@@ -1,0 +1,755 @@
+#################
+#### Italy
+#################
+event = {
+id = 440000
+country = ITA
+style = 2
+picture = "military_parade"
+
+trigger = {
+control = { province = 421 data = ITA } #Naples
+control = { province = 422 data = ITA } #Taranto
+control = { province = 427 data = ITA } #Salerno
+NOT = {
+core = { province = 421 data = ITA }
+core = { province = 422 data = ITA }
+core = { province = 427 data = ITA }
+war = { country = ITA country = RSI }
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Second Italian Unification"
+desc = "We now control the whole Italian peninsula and have won the support of all of its people."
+
+action_a = {
+name = "The Risorgimento is Complete!"
+command = { type = addcore which = 418 }
+command = { type = addcore which = 415 }
+command = { type = addcore which = 420 }
+command = { type = addcore which = 423 }
+command = { type = addcore which = 421 }
+command = { type = addcore which = 427 }
+command = { type = addcore which = 424 }
+command = { type = addcore which = 426 }
+command = { type = addcore which = 422 }
+command = { type = addcore which = 428 }
+command = { type = addcore which = 425 }
+command = { type = addcore which = 431 }
+command = { type = addcore which = 432 }
+command = { type = addcore which = 433 }
+command = { type = addcore which = 430 }
+command = { type = addcore which = 417 }
+command = { type = dissent value = -3 }
+command = { type = relation which = FRA value = -25 }
+command = { type = relation which = OTT value = -25 }
+}
+}
+
+
+event = {
+id = 440001
+country = RSI
+style = 2
+picture = "military_parade"
+
+trigger = {
+control = { province = 407 data = RSI } #Milan
+control = { province = 410 data = RSI } #Florence
+control = { province = 398 data = RSI } #Turin
+control = { province = 419 data = RSI } #Rome
+NOT = {
+core = { province = 407 data = RSI }
+core = { province = 410 data = RSI }
+core = { province = 398 data = RSI }
+core = { province = 419 data = RSI }
+war = { country = ITA country = RSI }
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  200
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Second Italian Unification"
+desc = "We now control the whole Italian peninsula and have won the support of all of its people."
+
+action_a = {
+name = "The Risorgimento is Complete!"
+command = { type = addcore which = 435 } #Genoa
+command = { type = addcore which = 434 } #La Spezia
+command = { type = addcore which = 396 } #Milan
+command = { type = addcore which = 399 } #Ferrara
+command = { type = addcore which = 398 } #Bologna
+command = { type = addcore which = 407 } #Florence
+command = { type = addcore which = 395 } #Rimini
+command = { type = addcore which = 393 } #Rome
+command = { type = addcore which = 408 } #Perugia
+command = { type = addcore which = 410 } #Anzio
+command = { type = addcore which = 411 } #Turin
+command = { type = addcore which = 413 } #Sardinia
+command = { type = addcore which = 419 }
+command = { type = addcore which = 414 }
+command = { type = addcore which = 412 }
+command = { type = addcore which = 416 }
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -25 }
+command = { type = relation which = OTT value = -25 }
+}
+}
+
+#### Peaceful Unification of Italy by AC and Placido
+#440002	RSI	Revolution in the North
+#440003	ITA	A proposal from the South
+#440004	ITA	A proposal from the South
+#440005	ITA	A proposal from the South
+#440006	RSI	The North accepted our proposal!
+#440007	RSI	The North rejected our proposal!
+#440008	RSI	Grenoble, Nice and Corsica
+#440009	RSI	Revolution in the South
+#440010	ITA	A proposal from the North
+#440011	ITA	A proposal from the North
+#440012	ITA	A proposal from the North
+#440013	RSI	The South accepted our proposal!
+#440014	RSI	The South rejected our proposal!
+#440015	RSI	Revolution in the North
+#440016	ITA	A proposal from the South
+#440017	ITA	Revolution in the South
+#440018	RSI	A proposal from the North
+#440019	ITA	New resources
+#440020	RSI	New resources
+
+event = {
+id = 440002
+random = no
+country = RSI
+style = 2
+
+trigger = {
+event = 91609 #Democratic Elections Italian Federation in Papacy.txt
+exists = ITA
+NOT = {
+ispuppet = ITA
+ispuppet = RSI
+war = { country = ITA country = RSI }
+event = 91779 #Democratic Elections Socialist Republic of Italy in Sicilies.txt
+flag = ITA_REV_SC # set by event in Papacy.txt
+}
+}
+
+name = "Revolution in the North"
+desc = "A successful revolution in the Italian Federation led to democratic elections which the right-wing conservatives failed to win. Perhaps we can approach the new government and convince them to join our country? A new Risorgimento could be achieved through peaceful negotiations!"
+picture = "politics2"
+
+date = { day = 0 month = january year = 1936 }
+offset = 4
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Send a proposal!"
+ai_chance = 95
+command = { type = dissent value = -1 }
+command = { type = trigger which = 440003 } #A proposal from the South
+command = { type = trigger which = 440004 } #A proposal from the South
+command = { type = trigger which = 440005 } #A proposal from the South
+}
+
+action_b = {
+name = "No, they are not worth it!"
+ai_chance = 5
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 440003
+random = no
+country = ITA
+style = 2
+
+trigger = {
+flag = ITA_REV_SL
+}
+
+name = "A proposal from the South"
+desc = "The Socialist Republic of Italy approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 20
+command = { type = trigger which = 440006 } #The north accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 80
+command = { type = dissent value = 3 }
+command = { type = relation which = RSI value = -25 }
+command = { type = trigger which = 440007 } #The north refused our proposal!
+}
+}
+
+
+event = {
+id = 440004
+random = no
+country = ITA
+style = 2
+
+trigger = {
+flag = ITA_REV_SD
+}
+
+name = "A proposal from the South"
+desc = "The Socialist Republic of Italy approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 75
+command = { type = trigger which = 440006 } #The north accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 25
+command = { type = dissent value = 3 }
+command = { type = relation which = RSI value = -25 }
+command = { type = trigger which = 440007 } #The north refused our proposal!
+}
+}
+
+
+event = {
+id = 440005
+random = no
+country = ITA
+style = 2
+
+trigger = {
+flag = ITA_REV_LWR
+}
+
+name = "A proposal from the South"
+desc = "The Socialist Republic of Italy approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 100
+command = { type = trigger which = 440006 } #The north accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 0
+command = { type = dissent value = 3 }
+command = { type = relation which = RSI value = -25 }
+command = { type = trigger which = 440007 } #The north refused our proposal!
+}
+}
+
+
+event = {
+id = 440006
+random = no
+country = RSI
+style = 2
+
+name = "The North accepted our proposal!"
+desc = "The new government of the Italian Federation accepted our proposal! Despite some grumbling, a new united Italy is born!"
+picture = "military_parade"
+
+action_a = {
+name = "A new united Italy!"
+command = { type = inherit which = ITA }
+command = { type = dissent value = 8 }
+command = { type = addcore which = 435 } #Genoa
+command = { type = addcore which = 434 } #La Spezia
+command = { type = addcore which = 396 } #Milan
+command = { type = addcore which = 399 } #Ferrara
+command = { type = addcore which = 398 } #Bologna
+command = { type = addcore which = 407 } #Florence
+command = { type = addcore which = 395 } #Rimini
+command = { type = addcore which = 393 } #Rome
+command = { type = addcore which = 408 } #Perugia
+command = { type = addcore which = 410 } #Anzio
+command = { type = addcore which = 411 } #Turin
+command = { type = addcore which = 413 } #Sardinia
+command = { type = addcore which = 419 }
+command = { type = addcore which = 414 }
+command = { type = addcore which = 412 }
+command = { type = addcore which = 416 }
+command = { type = sleepevent which = 440001 } #The Second Italian Unification
+}
+}
+
+
+event = {
+id = 440007
+random = no
+country = RSI
+style = 2
+
+name = "The North rejected our proposal"
+desc = "The stupid politicians in the Italian Federation refused to accept our proposal. What should we do now?"
+picture = "failed_objective"
+
+action_a = {
+name = "We will conquer their lands!"
+ai_chance = 50
+command = { type = war which = ITA }
+}
+
+action_b = {
+name = "They don't deserve us!"
+ai_chance = 50
+command = { type = relation which = ITA value = -25 }
+}
+}
+
+
+event = {
+id = 440008
+random = no
+country = RSI
+style = 2
+
+trigger = {
+owned = { province = 91 data = RSI } #Grenoble
+owned = { province = 87 data = RSI } #Nice
+owned = { province = 94 data = RSI } #Corsica
+alliance = { country = FRA country = RSI }
+}
+
+name = "Grenoble Nice and Corsica"
+desc = "After the peaceful annexation of the Italian Federation, we control the provinces of Grenoble, Nice and Corsica, whose rightful owner is our loyal ally, the Commune of France. We can now give those provinces back to their rightful owner."
+picture = "Kaiserreich_VIC_Nice"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The Commune of France will rule these lands!"
+ai_chance = 99
+command = { type = secedeprovince which = FRA value = 91 } #Grenoble
+command = { type = secedeprovince which = FRA value = 87 } #Nice
+command = { type = secedeprovince which = FRA value = 94 } #Corsica
+command = { type = relation which = FRA value = 50 }
+}
+
+action_b = {
+name = "These lands belong to us now!"
+ai_chance = 1
+command = { type = relation which = FRA value = -50 }
+}
+}
+
+
+event = {
+id = 440009
+random = no
+country = ITA
+style = 2
+
+trigger = {
+event = 91779 #Democratic Elections Socialist Republic of Italy in Sicilies.txt
+exists = RSI
+NOT = {
+ispuppet = ITA
+ispuppet = RSI
+war = { country = ITA country = RSI }
+flag = RSI_REV_SD # set by events in Sicilies.txt
+event = 91609 #Democratic Elections Italian Federation in Papacy.txt 
+}
+}
+
+name = "Revolution in the South"
+desc = "A successful revolution in the Socialist Republic of Italy led to democratic elections which the left-wing (former Syndicalist) party failed to win. Perhaps we can approach the new government and convince them to join our country? A new Risorgimento could be achieved through peaceful negotiations!"
+picture = "politics2"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Send a proposal!"
+ai_chance = 95
+command = { type = dissent value = -1 }
+command = { type = trigger which = 440010 } #A proposal from the North
+command = { type = trigger which = 440011 } #A proposal from the North
+command = { type = trigger which = 440012 } #A proposal from the North
+}
+
+action_b = {
+name = "No, they are not worth it!"
+ai_chance = 5
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 440010
+random = no
+country = RSI
+style = 2
+
+trigger = {
+flag = RSI_REV_SL
+}
+
+name = "A proposal from the North"
+desc = "The Italian Federation approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 20
+command = { type = trigger which = 440013 } #The north accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 80
+command = { type = dissent value = 3 }
+command = { type = relation which = ITA value = -25 }
+command = { type = trigger which = 440014 } #The north refused our proposal!
+}
+}
+
+
+event = {
+id = 440011
+random = no
+country = RSI
+style = 2
+
+trigger = {
+flag = RSI_REV_PA
+}
+
+name = "A proposal from the South"
+desc = "The Italian Federation approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 50
+command = { type = trigger which = 440013 } #The north accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 50
+command = { type = dissent value = 3 }
+command = { type = relation which = ITA value = -25 }
+command = { type = trigger which = 440014 } #The north refused our proposal!
+}
+}
+
+
+event = {
+id = 440012
+random = no
+country = RSI
+style = 2
+
+trigger = {
+flag = RSI_REV_SC
+}
+
+name = "A proposal from the South"
+desc = "The Italian Federation approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 100
+command = { type = trigger which = 440013 } #The north accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 0
+command = { type = dissent value = 3 }
+command = { type = relation which = ITA value = -25 }
+command = { type = trigger which = 440014 } #The north refused our proposal!
+}
+}
+
+event = {
+id = 440013
+random = no
+country = ITA
+style = 2
+
+name = "The South accepted our proposal!"
+desc = "The new government of the Socialist Republic of Italy accepted our proposal! Despite some grumbling, a new united Italy is born!"
+picture = "military_parade"
+
+action_a = {
+name = "A new united Italy!"
+command = { type = inherit which = RSI }
+command = { type = dissent value = 8 }
+command = { type = addcore which = 418 }
+command = { type = addcore which = 415 }
+command = { type = addcore which = 420 }
+command = { type = addcore which = 423 }
+command = { type = addcore which = 421 }
+command = { type = addcore which = 427 }
+command = { type = addcore which = 424 }
+command = { type = addcore which = 426 }
+command = { type = addcore which = 422 }
+command = { type = addcore which = 428 }
+command = { type = addcore which = 425 }
+command = { type = addcore which = 431 }
+command = { type = addcore which = 432 }
+command = { type = addcore which = 433 }
+command = { type = addcore which = 430 }
+command = { type = addcore which = 417 }
+command = { type = sleepevent which = 440000 } #The Second Italian Unification
+command = { type = sleepevent which = 996030 } #The Annexation of Southern Italy and Reunification of Italy
+}
+}
+
+
+event = {
+id = 440014
+random = no
+country = ITA
+style = 2
+
+name = "The South rejected our proposal"
+desc = "The stupid politicians in the Socialist Republic of Italy refused to accept our proposal. What should we do now?"
+picture = "failed_objective"
+
+action_a = {
+name = "We will conquer their lands!"
+ai_chance = 50
+command = { type = war which = RSI }
+}
+
+action_b = {
+name = "They don't deserve us!"
+ai_chance = 50
+command = { type = relation which = RSI value = -25 }
+}
+}
+
+
+event = {
+id = 440015
+random = no
+country = ITA
+style = 2
+
+trigger = {
+event = 91609 #Democratic Elections Italian Federation in Papacy.txt
+event = 91779 #Democratic Elections Socialist Republic of Italy in Sicilies.txt
+exists = RSI
+NOT = {
+ispuppet = ITA
+ispuppet = RSI
+war = { country = ITA country = RSI }
+}
+OR = {
+flag = ITA_REV_SC # set by events in Papacy.txt
+flag = ITA_REV_SL
+}
+OR = {
+flag = RSI_REV_SC # set by events in Sicilies.txt
+flag = RSI_REV_SL
+flag = RSI_REV_PA
+}
+}
+
+name = "Revolutions!"
+desc = "Two successful revolutions in our country and in the Socialist Republic of Italy led to democratic elections won by a liberal or right-leaning party. Perhaps we can approach the new government and convince them to join our country? A new Risorgimento could be achieved through peaceful negotiations!"
+picture = "politics2"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Send a proposal!"
+ai_chance = 95
+command = { type = dissent value = -1 }
+command = { type = trigger which = 440016 } #A proposal from the North
+}
+
+action_b = {
+name = "No, they are not worth it!"
+ai_chance = 5
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 440016
+random = no
+country = RSI
+style = 2
+
+name = "A proposal from the North"
+desc = "The Italian Federation approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 90
+command = { type = trigger which = 440013 } #The south accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 10
+command = { type = dissent value = 3 }
+command = { type = relation which = RSI value = -25 }
+command = { type = trigger which = 440014 } #The south refused our proposal!
+}
+}
+
+
+event = {
+id = 440017
+random = no
+country = RSI
+style = 2
+
+trigger = {
+event = 91609 #Democratic Elections Italian Federation in Papacy.txt
+event = 91779 #Democratic Elections Socialist Republic of Italy in Sicilies.txt
+exists = ITA
+NOT = {
+ispuppet = ITA
+ispuppet = RSI
+war = { country = ITA country = RSI }
+}
+OR = {
+flag = ITA_REV_SD # set by events in Papacy.txt
+flag = ITA_REV_LWR
+}
+flag = RSI_REV_SD # set by events in Sicilies.txt
+} 
+
+name = "Revolutions!"
+desc = "Two successful revolutions in our country and in the Italian Federation led to democratic elections won by a left-leaning party. Perhaps we can approach the new government and convince them to join our country? A new Risorgimento could be achieved through peaceful negotiations!"
+picture = "politics2"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Send a proposal!"
+ai_chance = 95
+command = { type = dissent value = -1 }
+command = { type = trigger which = 440018 } #A proposal from the South
+}
+
+action_b = {
+name = "No, they are not worth it!"
+ai_chance = 5
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 440018
+random = no
+country = ITA
+style = 2
+
+name = "A proposal from the South"
+desc = "The Socialist Republic of Italy approached us and, together with the congratulations for the new government, they asked if we want to become a part of their country. They think that we can achieve a peaceful unification through negotiations. What should we answer?"
+picture = "politics2"
+
+action_a = {
+name = "Accept, for a new united Italy!"
+ai_chance = 90
+command = { type = trigger which = 440006 } #The south accepted our proposal!
+}
+
+action_b = {
+name = "No, we will never be ruled by you!"
+ai_chance = 10
+command = { type = dissent value = 3 }
+command = { type = relation which = RSI value = -25 }
+command = { type = trigger which = 440007 } #The south refused our proposal!
+}
+}
+
+
+event = {
+id = 440019
+random = no
+country = ITA
+style = 2
+
+trigger = {
+core = { province = 421 data = ITA }
+NOT = {
+exists = RSI
+}
+random = 25
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  20
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "New resources"
+desc = "Now that the Italian peninsula is once again a united country, we've gained control over the industries, factories, universities and research centres of the former Socialist Republic of Italy. These new resources will greatly advance our production and our technology research!"
+picture = "Bank"
+
+action_a = {
+name = "Excellent!"
+command = { type = waketeam which =  1823 } #Università Federico II
+command = { type = waketeam which =  1824 } #I.M.A.M.
+command = { type = waketeam which =  1825 } #Cantieri Navali di Palermo
+command = { type = waketeam which =  1826 } #Ferrovie Italiane del Sud
+}
+}
+
+
+event = {
+id = 440020
+random = no
+country = RSI
+style = 2
+
+trigger = {
+core = { province = 419 data = RSI }
+NOT = {
+exists = ITA
+}
+random = 25
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  20
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "New resources"
+desc = "Now that the Italian peninsula is once again a united country, we've gained control over the industries, factories, universities and research centres of the former Italian Federation. These new resources will greatly advance our production and our technology research!"
+picture = "Bank"
+
+action_a = {
+name = "Excellent!"
+command = { type = waketeam which =  7714 } #Politecnico di Milano
+command = { type = waketeam which =  7715 } #Sapienza di Roma
+command = { type = waketeam which =  7716 } #Industria Aeronautica del Nord
+command = { type = waketeam which =  7717 } #Cantieri Liguri Riuniti
+command = { type = waketeam which =  7718 } #Ferrovie Nord
+}
+}

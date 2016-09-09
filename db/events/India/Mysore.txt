@@ -1,0 +1,1055 @@
+################################################################################?#
+#Mysore Post Princely Defeat
+################################################################################?#
+
+event = {
+id = 190000
+country = U45
+style = 2
+picture = "krishnaevent"
+decision_picture = "decision_krishna"
+
+decision = {
+NOT = {
+ispuppet = U45
+atwar = U45
+exists = IND
+}
+flag = Mysorerevolt # set by events in Princely Domestic Policy.txt
+flag = Travancorerevolt # set by events in Princely Domestic Policy.txt
+exists = U44
+}
+
+decision_trigger = {
+control = { province = 1507 data = U45 } #Mysore
+OR = {
+control = { province = 1502 data = U45 } #Bangalore
+}
+}
+
+trigger = {
+NOT = {
+atwar = U45
+exists = IND
+ispuppet = U45
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+exists = U44
+exists = U45
+control = { province = 1507 data = U45 } #Mysore
+OR = {
+control = { province = 1502 data = U45 } #Bangalore
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  25
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Gandaberunda Swipes the Nizam - Mysore Triumphant"
+desc = "After our struggle for secession from the Princely Federation came to fruition, Mysore State stands at the crossroads. Beleaguered to the north by the remaining twin governments of Calcutta and Delhi our independence might not be so viable as first thought. At the same time the local left-wing activists within our state are calling for a union with the socialist government in Calcutta. All of Mysore eagerly await the decision of his majesty’s government."
+
+action_a = {
+ai_chance = 50
+name = "No coolies in government - the royal cabinet soldiers on."
+command = { type = dissent value = 10 }
+command = { type = relation which = PAK value = 50 }
+command = { type = relation which = PRK value = -50 }
+command = { type = event which = 190001 where = U45 when = 14 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Mysore needs a government Of the people, for the people! Arrange an election!"
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = event which = 190006 where = U45 when = 14 }
+command = { type = dissent value = -5 }
+}
+}
+
+################################################################################?#
+#Mysore - Royalist cabinet
+################################################################################?#
+
+event = {
+id = 190001
+country = U45
+style = 2
+picture = "Mysoredurbar"
+
+name = "The Mysore Durbar and the Question of Indpendence"
+desc = "With the royalists and landed supporters of Krishna Wadiyar retaining control of the Mysore government, the Rajah has convened his ministers for a durbar to decide the multilateral course of our state. Some of the conservative zamindars hark for a union with the Dominion government in Delhi to the North, whilst others rally around the cry for independence. Whatever path His Majesty decides to undertake, the choice will decide our future for ever."
+
+action_a = {
+ai_chance = 99
+name = "Let us seek terms with the government in Delhi!"
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = relation which = PAK value = 100 }
+command = { type = relation which = VIC value = 200 }
+command = { type = relation which = CAN value = 200 }
+command = { type = relation which = GUY value = 200 }
+command = { type = leave_alliance }
+command = { type = event which = 190002 where = PAK when = 4 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Our state shall remain superior, sovereign and independent!"
+command = {  }
+#command = { type = event which = xxxxxxx where = PAK when = 15 } # to be added later
+}
+}
+
+
+event = {
+id = 190002
+country = PAK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore State Inquires About Terms of Ascension"
+desc = "The government of the recently restored independent Kingdom of Mysore has today announced its desire to ascend to our political union. However flattering, this request presents our cabinet with a tough decision given the volatile political climate in southern India. If we were to draw the Carnatic Kingdom into our sphere of influence, we might provoke the leftist radicals in Calcutta to respond in force. Public and private observers eagerly await our government’s decision."
+
+action_a = {
+ai_chance = 100
+name = "They shall be more than welcome!"
+command = { type = removeclaim which = 1501 }
+command = { type = removeclaim which = 1502 }
+command = { type = removeclaim which = 1503 }
+command = { type = removeclaim which = 1507 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = make_puppet which = U45 }
+command = { type = relation which = U45 value = 200 }
+command = { type = alliance which = U45 }
+command = { type = event which = 190003 where = PRK when = 10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Mysore? Isn't that some kind of briyani?"
+command = { type = dissent value = 10 }
+command = { type = domestic which = defense_lobby value = -2 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+
+event = {
+id = 190003
+country = PRK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore State Aligns With the Delhi Government"
+desc = "In the wake of the Nizam of Hyderabad’s downfall, the Kingdom of Mysore has reemerged as a new reactionary entity on the Deccan Plateau. While worryingly enough on its own, the restored princedom has now decided to align with our most ardent rivals in Delhi! We must act immediately lest this affront to our true and legal right to rule India go on any further!"
+
+action_a = {
+ai_chance = 75
+name = "Formally protest this reactionary disgrace!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = event which = 190004 where = PAK when = 5 }
+command = { type = relation which = U45 value = -50 }
+}
+
+action_b = {
+ai_chance = 25
+name = "The princely menace must be ended once and for all! To War!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = U45 value = -100 }
+command = { type = relation which = PAK value = -100 }
+command = { type = war which = PAK }
+command = { type = war which = U45 }
+command = { type = addclaim which = 1501 }
+command = { type = addclaim which = 1502 }
+command = { type = addclaim which = 1503 }
+command = { type = addclaim which = 1507 }
+command = { type = dissent value = -15 }
+}
+
+action_c = {
+ai_chance = 0
+name = "This is really below us."
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+
+event = {
+id = 190004
+country = PAK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore Aligns with Delhi, Calcutta Protests"
+desc = "As expected, our decision to expand our influence into the principality of Mysore has resulted in a strongly worded note of protest from the radical leftist government in Calcutta. The socialist cadres in the East have to the tunes of marching bands and parading soldiers warned us that such an imperialist act will result in strong repercussions from their government. How shall we react to such inane threats?"
+
+action_a = {
+ai_chance = 75
+name = "Ignore this Bolshevik rabble."
+command = { type = event which = 190005 where = PRK when = 5 }
+command = { type = relation which = PRK value = -50 }
+}
+
+action_b = {
+ai_chance = 25
+name = "These braying anarchists must be stopped at once - to war!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = U45 value = 100 }
+command = { type = war which = PRK }
+command = { type = dissent value = -5 }
+}
+
+action_c = {
+ai_chance = 0
+name = "Good God, what were we thinking?"
+command = { type = dissent value = 15 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = end_mastery which = U45 }
+}
+}
+
+
+event = {
+id = 190005
+country = PRK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore Remains in Delhi's Sphere"
+desc = "The dastardly zamindar henchmen of sick British imperialism have ignored our just demand for their disentanglment in the Deccan. Our prestige and revolutionary honour are at stake and the central comittee in Calcutta is loudly calling for our armed forces to take action against this disgrace!"
+
+action_a = {
+ai_chance = 100
+name = "We shall emancipate the Indian proletariat by force!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = U45 value = -100 }
+command = { type = relation which = PAK value = -100 }
+command = { type = war which = PAK }
+command = { type = war which = U45 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Back down, we cannot afford armed conflict."
+command = { type = dissent value = 15 }
+}
+}
+
+################################################################################?#
+#Mysore - Elections.
+################################################################################?#
+
+event = {
+id = 190006
+country = U45
+style = 2
+picture = "diarchy"
+
+name = "Popular Elections in Mysore"
+desc = "After the dissolution of the Princely Federation, Mysore stands - once again - independent. However, the fires of Indian unity haven’t been extinguished and calls still can be heard throughout the capital, demanding our reunion with one of the major successor states. However, the cabinet is weary of making a final decision and it seems that the final say of the Wadiyars might tip the balance."
+
+action_a = {
+ai_chance = 50
+name = "The feudal landlords and zamindars obtain a majority."
+command = { type = dissent value = 5 }
+command = { type = relation which = PAK value = 100 }
+command = { type = relation which = PRK value = -100 }
+command = { type = event which = 190001 where = U45 when = 14 }
+}
+
+action_b = {
+ai_chance = 50
+name = "The Congress Party topples the royal government!"
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 8 }
+command = { type = headofstate which = 59100 }
+command = { type = headofgovernment which = 59112 }
+command = { type = foreignminister which =  59113 }
+command = { type = ministerofsecurity which = 59115 }
+command = { type = armamentminister which = 59116 }
+command = { type = event which = 190007 where = U45 when = 2 }
+command = { type = dissent value = -5 }
+}
+}
+
+################################################################################?#
+#Mysore Goes Commie
+################################################################################?#
+
+event = {
+id = 190007
+country = U45
+style = 2
+picture = "Mysoredurbar"
+
+name = "Status of the Monarchy in Mysore"
+desc = "After years of oppression under the hegemony of Hyderabad, the working people and ryots of Mysore finally have a truly free and representative government. However, the royalist court still hold considerable influence which might pose a threat to the people's continued uplifting. The incumbent Congress Party will have to deal with this relic of feudalism before violence erupts."
+
+action_a = {
+ai_chance = 65
+name = "Abolish the princely durbar and proclaim Mysore a people's republic!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = PRK value = 50 }
+command = { type = relation which = PAK value = -100 }
+command = { type = headofstate which = 59117 }
+command = { type = event which = 190008 where = U45 when = 14 }
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 35
+name = "The people's livelyhood depends on the landlords, retain the monarchy."
+command = { type = relation which = PRK value = -25 }
+command = { type = relation which = PAK value = 25 }
+command = { type = event which = 190008 where = U45 when = 14 }
+command = { type = setflag which = Mysore_Congress_Royalist }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 190008
+country = U45
+style = 2
+picture = "diarchy"
+
+name = "The Case of Mysore's Sovereignty"
+desc = "After the dissolution of the Princely Federation, Mysore stands - once again - independent. However, the fires of Indian unity haven’t been extinguished and calls still can be heard throughout the capital, demanding our reunion with one of the major successor states. However, the cabinet is weary of making a final decision and it seems that the final say of the Congress Cadres might tip the balance."
+
+action_a = {
+ai_chance = 90
+name = "Apply for admission into the Bhartiya Commune!"
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = relation which = PRK value = 150 }
+command = { type = relation which = PAK value = -150 }
+command = { type = leave_alliance }
+command = { type = dissent value = 15 }
+command = { type = event which = 190009 where = PRK when = 10 }
+}
+
+action_b = {
+ai_chance = 9
+name = "Contact the Delhi Government for terms of ascension"
+trigger = { flag = Mysore_Congress_Royalist }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = relation which = PRK value = -150 }
+command = { type = relation which = PAK value = 150 }
+command = { type = leave_alliance }
+command = { type = dissent value = 15 }
+command = { type = event which = 190001 where = PAK when = 10 }
+}
+
+action_c = {
+ai_chance = 1
+name = "Bah, our principality shall stand alone!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = PRK value = -150 }
+command = { type = relation which = PAK value = -150 }
+command = { type = relation which = U44 value = 100 }
+command = { type = dissent value = -15 }
+}
+}
+
+
+event = {
+id = 190009
+country = PRK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore State Inquires About Terms of Ascension"
+desc = "The government of the recently restored independent state of Mysore has today announced its desire to ascend to our political union. However flattering, this request presents our cabinet with a tough decision given the volatile political climate in southern India. If we were to draw the Carnatic realm into our sphere of influence, we might provoke the feudal oppressors in Delhi to respond in force. Public and private observers eagerly await our government’s decision."
+
+action_a = {
+ai_chance = 100
+name = "They shall be more than welcome!"
+command = { type = removeclaim which = 1501 }
+command = { type = removeclaim which = 1502 }
+command = { type = removeclaim which = 1503 }
+command = { type = removeclaim which = 1507 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = make_puppet which = U45 }
+command = { type = relation which = U45 value = 200 }
+command = { type = alliance which = U45 }
+command = { type = event which = 190010 where = PAK when = 10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Mysore? Isn't that some kind of briyani?"
+command = { type = dissent value = 10 }
+command = { type = domestic which = defense_lobby value = -2 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+
+event = {
+id = 190010
+country = PAK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore State Aligns With the Calcutta Government"
+desc = "In the wake of the Nizam of Hyderabad’s downfall, the Kingdom of Mysore has reemerged as a new reactionary entity on the Deccan Plateau. While worryingly enough on its own, the restored princedom has now decided to align with our most ardent rivals in Delhi! We must act immediately lest this affront to our true and legal right to rule India go on any further!"
+
+action_a = {
+ai_chance = 65
+name = "Formally protest this leftist usurpation!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = event which = 190011 where = PRK when = 5 }
+command = { type = relation which = U45 value = -50 }
+}
+
+action_b = {
+ai_chance = 35
+name = "This is the day where we end Indian bolshevism for good!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = U45 value = -100 }
+command = { type = relation which = PRK value = -100 }
+command = { type = war which = PRK }
+command = { type = war which = U45 }
+command = { type = addclaim which = 1501 }
+command = { type = addclaim which = 1502 }
+command = { type = addclaim which = 1503 }
+command = { type = addclaim which = 1507 }
+command = { type = dissent value = -15 }
+}
+
+action_c = {
+ai_chance = 0
+name = "This is really below us."
+command = { type = dissent value = 15 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+
+event = {
+id = 190011
+country = PRK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore Aligns with Calcutta, Delhi Protests"
+desc = "As expected, our decision to expand our influence into the state of Mysore has resulted in a strongly worded note of protest from the rightist clique in Delhi. Troop manouvres on our borders and fiery rhetorics denouncing our government have drastically heigtened tensions between the two remaining successor states to the British Raj. Bose's Maximists in particular are crying out for an armed response to such imperialist gerrymandering."
+
+action_a = {
+ai_chance = 75
+name = "We are the vanguard of all Indian workingmen - refute any protests!"
+command = { type = event which = 190012 where = PAK when = 5 }
+command = { type = relation which = PAK value = -50 }
+}
+
+action_b = {
+ai_chance = 25
+name = "We shall skewer the imperialist menace on the tips of our bayonets!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = U45 value = 100 }
+command = { type = war which = PAK }
+command = { type = addclaim which = 1501 }
+command = { type = addclaim which = 1502 }
+command = { type = addclaim which = 1503 }
+command = { type = addclaim which = 1507 }
+command = { type = addclaim which = 1513 }
+command = { type = addclaim which = 1459 }
+command = { type = addclaim which = 1533 }
+command = { type = addclaim which = 1538 }
+command = { type = addclaim which = 1532 }
+command = { type = addclaim which = 1519 }
+command = { type = addclaim which = 1522 }
+command = { type = addclaim which = 1479 }
+command = { type = addclaim which = 1480 }
+command = { type = addclaim which = 1481 }
+command = { type = addclaim which = 1483 }
+command = { type = addclaim which = 1466 }
+command = { type = addclaim which = 1453 }
+command = { type = addclaim which = 1454 }
+command = { type = addclaim which = 1463 }
+command = { type = addclaim which = 1460 }
+command = { type = addclaim which = 1464 }
+command = { type = addclaim which = 1461 }
+command = { type = addclaim which = 1468 }
+command = { type = addclaim which = 1518 }
+command = { type = addclaim which = 1521 }
+command = { type = addclaim which = 1523 }
+command = { type = addclaim which = 1524 }
+command = { type = addclaim which = 1525 }
+command = { type = addclaim which = 1526 }
+command = { type = addclaim which = 1527 }
+command = { type = addclaim which = 1528 }
+command = { type = addclaim which = 1530 }
+command = { type = addclaim which = 1531 }
+command = { type = addclaim which = 1534 }
+command = { type = addclaim which = 1535 }
+command = { type = addclaim which = 1536 }
+command = { type = addclaim which = 1539 }
+command = { type = addclaim which = 1540 }
+command = { type = addclaim which = 1529 }
+command = { type = addclaim which = 1537 }
+command = { type = addclaim which = 1451 }
+command = { type = addclaim which = 1467 }
+command = { type = dissent value = -5 }
+}
+
+action_c = {
+ai_chance = 0
+name = "Good God(s), what were we thinking?"
+command = { type = dissent value = 15 }
+command = { type = domestic which = interventionism value = -3 }
+command = { type = end_mastery which = U45 }
+}
+}
+
+
+event = {
+id = 190012
+country = PAK
+style = 2
+picture = "Mysoredurbar"
+
+name = "Mysore Remains in Calcutta's Sphere"
+desc = "Our diplomatic protests to the socialist rabble in Calcutta has gone unnoticed. The people of Mysore remains oppressed by red forces and horror stories of forced collectivization are streaming north on the shoulders of countless refugees. The common people and the government are united in their outrage at this offense and are clamoring for an armed response!"
+
+action_a = {
+ai_chance = 100
+name = "The Bolshevik menance shall be vanquished by our righteous arms!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = U45 value = -100 }
+command = { type = relation which = PAK value = -100 }
+command = { type = war which = PRK }
+command = { type = war which = U45 }
+command = { type = addclaim which = 1501 }
+command = { type = addclaim which = 1502 }
+command = { type = addclaim which = 1503 }
+command = { type = addclaim which = 1507 }
+command = { type = addclaim which = 1439 }
+command = { type = addclaim which = 1440 }
+command = { type = addclaim which = 1441 }
+command = { type = addclaim which = 1442 }
+command = { type = addclaim which = 1443 }
+command = { type = addclaim which = 1444 }
+command = { type = addclaim which = 1445 }
+command = { type = addclaim which = 1446 }
+command = { type = addclaim which = 1447 }
+command = { type = addclaim which = 1448 }
+command = { type = addclaim which = 1449 }
+command = { type = addclaim which = 1450 }
+command = { type = addclaim which = 1458 }
+command = { type = addclaim which = 1465 }
+command = { type = addclaim which = 1469 }
+command = { type = addclaim which = 1470 }
+command = { type = addclaim which = 1471 }
+command = { type = addclaim which = 1472 }
+command = { type = addclaim which = 1473 }
+command = { type = addclaim which = 1474 }
+command = { type = addclaim which = 1475 }
+command = { type = addclaim which = 1476 }
+command = { type = addclaim which = 1477 }
+command = { type = addclaim which = 1493 }
+command = { type = addclaim which = 1452 }
+command = { type = addclaim which = 1462 }
+command = { type = dissent value = -15 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Back down, we cannot afford armed conflict."
+command = { type = dissent value = 15 }
+}
+}
+
+################################################################################?#
+#Delhi annexes Mysore
+################################################################################?#
+
+event = {
+id = 190013
+country = PAK
+style = 2
+picture = "Mysoredurbar"
+decision_picture = "decision_krishna"
+
+decision = {
+NOT = {
+war = { country = PAK country = U35 }
+exists = IND
+exists = PRK
+}
+flag = Mysorerevolt
+event = 190002
+puppet = { country = U45 country = PAK  }
+}
+
+decision_trigger = {
+control = { province = 1507 data = U45 } #Mysore
+OR = {
+control = { province = 1502 data = U45 } #Bangalore
+}
+}
+
+trigger = {
+NOT = {
+war = { country = PAK country = U35 }
+war = { country = PAK country = BUR }
+exists = IND
+exists = PRK
+}
+flag = Mysorerevolt
+event = 190002
+puppet = { country = U45 country = PAK  }
+control = { province = 1507 data = U45 } #Mysore
+OR = {
+control = { province = 1502 data = U45 } #Bangalore
+}
+}
+
+name = "Status of Mysore State"
+desc = "Both of the traitor governments in Calcutta and Hyderabad have been defeated by our righteous arms and in the wake of their demise stands the question of Mysore State's future. Shall they maintain autonomy or be integrated alongside the other provinces of our majestic country?"
+
+date = { day = 0 month = january year = 1938 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = "Glory to India Resurgent! Demand their incorporation!"
+command = { type = inherit which = U45 value = 1 }
+command = { type = addcore which = 1501 }
+command = { type = addcore which = 1502 }
+command = { type = addcore which = 1503 }
+command = { type = addcore which = 1507 }
+command = { type = wakeleader which = 564126 }
+command = { type = wakeleader which = 564127 }
+command = { type = wakeleader which = 564128 }
+command = { type = wakeleader which = 564129 }
+command = { type = wakeleader which = 564130 }
+command = { type = waketeam which = 12531 }
+command = { type = waketeam which = 12532 }
+command = { type = dissent value = -5 }
+command = { type = sleepevent which = 190015 }
+command = { type = local_setflag which = PAK_Mysore_pacified }
+command = { type = belligerence which = PAK value = -10 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Let them retain their petty autonomy."
+command = { type = relation which = U45 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PAK value = -10  }
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 190015 }
+command = { type = local_setflag which = PAK_Mysore_pacified }
+}
+}
+
+################################################################################?#
+#Calcutta annexes Mysore
+################################################################################?#
+
+event = {
+id = 190014
+country = PRK
+style = 2
+picture = "Mysoredurbar"
+decision_picture = "decision_krishna"
+
+decision = {
+NOT = {
+war = { country = PRK country = U45 }
+war = { country = PRK country = BUR }
+exists = IND
+exists = PAK
+}
+flag = Mysorerevolt
+event = 190009
+puppet = { country = U45 country = PRK  }
+}
+
+decision_trigger = {
+control = { province = 1507 data = U45 } #Mysore
+OR = {
+control = { province = 1502 data = U45 } #Bangalore
+}
+}
+
+trigger = {
+NOT = {
+war = { country = PRK country = U45 }
+exists = IND
+exists = PAK
+}
+flag = Mysorerevolt
+event = 190009
+puppet = { country = U45 country = PRK  }
+control = { province = 1507 data = U45 } #Mysore
+OR = {
+control = { province = 1502 data = U45 } #Bangalore
+}
+}
+
+name = "Status of Mysore State"
+desc = "Both of the traitor governments in Delhi and Hyderabad have been defeated by our righteous arms and in the wake of their demise stands the question of Mysore State's future. Shall they maintain autonomy or be integrated alongside the other provinces of our majestic country?"
+
+date = { day = 0 month = january year = 1938 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = "In the name of the revolution! Demand their annexation!"
+command = { type = inherit which = U45 value = 1 }
+command = { type = addcore which = 1501 }
+command = { type = addcore which = 1502 }
+command = { type = addcore which = 1503 }
+command = { type = addcore which = 1507 }
+command = { type = wakeleader which = 579102 }
+command = { type = wakeleader which = 579103 }
+command = { type = wakeleader which = 579104 }
+command = { type = wakeleader which = 579105 }
+command = { type = waketeam which = 12628 }
+command = { type = waketeam which = 12629 }
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 190016 }
+command = { type = local_setflag which = Mysore_pacified }
+command = { type = belligerence which = PRK value = -10 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Let them retain their petty autonomy."
+command = { type = relation which = U45 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PRK value = -10  }
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 190016 }
+command = { type = local_setflag which = Mysore_pacified }
+}
+}
+
+################################################################################?#
+#Delhi overthrows syndie Mysore by force
+################################################################################?#
+
+event = {
+id = 190015
+random = no
+country = PAK
+picture = "Mysoredurbar"
+style = 2
+
+trigger = {
+NOT = {
+exists = IND
+exists = PRK
+exists = U45
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+event = 190009
+control = { province = 1507 data = PAK } #Mysore
+OR = {
+control = { province = 1502 data = PAK } #Bangalore
+}
+}
+
+date = { day = 0 month = june year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Integration of Mysore"
+desc = "We have driven the socialist usurpers out of the erstwhile state of Mysore. Another important part of the former Raj has been returned to the control of the legal central government. However, the exact way this newfound territory should be administrated is still debated within the ruling cabinet."
+
+action_a = {
+ai_chance = 99
+name = "Formally annex Mysore state."
+command = { type = inherit which = U45 value = 1 }
+command = { type = addcore which = 1501 }
+command = { type = addcore which = 1502 }
+command = { type = addcore which = 1503 }
+command = { type = addcore which = 1507 }
+command = { type = wakeleader which = 564126 }
+command = { type = wakeleader which = 564127 }
+command = { type = wakeleader which = 564128 }
+command = { type = wakeleader which = 564129 }
+command = { type = wakeleader which = 564130 }
+command = { type = waketeam which = 12531 }
+command = { type = waketeam which = 12532 }
+command = { type = dissent value = -5 }
+command = { type = sleepevent which = 190013 }
+command = { type = dissent value = 5 }
+command = { type = local_setflag which = PAK_Mysore_pacified }
+}
+
+action_b = {
+ai_chance = 1
+name = "Establish a loyal puppet in the Southern Deccan Plateu."
+command = { type = independence which = U45 value = 1 when = 1 }
+command = { type = make_puppet which = U45 }
+command = { type = relation which = U45 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PAK value = -15  }
+command = { type = sleepevent which = 190013 }
+command = { type = dissent value = 10 }
+command = { type = local_setflag which = PAK_Mysore_pacified }
+}
+}
+
+################################################################################?#
+#Calcutta overthrows reactionary Mysore by force
+################################################################################?#
+
+event = {
+id = 190016
+random = no
+country = PRK
+picture = "Mysoredurbar"
+style = 2
+
+trigger = {
+NOT = {
+exists = IND
+exists = PAK
+exists = U45
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+event = 190002
+control = { province = 1497 data = PRK } #Kochi
+OR = {
+control = { province = 1495 data = PRK } #Trivandrum
+}
+}
+
+date = { day = 0 month = june year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Integration of Mysore"
+desc = "We have driven the reactionary usurpers and maraudering zamindars out of the erstwhile state of Mysore. An important part of the former Raj has once more been returned to the control of the legal central government. However, the exact way this newfound territory should be administrated is still debated within the ruling cabinet."
+
+action_a = {
+ai_chance = 99
+name = "The revolution advances to the cheers of all workers!"
+command = { type = inherit which = U45 value = 1 }
+command = { type = addcore which = 1501 }
+command = { type = addcore which = 1502 }
+command = { type = addcore which = 1503 }
+command = { type = addcore which = 1507 }
+command = { type = wakeleader which = 579102 }
+command = { type = wakeleader which = 579103 }
+command = { type = wakeleader which = 579104 }
+command = { type = wakeleader which = 579105 }
+command = { type = waketeam which = 12628 }
+command = { type = waketeam which = 12629 }
+command = { type = sleepevent which = 190014 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Establish a loyal puppet in the Deccan Plateu."
+command = { type = independence which = U45 value = 1 when = 1 }
+command = { type = make_puppet which = U45 }
+command = { type = relation which = U45 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PRK value = -15  }
+command = { type = sleepevent which = 190014 }
+command = { type = dissent value = 10 }
+}
+}
+
+################################################################################?#
+#Jinnah-Gandhi Talks, Hands are stretched
+################################################################################?#
+
+event = {
+id = 190017
+country = PAK
+style = 2
+picture = "jinnahgandhi"
+
+name = "Mr. Gandhi Stretches Out a Hand"
+desc = "EVT_101313_DESC"
+
+action_a = {
+ai_chance = 85
+name = "And in the name of peace we shall shake it!"
+command = { type = event which = 190019 where = PRK when = 7 }
+command = { type = event which = 190020 where = PAK when = 7 }
+command = { type = relation which = U45 value = 50 }
+command = { type = relation which = PRK value = 50 }
+command = { type = dissent value = 10 }
+}
+
+action_b = {
+ai_chance = 15
+name = "No deals with Syndicalist bastards!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = PRK value = -100 }
+command = { type = event which = 190005 where = PRK when = 5 }
+command = { type = dissent value = -5 }
+}
+}
+
+
+event = {
+id = 190018
+country = PRK
+style = 2
+picture = "jinnahgandhi"
+
+
+name = "Mr. Jinnah Stretches Out a Hand"
+desc = "EVT_101314_DESC"
+
+action_a = {
+ai_chance = 85
+name = "And in the name of peace we shall shake it!"
+command = { type = event which = 101350 where = PRK when = 3 }
+command = { type = relation which = U45 value = 50 }
+command = { type = relation which = PAK value = 50 }
+command = { type = dissent value = 10 }
+}
+
+action_b = {
+ai_chance = 15
+name = "No deals with the oppresors of the Indian proletariat!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = PAK value = -100 }
+command = { type = event which = 190012 where = PAK when = 5 }
+command = { type = dissent value = -5 }
+}
+}
+
+################################################################################?#
+#The Second Lucknow Pact - Unity talks
+################################################################################?#
+
+event = {
+id = 190019
+country = PRK
+style = 2
+picture = "jinnahgandhi2"
+
+name = "The Second Lucknow Pact - Gandhi and Jinnah Meet"
+desc = "Established in 1916, the Lucknow Pact refers to an agreement signed between the Muslim League and the Indian National Congress concerning Hindu-Muslim unity in the face of British attempts to further communal fractionalism. Now, with both Jinnah and Gandhi steering for a negotiated end to the division plaguing India, the city of Lucknow has been chosen once again as the scene for a renewed attempt at fostering pan-Indian unity."
+
+action_a = {
+name = "Are we about to shake hands with the devil?"
+command = { type = event which = 190017 where = PRK when = 7 }
+command = { type = relation which = PAK value = 25 }
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 190020
+country = PAK
+style = 2
+picture = "jinnahgandhi2"
+
+name = "The Second Lucknow Pact - Gandhi and Jinnah Meet"
+desc = "Established in 1916, the Lucknow Pact refers to an agreement signed between the Muslim League and the Indian National Congress concerning Hindu-Muslim unity in the face of British attempts at furthering communal fractionalism. Now, with both Jinnah and Gandhi steering for a negotiated end to the division plaguing India, the city of Lucknow has been chosen once again as the scene for a renewed attempt at fostering pan-Indian unity."
+
+action_a = {
+name = "Are we about to shake hands with the devil?"
+command = { type = relation which = PRK value = 25 }
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 190021
+country = PRK
+style = 2
+picture = "jinnahgandhi"
+
+name = "The Question of the Monarchy"
+desc = "ladeda"
+
+action_a = {
+ai_chance = 70
+name = "India cannot bow to a foreign king, demand its abolition!"
+command = { type = event which = 190018 where = PAK when = 3 }
+command = { type = relation which = PAK value = -20 }
+command = { type = dissent value = -1 }
+command = { type = setflag which = PRK_monarchy_no }
+}
+
+action_b = {
+ai_chance = 30
+name = "The King-Emperor is benevolent now as ever, retain the monarchy!"
+command = { type = event which = 190018 where = PAK when = 3 }
+command = { type = relation which = PAK value = 20 }
+command = { type = dissent value = 10 }
+command = { type = setflag which = PRK_monarchy_yes }
+}
+}
+
+
+event = {
+id = 190022
+country = PRK
+style = 2
+picture = "jinnahgandhi"
+
+name = "Proposed Nationalisation of Major Companies"
+desc = "ladeda"
+
+action_a = {
+ai_chance = 50
+name = "What preposterous proletariat nonsense!"
+command = { type = event which = 101350 where = PRK when = 3 }
+command = { type = relation which = PAK value = -20 }
+command = { type = dissent value = -1 }
+command = { type = setflag which = PAK_nationalisation_no }
+}
+
+action_b = {
+ai_chance = 50
+name = "The common Indian must enjoy the fruits of our nation's wealth!"
+command = { type = relation which = PRK value = 20 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = event which = 101360 where = PAK when = 5 }
+command = { type = dissent value = 10 }
+command = { type = setflag which = PAK_nationalisation_yes }
+}
+}
+
+
+event = {
+id = 190023
+country = PRK
+style = 2
+picture = "jinnahgandhi"
+
+name = "The Question of Private Property"
+desc = "ladeda"
+
+action_a = {
+ai_chance = 70
+name = "India cannot bow to a foreign king, demand its abolition!"
+command = { type = event which = 101350 where = PAK when = 3 }
+command = { type = relation which = PAK value = -20 }
+command = { type = dissent value = -1 }
+command = { type = setflag which = PAK_monarchy_no }
+}
+
+action_b = {
+ai_chance = 30
+name = "The King-Emperor is benevolent now as ever, retain the monarchy!"
+command = { type = relation which = PAK value = 20 }
+command = { type = event which = 101360 where = PAK when = 5 }
+command = { type = dissent value = 10 }
+command = { type = setflag which = PRK_monarchy_yes }
+}
+}

@@ -1,0 +1,287 @@
+###################
+####  OTTOMANS - THE FATE OF ALBANIA
+##################
+######################################################
+##### Wilhelm of Albania by Das Kapitalist
+######################################################
+event = {
+id = 80000
+random = no
+country = ALB
+
+trigger = {
+ispuppet = ALB
+headofstate = 32001
+OR = {
+war = { country = OTT country = SER }
+war = { country = OTT country = ROM }
+war = { country = OTT country = GRE }
+war = { country = OTT country = EGY }
+war = { country = OTT country = ARA }
+war = { country = OTT country = KUR }
+war = { country = OTT country = TUR }
+war = { country = OTT country = RUS }
+war = { country = OTT country = PER }
+war = { country = OTT country = FRA }
+}
+}
+
+name = EVT_80000_NAME # A Time for Change
+desc = EVT_80000_DESC # For many years, the Ottomans have ruled over us in an uneasy agreement with Germany to have Wilhelm on the throne. Today, problems have arisen for the Ottomans, and Zog wishes to claim the throne once and for all and establish a Free Albania.
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_80000_A # Overthrow Wilhelm and set Zog as ruler of all of the Albanians!
+ai_chance = 99
+command = { type = add_division which = "IX Zog Kembesori Pjesetim" value = militia when = 4 }
+command = { type = add_division which = "X Zog Kembesori Pjesetim" value = militia when = 4 }
+command = { type = sleepminister which = 32001 }
+command = { type = headofstate which = 32203 }
+command = { type = headofgovernment which = 32002 }
+command = { type = flag_ext where = ALB which = "_zog" }
+command = { type = leave_alliance when = 1 }
+command = { type = end_puppet }
+command = { type = peace which = SER value = 1 }
+command = { type = peace which = URU value = 1 }
+command = { type = peace which = ROM value = 1 }
+command = { type = peace which = MTN value = 1 }
+command = { type = peace which = GRE value = 1 }
+command = { type = peace which = EGY value = 1 }
+command = { type = peace which = ARA value = 1 }
+command = { type = peace which = KUR value = 1 }
+command = { type = peace which = TUR value = 1 }
+command = { type = peace which = RUS value = 1 }
+command = { type = peace which = PER value = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = unlock_division which = 11700 value = 72 }
+command = { type = event which = 80001 where = OTT when = 1  }
+}
+
+action_b = {
+name = ACTIONNAME_80000_B # Nonsense! Wilhelm is loved by the people!
+ai_chance = 1
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 80001
+random = no
+country = OTT
+
+name = EVT_80001_NAME # Wilhelm of Albania overthrown!
+desc = EVT_80001_DESC # For many years, we have ruled over Albania in an uneasy agreement with Germany to have Wilhelm on the throne. Today, the Albanian Zog has overthrown Wilhelm in a coup. How should we react to this mess ?
+style = 2
+
+action_a = {
+name = ACTIONNAME_80001_A # Recognize Zog as the new king; Let Albania Go
+ai_chance = 70
+command = { type = trigger which = 80002 }
+command = { type = end_mastery which = ALB }
+}
+
+action_b = {
+name = ACTIONNAME_80001_B # Blasphemy! Crush this upstart!
+ai_chance = 30
+command = { type = end_mastery which = ALB }
+command = { type = war which = ALB }
+}
+}
+
+event = {
+id = 80002
+random = no
+country = ALB
+
+trigger = {
+event = 80001
+war = { country = ALB country = OTT }
+control = { province = 359 data = ALB }
+control = { province = 362 data = ALB }
+NOT = {
+control = { province = 360 data = OTT }
+ispuppet = ALB
+}
+control = { province = 361 data = ALB }
+}
+
+name = EVT_80002_NAME # The Ottomans have been defeated!
+desc = EVT_80002_DESC # Glorious day! We have soundly defeated the Ottoman garrison!
+style = 2
+picture = "End_Winter_War"
+
+date = { day = 0 month = january year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_80002_A # Liri e Shqiperise! Freedom for Albania!
+command = { type = peace which = OTT value = 1 }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 80003
+random = no
+country = OTT
+
+trigger = {
+event = 80001
+control = { province = 359 data = OTT }
+control = { province = 362 data = OTT }
+NOT = { 
+exists = ALB 
+}
+}
+
+
+name = EVT_80003_NAME # The Albanian Campaign is Over
+desc = EVT_80003_DESC # After the Albanians began to resist our benevolent rule, we began a campaign to put them back in their place. Now, Albania is in our hands once again.
+style = 2
+picture = "militaryparade1"
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_80003_A # They can't seem to govern themselves, we'll do it for them
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 80004
+random = no
+country = SER
+style = 2
+
+decision = {
+owned = { province = 329 data = ALB }
+control = { province = 329 data = ALB }
+NOT = {
+atwar = SER
+ispuppet = SER
+}
+owned = { province = 327 data = SER }
+control = { province = 327 data = SER }
+}
+
+decision_trigger = {
+OR = {
+AND = {
+owned = { province = 355 data = SER }
+control = { province = 355 data = SER }
+}
+AND = {
+owned = { province = 332 data = SER }
+control = { province = 332 data = SER }
+}
+AND = {
+owned = { province = 333 data = SER }
+control = { province = 333 data = SER }
+}
+}
+NOT = {
+atwar = SER
+alliance = { country = SER country = ALB }
+alliance = { country = GER country = ALB }
+alliance = { country = RUS country = ALB }
+alliance = { country = SOV country = ALB }
+alliance = { country = U31 country = ALB }
+alliance = { country = OTT country = ALB }
+alliance = { country = SER country = ALB }
+ispuppet = ALB
+}
+}
+
+trigger = {
+owned = { province = 329 data = ALB }
+control = { province = 329 data = ALB }
+NOT = {
+atwar = SER
+alliance = { country = SER country = ALB }
+alliance = { country = GER country = ALB }
+alliance = { country = RUS country = ALB }
+alliance = { country = SOV country = ALB }
+alliance = { country = U31 country = ALB }
+alliance = { country = OTT country = ALB }
+ispuppet = SER
+ispuppet = ALB
+}
+owned = { province = 327 data = SER }
+control = { province = 327 data = SER }
+OR = {
+AND = {
+owned = { province = 355 data = SER }
+control = { province = 355 data = SER }
+}
+AND = {
+owned = { province = 332 data = SER }
+control = { province = 332 data = SER }
+}
+AND = {
+owned = { province = 333 data = SER }
+control = { province = 333 data = SER }
+}
+}
+}
+
+name = EVT_80004_NAME # Reclaiming Kosovo region
+desc = EVT_80004_DESC # With Serbian state finally regaining its former strength, we have the unique opportunity to reclaim Kosovo once again for Serbia ! Members of general staff together with several senior diplomats believe, that decisive action aimed at liberation of Kosovo will meet almost no resistance from weak Albanian state.
+picture = "serbianarmy"
+decision_picture = "decision_serbian_mobilization"
+
+date = { day = 1 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = ACTIONNAME_80004_A # Claim Kosovo!
+command = { type = belligerence which = SER value = 1  }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = addcore  which =  329 }
+command = { type = dissent value = 3 }  ## Reflects difficulty of integrating new territory
+command = { type = trigger which = 80005 }
+}
+
+action_b = {
+ai_chance = 1
+name = ACTIONNAME_80004_B # This is a bit risky...
+command = { type = domestic which = interventionism value = -2 }
+command = { type = relation which = ALB value = 60 }
+}
+}
+
+event = {
+id = 80005
+random = no
+country = ALB
+style = 2
+
+name = EVT_80005_NAME # Serbia makes its Move!
+desc = EVT_80005_DESC # Serbia has taken advantage of our recent vulnerability to establish its control over Kosovo.  While this is a great infringement on our sovereignty, we are currently very weak and may not be able to win a war to reclaim our lands...
+picture = "militaryparade1"
+
+action_a = {
+ai_chance = 80
+name =  ACTIONNAME_80005_A # We can not hope to win
+command = { type = domestic which = interventionism value = -2 }
+command = { type = dissent value = 5 }
+command = { type = secedeprovince which = SER value = 329 }
+}
+
+action_b = {
+ai_chance = 20
+name = ACTIONNAME_80005_B # We shall defend our territorial integrity!
+command = { type = domestic which = interventionism value = 2 }
+command = { type = secedeprovince which = SER value = 329 }
+command = { type = war which = SER }
+}
+}

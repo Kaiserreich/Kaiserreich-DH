@@ -1,0 +1,702 @@
+###############################
+# 140000-141999  - Nantong - Events by Sarmy #
+#edits and new events by thegreatplant
+###############################
+
+event = {
+id = 140000
+country = CGX
+picture = "Burning"
+style = 2
+
+name = "The Burning of the Head-Office"
+desc = "At 21:15 on the night of February 11, 1936, a Guilin fire station received an alarm call that the Head-Office, the assembly location of the Board of Directors, was ablaze. A Chinese Nationalist by the name of Lee-Hom Ren was arrested at the scene of the blaze two hours later. There was a warrant out for his arrest, and after three hours of enhanced interogation he confessed to the arson."
+
+date = { day = 11 month = february year = 1936 }
+
+action_a = {
+name = "This Is A Nationalist Outrage!"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 140001
+country = CGX
+picture = "urbanwarfare3"
+style = 2
+
+name = "The New Head-Office"
+desc = "The former head office of the Board of Directors is now a smoldering rubble. The man who was responsible was hung but it does not solve the question of where the Board of Directors will hold their meetings."
+
+date = { day = 5 month = march year = 1936 }
+
+action_a = {
+ai_chance = 25
+name = "Rebuild the New Head-Office right where the former one stood"
+command = { }
+}
+
+action_b = {
+ai_chance = 25
+name = "Guangzhou, the Industrial capital of Southern China"
+command = { type = capital which = 1369 }
+}
+
+action_c = {
+ai_chance = 25
+name = "Changsha, On The Bank of the Xiang River"
+command = { type = capital which = 1308 }
+}
+
+action_d = {
+ai_chance = 25
+name = "Nanchang, The Agricultural Capital of Southern China"
+command = { type = capital which = 1352 }
+}
+}
+
+
+
+event = {
+id = 140002 # triggered by event 908055 in German domestic.txt
+random = no
+country = CGX
+picture = "economic"
+style = 2
+
+
+name = "The Reactionary Reforms"
+desc = "Since the Burning of the Head-Office, the Board realizes a change in policy is required if its going to improve its fiscal outlook and keep Nationalist sentiments in Southern and Central China under control. We have just begun to feel the effects of the Berlin Stock Market Crash or 'Black Monday' as its being called, and we have to resolve the problems it presents and plan for the future of this company. The result of the meeting is..."
+
+action_a = {
+name = "We cannot afford to continue 'Iron Rice Bowl' practices" #People begin to worry about their job security, 1/3rd of China becomes unemployed overnight
+ai_chance = 20
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = local_setflag which = CGX_IronRiceBowl }
+command = { type = relation which = GER value = 5 }
+command = { type = money value = 100 }
+command = { type = dissent value = 15 }
+}
+
+action_b = {
+name = "Begin to work closer with the Elites and recognize the Native Structure" #The first step to becoming Chinatized.
+ai_chance = 5
+command = { type = relation which = GER value = -5 }
+command = { type = local_setflag which = CGX_Reform }
+command = { type = dissent value = -10 }
+}
+
+action_c = {
+name = "Close the Qing operated factories that are draining our profits" #Leads to resentment with the Qing, who if reformed will take an eye for an eye
+ai_chance = 40
+command = { type = setflag which = CGX_CSX_Downsize }
+command = { type = money value = -100 }
+command = { type = dissent value = 3 }
+}
+
+action_d = {
+name = "The economy is just in a slump, we can wait it out"
+ai_chance = 5
+command = { type = local_setflag which = CGX_Nothing }
+command = { type = dissent value = 20 }
+}
+}
+
+
+event = {
+id = 140003
+random = no
+country = CSX
+picture = "economic"
+style = 2
+
+trigger = { 
+flag = CGX_CSX_Downsize 
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  10
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The German Factories"
+desc = "The scoundrel Board of Directors of the AOG has decided to close the factories inside our borders to 'maximize their profits.'"
+
+action_a = {
+name = "Let them go"
+ai_chance = 70
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = relation which = CGX value = -100 }
+command = { type = relation which = GER value = -25 }
+command = { type = dissent value = 5 }
+command = { type = clrflag which = CGX_CSX_Downsize }
+}
+
+action_b = {
+name = "NO! We cannot let this happen! Buy them now!"
+ai_chance = 30
+command = { type = money value = -300 }
+command = { type = dissent value = 5 }
+command = { type = clrflag which = CGX_CSX_Downsize }
+}
+}
+
+
+event = {
+id = 140004
+random = no
+country = CGX
+picture = "Chinese Workforce"
+style = 2
+
+trigger = {
+NOT = {
+atwar = CGX
+}
+local_flag = CGX_IronRiceBowl
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  10
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Labor Force of Southern China"
+desc = "After we stopped guaranteeing job security, 'Iron Rice Bowl' jobs as the Chinese call it, to the Chinese people the workers have begun to do more worrying than working. Almost overnight, fully one third of Southern China's workforce was unemployed. A large majority of these people became migratory workers, moving from job to job in great masses.  There have been attempts to unionize in the more urbanized areas, and the Unionists were made an example of."
+
+action_a = {
+name = "We've made a mistake, re-instate job security"
+ai_chance = 10
+command = { type = local_clrflag which = CGX_IronRiceBowl }
+command = { type = money value = -500 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 90
+name = "There is unemployment, but have you seen the profits!?"
+command = { type = money value = 250 }
+command = { type = dissent value = 10 }
+command = { type = local_setflag which = CGX_IronRiceBowl2 }
+}
+}
+
+
+event = {
+id = 140005
+random = no
+country = CGX
+picture = "Guerillas"
+style = 2
+
+trigger = {
+NOT = {
+atwar = CGX
+}
+local_flag = CGX_IronRiceBowl
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  10
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Labor Riots of Changsha and Nanchang"
+desc = "As unemployment in the Northern and Southern areas continued to climb, dissent began to climb with them. Disturbing news comes from the Changsha and Nanchang regions as riots broke out in the two industrial cities as well as smaller riots all over the company. The only region where there have been no reported riots is the coastline as the fishing and shipping industries remain unaffected."
+
+action_a = {
+name = "Damn them !"
+command = { type = dissent value = 4 }
+command = { type = industrial_modifier which = total value = -4 }
+}
+}
+
+
+
+
+event = {
+id = 140006
+random = no
+country = CGX
+picture = "economic"
+style = 2
+
+trigger = {
+NOT = {
+atwar = CGX
+}
+local_flag = CGX_Reform
+}
+
+date = { day = 0 month = november year = 1936 }
+offset =  10
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Status of the Reforms"
+desc = "The Board Meeting was held today. At the last conference, the decision to begin downsizing was made by the Board. They are expected to make a decision whether to continue downsizing or not."
+
+action_a = {
+ai_chance = 20
+name = "Begin to De-Germanize the Face of the AOG"
+command = { type = local_setflag which = CGX_Reform_Continue }
+command = { type = money value = -250 }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 60
+name = "We have made enough progress with our comprimise, we met our goals"
+command = { type = local_clrflag which = CGX_Reform }
+command = { type = money value = 250 }
+command = { type = dissent value = 5 }
+}
+
+action_c = {
+ai_chance = 20
+name = "Abandon the reforms, we're getting in too deep!"
+command = { type = setflag which = CGX_CSX_Downsize }
+command = { type = money value = -100 }
+command = { type = dissent value = 20 }
+}
+}
+
+
+event = {
+id = 140007
+country = CGX
+picture = "China_Rally"
+style = 2
+
+trigger = {
+NOT = {
+atwar = CGX
+}
+local_flag = CGX_Reform_Continue
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  10
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "De-Germanizing the AOG"
+desc = "As we have give more and more influence to the Chinese Governors and elites, there has been more and more of a push to put more power into their hands."
+
+action_a = {
+ai_chance = 25
+name = "Claim some independence and reorganize"
+command = { type = local_clrflag which = CGX_Reform_Continue }
+command = { type = headofgovernment which = 502022 }
+command = { type = foreignminister which = 502023 }
+command = { type = chiefofstaff which = 502024 }
+command = { type = chiefofarmy which = 502025 }
+command = { type = chiefofnavy which = 502026 }
+command = { type = chiefofair which = 502027 }
+command = { type = ministerofsecurity which = 502028 }
+command = { type = ministerofintelligence which = 502029 }
+command = { type = armamentminister which = 502030 }
+command = { type = dissent value = -5 }
+command = { type = relation which = GER value = -25 }
+command = { type = end_puppet }
+command = { type = trigger which = 140010 }
+}
+
+action_b = {
+ai_chance = 5
+name = "Form a Republic"
+command = { type = local_clrflag which = CGX_Reform_Continue }
+command = { type = trigger which = 140009 }
+command = { type = dissent value = -5 }
+}
+
+action_c = {
+ai_chance = 50
+name = "We belong to the Qing Empire"
+command = { type = local_clrflag which = CGX_Reform_Continue }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = switch_allegiance which = -1 where = CSX }
+command = { type = trigger which = 140008 }
+}
+}
+
+
+event = {
+id = 140008
+country = CSX
+picture = "China_Rally"
+style = 2
+
+name = "The AoG are joining the Empire"
+desc = "The AoG is returning to it's Chinese roots and has decided to rejoin the Empire!"
+
+action_a = {
+name = "This is a great day for China!"
+command = { type = dissent value = -10 }
+command = { type = inherit which = CGX }
+}
+}
+
+
+event = {
+id = 140009
+country = CGX
+picture = "China_Rally"
+style = 2
+
+name = "Forming a Republic"
+desc = "The AOG will be reorganized into a free republic under guidance of the Chinese democrats."
+
+action_a = {
+name = "Form the republic!"
+command = { type = dissent value = -1 }
+command = { type = end_access which = GER }
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = country which = CHI }
+command = { type = ai which = "kaiserreich/Republican China.ai" }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+}
+
+
+event = {
+id = 140010
+random = no
+country = GER
+
+name = "AOG declares independence from Berlin!"
+desc = "The efforts of the Board of Directors in the AOG to bring stability to their corporate semi-state by inviting locals into leading positions backfired and the AOG has declared complete independence from the German Empire. Now we must decide what our next move will be!"
+picture = "Chinese Infantry2"
+style = 2
+
+action_a = {
+ai_chance = 100
+name = "Let them be!"
+command = { type = relation which = CGX value = -50 }
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 0
+name = "They will be crushed!"
+command = { type = war which = CGX }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 140011
+country = CHI
+picture = "China_Rally"
+style = 2
+
+trigger = {
+event = 140009 
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  10
+deathdate = { day = 29 month = december year = 1944 }
+
+name = "Long live the Republic"
+desc = "We have established Republican countrol over the former AOG lands!"
+
+action_a = {
+name = "Huzzah!"
+command = { type = dissent value = -10 }
+command = { type = headofstate which = 183500 }
+command = { type = headofgovernment which = 183501 }
+command = { type = foreignminister which = 183502 }
+command = { type = ministerofsecurity which = 183503 }
+command = { type = ministerofintelligence which = 183504 }
+command = { type = armamentminister which = 183505 }
+command = { type = chiefofstaff which = 183506 }
+command = { type = chiefofarmy which = 183507 }
+command = { type = chiefofnavy which = 183508 }
+command = { type = chiefofair which = 183509 }
+command = { type = set_relation which = CYN value = 149 }
+command = { type = set_relation which = GER value = -149 }
+command = { type = set_relation which = MAN value = -39 }
+command = { type = set_relation which = BUR value = 19 }
+command = { type = set_relation which = SIA value = -19 }
+command = { type = set_relation which = JAP value = -19 }
+command = { type = set_relation which = CSX value = -49 }
+command = { type = manpowerpool value = 50 }
+command = { type = supplies value = 250 }
+}
+}
+
+
+event = {
+id = 140012
+random = no
+country = CGX
+style = 2
+
+trigger = {
+NOT = { 
+atwar = CGX 
+}
+OR = {
+AND = {
+flag = GER_CON_Capitulation
+puppet = { country = CGX country = GER  }
+}
+AND = {
+flag = GER_Capitulation
+puppet = { country = CGX country = GER  }
+}
+AND = {
+NOT = { 
+exists = GER 
+}
+NOT = { 
+ispuppet = CGX 
+}
+}
+}
+}
+
+name = "The German Empire has been defeated"
+desc = "The German Empire, once the leading power of the world, was utterly defeated in Europe. Shockwaves created by the German defeat reached even German overseas territory. Defeated Chinese republicans together with the rest of the nation are raising their heads, in hopes that the fall of German Empire will herald the fall of the AOG as well. What shall we do?"
+picture = "GerPOW"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1964 }
+
+
+action = {
+ai_chance = 30
+name = "Rejoin the Qing Empire"
+trigger = {
+exists = CSX
+control = { province = 1247 data = CSX }
+}
+command = { type = dissent value = 5 }
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_puppet }
+command = { type = trigger which = 140013 }
+}
+
+action = {
+ai_chance = 10
+name = "Ask Japan for protection"
+trigger = {
+exists = JAP
+control = { province = 1552 data = JAP }
+NOT = {
+ispuppet = JAP
+flag = JAP_ISO
+}
+}
+command = { type = dissent value = 5 }
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_puppet }
+command = { type = trigger which = 140014 }
+}
+
+action = {
+ai_chance = 25
+name = "Ask Russia for protection"
+trigger = {
+exists = RUS
+control = { province = 572 data = RUS }
+control = { province = 553 data = RUS }
+control = { province = 1162 data = RUS }
+control = { province = 1186 data = RUS }
+NOT = {
+exists = PRI
+exists = SIB
+exists = SOV
+exists = TRA
+ispuppet = RUS
+flag = RUS_ISO # set by events in Russian foreign policy.txt
+}
+}
+command = { type = dissent value = 5 }
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_puppet }
+command = { type = trigger which = 140015 }
+}
+
+action = {
+ai_chance = 10
+name = "Ask the United States for protection"
+trigger = {
+exists = USA
+control = { province = 1887 data = USA }
+control = { province = 1809 data = USA }
+control = { province = 1832 data = USA }
+control = { province = 1789 data = USA }
+control = { province = 1955 data = USA }
+control = { province = 1734 data = USA }
+NOT = {
+exists = CSA
+exists = TEX
+exists = U10
+exists = CAL
+exists = U15
+ispuppet = USA
+}
+}
+command = { type = dissent value = 5 }
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_puppet }
+command = { type = trigger which = 140016 }
+}
+
+action = {
+ai_chance = 40
+name = "Allow the Chinese to rule"
+command = { type = dissent value = -10 }
+command = { type = end_puppet }
+command = { trigger = { NOT = { exists = CHI } } type = country which = CHI }
+command = { trigger = { exists = CHI } type = trigger which = 166039 } # in Yunnan.txt
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_puppet }
+command = { type = ai which = "kaiserreich/Republican China.ai" }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+
+action = {
+ai_chance =  5
+name = "We shall survive this!"
+command = { type = dissent value = 25 }
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_puppet }
+}
+}
+
+
+event = {
+id = 140013
+country = CSX
+style = 2
+picture = "Chinese Big Swords"
+
+name = "The AoG surrenders before us"
+desc = "The defeat of the German Empire in Europe sent shockwaves throughout the entire German colonial empire and the AOG was no different. In order to protect themselves from the fires of revolution, the board of AOG directors decided to fully rejoin our Empire."
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -10 }
+command = { type = inherit which = CGX value = 1 }
+}
+}
+
+
+event = {
+id = 140014
+country = JAP
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The AOG asks us for protection"
+desc = "The defeat of the German Empire in Europe sent shockwaves throughout the entire German colonial empire and the AOG was no different. In order to protect themselves from the fires of revolution, the board of AOG directors decided to ask our state for protection."
+
+action_a = {
+ai_chance = 95
+name = "Accept their offer!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -10 }
+command = { type = make_puppet which = CGX }
+command = { type = relation which = CGX value = 50 }
+command = { type = relation which = CSX value = -10 }
+}
+
+action_b = {
+ai_chance = 5
+name = "Refuse their alliance, we don't need anyone!"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CGX value = -25 }
+command = { type = relation which = CSX value = 10 }
+}
+}
+
+
+event = {
+id = 140015
+country = RUS
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The AOG asks us for protection"
+desc = "The defeat of the German Empire in Europe sent shockwaves throughout the entire German colonial empire and the AOG was no different. In order to protect themselves from the fires of revolution, the board of AOG directors decided to ask our state for protection."
+
+action_a = {
+ai_chance = 95
+name = "Accept their offer!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -10 }
+command = { type = make_puppet which = CGX }
+command = { type = relation which = CGX value = 50 }
+command = { type = relation which = CSX value = -10 }
+}
+
+action_b = {
+ai_chance = 5
+name = "Refuse their alliance, we don't need anyone!"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CGX value = -25 }
+command = { type = relation which = CSX value = 10 }
+}
+}
+
+
+event = {
+id = 140016
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The AOG asks us for protection"
+desc = "The defeat of the German Empire in Europe send shockwaves throughout the entire German colonial empire and the AOG was no different. In order to protect themselves from the fires of revolution, the board of AOG directors decided to ask our state for protection."
+
+action_a = {
+ai_chance = 95
+name = "Accept their offer!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -10 }
+command = { type = make_puppet which = CGX }
+command = { type = relation which = CGX value = 50 }
+command = { type = relation which = CSX value = -10 }
+}
+
+action_b = {
+ai_chance = 5
+name = "Refuse their alliance, we don't need anyone!"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CGX value = -25 }
+command = { type = relation which = CSX value = 10 }
+}
+}

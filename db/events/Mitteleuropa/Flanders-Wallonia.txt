@@ -1,0 +1,1050 @@
+event = {
+id = 62130050
+random = no
+country = BEL
+persistent = yes
+style = 2
+picture = "FORA"
+
+trigger = {
+ispuppet = BEL
+day = 25
+month = 7
+NOT = {
+day = 26
+}
+NOT = {
+month = 8
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Anniversary of the 1830 Revolution!"
+desc = "In the 25th of August of 1830 the southern provinces revolted against United Kingdom of Netherlands and its tyrannical king William I, which led few days later to formation of independent Belgian state. Unfortunately this glorious is in these times misused by various nationalist and monarchist groups, which are aiming against our dependance on foreign powers and demand restoration of independent and free Belgian state."
+
+action = {
+name = "Damn those protesters!"
+command = { type = dissent value = 3 }
+}
+
+}
+
+
+event = {
+id = 62130051
+random = no
+country = BEL
+persistent = yes
+style = 2
+picture = "belgium indep"
+
+trigger = {
+NOT = {
+ispuppet = BEL
+}
+day = 25
+month = 7
+NOT = {
+day = 26
+}
+NOT = {
+month = 8
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Anniversary of the 1830 Revolution!"
+desc = "In the 25th of August of 1830 the southern provinces revolted against United Kingdom of Netherlands and its tyrannical king William I, which led few days later to formation of independent Belgian state."
+
+action = {
+name = "A glorious day for our state!"
+command = { type = dissent value = -1 }
+}
+
+}
+
+
+event = {
+id = 62130052
+picture = "constitutional"
+country = BEL
+
+trigger = {
+puppet = { country = BEL country = GER  }
+owned = { province = 108 data = BEL } #Liège
+owned = { province = 111 data = BEL } #Arlon
+control = { province = 108 data = BEL } #Liège
+control = { province = 111 data = BEL } #Arlon
+NOT = {
+atwar = BEL
+government = communist
+exists = FRA
+exists = WLL
+exists = FLA
+}
+}
+
+name = "Status of Federation"
+desc = "After victory over Commune of France, our federation was rewarded for its loyalty to the German Empire by regaining parts of Wallonia, which were under German military occupation since Weltkrieg. Hovewer, gain of these territories only worsened already bad relations between Flemish and Wallons, since Waloons are feeling opressed under Flemish domination and are demanding decentralization of already fragmented federation. What should we do?"
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = december year = 1953 }
+
+
+action_a = {
+name = "Centralise federation !"
+ai_chance = 40
+command = { type = dissent value = 8 }
+command = { type = domestic which = freedom value = -2 }
+command = { type = industrial_modifier which = total value = 3 }
+command = { type = manpowerpool value = -10 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Retain status quo!"
+command = { type = dissent value = 2 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Further decentralize country!"
+command = { type = dissent value = -10 }
+command = { type = clrflag which = WLL_BEL }
+command = { type = domestic which = freedom value = 4 }
+command = { type = country which = FLA }
+command = { type = independence which = WLL value = 1 }
+command = { type = secedeprovince which = WLL value = 108 }
+command = { type = secedeprovince which = WLL value = 111 }
+command = { type = secedeprovince which = WLL value = 112 }
+command = { type = secedeprovince which = WLL value = 113 }
+command = { type = secedeprovince which = WLL value = 52 }
+command = { type = secedeprovince which = WLL value = 103 }
+command = { type = trigger which = 62130053 }
+}
+}
+
+
+
+
+event = {
+id = 62130053
+country = GER
+style = 2
+picture = "liberation00"
+
+name = "Decentralization of Flanders-Wallonia !"
+desc = "After much discussion regarding future state form of Flanders-Wallonia, most of important politicians decided, that it would be for the best to further decentralize federation between Flanders and Wallonia, which will be from now united only by common head of state and alliance with us."
+
+action_a = {
+name = "That's good!"
+command = { type = make_puppet which = FLA }
+command = { type = make_puppet which = WLL }
+command = { type = belligerence which = GER value = -5 }
+command = { type = dissent value = -3 }
+command = { type = trigger which = 62130054 }
+command = { type = trigger which = 62130055 }
+}
+}
+
+event = {
+id = 62130054
+country = FLA
+style = 2
+picture = "liberation00"
+
+name = "Independent Flanders"
+desc = "We have finally achieved long desired freedom ! ! Now long shall we suffer in federation with Waloons !"
+
+action_a = {
+name = "That's good!"
+command = { trigger = { government = fascist } type = headofstate which = 510125 }
+command = { trigger = { government = fascist } type = headofgovernment which = 510045 }
+command = { trigger = { government = democratic } type = headofstate which = 510126 }
+command = { trigger = { government = democratic } type = headofgovernment which = 510094 }
+command = { type = set_relation which = GER value = 150 }
+}
+}
+
+event = {
+id = 62130055
+country = WLL
+style = 2
+picture = "liberation00"
+
+name = "Independent Wallonia"
+desc = "We have finally achieved long desired freedom ! Now long shall we suffer in federation with Flanders !"
+
+action_a = {
+name = "That's good!"
+command = { trigger = { government = fascist } type = headofstate which = 511043 }
+command = { trigger = { government = fascist } type = headofgovernment which = 511014 }
+command = { trigger = { government = democratic } type = headofstate which = 511044 }
+command = { type = set_relation which = GER value = 150 }
+command = { type = removecore which = 110 } #Eupen
+}
+}
+
+event = {
+id = 62130056
+random = no
+country = BEL
+
+name = "Black Monday hits Flanders-Wallonia!"
+desc = "Just before a few days, the Berlin Stock Exchange plunged into bottomless depth, throwing Germany's economy into an unprecedented crisis. Now the crash's shockwaves have reached Flanders-Wallonia. German-owned companies have closed down or layed-off their workers, the Flanders-Wallonien mark is losing value, and industrial exports are shrinking..."
+style = 2
+picture = "stockcrashrus"
+
+date = { day = 11 month = february year = 1936 }
+
+action_a = {
+name = "Let's hope the goverment will save us from the worst..."
+command = { type = peacetime_ic_mod value = -2 }
+command = { type = dissent value = 5 }
+command = { type = money value = -50 }
+}
+}
+
+
+event = {
+id = 62130057
+picture = "constitutional"
+country = BEL
+
+trigger = {
+owned = { province = 108 data = BEL }
+owned = { province = 111 data = BEL }
+control = { province = 108 data = BEL }
+control = { province = 111 data = BEL }
+NOT = {
+war = { country = BEL country = FRA }
+war = { country = BEL country = GER }
+}
+}
+
+name = "Language question"
+desc = "After reacquisition of Wallonia our policy on the offical language of our united state has to be formed. While varying areas speak Flemish or Waloon, we need to decide the working language of our government. Flemish is the obvious choice, as it has been governmental language for a long time, but bilingualism would satisfy the Waloon minority who are afraid of Flemish domination. What shall we do ?"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = december year = 1953 }
+
+action_a = {
+name = "The government will be bilingual!"
+ai_chance = 40
+command = { type = dissent value = 3 }
+command = { type = domestic which = freedom value = 2 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Use only Flemish for the government"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -1 }
+}
+}
+
+
+
+
+
+
+
+event = {
+id = 62130058
+random = no
+country = BEL
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15157
+headofstate = 15161
+}
+puppet = { country = BEL country = GER  }
+NOT = {
+ideology = nazi
+government = communist
+}
+}
+
+name = "Flanders-Wallonian 1936 elections"
+desc = "EVT_91856_DESC"
+
+date = { day = 10 month = may year = 1936 }
+offset = 4
+deathdate = { day = 20 month = may year = 1936 }
+
+
+action_a = {
+ai_chance = 75
+name = "The Catholic Block wins the majority"
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130059 }
+}
+
+action_b = {
+ai_chance = 25
+name = "The Liberal party wins the majority"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130060 }
+}
+
+action_c = {
+ai_chance = 25
+name = "The Rexist-Flemish national union coalition wins the majority"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 15157 }
+command = { type = trigger which = 62130061 }
+}
+}
+
+
+event = {
+id = 62130059
+random = no
+country = BEL
+persistent = yes
+
+name = "Catholic Block victory!"
+desc = "Following the Catholic Block's victory in the last elections the King must know choose who he will appoint as Premierminister."
+picture = "reichstag"
+style = 2
+
+
+action_a = {
+name = "King appoints leader of the CB - Aloys Vyvere"
+ai_chance = 60
+command = { type = dissent value = -3 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = headofgovernment which = 15162 }
+}
+
+action_b = {
+name = "King does not trust the CB- August Borms"
+ai_chance = 40
+command = { type = dissent value = 1 }
+command = { type = headofgovernment which = 15159 }
+}
+}
+
+event = {
+id = 62130060
+random = no
+country = BEL
+persistent = yes
+
+name = "Liberal party victory!"
+desc = "Following the Liberal's victory in the last elections the King must know choose who he will appoint as Premierminister."
+picture = "reichstag"
+style = 2
+
+
+action_a = {
+name = "King appoints leader of the Liberals- Victor de Laveleye"
+ai_chance = 75
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 15164 }
+}
+
+action_b = {
+name = "King prefers August Borms"
+ai_chance = 25
+command = { type = dissent value = 1 }
+command = { type = headofgovernment which = 15159 }
+}
+}
+
+
+event = {
+id = 62130061
+random = no
+country = BEL
+persistent = yes
+
+name = "The Rexist-Flemish national union coalition victory!"
+desc = "Following the Coalition's victory in the last elections the King must know choose who he will appoint as Premierminister."
+picture = "reichstag"
+style = 2
+
+
+action_a = {
+name = "King appoints the more moderate of the Coalition- August Borms"
+ai_chance = 60
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 15159 }
+}
+
+action_b = {
+name = "King does not trust the Coalition- Joris Van Severen"
+ai_chance = 40
+command = { type = dissent value = 1 }
+command = { type = headofgovernment which = 15141 }
+}
+}
+
+event = {
+id = 62130062
+random = no
+country = BEL
+
+name = "Cancellation of elections!"
+desc = "We are at War with the Syndicalist forces! Its a battle for the very soul of our state and we must focuss on winning it!"
+picture = "reichstag"
+style = 2
+
+trigger = {
+war = { country = BEL country = FRA }
+}
+
+date = { day = 7 month = may year = 1940 }
+
+action_a = {
+name = "Its war and there will be no elections !"
+command = { type = dissent value = -2 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = sleepevent which = 62130063 }
+}
+}
+
+
+event = {
+id = 62130063
+random = no
+country = BEL
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15157
+headofstate = 15161
+}
+NOT = {
+war = { country = BEL country = FRA }
+ideology = nazi
+government = communist
+}
+puppet = { country = BEL country = GER  }
+}
+
+name = "Flanders-Wallonian 1940 elections"
+desc = "EVT_91856_DESC"
+
+date = { day = 8 month = may year = 1940 }
+
+action_a = {
+ai_chance = 65
+name = "The Catholic Block wins the majority"
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130059 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The Liberal party wins the majority"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130060 }
+}
+
+action_c = {
+ai_chance = 30
+name = "The Rexist-Flemish national union coalition wins the majority"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 15157 }
+command = { type = trigger which = 62130061 }
+}
+}
+
+
+event = {
+id = 62130064
+random = no
+country = BEL
+
+name = "Cancellation of elections!"
+desc = "We are at War with the Syndicalist forces! Its a battle for the very soul of our state and we must focuss on winning it!"
+picture = "reichstag"
+style = 2
+
+trigger = {
+war = { country = BEL country = FRA }
+}
+
+date = { day = 7 month = may year = 1944 }
+
+action_a = {
+name = "Its war and there will be no elections !"
+command = { type = dissent value = -2 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = sleepevent which = 62130065 }
+}
+}
+
+
+event = {
+id = 62130065
+random = no
+country = BEL
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15157
+headofstate = 15161
+}
+NOT = {
+war = { country = BEL country = FRA }
+ideology = nazi
+government = communist
+}
+puppet = { country = BEL country = GER  }
+}
+
+name = "Flanders-Wallonian 1944 elections"
+desc = "EVT_91856_DESC"
+
+date = { day = 8 month = may year = 1944 }
+
+action_a = {
+ai_chance = 65
+name = "The Catholic Block wins the majority"
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130059 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The Liberal party wins the majority"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130060 }
+}
+
+action_c = {
+ai_chance = 30
+name = "The Rexist-Flemish national union coalition wins the majority"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 15157 }
+command = { type = trigger which = 62130061 }
+}
+}
+
+
+event = {
+id = 62130068
+random = no
+country = BEL
+
+name = "Cancellation of elections!"
+desc = "We are at War with the Syndicalist forces! Its a battle for the very soul of our state and we must focuss on winning it!"
+picture = "reichstag"
+style = 2
+
+trigger = {
+war = { country = BEL country = FRA }
+}
+
+date = { day = 7 month = may year = 1948 }
+
+action_a = {
+name = "Its war and there will be no elections !"
+command = { type = dissent value = -2 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = sleepevent which = 62130069 }
+}
+}
+
+
+event = {
+id = 62130069
+random = no
+country = BEL
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15157
+headofstate = 15161
+}
+NOT = {
+war = { country = BEL country = FRA }
+ideology = nazi
+government = communist
+}
+puppet = { country = BEL country = GER  }
+}
+
+name = "Flanders-Wallonian 1948 elections"
+desc = "EVT_91856_DESC"
+
+date = { day = 8 month = may year = 1948 }
+
+action_a = {
+ai_chance = 65
+name = "The Catholic Block wins the majority"
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130059 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The Liberal party wins the majority"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 15161 }
+command = { type = trigger which = 62130060 }
+}
+
+action_c = {
+ai_chance = 30
+name = "The Rexist-Flemish national union coalition wins the majority"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 15157 }
+command = { type = trigger which = 62130061 }
+}
+}
+
+
+
+event = {
+id = 62130070
+random = no
+country = BEL
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15165
+headofstate = 15166
+}
+NOT = {
+ideology = nazi
+government = communist
+}
+puppet = { country = BEL country = GER  }
+}
+
+name = "Flanders-Wallonian 1952 elections"
+desc = "EVT_91856_DESC"
+
+date = { day = 8 month = may year = 1952 }
+
+action_a = {
+ai_chance = 65
+name = "The Catholic Block wins the majority"
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 15166 }
+command = { type = trigger which = 62130071 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The Liberal party wins the majority"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 15166 }
+command = { type = trigger which = 62130072 }
+}
+
+action_c = {
+ai_chance = 30
+name = "The Rexist-Flemish national union coalition wins the majority"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 15165 }
+command = { type = trigger which = 62130073 }
+}
+}
+
+
+
+
+event = {
+id = 62130071
+random = no
+country = BEL
+persistent = yes
+
+name = "Catholic Block victory!"
+desc = "Following the Catholic Block's victory in the last elections the King must know choose who he will appoint as Premierminister."
+picture = "reichstag"
+style = 2
+
+
+action_a = {
+name = "King appoints leader of the CB - Paul Van Zeeland"
+ai_chance = 60
+command = { type = dissent value = -3 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = headofgovernment which = 15002 }
+}
+
+action_b = {
+name = "King does not trust the CB- Hendrik Elias"
+ai_chance = 40
+command = { type = dissent value = 1 }
+command = { type = headofgovernment which = 15167 }
+}
+}
+
+event = {
+id = 62130072
+random = no
+country = BEL
+persistent = yes
+
+name = "Liberal party victory!"
+desc = "Following the Liberal's victory in the last elections the King must know choose who he will appoint as Premierminister."
+picture = "reichstag"
+style = 2
+
+
+action_a = {
+name = "King appoints leader of the Liberals- Roger Motz"
+ai_chance = 75
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 15164 }
+}
+
+action_b = {
+name = "King prefers Hendrik Elias"
+ai_chance = 25
+command = { type = dissent value = 1 }
+command = { type = headofgovernment which = 15167 }
+}
+}
+
+
+event = {
+id = 62130073
+random = no
+country = BEL
+persistent = yes
+
+name = "The Rexist-Flemish national union coalition victory!"
+desc = "Following the Coalition's victory in the last elections the King must know choose who he will appoint as Premierminister."
+picture = "reichstag"
+style = 2
+
+
+action_a = {
+name = "King appoints the more moderate of the Coalition- Hendrik Elias"
+ai_chance = 60
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 15167 }
+}
+
+action_b = {
+name = "King does not trust the Coalition- Joris Van Severen"
+ai_chance = 40
+command = { type = dissent value = 1 }
+command = { type = headofgovernment which = 15141 }
+}
+}
+
+
+event = {
+id = 62130074
+random = no
+country = BEL
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15165
+headofstate = 15166
+}
+NOT = {
+ideology = nazi
+government = communist
+}
+puppet = { country = BEL country = GER  }
+}
+
+name = "Flanders-Wallonian 1956 elections"
+desc = "EVT_91856_DESC"
+
+date = { day = 8 month = may year = 1956 }
+
+action_a = {
+ai_chance = 65
+name = "The Catholic Block wins the majority"
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 15166 }
+command = { type = trigger which = 62130071 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The Liberal party wins the majority"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 15166 }
+command = { type = trigger which = 62130072 }
+}
+
+action_c = {
+ai_chance = 30
+name = "The Rexist-Flemish national union coalition wins the majority"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 15165 }
+command = { type = trigger which = 62130073 }
+}
+}
+
+
+event = {
+id = 62130075
+random = no
+country = BEL
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15165
+headofstate = 15166
+}
+NOT = {
+ideology = nazi
+government = communist
+}
+puppet = { country = BEL country = GER  }
+}
+
+name = "Flanders-Wallonian 1960 elections"
+desc = "EVT_91856_DESC"
+
+date = { day = 8 month = may year = 1960 }
+
+action_a = {
+ai_chance = 65
+name = "The Catholic Block wins the majority"
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 15166 }
+command = { type = trigger which = 62130071 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The Liberal party wins the majority"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 15166 }
+command = { type = trigger which = 62130072 }
+}
+
+action_c = {
+ai_chance = 30
+name = "The Rexist-Flemish national union coalition wins the majority"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 15165 }
+command = { type = trigger which = 62130073 }
+}
+}
+
+
+event = {
+id = 62130066
+random = no
+country = BEL
+
+name = "Adalbert I passed away"
+desc = "Our beloved king and son of the great Weltkriegkaiser Wilhelm the second, Adalbert the first has passed away! Now it is his son, Wilhelm, to take up the mantle as our glorious King Wilhelm I. Long live Wilhelm I!!"
+picture = "WilhelmII_Funeral"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 15161 #Adalbert SC
+headofstate = 15157 #Adalbert PA
+}
+}
+
+date = { day = 20 month = july year = 1949 }
+
+action_a = {
+name = "The King is dead! Long live the King!"
+command = { trigger = { headofstate = 15157 } type = headofstate which = 15165 } #Wilhelm I PA
+command = { trigger = { headofstate = 15161 } type = headofstate which = 15166 } #Wilhelm I SC
+command = { type = sleepminister which = 15161 }
+command = { type = sleepminister which = 15157 }
+command = { trigger = { NOT = { exists = WLL } } type = sleepminister which = 511043 }
+command = { trigger = { NOT = { exists = WLL } } type = sleepminister which = 511044 }
+command = { trigger = { NOT = { exists = FLA } } type = sleepminister which = 510131 }
+command = { trigger = { NOT = { exists = FLA } } type = sleepminister which = 510132 }
+command = { type = sleepevent which = 62130067 }
+}
+}
+
+
+event = {
+id = 62130067
+random = no
+country = BEL
+
+name = "The former Hohenzollern king has died"
+desc = "The former Hohenzollern king of Flanders-Wallonia, Adalbert, has died in his sleep. Already nationalist are gathering to celebrate demise of the most hated king in the history of Flanders-Wallonia."
+picture = "WilhelmII_Funeral"
+style = 2
+
+trigger = {
+NOT = {
+headofstate = 15161 #Adalbert SC
+headofstate = 15157 #Adalbert PA
+}
+}
+
+date = { day = 20 month = july year = 1949 }
+
+action_a = {
+name = "May he burn in hell !"
+command = { type = sleepminister which = 15161 }
+command = { type = sleepminister which = 15157 }
+command = { trigger = { NOT = { exists = WLL } } type = sleepminister which = 511043 }
+command = { trigger = { NOT = { exists = WLL } } type = sleepminister which = 511044 }
+command = { trigger = { NOT = { exists = FLA } } type = sleepminister which = 510131 }
+command = { trigger = { NOT = { exists = FLA } } type = sleepminister which = 510132 }
+command = { type = sleepevent which = 62130066 }
+}
+}
+
+
+event = {
+id = 62130076
+random = no
+country = WLL
+
+name = "Adalbert I passed away"
+desc = "Our beloved king and son of the great Weltkriegkaiser Wilhelm the second, Adalbert the first has passed away! Now it is his son, Wilhelm, to take up the mantle as our glorious King Wilhelm I. Long live Wilhelm I!!"
+picture = "WilhelmII_Funeral"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 511043 #Adalbert SC
+headofstate = 511044 #Adalbert PA
+}
+}
+
+date = { day = 20 month = july year = 1949 }
+
+action_a = {
+name = "The King is dead! Long live the King!"
+command = { trigger = { headofstate = 511043 } type = headofstate which = 511062 } #Wilhelm I PA
+command = { trigger = { headofstate = 511044 } type = headofstate which = 511063 } #Wilhelm I SC
+command = { trigger = { NOT = { exists = BEL } } type = sleepminister which = 15161 }
+command = { trigger = { NOT = { exists = BEL } } type = sleepminister which = 15157 }
+command = { type = sleepminister which = 511043 }
+command = { type = sleepminister which = 511044 }
+command = { trigger = { NOT = { exists = FLA } } type = sleepminister which = 510131 }
+command = { trigger = { NOT = { exists = FLA } } type = sleepminister which = 510132 }
+command = { trigger = { NOT = { exists = BEL } } type = sleepevent which = 62130067 }
+command = { trigger = { NOT = { exists = BEL } } type = sleepevent which = 62130066 }
+}
+}
+
+event = {
+id = 62130077
+random = no
+country = FLA
+
+name = "Adalbert I passed away"
+desc = "Our beloved king and son of the great Weltkriegkaiser Wilhelm the second, Adalbert the first has passed away! Now it is his son, Wilhelm, to take up the mantle as our glorious King Wilhelm I. Long live Wilhelm I!!"
+picture = "WilhelmII_Funeral"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 510131 #Adalbert SC
+headofstate = 510132 #Adalbert PA
+}
+}
+
+date = { day = 20 month = july year = 1949 }
+
+action_a = {
+name = "The King is dead! Long live the King!"
+command = { trigger = { headofstate = 510131 } type = headofstate which = 510131 } #Wilhelm I PA
+command = { trigger = { headofstate = 510132 } type = headofstate which = 510132 } #Wilhelm I SC
+command = { trigger = { NOT = { exists = BEL } } type = sleepminister which = 15161 }
+command = { trigger = { NOT = { exists = BEL } } type = sleepminister which = 15157 }
+command = { trigger = { NOT = { exists = WLL } } type = sleepminister which = 511043 }
+command = { trigger = { NOT = { exists = WLL } } type = sleepminister which = 511044 }
+command = { type = sleepminister which = 510131 }
+command = { type = sleepminister which = 510132 }
+command = { trigger = { NOT = { exists = BEL } } type = sleepevent which = 62130067 }
+command = { trigger = { NOT = { exists = BEL } } type = sleepevent which = 62130066 }
+}
+}

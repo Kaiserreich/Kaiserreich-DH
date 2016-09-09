@@ -1,0 +1,5047 @@
+########################
+#Reaction to Stock Crash
+########################
+event = {
+id = 9980000
+random = no
+country = POL
+style = 2
+picture = "FAUD1"
+
+name = "The economy fails!"
+desc = "Germany is in a heavy economic crises, and our dependence on them economically means that our own economy will be crippled. Our farmers are making no money from the large decrease in prices of agricultural products and factories are preparing to fire thousands of workers. It seems that this summer will be hard for the Polish people, both in the cities and in countryside. We need to take countermeasures before the unrest begins."
+
+date = { day = 4 month = february year = 1936 }
+
+action_a = {
+ai_chance = 60
+name = "Send additional police to the countryside!"
+command = { type = setflag which = POL_TROUBLES }
+command = { type = dissent value = 5 }
+}
+action_b = {
+ai_chance = 40
+name = "Liberalize, introduce more democracy in Poland"
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = dissent value = -5 }
+command = { type = sleepevent which = 9980001 }
+command = { type = sleepevent which = 9980002 }
+command = { type = sleepevent which = 9980003 }
+command = { type = sleepevent which = 9980004 }
+command = { type = sleepevent which = 9980005 }
+command = { type = sleepevent which = 9980006 }
+command = { type = trigger which = 9980007 }
+}
+}
+
+event = {
+id = 9980001
+random = no
+country = POL
+style = 2
+picture = "FAUD1"
+
+trigger = { flag = POL_TROUBLES }
+
+date = { day = 1 month = march year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Bombing in Warsaw"
+desc = "Yesterday, over fifty people were killed and approximately 200 people were injured in a deadly bombing in Warsaw. The police doesn't yet know anything about who did it, but it is widely assumed that the Polish Underground Anarchist Party is responsible for the attack on the 'bourgeois'."
+
+action_a = {
+name = "A horrendous day!"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 9980002
+random = no
+country = POL
+style = 2
+picture = "FinIntervention"
+
+trigger = { flag = POL_TROUBLES }
+
+date = { day = 1 month = june year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "March on Myslenice"
+desc = "A local nationalist leader, Adam Doboszynski, decided to mobilize his branch of the 'Patriots for Saving Poland' organization and march through Poland. Things however did not go peaceably as Doboszynski decided to disarm the local police after Syndicalists attacked his men. It's a sign of serious problems in our country!"
+
+action_a = {
+name = "Send the army in and arrest everyone involved in this putsch!"
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 9980003
+random = no
+country = POL
+style = 2
+picture = "sovrusciviwar"
+
+trigger = { flag = POL_TROUBLES }
+
+date = { day = 1 month = june year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "General unrest in the countryside!"
+desc = "Since our national exports have fallen, our economy is so weak that it cannot support production. Prices are plummeting and thousands of peasants are demanding the government do something about the economic crisis. Peasant hatred has passed onto the gentry and the authorities, policemen have reported they are having a hard time in keeping peace in the countryside."
+
+action_a = {
+name = "Can this get any worse?"
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 9980004
+random = no
+country = POL
+style = 2
+
+trigger = {
+random = 45
+flag = POL_TROUBLES
+owned = { province = 242 data = POL }
+owned = { province = 239 data = POL }
+owned = { province = 240 data = POL }
+owned = { province = 241 data = POL }
+control = { province = 242 data = POL }
+control = { province = 239 data = POL }
+control = { province = 240 data = POL }
+control = { province = 241 data = POL }
+}
+
+name = "Ukrainian terror!"
+desc = "With the incorporation of Galicia the number of Ukrainians in our country has increased greatly. The larger cities of Eastern Galicia are populated by a majority of Poles, but the countryside the opposite is true and there are a majority of Ukrainians. Disenfranchised Ukrainians who are very unhappy  about being part of Poland and have set up an organization called the 'Ukrainian Insurgent Army' that is starting to attack our military and government officials."
+picture = "UPAterror"
+
+date = { day = 1 month = january year = 1937 }
+offset = 45
+deathdate = { day = 1 month = august year = 1960 }
+
+action_a = {
+name = "This is really bad!"
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 9980005
+random = no
+country = POL
+style = 2
+picture = "sovrusciviwar"
+
+trigger = { flag = POL_TROUBLES }
+
+date = { day = 1 month = june year = 1936 }
+offset = 120
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Solutions for our immense problems"
+desc = "Now we face two crises, a weak economy and a crisis of authority caused by the former. The police and the army are having serious problems keeping the country together. We need to seriously rethink our policies."
+
+action_a = {
+ai_chance = 25
+name = "Liberalize, introduce more democracy in Poland"
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = dissent value = -5 }
+command = { type = clrflag which = POL_TROUBLES }
+command = { type = trigger which = 9980007 }
+}
+action_b = {
+ai_chance = 15
+name = "The government collapses!"
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = AUS }
+command = { type = end_access which = GER }
+command = { type = end_guarantee which = GER where = POL }
+command = { type = end_guarantee which = AUS where = POL }
+command = { type = clrflag which = POL_TROUBLES }
+command = { type = sleepevent which = 9980010 }
+command = { type = sleepevent which = 9980017 }
+command = { type = sleepevent which = 9980018 }
+command = { type = sleepevent which = 9980019 }
+command = { type = sleepevent which = 9980020 }
+command = { type = sleepevent which = 9980021 }
+command = { type = sleepevent which = 9980022 }
+command = { type = sleepevent which = 9980028 }
+command = { type = sleepevent which = 9980029 }
+command = { type = sleepevent which = 9980030 } #King's election
+command = { type = trigger which = 9980006 }
+}
+action_c = {
+ai_chance = 60
+name = "Invite the military to form a new government"
+command = { type = supplies value = -1000 }
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofgovernment which = 13043 } #Sikorski
+command = { type = foreignminister which = 13049 } #Wieniawa
+command = { type = armamentminister which = 13070 } #Szeptycki
+command = { type = ministerofsecurity which = 13088 } #Kukiel
+command = { type = ministerofintelligence which = 13095 } #Kowalewski
+command = { type = chiefofstaff which = 13007 } #Sikorski
+command = { type = chiefofarmy which = 13008 } #Sikorski
+command = { type = clrflag which = POL_TROUBLES }
+command = { type = setflag which = POL_SIKORSKI }
+}
+}
+
+event = {
+id = 9980006
+random = no
+country = POL
+style = 2
+
+name = "Time to choose"
+desc = "Both the Syndicalist party and the Nationalist circles are strong enough to take over the Polish cities and countryside. The authorities are skeptical about their own ability to retain power so they decided to give up and...."
+picture = "Riot1"
+
+action_a = {
+ai_chance = 40
+name = "Syndicalists take over!"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic	which = free_market value = 1 }
+command = { type = dissent value = -5 }
+command = { type = headofstate which = 13019 } #Dzierzynski
+command = { type = headofgovernment which = 13030 } #Radek
+command = { type = foreignminister which = 13045 } #Luksemurg
+command = { type = armamentminister which = 13060 } #Wasilewska
+command = { type = ministerofsecurity which = 13072 } #Warski
+command = { type = ministerofintelligence which = 13097 } #Komar
+command = { type = chiefofstaff which = 13100 } #Swierczewski
+command = { type = chiefofarmy which = 13115 } #Swierczewski
+command = { type = chiefofnavy which = 13125 } #Mohuczy
+command = { type = chiefofair which = 13130 } #Grosfeld
+command = { type = setflag which = POL_SYNDIE }
+}
+action_b = {
+ai_chance = 60
+name = "Nationalists take over!"
+command = { type = set_domestic which = democratic value = 1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic	which = free_market value = 3 }
+command = { type = dissent value = -5 }
+command = { type = headofstate which = 13021 } #Dmowski
+command = { type = headofgovernment which = 13032 } #Doboszynski
+command = { type = foreignminister which = 13047 } #Giertych
+command = { type = armamentminister which = 13111 } #Rybarski
+command = { type = ministerofsecurity which = 13075 } #Bielecki
+command = { type = ministerofintelligence which = 13092 } #Koneczny
+command = { type = chiefofstaff which = 13110 } #Januszajtis
+command = { type = chiefofarmy which = 13117 } #Januszajtis
+command = { type = relation which = GER value = -100 }
+command = { type = relation which = AUS value = -100 }
+command = { type = relation which = BLR value = -100 }
+command = { type = relation which = LIT value = -100 }
+command = { type = setflag which = POL_NATIONALISTS }
+}
+}
+
+event = {
+id = 9980007
+random = no
+country = POL
+style = 2
+
+name = "Constitution"
+desc = "After the Regency Council promised sweeping reforms, we now have to think about what the reforms should actually entail."
+picture = "constitutional"
+
+action_a = {
+name = "Long live the Republic!"
+ai_chance = 20
+command = { type = dissent value = -7 }
+command = { type = setflag which = POL_REPUBLIC }
+command = { type = sleepevent which = 9980010 }
+command = { type = sleepevent which = 9980022 }
+command = { type = sleepevent which = 9980042 }
+command = { type = sleepevent which = 9980051 }
+command = { type = sleepevent which = 9980052 }
+command = { type = sleepevent which = 9980053 }
+command = { type = sleepevent which = 9980061 }
+command = { type = sleepevent which = 9980072 }
+command = { type = sleepevent which = 9980073 }
+command = { type = sleepevent which = 9980074 }
+command = { type = sleepevent which = 9980075 }
+command = { type = sleepevent which = 9980076 }
+command = { type = sleepevent which = 9980078 }
+command = { type = sleepevent which = 9980079 }
+command = { type = sleepevent which = 9980080 }
+command = { type = sleepevent which = 9980081 }
+}
+action_b = {
+name = "Reform into a Constitutional Monarchy"
+ai_chance = 80
+command = { type = dissent value = -5 }
+command = { type = setflag which = POL_CONMON }
+command = { type = sleepevent which = 9980071 }
+command = { type = sleepevent which = 9980077 }
+command = { type = sleepevent which = 9980082 }
+}
+}
+
+######################
+#Electing the King
+######################
+event = {
+id = 9980010
+random = no
+country = POL
+
+trigger = {
+NOT = {
+puppet = { country = POL country = AUS }
+puppet = { country = POL country = U24 }
+puppet = { country = POL country = U25 }
+atwar = POL
+}
+}
+
+name = "Another attempt at a King of Poland"
+desc = "Just after the Weltkrieg, the Regency Council made an attempt to elect a king of Poland. This attempt, however, was stalled by the Polish inability to firmly support a single candidate and by the Central Powers' apparent lack of interest. Now, with the 20th anniversary of Kingdom of Poland's proclamation approaching, the Regency Council wants to make one last attempt."
+style = 2
+picture = "regency"
+
+date = { day = 1 month = september year = 1937 }
+offset = 4
+deathdate = { day = 20 month = september year = 1939 }
+
+action_a = {
+name = "Let us try again"
+command = { type = trigger which = 9980011 }
+command = { type = sleepevent which = 9980022 }
+}
+}
+
+event = {
+id = 9980011
+random = no
+country = LIT
+style = 2
+picture = "regency"
+
+trigger = { event = 9980010 }
+
+name = "The Polish election"
+desc = "The Polish Regency Council has announced that it will again attempt to elect a King. Many in Lithuania see this as the perfect chance to recreate the Polish-Lithuanian Commonwealth. If we were able to do that, it would unite us once more with our Polish brothers and the Commonwealth would be a power to be reckoned with. Should we declare our desire to recreate the Commonwealth or just let the Poles try and elect a King?"
+
+date = { day = 1 month = september year = 1937 }
+offset = 4
+deathdate = { day = 7 month = december year = 1963 }
+
+action_a = {
+ai_chance = 50
+name = "Announce our desire to recreate the Commonwealth"
+command = { type = trigger which = 9980012 }
+}
+action_b = {
+ai_chance = 50
+name = "Wish them luck"
+command = { type = trigger which = 9980017 }
+}
+}
+
+event = {
+id = 9980012
+random = no
+country = POL
+style = 2
+picture = "regency"
+
+name = "Lithuanians and the Commonwealth"
+desc = "The Lithuanians have declared a renewed interest in recreating the Commonwealth. While in the past the Commonwealth was a major power in Europe it eventually was destroyed by Russia, Austria and Prussia. Because of this, some people have said we should forget the Commonwealth and instead start the election for a King. What should our response be to the Lithuanians?"
+
+action_a = {
+ai_chance = 30
+name = "Agree to the proposal"
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+}
+action_b = {
+ai_chance = 30
+name = "Ban Mindaugas from the election"
+command = { type = trigger which = 9980013 }
+}
+action_c = {
+ai_chance = 40
+name = "Proceed with the election"
+command = { type = trigger which = 9980015 }
+}
+}
+
+event = {
+id = 9980013
+random = no
+country = LIT
+style = 2
+picture = "regency"
+
+name = "The Polish have shunned us!"
+desc = "After we expressed our wish to once more stand with Poland by remaking the Commonwealth, the Regency Council banned Mindaguas III from the election and spurned the idea of remaking the Commonwealth!"
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980014 }
+command = { type = relation which = POL value = -50 }
+}
+}
+
+event = {
+id = 9980014
+random = no
+country = GER
+style = 2
+picture = "regency"
+
+name = "The Polish Election"
+desc = "The Lithuanians under Mindaugas III had proposed a reborn Polish-Lithuanian Commonwealth to the Polish Regency Council. Thankfully, the Council not only rejected the proposal, but banned Mindaugas from the election. Many officials are calling for us to pressure the council to elect Friedrich Christian Witten as the new King of Poland to ensure the Poles do nothing to upset our interests. What should we do?"
+
+action_a = {
+ai_chance = 70
+name = "Pressure the Poles to elect Friedrich Christian Witten"
+command = { type = trigger which = 9980019 }
+}
+action_b = {
+ai_chance = 30
+name = "Wish them luck"
+command = { type = trigger which = 9980018 }
+}
+}
+
+event = {
+id = 9980015
+random = no
+country = LIT
+style = 2
+picture = "regency"
+
+name = "The Council has ignored us"
+desc = "After declaring our desire to recreate the Commonwealth, the Polish Regency Council has simply ignored us! While we do not have the diplomatic power to do much more then complain, Germany certainly does have the ability to do so. Should we ask the Germans to help us create a new Commonwealth?"
+
+action_a = {
+ai_chance = 60
+name = "Ask for Germany's help"
+command = { type = trigger which = 9980016 }
+}
+action_b = {
+ai_chance = 40
+name = "Let the Poles have their election"
+command = { type = trigger which = 9980017 }
+}
+}
+
+event = {
+id = 9980016
+random = no
+country = GER
+style = 2
+picture = "regency"
+
+name = "Lithuania has asked for help"
+desc = "The Lithuanians are asking we help them recreate the Commonwealth. Supporting them would create both a strong ally and keep Poland out of the Hapsburg's hands. However, some worry it would weaken our own position in the region and instead we should support Friedrich Christian Witten to become the new King of Poland. What should we do?"
+
+action_a = {
+ai_chance = 40
+name = "Pressure the Poles to elect Mindaugas III"
+command = { type = trigger which = 9980020 }
+}
+action_b = {
+ai_chance = 40
+name = "Pressure the Poles to elect Friedrich Christian Witten"
+command = { type = trigger which = 9980021 }
+}
+action_c = {
+ai_chance = 20
+name = "Don't interfere with the election"
+command = { type = trigger which = 9980017 }
+}
+}
+
+#########
+#Election
+#########
+event = {
+id = 9980017
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 40
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = end_puppet }
+command = { type = relation which = GER value = 100 }
+command = { type = relation which = AUS value = -50 }
+command = { type = setflag which = POL_WE }
+}
+action_b = {
+ai_chance = 20
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_c = {
+ai_chance = 30
+name = "Mendog III will restore the Commonwealth!"
+command = { type = headofstate which = 13178 } #Mendog III
+command = { type = dissent value = -1 }
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = setflag which = POL_MEN }
+}
+action_d = {
+ai_chance = 10
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -25 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+event = {
+id = 9980018
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 40
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = end_puppet }
+command = { type = relation which = GER value = 100 }
+command = { type = relation which = AUS value = -50 }
+command = { type = setflag which = POL_WE }
+}
+action_b = {
+ai_chance = 40
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_c = {
+ai_chance = 20
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -25 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+event = {
+id = 9980019
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 60
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = end_puppet }
+command = { type = relation which = GER value = 100 }
+command = { type = relation which = AUS value = -50 }
+command = { type = setflag which = POL_WE }
+}
+action_b = {
+ai_chance = 20
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_c = {
+ai_chance = 20
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -25 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+event = {
+id = 9980020
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 40
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = relation which = GER value = 100 }
+command = { type = relation which = AUS value = -50 }
+command = { type = setflag which = POL_WE }
+}
+action_b = {
+ai_chance = 10
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_c = {
+ai_chance = 40
+name = "Mendog III will restore the Commonwealth!"
+command = { type = headofstate which = 13178 } #Mendog III
+command = { type = dissent value = -1 }
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = setflag which = POL_MEN }
+}
+action_d = {
+ai_chance = 10
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -25 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+event = {
+id = 9980021
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 60
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = relation which = GER value = 100 }
+command = { type = relation which = AUS value = -50 }
+command = { type = setflag which = POL_WE }
+}
+action_b = {
+ai_chance = 10
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_c = {
+ai_chance = 20
+name = "Mendog III will restore the Commonwealth!"
+command = { type = headofstate which = 13178 } #Mendog III
+command = { type = dissent value = -1 }
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = setflag which = POL_MEN }
+}
+action_d = {
+ai_chance = 10
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -25 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+########################
+#Austrian puppet variant
+########################
+event = {
+id = 9980022
+random = no
+country = POL
+
+trigger = {
+OR = {
+puppet = { country = POL country = AUS }
+puppet = { country = POL country = U24 }
+puppet = { country = POL country = U25 }
+}
+}
+
+name = "Another attempt for a King of Poland"
+desc = "Just after the Weltkrieg, the Regency Council made an attempt to elect a king of Poland. This attempt, however, was stalled by the Polish inability to firmly support a single candidate and by the Central Powers' apparent lack of interest. Now, with the 20th anniversary of Kingdom of Poland's proclamation approaching, the Regency Council wants to make one last attempt."
+style = 2
+picture = "regency"
+
+date = { day = 1 month = september year = 1937 }
+offset = 4
+deathdate = { day = 20 month = september year = 1938 }
+
+
+action_a = {
+name = "Let us try again"
+command = { type = sleepevent which = 9980010 }
+command = { type = trigger which = 9980023 }
+command = { type = trigger which = 9980388 }
+command = { type = trigger which = 9980389 }
+}
+}
+
+event = {
+id = 9980023
+random = no
+country = AUS
+style = 2
+
+trigger = {
+puppet = { country = POL country = AUS }
+}
+
+name = "The Polish election"
+desc = "The Polish are attempting another election for a King and Mindaugas III is an official candidate. We would clearly lose Poland if he was elected so many officials are calling for the removal of Mindaugas III. As Lithuania is an ally of Germany, such a move would upset them as well, so it has also been proposed that we pressure for the election of Karl Olbracht Hapsburg. What should we do?"
+
+action_a = {
+name = "Demand Mindaugas III is removed"
+ai_chance = 50
+command = { type = trigger which = 9980024 }
+}
+action_b = {
+name = "Pressure the Poles to elect Karl Olbracht Hapsburg"
+ai_chance = 40
+command = { type = trigger which = 9980029 }
+}
+action_c = {
+name = "Wish them luck"
+ai_chance = 10
+command = { type = trigger which = 9980028 }
+}
+}
+
+event = {
+id = 9980388
+random = no
+country = U24
+style = 2
+
+trigger = {
+puppet = { country = POL country = U24 }
+}
+
+name = "The Polish election"
+desc = "The Polish are attempting another election for a King and Mindaugas III is an official candidate. We would clearly lose Poland if he was elected so many officials are calling for the removal of Mindaugas III. As Lithuania is an ally of Germany, such a move would upset them as well, so it has also been proposed that we pressure for the election of Karl Olbracht Hapsburg. What should we do?"
+
+action_a = {
+name = "Demand Mindaugas III is removed"
+ai_chance = 50
+command = { type = trigger which = 9980024 }
+}
+action_b = {
+name = "Pressure the Poles to elect Karl Olbracht Hapsburg"
+ai_chance = 40
+command = { type = trigger which = 9980029 }
+}
+action_c = {
+name = "Wish them luck"
+ai_chance = 10
+command = { type = trigger which = 9980028 }
+}
+}
+
+event = {
+id = 9980389
+random = no
+country = U25
+style = 2
+
+trigger = {
+puppet = { country = POL country = U25 }
+}
+
+name = "The Polish election"
+desc = "The Polish are attempting another election for a King and Mindaugas III is an official candidate. We would clearly lose Poland if he was elected so many officials are calling for the removal of Mindaugas III. As Lithuania is an ally of Germany, such a move would upset them as well, so it has also been proposed that we pressure for the election of Karl Olbracht Hapsburg. What should we do?"
+
+action_a = {
+name = "Demand Mindaugas III is removed"
+ai_chance = 50
+command = { type = trigger which = 9980024 }
+}
+action_b = {
+name = "Pressure the Poles to elect Karl Olbracht Hapsburg"
+ai_chance = 40
+command = { type = trigger which = 9980029 }
+}
+action_c = {
+name = "Wish them luck"
+ai_chance = 10
+command = { type = trigger which = 9980028 }
+}
+}
+
+
+event = {
+id = 9980024
+random = no
+country = POL
+style = 2
+
+name = "The Austrian demand"
+desc = "The Austrians have sent a demand to us bluntly stating to remove Mindaugas III of Lithuania from the list of potential Kings. The obvious choice is to agree to the demand, but we could elect Mindaugas III on the spot to free ourselves of the Austrians, or finally, we could ignore their demands and proceed with the election. What should we do?"
+
+action_a = {
+ai_chance = 60
+name = "Comply and remove Mindaugas III"
+command = { type = trigger which = 9980025 }
+}
+action_b = {
+ai_chance = 15
+name = "Ignore their demand"
+command = { type = trigger which = 9980026 }
+command = { type = trigger which = 9980390 }
+command = { type = trigger which = 9980392 }
+}
+action_c = {
+ai_chance = 25
+name = "Elect Mindaugas III now!"
+command = { type = headofstate which = 13178 } #Mendog III
+command = { type = trigger which = 9980027 }
+command = { type = trigger which = 9980391 }
+command = { type = trigger which = 9980393 }
+}
+}
+
+event = {
+id = 9980025
+random = no
+country = LIT
+style = 2
+
+name = "The Polish have shunned us!"
+desc = "The Polish Regency Council has declared our King to be invalid as a possible King of Poland. It's obvious however, that the Council's master, the Austrians, ordered them to do this."
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980028 }
+command = { type = relation which = POL value = -50 }
+}
+}
+
+event = {
+id = 9980026
+random = no
+country = AUS
+style = 2
+
+trigger = {
+puppet = { country = POL country = AUS }
+}
+
+name = "The Polish defied us!"
+desc = "The Polish Regency Council has ignored our demand to remove Mindaugas III and have started the election."
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980029 }
+command = { type = relation which = POL value = -20 }
+}
+}
+
+event = {
+id = 9980027
+random = no
+country = AUS
+style = 2
+
+trigger = {
+puppet = { country = POL country = AUS }
+}
+
+name = "The Polish defied us!"
+desc = "The Polish Regency Council has instead of complying with our demand have done the inverse and elected him the new King of Poland! There's little we can do as Mindaugas III is protected by the Germans..."
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = relation which = POL value = -50 }
+}
+}
+
+event = {
+id = 9980390
+random = no
+country = U24
+style = 2
+
+trigger = {
+puppet = { country = POL country = U24 }
+}
+
+name = "The Polish defied us!"
+desc = "The Polish Regency Council has ignored our demand to remove Mindaugas III and have started the election."
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980029 }
+command = { type = relation which = POL value = -20 }
+}
+}
+
+event = {
+id = 9980391
+random = no
+country = U24
+style = 2
+
+trigger = {
+puppet = { country = POL country = U24 }
+}
+
+name = "The Polish defied us!"
+desc = "The Polish Regency Council has instead of complying with our demand have done the opposite and elected him the new King of Poland! There's little we can do as Mindaugas III is protected by the Germans..."
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = relation which = POL value = -50 }
+}
+}
+
+event = {
+id = 9980392
+random = no
+country = U25
+style = 2
+
+trigger = {
+puppet = { country = POL country = U25 }
+}
+
+name = "The Polish defied us!"
+desc = "The Polish Regency Council has ignored our demand to remove Mindaugas III and have started the election."
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980029 }
+command = { type = relation which = POL value = -20 }
+}
+}
+
+event = {
+id = 9980393
+random = no
+country = U25
+style = 2
+
+trigger = {
+puppet = { country = POL country = U25 }
+}
+
+name = "The Polish defied us!"
+desc = "The Polish Regency Council has instead of complying with our demand have done the opposite and elected him the new King of Poland! There's little we can do as Mindaugas III is protected by the Germans..."
+
+action_a = {
+name = "Curse them!"
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = relation which = POL value = -50 }
+}
+}
+
+
+#########
+#Election
+#########
+event = {
+id = 9980028
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 50
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_b = {
+ai_chance = 30
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = end_puppet }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = GER value = 100 }
+command = { type = setflag which = POL_WE }
+}
+action_c = {
+ai_chance = 20
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+event = {
+id = 9980029
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 40
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_b = {
+ai_chance = 20
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = end_puppet }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = GER value = 100 }
+command = { type = setflag which = POL_WE }
+}
+action_c = {
+ai_chance = 30
+name = "Mendog III will restore the Commonwealth!"
+command = { type = headofstate which = 13178 } #Mendog III
+command = { type = dissent value = -1 }
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = setflag which = POL_MEN }
+}
+action_d = {
+ai_chance = 10
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+event = {
+id = 9980030
+random = no
+country = POL
+style = 2
+
+name = "Choosing the King"
+desc = "For over 20 years Poland has not had a King. However, another election by the Regency Council may finally change that. Each potential King has supporters (and opponents) and will provide differing paths for the development of Poland. Who shall become the new King?"
+picture = "regency"
+
+action_a = {
+ai_chance = 60
+name = "Austria is our friend, Karl Olbracht Hapsburg!"
+command = { type = headofstate which = 13015 } #Karol Olbracht Hapsburg
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = GER value = -50 }
+command = { type = setflag which = POL_HA }
+}
+action_b = {
+ai_chance = 15
+name = "The Saxon, Friedrich Christian Witten will lead us to glory!"
+command = { type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { type = dissent value = 1 }
+command = { type = end_puppet }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = GER value = 100 }
+command = { type = setflag which = POL_WE }
+}
+action_c = {
+ai_chance = 20
+name = "Mendog III will restore the Commonwealth!"
+command = { type = headofstate which = 13178 } #Mendog III
+command = { type = dissent value = -1 }
+command = { type = trigger which = 9980031 }
+command = { type = trigger which = 9980032 }
+command = { type = setflag which = POL_MEN }
+}
+action_d = {
+ai_chance = 5
+name = "We need a Polish King, viva la Augustyn I Czartoryski!"
+command = { type = headofstate which = 13014 } #Czartoryski
+command = { type = dissent value = -3 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = GER value = -50 }
+command = { type = sleepminister which = 13063 }
+command = { type = sleepminister which = 13056 }
+command = { type = setflag which = POL_CZA }
+}
+}
+
+############
+#King events
+############
+event = {
+id = 9980031
+random = no
+country = POL
+style = 2
+
+name = "The decision of Mendog"
+desc = "Mendog III has been elected the new King of Poland. Now, he has to make a decision that is on his and everyone else's mind, if Poland and Lithaunia should recreate the Commonwealth or not."
+picture= "commonwealth_map"
+
+action_a = {
+name = "Poland and Lithaunia shall stay separate"
+ai_chance = 0
+command = { type = relation which = LIT value = 50 }
+}
+
+action_b = {
+name = "Long live the Polish-Lithaunian Commonwealth!"
+ai_chance = 100
+command = { type = end_puppet }
+command = { type = steal_tech which = LIT }
+command = { type = steal_tech which = LIT }
+command = { type = steal_tech which = LIT }
+command = { type = steal_tech which = LIT }
+command = { type = steal_tech which = LIT }
+command = { type = steal_tech which = LIT }
+command = { type = steal_tech which = LIT }
+command = { type = steal_tech which = LIT }
+command = { type = inherit which = LIT }
+command = { type = country which = U00 }
+command = { type = trigger which = 9981000 }
+command = { type = trigger which = 9981001 }
+command = { type = ai which = "kaiserreich/PLCommonwealth.ai" }
+}
+}
+
+
+#######
+#Witten
+#######
+event = {
+id = 9980041
+random = no
+country = POL
+style = 2
+
+trigger = {
+exists = GER
+NOT = {
+ispuppet = POL
+government = communist
+atwar = POL
+alliance = { country = GER country = POL }
+}
+headofstate = 13011
+}
+
+name = "Revising Our Foreign Policy"
+desc = "HRH Fryderyk has, as expected, declared his desire for Poland to join Mitteleuropa. Should we send an envoy to the Germans?"
+picture = "royal_castle_warsaw"
+
+date = { day = 1 month = january year = 1937 }
+offset = 5
+deathdate = { day = 1 month = december year = 1939 }
+
+action_a = {
+name = "Send the envoy"
+ai_chance = 80
+command = { type = trigger which = 9980042 }
+command = { trigger = { alliance = { country = GER country = UKR } } type = relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = GER country = BLR } } type = relation which = BLR value = 150 }
+command = { trigger = { alliance = { country = GER country = BUR } } type = relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = GER country = BEL } } type = relation which = BEL value = 150 }
+command = { trigger = { alliance = { country = GER country = U24 } } type = relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = GER country = U25 } } type = relation which = U25 value = 150 }
+command = { trigger = { alliance = { country = GER country = AUS } } type = relation which = AUS value = 150 }
+command = { trigger = { alliance = { country = GER country = OTT } } type = relation which = OTT value = 150 }
+command = { trigger = { alliance = { country = GER country = TRA } } type = relation which = TRA value = 150 }
+command = { trigger = { alliance = { country = GER country = ITA } } type = relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = GER country = CGX } } type = relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = GER country = VIE } } type = relation which = VIE value = 150 }
+}
+
+action_b = {
+name = "Let's stay out of Mitteleuropa"
+ai_chance = 20
+command = { type = relation which = GER value = -30 }
+}
+}
+
+event = {
+id = 9980042
+random = no
+country = GER
+style = 2
+
+name = "An envoy from Poland"
+desc = "Friedrich C. Witten, the new King of Poland, has sent us a message asking for Poland to join Mitteleuropa. Should we invite Poland into Mitteleuropa?"
+picture = "royal_castle_warsaw"
+
+action_a = {
+name = "Invite Poland to Mitteleuropa"
+ai_chance = 90
+command = { type = relation which = POL value = 200 }
+command = { type = alliance which = POL }
+}
+action_b = {
+name = "No, we do not need Poland"
+ai_chance = 10
+command = { type = relation which = POL value = -50 }
+
+}
+}
+
+event = {
+id = 9980043
+random = no
+country = POL
+style = 2
+
+trigger = {
+headofstate = 13011
+NOT = { flag = POL_CONMON } }
+
+name = "Appointing a Prime Minister"
+desc = "After a government crisis, the position of Prime Minister is empty and the King needs to appoint a new one."
+picture = "Politics6"
+
+date = { day = 1 month = october year = 1937 }
+offset = 5
+deathdate = { day = 7 month = august year = 1963 }
+
+action_a = {
+ai_chance = 40
+name = "Wladyslaw Studnicki, the pro-German politician"
+command = { type = dissent value = 5 }
+command = { type = headofgovernment which = 13042 } #Studnicki
+command = { type = foreignminister which = 13121 } #Targowski
+command = { type = armamentminister which = 13062 } #Paszkowski
+command = { type = ministerofsecurity which = 13078 } #Ponikowski
+}
+action_b = {
+ai_chance = 10
+name = "Leopold Skulski, the Conservative leader"
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 13034 } #Skulski
+command = { type = foreignminister which = 13121 } #Targowski
+command = { type = armamentminister which = 13012 } #Stecki
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+}
+action_c = {
+ai_chance = 40
+name = "Janusz Radziwill, the former leader of the Regency Council"
+command = { type = dissent value = 3 }
+command = { type = headofgovernment which = 13035 } #Radziwill
+command = { type = foreignminister which = 13003 } #Szembek
+command = { type = armamentminister which = 13004 } #Wierzbicki
+command = { type = ministerofsecurity which = 13081 } #Lubomirski
+}
+action_d = {
+ai_chance = 10
+name = "General Wladyslaw Sikorski"
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 13043 } #Sikorski
+command = { type = foreignminister which = 13148 } #Wysocki
+command = { type = armamentminister which = 13070 } #Szeptycki
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+command = { type = ministerofintelligence which = 13095 } #Kowalewski
+command = { type = chiefofstaff which = 13007 } #Sikorski
+command = { type = chiefofarmy which = 13008 } #Sikorski
+}
+}
+
+#########
+#Habsburg
+#########
+event = {
+id = 9980051
+random = no
+country = POL
+style = 2
+
+name = "Incorporation of Galicia"
+desc = "During the partitions of Poland the Austrians had taken Galicia from the Commonwealth. Now, more than 150 years later, Galicia is once more a part of Poland."
+picture = "galicia"
+
+trigger = {
+headofstate = 13015
+exists = GLD
+OR = {
+puppet = { country = GLD country = AUS }
+AND = { puppet = { country = GLD country = HUN }
+puppet = { country = HUN country = AUS } } }
+NOT = {	event = 90129 } }
+
+date = { day = 1 month = january year = 1937 }
+offset = 3
+deathdate = { day = 7 month = august year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = inherit which = GLD }
+command = { type = addcore  which =  235 }
+command = { type = addcore  which =  236 }
+command = { type = addcore  which =  237 }
+command = { type = addcore  which =  239 }
+command = { type = addcore  which =  241 }
+command = { type = addcore  which =  242 }
+command = { type = addcore  which =  238 }
+command = { type = addcore  which =  300 }
+command = { type = addcore  which =  240 }
+command = { type = addcore  which =  301 }
+command = { type = waketeam which = 2713 }
+command = { type = waketeam which = 2714 }
+command = { type = waketeam which = 2715 }
+command = { type = relation which = UKR value = -50 }
+command = { type = clrflag which = POL_INCORPORATION }
+}
+}
+
+event = {
+id = 9980052
+random = no
+country = POL
+style = 2
+
+trigger = {
+headofstate = 13015
+NOT = { flag = POL_CONMON }
+}
+
+name = "Appointing a Prime Minister"
+desc = "After a governmental crisis, the position of Prime Minister is empty and the King needs to appoint a new one."
+picture = "Politics6"
+
+date = { day = 1 month = october year = 1937 }
+offset = 5
+deathdate = { day = 7 month = august year = 1963 }
+
+action_a = {
+ai_chance = 25
+name = "Leopold Skulski, the Conservative leader"
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 13034 } #Skulski
+command = { type = foreignminister which = 13121 } #Targowski
+command = { type = armamentminister which = 13012 } #Stecki
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+}
+action_b = {
+ai_chance = 25
+name = "Archbishop A. Kakowski, the Primate of Poland"
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 13013 } #Kakowski
+command = { type = foreignminister which = 13121 } #Targowski
+command = { type = armamentminister which = 13004 } #Wierzbicki
+command = { type = ministerofsecurity which = 13005 } #Bukowiecki
+}
+action_c = {
+ai_chance = 25
+name = "Zdzislaw Lubomirski, the former leader of the Regency Council"
+command = { type = dissent value = 3 }
+command = { type = headofgovernment which = 13002 } #Lubomirski
+command = { type = foreignminister which = 13003 } #Szembek
+command = { type = armamentminister which = 13004 } #Wierzbicki
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+}
+action_d = {
+ai_chance = 25
+name = "General Wladyslaw Sikorski"
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 13043 } #Sikorski
+command = { type = foreignminister which = 13148 } #Wysocki
+command = { type = armamentminister which = 13070 } #Szeptycki
+command = { type = ministerofsecurity which = 13081 } #Lubomirski
+command = { type = ministerofintelligence which = 13095 } #Kowalewski
+command = { type = chiefofstaff which = 13007 } #Sikorski
+command = { type = chiefofarmy which = 13008 } #Sikorski
+}
+}
+
+event = {
+id = 9980053
+random = no
+country = POL
+picture = "Politics6"
+
+trigger = {
+headofstate = 13015
+minister = 13024
+minister = 13151
+NOT = {
+government = democratic
+flag = POL_CONMON }
+}
+
+name = "Cabinet crisis"
+desc = "In December 1937 'Kurier Warszawski', one of the most influential newspapers in Poland, published a number of articles accusing a few members of current cabinet of stealing public funds. An investigation into the matter has proven the accusation as correct. King Karol Olbracht Hapsburg will likely use this opportunity to change the cabinet and place his protege from Galicia, Hieronim Tarnowski, as the new Prime Minister."
+style = 2
+
+date = { day = 7 month = february year = 1938 }
+
+action_a = {
+name = "Hieronim Tarnowski will form the new government"
+ai_chance = 70
+command = { type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { type = headofgovernment which = 13024 } #Tarnowski
+command = { type = foreignminister which = 13003 } #Szembek
+command = { type = armamentminister which = 13151 } #Krzyzanowski
+command = { type = ministerofsecurity which = 13090 } #Stecki
+}
+action_b = {
+name = "Keep the current government"
+ai_chance = 30
+command = { type = dissent value = 3 }
+}
+}
+
+############
+#Czartoryski
+############
+event = {
+id = 9980061
+random = no
+country = POL
+style = 2
+
+trigger = {
+headofstate = 13014
+NOT = { flag = POL_CONMON }
+}
+
+name = "Appointing a Prime Minister"
+desc = "After a government crisis, the position of Prime Minister is empty and the King needs to appoint a new one."
+picture = "Politics6"
+
+date = { day = 1 month = october year = 1937 }
+offset = 5
+deathdate = { day = 7 month = august year = 1963 }
+
+action_a = {
+ai_chance = 25
+name = "Leopold Skulski, the Conservative leader"
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 13034 } #Skulski
+command = { type = foreignminister which = 13121 } #Targowski
+command = { type = armamentminister which = 13012 } #Stecki
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+}
+action_b = {
+ai_chance = 25
+name = "Archbishop A. Kakowski, the Primate of Poland"
+command = { type = dissent value = -3 }
+command = { type = headofgovernment which = 13013 } #Kakowski
+command = { type = foreignminister which = 13121 } #Targowski
+command = { type = armamentminister which = 13004 } #Wierzbicki
+command = { type = ministerofsecurity which = 13005 } #Bukowiecki
+}
+action_c = {
+ai_chance = 25
+name = "Zdzislaw Lubomirski, the former leader of the Regency Council"
+command = { type = dissent value = 3 }
+command = { type = headofgovernment which = 13002 } #Lubomirski
+command = { type = foreignminister which = 13003 } #Szembek
+command = { type = armamentminister which = 13004 } #Wierzbicki
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+}
+action_d = {
+ai_chance = 25
+name = "General Wladyslaw Sikorski"
+command = { type = dissent value = -5 }
+command = { type = headofgovernment which = 13043 } #Sikorski
+command = { type = foreignminister which = 13148 } #Wysocki
+command = { type = armamentminister which = 13070 } #Szeptycki
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+command = { type = ministerofintelligence which = 13095 } #Kowalewski
+command = { type = chiefofstaff which = 13007 } #Sikorski
+command = { type = chiefofarmy which = 13008 } #Sikorski
+}
+}
+
+##########
+#Elections
+##########
+event = {
+id = 9980071
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = {
+flag = POL_REPUBLIC
+NOT = {
+government = communist
+ispuppet = POL
+}
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only four major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 18 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+action_a = {
+ai_chance = 40
+name = "The Patriotic Party"
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 13026 } #Paderewski
+command = { type = headofgovernment which = 13041 } #Jankowski
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_b = {
+ai_chance = 40
+name = "The People's Coalition"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 13023 } #Narutowicz
+command = { type = headofgovernment which = 13039 } #Wojciechowski
+command = { type = foreignminister which = 13057 } #Patek
+command = { type = armamentminister which = 13068 } #Arciszewski
+command = { type = ministerofsecurity which = 13082 } #Mikolajczyk
+}
+action_c = {
+ai_chance = 10
+name = "National-Radical Party"
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = AUS }
+command = { type = end_access which = GER }
+command = { type = end_access which = HUN }
+command = { type = end_guarantee which = GER where = POL }
+command = { type = end_guarantee which = AUS where = POL }
+command = { type = end_guarantee which = HUN where = POL }
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic	which = free_market value = 3 }
+command = { type = headofstate which = 13021 } #Dmowski
+command = { type = headofgovernment which = 13032 } #Doboszynski
+command = { type = foreignminister which = 13047 } #Giertych
+command = { type = armamentminister which = 13111 } #Rybarski
+command = { type = ministerofsecurity which = 13075 } #Bielecki
+command = { type = ministerofintelligence which = 13092 } #Koneczny
+command = { type = chiefofstaff which = 13110 } #Januszajtis
+command = { type = chiefofarmy which = 13117 } #Januszajtis
+command = { type = clrflag which = POL_REPUBLIC }
+command = { type = setflag which = POL_NATIONALISTS }
+command = { type = relation which = GER value = -300 }
+command = { type = relation which = AUS value = -200 }
+command = { type = relation which = BLR value = -200 }
+command = { type = relation which = LIT value = -200 }
+command = { type = relation which = VIC value = 300 }
+command = { type = relation which = CAN value = 300 }
+command = { type = peace which = CAN value = 1 }
+command = { type = peace which = JAP value = 1 }
+command = { type = peace which = MAN value = 1 }
+command = { type = peace which = PRI value = 1 }
+command = { type = peace which = CHC value = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = peace which = ENG value = 1 }
+command = { type = peace which = CSA value = 1 }
+command = { type = peace which = RUS value = 1 }
+command = { type = peace which = SOV value = 1 }
+}
+action_d = {
+ai_chance = 5
+name = "The Syndicalist Party"
+command = { type = end_puppet }
+command = { type = end_access which = AUS }
+command = { type = end_access which = GER }
+command = { type = end_access which = HUN }
+command = { type = end_guarantee which = GER where = POL }
+command = { type = end_guarantee which = AUS where = POL }
+command = { type = end_guarantee which = HUN where = POL }
+command = { type = leave_alliance }
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic	which = free_market value = 1 }
+command = { type = headofstate which = 13019 } #Dzierzynski
+command = { type = headofgovernment which = 13030 } #Radek
+command = { type = foreignminister which = 13045 } #Luksemurg
+command = { type = armamentminister which = 13060 } #Wasilewska
+command = { type = ministerofsecurity which = 13072 } #Warski
+command = { type = ministerofintelligence which = 13097 } #Komar
+command = { type = chiefofstaff which = 13100 } #Swierczewski
+command = { type = chiefofarmy which = 13115 } #Swierczewski
+command = { type = chiefofnavy which = 13125 } #Mohuczy
+command = { type = chiefofair which = 13130 } #Grosfeld
+command = { type = clrflag which = POL_REPUBLIC }
+command = { type = setflag which = POL_SYNDIE }
+command = { type = peace which = CAN value = 1 }
+command = { type = peace which = JAP value = 1 }
+command = { type = peace which = MAN value = 1 }
+command = { type = peace which = PRI value = 1 }
+command = { type = peace which = CHC value = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = peace which = ENG value = 1 }
+command = { type = peace which = CSA value = 1 }
+command = { type = peace which = RUS value = 1 }
+command = { type = peace which = SOV value = 1 }
+}
+}
+
+event = {
+id = 9980072
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = {
+OR = {
+headofstate = 13011
+headofstate = 13014
+headofstate = 13015
+headofstate = 13185
+headofstate = 13178
+}
+flag = POL_CONMON
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only four major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 18 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+action_a = {
+ai_chance = 40
+name = "The Patriotic Party"
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13044 } #Cat-Mackiewicz
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_b = {
+ai_chance = 40
+name = "The People's Coalition"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13039 } #Wojciechowski
+command = { type = foreignminister which = 13054 } #Narutowicz
+command = { type = armamentminister which = 13068 } #Arciszewski
+command = { type = ministerofsecurity which = 13082 } #Mikolajczyk
+}
+action_c = {
+ai_chance = 15
+name = "National-Radical Party"
+trigger = {
+NOT = {
+puppet = { country = POL country = GER  }
+puppet = { country = POL country = AUS  }
+puppet = { country = POL country = U24  }
+puppet = { country = POL country = RUS  }
+}
+}
+command = { type = dissent value = 15 }
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = AUS }
+command = { type = end_access which = GER }
+command = { type = end_access which = HUN }
+command = { type = end_guarantee which = GER where = POL }
+command = { type = end_guarantee which = AUS where = POL }
+command = { type = end_guarantee which = HUN where = POL }
+command = { type = set_domestic which = democratic value = 1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic	which = free_market value = 3 }
+command = { type = dissent value = 10 }
+command = { type = headofstate which = 13021 } #Dmowski
+command = { type = headofgovernment which = 13032 } #Doboszynski
+command = { type = foreignminister which = 13047 } #Giertych
+command = { type = armamentminister which = 13111 } #Rybarski
+command = { type = ministerofsecurity which = 13075 } #Bielecki
+command = { type = ministerofintelligence which = 13092 } #Koneczny
+command = { type = chiefofstaff which = 13110 } #Januszajtis
+command = { type = chiefofarmy which = 13117 } #Januszajtis
+command = { type = clrflag which = POL_CONMON }
+command = { type = setflag which = POL_NATIONALISTS }
+command = { type = relation which = GER value = -300 }
+command = { type = relation which = AUS value = -200 }
+command = { type = relation which = BLR value = -200 }
+command = { type = relation which = LIT value = -200 }
+command = { type = relation which = VIC value = 300 }
+command = { type = relation which = CAN value = 300 }
+command = { type = relation which = RUS value = 100 }
+command = { type = clrflag which = POL_WE }
+command = { type = clrflag which = POL_CZA }
+command = { type = clrflag which = POL_HA }
+command = { type = clrflag which = POL_MEN }
+}
+action_d = {
+ai_chance = 5
+name = "The Syndicalist Party"
+trigger = {
+NOT = {
+puppet = { country = POL country = RUS  }
+puppet = { country = POL country = GER  }
+puppet = { country = POL country = AUS  }
+puppet = { country = POL country = U24  }
+}
+}
+command = { type = dissent value = 15 }
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = AUS }
+command = { type = end_access which = GER }
+command = { type = end_access which = HUN }
+command = { type = end_guarantee which = GER where = POL }
+command = { type = end_guarantee which = AUS where = POL }
+command = { type = end_guarantee which = HUN where = POL }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic	which = free_market value = 1 }
+command = { type = headofstate which = 13019 } #Dzierzynski
+command = { type = headofgovernment which = 13030 } #Radek
+command = { type = foreignminister which = 13045 } #Luksemurg
+command = { type = armamentminister which = 13060 } #Wasilewska
+command = { type = ministerofsecurity which = 13072 } #Warski
+command = { type = ministerofintelligence which = 13097 } #Komar
+command = { type = chiefofstaff which = 13100 } #Swierczewski
+command = { type = chiefofarmy which = 13115 } #Swierczewski
+command = { type = chiefofnavy which = 13125 } #Mohuczy
+command = { type = chiefofair which = 13130 } #Grosfeld
+command = { type = relation which = GER value = -300 }
+command = { type = relation which = AUS value = -200 }
+command = { type = relation which = BLR value = -200 }
+command = { type = relation which = LIT value = -200 }
+command = { type = relation which = FRA value = 300 }
+command = { type = relation which = ENG value = 200 }
+command = { type = relation which = RSI value = 200 }
+command = { type = relation which = SOV value = 200 }
+command = { type = clrflag which = POL_CONMON }
+command = { type = setflag which = POL_SYNDIE }
+command = { type = clrflag which = POL_WE }
+command = { type = clrflag which = POL_CZA }
+command = { type = clrflag which = POL_HA }
+command = { type = clrflag which = POL_MEN }
+}
+}
+
+
+
+#1941
+
+event = {
+id = 9980076
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = {
+flag = POL_CONMON
+OR = {
+headofstate = 13011
+headofstate = 13014
+headofstate = 13015
+headofstate = 13185
+headofstate = 13178
+}
+event = { id = 9980072 days = 1460 } #4 years
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only three major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 20
+name = "The King shall put an end to this chaos"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13042 } #Studnicki
+command = { type = foreignminister which = 13148 } #Wysocki
+command = { type = foreignminister which = 13157 } #Jerzy Potocki
+command = { type = armamentminister which = 13062 } #Paszkowski
+command = { type = ministerofsecurity which = 13150 } #Radziwill
+command = { type = clrflag which = POL_CONMON }
+}
+action_b = {
+ai_chance = 35
+name = "The Patriotic Party"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13044 } #Cat-Mackiewicz
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_c = {
+ai_chance = 10
+name = "The Democratic Party"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13027 } #Kwasniewski
+command = { type = foreignminister which = 13036 } #Lednicki
+command = { type = armamentminister which = 13074 } #Czarnowski
+command = { type = armamentminister which = 13151 } #Krzyzanowski
+command = { type = ministerofsecurity which = 13076 } #Bilek
+}
+action_d = {
+ai_chance = 35
+name = "The People's Coalition"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13166 } #Mikolajczyk
+command = { type = headofgovernment which = 13156 } #Witos
+command = { type = foreignminister which = 13054 } #Narutowicz
+command = { type = armamentminister which = 13068 } #Arciszewski
+command = { type = armamentminister which = 13069 } #Liebermann
+command = { type = ministerofsecurity which = 13067 } #Barlicki
+}
+}
+
+
+
+event = {
+id = 9980080
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = { flag = POL_REPUBLIC
+event = { id = 9980071 days = 1460 } #4 years
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only three major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 40
+name = "The Patriotic Party"
+command = { type = dissent value = -10 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = headofstate which = 13063 } #Sapieha
+command = { type = headofgovernment which = 13041 } #Jankowski
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_b = {
+ai_chance = 20
+name = "The Democratic Party"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = headofstate which = 13038 } #Michalowicz
+command = { type = headofgovernment which = 13027 } #Kwasniewski
+command = { type = foreignminister which = 13036 } #Lednicki
+command = { type = armamentminister which = 13074 } #Czarnowski
+command = { type = armamentminister which = 13151 } #Krzyzanowski
+command = { type = ministerofsecurity which = 13076 } #Bilek
+}
+action_c = {
+ai_chance = 40
+name = "The People's Coalition"
+command = { type = dissent value = -10 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 13028 } #Wojciechowski
+command = { type = headofgovernment which = 13166 } #Mikolajczyk
+command = { type = headofgovernment which = 13156 } #Witos
+command = { type = foreignminister which = 13175 } #Ciolkosz
+command = { type = foreignminister which = 13052 } #Prochnik
+command = { type = armamentminister which = 13064 } #Piekalkiewicz
+command = { type = ministerofsecurity which = 13085 } #Niedzialkowski
+}
+}
+
+#1945
+
+event = {
+id = 9980081
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = {
+flag = POL_CONMON
+event = { id = 9980076 days = 1460 } #4 years
+OR = {
+headofstate = 13011
+headofstate = 13014
+headofstate = 13015
+headofstate = 13185
+headofstate = 13178
+}
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only three major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 20
+name = "The King shall put an end to this chaos"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13042 }
+command = { type = foreignminister which = 13148 }
+command = { type = foreignminister which = 13149 }
+command = { type = armamentminister which = 13062 }
+command = { type = ministerofsecurity which = 13150 }
+command = { type = ministerofintelligence which = 13092 }
+command = { type = clrflag which = POL_CONMON }
+}
+action_b = {
+ai_chance = 35
+name = "The Patriotic Party"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13044 } #Cat-Mackiewicz
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_c = {
+ai_chance = 10
+name = "The Democratic Party"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13027 } #Kwasniewski
+command = { type = foreignminister which = 13036 } #Lednicki
+command = { type = armamentminister which = 13074 } #Czarnowski
+command = { type = armamentminister which = 13151 } #Krzyzanowski
+command = { type = ministerofsecurity which = 13076 } #Bilek
+}
+action_d = {
+ai_chance = 35
+name = "The People's Coalition"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13166 } #Mikolajczyk
+command = { type = foreignminister which = 13175 } #Ciolkosz
+command = { type = foreignminister which = 13052 } #Prochnik
+command = { type = armamentminister which = 13064 } #Piekalkiewicz
+command = { type = ministerofsecurity which = 13085 } #Niedzialkowski
+command = { type = ministerofsecurity which = 13160 } #Moraczewski
+}
+}
+
+
+
+event = {
+id = 9980085
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = { flag = POL_REPUBLIC
+event = { id = 9980080 days = 1460 } #4 years
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only three major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 40
+name = "The Patriotic Party"
+command = { type = dissent value = -10 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 13063 } #Sapieha
+command = { type = headofgovernment which = 13044 } #Cat-Mackiewicz
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_b = {
+ai_chance = 20
+name = "The Democratic Party"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 13038 } #Michalowicz
+command = { type = headofgovernment which = 13027 } #Kwasniewski
+command = { type = foreignminister which = 13036 } #Lednicki
+command = { type = armamentminister which = 13074 } #Czarnowski
+command = { type = armamentminister which = 13151 } #Krzyzanowski
+command = { type = ministerofsecurity which = 13076 } #Bilek
+}
+action_b = {
+ai_chance = 40
+name = "The People's Coalition"
+command = { type = dissent value = -10 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 13025 } #Barlicki
+command = { type = headofgovernment which = 13166 } #Mikolajczyk
+command = { type = foreignminister which = 13175 } #Ciolkosz
+command = { type = foreignminister which = 13052 } #Prochnik
+command = { type = armamentminister which = 13064 } #Piekalkiewicz
+command = { type = ministerofsecurity which = 13085 } #Niedzialkowski
+command = { type = ministerofsecurity which = 13160 } #Moraczewski
+}
+}
+
+
+event = {
+id = 9980386
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = { flag = POL_REPUBLIC
+event = { id = 9980085 days = 1460 } #4 years
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only three major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 40
+name = "The Patriotic Party"
+command = { type = dissent value = -10 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 13063 } #Sapieha
+command = { type = headofgovernment which = 13044 } #Cat-Mackiewicz
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_b = {
+ai_chance = 20
+name = "The Democratic Party"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 13038 } #Michalowicz
+command = { type = headofgovernment which = 13027 } #Kwasniewski
+command = { type = foreignminister which = 13036 } #Lednicki
+command = { type = armamentminister which = 13074 } #Czarnowski
+command = { type = armamentminister which = 13151 } #Krzyzanowski
+command = { type = ministerofsecurity which = 13076 } #Bilek
+}
+action_b = {
+ai_chance = 40
+name = "The People's Coalition"
+command = { type = dissent value = -10 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 13025 } #Barlicki
+command = { type = headofgovernment which = 13166 } #Mikolajczyk
+command = { type = foreignminister which = 13175 } #Ciolkosz
+command = { type = foreignminister which = 13052 } #Prochnik
+command = { type = armamentminister which = 13064 } #Piekalkiewicz
+command = { type = ministerofsecurity which = 13085 } #Niedzialkowski
+command = { type = ministerofsecurity which = 13160 } #Moraczewski
+}
+}
+
+
+event = {
+id = 9980387
+random = no
+country = POL
+style = 2
+save_date = yes
+
+trigger = {
+flag = POL_CONMON
+event = { id = 9980081 days = 1460 } #4 years
+OR = {
+headofstate = 13011
+headofstate = 13014
+headofstate = 13015
+headofstate = 13185
+headofstate = 13178
+}
+}
+
+name = "The Sejim Elections"
+desc = "As stated in our Constitution, elections for the Sejim must be held every four years. There are only three major parties that have a chance of gaining a majority, who will it be?"
+picture = "election"
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 20
+name = "The King shall put an end to this chaos"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13042 }
+command = { type = foreignminister which = 13148 }
+command = { type = foreignminister which = 13149 }
+command = { type = armamentminister which = 13062 }
+command = { type = ministerofsecurity which = 13150 }
+command = { type = ministerofintelligence which = 13092 }
+command = { type = clrflag which = POL_CONMON }
+}
+action_b = {
+ai_chance = 35
+name = "The Patriotic Party"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13044 } #Cat-Mackiewicz
+command = { type = foreignminister which = 13058 } #Skirmunt
+command = { type = armamentminister which = 13065 } #Strasburger
+command = { type = ministerofsecurity which = 13083 } #Popiel
+}
+action_c = {
+ai_chance = 10
+name = "The Democratic Party"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13027 } #Kwasniewski
+command = { type = foreignminister which = 13036 } #Lednicki
+command = { type = armamentminister which = 13074 } #Czarnowski
+command = { type = armamentminister which = 13151 } #Krzyzanowski
+command = { type = ministerofsecurity which = 13076 } #Bilek
+}
+action_d = {
+ai_chance = 35
+name = "The People's Coalition"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = POL_WE } type = headofstate which = 13011 } #Fryderyk Krystian Saski
+command = { trigger = { flag = POL_CZA } type = headofstate which = 13014 } #Czartoryski
+command = { trigger = { flag = POL_HA } type = headofstate which = 13015 } #Karol Olbracht Hasburg
+command = { trigger = { flag = POL_MEN } type = headofstate which = 13178 } #Mendog III
+command = { trigger = { puppet = { country = POL country = RUS  } flag = RUS_TSAR } type = headofstate which = 13185 }
+command = { type = headofgovernment which = 13166 } #Mikolajczyk
+command = { type = foreignminister which = 13175 } #Ciolkosz
+command = { type = foreignminister which = 13052 } #Prochnik
+command = { type = armamentminister which = 13064 } #Piekalkiewicz
+command = { type = ministerofsecurity which = 13085 } #Niedzialkowski
+command = { type = ministerofsecurity which = 13160 } #Moraczewski
+}
+}
+
+############
+#Syndicalist
+############
+event = {
+id = 9980100
+random = no
+country = POL
+style = 2
+
+trigger = { headofstate = 13019 }
+
+date = { month = july day = 20 year = 1938  }
+offset = 30
+deathdate = { day = 29 month = december year = 1963   }
+
+name = "Comrade Dzierzynski passes away"
+desc = "The famous leader of our revolution and leader of our country, Feliks Dzierzynski, died of a heart attack today in Warsaw, immediately after a two-hour long speech to the Central Committee of the Party. Who will replace him?"
+picture = "minister_died"
+
+action_a = {
+name = "Karol Radek takes over"
+ai_chance = 30
+command = { type = sleepminister which = 13019 } #Dzierzynski
+command = { type = headofstate which = 13146 } #Radek
+command = { type = headofgovernment which = 13030 } #Radek
+command = { type = sleepevent which = 9980201 }
+}
+action_b = {
+name = "Jakub Hanceki, old Lenin's associate"
+ai_chance = 30
+command = { type = sleepminister which = 13019 } #Dzierzynski
+command = { type = headofstate which = 13020 } #Hanecki
+command = { type = headofgovernment which = 13031 } #Lampe
+command = { type = sleepevent which = 9980201 }
+}
+action_c = {
+name = "Roza Luksemburg, international revolutionary"
+ai_chance = 30
+command = { type = sleepminister which = 13019 } #Dzierzynski
+command = { type = headofstate which = 13174 } #Luksemburg
+command = { type = headofgovernment which = 13030 } #Radek
+command = { type = sleepevent which = 9980201 }
+}
+}
+
+
+
+
+event = {
+id = 9980101
+random = no
+country = POL
+
+trigger = { NOT = {
+ispuppet = yes
+ispuppet = UKR
+war = { country = RUS country = UKR }
+alliance = { country = GER country = UKR }
+alliance = { country = SOV country = UKR }
+alliance = { country = POL country = UKR }
+alliance = { country = RUS country = UKR } }
+OR = {
+flag = UKR_Syndicalist
+flag = UKR_Alone
+}
+flag = POL_SYNDIE
+exists = UKR
+atwar = no }
+
+date = { day = 1 month = january year = 1936 }
+offset = 120
+deathdate = { day = 12 month = december year = 1963 }
+
+name = "Ukraine"
+desc = "Now that Syndicalists are firmly in control of both Poland and Ukraine, it is possible to create an alliance between us. Should we make the proposition to Khrushchev?"
+
+action_a = {
+name = "Send officials to Kiev"
+ai_chance = 90
+command = { type = setflag which = POL_KIEV }
+}
+action_b = {
+name = "Don't provoke Mitteleuropa"
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 50 }
+command = { type = relation which = AUS value = 50 }
+command = { type = relation which = HUN value = 50 }
+command = { type = relation which = FRA value = -50 }
+command = { type = relation which = ENG value = -50 }
+command = { type = relation which = RSI value = -50 }
+}
+}
+
+event = {
+id = 9980102
+random = no
+country = UKR
+style = 2
+
+trigger = { NOT = {
+event = 9980103
+control = { province = 239 data = POL }
+control = { province = 240 data = POL }
+control = { province = 241 data = POL }
+control = { province = 242 data = POL }
+control = { province = 243 data = POL } }
+OR = {
+flag = UKR_Syndicalist
+flag = UKR_Alone
+}
+flag = POL_SYNDIE
+flag = POL_KIEV
+exists = POL
+atwar = no }
+
+date = { day = 1 month = january year = 1936 }
+offset = 4
+deathdate = { day = 12 month = december year = 1963 }
+
+name = "An alliance with Poland?"
+desc = "Our comrades in Poland have turned to us and have offered an alliance. What should our response be?"
+
+action_a = {
+name = "Let us stand by our brothers!"
+ai_chance = 90
+command = { type = sleepevent which = 9980103 }
+command = { type = alliance which = POL }
+}
+action_b = {
+name = "It is unnecessary"
+ai_chance = 10
+command = { type = sleepevent which = 9980103 }
+command = { type = trigger which = 9980104 }
+}
+}
+
+event = {
+id = 9980103
+random = no
+country = UKR
+style = 2
+
+trigger = {
+NOT = { event = 9980102 }
+flag = POL_KIEV
+atwar = no
+AND = {
+control = { province = 239 data = POL }
+control = { province = 240 data = POL }
+control = { province = 241 data = POL }
+control = { province = 242 data = POL }
+control = { province = 243 data = POL }
+} }
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 12 month = march year = 1963 }
+
+name = "An alliance with Poland?"
+desc = "Our comrades in Poland have turned to us and have offered an alliance. As Poland owns Galicia, which the Eastern half of contains a majority of Ukrainians, there is pressure to demand it from the Poles. What should our response be?"
+
+action_a = {
+name = "Let us stand by our brothers!"
+ai_chance = 30
+command = { type = alliance which = POL }
+}
+action_b = {
+name = "Agree, but demand half of Eastern Galicia"
+ai_chance = 30
+command = { type = addcore which = 240 }
+command = { type = addcore which = 238 }
+command = { type = addcore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = sleepevent which = 9980102 }
+command = { type = trigger which = 9980105 }
+}
+action_c = {
+name = "Agree, but demand Eastern Galicia"
+ai_chance = 30
+command = { type = addcore which = 238 }
+command = { type = addcore which = 239 }
+command = { type = addcore which = 240 }
+command = { type = addcore which = 241 }
+command = { type = addcore which = 242 }
+command = { type = addcore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = sleepevent which = 9980102 }
+command = { type = trigger which = 9980107 }
+}
+action_d = {
+name = "It is unnecessary"
+ai_chance = 10
+command = { type = sleepevent which = 9980102 }
+command = { type = trigger which = 9980104 }
+}
+}
+
+event = {
+id = 9980104
+random = no
+country = POL
+style = 2
+
+name = "Ukraine refused our offer"
+desc = "Ukraine stated that an alliance with us is unnecessary."
+
+action_a = {
+name = "Damn!"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 9980105
+random = no
+country = POL
+style = 2
+
+name = "Ukraine's answer"
+desc = "Ukraine has agreed to an alliance, but wants the Tarnopol and Stanislawow provinces as a condition. What should we do?"
+
+action_a = {
+ai_chance = 80
+name = "All right!"
+command = { type = dissent value = 5 }
+command = { type = secedeprovince which = UKR value = 240 }
+command = { type = secedeprovince which = UKR value = 238 }
+command = { type = secedeprovince which = UKR value = 300 }
+command = { type = secedeprovince which = UKR value = 301 }
+command = { type = removecore which = 240 }
+command = { type = removecore which = 238 }
+command = { type = removecore which = 300 }
+command = { type = removecore which = 301 }
+command = { type = trigger which = 9980106 }
+}
+action_b = {
+name = "No way!"
+ai_chance = 20
+command = { type = dissent value = 1 }
+command = { type = relation which = UKR value = -200 }
+}
+}
+
+event = {
+id = 9980106
+random = no
+country = UKR
+style = 2
+
+name = "Poland has agreed"
+desc = "Poland has agreed with our conditions and we now stand with our Syndicalist brothers."
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = POL }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 9980107
+random = no
+country = POL
+style = 2
+
+name = "Ukraine's answer"
+desc = "Ukraine agreed to an alliance, but wants Eastern Galicia. What should we do?"
+
+action_a = {
+name = "All right!"
+ai_chance = 30
+command = { type = dissent value = 10 }
+command = { type = removecore which = 238 }
+command = { type = removecore which = 239 }
+command = { type = removecore which = 240 }
+command = { type = removecore which = 241 }
+command = { type = removecore which = 242 }
+command = { type = removecore which = 300 }
+command = { type = removecore which = 301 }
+command = { type = secedeprovince which = UKR value = 238 }
+command = { type = secedeprovince which = UKR value = 239 }
+command = { type = secedeprovince which = UKR value = 240 }
+command = { type = secedeprovince which = UKR value = 241 }
+command = { type = secedeprovince which = UKR value = 242 }
+command = { type = secedeprovince which = UKR value = 300 }
+command = { type = secedeprovince which = UKR value = 301 }
+command = { type = trigger which = 9980106 }
+}
+action_b = {
+ai_chance = 60
+name = "Give them Tarnopol and Stanislawow instead"
+command = { type = trigger which = 9980108 }
+}
+action_c = {
+name = "No way!"
+ai_chance = 10
+command = { type = dissent value = 1 }
+command = { type = relation which = UKR value = -100 }
+}
+}
+
+event = {
+id = 9980108
+random = no
+country = UKR
+style = 2
+
+name = "Poland's answer"
+desc = "Poland has rejected us, citing the Polish majority of Lviv. However, they have agreed to cede the Tarnopol and Stanislawow provinces to us. Should we accept the offer?"
+
+action_a = {
+ai_chance = 80
+name = "Better then nothing"
+command = { type = dissent value = 1 }
+command = { type = alliance which = POL }
+command = { type = trigger which = 9980109 }
+command = { type = removecore which = 241 }
+command = { type = removecore which = 242 }
+command = { type = removecore which = 239 }
+}
+action_b = {
+ai_chance = 20
+name = "No way!"
+command = { type = relation which = POL value = -100 }
+}
+}
+
+event = {
+id = 9980109
+random = no
+country = POL
+style = 2
+
+name = "Ukraine has agreed"
+desc = "Ukraine has agreed to our proposition of ceding them Tarnopol and Stanislawow."
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = 5 }
+command = { type = secedeprovince which = UKR value = 240 }
+command = { type = secedeprovince which = UKR value = 238 }
+command = { type = secedeprovince which = UKR value = 300 }
+command = { type = secedeprovince which = UKR value = 301 }
+command = { type = removecore which = 240 }
+command = { type = removecore which = 238 }
+command = { type = removecore which = 300 }
+command = { type = removecore which = 301 }
+}
+}
+
+#############
+#Nationalists
+#############
+event = {
+id = 9980150
+random = no
+country = POL
+style = 2
+
+trigger = { headofstate = 13021 }
+
+date = { year = 1939 month = january day = 2 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Roman Dmowski passes away"
+desc = "The Chief of State, Roman Dmowski, passed away in his sleep last night. A week of mourning has been declared but who will replace him?"
+picture = "minister_resign"
+
+action_a = {
+name = "Adam Doboszyski, the leader of National-Radical Party"
+ai_chance = 50
+command = { type = sleepminister which = 13021 } #Dmowski
+command = { type = headofstate which = 13022 } #Doboszynski
+command = { type = headofgovernment which = 13032 } #Doboszynski
+command = { type = ministerofsecurity which = 13077 } #Trajdos
+command = { type = sleepevent which = 9980221 }
+command = { type = sleepevent which = 9980151 }
+}
+action_b = {
+name = "Tadeusz Bielecki, Dmowski's associate"
+ai_chance = 50
+command = { type = sleepminister which = 13021 } #Dmowski
+command = { type = headofstate which = 13098 } #Bielecki
+command = { type = headofgovernment which = 13033 } #Bielecki
+command = { type = ministerofsecurity which = 13077 } #Trajdos
+command = { type = sleepevent which = 9980221 }
+command = { type = sleepevent which = 9980152 }
+}
+}
+
+event = {
+id = 9980151
+random = no
+country = POL
+style = 2
+
+trigger = { headofstate = 13022 }
+
+name = "A Second in Command?"
+desc = "Doboszynski is in control and poised to build a New State, but he needs a right-hand man to carry his projects through."
+picture = "coup"
+
+date = { day = 16 month = january year = 1936 }
+offset = 5
+deathdate = { day = 18 month = january year = 1963 }
+
+action_a = {
+ai_chance = 25
+name = "General Marian Januszajtis-Zegota"
+command = { type = dissent value = -5 }
+command = { type = headofgovernment which = 13167 } #Januszajtis-Zegota
+}
+action_b = {
+ai_chance = 25
+name = "The Primate of Poland, Archbishop August Hlond"
+command = { type = dissent value = -10 }
+command = { type = headofgovernment which = 13017 } #Hlond
+}
+action_c = {
+ai_chance = 25
+name = "Adolf Bninski, an Aristocrat from Greater Poland"
+command = { type = dissent value = 5 }
+command = { type = headofgovernment which = 13029 } #Bninski
+command = { type = relation which = GER value = -50 }
+}
+action_d = {
+ai_chance = 25
+name = "Poland needs only one ruler!"
+command = { type = dissent value = 10 }
+command = { type = headofgovernment which = 13032 } #Doboszynski
+}
+}
+
+event = {
+id = 9980152
+random = no
+country = POL
+style = 2
+
+trigger = { headofstate = 13098 }
+
+name = "A Second in Command?"
+desc = "Bielecki is in control and poised to build a New State, but he needs a right-hand man to carry his projects through."
+picture = "coup"
+
+date = { day = 16 month = january year = 1936 }
+offset = 5
+deathdate = { day = 18 month = january year = 1963 }
+
+action_a = {
+ai_chance = 25
+name = "General Marian Januszajtis-Zegota"
+command = { type = dissent value = -5 }
+command = { type = headofgovernment which = 13167 } #Januszajtis-Zegota
+}
+action_b = {
+ai_chance = 25
+name = "The Primate of Poland, Archbishop August Hlond"
+command = { type = dissent value = -10 }
+command = { type = headofgovernment which = 13017 } #Hlond
+}
+action_c = {
+ai_chance = 25
+name = "Adolf Bninski, an Aristocrat from Greater Poland"
+command = { type = dissent value = 5 }
+command = { type = headofgovernment which = 13029 } #Bninski
+command = { type = relation which = GER value = -50 }
+}
+action_d = {
+ai_chance = 25
+name = "Poland needs only one ruler!"
+command = { type = dissent value = 10 }
+command = { type = headofgovernment which = 13032 } #Doboszynski
+}
+}
+
+#################
+#Ukrainian terror
+#################
+event = {
+id = 9980250
+country = UKR
+style = 2
+
+trigger = {
+NOT = {
+ispuppet = UKR
+}
+OR = {
+AND = {
+control = { province = 242 data = POL }
+control = { province = 239 data = POL }
+control = { province = 240 data = POL }
+control = { province = 241 data = POL }
+}
+AND = {
+control = { province = 242 data = U00 }
+control = { province = 239 data = U00 }
+control = { province = 240 data = U00 }
+control = { province = 241 data = U00 }
+}
+}
+NOT = {
+alliance = { country = POL country = UKR }
+AND = {
+government = communist
+flag = POL_SYNDIE }
+AND = {
+puppet = { country = POL country = AUS }
+alliance = { country = GER country = UKR } } } }
+
+date = { day = 13 month = april year = 1937 }
+offset = 120
+deathdate = { day = 10 month = december year = 1963 }
+
+name = "Ukrainian partisans in Eastern Galicia"
+desc = "Even though the Ukraine is independent state, there are still many Ukrainians that are not in this country. They live in Eastern Galicia, which belongs to Poland. Representatives of the Eastern Galician Ukrainians have come to Kiev to ask for help in their fight against the Poles. What should we do?"
+picture = "UPAterror"
+
+action_a = {
+name = "It's not our business"
+ai_chance = 25
+command = { type = dissent value = 10 }
+command = { type = relation which = POL value = 35 }
+command = { type = relation which = U00 value = 35 }
+command = { type = sleepevent which = 9980251 }
+command = { type = sleepevent which = 9980252 }
+command = { type = sleepevent which = 9980253 }
+command = { type = sleepevent which = 9980254 }
+command = { type = sleepevent which = 9980255 }
+}
+action_b = {
+name = "Help our brothers"
+ai_chance = 75
+command = { type = money value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = dissent value = -4 }
+command = { type = relation which = POL value = -50 }
+command = { type = relation which = U00 value = 35 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = setflag which = POL_UKRAINIANTERROR }
+}
+}
+
+event = {
+id = 9980251
+random = no
+tag = { POL U00 }
+
+date = { day = 1 month = january year = 1937 }
+offset = 30
+deathdate = { day = 1 month = august year = 1963 }
+
+trigger = {
+flag = POL_UKRAINIANTERROR
+control = { province = 238 data = -1 }
+control = { province = 242 data = -1 }
+control = { province = 240 data = -1 }
+control = { province = 241 data = -1 } }
+
+name = "Ukrainian partisans in Eastern Galicia"
+desc = "Ukrainian partisans have launched serious operations in Eastern Galicia during the past month. It's suspected that the funding for their operations is coming from Kiev."
+
+action_a = {
+name = "Oh no!"
+command = { type = dissent value = 5 }
+command = { type = province_revoltrisk which = 238 value = 60 }
+command = { type = province_revoltrisk which = 240 value = 60 }
+command = { type = province_revoltrisk which = 241 value = 60 }
+command = { type = province_revoltrisk which = 242 value = 60 }
+}
+}
+
+event = {
+id = 9980252
+tag = { POL U00 }
+style = 2
+
+trigger = {
+random = 30
+event = 9980251
+flag = POL_UKRAINIANTERROR
+control = { province = 238 data = -1 }
+control = { province = 240 data = -1 }
+control = { province = 241 data = -1 }
+control = { province = 242 data = -1 } }
+
+date = { day = 13 month = april year = 1940 }
+offset = 45
+deathdate = { day = 10 month = december year = 1963 }
+
+name = "Operation Vistula"
+desc = "The actions of the Ukrainian terrorists have become intolerable. A proposed operation, 'Operation Vistula', to counteract the terrorists is to install military checkpoints in Galicia to regulate the movement of the people. Should we enact this proposal?"
+picture = "UPAterror"
+
+action_a = {
+name = "Operation Vistula is the only solution"
+ai_chance = 90
+command = { type = clrflag which = POL_UKRAINIANTERROR }
+command = { type = dissent value = 10 }
+command = { type = money value = -100 }
+command = { type = resource which = supplies value = -250 }
+command = { type = province_revoltrisk which = 238 value = 5 }
+command = { type = province_revoltrisk which = 240 value = 5 }
+command = { type = province_revoltrisk which = 241 value = 5 }
+command = { type = province_revoltrisk which = 242 value = 5 }
+command = { type = sleepevent which = 9980253 }
+command = { type = sleepevent which = 9980254 }
+command = { type = sleepevent which = 9980255 }
+}
+action_b = {
+name = "This is bad idea"
+ai_chance = 10
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 9980253
+tag = { POL U00 }
+style = 2
+persistent = yes
+
+trigger = {
+event = 9980252
+flag = POL_UKRAINIANTERROR
+control = { province = 238 data = -1 }
+control = { province = 241 data = -1 }
+control = { province = 240 data = -1 }
+control = { province = 242 data = -1 }
+random = 30 }
+
+date = { day = 13 month = april year = 1940 }
+offset = 30
+deathdate = { day = 10 month = december year = 1963 }
+
+name = "Operation Vistula"
+desc = "The Ukrainians terrorists are really denting the stability of Galicia and the plan we rejected, Operation Vistula, will be enacted. What should we do?"
+picture = "UPAterror"
+
+action_a = {
+name = "Operation Vistula is the only solution"
+ai_chance = 99
+command = { type = clrflag which = POL_UKRAINIANTERROR }
+command = { type = dissent value = 10 }
+command = { type = money value = -150 }
+command = { type = resource which = supplies value = -300 }
+command = { type = province_revoltrisk which = 238 value = 5 }
+command = { type = province_revoltrisk which = 240 value = 5 }
+command = { type = province_revoltrisk which = 241 value = 5 }
+command = { type = province_revoltrisk which = 242 value = 5 }
+command = { type = sleepevent which = 9980254 }
+command = { type = sleepevent which = 9980255 }
+}
+action_b = {
+name = "This is still a bad idea"
+ai_chance = 1
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 9980144
+tag = { POL U00 }
+style = 2
+persistent = yes
+random = 50
+
+trigger = {
+flag = POL_UKRAINIANTERROR
+control = { province = 238 data = -1 }
+control = { province = 240 data = -1 }
+control = { province = 241 data = -1 }
+control = { province = 242 data = -1 } }
+
+date = { day = 13 month = april year = 1940 }
+offset = 30
+deathdate = { day = 10 month = december year = 1956 }
+
+name = "Terrorist attack"
+desc = "Ukrainian terrorists attacked a police-station in Lwow, and have killed a few officers."
+picture = "UPAterror"
+
+action_a = {
+name = "Barbarians!"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 9980145
+tag = { POL U00 }
+style = 2
+persistent = yes
+random = 50
+
+trigger = {
+flag = POL_UKRAINIANTERROR
+control = { province = 238 data = -1 }
+control = { province = 240 data = -1 }
+control = { province = 241 data = -1 }
+control = { province = 242 data = -1 } }
+
+date = { day = 13 month = april year = 1940 }
+offset = 60
+deathdate = { day = 10 month = december year = 1956 }
+
+name = "Terrorist attack"
+desc = "Ukrainian terrorists planted and detonated a bomb in a major intersection of Stryj, which killed 34 people and injured another 120 people."
+picture = "UPAterror"
+
+action_a = {
+name = "Barbarians!"
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 9980146
+random = no
+tag = { POL U00 }
+
+date = { day = 1 month = january year = 1937 }
+offset = 45
+deathdate = { day = 1 month = august year = 1963 }
+
+trigger = {
+NOT = { exists = UKR }
+control = { province = 238 data = -1 }
+control = { province = 240 data = -1 }
+control = { province = 241 data = -1 }
+control = { province = 242 data = -1 }
+control = { province = 612 data = -1 }
+control = { province = 617 data = -1 } }
+
+name = "Organization of Ukrainian Nationalists"
+desc = "After we conquered Ukraine, radicals have set up the 'Organization of Ukrainian Nationalists', with the principal aim of armed rebellion against us!"
+
+action_a = {
+name = "Oh no!"
+command = { type = province_revoltrisk which = 500 value = 60 }
+command = { type = province_revoltrisk which = 502 value = 60 }
+command = { type = province_revoltrisk which = 506 value = 60 }
+command = { type = province_revoltrisk which = 229 value = 60 }
+command = { type = province_revoltrisk which = 238 value = 50 }
+command = { type = province_revoltrisk which = 226 value = 50 }
+command = { type = province_revoltrisk which = 240 value = 50 }
+command = { type = province_revoltrisk which = 227 value = 50 }
+command = { type = province_revoltrisk which = 228 value = 50 }
+command = { type = province_revoltrisk which = 231 value = 50 }
+command = { type = province_revoltrisk which = 237 value = 50 }
+command = { type = province_revoltrisk which = 232 value = 50 }
+command = { type = province_revoltrisk which = 233 value = 50 }
+command = { type = province_revoltrisk which = 234 value = 50 }
+command = { type = province_revoltrisk which = 235 value = 50 }
+command = { type = province_revoltrisk which = 236 value = 50 }
+command = { type = dissent value = 10 }
+}
+}
+
+#############
+#Death events
+#############
+event = {
+id = 9980200
+country = POL
+style = 2
+random = 25
+
+trigger = { minister = 13108 }
+
+date = { day = 7 month = august year = 1938 }
+offset = 5
+deathdate = { day = 29 month = december year = 1945 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13108 } #Rozwadowski
+}
+}
+
+event = {
+id = 9980201
+country = POL
+style = 2
+random = 25
+
+trigger = {
+minister = 13019
+NOT = { headofstate = 13019 } }
+
+date = { year = 1938 month = july day = 1938 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13019 } #Dzierzynski
+command = { type = sleepevent which = 9980080 }
+}
+}
+
+event = {
+id = 9980202
+country = POL
+style = 2
+random = no
+
+trigger = { headofgovernment = 13013 }
+
+date = { day = 29 month = december year = 1938 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Death of Archbishop A. Kakowski"
+desc = "Archbishop Aleksander Kakowski died today in Warsaw. August Hlond has become his successor, becoming both the new primate of Poland and prime minister."
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13013 } #Kakowski
+command = { type = sleepevent which = 9980203 }
+command = { type = headofgovernment which = 13017 } #Hlond
+}
+}
+
+event = {
+id = 9980203
+
+country = POL
+style = 2
+random = no
+
+trigger = {
+minister = 13013
+NOT = { headofgovernment = 13013 } }
+
+date = { day = 29 month = december year = 1938 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13013 } #Kakowski
+command = { type = sleepevent which = 9980202 }
+}
+}
+
+event = {
+id = 9980204
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13057 }
+
+date = { day = 22 month = august year = 1944 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13057 } #Patek
+}
+}
+
+event = {
+id = 9980205
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13089 }
+
+date = { day = 15 month = july year = 1941 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13089 } #Thugutt
+}
+}
+
+event = {
+id = 9980206
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13003 }
+
+date = { day = 9 month = july year = 1945 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13003 } #Szembek
+}
+}
+
+event = {
+id = 9980207
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13005 }
+
+date = { day = 9 month = february year = 1944 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13005 } #Bukowiecki
+}
+}
+
+event = {
+id = 9980208
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13026 }
+
+date = { day = 29 month = june year = 1941 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13026 } #Paderewski
+}
+}
+
+event = {
+id = 9980209
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13160 }
+
+date = { day = 29 month = january year = 1946 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13160 } #Moraczewski
+}
+}
+
+event = {
+id = 9980210
+random = no
+country = POL
+style = 2
+
+
+trigger = { headofgovernment = 13017 }
+
+date = { day = 22 month = october year = 1948 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Death of Archbishop A. Hlond"
+desc = "Archbishop August Hlond died today in Warsaw. Stanislaw Cat Mackiewicz has become the new prime minister, while Stefan Wyszynski is the new primate of Poland."
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13017 } #Hlond
+command = { type = headofgovernment which = 13044 } #Cat-Mackiewicz
+command = { type = sleepevent which = 9980211 }
+}
+}
+
+event = {
+id = 9980211
+random = no
+country = POL
+style = 2
+
+
+trigger = {
+minister = 13017
+NOT = { headofgovernment = 13017 } }
+
+date = { day = 22 month = october year = 1948 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13017 } #Hlond
+command = { type = sleepevent which = 9980210 }
+}
+}
+
+event = {
+id = 9980212
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13155 }
+
+date = { day = 7 month = november year = 1946 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13155 } #Nowak
+}
+}
+
+event = {
+id = 9980213
+random = no
+country = POL
+style = 2
+
+
+trigger = { OR = {
+minister = 13156
+minister = 13084 } }
+
+date = { day = 29 month = october year = 1945 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13156 } #Witos HoG
+command = { type = sleepminister which = 13084 } #Witos MS
+}
+}
+
+event = {
+id = 9980214
+random = no
+country = POL
+style = 2
+
+
+trigger = {
+minister = 13024
+NOT = { headofgovernment = 13024 } }
+
+date = { day = 29 month = october year = 1945 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13024 } #Tarnowski
+command = { type = sleepevent which = 9980215 }
+}
+}
+
+event = {
+id = 9980215
+random = no
+country = POL
+style = 2
+
+
+trigger = { headofgovernment = 13024 }
+
+date = { day = 29 month = october year = 1945 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Hieronim Tarnowski passes away"
+desc = "Prime Minister Hieronim Tarnowski died today in Warsaw. Leopold Skulski has become the new Prime Minister."
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13024 } #Tarnowski
+command = { type = headofgovernment which = 13034 } #Skulski
+command = { type = sleepevent which = 9980214 }
+}
+}
+
+event = {
+id = 9980216
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13058 }
+
+date = { day = 24 month = july year = 1949 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13058 } #Skirmunt
+}
+}
+
+event = {
+id = 9980217
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13099 }
+
+date = { day = 24 month = december year = 1947 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13099 } #Kofranty
+}
+}
+
+event = {
+id = 9980218
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13164 }
+
+date = { day = 23 month = march year = 1948 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13164 } #Zoll
+}
+}
+
+event = {
+id = 9980219
+random = no
+country = POL
+style = 2
+
+
+trigger = { minister = 13263 }
+
+date = { day = 12 month = april year = 1946 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13263 } #Koscialkowski
+}
+}
+
+event = {
+id = 9980220
+random = no
+country = POL
+style = 2
+
+
+trigger = { OR = {
+minister = 13069
+minister = 13106 } }
+
+date = { day = 29 month = october year = 1945 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13069 } #Lieberman MoA
+command = { type = sleepminister which = 13106 } #Lieberman ChoS
+}
+}
+
+event = {
+id = 9980221
+random = no
+country = POL
+style = 2
+
+
+trigger = {
+NOT = { headofstate = 13021 }
+minister = 13021 }
+
+date = { year = 1939 month = january day = 2 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 13021 } #Dmowski
+command = { type = sleepevent which = 9980093 }
+}
+}
+
+###############################################################################
+#Weissruthenien
+###############################################################################
+
+event = {
+id = 9980082
+random = no
+country = POL
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+random = 25
+atwar = no
+NOT = { alliance = { country = POL country = BLR } }
+control = { province = 247 data = BLR } #Brzesc Litewski
+NOT = { flag = POL_SYNDYCALISTS }
+OR = {
+control = { province = 254 data = POL } #Bielsk
+control = { province = 246 data = POL } #Kowel
+}
+OR = {
+headofstate = 13011
+AND = { NOT = { alliance = { country = GER country = BLR } }
+headofstate = 13014
+}
+AND = { NOT = { alliance = { country = GER country = BLR } }
+headofstate = 13015
+}
+AND = { NOT = { alliance = { country = GER country = BLR } }
+flag = POL_NATIONALISTS
+}
+}
+}
+
+name = "Brest Litovsk"
+desc = "Kaiser doesn't support Belarus anymore than Poland, so this is a good chance to regain Brest Litovsk, a city populated mostly by Poles, but belonging to Belarus."
+style = 2
+picture = "Artist"
+
+action_a = {
+ai_chance = 80
+name = "Press claims"
+command = { type = relation which = LIT value = -10 }
+command = { type = relation which = BLR value = -10 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = addcore which = 247 } # gain core on Brest Litovsk
+command = { type = setflag which = POL_BREST }
+}
+
+action_b = {
+ai_chance = 20
+name = "It's bad idea"
+command = { type = relation which = BLR value = 10 }
+command = { type = relation which = UKR value = 10 }
+command = { type = relation which = LIT value = 10 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 2 }
+
+}
+}
+
+event = {
+id = 9980083
+random = no
+country = BLR
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+exists = POL
+exists = BLR
+control = { province = 247 data = BLR } #Brzesc Litewski
+flag = POL_BREST
+alliance = { country = GER country = BLR }
+}
+
+name = "Poland demands territory!"
+desc = "The Polish government has demanded that we cede the city of Brest Litovsk to them. Otherwise, we may have to face some very disastrous consequences. The Kaiser has been silent. What shall we do?"
+style = 2
+picture = "impatientlydemands"
+
+action_a = {
+ai_chance = 20
+name = "We cannot hope to win, submit to their demands"
+command = { type = secedeprovince which = POL value = 247 }
+command = { type = dissent value = 10 }
+command = { type = sleepevent which = 9980091 }
+}
+
+action_b = {
+ai_chance = 80
+name = "Demand German intervention"
+command = { type = trigger which = 9980084 }
+command = { type = sleepevent which = 9980091 }
+}
+}
+
+event = {
+id = 9980084
+random = no
+country = GER
+
+name = "Polish claims"
+desc = "The Polish government has demanded the city of Brest Litovsk from Weissruthenien. The Weissruthenian government has asked us to intervene on their behalf. This conflict can lead to a fragmentation of the alliance. How shall we react?"
+style = 2
+picture = "impatientlydemands"
+
+action_a = {
+ai_chance = 50
+name = "Support Poland"
+command = { type = trigger which = 9980185 } #Trigger info to BLR
+}
+
+action_b = {
+ai_chance = 50
+name = "Support Weissruthenien"
+command = { type = trigger which = 9980089 } #Trigger info to POL
+command = { type = trigger which = 9980090 } #Trigger info to BLR
+}
+}
+
+event = {
+id = 9980185
+random = no
+country = BLR
+
+name = "No support from Germany!"
+desc = "The Kaiser has decided that Poland is more important than us! What shall we do?"
+style = 2
+picture = "Memel"
+
+action_a = {
+ai_chance = 99
+name = "We cannot hope to win, submit to their demands"
+command = { type = secedeprovince which = POL value = 247 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+ai_chance = 1
+name = "We are ready to defend!"
+command = { type = leave_alliance }
+command = { type = trigger which = 9980086 }
+}
+}
+
+event = {
+id = 9980086
+random = no
+country = GER
+
+name = "Belorussian secession"
+desc = "The Belorussian government has stated that they will not back down. The nationalist elements are much stronger than we have assumed."
+style = 2
+picture = "Memel"
+
+
+action_a = {
+ai_chance = 90
+name = "Move in to maintain order"
+command = { type = end_access which = BLR }
+command = { type = end_non_aggression which = GER where = BLR }
+command = { type = end_trades which = GER where = BLR }
+command = { type = end_guarantee which = GER where = BLR }
+command = { type = war which = BLR }
+command = { type = trigger which = 9980087 }
+}
+action_b = {
+ai_chance = 10
+name = "Back down"
+command = { type = relation which = BLR value = 10 }
+command = { type = relation which = LAT value = -10 }
+command = { type = relation which = POL value = -10 }
+command = { type = relation which = LIT value = -10 }
+command = { type = relation which = UKR value = -10 }
+}
+}
+
+event = {
+id = 9980087
+random = no
+country = POL
+
+name = "German intervention"
+desc = "The Kaiser decided to move into Belarus to maintain order. We can do the same to regain Brest. What shall we do?"
+style = 2
+picture = "Memel"
+
+
+action_a = {
+ai_chance = 99
+name = "We must intervene directly!"
+command = { type = end_access which = BLR }
+command = { type = end_non_aggression which = POL where = BLR }
+command = { type = end_trades which = POL where = BLR }
+command = { type = end_guarantee which = POL where = BLR }
+command = { type = war which = BLR }
+}
+action_b = {
+ai_chance = 1
+name = "Cut diplomatic ties"
+command = { type = end_access which = BLR }
+command = { type = end_non_aggression which = POL where = BLR }
+command = { type = end_trades which = POL where = BLR }
+command = { type = end_guarantee which = POL where = BLR }
+command = { type = dissent value = 5 }
+}
+action_c = {
+ai_chance = 0
+name = "Back down"
+command = { type = relation which = BLR value = 10 }
+command = { type = relation which = GER value = -10 }
+command = { type = relation which = LIT value = -10 }
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 9980089
+random = no
+country = POL
+
+name = "No support from Germany!"
+desc = "The Kaiser has decided that Belarus is more important than us! What shall we do?"
+style = 2
+picture = "Memel"
+
+action_a = {
+name = "We cannot hope to win, back down"
+command = { type = relation which = BLR value = -50 }
+command = { type = relation which = GER value = -50 }
+command = { type = dissent value = 10 }
+}
+}
+
+
+event = {
+id = 9980090
+random = no
+country = BLR
+style = 2
+picture = "Memel"
+
+name = "Germany supports us!"
+desc = "The Kaiser has decided that our territory must remain intact! The Poles should be forced to back down."
+
+action_a = {
+name = "Brilliant news!"
+command = { type = relation which = GER value = 50 }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 9980091
+random = no
+country = BLR
+
+date = {day = 1 month = january year = 1936 }
+offset = 2
+deathdate = {day = 29 month = december year = 1963}
+
+trigger = {
+exists = POL
+exists = BLR
+control = { province = 247 data = BLR } #Brzesc Litewski
+flag = POL_BREST
+NOT = { alliance = { country = GER country = BLR } }
+}
+
+name = "Poland demands territory!"
+desc = "The Polish government has demanded that we cede the city Brest Litovsk to them. Otherwise, we may have to face some very disastrous consequences. The Kaiser has been silent. What shall we do?"
+style = 2
+picture = "impatientlydemands"
+
+action_a = {
+ai_chance = 30
+name = "We cannot hope to win, submit to their demands"
+command = { type = secedeprovince which = POL value = 247 }
+command = { type = dissent value = 10 }
+command = { type = sleepevent which = 9980083 }
+}
+action_b = {
+ai_chance = 70
+name = "We are ready to defend!"
+command = { type = trigger which = 9980092 }
+command = { type = sleepevent which = 9980083 }
+}
+}
+
+event = {
+id = 9980092
+random = no
+country = POL
+
+name = "Belarus refused!"
+desc = "The Belarusian government has stated that they will not back down. What shall we do?"
+style = 2
+picture = "Memel"
+
+
+action_a = {
+ai_chance = 90
+name = "We must intervene directly!"
+command = { type = end_access which = BLR }
+command = { type = end_non_aggression which = POL where = BLR }
+command = { type = end_trades which = POL where = BLR }
+command = { type = end_guarantee which = POL where = BLR }
+command = { type = war which = BLR }
+}
+action_b = {
+ai_chance = 9
+name = "Cut diplomatic ties"
+command = { type = end_access which = BLR }
+command = { type = end_non_aggression which = POL where = BLR }
+command = { type = end_trades which = POL where = BLR }
+command = { type = end_guarantee which = POL where = BLR }
+command = { type = dissent value = 10 }
+}
+action_c = {
+ai_chance = 1
+name = "Back down"
+command = { type = dissent value = 20 }
+}
+}
+
+###############################
+#Ukraine
+###############################
+event = {
+id = 9980128
+random = no
+country = POL
+
+date = { day = 18 month = april year = 1938 }
+offset = 60
+deathdate = { day = 1 month = january year = 1963 }
+
+trigger = {
+random = 75
+exists = POL
+exists = UKR
+exists = TRA
+control = { province = 238 data = POL }
+control = { province = 239 data = POL }
+control = { province = 240 data = POL }
+control = { province = 241 data = POL }
+control = { province = 242 data = POL }
+event = 91406
+
+NOT = {
+flag = UKR_RUSCOUP
+event = 771021
+government = communist
+flag = POL_SYNDYCALISTS
+ispuppet = POL
+ispuppet = UKR
+ispuppet = TRA
+atwar = POL
+atwar = UKR
+atwar = TRA
+alliance = { country = POL country = GER }
+alliance = { country = POL country = AUS }
+alliance = { country = POL country = U24 }
+alliance = { country = POL country = U25 }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = AUS }
+alliance = { country = UKR country = U24 }
+alliance = { country = UKR country = U25 }
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = POL }
+alliance = { country = UKR country = TRA }
+alliance = { country = UKR country = RUS }
+alliance = { country = TRA country = RUS }
+}
+}
+
+name = "Reds in the Ukraine"
+desc = "Syndicalists, who rule Ukraine, can be a serious problem for us. It is good idea to attack them before they attack us, but we are too weak to do it on our own. Should we send officials to propose an anti-Ukrainian coalition to the Don-Kuban Cossacks? If we make a deal, the Dnieper river will be new border."
+style = 2
+
+action_a = {
+name = "Propose a partition to the Don-Kuban Cossacks"
+ai_chance =  90
+command = { type = trigger which = 9980129 }
+command = { type = dissent value = -3 }
+}
+action_b = {
+name = "It is a stupid and dangerous idea"
+ai_chance =  10
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 9980129
+random = no
+country = TRA
+
+name = "Poland Proposes a Partition of the Ukraine"
+desc = "Poland proposes an attack on syndicalist Ukraine and a partition of the country."
+picture = "russia_politics"
+style = 2
+
+action_a = {
+name = "Together we shall drive the Reds from Kiev!" # Great!
+ai_chance =  90
+command = { type = setflag which = POL_COALITION_COSSACS }
+}
+action_b = {
+name = "We won't risk it" # Great!
+ai_chance =  10
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 9980130
+random = no
+country = POL
+trigger = {
+flag = POL_COALITION_COSSACS
+NOT = { flag = POL_COALITION_RUSSIANS }
+}
+
+name = "Polish-Cossack Coalition Created"
+desc = "We will attack Ukraine in a few days!"
+style = 2
+picture = "regency"
+
+date = { day = 1 month = september year = 1937 }
+offset = 3
+deathdate = { day = 7 month = august year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = addcore  which =  616 }
+command = { type = addcore  which =  609 }
+command = { type = addcore  which =  614 }
+command = { type = addcore  which =  611 }
+command = { type = addcore  which =  617 }
+command = { type = addcore  which =  612 }
+command = { type = addcore  which =  618 }
+command = { type = addcore  which =  619 }
+command = { type = addcore  which =  613 }
+command = { type = addcore  which =  615 }
+command = { type = addcore  which =  628 }
+command = { type = addcore  which =  627 }
+command = { type = addcore  which =  622 }
+command = { type = addcore  which =  620 }
+command = { type = addcore  which =  625 }
+command = { type = addcore  which =  626 }
+command = { type = addcore  which =  621 }
+command = { type = setflag which = POL_COALITION_COSSACS_FORMED }
+}
+}
+
+event = {
+id = 9980131
+random = no
+country = TRA
+trigger = {
+flag = POL_COALITION_COSSACS
+}
+
+name = "Polish-Cossacks Coalition Created"
+desc = "We will attack Ukraine in a few days"
+style = 2
+picture = "regency"
+
+date = { day = 1 month = september year = 1937 }
+offset = 1
+deathdate = { day = 7 month = august year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = addcore  which =  642 }
+command = { type = addcore  which =  643 }
+command = { type = addcore  which =  645 }
+command = { type = addcore  which =  649 }
+command = { type = addcore  which =  633 }
+command = { type = addcore  which =  648 }
+command = { type = addcore  which =  646 }
+command = { type = addcore  which =  647 }
+command = { type = addcore  which =  604 }
+command = { type = addcore  which =  644 }
+command = { type = addcore  which =  634 }
+command = { type = addcore  which =  635 }
+command = { type = addcore  which =  630 }
+command = { type = addcore  which =  631 }
+command = { type = addcore  which =  623 }
+command = { type = addcore  which =  624 }
+command = { type = addcore  which =  637 }
+command = { type = addcore  which =  639 }
+command = { type = addcore  which =  638 }
+command = { type = addcore  which =  640 }
+command = { type = addcore  which =  641 }
+command = { type = addcore  which =  632 }
+command = { type = addcore  which =  636 }
+command = { type = addcore  which =  629 }
+command = { type = addcore  which =  606 }
+command = { type = addcore  which =  610 }
+command = { type = addcore  which =  608 }
+command = { type = addcore  which =  607 }
+command = { type = addcore  which =  605 }
+command = { type = addcore  which =  602 }
+command = { type = addcore  which =  603 }
+}
+}
+
+event = {
+id = 9980132
+random = no
+country = POL
+
+trigger = {
+flag = POL_COALITION_COSSACS_FORMED
+exists = POL
+exists = UKR
+exists = TRA
+NOT = {
+government = communist
+flag = POL_SYNDYCALISTS
+ispuppet = POL
+ispuppet = UKR
+atwar = POL
+atwar = UKR
+atwar = TRA
+alliance = { country = POL country = GER }
+alliance = { country = POL country = AUS }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = AUS }
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = POL }
+alliance = { country = UKR country = TRA }
+alliance = { country = UKR country = RUS }
+}
+}
+date = { day = 18 month = may year = 1936 }
+offset = 6
+deathdate = { day = 29 month = april year = 1963 }
+
+name = "The Polish-Cossack Coalition Attacks the Ukraine"
+desc = "It is time to attack!"
+style = 2
+
+action_a = {
+name = "Smash those bastards!"
+command = { type = war which = UKR }
+command = { type = clrflag which = POL_COALITION_COSSACS }
+command = { type = clrflag which = POL_COALITION_COSSACS_FORMED }
+command = { type = setflag which = POL_COS_WAR }
+command = { type = trigger which = 9980148 }
+}
+}
+
+event = {
+id = 9980148
+random = no
+country = TRA
+
+name = "The Polish-Cossack Coalition Attacks the Ukraine"
+desc = "It is time to attack!"
+style = 2
+
+action_a = {
+name = "Smash those bastards!"
+command = { type = war which = UKR }
+}
+}
+
+event = {
+id = 9980133
+random = no
+country = POL
+
+trigger = {
+flag = POL_COS_WAR
+NOT = {
+war = { country = POL country = TRA }
+exists = UKR
+}
+}
+
+name = "The Polish-Cossack Partition of the Ukraine"
+desc = "We conquered Ukraine!"
+style = 2
+
+date = { day = 2 month = january year = 1936 }
+offset = 3 # Check for trigger conditions every three days
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = relation which = TRA value = 40 }
+command = { type = secedeprovince which = TRA value =  642 }
+command = { type = secedeprovince which = TRA value =  643 }
+command = { type = secedeprovince which = TRA value =  645 }
+command = { type = secedeprovince which = TRA value =  649 }
+command = { type = secedeprovince which = TRA value =  633 }
+command = { type = secedeprovince which = TRA value =  648 }
+command = { type = secedeprovince which = TRA value =  646 }
+command = { type = secedeprovince which = TRA value =  647 }
+command = { type = secedeprovince which = TRA value =  604 }
+command = { type = secedeprovince which = TRA value =  644 }
+command = { type = secedeprovince which = TRA value =  634 }
+command = { type = secedeprovince which = TRA value =  635 }
+command = { type = secedeprovince which = TRA value =  630 }
+command = { type = secedeprovince which = TRA value =  631 }
+command = { type = secedeprovince which = TRA value =  623 }
+command = { type = secedeprovince which = TRA value =  624 }
+command = { type = secedeprovince which = TRA value =  637 }
+command = { type = secedeprovince which = TRA value =  639 }
+command = { type = secedeprovince which = TRA value =  638 }
+command = { type = secedeprovince which = TRA value =  640 }
+command = { type = secedeprovince which = TRA value =  641 }
+command = { type = secedeprovince which = TRA value =  632 }
+command = { type = secedeprovince which = TRA value =  636 }
+command = { type = secedeprovince which = TRA value =  629 }
+command = { type = secedeprovince which = TRA value =  606 }
+command = { type = secedeprovince which = TRA value =  610 }
+command = { type = secedeprovince which = TRA value =  608 }
+command = { type = secedeprovince which = TRA value =  607 }
+command = { type = secedeprovince which = TRA value =  605 }
+command = { type = secedeprovince which = TRA value =  602 }
+command = { type = secedeprovince which = TRA value =  603 }
+command = { type = clrflag which = POL_COS_WAR }
+command = { type = trigger which = 9980134 }
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 9980134
+random = no
+country = TRA
+
+name = "The Polish-Cossack Partition of the Ukraine"
+desc = "We conquered Ukraine!"
+style = 2
+
+action_a = {
+name = "Great!"
+command = { type = secedeprovince which = POL value =  616 }
+command = { type = secedeprovince which = POL value =  609 }
+command = { type = secedeprovince which = POL value =  614 }
+command = { type = secedeprovince which = POL value =  611 }
+command = { type = secedeprovince which = POL value =  617 }
+command = { type = secedeprovince which = POL value =  612 }
+command = { type = secedeprovince which = POL value =  618 }
+command = { type = secedeprovince which = POL value =  619 }
+command = { type = secedeprovince which = POL value =  613 }
+command = { type = secedeprovince which = POL value =  615 }
+command = { type = secedeprovince which = POL value =  628 }
+command = { type = secedeprovince which = POL value =  627 }
+command = { type = secedeprovince which = POL value =  622 }
+command = { type = secedeprovince which = POL value =  620 }
+command = { type = secedeprovince which = POL value =  625 }
+command = { type = secedeprovince which = POL value =  626 }
+command = { type = secedeprovince which = POL value =  621 }
+command = { type = secedeprovince which = POL value =  244 }
+command = { type = secedeprovince which = POL value =  245 }
+command = { type = secedeprovince which = POL value =  249 }
+command = { type = clrflag which = POL_COS_WAR }
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 9980350
+random = no
+country = UKR
+
+trigger = {
+flag = POL_COS_WAR
+war = { country = POL country = UKR }
+OR = {
+AND = {
+NOT = { control = { province = 232 data = POL } }
+control = { province = 242 data = UKR }
+OR = {
+control = { province = 240 data = UKR }
+control = { province = 238 data = UKR }
+}
+}
+AND = {
+control = { province = 238 data = UKR }
+control = { province = 239 data = UKR }
+control = { province = 240 data = UKR }
+control = { province = 241 data = UKR }
+control = { province = 242 data = UKR }
+OR = {
+control = { province = 443 data = UKR }
+control = { province = 446 data = UKR }
+}
+}
+}
+}
+
+date = { day = 1 month = march year = 1936 }
+offset = 5
+deathdate = { day = 1 month = january year = 1963 }
+
+name = "Proposing Peace to Poland"
+desc = "It is clear that we won the war against Poland; should we offer them peace?"
+style = 2
+
+action_a = {
+ai_chance =  100
+name = "Yes, and demand Eastern Galicia"
+command = { type = addcore which = 238 }
+command = { type = addcore which = 239 }
+command = { type = addcore which = 240 }
+command = { type = addcore which = 241 }
+command = { type = addcore which = 242 }
+command = { type = addcore which = 244 }
+command = { type = addcore which = 245 }
+command = { type = addcore which = 249 }
+command = { type = addcore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 9980351 }
+}
+action_b = {
+ai_chance =  0
+name = "We shall march all the way across the Vistula!"
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 9980351
+random = no
+country = POL
+
+name = "Ukraine Offers Peace"
+desc = "It is clear that we lost the war against the Ukraine and continuation of the fight will cause the fall of the Polish state. Ukraine proposes peace, but demands Eastern Galicia- should we agree to that?"
+style = 2
+
+action_a = {
+ai_chance =  100
+name = "We have to save Poland"
+command = { type = peace which = UKR value = 1 }
+command = { type = secedeprovince which = UKR value = 238 }
+command = { type = secedeprovince which = UKR value = 239 }
+command = { type = secedeprovince which = UKR value = 240 }
+command = { type = secedeprovince which = UKR value = 241 }
+command = { type = secedeprovince which = UKR value = 242 }
+command = { type = secedeprovince which = UKR value = 244 }
+command = { type = secedeprovince which = UKR value = 245 }
+command = { type = secedeprovince which = UKR value = 249 }
+command = { type = secedeprovince which = UKR value = 300 }
+command = { type = secedeprovince which = UKR value = 301 }
+command = { type = removecore which = 238 }
+command = { type = removecore which = 239 }
+command = { type = removecore which = 240 }
+command = { type = removecore which = 241 }
+command = { type = removecore which = 242 }
+command = { type = removecore which = 244 }
+command = { type = removecore which = 245 }
+command = { type = removecore which = 249 }
+command = { type = removecore which = 300 }
+command = { type = removecore which = 301 }
+command = { type = removecore  which =  616 }
+command = { type = removecore  which =  609 }
+command = { type = removecore  which =  614 }
+command = { type = removecore  which =  611 }
+command = { type = removecore  which =  617 }
+command = { type = removecore  which =  612 }
+command = { type = removecore  which =  618 }
+command = { type = removecore  which =  619 }
+command = { type = removecore  which =  613 }
+command = { type = removecore  which =  615 }
+command = { type = removecore  which =  628 }
+command = { type = removecore  which =  627 }
+command = { type = removecore  which =  622 }
+command = { type = removecore  which =  620 }
+command = { type = removecore  which =  625 }
+command = { type = removecore  which =  626 }
+command = { type = removecore  which =  621 }
+command = { type = clrflag which = POL_COS_WAR }
+command = { type = dissent value = 20 }
+}
+action_b = {
+ai_chance =  0
+name = "Fight to the end!"
+command = { type = dissent value = 10 }
+}
+}
+
+################################################
+#Germany
+################################################
+
+event = {
+id = 9980167
+random = no
+country = POL
+
+date = { day = 18 month = april year = 1938 }
+offset = 60
+deathdate = { day = 1 month = january year = 1963 }
+
+trigger = {
+random = 75
+exists = POL
+exists = GER
+atwar = no
+control = { province = 232 data = POL } # Warsaw
+control = { province = 181 data = GER } # Gdansk
+control = { province = 226 data = GER } # Elblag
+control = { province = 222 data = GER } # Torun
+control = { province = 224 data = GER } # Bydgoszcz
+control = { province = 225 data = GER } # Poznan
+OR = {
+war = { country = GER country = FRA }
+war = { country = GER country = RUS }
+war = { country = GER country = AUS }
+war = { country = GER country = ENG }
+}
+OR = {
+AND = {
+control = { province = 235 data = POL }
+control = { province = 242 data = POL }
+} # Cracow and Lviv
+AND = {
+control = { province = 247 data = POL }
+control = { province = 255 data = POL }
+} # Grodno and Brest Litovsk
+AND = {
+control = { province = 258 data = POL }
+control = { province = 255 data = POL }
+} # Grodno and Vilnius
+}
+NOT = {
+puppet = { country = POL country = GER }
+puppet = { country = POL country = AUS }
+alliance = { country = GER country = POL }
+alliance = { country = AUS country = POL }
+headofstate = 13011
+headofstate = 13015
+headofstate = 13101
+}
+}
+name = "Prussian partition"
+desc = "The Polish-Lithuanian Commonwealth lost much during the partitions of Poland in the late 18th century. Many provinces were ceded to the Kingdom of Prussia. Now Germany is at war and we are strong; should we press claims on our former lands?"
+style = 2
+
+action_a = {
+name = "Press claims on all our rightful lands!"
+ai_chance =  20
+command = { type = dissent value = -10 }
+command = { type = addclaim   which = 221 }
+command = { type = addclaim   which = 168 }
+command = { type = addclaim   which = 164 }
+command = { type = addclaim   which = 224 }
+command = { type = addclaim   which = 225 }
+command = { type = addclaim   which = 161 }
+command = { type = addclaim   which = 226 }
+command = { type = addclaim   which = 181 }
+command = { type = addclaim   which = 222 }
+command = { type = addclaim   which = 226 }
+command = { type = relation which = GER value = -400 }
+command = { type = setflag which = POL_PRUSSIANPARTITION }
+}
+action_b = {
+name = "Press claims on the Prussian partition and Silesia"
+ai_chance =  70
+command = { type = dissent value = -5 }
+command = { type = addclaim   which = 221 }
+command = { type = addclaim   which = 168 }
+command = { type = addclaim   which = 164 }
+command = { type = addclaim   which = 224 }
+command = { type = addclaim   which = 225 }
+command = { type = addclaim   which = 161 }
+command = { type = addclaim   which = 222 }
+command = { type = addclaim   which = 226 }
+command = { type = relation which = GER value = -300 }
+command = { type = setflag which = POL_PRUSSIANPARTITION }
+}
+action_c = {
+name = "We can't provoke Germans!"
+ai_chance =  10
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 25 }
+}
+}
+
+event = {
+id = 9980168
+random = no
+country = POL
+
+date = { day = 18 month = april year = 1938 }
+offset = 10
+deathdate = { day = 1 month = january year = 1963 }
+
+trigger = {
+flag = POL_PRUSSIANPARTITION
+exists = POL
+exists = GER
+atwar = no
+atwar = GER
+control = { province = 235 data = POL } # Cracow
+control = { province = 242 data = POL } # Lviv
+control = { province = 247 data = POL } # Brest Litovsk
+control = { province = 255 data = POL } # Grodno
+control = { province = 232 data = POL } # Warsaw
+control = { province = 181 data = GER } # Gdansk
+control = { province = 226 data = GER } # Elblag
+control = { province = 222 data = GER } # Torun
+control = { province = 224 data = GER } # Bydgoszcz
+control = { province = 225 data = GER } # Poznan
+OR = {
+NOT = { control = { province = 163 data = GER } }
+AND = {
+NOT = {
+control = { province = 160 data = GER }
+OR = {
+control = { province = 153 data = GER }
+control = { province = 157 data = GER }
+}
+}
+}
+AND = {
+NOT = {
+control = { province = 172 data = GER }
+OR = {
+control = { province = 170 data = GER }
+control = { province = 173 data = GER }
+control = { province = 157 data = GER }
+}
+}
+}
+}
+NOT = {
+puppet = { country = POL country = GER }
+puppet = { country = POL country = AUS }
+alliance = { country = GER country = POL }
+alliance = { country = AUS country = POL }
+headofstate = 13011
+headofstate = 13015
+headofstate = 13101
+}
+}
+name = "Germany is falling"
+desc = "The German armies are defeated, Berlin has no chance of winning. It is our chance to regain the Prussian partition."
+style = 2
+
+action_a = {
+name = "Attack!"
+ai_chance =  100
+command = { type = dissent value = -10 }
+command = { type = relation which = GER value = -400 }
+command = { type = war which = GER }
+command = { type = clrflag which = POL_PRUSSIANPARTITION }
+}
+action_b = {
+name = "Those claims were a mistake"
+ai_chance =  0
+command = { type = dissent value = 20 }
+command = { type = removeclaim   which = 221 }
+command = { type = removeclaim   which = 168 }
+command = { type = removeclaim   which = 164 }
+command = { type = removeclaim   which = 224 }
+command = { type = removeclaim   which = 225 }
+command = { type = removeclaim   which = 161 }
+command = { type = removeclaim   which = 226 }
+command = { type = removeclaim   which = 181 }
+command = { type = removeclaim   which = 222 }
+command = { type = removeclaim   which = 226 }
+command = { type = relation which = GER value = 25 }
+command = { type = clrflag which = POL_PRUSSIANPARTITION }
+}
+}
+
+
+
+event = {
+id = 9980197
+random = 2
+country = POL
+
+trigger = {
+exists = GER
+NOT = {
+ispuppet = POL
+puppet = { country = RUS country = GER }
+alliance = { country = GER country = POL }
+alliance = { country = GER country = RUS }
+control = { province = 163 data = GER }
+atwar = POL
+}
+atwar = GER
+control = { province = 224 data = GER }
+control = { province = 225 data = GER }
+control = { province = 227 data = POL }
+}
+
+name = "German Empire in disarray"
+desc = "With the German Empire in turmoil, we have a great opportunity to seize parts of Silesia and entire Greater Poland. There is very little the German Empire government can do to stop us at this point."
+style = 2
+picture = "militaryparade1"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = january year = 1963 }
+
+action_a = {
+ai_chance = 70
+name = "Seize Silesia and Greater Poland!"
+command = { type = end_guarantee which = GER where = POL }
+command = { type = end_guarantee which = POL where = GER }
+command = { type = end_access which = GER where = POL }
+command = { type = end_non_aggression which = POL where = GER }
+command = { type = end_non_aggression which = GER where = POL }
+command = { type = addcore which = 221 }
+command = { type = addcore which = 168 }
+command = { type = addcore which = 222 }
+command = { type = addcore which = 224 }
+command = { type = addcore which = 225 }
+command = { type = addcore which = 164 }
+command = { type = relation which = GER value = -100 }
+command = { trigger = { government = democratic } type = dissent value = 5 }
+command = { type = event which = 9980198 where = GER when = 1  }
+}
+action_b = {
+ai_chance = 10
+name = "Rather not"
+command = { type = relation which = GER value = 100 }
+command = { trigger = { government = fascist } type = dissent value = 5 }
+}
+action_c = {
+trigger = {
+NOT = {
+alliance = { country = POL country = AUS }
+alliance = { country = POL country = U24 }
+alliance = { country = POL country = U25 }
+alliance = { country = POL country = RUS }
+government = communist
+}
+}
+ai_chance = 30
+name = "We must ally with German Empire"
+command = { type = relation which = GER value = 200 }
+command = { trigger = { government = fascist } type = dissent value = 2 }
+command = { type = trigger which = 9980199 }
+}
+}
+
+event = {
+id = 9980198
+random = no
+country = GER
+## triggered by 9980197
+
+name = "Poland occupies Silesia and Greater Poland!"
+desc = "With our empire in chaos Poland used this opportunity to occupy parts of Silesia and Greater Poland. Currently there is very little that we can do to stop Poland."
+style = 2
+picture = "militaryparade1"
+
+action_a = {
+ai_chance = 95
+name = "There is nothing we can do"
+command = { type = secedeprovince which = POL value = 221 }
+command = { type = secedeprovince which = POL value = 168 }
+command = { type = secedeprovince which = POL value = 222 }
+command = { type = secedeprovince which = POL value = 224 }
+command = { type = secedeprovince which = POL value = 225 }
+command = { type = secedeprovince which = POL value = 164 }
+command = { type = secedeprovince which = POL value = 227 }
+command = { type = secedeprovince which = POL value = 230 }
+command = { type = dissent value = 1 }
+}
+action_b = {
+ai_chance = 5
+name = "This means WAR!"
+command = { type = war which = POL }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 9980199
+random = no
+country = GER
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Poland offers alliance"
+desc = "Poland, worried about recent developments in the Syndicalist-Mitteleuropa war has offered us their support in defeating the Syndicalists and their supporters."
+
+action_a = {
+ai_chance = 100
+name = "YES!"
+command = { type = alliance which = POL }
+command = { type = relation which = POL value = 100 }
+command = { type = dissent value = -7 }
+}
+action_b = {
+ai_chance = 0
+name = "Rather not."
+command = { type = dissent value = 1 }
+command = { type = relation which = POL value = -100 }
+}
+}
+
+############### Adjusting the Polish-Romanian border
+
+event = {
+id = 966730
+random = no
+TAG = { ROM URU }
+picture = "russia_politics"
+
+decision = {
+NOT = { 
+ispuppet = yes 
+}
+OR = { 
+AND = {
+exists = ROM
+NOT = {
+exists = URU
+}
+}
+AND = {
+exists = URU
+NOT = {
+exists = ROM
+}
+}
+}
+OR = {
+AND = {
+owned = { province = 301 data = POL }
+control = { province = 301 data = POL }
+NOT = { ispuppet = POL }
+}
+AND = {
+owned = { province = 301 data = U00 }
+control = { province = 301 data = U00 }
+NOT = { ispuppet = U00 }
+}
+}
+NOT = {
+exists = GLD
+war = { country = ROM country = URU }
+}
+}
+
+decision_trigger = {
+atwar = no
+money = 1000
+}
+
+trigger = {
+atwar = no
+NOT = { 
+ispuppet = yes 
+}
+OR = { 
+AND = {
+exists = ROM
+NOT = {
+exists = URU
+}
+}
+AND = {
+exists = URU
+NOT = {
+exists = ROM
+}
+}
+}
+OR = {
+AND = {
+owned = { province = 301 data = POL }
+control = { province = 301 data = POL }
+NOT = { ispuppet = POL }
+}
+AND = {
+owned = { province = 301 data = U00 }
+control = { province = 301 data = U00 }
+NOT = { ispuppet = U00 }
+}
+}
+NOT = {
+exists = GLD
+war = { country = ROM country = URU }
+}
+}
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Revising the Polish-Romanian Border"
+desc = "After the annexation of Galicia-Lodomeria, Poland obtained the territory of the Duchy of Bukovina. This territory contains a small Polish minority and many Ukrainians, while the southern part contains a large Romanian population. We could ask the Polish government to divide Bukovina, but we must be ready to pay them a large sum of money for the new territory."
+style = 2
+decision_picture = "decision_peace_conference"
+
+action = {
+name = "Do it"
+ai_chance = 99
+command = { trigger = { control = { province = 301 data = POL } owned = { province = 301 data = POL } } type = trigger which = 966731 }
+command = { trigger = { control = { province = 301 data = U00 } owned = { province = 301 data = U00 } } type = trigger which = 966735 }
+}
+
+action = {
+name = "We won't buy it"
+ai_chance = 1
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 966731
+random = no
+country = POL
+picture = "russia_politics"
+
+name = "Revising the Polish-Romanian Border"
+desc = "After the annexation of Galicia-Lodomeria, we have taken control of the Duchy of Bukovina. This territory contains a small Polish minority and many Ukrainians, while the south part of this Duchy contains a large Romanian population. The Romanian government has asked us to sell the southern part of Bukovina. They are ready to renounce their claims on the north of Bukovina and pay us a large some of money."
+style = 2
+
+action = {
+name = "If the Romanians pay, they can have southern Bukovina"
+ai_chance = 70
+command = { type = trigger which = 966732 }
+command = { type = money value = 1000 }
+command = { type = secedeprovince which = ROM value = 301 when = 1 }
+command = { type = secedeprovince which = URU value = 301 when = 1 }
+command = { type = removecore which = 301 }
+}
+
+action = {
+name = "Trade southern Bukovina for Romanian oil"
+ai_chance = 25
+command = { type = trigger which = 966733 }
+command = { type = secedeprovince which = ROM value = 301 }
+command = { type = secedeprovince which = URU value = 301 }
+command = { type = oilpool value = 4000  }
+command = { type = removecore which = 301 }
+}
+
+action_c = {
+name = "We shall retain all of Bukovina!"
+ai_chance = 5
+command = { type = trigger which = 966734 }
+}
+}
+
+
+event = {
+id = 966735
+random = no
+country = U00
+picture = "russia_politics"
+
+name = "Revising the Polish-Romanian Border"
+desc = "After the annexation of Galicia-Lodomeria, we have taken control of the Duchy of Bukovina. This territory contains a small Polish minority and many Ukrainians, while the south part of this Duchy contains a large Romanian population. The Romanian government has asked us to sell the southern part of Bukovina. They are ready to renounce their claims on the north of Bukovina and pay us a large some of money."
+style = 2
+
+action = {
+name = "If the Romanians pay, they can have southern Bukovina"
+ai_chance = 70
+command = { type = trigger which = 966732 }
+command = { type = trigger which = 966736 }
+command = { type = money value = 1000 }
+command = { type = secedeprovince which = ROM value = 301 when = 1 }
+command = { type = secedeprovince which = URU value = 301 when = 1 }
+command = { type = removecore which = 301 }
+}
+
+action = {
+name = "Trade southern Bukovina for Romanian oil"
+ai_chance = 25
+command = { type = trigger which = 966733 }
+command = { type = trigger which = 966737 }
+command = { type = secedeprovince which = ROM value = 301 }
+command = { type = secedeprovince which = URU value = 301 }
+command = { type = oilpool value = 4000  }
+command = { type = removecore which = 301 }
+}
+
+action_c = {
+name = "We shall retain all of Bukovina!"
+ai_chance = 5
+command = { type = trigger which = 966734 }
+command = { type = trigger which = 966738 }
+}
+}
+
+event = {
+id = 966732
+random = no
+country = ROM
+picture = "russia_politics"
+
+
+name = "Polish-Romanian Border Revision"
+desc = "The Polish government has agreed to sell Suceava to us. It is a great day for Romania!"
+style = 2
+
+action = {
+name = "Hooray!"
+command = { type = dissent value = -2 }
+command = { type = removecore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = relation which = POL value = 50 }
+command = { type = relation which = U00 value = 50 }
+command = { type = money value = -1000 }
+}
+}
+
+event = {
+id = 966736
+random = no
+country = URU
+picture = "russia_politics"
+
+
+name = "Polish-Romanian Border Revision"
+desc = "The Polish government has agreed to sell Suceava to us. It is a great day for Romania!"
+style = 2
+
+action = {
+name = "Hooray!"
+command = { type = dissent value = -2 }
+command = { type = removecore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = relation which = POL value = 50 }
+command = { type = relation which = U00 value = 50 }
+command = { type = money value = -1000 }
+}
+}
+
+event = {
+id = 966733
+random = no
+country = ROM
+picture = "russia_politics"
+
+name = "Polish-Romanian Border Revision"
+desc = "The Polish government has agreed to sell Suceava to us. It is a great day for Romania!"
+style = 2
+
+action = {
+name = "Hooray!"
+command = { type = dissent value = -2 }
+command = { type = removecore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = relation which = POL value = 50 }
+command = { type = relation which = U00 value = 50 }
+command = { type = oilpool value = -4000  }
+}
+}
+
+event = {
+id = 966737
+random = no
+country = URU
+picture = "russia_politics"
+
+name = "Polish-Romanian Border Revision"
+desc = "The Polish government has agreed to sell Suceava to us. It is a great day for Romania!"
+style = 2
+
+action = {
+name = "Hooray!"
+command = { type = dissent value = -2 }
+command = { type = removecore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = relation which = POL value = 50 }
+command = { type = relation which = U00 value = 50 }
+command = { type = oilpool value = -4000  }
+}
+}
+
+event = {
+id = 966734
+random = no
+country = ROM
+picture = "russia_politics"
+
+name = "Polish-Romanian Border Revision - Poland Refuses"
+desc = "The Polish government has refused to sell Suceava to us. We'll have to try something else."
+style = 2
+
+action = {
+name = "One day we shall take it by force!"
+command = { type = dissent value = 1 }
+command = { type = addcore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = relation which = POL value = -50 }
+command = { type = relation which = U00 value = -50 }
+}
+}
+
+event = {
+id = 966738
+random = no
+country = URU
+picture = "russia_politics"
+
+name = "Polish-Romanian Border Revision - Poland Refuses"
+desc = "The Polish government has refused to sell Suceava to us. We'll have to try something else."
+style = 2
+
+action = {
+name = "One day we shall take it by force!"
+command = { type = dissent value = 1 }
+command = { type = addcore which = 300 }
+command = { type = addcore which = 301 }
+command = { type = relation which = POL value = -50 }
+command = { type = relation which = U00 value = -50 }
+}
+}

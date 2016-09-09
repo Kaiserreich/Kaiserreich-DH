@@ -1,0 +1,1247 @@
+#################################################################################################################################################
+# The South African Federation (U49) By GP93
+#
+# id range = 21000 - 22999
+#
+# The South African Federation can be formed via 2 methods; the first is by victory in the 4th Boer War and the second is by peaceful reform
+# starting in early 1939. The Boer War events are covered in the South Africa.txt file, so the initial event here shall be the peaceful
+# reformation - after that, both routes will link up.
+#
+#
+
+event = {
+id = 21000
+random = no
+country = SAF
+style = 2
+picture = "Volksraad"
+
+trigger = {
+flag = SouthAfricanFederation
+not = {
+headofstate = 70100
+flag = U49_WIN_4BW
+flag = SAF_WIN_4BW
+}
+}
+
+date = { day = 1 month = january year = 1939 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+name = EVT_21000_NAME # The End of the Union of South Africa
+desc = EVT_21000_DESC # After careful negotiations we have convinced the Afrikaner dominated provincial councils to accept our proposed reforms and have agreed to allow the incorporation of the provinces of the Orange Free State and Transvaal into our new Federation. Despite having to make a number of concessions, we will now be able to pursue our goal of a united and federal South Africa where the rights of all it's citizens, regardless of race, are respected.
+
+action_a = {
+name = ACTIONNAME_21000_A # Long live the Federation!
+command = { type = domestic which = freedom value = 1 }
+command = { trigger = { exists = RHO } type = trigger which = 17114   } # U49
+command = { type = country which = U49  }
+command = { type = dissent value = 10 } # Afrikaners still mad
+}
+}
+
+#################################################################################################################################################
+# Constitution of the Federation, Approaching the Entente and Restoration of the Monarchy
+#
+
+# Constitution
+
+event = {
+id = 21001
+random = no
+country = U49
+style = 2
+picture = "CapeTown1"
+
+trigger = {
+flag = SouthAfricanFederation
+OR = {
+flag = U49_WIN_4BW
+event = 21000
+}
+not = {
+exists = SAF
+}
+}
+
+date = { day = 1 month = january year = 1939 }
+offset = 15
+deathdate = { day = 29 month = december year = 1960 }
+
+name = EVT_21001_NAME # The Political Structure of the Federation
+desc = EVT_21001_DESC # The old unitary structure of South Africa, has been replaced by a federal model - the five old provinces (Cape, Natal, the Orange Free State, Transvaal and Rhodesia) have been joined by the three High Commission Territories of Bechuanaland, Basotuland and Swaziland to form the eight states of the Federation. The states have their own legislatures and premiers with considerable powers over socio-economic policy within the state, but there are limits imposed by the central federal government based in Cape Town. The major ones are the Natives Trust Act and the Qualified Franchise Act.
+
+action_a = {
+name = ACTIONNAME_21001_A # Great!
+command = { type = trigger which = 21002 }
+}
+}
+
+event = {
+id = 21002
+random = no
+country = U49
+style = 2
+picture = "SA_Natives2"
+
+name = EVT_21002_NAME # The Natives Trust Act
+desc = EVT_21002_DESC # The Natives Trust Act provides for the existence of native administrated tribal land and grants a great deal of autonomy for them in adittion to ensuring that a minimum of 20 percent of state land must be marked as such (previously this was only 8 percent in the precursory Union reservations). The former Boer Republics of the Orange Free State and Transvaal keep at the minimum threshold with that figure rising in the British states and a majority of the High Commission Territories being given over to be governed by established Paramount Chiefs.
+
+action_a = {
+name = ACTIONNAME_21002_A # KwaZulu!
+command = { type = domestic which = freedom value = 2 }
+command = { type = trigger which = 21003 }
+}
+}
+
+event = {
+id = 21003
+random = no
+country = U49
+style = 2
+picture = "SA_Voters"
+
+name = EVT_21003_NAME # The Qualified Franchise Act
+desc = EVT_21003_DESC # The Qualified Franchise Act requires all states use a derrivative of the Cape Qaulified Franchise in their elections, to ensure native representation and integration into the political process of South Africa. Again though, the extent this is implemented in the Afrikaner-dominant states is kept at the required minimum. Despite this, qualified franchise in the other states ensures that non whites of at least 'middle class' wealth and education are eligible. This is most prominant in the Cape, where the qualified franchise is the most inclusive and full adult suffrage is granted to the Coloured & Asiatic populations. The same is true in Natal for the Asiatics, with the second largest franchise in South Africa.
+
+action_a = {
+name = ACTIONNAME_21003_A # Great.
+command = { type = dissent value = -5 }
+command = { type = relative_manpower value = 50 }
+command = { type = trigger which = 21004 }
+}
+}
+
+event = {
+id = 21004
+random = no
+country = U49
+style = 2
+picture = "Durban City Hall"
+
+name = EVT_21004_NAME # The National Assembly, Senate & House of Lords
+desc = EVT_21004_DESC # The Volksraad and Senate of South Africa have been reconstituted as the first two parts of a new tri-caramel parliament. The Volksraad, now the National Assembly, is the lower house and its members are elected from the local constituencies using local state franchise (varies state to state). The Senate is the first upper house, its members representing their states as a whole, the number of representatives each state is allocated is determined via their total electorate number, meaning that states with a larger electorate wield more power in the Senate as legislation is required to pass all three of the houses. This is set to seriously disavantage the Afrikaner states, who, by keeping their franchise limited preserve their rights in-state while ceding influence on the Federation as a whole. The second upper house, the House of Lords, is a advisory council composed of hereditary native rulers. They have a limited veto unlike the Senate in a manner modeled on the old United Kingdom's                           # Parliament, although they do have the right to legislate on matters that solely relate to the governance of the Native Trust land and have considerable influence in this area.
+
+action_a = {
+name = ACTIONNAME_21004_A # Right then...
+command = {  }
+}
+}
+
+# Approaching the Entente
+
+event = {
+id = 21005
+random = no
+country = U49
+style = 2
+picture = "Entente1"
+
+trigger = {
+participant = { country = CAN value = 1 }
+flag = SouthAfricanFederation
+OR = {
+event = 21000
+flag = U49_WIN_4BW
+}
+NOT = {
+atwar = U49
+alliance = { country = CAN country = U49 }
+alliance = { country = GER country = U49 }
+alliance = { country = JAP country = U49 }
+alliance = { country = FRA country = U49 }
+alliance = { country = RUS country = U49 }
+alliance = { country = SOV country = U49 }
+ispuppet = U49
+ispuppet = CAN
+}
+}
+
+name = EVT_21005_NAME # South Africa, the Entente and the Empire
+desc = EVT_21005_DESC # With South Africa fully under our control we can now freely decide our stance towards the international community. A longstanding goal of the Dominion Party, the restoration of South Africa's ties to the British Empire is finally in our grasp. Despite the ever present protestations from the hardliners within the Afrikaner community, we are in a position at last to realise our goal. Shall we stand shoulder to shoulder with our brother-nations against the forces of German militarism and Syndicalist barbarism?
+
+date = { day = 3 month = january year = 1939 }
+offset = 40
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+ai_chance = 99
+name = ACTIONNAME_21005_A # We must rejoin the Empire!
+command = { type = trigger which = 21006 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = 4 }
+}
+action_b = {
+ai_chance = 1
+name = ACTIONNAME_21005_B # Isolationism, we must organize our country
+command = { type = dissent value = -5 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 21006
+random = no
+country = CAN
+style = 2
+picture = "diplomatic_campaign"
+
+name = EVT_21006_NAME # South Africa wishes to rejoin the Empire
+desc = EVT_21006_DESC # The government of the South African Federation has annouced recently that they want to return to the fold. It's not a sudden move because pro-British policy is popular in many circles including the government and the army. This is a great day for the Empire, as we move forward together.
+
+action_a = {
+ai_chance = 100
+name = ACTIONNAME_21006_A # For King and Empire!
+command = { type = alliance which = U49 }
+command = { type = relation which = U49 value = 200 }
+command = { type = dissent value = -2 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 21007 }
+}
+
+action_a = {
+ai_chance = 0
+name = ACTIONNAME_21006_B # Rather Not...
+command = { type = relation which = U49 value = -100 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 21007
+random = no
+country = U49
+style = 2
+picture = "britishcommonwealth"
+
+name = EVT_21007_NAME # We rejoin the Empire!
+desc = EVT_21007_DESC # The King and His government have accepted our request for readmittence into the British Empire. Crowds flock the streets of Cape Town, while we look forward to our new place amongst the family of nations.
+
+action_a = {
+name = ACTIONNAME_21007_A # This time we will win!
+command = { type = dissent value = -3 }
+command = { trigger = { alliance = { country = CAN country = U07 } } type = set_relation which = U07 value = 180 }
+command = { trigger = { alliance = { country = CAN country = GER } } type = set_relation which = GER value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = RUS } } type = set_relation which = RUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = AFG } } type = set_relation which = AFG value = 150 }
+command = { trigger = { alliance = { country = CAN country = NEP } } type = set_relation which = NEP value = 150 }
+command = { trigger = { alliance = { country = CAN country = TIB } } type = set_relation which = TIB value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = CAN country = CAL } } type = set_relation which = CAL value = 150 }
+command = { trigger = { alliance = { country = CAN country = U10 } } type = set_relation which = U10 value = 150 }
+command = { trigger = { alliance = { country = CAN country = CUB } } type = set_relation which = CUB value = 150 }
+command = { trigger = { alliance = { country = CAN country = BLR } } type = set_relation which = BLR value = 150 }
+command = { trigger = { alliance = { country = CAN country = UKR } } type = set_relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = CAN country = LIT } } type = set_relation which = LIT value = 150 }
+command = { trigger = { alliance = { country = CAN country = LAT } } type = set_relation which = LAT value = 150 }
+command = { trigger = { alliance = { country = CAN country = AUS } } type = set_relation which = AUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = HUN } } type = set_relation which = HUN value = 150 }
+command = { trigger = { alliance = { country = CAN country = CZE } } type = set_relation which = CZE value = 150 }
+command = { trigger = { alliance = { country = CAN country = POL } } type = set_relation which = POL value = 150 }
+command = { trigger = { alliance = { country = CAN country = U00 } } type = set_relation which = U00 value = 150 }
+command = { trigger = { alliance = { country = CAN country = FIN } } type = set_relation which = FIN value = 150 }
+command = { trigger = { alliance = { country = CAN country = TRA } } type = set_relation which = TRA value = 150 }
+command = { trigger = { alliance = { country = CAN country = U26 } } type = set_relation which = U26 value = 150 }
+command = { trigger = { alliance = { country = CAN country = U24 } } type = set_relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = CAN country = U25 } } type = set_relation which = U25 value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUL } } type = set_relation which = BUL value = 150 }
+command = { trigger = { alliance = { country = CAN country = URU } } type = set_relation which = URU value = 150 }
+command = { trigger = { alliance = { country = CAN country = SER } } type = set_relation which = SER value = 150 }
+command = { trigger = { alliance = { country = CAN country = GRE } } type = set_relation which = GRE value = 150 }
+command = { trigger = { alliance = { country = CAN country = GLD } } type = set_relation which = GLD value = 150 }
+command = { trigger = { alliance = { country = CAN country = CRO } } type = set_relation which = CRO value = 150 }
+command = { trigger = { alliance = { country = CAN country = BOS } } type = set_relation which = BOS value = 150 }
+command = { trigger = { alliance = { country = CAN country = MTN } } type = set_relation which = MTN value = 150 }
+command = { trigger = { alliance = { country = CAN country = OTT } } type = set_relation which = OTT value = 150 }
+command = { trigger = { alliance = { country = CAN country = DEN } } type = set_relation which = DEN value = 150 }
+command = { trigger = { alliance = { country = CAN country = ALB } } type = set_relation which = ALB value = 150 }
+command = { trigger = { alliance = { country = CAN country = ARM } } type = set_relation which = ARM value = 150 }
+command = { trigger = { alliance = { country = CAN country = LBY } } type = set_relation which = LBY value = 150 }
+command = { trigger = { alliance = { country = CAN country = EGY } } type = set_relation which = EGY value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAU } } type = set_relation which = SAU value = 150 }
+command = { trigger = { alliance = { country = CAN country = PER } } type = set_relation which = PER value = 150 }
+command = { trigger = { alliance = { country = CAN country = OMN } } type = set_relation which = OMN value = 150 }
+command = { trigger = { alliance = { country = CAN country = CON } } type = set_relation which = CON value = 150 }
+command = { trigger = { alliance = { country = CAN country = ITA } } type = set_relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = CAN country = CGX } } type = set_relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = CAN country = SPA } } type = set_relation which = SPA value = 150 }
+command = { trigger = { alliance = { country = CAN country = POR } } type = set_relation which = POR value = 150 }
+command = { trigger = { alliance = { country = CAN country = EUS } } type = set_relation which = EUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = PHI } } type = set_relation which = PHI value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = CAN country = CSX } } type = set_relation which = CSX value = 150 }
+command = { trigger = { alliance = { country = CAN country = YEM } } type = set_relation which = YEM value = 150 }
+command = { trigger = { alliance = { country = CAN country = BEL } } type = set_relation which = BEL value = 150 }
+command = { trigger = { alliance = { country = CAN country = FLA } } type = set_relation which = FLA value = 150 }
+command = { trigger = { alliance = { country = CAN country = WLL } } type = set_relation which = WLL value = 150 }
+command = { trigger = { alliance = { country = CAN country = TEX } } type = set_relation which = TEX value = 150 }
+command = { trigger = { alliance = { country = CAN country = IRE } } type = set_relation which = IRE value = 150 }
+command = { trigger = { alliance = { country = CAN country = INO } } type = set_relation which = INO value = 150 }
+command = { trigger = { alliance = { country = CAN country = JAP } } type = set_relation which = JAP value = 150 }
+command = { trigger = { alliance = { country = CAN country = USA } } type = set_relation which = USA value = 150 }
+command = { type = end_trades which = GER where = SAF }
+command = { type = end_trades which = FRA where = SAF }
+}
+}
+
+# Monarchy & The Role of the Governor General
+
+event = {
+id = 21008
+random = no
+country = U49
+style = 2
+picture = "british_celebrating"
+
+trigger = {
+flag = SouthAfricanFederation
+event = 21007
+}
+
+name = EVT_21008_NAME # The Restoration
+desc = EVT_21008_DESC # We have been accepted back into the British Empire, the National Assembly today passing the Restoration Act - restoring the King's position as South Africa's head of state. While a corronation is not possible at this time, Edward VIII has been hailed as the monarch by all three houses of the South African Parliament. The former premier, Jan Smuts looks set to be appointed as Governor-General, however we now have to decide how much power that position can exercise on the Kings behalf. Many conservatives and liberals are advocating legally establishing the monarch as a figurehead, with his powers exercised by parliament, while nationalists are demanding Smuts, an Afrikaner, excercise the King's powers as Governor General.
+
+date = { day = 3 month = january year = 1939 }
+offset = 10
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+ai_chance = 30
+name = ACTIONNAME_21008_A # Legally establish the King as a figurehead!
+command = { type = relation which = CAN value = 25 }
+command = { type = relation which = U07 value = 25 }
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 72132 } # Edward VIII (SC)
+command = { type = headofgovernment which = 72030 } # Jan Smuts
+command = { type = domestic which = freedom value = 1 }
+command = { type = setflag which = U49DOMINION_ED }
+}
+
+action_b = {
+ai_chance = 70
+name = ACTIONNAME_21008_B # Delegate the King's duties to the Governor-General.
+command = { type = relation which = CAN value = -25 }
+command = { type = relation which = U07 value = -25 }
+command = { type = dissent value = -3 }
+command = { type = headofstate which = 72099 } # Jan Smuts (SC)
+command = { type = domestic which = freedom value = -1 }
+command = { type = setflag which = U49DOMINION_GG }
+}
+}
+
+#################################################################################################################################################
+# Dissolution of the Dominionist party, the formation of new political parties & the role of natives in government and the military &
+# the dissolution of the Nuweveld & indentured service if they exist.
+#
+
+event = {
+id = 21009
+random = no
+country = U49
+style = 2
+picture = "Smuts_Hofmeyer"
+
+trigger = { event = 21008 }
+
+name = EVT_21009_NAME # The Fate of the Dominionist Party
+desc = EVT_21009_DESC # The Dominionist Party campaigned to restore the monarchy to South Africa and to reform the country into a new federation. Now that these goals have been acheived, idealogical differences are beginning to fracture the party, with Hofmeyer's Progressives who seek to pursue a more liberal line in government, using federal powers to expand the franchise & social reform even further, and the Conservatives, still headed for now by Smuts. The Conservatives feel that the current reform of South Africa is sufficient and are reluctant to further encroach upon states rights and do not wish the franchise expanded further. While these factions will continue to govern in coalition, the look set to form their own independent political parties in time to contest the next general elections in 1941, at which point the Dominionist Party would cease to exist.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21009_A # Ok then...
+command = { type = dissent value = 1 }
+}
+}
+
+# In the event either I or someone else gets around to adding native ministers and leaders.
+#event = {
+#id = 21010
+#random = no
+#country = U49
+#style = 2
+#picture = "SA_Natives1"
+#
+#trigger = { event = 21009 }
+#
+#name = EVT_21010_NAME # The Role of Natives in Government & the Military
+#desc = EVT_21010_DESC #
+#
+#date = { day = 3 month = january year = 1939 }
+#offset = 40
+#deathdate = { day = 10 month = december year = 1960 }
+#
+#action_a = {
+#ai_chance = 50
+#name = ACTIONNAME_21010_A # No this would be a step too far...
+#command = { type = dissent value = -2 }
+#}
+#
+#action_b = {
+#ai_chance = 50
+#name = ACTIONNAME_21010_B # Integrate them into the new system.
+#command = { type = dissent value = 7 }
+#}
+#}
+#
+#
+
+event = {
+id = 21011
+random = no
+country = U49
+style = 2
+picture = "African Labour"
+
+trigger = {
+event = 17052
+event = 21004
+}
+
+name = EVT_21011_NAME # The End of Forced Labour in South Africa
+desc = EVT_21011_DESC # The barbaric practice of forced labour adopted by the previous Afrikaner government has been abolished. Any existing projects have been taken over by the federal government and have instituted reparations and fair pay to the workers involved.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21011_A # Good Riddance!
+command = { type = dissent value = -10 }
+command = { type = money value = -200 } #
+command = { type = domestic which = free_market value = -1 }
+command = { type = industrial_modifier which = total value = -3 }
+}
+}
+
+event = {
+id = 21012
+random = no
+country = U49
+style = 2
+picture = "SA_Apartheid3"
+
+trigger = {
+event = 17047
+event = 21004
+}
+
+name = EVT_21012_NAME # Dissolution of the Nuweveld
+desc = EVT_21012_DESC # The Afrikaner colonisation of native African land has been brought to an end in the former High Commission Territories, with the vast majority of Nuweveld settelers being evicted from their properties and returned to their state of origin.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21012_A # This is federal land now!
+command = { type = dissent value = -2 } # Happy natives vs angry Afrikaners
+command = { type = industrial_modifier which = total value = -1 }
+}
+}
+
+###############################################################################################################################################
+# The Army of the South African Federation
+#
+#
+#
+
+event = {
+id = 21013
+random = no
+country = U49
+style = 2
+picture = "SAF_Rifles1"
+
+trigger = { event = 21009 }
+
+name = EVT_21013_NAME # The Armed Forces of the South African Federation
+desc = EVT_21013_DESC # Given the dangerous situation in the world and our newfound responsibilities as a Dominion of the British Empire, we shall need a much stronger military than the on that we currently posess. Therefore, we can take one of two routes in expanding the Federations armed forces. First, we could open up service to all citizens regardless of race, and activly encourage natives to join up. This would have the benefit of rapidly expanding the number of available recruits. Second, we could restrict the intake of non-white recruits, instead focusing upon making the South African Armed Forces one of the most elite in the Entente.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+ai_chance = 50
+name = ACTIONNAME_21013_A # Encourage Native Service
+command = { type = dissent value = 2 }
+command = { type = manpowerpool value = 150 }
+command = { type = add_division value = hq when = 2 }
+command = { type = max_organization which = land value = 1 }
+command = { type = morale which = land value = 5 }
+command = { type = attrition_mod value = 6 }
+command = { type = domestic which = professional_army value = -3 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = defense_lobby value = 4 }
+command = { type = setflag which = U49_KingsAfricanRifles }
+}
+
+action_b = {
+ai_chance = 50
+name = ACTIONNAME_21013_B # A Small, Elite Force
+command = { type = dissent value = -4 }
+command = { type = manpowerpool value = 25 }
+command = { type = add_division value = hq when = 2 }
+command = { type = max_organization which = land value = 5 }
+command = { type = morale which = land value = 2 }
+command = { type = attrition_mod value = 2 }
+command = { type = domestic which = professional_army value = 5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = setflag which = U49_SAFArmedForce }
+}
+}
+
+# Native Recruitment
+
+event = {
+id = 21014
+random = no
+country = U49
+style = 2
+picture = "SAF_Rifles2"
+
+trigger = {
+flag = U49_KingsAfricanRifles
+event = { id = 21013 days = 150 }
+}
+
+name = EVT_21014_NAME # Expansion of the Army
+desc = EVT_21014_DESC # The armed forces of the Federation continues to expand, with record numbers of South Africans of all racial backgrounds joining up.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21014_A # Continue the expansion!
+command = { type = dissent value = 1 }
+command = { type = manpowerpool value = 30 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+}
+}
+
+event = {
+id = 21015
+random = no
+country = U49
+style = 2
+picture = "SAF_Rifles4"
+
+trigger = {
+flag = U49_KingsAfricanRifles
+event = { id = 21014 days = 150 }
+}
+
+name = EVT_21015_NAME # Expansion of the Army
+desc = EVT_21015_DESC # The armed forces of the Federation continues to expand, with record numbers of South Africans of all racial backgrounds joining up.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21015_A # Continue the expansion!
+command = { type = dissent value = -1 }
+command = { type = manpowerpool value = 30 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+}
+}
+
+event = {
+id = 21016
+random = no
+country = U49
+style = 2
+picture = "SAF_Rifles5"
+
+trigger = {
+flag = U49_KingsAfricanRifles
+event = { id = 21015 days = 150 }
+}
+
+name = EVT_21016_NAME # Expansion of the Army
+desc = EVT_21016_DESC # The armed forces of the Federation continues to expand, with record numbers of South Africans of all racial backgrounds joining up. Afrikaners from the Transvaal now march alongside British from Rhodesia, Zulu from Natal, Coloureds and Xhosa from the Cape. The Army has become a pillar of our new federation.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21016_A # Great!
+command = { type = dissent value = -3 }
+command = { type = manpowerpool value = 30 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = cavalry when = 11 }
+}
+}
+
+# Limited Recruitment
+
+event = {
+id = 21017
+random = no
+country = U49
+style = 2
+picture = "SAF_Rifles3"
+
+trigger = {
+flag = U49_SAFArmedForce
+event = { id = 21013 days = 150 }
+}
+
+name = EVT_21017_NAME # Expansion of the Army
+desc = EVT_21017_DESC # The armed forces of the Federation continues to expand steadily, priority being given to recruit from white Africans and certain native tribes.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21017_A # Continue the expansion!
+command = { type = dissent value = -1 }
+command = { type = manpowerpool value = 15 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+}
+}
+
+event = {
+id = 21018
+random = no
+country = U49
+style = 2
+picture = "SAF_Rifles6"
+
+trigger = {
+flag = U49_SAFArmedForce
+event = { id = 21017 days = 150 }
+}
+
+name = EVT_21018_NAME # Expansion of the Army
+desc = EVT_21018_DESC # The armed forces of the Federation continues to expand steadily, priority being given to recruit from white Africans and certain native tribes.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21018_A # Continue the expansion!
+command = { type = manpowerpool value = 15 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = cavalry when = 11 }
+}
+}
+
+event = {
+id = 21019
+random = no
+country = U49
+style = 2
+picture = "SAF_Soldiers2"
+
+trigger = {
+flag = U49_SAFArmedForce
+event = { id = 21018 days = 150 }
+}
+
+name = EVT_21019_NAME # Expansion of the Army
+desc = EVT_21019_DESC # The armed forces of the Federation continues to expand steadily and although there has been criticism that the army is more reflective of the old pre-federal system, the result is a highly disciplined military that is the equal of any of the Entente powers.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21019_A # Continue the expansion!
+command = { type = dissent value = 2 }
+command = { type = manpowerpool value = 20 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = cavalry when = 11 }
+command = { type = add_division value = d_01 when = 9 }
+}
+}
+
+# Founding The RSAAF
+
+event = {
+id = 21020
+random = no
+country = U49
+style = 2
+picture = "AMalan"
+
+trigger = { event = 21009 }
+
+name = EVT_21020_NAME # Founding the RSAAF
+desc = EVT_21020_DESC # The South African Air Service, prior to federation was underfunded and not really considered an independent branch of the military. The talented young officer Adolph Malan has petitioned the government asking for us to request aid from Canada in aquiring planes for the new Royal South African Air Force.
+
+date = { day = 3 month = january year = 1939 }
+offset = 30
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+ai_chance = 80
+name = ACTIONNAME_21020_A # Approach the Canadians
+command = { type = trigger which = 21021 }
+}
+
+action_b = {
+ai_chance = 20
+name = ACTIONNAME_21020_B # There is no need for this...
+command = {  }
+}
+}
+
+event = {
+id = 21021
+random = no
+country = CAN
+style = 2
+picture = "AMalan"
+
+name = EVT_21021_NAME # Canadian Planes for the RSAAF
+desc = EVT_21021_DESC # The South Africans have requested our assistance in organising their own airforce. They have offered to purchase a fighter wing from us for use in service in Africa.
+
+action_a = {
+ai_chance = 80
+name = ACTIONNAME_21021_A # Provide the planes
+command = { type = money value = 200 }
+command = { type = metalpool value = -500 }
+command = { type = supplies value = -2500 }
+command = { type = relation which = U49 value = 25 }
+command = { type = trigger which = 21022 }
+}
+
+action_b = {
+ai_chance = 20
+name = ACTIONNAME_21021_B # We cannot spare the resources
+command = { type = dissent value = 1 }
+command = { type = relation which = U49 value = -25 }
+command = { type = trigger which = 21023 }
+}
+}
+
+event = {
+id = 21022
+random = no
+country = U49
+style = 2
+picture = "swedish_planes"
+
+name = EVT_21022_NAME # The Canadians Accept!
+desc = EVT_21022_DESC # The Canadians have agreed to provide us with planes for the RSAAF. These shall be the foundation of our new air service.
+
+action_a = {
+name = ACTIONNAME_21022_A # Great!
+command = { type = money value = -200 }
+command = { type = add_division value = multi_role when = 4 }
+command = { type = dissent value = -4 }
+}
+}
+
+event = {
+id = 21023
+random = no
+country = U49
+style = 2
+picture = "swedish_planes"
+
+name = EVT_21023_NAME # The Canadians Turn Us Down
+desc = EVT_21023_DESC # The Canadians have told us they are unable to fullfil our request. We shall have to produce the planes ourselves if we wish to expand the RSAAF.
+
+action_a = {
+name = ACTIONNAME_21023_A # Oh Well...
+command = { type = dissent value = 2 }
+}
+}
+
+# WW2 Recruitment events
+
+event = {
+id = 21024
+random = no
+country = U49
+style = 2
+picture = "SAF_Rifles2"
+
+trigger = {
+flag = U49_KingsAfricanRifles
+OR = {
+war = { country = U49 country = ENG }
+war = { country = U49 country = GER }
+}
+}
+
+name = EVT_21024_NAME # South African Native Volunteers
+desc = EVT_21024_DESC # South Africa is now part of the new Great War that has engulfed Europe, alongside the other British Dominions. Thousands of South African citizens from across the racial divide have rushed to volunteer, eager to enlist and serve their country. In particular, large numbers of native South Africans have come forward to fight for an Empire many now see as having a real stake in.
+
+date = { day = 3 month = january year = 1939 }
+offset = 20
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+name = ACTIONNAME_21024_A # Usutu! Usutu!
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = add_division value = d_01 when = 9 }
+}
+}
+
+event = {
+id = 21025
+random = no
+country = U49
+style = 2
+picture = "Brittank"
+
+trigger = {
+flag = U49_SAFArmedForce
+OR = {
+war = { country = U49 country = ENG }
+war = { country = U49 country = GER }
+}
+OR = {
+flag = CAN_JFCFULLER
+flag = ANZAC_JFCFULLER
+}
+}
+
+name = EVT_21025_NAME # A South African Armoured Corps?
+desc = EVT_21025_DESC # South Africa is now part of the new Great War that has engulfed Europe, alongside the other British Dominions. However, due to our continued policy of segregation in the armed forces, the number of volunteers are limited. It has been suggested therefore that we adopt some of the practices of our allies who have developed their own armoured divisions, and organise one of our own as this kind of formation is highly efficient in terms of manpower requirements as well as being highly tactically flexible.
+
+date = { day = 3 month = january year = 1939 }
+offset = 20
+deathdate = { day = 10 month = december year = 1960 }
+
+action_a = {
+ai_chance = 80
+name = ACTIONNAME_21025_A # Yes! Roll out the tanks!
+command = { type = dissent value = -1 }
+command = { type = metalpool value = -750 }
+command = { type = money value = -100 }
+command = { type = add_division which = "Royal S.A.F. Mobile Division" value = light_armor when = 0 }
+}
+
+action_b = {
+ai_chance = 20
+name = ACTIONNAME_21025_B # No need...
+command = { type = dissent value = 2 }
+}
+}
+
+#################################################################################################################################################
+# Elections
+#
+
+# 1943
+event = {
+id = 21026
+country = U49
+style = 2
+picture = "election"
+
+name = EVT_21026_NAME # The 1943 South Africa General Election
+desc = EVT_21026_DESC # According to the Federation's constitution, the elections are to be held every five years. The National Assembly & Senate's terms have expired and the time has come to elect a new parliament. With both sides launching aggressive electoral campaigns, these elections may turn out to be quite surprising...
+
+trigger = { OR = { flag = U49DOMINION_ED
+flag = U49DOMINION_GG }
+NOT = { government = communist }
+}
+
+date = { day = 7 month = may year = 1943 }
+offset = 4
+deathdate = { day = 14 month = may year = 1943 }
+
+action = {
+name = ACTIONNAME_21026_A # The Conservative Party
+ai_chance = 50
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72132 } # Edward VIII (SC)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72099 } # Jan Smuts (SC)
+command = { trigger = { flag = U49DOMINION_ED } type = headofgovernment which = 72030 } # Jan Smuts
+command = { trigger = { flag = U49DOMINION_GG } type = headofgovernment which = 72129 } # C. F. Stallard
+command = { type = foreignminister which = 72037 } # Pierre van Ryneveld
+command = { type = armamentminister which = 72048 } # Charles T. te Water
+command = { type = ministerofsecurity which = 72092 } # H.G. Lawrence
+command = { type = ministerofintelligence which = 72067 } # Seymour Jacklin
+}
+
+action = {
+name = ACTIONNAME_21026_B # The Progressive Party
+ai_chance = 50
+command = { type = dissent value = -2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72134 } # Edward VIII (ML)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72153 } # Jan Smuts (ML)
+command = { type = headofgovernment which = 72096 } # Jan Hofmeyer
+command = { type = foreignminister which = 72038 } # L. J. du Plessis
+command = { type = armamentminister which = 72138 } # Robert J. Hudson
+command = { type = ministerofsecurity which = 72095 } # Nicolaas J. de Wet
+command = { type = ministerofintelligence which = 72066 } # Jeannot de la Tourier
+}
+}
+
+# 1948
+event = {
+id = 21027
+country = U49
+style = 2
+picture = "election"
+
+name = EVT_21027_NAME # The 1948 South Africa General Election
+desc = EVT_21027_DESC # According to the Federation's constitution, the elections are to be held every five years. The National Assembly & Senate's terms have expired and the time has come to elect a new parliament. With both sides launching aggressive electoral campaigns, these elections may turn out to be quite surprising...
+
+trigger = { OR = { flag = U49DOMINION_ED
+flag = U49DOMINION_GG }
+NOT = { government = communist }
+}
+
+date = { day = 7 month = may year = 1948 }
+offset = 4
+deathdate = { day = 14 month = may year = 1948 }
+
+action = {
+name = ACTIONNAME_21027_A # The Conservative Party
+ai_chance = 50
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72132 } # Edward VIII (SC)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72099 } # Jan Smuts (SC)
+command = { trigger = { flag = U49DOMINION_ED } type = headofgovernment which = 72030 } # Jan Smuts
+command = { trigger = { flag = U49DOMINION_GG } type = headofgovernment which = 72129 } # C. F. Stallard
+command = { type = foreignminister which = 72037 } # Pierre van Ryneveld
+command = { type = armamentminister which = 72048 } # Charles T. te Water
+command = { type = ministerofsecurity which = 72092 } # H.G. Lawrence
+command = { type = ministerofintelligence which = 72067 } # Seymour Jacklin
+}
+
+action = {
+name = ACTIONNAME_21027_B # The Progressive Party
+ai_chance = 50
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72134 } # Edward VIII (ML)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72153 } # Jan Smuts (ML)
+command = { type = headofgovernment which = 72096 } # Jan Hofmeyer
+command = { type = foreignminister which = 72038 } # L. J. du Plessis
+command = { type = armamentminister which = 72138 } # Robert J. Hudson
+command = { type = ministerofsecurity which = 72095 } # Nicolaas J. de Wet
+command = { type = ministerofintelligence which = 72066 } # Jeannot de la Tourier
+}
+}
+
+# The Death of Jan C Smuts
+
+event = {
+id = 21028
+random = no
+country = U49
+style = 2
+
+trigger = {
+OR = {
+headofstate = 72099
+headofstate = 72153
+}
+}
+
+date = { day = 11 month = september year = 1950 }
+
+name = EVT_21028_NAME # The Death of Jan C Smuts
+desc = EVT_21028_DESC # Governor-General Jan Smuts passed away at family farm of Doornkloof, Irene, near Pretoria, today. A giant of South African politics, General Jan C Smuts has played a decisive role in the nations history for the last half century. Originally a commander of a Boer Kommando in the 2nd Boer War, Smuts would go on to reconcile his Afrikaner heritage and forge a loyalty to the British Empire that never wavered through the subsequent years. Fighting in the Welkrieg against the German general Paul von Lettow Vorbeck, Smuts returned home to South Africa, becoming Prime Minister for a time. He could not prevent the country moving away from the Empire, but, largely through his efforts and those of his protoge Jan Hofmeyer, South Africa was restored to its place within the British Commonwealth. His friendship with Hofmeyer had survived the parting of the Dominionist Party, now though, competition between the Conservatives and Progressives is sure to become fiercer. Herbert J. Stanley has taken up                        # the position of Governor-General.
+picture = "minister_died"
+
+action_a = {
+name = ACTIONNAME_21028_A # What a man!
+command = { trigger = { minister = 72099 } type = headofstate which = 72154 } # Herbert J. Stanley (SC)
+command = { trigger = { minister = 72153 } type = headofstate which = 72136 } # Herbert J. Stanley (ML)
+command = { type = sleepminister which = 72153 }
+command = { type = sleepminister which = 72099 }
+command = { type = sleepminister which = 72090 }
+command = { type = sleepminister which = 72074 }
+command = { type = sleepminister which = 72035 }
+command = { type = sleepminister which = 72030 }
+command = { type = sleepminister which = 72008 }
+command = { type = sleepminister which = 72006 }
+command = { type = sleepminister which = 72005 }
+command = { type = sleepleader which = 451026 }
+# command = { type = sleepteam which = 3105 } # not needed
+}
+}
+
+event = {
+id = 21029
+random = no
+country = U49
+style = 2
+
+trigger = {
+NOT = {
+headofgovernment = 72030
+headofstate = 72099
+headofstate = 72153
+}
+}
+
+date = { day = 11 month = september year = 1950 }
+
+name = EVT_21029_NAME # The Death of Jan C Smuts
+desc = EVT_21029_DESC # Jan Smuts passed away at family farm of Doornkloof, Irene, near Pretoria, today. A giant of South African politics, General Jan C Smuts has played a decisive role in the nations history for the last half century. Originally a commander of a Boer Kommando in the 2nd Boer War, Smuts would go on to reconcile his Afrikaner heritage and forge a loyalty to the British Empire that never wavered through the subsequent years. Fighting in the Welkrieg against the German general Paul von Lettow Vorbeck, Smuts returned home to South Africa, becoming Prime Minister for a time. He could not prevent the country moving away from the Empire, but, largely through his efforts and those of his protoge Jan Hofmeyer, South Africa was restored to its place within the British Commonwealth. His friendship with Hofmeyer had survived the parting of the Dominionist Party, now though, competition between the Conservatives and Progressives is sure to become fiercer.
+picture = "minister_died"
+
+action_a = {
+name = ACTIONNAME_21029_A # What a man!
+command = { type = sleepminister which = 72153 }
+command = { type = sleepminister which = 72099 }
+command = { type = sleepminister which = 72090 }
+command = { type = sleepminister which = 72074 }
+command = { type = sleepminister which = 72035 }
+command = { type = sleepminister which = 72030 }
+command = { type = sleepminister which = 72008 }
+command = { type = sleepminister which = 72006 }
+command = { type = sleepminister which = 72005 }
+command = { type = sleepleader which = 451026 }
+# command = { type = sleepteam which = 3105 } # not needed
+}
+}
+
+event = {
+id = 21030
+random = no
+country = U49
+style = 2
+
+trigger = {
+headofgovernment = 72030
+}
+
+date = { day = 11 month = september year = 1950 }
+
+name = EVT_21030_NAME # The Death of Jan C Smuts
+desc = EVT_21030_DESC # Prime Minister Jan Smuts passed away at family farm of Doornkloof, Irene, near Pretoria, today. A giant of South African politics, General Jan C Smuts has played a decisive role in the nations history for the last half century. Originally a commander of a Boer Kommando in the 2nd Boer War, Smuts would go on to reconcile his Afrikaner heritage and forge a loyalty to the British Empire that never wavered through the subsequent years. Fighting in the Welkrieg against the German general Paul von Lettow Vorbeck, Smuts returned home to South Africa, becoming Prime Minister for a time. He could not prevent the country moving away from the Empire, but, largely through his efforts and those of his protoge Jan Hofmeyer, South Africa was restored to its place within the British Commonwealth. His friendship with Hofmeyer had survived the parting of the Dominionist Party, now though, competition between the Conservatives and Progressives is sure to become fiercer. C. F. Stallard as deputy leader of                       # the Conservatives has become the new Prime Minister.
+picture = "minister_died"
+
+action_a = {
+name = ACTIONNAME_21030_A # What a man!
+command = { type = headofgovernment which = 72129 } #  C. F. Stallard
+command = { type = sleepminister which = 72153 }
+command = { type = sleepminister which = 72099 }
+command = { type = sleepminister which = 72090 }
+command = { type = sleepminister which = 72074 }
+command = { type = sleepminister which = 72035 }
+command = { type = sleepminister which = 72030 }
+command = { type = sleepminister which = 72008 }
+command = { type = sleepminister which = 72006 }
+command = { type = sleepminister which = 72005 }
+command = { type = sleepleader which = 451026 }
+# command = { type = sleepteam which = 3105 } # not needed
+}
+}
+
+# 1953
+event = {
+id = 21031
+country = U49
+style = 2
+picture = "election"
+
+name = EVT_21031_NAME # The 1953 South Africa General Election
+desc = EVT_21031_DESC # According to the Federation's constitution, the elections are to be held every five years. The National Assembly & Senate's terms have expired and the time has come to elect a new parliament. With both sides launching aggressive electoral campaigns, these elections may turn out to be quite surprising...
+
+trigger = { OR = { flag = U49DOMINION_ED
+flag = U49DOMINION_GG }
+NOT = { government = communist }
+}
+
+date = { day = 7 month = may year = 1953 }
+offset = 4
+deathdate = { day = 14 month = may year = 1953 }
+
+action = {
+name = ACTIONNAME_21031_A # The Conservative Party
+ai_chance = 40
+command = { type = dissent value = 3 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72132 } # Edward VIII (SC)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72154 } # Herbert J. Stanley (SC)
+command = { type = headofgovernment which = 72129 } # C. F. Stallard
+command = { type = foreignminister which = 72037 } # Pierre van Ryneveld
+command = { type = armamentminister which = 72048 } # Charles T. te Water
+command = { type = ministerofsecurity which = 72092 } # H.G. Lawrence
+command = { type = ministerofintelligence which = 72067 } # Seymour Jacklin
+}
+
+action = {
+name = ACTIONNAME_21031_B # The Progressive Party
+ai_chance = 60
+command = { type = dissent value = -4 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72134 } # Edward VIII (ML)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72136 } # Herbert J. Stanley (ML)
+command = { type = headofgovernment which = 72096 } # Jan Hofmeyer
+command = { type = foreignminister which = 72038 } # L. J. du Plessis
+command = { type = armamentminister which = 72138 } # Robert J. Hudson
+command = { type = ministerofsecurity which = 72095 } # Nicolaas J. de Wet
+command = { type = ministerofintelligence which = 72066 } # Jeannot de la Tourier
+}
+}
+
+# 1958
+event = {
+id = 21032
+country = U49
+style = 2
+picture = "election"
+
+name = EVT_21032_NAME # The 1958 South Africa General Election
+desc = EVT_21032_DESC # According to the Federation's constitution, the elections are to be held every five years. The National Assembly & Senate's terms have expired and the time has come to elect a new parliament. With both sides launching aggressive electoral campaigns, these elections may turn out to be quite surprising...
+
+trigger = { OR = { flag = U49DOMINION_ED
+flag = U49DOMINION_GG }
+NOT = { government = communist }
+}
+
+date = { day = 7 month = may year = 1958 }
+offset = 4
+deathdate = { day = 14 month = may year = 1958 }
+
+action = {
+name = ACTIONNAME_21032_A # The Conservative Party
+ai_chance = 35
+command = { type = dissent value = 4 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72132 } # Edward VIII (SC)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72154 } # Herbert J. Stanley (SC)
+command = { type = headofgovernment which = 72129 } # C. F. Stallard
+command = { type = foreignminister which = 72037 } # Pierre van Ryneveld
+command = { type = armamentminister which = 72156 } # Ian Smith
+command = { type = ministerofsecurity which = 72092 } # H.G. Lawrence
+command = { type = ministerofintelligence which = 72067 } # Seymour Jacklin
+}
+
+action = {
+name = ACTIONNAME_21032_B # The Progressive Party
+ai_chance = 65
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72134 } # Edward VIII (ML)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72136 } # Herbert J. Stanley (ML)
+command = { type = headofgovernment which = 72096 } # Jan Hofmeyer
+command = { type = foreignminister which = 72038 } # L. J. du Plessis
+command = { type = armamentminister which = 72138 } # Robert J. Hudson
+command = { type = ministerofsecurity which = 72095 } # Nicolaas J. de Wet
+command = { type = ministerofintelligence which = 72066 } # Jeannot de la Tourier
+}
+}
+
+# 1963
+event = {
+id = 21033
+country = U49
+style = 2
+picture = "election"
+
+name = EVT_21033_NAME # The 1963 South Africa General Election
+desc = EVT_21033_DESC # According to the Federation's constitution, the elections are to be held every five years. The National Assembly & Senate's terms have expired and the time has come to elect a new parliament. With both sides launching aggressive electoral campaigns, these elections may turn out to be quite surprising...
+
+trigger = { OR = { flag = U49DOMINION_ED
+flag = U49DOMINION_GG }
+NOT = { government = communist }
+}
+
+date = { day = 7 month = may year = 1963 }
+offset = 4
+deathdate = { day = 14 month = may year = 1963 }
+
+action = {
+name = ACTIONNAME_21033_A # The Conservative Party
+ai_chance = 50
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72132 } # Edward VIII (SC)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72154 } # Herbert J. Stanley (SC)
+command = { type = headofgovernment which = 72155 } # Ian Smith
+command = { type = foreignminister which = 72037 } # Pierre van Ryneveld
+command = { type = armamentminister which = 72156 } # Ian Smith
+command = { type = ministerofsecurity which = 72092 } # H.G. Lawrence
+command = { type = ministerofintelligence which = 72067 } # Seymour Jacklin
+}
+
+action = {
+name = ACTIONNAME_21033_B # The Progressive Party
+ai_chance = 50
+command = { type = dissent value = -2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = U49DOMINION_ED } type = headofstate which = 72134 } # Edward VIII (ML)
+command = { trigger = { flag = U49DOMINION_GG } type = headofstate which = 72136 } # Herbert J. Stanley (ML)
+command = { type = headofgovernment which = 72096 } # Jan Hofmeyer
+command = { type = foreignminister which = 72038 } # L. J. du Plessis
+command = { type = armamentminister which = 72138 } # Robert J. Hudson
+command = { type = ministerofsecurity which = 72095 } # Nicolaas J. de Wet
+command = { type = ministerofintelligence which = 72066 } # Jeannot de la Tourier
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

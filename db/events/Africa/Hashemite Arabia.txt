@@ -1,0 +1,415 @@
+#########################################################################
+#Hashemite Arabia by Milites
+#
+#
+# 5000 - Refugees from the Ottoman Empire
+# 5001 - More Refugees from the Ottoman Empire
+# 5002 - Negotiating with the Emir of Jebel Shammar
+# 5003 - The Response of the Emir #REB
+# 5004 - The Emir Accepts!
+# 5005 - Rashidi-Hashemite Conspiracies #OTT
+# 5007 - Choosing a new capital
+# 5008 - Showdown with Persia
+# 5009 - The Arabian Bloc Attacks Us! #PER
+#
+#
+#########################################################################
+
+
+event = {
+id = 5000
+random = no
+country = SAU
+style = 2
+save_date = yes
+picture = "Arabrevolt"
+
+trigger = {
+event = 11 # The Result of the Arab Congress in Egypt.txt
+flag = ARA_CON2 # set by The Result of the Arab Congress in Egypt.txt
+NOT = {
+ispuppet = SAU
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+
+name = EVT_5000_NAME # Refugees From the Ottoman Empire
+desc = EVT_5000_DESC # Ever since the Arab Congress in Cairo fleshed out the ambitions of the Arab Bloc, the Arabian vilayets of the Ottoman Empire has been in turmoil. Now Bedus as well as Levantines cross the border to the Hedjaz, hoping to join the Shariffian forces in taking up arms against the Turkish menace.
+
+date = { day = 0 month = september year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_5000_A # With the help of God and Cairo, we shall prevail!
+command = { type = manpowerpool value = 30 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = infantry when = 4 }
+command = { type = supplies value = 2000 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 5001
+random = no
+country = SAU
+style = 2
+picture = "Arabrevolt"
+
+trigger = {
+event = { id = 5000 days = 180 }
+flag = ARA_CON2 # set by The Result of the Arab Congress in Egypt.txt
+NOT = {
+ispuppet = SAU
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+
+name = EVT_5000_NAME # Refugees From the Ottoman Empire
+desc = EVT_5000_DESC # Ever since the Arab Congress in Cairo fleshed out the ambitions of the Arab Bloc, the Arabian vilayets of the Ottoman Empire has been in turmoil. Now Bedus as well as Levantines cross the border to the Hedjaz, hoping to join the Shariffian forces in taking up arms against the Turkish menace.
+
+date = { day = 0 month = january year = 1937 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+name = ACTIONNAME_5000_A # With the help of God and Cairo, we shall prevail!
+command = { type = manpowerpool value = 30 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = militia when = 4 }
+command = { type = supplies value = 2000 }
+command = { type = dissent value = -1 }
+}
+}
+#########################################################################
+#Negotiating with the Emir of Jebel Shamar
+#########################################################################
+event = {
+id = 5002
+random = no
+country = SAU
+style = 2
+picture = "JebelShamar"
+
+trigger = {
+flag = ARA_CON2
+NOT = {
+control = { province = 1044 data = SAU }
+ispuppet = SAU
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+
+name = EVT_5002_NAME # Exchanging Letters With the Emir of Jebel Shammar
+desc = EVT_5002_DESC # The various clans and emirates of Arabia all took different sides during the Weltkrieg and one of the most hotly contended was the Emirate of Jebel Shammar. The Rashidi emir Saud bin Abdulaziz remained neutral during the Arab Campaign and maintained cordial relations with the Turks, which allowed him to maintain a certain amount of autonomy from Istanbul. However, the Ottoman administration and authority has suffered greatly since the Arab Congress and bin Abdulaziz, opportunist to the very core, is starting to get worried what his fate would be once a successful Arab uprising displaces his Turkish overlords. Now might be a good time to offer, discretely of course, the emir a way out.
+
+date = { day = 1 month = march year = 1937 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance =  70
+name = ACTIONNAME_5002_A # Engage in clandestine contact with bin Abdulaziz!
+command = { type = relation which = OTT value = -20 }
+command = { type = event which = 5003 where = REB when = 7 } # Use REB tag for Jebel Shammar response
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+ai_chance =  30
+name = ACTIONNAME_5002_B # We cannot trust that Turkish lapdog!
+command = { type = relation which = OTT value = 20 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 5003
+random = no
+country = REB
+style = 2
+save_date = yes
+picture = "Sillyshamar"
+
+name = EVT_5003_NAME # Hashemite Overtures to the Rashid Emirate
+desc = EVT_5003_DESC # Should we backstab the Ottomans ?
+
+
+action_a = {
+ai_chance =  70
+name = ACTIONNAME_5003_A # Respond positively.
+command = { type = event which = 5004 where = SAU when = 7 }
+command = { type = event which = 5005 where = OTT when = 10 }
+}
+
+action_b = {
+ai_chance =  30
+name = ACTIONNAME_5003_B # Reject these dustbeaten Hedjazi!
+command = { type = dissent value = 10 }
+}
+
+action_c = {
+ai_chance =  0
+name = ACTIONNAME_5003_C # I'm a beautiful penguin!
+command = { type = event which = 5004 where = SAU when = 7 }
+}
+}
+
+event = {
+id = 5004
+random = no
+country = SAU
+style = 2
+picture = "JebelShamar"
+
+name = EVT_5004_NAME # Rashidi Support
+desc = EVT_5004_DESC # The Rashidi Emirate has clandestinely let us know that they support our ambitions on the Ottoman Arab provinces, given that we grant them local autonomy and economic privileges.
+
+action_a = {
+name = ACTIONNAME_5004_A # God is truly great!
+command = { type = wakeleader which = 290044 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = event which = 5005 where = OTT when = 10 }
+}
+}
+
+event = {
+id = 5005
+random = no
+country = OTT
+style = 2
+picture = "JebelShamar"
+
+name = EVT_5005_NAME # Rashidi Scheming With the Hashemite Shariff
+desc = EVT_5005_DESC # The Rashidi emir of Jebel Shamar is apparently conducting some kind of correspondence with the Arab traitor and so-called Shariff of Mecca, Feisal bin Hussein. This doesn't bode well for our hold on the region.
+
+action_a = {
+name = ACTIONNAME_5005_A # That's really not very good.
+command = { type = relation which = SAU value = -50 }
+command = { type = province_revoltrisk which = 1044 value = 5 }
+command = { type = province_revoltrisk which = 1046 value = 5 }
+}
+}
+#########################################################################
+#Choosing a new capital
+#########################################################################
+event = {
+id = 5006
+random = no
+country = SAU
+style = 2
+
+trigger = {
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+NOT = {
+war = { country = KUR country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+name = EVT_5006_NAME # A New Capital For Hashemite Arabia ?
+desc = EVT_5006_DESC # After our successful dislodgement of the Turkish oppressor, we now face the prospect of ruling a greater part of Arabia. In lieu of this change, it might be prudent to change our capital to a more centrally placed location.
+picture = "Damascus"
+
+date = { day = 0 month = january year = 1936 }
+offset = 4
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 60
+trigger = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+name = ACTIONNAME_5006_A # To Damascus! The dream of Lawrence and Feisal!
+command = { type = capital which = 1016 }
+}
+
+action = {
+ai_chance = 30
+trigger = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+name = ACTIONNAME_5006_B # Baghdad, the Jewel of Mesopotamia!
+command = { type = capital which = 1034 }
+}
+
+action = {
+ai_chance = 10
+trigger = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+name = ACTIONNAME_5006_C # Jerusalem, the sacred city of Palestine!
+command = { type = capital which = 1172 }
+}
+
+action = {
+ai_chance = 5
+name = ACTIONNAME_5006_D # To Mecca, the most holy of all cities!
+command = { type = capital which = 1049 }
+}
+
+action = {
+ai_chance = 1
+name = ACTIONNAME_5006_E # Riyad in the great desert shall protect our dynasty!?
+command = { type = dissent value = 2 }
+}
+}
+#########################################################################
+#Showdown with the Persians
+#########################################################################
+event = {
+id = 5007
+random = no
+country = SAU
+style = 2
+
+decision = {
+NOT = {
+ispuppet = SAU
+}
+OR = {
+AND = {
+core = { province = 1034 data = SAU }
+control = { province = 1034 data = PER } #Baghdad
+}
+AND = {
+core = { province = 1036 data = SAU }
+control = { province = 1036 data = PER } #Kirkuk
+}
+AND = {
+core = { province = 1028 data = SAU }
+control = { province = 1028 data = PER } #Al Amarah
+}
+AND = {
+core = { province = 1027 data = SAU }
+control = { province = 1027 data = PER } #Arbil
+}
+}
+}
+
+decision_trigger = {
+NOT = {
+alliance = { country = PER country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+trigger = {
+OR = {
+AND = {
+core = { province = 1034 data = SAU }
+control = { province = 1034 data = PER } #Baghdad
+}
+AND = {
+core = { province = 1036 data = SAU }
+control = { province = 1036 data = PER } #Kirkuk
+}
+AND = {
+core = { province = 1028 data = SAU }
+control = { province = 1028 data = PER } #Al Amarah
+}
+AND = {
+core = { province = 1027 data = SAU }
+control = { province = 1027 data = PER } #Arbil
+}
+}
+NOT = {
+ispuppet = SAU
+alliance = { country = PER country = SAU  }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+name = EVT_5007_NAME # Persian Ambitions in Mesopotamia
+desc = EVT_5007_DESC # After our defeat of the Ottomans we're now faced with the prospect of Persian hegemony in Mesopotamia. We must do something about this outrageous attack on Arab sovereignty!
+picture = "Damascus"
+decision_picture = "decision_hatsemitewar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 4
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 95
+name = ACTIONNAME_5007_A # We shall drive these Persian heretics into the Caspian!
+command = { trigger = { guarantee = { country = -1 country = PER } } type =  end_guarantee which = SAU where = PER }
+command = { type = end_non_aggression which = SAU where = PER }
+command = { type = war which = PER }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = PER value = -200 }
+command = { type = dissent value = -5 }
+command = { type = event which = 5008 where = PER when = 1 }
+command = { type = add_division value = militia when = 4 }
+}
+
+action = {
+ai_chance = 5
+name = ACTIONNAME_5007_B # Let us rebuild peacefully.
+command = { type = domestic which = defense_lobby value = -2 }
+command = { type = relation which = PER value = 100 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 5008
+random = no
+country = PER
+style = 2
+picture = "JebelShamar"
+
+name = EVT_5008_NAME # The Arabian Block Declares War on Persia
+desc = EVT_5008_DESC # The traitorous Arabs have true to their base instincts back-stabbed us! We must defend ourselves by all means necessary!
+
+
+action_a = {
+name = ACTIONNAME_5008_A # This second Arab invasion shall be utterly crushed!
+command = { type = end_non_aggression which = PER where = SAU }
+command = { type = end_non_aggression which = PER where = EGY }
+command = { type = relation which = SAU value = -50 }
+command = { type = relation which = EGY value = -50 }
+command = { type = addcore which = 1035 }
+command = { type = addcore which = 1036 }
+command = { type = addcore which = 1028 }
+command = { type = addcore which = 1027 }
+command = { type = addcore which = 1034 }
+command = { type = addcore which = 1029 }
+command = { type = addcore which = 1033 }
+command = { type = addcore which = 1037 }
+command = { type = addcore which = 1032 }
+command = { type = addcore which = 1062 }
+command = { type = addclaim which = 1041 }
+command = { type = addclaim which = 1030 }
+command = { type = addclaim which = 1031 }
+}
+}

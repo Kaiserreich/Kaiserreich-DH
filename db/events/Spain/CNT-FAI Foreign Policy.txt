@@ -1,0 +1,2184 @@
+########################################
+#### CNT-FAI Foreign Policy
+########################################
+
+event = {
+id = 3967084
+country = SPR
+style = 2
+picture = "Desert_Fighting"
+
+
+trigger = {
+government = communist
+flag = spr_postwar
+NOT = {
+ispuppet = SPR
+exists = SPA
+exists = EUS
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "What now?"
+desc = "With our victory in the Civil War we are now recovering and it is time to choose the direction of our Nation and Union. The civil strife and problems are still rampant throughout Spain and we must decide which path to take in the days ahead. Shall we become aggressive in our promotion of Anarchy or should we heal the rifts in our country first?"
+
+action_a = {
+ai_chance = 60
+name = "To survive we must spread!"
+command = { type = setflag which = cnt_expand }
+command = { type = dissent value = 5 }
+command = { type = relation which = FRA value = 20 }
+command = { type = relation which = ENG value = 10 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = ITA value = -20 }
+command = { type = relation which = POR value = -20 }
+command = { type = relation which = VIC value = -20 }
+}
+
+action_b = {
+ai_chance = 40
+name = "We must reorganize our own country"
+command = { type = setflag which = cnt_internal }
+command = { type = dissent value = -5 }
+}
+}
+
+
+##################
+# FAI IN PORTUGAL
+##################
+
+event = {
+id = 3967063
+country = SPR
+style = 2
+picture = "Desert_Fighting"
+decision_picture = "decision_spread_revolution"
+
+decision = {
+flag = cnt_expand
+exists = POR
+government = communist
+NOT = {
+exists = SPA
+exists = EUS
+flag = POR_SYN
+ispuppet = SPR
+ispuppet = POR
+}
+}
+
+decision_trigger = {
+NOT = {
+atwar = SPR
+alliance = { country = POR country = SPR }
+alliance = { country = POR country = GER }
+alliance = { country = POR country = CAN }
+}
+}
+
+trigger = {
+flag = cnt_expand
+exists = POR
+government = communist
+NOT = {
+exists = SPA
+exists = EUS
+atwar = SPR
+flag = POR_SYN
+alliance = { country = POR country = SPR }
+alliance = { country = POR country = GER }
+alliance = { country = POR country = CAN }
+ispuppet = SPR
+ispuppet = POR
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Portuguese Anarchists"
+desc = "For years, our organization has been closely tied to both the leading Anarcho-Syndicalist group in Portugal, the União Anarquista Portuguesa, and their own branch of the CGT, the Confederação Geral do Trabalho. With our securing of Spain, we think it is time to start using the Portuguese Anarchists to start causing fatal trouble in that ailing nation."
+
+action_a = {
+name = "Send the word and support to the UAP."
+ai_chance = 90
+command = { type = domestic which = interventionism value = 1 }
+command = { type = setflag which = portan }
+command = { type = supplies value = -100 }
+}
+action_b = {
+name = "We should leave Portugal alone"
+ai_chance = 10
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 3967064
+country = POR
+style = 2
+picture = "urbanwarfare5"
+
+trigger = {
+flag = portan
+exists = SPR
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Anarchist Riots"
+desc = "Inspired by the success of the FAI in the Spanish Revolution and its swelling membership, our local anarcho-syndicalist group, the União Anarquista Portuguesa, has been causing strikes and protests across the nation. Today, a major strike and protest took place on the streets of Lisbon, which soon turned violent. Rumors say the anarchists are plotting to coup the government!"
+
+action_a = {
+name = "Turn the UAP illegal and wrest control of the streets"
+ai_chance = 80
+command = { type = trigger which = 3967066 }
+command = { type = clrflag  which = portan }
+}
+
+action_b = {
+name = "The UAP succedes in their coup"
+ai_chance = 20
+command = { type = trigger which = 3967065 }
+command = { type = clrflag  which = portan }
+}
+}
+
+event = {
+id = 3967065
+country = POR
+style = 2
+picture = "SCW1"
+
+name = "Anarchist Coup!"
+desc = "The União Anarquista Portuguesa has succeded on their coup against Salazar's government. A true government of all workers has been established!"
+
+action = {
+name = "The UAP establishes a new Portuguese Republic"
+ai_chance = 90
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = headofstate which = 9094 }
+command = { type = headofgovernment which = 9095 }
+command = { type = embargo which = POR where = SPR value = 0 }
+command = { type = setflag which = POR_SYN }
+command = { trigger = { NOT = { ispuppet = SPR } } type = trigger which = 39670651 }
+}
+
+action = {
+name = "Propose integration into the FAI"
+ai_chance = 10
+trigger = {
+exists = SPR
+NOT = {
+ispuppet = SPR
+ispuppet = POR
+}
+}
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = headofstate which = 9094 }
+command = { type = headofgovernment which = 9095 }
+command = { type = embargo which = POR where = SPR value = 0 }
+command = { trigger = { NOT = { ispuppet = SPR } } type = trigger which = 39670654 }
+}
+}
+
+event = {
+id = 39670651
+country = SPR
+style = 2
+picture = "SCW1"
+
+name = "Revolution in Portugal"
+desc = "The Uniao Anarquista Portuguesa has succeded on their coup against Salazar's dictatorship in Portugal. With help from the CNT-FAI, a true government of all workers has been established! The world is a dangerous place for the freedom-loving peoples, however - should we invite Portugal into a defensive pact?"
+
+action = {
+name = "Attempt to bring them into an alliance"
+ai_chance = 100
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 39670652 }
+}
+action = {
+name = "We're not interested on that, really"
+ai_chance = 0
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 39670652
+country = POR
+style = 2
+picture = "SCW1"
+
+name = "Revolution in Portugal"
+desc = "Our brothers in Spain, the Federación Anarquista Ibérica, has congratulated us on our victorious revolution! The world is a dangerous place for the freedom-loving peoples, however - the Spanish have proposed a defensive pact between our nations!"
+
+action = {
+name = "Accept their offer"
+ai_chance = 100
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 39670653 }
+}
+action = {
+name = "We're not interested on that, really"
+ai_chance = 0
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 39670653
+country = SPR
+style = 2
+picture = "SCW1"
+
+name = "The Treaty of Barcelona"
+desc = "The Portuguese have accepted our offer and a defensive pact has been signed between our countries!"
+
+action = {
+name = "Great!"
+ai_chance = 100
+command = { type = alliance which = POR }
+}
+}
+
+event = {
+id = 39670654
+country = SPR
+style = 2
+picture = "SCW1"
+
+name = "Revolution in Portugal"
+desc = "The União Anarquista Portuguesa has succeded on their coup against Salazar's dictatorship in Portugal. With help from the CNT-FAI, a true government of all workers has been established! The UAP has now proposed a complete integration of Portugal into our Federation."
+
+action = {
+name = "Accept their offer - Integrate the Portuguese nation"
+ai_chance = 90
+command = { type = domestic which = interventionism value = 1 }
+command = { type = inherit which = POR }
+command = { type = addcore which = 481 }
+command = { type = addcore which = 476 }
+command = { type = addcore which = 479 }
+command = { type = addcore which = 477 }
+command = { type = addcore which = 478 }
+command = { type = addcore which = 482 }
+command = { type = addcore which = 480 }
+command = { type = headofgovernment which = 11405 }
+command = { type = setflag which = porcol }
+command = { type = province_keypoints which = 995 value = -1 }
+command = { type = event which = 39670751 where = SPR when = 1 }
+}
+action = {
+name = "Rather not - Maybe an alliance instead?"
+ai_chance = 10
+command = { type = domestic which = interventionism value = -1 }
+command = { type = setflag which = POR_SYN }
+command = { type = trigger which = 39670655 }
+}
+}
+
+event = {
+id = 39670655
+country = POR
+style = 2
+picture = "SCW1"
+
+name = "Revolution in Portugal"
+desc = "Our brothers in Spain, the FAI, have declined our proposal for full integration into their Federation. They now propose a defensive pact between Spain and Portugal."
+
+action = {
+name = "Accept their offer"
+ai_chance = 100
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 39670653 }
+}
+action = {
+name = "We're not interested on that, really"
+ai_chance = 0
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+#####################
+# IBERIAN REVOLUTION
+#####################
+
+event = {
+id = 3967066
+country = SPR
+style = 2
+picture = "urbanwarfare5"
+
+name = "Suppression of the UAP"
+desc = "An emergency CNT-FAI meeting has been called to discuss the problem in Portugal. With the increased violent action from the UAP, the Portuguese government has decided to crack down on the organization. With the fear and anger of its members, the UAP is calling for action. "
+
+action_a = {
+name = "Invade Portugal! Viva la Revolución!"
+ai_chance = 90
+command = { type = war which = POR }
+command = { type = clrflag  which = portan }
+}
+
+action_b = {
+name = "Let the UAP take care of this alone"
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = revolt which = 481 }
+command = { type = revolt which = 479 }
+command = { type = revolt which = 477 }
+command = { type = revolt which = 478 }
+command = { type = revolt which = 482 }
+command = { type = clrflag  which = portan }
+}
+}
+
+#################
+# FALL OF Portugal
+#################
+
+event = {
+id = 3967067
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+trigger = {
+control = { province = 476 data = SPR }
+control = { province = 481 data = SPR }
+control = { province = 479 data = SPR }
+control = { province = 477 data = SPR }
+control = { province = 478 data = SPR }
+control = { province = 482 data = SPR }
+control = { province = 480 data = SPR }
+exists = POR
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Fall of Portugal"
+desc = "Our Revolutionary army has secured the Portuguese mainland! We can now force their government to submit."
+
+action = {
+name = "Integrate the Portuguese nation"
+ai_chance = 70
+command = { type = addcore which = 481 }
+command = { type = addcore which = 476 }
+command = { type = addcore which = 479 }
+command = { type = addcore which = 477 }
+command = { type = addcore which = 478 }
+command = { type = addcore which = 482 }
+command = { type = addcore which = 480 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = headofgovernment which = 11405 }
+command = { type = trigger which = 39670672 }
+}
+action = {
+name = "Establish a friendly regime in Portugal"
+ai_chance = 30
+command = { type = coup_nation which = POR }
+command = { type = make_puppet which = POR }
+command = { type = relation which = ITA value = -50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = embargo which = POR where = SPR value = 0 }
+command = { type = setflag which = POR_SYN }
+command = { type = trigger which = 39670671 }
+}
+}
+
+event = {
+id = 39670671
+country = POR
+style = 2
+picture = "SCW1"
+
+name = "A Friendly Regime in Portugal"
+desc = "With help from our Spanish comrades, a true government of all workers has been established!"
+
+action = {
+name = "Trabalhadores do Mundo, Uni-Vos!"
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = headofstate which = 9094 }
+command = { type = headofgovernment which = 9095 }
+command = { type = setflag which = POR_SYN }
+}
+}
+
+event = {
+id = 39670672
+country = POR
+style = 2
+picture = "urbanwarfare3"
+
+name = "Portugal under occupation"
+desc = "The Portuguese mainland has been overrun by the Spanish anarchists and added to their godless Federación. While our people is suffering under the occupation, our remaining cabinet has been moved to the Azores, together with the remnants of our navy. We now must face a decision: either setup a government-in-exile in the Ultramar - our overseas provinces - and wait for a proper moment to retake the homeland, or submit to the CNT-FAI..."
+
+action = {
+name = "There's no point fighting on, surrender to Spain"
+ai_chance = 25
+command = { type = trigger which = 39670673 }
+command = { type = setflag which = porcol }
+}
+action = {
+name = "The war must go on until we're back into Lisbon"
+ai_chance = 5
+command = { type = capital which = 305 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = morale which = land value = 5 }
+command = { type = setflag which = POR_EXILE }
+command = { type = name where = POR which = "Portuguese Republic" }
+command = { type = flag_ext where = POR which = "_EXILE" }
+command = { type = free_ic value = 3 } #Just some offmap IC!
+command = { type = add_corps which = "Milícia Patriota dos Açores" value = land where = 995 }
+command = { type = add_division which = "Milícia Patriota dos Açores" value = militia when = 8 where = police }
+}
+
+action = {
+ai_chance = 70
+trigger = { NOT = {
+alliance = { country = POR country = CAN }
+alliance = { country = POR country = GER }
+} }
+name = "Form a government-in-exile, seek peace with the CNT-FAI"
+command = { type = capital which = 305 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = morale which = land value = 5 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = headofstate which = 90107 }
+command = { type = headofgovernment which = 90108 }
+command = { type = setflag which = POR_EXILE }
+command = { type = secedeprovince which = SPR value = 481 }
+command = { type = secedeprovince which = SPR value = 479 }
+command = { type = secedeprovince which = SPR value = 476 }
+command = { type = secedeprovince which = SPR value = 477 }
+command = { type = secedeprovince which = SPR value = 478 }
+command = { type = secedeprovince which = SPR value = 482 }
+command = { type = secedeprovince which = SPR value = 480 }
+command = { type = name where = POR which = "Portuguese Republic" }
+command = { type = flag_ext where = POR which = "_EXILE" }
+command = { type = free_ic value = 3 } #Just some offmap IC!
+command = { type = trigger which = 39670674 }
+command = { type = add_corps which = "Milícia Patriota dos Açores" value = land where = 995 }
+command = { type = add_division which = "Milícia Patriota dos Açores" value = militia when = 8 where = police }
+}
+}
+
+event = {
+id = 39670673
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+name = "Portugal surrenders"
+desc = "The Portuguese government has laid down their arms and formally surrendered to us."
+
+action = {
+name = "Good! Long live the Revolution!"
+command = { type = inherit which = POR }
+command = { type = province_keypoints which = 995 value = -1 }
+command = { type = event which = 39670751 where = SPR when = 1 }
+}
+}
+
+event = {
+id = 39670674
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+name = "Portuguese Government in Exile"
+desc = "The former Portuguese government has fled to their overseas provinces and setup a new government-in-exile, modeled after the regime of National France. They are seeking peace with us... With the Portuguese mainland occupied and our own peoples too tired from war, this could be a nice offer - what use would we make of their far-off territories now, anyway?"
+
+action = {
+name = "The war must go on until their complete defeat"
+ai_chance = 10
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value =1 }
+command = { type = war which = POR }
+command = { type = dissent value = 5 }
+}
+action = {
+name = "Accept their offer and sign a peace treaty"
+ai_chance = 90
+command = { type = dissent value = 2 }
+command = { type = peace which = POR value = 0 }
+command = { type = event which = 3970081 where = POR when = 30 }
+}
+}
+
+###########
+# COLONIES
+###########
+
+event = {
+id = 3967103
+country = CON
+style = 2
+picture = "angola"
+
+trigger = {
+war = { country = SPR country = POR }
+control = { province = 892 data = POR }
+NOT = {
+alliance = { country = CON country = POR }
+atwar = CON
+ispuppet = CON
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Portugal is weak, we could grab Angola!"
+desc = "Portugal is under attack from the CNT-FAI. Their colonies here in Afrika are weak and underprotected - should we grab Angola now before it falls into CNT hands?"
+
+action_a = {
+ai_chance = 60
+name = "We must get it!"
+command = { type = relation which = SPR value = -50 }
+command = { type = relation which = POR value = -50 }
+command = { type = trigger which = 3967104 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Leave it alone"
+command = { type = relation which = POR value = 10 }
+}
+}
+
+
+event = {
+id = 3967104
+random = no
+country = POR
+style = 2
+picture = "angola"
+
+name = "Mittelafrika takes Angola"
+desc = "Mittelafrika has sent its troops into Angola, Sao Tome and Principe. ."
+
+action_a = {
+name = "Curse them!"
+command = { type = secedeprovince which = CON value = 888 } #Angola!
+command = { type = secedeprovince which = CON value = 892 }
+command = { type = secedeprovince which = CON value = 895 }
+command = { type = secedeprovince which = CON value = 887 }
+command = { type = secedeprovince which = CON value = 891 }
+command = { type = secedeprovince which = CON value = 890 }
+command = { type = secedeprovince which = CON value = 893 } #Cabana
+command = { type = secedeprovince which = CON value = 912 } #São Tomé
+}
+}
+
+event = {
+id = 3967105
+country = CON
+style = 2
+picture = "angola"
+
+trigger = {
+war = { country = SPR country = POR }
+control = { province = 854 data = POR }
+NOT = {
+alliance = { country = CON country = POR }
+atwar = CON
+ispuppet = CON
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Portugal is weak, we could grab Mozambique"
+desc = "Portugal is under attack from the CNT-FAI. Their colonies here in Afrika are weak and underprotected - should we grab Mozambique now before it falls into CNT hands?"
+
+action_a = {
+ai_chance = 60
+name = "We must get it!"
+command = { type = relation which = SPR value = -50 }
+command = { type = relation which = POR value = -50 }
+command = { type = trigger which = 3967107 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Leave it alone"
+command = { type = relation which = POR value = 10 }
+}
+}
+
+
+event = {
+id = 3967107
+random = no
+country = POR
+style = 2
+picture = "angola"
+
+name = "Mittelafrika takes Mozambique"
+desc = "Mittelafrika has sent its troops into Mozambique. ."
+
+action_a = {
+name = "Curse them!"
+command = { type = secedeprovince which = CON value = 856 } #Mozam
+command = { type = secedeprovince which = CON value = 855 }
+command = { type = secedeprovince which = CON value = 857 }
+command = { type = secedeprovince which = CON value = 858 }
+command = { type = secedeprovince which = CON value = 853 }
+command = { type = secedeprovince which = CON value = 854 }
+}
+}
+
+event = {
+id = 3967068
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+
+trigger = {
+OR = {
+flag = porcol
+AND = {
+NOT = {
+event = 3967067 #The Fall of Portugal
+}
+owned = { province = 481 data = SPR }
+owned = { province = 476 data = SPR }
+owned = { province = 479 data = SPR }
+owned = { province = 477 data = SPR }
+owned = { province = 478 data = SPR }
+owned = { province = 482 data = SPR }
+owned = { province = 480 data = SPR }
+}
+}
+control = { province = 892 data = SPR }
+NOT = {
+exists = POR
+exists = ANG
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI and Angola"
+desc = "Following the fall of Portugal, we ended up in control of their former colony of Angola"
+
+action_a = {
+name = "Keep it as ours."
+ai_chance = 40
+command = { type = dissent value = 5 }
+}
+action_b = {
+name = "Release them!"
+ai_chance = 60
+command = { type = independence which = ANG value = 1 when = 0 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 3967069 }
+command = { type = setflag which = cnt_ang }
+}
+}
+
+event = {
+id = 3967069
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+name = "Fate of Angola"
+desc = "What shall be done with the liberated colony of Angola?"
+
+action_a = {
+name = "Give them freedom."
+ai_chance = 20
+command = { type = dissent value = 5 }
+}
+action_b = {
+name = "They need our watchful eyes"
+ai_chance = 80
+command = { type = make_puppet which = ANG }
+command = { type = dissent value = -5 }
+}
+}
+
+
+event = {
+id = 3967108
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+
+trigger = {
+OR = {
+flag = porcol
+AND = {
+NOT = {
+event = 3967067 #The Fall of Portugal
+}
+owned = { province = 481 data = SPR }
+owned = { province = 476 data = SPR }
+owned = { province = 479 data = SPR }
+owned = { province = 477 data = SPR }
+owned = { province = 478 data = SPR }
+owned = { province = 482 data = SPR }
+owned = { province = 480 data = SPR }
+}
+}
+control = { province = 854 data = SPR }
+NOT = {
+exists = POR
+exists = MOZ
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI and Mozambique"
+desc = "Following our annexation of Portugal, we ended up controlling their former colony of Mozambique."
+
+action_a = {
+name = "Keep it as ours."
+ai_chance = 40
+command = { type = dissent value = 5 }
+}
+action_b = {
+name = "Release them!"
+ai_chance = 60
+command = { type = independence which = MOZ value = 1 when = 0 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 3967109 }
+command = { type = setflag which = cnt_moz }
+}
+}
+
+event = {
+id = 3967109
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+name = "Fate of Mozambique"
+desc = "What shall be done with the liberated colony of Mozambique?"
+
+action_a = {
+name = "Give them freedom."
+ai_chance = 20
+command = { type = dissent value = 5 }
+}
+action_b = {
+name = "They need our watchful eyes"
+ai_chance = 80
+command = { type = make_puppet which = MOZ }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 3967070
+country = EAF
+style = 2
+picture = "urbanwarfare3"
+
+
+trigger = {
+OR = {
+flag = porcol
+AND = {
+NOT = {
+event = 3967067 #The Fall of Portugal
+}
+owned = { province = 481 data = SPR }
+owned = { province = 476 data = SPR }
+owned = { province = 479 data = SPR }
+owned = { province = 477 data = SPR }
+owned = { province = 478 data = SPR }
+owned = { province = 482 data = SPR }
+owned = { province = 480 data = SPR }
+}
+}
+control = { province = 1372 data = SPR }
+NOT = {
+exists = POR
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Fate of Macao"
+desc = "The collapse of Portugal has allowed Macao to be open for occupation!"
+
+action_a = {
+name = "Welcome them."
+command = { type = trigger which = 3967072 }
+}
+}
+
+event = {
+id = 3967071
+country = HOL
+style = 2
+picture = "urbanwarfare3"
+
+
+trigger = {
+OR = {
+flag = porcol
+AND = {
+NOT = {
+event = 3967067 #The Fall of Portugal
+}
+owned = { province = 481 data = SPR }
+owned = { province = 476 data = SPR }
+owned = { province = 479 data = SPR }
+owned = { province = 477 data = SPR }
+owned = { province = 478 data = SPR }
+owned = { province = 482 data = SPR }
+owned = { province = 480 data = SPR }
+}
+}
+control = { province = 1616 data = HOL }
+control = { province = 1617 data = SPR }
+NOT = {
+exists = POR
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Fate of East Timor"
+desc = "The collapse of Portugal has allowed East Timor to be open for occupation!"
+
+action_a = {
+name = "Welcome them."
+command = { type = trigger which = 3967073 }
+}
+}
+
+event = {
+id = 3967072
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+
+name = "Fate of Macao"
+desc = "The collapse of Portugal has allowed Macao to be occupied by the Legation Cities!"
+
+action_a = {
+name = "There's nothing we can do."
+command = { type = secedeprovince which = EAF value = 1372 }
+}
+}
+
+event = {
+id = 3967073
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+
+
+name = "Fate of East Timor"
+desc = "The collapse of Portugal has allowed East Timor to be occupied by the Dutch!"
+
+action_a = {
+name = "There's nothing we can do."
+command = { type = secedeprovince which = HOL value = 1617 }
+}
+}
+
+#####
+##### Unrest in former Portuguese Africa
+#####
+
+event = {
+id = 39670751
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+one_action = yes
+
+name = "Unrest in Africa"
+desc = "As news of the annexation of Portugal has reached their former colonies in Africa, colonial administrators and border guards are now attempting to seize control of the local governments before socialist-sympathizing units and militias disarm them!"
+
+action = {
+trigger = { OR = {
+control = { province = 887 data = SPR }
+control = { province = 888 data = SPR }
+control = { province = 890 data = SPR }
+control = { province = 891 data = SPR }
+control = { province = 892 data = SPR }
+control = { province = 893 data = SPR }
+control = { province = 895 data = SPR }	#Angola
+}
+NOT = {
+control = { province = 853 data = SPR }
+control = { province = 854 data = SPR }
+control = { province = 855 data = SPR }
+control = { province = 856 data = SPR }
+control = { province = 857 data = SPR }
+control = { province = 858 data = SPR }	#Mozambique
+}
+}
+name = "Reactionary officers revolt in Angola"
+ai_chance = 100
+command = { type = trigger which = 39670761 }
+}
+action = {
+trigger = { NOT = {
+control = { province = 887 data = SPR }
+control = { province = 888 data = SPR }
+control = { province = 890 data = SPR }
+control = { province = 891 data = SPR }
+control = { province = 892 data = SPR }
+control = { province = 893 data = SPR }
+control = { province = 895 data = SPR }	#Angola
+}
+OR = {
+control = { province = 853 data = SPR }
+control = { province = 854 data = SPR }
+control = { province = 855 data = SPR }
+control = { province = 856 data = SPR }
+control = { province = 857 data = SPR }
+control = { province = 858 data = SPR }	#Mozambique
+}
+}
+name = "Revolutionary officers revolt in Mozambique"
+ai_chance = 100
+command = { type = trigger which = 396707911 }
+}
+action = {
+trigger = { OR = {
+control = { province = 887 data = SPR }
+control = { province = 888 data = SPR }
+control = { province = 890 data = SPR }
+control = { province = 891 data = SPR }
+control = { province = 892 data = SPR }
+control = { province = 893 data = SPR }
+control = { province = 895 data = SPR }	#Angola
+}
+OR = {
+control = { province = 853 data = SPR }
+control = { province = 854 data = SPR }
+control = { province = 855 data = SPR }
+control = { province = 856 data = SPR }
+control = { province = 857 data = SPR }
+control = { province = 858 data = SPR }	#Mozambique
+}
+}
+name = "Reactionary officers revolt in Angola and Mozambique"
+ai_chance = 100
+command = { type = trigger which = 39670821 }
+}
+action = {
+trigger = { NOT = {
+control = { province = 887 data = SPR }
+control = { province = 888 data = SPR }
+control = { province = 890 data = SPR }
+control = { province = 891 data = SPR }
+control = { province = 892 data = SPR }
+control = { province = 893 data = SPR }
+control = { province = 895 data = SPR }	#Angola
+}
+NOT = {
+control = { province = 853 data = SPR }
+control = { province = 854 data = SPR }
+control = { province = 855 data = SPR }
+control = { province = 856 data = SPR }
+control = { province = 857 data = SPR }
+control = { province = 858 data = SPR }	#Mozambique
+}
+}
+name = "Revolts eclode in Bissau and the Cape Verde islands"
+ai_chance = 100
+command = { type = dissent value = 1 }
+command = { type = revolt which = 963 }
+command = { type = revolt which = 992 }
+}
+}
+
+event = {
+id = 39670761
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+one_action = yes
+
+name = "Revolts in Angola"
+desc = "Reactionary army officers and bureaucrats are now staging an uprising against the new socialist order in the former Portuguese colony of Angola!"
+
+action = {
+ai_chance = 20
+name = "The revolt is defeated and the reactionaries are arrested"
+command = { type = dissent value = -2 }
+}
+action = {
+ai_chance = 80
+name = "The revolters succeed and declare the independence of Angola"
+command = { type = dissent value = 2 }
+command = { type = independence which = ANG value = 1 when = 0 }
+command = { type = trigger which = 39670771 }
+}
+}
+
+event = {
+id = 39670771
+country = ANG
+style = 2
+
+name = "Independence of Portuguese Africa"
+desc = "Nobody will read this."
+
+action = {
+name = "Yeah, nobody!"
+command = { type = country which = POR }
+command = { type = trigger which = 39670781 }
+}
+}
+
+event = {
+id = 39670781
+country = POR
+style = 2
+
+name = "Portuguese Government in Exile is setup in Africa"
+desc = "Nobody will read this."
+
+action = {
+name = "Yeah, nobody!"
+command = { type = capital which = 895 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = morale which = land value = 5 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = headofstate which = 90111 }
+command = { type = headofgovernment which = 90112 }
+command = { type = foreignminister which = 90113 }
+command = { type = setflag which = POR_EXILE }
+command = { type = setflag which = POR_EXILE_AFRICA }
+command = { type = name where = POR which = "Portuguese Republic" }
+command = { type = flag_ext where = POR which = "_EXILE" }
+command = { type = free_ic value = 2 } #Just some offmap IC!
+command = { type = trigger which = 39670674 }
+}
+}
+
+event = {
+id = 396707911
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+one_action = yes
+
+name = "Revolts in Mozambique"
+desc = "Reactionary army officers and bureaucrats are now staging an uprising against the new socialist order in the former Portuguese colony of Mozambique!"
+
+action = {
+ai_chance = 20
+name = "The revolt is defeated and the reactionaries are arrested"
+command = { type = dissent value = -2 }
+}
+action = {
+ai_chance = 80
+name = "The revolters succeed and declare the independence of Mozambique"
+command = { type = dissent value = 2 }
+command = { type = independence which = MOZ value = 1 when = 0 }
+command = { type = trigger which = 39670801 }
+}
+}
+
+event = {
+id = 39670801
+country = MOZ
+style = 2
+
+name = "Freedom in Mozambique"
+desc = "Nobody will read this."
+
+action = {
+name = "Yeah, nobody!"
+command = { type = country which = POR }
+command = { type = trigger which = 39670811 }
+}
+}
+
+event = {
+id = 39670811
+country = POR
+style = 2
+
+name = "Portuguese Government in Exile is setup in Mozambique"
+desc = "Nobody will read this."
+
+action = {
+name = "Yeah, nobody!"
+command = { type = capital which = 855 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = morale which = land value = 5 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = headofstate which = 90111 }
+command = { type = headofgovernment which = 90112 }
+command = { type = foreignminister which = 90113 }
+command = { type = setflag which = POR_EXILE }
+command = { type = setflag which = POR_EXILE_AFRICA }
+command = { type = name where = POR which = "Portuguese Republic" }
+command = { type = flag_ext where = POR which = "_EXILE" }
+command = { type = free_ic value = 2 } #Just some offmap IC!
+command = { type = trigger which = 39670674 }
+}
+}
+
+event = {
+id = 39670821
+country = SPR
+style = 2
+picture = "urbanwarfare3"
+one_action = yes
+
+name = "Revolts in Portuguese Africa"
+desc = "Reactionary army officers and bureaucrats are now staging an uprising against the new socialist order in the former Portuguese colonies of Angola and Mozambique!"
+
+action = {
+ai_chance = 20
+name = "The revolt is defeated and the reactionaries are arrested"
+command = { type = dissent value = -2 }
+}
+action = {
+ai_chance = 80
+name = "The revolters succeed and declare the independence of Portuguese Africa"
+command = { type = dissent value = 2 }
+command = { type = independence which = ANG value = 1 when = 0 }
+command = { type = secedeprovince which = ANG value = 853 }
+command = { type = secedeprovince which = ANG value = 854 }
+command = { type = secedeprovince which = ANG value = 855 }
+command = { type = secedeprovince which = ANG value = 856 }
+command = { type = secedeprovince which = ANG value = 857 }
+command = { type = secedeprovince which = ANG value = 858 }
+command = { type = trigger which = 39670771 }
+}
+}
+
+event = {
+id = 3967083
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 995 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in the Azores"
+desc = "Reactionary officers have staged an uprising in the Azores and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 50
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 50
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 995 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+event = {
+id = 39670841
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 994 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in the Madeira"
+desc = "Reactionary officers have staged an uprising in the Madeira Island and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 50
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 50
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 994 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+event = {
+id = 39670851
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 992 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in Cape Verde"
+desc = "Reactionary officers have staged an uprising in the Cape Verde archipelago and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 50
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 50
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 992 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+event = {
+id = 39670861
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 963 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in Guinea"
+desc = "Reactionary officers have staged an uprising in former Portuguese Guinea and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 50
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 50
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 963 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+event = {
+id = 39670871
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 912 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in São Tomé and Príncipe"
+desc = "Reactionary officers have staged an uprising in the São Tomé and Príncipe islands and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 50
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 50
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 912 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+event = {
+id = 39670881
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 1372 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in Macao"
+desc = "Reactionary officers have staged an uprising in Macao and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 90
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 10
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 1372 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+event = {
+id = 39670891
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 1617 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in Portuguese Timor"
+desc = "Reactionary officers have staged an uprising in Timor and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 80
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 20
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 1617 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+event = {
+id = 39670832
+country = SPR
+style = 2
+one_action = yes
+
+trigger = {
+OR = {
+flag = POR_EXILE
+flag = POR_EXILE_AFRICA
+}
+NOT = { war = { country = SPR country = POR } }
+control = { province = 1513 data = SPR }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Revolts in Goa"
+desc = "Reactionary officers have staged an uprising in former Portuguese India and pledged loyalty to the Portuguese government-in-exile!"
+
+action = {
+ai_chance = 50
+name = "The revolt is put down and order is restored"
+command = { type = relation which = POR value = -10 }
+}
+action = {
+ai_chance = 50
+name = "The revolt succeedes, the Portuguese assume control"
+command = { type = secedeprovince which = POR value = 1513 }
+command = { type = relation which = POR value = -20 }
+}
+}
+
+#####################
+# CNT-FAI in Morocco
+#####################
+
+event = {
+id = 91270
+country = SPR
+style = 2
+picture = "Milice"
+decision_picture = "decision_spread_revolution"
+
+decision = {
+flag = cnt_expand
+government = communist
+control = { province = 715 data = SPR } #Tanger
+control = { province = 718 data = GER }
+NOT = {
+ispuppet = SPR
+exists = SPA
+exists = EUS
+exists = MOR
+}
+}
+
+decision_trigger = {
+NOT = {
+atwar = yes
+}
+}
+
+trigger = {
+flag = cnt_expand
+government = communist
+control = { province = 715 data = SPR } #Tanger
+control = { province = 718 data = GER }
+NOT = {
+ispuppet = SPR
+atwar = yes
+exists = SPA
+exists = EUS
+exists = MOR
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 80
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Moroccans"
+desc = "Our holds in Northern and Southern Morocco, while behind mainland Iberia, have been progressing greatly in the advancement of the region. Recently, the communes there have made contact with a fledgling Moroccan syndicalist group in German occupied Morocco. The communes are asking if we can aid them as we aided the UAP"
+
+action_a = {
+name = "Supply them with advisors and aid!"
+ai_chance = 80
+command = { type = supplies value = -100 }
+command = { type = relation which = GER value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = setflag which = morocco }
+command = { type = manpowerpool value = -5 }
+}
+
+action_b = {
+name = "This isn't worth tangling with Germany"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 91271
+country = SPR
+style = 2
+picture = "Gibraltar"
+
+trigger = {
+flag = morocco
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Moroccan Rebellion"
+desc = "Good news from Morocco. The syndicalist movement we've been supplying has grown very strong! So strong, that they have organized a major protest and strike, paralyzing the colony. Some are calling for the CNT-FAI to send an ultimatum to Germany..."
+
+action_a = {
+name = "Send the Ultimatum"
+ai_chance = 40
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 91272 }
+}
+action_b = {
+name = "No! They're on their own now."
+ai_chance = 50
+command = { type = domestic which = interventionism value = -1 }
+command = { type = trigger which = 91273 }
+}
+
+action_c = {
+name = "Intervention is the key now."
+ai_chance = 10
+command = { type = domestic which = interventionism value = 1 }
+command = { type = war which = GER }
+command = { type = setflag which = morocco2 }
+}
+}
+
+event = {
+id = 91272
+country = GER
+style = 2
+picture = "Gibraltar"
+
+name = "The Moroccan Rebellion"
+desc = "Bad news from Morocco. A syndicalist movement, feeding itself with Moroccan nationalism, has grown considerably recently, most likely through aid from the CNT-FAI. So much so, that the group has staged massive protests and strikes today, paralyzing the colony. the CNT-FAI has sent a message to give Morocco independence. Should we risk war over one of our lesser colonies?"
+
+action_a = {
+name = "No! Who do they think they are?"
+ai_chance = 60
+command = { type = relation which = SPR value = -20 }
+command = { type = trigger which = 91276 }
+}
+
+action_b = {
+name = "They are right... it is time for Morocco to be on its own."
+ai_chance = 40
+command = { type = trigger which = 91274 }
+command = { type = independence which = MOR value = 1 when = 0 }
+command = { type = setflag which = cnt_mor }
+}
+}
+
+event = {
+id = 91273
+country = GER
+style = 2
+picture = "Gibraltar"
+
+name = "The Moroccan Rebellion"
+desc = "Bad news from Morocco. A syndicalist movement, feeding itself with Moroccan nationalism, has grown considerably recently, most likely through aid from the CNT-FAI. So much so, that the group has staged massive protests and strikes today, paralyzing the colony."
+
+action_a = {
+name = "Crush the dissenters!"
+command = { type = relation which = SPR value = -20 }
+command = { type = revolt which = 717 }
+command = { type = revolt which = 718 }
+command = { type = revolt which = 722 }
+command = { type = revolt which = 723 }
+}
+}
+
+event = {
+id = 91274
+country = MOR
+style = 2
+picture = "algeria2"
+
+name = "Freedom!"
+desc = "Alas, through struggle of the Moroccan people with the help from the CNT-FAI, we are finally a free nation."
+
+action_a = {
+name = "Yay!"
+command = { type = trigger which = 91275 }
+}
+}
+
+event = {
+id = 91275
+country = SPR
+style = 2
+picture = "algeria2"
+
+name = "Moroccan Freedom"
+desc = "At last, the people of Morocco have thrown off the chains of their oppressive rulers, the Germans, and fully embrace the bosom of anarcho-syndicalism. But, shall we keep our lands in Northern and Southern Morocco, or give it to the new Moroccan nation?"
+
+action_a = {
+name = "The Moroccans deserve it."
+ai_chance = 70
+command = { type = removecore which = 715 }
+command = { type = removecore which = 716 }
+command = { type = removecore which = 987 }
+command = { type = removecore which = 988 }
+command = { type = removecore which = 989 }
+command = { type = secedeprovince which = MOR value = 715 }
+command = { type = secedeprovince which = MOR value = 716 }
+command = { type = secedeprovince which = MOR value = 987 }
+command = { type = secedeprovince which = MOR value = 988 }
+command = { type = secedeprovince which = MOR value = 989 }
+command = { type = make_puppet which = MOR }
+}
+
+action_b = {
+name = "Freedom is enough."
+ai_chance = 30
+command = { type = make_puppet which = MOR }
+}
+}
+
+event = {
+id = 91276
+country = SPR
+style = 2
+picture = "algeria2"
+
+name = "The Germans Refuse"
+desc = "The German officials have refused to give up their stranglehold on Morocco!"
+
+action_a = {
+name = "Send word to our allies. This means war!"
+ai_chance = 30
+command = { type = war which = GER }
+command = { type = setflag which = morocco2 }
+}
+
+action_b = {
+name = "The Moroccans are on their own."
+ai_chance = 70
+command = { type = trigger which = 91273 }
+}
+}
+
+###############
+# Intervention
+###############
+event = {
+id = 91277
+country = FRA
+style = 2
+picture = "argentina_tank1"
+
+trigger = {
+flag = morocco2
+NOT = {
+alliance = { country = FRA country = SPR }
+atwar = GER
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Moroccan War"
+desc = "It appears our close friends, the CNT-FAI, have gotten themselves in a terrible conflict with Germany over Morocco. With Germany sending supplies and troops to Morocco, it may be the perfect time to join with the CNT-FAI to crush the German scum, once and for all."
+
+action_a = {
+name = "War!"
+ai_chance = 60
+command = { type = alliance which = SPR }
+command = { type = war which = GER }
+command = { type = trigger which = 91278 }
+}
+
+action_b = {
+name = "No! They're on their own now."
+ai_chance = 40
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SPR value = -100 }
+}
+}
+
+event = {
+id = 91278
+country = AUS
+style = 2
+picture = "argentina_tank1"
+
+name = "The French Attack!"
+desc = "It appears France is openly aiding the CNT-FAI in their war against Germany. Is it time for us to put our differences aside and join with Germany?"
+
+action_a = {
+name = "Join with Germany!"
+ai_chance = 60
+command = { type = trigger which = 91279 }
+}
+action_b = {
+name = "No! They're on their own now."
+ai_chance = 40
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -100 }
+}
+}
+
+event = {
+id = 91279
+country = GER
+style = 2
+picture = "argentina_tank1"
+
+name = "The Austrians Ally"
+desc = "Seeing France supporting the CNT-FAI's belligerence, Austria has decided to forget former problems with us and join us to fight the syndicalists."
+
+action_a = {
+name = "Welcome them!"
+command = { type = alliance which = AUS }
+}
+}
+
+
+
+event = {
+id = 900822
+picture = "English_declaration_war"
+decision_picture = "decision_english_declaration_war"
+style = 2
+country = SPR
+
+decision = {
+war = { country = GER country = FRA }
+NOT = {
+war = { country = GER country = SPR }
+alliance = { country = SPR country = FRA }
+alliance = { country = SPR country = GER }
+ispuppet = SPR
+ispuppet = FRA
+exists = SPA
+exists = EUS
+}
+}
+
+decision_trigger = { }
+
+trigger = {
+war = { country = GER country = FRA }
+NOT = {
+war = { country = GER country = SPR }
+alliance = { country = SPR country = FRA }
+alliance = { country = SPR country = GER }
+ispuppet = SPR
+ispuppet = FRA
+exists = SPA
+exists = EUS
+}
+}
+
+name = "Germany and France at War"
+desc = "After France refused German ultimatum to pull from its troops from the disputed territory, German Empire declared war upon it. If France falls, we will be alone on this continent and it is being questioned if we could even keep up our industrial capacity without the resources France trades."
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 97
+name = "This is the first stage of the Worldwide Revolution!"
+command = { type = trigger which = 900823 }
+command = { type = belligerence which = SPR value = 3 }
+command = { type = dissent value = -10 }
+command = { type = manpowerpool value = 25 }
+command = { type = relation which = FRA value = 200 }
+command = { type = relation which = RSI value = 175 }
+command = { type = relation which = ENG value = 150 }
+command = { type = relation which = GER value = -200 }
+command = { type = relation which = AUS value = -100 }
+command = { type = relation which = HUN value = -100 }
+command = { type = relation which = ITA value = -100 }
+command = { type = end_non_aggression which = SPR where = GER }
+command = { type = end_non_aggression which = SPR where = ITA }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+}
+action_b = {
+ai_chance = 3
+name = "We cannot get involved, we're safe behind Pyrenees"
+command = { type = belligerence which = SPR value = -5 }
+command = { type = dissent value = 15 }
+command = { type = relation which = FRA value = -100 }
+command = { type = relation which = RSI value = -75 }
+command = { type = relation which = GER value = 20 }
+command = { type = relation which = AUS value = 10 }
+command = { type = relation which = HUN value = 10 }
+command = { type = relation which = ITA value = 10 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = domestic which = defense_lobby value = -2 }
+}
+}
+
+event = {
+id = 900823
+picture = "news_paper"
+country = FRA
+style = 2
+
+name = "Spain joins in the fight"
+desc = "The Spanish syndicalist have joined our side in the war."
+
+action_a = {
+name = "United we shall win !"
+command = { type = alliance which = SPR }
+command = { type = dissent value = -10 }
+}
+}
+
+#######aid events
+
+event = {
+id = 3967093
+country = SPR
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = { atwar = no }
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Aiding our Friends"
+desc = "Several countries either directly helped us in our war efforts or where at least with us in spirit. It has been proposed that we return these favors in order to bring the workers of the world together!"
+
+action_a = {
+ai_chance = 75
+name = "Send forth workers to unite the world"
+command = { type = setflag which = cnt_helphands }
+command = { type = manpowerpool value = -100 }
+command = { type = resource which = supplies value = -5000 } # % of max daily income
+command = { type = money value = -300 }
+command = { type = relation which = RSI value = 50 }
+command = { type = relation which = MEX value = 20 }
+command = { type = relation which = BRA value = 20 }
+command = { type = relation which = PRK value = 50 }
+command = { type = relation which = FRA value = 50 }
+command = { type = relation which = ENG value = 50 }
+command = { type = relation which = GEO value = 50 }
+}
+
+action_b = {
+ai_chance = 25
+name = "We must rebuild here first"
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 3967094
+country = RSI
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_helphands
+government = communist
+}
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 2 where = energy }
+command = { type = add_prov_resource which = -1 value = 2 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 2 }
+}
+}
+
+event = {
+id = 3967095
+country = MEX
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = mex_cnt
+flag = cnt_helphands
+government = communist
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+event = {
+id = 3967096
+country = BRA
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = bra_cnt
+flag = cnt_helphands
+government = communist
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+event = {
+id = 3967097
+country = GEO
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_helphands
+government = communist
+}
+
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+event = {
+id = 3967098
+country = PRK
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_helphands
+government = communist
+}
+
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+event = {
+id = 3967099
+country = FRA
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_helphands
+government = communist
+}
+
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+event = {
+id = 3967100
+country = ENG
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_helphands
+government = communist
+}
+
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+event = {
+id = 3967110
+country = MOZ
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_moz
+flag = cnt_helphands
+government = communist
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+event = {
+id = 3967111
+country = ANG
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_ang
+flag = cnt_helphands
+government = communist
+}
+
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 3967112
+country = MOR
+style = 2
+picture = "SCW_French Intervention"
+
+trigger = {
+flag = cnt_mor
+flag = cnt_helphands
+government = communist
+}
+
+
+date = { day = 7 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "CNT-FAI lends us a hand!"
+desc = "In an effort to build better connections between the workers of the world the CNT-FAI of Iberia have sent workers with mining and industrial knowledge to assist us in growing and prospering"
+
+action_a = {
+name = "Workers of the world Unite!"
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+}

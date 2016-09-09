@@ -1,0 +1,320 @@
+################################################
+# The Sino Coalition: Defending China from Japan/Russia
+################################################
+event = {
+id = 158000
+country = CSX
+style = 2
+picture = "Chinese Infantry2"
+
+trigger = {
+OR = {
+war = { country = JAP country = CSX }
+war = { country = GER country = CSX }
+war = { country = SOV country = CSX }
+war = { country = RUS country = CSX }
+}
+OR = {
+exists = CHC
+exists = CYN
+exists = CXB
+}
+NOT = {
+ispuppet = CSX
+alliance = { country = GER country = CSX }
+alliance = { country = RUS country = CSX }
+alliance = { country = JAP country = CSX }
+alliance = { country = USA country = CSX }
+alliance = { country = TEX country = CSX }
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The War of Resistance"
+desc = "The Qing Empire is now in a War of Resistance against our mortal enemies. We cannot hold for long on our own. We should ask for support and possibly to form a Coalition to combat foreign expansionism."
+
+action_a = {
+ai_chance = 80
+name = "We must form the Coalition of China"
+command = { type = setflag which = CofC }
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+ai_chance = 20
+name = "The Qing Shall Prevail Without Any Coalition!"
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 158001
+country = CHC
+style = 2
+picture = "Chinese Infantry2"
+
+trigger = {
+flag = CofC
+NOT = {
+ispuppet = CHC
+atwar = CHC
+alliance = { country = CSX country = CHC }
+alliance = { country = RUS country = CHC }
+}
+exists = CSX
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Sino Coalition"
+desc = "The Qing Empire is fighting a war against against the mortal enemies of China, and has asked that we join their so called 'Sino Coalition' in order to stop the foreigners from taking Mainland China. One thing they say is true, if the Qing fall, we may be next."
+
+action_a = {
+ai_chance = 60
+name = "Join the Sino Coalition"
+command = { type = ai which = "switch/CHC_atwar_JAP.ai" }
+command = { type = domestic which = interventionism value = 3 }
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = relation which = CSX value = 50 }
+command = { type = relation which = GER value = 5 }
+command = { type = setflag which = CHC_CofC }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { type = trigger which = 158002 }
+}
+
+action_b = {
+ai_chance = 0
+name = "We shall fight the Foreigners on our own"
+command = { type = ai which = "switch/CHC_atwar_JAP.ai" }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = GER value = 5 }
+command = { trigger = { war = { country = CSX country = JAP } } type = war which = JAP }
+command = { trigger = { war = { country = CSX country = RUS } } type = war which = RUS }
+command = { trigger = { war = { country = CSX country = SOV } } type = war which = SOV }
+command = { trigger = { war = { country = CSX country = GER } } type = war which = GER }
+}
+
+action_c = {
+ai_chance = 30
+name = "This is the Qing's Fight, not ours"
+command = { type = relation which = CSX value = -25 }
+}
+}
+
+
+event = {
+id = 158002
+country = CSX
+style = 2
+picture = "Chinese Infantry2"
+
+name = "Shangqing Tianguo joins the Sino Coalition"
+desc = "Shangqing Tianguo has graciously joined our coalition, offering to help push the foreigners off the mainland, but we should be suspicious of their true intentions."
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = CHC }
+command = { type = dissent value = -5 }
+command = { type = relation which = CHC value = 70 }
+command = { type = manpowerpool value = 30 }
+command = { type = money value = 10 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { type = supplies value = 100 }
+}
+}
+
+
+event = {
+id = 158003
+country = CYN
+style = 2
+picture = "Chinese Infantry2"
+
+trigger = {
+flag = CofC
+NOT = {
+ispuppet = CYN
+ispuppet = CSX
+atwar = CYN
+}
+NOT = {
+alliance = { country = CSX country = CYN }
+alliance = { country = RUS country = CYN }
+}
+exists = CSX
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Sino Coalition"
+desc = "The Qing Empire is fighting a war against the mortal enemies of China, and has asked that we join the newly-formed Sino Coalition in order to stop the foreigners from taking Mainland China."
+
+action_a = {
+ai_chance = 80
+name = "Join the Sino Coalition"
+command = { type = domestic which = interventionism value = 3 }
+command = { type = domestic which = defense_lobby value = 3 }
+#command = { type = ai which = "switch/CYN_atwar_JAP.ai" }
+command = { type = setflag which = CYN_CofC }
+command = { type = relation which = CSX value = 50 }
+command = { type = relation which = GER value = 5 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { type = trigger which = 158004 }
+}
+
+action_b = {
+ai_chance = 0
+name = "We shall go to war with Foreigners, but refuse their offer"
+#command = { type = ai which = "switch/CYN_atwar_JAP.ai" }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = GER value = 5 }
+command = { trigger = { war = { country = CSX country = JAP } } type = war which = JAP }
+command = { trigger = { war = { country = CSX country = RUS } } type = war which = RUS }
+command = { trigger = { war = { country = CSX country = SOV } } type = war which = SOV }
+command = { trigger = { war = { country = CSX country = GER } } type = war which = GER }
+}
+
+action_c = {
+ai_chance = 15
+name = "Foreigners are not a threat to us, refuse their offer"
+command = { type = relation which = CSX value = -25 }
+}
+}
+
+
+event = {
+id = 158004
+country = CSX
+style = 2
+picture = "Chinese Infantry2"
+
+name = "Yunnan joins the Sino Coalition"
+desc = "The Warlords of Yunnan have joined our coalition, offering to help defend the Mainland from foreign aggression."
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = CYN }
+command = { type = dissent value = -5 }
+command = { type = relation which = CYN value = 70 }
+command = { type = manpowerpool value = 30 }
+command = { type = money value = 10 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { type = supplies value = 100 }
+}
+}
+
+
+event = {
+id = 158005
+country = CXB
+style = 2
+picture = "Chinese Infantry2"
+
+trigger = { flag = CofC
+NOT = {
+ispuppet = CXB
+ispuppet = CSX
+atwar = CXB
+}
+NOT = { 
+alliance = { country = CHC country = CXB } 
+alliance = { country = RUS country = CXB }
+}
+exists = CSX
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Sino Coalition"
+desc = "The Qing Empire is fighting a war against the mortal enemies of China, and has asked that we join the newly-formed Sino Coalition in order to stop the Foreigners from taking Mainland China."
+
+action_a = {
+ai_chance = 59
+name = "Join the Sino Coalition"
+command = { type = domestic which = interventionism value = 3 }
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = ai which = "switch/CXB_atwar_JAP.ai" }
+command = { type = setflag which = CXB_CofC }
+command = { type = relation which = CSX value = 100 }
+command = { type = relation which = GER value = 5 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { type = trigger which = 158006 }
+}
+
+action_b = {
+ai_chance = 0
+name = "We shall go to war with Foreigners, but refuse their offer"
+command = { type = ai which = "switch/CXB_atwar_JAP.ai" }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = GER value = 5 }
+command = { trigger = { war = { country = CSX country = JAP } } type = war which = JAP }
+command = { trigger = { war = { country = CSX country = RUS } } type = war which = RUS }
+command = { trigger = { war = { country = CSX country = SOV } } type = war which = SOV }
+command = { trigger = { war = { country = CSX country = GER } } type = war which = GER }
+}
+
+action_c = {
+ai_chance = 40
+name = "Foreigners are not a threat to us, refuse their offer"
+command = { type = relation which = CSX value = -25 }
+}
+}
+
+
+event = {
+id = 158006
+country = CSX
+style = 2
+picture = "Chinese Infantry2"
+
+name = "Xibei San Ma joins the Sino Coalition"
+desc = "Xibei San Ma has joined the coalition in order to help us defend China from foreign aggression."
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = CXB }
+command = { type = dissent value = -5 }
+command = { type = relation which = CXB value = 70 }
+command = { type = manpowerpool value = 30 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = cavalry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { trigger = { ai = yes ai = CSX } type = add_division value = infantry when = 7 }
+command = { type = money value = 10 }
+command = { type = supplies value = 100 }
+}
+}

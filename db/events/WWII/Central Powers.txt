@@ -1,0 +1,3447 @@
+##############################################
+####The Rebuilding of the Central Powers
+####Events by Meadow, revised by AC
+##############################################
+
+#9728553	GER		Appeal to old friends?
+#9728554	AUS		Assist Germany against the Syndicalists  (not at war with HUN, ROM, SER, GRE, ITA or RUS)
+#9728555 	AUS		Assist Germany against the Syndicalists (at war with ROM, SER, GRE, ITA or RUS)
+#9728556 	U24		Assist Germany against the Syndicalists (not at war with ROM, SER, GRE, ITA or RUS)
+#9728557 	U24		Assist Germany against the Syndicalists (at war with ROM, SER, GRE, ITA or RUS)
+#9728558 	U25		Assist Germany against the Syndicalists (not at war with ROM, SER, GRE, ITA or RUS)
+#9728559 	U25		Assist Germany against the Syndicalists (at war with ROM, SER, GRE, ITA or RUS)
+#9728560 	OTT		Assist Germany against the Syndicalists (not at war with SER, ROM, GRE or RUS)
+#9728561 	OTT		Assist Germany against the Syndicalists( at war with SER, ROM, GRE or RUS)
+#9728562 	BUL		Assist Germany against the Syndicalists (not at war with SER, ROM, GRE or RUS)
+#9728563 	BUL		Assist Germany against the Syndicalists ( at war with SER, ROM, GRE or RUS)
+#9728564	GER		Austria will be our ally in this war!
+#9728565	GER		Austria-Hungary will be our ally in this war!
+#9728566	GER		The Danubian Federation will be our ally in this war!
+#9728567	GER		The Ottoman Empire will be our ally in this war!
+#9728568	GER		Bulgaria will be our ally in this war!
+#9728569	GER		Austria will give us some aid!
+#97285700	GER		Austria-Hungary will give us some aid!
+#97285710	GER		The Danubian Federation will give us some aid!
+#97285720	GER		The Ottoman Empire will give us some aid!
+#97285730	GER		Bulgaria will be give us some aid!
+#97285740	GER		Austria refused to help us!
+#97285750	GER		Austria-Hungary refused to help us!
+#97285760	GER		The Danubian Federation refused to help us!
+#97285770	GER		The Ottoman Empire refused to help us!
+#97285780	GER		Bulgaria refused to help us!
+
+
+event = {
+id = 9728553
+country = GER
+style = 2
+
+trigger = {
+OR = {
+war = { country = FRA country = GER }
+war = { country = SOV country = GER }
+war = { country = CSA country = GER }
+war = { country = ENG country = GER }
+}
+lost_national = { country = GER value = 15 } #Germany is losing the war
+NOT = {
+ispuppet = GER
+alliance = { country = GER country = AUS }
+alliance = { country = GER country = U24 }
+alliance = { country = GER country = U25 }
+ispuppet = AUS
+ispuppet = U24
+ispuppet = U25
+}
+NOT = {
+war = { country = AUS country = GER }
+war = { country = U24 country = GER }
+war = { country = U25 country = GER }
+flag = GER_Capitulation
+flag = GER_CON_Capitulation
+}
+OR = {
+exists = AUS
+exists = BUL
+exists = U24
+exists = U25
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Appeal to old friends?"
+desc = "We are at war with France and they seem to be getting the upper hand! Perhaps it would be wise to turn to our old allies for support."
+picture = "reichstag"
+
+action_a = {
+name = "We need all the help we can get!"
+ai_chance = 45
+command = { type = trigger which = 9728554 } #Austria (not at war with HUN, ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728555 } #Austria(at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728556 } #Austria-Hungary(not at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728557 } #Austria-Hungary(at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728558 } #Danubian Federation(not at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728559 } #Danubian Federation(at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728560 } #Ottomans(not at war with SER, ROM, GRE or RUS)
+command = { type = trigger which = 9728561 } #Ottomans( at war with SER, ROM, GRE or RUS)
+command = { type = trigger which = 9728562 } #Bulgaria(not at war with SER, ROM, GRE or RUS)
+command = { type = trigger which = 9728563 } #Bulgaria( at war with SER, ROM, GRE or RUS)
+}
+action_b = {
+name = "Only contact Austria, the others are a liability."
+ai_chance = 45
+command = { type = trigger which = 9728554 } #Austria (not at war with HUN, ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728555 } #Austria(at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728556 } #Austria-Hungary(not at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728557 } #Austria-Hungary(at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728558 } #Danube Federation(not at war with ROM, SER, GRE, ITA or RUS)
+command = { type = trigger which = 9728559 } #Danube Federation(at war with ROM, SER, GRE, ITA or RUS)
+}
+action_c = {
+name = "Germany and Mitteleuropa are strong enough as it is!"
+ai_chance = 10
+command = { type = dissent value = 5 } #Germany is losing national territories
+}
+}
+
+#####Austrian decisions
+
+event = {
+id = 9728554
+country = AUS
+style = 2
+
+trigger = {
+NOT = {
+war = { country = AUS country = GER }
+alliance = { country = AUS country = GER }
+government = communist
+ispuppet = AUS
+war = { country = AUS country = HUN }
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = ITA }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "Remember the Weltkrieg! We shall fight!"
+ai_chance = 70
+trigger = {
+NOT = {
+alliance = { country = AUS country = RUS }
+alliance = { country = AUS country = CAN }
+alliance = { country = AUS country = JAP }
+}
+}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = trigger which = 9728564 } #Austria will be our ally in this war!
+}
+
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 25
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 9728569 } #Austria will give us some aid!
+}
+
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 5
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = dissent value = 1 } #we should help our friends against the evil Syndicalists
+command = { type = trigger which = 97285740 } #Austria refused to help us!
+}
+}
+
+event = {
+id = 9728555
+country = AUS
+style = 2
+
+trigger = {
+NOT = {
+war = { country = AUS country = GER }
+alliance = { country = AUS country = GER }
+government = communist
+ispuppet = AUS
+}
+OR = {
+war = { country = AUS country = HUN }
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = ITA }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them, especially now that we are involved in a war of our own."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "Remember the Weltkrieg! We shall fight!"
+ai_chance = 20
+trigger = {
+NOT = {
+alliance = { country = AUS country = RUS }
+alliance = { country = AUS country = CAN }
+alliance = { country = AUS country = JAP }
+}
+}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = dissent value = 3 } #we are already involved in a war, more people are going to die!
+command = { type = trigger which = 9728564 } #Austria will be our ally in this war!
+}
+
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 60
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 9728569 } #Austria will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = trigger which = 97285740 } #Austria refused to help us!
+}
+}
+
+
+event = {
+id = 9728556
+country = U24
+style = 2
+
+trigger = {
+NOT = {
+war = { country = U24 country = GER }
+alliance = { country = U24 country = GER }
+government = communist
+ispuppet = U24
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = ITA }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "Remember the Weltkrieg! We shall fight!"
+trigger = {
+NOT = {
+alliance = { country = U24 country = RUS }
+alliance = { country = U24 country = CAN }
+alliance = { country = U24 country = JAP }
+}
+}
+ai_chance = 70
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = trigger which = 9728565 } #Austria-Hungary will be our ally in this war!
+}
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 25
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285700 } #Austria-Hungary will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 5
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = dissent value = 1 } #we should help our friends against the evil Syndicalists
+command = { type = trigger which = 97285750 } #Austria-Hungary refused to help us!
+}
+}
+
+event = {
+id = 9728557
+country = U24
+style = 2
+
+trigger = {
+NOT = {
+war = { country = U24 country = GER }
+alliance = { country = U24 country = GER }
+government = communist
+ispuppet = U24
+}
+OR = {
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = ITA }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them, especially now that we are involved in a war of our own."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "Remember the Weltkrieg! We shall fight!"
+ai_chance = 20
+trigger = {
+NOT = {
+alliance = { country = U24 country = RUS }
+alliance = { country = U24 country = CAN }
+alliance = { country = U24 country = JAP }
+}
+}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = dissent value = 3 } #we are already involved in a war, more people are going to die!
+command = { type = trigger which = 9728565 } #Austria-Hungary will be our ally in this war!
+}
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 60
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285700 } #Austria-Hungary will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = trigger which = 97285750 } #Austria-Hungary refused to help us!
+}
+}
+
+event = {
+id = 9728558
+country = U25
+style = 2
+
+trigger = {
+NOT = {
+war = { country = U25 country = GER }
+alliance = { country = U25 country = GER }
+government = communist
+ispuppet = U25
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = ITA }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "Remember the Weltkrieg! We shall fight!"
+ai_chance = 50
+trigger = {
+NOT = {
+alliance = { country = U25 country = RUS }
+alliance = { country = U25 country = CAN }
+alliance = { country = U25 country = JAP }
+}
+}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = trigger which = 9728566 } #The Danubian Federation will be our ally in this war!
+}
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 30
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285710 } #The Danubian Federation will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = dissent value = 1 } #we should help our friends against the evil Syndicalists
+command = { type = trigger which = 97285760 } #The Danubian Federation refused to help us!
+}
+}
+
+event = {
+id = 9728559
+country = U25
+style = 2
+
+trigger = {
+NOT = {
+war = { country = U25 country = GER }
+alliance = { country = U25 country = GER }
+government = communist
+ispuppet = U25
+}
+OR = {
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = ITA }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them, especially now that we are involved in a war of our own."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "Remember the Weltkrieg! We shall fight!"
+ai_chance = 10
+trigger = {
+NOT = {
+alliance = { country = U25 country = RUS }
+alliance = { country = U25 country = CAN }
+alliance = { country = U25 country = JAP }
+}
+}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = dissent value = 3 } #we are already involved in a war, more people are going to die!
+command = { type = trigger which = 9728566 } #The Danubian Federation will be our ally in this war!
+}
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 60
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285710 } #The Danubian Federation will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 30
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = trigger which = 97285760 } #The Danubian Federation refused to help us!
+}
+}
+
+####Ottoman Decisions
+
+event = {
+id = 9728560
+country = OTT
+style = 2
+
+trigger = {
+NOT = {
+war = { country = OTT country = GER }
+alliance = { country = OTT country = GER }
+government = communist
+ispuppet = OTT
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "The Kaiserbund is back! The Sultan shall aid the Germans!"
+ai_chance = 50
+trigger = {
+NOT = {
+alliance = { country = OTT country = RUS }
+alliance = { country = OTT country = CAN }
+alliance = { country = OTT country = JAP }
+}
+}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = trigger which = 9728567 } #The Ottoman Empire will be our ally in this war!
+}
+
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 30
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285720 } #The Ottoman Empire will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = dissent value = 1 } #we should help our friends against the evil Syndicalists
+command = { type = trigger which = 97285770 } #The Ottoman Empire refused to help us!
+}
+}
+
+event = {
+id = 9728561
+country = OTT
+style = 2
+
+trigger = {
+NOT = {
+war = { country = OTT country = GER }
+alliance = { country = OTT country = GER }
+government = communist
+ispuppet = OTT
+}
+OR = {
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them, especially now that we are involved in a war of our own."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "The Kaiserbund is back! The Sultan shall aid the Germans!"
+ai_chance = 10
+trigger = {
+NOT = {
+alliance = { country = OTT country = RUS }
+alliance = { country = OTT country = CAN }
+alliance = { country = OTT country = JAP }
+}
+}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = dissent value = 3 } #we are already involved in a war, more people are going to die!
+command = { type = trigger which = 9728567 } #The Ottoman Empire will be our ally in this war!
+}
+
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 60
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285720 } #The Ottoman Empire will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 30
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = trigger which = 97285770 } #The Ottoman Empire refused to help us!
+}
+}
+
+####Bulgarian Decisions
+
+
+event = {
+id = 9728562
+country = BUL
+style = 2
+
+trigger = {
+NOT = {
+war = { country = BUL country = GER }
+alliance = { country = BUL country = GER }
+government = communist
+ispuppet = BUL
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "We owe the Germans everything, it is time to pay them back!"
+ai_chance = 40
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = trigger which = 9728568 } #Bulgaria will be our ally in this war!
+}
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 40
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285730 } #Bulgaria will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = dissent value = 1 } #we should help our friends against the evil Syndicalists
+command = { type = trigger which = 97285780 } #Bulgaria refused to help us!
+}
+}
+
+event = {
+id = 9728563
+country = BUL
+style = 2
+
+trigger = {
+NOT = {
+war = { country = BUL country = GER }
+alliance = { country = BUL country = GER }
+government = communist
+ispuppet = BUL
+}
+OR ={
+war = { country = AUS country = ROM }
+war = { country = AUS country = SER }
+war = { country = AUS country = GRE }
+war = { country = AUS country = RUS }
+}
+}
+
+name = "Assist Germany against the Syndicalists?"
+desc = "The Germans have asked us to join them in their war against Syndicalism. Conservative elements in the country say that it is our sacred duty to defend Europe against Syndicalism while others say that we should not be forced to fight Germany's war for them, especially now that we are involved in a war of our own."
+picture = "German_Reinforcment_8"
+
+action_a = {
+name = "We owe the Germans everything, it is time to pay them back!"
+ai_chance = 5
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = GER value = 50 }
+command = { type = dissent value = 3 } #we are already involved in a war, more people are going to die!
+command = { type = trigger which = 9728568 } #Bulgaria will be our ally in this war!
+}
+action_b = {
+name = "Send supplies and volunteers."
+ai_chance = 60
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = 15 }
+command = { type = trigger which = 97285730 } #Bulgaria will give us some aid!
+}
+action_c = {
+name = "The Germans are on their own this time!"
+ai_chance = 35
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -25 }
+command = { type = trigger which = 97285780 } #Bulgaria refused to help us!
+}
+}
+
+event = {
+id = 9728564
+country = GER
+style = 2
+
+name = "Austria will be our ally in this war!"
+desc = "Austria listened to our plea for help and decided to join our alliance! Mitteleuropa grows stronger, the Syndicalists will not be able to crush us!"
+picture = "American_Infantry"
+
+action_a = {
+name = "Welcome to Mitteleuropa!"
+command = { type = alliance which = AUS }
+command = { trigger = { puppet = { country = HUN country = AUS } } type = alliance which = HUN }
+command = { trigger = { puppet = { country = POL country = AUS } } type = alliance which = POL }
+command = { trigger = { puppet = { country = GLD country = AUS } } type = alliance which = GLD }
+command = { trigger = { puppet = { country = CZE country = AUS } } type = alliance which = CZE }
+command = { trigger = { puppet = { country = ITA country = AUS } } type = alliance which = ITA }
+command = { trigger = { puppet = { country = CRO country = AUS } } type = alliance which = CRO }
+command = { trigger = { puppet = { country = BOS country = AUS } } type = alliance which = BOS }
+command = { trigger = { puppet = { country = MTN country = AUS } } type = alliance which = MTN }
+command = { trigger = { puppet = { country = URU country = AUS } } type = alliance which = URU }
+command = { trigger = { puppet = { country = SER country = AUS } } type = alliance which = SER }
+command = { trigger = { puppet = { country = ITA country = AUS } } type = alliance which = ITA }
+command = { trigger = { puppet = { country = HUN country = AUS } puppet = { country = URU country = HUN } }type = alliance which = URU }
+command = { trigger = { puppet = { country = HUN country = AUS } puppet = { country = CRO country = HUN } }type = alliance which = CRO }
+command = { trigger = { puppet = { country = HUN country = AUS } puppet = { country = SER country = HUN } }type = alliance which = SER }
+command = { trigger = { puppet = { country = HUN country = AUS } puppet = { country = BOS country = HUN } }type = alliance which = BOS }
+command = { type = relation which = AUS value = 50 }
+command = { type = dissent value = -3 } #our friends will help us
+}
+}
+
+event = {
+id = 9728565
+country = GER
+style = 2
+
+name = "Austria-Hungary will be our ally in this war!"
+desc = "Austria-Hungary listened to our plea for help and decided to join our alliance! Mitteleuropa grows stronger, the Syndicalists will not be able to crush us!"
+picture = "AUSHUN"
+
+action_a = {
+name = "Welcome to Mitteleuropa!"
+command = { type = alliance which = U24 }
+command = { type = relation which = U24 value = 50 }
+command = { trigger = { puppet = { country = URU country = U24 } } type = alliance which = URU }
+command = { trigger = { puppet = { country = SER country = U24 } } type = alliance which = SER }
+command = { trigger = { puppet = { country = ALB country = U24 } } type = alliance which = ALB }
+command = { trigger = { puppet = { country = ITA country = U24 } } type = alliance which = ITA }
+command = { type = dissent value = -3 } #our friends will help us
+}
+}
+
+event = {
+id = 9728566
+country = GER
+style = 2
+
+name = "The Danubian Federation will be our ally in this war!"
+desc = "The Danubian Federation listened to our plea for help and decided to join our alliance! Mitteleuropa grows stronger, the Syndicalists will not be able to crush us!"
+picture = "AUSDanube"
+
+action_a = {
+name = "Welcome to Mitteleuropa!"
+command = { type = alliance which = U25 }
+command = { type = relation which = U25 value = 50 }
+command = { trigger = { puppet = { country = URU country = U25 } } type = alliance which = URU }
+command = { trigger = { puppet = { country = SER country = U25 } } type = alliance which = SER }
+command = { trigger = { puppet = { country = ALB country = U25 } } type = alliance which = ALB }
+command = { trigger = { puppet = { country = ITA country = U25 } } type = alliance which = ITA }
+command = { type = dissent value = -3 } #our friends will help us
+}
+}
+
+event = {
+id = 9728567
+country = GER
+style = 2
+
+name = "The Ottoman Empire will be our ally in this war!"
+desc = "The Ottoman Empire listened to our plea for help and decided to join our alliance! Mitteleuropa grows stronger, the Syndicalists will not be able to crush us!"
+picture = "American_Infantry"
+
+action_a = {
+name = "Welcome to Mitteleuropa!"
+command = { type = alliance which = OTT }
+command = { type = relation which = OTT value = 50 }
+command = { trigger = { puppet = { country = ALB country = OTT } } type = alliance which = ALB }
+command = { trigger = { puppet = { country = ARM country = OTT } } type = alliance which = ARM }
+command = { trigger = { puppet = { country = PER country = OTT } } type = alliance which = PER }
+command = { trigger = { puppet = { country = SAU country = OTT } } type = alliance which = SAU }
+command = { trigger = { puppet = { country = OMN country = OTT } } type = alliance which = OMN }
+command = { trigger = { puppet = { country = EGY country = OTT } } type = alliance which = EGY }
+command = { trigger = { puppet = { country = LBY country = OTT } } type = alliance which = LBY }
+command = { trigger = { puppet = { country = YEM country = OTT } } type = alliance which = YEM }
+command = { trigger = { puppet = { country = SUD country = OTT } } type = alliance which = SUD }
+command = { trigger = { puppet = { country = TUN country = OTT } } type = alliance which = TUN }
+command = { trigger = { puppet = { country = U29 country = OTT } }type = alliance which = U29 }
+command = { trigger = { puppet = { country = MOR country = OTT } }type = alliance which = MOR }
+command = { trigger = { puppet = { country = U04 country = OTT } }type = alliance which = U04 }
+command = { trigger = { puppet = { country = GUI country = OTT } }type = alliance which = GUI }
+command = { trigger = { puppet = { country = GEO country = OTT } }type = alliance which = GEO }
+command = { trigger = { puppet = { country = AZB country = OTT } }type = alliance which = AZB }
+command = { type = dissent value = -2 } #our friends will help us, but not as much as the austrians (they are weaker and far away)
+}
+}
+
+event = {
+id = 9728568
+country = GER
+style = 2
+
+name = "Bulgaria will be our ally in this war!"
+desc = "Bulgaria listened to our plea for help and decided to join our alliance! Mitteleuropa grows stronger, the Syndicalists will not be able to crush us!"
+picture = "American_Infantry"
+
+action_a = {
+name = "Welcome to Mitteleuropa!"
+command = { type = alliance which = BUL }
+command = { trigger = { puppet = { country = URU country = BUL } } type = alliance which = URU }
+command = { trigger = { puppet = { country = SER country = BUL } } type = alliance which = SER }
+command = { trigger = { puppet = { country = ALB country = BUL } } type = alliance which = ALB }
+command = { trigger = { puppet = { country = GRE country = BUL } } type = alliance which = GRE }
+command = { type = relation which = BUL value = 50 }
+command = { type = dissent value = -2 } #our friends will help us, but not as much as the austrians (they are weaker and far away)
+}
+}
+
+event = {
+id = 9728569
+country = GER
+style = 2
+
+name = "Austria will give us some aid!"
+desc = "Austria listened to our plea for help but decided not to join our alliance. Instead they will send supplies and volunteers to help in our struggle against Syndicalism!"
+picture = "Supplies1"
+
+action_a = {
+name = "It's better than nothing!"
+command = { type = relation which = AUS value = 15 }
+command = { type = supplies value = 200 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+event = {
+id = 97285700
+country = GER
+style = 2
+
+name = "Austria-Hungary will give us some aid!"
+desc = "Austria-Hungary listened to our plea for help but decided not to join our alliance. Instead they will send supplies and volunteers to help in our struggle against Syndicalism!"
+picture = "AUSHUN"
+
+action_a = {
+name = "It's better than nothing!"
+command = { type = relation which = U24 value = 15 }
+command = { type = supplies value = 200 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+event = {
+id = 97285710
+country = GER
+
+name = "The Danubian Federation will give us some aid!"
+desc = "The Danubian Federation listened to our plea for help but decided not to join our alliance. Instead they will send supplies and volunteers to help in our struggle against Syndicalism!"
+picture = "AUSDanube"
+style = 2
+
+action_a = {
+name = "It's better than nothing!"
+command = { type = relation which = U25 value = 15 }
+command = { type = supplies value = 200 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+event = {
+id = 97285720
+country = GER
+style = 2
+
+name = "The Ottoman Empire will give us some aid!"
+desc = "The Ottoman Empire listened to our plea for help but decided not to join our alliance. Instead they will send supplies and volunteers to help in our struggle against Syndicalism!"
+picture = "Supplies1"
+
+action_a = {
+name = "It's better than nothing!"
+command = { type = relation which = OTT value = 15 }
+command = { type = supplies value = 200 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+event = {
+id = 97285730
+country = GER
+style = 2
+
+name = "Bulgaria will give us some aid!"
+desc = "Bulgaria listened to our plea for help but decided not to join our alliance. Instead they will send supplies and volunteers to help in our struggle against Syndicalism!"
+picture = "Supplies1"
+
+action_a = {
+name = "It's better than nothing!"
+command = { type = relation which = BUL value = 15 }
+command = { type = supplies value = 200 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+event = {
+id = 97285740
+country = GER
+style = 2
+
+name = "Austria refused to help us!"
+desc = "Austria listened to our plea but refused to send us any help. We are alone in our struggle against Syndicalism!"
+picture = "foreign_policy"
+
+action_a = {
+name = "Traitors! We would have helped them, wouldn't we?"
+command = { type = dissent value = 3 } #our friends refused to help us
+command = { type = relation which = AUS value = -25 }
+}
+}
+
+event = {
+id = 97285750
+country = GER
+style = 2
+
+name = "Austria-Hungary refused to help us!"
+desc = "Austria-Hungary listened to our plea but refused to send us any help. We are alone in our struggle against Syndicalism!"
+picture = "AUSHUN"
+
+action_a = {
+name = "Traitors! We would have helped them, wouldn't we?"
+command = { type = dissent value = 3 } #our friends refused to help us
+command = { type = relation which = U24 value = -25 }
+}
+}
+
+event = {
+id = 97285760
+country = GER
+style = 2
+
+name = "The Danubian Federation refused to help us!"
+desc = "The Danubian Federation listened to our plea but refused to send us any help. We are alone in our struggle against Syndicalism!"
+picture = "AUSDanube"
+
+action_a = {
+name = "Traitors! We would have helped them, wouldn't we?"
+command = { type = dissent value = 3 } #our friends refused to help us
+command = { type = relation which = U25 value = -25 }
+}
+}
+
+event = {
+id = 97285770
+country = GER
+style = 2
+
+name = "The Ottoman Empire refused to help us!"
+desc = "The Ottoman Empire listened to our plea but refused to send us any help. We are alone in our struggle against Syndicalism!"
+picture = "foreign_policy"
+
+action_a = {
+name = "Traitors! We would have helped them, wouldn't we?"
+command = { type = dissent value = 2 } #our friends refused to help us
+command = { type = relation which = OTT value = -25 }
+}
+}
+
+event = {
+id = 97285780
+country = GER
+style = 2
+
+name = "Bulgaria refused to help us!"
+desc = "Bulgaria listened to our plea but refused to send us any help. We are alone in our struggle against Syndicalism!"
+picture = "foreign_policy"
+
+action_a = {
+name = "Traitors! We would have helped them, wouldn't we?"
+command = { type = dissent value = 3 } #our friends refused to help us
+command = { type = relation which = BUL value = -25 }
+}
+}
+
+event = {
+id = 9999999
+country = GER
+style = 2
+
+trigger = {
+war = { country = FRA country = GER }
+OR = {
+flag = GER_Capitulation
+flag = GER_CON_Capitulation
+}
+control = { province = 55 data = FRA }
+NOT = { control = { province = 163 data = GER } }
+control = { province = 2108 data = CAN }
+exists = CAN
+war = { country = CAN country = FRA }
+participant = { country = CAN value = 1 }
+NOT = {
+ispuppet = GER
+ispuppet = CAN
+alliance = { country = GER country = CAN }
+war = { country = CAN country = GER }
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Deal with the Devil?"
+desc = "We have been defeated by the Syndicalist bastards but the Entente still fights on. While it was the inability of their governments to hold on to their lands that led to this whole mess many say that we should put aside our differences and join with the Entente to reclaim our homeland!"
+picture = "diet"
+
+action_a = {
+name = "Join with the Entente."
+ai_chance = 80
+command = { trigger = { OR = { NOT = { exists = U07 } AND = { exists = U07 NOT = { alliance = { country = U07 country = CAN } } } } } type = trigger which = 9999998 } #Canadian event
+command = { trigger = { exists = U07 alliance = { country = U07 country = CAN } } type = trigger which = 9999989 } #British event
+command = { type = dissent value = -5 }
+command = { trigger = { alliance = { country = GER country = BLR } } type = setflag which = BLR_MIT }
+command = { trigger = { alliance = { country = GER country = UKR } } type = setflag which = UKR_MIT }
+command = { trigger = { alliance = { country = GER country = LIT } } type = setflag which = BLR_LIT }
+command = { trigger = { alliance = { country = GER country = LAT } } type = setflag which = LAT_MIT }
+command = { trigger = { alliance = { country = GER country = AUS } } type = setflag which = AUS_MIT }
+command = { trigger = { alliance = { country = GER country = HUN } } type = setflag which = HUN_MIT }
+command = { trigger = { alliance = { country = GER country = CZE } } type = setflag which = CZE_MIT }
+command = { trigger = { alliance = { country = GER country = POL } } type = setflag which = POL_MIT }
+command = { trigger = { alliance = { country = GER country = U00 } } type = setflag which = U00_MIT }
+command = { trigger = { alliance = { country = GER country = FIN } } type = setflag which = FIN_MIT }
+command = { trigger = { alliance = { country = GER country = RUS } } type = setflag which = RUS_MIT }
+command = { trigger = { alliance = { country = GER country = TRA } } type = setflag which = TRA_MIT }
+command = { trigger = { alliance = { country = GER country = U26 } } type = setflag which = U26_MIT }
+command = { trigger = { alliance = { country = GER country = U24 } } type = setflag which = U24_MIT }
+command = { trigger = { alliance = { country = GER country = U25 } } type = setflag which = U25_MIT }
+command = { trigger = { alliance = { country = GER country = BUL } } type = setflag which = BUL_MIT }
+command = { trigger = { alliance = { country = GER country = URU } } type = setflag which = URU_MIT }
+command = { trigger = { alliance = { country = GER country = SER } } type = setflag which = SER_MIT }
+command = { trigger = { alliance = { country = GER country = GRE } } type = setflag which = GRE_MIT }
+command = { trigger = { alliance = { country = GER country = GLD } } type = setflag which = GLD_MIT }
+command = { trigger = { alliance = { country = GER country = CRO } } type = setflag which = CRO_MIT }
+command = { trigger = { alliance = { country = GER country = BOS } } type = setflag which = BOS_MIT }
+command = { trigger = { alliance = { country = GER country = MTN } } type = setflag which = MTN_MIT }
+command = { trigger = { alliance = { country = GER country = OTT } } type = setflag which = OTT_MIT }
+command = { trigger = { alliance = { country = GER country = DEN } } type = setflag which = DEN_MIT }
+command = { trigger = { alliance = { country = GER country = ALB } } type = setflag which = ALB_MIT }
+command = { trigger = { alliance = { country = GER country = ARM } } type = setflag which = ARM_MIT }
+command = { trigger = { alliance = { country = GER country = LBY } } type = setflag which = LBY_MIT }
+command = { trigger = { alliance = { country = GER country = EGY } } type = setflag which = EGY_MIT }
+command = { trigger = { alliance = { country = GER country = SAU } } type = setflag which = SAU_MIT }
+command = { trigger = { alliance = { country = GER country = PER } } type = setflag which = PER_MIT }
+command = { trigger = { alliance = { country = GER country = OMN } } type = setflag which = OMN_MIT }
+command = { trigger = { alliance = { country = GER country = CON } } type = setflag which = CON_MIT }
+command = { trigger = { alliance = { country = GER country = ITA } } type = setflag which = ITA_MIT }
+command = { trigger = { alliance = { country = GER country = CGX } } type = setflag which = CGX_MIT }
+command = { trigger = { alliance = { country = GER country = SPA } } type = setflag which = SPA_MIT }
+command = { trigger = { alliance = { country = GER country = POR } } type = setflag which = POR_MIT }
+command = { trigger = { alliance = { country = GER country = EUS } } type = setflag which = EUS_MIT }
+command = { trigger = { alliance = { country = GER country = AST } } type = setflag which = AST_MIT }
+command = { trigger = { alliance = { country = GER country = PHI } } type = setflag which = PHI_MIT }
+command = { trigger = { alliance = { country = GER country = BUR } } type = setflag which = BUR_MIT }
+command = { trigger = { alliance = { country = GER country = CSX } } type = setflag which = CSX_MIT }
+command = { trigger = { alliance = { country = GER country = YEM } } type = setflag which = YEM_MIT }
+command = { trigger = { alliance = { country = GER country = BEL } } type = setflag which = BEL_MIT }
+command = { trigger = { alliance = { country = GER country = FLA } } type = setflag which = FLA_MIT }
+command = { trigger = { alliance = { country = GER country = WLL } } type = setflag which = WLL_MIT }
+command = { trigger = { alliance = { country = GER country = TEX } } type = setflag which = TEX_MIT }
+command = { trigger = { alliance = { country = GER country = ETH } } type = setflag which = ETH_MIT }
+command = { trigger = { alliance = { country = GER country = IRE } } type = setflag which = IRE_MIT2 }
+command = { trigger = { alliance = { country = GER country = INO } } type = setflag which = INO_MIT }
+command = { type = relation which = CAN value = 40 }
+command = { type = relation which = U07 value = 40 }
+}
+
+action_b = {
+name = "No, we will fight alone!"
+ai_chance = 20
+command = { type = sleepevent which = 9999998 } #all events in this chain
+command = { type = sleepevent which = 9999997 }
+command = { type = sleepevent which = 9999996 }
+command = { type = sleepevent which = 9999995 }
+command = { type = sleepevent which = 9999994 }
+command = { type = sleepevent which = 9999993 }
+command = { type = sleepevent which = 9999992 }
+command = { type = sleepevent which = 9999991 }
+command = { type = sleepevent which = 9999990 }
+command = { type = dissent value = 5 } # Best chance to take back Germany refused
+}
+}
+
+event = {
+id = 9999998
+country = CAN
+style = 2
+
+name = "Germany wants to talk!"
+desc = "The Germans have been defeated by the Syndicalist usurpers. While it was their fault that the Syndicalists have taken control of Europe they are now in the same position as we are. Surprisingly, the Germans have sent a delegate to Ottawa asking for an alliance. What will be our terms?"
+picture = "diet"
+
+action = {
+name = "Allow them into the Entente without concessions."
+ai_chance = 30
+trigger = { alliance = { country = CAN country = VIC } } #National France isn't with carlists
+command = { type = setflag which = CAN_NO_STRINGS }
+command = { type = trigger which = 9999997 } #French event
+}
+
+action = {
+name = "Allow them into the Entente with concessions."
+ai_chance = 65
+trigger = { alliance = { country = CAN country = VIC } } #National France isn't with carlists
+command = { type = setflag which = CAN_COLONIES }
+command = { type = addclaim which = 964 } #Freetown
+command = { type = addclaim which = 993 } #Ascunsion
+command = { type = addclaim which = 896 } #St. Helena
+command = { type = addclaim which = 429 } #Malta
+command = { type = addclaim which = 1007 } #Port Said
+command = { type = addclaim which = 900 } #Suez
+command = { type = addclaim which = 1050 } #Aden
+command = { type = addclaim which = 1053 } #Zeila
+command = { type = addclaim which = 832 } #Berbera
+command = { type = addclaim which = 833 } #Socotra
+command = { type = addclaim which = 840 } #Seychelles
+command = { type = addclaim which = 999 } #Mauritius
+command = { type = addclaim which = 1000 } #Diego Garcia
+command = { type = addclaim which = 998 } #Trincomalee
+command = { type = addclaim which = 1611 } #Colombo
+command = { type = addclaim which = 1612 } #Kuantan
+command = { type = addclaim which = 1509 } #Singapore
+command = { type = addclaim which = 1510 } #Kuching
+command = { type = addclaim which = 1511 } #Miri
+command = { type = addclaim which = 1613 } #Jesselton
+command = { type = addclaim which = 1614 } #Milne Bay
+command = { type = addclaim which = 1437 } #Owen Stanley Mountains
+command = { type = addclaim which = 1438 } #Kerema
+command = { type = addclaim which = 1432 } #Shortland Island
+command = { type = addclaim which = 1624 } #Vella Lavella
+command = { type = addclaim which = 1625 } #Kolombangara
+command = { type = addclaim which = 1626 } #New Georgia
+command = { type = addclaim which = 1328 } #Guadalcanal
+command = { type = addclaim which = 1331 } #Santa Cruz Islands
+command = { type = addclaim which = 1605 } #Makin
+command = { type = addclaim which = 1602 } #Abaing
+command = { type = addclaim which = 1234 } #Tarawa
+command = { type = addclaim which = 1603 } #Maiana
+command = { type = addclaim which = 1610 } #Apamama
+command = { type = addclaim which = 1725 } #Nanouti
+command = { type = addclaim which = 1726 } #Tabiteuea
+command = { type = addclaim which = 1727 } #Arorae
+command = { type = addclaim which = 1724 } #Tamana
+command = { type = addclaim which = 1587 } #Christmas Island
+command = { type = trigger which = 9999997 } #French event
+}
+
+action = {
+name = "Allow them into the Entente without concessions."
+ai_chance = 30
+trigger = { NOT = { alliance = { country = CAN country = VIC } } }#National France is with carlists
+command = { type = setflag which = CAN_NO_STRINGS }
+command = { type = setflag which = CAN_VIC_NO_ALLY }
+}
+action = {
+name = "Allow them into the Entente with concessions."
+ai_chance = 65
+trigger = { NOT = { alliance = { country = CAN country = VIC } } }#National France is with carlists
+command = { type = addclaim which = 964 } #Freetown
+command = { type = addclaim which = 993 } #Ascunsion
+command = { type = addclaim which = 896 } #St. Helena
+command = { type = addclaim which = 429 } #Malta
+command = { type = addclaim which = 1007 } #Port Said
+command = { type = addclaim which = 900 } #Suez
+command = { type = addclaim which = 1050 } #Aden
+command = { type = addclaim which = 1053 } #Zeila
+command = { type = addclaim which = 832 } #Berbera
+command = { type = addclaim which = 833 } #Socotra
+command = { type = addclaim which = 840 } #Seychelles
+command = { type = addclaim which = 999 } #Mauritius
+command = { type = addclaim which = 1000 } #Diego Garcia
+command = { type = addclaim which = 998 } #Trincomalee
+command = { type = addclaim which = 1611 } #Colombo
+command = { type = addclaim which = 1612 } #Kuantan
+command = { type = addclaim which = 1509 } #Singapore
+command = { type = addclaim which = 1510 } #Kuching
+command = { type = addclaim which = 1511 } #Miri
+command = { type = addclaim which = 1613 } #Jesselton
+command = { type = addclaim which = 1614 } #Milne Bay
+command = { type = addclaim which = 1437 } #Owen Stanley Mountains
+command = { type = addclaim which = 1438 } #Kerema
+command = { type = addclaim which = 1432 } #Shortland Island
+command = { type = addclaim which = 1624 } #Vella Lavella
+command = { type = addclaim which = 1625 } #Kolombangara
+command = { type = addclaim which = 1626 } #New Georgia
+command = { type = addclaim which = 1328 } #Guadalcanal
+command = { type = addclaim which = 1331 } #Santa Cruz Islands
+command = { type = addclaim which = 1605 } #Makin
+command = { type = addclaim which = 1602 } #Abaing
+command = { type = addclaim which = 1234 } #Tarawa
+command = { type = addclaim which = 1603 } #Maiana
+command = { type = addclaim which = 1610 } #Apamama
+command = { type = addclaim which = 1725 } #Nanouti
+command = { type = addclaim which = 1726 } #Tabiteuea
+command = { type = addclaim which = 1727 } #Arorae
+command = { type = addclaim which = 1724 } #Tamana
+command = { type = addclaim which = 1587 } #Christmas Island
+command = { type = setflag which = CAN_COLONIES }
+command = { type = setflag which = CAN_VIC_NO_ALLY }
+}
+action = {
+name = "We will regain our homeland without the German swines!"
+ai_chance = 5
+command = { type = trigger which = 9999990 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 9999989
+country = U07
+style = 2
+
+name = "Germany wants to talk!"
+desc = "The Germans have been defeated by the Syndicalist usurpers. While it was their fault that the Syndicalists have taken control of Europe they are now in the same position as we are. Surprisingly, the Germans have sent a delegate to Ottawa asking for an alliance. What will be our terms?"
+picture = "diet"
+
+action = {
+name = "Allow them into the Entente without concessions."
+ai_chance = 30
+trigger = { alliance = { country = CAN country = VIC } } #National France isn't with carlists
+command = { type = setflag which = CAN_NO_STRINGS }
+command = { type = trigger which = 9999997 } #French event
+}
+
+action = {
+name = "Allow them into the Entente with concessions."
+ai_chance = 65
+trigger = { alliance = { country = CAN country = VIC } } #National France isn't with carlists
+command = { type = setflag which = CAN_COLONIES }
+command = { type = addclaim which = 964 } #Freetown
+command = { type = addclaim which = 993 } #Ascunsion
+command = { type = addclaim which = 896 } #St. Helena
+command = { type = addclaim which = 429 } #Malta
+command = { type = addclaim which = 1007 } #Port Said
+command = { type = addclaim which = 900 } #Suez
+command = { type = addclaim which = 1050 } #Aden
+command = { type = addclaim which = 1053 } #Zeila
+command = { type = addclaim which = 832 } #Berbera
+command = { type = addclaim which = 833 } #Socotra
+command = { type = addclaim which = 840 } #Seychelles
+command = { type = addclaim which = 999 } #Mauritius
+command = { type = addclaim which = 1000 } #Diego Garcia
+command = { type = addclaim which = 998 } #Trincomalee
+command = { type = addclaim which = 1611 } #Colombo
+command = { type = addclaim which = 1612 } #Kuantan
+command = { type = addclaim which = 1509 } #Singapore
+command = { type = addclaim which = 1510 } #Kuching
+command = { type = addclaim which = 1511 } #Miri
+command = { type = addclaim which = 1613 } #Jesselton
+command = { type = addclaim which = 1614 } #Milne Bay
+command = { type = addclaim which = 1437 } #Owen Stanley Mountains
+command = { type = addclaim which = 1438 } #Kerema
+command = { type = addclaim which = 1432 } #Shortland Island
+command = { type = addclaim which = 1624 } #Vella Lavella
+command = { type = addclaim which = 1625 } #Kolombangara
+command = { type = addclaim which = 1626 } #New Georgia
+command = { type = addclaim which = 1328 } #Guadalcanal
+command = { type = addclaim which = 1331 } #Santa Cruz Islands
+command = { type = addclaim which = 1605 } #Makin
+command = { type = addclaim which = 1602 } #Abaing
+command = { type = addclaim which = 1234 } #Tarawa
+command = { type = addclaim which = 1603 } #Maiana
+command = { type = addclaim which = 1610 } #Apamama
+command = { type = addclaim which = 1725 } #Nanouti
+command = { type = addclaim which = 1726 } #Tabiteuea
+command = { type = addclaim which = 1727 } #Arorae
+command = { type = addclaim which = 1724 } #Tamana
+command = { type = addclaim which = 1587 } #Christmas Island
+command = { type = trigger which = 9999997 } #French event
+}
+action = {
+name = "Allow them into the Entente without concessions."
+ai_chance = 30
+trigger = { NOT = { alliance = { country = CAN country = VIC } } }#National France is with carlists
+command = { type = setflag which = CAN_NO_STRINGS }
+command = { type = setflag which = CAN_VIC_NO_ALLY }
+}
+
+action = {
+name = "Allow them into the Entente with concessions."
+ai_chance = 65
+trigger = { NOT = { alliance = { country = CAN country = VIC } } }#National France is with carlists
+command = { type = setflag which = CAN_COLONIES }
+command = { type = setflag which = CAN_VIC_NO_ALLY }
+command = { type = addclaim which = 964 } #Freetown
+command = { type = addclaim which = 993 } #Ascunsion
+command = { type = addclaim which = 896 } #St. Helena
+command = { type = addclaim which = 429 } #Malta
+command = { type = addclaim which = 1007 } #Port Said
+command = { type = addclaim which = 900 } #Suez
+command = { type = addclaim which = 1050 } #Aden
+command = { type = addclaim which = 1053 } #Zeila
+command = { type = addclaim which = 832 } #Berbera
+command = { type = addclaim which = 833 } #Socotra
+command = { type = addclaim which = 840 } #Seychelles
+command = { type = addclaim which = 999 } #Mauritius
+command = { type = addclaim which = 1000 } #Diego Garcia
+command = { type = addclaim which = 998 } #Trincomalee
+command = { type = addclaim which = 1611 } #Colombo
+command = { type = addclaim which = 1612 } #Kuantan
+command = { type = addclaim which = 1509 } #Singapore
+command = { type = addclaim which = 1510 } #Kuching
+command = { type = addclaim which = 1511 } #Miri
+command = { type = addclaim which = 1613 } #Jesselton
+command = { type = addclaim which = 1614 } #Milne Bay
+command = { type = addclaim which = 1437 } #Owen Stanley Mountains
+command = { type = addclaim which = 1438 } #Kerema
+command = { type = addclaim which = 1432 } #Shortland Island
+command = { type = addclaim which = 1624 } #Vella Lavella
+command = { type = addclaim which = 1625 } #Kolombangara
+command = { type = addclaim which = 1626 } #New Georgia
+command = { type = addclaim which = 1328 } #Guadalcanal
+command = { type = addclaim which = 1331 } #Santa Cruz Islands
+command = { type = addclaim which = 1605 } #Makin
+command = { type = addclaim which = 1602 } #Abaing
+command = { type = addclaim which = 1234 } #Tarawa
+command = { type = addclaim which = 1603 } #Maiana
+command = { type = addclaim which = 1610 } #Apamama
+command = { type = addclaim which = 1725 } #Nanouti
+command = { type = addclaim which = 1726 } #Tabiteuea
+command = { type = addclaim which = 1727 } #Arorae
+command = { type = addclaim which = 1724 } #Tamana
+command = { type = addclaim which = 1587 } #Christmas Island
+}
+
+action = {
+name = "We will regain our homeland without the German swine!"
+ai_chance = 5
+command = { type = trigger which = 9999990 }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 9999997
+country = VIC
+style = 2
+
+name = "Germany wants to talk!"
+desc = "The Germans have been defeated by the Syndicalist usurpers. While it was their fault that the Syndicalists have taken over Europe they are now in the same position as we are. Surprisingly, the Germans have sent a delegate to Ottawa asking for an alliance which the Canadians have accepted. Should we demand anything from the Germans in exchange for the alliance?"
+picture = "diet"
+
+
+action_a = {
+name = "Demand Alsace-Lorraine!"
+ai_chance = 50
+command = { type = setflag which = VIC_ALSACE }
+command = { type = addclaim which = 106 }
+command = { type = addclaim which = 107 }
+command = { type = addclaim which = 96 }
+command = { type = addclaim which = 105 }
+command = { type = addclaim which = 104 }
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+name = "Demand Alsace-Lorraine and part of their colonies!"
+ai_chance = 50
+command = { type = setflag which = VIC_COLONIES }
+command = { type = addclaim which = 719 }
+command = { type = addclaim which = 720 }
+command = { type = addclaim which = 722 }
+command = { type = addclaim which = 718 }
+command = { type = addclaim which = 717 }
+command = { type = addclaim which = 721 }
+command = { type = addclaim which = 723 }
+command = { type = addclaim which = 725 }
+command = { type = addclaim which = 726 }
+command = { type = addclaim which = 724 }
+command = { type = addclaim which = 106 }
+command = { type = addclaim which = 107 }
+command = { type = addclaim which = 96 }
+command = { type = addclaim which = 105 }
+command = { type = addclaim which = 104 }
+command = { type = dissent value = -5 }
+}
+
+action_c = {
+name = "Demand nothing from the Germans."
+ai_chance = 0
+command = { type = setflag which = VIC_NO_STRINGS }
+command = { type = dissent value = 5 } # you're giving up core land
+}
+}
+
+
+
+event = {
+id = 9999996
+country = GER
+style = 2
+
+name = "The Entente has accepted"
+desc = "The Entente has accepted our alliance proposal and they haven't requested anything in return! This is the best offer we could hope for!"
+picture = "diet"
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+AND = {
+flag = CAN_NO_STRINGS
+OR = {
+flag = VIC_NO_STRINGS
+flag = CAN_VIC_NO_ALLY
+}
+}
+}
+
+action_a = {
+name = "Sign the treaty!"
+ai_chance = 100
+command = { type = leave_alliance }
+command = { trigger = { flag = BLR_MIT } type = trigger which = 9999986 }
+command = { trigger = { flag = UKR_MIT } type = trigger which = 9999985 }
+command = { trigger = { flag = LIT_MIT } type = trigger which = 9999984 }
+command = { trigger = { flag = LAT_MIT } type = trigger which = 9999983 }
+command = { trigger = { flag = AUS_MIT } type = trigger which = 9999982 }
+command = { trigger = { flag = HUN_MIT } type = trigger which = 9999981 }
+command = { trigger = { flag = CZE_MIT } type = trigger which = 9999980 }
+command = { trigger = { flag = POL_MIT } type = trigger which = 9999979 }
+command = { trigger = { flag = U00_MIT } type = trigger which = 9999978 }
+command = { trigger = { flag = FIN_MIT } type = trigger which = 9999977 }
+command = { trigger = { flag = RUS_MIT } type = trigger which = 9999976 }
+command = { trigger = { flag = TRA_MIT } type = trigger which = 9999975 }
+command = { trigger = { flag = U26_MIT } type = trigger which = 9999974 }
+command = { trigger = { flag = U24_MIT } type = trigger which = 9999973 }
+command = { trigger = { flag = U25_MIT } type = trigger which = 9999972 }
+command = { trigger = { flag = BUL_MIT } type = trigger which = 9999971 }
+command = { trigger = { flag = URU_MIT } type = trigger which = 9999970 }
+command = { trigger = { flag = SER_MIT } type = trigger which = 9999969 }
+command = { trigger = { flag = GRE_MIT } type = trigger which = 9999968 }
+command = { trigger = { flag = GLD_MIT } type = trigger which = 9999967 }
+command = { trigger = { flag = CRO_MIT } type = trigger which = 9999966 }
+command = { trigger = { flag = BOS_MIT } type = trigger which = 9999965 }
+command = { trigger = { flag = MTN_MIT } type = trigger which = 9999964 }
+command = { trigger = { flag = OTT_MIT } type = trigger which = 9999963 }
+command = { trigger = { flag = DEN_MIT } type = trigger which = 9999962 }
+command = { trigger = { flag = ALB_MIT } type = trigger which = 9999961 }
+command = { trigger = { flag = ARM_MIT } type = trigger which = 9999960 }
+command = { trigger = { flag = LBY_MIT } type = trigger which = 9999959 }
+command = { trigger = { flag = EGY_MIT } type = trigger which = 9999958 }
+command = { trigger = { flag = SAU_MIT } type = trigger which = 9999957 }
+command = { trigger = { flag = PER_MIT } type = trigger which = 9999956 }
+command = { trigger = { flag = OMN_MIT } type = trigger which = 9999955 }
+command = { trigger = { flag = CON_MIT } type = trigger which = 9999954 }
+command = { trigger = { flag = ITA_MIT } type = trigger which = 9999953 }
+command = { trigger = { flag = CGX_MIT } type = trigger which = 9999952 }
+command = { trigger = { flag = SPA_MIT } type = trigger which = 9999951 }
+command = { trigger = { flag = POR_MIT } type = trigger which = 9999950 }
+command = { trigger = { flag = EUS_MIT } type = trigger which = 9999949 }
+command = { trigger = { flag = AST_MIT } type = trigger which = 9999948 }
+command = { trigger = { flag = PHI_MIT } type = trigger which = 9999947 }
+command = { trigger = { flag = BUR_MIT } type = trigger which = 9999946 }
+command = { trigger = { flag = CSX_MIT } type = trigger which = 9999945 }
+command = { trigger = { flag = YEM_MIT } type = trigger which = 9999944 }
+command = { trigger = { flag = BEL_MIT } type = trigger which = 9999943 }
+command = { trigger = { flag = FLA_MIT } type = trigger which = 9999942 }
+command = { trigger = { flag = WLL_MIT } type = trigger which = 9999941 }
+command = { trigger = { flag = TEX_MIT } type = trigger which = 9999940 }
+command = { trigger = { flag = IRE_MIT2 } type = trigger which = 9999939 }
+command = { trigger = { flag = INO_MIT } type = trigger which = 10000000 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = U49 } } type = set_relation which = U49 value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { trigger = { OR = { NOT = { exists = U07 } AND = { exists = U07 NOT = { alliance = { country = U07 country = CAN } } } } } type = event which = 9999988 where = CAN when = 1  }
+command = { trigger = { exists = U07 alliance = { country = U07 country = CAN } } type = event which = 9999987 where = U07 when = 1  }
+}
+action_b = {
+name = "No, we've changed our minds."
+ai_chance = 0
+command = { type = dissent value = 10 } #Ze Kaiser isn't making much sense
+command = { type = clrflag which = CAN_NO_STRINGS }
+command = { type = clrflag which = CAN_COLONIES }
+command = { type = clrflag which = CAN_VIC_NO_ALLY }
+command = { type = clrflag which = VIC_ALSACE }
+command = { type = clrflag which = VIC_COLONIES }
+command = { type = clrflag which = VIC_NO_STRINGS }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+command = { trigger = { alliance = { country = GER country = INO } } type = setflag which = INO_MIT }
+}
+}
+
+
+event = {
+id = 9999995
+country = GER
+style = 2
+
+name = "The Entente has accepted"
+desc = "The Entente has accepted our alliance proposal! Canada, however, has requested that in return we must enter negotiations regarding our claims on former British colonies which we took after the war. Should we still sign the treaty?"
+picture = "diet"
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+AND = {
+flag = CAN_COLONIES
+OR = {
+flag = VIC_NO_STRINGS
+flag = CAN_VIC_NO_ALLY
+}
+}
+}
+
+action_a = {
+name = "Sign the treaty!"
+ai_chance = 90
+command = { type = leave_alliance }
+command = { trigger = { flag = BLR_MIT } type = trigger which = 9999986 }
+command = { trigger = { flag = UKR_MIT } type = trigger which = 9999985 }
+command = { trigger = { flag = LIT_MIT } type = trigger which = 9999984 }
+command = { trigger = { flag = LAT_MIT } type = trigger which = 9999983 }
+command = { trigger = { flag = AUS_MIT } type = trigger which = 9999982 }
+command = { trigger = { flag = HUN_MIT } type = trigger which = 9999981 }
+command = { trigger = { flag = CZE_MIT } type = trigger which = 9999980 }
+command = { trigger = { flag = POL_MIT } type = trigger which = 9999979 }
+command = { trigger = { flag = U00_MIT } type = trigger which = 9999978 }
+command = { trigger = { flag = FIN_MIT } type = trigger which = 9999977 }
+command = { trigger = { flag = RUS_MIT } type = trigger which = 9999976 }
+command = { trigger = { flag = TRA_MIT } type = trigger which = 9999975 }
+command = { trigger = { flag = U26_MIT } type = trigger which = 9999974 }
+command = { trigger = { flag = U24_MIT } type = trigger which = 9999973 }
+command = { trigger = { flag = U25_MIT } type = trigger which = 9999972 }
+command = { trigger = { flag = BUL_MIT } type = trigger which = 9999971 }
+command = { trigger = { flag = URU_MIT } type = trigger which = 9999970 }
+command = { trigger = { flag = SER_MIT } type = trigger which = 9999969 }
+command = { trigger = { flag = GRE_MIT } type = trigger which = 9999968 }
+command = { trigger = { flag = GLD_MIT } type = trigger which = 9999967 }
+command = { trigger = { flag = CRO_MIT } type = trigger which = 9999966 }
+command = { trigger = { flag = BOS_MIT } type = trigger which = 9999965 }
+command = { trigger = { flag = MTN_MIT } type = trigger which = 9999964 }
+command = { trigger = { flag = OTT_MIT } type = trigger which = 9999963 }
+command = { trigger = { flag = DEN_MIT } type = trigger which = 9999962 }
+command = { trigger = { flag = ALB_MIT } type = trigger which = 9999961 }
+command = { trigger = { flag = ARM_MIT } type = trigger which = 9999960 }
+command = { trigger = { flag = LBY_MIT } type = trigger which = 9999959 }
+command = { trigger = { flag = EGY_MIT } type = trigger which = 9999958 }
+command = { trigger = { flag = SAU_MIT } type = trigger which = 9999957 }
+command = { trigger = { flag = PER_MIT } type = trigger which = 9999956 }
+command = { trigger = { flag = OMN_MIT } type = trigger which = 9999955 }
+command = { trigger = { flag = CON_MIT } type = trigger which = 9999954 }
+command = { trigger = { flag = ITA_MIT } type = trigger which = 9999953 }
+command = { trigger = { flag = CGX_MIT } type = trigger which = 9999952 }
+command = { trigger = { flag = SPA_MIT } type = trigger which = 9999951 }
+command = { trigger = { flag = POR_MIT } type = trigger which = 9999950 }
+command = { trigger = { flag = EUS_MIT } type = trigger which = 9999949 }
+command = { trigger = { flag = AST_MIT } type = trigger which = 9999948 }
+command = { trigger = { flag = PHI_MIT } type = trigger which = 9999947 }
+command = { trigger = { flag = BUR_MIT } type = trigger which = 9999946 }
+command = { trigger = { flag = CSX_MIT } type = trigger which = 9999945 }
+command = { trigger = { flag = YEM_MIT } type = trigger which = 9999944 }
+command = { trigger = { flag = BEL_MIT } type = trigger which = 9999943 }
+command = { trigger = { flag = FLA_MIT } type = trigger which = 9999942 }
+command = { trigger = { flag = WLL_MIT } type = trigger which = 9999941 }
+command = { trigger = { flag = TEX_MIT } type = trigger which = 9999940 }
+command = { trigger = { flag = ETH_MIT } type = trigger which = 9999900 }
+command = { trigger = { flag = IRE_MIT2 } type = trigger which = 9999939 }
+command = { trigger = { flag = INO_MIT } type = trigger which = 10000000 }
+command = { type = set_relation which = CAN value = 150 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = U49 } } type = set_relation which = U49 value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { trigger = { OR = { NOT = { exists = U07 } AND = { exists = U07 NOT = { alliance = { country = U07 country = CAN } } } } } type = event which = 9999988 where = CAN when = 1  }
+command = { trigger = { exists = U07 alliance = { country = U07 country = CAN } } type = event which = 9999987 where = U07 when = 1  }
+}
+action_b = {
+name = "No, the price is too high."
+ai_chance = 10
+command = { type = dissent value = 7 } #People pissed that you'd rather keep a few of your colonies than have plenty of help re-taking your homeland
+command = { type = clrflag which = CAN_NO_STRINGS }
+command = { type = clrflag which = CAN_COLONIES }
+command = { type = clrflag which = CAN_VIC_NO_ALLY }
+command = { type = clrflag which = VIC_ALSACE }
+command = { type = clrflag which = VIC_COLONIES }
+command = { type = clrflag which = VIC_NO_STRINGS }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = ETH_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+}
+}
+
+
+event = {
+id = 9999994
+country = GER
+style = 2
+
+name = "The Entente has accepted"
+desc = "The Entente has accepted our alliance proposal! While Canada has requested nothing in return, France has demanded that we give them Alsace-Lorraine after the war. Should we still sign the treaty?"
+picture = "diet"
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+flag = CAN_NO_STRINGS
+flag = VIC_ALSACE
+}
+
+action_a = {
+name = "Sign the treaty!"
+ai_chance = 95
+command = { type = leave_alliance }
+command = { trigger = { flag = BLR_MIT } type = trigger which = 9999986 }
+command = { trigger = { flag = UKR_MIT } type = trigger which = 9999985 }
+command = { trigger = { flag = LIT_MIT } type = trigger which = 9999984 }
+command = { trigger = { flag = LAT_MIT } type = trigger which = 9999983 }
+command = { trigger = { flag = AUS_MIT } type = trigger which = 9999982 }
+command = { trigger = { flag = HUN_MIT } type = trigger which = 9999981 }
+command = { trigger = { flag = CZE_MIT } type = trigger which = 9999980 }
+command = { trigger = { flag = POL_MIT } type = trigger which = 9999979 }
+command = { trigger = { flag = U00_MIT } type = trigger which = 9999978 }
+command = { trigger = { flag = FIN_MIT } type = trigger which = 9999977 }
+command = { trigger = { flag = RUS_MIT } type = trigger which = 9999976 }
+command = { trigger = { flag = TRA_MIT } type = trigger which = 9999975 }
+command = { trigger = { flag = U26_MIT } type = trigger which = 9999974 }
+command = { trigger = { flag = U24_MIT } type = trigger which = 9999973 }
+command = { trigger = { flag = U25_MIT } type = trigger which = 9999972 }
+command = { trigger = { flag = BUL_MIT } type = trigger which = 9999971 }
+command = { trigger = { flag = URU_MIT } type = trigger which = 9999970 }
+command = { trigger = { flag = SER_MIT } type = trigger which = 9999969 }
+command = { trigger = { flag = GRE_MIT } type = trigger which = 9999968 }
+command = { trigger = { flag = GLD_MIT } type = trigger which = 9999967 }
+command = { trigger = { flag = CRO_MIT } type = trigger which = 9999966 }
+command = { trigger = { flag = BOS_MIT } type = trigger which = 9999965 }
+command = { trigger = { flag = MTN_MIT } type = trigger which = 9999964 }
+command = { trigger = { flag = OTT_MIT } type = trigger which = 9999963 }
+command = { trigger = { flag = DEN_MIT } type = trigger which = 9999962 }
+command = { trigger = { flag = ALB_MIT } type = trigger which = 9999961 }
+command = { trigger = { flag = ARM_MIT } type = trigger which = 9999960 }
+command = { trigger = { flag = LBY_MIT } type = trigger which = 9999959 }
+command = { trigger = { flag = EGY_MIT } type = trigger which = 9999958 }
+command = { trigger = { flag = SAU_MIT } type = trigger which = 9999957 }
+command = { trigger = { flag = PER_MIT } type = trigger which = 9999956 }
+command = { trigger = { flag = OMN_MIT } type = trigger which = 9999955 }
+command = { trigger = { flag = CON_MIT } type = trigger which = 9999954 }
+command = { trigger = { flag = ITA_MIT } type = trigger which = 9999953 }
+command = { trigger = { flag = CGX_MIT } type = trigger which = 9999952 }
+command = { trigger = { flag = SPA_MIT } type = trigger which = 9999951 }
+command = { trigger = { flag = POR_MIT } type = trigger which = 9999950 }
+command = { trigger = { flag = EUS_MIT } type = trigger which = 9999949 }
+command = { trigger = { flag = AST_MIT } type = trigger which = 9999948 }
+command = { trigger = { flag = PHI_MIT } type = trigger which = 9999947 }
+command = { trigger = { flag = BUR_MIT } type = trigger which = 9999946 }
+command = { trigger = { flag = CSX_MIT } type = trigger which = 9999945 }
+command = { trigger = { flag = YEM_MIT } type = trigger which = 9999944 }
+command = { trigger = { flag = BEL_MIT } type = trigger which = 9999943 }
+command = { trigger = { flag = FLA_MIT } type = trigger which = 9999942 }
+command = { trigger = { flag = WLL_MIT } type = trigger which = 9999941 }
+command = { trigger = { flag = TEX_MIT } type = trigger which = 9999940 }
+command = { trigger = { flag = ETH_MIT } type = trigger which = 9999900 }
+command = { trigger = { flag = IRE_MIT2 } type = trigger which = 9999939 }
+command = { trigger = { flag = INO_MIT } type = trigger which = 10000000 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = U49 } } type = set_relation which = U49 value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { type = removecore which = 104 } #Metz
+command = { type = removecore which = 107 } #Strasbourg
+command = { type = removecore which = 105 } #Mulhouse
+command = { type = removecore which = 106 }
+command = { type = removecore which = 96 }
+command = { trigger = { OR = { NOT = { exists = U07 } AND = { exists = U07 NOT = { alliance = { country = U07 country = CAN } } } } } type = event which = 9999988 where = CAN when = 1  }
+command = { trigger = { exists = U07 alliance = { country = U07 country = CAN } } type = event which = 9999987 where = U07 when = 1  }
+}
+action_b = {
+name = "No, the price is too high."
+ai_chance = 5
+command = { type = dissent value = 9 } #People pissed that you'd rather have Aslace than help re-taking all of Germany
+command = { type = clrflag which = CAN_NO_STRINGS }
+command = { type = clrflag which = CAN_COLONIES }
+command = { type = clrflag which = CAN_VIC_NO_ALLY }
+command = { type = clrflag which = VIC_ALSACE }
+command = { type = clrflag which = VIC_COLONIES }
+command = { type = clrflag which = VIC_NO_STRINGS }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = ETH_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+}
+}
+
+
+event = {
+id = 9999993
+country = GER
+style = 2
+
+name = "The Entente has accepted"
+desc = "The Entente has accepted our alliance proposal, but both the French and British governments in exile have requested something in return. Canada has requested we enter negotiations regarding our claims on former British colonies which we took after the war and France has demanded Alsace-Lorraine. Should we still sign the treaty?"
+picture = "diet"
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+flag = CAN_COLONIES
+flag = VIC_ALSACE
+}
+
+action_a = {
+name = "Sign the treaty!"
+ai_chance = 85
+command = { type = leave_alliance }
+command = { trigger = { flag = BLR_MIT } type = trigger which = 9999986 }
+command = { trigger = { flag = UKR_MIT } type = trigger which = 9999985 }
+command = { trigger = { flag = LIT_MIT } type = trigger which = 9999984 }
+command = { trigger = { flag = LAT_MIT } type = trigger which = 9999983 }
+command = { trigger = { flag = AUS_MIT } type = trigger which = 9999982 }
+command = { trigger = { flag = HUN_MIT } type = trigger which = 9999981 }
+command = { trigger = { flag = CZE_MIT } type = trigger which = 9999980 }
+command = { trigger = { flag = POL_MIT } type = trigger which = 9999979 }
+command = { trigger = { flag = U00_MIT } type = trigger which = 9999978 }
+command = { trigger = { flag = FIN_MIT } type = trigger which = 9999977 }
+command = { trigger = { flag = RUS_MIT } type = trigger which = 9999976 }
+command = { trigger = { flag = TRA_MIT } type = trigger which = 9999975 }
+command = { trigger = { flag = U26_MIT } type = trigger which = 9999974 }
+command = { trigger = { flag = U24_MIT } type = trigger which = 9999973 }
+command = { trigger = { flag = U25_MIT } type = trigger which = 9999972 }
+command = { trigger = { flag = BUL_MIT } type = trigger which = 9999971 }
+command = { trigger = { flag = URU_MIT } type = trigger which = 9999970 }
+command = { trigger = { flag = SER_MIT } type = trigger which = 9999969 }
+command = { trigger = { flag = GRE_MIT } type = trigger which = 9999968 }
+command = { trigger = { flag = GLD_MIT } type = trigger which = 9999967 }
+command = { trigger = { flag = CRO_MIT } type = trigger which = 9999966 }
+command = { trigger = { flag = BOS_MIT } type = trigger which = 9999965 }
+command = { trigger = { flag = MTN_MIT } type = trigger which = 9999964 }
+command = { trigger = { flag = OTT_MIT } type = trigger which = 9999963 }
+command = { trigger = { flag = DEN_MIT } type = trigger which = 9999962 }
+command = { trigger = { flag = ALB_MIT } type = trigger which = 9999961 }
+command = { trigger = { flag = ARM_MIT } type = trigger which = 9999960 }
+command = { trigger = { flag = LBY_MIT } type = trigger which = 9999959 }
+command = { trigger = { flag = EGY_MIT } type = trigger which = 9999958 }
+command = { trigger = { flag = SAU_MIT } type = trigger which = 9999957 }
+command = { trigger = { flag = PER_MIT } type = trigger which = 9999956 }
+command = { trigger = { flag = OMN_MIT } type = trigger which = 9999955 }
+command = { trigger = { flag = CON_MIT } type = trigger which = 9999954 }
+command = { trigger = { flag = ITA_MIT } type = trigger which = 9999953 }
+command = { trigger = { flag = CGX_MIT } type = trigger which = 9999952 }
+command = { trigger = { flag = SPA_MIT } type = trigger which = 9999951 }
+command = { trigger = { flag = POR_MIT } type = trigger which = 9999950 }
+command = { trigger = { flag = EUS_MIT } type = trigger which = 9999949 }
+command = { trigger = { flag = AST_MIT } type = trigger which = 9999948 }
+command = { trigger = { flag = PHI_MIT } type = trigger which = 9999947 }
+command = { trigger = { flag = BUR_MIT } type = trigger which = 9999946 }
+command = { trigger = { flag = CSX_MIT } type = trigger which = 9999945 }
+command = { trigger = { flag = YEM_MIT } type = trigger which = 9999944 }
+command = { trigger = { flag = BEL_MIT } type = trigger which = 9999943 }
+command = { trigger = { flag = FLA_MIT } type = trigger which = 9999942 }
+command = { trigger = { flag = WLL_MIT } type = trigger which = 9999941 }
+command = { trigger = { flag = TEX_MIT } type = trigger which = 9999940 }
+command = { trigger = { flag = ETH_MIT } type = trigger which = 9999900 }
+command = { trigger = { flag = IRE_MIT2 } type = trigger which = 9999939 }
+command = { trigger = { flag = INO_MIT } type = trigger which = 10000000 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = U49 } } type = set_relation which = U49 value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { type = removecore which = 104 } #Metz
+command = { type = removecore which = 107 } #Strasbourg
+command = { type = removecore which = 105 } #Mulhouse
+command = { type = removecore which = 106 }
+command = { type = removecore which = 96 }
+command = { trigger = { OR = { NOT = { exists = U07 } AND = { exists = U07 NOT = { alliance = { country = U07 country = CAN } } } } } type = event which = 9999988 where = CAN when = 1  }
+command = { trigger = { exists = U07 alliance = { country = U07 country = CAN } } type = event which = 9999987 where = U07 when = 1  }
+}
+action_b = {
+name = "No, the price is too high."
+ai_chance = 15
+command = { type = dissent value = 6 } # People pissed that you'd rather keep some colonies and Alsace-Lorraine than have plenty of help getting Germany back
+command = { type = clrflag which = CAN_NO_STRINGS }
+command = { type = clrflag which = CAN_COLONIES }
+command = { type = clrflag which = CAN_VIC_NO_ALLY }
+command = { type = clrflag which = VIC_ALSACE }
+command = { type = clrflag which = VIC_COLONIES }
+command = { type = clrflag which = VIC_NO_STRINGS }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = ETH_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+}
+}
+
+
+event = {
+id = 9999992
+country = GER
+style = 2
+
+name = "The Entente has accepted"
+desc = "We have been defeated by the Syndicalist bastards but the Entente still fights on. While it was the inability of their governments to hold onto their lands that led to this whole mess many say we should put aside our differences and join with the Entente to reclaim our homeland!"
+picture = "diet"
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+flag = CAN_NO_STRINGS
+flag = VIC_COLONIES
+}
+
+action_a = {
+name = "Sign the treaty!"
+ai_chance = 90
+command = { type = leave_alliance }
+command = { trigger = { flag = BLR_MIT } type = trigger which = 9999986 }
+command = { trigger = { flag = UKR_MIT } type = trigger which = 9999985 }
+command = { trigger = { flag = LIT_MIT } type = trigger which = 9999984 }
+command = { trigger = { flag = LAT_MIT } type = trigger which = 9999983 }
+command = { trigger = { flag = AUS_MIT } type = trigger which = 9999982 }
+command = { trigger = { flag = HUN_MIT } type = trigger which = 9999981 }
+command = { trigger = { flag = CZE_MIT } type = trigger which = 9999980 }
+command = { trigger = { flag = POL_MIT } type = trigger which = 9999979 }
+command = { trigger = { flag = U00_MIT } type = trigger which = 9999978 }
+command = { trigger = { flag = FIN_MIT } type = trigger which = 9999977 }
+command = { trigger = { flag = RUS_MIT } type = trigger which = 9999976 }
+command = { trigger = { flag = TRA_MIT } type = trigger which = 9999975 }
+command = { trigger = { flag = U26_MIT } type = trigger which = 9999974 }
+command = { trigger = { flag = U24_MIT } type = trigger which = 9999973 }
+command = { trigger = { flag = U25_MIT } type = trigger which = 9999972 }
+command = { trigger = { flag = BUL_MIT } type = trigger which = 9999971 }
+command = { trigger = { flag = URU_MIT } type = trigger which = 9999970 }
+command = { trigger = { flag = SER_MIT } type = trigger which = 9999969 }
+command = { trigger = { flag = GRE_MIT } type = trigger which = 9999968 }
+command = { trigger = { flag = GLD_MIT } type = trigger which = 9999967 }
+command = { trigger = { flag = CRO_MIT } type = trigger which = 9999966 }
+command = { trigger = { flag = BOS_MIT } type = trigger which = 9999965 }
+command = { trigger = { flag = MTN_MIT } type = trigger which = 9999964 }
+command = { trigger = { flag = OTT_MIT } type = trigger which = 9999963 }
+command = { trigger = { flag = DEN_MIT } type = trigger which = 9999962 }
+command = { trigger = { flag = ALB_MIT } type = trigger which = 9999961 }
+command = { trigger = { flag = ARM_MIT } type = trigger which = 9999960 }
+command = { trigger = { flag = LBY_MIT } type = trigger which = 9999959 }
+command = { trigger = { flag = EGY_MIT } type = trigger which = 9999958 }
+command = { trigger = { flag = SAU_MIT } type = trigger which = 9999957 }
+command = { trigger = { flag = PER_MIT } type = trigger which = 9999956 }
+command = { trigger = { flag = OMN_MIT } type = trigger which = 9999955 }
+command = { trigger = { flag = CON_MIT } type = trigger which = 9999954 }
+command = { trigger = { flag = ITA_MIT } type = trigger which = 9999953 }
+command = { trigger = { flag = CGX_MIT } type = trigger which = 9999952 }
+command = { trigger = { flag = SPA_MIT } type = trigger which = 9999951 }
+command = { trigger = { flag = POR_MIT } type = trigger which = 9999950 }
+command = { trigger = { flag = EUS_MIT } type = trigger which = 9999949 }
+command = { trigger = { flag = AST_MIT } type = trigger which = 9999948 }
+command = { trigger = { flag = PHI_MIT } type = trigger which = 9999947 }
+command = { trigger = { flag = BUR_MIT } type = trigger which = 9999946 }
+command = { trigger = { flag = CSX_MIT } type = trigger which = 9999945 }
+command = { trigger = { flag = YEM_MIT } type = trigger which = 9999944 }
+command = { trigger = { flag = BEL_MIT } type = trigger which = 9999943 }
+command = { trigger = { flag = FLA_MIT } type = trigger which = 9999942 }
+command = { trigger = { flag = WLL_MIT } type = trigger which = 9999941 }
+command = { trigger = { flag = TEX_MIT } type = trigger which = 9999940 }
+command = { trigger = { flag = ETH_MIT } type = trigger which = 9999900 }
+command = { trigger = { flag = IRE_MIT2 } type = trigger which = 9999939 }
+command = { trigger = { flag = INO_MIT } type = trigger which = 10000000 }
+command = { type = removecore which = 104 } #Metz
+command = { type = removecore which = 107 } #Strasbourg
+command = { type = removecore which = 105 } #Mulhouse
+command = { type = removecore which = 106 }
+command = { type = removecore which = 96 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = U49 } } type = set_relation which = U49 value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { trigger = { OR = { NOT = { exists = U07 } AND = { exists = U07 NOT = { alliance = { country = U07 country = CAN } } } } } type = event which = 9999988 where = CAN when = 1  }
+command = { trigger = { exists = U07 alliance = { country = U07 country = CAN } } type = event which = 9999987 where = U07 when = 1  }
+}
+action_b = {
+name = "No, the price is too high."
+ai_chance = 10
+command = { type = dissent value = 6 } # People pissed that you'd rather have a few colonies and Alsace than get help taking back Germany
+command = { type = clrflag which = CAN_NO_STRINGS }
+command = { type = clrflag which = CAN_COLONIES }
+command = { type = clrflag which = CAN_VIC_NO_ALLY }
+command = { type = clrflag which = VIC_ALSACE }
+command = { type = clrflag which = VIC_COLONIES }
+command = { type = clrflag which = VIC_NO_STRINGS }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = ETH_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+}
+}
+
+event = {
+id = 9999991
+country = GER
+style = 2
+
+name = "The Entente has accepted"
+desc = "The Entente has accepted our alliance proposal, but both the French and British governments in exile have requested that we enter negotiations regarding our claims on former French and British colonies after the war in addition to renouncing our claim on Alsace-Lorraine. Should we still sign the treaty?"
+picture = "diet"
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+flag = CAN_COLONIES
+flag = VIC_COLONIES
+}
+
+action_a = {
+name = "Sign the treaty!"
+ai_chance = 75
+command = { type = leave_alliance }
+command = { trigger = { flag = BLR_MIT } type = trigger which = 9999986 }
+command = { trigger = { flag = UKR_MIT } type = trigger which = 9999985 }
+command = { trigger = { flag = LIT_MIT } type = trigger which = 9999984 }
+command = { trigger = { flag = LAT_MIT } type = trigger which = 9999983 }
+command = { trigger = { flag = AUS_MIT } type = trigger which = 9999982 }
+command = { trigger = { flag = HUN_MIT } type = trigger which = 9999981 }
+command = { trigger = { flag = CZE_MIT } type = trigger which = 9999980 }
+command = { trigger = { flag = POL_MIT } type = trigger which = 9999979 }
+command = { trigger = { flag = U00_MIT } type = trigger which = 9999978 }
+command = { trigger = { flag = FIN_MIT } type = trigger which = 9999977 }
+command = { trigger = { flag = RUS_MIT } type = trigger which = 9999976 }
+command = { trigger = { flag = TRA_MIT } type = trigger which = 9999975 }
+command = { trigger = { flag = U26_MIT } type = trigger which = 9999974 }
+command = { trigger = { flag = U24_MIT } type = trigger which = 9999973 }
+command = { trigger = { flag = U25_MIT } type = trigger which = 9999972 }
+command = { trigger = { flag = BUL_MIT } type = trigger which = 9999971 }
+command = { trigger = { flag = URU_MIT } type = trigger which = 9999970 }
+command = { trigger = { flag = SER_MIT } type = trigger which = 9999969 }
+command = { trigger = { flag = GRE_MIT } type = trigger which = 9999968 }
+command = { trigger = { flag = GLD_MIT } type = trigger which = 9999967 }
+command = { trigger = { flag = CRO_MIT } type = trigger which = 9999966 }
+command = { trigger = { flag = BOS_MIT } type = trigger which = 9999965 }
+command = { trigger = { flag = MTN_MIT } type = trigger which = 9999964 }
+command = { trigger = { flag = OTT_MIT } type = trigger which = 9999963 }
+command = { trigger = { flag = DEN_MIT } type = trigger which = 9999962 }
+command = { trigger = { flag = ALB_MIT } type = trigger which = 9999961 }
+command = { trigger = { flag = ARM_MIT } type = trigger which = 9999960 }
+command = { trigger = { flag = LBY_MIT } type = trigger which = 9999959 }
+command = { trigger = { flag = EGY_MIT } type = trigger which = 9999958 }
+command = { trigger = { flag = SAU_MIT } type = trigger which = 9999957 }
+command = { trigger = { flag = PER_MIT } type = trigger which = 9999956 }
+command = { trigger = { flag = OMN_MIT } type = trigger which = 9999955 }
+command = { trigger = { flag = CON_MIT } type = trigger which = 9999954 }
+command = { trigger = { flag = ITA_MIT } type = trigger which = 9999953 }
+command = { trigger = { flag = CGX_MIT } type = trigger which = 9999952 }
+command = { trigger = { flag = SPA_MIT } type = trigger which = 9999951 }
+command = { trigger = { flag = POR_MIT } type = trigger which = 9999950 }
+command = { trigger = { flag = EUS_MIT } type = trigger which = 9999949 }
+command = { trigger = { flag = AST_MIT } type = trigger which = 9999948 }
+command = { trigger = { flag = PHI_MIT } type = trigger which = 9999947 }
+command = { trigger = { flag = BUR_MIT } type = trigger which = 9999946 }
+command = { trigger = { flag = CSX_MIT } type = trigger which = 9999945 }
+command = { trigger = { flag = YEM_MIT } type = trigger which = 9999944 }
+command = { trigger = { flag = BEL_MIT } type = trigger which = 9999943 }
+command = { trigger = { flag = FLA_MIT } type = trigger which = 9999942 }
+command = { trigger = { flag = WLL_MIT } type = trigger which = 9999941 }
+command = { trigger = { flag = TEX_MIT } type = trigger which = 9999940 }
+command = { trigger = { flag = ETH_MIT } type = trigger which = 9999900 }
+command = { trigger = { flag = IRE_MIT2 } type = trigger which = 9999939 }
+command = { trigger = { flag = INO_MIT } type = trigger which = 10000000 }
+command = { type = removecore which = 104 } #Metz
+command = { type = removecore which = 107 } #Strasbourg
+command = { type = removecore which = 105 } #Mulhouse
+command = { type = removecore which = 106 }
+command = { type = removecore which = 96 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = U49 } } type = set_relation which = U49 value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { trigger = { OR = { NOT = { exists = U07 } AND = { exists = U07 NOT = { alliance = { country = U07 country = CAN } } } } } type = event which = 9999988 where = CAN when = 1  }
+command = { trigger = { exists = U07 alliance = { country = U07 country = CAN } } type = event which = 9999987 where = U07 when = 1  }
+}
+action_b = {
+name = "No, the price is too high."
+ai_chance = 25
+command = { type = dissent value = 2 } #Some people are still pissed, but the terms aren't very generous
+command = { type = clrflag which = CAN_NO_STRINGS }
+command = { type = clrflag which = CAN_COLONIES }
+command = { type = clrflag which = CAN_VIC_NO_ALLY }
+command = { type = clrflag which = VIC_ALSACE }
+command = { type = clrflag which = VIC_COLONIES }
+command = { type = clrflag which = VIC_NO_STRINGS }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = ETH_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+
+}
+}
+
+
+event = {
+id = 9999990
+country = GER
+style = 2
+
+name = "The Entente has refused"
+desc = "The Canadians have refused our offer to ally with them. They blame us for this whole mess and claim that they don't need any help to defeat the Syndicalists!"
+picture = "diet"
+
+action_a = {
+name = "Verdammt!"
+command = { type = sleepevent which = 9999998 } #all events in this chain
+command = { type = sleepevent which = 9999997 }
+command = { type = sleepevent which = 9999996 }
+command = { type = sleepevent which = 9999995 }
+command = { type = sleepevent which = 9999994 }
+command = { type = sleepevent which = 9999993 }
+command = { type = sleepevent which = 9999992 }
+command = { type = sleepevent which = 9999991 }
+command = { type = sleepevent which = 9999990 }
+command = { type = dissent value = 3 } # Damn Canadians
+command = { type = clrflag which = CAN_NO_STRINGS }
+command = { type = clrflag which = CAN_COLONIES }
+command = { type = clrflag which = CAN_VIC_NO_ALLY }
+command = { type = clrflag which = VIC_ALSACE }
+command = { type = clrflag which = VIC_COLONIES }
+command = { type = clrflag which = VIC_NO_STRINGS }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+}
+}
+
+event = {
+id = 9999988
+country = CAN
+style = 2
+
+name = "Enlargement of the Entente"
+desc = "The former members of the Mitteleuropa alliance have followed the example of the German Empire and they are now members of our alliance."
+picture = "diet"
+
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = GER }
+command = { trigger = { flag = BLR_MIT } type = set_relation which = BLR value = 150 }
+command = { trigger = { flag = UKR_MIT } type = set_relation which = UKR value = 150 }
+command = { trigger = { flag = LIT_MIT } type = set_relation which = LIT value = 150 }
+command = { trigger = { flag = LAT_MIT } type = set_relation which = LAT value = 150 }
+command = { trigger = { flag = AUS_MIT } type = set_relation which = AUS value = 150 }
+command = { trigger = { flag = HUN_MIT } type = set_relation which = HUN value = 150 }
+command = { trigger = { flag = CZE_MIT } type = set_relation which = CZE value = 150 }
+command = { trigger = { flag = POL_MIT } type = set_relation which = POL value = 150 }
+command = { trigger = { flag = U00_MIT } type = set_relation which = U00 value = 150 }
+command = { trigger = { flag = FIN_MIT } type = set_relation which = FIN value = 150 }
+command = { trigger = { flag = RUS_MIT } type = set_relation which = RUS value = 150 }
+command = { trigger = { flag = TRA_MIT } type = set_relation which = TRA value = 150 }
+command = { trigger = { flag = U26_MIT } type = set_relation which = U26 value = 150 }
+command = { trigger = { flag = U24_MIT } type = set_relation which = U24 value = 150 }
+command = { trigger = { flag = U25_MIT } type = set_relation which = U25 value = 150 }
+command = { trigger = { flag = BUL_MIT } type = set_relation which = BUL value = 150 }
+command = { trigger = { flag = URU_MIT } type = set_relation which = URU value = 150 }
+command = { trigger = { flag = SER_MIT } type = set_relation which = SER value = 150 }
+command = { trigger = { flag = GRE_MIT } type = set_relation which = GRE value = 150 }
+command = { trigger = { flag = GLD_MIT } type = set_relation which = GLD value = 150 }
+command = { trigger = { flag = CRO_MIT } type = set_relation which = CRO value = 150 }
+command = { trigger = { flag = BOS_MIT } type = set_relation which = BOS value = 150 }
+command = { trigger = { flag = MTN_MIT } type = set_relation which = MTN value = 150 }
+command = { trigger = { flag = OTT_MIT } type = set_relation which = OTT value = 150 }
+command = { trigger = { flag = DEN_MIT } type = set_relation which = DEN value = 150 }
+command = { trigger = { flag = ALB_MIT } type = set_relation which = ALB value = 150 }
+command = { trigger = { flag = ARM_MIT } type = set_relation which = ARM value = 150 }
+command = { trigger = { flag = LBY_MIT } type = set_relation which = LBY value = 150 }
+command = { trigger = { flag = EGY_MIT } type = set_relation which = EGY value = 150 }
+command = { trigger = { flag = SAU_MIT } type = set_relation which = SAU value = 150 }
+command = { trigger = { flag = PER_MIT } type = set_relation which = PER value = 150 }
+command = { trigger = { flag = OMN_MIT } type = set_relation which = OMN value = 150 }
+command = { trigger = { flag = CON_MIT } type = set_relation which = CON value = 150 }
+command = { trigger = { flag = ITA_MIT } type = set_relation which = ITA value = 150 }
+command = { trigger = { flag = CGX_MIT } type = set_relation which = CGX value = 150 }
+command = { trigger = { flag = SPA_MIT } type = set_relation which = SPA value = 150 }
+command = { trigger = { flag = POR_MIT } type = set_relation which = POR value = 150 }
+command = { trigger = { flag = EUS_MIT } type = set_relation which = EUS value = 150 }
+command = { trigger = { flag = AST_MIT } type = set_relation which = AST value = 150 }
+command = { trigger = { flag = PHI_MIT } type = set_relation which = PHI value = 150 }
+command = { trigger = { flag = BUR_MIT } type = set_relation which = BUR value = 150 }
+command = { trigger = { flag = CSX_MIT } type = set_relation which = CSX value = 150 }
+command = { trigger = { flag = YEM_MIT } type = set_relation which = YEM value = 150 }
+command = { trigger = { flag = BEL_MIT } type = set_relation which = BEL value = 150 }
+command = { trigger = { flag = FLA_MIT } type = set_relation which = FLA value = 150 }
+command = { trigger = { flag = WLL_MIT } type = set_relation which = WLL value = 150 }
+command = { trigger = { flag = TEX_MIT } type = set_relation which = TEX value = 150 }
+command = { trigger = { flag = ETH_MIT } type = set_relation which = ETH value = 150 }
+command = { trigger = { flag = IRE_MIT2 } type = set_relation which = IRE value = 150 }
+command = { trigger = { flag = INO_MIT } type = set_relation which = INO value = 150 }
+command = { trigger = { flag = BLR_MIT } type = alliance which = BLR }
+command = { trigger = { flag = UKR_MIT } type = alliance which = UKR }
+command = { trigger = { flag = LIT_MIT } type = alliance which = LIT }
+command = { trigger = { flag = LAT_MIT } type = alliance which = LAT }
+command = { trigger = { flag = AUS_MIT } type = alliance which = AUS }
+command = { trigger = { flag = HUN_MIT } type = alliance which = HUN }
+command = { trigger = { flag = CZE_MIT } type = alliance which = CZE }
+command = { trigger = { flag = POL_MIT } type = alliance which = POL }
+command = { trigger = { flag = U00_MIT } type = alliance which = U00 }
+command = { trigger = { flag = FIN_MIT } type = alliance which = FIN }
+command = { trigger = { flag = RUS_MIT } type = alliance which = RUS }
+command = { trigger = { flag = TRA_MIT } type = alliance which = TRA }
+command = { trigger = { flag = U26_MIT } type = alliance which = U26 }
+command = { trigger = { flag = U24_MIT } type = alliance which = U24 }
+command = { trigger = { flag = U25_MIT } type = alliance which = U25 }
+command = { trigger = { flag = BUL_MIT } type = alliance which = BUL }
+command = { trigger = { flag = URU_MIT } type = alliance which = URU }
+command = { trigger = { flag = SER_MIT } type = alliance which = SER }
+command = { trigger = { flag = GRE_MIT } type = alliance which = GRE }
+command = { trigger = { flag = GLD_MIT } type = alliance which = GLD }
+command = { trigger = { flag = CRO_MIT } type = alliance which = CRO }
+command = { trigger = { flag = BOS_MIT } type = alliance which = BOS }
+command = { trigger = { flag = MTN_MIT } type = alliance which = MTN }
+command = { trigger = { flag = OTT_MIT } type = alliance which = OTT }
+command = { trigger = { flag = DEN_MIT } type = alliance which = DEN }
+command = { trigger = { flag = ALB_MIT } type = alliance which = ALB }
+command = { trigger = { flag = ARM_MIT } type = alliance which = ARM }
+command = { trigger = { flag = LBY_MIT } type = alliance which = LBY }
+command = { trigger = { flag = EGY_MIT } type = alliance which = EGY }
+command = { trigger = { flag = SAU_MIT } type = alliance which = SAU }
+command = { trigger = { flag = PER_MIT } type = alliance which = PER }
+command = { trigger = { flag = OMN_MIT } type = alliance which = OMN }
+command = { trigger = { flag = CON_MIT } type = alliance which = CON }
+command = { trigger = { flag = ITA_MIT } type = alliance which = ITA }
+command = { trigger = { flag = CGX_MIT } type = alliance which = CGX }
+command = { trigger = { flag = SPA_MIT } type = alliance which = SPA }
+command = { trigger = { flag = POR_MIT } type = alliance which = POR }
+command = { trigger = { flag = EUS_MIT } type = alliance which = EUS }
+command = { trigger = { flag = AST_MIT } type = alliance which = AST }
+command = { trigger = { flag = PHI_MIT } type = alliance which = PHI }
+command = { trigger = { flag = BUR_MIT } type = alliance which = BUR }
+command = { trigger = { flag = CSX_MIT } type = alliance which = CSX }
+command = { trigger = { flag = YEM_MIT } type = alliance which = YEM }
+command = { trigger = { flag = BEL_MIT } type = alliance which = BEL }
+command = { trigger = { flag = FLA_MIT } type = alliance which = FLA }
+command = { trigger = { flag = WLL_MIT } type = alliance which = WLL }
+command = { trigger = { flag = TEX_MIT } type = alliance which = TEX }
+command = { trigger = { flag = ETH_MIT } type = alliance which = ETH }
+command = { trigger = { flag = IRE_MIT2 } type = alliance which = IRE }
+command = { trigger = { flag = INO_MIT } type = alliance which = INO }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = ETH_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+}
+}
+
+
+event = {
+id = 9999987
+country = U07
+style = 2
+
+name = "Enlargement of the Entente"
+desc = "The former members of the Mitteleuropa alliance have followed the example of the German Empire and they are now members of our alliance."
+picture = "diet"
+
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = GER }
+command = { trigger = { flag = BLR_MIT } type = set_relation which = BLR value = 150 }
+command = { trigger = { flag = UKR_MIT } type = set_relation which = UKR value = 150 }
+command = { trigger = { flag = LIT_MIT } type = set_relation which = LIT value = 150 }
+command = { trigger = { flag = LAT_MIT } type = set_relation which = LAT value = 150 }
+command = { trigger = { flag = AUS_MIT } type = set_relation which = AUS value = 150 }
+command = { trigger = { flag = HUN_MIT } type = set_relation which = HUN value = 150 }
+command = { trigger = { flag = CZE_MIT } type = set_relation which = CZE value = 150 }
+command = { trigger = { flag = POL_MIT } type = set_relation which = POL value = 150 }
+command = { trigger = { flag = U00_MIT } type = set_relation which = U00 value = 150 }
+command = { trigger = { flag = FIN_MIT } type = set_relation which = FIN value = 150 }
+command = { trigger = { flag = RUS_MIT } type = set_relation which = RUS value = 150 }
+command = { trigger = { flag = TRA_MIT } type = set_relation which = TRA value = 150 }
+command = { trigger = { flag = U26_MIT } type = set_relation which = U26 value = 150 }
+command = { trigger = { flag = U24_MIT } type = set_relation which = U24 value = 150 }
+command = { trigger = { flag = U25_MIT } type = set_relation which = U25 value = 150 }
+command = { trigger = { flag = BUL_MIT } type = set_relation which = BUL value = 150 }
+command = { trigger = { flag = URU_MIT } type = set_relation which = URU value = 150 }
+command = { trigger = { flag = SER_MIT } type = set_relation which = SER value = 150 }
+command = { trigger = { flag = GRE_MIT } type = set_relation which = GRE value = 150 }
+command = { trigger = { flag = GLD_MIT } type = set_relation which = GLD value = 150 }
+command = { trigger = { flag = CRO_MIT } type = set_relation which = CRO value = 150 }
+command = { trigger = { flag = BOS_MIT } type = set_relation which = BOS value = 150 }
+command = { trigger = { flag = MTN_MIT } type = set_relation which = MTN value = 150 }
+command = { trigger = { flag = OTT_MIT } type = set_relation which = OTT value = 150 }
+command = { trigger = { flag = DEN_MIT } type = set_relation which = DEN value = 150 }
+command = { trigger = { flag = ALB_MIT } type = set_relation which = ALB value = 150 }
+command = { trigger = { flag = ARM_MIT } type = set_relation which = ARM value = 150 }
+command = { trigger = { flag = LBY_MIT } type = set_relation which = LBY value = 150 }
+command = { trigger = { flag = EGY_MIT } type = set_relation which = EGY value = 150 }
+command = { trigger = { flag = SAU_MIT } type = set_relation which = SAU value = 150 }
+command = { trigger = { flag = PER_MIT } type = set_relation which = PER value = 150 }
+command = { trigger = { flag = OMN_MIT } type = set_relation which = OMN value = 150 }
+command = { trigger = { flag = CON_MIT } type = set_relation which = CON value = 150 }
+command = { trigger = { flag = ITA_MIT } type = set_relation which = ITA value = 150 }
+command = { trigger = { flag = CGX_MIT } type = set_relation which = CGX value = 150 }
+command = { trigger = { flag = SPA_MIT } type = set_relation which = SPA value = 150 }
+command = { trigger = { flag = POR_MIT } type = set_relation which = POR value = 150 }
+command = { trigger = { flag = EUS_MIT } type = set_relation which = EUS value = 150 }
+command = { trigger = { flag = AST_MIT } type = set_relation which = AST value = 150 }
+command = { trigger = { flag = PHI_MIT } type = set_relation which = PHI value = 150 }
+command = { trigger = { flag = BUR_MIT } type = set_relation which = BUR value = 150 }
+command = { trigger = { flag = CSX_MIT } type = set_relation which = CSX value = 150 }
+command = { trigger = { flag = YEM_MIT } type = set_relation which = YEM value = 150 }
+command = { trigger = { flag = BEL_MIT } type = set_relation which = BEL value = 150 }
+command = { trigger = { flag = FLA_MIT } type = set_relation which = FLA value = 150 }
+command = { trigger = { flag = WLL_MIT } type = set_relation which = WLL value = 150 }
+command = { trigger = { flag = TEX_MIT } type = set_relation which = TEX value = 150 }
+command = { trigger = { flag = IRE_MIT2 } type = set_relation which = IRE value = 150 }
+command = { trigger = { flag = INO_MIT } type = set_relation which = INO value = 150 }
+command = { trigger = { flag = BLR_MIT } type = alliance which = BLR }
+command = { trigger = { flag = UKR_MIT } type = alliance which = UKR }
+command = { trigger = { flag = LIT_MIT } type = alliance which = LIT }
+command = { trigger = { flag = LAT_MIT } type = alliance which = LAT }
+command = { trigger = { flag = AUS_MIT } type = alliance which = AUS }
+command = { trigger = { flag = HUN_MIT } type = alliance which = HUN }
+command = { trigger = { flag = CZE_MIT } type = alliance which = CZE }
+command = { trigger = { flag = POL_MIT } type = alliance which = POL }
+command = { trigger = { flag = U00_MIT } type = alliance which = U00 }
+command = { trigger = { flag = FIN_MIT } type = alliance which = FIN }
+command = { trigger = { flag = RUS_MIT } type = alliance which = RUS }
+command = { trigger = { flag = TRA_MIT } type = alliance which = TRA }
+command = { trigger = { flag = U26_MIT } type = alliance which = U26 }
+command = { trigger = { flag = U24_MIT } type = alliance which = U24 }
+command = { trigger = { flag = U25_MIT } type = alliance which = U25 }
+command = { trigger = { flag = BUL_MIT } type = alliance which = BUL }
+command = { trigger = { flag = URU_MIT } type = alliance which = URU }
+command = { trigger = { flag = SER_MIT } type = alliance which = SER }
+command = { trigger = { flag = GRE_MIT } type = alliance which = GRE }
+command = { trigger = { flag = GLD_MIT } type = alliance which = GLD }
+command = { trigger = { flag = CRO_MIT } type = alliance which = CRO }
+command = { trigger = { flag = BOS_MIT } type = alliance which = BOS }
+command = { trigger = { flag = MTN_MIT } type = alliance which = MTN }
+command = { trigger = { flag = OTT_MIT } type = alliance which = OTT }
+command = { trigger = { flag = DEN_MIT } type = alliance which = DEN }
+command = { trigger = { flag = ALB_MIT } type = alliance which = ALB }
+command = { trigger = { flag = ARM_MIT } type = alliance which = ARM }
+command = { trigger = { flag = LBY_MIT } type = alliance which = LBY }
+command = { trigger = { flag = EGY_MIT } type = alliance which = EGY }
+command = { trigger = { flag = SAU_MIT } type = alliance which = SAU }
+command = { trigger = { flag = PER_MIT } type = alliance which = PER }
+command = { trigger = { flag = OMN_MIT } type = alliance which = OMN }
+command = { trigger = { flag = CON_MIT } type = alliance which = CON }
+command = { trigger = { flag = ITA_MIT } type = alliance which = ITA }
+command = { trigger = { flag = CGX_MIT } type = alliance which = CGX }
+command = { trigger = { flag = SPA_MIT } type = alliance which = SPA }
+command = { trigger = { flag = POR_MIT } type = alliance which = POR }
+command = { trigger = { flag = EUS_MIT } type = alliance which = EUS }
+command = { trigger = { flag = AST_MIT } type = alliance which = AST }
+command = { trigger = { flag = PHI_MIT } type = alliance which = PHI }
+command = { trigger = { flag = BUR_MIT } type = alliance which = BUR }
+command = { trigger = { flag = CSX_MIT } type = alliance which = CSX }
+command = { trigger = { flag = YEM_MIT } type = alliance which = YEM }
+command = { trigger = { flag = BEL_MIT } type = alliance which = BEL }
+command = { trigger = { flag = FLA_MIT } type = alliance which = FLA }
+command = { trigger = { flag = WLL_MIT } type = alliance which = WLL }
+command = { trigger = { flag = TEX_MIT } type = alliance which = TEX }
+command = { trigger = { flag = ETH_MIT } type = alliance which = ETH }
+command = { trigger = { flag = IRE_MIT2 } type = alliance which = IRE }
+command = { trigger = { flag = INO_MIT } type = alliance which = INO }
+command = { type = clrflag which = BLR_MIT }
+command = { type = clrflag which = UKR_MIT }
+command = { type = clrflag which = LIT_MIT }
+command = { type = clrflag which = LAT_MIT }
+command = { type = clrflag which = AUS_MIT }
+command = { type = clrflag which = HUN_MIT }
+command = { type = clrflag which = CZE_MIT }
+command = { type = clrflag which = POL_MIT }
+command = { type = clrflag which = U00_MIT }
+command = { type = clrflag which = FIN_MIT }
+command = { type = clrflag which = RUS_MIT }
+command = { type = clrflag which = TRA_MIT }
+command = { type = clrflag which = U26_MIT }
+command = { type = clrflag which = U24_MIT }
+command = { type = clrflag which = U25_MIT }
+command = { type = clrflag which = BUL_MIT }
+command = { type = clrflag which = URU_MIT }
+command = { type = clrflag which = SER_MIT }
+command = { type = clrflag which = GRE_MIT }
+command = { type = clrflag which = GLD_MIT }
+command = { type = clrflag which = CRO_MIT }
+command = { type = clrflag which = BOS_MIT }
+command = { type = clrflag which = MTN_MIT }
+command = { type = clrflag which = OTT_MIT }
+command = { type = clrflag which = DEN_MIT }
+command = { type = clrflag which = ALB_MIT }
+command = { type = clrflag which = ARM_MIT }
+command = { type = clrflag which = LBY_MIT }
+command = { type = clrflag which = EGY_MIT }
+command = { type = clrflag which = SAU_MIT }
+command = { type = clrflag which = PER_MIT }
+command = { type = clrflag which = OMN_MIT }
+command = { type = clrflag which = CON_MIT }
+command = { type = clrflag which = ITA_MIT }
+command = { type = clrflag which = CGX_MIT }
+command = { type = clrflag which = SPA_MIT }
+command = { type = clrflag which = POR_MIT }
+command = { type = clrflag which = EUS_MIT }
+command = { type = clrflag which = AST_MIT }
+command = { type = clrflag which = PHI_MIT }
+command = { type = clrflag which = BUR_MIT }
+command = { type = clrflag which = CSX_MIT }
+command = { type = clrflag which = YEM_MIT }
+command = { type = clrflag which = BEL_MIT }
+command = { type = clrflag which = FLA_MIT }
+command = { type = clrflag which = WLL_MIT }
+command = { type = clrflag which = TEX_MIT }
+command = { type = clrflag which = ETH_MIT }
+command = { type = clrflag which = IRE_MIT2 }
+command = { type = clrflag which = INO_MIT }
+}
+}
+
+
+
+event = {
+id = 9999986
+country = BLR
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999985
+country = UKR
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999984
+country = LIT
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999983
+country = LAT
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999982
+country = AUS
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999981
+country = HUN
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999980
+country = CZE
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999979
+country = POL
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999978
+country = U00
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999977
+country = FIN
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999976
+country = RUS
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999975
+country = TRA
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999974
+country = U26
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999973
+country = U24
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999972
+country = U25
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999971
+country = BUL
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999970
+country = URU
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999969
+country = SER
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999968
+country = GRE
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999967
+country = GLD
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999966
+country = CRO
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999965
+country = BOS
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999964
+country = MTN
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999963
+country = OTT
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999962
+country = DEN
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999961
+country = ALB
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999960
+country = ARM
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999959
+country = LBY
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999958
+country = EGY
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999957
+country = SAU
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999956
+country = PER
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999955
+country = OMN
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999954
+country = CON
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999953
+country = ITA
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999952
+country = CGX
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999951
+country = SPA
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999950
+country = POR
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999949
+country = EUS
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999948
+country = AST
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999947
+country = PHI
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999946
+country = BUR
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999945
+country = CSX
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999944
+country = YEM
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999943
+country = BEL
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999942
+country = FLA
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999941
+country = WLL
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999940
+country = TEX
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999900
+country = ETH
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 9999939
+country = IRE
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 10000000
+country = INO
+style = 2
+
+name = "The end of Mitteleuropa"
+desc = "With the German Empire uniting Mitteleuropa with the Entente to save the world from the Syndicalist threat it is time to follow suit or we will be conquered."
+picture = "diet"
+
+action_a = {
+name = "Sign the treaty!"
+command = { type = leave_alliance }
+}
+}

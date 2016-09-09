@@ -1,0 +1,534 @@
+#####################################################################
+######Indochina
+######rewritten/adapted by Milites
+######
+######First events triggered by 182064 in Bengal Foreign Policy
+#####################################################################
+
+event = {
+id = 52000
+random = no
+country = GER
+style = 2
+save_date = yes
+
+name = EVT_52000_NAME # Unrest and Sedition in Indochina
+desc = EVT_52000_DESC # Our control with Indochina has never been very strong, but recently our colonial officers report a stark rise in guerrilla attacks on our schutztruppen and strikes organized by the local trade unions. As if that wasn’t enough, intelligence suggests the recently reunited Indian sub-continent as the source of much of the rebellious natives resources and weapons.
+picture = "vietmin"
+
+action_a = {
+name = ACTIONNAME_52000_A # This colony has been nothing but trouble!
+command = { type = relation which = PRK value = -100 }
+command = { type = province_revoltrisk which = 1403 value = 15 }
+command = { type = province_revoltrisk which = 1399 value = 15 }
+command = { type = province_revoltrisk which = 1398 value = 15 }
+command = { type = province_revoltrisk which = 1397 value = 15 }
+command = { type = province_revoltrisk which = 1394 value = 15 }
+command = { type = province_revoltrisk which = 1396 value = 15 }
+command = { type = province_revoltrisk which = 1405 value = 15 }
+command = { type = province_revoltrisk which = 1392 value = 15 }
+command = { type = province_revoltrisk which = 1395 value = 15 }
+command = { type = province_revoltrisk which = 1391 value = 15 }
+command = { type = province_revoltrisk which = 1404 value = 15 }
+command = { type = setflag which = Indochina_revolt_1 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 52001
+random = no
+country = GER
+style = 2
+save_date = yes
+
+name = EVT_52001_NAME # Ho Chi Minh Proclaims Indochina Independent!
+desc = EVT_52001_DESC # Our control with Indochina has never been very strong, but recently our colonial officers report a stark rise in guerrilla attacks on our schutztruppen and strikes organized by the local trade unions. From his exile in Calcutta, Ho Chi Minh has proclaimed Indochina to be an independent federal socialist republic! This would seem to be the signal for all out rebellion, we must be vigilant!
+picture = "vietmin"
+
+action_a = {
+name = ACTIONNAME_52001_A # He shall be caught!
+command = { type = relation which = PRK value = -100 }
+command = { type = province_revoltrisk which = 1403 value = 30 }
+command = { type = province_revoltrisk which = 1399 value = 30 }
+command = { type = province_revoltrisk which = 1398 value = 30 }
+command = { type = province_revoltrisk which = 1397 value = 30 }
+command = { type = province_revoltrisk which = 1394 value = 30 }
+command = { type = province_revoltrisk which = 1396 value = 30 }
+command = { type = province_revoltrisk which = 1405 value = 30 }
+command = { type = province_revoltrisk which = 1392 value = 30 }
+command = { type = province_revoltrisk which = 1395 value = 30 }
+command = { type = province_revoltrisk which = 1391 value = 30 }
+command = { type = province_revoltrisk which = 1404 value = 30 }
+command = { type = setflag which = Indochina_revolt_2 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 52002
+country = GER
+style = 2
+
+trigger = {
+event = { id = 52000 days = 60 }
+flag = Indochina_revolt_1
+owned = { province = 1399 data = GER }
+owned = { province = 1395 data = GER }
+control = { province = 1399 data = GER }
+control = { province = 1395 data = GER }
+NOT = {
+exists = BRU
+}
+}
+
+name = EVT_52002_NAME # Revolt in Indochina!
+desc = EVT_52002_DESC # Today local garrisons from Cochinchina to Tonkin have begun an armed rising against our colonial officials! Aided by revolutionaries and volunteers from India they pose a grave danger towards the future of German Indochina!
+picture = "vietmin2"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_52002_A # Mein Gott!
+command = { type = independence which = BRU value = 1 when = 0 }
+command = { type = secedeprovince which = BRU value = 1397 }
+command = { type = secedeprovince which = BRU value = 1403 }
+command = { type = industrial_modifier which = total value = -5 }
+command = { type = clrflag which = Indochina_revolt_1 }
+command = { type = trigger which = 52004 }
+command = { type = sleepevent which = 52003 }
+}
+}
+
+event = {
+id = 52003
+country = GER
+style = 2
+
+trigger = {
+event = { id = 52001 days = 30 }
+flag = Indochina_revolt_2
+owned = { province = 1399 data = GER }
+owned = { province = 1395 data = GER }
+control = { province = 1399 data = GER }
+control = { province = 1395 data = GER }
+NOT = {
+exists = BRU
+}
+}
+
+name = EVT_52002_NAME # Revolt in Indochina!
+desc = EVT_52002_DESC # Today local garrisons from Cochinchina to Tonkin have begun an armed rising against our colonial officials! Aided by revolutionaries and volunteers from India they pose a grave danger towards the future of German Indochina!
+picture = "vietmin2"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_52002_A # Mein Gott!
+command = { type = independence which = BRU value = 1 when = 0 }
+command = { type = secedeprovince which = BRU value = 1397 }
+command = { type = secedeprovince which = BRU value = 1403 }
+command = { type = industrial_modifier which = total value = -5 }
+command = { type = clrflag which = Indochina_revolt_2 }
+command = { type = trigger which = 52004 }
+command = { type = sleepevent which = 52002 }
+}
+}
+
+event = {
+id = 52004
+random = no
+country = BRU
+style = 2
+save_date = yes
+
+name = EVT_52004_NAME # Revolution in Indochina!
+desc = EVT_52004_DESC # The peoples of Indochina unite to cast off the exploitation of German imperialism!
+picture = "vietmin3"
+
+action_a = {
+name = ACTIONNAME_52004_A # Onwards, to liberty!
+command = { type = relation which = PRK value = 200 }
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = professional_army value = 4 }
+command = { type = set_domestic which = interventionism value = 6 }
+command = { type = headofstate which = 567001 }
+command = { type = headofgovernment which = 567002 }
+command = { type = foreignminister which = 567003 }
+command = { type = armamentminister which = 567004 }
+command = { type = ministerofsecurity which = 567005 }
+command = { type = ministerofintelligence which = 567006 }
+command = { type = secedeprovince which = GER value = 1396 }
+command = { type = secedeprovince which = GER value = 1397 }
+command = { type = add_corps value = land where = 1405 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_corps value = land where = 1398 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_corps value = land where = 1394 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = war which = GER }
+command = { type = province_revoltrisk which = 1403 value = -30 }
+command = { type = province_revoltrisk which = 1399 value = -30 }
+command = { type = province_revoltrisk which = 1398 value = -30 }
+command = { type = province_revoltrisk which = 1397 value = -30 }
+command = { type = province_revoltrisk which = 1394 value = -30 }
+command = { type = province_revoltrisk which = 1396 value = -30 }
+command = { type = province_revoltrisk which = 1405 value = -30 }
+command = { type = province_revoltrisk which = 1392 value = -30 }
+command = { type = province_revoltrisk which = 1395 value = -30 }
+command = { type = province_revoltrisk which = 1391 value = -30 }
+command = { type = province_revoltrisk which = 1404 value = -30 }
+command = { type = dissent value = -5 }
+command = { type = event which = 52005 where = PRK when = 4 }
+}
+}
+
+event = {
+id = 52005
+random = no
+country = PRK
+style = 2
+save_date = yes
+picture = "vietmin2"
+
+name = EVT_52005_NAME # Revolution in Indochina
+desc = EVT_52005_DESC # In no small part thanks to our patronage, the Indochinese revolutionaries have risen against German colonial rule. Should we continue our military support, dispatch further volunteers or maybe even intervene directly? This is the Asiatic Revolution's first hour of glory, we must not spill it!
+
+action = {
+ai_chance = 70
+trigger = {
+war = { country = BRU country = GER }
+war = { country = PRK country = GER }
+}
+name = ACTIONNAME_52005_A # We must intervene directly!
+command = { type = relation which = BRU value = 200 }
+command = { type = alliance which = BRU }
+command = { type = local_setflag which = PRK_BRU_Alliance }
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance = 30
+name = ACTIONNAME_52005_B # Dispatch volunteers and material to our proletarian friends!
+command = { type = relation which = BRU value = 200 }
+command = { type = relation which = GER value = -50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = supplies value = -2500 }
+command = { type = trigger which = 52006 } # Indochina
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance = 0
+name = ACTIONNAME_52005_C # Dispatch instructors and take control of their military!
+command = { type = relation which = BRU value = 200 }
+command = { type = relation which = GER value = -75 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = supplies value = -2500 }
+command = { trigger = { ai = no } type = military_control which = PRK where = BRU value = 1 }
+command = { type = local_setflag which = military_control }
+command = { type = trigger which = 52006 } # Indochina
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance = 1
+name = ACTIONNAME_52005_D # Indochina is a silly place.
+command = { type = relation which = BRU value = -200 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 52006
+random = no
+country = BRU
+style = 2
+save_date = yes
+
+name = EVT_52006_NAME # Indian Volunteers Arrive
+desc = EVT_52006_DESC # Indian volunteers and material arrived today at our capital. Now we shall finally be free of the German scum!
+picture = "vietmin3"
+
+action_a = {
+name = ACTIONNAME_52006_A # Workers of the World, Unite!
+command = { type = relation which = PRK value = 200 }
+command = { type = money value = 100 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 2500 }
+command = { type = add_division which = "Azad Hind Division" value = infantry when = 7 }
+command = { type = steal_tech which = PRK }
+command = { type = steal_tech which = PRK }
+}
+}
+
+event = {
+id = 52007
+random = no
+country = GER
+style = 2
+
+trigger = {
+NOT = {
+participant = { country = BRU value = 3 } #To make sure WW2 doesn't end prematurely.
+ispuppet = BRU
+}
+war = { country = GER country = BRU }
+control = { province = 1399 data = BRU }
+control = { province = 1395 data = BRU }
+OR = {
+control = { province = 1392 data = BRU }
+control = { province = 1393 data = BRU }
+control = { province = 1405 data = BRU }
+control = { province = 1394 data = BRU }
+control = { province = 1397 data = BRU }
+}
+OR = {
+control = { province = 1391 data = BRU }
+control = { province = 1404 data = BRU }
+control = { province = 1405 data = BRU }
+control = { province = 1394 data = BRU }
+}
+}
+
+name = EVT_52007_NAME # Indochina is in Full Rebellion
+desc = EVT_52007_DESC # The uprisings in Indochina have worsened. Hanoi and Saigon have fallen to them and we are struggling to cope. Although many oppose such a move it may be necessary to give up control of the region.
+picture = "vietmin4"
+
+date = { day = 0 month = january year = 1936 }
+offset = 80
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_52007_A # No, we will keep fighting these rebels!
+ai_chance = 85
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+name = ACTIONNAME_52007_B # We have no choice but to let them go.
+ai_chance = 15
+command = { type = secedeprovince which = BRU value = 1392 }
+command = { type = secedeprovince which = BRU value = 1393 }
+command = { type = secedeprovince which = BRU value = 1395 }
+command = { type = secedeprovince which = BRU value = 1405 }
+command = { type = secedeprovince which = BRU value = 1404 }
+command = { type = secedeprovince which = BRU value = 1391 }
+command = { type = secedeprovince which = BRU value = 1394 }
+command = { type = secedeprovince which = BRU value = 1396 }
+command = { type = secedeprovince which = BRU value = 1397 }
+command = { type = secedeprovince which = BRU value = 1398 }
+command = { type = secedeprovince which = BRU value = 1399 }
+command = { type = secedeprovince which = BRU value = 1403 }
+command = { type = dissent value = 8 }
+command = { type = trigger which = 52009 }
+command = { type = sleepevent which = 52008 }
+
+}
+}
+
+event = {
+id = 52008
+random = no
+country = GER
+style = 2
+
+trigger = {
+war = { country = GER country = BRU }
+NOT = {
+participant = { country = BRU value = 3 } #To make sure WW2 doesn't end prematurely.
+ispuppet = BRU
+}
+OR = {
+control = { province = 1395 data = BRU }
+control = { province = 1399 data = BRU }
+control = { province = 1392 data = BRU }
+control = { province = 1393 data = BRU }
+control = { province = 1405 data = BRU }
+control = { province = 1404 data = BRU }
+}
+OR = {
+control = { province = 1397 data = BRU }
+control = { province = 1394 data = BRU }
+control = { province = 1398 data = BRU }
+control = { province = 1399 data = BRU }
+control = { province = 1403 data = BRU }
+}
+}
+
+name = EVT_52007_NAME # Indochina is in Full Rebellion
+desc = EVT_52008_DESC # The uprisings in Indochina have worsened. What with our forces tied down in the war we are unable to deal with them  effectively. It maybe time to admit defeat here.
+picture = "vietmin4"
+
+date = { day = 0 month = january year = 1936 }
+offset = 80
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+name = ACTIONNAME_52007_A # No, we will keep fighting these rebels!
+ai_chance = 30
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+name = ACTIONNAME_52007_B # We have no choice but to let them go.
+ai_chance = 70
+command = { type = secedeprovince which = BRU value = 1392 }
+command = { type = secedeprovince which = BRU value = 1393 }
+command = { type = secedeprovince which = BRU value = 1395 }
+command = { type = secedeprovince which = BRU value = 1405 }
+command = { type = secedeprovince which = BRU value = 1404 }
+command = { type = secedeprovince which = BRU value = 1391 }
+command = { type = secedeprovince which = BRU value = 1394 }
+command = { type = secedeprovince which = BRU value = 1396 }
+command = { type = secedeprovince which = BRU value = 1397 }
+command = { type = secedeprovince which = BRU value = 1398 }
+command = { type = secedeprovince which = BRU value = 1399 }
+command = { type = secedeprovince which = BRU value = 1403 }
+command = { type = dissent value = 10 }
+command = { type = trigger which = 52009 }
+command = { type = sleepevent which = 52007 }
+}
+}
+
+event = {
+id = 52009
+random = no
+country = BRU
+style = 2
+
+name = EVT_52009_NAME # Major Victory
+desc = EVT_52009_DESC # We have now complete control over German Indochina. Now, we can finally create an independent People's Republic!
+picture = "vietmin4"
+
+action_a = {
+name = ACTIONNAME_52009_A # Excellent!
+command = { type = set_relation which = PRK value = 200 }
+command = { type = peace which = GER value = 0 }
+}
+}
+
+event = {
+id = 52010
+country = PRK
+style = 2
+
+trigger = {
+owned = { province = 1399 data = BRU }
+owned = { province = 1395 data = BRU }
+control = { province = 1399 data = BRU }
+control = { province = 1395 data = BRU }
+NOT = {
+war = { country = BRU country = GER }
+alliance = { country = PRK country = BRU }
+exists = IND
+exists = PAK
+}
+}
+
+name = EVT_52010_NAME # The Indochinese Revolt Succeeds
+desc = EVT_52010_DESC # With the selfless help of our brave volunteers, the peoples of Indochina have finally thrown of the yoke of colonial exploitation! This is a great day for all the socialist nations of the world! Ho Chi Minh’s stern, but emotional voice echoes from every radio across the free world, broadcasting the news that every people has a right to self-determination! 
+picture = "vietmin4"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 99
+name = ACTIONNAME_52010_A # Bring the Indochinese Republic into our alliance!
+command = { type = alliance which = BRU }
+command = { type = manpowerpool value = 8 }		# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -2 } 		# get blueprints for a random tech currently being researched
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command	= { trigger = { local_flag = military_control } type = military_control which = PRK where = BRU }
+command	= { trigger = { local_flag = military_control } type = local_clrflag which = military_control }
+}
+
+action = {
+ai_chance = 1
+name = ACTIONNAME_52010_B # Congratulate them warmly and leave them to their own affairs.
+command = { type = manpowerpool value = 8 }		# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -2 } 		# get blueprints for a random tech currently being researched
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = domestic which = interventionism value = -1 }
+command = { type = belligerence which = PRK value = -5 }
+command	= { trigger = { local_flag = military_control } type = military_control which = PRK where = BRU }
+command	= { trigger = { local_flag = military_control } type = local_clrflag which = military_control }
+}
+}
+
+event = {
+id = 52011
+random = no
+country = GER
+style = 2
+
+trigger = {
+war = { country = BRU country = GER }
+control = { province = 1399 data = GER }
+control = { province = 1395 data = GER }
+NOT = {
+control = { province = 1392 data = BRU }
+control = { province = 1393 data = BRU }
+control = { province = 1397 data = BRU }
+control = { province = 1398 data = BRU }
+control = { province = 1405 data = BRU }
+control = { province = 1396 data = BRU }
+control = { province = 1404 data = BRU }
+control = { province = 1391 data = BRU }
+}
+}
+
+name = EVT_52011_NAME # Victory in Indochina
+desc = EVT_52011_DESC # Our glorious army has managed to thwart the syndicalist revolt in Indochina! This is a glorious day for Germany!
+picture = "Vietmin"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_52011_A # Sehr gut, kamaraden!
+command = { type = inherit which = BRU }
+command = { type = trigger which = 52012 }
+command = { type = industrial_modifier which = total value = 3 }
+}
+}
+
+
+
+event = {
+id = 52012
+random = no
+country = PRK
+style = 2
+
+name = EVT_52012_NAME # The Indochinese Revolution is Defeated
+desc = EVT_52012_DESC # The Revolution in Indochina was crushed by the German imperialists... The only thing we gained from this failed endeavour is some combat experience for our officers that advised the fallen freedom fighters.
+picture = "vietmin"
+
+action_a = {
+name = ACTIONNAME_52012_A # The tree of liberty must be watered by the blood of martyrs.
+command = { type = relation which = GER value = -50 }
+command = { type = dissent value = 3 }
+command = { type = add_leader_skill which = -1 value = 2 }
+command = { type = add_leader_skill which = -1 value = 2 }
+command = { type = add_leader_skill which = -1 value = 2 }
+}
+}

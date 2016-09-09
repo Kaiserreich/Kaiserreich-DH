@@ -1,0 +1,232 @@
+event = {
+id = 9000
+random = no
+country = LBY
+persistent = yes
+
+trigger = {
+puppet = { country = LBY country = OTT  }
+atwar = OTT
+control = { province = 750 data = LBY }
+control = { province = 761 data = LBY }
+control = { province = 765 data = LBY }
+NOT = {
+local_flag = LBY_TRUEPUPPET # set by event Independent Libya in Annexations.txt
+}
+}
+
+
+name = EVT_9000_NAME # Status of Tripolitania
+desc = EVT_9000_DESC # For many years, the Ottomans have been free to impose their will over us. Today, problems have arisen for the Ottomans, and Idris-al-Sanusi wishes to claim the libyan throne once and for all and establish a Free Libya.
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_9000_A # Declare complete independence from the Ottomans!
+ai_chance = 80
+command = { type = name where = LBY }
+command = { type = flag_ext where = LBY }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = leave_alliance when = 1 }
+command = { type = peace which = EGY value = 1 }
+command = { type = peace which = SAU value = 1 }
+command = { type = peace which = PER value = 1 }
+command = { type = peace which = KUR value = 1 }
+command = { type = peace which = RUS value = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = peace which = ARM value = 1 }
+command = { type = peace which = ALB value = 1 }
+command = { type = peace which = CYP value = 1 }
+command = { type = peace which = GRE value = 1 }
+command = { type = peace which = SER value = 1 }
+command = { type = peace which = URU value = 1 }
+command = { type = peace which = ROM value = 1 }
+command = { type = peace which = MTN value = 1 }
+command = { type = peace which = BUL value = 1 }
+command = { type = trigger which = 9001 }
+}
+
+action_b = {
+name = ACTIONNAME_9000_B # Time is not right!
+ai_chance = 20
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 9001
+random = no
+country = OTT
+save_date = yes
+
+name = EVT_9001_NAME # Tripolitania declares independence!
+desc = EVT_9001_DESC # For many years, we have ruled over Tripolitania. But today, with our country engaged in a lenghty conflict, Tripolitania decided to use this opportunity to break from our dominance. How should we react to this mess ? 
+style = 2
+
+action_a = {
+name = ACTIONNAME_9001_A # Let them go
+ai_chance = 50
+command = { type = end_mastery which = LBY }
+}
+
+action_b = {
+name = ACTIONNAME_9001_B # Blasphemy! Crush this upstart!
+ai_chance = 50
+command = { type = end_mastery which = LBY }
+command = { type = war which = LBY }
+}
+}
+
+event = {
+id = 9002
+country = OTT
+style = 2
+trigger = {
+NOT = {
+ispuppet = OTT
+ispuppet = LBY
+alliance = { country = LBY country = RUS }
+alliance = { country = LBY country = EGY }
+alliance = { country = LBY country = ITA }
+alliance = { country = LBY country = VIC }
+alliance = { country = LBY country = FRA }
+}
+event = { id = 9001 days = 100 } #Libyan Uprising 100 days ago
+control = { province = 750 data = LBY }
+control = { province = 761 data = LBY }
+control = { province = 765 data = LBY }
+war = { country = OTT country = LBY }
+}
+picture = "riot1"
+
+date = { day = 1 month = January year = 1936 }
+offset =  80
+deathdate = { day = 29 month = december year = 1960 }
+
+name = EVT_9002_NAME # Libya still exists!
+desc = EVT_9002_DESC # Even the concentration of our elite armed forces could not break apart the rebellious state of Libya. Some members of the general staff suggest that continuing with this fruitless effort greatly weakens our forces facing the hostile Arabian states of Hashemite Arabia and Egypt. Shall we recognize the independence of Libya ?
+
+action_a = {
+name = ACTIONNAME_9002_A # Accept their independence....
+ai_chance = 70
+command = { type = dissent value = 2 }
+command = { type = peace which = LBY value = 1 }
+}
+
+action_b = {
+name = ACTIONNAME_9002_B # Never!
+ai_chance = 30
+command = { type = dissent value = 7 }
+}
+}
+
+
+################################################################
+#Alliance with Libya
+################################################################
+event = {
+id = 9003
+random = no
+country = LBY
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+exists = SAU
+exists = OTT
+exists = EGY
+NOT = {
+ispuppet = EGY
+ispuppet = SAU
+ispuppet = LBY
+government = communist
+atwar = LBY
+atwar = EGY
+}
+alliance = { country = EGY country = SAU }
+NOT = {
+alliance = { country = LBY country = OTT }
+alliance = { country = LBY country = EGY }
+alliance = { country = EGY country = OTT }
+alliance = { country = EGY country = FRA }
+alliance = { country = EGY country = SOV }
+alliance = { country = EGY country = RUS }
+alliance = { country = EGY country = USA }
+alliance = { country = EGY country = TEX }
+alliance = { country = EGY country = CSA }
+alliance = { country = EGY country = CAN }
+}
+}
+
+date = { day = 1 month = february year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = EVT_9003_NAME # Foreign policy
+desc = EVT_9003_DESC # In order to secure our independence from foreign threats we should join the already existing Arabian alliance between Egypt and Hashemite Arabia, which wants to see the Ottoman Empire crumble and disintegrate just as much as we do.
+
+action_a = {
+ai_chance = 90
+name = ACTIONNAME_9003_A # Send proposition
+command = { type = dissent value = -3 }
+command = { type = trigger which = 9004 } # Arabian response
+}
+
+action_b = {
+ai_chance = 1
+name = ACTIONNAME_9003_B # There is no need for an alliance
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 9004
+random = no
+country = EGY
+style = 2
+picture = "diplomatic_campaign"
+
+name = EVT_9004_NAME # Libya wants to join our alliance
+desc = EVT_9004_DESC
+
+action_a  = {
+ai_chance = 95
+name = ACTIONNAME_9004_A # Yes, Arabian countries should keep together
+command = { type = alliance which = LBY }
+command = { type = relation which = LBY value = 200 }
+command = { type = relation which = OTT value = -20 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = trigger which = 9005 }
+}
+
+action_b  = {
+ai_chance = 5
+name =  ACTIONNAME_9004_B # Refuse them!
+command = { type = domestic which = interventionism value = -1 }
+command = { type = domestic which = defense_lobby value = 1 }
+}
+}
+
+event = {
+id = 9005
+country = LBY
+style = 2
+picture = "diplomatic_campaign"
+
+name = EVT_9005_NAME # Libya joins the Arabian block
+desc = EVT_9005_DESC # Egypt accepted our request and admitted us to their alliance. With our presence in this alliance our independence should be secured !
+
+action_a = {
+name = ACTIONNAME_9005_A # Welcome!!
+command = { type = set_relation which = EGY value = 175 }
+command = { type = set_relation which = SAU value = 175 }
+command = { type = relation which = OTT value = -20 }
+command = { type = dissent value = -3 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}

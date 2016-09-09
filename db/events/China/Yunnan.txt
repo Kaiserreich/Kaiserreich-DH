@@ -1,0 +1,2574 @@
+
+
+event = {
+id = 166000
+random = no
+country = CYN
+style = 2
+save_date = yes
+picture = "shenyang"
+
+trigger = {
+control = { province = 1389 data = CYN }
+}
+
+name = "The Baoshan Warlords"
+desc = "A warlord in Baoshan has gathered a small army from local gangs and militias and now they sweep through the countryside, causing chaos and destruction."
+
+date = { day = 12 month = february year = 1936 }
+offset = 10
+deathdate = { day = 1 month = march year = 1936 }
+
+action_a = {
+name = "The Baoshan Province Will Learn to Respect Our Authority!"
+command = { type = removecore which = 1389 }
+command = { type = addclaim which = 1389 }
+command = { type = dissent value = 2 }
+command = { type = revolt which = 1389 }
+}
+}
+
+
+event = {
+id = 166001
+random = no
+country = CYN
+style = 2
+
+trigger = {
+event = 166000
+event = { id = 166000 days = 40 } # It takes some time to supress local population
+control = { province = 1389 data = CYN }
+}
+
+name = "The Warlords Have Been Put Down"
+desc = "Our troops archieved victory over the rebels at Baoshan! Their army has surrendered with little resistance and the warlord was publically hanged. Baoshan is at peace once more."
+picture = "surrender"
+
+date = { day = 14 month = february year = 1936 }
+offset = 15
+deathdate = { day = 29 month = may year = 1963 }
+
+action_a = {
+name = "Yunnan will not tolerate any new cliques"
+command = { type = addcore which = 1389 }
+command = { type = dissent value = -1 }
+}
+}
+
+
+event = {
+id = 166002
+country = CYN
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+random = 50
+exists = CGX
+NOT = {
+ispuppet = CYN
+atwar = CYN
+exists = CHI
+}
+}
+
+date = { day = 0 month = june year = 1937 }
+offset = 30
+deathdate = { day = 29 month = may year = 1963 }
+
+name = "To raid or not to raid"
+desc = "One of our generals feels that starting crossborder raids might net us a fair amount of money and supplies to help us develop our indsutry, and we can always blame it on bandits!"
+
+action_a = {
+ai_chance = 80
+name = "Launch raids"
+command = { type = setflag which = CYN_raids }
+}
+
+action_b = {
+ai_chance = 20
+name = "They are not worth the risk"
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 166003
+country = CYN
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+flag = CYN_raids
+exists = CGX
+NOT = {
+ispuppet = CYN
+atwar = CYN
+}
+}
+
+date = { day = 1 month = June year = 1937 }
+offset = 30
+deathdate = { day = 29 month = may year = 1963 }
+
+name = "Successful raid"
+desc = "Our first raid across borders into AOG territory was a success ! We have obtained large quantities of supplies and money, which will help our industry."
+
+action_a = {
+name = "Huzzah!"
+command = { type = dissent value = -1 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 50 }
+command = { type = money value = 5 }
+command = { type = relation which = CGX value = -30 }
+command = { type = relation which = GER value = -10 }
+}
+}
+
+
+event = {
+id = 166004
+country = CYN
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+flag = CYN_raids
+exists = CGX
+NOT = {
+ispuppet = CYN
+atwar = CYN
+}
+}
+
+date = { day = 0 month = december year = 1937 }
+offset = 30
+deathdate = { day = 29 month = may year = 1963 }
+
+name = "Successful raid"
+desc = "Our second raid across borders into AOG territory was a success ! We have obtained large quantities of supplies and money, which will help our industry."
+
+action_a = {
+name = "Huzzah!"
+command = { type = dissent value = -1 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 50 }
+command = { type = money value = 5 }
+command = { type = setflag which = CYN_raids_CGX }
+command = { type = relation which = CGX value = -30 }
+command = { type = relation which = GER value = -10 }
+}
+}
+
+
+event = {
+id = 166005
+country = CGX
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+NOT = { 
+war = { country = CGX country = CYN } 
+}
+flag = CYN_raids_CGX
+NOT = {
+exists = CHI
+}
+}
+
+date = { day = 0 month = december year = 1937 }
+offset = 30
+deathdate = { day = 29 month = may year = 1963 }
+
+name = "Raiders!"
+desc = "Raiders have been continuously crossing the borders from Yunnan, how should we react to these incursions ?"
+
+action_a = {
+ai_chance = 30
+name = "Let the local militia handle it"
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Reinforce the militia with some German troops"
+command = { type = setflag which = CGX_CYN_gaurding }
+}
+}
+
+
+event = {
+id = 166006
+country = CYN
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+flag = CYN_raids
+NOT = { 
+flag = CGX_CYN_gaurding 
+war = { country = CGX country = CYN } 
+}
+}
+
+date = { day = 0 month = april year = 1938 }
+offset = 30
+deathdate = { day = 29 month = may year = 1963 }
+
+name = "Successful raid"
+desc = "Our third raid is a success, we have captured and ransomed a German investor, we should lay low for a while however...!"
+
+action_a = {
+name = "Huzzah!"
+command = { type = dissent value = -1 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 50 }
+command = { type = money value = 50 }
+command = { type = relation which = CGX value = -30 }
+command = { type = relation which = GER value = -10 }
+}
+}
+
+
+event = {
+id = 166007
+country = CGX
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+flag = CYN_raids_CGX
+flag = CGX_CYN_gaurding
+exists = CYN
+NOT = { 
+war = { country = CGX country = CYN } 
+}
+}
+
+date = { day = 0 month = april year = 1938 }
+offset = 30
+deathdate = { day = 29 month = may year = 1963 }
+
+name = "Raiders!"
+desc = "Raiders have captured a German investor inspecting the region, The Legion is in hot pursuit!"
+
+action_a = {
+ai_chance = 80
+name = "Cross the border and chase them down"
+command = { type = event which = 166009 where = CYN when = 2  }
+command = { type = dissent value = -5 }
+command = { type = clrflag which = CYN_raids_CGX  }
+command = { type = clrflag which = CGX_CYN_gaurding  }
+}
+
+action_b = {
+ai_chance = 20
+name = "We do not want to start a war, pay the ransom"
+command = { type = trigger which = 166008 }
+command = { type = dissent value = 5 }
+command = { type = money value = -50 }
+command = { type = clrflag which = CYN_raids_CGX  }
+command = { type = clrflag which = CGX_CYN_gaurding  }
+}
+}
+
+
+event = {
+id = 166008
+country = CYN
+style = 2
+picture = "Chinese Crossroad"
+
+name = "Ransom paid"
+desc = "The ransom for the German investor has been paid, however we better stay quiet for a while or we may stir up a war!"
+
+action_a = {
+name = "It's enough!"
+ai_chance = 95
+command = { type = money value = 50 }
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+name = "It's not enough, to war!"
+ai_chance = 5
+command = { type = money value = 50 }
+command = { type = war which = CGX }
+}
+}
+
+
+event = {
+id = 166009
+country = CYN
+style = 2
+picture = "Chinese Crossroad"
+
+name = "German troops give chase!"
+desc = "German troops have crossed the border and are in pursuit of our raiders. The AoG Board of Directors is contemplating crossing the border en-mass! We must respond!"
+
+action_a = {
+ai_chance = 60
+name = "Return the German and apologize"
+command = { type = dissent value = 2 }
+command = { type = relation which = CGX value = 20 }
+command = { type = relation which = GER value = 10 }
+command = { type = trigger which = 166010 }
+}
+
+action_b = {
+ai_chance = 40
+name = "They dare cross the border, kill them!"
+command = { type = war which = CGX }
+}
+}
+
+
+event = {
+id = 166010
+country = CGX
+style = 2
+picture = "Chinese Crossroad"
+
+name = "Apology Accepted?"
+desc = "Yun has returned our investor and personally apologized for the incident, how should we continue?"
+
+action_a = {
+ai_chance = 0
+name = "Cross the border and end the Clique forever!"
+command = { type = war which = CYN }
+command = { type = dissent value = -2 }
+}
+
+action_b = {
+ai_chance = 100
+name = "We accept the apology"
+command = { type = dissent value = 1 }
+command = { type = relation which = CYN value = 20 }
+}
+}
+
+
+
+
+### Chinese Unification by Yunnan
+
+event = {
+id = 166011
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+NOT = {
+atwar = CYN
+ispuppet = CYN
+}
+}
+
+name = "The Shining Path of Yunnan"
+desc = "Yunnan, a state controlling a good part of Central China, is still regarded as not much more than a warlord domain by the international community. Lately, as nationalist sentiment and talks of reunification are being spread across all of the Middle Kingdom, some of our intelligentsia and military class have started supporting an effort for Chinese Reunification spearheaded by Yunnan troops. Maybe its time to ressurect National protection movement and reunite China !"
+
+date = { day = 0 month = april year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action = {
+ai_chance = 60
+name = "Well, that's nonsense"
+command = { type = dissent value = 1 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = sleepevent which = 166012 }
+command = { type = sleepevent which = 166013 }
+command = { type = sleepevent which = 166014 }
+command = { type = sleepevent which = 166015 }
+command = { type = sleepevent which = 166016 }
+command = { type = sleepevent which = 166017 }
+command = { type = sleepevent which = 166018 }
+command = { type = sleepevent which = 166019 }
+command = { type = sleepevent which = 166020 }
+command = { type = sleepevent which = 166021 }
+command = { type = sleepevent which = 166022 }
+command = { type = sleepevent which = 166023 }
+command = { type = sleepevent which = 166024 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166026 }
+command = { type = sleepevent which = 166027 }
+command = { type = sleepevent which = 166028 }
+command = { type = sleepevent which = 166029 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+
+action = {
+ai_chance = 40
+name = "Yes! China for the Chinese!"
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = GER value = -30 }
+command = { type = relation which = CGX value = -30 }
+command = { type = relation which = CHC value = -30 }
+command = { type = relation which = CXB value = -30 }
+command = { type = relation which = TIB value = -30 }
+command = { type = relation which = MON value = -30 }
+command = { type = relation which = CSX value = -30 }
+command = { type = relation which = MAN value = -30 }
+command = { type = sleepevent which = 166002 }
+command = { type = sleepevent which = 166003 }
+command = { type = sleepevent which = 166004 }
+command = { type = sleepevent which = 166005 }
+command = { type = sleepevent which = 166006 }
+command = { type = sleepevent which = 166007 }
+command = { type = setflag which = YUN_CHINA }
+command = { type = flag_ext where = CYN which = "_REP" }
+command = { type = name where = CYN which = CYN_NPA }
+}
+}
+
+
+event = {
+id = 166012
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+event = 166011
+flag = YUN_CHINA
+NOT = {
+exists = CHI
+atwar = CYN
+ispuppet = CYN
+}
+}
+
+name = "Republican refugees"
+desc = "Since we announced our intention of reuniting China under our banner, some republican sympatizers, under persecution in the Qing and AOG areas, have begun settling in our territories. They're soldiers, industrialists, farmers, sometimes entire families, who are now supporting our efforts."
+
+date = { day = 0 month = june year = 1937 }
+offset = 100
+deathdate = { day = 29 month = december year = 1966 }
+
+action = {
+name = "Welcome them"
+command = { type = dissent value = -1 }
+command = { type = relation which = CGX value = -10 }
+command = { type = relation which = CSX value = -10 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 100 where = 1390 }
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = industrial_modifier which = supplies value = 2 }
+command = { type = free_ic value = 2 }
+}
+}
+
+
+event = {
+id = 166013
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+flag = YUN_CHINA
+NOT = {
+atwar = CYN
+ispuppet = CYN
+}
+}
+
+name = "Unification of China - First Step"
+desc = "The first step towards the reunification of China is ready to be taken, according to our military leaders. Our soldiers are fully mobilized and ready to take action against the other petty states of China. Which will be our first target?"
+
+date = { day = 0 month = january year = 1938 }
+offset = 100
+deathdate = { day = 29 month = december year = 1966 }
+
+action = {
+ai_chance = 55
+trigger = {
+exists = CXB
+NOT = {
+alliance = { country = CYN country = CXB }
+ispuppet = CXB
+}
+}
+name = "Attack the Muslim territory of Xibei Lianbang Yiyuan"
+command = { type = relation which = CXB value = -50 }
+command = { type = event which = 166014 where = CYN when = 30 }
+}
+
+action = {
+ai_chance = 15
+trigger = {
+exists = TIB
+NOT = {
+alliance = { country = CYN country = TIB }
+ispuppet = TIB
+}
+}
+name = "Move against Tibet"
+command = { type = relation which = TIB value = -50 }
+command = { type = event which = 166015 where = CYN when = 50 }
+}
+
+action = {
+ai_chance = 20
+trigger = {
+exists = CHC
+NOT = {
+alliance = { country = CYN country = CHC }
+ispuppet = CHC
+}
+}
+name = "Attack the Millenarians of Shangqing Tianguo"
+command = { type = relation which = CHC value = -50 }
+command = { type = event which = 166016 where = CYN when = 50 }
+}
+
+action = {
+ai_chance = 0
+trigger = {
+exists = CGX
+NOT = { alliance = { country = CYN country = CGX } }
+}
+name = "Target the foreign interests of the AOG"
+command = { type = relation which = CGX value = -50 }
+command = { type = event which = 166017 where = CYN when = 50 }
+}
+
+action = {
+ai_chance = 0
+name = "Abandon all  plans for unification"
+command = { type = dissent value = 5 }
+command = { type = clrflag which = YUN_CHINA }
+command = { type = sleepevent which = 166014 }
+command = { type = sleepevent which = 166015 }
+command = { type = sleepevent which = 166016 }
+command = { type = sleepevent which = 166017 }
+command = { type = sleepevent which = 166018 }
+command = { type = sleepevent which = 166019 }
+command = { type = sleepevent which = 166020 }
+command = { type = sleepevent which = 166021 }
+command = { type = sleepevent which = 166022 }
+command = { type = sleepevent which = 166023 }
+command = { type = sleepevent which = 166024 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166026 }
+command = { type = sleepevent which = 166027 }
+command = { type = sleepevent which = 166028 }
+command = { type = sleepevent which = 166029 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+}
+
+
+event = {
+id = 166014
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Unification of China - Operation Huijiang"
+desc = "Our troops are now ready to move against Xibei Lianbang Yiyuan - Shall we procceed?"
+
+action = {
+ai_chance = 100
+trigger = {
+exists = CXB
+NOT = { alliance = { country = CYN country = CXB } }
+}
+name = "Attack!"
+command = { type = war which = CXB }
+command = { type = addclaim which = 1283 }
+command = { type = addclaim which = 1284 }
+command = { type = addclaim which = 1285 }
+command = { type = addclaim which = 1266 }
+command = { type = addclaim which = 1265 }
+command = { type = addclaim which = 1264 }
+command = { type = addclaim which = 1272 }
+command = { type = addclaim which = 1268 }
+command = { type = addclaim which = 1270 }
+command = { type = addclaim which = 1277 }
+command = { type = addclaim which = 1281 }
+command = { type = addclaim which = 1280 }
+command = { type = addclaim which = 1276 }
+command = { type = addclaim which = 1273 }
+command = { type = addclaim which = 1275 }
+command = { type = addclaim which = 1279 }
+command = { type = addclaim which = 1282 }
+command = { type = addclaim which = 1274 }
+command = { type = dissent value = -1 }
+}
+
+action = {
+ai_chance = 0
+trigger = {
+exists = CXB
+NOT = { alliance = { country = CYN country = CXB } }
+}
+name = "Abandon all plans for unification"
+command = { type = dissent value = 10 }
+command = { type = clrflag which = YUN_CHINA }
+command = { type = sleepevent which = 166012 }
+command = { type = sleepevent which = 166013 }
+command = { type = sleepevent which = 166014 }
+command = { type = sleepevent which = 166015 }
+command = { type = sleepevent which = 166016 }
+command = { type = sleepevent which = 166017 }
+command = { type = sleepevent which = 166018 }
+command = { type = sleepevent which = 166019 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+
+action = {
+ai_chance = 15
+trigger = {
+event = 166018
+OR = {
+control = { province = 1289 data = CYN }
+control = { province = 1281 data = CYN }
+control = { province = 1284 data = CYN }
+control = { province = 1277 data = CYN }
+control = { province = 1263 data = CYN }
+control = { province = 1259 data = CYN }
+control = { province = 1310 data = CYN }
+control = { province = 1378 data = CYN }
+control = { province = 1369 data = CYN }
+}
+}
+name = "We must consolidate and wait for the next move"
+command = { type = trigger which = 166019 }
+}
+}
+
+
+event = {
+id = 166015
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Unification of China - Operation Shambhala"
+desc = "Our troops are now ready to move against Tibet - Shall we procceed?"
+
+action = {
+ai_chance = 90
+trigger = {
+exists = TIB
+NOT = { alliance = { country = CYN country = TIB } }
+}
+name = "Attack!"
+command = { type = war which = TIB }
+command = { type = addclaim which = 1278 }
+command = { type = addclaim which = 1286 }
+command = { type = addclaim which = 1287 }
+command = { type = addclaim which = 1288 }
+command = { type = addclaim which = 1290 }
+command = { type = addclaim which = 1289 }
+command = { type = addclaim which = 1295 }
+command = { type = addclaim which = 1294 }
+command = { type = dissent value = -1 }
+}
+
+action = {
+ai_chance = 10
+trigger = {
+exists = TIB
+NOT = { alliance = { country = CYN country = TIB } }
+}
+name = "Abandon all plans for unification"
+command = { type = dissent value = 10 }
+command = { type = clrflag which = YUN_CHINA }
+command = { type = sleepevent which = 166012 }
+command = { type = sleepevent which = 166013 }
+command = { type = sleepevent which = 166014 }
+command = { type = sleepevent which = 166015 }
+command = { type = sleepevent which = 166016 }
+command = { type = sleepevent which = 166017 }
+command = { type = sleepevent which = 166018 }
+command = { type = sleepevent which = 166019 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+
+action = {
+ai_chance = 15
+trigger = {
+event = 166018
+OR = {
+control = { province = 1289 data = CYN }
+control = { province = 1281 data = CYN }
+control = { province = 1284 data = CYN }
+control = { province = 1277 data = CYN }
+control = { province = 1263 data = CYN }
+control = { province = 1259 data = CYN }
+control = { province = 1310 data = CYN }
+control = { province = 1378 data = CYN }
+control = { province = 1369 data = CYN }
+}
+}
+name = "We must consolidate and wait for the next move"
+command = { type = trigger which = 166019 }
+}
+}
+
+
+event = {
+id = 166016
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Unification of China - Operation Yan'An"
+desc = "Our troops are now ready to move against Shangqing Tianguo - Shall we procceed?"
+
+action = {
+ai_chance = 90
+trigger = {
+exists = CHC
+NOT = { alliance = { country = CYN country = CHC } }
+}
+name = "Attack!"
+command = { type = war which = CHC }
+command = { type = addclaim which = 1263 }
+command = { type = addclaim which = 1258 }
+command = { type = addclaim which = 1257 }
+command = { type = addclaim which = 1256 }
+command = { type = addclaim which = 1255 }
+command = { type = addclaim which = 1271 }
+command = { type = addclaim which = 1259 }
+command = { type = addclaim which = 1269 }
+command = { type = addclaim which = 1260 }
+command = { type = dissent value = -1 }
+}
+
+action = {
+ai_chance = 10
+trigger = {
+exists = CHC
+NOT = { alliance = { country = CYN country = CHC } }
+}
+name = "Abandon all plans for unification"
+command = { type = dissent value = 10 }
+command = { type = clrflag which = YUN_CHINA }
+command = { type = sleepevent which = 166012 }
+command = { type = sleepevent which = 166013 }
+command = { type = sleepevent which = 166014 }
+command = { type = sleepevent which = 166015 }
+command = { type = sleepevent which = 166016 }
+command = { type = sleepevent which = 166017 }
+command = { type = sleepevent which = 166018 }
+command = { type = sleepevent which = 166019 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+
+action = {
+ai_chance = 15
+trigger = {
+event = 166018
+OR = {
+control = { province = 1289 data = CYN }
+control = { province = 1281 data = CYN }
+control = { province = 1284 data = CYN }
+control = { province = 1277 data = CYN }
+control = { province = 1263 data = CYN }
+control = { province = 1259 data = CYN }
+control = { province = 1310 data = CYN }
+control = { province = 1378 data = CYN }
+control = { province = 1369 data = CYN }
+}
+}
+name = "We must consolidate and wait for the next move"
+command = { type = trigger which = 166019 }
+}
+}
+
+
+event = {
+id = 166017
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Unification of China - Operation Quzhú Waiguó Rén"
+desc = "Our troops are now ready to move against the AOG - Shall we procceed?"
+
+action = {
+ai_chance = 90
+trigger = {
+exists = CGX
+NOT = { alliance = { country = CYN country = CGX } }
+}
+name = "Attack!"
+command = { type = war which = CGX }
+command = { type = addclaim which = 1314 }
+command = { type = addclaim which = 1315 }
+command = { type = addclaim which = 1313 }
+command = { type = addclaim which = 1310 }
+command = { type = addclaim which = 1301 }
+command = { type = addclaim which = 1304 }
+command = { type = addclaim which = 1307 }
+command = { type = addclaim which = 1309 }
+command = { type = addclaim which = 1312 }
+command = { type = addclaim which = 1306 }
+command = { type = addclaim which = 1305 }
+command = { type = addclaim which = 1378 }
+command = { type = addclaim which = 1380 }
+command = { type = addclaim which = 1382 }
+command = { type = addclaim which = 1381 }
+command = { type = addclaim which = 1383 }
+command = { type = addclaim which = 1379 }
+command = { type = addclaim which = 1376 }
+command = { type = addclaim which = 1377 }
+command = { type = addclaim which = 1374 }
+command = { type = addclaim which = 1318 }
+command = { type = addclaim which = 1353 }
+command = { type = addclaim which = 1308 }
+command = { type = addclaim which = 1355 }
+command = { type = addclaim which = 1311 }
+command = { type = addclaim which = 1354 }
+command = { type = addclaim which = 1368 }
+command = { type = addclaim which = 1369 }
+command = { type = addclaim which = 1373 }
+command = { type = addclaim which = 1370 }
+command = { type = addclaim which = 1375 }
+command = { type = addclaim which = 1356 }
+command = { type = addclaim which = 1349 }
+command = { type = addclaim which = 1359 }
+command = { type = addclaim which = 1360 }
+command = { type = addclaim which = 1352 }
+command = { type = addclaim which = 1357 }
+command = { type = addclaim which = 1350 }
+command = { type = addclaim which = 1351 }
+command = { type = addclaim which = 1348 }
+command = { type = addclaim which = 1347 }
+command = { type = dissent value = -1 }
+}
+
+action = {
+ai_chance = 10
+trigger = {
+exists = CGX
+NOT = { alliance = { country = CYN country = CGX } }
+}
+name = "Abandon all plans for unification"
+command = { type = dissent value = 10 }
+command = { type = clrflag which = YUN_CHINA }
+command = { type = sleepevent which = 166012 }
+command = { type = sleepevent which = 166013 }
+command = { type = sleepevent which = 166014 }
+command = { type = sleepevent which = 166015 }
+command = { type = sleepevent which = 166016 }
+command = { type = sleepevent which = 166017 }
+command = { type = sleepevent which = 166018 }
+command = { type = sleepevent which = 166019 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+
+action = {
+ai_chance = 15
+trigger = {
+event = 166018
+OR = {
+control = { province = 1289 data = CYN }
+control = { province = 1281 data = CYN }
+control = { province = 1284 data = CYN }
+control = { province = 1277 data = CYN }
+control = { province = 1263 data = CYN }
+control = { province = 1259 data = CYN }
+control = { province = 1310 data = CYN }
+control = { province = 1378 data = CYN }
+control = { province = 1369 data = CYN }
+}
+}
+name = "We must consolidate and wait for the next move"
+command = { type = trigger which = 166019 }
+}
+}
+
+
+event = {
+id = 166018
+random = no
+persistent = yes
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+flag = YUN_CHINA
+event = 166013
+OR = {
+event = 166014
+event = 166015
+event = 166016
+event = 166017
+}
+NOT = {
+atwar = CYN
+ispuppet = CYN
+}
+}
+
+name = "Unification of China - A New Phase"
+desc = "A new step towards the reunification of China is ready to be taken, according to our military leaders. Our soldiers are fully mobilized and ready to take action against the other petty states of China. Which will be our next target?"
+
+date = { day = 0 month = january year = 1938 }
+offset = 100
+deathdate = { day = 29 month = march year = 1966 }
+
+action = {
+ai_chance = 55
+trigger = {
+exists = CXB
+NOT = {
+alliance = { country = CYN country = CXB }
+event = 166014
+}
+}
+name = "Attack the Muslim territory of Xibei Lianbang Yiyuan"
+command = { type = relation which = CXB value = -50 }
+command = { type = event which = 166014 where = CYN when = 50 }
+}
+
+action = {
+ai_chance = 15
+trigger = {
+exists = TIB
+NOT = {
+alliance = { country = CYN country = TIB }
+event = 166015
+}
+}
+name = "Move against Tibet"
+command = { type = relation which = TIB value = -50 }
+command = { type = event which = 166015 where = CYN when = 50 }
+}
+
+action = {
+ai_chance = 20
+trigger = {
+exists = CHC
+NOT = {
+alliance = { country = CYN country = CHC }
+event = 166016
+}
+}
+name = "Attack the Millenarians of Shangqing Tianguo"
+command = { type = relation which = CHC value = -50 }
+command = { type = event which = 166016 where = CYN when = 50 }
+}
+
+action = {
+ai_chance = 5
+trigger = {
+exists = CGX
+NOT = {
+alliance = { country = CYN country = CGX }
+event = 166017
+}
+}
+name = "Target the foreign interests of the AOG"
+command = { type = relation which = CGX value = -50 }
+command = { type = event which = 166017 where = CYN when = 50 }
+}
+
+action = {
+ai_chance = 15
+trigger = { OR = {
+control = { province = 1289 data = CYN }
+control = { province = 1281 data = CYN }
+control = { province = 1284 data = CYN }
+control = { province = 1277 data = CYN }
+control = { province = 1263 data = CYN }
+control = { province = 1259 data = CYN }
+control = { province = 1310 data = CYN }
+control = { province = 1378 data = CYN }
+control = { province = 1369 data = CYN }
+}
+}
+name = "We must consolidate and wait for the next move"
+command = { type = trigger which = 166019 }
+}
+
+action = {
+ai_chance = 1
+name = "Abandon all further plans for unification"
+command = { type = dissent value = 10 }
+command = { type = clrflag which = YUN_CHINA }
+command = { type = sleepevent which = 166012 }
+command = { type = sleepevent which = 166013 }
+command = { type = sleepevent which = 166014 }
+command = { type = sleepevent which = 166015 }
+command = { type = sleepevent which = 166016 }
+command = { type = sleepevent which = 166017 }
+command = { type = sleepevent which = 166018 }
+command = { type = sleepevent which = 166019 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+}
+
+
+event = {
+id = 166019
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Unification of China - The Transformation"
+desc = "With a great deal of the Middle Kingdom under our control, our newly-incorpored populations are now pressuring the government in Kunming to reform into a true republican federation of all China. Despite the great strenghtening of our domains that this move would ensue, some members of our clique are in fear of losing their power..."
+
+action = {
+ai_chance = 80
+trigger = { NOT = { exists = CHI } }
+name = "Reform and proclaim the Republic of China"
+command = { type = dissent value = -10 }
+command = { type = flag_ext where = CYN } #reset flag
+command = { type = name where = CYN }
+command = { type = country which = CHI }
+command = { type = free_ic value = 2 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = trigger which = 166025 }
+}
+
+action = {
+ai_chance = 20
+name = "We're not ready for this"
+command = { type = dissent value = 10 }
+command = { type = sleepevent which = 166025 }
+command = { type = sleepevent which = 166030 }
+command = { type = sleepevent which = 166031 }
+command = { type = sleepevent which = 166032 }
+command = { type = sleepevent which = 166033 }
+command = { type = sleepevent which = 166034 }
+command = { type = sleepevent which = 166035 }
+command = { type = sleepevent which = 166036 }
+}
+}
+
+
+event = {
+id = 166020
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+flag = YUN_CHINA
+control = { province = 1289 data = CYN }
+}
+
+name = "Lhasa under our control"
+desc = "Lhasa, the historical capital of Tibet, is now under control of our troops. Several thousands of Tibetan civilians and soldiers of the former regime are now ready to join our forces and fight for the unification of China!"
+
+date = { day = 0 month = january year = 1938 }
+offset = 50
+deathdate = { day = 29 month = march year = 1966 }
+
+action = {
+name = "Great!"
+command = { type = add_division which = "Xizang bubing" value = infantry when = 7 }
+command = { type = add_division which = "Xizang weidui" value = militia when = 4 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 100 where = 1390 }
+command = { type = event which = 166027 where = CYN when = 350 }
+}
+}
+
+
+event = {
+id = 166021
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+flag = YUN_CHINA
+control = { province = 1281 data = CYN }
+}
+
+name = "Urumqi under our control"
+desc = "Urumqi, the historical capital of the Northewestern Mas, is now under control of our troops. Several thousands of civilians and soldiers of the former regime are now ready to join our forces and fight for the unification of China!"
+
+date = { day = 0 month = january year = 1938 }
+offset = 50
+deathdate = { day = 29 month = march year = 1966 }
+
+action = {
+name = "Great!"
+command = { type = add_division which = "Xibei bubing" value = infantry when = 7 }
+command = { type = add_division which = "Xibei weidui" value = militia when = 4 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 100 where = 1390 }
+command = { type = event which = 166026 where = CYN when = 350 }
+}
+}
+
+
+event = {
+id = 166022
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+flag = YUN_CHINA
+control = { province = 1259 data = CYN }
+}
+
+name = "Yan'An under our control"
+desc = "Yan'An the historical capital of the Shangqing Tianguo, is now under control of our troops. Several thousands of former millenarian civilians and soldiers of the former regime are now ready to join our forces and fight for the unification of China!"
+
+date = { day = 0 month = january year = 1938 }
+offset = 50
+deathdate = { day = 29 month = march year = 1966 }
+
+action = {
+name = "Great!"
+command = { type = add_division which = "Shan bubing" value = infantry when = 7 }
+command = { type = add_division which = "Shan weidui" value = militia when = 4 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 100 where = 1390 }
+command = { type = event which = 166028 where = CYN when = 350 }
+}
+}
+
+
+event = {
+id = 166023
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+flag = YUN_CHINA
+control = { province = 1378 data = CYN }
+}
+
+name = "Guilin under our control"
+desc = "Guilin, one of the main cities of the AOG, is now under control of our troops. Several thousands of civilians and soldiers of the former regime are now ready to join our forces and fight for the unification of China!"
+
+date = { day = 0 month = january year = 1938 }
+offset = 50
+deathdate = { day = 29 month = march year = 1966 }
+
+action = {
+name = "Great!"
+command = { type = add_division which = "Guilín bubing" value = infantry when = 6 }
+command = { type = add_division which = "Guilín weidui" value = militia when = 4 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 100 where = 1390 }
+command = { type = event which = 166029 where = CYN when = 350 }
+}
+}
+
+
+event = {
+id = 166024
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+flag = YUN_CHINA
+control = { province = 1369 data = CYN }
+}
+
+name = "Guangzhou under our control"
+desc = "Guangzhou, one of the main cities of the AOG, is now under control of our troops. Several thousands of civilians and soldiers of the former regime are now ready to join our forces and fight for the unification of China!"
+
+date = { day = 0 month = january year = 1938 }
+offset = 50
+deathdate = { day = 29 month = march year = 1966 }
+
+action = {
+name = "Great!"
+command = { type = add_division which = "Guangzhou bubing" value = infantry when = 6 }
+command = { type = add_division which = "Guangzhou weidui" value = militia when = 4 }
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 100 where = 1390 }
+command = { type = event which = 166029 where = CYN when = 350 }
+}
+}
+
+
+event = {
+id = 166025
+random = no
+country = CHI
+style = 2
+picture = "China_Army"
+
+name = "The Republic of China is born!"
+desc = "Thanks to the efforts spearheaded by the Yunnan Clique, a new Republic of China has been formed, with claims on all rightfull Chinese lands. The question is now open regarding the nature of the new regime. The population is pressuring for a call for elections soon, while the old military clique still wants to retain their power."
+
+action = {
+ai_chance = 40
+name = "Call for emergency elections in one month"
+command = { type = event which = 166030 where = CHI when = 30 }
+command = { type = sleepevent which = 630103 } #Chosing new capital
+command = { type = sleepevent which = 628016 } #Shangqing's alliance
+command = { type = dissent value = -5 }
+command = { type = wakeminister which = 77501001 }
+command = { type = wakeminister which = 77501002 }
+command = { type = wakeminister which = 77501003 }
+command = { type = wakeminister which = 77501004 }
+command = { type = wakeminister which = 77501005 }
+command = { type = wakeminister which = 77501006 }
+command = { type = wakeminister which = 77501007 }
+command = { type = wakeminister which = 77501008 }
+command = { type = wakeminister which = 77501009 }
+command = { type = wakeminister which = 77501010 }
+command = { type = wakeminister which = 77501011 }
+command = { type = wakeminister which = 77501012 }
+command = { type = wakeminister which = 77501013 }
+command = { type = wakeminister which = 77501014 }
+command = { type = wakeminister which = 77501015 }
+command = { type = wakeminister which = 77501016 }
+command = { type = wakeminister which = 77501017 }
+command = { type = wakeminister which = 77501018 }
+command = { type = wakeminister which = 77501019 }
+command = { type = wakeminister which = 77501020 }
+command = { type = headofstate which = 77501001 }
+command = { type = headofgovernment which = 77501002 }
+command = { type = foreignminister which = 77501003 }
+command = { type = armamentminister which = 77501004 }
+command = { type = ministerofsecurity which = 77501005 }
+command = { type = ministerofintelligence which = 77501006 }
+command = { type = chiefofstaff which = 77501007 }
+command = { type = chiefofarmy which = 77501008 }
+command = { type = chiefofnavy which = 77501009 }
+command = { type = chiefofair which = 77501010 }
+command = { type = sleepevent which = 152020 }
+command = { type = sleepevent which = 152031 }
+command = { type = sleepevent which = 152089 }
+command = { type = sleepevent which = 152090 }
+command = { type = sleepevent which = 152091 }
+command = { type = sleepevent which = 152092 }
+command = { type = sleepevent which = 152093 }    # Elections at Republican China.txt
+}
+
+action = {
+ai_chance = 60
+name = "The Yunnan generals will continue their dictatorship"
+command = { type = sleepevent which = 630103 } #Chosing new capital
+command = { type = sleepevent which = 628016 } #Shangqing's alliance
+command = { type = dissent value = 10 }
+command = { type = wakeminister which = 77501001 }
+command = { type = wakeminister which = 77501002 }
+command = { type = wakeminister which = 77501003 }
+command = { type = wakeminister which = 77501004 }
+command = { type = wakeminister which = 77501005 }
+command = { type = wakeminister which = 77501006 }
+command = { type = wakeminister which = 77501007 }
+command = { type = wakeminister which = 77501008 }
+command = { type = wakeminister which = 77501009 }
+command = { type = wakeminister which = 77501010 }
+command = { type = wakeminister which = 77501011 }
+command = { type = wakeminister which = 77501012 }
+command = { type = wakeminister which = 77501013 }
+command = { type = wakeminister which = 77501014 }
+command = { type = wakeminister which = 77501015 }
+command = { type = wakeminister which = 77501016 }
+command = { type = wakeminister which = 77501017 }
+command = { type = wakeminister which = 77501018 }
+command = { type = wakeminister which = 77501019 }
+command = { type = wakeminister which = 77501020 }
+command = { type = headofstate which = 77501001 }
+command = { type = headofgovernment which = 77501002 }
+command = { type = foreignminister which = 77501003 }
+command = { type = armamentminister which = 77501004 }
+command = { type = ministerofsecurity which = 77501005 }
+command = { type = ministerofintelligence which = 77501006 }
+command = { type = chiefofstaff which = 77501007 }
+command = { type = chiefofarmy which = 77501008 }
+command = { type = chiefofnavy which = 77501009 }
+command = { type = chiefofair which = 77501010 }
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = sleepevent which = 152020 }
+command = { type = sleepevent which = 152031 }
+command = { type = sleepevent which = 152089 }
+command = { type = sleepevent which = 152090 }
+command = { type = sleepevent which = 152091 }
+command = { type = sleepevent which = 152092 }
+command = { type = sleepevent which = 152093 }    # Elections at Republican China.txt
+}
+}
+
+
+event = {
+id = 166026
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Northwest areas under our control"
+desc = "The Muslim peoples of former Xibei Lianbang are now fully under our control."
+
+action = {
+trigger = {
+NOT = { 
+exists = CXB
+}
+control = { province = 1281 data = CYN }
+}
+name = "Oh, great!"
+command = { type = dissent value = -2 }
+command = { type = addcore which = 1283 }
+command = { type = addcore which = 1284 }
+command = { type = addcore which = 1285 }
+command = { type = addcore which = 1266 }
+command = { type = addcore which = 1265 }
+command = { type = addcore which = 1264 }
+command = { type = addcore which = 1272 }
+command = { type = addcore which = 1268 }
+command = { type = addcore which = 1270 }
+command = { type = addcore which = 1277 }
+command = { type = addcore which = 1281 }
+command = { type = addcore which = 1280 }
+command = { type = addcore which = 1276 }
+command = { type = addcore which = 1273 }
+command = { type = addcore which = 1275 }
+command = { type = addcore which = 1279 }
+command = { type = addcore which = 1282 }
+command = { type = addcore which = 1274 }
+}
+}
+
+
+event = {
+id = 166027
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Tibet under our control"
+desc = "The peoples of former Tibet are now fully under our control."
+
+action = {
+trigger = {
+NOT = { 
+exists = TIB 
+}
+control = { province = 1289 data = CYN }
+}
+name = "Oh, great!"
+command = { type = dissent value = -2 }
+command = { type = addcore which = 1278 }
+command = { type = addcore which = 1286 }
+command = { type = addcore which = 1287 }
+command = { type = addcore which = 1288 }
+command = { type = addcore which = 1290 }
+command = { type = addcore which = 1289 }
+command = { type = addcore which = 1295 }
+command = { type = addcore which = 1294 }
+}
+}
+
+
+event = {
+id = 166028
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Shangqing lands under our control"
+desc = "The peoples of former Shangqing Tianguo are now fully under our control."
+
+action = {
+trigger = {
+NOT = { 
+exists = CHC 
+}
+control = { province = 1259 data = CYN }
+}
+name = "Oh, great!"
+command = { type = dissent value = -2 }
+command = { type = addcore which = 1263 }
+command = { type = addcore which = 1258 }
+command = { type = addcore which = 1257 }
+command = { type = addcore which = 1256 }
+command = { type = addcore which = 1255 }
+command = { type = addcore which = 1271 }
+command = { type = addcore which = 1259 }
+command = { type = addcore which = 1269 }
+command = { type = addcore which = 1260 }
+}
+}
+
+
+event = {
+id = 166029
+random = no
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "The AOG lands under our control"
+desc = "The peoples of former AOG are now fully under our control."
+
+action = {
+trigger = {
+NOT = { 
+exists = CGX
+ }
+OR = {
+control = { province = 1369 data = CYN }
+control = { province = 1378 data = CYN }
+}
+}
+name = "Oh, great!"
+command = { type = dissent value = -2 }
+command = { type = addcore which = 1314 }
+command = { type = addcore which = 1315 }
+command = { type = addcore which = 1313 }
+command = { type = addcore which = 1310 }
+command = { type = addcore which = 1301 }
+command = { type = addcore which = 1304 }
+command = { type = addcore which = 1307 }
+command = { type = addcore which = 1309 }
+command = { type = addcore which = 1312 }
+command = { type = addcore which = 1306 }
+command = { type = addcore which = 1305 }
+command = { type = addcore which = 1378 }
+command = { type = addcore which = 1380 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1381 }
+command = { type = addcore which = 1383 }
+command = { type = addcore which = 1379 }
+command = { type = addcore which = 1376 }
+command = { type = addcore which = 1377 }
+command = { type = addcore which = 1374 }
+command = { type = addcore which = 1318 }
+command = { type = addcore which = 1353 }
+command = { type = addcore which = 1308 }
+command = { type = addcore which = 1355 }
+command = { type = addcore which = 1311 }
+command = { type = addcore which = 1354 }
+command = { type = addcore which = 1368 }
+command = { type = addcore which = 1369 }
+command = { type = addcore which = 1373 }
+command = { type = addcore which = 1370 }
+command = { type = addcore which = 1375 }
+command = { type = addcore which = 1356 }
+command = { type = addcore which = 1349 }
+command = { type = addcore which = 1359 }
+command = { type = addcore which = 1360 }
+command = { type = addcore which = 1352 }
+command = { type = addcore which = 1357 }
+command = { type = addcore which = 1350 }
+command = { type = addcore which = 1351 }
+command = { type = addcore which = 1348 }
+command = { type = addcore which = 1347 }
+}
+}
+
+
+event = {
+id = 166030
+random = no
+country = CHI
+style = 2
+
+name = "General Elections"
+desc = "Following the partial unification of our country, we need to define which party will lead us and China in the fullfillment of Sun Yat-sen's legacy."
+picture = "mayfourth"
+
+action_a = {
+ai_chance =  40
+name = "Soong Ching-ling and Zhou Shuren's Leftist Kuomintang"
+command = { type = dissent value = -3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 183510 } # Soong Ching-ling
+command = { type = headofgovernment which = 183521 } # Zhou Shuren
+command = { type = foreignminister which =  183530 } # Zhang Junmai
+command = { type = armamentminister which = 183513 } # Liao Zhongkai
+command = { type = ministerofsecurity which = 183514 } # Lieu Xiao
+command = { type = ministerofintelligence which = 183516 } # Woo Tsin-hang
+command = { type = domestic which = free_market value = 2 }
+command = { type = set_domestic which = interventionism value = 5 }
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = local_setflag which = CHI_KTMDEM }
+command = { type = local_setflag which = CHI_DEM }
+command = { type = event which = 166031 where = CHI when = 1480 }
+command = { type = event which = 630105 where = CHI when = 150 }    # The Legacy of Sun Yat Sen
+}
+
+action_b = {
+ai_chance =  30
+name = "Hu Shi's Liberals Secure a Majority!"
+command = { type = dissent value = -2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 183512 } # Hu Shi
+command = { type = headofgovernment which = 183511 } # Wellington Koo
+command = { type = foreignminister which =  183533 } # Zhang Dongsun
+command = { type = armamentminister which = 183525 } # Chen Yinque
+command = { type = ministerofsecurity which = 183527 } # Chao Yuen Ren
+command = { type = ministerofintelligence which = 183520 } # Xian Xinghai
+command = { type = domestic which = free_market value = 5 }
+command = { type = set_domestic which = interventionism value = 4 }
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = local_setflag which = CHI_LIBDEM }
+command = { type = local_setflag which = CHI_DEM }
+command = { type = event which = 166031 where = CHI when = 1480 }
+command = { type = event which = 630105 where = CHI when = 150 }    # The Legacy of Sun Yat Sen
+}
+
+action_c = {
+ai_chance =  30
+name = "Chen Jiongming will defend the Republic!"
+command = { type = dissent value = 3 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = set_domestic which = free_market value = -1 }
+command = { type = headofstate which = 183562 } # Chen Jiongming
+command = { type = headofgovernment which = 183538 } # Tang Shaoyi
+command = { type = foreignminister which =  52035 } # Lin Wei
+command = { type = armamentminister which = 183539 } # Zhang Qun
+command = { type = ministerofsecurity which = 183535 } # Jiang Tingfu
+command = { type = ministerofintelligence which = 183532 } # Lin Yutang
+command = { type = set_domestic which = interventionism value = 3 }
+command = { type = domestic which = defense_lobby value = 4 }
+command = { type = local_setflag which = CHI_CONDEM }
+command = { type = local_setflag which = CHI_DEM }
+command = { type = event which = 166031 where = CHI when = 1480 }
+command = { type = event which = 630105 where = CHI when = 150 }    # The Legacy of Sun Yat Sen
+}
+}
+
+
+event = {
+id = 166031
+random = no
+country = CHI
+style = 2
+
+name = "The Parliamentary elections"
+desc = "As per the constitution, Free China is to experience the second batch of elections to the National Assembly and the old guard of parties have been readying themselves for months. However, new claimants to the popular mandate have also arisen in the Young China Party."
+picture = "mayfourth"
+
+action_a = {
+ai_chance =  40
+name = "Soong Ching-ling and Zhou Shuren's Leftist Kuomintang!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = dissent value = -3  }
+command = { type = headofstate which = 183510 } # Soong Ching-ling
+command = { type = headofgovernment which = 183521 } # Zhou Shuren
+command = { type = foreignminister which =  183530 } # Zhang Junmai
+command = { type = armamentminister which = 183513 } # Cheng Jioming
+command = { type = ministerofsecurity which = 183514 } # Lieu Xiao
+command = { type = ministerofintelligence which = 183516 } # Woo Tsin-hang
+command = { type = event which = 166032 where = CHI when = 1480 }
+}
+
+action_b = {
+ai_chance =  25
+name = "Hu Shi's Liberals Secure a Majority!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183512 } # Hu Shi
+command = { type = headofgovernment which = 183511 } # Wellington Koo
+command = { type = foreignminister which =  183533 } # Zhang Dongsun
+command = { type = armamentminister which = 183525 } # Chen Yinque
+command = { type = ministerofsecurity which = 183527 } # Chao Yuen Ren
+command = { type = ministerofintelligence which = 183520 } # Xian Xinghai
+command = { type = event which = 166032 where = CHI when = 1480 }
+}
+
+action_c = {
+ai_chance =  10
+name = "Chen Jiongming's Conservatives!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 183562 } # Chen Jiongming
+command = { type = headofgovernment which = 183538 } # Tang Shaoyi
+command = { type = foreignminister which =  52035 } # Lin Wei
+command = { type = armamentminister which = 183539 } # Zhang Qun
+command = { type = ministerofsecurity which = 183535 } # Jiang Tingfu
+command = { type = ministerofintelligence which = 183532 } # Lin Yutang
+command = { type = event which = 166032 where = CHI when = 1480 }
+}
+
+action_d = {
+ai_chance =  25
+name = "The Young China Party carries the day!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183542 } # Zeng Qi
+command = { type = headofgovernment which = 183543 } # Zuo Shunsheng
+command = { type = foreignminister which =  183544 } # He Luzhi
+command = { type = armamentminister which = 183545 } # Luo Longji
+command = { type = event which = 166032 where = CHI when = 1480 }
+}
+}
+
+
+event = {
+id = 166032
+random = no
+country = CHI
+style = 2
+
+name = "The Parliamentary elections"
+desc = "As four years have passed since the last election the country is filled with excitement and political bickering. Our cities are filled with posters and wall paintings proclaiming the advantages of the various parliamentary groupings. Today is a great day for democratic China, the election will prove that the revolution and defeat of the AOG, warlords, and monarchists have secured a future for the Middle Kingdom enshrined in liberty!"
+picture = "mayfourth"
+
+action_a = {
+ai_chance =  40
+name = "Soong Ching-ling and Zhou Shuren's Leftist Kuomintang!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = dissent value = -3  }
+command = { type = headofstate which = 183510 } # Soong Ching-ling
+command = { type = headofgovernment which = 183521 } # Zhou Shuren
+command = { type = foreignminister which =  183530 } # Zhang Junmai
+command = { type = armamentminister which = 183513 } # Cheng Jioming
+command = { type = ministerofsecurity which = 183514 } # Lieu Xiao
+command = { type = ministerofintelligence which = 183516 } # Woo Tsin-hang
+command = { type = event which = 166033 where = CHI when = 1480 }
+}
+
+action_b = {
+ai_chance =  25
+name = "Hu Shi's Liberals Secure a Majority!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183512 } # Hu Shi
+command = { type = headofgovernment which = 183511 } # Wellington Koo
+command = { type = foreignminister which =  183533 } # Zhang Dongsun
+command = { type = armamentminister which = 183525 } # Chen Yinque
+command = { type = ministerofsecurity which = 183527 } # Chao Yuen Ren
+command = { type = ministerofintelligence which = 183520 } # Xian Xinghai
+command = { type = event which = 166033 where = CHI when = 1480 }
+}
+
+action_c = {
+ai_chance =  10
+name = "Chen Jiongming's Conservatives!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 183562 } # Chen Jiongming
+command = { type = headofgovernment which = 183538 } # Tang Shaoyi
+command = { type = foreignminister which =  52035 } # Lin Wei
+command = { type = armamentminister which = 183539 } # Zhang Qun
+command = { type = ministerofsecurity which = 183535 } # Jiang Tingfu
+command = { type = ministerofintelligence which = 183532 } # Lin Yutang
+command = { type = event which = 166033 where = CHI when = 1480 }
+}
+
+action_d = {
+ai_chance =  25
+name = "The Young China Party carries the day!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183542 } # Zeng Qi
+command = { type = headofgovernment which = 183543 } # Zuo Shunsheng
+command = { type = foreignminister which =  183544 } # He Luzhi
+command = { type = armamentminister which = 183545 } # Luo Longji
+command = { type = event which = 166033 where = CHI when = 1480 }
+}
+}
+
+
+event = {
+id = 166033
+random = no
+country = CHI
+style = 2
+
+name = "The Parliamentary elections"
+desc = "As four years have passed since the last election the country is filled with excitement and political bickering. Our cities are filled with posters and wall paintings proclaiming the advantages of the various parliamentary groupings. Today is a great day for democratic China, the election will prove that the revolution and defeat of the AOG, warlords, and monarchists have secured a future for the Middle Kingdom enshrined in liberty!"
+picture = "mayfourth"
+
+action_a = {
+ai_chance =  40
+name = "Soong Ching-ling and Zhou Shuren's Leftist Kuomintang!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = dissent value = -3  }
+command = { type = headofstate which = 183510 } # Soong Ching-ling
+command = { type = headofgovernment which = 183521 } # Zhou Shuren
+command = { type = foreignminister which =  183530 } # Zhang Junmai
+command = { type = armamentminister which = 183513 } # Cheng Jioming
+command = { type = ministerofsecurity which = 183514 } # Lieu Xiao
+command = { type = ministerofintelligence which = 183516 } # Woo Tsin-hang
+command = { type = event which = 166034 where = CHI when = 1480 }
+}
+
+action_b = {
+ai_chance =  25
+name = "Hu Shi's Liberals Secure a Majority!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183512 } # Hu Shi
+command = { type = headofgovernment which = 183511 } # Wellington Koo
+command = { type = foreignminister which =  183533 } # Zhang Dongsun
+command = { type = armamentminister which = 183525 } # Chen Yinque
+command = { type = ministerofsecurity which = 183527 } # Chao Yuen Ren
+command = { type = ministerofintelligence which = 183520 } # Xian Xinghai
+command = { type = event which = 166034 where = CHI when = 1480 }
+}
+
+action_c = {
+ai_chance =  10
+name = "Chen Jiongming's Conservatives!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 183562 } # Chen Jiongming
+command = { type = headofgovernment which = 183538 } # Tang Shaoyi
+command = { type = foreignminister which =  52035 } # Lin Wei
+command = { type = armamentminister which = 183539 } # Zhang Qun
+command = { type = ministerofsecurity which = 183535 } # Jiang Tingfu
+command = { type = ministerofintelligence which = 183532 } # Lin Yutang
+command = { type = event which = 166034 where = CHI when = 1480 }
+}
+
+action_d = {
+ai_chance =  25
+name = "The Young China Party carries the day!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183542 } # Zeng Qi
+command = { type = headofgovernment which = 183543 } # Zuo Shunsheng
+command = { type = foreignminister which =  183544 } # He Luzhi
+command = { type = armamentminister which = 183545 } # Luo Longji
+command = { type = event which = 166034 where = CHI when = 1480 }
+}
+}
+
+
+event = {
+id = 166034
+random = no
+country = CHI
+style = 2
+
+name = "The Parliamentary elections"
+desc = "As four years have passed since the last election the country is filled with excitement and political bickering. Our cities are filled with posters and wall paintings proclaiming the advantages of the various parliamentary groupings. Today is a great day for democratic China, the election will prove that the revolution and defeat of the AOG, warlords, and monarchists have secured a future for the Middle Kingdom enshrined in liberty!"
+picture = "mayfourth"
+
+action_a = {
+ai_chance =  40
+name = "Soong Ching-ling and Zhou Shuren's Leftist Kuomintang!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = dissent value = -3  }
+command = { type = headofstate which = 183510 } # Soong Ching-ling
+command = { type = headofgovernment which = 183521 } # Zhou Shuren
+command = { type = foreignminister which =  183530 } # Zhang Junmai
+command = { type = armamentminister which = 183513 } # Cheng Jioming
+command = { type = ministerofsecurity which = 183514 } # Lieu Xiao
+command = { type = ministerofintelligence which = 183516 } # Woo Tsin-hang
+command = { type = event which = 166035 where = CHI when = 1480 }
+}
+
+action_b = {
+ai_chance =  25
+name = "Hu Shi's Liberals Secure a Majority!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183512 } # Hu Shi
+command = { type = headofgovernment which = 183511 } # Wellington Koo
+command = { type = foreignminister which =  183533 } # Zhang Dongsun
+command = { type = armamentminister which = 183525 } # Chen Yinque
+command = { type = ministerofsecurity which = 183527 } # Chao Yuen Ren
+command = { type = ministerofintelligence which = 183520 } # Xian Xinghai
+command = { type = event which = 166035 where = CHI when = 1480 }
+}
+
+action_c = {
+ai_chance =  10
+name = "Chen Jiongming's Conservatives!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 183562 } # Chen Jiongming
+command = { type = headofgovernment which = 183538 } # Tang Shaoyi
+command = { type = foreignminister which =  52035 } # Lin Wei
+command = { type = armamentminister which = 183539 } # Zhang Qun
+command = { type = ministerofsecurity which = 183535 } # Jiang Tingfu
+command = { type = ministerofintelligence which = 183532 } # Lin Yutang
+command = { type = event which = 166035 where = CHI when = 1480 }
+}
+
+action_d = {
+ai_chance =  25
+name = "The Young China Party carries the day!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183542 } # Zeng Qi
+command = { type = headofgovernment which = 183543 } # Zuo Shunsheng
+command = { type = foreignminister which =  183544 } # He Luzhi
+command = { type = armamentminister which = 183545 } # Luo Longji
+command = { type = event which = 166035 where = CHI when = 1480 }
+}
+}
+
+
+event = {
+id = 166035
+random = no
+country = CHI
+style = 2
+
+name = "The Parliamentary elections"
+desc = "As four years have passed since the last election the country is filled with excitement and political bickering. Our cities are filled with posters and wall paintings proclaiming the advantages of the various parliamentary groupings. Today is a great day for democratic China, the election will prove that the revolution and defeat of the AOG, warlords, and monarchists have secured a future for the Middle Kingdom enshrined in liberty!"
+picture = "mayfourth"
+
+action_a = {
+ai_chance =  35
+name = "Soong Ching-ling and Zhou Shuren's Leftist Kuomintang!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = dissent value = -3  }
+command = { type = headofstate which = 183510 } # Soong Ching-ling
+command = { type = headofgovernment which = 183521 } # Zhou Shuren
+command = { type = foreignminister which =  183530 } # Zhang Junmai
+command = { type = armamentminister which = 183513 } # Cheng Jioming
+command = { type = ministerofsecurity which = 183514 } # Lieu Xiao
+command = { type = ministerofintelligence which = 183516 } # Woo Tsin-hang
+command = { type = event which = 166036 where = CHI when = 1480 }
+}
+
+action_b = {
+ai_chance =  25
+name = "Hu Shi's Liberals Secure a Majority!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183512 } # Hu Shi
+command = { type = headofgovernment which = 183511 } # Wellington Koo
+command = { type = foreignminister which =  183533 } # Zhang Dongsun
+command = { type = armamentminister which = 183525 } # Chen Yinque
+command = { type = ministerofsecurity which = 183527 } # Chao Yuen Ren
+command = { type = ministerofintelligence which = 183520 } # Xian Xinghai
+command = { type = event which = 166036 where = CHI when = 1480 }
+}
+
+action_c = {
+ai_chance =  25
+name = "Chen Jiongming's Conservatives!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 183562 } # Chen Jiongming
+command = { type = headofgovernment which = 183538 } # Tang Shaoyi
+command = { type = foreignminister which =  52035 } # Lin Wei
+command = { type = armamentminister which = 183539 } # Zhang Qun
+command = { type = ministerofsecurity which = 183535 } # Jiang Tingfu
+command = { type = ministerofintelligence which = 183532 } # Lin Yutang
+command = { type = event which = 166036 where = CHI when = 1480 }
+}
+
+action_d = {
+ai_chance =  15
+name = "The Young China Party carries the day!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183542 } # Zeng Qi
+command = { type = headofgovernment which = 183543 } # Zuo Shunsheng
+command = { type = foreignminister which =  183544 } # He Luzhi
+command = { type = armamentminister which = 183545 } # Luo Longji
+command = { type = event which = 166036 where = CHI when = 1480 }
+}
+}
+
+
+event = {
+id = 166036
+random = no
+country = CHI
+
+name = "The Parliamentary elections"
+desc = "As four years have passed since the last election the country is filled with excitement and political bickering. Our cities are filled with posters and wall paintings proclaiming the advantages of the various parliamentary groupings. Today is a great day for democratic China, the election will prove that the revolution and defeat of the AOG, warlords, and monarchists have secured a future for the Middle Kingdom enshrined in liberty!"
+picture = "mayfourth"
+
+action_a = {
+ai_chance =  35
+name = "Soong Ching-ling and Zhou Shuren's Leftist Kuomintang!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = dissent value = -3  }
+command = { type = headofstate which = 183510 } # Soong Ching-ling
+command = { type = headofgovernment which = 183521 } # Zhou Shuren
+command = { type = foreignminister which =  183530 } # Zhang Junmai
+command = { type = armamentminister which = 183513 } # Cheng Jioming
+command = { type = ministerofsecurity which = 183514 } # Lieu Xiao
+command = { type = ministerofintelligence which = 183516 } # Woo Tsin-hang
+}
+
+action_b = {
+ai_chance =  25
+name = "Hu Shi's Liberals Secure a Majority!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183512 } # Hu Shi
+command = { type = headofgovernment which = 183511 } # Wellington Koo
+command = { type = foreignminister which =  183533 } # Zhang Dongsun
+command = { type = armamentminister which = 183525 } # Chen Yinque
+command = { type = ministerofsecurity which = 183527 } # Chao Yuen Ren
+command = { type = ministerofintelligence which = 183520 } # Xian Xinghai
+}
+
+action_c = {
+ai_chance =  25
+name = "Chen Jiongming's Conservatives!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 183562 } # Chen Jiongming
+command = { type = headofgovernment which = 183538 } # Tang Shaoyi
+command = { type = foreignminister which =  52035 } # Lin Wei
+command = { type = armamentminister which = 183539 } # Zhang Qun
+command = { type = ministerofsecurity which = 183535 } # Jiang Tingfu
+command = { type = ministerofintelligence which = 183532 } # Lin Yutang
+}
+
+action_d = {
+ai_chance =  15
+name = "The Young China Party carries the day!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = dissent value = -2 }
+command = { type = headofstate which = 183542 } # Zeng Qi
+command = { type = headofgovernment which = 183543 } # Zuo Shunsheng
+command = { type = foreignminister which =  183544 } # He Luzhi
+command = { type = armamentminister which = 183545 } # Luo Longji
+}
+}
+
+
+
+### Expedition against the AOG
+
+event = {
+id = 166037
+country = CHI
+style = 2
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+decision = {
+exists = CGX
+OR = {
+puppet = { country = CGX country = GER }
+alliance = { country = GER country = CGX }
+}
+NOT = {
+alliance = { country = GER country = CHI }
+alliance = { country = CGX country = CHI }
+alliance = { country = CSX country = CHI }
+ispuppet = CHI
+}
+}
+
+decision_trigger = { }
+
+trigger = {
+exists = CGX
+NOT = {
+alliance = { country = GER country = CHI }
+alliance = { country = CGX country = CHI }
+alliance = { country = CSX country = CHI }
+ispuppet = CHI
+war = { country = JAP country = CHI }
+war = { country = GER country = CHI }
+war = { country = MAN country = CHI }
+war = { country = TIB country = CHI }
+war = { country = CYN country = CHI }
+war = { country = CXB country = CHI }
+war = { country = MON country = CHI }
+}
+}
+
+date = { day = 0 month = may year = 1939 }
+offset =  150
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "The Southern Expansion"
+desc = "If we wish to continue our efforts for the unification of the Middle Kingdom, we must pay attention to the AoG - the Allgemeine Ostasiatische Gesellschaft, the German-dependent corporate state covering much of South China. Our ministers suggest that we should approach the Germans and start negotiations over the territory. Some of our generals, however, insist on a land offensive against the corporate militias - which may trigger a war with the German Reich itself."
+
+action = {
+ai_chance = 200
+trigger = {
+OR = {
+NOT = {
+puppet = { country = CGX country = GER }
+alliance = { country = CGX country = GER }        # AOG is all alone
+}
+flag = GER_Capitulation
+flag = GER_CON_Capitulation
+}
+}
+name = "Ready the troops and prepare to cross the border"
+command = { type = dissent value = -5 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 166038 }
+}
+
+action = {
+ai_chance = 20
+trigger = {
+OR = {
+puppet = { country = CGX country = GER }
+alliance = { country = CGX country = GER }        # AOG allied/puppet of the Germans
+}
+NOT = {
+flag = GER_Capitulation
+flag = GER_CON_Capitulation
+}
+}
+name = "Ready the troops and prepare to cross the border"
+command = { type = dissent value = -5 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 166040 }
+}
+
+action = {
+ai_chance = 70
+trigger = {
+OR = {
+puppet = { country = CGX country = GER }
+alliance = { country = CGX country = GER }        # AOG allied/puppet of the Germans
+}
+NOT = {
+flag = GER_Capitulation
+flag = GER_CON_Capitulation
+}
+}
+name = "Attempt to start negotiations with Germany"
+command = { type = trigger which = 166042 }
+}
+action = {
+ai_chance = 10
+name = "This is not worth the trouble"
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 166038
+country = CGX
+style = 2
+picture = "China_Army"
+
+name = "Republican demands"
+desc = "The resurgent republic of China has demanded our complete submission to the Chinese National Assembly. Obviously, our Board of Directors is divided regarding our answer to such boasts, even with the support from Germany now gone and Republican forces deployed on our borders..."
+
+action = {
+ai_chance = 20
+name = "We will fight the invaders! War!"
+command = { type = dissent value = -5 }
+command = { type = war which = CHI }
+}
+
+action = {
+ai_chance = 80
+name = "We must fold to their demands"
+command = { type = trigger which = 166039 }
+}
+}
+
+
+event = {
+id = 166039
+country = CHI
+style = 2
+picture = "China_Army"
+
+name = "The AOG has folded"
+desc = "The AOG Company has accepted our demands and now their lands are part of the great Chinese Republic!"
+
+action = {
+name = "Great!"
+command = { type = dissent value = -5 }
+command = { type = inherit which = CGX }
+}
+}
+
+
+event = {
+id = 166040
+country = GER
+style = 2
+picture = "China_Army"
+
+name = "Republican China threatens the AOG"
+desc = "Our diplomatic representatives in Southern China have reported that troops from the Chinese Republicans are amassing near the borders of the AOG territories. The threat of an invasion is clear! We must stand firm to this menace, as the future of our interests in China is at stake."
+
+action = {
+ai_chance = 5
+name = "We can't counter their forces - Abandon the AOG to its own luck"
+command = { type = dissent value = 10 }
+command = { type = end_mastery which = CGX }
+command = { type = relation which = CSX value = -100 }
+command = { type = trigger which = 166038 }
+}
+
+action = {
+ai_chance = 95
+name = "Warn them to turn back or face the Reich's war machine"
+command = { type = relation which = CSX value = 50 }
+command = { type = trigger which = 166041 }
+}
+}
+
+
+event = {
+id = 166041
+country = CHI
+style = 2
+picture = "China_Army"
+
+name = "German Response"
+desc = "The German Empire has stood to the side of their corporate lackeys of the AOG. They have stated that any attempt by our forces to cross the borders into South China will be considered a declaration of war against the Reich!"
+
+action = {
+ai_chance = 30
+name = "Ignore their threats and move into South China"
+command = { type = war which = CGX }
+}
+
+action = {
+ai_chance = 70
+name = "We can't risk a war with Germany"
+command = { type = dissent value = 8 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = domestic which = defense_lobby value = -1 }
+}
+}
+
+
+event = {
+id = 166042
+country = GER
+style = 2
+picture = "China_Army"
+
+name = "Negotiations with Republican China"
+desc = "The young Chinese Republic is trying to reassert control over Southern China, which is administered by the AOG since the 1926 Treaty of Nanjing. They are now attempting to start negotiations with us over the territory. We must be cautious, however, as any concessions to the republicans may threaten our influence in East Asia, and even shake our relationship with our partners of the Qing Empire."
+
+action = {
+ai_chance = 60
+name = "Don't even bother answering"
+command = { type = relation which = CSX value = 50 }
+command = { type = trigger which = 166043 }
+}
+
+action = {
+ai_chance = 5
+name = "Force the AOG to give in - The legal precedent is clear"
+command = { type = dissent value = 3 }
+command = { type = relation which = CSX value = -100 }
+command = { type = relation which = CHI value = 100 }
+command = { type = trigger which = 166044 }
+}
+
+action = {
+ai_chance = 35
+name = "Give them the company for exchange for a full alliance"
+command = { type = relation which = CSX value = -100 }
+command = { type = relation which = CHI value = 100 }
+command = { type = trigger which = 166045 }
+}
+}
+
+
+event = {
+id = 166043
+country = CHI
+style = 2
+picture = "China_Army"
+
+name = "Negotiations have failed"
+desc = "The arrogant Germans haven't even bothered answering for our calls for a conference over the AOG... What should we do now?"
+
+action = {
+ai_chance = 60
+name = "Ready the troops and prepare to cross the border"
+command = { type = dissent value = -5 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 166040 }
+}
+
+action = {
+ai_chance = 40
+name = "Forget about this matter"
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 166044
+country = CGX
+style = 2
+picture = "China_Army"
+
+name = "Germany has abandoned us"
+desc = "The resurgent Republic of China has demanded our complete submission to the Chinese National Assembly. Obviously, our Board of Directors is divided regarding our answer to such boasts, even with the support from Germany now gone and Republican forces deployed on our borders..."
+
+action = {
+ai_chance = 0
+name = "We will fight the invaders! War!"
+command = { type = dissent value = 5 }
+command = { type = war which = CHI }
+}
+
+action = {
+ai_chance = 80
+name = "We must fold to their demands"
+command = { type = trigger which = 166039 }
+}
+}
+
+
+event = {
+id = 166045
+country = CHI
+style = 2
+picture = "China_Army"
+
+name = "A proposal from Germany"
+desc = "The German Empire has started negotiations with us over the AOG lands, and have come up with an interesting proposal: they are willing to cede us the entire territory, in exchange for an alliance..."
+
+action = {
+ai_chance = 80
+name = "Yes, accept their offer"
+command = { type = trigger which = 166046 }
+command = { type = dissent value = -5 }
+command = { type = inherit which = CGX }
+command = { type = set_relation which = GER value = 100 }
+command = { trigger = { alliance = { country = POL country = GER } } type = set_relation which = POL value = 100 }
+command = { trigger = { alliance = { country = BEL country = GER } } type = set_relation which = BEL value = 100 }
+command = { trigger = { alliance = { country = LIT country = GER } } type = set_relation which = LIT value = 100 }
+command = { trigger = { alliance = { country = OTT country = GER } } type = set_relation which = OTT value = 100 }
+command = { trigger = { alliance = { country = TUR country = GER } } type = set_relation which = TUR value = 100 }
+command = { trigger = { alliance = { country = RUS country = GER } } type = set_relation which = RUS value = 100 }
+command = { trigger = { alliance = { country = ITA country = GER } } type = set_relation which = ITA value = 100 }
+command = { trigger = { alliance = { country = SCH country = GER } } type = set_relation which = SCH value = 100 }
+command = { trigger = { alliance = { country = HOL country = GER } } type = set_relation which = HOL value = 100 }
+command = { trigger = { alliance = { country = POL country = GER } } type = set_relation which = POL value = 100 }
+command = { trigger = { alliance = { country = SPA country = GER } } type = set_relation which = SPA value = 100 }
+command = { trigger = { alliance = { country = EUS country = GER } } type = set_relation which = EUS value = 100 }
+command = { trigger = { alliance = { country = POR country = GER } } type = set_relation which = POR value = 100 }
+command = { trigger = { alliance = { country = SPR country = GER } } type = set_relation which = SPR value = 100 }
+command = { trigger = { alliance = { country = UKR country = GER } } type = set_relation which = UKR value = 100 }
+command = { trigger = { alliance = { country = AUS country = GER } } type = set_relation which = AUS value = 100 }
+command = { trigger = { alliance = { country = RSI country = GER } } type = set_relation which = RSI value = 100 }
+command = { trigger = { alliance = { country = BLR country = GER } } type = set_relation which = BLR value = 100 }
+command = { trigger = { alliance = { country = LAT country = GER } } type = set_relation which = LAT value = 100 }
+command = { trigger = { alliance = { country = TEX country = GER } } type = set_relation which = TEX value = 100 }
+command = { trigger = { alliance = { country = IRE country = GER } } type = set_relation which = IRE value = 100 }
+}
+
+action = {
+ai_chance = 20
+name = "Forget about this matter, then"
+command = { type = relation which = GER value = -50 }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 166046
+country = GER
+style = 2
+picture = "China_Army"
+
+name = "China has joined Mitteleuropa"
+desc = "The Chinese Republic has joined our alliance, in exchange for the territory administered by AOG."
+
+action = {
+name = "Great!"
+command = { type = alliance which = CHI }
+}
+}
+
+
+event = {
+id = 166047
+country = CYN
+style = 2
+picture = "China_Army"
+
+trigger = {
+exists = CHI
+flag = YUN_CHINA
+war = { country = CHI country = CGX }
+NOT = {
+ispuppet = CYN
+ispuppet = CHI
+atwar = CYN
+alliance = { country = CHI country = CYN }
+}
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "A like minded revolution"
+desc = "In Southern China a new republican revolution has erupted against German opressors. Although we may not agree on everything, It may be in our best interest to support this revolution and decide who truly rules China later!"
+
+action_a = {
+ai_chance = 80
+name = "China for the Chinese!"
+command = { type = trigger which = 166048 }
+}
+
+action_b = {
+ai_chance = 20
+name = "They are really no better than collaborators!"
+command = { type = dissent value = -1 }
+}
+}
+
+
+event = {
+id = 166048
+country = CHI
+style = 2
+picture = "China_Army"
+
+name = "The National protection alliance offer"
+desc = "The National protection alliance based in Yunnan province have offered us an alliance to secure China for the Chinese, this may benefit both of us, but we shall see what happens in the end."
+
+action_a = {
+ai_chance = 95
+name = "China for the Chinese!"
+command = { type = relation which = CYN value = 200 }
+command = { type = alliance which = CYN }
+}
+
+action_b = {
+ai_chance = 5
+name = "Send them away"
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 166049
+country = CHI
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+alliance = { country = CYN country = CHI }
+NOT = {
+atwar = CHI
+exists = CGX
+exists = CSX
+ispuppet = CHI
+}
+OR = {
+NOT = {
+ispuppet = CYN
+}
+puppet = { country = CYN country = CHI  }
+}
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  40
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "China is Chinese and now it needs one Government!"
+desc = "We, together with the National protection Alliance, have thrown the corruption of the foreigners out of our lands and liberated large parts of China. Now we must reunite and carry China onwards forever !"
+
+action_a = {
+ai_chance = 95
+name = "Press for unity"
+command = { type = event which = 166050 where = CHI when = 2  }
+}
+
+action_b = {
+ai_chance = 5
+name = "Our alliance shall stand!"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 166050
+country = CYN
+style = 2
+persistent = yes
+picture = "Chinese Crossroad"
+
+name = "The Republicans are pressing for a united China"
+desc = "The Republicans have decided that in order for China to finally emerge from time of turmoil, National protection Alliance must fully reunify with Republic of China. How shall we respond ?"
+
+action_a = {
+ai_chance = 30
+name = "We refuse - push for twin governments"
+trigger = {
+NOT = {
+puppet = { country = CYN country = CHI  }
+}
+}
+command = { type = dissent value = 7 }
+command = { type = event which = 166051 where = CHI when = 1  }
+command = { type = leave_alliance }
+}
+
+action_b = {
+ai_chance = 70
+name = "Accept to exist under their rule"
+command = { type = trigger which = 166052 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 166051
+country = CHI
+style = 2
+persistent = yes
+picture = "Chinese Crossroad"
+
+name = "The NPA refused our offer !"
+desc = "The National protection Alliance in their arrogance have refused our reasonable offer to finally reunify China. It seems that only way how to finish reunification of China is WAR !"
+
+action_a = {
+ai_chance = 95
+name = "We shall destroy them !"
+command = { type = dissent value = -3 }
+command = { type = war which = CYN }
+}
+
+action_b = {
+ai_chance = 5
+name = "We must accept their will"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 166052
+country = CHI
+style = 2
+persistent = yes
+picture = "Chinese Crossroad"
+
+name = "Unity for China!"
+desc = "The National protection Alliance has accepted our push for the total unification of our countries. This is a great day for all of China!"
+
+action_a = {
+name = "Bring them into the fold!"
+command = { type = dissent value = -10 }
+command = { type = inherit which = CHI value = 1 }
+}
+}
+
+

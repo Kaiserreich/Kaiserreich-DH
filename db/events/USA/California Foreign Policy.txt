@@ -1,0 +1,788 @@
+########################################
+#### California Foreign Policy
+########################################
+
+### PSA puppets Mexico
+event = {
+id = 903950
+random = no
+country = MEX
+picture = "diplomatic_campaign"
+trigger = {
+lost_national = { country = MEX value = 20 }
+war = { country = CAL country = MEX }
+control = { province = 1977 data = CAL }
+}
+name = "Mexico Surrenders"
+desc = "The war between the PSA and Mexico has been a disaster for the Mexicans. PSA forces have occupied most of the country and there is no way that the Mexican army can hold anymore. Surrender seems like the only option."
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1954 }
+
+action_a = {
+name = "We surrender"
+ai_chance = 99
+command = { type = trigger which = 903951 }
+}
+action_b = {
+name = "We shall never surrender!"
+ai_chance = 1
+command = { type = dissent value = -1 }
+}
+}
+
+### MEX offers surrender
+event = {
+id = 903951
+random = no
+country = CAL
+picture = "diplomatic_campaign"
+
+name = "Mexico Surrenders"
+desc = "With no hope of victory the Mexican government has decided to capitulate. The PSA now must decide what they wish to do with the defeated nation."
+style = 2
+
+action_a = {
+name = "We only want South California"
+ai_chance = 15
+command = { type = peace which = MEX value = 0 }
+command = { type = addcore which = 1979 } #Mexicali
+command = { type = addcore which = 1981 } #La Paz
+command = { type = dissent value = -2 }
+command = { type = trigger which = 903952 }
+}
+action_b = {
+name = "Let us setup a friendly government"
+ai_chance = 50
+command = { type = peace which = MEX value = 0 }
+command = { type = make_puppet which = MEX }
+command = { type = dissent value = -1 }
+}
+action_c = {
+name = "We only want South California and a friendly government!"
+ai_chance = 10
+command = { type = peace which = MEX value = 0 }
+command = { type = make_puppet which = MEX }
+command = { type = addcore which = 1979 } #Mexicali
+command = { type = addcore which = 1981 } #La Paz
+command = { type = dissent value = -5 }
+command = { type = trigger which = 903952 }
+}
+action_d = {
+name = "Peace is all we want"
+ai_chance = 25
+command = { type = peace which = MEX value = 0 }
+
+}
+}
+
+event = {
+id = 903952
+random = no
+country = MEX
+picture = "diplomatic_campaign"
+
+name = "The loss of South California"
+desc = "The war between the PSA and Mexico has been a disaster for the Mexicans. PSA forces have occupied most of the country and there is no way that the Mexican army can hold anymore. Surrender seems like the only option."
+style = 2
+
+action_a = {
+name = "It's the price we have to pay"
+command = { type = secedeprovince which = CAL value = 1979 } #Mexicali
+command = { type = secedeprovince which = CAL value = 1981 } #La Paz
+command = { type = dissent value = 4 }
+}
+}
+#######################################
+#PSA after civil war - USA democracy, PSA democracy
+#######################################
+event = {
+id = 903953
+random = no
+country = CAL
+picture = "diplomatic_campaign"
+
+trigger = {
+NOT = {
+ispuppet = CAL
+atwar = CAL
+alliance = { country = CAL country = USA }
+alliance = { country = CAL country = GER }
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = JAP }
+alliance = { country = CAL country = RUS }
+}
+}
+
+name = "PSA foreign policy"
+desc = "We have decide as soon as posiblle our main goals in foreign policy. Are we going to with US or we will forge our future alone...or with someone else?"
+style = 2
+
+date = { day = 1 month = january year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 35
+name = "Start searching for friendly powers"
+trigger = {
+NOT = {
+alliance = { country = CAL country = USA }
+alliance = { country = CAL country = GER }
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = JAP }
+alliance = { country = CAL country = RUS }
+}
+}
+command = { type = local_setflag which = CAL_INT } #california foreign policy
+command = { type = set_domestic  which = interventionism value = 7 }
+command = { type = set_domestic which = defense_lobby value = 6 }
+}
+
+action_b = {
+ai_chance = 5
+name = "We don't need friends or foes"
+command = { type = set_domestic which = interventionism value = 0 }
+command = { type = set_domestic which = defense_lobby value = 0 }
+}
+action_c = {
+trigger = {
+exists = USA
+NOT = {
+event = 903965
+}
+}
+ai_chance = 20
+name = "Rejoin the US with autonomy"
+command = { type = trigger which = 903955 }
+}
+
+action_d = {
+trigger = {
+exists = USA
+NOT = {
+event = 903965
+}
+}
+ai_chance = 15
+name = "We are coming back to the Union"
+command = { type = trigger which = 903956 }
+}
+}
+######################################################
+#PSA becames US puppet
+######################################################
+event = {
+id = 903955
+random = no
+country = USA
+picture = "diplomatic_campaign"
+
+name = "PSA demands autonomy within the USA"
+desc = "Senate of the PSA decided yesterday about submitting to us, however at the price of accepting their independence. Incorporationists insist on annexation while the majority of congressmen favour accepting their bid. What we should do?"
+style = 2
+
+action_a = {
+ai_chance = 70
+name = "Grant them autonomy!"
+command = { type = removecore which = 1890 }
+command = { type = removecore which = 1884 }
+command = { type = removecore which = 1885 }
+command = { type = removecore which = 1888 }
+command = { type = removecore which = 1889 }
+command = { type = removecore which = 1883 }
+command = { type = removecore which = 1891 }
+command = { type = removecore which = 1892 }
+command = { type = removecore which = 1887 }
+command = { type = removecore which = 1886 }
+command = { type = removecore which = 1880 }
+command = { type = removecore which = 1873 }
+command = { type = removecore which = 1875 }
+command = { type = removecore which = 1876 }
+command = { type = removecore which = 1874 }
+command = { type = removecore which = 1877 }
+command = { type = removecore which = 1878 }
+command = { type = removecore which = 1882 }
+command = { type = removecore which = 1879 }
+command = { type = removecore which = 1872 }
+command = { type = removeclaim which = 1890 }
+command = { type = removeclaim which = 1884 }
+command = { type = removeclaim which = 1885 }
+command = { type = removeclaim which = 1888 }
+command = { type = removeclaim which = 1889 }
+command = { type = removeclaim which = 1883 }
+command = { type = removeclaim which = 1891 }
+command = { type = removeclaim which = 1892 }
+command = { type = removeclaim which = 1887 }
+command = { type = removeclaim which = 1886 }
+command = { type = removeclaim which = 1880 }
+command = { type = removeclaim which = 1873 }
+command = { type = removeclaim which = 1875 }
+command = { type = removeclaim which = 1876 }
+command = { type = removeclaim which = 1874 }
+command = { type = removeclaim which = 1877 }
+command = { type = removeclaim which = 1878 }
+command = { type = removeclaim which = 1882 }
+command = { type = removeclaim which = 1879 }
+command = { type = removeclaim which = 1872 }
+command = { type = make_puppet which = CAL }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Leave them as they are"
+command = { type = dissent value = 10 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Fools! Your future is in the Union!"
+command = { type = addcore which = 1890 }
+command = { type = addcore which = 1884 }
+command = { type = addcore which = 1885 }
+command = { type = addcore which = 1888 }
+command = { type = addcore which = 1889 }
+command = { type = addcore which = 1883 }
+command = { type = addcore which = 1891 }
+command = { type = addcore which = 1892 }
+command = { type = addcore which = 1887 }
+command = { type = addcore which = 1886 }
+command = { type = addcore which = 1880 }
+command = { type = addcore which = 1873 }
+command = { type = addcore which = 1875 }
+command = { type = addcore which = 1876 }
+command = { type = addcore which = 1874 }
+command = { type = addcore which = 1877 }
+command = { type = addcore which = 1878 }
+command = { type = addcore which = 1882 }
+command = { type = addcore which = 1879 }
+command = { type = addcore which = 1872 }
+command = { type = addcore which = 1893 }
+command = { type = addcore which = 1894 }
+command = { type = addcore which = 1895 }
+command = { type = addcore which = 1861 }
+command = { type = addcore which = 1870 }
+command = { type = addcore which = 1871 }
+command = { type = addcore which = 1869 }
+command = { type = addcore which = 1881 }
+command = { type = dissent value = 5 }
+command = { type = belligerence value = 10 }
+}
+}
+######################################################
+#PSA joins USA
+######################################################
+event = {
+id = 903956
+random = no
+country = USA
+picture = "diplomatic_campaign"
+
+name = "PSA comes back to Union"
+desc = "The Senate of PSA decided yesterday that it will totally submit to us. PSA leaders accepted the inevitable and they should be honoured about that."
+style = 2
+
+action_a = {
+name = "Welcome back brothers"
+command = { type = inherit which = CAL }
+command = { type = addcore which = 1890 }
+command = { type = addcore which = 1884 }
+command = { type = addcore which = 1885 }
+command = { type = addcore which = 1888 }
+command = { type = addcore which = 1889 }
+command = { type = addcore which = 1883 }
+command = { type = addcore which = 1891 }
+command = { type = addcore which = 1892 }
+command = { type = addcore which = 1887 }
+command = { type = addcore which = 1886 }
+command = { type = addcore which = 1880 }
+command = { type = addcore which = 1873 }
+command = { type = addcore which = 1875 }
+command = { type = addcore which = 1876 }
+command = { type = addcore which = 1874 }
+command = { type = addcore which = 1877 }
+command = { type = addcore which = 1878 }
+command = { type = addcore which = 1882 }
+command = { type = addcore which = 1879 }
+command = { type = addcore which = 1872 }
+command = { type = addcore which = 1893 }
+command = { type = addcore which = 1894 }
+command = { type = addcore which = 1895 }
+command = { type = addcore which = 1861 }
+command = { type = addcore which = 1870 }
+command = { type = addcore which = 1871 }
+command = { type = addcore which = 1869 }
+command = { type = addcore which = 1881 }
+command = { type = dissent value = 5 }
+}
+}
+####################################
+#Foreign policy - choosing ally
+####################################
+event = {
+id = 903954
+random = no
+country = CAL
+picture = "diplomatic_campaign"
+
+trigger = {
+local_flag = CAL_INT
+NOT = {
+atwar = CAL
+ispuppet = CAL
+}
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Foreign policy - choosing ally"
+desc = "Only four countries except the USA are powerful enough to secure our independence: Germany, Canada, Japan and Russia. Germany is the world superpower however it's relatively weak in the Pacific where it loses the competition to Japan. Let's not forget that we are bordering Canada and distant Russia could be a good partner too."
+style = 2
+
+action_a = {
+ai_chance = 50
+name = "Canada"
+trigger = {
+exists = CAN
+control = { province = 2089 data = CAN }
+control = { province = 2108 data = CAN }
+control = { province = 2132 data = CAN }
+NOT = {
+ispuppet = CAN
+alliance = { country = CAN country = ENG }
+war = { country = CAN country = USA }
+}
+}
+command = { type = relation which = USA value = -25 }
+command = { trigger = { exists = USA NOT = { alliance = { country = USA country = CAN } } } type = trigger which = 903957 }
+command = { trigger = { OR = { NOT = { exists = USA } AND = { alliance = { country = USA country = CAN } exists = USA } } }  type = trigger which = 903963 }
+command = { trigger = { ai = yes alliance = { country = CAN country = VIC } } type = relation which = VIC value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = AST } } type = relation which = AST value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = GUY } } type = relation which = GUY value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = PAK } } type = relation which = PAK value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = U24 } } type = relation which = U24 value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = U25 } } type = relation which = U25 value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = AUS } } type = relation which = AUS value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = OTT } } type = relation which = OTT value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = RSI } } type = relation which = RSI value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = ITA } } type = relation which = ITA value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = CHI } } type = relation which = CHI value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = JAP } } type = relation which = JAP value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = CSX } } type = relation which = CSX value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = RUS } } type = relation which = RUS value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = SAF } } type = relation which = SAF value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = CUB } } type = relation which = CUB value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = U15 } } type = relation which = U15 value = 250 }
+command = { trigger = { ai = yes alliance = { country = CAN country = MON } } type = relation which = MON value = 250 }
+}
+
+action_b = {
+ai_chance = 25
+name = "Japan"
+trigger = {
+exists = JAP
+control = { province = 1552 data = JAP }
+control = { province = 1554 data = JAP }
+NOT = {
+ispuppet = JAP
+alliance = { country = JAP country = CAN }
+flag = JAP_ISO
+atwar = JAP
+}
+}
+command = { type = relation which = USA value = -50 }
+command = { type = trigger which = 903962 }
+}
+
+action_c = {
+ai_chance = 20
+name ="Germany"
+trigger = {
+exists = GER
+control = { province = 163 data = GER }
+NOT = {
+ispuppet = GER
+atwar = GER
+}
+}
+command = { type = relation which = USA value = -50 }
+command = { type = trigger which = 903960 }
+}
+
+action_d = {
+ai_chance = 5
+name = "Russia"
+trigger = {
+exists = RUS
+control = { province = 572 data = RUS }
+control = { province = 553 data = RUS }
+control = { province = 1186 data = RUS }
+control = { province = 1191 data = RUS }
+NOT = {
+ispuppet = RUS
+atwar = RUS
+}
+}
+command = { type = relation which = USA value = -50 }
+command = { type = trigger which = 903961 }
+}
+}
+
+
+event = {
+id = 903957
+random = no
+country = USA
+
+name = "Our protest against PSA in Entente"
+desc = "PSA wants to join the Entente - if they join then we can forget about any actions against the PSA."
+style = 2
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 25
+name = "We don't care"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 903963 }
+}
+
+action_b = {
+ai_chance = 75
+name = "Outrageous! Send a letter to the King"
+command = { type = trigger which = 903958 }
+}
+}
+
+event = {
+id = 903963
+random = no
+country = CAN
+style = 2
+persistent = yes
+picture = "diplomatic_campaign"
+
+name = "PSA wants to join Entente"
+desc = "The Pacific States of America expressed their desire to become a member of our alliance. How shall we react?"
+
+action_a = {
+ai_chance = 90
+name = "Welcome"
+command = { type = dissent value = -2 }
+command = { type = alliance which = CAL }
+}
+
+action_b = {
+ai_chance = 10
+name = "We don´t need them"
+command = { type = dissent value = 2 }
+}
+
+}
+
+event = {
+id = 903958
+random = no
+country = CAN
+style = 2
+persistent = yes
+picture = "diplomatic_campaign"
+
+name = "USA protests against alliance with PSA"
+desc = "The USA, terrified by PSA plans, presses us not to accept them into the Entente. The American president wrote a personal letter to the King, in which he declares the PSA as a part of Amercia's sphere of influence and threatens us with breaking off diplomatic relations. Without the USA our economy will collapse!"
+
+action_a = {
+ai_chance = 75
+name  = "Don't do anything against the will of the US"
+command = { type = trigger which = 903959 }
+command = { type = dissent value = -3 }
+command = { type = relation which = USA value = 50 }
+command = { type = relation which = CAL value = -50 }
+}
+
+action_b = {
+ai_chance = 25
+name = "We don't care about the USA's opinon"
+command = { type = dissent value = 2 }
+command = { type = alliance which = CAL }
+command = { type = relation which = USA value = -50 }
+command = { type = relation which = CAL value = 100 }
+}
+}
+
+event = {
+id = 903959
+random = no
+country = CAL
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Canada banned us from Entente"
+desc = "The Canadians, in fear of breaking all relations with US, decided to not allow us to enter the Entente. It's a shameful day for the Entente!"
+
+action_a = {
+name = "We can't do anything about it"
+command = { type = relation which = CAN value = -50 }
+}
+}
+
+event = {
+id = 903960
+random = no
+country = GER
+style = 2
+picture = "diplomatic_campaign"
+
+name = "PSA wants an alliance with us"
+desc = "The Pacific States decided yesterday to form an alliance with us. How should we respond?"
+
+action_a = {
+ai_chance = 0
+name = "Form an alliance"
+command = { type = alliance which = CAL }
+command = { type = relation which = CAL  value = 200 }
+command = { type = relation which = USA  value = -50 }
+}
+
+action_b = {
+ai_chance = 70
+name = "They are useless"
+command = { type = relation which = CAL  value = -50 }
+command = { type = relation which = USA  value = 50 }
+}
+action_c = {
+ai_chance = 30
+name = "Just guarantee their independence"
+command = { type = guarantee which = GER where = CAL }
+command = { type = relation which = CAL  value = 30 }
+command = { type = relation which = USA  value = -30 }
+}
+}
+
+event = {
+id = 903961
+random = no
+country = RUS
+style = 2
+picture = "diplomatic_campaign"
+
+name = "PSA wants an alliance with us"
+desc = "Pacific States decided yesterday to form an alliance with us. How should we respond?"
+
+action_a = {
+ai_chance = 0
+name = "Form an alliance"
+command = { type = alliance which = CAL }
+command = { type = relation which = CAL  value = 200 }
+command = { type = relation which = USA  value = -100 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Pacific? It's too far"
+command = { type = relation which = CAL  value = -50 }
+command = { type = relation which = USA  value = 50 }
+}
+action_c = {
+ai_chance = 30
+name = "Just guarantee their independence"
+command = { type = guarantee which = RUS where = CAL }
+command = { type = relation which = CAL  value = 30 }
+command = { type = relation which = USA  value = -30 }
+}
+}
+
+event = {
+id = 903962
+random = no
+country = JAP
+style = 2
+picture = "diplomatic_campaign"
+
+name = "PSA wants an alliance with us"
+desc = "Pacific States decided yesterday to form an alliance with us. How should we respond?"
+
+action_a = {
+ai_chance = 50
+name = "Form an alliance"
+command = { type = alliance which = CAL }
+command = { type = relation which = CAL  value = 200 }
+command = { type = relation which = USA  value = -100 }
+}
+
+action_b = {
+ai_chance = 0
+name = "America? It's too far"
+command = { type = relation which = CAL  value = -50 }
+command = { type = relation which = USA  value = 50 }
+}
+
+action_c = {
+ai_chance = 50
+name = "Just guarantee their independence"
+command = { type = guarantee which = JAP where = CAL }
+command = { type = relation which = CAL  value = 30 }
+command = { type = relation which = USA  value = -30 }
+}
+}
+
+
+event = {
+id = 903967
+country = USA
+style = 2
+
+trigger = {
+war = { country = USA country = CAL }
+control = { province = 1888 data = CAL }
+control = { province = 1894 data = CAL }
+NOT = { control = { province = 1900 data = USA } }
+control = { province = 1871 data = CAL }
+NOT = { control = { province = 1896 data = USA } }
+NOT = {
+alliance = { country = CAL country = GER }
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = JAP }
+alliance = { country = CAL country = RUS }
+ispuppet = USA
+ispuppet = CAL
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Sacramento"
+desc = "We've been beaten by the armed forces of the Pacific States. How did this happen? They've seized the whole Rocky Mountains region!"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 99
+name =  "Offer peace treaty, recognize Californian teritorial gains"
+command = { type = trigger which = 903964 }
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 1
+name = "No, the war will continue until we march through Sacramento!"
+command = { type = dissent value = 5 }
+}
+}
+
+
+
+event = {
+id = 903964
+country = CAL
+style = 2
+
+
+name = "The Treaty of Sacramento"
+desc = "We've succesfully beaten the armed forces of the United states and conquered the Rocky Mountains. Now the humiliated American leadership offers us peace in which they promise to recognize our territorial gains and withdraw from the disputed teritory. How shall we react?"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 100
+name =  "Accept the proposal, this is more than we hoped!"
+command = { type = dissent value = -5 }
+command = { type = peace which = USA value = 0 }
+command = { type = addcore which = 1861 }
+command = { type = addcore which = 1870 }
+command = { type = addcore which = 1871 }
+command = { type = addcore which = 1869 }
+command = { type = addcore which = 1881 }
+command = { type = addcore which = 1893 }
+command = { type = addcore which = 1894 }
+command = { type = addcore which = 1895 }
+command = { type = addcore which = 1900 }
+command = { type = addcore which = 1901 }
+command = { type = addcore which = 1902 }
+command = { type = addcore which = 1896 }
+command = { type = addcore which = 1898 }
+command = { type = addcore which = 1897 }
+command = { type = addcore which = 1899 }
+command = { type = non_aggression which = CAL where = USA }
+command = { type = sleepevent which = 800201 }
+command = { type = sleepevent which = 800200 }
+command = { type = sleepevent which = 800211 }
+command = { type = sleepevent which = 800212 }
+command = { type = trigger which = 903965 }
+}
+action_b = {
+ai_chance = 0
+name = "No, the war will continue until our army marches through Washington!"
+command = { type = dissent value = 2 }
+command = { type = addcore which = 1861 }
+command = { type = addcore which = 1870 }
+command = { type = addcore which = 1871 }
+command = { type = addcore which = 1869 }
+command = { type = addcore which = 1881 }
+command = { type = addcore which = 1893 }
+command = { type = addcore which = 1894 }
+command = { type = addcore which = 1895 }
+command = { type = addcore which = 1900 }
+command = { type = addcore which = 1901 }
+command = { type = addcore which = 1902 }
+command = { type = addcore which = 1896 }
+command = { type = addcore which = 1898 }
+command = { type = addcore which = 1897 }
+command = { type = addcore which = 1899 }
+command = { type = belligerence which = USA value = 5  }
+command = { type = trigger which = 903966 }
+}
+}
+
+
+event = {
+id = 903965
+country = USA
+style = 2
+
+
+name = "The Treaty of Sacramento"
+desc = "According to the Treaty of Saramento, we must withdraw our force from the remaining parts of the Rocky Mountains area..."
+picture = "FaRpeace"
+
+action_a = {
+name =  "How humiliating !"
+command = { type = secedeprovince which = CAL value = 1861 }
+command = { type = secedeprovince which = CAL value = 1870 }
+command = { type = secedeprovince which = CAL value = 1871 }
+command = { type = secedeprovince which = CAL value = 1869 }
+command = { type = secedeprovince which = CAL value = 1881 }
+command = { type = secedeprovince which = CAL value = 1893 }
+command = { type = secedeprovince which = CAL value = 1894 }
+command = { type = secedeprovince which = CAL value = 1895 }
+command = { type = secedeprovince which = CAL value = 1900 }
+command = { type = secedeprovince which = CAL value = 1901 }
+command = { type = secedeprovince which = CAL value = 1902 }
+command = { type = secedeprovince which = CAL value = 1896 }
+command = { type = secedeprovince which = CAL value = 1897 }
+command = { type = secedeprovince which = CAL value = 1898 }
+command = { type = secedeprovince which = CAL value = 1899 }
+command = { type = dissent value = 2 }
+}
+
+}
+
+event = {
+id = 903966
+country = USA
+style = 2
+
+
+name = "PSA refused to sign peace treaty!"
+desc = "The Pacific States refused our generous peace offer and renewed military actions..."
+picture = "FaRpeace"
+
+action_a = {
+name =  "They will pay for this..."
+command = { type = dissent value = 1 }
+}
+
+}

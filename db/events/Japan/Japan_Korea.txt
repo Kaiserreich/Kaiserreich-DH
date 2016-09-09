@@ -1,0 +1,2182 @@
+#################################################################
+#	Japan - Korean's liberation movement
+#	Events by Hasagwan and Kibbles
+#	last edit: 15.09.2009
+#################################################################
+
+# reserved ID's 340000 - 340099
+
+
+
+#### Path of non-democratic Japan
+###	Korean exiles looks for foreign backing
+# 	Korean exiles looks for foreign backing - Korea					340035
+# 	Korean exiles looks for foreign backing - Germany				340036
+# 	Korean exiles looks for foreign backing - Australasian			        340038
+# 	Korean exiles looks for foreign backing - Russia				340039
+# 	Korean exiles looks for foreign backing - Qing					340040
+
+
+### Transamur and Korea
+# 	Transamur - Japan												340069
+# 	Transamur - Transamur											340070
+# 	Transamur refuse - Japan										340071
+# 	Japan intervenes - Transamur									340072
+# 	Japan threatens with war - Transamur							340073
+# 	Transamur wants to capitulate - Japan							340074
+# 	Japan wants to replace Kolchak - Transamur						340084
+
+#### Democratic path
+#	Korean exiles looks for foreign backing - Japan					340075
+
+### peaceful
+# 	Negotiations in Korea - Japan									340076
+# 	Freedom for Korea I - Japan										340077
+# 	Freedom for Korea II - Japan									340078
+# 	Freedom for Korea III - Japan									340079
+# 	Freedom for Korea IV - Japan									340089
+
+###	military														# isn't ready yet
+
+#### Korean revolt
+# 	Korea revolts without foreign help - Japan 						340080
+# 	Korea revolts with light foreign help - Japan 85				340085
+# 	Korea revolts with light foreign help - Korea 81				340081
+# 	Korea revolts with full foreign help - Japan 82					340082
+# 	Korea revolts with full foreign help - Korea 83					340083
+# 	Korean revolt succeeded - Japan 86								340086
+# 	Korean revolt succeeded - Fengtien 87							340087
+# 	Korean revolt succeeded - Transamur 88							340088
+
+
+
+
+
+
+#### Path of non-democratic Japan
+
+### Korean exiles looks for foreign backing
+
+# Korean exiles looks for foreign backing - Korea
+
+event = {
+id = 340035
+random = no
+country = REB
+style = 2
+picture = "japanese_officers"
+
+date = { day = 10 month = august year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Korean exiles looks for foreign backing"
+desc = "The Korean government-in-exile has trudged along for a long time alone building up minor support. However our Prince has seen the growing instability as a chance to return to Korea. He has begun to put out feelers for a strong ally to help against Japan."
+
+action = {
+ai_chance = 30
+name = "Germany would surely love to have an ace in the hole"
+trigger = {
+exists = GER
+NOT = {
+alliance = { country = GER country = JAP }
+}
+}
+command = { type = event which = 340036 where = GER when = 2  }
+}
+
+action = {
+ai_chance = 25
+name = "Australasia is a local power that feels threatened"
+trigger = {
+exists = AST
+NOT = {
+alliance = { country = AST country = JAP }
+}
+}
+command = { type = event which = 340038 where = AST when = 2  }
+}
+
+action = {
+ai_chance = 20
+name = "Russia is weakened but still a giant"
+trigger = {
+exists = RUS
+control = { province = 1186 data = RUS }
+NOT = {
+alliance = { country = RUS country = JAP }
+exists = SOV
+exists = SIB
+}
+}
+command = { type = event which = 340039 where = RUS when = 2  }
+}
+
+action = {
+ai_chance = 25
+name = "The Europeans have caused enough damage, China is our choice"
+trigger = {
+exists = CSX
+NOT = {
+alliance = { country = CSX country = JAP }
+}
+}
+command = { type = event which = 340040 where = CSX when = 2  }
+}
+
+action = {
+ai_chance = 1
+name = "We do not need foreign support !"
+command = { type = setflag which = kor_alone }
+}
+}
+
+
+## German path
+
+# Korean exiles looks for foreign backing - Germany
+
+event = {
+id = 340036
+random = no
+country = GER
+style = 2
+picture = "korea"
+
+name = "Korea asks for aid"
+desc = "The Korean government-in-exile has approached the German people for military and political aid in retaking their lands from Japan. This would cause much grief to the Japanese should we go to war with them. But it might also cause other problems for us should Korea jump the guns."
+
+action_a = {
+ai_chance = 35
+name = "A great place to drop left over equipment"
+command = { type = setflag which = kor_light }
+command = { type = relation which = JAP value = -25 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_b = {
+ai_chance = 35
+name = "Full support and aid shall be given"
+command = { type = setflag which = kor_full }
+command = { type = relation which = JAP value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -1500 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_c = {
+ai_chance = 30
+name = "We’re not interested"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 25 }
+command = { type = setflag which = KOR_NHG }
+command = { type = trigger which = 340037  }
+}
+}
+
+
+event = {
+id = 340037
+random = no
+country = REB
+style = 2
+persistent = yes
+picture = "japanese_officers"
+
+name = "Korean exiles looks for foreign backing"
+desc = "After the latest unsuccesfull negotiaions the Korean delegation has decided to leave for....."
+
+action = {
+ai_chance = 10
+name = "Forget this, we will continue on our own"
+command = { type = setflag which = kor_alone }
+}
+
+action = {
+ai_chance = 25
+name = "Germany would surely love to have an ace in the hole"
+trigger = {
+exists = GER
+NOT = {
+flag = KOR_NHG
+alliance = { country = GER country = JAP }
+}
+}
+command = { type = event which = 340036 where = GER when = 2  }
+}
+
+action = {
+ai_chance = 25
+name = "Australasia is a local power that feels threatened"
+trigger = {
+exists = AST
+NOT = {
+flag = KOR_NHA
+alliance = { country = AST country = JAP }
+}
+}
+command = { type = event which = 340038 where = AST when = 2  }
+}
+
+action = {
+ai_chance = 20
+name = "Russia is weakened but still a giant"
+trigger = {
+exists = RUS
+control = { province = 1186 data = RUS }
+NOT = {
+alliance = { country = RUS country = JAP }
+flag = KOR_NHR
+exists = SOV
+exists = SIB
+}
+}
+command = { type = event which = 340039 where = RUS when = 2  }
+}
+
+action = {
+ai_chance = 25
+name = "The Europeans have caused enough damage, China is our choice"
+trigger = {
+exists = CSX
+NOT = {
+alliance = { country = JAP country = CSX }
+flag = KOR_NHC
+}
+}
+command = { type = event which = 340040 where = CSX when = 2  }
+}
+}
+
+# Korean exiles looks for foreign backing - Australasian
+
+event = {
+id = 340038
+random = no
+country = AST
+style = 2
+picture = "korea"
+
+name = "Korea requests aid"
+desc = "Korean government in exile has asked us for military and political aid against Japan. It might be wise to send them aid to keep the Japanese off balanced. But it could mean that Japan guns for us sooner rather than later."
+
+action_a = {
+ai_chance = 35
+name = "A great place to drop left over equipment"
+command = { type = setflag which = kor_light }
+command = { type = relation which = JAP value = -25 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_b = {
+ai_chance = 35
+name = "Full support and aid shall be given"
+command = { type = setflag which = kor_full }
+command = { type = relation which = JAP value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -1500 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_c = {
+ai_chance = 30
+name = "We’re not interested"
+command = { type = setflag which = KOR_NHA }
+command = { type = trigger which = 340037  }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 25 }
+}
+}
+
+
+event = {
+id = 340039
+random = no
+country = RUS
+style = 2
+picture = "korea"
+
+name = "Korea requests aid"
+desc = "Korean government in exile has asked us for military and political aid against Japan. It might be wise to send them aid to keep the Japanese off balanced. But it could mean that Japan guns for us sooner rather than later."
+
+action_a = {
+ai_chance = 35
+name = "A great place to drop left over equipment"
+command = { type = setflag which = kor_light }
+command = { type = relation which = JAP value = -25 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_b = {
+ai_chance = 35
+name = "Full support and aid shall be given"
+command = { type = setflag which = kor_full }
+command = { type = relation which = JAP value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -1500 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_c = {
+ai_chance = 30
+name = "We’re not interested"
+command = { type = setflag which = KOR_NHR }
+command = { type = trigger which = 340037  }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 25 }
+}
+}
+
+
+event = {
+id = 340040
+random = no
+country = CSX
+style = 2
+picture = "korea"
+
+name = "Korea requests aid"
+desc = "Korean government in exile has asked us for military and political aid against Japan. It might be wise to send them aid to keep the Japanese off balanced. But it could mean that Japan guns for us sooner rather than later."
+
+action_a = {
+ai_chance = 35
+name = "A great place to drop left over equipment"
+command = { type = setflag which = kor_light }
+command = { type = relation which = JAP value = -25 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_b = {
+ai_chance = 35
+name = "Full support and aid shall be given"
+command = { type = setflag which = kor_full }
+command = { type = relation which = JAP value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -1500 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = clrflag which = KOR_NHA }
+command = { type = clrflag which = KOR_NHG }
+command = { type = clrflag which = KOR_NHC }
+command = { type = clrflag which = KOR_NHR }
+}
+
+action_c = {
+ai_chance = 30
+name = "We’re not interested"
+command = { type = setflag which = KOR_NHC }
+command = { type = trigger which = 340037 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 25 }
+}
+}
+
+
+
+event = {
+id = 340068
+random = no
+country = JAP
+style = 2
+picture = "korea"
+
+trigger = {
+government = fascist
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+}
+
+
+date = { day = 15 month = august year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Korean Problem"
+desc = "The Korean government in exile has announced that a campaign to free their country is in motion and that they are calling for support"
+
+action_a = {
+name = "Keep our eyes and ear open"
+command = { type = dissent value = 4 }
+command = { trigger = { puppet = { country = PRI country = JAP } } type = event which = 340069 where = JAP when = 3  }
+command = { type = sleepevent which = 340075 }
+}
+}
+
+### Transamur and Korea
+
+
+# Transamur - Japan
+
+event = {
+id = 340069
+random = no
+country = JAP
+style = 2
+picture = "korea"
+
+
+name = "Rise of Korean nationalism in Transamur"
+desc = "The Korean independence movement is spreading in Transmur using large existing korean minority and it could pose a future problem if it is not contained...."
+
+action_a = {
+ai_chance = 75
+name = "Push Transmur for a crack down"
+command = { type = relation which = PRI value = -25 }
+command = { type = trigger which = 340070 }
+}
+
+action_b = {
+ai_chance = 25
+name = "Let it be. They can’t push us out"
+command = { type = relation which = PRI value = 25 }
+command = { type = setflag which = kor_trans }
+}
+}
+
+# Transamur - Transamur
+
+event = {
+id = 340070
+random = no
+country = PRI
+style = 2
+picture = "korea"
+
+name = "Japanese pressure"
+desc = "The rise of Korean nationalism in our state has made Japan a bit nervous and they are insisting that we crack down on them. Failure to do this could draw Japan’s ire down upon us. But to crack down will make the people restless, especially our middle class which has a great number of Koreans."
+
+action_a = {
+ai_chance = 40
+name = "We have no choice...."
+command = { type = dissent value = 7 }
+command = { type = domestic which = freedom value = -2 }
+command = { type = relation which = JAP value = 25 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Just arrest the agitators"
+command = { type = dissent value = 2 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = relation which = JAP value = 15 }
+}
+
+action_c = {
+ai_chance = 20
+name = "We refuse"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = trigger which = 340071 }
+command = { type = relation which = JAP value = -25 }
+}
+}
+
+# Transamur refuse - Japan
+
+event = {
+id = 340071
+random = no
+country = JAP
+style = 2
+picture = "japanese_officers"
+
+name = "Transmur refuses our demand!"
+desc = "When the demand for a crackdown was refused, many members of the Japanese government were taken aback by the disrespect for our nation’s security by our supposed younger ally who we have protected for so long from Russia. Now the question was what to do?"
+
+action_a = {
+ai_chance = 30
+name = "Respect their independence"
+command = { type = relation which = PRI value = 25 }
+command = { type = setflag which = kor_trans }
+command = { type = dissent value = 4 }
+}
+
+action_b = {
+ai_chance = 40
+name = "We will do it ourselves"
+command = { type = relation which = PRI value = -25 }
+command = { type = dissent value = 2 }
+command = { type = trigger which = 340072 }
+}
+
+action_c = {
+ai_chance = 30
+name = "How dare they, send in the troops!"
+command = { type = trigger which = 340073 }
+command = { type = relation which = PRI value = -50 }
+}
+}
+
+# Japan intervenes - Transamur
+
+event = {
+id = 340072
+random = no
+country = PRI
+style = 2
+picture = "japanese_officers"
+
+name = "Japanese troops crackdown on Koreans"
+desc = "In a show of force, Japan has deployed their forces throughout Transmur in order to do the crackdown. It appears that Japan does not, nor has it respected our rights as a nation."
+
+action_a = {
+ai_chance = 50
+name = "They betrayed our trust"
+command = { type = relation which = JAP value = -25 }
+command = { trigger = { puppet = { country = PRI country = JAP } } type = event which = 340074 where = JAP when = 4  }
+}
+
+action_b = {
+ai_chance = 50
+name = "There is nothing we can do..."
+command = { type = dissent value = 7 }
+command = { type = relation which = JAP value = 25 }
+}
+}
+
+# Japan threatens with war - Transamur
+
+event = {
+id = 340073
+random = no
+country = PRI
+style = 2
+picture = "japanese_officers"
+
+name = "Japan marches on Vladivostok"
+desc = "In order to force our hand, Japanese forces have marched on our capital and placed it under siege. We are not militarily strong enough to resist them in a full on conflict."
+
+action_a = {
+ai_chance = 80
+name = "Capitulate and order the crackdown"
+command = { type = relation which = JAP value = 25 }
+command = { trigger = { puppet = { country = PRI country = JAP } } type = event which = 340074 where = JAP when = 4  }
+}
+
+action_b = {
+ai_chance = 20
+name = "Resist and declare independece from Tokyo !"
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = end_access which = JAP }
+command = { type = event which = 751005 where = JAP when = 1  } # in russian frontier.txt
+}
+}
+
+# Transamur wants to capitulate - Japan
+
+event = {
+id = 340074
+random = no
+country = JAP
+style = 2
+picture = "japanese_officers"
+
+name = "Troubles in Transamur"
+desc = "First it was Korean worries and now it is worries about Transmur. It seems that we should prepare plan in case our erstwhile ally decides to break away from us."
+
+action_a = {
+ai_chance = 75
+name = "There is no need for drastic action yet..."
+command = { type = relation which = PRI value = 25 }
+}
+
+action_b = {
+ai_chance = 25
+name = "Prepare to replace Kolchak"
+command = { type = relation which = PRI value = -25 }
+command = { trigger = { puppet = { country = PRI country = JAP } } type = event which = 340084 where = PRI when = 4  }
+}
+}
+
+# Japan wants to replace Kolchak - Transamur
+
+event = {
+id = 340084
+random = no
+country = PRI
+style = 2
+picture = "japanese_officers"
+
+name = "Japanese troops move to arrest Kolchak!"
+desc = "After the our refusal to assist Japan fully in their troubles with the exiled Korean government Japan has moved to arrest and replace Our Dear Leader - Admiral and President Kolchak!"
+
+action_a = {
+ai_chance = 35
+name = "Capitulate and hand him over"
+command = { type = relation which = JAP value = 25 }
+command = { type = dissent value = 10 }
+command = { type = headofstate which = 527012 }
+command = { type = sleepminister which = 527001 }
+command = { type = sleepminister which = 527047 }
+command = { type = sleepminister which = 527048 }
+command = { type = sleepminister which = 527049 }
+command = { type = sleepminister which = 527050 }
+}
+
+action_b = {
+ai_chance = 65
+name = "Resist and declare independece from Tokyo !"
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = end_access which = JAP }
+command = { type = event which = 751005 where = JAP when = 1  } # in russian frontier.txt
+command = { type = dissent value = -7 }
+}
+}
+
+
+
+
+
+#### Democratic path
+
+
+
+# Korean exiles looks for foreign backing - Japan
+
+event = {
+id = 340075
+random = no
+country = JAP
+style = 2
+picture = "korea"
+
+trigger = {
+government = democratic
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+}
+
+
+date = { day = 10 month = november year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Korean Problem"
+desc = "The Korean government in exile has announced that a campaign to free their country is in motion and that they are calling for support"
+
+action_a = {
+ai_chance = 50
+name = "Japan will not stand for this"
+command = { type = dissent value = 3 }
+command = { trigger = { puppet = { country = PRI country = JAP } } type = event which = 340069 where = JAP when = 3  }
+command = { type = sleepevent which = 340068 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Invite them to talk"
+command = { type = dissent value = 5 }
+command = { type = event which = 340076 where = JAP when = 3  }
+}
+}
+
+### peaceful
+
+
+
+# Negotiations in Korea - Japan
+
+event = {
+id = 340076
+random = no
+country = JAP
+style = 2
+picture = "japanese_officers"
+
+name = "Negotiations in Korea"
+desc = "We have invited the exiled Korean government to talks about the future of Korea as potential massive uprising on the Korean peninsula threatens to destabilize our hardly won sphere of influence and any future expansionist plans !"
+
+action_a = {
+ai_chance = 80
+name = "Grant Koreans partial independence"
+command = { type = removeclaim which = 1230 }
+command = { type = removeclaim which = 1231 }
+command = { type = removeclaim which = 1232 }
+command = { type = removeclaim which = 1233 }
+command = { type = removeclaim which = 1228 }
+command = { type = removeclaim which = 1229 }
+command = { type = removeclaim which = 1224 }
+command = { type = removeclaim which = 1226 }
+command = { type = removeclaim which = 1225 }
+command = { type = removeclaim which = 1227 }
+command = { type = removeclaim which = 1223 }
+command = { type = removeclaim which = 1221 }
+command = { type = removeclaim which = 1222 }
+command = { type = independence which = KOR value = 1 when = 1 }
+command = { type = make_puppet which = KOR }
+command = { type = trigger which = 340078 }
+command = { type = trigger which = 340079 }
+command = { type = trigger which = 340089 }
+command = { type = dissent value = 10 }
+command = { type = secedeprovince which = KOR value = 1230 }
+command = { type = secedeprovince which = KOR value = 1231 }
+command = { type = secedeprovince which = KOR value = 1232 }
+command = { type = secedeprovince which = KOR value = 1233 }
+command = { type = secedeprovince which = KOR value = 1228 }
+command = { type = secedeprovince which = KOR value = 1229 }
+command = { type = secedeprovince which = KOR value = 1224 }
+command = { type = secedeprovince which = KOR value = 1226 }
+command = { type = secedeprovince which = KOR value = 1225 }
+command = { type = secedeprovince which = KOR value = 1227 }
+command = { type = secedeprovince which = KOR value = 1223 }
+command = { type = secedeprovince which = KOR value = 1221 }
+command = { type = secedeprovince which = KOR value = 1222 }
+command = { type = sleepevent which = 555426 }
+}
+
+action_b = {
+ai_chance = 20
+name = "The talks break down"
+command = { type = dissent value = 5 }
+command = { trigger = { puppet = { country = PRI country = JAP } } type = event which = 340069 where = JAP when = 3  }
+command = { type = sleepevent which = 340068 }
+}
+}
+
+
+event = {
+id = 340079
+random = no
+country = KOR
+style = 2
+picture = "korea_independent"
+
+name = "Independent Korea !"
+desc = "Japan has gracefully restored us to power and given us our freedom!"
+
+action_a = {
+name = "We will stand by our Japanese Brothers!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 578038 }
+command = { type = headofgovernment which = 578039 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = garrison when = 4 }
+command = { type = add_division value = garrison when = 4 }
+command = { type = supplies value = 500 }
+command = { type = oilpool value = 2500 }
+command = { type = metalpool value = 2500 }
+command = { type = energypool value = 5000 }
+command = { type = rarematerialspool value = 2500 }
+command = { type = setflag which = kor_japfree }
+}
+}
+
+
+
+#### Korean Revolt
+
+
+# Korea revolts without foreign help - Japan
+
+event = {
+id = 340080
+random = no
+country = JAP
+style = 2
+picture = "japanese_officers"
+
+trigger = {
+flag = kor_alone
+NOT = { exists = KOR }
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+}
+
+date = { day = 10 month = january year = 1937 }
+offset = 100
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Attempted rebellion in Korea!"
+desc = "Korea rebels attempted to take and hold several key points today but Loyalist Korean and Japanese troops were able to fend them off and crush the rebellion"
+
+action_a = {
+name = "We are ever vigilant"
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -1500 }
+command = { trigger = { NOT = { flag = kor_trans } } type = dissent value = 7 }
+command = { trigger = { flag = kor_trans } type = dissent value = 10 }
+command = { type = clrflag which = kor_alone }
+command = { type = revolt which = 1221 }
+command = { type = revolt which = 1228 }
+command = { trigger = { flag = kor_trans } type = revolt which = 1222 }
+command = { trigger = { flag = kor_trans } type = revolt which = 1223 }
+command = { type = clrflag which = kor_trans }
+}
+}
+
+# Korea revolts with light foreign help - Japan
+
+event = {
+id = 340085
+random = no
+country = JAP
+style = 2
+picture = "korea_independent"
+
+trigger = {
+flag = kor_light
+NOT = { exists = KOR }
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+}
+
+date = { day = 10 month = january year = 1937 }
+offset = 100
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Rebellion in Korea!"
+desc = "Korean rebels with foreign arms are attacking our forces and attempting to gain important strategic locations across Korea. We have taken loses already and must send aid to crush this rebellion!"
+
+action_a = {
+name = "We must destroy them!"
+command = { type = clrflag which = kor_light }
+command = { type = independence which = KOR value = 1 when = 0 }
+command = { type = secedeprovince which = KOR value = 1222 }
+command = { type = secedeprovince which = KOR value = 1223 }
+command = { type = secedeprovince which = KOR value = 1221 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 340081 }
+}
+}
+
+# Korea revolts with light foreign help - Korea
+
+event = {
+id = 340081
+random = no
+country = KOR
+style = 2
+picture = "korea_independent"
+
+name = "Rebellion!"
+desc = "With foreign backing we have revolted and are fighting for our future!"
+
+action_a = {
+name = "We will fight for freedom!"
+command = { type = secedeprovince which = JAP value = 1225 }
+command = { type = secedeprovince which = JAP value = 1227 }
+command = { type = secedeprovince which = JAP value = 1226 }
+command = { type = secedeprovince which = JAP value = 1224 }
+command = { type = secedeprovince which = JAP value = 1232 }
+command = { type = secedeprovince which = JAP value = 1230 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 578038 }
+command = { type = headofgovernment which = 578039 }
+command = { type = manpowerpool value = 200 }
+command = { type = add_corps which = "I Korean Corps" value = land when = -1 where = 1228 }
+command = { type = add_division which = "1st ROK Infantry Division" value = infantry when = 9 }
+command = { type = add_division which = "2nd ROK Infantry Division" value = infantry when = 9 }
+command = { type = add_division which = "3rd ROK Infantry Division" value = infantry when = 9 }
+command = { type = add_division which = "1st ROK Cavalry Division" value = cavalry when = 8 }
+command = { type = add_corps which = "II Korean Corps" value = land when = -1 where = 1222 }
+command = { type = add_division which = "4th ROK Infantry Division" value = militia when = 4 }
+command = { type = add_corps which = "III Korean Corps" value = land when = -1 where = 1223 }
+command = { type = add_division which = "5th ROK Infantry Division" value = militia when = 4 }
+command = { type = add_corps which = "IV Korean Corps" value = land when = -1 where = 1233 }
+command = { type = add_division which = "6th ROK Infantry Division" value = militia when = 4 }
+command = { trigger = { flag = kor_trans } type = add_corps which = "V Korean Corps" value = land when = -1 where = 1233 }
+command = { trigger = { flag = kor_trans } type = add_division which = "7th ROK Infantry Division" value = militia when = 4 }
+command = { trigger = { flag = kor_trans } type = add_division which = "8th ROK Infantry Division" value = militia when = 4 }
+command = { trigger = { flag = kor_trans } type = add_division which = "9th ROK Infantry Division" value = militia when = 4 }
+command = { type = supplies value = 500 }
+command = { type = oilpool value = 2500 }
+command = { type = metalpool value = 2500 }
+command = { type = energypool value = 5000 }
+command = { type = rarematerialspool value = 2500 }
+command = { type = war which = JAP }
+command = { trigger = { NOT = { exists = U30 } } type = trigger which = 976661 } # in Taiwan.txt
+command = { type = clrflag which = kor_trans }
+command = { type = dissent value = -20 }
+}
+}
+
+# Korea revolts with full foreign help - Japan
+
+event = {
+id = 340082
+random = no
+country = JAP
+style = 2
+picture = "korea"
+
+trigger = {
+flag = kor_full
+NOT = { exists = KOR }
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+}
+
+date = { day = 10 month = january year = 1937 }
+offset = 100
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Rebellion in Korea!"
+desc = "Korean rebels with foreign arms are attacking our forces and attempting to gain important strategic locations across Korea. We have taken loses already and must send aid to crush this rebellion!"
+
+action_a = {
+name = "We must destroy them!"
+command = { type = clrflag which = kor_full }
+command = { type = independence which = KOR value = 1 when = 0 }
+command = { type = secedeprovince which = KOR value = 1222 }
+command = { type = secedeprovince which = KOR value = 1223 }
+command = { type = secedeprovince which = KOR value = 1221 }
+command = { type = secedeprovince which = KOR value = 1228 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 340083 }
+}
+}
+
+# Korea revolts with full foreign help - Korea
+
+event = {
+id = 340083
+random = no
+country = KOR
+style = 2
+picture = "japanese_officers"
+
+name = "Rebellion!"
+desc = "With foreign backing we have revolted and are fighting for our future!"
+
+action_a = {
+name = "We will fight for freedom!"
+command = { type = secedeprovince which = JAP value = 1225 }
+command = { type = secedeprovince which = JAP value = 1227 }
+command = { type = secedeprovince which = JAP value = 1226 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 578038 }
+command = { type = headofgovernment which = 578039 }
+command = { type = manpowerpool value = 200 }
+command = { type = add_corps which = "I Korean Corps" value = land when = -1 where = 1228 }
+command = { type = add_division which = "1st ROK Infantry Division" value = infantry when = 9 }
+command = { type = add_division which = "2nd ROK Infantry Division" value = infantry when = 9 }
+command = { type = add_division which = "3rd ROK Infantry Division" value = infantry when = 9 }
+command = { type = add_division which = "7th ROK Infantry Division" value = infantry when = 9 }
+command = { type = add_division which = "1st ROK Cavalry Division" value = cavalry when = 8 }
+command = { type = add_corps which = "II Korean Corps" value = land when = -1 where = 1222 }
+command = { type = add_division which = "4th ROK Infantry Division" value = militia when = 4 }
+command = { type = add_division which = "10th ROK Infantry Division" value = militia when = 4 }
+command = { type = add_corps which = "III Korean Corps" value = land when = -1 where = 1223 }
+command = { type = add_division which = "5th ROK Infantry Division" value = militia when = 4 }
+command = { type = add_division which = "9th ROK Infantry Division" value = militia when = 4 }
+command = { type = add_corps which = "IV Korean Corps" value = land when = -1 where = 1233 }
+command = { type = add_division which = "6th ROK Infantry Division" value = militia when = 4 }
+command = { type = add_division which = "8th ROK Infantry Division" value = militia when = 4 }
+command = { trigger = { flag = kor_trans } type = add_corps which = "V Korean Corps" value = land when = -1 where = 1233 }
+command = { trigger = { flag = kor_trans } type = add_division which = "10th ROK Infantry Division" value = militia when = 4 }
+command = { trigger = { flag = kor_trans } type = add_division which = "11th ROK Infantry Division" value = militia when = 4 }
+command = { trigger = { flag = kor_trans } type = add_division which = "12th ROK Infantry Division" value = militia when = 4 }
+command = { type = supplies value = 1000 }
+command = { type = oilpool value = 2500 }
+command = { type = metalpool value = 2500 }
+command = { type = energypool value = 5000 }
+command = { type = rarematerialspool value = 2500 }
+command = { type = war which = JAP }
+command = { trigger = { NOT = { exists = U30 } } type = trigger which = 976661 } # in Taiwan.txt
+command = { type = clrflag which = kor_trans }
+command = { type = dissent value = -20 }
+}
+}
+
+# Korean revolt succeeded - Japan
+
+event = {
+id = 340086
+random = no
+country = JAP
+style = 2
+picture = "korea"
+
+trigger = {
+war = { country = JAP country = KOR }
+NOT = {
+ispuppet = JAP
+ispuppet = KOR
+alliance = { country = KOR country = RUS }
+alliance = { country = KOR country = SOV }
+alliance = { country = KOR country = GER }
+alliance = { country = KOR country = USA }
+alliance = { country = KOR country = CSX }
+alliance = { country = KOR country = CHI }
+alliance = { country = KOR country = CHC }
+alliance = { country = KOR country = TEX }
+alliance = { country = KOR country = FRA }
+alliance = { country = JAP country = RUS }
+alliance = { country = JAP country = SOV }
+alliance = { country = JAP country = GER }
+alliance = { country = JAP country = USA }
+alliance = { country = JAP country = CSX }
+alliance = { country = JAP country = CHI }
+alliance = { country = JAP country = CHC }
+alliance = { country = JAP country = TEX }
+alliance = { country = JAP country = FRA }
+}
+OR = {
+event = 340081
+event = 340083
+}
+control = { province = 1230 data = KOR }
+control = { province = 1231 data = KOR }
+control = { province = 1232 data = KOR }
+control = { province = 1233 data = KOR }
+control = { province = 1228 data = KOR }
+control = { province = 1229 data = KOR }
+control = { province = 1224 data = KOR }
+control = { province = 1226 data = KOR }
+control = { province = 1221 data = KOR }
+}
+
+name = "Korea fights us off"
+desc = "Korean forces have taken many of the key points and are forcing us off the mainland. Trasamur and the Fengtein Republic are noticing this and might decide to rebel as well. Should we seek peace?"
+
+date = { day = 10 month = january year = 1937 }
+offset = 100
+deathdate = { day = 29 month = december year = 1940 }
+
+action_a = {
+ai_chance = 55
+name = "We must withdraw to our island"
+command = { type = peace which = KOR value = 0 }
+command = { type = secedeprovince which = KOR value = 1230 }
+command = { type = secedeprovince which = KOR value = 1231 }
+command = { type = secedeprovince which = KOR value = 1232 }
+command = { type = secedeprovince which = KOR value = 1233 }
+command = { type = secedeprovince which = KOR value = 1228 }
+command = { type = secedeprovince which = KOR value = 1229 }
+command = { type = secedeprovince which = KOR value = 1224 }
+command = { type = secedeprovince which = KOR value = 1226 }
+command = { type = secedeprovince which = KOR value = 1225 }
+command = { type = secedeprovince which = KOR value = 1227 }
+command = { type = secedeprovince which = KOR value = 1223 }
+command = { type = secedeprovince which = KOR value = 1221 }
+command = { type = secedeprovince which = KOR value = 1222 }
+command = { type = dissent value = 15 }
+command = { type = trigger which = 340087 }
+command = { type = trigger which = 340088 }
+}
+
+action_b = {
+ai_chance = 45
+name = "We must keep Korea within our grasp!"
+command = { type = dissent value = 5 }
+}
+}
+
+# Korean revolt succeeded - Fengtien
+
+event = {
+id = 340087
+random = no
+country = MAN
+style = 2
+picture = "korea"
+
+name = "Japan shows weakness in Korea"
+desc = "Japan has decided to give up Korea and now we have a choice to make. With our former masters defeated should we break away and choose our own direction?"
+
+action_a = {
+ai_chance = 10
+name = "We must continue our support the Japanese"
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Make Peace and choose independence"
+command = { type = peace which = KOR value = 0 }
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = end_access which = JAP }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = CSX value = 20 }
+command = { type = relation which = KOR value = 20 }
+}
+
+action_c = {
+ai_chance = 0
+name = "We shall break away and force Korea to submit to us!"
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = end_access which = JAP }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = CSX value = -20 }
+command = { type = relation which = KOR value = -50 }
+}
+
+action_d = {
+ai_chance = 20
+trigger = {
+exists = CSX
+NOT = { ispuppet = CSX }
+}
+name = "It is time to reunite China under Pu Yi"
+command = { type = setflag which = CSX_MAN }
+command = { type = trigger which = 627066 }
+}
+}
+
+# Korean revolt succeeded - Transamur
+
+event = {
+id = 340088
+random = no
+country = PRI
+style = 2
+picture = "korea"
+
+name = "Japan shows weakness in Korea"
+desc = "Japan has decided to give up Korea and now we have a choice to make. With our former masters defeated should we break away and choose our own direction?"
+
+action_a = {
+ai_chance = 10
+name = "We must continue our support the Japanese"
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Make Peace and choose independence"
+command = { type = peace which = KOR value = 0 }
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = end_access which = JAP }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = CSX value = 20 }
+command = { type = relation which = KOR value = 20 }
+}
+
+action_c = {
+ai_chance = 0
+name = "We shall break away and force Korea to submit to us!"
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = end_access which = JAP }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = CSX value = -20 }
+command = { type = relation which = KOR value = -50 }
+command = { type = war which = KOR }
+}
+
+action_d = {
+ai_chance = 20
+trigger = {
+exists = RUS
+NOT = { ispuppet = RUS }
+control = { province = 1186 data = RUS }
+}
+name = "It is time to reunite with Russia"
+command = { type = trigger which = 750068 }
+}
+}
+
+
+#### Foreign Intervention in Korea
+event = {
+id = 340090
+random = no
+country = RUS
+
+decision = {
+atwar = no
+war = { country = JAP country = KOR }
+NOT = { flag = JNBK }
+NOT = {    ispuppet = RUS }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = RUS } }
+control = { province = 1162 data = RUS }
+control = { province = 1186 data = RUS }
+NOT = { exists = SIB }
+NOT = { exists = SOV }
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = RUS }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = RUS } }
+control = { province = 1162 data = RUS }
+control = { province = 1186 data = RUS }
+NOT = { exists = SIB }
+NOT = { exists = SOV }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Korean uprising"
+desc = "The Korean people have risen against their Japaneese overlords, wanting to finally break free from them. This presents us with option to weaken Japaneese empire via supporting Korean independence movement..."
+picture = "soviet_reinforcements"
+decision_picture = "decision_foreign_volunteers"
+style = 2
+
+action_a = {
+ai_chance = 70
+name = "Send aid to the Koreans!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = PRI value = -50 }
+command = { type = relation which = KOR value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 340091 }
+}
+action_b = {
+ai_chance = 30
+name = "We cannot do anything..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 50 }
+command = { type = relation which = PRI value = 50 }
+command = { type = relation which = KOR value = -50 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 340091
+random = no
+country = KOR
+
+name = "Aid from the Russians"
+desc = "The Russian state has sent us massive ammount of supplies and volunteers eager to help us preveil against Japan !"
+style = 2
+picture = "SCW_German Intervention"
+
+action_a = {
+name = "Great !"
+command = { type = supplies value = 500 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = RUS }
+}
+}
+
+event = {
+id = 340092
+random = no
+country = CSX
+
+decision = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = CSX }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = CSX } }
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = CSX }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = CSX } }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Korean uprising"
+desc = "The Korean people have risen against their Japaneese overlords, wanting to finally break free from them. This presents us with option to weaken Japaneese empire via supporting Korean independence movement..."
+picture = "soviet_reinforcements"
+decision_picture = "decision_foreign_volunteers"
+style = 2
+
+action_a = {
+ai_chance = 70
+name = "Send aid to the Koreans!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = PRI value = -50 }
+command = { type = relation which = KOR value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 340093 }
+}
+action_b = {
+ai_chance = 30
+name = "We cannot do anything..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 50 }
+command = { type = relation which = PRI value = 50 }
+command = { type = relation which = KOR value = -50 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 340093
+random = no
+country = KOR
+
+name = "Aid from the Qing"
+desc = "The Qing Empire has sent us massive ammount of supplies and volunteers eager to help us prevail against Japan !"
+style = 2
+picture = "SCW_German Intervention"
+
+action_a = {
+name = "Great !"
+command = { type = supplies value = 500 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = CSX }
+}
+}
+
+
+event = {
+id = 340319
+random = no
+country = SOV
+
+decision = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = SOV }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = SOV } }
+control = { province = 1162 data = SOV }
+control = { province = 1186 data = SOV }
+NOT = { exists = SIB }
+NOT = { exists = RUS }
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = SOV }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = SOV } }
+control = { province = 1162 data = SOV }
+control = { province = 1186 data = SOV }
+NOT = { exists = SIB }
+NOT = { exists = RUS }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Korean uprising"
+desc = "The Korean people have risen against their Japaneese overlords, wanting to finally break free from them. This presents us with option to weaken Japaneese empire via supporting Korean independence movement..."
+picture = "soviet_reinforcements"
+decision_picture = "decision_foreign_volunteers"
+style = 2
+
+action_a = {
+ai_chance = 70
+name = "Send aid to the Koreans!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = PRI value = -50 }
+command = { type = relation which = KOR value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 340306 }
+}
+action_b = {
+ai_chance = 30
+name = "We cannot do anything..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 50 }
+command = { type = relation which = PRI value = 50 }
+command = { type = relation which = KOR value = -50 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 340306
+random = no
+country = KOR
+
+name = "Aid from the Soviets"
+desc = "The Soviet state has sent us massive ammount of supplies and volunteers eager to help us prevail against Japan !"
+style = 2
+picture = "SCW_German Intervention"
+
+action_a = {
+name = "Great !"
+command = { type = supplies value = 500 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = SOV }
+}
+}
+
+event = {
+id = 340307
+random = no
+country = CGX
+
+decision = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = CGX } }
+NOT = { exists = CHI }
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = KOR }
+NOT = { alliance = { country = JAP country = CGX } }
+NOT = { exists = CHI }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Korean uprising"
+desc = "The Korean people have risen against their Japaneese overlords, wanting to finally break free from them. This presents us with option to weaken Japaneese empire via supporting Korean independence movement..."
+picture = "soviet_reinforcements"
+decision_picture = "decision_foreign_volunteers"
+style = 2
+
+action_a = {
+ai_chance = 70
+name = "Send aid to the Koreans!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = PRI value = -50 }
+command = { type = relation which = KOR value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 340308 }
+}
+action_b = {
+ai_chance = 30
+name = "We cannot do anything..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 50 }
+command = { type = relation which = PRI value = 50 }
+command = { type = relation which = KOR value = -50 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 340308
+random = no
+country = KOR
+
+name = "Aid from the AOG"
+desc = "The German corporativist state AOG has sent us massive ammount of supplies and volunteers eager to help us prevail against Japan !"
+style = 2
+picture = "SCW_German Intervention"
+
+action_a = {
+name = "Great !"
+command = { type = supplies value = 500 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = CGX }
+}
+}
+
+event = {
+id = 340309
+random = no
+country = CHI
+
+decision = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = KOR }
+NOT = {    ispuppet = CHI }
+NOT = { alliance = { country = JAP country = CHI } }
+NOT = { exists = CGX }
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+atwar = no
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = KOR }
+NOT = {    ispuppet = CHI }
+NOT = { alliance = { country = JAP country = CHI } }
+NOT = { exists = CGX }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Korean uprising"
+desc = "The Korean people have risen against their Japaneese overlords, wanting to finally break free from them. This presents us with option to weaken Japaneese empire via supporting Korean independence movement..."
+picture = "soviet_reinforcements"
+decision_picture = "decision_foreign_volunteers"
+style = 2
+
+action_a = {
+ai_chance = 70
+name = "Send aid to the Koreans!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = PRI value = -50 }
+command = { type = relation which = KOR value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 340310 }
+}
+action_b = {
+ai_chance = 30
+name = "We cannot do anything..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 50 }
+command = { type = relation which = PRI value = 50 }
+command = { type = relation which = KOR value = -50 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 340310
+random = no
+country = KOR
+
+name = "Aid from the Chineese republic"
+desc = "The Republic of China has sent us massive ammount of supplies and volunteers eager to help us preveil against Japan !"
+style = 2
+picture = "SCW_German Intervention"
+
+action_a = {
+name = "Great !"
+command = { type = supplies value = 500 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = CHI }
+}
+}
+
+
+event = {
+id = 340311
+random = no
+country = GER
+
+decision = {
+NOT = { war = { country = JAP country = GER } }
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = KOR }
+NOT = {    ispuppet = GER }
+NOT = { alliance = { country = JAP country = GER } }
+control = { province = 163 data = GER }
+}
+
+decision_trigger = {
+manpower = 2
+supplies = 1000
+money = 100
+}
+
+trigger = {
+NOT = { war = { country = JAP country = GER } }
+NOT = { flag = JNBK }
+war = { country = JAP country = KOR }
+NOT = {    ispuppet = KOR }
+NOT = {    ispuppet = GER }
+NOT = { alliance = { country = JAP country = GER } }
+control = { province = 163 data = GER }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "The Korean uprising"
+desc = "The Korean people have risen against their Japaneese overlords, wanting to finally break free from them. This presents us with option to weaken Japaneese empire via supporting Korean independence movement..."
+picture = "Wehrmacht"
+decision_picture = "decision_foreign_volunteers"
+style = 2
+
+action_a = {
+ai_chance = 70
+name = "Send aid to the Koreans!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = PRI value = -50 }
+command = { type = relation which = KOR value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -2 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 340312 }
+}
+action_b = {
+ai_chance = 30
+name = "We cannot do anything..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = JAP value = 50 }
+command = { type = relation which = PRI value = 50 }
+command = { type = relation which = KOR value = -50 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 340312
+random = no
+country = KOR
+
+name = "Aid from the German Empire"
+desc = "The German Empire has sent us large ammount of supplies and skilled officers eager to help us prevail against Japan !"
+style = 2
+picture = "Wehrmacht"
+
+action_a = {
+name = "Great !"
+command = { type = supplies value = 500 }
+command = { type = steal_tech which = GER }
+command = { type = manpowerpool value = 2 }
+command = { type = max_organization which = land value = 2 }
+command = { type = morale which = land value = 2 }
+}
+}
+
+event = {
+id = 340313
+random = no
+country = RUS
+
+trigger = {
+
+event = 340091
+
+
+NOT = { war = { country = KOR country = JAP } }
+
+
+}
+name = "The End of the Korean war"
+desc = "For good or ill, the Korean war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 340314
+random = no
+country = CSX
+
+trigger = {
+
+event = 340093
+
+
+NOT = { war = { country = KOR country = JAP } }
+
+
+}
+name = "The End of the Korean war"
+desc = "For good or ill, the Korean war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 340315
+random = no
+country = SOV
+
+trigger = {
+
+event = 340306
+
+
+NOT = { war = { country = KOR country = JAP } }
+
+
+}
+name = "The End of the Korean war"
+desc = "For good or ill, the Korean war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 340316
+random = no
+country = CGX
+
+trigger = {
+
+event = 340308
+
+
+NOT = { war = { country = KOR country = JAP } }
+
+
+}
+name = "The End of the Korean war"
+desc = "For good or ill, the Korean war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 340317
+random = no
+country = CHI
+
+trigger = {
+
+event = 340320
+
+
+NOT = { war = { country = KOR country = JAP } }
+
+
+}
+name = "The End of the Korean war"
+desc = "For good or ill, the Korean war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 340318
+random = no
+country = GER
+
+trigger = {
+
+event = 340312
+
+
+NOT = { war = { country = KOR country = JAP } }
+
+
+}
+name = "The End of the Korean war"
+desc = "For good or ill, the Korean war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 2 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+##Naval Blockade of Korea
+event = {
+id = 340324
+random = no
+country = JAP
+
+
+name = "Naval blockade of the Korean peninsula"
+desc = "With the Korean peninsula engulfed with fires of revolution, many hostile nations might use this event as grand opportunity to weaken our influence in pacific by direct or indirect support of those damned revolutionaries. We can only prevent this by imposing naval blockade around entire Korean peninsula."
+style = 2
+picture = "navalblockade"
+decision_picture = "decision_navalblockadej"
+
+decision = {
+war = { country = JAP country = KOR }
+puppet = { country = MAN country = JAP  }
+OR = {
+event = 340081
+event = 340083
+}
+}
+
+decision_trigger = {
+garrison = { country = JAP province = 2517   type = naval size = 3 area = no }
+garrison = { country = JAP province = 2518   type = naval size = 3 area = no }
+garrison = { country = JAP province = 2495   type = naval size = 3 area = no }
+garrison = { country = JAP province = 2496   type = naval size = 3 area = no }
+oil = 200
+supplies = 800
+}
+
+trigger = {
+war = { country = JAP country = KOR }
+puppet = { country = MAN country = JAP  }
+OR = {
+event = 340081
+event = 340083
+}
+garrison = { country = JAP province = 2517   type = naval size = 3 area = no }
+garrison = { country = JAP province = 2518   type = naval size = 3 area = no }
+garrison = { country = JAP province = 2495   type = naval size = 3 area = no }
+garrison = { country = JAP province = 2496   type = naval size = 3 area = no }
+}
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1940 }
+
+action_a = {
+name = "Impose naval blockade !"
+command = { type = setflag which = JNBK }
+command = { type = belligerence which = JAP value = 5  }
+command = { type = supplies value = -800 }
+command = { type = oilpool value = -200 }
+command = { type = trigger which = 340320 }
+}
+}
+
+event = {
+id = 340320
+random = no
+country = KOR
+
+name = "Japan naval blockade"
+desc = "In desperate attempt to prevent our inevitable victory, the imperial japaneese navy has set up blockade around the entire Korean peninsula."
+style = 2
+picture = "navalblockade"
+
+action_a = {
+name = "They can not stop us !"
+command = { type = supplies value = -500 }
+command = { type = industrial_modifier which = total value = -2 }
+command = { type = embargo which = ENG where = KOR value = 3 }
+command = { type = embargo which = SWE where = KOR value = 3 }
+command = { type = embargo which = SOV where = KOR value = 3 }
+command = { type = embargo which = SPA where = KOR value = 3 }
+command = { type = embargo which = POR where = KOR value = 3 }
+command = { type = embargo which = GRE where = KOR value = 3 }
+command = { type = embargo which = CAL where = KOR value = 3 }
+command = { type = embargo which = USA where = KOR value = 3 }
+command = { type = embargo which = CAN where = KOR value = 3 }
+command = { type = embargo which = MEX where = KOR value = 3 }
+command = { type = embargo which = BRA where = KOR value = 3 }
+command = { type = embargo which = ARG where = KOR value = 3 }
+command = { type = embargo which = CGX where = KOR value = 3 }
+command = { type = embargo which = CHI where = KOR value = 3 }
+command = { type = embargo which = CSX where = KOR value = 3 }
+command = { type = embargo which = AST where = KOR value = 3 }
+command = { type = embargo which = RUS where = KOR value = 3 }
+}
+}
+
+event = {
+id = 340325
+random = no
+country = JAP
+style = 2
+picture = "navalblockade"
+persistent = yes
+
+trigger = {
+flag = JNBK
+war = { country = JAP country = KOR }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "Enforcing naval blockade"
+desc = "Our glorious navy continues to maintain complete naval blockade around the rebellious Korean peninsula, denying rebels much needed foreign aid. But some members of general staff argue, that naval blockade has already outlived its usefullness since rebels will be soon crushed and blockade itself is a very costly matter to us..."
+
+action_a = {
+name = "Continue the blockade !"
+ai_chance = 90
+command = { type = supplies value = -400 }
+command = { type = oilpool value = -100 }
+command = { type = belligerence which = JAP value = 3  }
+}
+action_b = {
+name = "Cancel blockade"
+ai_chance = 10
+command = { type = clrflag which = JNBK }
+command = { type = trigger which = 340323 }
+command = { type = belligerence which = JAP value = -1  }
+}
+}
+
+event = {
+id = 340322
+random = no
+country = JAP
+style = 2
+picture = "navalblockade"
+
+trigger = { flag = JNBK
+NOT = { war = { country = JAP country = KOR } }
+}
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1942 }
+
+name = "End of the naval blockade"
+desc = "With fighting over Korean peninsula definitively over it is time for our navy to end this long and costly blockade."
+
+action_a = {
+name = "Cancel blockade"
+command = { type = clrflag which = JNBK }
+command = { type = trigger which = 340323 }
+command = { type = belligerence which = JAP value = -1  }
+}
+}
+
+event = {
+id = 340323
+random = no
+country = KOR
+style = 2
+picture = "navalblockade"
+
+
+name = "Naval blockade ended !"
+desc = "Imperial Japaneese navy facing severe problems canceled deadly military blockade around Korean peninsula."
+
+action_a = {
+name = "We shall win !"
+command = { type = supplies value = 500 }
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = embargo which = ENG where = U30 value = 0 }
+command = { type = embargo which = SWE where = U30 value = 0 }
+command = { type = embargo which = SOV where = U30 value = 0 }
+command = { type = embargo which = SPA where = U30 value = 0 }
+command = { type = embargo which = POR where = U30 value = 0 }
+command = { type = embargo which = GRE where = U30 value = 0 }
+command = { type = embargo which = CAL where = U30 value = 0 }
+command = { type = embargo which = USA where = U30 value = 0 }
+command = { type = embargo which = CAN where = U30 value = 0 }
+command = { type = embargo which = MEX where = U30 value = 0 }
+command = { type = embargo which = BRA where = U30 value = 0 }
+command = { type = embargo which = ARG where = U30 value = 0 }
+command = { type = embargo which = CGX where = U30 value = 0 }
+command = { type = embargo which = CHI where = U30 value = 0 }
+command = { type = embargo which = CSX where = U30 value = 0 }
+command = { type = embargo which = AST where = U30 value = 0 }
+command = { type = embargo which = RUS where = U30 value = 0 }
+}
+}
+
+event = {
+id = 340328
+country = KOR
+picture = "Cernauti"
+style = 2
+
+trigger = {
+NOT = {
+puppet = { country = KOR country = JAP  }
+war = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+
+name = "Japaneese settlers in Korea"
+desc = "During occupation of Korea by forces of the Japaneese Empire, thousands of Japaneese were settled in our frontiers, founding many new farms and villages. With our independence regained, however, we could very well seize those lands and redistribute them amongst our own people! However, such populist move could harm our fragile economy, as a good part of our agriculture production comes from these farms."
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 20 month = february year = 1966 }
+
+action_a = {
+ai_chance = 50
+name = "Seize the farms and expell the Japaneese"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = -1 }
+command = { type = industrial_modifier which = supplies value = -1 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = JAP value = -25 }
+command = { type = trigger which = 340329 }
+}
+action_b = {
+ai_chance = 50
+name = "Those settlers are important for our economy"
+command = { type = dissent value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = industrial_modifier which = supplies value = 1 }
+command = { type = relation which = JAP value = 15 }
+}
+}
+
+event = {
+id = 340329
+country = JAP
+picture = "Cernauti"
+style = 2
+
+
+name = "Refugees from Korea"
+desc = "During our occupation of Korea, thousands of Japaneese settlers moved to the area of Korean peninsula. Their newly-independent government has decided to expell them..."
+
+action_a = {
+name = "Oh!"
+command = { type = manpowerpool value = 10 }
+command = { type = dissent value = 2 }
+}
+}

@@ -1,0 +1,575 @@
+event = {
+id = 64000
+random = no
+country = SIA
+style = 2
+picture = "japanese_decisive_defeat"
+
+trigger = {
+NOT = {
+ispuppet = SIA
+}
+war = { country = SIA country = GER }
+OR = {
+control = { province = 1423 data = GER }
+control = { province = 1423 data = CSX }
+control = { province = 1423 data = CGX }
+control = { province = 1423 data = BUR }
+}
+OR = {
+control = { province = 1422 data = GER }
+control = { province = 1422 data = CSX }
+control = { province = 1422 data = CGX }
+control = { province = 1422 data = BUR }
+}
+}
+
+date = { day = 0 month = january year = 1939 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Defeat"
+desc = "With the news of the surrender of Japan, our fight seems hopeless. It would be in the best interests of the people of Siam to surrender, face the humilation and keep as much land as we can."
+
+action_a = {
+name = "The war is hopeless now..."
+ai_chance = 100
+command = { type = secedeprovince which = GER value = 1433 }
+command = { type = secedeprovince which = GER value = 1436 }
+command = { type = secedeprovince which = GER value = 1434 }
+command = { type = secedeprovince which = GER value = 1435 }
+command = { type = secedeprovince which = GER value = 1401 }
+command = { type = secedeprovince which = GER value = 1402 }
+command = { type = secedeprovince which = GER value = 1400 }
+command = { type = secedeprovince which = BUR value = 1416 }
+command = { type = secedeprovince which = BUR value = 1418 }
+command = { type = secedeprovince which = BUR value = 1413 }
+command = { type = peace which = GER value = 1 }
+command = { type = peace which = CSX value = 1 }
+command = { type = peace which = BUR value = 1 }
+command = { type = peace which = PHI value = 1 }
+command = { type = peace which = CGX value = 1 }
+command = { type = peace which = BLR value = 1 }
+command = { type = peace which = UKR value = 1 }
+command = { type = peace which = LAT value = 1 }
+command = { type = peace which = POL value = 1 }
+command = { type = peace which = RUS value = 1 }
+command = { type = peace which = BEL value = 1 }
+command = { type = access which = GER }
+command = { type = leave_alliance when = 1 }
+command = { type = end_puppet }
+}
+
+action_b = {
+name = "Fight to death !"
+ai_chance = 0
+command = {  }
+}
+}
+
+event = {
+id = 64001
+random = no
+country = SIA
+
+trigger = {
+exists = GER
+OR = {
+flag = GER_CON_Capitulation
+flag = GER_Capitulation
+}
+NOT = {
+flag = GER_ASIA
+puppet = { country = SIA country = GER }
+alliance = { country = GER country = SIA }
+war = { country = GER country = SIA }
+}
+control = { province = 1437 data = GER }
+control = { province = 1438 data = GER }
+control = { province = 1432 data = GER }
+control = { province = 1435 data = SIA }
+control = { province = 1436 data = SIA }
+control = { province = 1423 data = SIA }
+}
+
+name = "German Empire in disarray"
+desc = "With the German Empire in turmoil, we have a great oportunity to seize control of Singapore. There is very little that the German Empire can do to stop us at this point."
+style = 2
+
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 100
+name = "Seize Singapore!"
+command = { type = addcore which = 1437 }
+command = { type = addcore which = 1438 }
+command = { type = addcore which = 1432 }
+command = { type = relation which = GER value = -100 }
+command = { type = trigger which = 64002 }
+
+}
+action_b = {
+ai_chance = 0
+name = "Rather not"
+command = { type = relation which = GER value = 100 }
+command = { type = dissent value = 5 }
+
+}
+}
+
+event = {
+id = 64002
+random = no
+country = GER
+
+name = "Siam seize Singapore!"
+desc = "With our empire in chaos Siam used this oportunity to seize control of Singapore. Currently there is very little that we can do to stop Siam at this point."
+style = 2
+
+
+action_a = {
+ai_chance = 100
+name = "There is nothing we can do"
+command = { type = secedeprovince which = SIA value = 1437 }
+command = { type = secedeprovince which = SIA value = 1438 }
+command = { type = secedeprovince which = SIA value = 1432 }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 0
+name = "This means WAR!"
+command = { type = war which = SIA }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 64003
+random = no
+country = SIA
+style = 2
+
+name = "The name of our country"
+desc = "A campaign supported by some ministers and military leaders, and also by the nationalist inteligentsia, has proposed the change of our country's name from Siam to Ratcha Anachak Thai - the Kingdom of Thailand, after our main ethnic group, the Thai people."
+
+date = { day = 0 month = june year = 1939 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 70
+name = "This is Thailand, land of the free"
+command = { type = name where = SIA which = "Thailand" }
+command = { type = dissent value = -1 }
+command = { type = setflag which = SIA_THAILAND }
+}
+
+action_b = {
+ai_chance = 20
+name = "We've been calling it Siam since forever, why bother?"
+command = { type = dissent value = 1 }
+command = { type = setflag which = SIA_SIAM }
+}
+}
+
+event = {
+id = 64004
+random = no
+country = SIA
+
+trigger = {
+NOT = {
+ispuppet = SIA # We're nobody's puppet
+exists = BUR # Burma is no longer around
+}
+control = { province = 1410 data = SIA }    # We hold Mandalay
+control = { province = 1415 data = SIA }    # We hold Rangoon
+control = { province = 1423 data = SIA }    # We hold Bangkoc
+control = { province = 1400 data = SIA }    # We hold Phnom Penh
+OR = {
+control = { province = 1432 data = SIA } # Singapore
+control = { province = 1395 data = SIA } # Hanoi
+control = { province = 1399 data = SIA } # Saigon
+}
+OR = {
+flag = SIA_THAILAND
+flag = SIA_SIAM
+}
+}
+
+name = "The Birth of an Empire"
+desc = "Following our successes against both Burma and the mighty German Empire, our country has secured her place as the greatest nation in Southeast Asia. Our beloved king, after listening to the proposals of our prime minister, is seriously considering his idea of a showcase of Thai power to the world: the proclamation of a new Empire based in Bangcok!"
+
+date = { day = 0 month = june year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+trigger = {
+flag = SIA_THAILAND 
+}
+ai_chance = 80
+name = "Proclaim the Thai Empire"
+command = { type = name where = SIA which = "Thai Empire" }
+command = { type = dissent value = 5 } # The minorities would be pissed...
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = belligerence which = SIA value = 5 }
+command = { type = setflag which = SIA_EMPIRE }
+command = { type = addclaim which = 1414 }
+command = { type = addclaim which = 1408 }
+command = { type = addclaim which = 1407 }
+command = { type = addclaim which = 1409 }
+command = { type = addclaim which = 1406 }
+command = { type = addclaim which = 1420 }
+command = { type = addclaim which = 1411 }
+command = { type = addclaim which = 1410 }
+command = { type = addclaim which = 1412 }
+command = { type = addclaim which = 1419 }
+command = { type = addclaim which = 1415 }
+command = { type = addclaim which = 1417 } # BURMA
+command = { type = addclaim which = 1438 }
+command = { type = addclaim which = 1437 }
+command = { type = addclaim which = 1432 } #MALAYA and SINGAPORE
+command = { type = addclaim which = 1403 }
+command = { type = addclaim which = 1399 }
+command = { type = addclaim which = 1398 }
+command = { type = addclaim which = 1397 }
+command = { type = addclaim which = 1394 }
+command = { type = addclaim which = 1396 }
+command = { type = addclaim which = 1405 }
+command = { type = addclaim which = 1391 }
+command = { type = addclaim which = 1404 }
+command = { type = addclaim which = 1395 }
+command = { type = addclaim which = 1393 }
+command = { type = addclaim which = 1392 } #VIETNAM
+}
+
+action = {
+trigger = {
+flag = SIA_SIAM 
+}
+ai_chance = 80
+name = "Proclaim the Siamese Empire"
+command = { type = name where = SIA which = "Siamese Empire" }
+command = { type = dissent value = 5 } # The minorities would be pissed...
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = belligerence which = SIA value = 5 }
+command = { type = setflag which = SIA_EMPIRE }
+command = { type = addclaim which = 1414 }
+command = { type = addclaim which = 1408 }
+command = { type = addclaim which = 1407 }
+command = { type = addclaim which = 1409 }
+command = { type = addclaim which = 1406 }
+command = { type = addclaim which = 1420 }
+command = { type = addclaim which = 1411 }
+command = { type = addclaim which = 1410 }
+command = { type = addclaim which = 1412 }
+command = { type = addclaim which = 1419 }
+command = { type = addclaim which = 1415 }
+command = { type = addclaim which = 1417 } # BURMA
+command = { type = addclaim which = 1438 }
+command = { type = addclaim which = 1437 }
+command = { type = addclaim which = 1432 } #MALAYA and SINGAPORE
+command = { type = addclaim which = 1403 }
+command = { type = addclaim which = 1399 }
+command = { type = addclaim which = 1398 }
+command = { type = addclaim which = 1397 }
+command = { type = addclaim which = 1394 }
+command = { type = addclaim which = 1396 }
+command = { type = addclaim which = 1405 }
+command = { type = addclaim which = 1391 }
+command = { type = addclaim which = 1404 }
+command = { type = addclaim which = 1395 }
+command = { type = addclaim which = 1393 }
+command = { type = addclaim which = 1392 } #VIETNAM
+}
+
+action = {
+ai_chance = 20
+name = "We're tired of being imperialists, drop the proposal"
+command = { type = dissent value = -5 } # The minorities are happy!
+command = { type = set_domestic which = interventionism value = -2 }
+command = { type = belligerence which = SIA value = -5 }
+}
+}
+
+event = {
+id = 64005
+random = no
+country = SIA
+
+trigger = {
+NOT = {
+ispuppet = SIA # We're nobody's puppet
+exists = BUR # Burma is no longer around
+}
+control = { province = 1410 data = SIA }    # We hold Mandalay
+control = { province = 1415 data = SIA }    # We hold Rangoon
+control = { province = 1423 data = SIA }    # We hold Bangkoc
+control = { province = 1400 data = SIA }    # We hold Phnom Penh
+flag = SIA_EMPIRE
+}
+
+name = "The Fate of Burma"
+desc = "As we proclaimed the birth of our Empire, the native population of Burma has been behaving uneasily. Heavy riots have erupted in their major cities as local nationalists and syndicalists protest to the idea of being ruled by a Thai sovereign. While our military demands an imposition of martial law and the complete integration of Burma into the Empire, some moderate politicians have proposed that we grant them a small ammount of autonomy, just to appease their leaders."
+
+date = { day = 0 month = june year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 70
+name = "Integrate Burma"
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = freedom value = -1 }
+command = { type = belligerence which = SIA value = 5 }
+command = { type = event which = 64006 where = SIA when = 900 }
+}
+
+action = {
+ai_chance = 30
+name = "Release an autonomous Burma"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = interventionism value = -1 }
+command = { type = set_domestic which = defense_lobby value = -1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = belligerence which = SIA value = -5 }
+command = { type = removeclaim which = 1414 }
+command = { type = removeclaim which = 1408 }
+command = { type = removeclaim which = 1407 }
+command = { type = removeclaim which = 1409 }
+command = { type = removeclaim which = 1406 }
+command = { type = removeclaim which = 1420 }
+command = { type = removeclaim which = 1411 }
+command = { type = removeclaim which = 1410 }
+command = { type = removeclaim which = 1412 }
+command = { type = removeclaim which = 1419 }
+command = { type = removeclaim which = 1415 }
+command = { type = removeclaim which = 1417 }
+command = { type = removeclaim which = 1413 }
+command = { type = removeclaim which = 1416 }
+command = { type = removeclaim which = 1418 }
+command = { type = independence which = BUR value = 1 when = 0 }
+command = { type = make_puppet which = BUR }
+}
+}
+
+event = {
+id = 64006
+random = no
+country = SIA
+
+name = "Integration of Burma"
+desc = "After three years of hard work, repression of dissidents and propaganda campaigns, the integration of the former Kingdom of Burma is completed."
+
+action = {
+name = "Great!"
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = freedom value = -1 }
+command = { type = addcore which = 1414 }
+command = { type = addcore which = 1408 }
+command = { type = addcore which = 1407 }
+command = { type = addcore which = 1409 }
+command = { type = addcore which = 1406 }
+command = { type = addcore which = 1420 }
+command = { type = addcore which = 1411 }
+command = { type = addcore which = 1410 }
+command = { type = addcore which = 1412 }
+command = { type = addcore which = 1419 }
+command = { type = addcore which = 1415 }
+command = { type = addcore which = 1417 }
+command = { type = addcore which = 1413 }
+command = { type = addcore which = 1416 }
+command = { type = addcore which = 1418 }
+}
+}
+
+event = {
+id = 64007
+random = no
+country = SIA
+
+trigger = {
+NOT = {
+ispuppet = SIA # We're nobody's puppet
+exists = MLY # Malaysia doesn't exists
+}
+control = { province = 1438 data = SIA }    # We hold Kuala Lumpur
+control = { province = 1423 data = SIA }    # We hold Bangkoc
+control = { province = 1400 data = SIA }    # We hold Phnom Penh
+flag = SIA_EMPIRE
+}
+
+name = "The Fate of Malaya"
+desc = "As we proclaimed the birth of our Empire, the Malays have been rioting, their major cities turning into battlefields as local nationalists and syndicalists protest to the idea of being ruled by a Thai sovereign. While our military demands an imposition of martial law and the complete integration of Malaya into the Empire, some moderate politicians have proposed that we grant them a small ammount of autonomy to queel the protests."
+
+date = { day = 0 month = june year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 70
+name = "Integrate Malaya"
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = freedom value = -1 }
+command = { type = belligerence which = SIA value = 5 }
+command = { type = event which = 64008 where = SIA when = 900 }
+}
+
+action = {
+ai_chance = 30
+name = "Release an autonomous Malaya"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = interventionism value = -1 }
+command = { type = set_domestic which = defense_lobby value = -1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = belligerence which = SIA value = -5 }
+command = { type = removeclaim which = 1438 }
+command = { type = removeclaim which = 1437 }
+command = { type = removeclaim which = 1432 }
+command = { type = independence which = MLY value = 1 when = 0 }
+command = { type = make_puppet which = MLY }
+}
+}
+
+event = {
+id = 64008
+random = no
+country = SIA
+
+name = "Integration of Malaya"
+desc = "After three years of hard work, repression of dissidents and propaganda campaigns, the integration of Malaya is completed."
+
+action = {
+name = "Great!"
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = freedom value = -1 }
+command = { type = addcore which = 1438 }
+command = { type = addcore which = 1437 }
+command = { type = addcore which = 1432 }
+}
+}
+
+event = {
+id = 64009
+random = no
+country = SIA
+
+trigger = {
+NOT = {
+ispuppet = SIA # We're nobody's puppet
+exists = VIE # Vietnam doesn't exists
+}
+OR = {
+control = { province = 1399 data = SIA }    # We hold Saigon
+control = { province = 1395 data = SIA }    # We hold Hanoi
+}
+control = { province = 1423 data = SIA }    # We hold Bangkoc
+control = { province = 1400 data = SIA }    # We hold Phnom Penh
+flag = SIA_EMPIRE
+}
+
+name = "The Fate of Vietnam"
+desc = "As we proclaimed the birth of our Empire, the Vietnamese people has been rioting, their major cities turning into battlefields as local nationalists and syndicalists protest to the idea of being ruled by a Thai sovereign. While our military demands an imposition of martial law and the complete integration of Vietnam into the Empire, some moderate politicians have proposed that we grant them a small ammount of autonomy to queel the protests."
+
+date = { day = 0 month = june year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 70
+name = "Integrate Vietnam"
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = freedom value = -1 }
+command = { type = belligerence which = SIA value = 5 }
+command = { type = event which = 64010 where = SIA when = 900 }
+}
+
+action = {
+ai_chance = 30
+name = "Release an autonomous Vietnam"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = interventionism value = -1 }
+command = { type = set_domestic which = defense_lobby value = -1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = belligerence which = SIA value = -5 }
+command = { type = removeclaim which = 1403 }
+command = { type = removeclaim which = 1399 }
+command = { type = removeclaim which = 1398 }
+command = { type = removeclaim which = 1397 }
+command = { type = removeclaim which = 1394 }
+command = { type = removeclaim which = 1396 }
+command = { type = removeclaim which = 1405 }
+command = { type = removeclaim which = 1391 }
+command = { type = removeclaim which = 1404 }
+command = { type = removeclaim which = 1395 }
+command = { type = removeclaim which = 1393 }
+command = { type = removeclaim which = 1392 }
+command = { type = independence which = VIE value = 1 when = 0 }
+command = { type = make_puppet which = VIE }
+}
+}
+
+event = {
+id = 64010
+random = no
+country = SIA
+
+name = "Integration of Vietnam"
+desc = "After three years of hard work, repression of dissidents and propaganda campaigns, the integration of Vietnam is completed."
+
+action = {
+name = "Great!"
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = freedom value = -1 }
+command = { type = addcore which = 1403 }
+command = { type = addcore which = 1399 }
+command = { type = addcore which = 1398 }
+command = { type = addcore which = 1397 }
+command = { type = addcore which = 1394 }
+command = { type = addcore which = 1396 }
+command = { type = addcore which = 1405 }
+command = { type = addcore which = 1391 }
+command = { type = addcore which = 1404 }
+command = { type = addcore which = 1395 }
+command = { type = addcore which = 1393 }
+command = { type = addcore which = 1392 }
+}
+}
+
+event = {
+id = 64011
+random = no
+country = SIA
+
+trigger = { 
+headofstate = 62115 
+}
+
+name = "The death of Rama VII"
+desc = "Our dear King Prajadhipok, also known as Rama VII, the 7th monarch of the House of Chakri, has died due to a heart failure this morning. The childless monarch will be succeded by his nephew Ananda Mahidol, who took the regnal name Rama VIII."
+
+date = { day = 0 month = september year = 1941 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "May he rest in peace!"
+command = { type = headofstate which = 62001 }
+command = { type = sleepminister which = 62115 }
+}
+}

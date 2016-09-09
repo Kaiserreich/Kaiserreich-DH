@@ -1,0 +1,4141 @@
+event = {
+id = 751000
+random = no
+country = PRI
+style = 2
+
+decision = {
+flag = SIB_PANIC
+NOT = {
+exists = SIB
+alliance = { country = PRI country = RUS }
+war = { country = PRI country = RUS }
+war = { country = PRI country = JAP }
+war = { country = PRI country = KOR }
+war = { country = PRI country = MAN }
+puppet = { country = PRI country = RUS  }
+}
+OR = {
+control = { province = 1162 data = RUS }
+control = { province = 1186 data = RUS }
+control = { province = 1142 data = RUS }
+control = { province = 1184 data = RUS }
+control = { province = 1188 data = RUS }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+flag = SIB_PANIC
+NOT = {
+exists = SIB
+alliance = { country = PRI country = RUS }
+war = { country = PRI country = RUS }
+war = { country = PRI country = JAP }
+war = { country = PRI country = KOR }
+war = { country = PRI country = MAN }
+puppet = { country = PRI country = RUS  }
+}
+OR = {
+control = { province = 1162 data = RUS }
+control = { province = 1186 data = RUS }
+control = { province = 1142 data = RUS }
+control = { province = 1184 data = RUS }
+control = { province = 1188 data = RUS }
+}
+}
+
+name = "Panic in Siberia!"
+desc = "The Russian government has proven itself unable to maintain the security of its Siberian territories. We have received word that many local leaders want to secede and join Transamur! There may be international complications but we may never get another opportunity like this!"
+picture = "SiberiaAssembly"
+decision_picture = "decision_Russian_mobilization"
+
+date = { day = 1 month = january year = 1936 }
+offset = 120
+deathdate = { day = 1 month = december year = 1960 }
+
+action_a = {
+ai_chance = 70
+name = "Claim the land up to Lake Baikal!"
+trigger = {
+NOT = {
+puppet = { country = PRI country = JAP  }
+}
+}
+command = { type = belligerence which = PRI value = 10  }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = dissent value = 10 }  ## Reflects difficulty of integrating new territory
+command = { type = event which = 751001 where = RUS when = 2  }
+}
+
+action_b = {
+ai_chance = 70
+name = "Ask the Japanese Empire for permission."
+trigger = {
+puppet = { country = PRI country = JAP  }
+}
+command = { type = belligerence which = PRI value = 10  }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = trigger which = 751125 }
+}
+
+action_c = {
+ai_chance = 30
+name = "This is a bit risky..."
+command = { type = domestic which = interventionism value = -2 }
+command = { type = relation which = RUS value = 60 }
+}
+}
+
+event = {
+id = 751125
+random = no
+country = JAP
+style = 2
+picture = "Siberia4"
+
+
+name = "Transamur ambitions"
+desc = "The growing instability in Russia was viewed by the leadership of Transamur as an excellent opportunity to finally take control over Eastern Siberia. An official diplomatic representative from Transamur has come to us seeking permission to use force against Russia if they resist their rightful demands regarding Siberia."
+
+action_a = {
+ai_chance = 90
+name = "Give them the green light."
+trigger = {
+NOT = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = TEX }
+war = { country = JAP country = AST }
+}
+}
+command = { type = belligerence which = JAP value = 3 }
+command = { type = dissent value = -1 }
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = PRI value = 25 }
+command = { type = event which = 751001 where = RUS when = 2  }
+command = { type = sleepevent which = 756037 }
+}
+
+action_b = {
+ai_chance = 10
+name =  "Siberia will remain untouched!"
+trigger = {
+NOT = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = TEX }
+war = { country = JAP country = AST }
+}
+}
+command = { type = belligerence which = JAP value = -3 }
+command = { type = dissent value = 1 }
+command = { type = relation which = RUS value = 50 }
+command = { type = relation which = PRI value = -25 }
+}
+
+action_c = {
+ai_chance = 0
+name = "Give them the green light."
+trigger = {
+OR = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = TEX }
+war = { country = JAP country = AST }
+}
+}
+command = { type = belligerence which = JAP value = 3 }
+command = { type = dissent value = 1 }
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = PRI value = 25 }
+command = { type = event which = 751001 where = RUS when = 2  }
+command = { type = sleepevent which = 756037 }
+}
+
+action_d = {
+ai_chance = 100
+name =  "Siberia will remain untouched!"
+trigger = {
+OR = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = TEX }
+war = { country = JAP country = AST }
+}
+}
+command = { type = belligerence which = JAP value = -3 }
+command = { type = dissent value = -1 }
+command = { type = relation which = RUS value = 50 }
+command = { type = relation which = PRI value = -25 }
+}
+}
+
+event = {
+id = 751001
+random = no
+country = RUS
+style = 2
+
+
+name = "Transamur makes its Move!"
+desc = "Transamur has taken advantage of the unrest in Siberia to establish its control over the region. While this is a great infringement on our sovereignty we are currently very weak and may not be able to win a war to reclaim our lands, especially since fighting Transamur may mean fighting Japan as well."
+picture = "Siberia4"
+
+
+
+action_a = {
+ai_chance = 80
+name =  "It is useless to fight over an icy wasteland."
+command = { type = domestic which = interventionism value = -2 }
+command = { type = dissent value = 15 }
+command = { trigger = { puppet = { country = PRI country = JAP  } } type = event which = 751002 where = JAP when = 3  }
+command = { type = secedeprovince which = PRI value = 1187  }
+command = { type = secedeprovince which = PRI value = 1188  }
+command = { type = secedeprovince which = PRI value = 1175  }
+command = { type = secedeprovince which = PRI value = 1189  }
+command = { type = secedeprovince which = PRI value = 1174  }
+command = { type = secedeprovince which = PRI value = 1176  }
+command = { type = secedeprovince which = PRI value = 1170  }
+command = { type = secedeprovince which = PRI value = 1171  }
+command = { type = secedeprovince which = PRI value = 1178  }
+command = { type = secedeprovince which = PRI value = 1180  }
+command = { type = secedeprovince which = PRI value = 1186  }
+command = { type = secedeprovince which = PRI value = 1181  }
+command = { type = secedeprovince which = PRI value = 1182  }
+command = { type = secedeprovince which = PRI value = 1183  }
+command = { type = secedeprovince which = PRI value = 1184  }
+command = { type = trigger which = 751133 }
+}
+
+action_b = {
+ai_chance = 20
+name = "What!? Siberia shall always belong to Russia!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = PRI }
+}  ### Add option later to invite Kolchak to take leadership of a united Russia, with Japanese reaction
+
+}
+
+event = {
+id = 751133
+random = no
+country = SOV
+style = 2
+
+trigger = {
+OR = {
+control = { province = 1187 data = SOV }
+control = { province = 1188 data = SOV }
+control = { province = 1175 data = SOV }
+control = { province = 1189 data = SOV }
+control = { province = 1174 data = SOV }
+control = { province = 1176 data = SOV }
+control = { province = 1170 data = SOV }
+control = { province = 1171 data = SOV }
+control = { province = 1178 data = SOV }
+control = { province = 1180 data = SOV }
+control = { province = 1186 data = SOV }
+control = { province = 1181 data = SOV }
+control = { province = 1182 data = SOV }
+control = { province = 1183 data = SOV }
+control = { province = 1174 data = SOV }
+}
+}
+
+name = "Transamur makes its Move!"
+desc = "Transamur has taken advantage of the unrest in Siberia to establish its control over the region. While this is a great infringement on our sovereignty, we are currently very weak in the Far East and can not hope to win a war to reclaim our lands, especially since we are still caught up in a deadly civil war."
+picture = "Siberia4"
+
+action_a = {
+name =  "Damn it!"
+command = { type = dissent value = 2 }
+command = { type = secedeprovince which = PRI value = 1187  }
+command = { type = secedeprovince which = PRI value = 1188  }
+command = { type = secedeprovince which = PRI value = 1175  }
+command = { type = secedeprovince which = PRI value = 1189  }
+command = { type = secedeprovince which = PRI value = 1174  }
+command = { type = secedeprovince which = PRI value = 1176  }
+command = { type = secedeprovince which = PRI value = 1170  }
+command = { type = secedeprovince which = PRI value = 1171  }
+command = { type = secedeprovince which = PRI value = 1178  }
+command = { type = secedeprovince which = PRI value = 1180  }
+command = { type = secedeprovince which = PRI value = 1186  }
+command = { type = secedeprovince which = PRI value = 1181  }
+command = { type = secedeprovince which = PRI value = 1182  }
+command = { type = secedeprovince which = PRI value = 1183  }
+command = { type = secedeprovince which = PRI value = 1184  }
+}
+
+}
+
+
+event = {
+id = 751002
+random = no
+country = JAP
+style = 2
+
+name = "The Japanese reaction"
+desc = "Our client state, the Transamur Republic, has established its control over parts of Siberia. While this is a fine addition to the Co-Prosperity Sphere it is possible that Transamur is becoming too powerful and needs to be restrained."
+picture = "Siberia4"
+
+
+action_a = {
+ai_chance = 5
+name = "Demand Kamchatka and bases in the Sea of Okhotsk!"
+command = { type = trigger which = 751003 }
+}
+
+action_b = {
+ai_chance = 60
+name = "It is good to have strong client states!"
+command = { type = relation which = PRI value = 100 }
+}
+
+action_c = {
+ai_chance = 5
+name = "Kolchak is too greedy for his own good, it is time to replace him."
+trigger = { minister = 527001 }
+command = { type = trigger which = 751004 }
+
+}
+}
+
+
+event = {
+id = 751003
+random = no
+country = PRI
+style = 2
+
+name = "Japan demands bases"
+desc = "The Japanese have congratulated us on our seizure of Siberia but the Representative of the Mikado states that we should allow Japan to administer Kamchatka and allow them to establish a naval base in the Sea of Okhotsk."
+picture = "japan"
+
+
+action_a = {
+
+ai_chance = 70
+name = "Yes, we still need Japanese protection."
+command = { type = secedeprovince which = JAP value = 1183 }
+command = { type = secedeprovince which = JAP value = 1184 }
+command = { type = secedeprovince which = JAP value = 1186 }
+command = { type = relation which = JAP value = 100 }
+}
+
+action_b = {
+ai_chance = 30
+name = "It is time to throw off the Japanese yoke!"
+command = { type = end_puppet }
+command = { type = relation which = JAP value = -250 }
+command = { type = end_access which = JAP  }
+command = { trigger = { alliance = { country = PRI country = JAP } } type = leave_alliance when = 1 }
+command = { type = end_non_aggression  which = JAP where = PRI	  }
+command = { type = end_trades which = JAP where = PRI  }
+command = { type = sleepteam which = 12708 }
+command = { type = peace which = MAN value = 1 }
+command = { type = peace which = CSX value = 1 }
+command = { type = peace which = KOR value = 1 }
+command = { type = peace which = U30 value = 1 }
+command = { type = peace which = CGX value = 1 }
+command = { type = peace which = CHC value = 1 }
+command = { type = peace which = GER value = 1 }
+command = { type = peace which = AST value = 1 }
+command = { type = peace which = USA value = 1 } #A few more nations added, just in case
+command = { type = peace which = CAL value = 1 }
+command = { type = peace which = TEX value = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = peace which = ENG value = 1 }
+command = { type = peace which = SOV value = 1 }
+command = { type = peace which = PAK value = 1 }
+command = { type = peace which = IND value = 1 }
+command = { type = peace which = PRK value = 1 }
+command = { type = peace which = OTT value = 1 }
+command = { type = event which = 751005 where = JAP when = 1  }
+}
+}
+
+event = {
+id = 751004
+random = no
+country = PRI
+style = 2
+
+name = "The Japanese are trying to remove Admiral Kolchak!"
+desc = "The Japanese believe Kolchak has outlived his usefulness and have approached the elite of Transamur with the plan of backing a coup d'etat to replace him with a more pliant council of business and military leaders."
+picture = "kolchak"
+
+
+action_a = {
+ai_chance = 65
+name = "Yes, Kolchak is mad and should be removed!"
+command = { type = secedeprovince which = JAP value = 1183 }
+command = { type = secedeprovince which = JAP value = 1184 }
+command = { type = secedeprovince which = JAP value = 1186 }
+command = { type = relation which = JAP value = 100 }
+command = { type = sleepminister which = 527047 }
+command = { type = sleepminister which = 527011 }
+command = { type = sleepminister which = 527048 }
+command = { type = sleepminister which = 527049 }
+command = { type = sleepminister which = 527001 }
+command = { type = sleepminister which = 527002 }
+command = { type = sleepteam which = 12707 }
+command = { type = headofstate which = 527012 }
+command = { type = headofgovernment which = 527014 }
+command = { type = waketeam which = 12721 }
+}
+
+action_b = {
+ai_chance = 35
+name = "Kolchak is the Mighty Lord of the East, he stays here!"
+command = { type = end_puppet }
+command = { type = event which = 751005 where = JAP when = 1  }
+command = { type = relation which = JAP value = -250 }
+command = { type = end_access which = JAP  }
+command = { trigger = { alliance = { country = PRI country = JAP } } type = leave_alliance when = 1 }
+command = { type = end_non_aggression  which = JAP where = PRI	  }
+command = { type = end_trades which = JAP where = PRI  }
+command = { type = sleepteam which = 12708 }
+command = { type = peace which = MAN value = 1 }
+command = { type = peace which = CSX value = 1 }
+command = { type = peace which = KOR value = 1 }
+command = { type = peace which = U30 value = 1 }
+command = { type = peace which = CGX value = 1 }
+command = { type = peace which = CHC value = 1 }
+command = { type = peace which = GER value = 1 }
+command = { type = peace which = AST value = 1 }
+command = { type = peace which = USA value = 1 }
+command = { type = peace which = CAL value = 1 }
+command = { type = peace which = TEX value = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = peace which = ENG value = 1 }
+command = { type = peace which = SOV value = 1 }
+command = { type = peace which = PAK value = 1 }
+command = { type = peace which = IND value = 1 }
+command = { type = peace which = PRK value = 1 }
+command = { type = peace which = OTT value = 1 }
+
+}
+}
+
+
+event = {
+id = 751005
+random = no
+country = JAP
+style = 2
+persistent = yes
+
+name = "Transamur breaks away!"
+desc = "The Transamur Republic has taken great offence at our attempts to regulate their internal affairs and are severing all political ties with us!"
+picture = "Transamur"
+
+
+action_a = {
+ai_chance = 70
+name = "Destroy them!"
+command = { type = war which = PRI }
+command = { type = setflag which = PRI_breaksaway }
+}
+
+action_b = {
+ai_chance = 30
+name = "We can only let them go..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 10 }
+command = { type = setflag which = PRI_breaksaway }
+}
+}
+
+
+event = {
+id = 751040
+random = no
+country = PRI
+style = 2
+
+decision = {
+exists = SIB
+atwar = SIB
+NOT = {
+atwar = PRI
+ispuppet = SIB
+alliance = { country = PRI country = SIB }
+alliance = { country = JAP country = SIB }
+alliance = { country = RUS country = SIB }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+exists = SIB
+atwar = SIB
+NOT = {
+atwar = PRI
+ispuppet = SIB
+alliance = { country = PRI country = SIB }
+alliance = { country = JAP country = SIB }
+alliance = { country = RUS country = SIB }
+}
+}
+
+name = "Siberia is vulnerable"
+desc = "For a time during the Civil War Kolchak was the Supreme Ruler of All Siberia, one step away from rulership of all the Russias. Now that Siberia is in a state of rebellion against Russia this could be an opportunity to reassert the Admiral's claims over the weak rebellious government in Novosibirsk."
+picture = "SiberianAssembly"
+decision_picture = "decision_Russian_mobilization"
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 1 month = january year = 1960 }
+
+action = {
+ai_chance = 50
+name = "We should take this opportunity to attack Siberia!"
+trigger = {
+NOT = {
+puppet = { country = PRI country = JAP }
+}
+}
+command = { type = war which = SIB  }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = addclaim   which =  1142  }
+command = { type = addclaim   which =  1155  }
+command = { type = addclaim   which =  1157  }
+command = { type = addclaim   which =  1148  }
+command = { type = addclaim   which =  1140  }
+command = { type = addclaim   which =  1143  }
+command = { type = addclaim   which =  1144  }
+command = { type = addclaim   which =  1145  }
+command = { type = addclaim   which =  1152  }
+command = { type = addclaim   which =  1153  }
+command = { type = addclaim   which =  1150  }
+command = { type = addclaim   which =  1146  }
+command = { type = addclaim   which =  1158  }
+command = { type = addclaim   which =  1138  }
+command = { type = addclaim   which =  1147  }
+command = { type = addclaim   which =  1166  }
+command = { type = addclaim   which =  1167  }
+command = { type = addclaim   which =  1162  }
+command = { type = addclaim   which =  1163  }
+command = { type = addclaim   which =  1164  }
+command = { type = addclaim   which =  1165  }
+command = { type = addclaim   which =  1169  }
+command = { type = addclaim   which =  1179  }
+command = { type = addclaim   which =  1178  }
+command = { type = addclaim   which =  1177  }
+command = { type = addclaim   which =  1168  }
+command = { type = addclaim   which =  1156  }
+command = { type = addclaim   which =  1189  }
+command = { type = addclaim   which =  1186  }
+command = { type = addclaim   which =  1139  }
+command = { type = addclaim   which =  1149  }
+command = { type = addclaim   which =  1141  }
+command = { type = addclaim   which =  1135  }
+command = { type = addclaim   which =  1138  }
+command = { type = addclaim   which =  1154  }
+command = { type = addclaim   which =  1180  }
+command = { type = addclaim   which =  1181  }
+command = { type = addclaim   which =  1182  }
+command = { type = addclaim   which =  1183  }
+command = { type = addclaim   which =  1184  }
+command = { type = addclaim   which =  1176  }
+command = { type = addclaim   which =  1174  }
+command = { type = addclaim   which =  1188  }
+command = { type = addclaim   which =  1175  }
+command = { type = addclaim   which =  1187  }
+command = { type = addclaim   which =  1136  }
+command = { type = addclaim   which =  1137  }
+command = { type = addclaim   which =  1151  }
+command = { type = addclaim   which =  1069  }
+command = { type = addclaim   which =  1070  }
+command = { type = addclaim   which =  1170  }
+command = { type = addclaim   which =  1171  }
+command = { type = addclaim   which =  1161  }
+command = { type = addclaim   which =  1132  }
+command = { type = addclaim   which =  1133  }
+command = { type = addclaim   which =  1127  }
+command = { type = addclaim   which =  1128  }
+command = { type = addclaim   which =  1140  }
+command = { type = dissent value = -5 }
+command = { type = belligerence which = PRI value = 5  }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = RUS value = -80 }
+}
+
+action = {
+ai_chance = 70
+name = "Ask the Japanese Empire for permission."
+trigger = {
+puppet = { country = PRI country = JAP  }
+}
+command = { type = belligerence which = PRI value = 10  }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = trigger which = 751126 }
+}
+
+action = {
+ai_chance =  0
+name = "Guarantee their independence instead."
+trigger = {
+NOT = {
+puppet = { country = PRI country = JAP }
+}
+}
+command = { type = relation which = SIB value = 150 }
+command = { type = guarantee which = PRI where = SIB }
+}
+
+action = {
+ai_chance =  70
+name = "Demand that they cede us the land up to lake Baikal!"
+trigger = {
+NOT = {
+puppet = { country = PRI country = JAP }
+control = { province = 1186 data = PRI }
+}
+}
+command = { type = relation which = SIB value = -80 }
+command = { type = trigger which = 751042 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action = {
+ai_chance = 30
+name = "Not yet, we are still building up Transamur..."
+command = { type = dissent value = 1 }
+command = { type = belligerence which = PRI value = -5  }
+command = { type = relation which = GER value = 20 }
+command = { type = relation which = RUS value = 80 }
+}
+}
+
+
+event = {
+id = 751126
+random = no
+country = JAP
+style = 2
+picture = "Siberia4"
+
+
+name = "Transamur ambitions"
+desc = "The growing instability in Russia was viewed by the leadership of Transamur as an excellent opportunity to finally take control over Eastern Siberia. An official diplomatic representative of Transamur has come to us seeking permission to use force against the rebellious government of Siberia if they resist their rightful demands."
+
+action_a = {
+ai_chance = 90
+name = "Give them the green light."
+trigger = {
+NOT = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = AST }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = CSA }
+war = { country = JAP country = TEX }
+war = { country = JAP country = FRA }
+war = { country = JAP country = ENG }
+war = { country = JAP country = SOV }
+war = { country = JAP country = PAK }
+war = { country = JAP country = IND }
+war = { country = JAP country = PRK }
+war = { country = JAP country = OTT }
+}
+}
+command = { type = belligerence which = JAP value = 3 }
+command = { type = dissent value = -1 }
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = PRI value = 25 }
+command = { type = trigger which = 751041 }
+}
+
+action_b = {
+ai_chance = 10
+name =  "Siberia will remain untouched!"
+trigger = {
+NOT = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = AST }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = CSA }
+war = { country = JAP country = TEX }
+war = { country = JAP country = FRA }
+war = { country = JAP country = ENG }
+war = { country = JAP country = SOV }
+war = { country = JAP country = PAK }
+war = { country = JAP country = IND }
+war = { country = JAP country = PRK }
+war = { country = JAP country = OTT }
+}
+}
+command = { type = belligerence which = JAP value = -3 }
+command = { type = dissent value = 1 }
+command = { type = relation which = RUS value = 50 }
+command = { type = relation which = PRI value = -25 }
+}
+
+action_c = {
+ai_chance = 0
+name = "Give them the green light."
+trigger = {
+OR = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = AST }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = CSA }
+war = { country = JAP country = TEX }
+war = { country = JAP country = FRA }
+war = { country = JAP country = ENG }
+war = { country = JAP country = SOV }
+war = { country = JAP country = PAK }
+war = { country = JAP country = IND }
+war = { country = JAP country = PRK }
+war = { country = JAP country = OTT }
+}
+}
+command = { type = belligerence which = JAP value = 3 }
+command = { type = dissent value = 1 }
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = PRI value = 25 }
+command = { type = trigger which = 751041 }
+}
+
+action_d = {
+ai_chance = 100
+name =  "Siberia will remain untouched!"
+trigger = {
+OR = {
+war = { country = JAP country = GER }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = AST }
+war = { country = JAP country = USA }
+war = { country = JAP country = CAL }
+war = { country = JAP country = CSA }
+war = { country = JAP country = TEX }
+war = { country = JAP country = FRA }
+war = { country = JAP country = ENG }
+war = { country = JAP country = SOV }
+war = { country = JAP country = PAK }
+war = { country = JAP country = IND }
+war = { country = JAP country = PRK }
+war = { country = JAP country = OTT }
+}
+}
+command = { type = belligerence which = JAP value = -3 }
+command = { type = dissent value = -1 }
+command = { type = relation which = RUS value = 50 }
+command = { type = relation which = PRI value = -25 }
+}
+}
+
+
+event = {
+id = 751041
+random = no
+country = PRI
+style = 2
+
+
+name = "Siberian policy"
+desc = "We have obtained permission from our Japanese overlords and we are free to proceed with our plans regarding Siberia."
+picture = "Siberia4"
+
+
+action_a = {
+ai_chance =  70
+name = "Demand that they cede us the land up to lake Baikal!"
+trigger = {
+NOT = {
+control = { province = 1186 data = PRI }
+}
+}
+command = { type = relation which = SIB value = -80 }
+command = { type = trigger which = 751042 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action_b = {
+ai_chance =  20
+name = "Transamur will dominate Siberia, march on!"
+command = { type = relation which = SIB value = -200 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = addclaim   which =  1142  }
+command = { type = addclaim   which =  1155  }
+command = { type = addclaim   which =  1157  }
+command = { type = addclaim   which =  1148  }
+command = { type = addclaim   which =  1140  }
+command = { type = addclaim   which =  1143  }
+command = { type = addclaim   which =  1144  }
+command = { type = addclaim   which =  1145  }
+command = { type = addclaim   which =  1152  }
+command = { type = addclaim   which =  1153  }
+command = { type = addclaim   which =  1150  }
+command = { type = addclaim   which =  1146  }
+command = { type = addclaim   which =  1158  }
+command = { type = addclaim   which =  1138  }
+command = { type = addclaim   which =  1147  }
+command = { type = addclaim   which =  1166  }
+command = { type = addclaim   which =  1167  }
+command = { type = addclaim   which =  1162  }
+command = { type = addclaim   which =  1163  }
+command = { type = addclaim   which =  1164  }
+command = { type = addclaim   which =  1165  }
+command = { type = addclaim   which =  1169  }
+command = { type = addclaim   which =  1179  }
+command = { type = addclaim   which =  1178  }
+command = { type = addclaim   which =  1177  }
+command = { type = addclaim   which =  1168  }
+command = { type = addclaim   which =  1156  }
+command = { type = addclaim   which =  1189  }
+command = { type = addclaim   which =  1186  }
+command = { type = addclaim   which =  1139  }
+command = { type = addclaim   which =  1149  }
+command = { type = addclaim   which =  1141  }
+command = { type = addclaim   which =  1135  }
+command = { type = addclaim   which =  1138  }
+command = { type = addclaim   which =  1154  }
+command = { type = addclaim   which =  1180  }
+command = { type = addclaim   which =  1181  }
+command = { type = addclaim   which =  1182  }
+command = { type = addclaim   which =  1183  }
+command = { type = addclaim   which =  1184  }
+command = { type = addclaim   which =  1176  }
+command = { type = addclaim   which =  1174  }
+command = { type = addclaim   which =  1188  }
+command = { type = addclaim   which =  1175  }
+command = { type = addclaim   which =  1187  }
+command = { type = addclaim   which =  1136  }
+command = { type = addclaim   which =  1137  }
+command = { type = addclaim   which =  1151  }
+command = { type = addclaim   which =  1069  }
+command = { type = addclaim   which =  1070  }
+command = { type = addclaim   which =  1170  }
+command = { type = addclaim   which =  1171  }
+command = { type = addclaim   which =  1161  }
+command = { type = addclaim   which =  1132  }
+command = { type = addclaim   which =  1133  }
+command = { type = addclaim   which =  1127  }
+command = { type = addclaim   which =  1128  }
+command = { type = addclaim   which =  1140  }
+command = { type = dissent value = -5 }
+command = { type = belligerence which = PRI value = 5  }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = RUS value = -80 }
+command = { type = war which = SIB }
+}
+
+
+
+action_d = {
+ai_chance =  0
+name = "Ignore them, they will not last."
+command = { type = relation which = SIB value = 20 }
+command = { type = belligerence which = PRI value = 5  }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = RUS value = -80 }
+}
+}
+
+
+event = {
+id = 751042
+random = no
+country = SIB
+style = 2
+
+name = "Transamur makes its move!"
+desc = "Transamur has sent troops and political specialists into Eastern Siberia, asserting their claim to rulership over the eastern parts of our state. What shall we do?"
+picture = "Siberia4"
+
+
+action_a = {
+ai_chance = 40
+name =  "Let them take Eastern Siberia, we must keep our autonomy."
+command = { type = domestic which = interventionism value = -2 }
+command = { type = dissent value = 15 }
+command = { trigger = { puppet = { country = PRI country = JAP  } } type = event which = 751002 where = JAP when = 3  }
+command = { type = relation which = PRI value = 100 }
+command = { type = secedeprovince which = PRI value = 1187  }
+command = { type = secedeprovince which = PRI value = 1188  }
+command = { type = secedeprovince which = PRI value = 1175  }
+command = { type = secedeprovince which = PRI value = 1189  }
+command = { type = secedeprovince which = PRI value = 1174  }
+command = { type = secedeprovince which = PRI value = 1176  }
+command = { type = secedeprovince which = PRI value = 1170  }
+command = { type = secedeprovince which = PRI value = 1171  }
+command = { type = secedeprovince which = PRI value = 1178  }
+command = { type = secedeprovince which = PRI value = 1180  }
+command = { type = secedeprovince which = PRI value = 1186  }
+command = { type = secedeprovince which = PRI value = 1181  }
+command = { type = secedeprovince which = PRI value = 1182  }
+command = { type = secedeprovince which = PRI value = 1183  }
+command = { type = secedeprovince which = PRI value = 1184  }
+}
+
+action_b = {
+ai_chance = 30
+name = "No, this is our land!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = PRI }
+}
+
+action_c = {
+ai_chance = 30
+name = "Submit before Transamur."
+command = { type = trigger which = 751044 }
+}
+}
+
+
+event = {
+id = 751044
+random = no
+country = PRI
+style = 2
+
+name = "Siberia offers positions in their goverment"
+desc = "Our request for the eastern part of Siberia was met with a counteroffer from Siberia in which they promise to become our protectorate in exchange for the recognition of their independence."
+picture = "Transamur"
+
+
+action_a = {
+ai_chance = 70
+name = "Accept the offer."
+command = { type = make_puppet which = SIB }
+command = { type = trigger which = 751045 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Demand their complete intergration!"
+command = { type = trigger which = 751048 }
+}
+
+action_b = {
+ai_chance = 30
+name = "We will take everything!"
+command = { type = war which = SIB }
+command = { type = relation which = SIB value = -200 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = war which = SIB }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = addclaim   which =  1142  }
+command = { type = addclaim   which =  1155  }
+command = { type = addclaim   which =  1157  }
+command = { type = addclaim   which =  1148  }
+command = { type = addclaim   which =  1140  }
+command = { type = addclaim   which =  1143  }
+command = { type = addclaim   which =  1144  }
+command = { type = addclaim   which =  1145  }
+command = { type = addclaim   which =  1152  }
+command = { type = addclaim   which =  1153  }
+command = { type = addclaim   which =  1150  }
+command = { type = addclaim   which =  1146  }
+command = { type = addclaim   which =  1158  }
+command = { type = addclaim   which =  1138  }
+command = { type = addclaim   which =  1147  }
+command = { type = addclaim   which =  1166  }
+command = { type = addclaim   which =  1167  }
+command = { type = addclaim   which =  1162  }
+command = { type = addclaim   which =  1163  }
+command = { type = addclaim   which =  1164  }
+command = { type = addclaim   which =  1165  }
+command = { type = addclaim   which =  1169  }
+command = { type = addclaim   which =  1179  }
+command = { type = addclaim   which =  1178  }
+command = { type = addclaim   which =  1177  }
+command = { type = addclaim   which =  1168  }
+command = { type = addclaim   which =  1156  }
+command = { type = addclaim   which =  1189  }
+command = { type = addclaim   which =  1186  }
+command = { type = addclaim   which =  1139  }
+command = { type = addclaim   which =  1149  }
+command = { type = addclaim   which =  1141  }
+command = { type = addclaim   which =  1135  }
+command = { type = addclaim   which =  1138  }
+command = { type = addclaim   which =  1154  }
+command = { type = addclaim   which =  1180  }
+command = { type = addclaim   which =  1181  }
+command = { type = addclaim   which =  1182  }
+command = { type = addclaim   which =  1183  }
+command = { type = addclaim   which =  1184  }
+command = { type = addclaim   which =  1176  }
+command = { type = addclaim   which =  1174  }
+command = { type = addclaim   which =  1188  }
+command = { type = addclaim   which =  1175  }
+command = { type = addclaim   which =  1187  }
+command = { type = addclaim   which =  1136  }
+command = { type = addclaim   which =  1137  }
+command = { type = addclaim   which =  1151  }
+command = { type = addclaim   which =  1069  }
+command = { type = addclaim   which =  1070  }
+command = { type = addclaim   which =  1170  }
+command = { type = addclaim   which =  1171  }
+command = { type = addclaim   which =  1161  }
+command = { type = addclaim   which =  1132  }
+command = { type = addclaim   which =  1133  }
+command = { type = addclaim   which =  1127  }
+command = { type = addclaim   which =  1128  }
+command = { type = addclaim   which =  1140  }
+command = { type = dissent value = -5 }
+command = { type = belligerence which = PRI value = 5  }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = RUS value = -80 }
+}
+
+action_c = {
+ai_chance = 0
+name = "It is too risky to overstretch ourselves..."
+command = { type = dissent value = 5 } ## How can you ignore such perfect oportunity to gain control over Siberia!
+}
+}
+
+
+event = {
+id = 751048
+random = no
+country = SIB
+style = 2
+
+name = "Transamurian mobilisation on our border"
+desc = "The government of Transamur, unsatisfied with our offer, has instead demanded we submit to their authority immediately or face war! What shall we do?"
+picture = "kolchak"
+
+action_a = {
+ai_chance = 50
+name = "Refuse their demands!"
+command = { type = dissent value = -1 }
+command = { type = relation which = PRI value = -100 }
+command = { type = event which = 751136 where = PRI when = 1  }
+}
+
+action_b = {
+ai_chance = 50
+name = "Let us unite under one leader!"
+command = { type = dissent value = 3 }
+command = { type = event which = 751135 where = PRI when = 1  }
+}
+}
+
+
+event = {
+id = 751136
+random = no
+country = PRI
+style = 2
+
+name = "Siberia denies our claim of authority!"
+desc = "The insolent Siberian government has refused to accept direct rule from us, many of our officials are calling for a war against the 'heretical' state."
+picture = "kolchak"
+
+action_a = {
+ai_chance = 80
+name = "Transamur will dominate Siberia, march on!"
+command = { type = relation which = SIB value = -200 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = addclaim which = 1142 }
+command = { type = addclaim which = 1155 }
+command = { type = addclaim which = 1157 }
+command = { type = addclaim which = 1148 }
+command = { type = addclaim which = 1140 }
+command = { type = addclaim which = 1143 }
+command = { type = addclaim which = 1144 }
+command = { type = addclaim which = 1145 }
+command = { type = addclaim which = 1152 }
+command = { type = addclaim which = 1153 }
+command = { type = addclaim which = 1150 }
+command = { type = addclaim which = 1146 }
+command = { type = addclaim which = 1158 }
+command = { type = addclaim which = 1138 }
+command = { type = addclaim which = 1147 }
+command = { type = addclaim which = 1166 }
+command = { type = addclaim which = 1167 }
+command = { type = addclaim which = 1162 }
+command = { type = addclaim which = 1163 }
+command = { type = addclaim which = 1164 }
+command = { type = addclaim which = 1165 }
+command = { type = addclaim which = 1169 }
+command = { type = addclaim which = 1179 }
+command = { type = addclaim which = 1178 }
+command = { type = addclaim which = 1177 }
+command = { type = addclaim which = 1168 }
+command = { type = addclaim which = 1156 }
+command = { type = addclaim which = 1189 }
+command = { type = addclaim which = 1186 }
+command = { type = addclaim which = 1139 }
+command = { type = addclaim which = 1149 }
+command = { type = addclaim which = 1141 }
+command = { type = addclaim which = 1135 }
+command = { type = addclaim which = 1138 }
+command = { type = addclaim which = 1154 }
+command = { type = addclaim which = 1180 }
+command = { type = addclaim which = 1181 }
+command = { type = addclaim which = 1182 }
+command = { type = addclaim which = 1183 }
+command = { type = addclaim which = 1184 }
+command = { type = addclaim which = 1176 }
+command = { type = addclaim which = 1174 }
+command = { type = addclaim which = 1188 }
+command = { type = addclaim which = 1175 }
+command = { type = addclaim which = 1187 }
+command = { type = addclaim which = 1136 }
+command = { type = addclaim which = 1137 }
+command = { type = addclaim which = 1151 }
+command = { type = addclaim which = 1069 }
+command = { type = addclaim which = 1070 }
+command = { type = addclaim which = 1170 }
+command = { type = addclaim which = 1171 }
+command = { type = addclaim which = 1161 }
+command = { type = addclaim which = 1132 }
+command = { type = addclaim which = 1133 }
+command = { type = addclaim which = 1127 }
+command = { type = addclaim which = 1128 }
+command = { type = addclaim which = 1140 }
+command = { type = dissent value = -5 }
+command = { type = belligerence which = PRI value = 5 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = RUS value = -80 }
+command = { type = war which = SIB }
+}
+action_b = {
+ai_chance = 20
+name = "Let's not focus on those whelps"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 751135
+country = PRI
+style = 2
+picture = "caucasusgeo"
+
+name = "Siberian submission"
+desc = "Seeing no other options the leadership of Siberia has accepted all our demands."
+
+
+action = {
+name = "Hooray!"
+command = { type = dissent value = 2 }
+command = { type = inherit which = SIB }
+command = { type = add_division value = cavalry when = 9 }
+command = { type = add_division value = cavalry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = addclaim which = 1142 }
+command = { type = addclaim which = 1155 }
+command = { type = addclaim which = 1157 }
+command = { type = addclaim which = 1148 }
+command = { type = addclaim which = 1140 }
+command = { type = addclaim which = 1143 }
+command = { type = addclaim which = 1144 }
+command = { type = addclaim which = 1145 }
+command = { type = addclaim which = 1152 }
+command = { type = addclaim which = 1153 }
+command = { type = addclaim which = 1150 }
+command = { type = addclaim which = 1146 }
+command = { type = addclaim which = 1158 }
+command = { type = addclaim which = 1138 }
+command = { type = addclaim which = 1147 }
+command = { type = addclaim which = 1166 }
+command = { type = addclaim which = 1167 }
+command = { type = addclaim which = 1162 }
+command = { type = addclaim which = 1163 }
+command = { type = addclaim which = 1164 }
+command = { type = addclaim which = 1165 }
+command = { type = addclaim which = 1169 }
+command = { type = addclaim which = 1179 }
+command = { type = addclaim which = 1178 }
+command = { type = addclaim which = 1177 }
+command = { type = addclaim which = 1168 }
+command = { type = addclaim which = 1156 }
+command = { type = addclaim which = 1189 }
+command = { type = addclaim which = 1186 }
+command = { type = addclaim which = 1139 }
+command = { type = addclaim which = 1149 }
+command = { type = addclaim which = 1141 }
+command = { type = addclaim which = 1135 }
+command = { type = addclaim which = 1138 }
+command = { type = addclaim which = 1154 }
+command = { type = addclaim which = 1180 }
+command = { type = addclaim which = 1181 }
+command = { type = addclaim which = 1182 }
+command = { type = addclaim which = 1183 }
+command = { type = addclaim which = 1184 }
+command = { type = addclaim which = 1176 }
+command = { type = addclaim which = 1174 }
+command = { type = addclaim which = 1188 }
+command = { type = addclaim which = 1175 }
+command = { type = addclaim which = 1187 }
+command = { type = addclaim which = 1136 }
+command = { type = addclaim which = 1137 }
+command = { type = addclaim which = 1151 }
+command = { type = addclaim which = 1069 }
+command = { type = addclaim which = 1070 }
+command = { type = addclaim which = 1170 }
+command = { type = addclaim which = 1171 }
+command = { type = addclaim which = 1161 }
+command = { type = addclaim which = 1132 }
+command = { type = addclaim which = 1133 }
+command = { type = addclaim which = 1127 }
+command = { type = addclaim which = 1128 }
+command = { type = addclaim which = 1140 }
+}
+}
+
+
+event = {
+id = 751045
+random = no
+country = SIB
+style = 2
+
+name = "Transamur assumes control over Siberia"
+desc = "According to the treaty we have signed with Transamur Siberia will recognize Transamur as a protector in exchange for their recognition of our independence."
+picture = "Siberia4"
+
+action_a = {
+name =  "Our independence is secured!"
+command = { type = dissent value = -5 }
+command = { type = relation which = PRI value = 200 }
+command = { type = headofstate which = 522011 }
+}
+}
+
+
+event = {
+id = 751046
+random = no
+country = PRI
+style = 2
+
+
+trigger = {
+puppet = { country = SIB country = PRI }
+}
+
+name = "Siberian Autonomy"
+desc = "With the Transamur domination over Siberia complete some members of our government think that the time is right for the integration of Siberia into Transamur. It would be quite easy to pass a series of laws which would ensure that the region is more firmly integrated into Transamur."
+picture = "Siberia4"
+
+
+date = { day = 1 month = january year = 1938 }
+offset = 500
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 100
+name = "It is time for Transamur to directly rule over Siberia!"
+command = { type = inherit which = SIB  }
+command = { type = addcore   which =  1155  }
+command = { type = addcore   which =  1157  }
+command = { type = addcore   which =  1142  }
+command = { type = addcore   which =  1148  }
+command = { type = addcore   which =  1140  }
+command = { type = addcore   which =  1143  }
+command = { type = addcore   which =  1144  }
+command = { type = addcore   which =  1145  }
+command = { type = addcore   which =  1152  }
+command = { type = addcore   which =  1153  }
+command = { type = addcore   which =  1150  }
+command = { type = addcore   which =  1146  }
+command = { type = addcore   which =  1158  }
+command = { type = addcore   which =  1138  }
+command = { type = addcore   which =  1147  }
+command = { type = addcore   which =  1166  }
+command = { type = addcore   which =  1167  }
+command = { type = addcore   which =  1162  }
+command = { type = addcore   which =  1163  }
+command = { type = addcore   which =  1164  }
+command = { type = addcore   which =  1165  }
+command = { type = addcore   which =  1169  }
+command = { type = addcore   which =  1179  }
+command = { type = addcore   which =  1178  }
+command = { type = addcore   which =  1177  }
+command = { type = addcore   which =  1168  }
+command = { type = addcore   which =  1156  }
+command = { type = addcore   which =  1189  }
+command = { type = addcore   which =  1186  }
+command = { type = addcore   which =  1139  }
+command = { type = addcore   which =  1149  }
+command = { type = addcore   which =  1141  }
+command = { type = addcore   which =  1135  }
+command = { type = addcore   which =  1138  }
+command = { type = addcore   which =  1154  }
+command = { type = addcore   which =  1180  }
+command = { type = addcore   which =  1181  }
+command = { type = addcore   which =  1182  }
+command = { type = addcore   which =  1183  }
+command = { type = addcore   which =  1184  }
+command = { type = addcore   which =  1176  }
+command = { type = addcore   which =  1174  }
+command = { type = addcore   which =  1188  }
+command = { type = addcore   which =  1175  }
+command = { type = addcore   which =  1187  }
+command = { type = addcore   which =  1136  }
+command = { type = addcore   which =  1137  }
+command = { type = addcore   which =  1151  }
+command = { type = addcore   which =  1069  }
+command = { type = addcore   which =  1070  }
+command = { type = addcore   which =  1170  }
+command = { type = addcore   which =  1171  }
+command = { type = addcore   which =  1161  }
+command = { type = addcore   which =  1132  }
+command = { type = addcore   which =  1133  }
+command = { type = addcore   which =  1127  }
+command = { type = addcore   which =  1128  }
+command = { type = addcore   which =  1140  }
+command = { type = addcore   which =  498  }
+command = { type = addcore   which =  499  }
+command = { type = addcore   which =  501  }
+command = { type = addcore   which =  502  }
+command = { type = addcore   which =  1115  }
+command = { type = sleepevent which = 751047 }
+command = { type = waketeam which = 12709 }
+command = { type = waketeam which = 12710 }
+command = { type = waketeam which = 12711 }
+command = { type = waketeam which = 12712 }
+command = { type = waketeam which = 12713 }
+command = { type = waketeam which = 12714 }
+command = { type = waketeam which = 12715 }
+command = { type = waketeam which = 12716 }
+command = { type = waketeam which = 12717 }
+command = { type = waketeam which = 12718 }
+command = { type = waketeam which = 12719 }
+command = { type = waketeam which = 12720 }
+command = { type = waketeam which = 12721 }
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = manpowerpool value = 150 }
+command = { type = dissent value = 5 } ## Reflects difficulty of integrating Siberia, which was independent for a little bit longer....
+}
+
+action_b = {
+ai_chance = 0
+name = "Siberia must remain autonomous."
+command = { type = domestic which = interventionism value = -1   }
+}
+}
+
+
+event = {
+id = 751047
+random = no
+country = PRI
+style = 2
+
+
+trigger = {
+NOT = {
+exists = SIB
+}
+OR = {
+AND = {
+control = { province = 1142 data = PRI }
+owned = { province = 1142 data = PRI }
+}
+AND = {
+control = { province = 1162 data = PRI }
+owned = { province = 1162 data = PRI }
+}
+}
+}
+
+name = "The integration of Siberia"
+desc = "Vast areas of Siberia are now firmly integrated into our state!"
+
+picture = "Siberia4"
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 200
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+name = "God is with us!"
+command = { type = addcore   which =  1155  }
+command = { type = addcore   which =  1157  }
+command = { type = addcore   which =  1142  }
+command = { type = addcore   which =  1148  }
+command = { type = addcore   which =  1140  }
+command = { type = addcore   which =  1143  }
+command = { type = addcore   which =  1144  }
+command = { type = addcore   which =  1145  }
+command = { type = addcore   which =  1152  }
+command = { type = addcore   which =  1153  }
+command = { type = addcore   which =  1150  }
+command = { type = addcore   which =  1146  }
+command = { type = addcore   which =  1158  }
+command = { type = addcore   which =  1138  }
+command = { type = addcore   which =  1147  }
+command = { type = addcore   which =  1166  }
+command = { type = addcore   which =  1167  }
+command = { type = addcore   which =  1162  }
+command = { type = addcore   which =  1163  }
+command = { type = addcore   which =  1164  }
+command = { type = addcore   which =  1165  }
+command = { type = addcore   which =  1169  }
+command = { type = addcore   which =  1179  }
+command = { type = addcore   which =  1178  }
+command = { type = addcore   which =  1177  }
+command = { type = addcore   which =  1168  }
+command = { type = addcore   which =  1156  }
+command = { type = addcore   which =  1189  }
+command = { type = addcore   which =  1186  }
+command = { type = addcore   which =  1139  }
+command = { type = addcore   which =  1149  }
+command = { type = addcore   which =  1141  }
+command = { type = addcore   which =  1135  }
+command = { type = addcore   which =  1138  }
+command = { type = addcore   which =  1154  }
+command = { type = addcore   which =  1180  }
+command = { type = addcore   which =  1181  }
+command = { type = addcore   which =  1182  }
+command = { type = addcore   which =  1183  }
+command = { type = addcore   which =  1184  }
+command = { type = addcore   which =  1176  }
+command = { type = addcore   which =  1174  }
+command = { type = addcore   which =  1188  }
+command = { type = addcore   which =  1175  }
+command = { type = addcore   which =  1187  }
+command = { type = addcore   which =  1136  }
+command = { type = addcore   which =  1137  }
+command = { type = addcore   which =  1151  }
+command = { type = addcore   which =  1069  }
+command = { type = addcore   which =  1070  }
+command = { type = addcore   which =  1170  }
+command = { type = addcore   which =  1171  }
+command = { type = addcore   which =  1161  }
+command = { type = addcore   which =  1132  }
+command = { type = addcore   which =  1133  }
+command = { type = addcore   which =  1127  }
+command = { type = addcore   which =  1128  }
+command = { type = addcore   which =  1140  }
+command = { type = addcore   which =  498  }
+command = { type = addcore   which =  499  }
+command = { type = addcore   which =  501  }
+command = { type = addcore   which =  502  }
+command = { type = addcore   which =  1115  }
+command = { type = waketeam which = 12709 }
+command = { type = waketeam which = 12710 }
+command = { type = waketeam which = 12711 }
+command = { type = waketeam which = 12712 }
+command = { type = waketeam which = 12713 }
+command = { type = waketeam which = 12714 }
+command = { type = waketeam which = 12715 }
+command = { type = waketeam which = 12716 }
+command = { type = waketeam which = 12717 }
+command = { type = waketeam which = 12718 }
+command = { type = waketeam which = 12719 }
+command = { type = waketeam which = 12720 }
+command = { type = waketeam which = 12721 }
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = manpowerpool value = 150 }
+command = { type = dissent value = 5 } ## Reflects difficulty of integrating Siberia
+}
+}
+
+###############
+#Capital change
+###############
+
+event = {
+id = 751050
+random = no
+country = PRI
+style = 2
+
+trigger = {
+NOT = {
+atwar = PRI
+}
+control = { province = 1191 data = PRI }
+OR = {
+AND = {
+owned = { province = 1162 data = PRI }
+control = { province = 1162 data = PRI }
+}
+AND = {
+owned = { province = 1142 data = PRI }
+control = { province = 1142 data = PRI }
+}
+}
+}
+
+
+name = "The Capital"
+desc = "With Transamur gaining control over Siberia maybe the time is right to move our capital into the hinterland in order to limit Japanese influence. Where should we go?"
+picture = "Transamur"
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+ai_chance = 10
+name = "The capital stays in Vladivostok!"
+command = { type = capital which = 1191 }
+command = { type = dissent value = 2 }
+command = { type = relation which = JAP value = 50 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Irkutsk!"
+trigger = {
+control = { province = 1162 data = PRI }
+}
+command = { type = capital which = 1162 }
+command = { type = dissent value = -3 }
+command = { type = relation which = JAP value = -30 }
+command = { type = trigger which = 751066  }
+}
+
+action_c = {
+ai_chance = 40
+name = "Novosibirsk!"
+trigger = {
+control = { province = 1142 data = PRI }
+}
+command = { type = capital which = 1142 }
+command = { type = dissent value = -5 }
+command = { type = relation which = JAP value = -50 }
+command = { type = trigger which = 751066  }
+}
+
+}
+
+
+event = {
+id = 751066
+random = no
+country = JAP
+style = 2
+
+trigger = {
+puppet = { country = PRI country = JAP  }
+}
+
+name = "Transamur tries to escape our influence!"
+desc = "With the recent reconquest of Siberia by Transamur they have become much bolder, trying to forge their own way under the sun. Recently they have moved their capital from Vladivostok to more remote parts of their republic, a clear attempt to minimize our influence. What shall we do?"
+picture = "Transamur"
+
+
+action_a = {
+ai_chance = 70
+name = "It is good to have strong allies!"
+command = { type = end_mastery which = PRI }
+command = { type = alliance which = PRI }
+command = { type = relation which = PRI value = 200 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Try to restore our influence over Transamur!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -2 }
+command = { type = trigger which = 751067 }
+}
+}
+
+event = {
+id = 751067
+random = no
+country = PRI
+style = 2
+
+
+name = "The Japanese are trying to subdue us!"
+desc = "The Japanese feel threatened by our attempts to minimize their influence over our country and they have issued an ultimatum to us in which they demand the cessation of steps threatening their sphere of prosperity."
+picture = "kolchak"
+
+
+action_a = {
+ai_chance = 50
+name = "Submit before Japan."
+command = { type = relation which = JAP value = 100 }
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Never!"
+command = { type = end_puppet }
+command = { type = event which = 751068 where = JAP when = 1  }
+command = { type = relation which = JAP value = -250 }
+command = { type = end_access which = JAP  }
+command = { trigger = { alliance = { country = JAP country = PRI } } type = leave_alliance when = 1  }
+command = { type = end_non_aggression  which = JAP where = PRI	  }
+command = { type = end_trades which = JAP where = PRI  }
+command = { type = sleepteam which = 12708 }
+command = { type = peace which = MAN value = 1 }
+command = { type = peace which = CSX value = 1 }
+command = { type = peace which = KOR value = 1 }
+command = { type = peace which = U30 value = 1 }
+command = { type = peace which = CGX value = 1 }
+command = { type = peace which = CHC value = 1 }
+command = { type = peace which = GER value = 1 }
+}
+}
+
+event = {
+id = 751068
+random = no
+country = JAP
+style = 2
+
+
+name = "Transamur breaks away!"
+desc = "The Transamur Republic has taken great offence at our attempts to regulate their internal affairs and are severing all political ties with us!"
+picture = "Transamur"
+
+action_a = {
+ai_chance = 70
+name = "Destroy them!"
+command = { type = war which = PRI }
+command = { type = setflag which = PRI_breaksaway }
+}
+
+action_b = {
+ai_chance = 30
+name = "We can only let them go..."
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = 5 }
+command = { type = setflag which = PRI_breaksaway }
+}
+}
+
+
+
+event = {
+id = 751051
+random = no
+country = PRI
+style = 2
+
+trigger = {
+NOT = {
+exists = SIB
+}
+owned = { province = 1162 data = PRI }
+owned = { province = 1142 data = PRI }
+control = { province = 1191 data = PRI }
+control = { province = 1162 data = PRI }
+control = { province = 1142 data = PRI }
+}
+
+name = "Claiming Russia!"
+desc = "With Siberia firmly integrated into our growing state we can now move further towards our ultimate goal; the restoration of the Russian state in its full glory."
+picture = "russiageo"
+
+date = { day = 1 month = january year = 1936 }
+offset = 120
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+
+ai_chance = 70
+name = "Claim rulership over Russia!"
+command = { type = belligerence which = PRI value = 10  }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = dissent value = -5 }
+command = { type = relation which = RUS value = -60 }
+command = { type = name where = PRI which = PRI_RUS_NAME }
+command = { type = flag_ext where = PRI which = "_rus" }
+command = { type = addclaim which = 534 }
+command = { type = addclaim which = 535 }
+command = { type = addclaim which = 536 }
+command = { type = addclaim which = 537 }
+command = { type = addclaim which = 541 }
+command = { type = addclaim which = 546 }
+command = { type = addclaim which = 539 }
+command = { type = addclaim which = 529 }
+command = { type = addclaim which = 530 }
+command = { type = addclaim which = 531 }
+command = { type = addclaim which = 525 }
+command = { type = addclaim which = 524 }
+command = { type = addclaim which = 512 }
+command = { type = addclaim which = 527 }
+command = { type = addclaim which = 528 }
+command = { type = addclaim which = 533 }
+command = { type = addclaim which = 532 }
+command = { type = addclaim which = 538 }
+command = { type = addclaim which = 520 }
+command = { type = addclaim which = 521 }
+command = { type = addclaim which = 523 }
+command = { type = addclaim which = 518 }
+command = { type = addclaim which = 540 }
+command = { type = addclaim which = 522 }
+command = { type = addclaim which = 519 }
+command = { type = addclaim which = 514 }
+command = { type = addclaim which = 515 }
+command = { type = addclaim which = 516 }
+command = { type = addclaim which = 511 }
+command = { type = addclaim which = 513 }
+command = { type = addclaim which = 517 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = addclaim which = 257 }
+command = { type = addclaim which = 256 }
+command = { type = addclaim which = 251 }
+command = { type = addclaim which = 253 }
+command = { type = addclaim which = 247 }
+command = { type = addclaim which = 248 }
+command = { type = addclaim which = 595 }
+command = { type = addclaim which = 598 }
+command = { type = addclaim which = 597 }
+command = { type = addclaim which = 596 }
+command = { type = addclaim which = 599 }
+command = { type = addclaim which = 592 }
+command = { type = addclaim which = 594 }
+command = { type = addclaim which = 591 }
+command = { type = addclaim which = 618 }
+command = { type = addclaim which = 619 }
+command = { type = addclaim which = 620 }
+command = { type = addclaim which = 621 }
+command = { type = addclaim which = 626 }
+command = { type = addclaim which = 625 }
+command = { type = addclaim which = 622 }
+command = { type = addclaim which = 623 }
+command = { type = addclaim which = 624 }
+command = { type = addclaim which = 637 }
+command = { type = addclaim which = 638 }
+command = { type = addclaim which = 639 }
+command = { type = addclaim which = 640 }
+command = { type = addclaim which = 641 }
+command = { type = addclaim which = 630 }
+command = { type = addclaim which = 631 }
+command = { type = addclaim which = 644 }
+command = { type = addclaim which = 645 }
+command = { type = addclaim which = 643 }
+command = { type = addclaim which = 649 }
+command = { type = addclaim which = 633 }
+command = { type = addclaim which = 634 }
+command = { type = addclaim which = 635 }
+command = { type = addclaim which = 636 }
+command = { type = addclaim which = 632 }
+command = { type = addclaim which = 627 }
+command = { type = addclaim which = 646 }
+command = { type = addclaim which = 647 }
+command = { type = addclaim which = 648 }
+command = { type = addclaim which = 602 }
+command = { type = addclaim which = 604 }
+command = { type = addclaim which = 603 }
+command = { type = addclaim which = 605 }
+command = { type = addclaim which = 606 }
+command = { type = addclaim which = 607 }
+command = { type = addclaim which = 608 }
+command = { type = addclaim which = 610 }
+command = { type = addclaim which = 629 }
+command = { type = addclaim which = 628 }
+command = { type = addclaim which = 615 }
+command = { type = addclaim which = 612 }
+command = { type = addclaim which = 614 }
+command = { type = addclaim which = 611 }
+command = { type = addclaim which = 616 }
+command = { type = addclaim which = 609 }
+command = { type = addclaim which = 617 }
+command = { type = addclaim which = 613 }
+command = { type = addclaim which = 694 }
+command = { type = addclaim which = 693 }
+command = { type = addclaim which = 695 }
+command = { type = addclaim which = 696 }
+command = { type = addclaim which = 691 }
+command = { type = addclaim which = 692 }
+command = { type = addclaim which = 697 }
+command = { type = addclaim which = 662 }
+command = { type = addclaim which = 698 }
+command = { type = addclaim which = 701 }
+command = { type = addclaim which = 703 }
+command = { type = addclaim which = 705 }
+command = { type = addclaim which = 702 }
+command = { type = addclaim which = 700 }
+command = { type = addclaim which = 699 }
+command = { type = addclaim which = 704 }
+command = { type = addclaim which = 712 }
+command = { type = addclaim which = 713 }
+command = { type = addclaim which = 710 }
+command = { type = addclaim which = 708 }
+command = { type = addclaim which = 707 }
+command = { type = addclaim which = 709 }
+command = { type = addclaim which = 542 }
+command = { type = addclaim which = 547 }
+command = { type = addclaim which = 543 }
+command = { type = addclaim which = 545 }
+command = { type = addclaim which = 544 }
+command = { type = addclaim which = 685 }
+command = { type = addclaim which = 684 }
+command = { type = addclaim which = 673 }
+command = { type = addclaim which = 674 }
+command = { type = addclaim which = 656 }
+command = { type = addclaim which = 665 }
+command = { type = addclaim which = 668 }
+command = { type = addclaim which = 669 }
+command = { type = addclaim which = 661 }
+command = { type = addclaim which = 663 }
+command = { type = addclaim which = 550 }
+command = { type = addclaim which = 551 }
+command = { type = addclaim which = 553 }
+command = { type = addclaim which = 557 }
+command = { type = addclaim which = 556 }
+command = { type = addclaim which = 539 }
+command = { type = addclaim which = 552 }
+command = { type = addclaim which = 566 }
+command = { type = addclaim which = 564 }
+command = { type = addclaim which = 593 }
+command = { type = addclaim which = 590 }
+command = { type = addclaim which = 565 }
+command = { type = addclaim which = 549 }
+command = { type = addclaim which = 560 }
+command = { type = addclaim which = 600 }
+command = { type = addclaim which = 601 }
+command = { type = addclaim which = 587 }
+command = { type = addclaim which = 581 }
+command = { type = addclaim which = 582 }
+command = { type = addclaim which = 580 }
+command = { type = addclaim which = 654 }
+command = { type = addclaim which = 653 }
+command = { type = addclaim which = 655 }
+command = { type = addclaim which = 642 }
+command = { type = addclaim which = 659 }
+command = { type = addclaim which = 657 }
+command = { type = addclaim which = 658 }
+command = { type = addclaim which = 670 }
+command = { type = addclaim which = 675 }
+command = { type = addclaim which = 683 }
+command = { type = addclaim which = 680 }
+command = { type = addclaim which = 681 }
+command = { type = addclaim which = 555 }
+command = { type = addclaim which = 548 }
+command = { type = addclaim which = 650 }
+command = { type = addclaim which = 651 }
+command = { type = addclaim which = 652 }
+command = { type = addclaim which = 578 }
+command = { type = addclaim which = 679 }
+command = { type = addclaim which = 682 }
+command = { type = addclaim which = 676 }
+command = { type = addclaim which = 554 }
+command = { type = addclaim which = 563 }
+command = { type = addclaim which = 559 }
+command = { type = addclaim which = 562 }
+command = { type = addclaim which = 561 }
+command = { type = addclaim which = 573 }
+command = { type = addclaim which = 589 }
+command = { type = addclaim which = 586 }
+command = { type = addclaim which = 588 }
+command = { type = addclaim which = 583 }
+command = { type = addclaim which = 585 }
+command = { type = addclaim which = 579 }
+command = { type = addclaim which = 558 }
+command = { type = addclaim which = 577 }
+command = { type = addclaim which = 575 }
+command = { type = addclaim which = 574 }
+command = { type = addclaim which = 576 }
+command = { type = addclaim which = 584 }
+command = { type = addclaim which = 567 }
+command = { type = addclaim which = 572 }
+command = { type = addclaim which = 568 }
+command = { type = addclaim which = 569 }
+command = { type = addclaim which = 570 }
+command = { type = addclaim which = 571 }
+command = { type = addclaim which = 677 }
+command = { type = addclaim which = 678 }
+command = { type = addclaim which = 244 }
+command = { type = addclaim which = 245 }
+command = { type = addclaim which = 249 }
+command = { type = addclaim which = 711 }
+command = { type = addclaim which = 714 }
+command = { type = addclaim which = 386 }
+command = { type = addclaim which = 230 }
+command = { type = addclaim which = 231 }
+command = { type = addclaim which = 227 }
+command = { type = addclaim which = 223 }
+command = { type = addclaim which = 233 }
+command = { type = addclaim which = 234 }
+command = { type = addclaim which = 243 }
+command = { type = addclaim which = 246 }
+command = { type = addclaim which = 228 }
+command = { type = addclaim which = 232 }
+command = { type = addclaim which = 229 }
+command = { type = addclaim which = 250 }
+command = { type = addclaim which = 254 }
+command = { type = addclaim which = 259 }
+command = { type = addclaim which = 260 }
+command = { type = addclaim which = 262 }
+command = { type = addclaim which = 263 }
+command = { type = addclaim which = 252 }
+command = { type = addclaim which = 255 }
+command = { type = addclaim which = 258 }
+command = { type = addclaim which = 660 }
+command = { type = addclaim which = 666 }
+command = { type = addclaim which = 667 }
+command = { type = addclaim which = 258 }
+command = { type = addclaim which = 1134 }
+command = { type = addclaim which = 690 }
+command = { type = addclaim which = 1131 }
+command = { type = addclaim which = 664 }
+command = { type = addclaim which = 672 }
+command = { type = addclaim which = 671 }
+command = { type = addclaim which = 687 }
+command = { type = addclaim which = 1126 }
+command = { type = addclaim which = 1131 }
+command = { type = addclaim which = 1130 }
+command = { type = addclaim which = 1129 }
+command = { type = addclaim which = 686 }
+command = { type = addclaim which = 689 }
+command = { type = addclaim which = 688 }
+command = { type = addclaim which = 706 }
+command = { type = addclaim which = 1113 }
+command = { type = addclaim which = 1118 }
+command = { type = addclaim which = 1115 }
+command = { type = addclaim which = 1116 }
+command = { type = addclaim which = 1117 }
+command = { type = addclaim which = 501 }
+command = { type = addclaim which = 502 }
+command = { type = addclaim which = 498 }
+command = { type = addclaim which = 499 }
+command = { type = addclaim which = 1140 }
+command = { type = addclaim which = 507 }
+command = { type = addclaim which = 505 }
+command = { type = addclaim which = 506 }
+command = { type = addclaim which = 504 }
+command = { type = addclaim which = 1114 }
+command = { type = addclaim which = 1110 }
+command = { type = addclaim which = 1111 }
+command = { type = addclaim which = 503 }
+command = { type = addclaim which = 500 }
+command = { type = addclaim which = 1108 }
+command = { type = addclaim which = 1109 }
+command = { type = addclaim which = 1112 }
+command = { type = addclaim which = 1103 }
+command = { type = addclaim which = 1105 }
+command = { type = addclaim which = 1104 }
+command = { type = addclaim which = 1106 }
+command = { type = addclaim which = 1107 }
+command = { type = addclaim which = 1099 }
+command = { type = addclaim which = 1100 }
+command = { type = addclaim which = 1101 }
+command = { type = addclaim which = 1102 }
+command = { type = addclaim which = 1097 }
+command = { type = addclaim which = 1098 }
+command = { type = addclaim which = 302 }
+command = { type = addclaim which = 303 }
+command = { type = addclaim which = 304 }
+command = { type = addclaim which = 305 }
+command = { type = addclaim which = 306 }
+command = { type = addclaim which = 501 }
+command = { type = addclaim which = 498 }
+command = { type = addclaim which = 1115 }
+command = { type = addclaim which = 499 }
+command = { type = addclaim which = 502 }
+}
+
+action_b = {
+ai_chance = 10
+name = "This is a bit risky..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = RUS value = 60 }
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 751052
+random = no
+country = PRI
+
+trigger = {
+NOT = {
+puppet = { country = PRI country = JAP  }
+}
+exists = MON
+war = { country = MON country = PRI }
+control = { province = 1124 data = PRI }
+control = { province = 1162 data = PRI }
+}
+
+
+name = "Ulan Bator Captured"
+desc = "We have finally seized control of the Mongolian capital! How shall we deal with these barbarians?"
+style = 2
+picture = "mongoliadefeated"
+
+date = { day = 1 month = january year = 1936 }
+offset = 7
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = " Let the Mongols join us on OUR terms!"
+ai_chance = 95
+command = { type = trigger which = 751053 }
+command = { type = addcore   which = 1167   }
+command = { type = addcore   which = 1168   }
+command = { type = addcore   which = 1169   }
+command = { type = addcore   which = 1146   }
+command = { type = addcore   which = 1147   }
+command = { type = addcore   which = 1158   }
+command = { type = relation which = MON value = 10 }
+}
+action_b = {
+name = "Make an example of them, unconditional surrender!"
+ai_chance = 5
+command = { type = relation which = KYG value = -50 }
+command = { type = relation which = KAZ value = -50 }
+command = { type = relation which = JAP value = -40 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = addcore   which = 1167   }
+command = { type = addcore   which = 1168   }
+command = { type = addcore   which = 1169   }
+command = { type = addcore   which = 1146   }
+command = { type = addcore   which = 1147   }
+command = { type = addcore   which = 1158   }
+}
+}
+
+event = {
+id = 751053
+random = no
+country = MON
+
+name = "Ulan Bator Captured"
+desc = "The wretched Russians have siezed our glorious capital! Defeat seems near, is it time to submit?"
+style = 2
+picture = "mongoliadefeated"
+
+action_a = {
+name = "We have no choice but to submit..."
+ai_chance = 90
+command = { type = flag_ext where = MON  }
+command = { type = name where = MON  }
+command = { type = peace which = PRI value = 1 }
+command = { type = peace which = JAP value = 1 }
+command = { type = peace which = KOR value = 1 }
+command = { type = peace which = U30 value = 1 }
+command = { type = peace which = MAN value = 1 }
+command = { type = leave_alliance when = 1 }
+command = { type = secedeprovince which = PRI value = 1167 }
+command = { type = secedeprovince which = PRI value = 1168 }
+command = { type = secedeprovince which = PRI value = 1169 }
+command = { type = secedeprovince which = PRI value = 1146 }
+command = { type = secedeprovince which = PRI value = 1147 }
+command = { type = secedeprovince which = PRI value = 1158 }
+command = { type = removecore which = 1167 }
+command = { type = removecore which = 1168 }
+command = { type = removecore which = 1169 }
+command = { type = removecore which = 1146 }
+command = { type = removecore which = 1147 }
+command = { type = removecore which = 1158 }
+command = { type = removeclaim which = 1142 }
+command = { type = removeclaim which = 1155 }
+command = { type = removeclaim which = 1157 }
+command = { type = removeclaim which = 1148 }
+command = { type = removeclaim which = 1140 }
+command = { type = removeclaim which = 1143 }
+command = { type = removeclaim which = 1144 }
+command = { type = removeclaim which = 1145 }
+command = { type = removeclaim which = 1152 }
+command = { type = removeclaim which = 1153 }
+command = { type = removeclaim which = 1150 }
+command = { type = removeclaim which = 1146 }
+command = { type = removeclaim which = 1158 }
+command = { type = removeclaim which = 1138 }
+command = { type = removeclaim which = 1147 }
+command = { type = removeclaim which = 1166 }
+command = { type = removeclaim which = 1167 }
+command = { type = removeclaim which = 1162 }
+command = { type = removeclaim which = 1163 }
+command = { type = removeclaim which = 1164 }
+command = { type = removeclaim which = 1165 }
+command = { type = removeclaim which = 1169 }
+command = { type = removeclaim which = 1179 }
+command = { type = removeclaim which = 1178 }
+command = { type = removeclaim which = 1177 }
+command = { type = removeclaim which = 1168 }
+command = { type = removeclaim which = 1156 }
+command = { type = removeclaim which = 1189 }
+command = { type = removeclaim which = 1186 }
+command = { type = removeclaim which = 1139 }
+command = { type = removeclaim which = 1149 }
+command = { type = removeclaim which = 1141 }
+command = { type = removeclaim which = 1135 }
+command = { type = removeclaim which = 1138 }
+command = { type = removeclaim which = 1154 }
+command = { type = removeclaim which = 1180 }
+command = { type = removeclaim which = 1181 }
+command = { type = removeclaim which = 1182 }
+command = { type = removeclaim which = 1183 }
+command = { type = removeclaim which = 1184 }
+command = { type = removeclaim which = 1176 }
+command = { type = removeclaim which = 1174 }
+command = { type = removeclaim which = 1188 }
+command = { type = removeclaim which = 1175 }
+command = { type = removeclaim which = 1187 }
+command = { type = removeclaim which = 1136 }
+command = { type = removeclaim which = 1137 }
+command = { type = removeclaim which = 1151 }
+command = { type = removeclaim which = 1069 }
+command = { type = removeclaim which = 1070 }
+command = { type = removeclaim which = 1170 }
+command = { type = removeclaim which = 1171 }
+command = { type = removeclaim which = 1161 }
+command = { type = removecore which = 1270 }
+command = { type = removecore which = 1272 }
+command = { type = removecore which = 1273 }
+command = { type = removecore which = 1276 }
+command = { type = removecore which = 1281 }
+command = { type = removeclaim which = 1265 }
+command = { type = removeclaim which = 1266 }
+command = { type = removeclaim which = 1268 }
+command = { type = removeclaim which = 1275 }
+command = { type = removeclaim which = 1277 }
+command = { type = removeclaim which = 1279 }
+command = { type = removeclaim which = 1280 }
+command = { type = removeclaim which = 1282 }
+command = { type = removeclaim which = 1284 }
+command = { type = removeclaim which = 1280 }
+command = { type = removeclaim which = 1241 }
+command = { type = removeclaim which = 501 }
+command = { type = removeclaim which = 498 }
+command = { type = removeclaim which = 1115 }
+command = { type = removeclaim which = 499 }
+command = { type = removeclaim which = 502 }
+command = { type = removeclaim   which =  1338  }
+command = { type = removeclaim   which =  1107  }
+command = { type = removeclaim   which =  1245  }
+command = { type = removeclaim   which =  1328  }
+command = { type = removeclaim   which =  1331  }
+command = { type = removeclaim   which =  1241  }
+command = { type = removeclaim   which =  1245  }
+command = { type = removeclaim   which =  1157  }
+command = { type = removeclaim   which =  1148  }
+command = { type = removeclaim   which =  1140  }
+command = { type = removeclaim   which =  1143  }
+command = { type = removeclaim   which =  1144  }
+command = { type = removeclaim   which =  1145  }
+command = { type = removeclaim   which =  1152  }
+command = { type = removeclaim   which =  1153  }
+command = { type = removeclaim   which =  1150  }
+command = { type = removeclaim   which =  1146  }
+command = { type = removeclaim   which =  1158  }
+command = { type = removeclaim   which =  1138  }
+command = { type = removeclaim   which =  1147  }
+command = { type = removeclaim   which =  1166  }
+command = { type = removeclaim   which =  1167  }
+command = { type = removeclaim   which =  1162  }
+command = { type = removeclaim   which =  1163  }
+command = { type = removeclaim   which =  1164  }
+command = { type = removeclaim   which =  1165  }
+command = { type = removeclaim   which =  1169  }
+command = { type = removeclaim   which =  1179  }
+command = { type = removeclaim   which =  1178  }
+command = { type = removeclaim   which =  1177  }
+command = { type = removeclaim   which =  1168  }
+command = { type = removeclaim   which =  1156  }
+command = { type = removeclaim   which =  1189  }
+command = { type = removeclaim   which =  1186  }
+command = { type = removeclaim   which =  1139  }
+command = { type = removeclaim   which =  1149  }
+command = { type = removeclaim   which =  1141  }
+command = { type = removeclaim   which =  1135  }
+command = { type = removeclaim   which =  1138  }
+command = { type = removeclaim   which =  1154  }
+command = { type = removeclaim   which =  1180  }
+command = { type = removeclaim   which =  1181  }
+command = { type = removeclaim   which =  1182  }
+command = { type = removeclaim   which =  1183  }
+command = { type = removeclaim   which =  1184  }
+command = { type = removeclaim   which =  1176  }
+command = { type = removeclaim   which =  1174  }
+command = { type = removeclaim   which =  1188  }
+command = { type = removeclaim   which =  1175  }
+command = { type = removeclaim   which =  1187  }
+command = { type = removeclaim   which =  1136  }
+command = { type = removeclaim   which =  1137  }
+command = { type = removeclaim   which =  1151  }
+command = { type = removeclaim   which =  1069  }
+command = { type = removeclaim   which =  1070  }
+command = { type = removeclaim   which =  1170  }
+command = { type = removeclaim   which =  1171  }
+command = { type = removeclaim   which =  1161  }
+command = { type = removeclaim   which =  1202  }
+command = { type = removeclaim   which =  1216  }
+command = { type = removeclaim   which =  1235  }
+command = { type = removeclaim   which =  1236  }
+command = { type = removeclaim   which =  1240  }
+command = { type = removeclaim   which =  1204  }
+command = { type = removeclaim   which =  1212  }
+command = { type = removeclaim   which =  1205  }
+command = { type = removeclaim   which =  1199  }
+command = { type = removeclaim   which =  1203  }
+command = { type = removeclaim   which =  1200  }
+command = { type = removeclaim   which =  1206  }
+command = { type = removeclaim   which =  1213  }
+command = { type = removeclaim   which =  1237  }
+command = { type = removeclaim   which =  1207  }
+command = { type = removeclaim   which =  1220  }
+command = { type = removeclaim   which =  1218  }
+command = { type = removeclaim   which =  1201  }
+command = { type = removeclaim   which =  1208  }
+command = { type = removeclaim   which =  1209  }
+command = { type = removeclaim   which =  1210  }
+command = { type = removeclaim   which =  1211  }
+command = { type = removeclaim   which =  1214  }
+command = { type = removeclaim   which =  1215  }
+command = { type = removeclaim   which =  1217  }
+command = { type = removeclaim   which =  1197  }
+command = { type = removeclaim   which =  1198  }
+command = { type = removeclaim   which =  1219  }
+command = { type = removeclaim   which =  1142  }
+command = { type = removeclaim   which =  1155  }
+command = { type = removeclaim   which =  1191  }
+command = { type = removeclaim   which =  1196  }
+command = { type = removeclaim   which =  1193  }
+command = { type = removeclaim   which =  1192  }
+command = { type = removeclaim   which =  1195  }
+command = { type = removeclaim   which =  1194  }
+command = { type = removeclaim   which =  1190  }
+command = { type = removeclaim   which =  1185  }
+command = { type = removeclaim   which =  1541  }
+command = { type = removeclaim   which =  1542  }
+command = { type = removeclaim   which =  1543  }
+command = { type = removeclaim which = 1246 }
+command = { type = removeclaim which = 1247 }
+command = { type = removeclaim which = 1243 }
+command = { type = removeclaim which = 1250 }
+command = { type = removeclaim which = 1321 }
+command = { type = removeclaim which = 1323 }
+command = { type = removeclaim which = 1238 }
+command = { type = removeclaim which = 1333 }
+command = { type = removeclaim which = 1342 }
+command = { type = removeclaim which = 1345 }
+command = { type = removeclaim which = 1239 }
+command = { type = removeclaim which = 1343 }
+command = { type = removeclaim which = 1337 }
+command = { type = removeclaim which = 1334 }
+command = { type = removeclaim which = 1336 }
+command = { type = removeclaim which = 1339 }
+command = { type = removeclaim which = 1335 }
+command = { type = removeclaim which = 1251 }
+command = { type = removeclaim which = 1242 }
+command = { type = removeclaim which = 1254 }
+command = { type = removeclaim which = 1332 }
+command = { type = removeclaim which = 1252 }
+command = { type = removeclaim which = 1253 }
+command = { type = removeclaim which = 1248 }
+command = { type = removeclaim which = 1249 }
+command = { type = removeclaim which = 1250 }
+command = { type = removeclaim which = 1327 }
+command = { type = removeclaim which = 1244 }
+command = { type = removeclaim which = 1329 }
+command = { type = removeclaim which = 1330 }
+command = { type = removeclaim which = 1340 }
+command = { type = removeclaim which = 1341 }
+command = { type = removeclaim which = 1319 }
+command = { type = removeclaim which = 1324 }
+command = { type = removeclaim which = 1322 }
+command = { type = removeclaim which = 1320 }
+command = { type = removeclaim which = 1325 }
+command = { type = removeclaim which = 1316 }
+command = { type = removeclaim which = 1326 }
+command = { type = removeclaim which = 1317 }
+command = { type = removeclaim which = 1344 }
+command = { type = removeclaim which = 1259 }
+command = { type = removeclaim which = 1255 }
+command = { type = removeclaim which = 1260 }
+command = { type = removeclaim which = 1269 }
+command = { type = removeclaim which = 1271 }
+command = { type = removeclaim which = 1256 }
+command = { type = removeclaim which = 1263 }
+command = { type = removeclaim which = 1257 }
+command = { type = removeclaim which = 1258 }
+command = { type = removeclaim which = 1278 }
+command = { type = removeclaim which = 1286 }
+command = { type = removeclaim which = 1287 }
+command = { type = removeclaim which = 1288 }
+command = { type = removeclaim which = 1289 }
+command = { type = removeclaim which = 1290 }
+command = { type = removeclaim which = 1294 }
+command = { type = removeclaim which = 1295 }
+command = { type = removeclaim which = 1113 }
+command = { type = removeclaim which = 706  }
+command = { type = removeclaim which = 1115 }
+command = { type = removeclaim which = 502  }
+command = { type = removeclaim which = 501  }
+command = { type = removeclaim which = 498  }
+command = { type = removeclaim which = 499  }
+command = { type = removeclaim which = 1140 }
+command = { type = removeclaim which = 1114 }
+command = { type = removeclaim which = 1117 }
+command = { type = removeclaim which = 1118 }
+command = { type = removeclaim which = 1116 }
+command = { type = removeclaim which = 1111 }
+command = { type = removeclaim which = 500  }
+command = { type = removeclaim which = 503  }
+command = { type = removeclaim which = 505  }
+command = { type = removeclaim which = 507  }
+command = { type = removeclaim which = 504  }
+command = { type = removeclaim which = 506  }
+command = { type = removeclaim which = 1108 }
+command = { type = removeclaim which = 1109 }
+command = { type = removeclaim which = 1110 }
+command = { type = removeclaim which = 1112 }
+command = { type = removeclaim which = 1264 }
+command = { type = removeclaim which = 1268 }
+command = { type = removeclaim which = 1275 }
+command = { type = removeclaim which = 1279 }
+command = { type = removeclaim which = 1280 }
+command = { type = removeclaim which = 1277 }
+command = { type = removeclaim which = 1282 }
+command = { type = removeclaim which = 1266 }
+command = { type = removeclaim which = 1284 }
+command = { type = removeclaim which = 1265 }
+command = { type = removeclaim which = 1280 }
+command = { type = removeclaim which = 1268 }
+command = { type = removecore which = 1273 }
+command = { type = removecore which = 1276 }
+command = { type = removecore which = 1281 }
+command = { type = removecore which = 1270 }
+command = { type = removecore which = 1272 }
+command = { type = removeclaim which = 1283 }
+command = { type = removeclaim which = 1285 }
+command = { type = removeclaim which = 1274 }
+command = { type = sleepleader which = 330025 }
+command = { type = sleepteam which = 6802 }
+command = { type = sleepteam which = 6801 }
+command = { type = waketeam which = 6807 }
+command = { type = sleepminister which = 94105 }
+command = { type = sleepminister which = 94111 }
+command = { type = sleepminister which = 94112 }
+command = { type = trigger which = 751054 }
+}
+action_b = {
+name = "The Baron shall lead us to victory or death!"
+ai_chance = 10
+command = { type = trigger which = 751056 }
+
+}
+}
+
+
+event = {
+id = 751054
+random = no
+country = PRI
+
+
+name = "Mongols Accept!"
+desc = "The Mongols fold to our demands!"
+style = 2
+picture = "mongoliadefeated"
+
+action_a = {
+name = "Good!"
+command = { type = trigger which = 751055 }
+command = { type = dissent value = -10 }
+command = { type = make_puppet which = MON }
+command = { type = trigger which = 751057 }
+command = { type = trigger which = 901937 }
+}
+}
+
+
+event = {
+id = 751055
+random = no
+country = TIB
+
+trigger = {
+war = { country = TIB country = PRI }
+}
+
+
+name = "Tibet abandons Mongolia"
+desc = "Our alliance with Baron von Sternberg and Mongolia ended in disaster! After the self-proclaimed Khan has ended as a Transamur puppet there's nothing to gain for us in this conflict."
+style = 2
+picture = "End_Winter_War"
+
+action_a = {
+name = "We'll make peace with Transamur!"
+command = { type = peace which = PRI value = 0 }
+command = { type = dissent value = 5 }
+
+}
+}
+
+event = {
+id = 751056
+random = no
+country = PRI
+
+name = "The Mongols are Suicidal!"
+desc = "Apparently the rogue Baron is more important to the Mongols than a dignified defeat!"
+style = 2
+picture = "mongoliadefeated"
+
+action_a = {
+name = "They will have to pay!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}
+
+event = {
+id = 751057
+country = PRI
+style = 2
+picture = "tannutuvadec"
+
+name = "The Tuvan Question"
+desc = "The Tuvan people are Turks that live next to the Mongols and they have played an important function in Sternberg's empire. Upon hearing about the collapse of his power the Tuvans are demanding freedom. Granting them this wish would greatly weaken the Mongols."
+
+action_a = {
+ai_chance = 20
+name = "Order Mongolia to release Tannu Tuva!"
+command = { type = trigger which = 751059 }
+command = { type = relation which = MON value = -50 }
+command = { type = sleepevent which = 751058 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Tannu Tuva will be Russian once more!"
+command = { type = relation which = MON value = -50 }
+command = { type = addcore   which = 1119   }
+command = { type = dissent value = 3 }
+command = { type = sleepevent which = 751062 }
+}
+
+
+action_c = {
+ai_chance = 25
+name = "They are still Mongols for all we care!"
+command = { type = relation which = MON value = 50 }
+command = { type = sleepevent which = 751058 }
+}
+}
+
+event = {
+id = 751058
+country = PRI
+style = 2
+picture = "tannutuvadec"
+
+
+trigger = {
+owned = { province = 1119 data = PRI }
+control = { province = 1119 data = PRI }
+NOT = {
+war = { country = MON country = PRI }
+core = { province = 1119 data = PRI }
+}
+}
+
+name = "The Tuvan Question"
+desc = "The Tuvan people are Turks that live next to the Mongols and they have played an important function in Sternberg's empire. Upon hearing about the collapse of his power the Tuvans are demanding freedom. Granting them this wish would greatly weaken the Mongols."
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 0
+name = "Give the Tuvans total freedom, once and for all!"
+command = { type = independence which = TAN value = 1 when = 0 }
+command = { type = relation which = MON value = -50 }
+}
+
+action_b = {
+ai_chance = 55
+name = "Give the Tuvans freedom, but they shall remain loyal to us!"
+command = { type = independence which = TAN value = 1 when = 0 }
+command = { type = trigger which = 751060 }
+command = { type = relation which = MON value = -50 }
+}
+
+action_c = {
+ai_chance = 70
+name = "Tannu Tuva will be Russian once more!"
+command = { type = relation which = MON value = -50 }
+command = { type = addcore   which = 1119   }
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 751059
+random = no
+country = MON
+style = 2
+picture = "tannutuvadec"
+
+
+name = "The Transamur Ultimatum"
+desc = "The Russians have sent us an ultimatum to release the Tuvans!"
+action_a = {
+name = "Well, if they insist..."
+command = { type = independence which = TAN value = 1 when = 0 }
+command = { type = removecore which = 1119 }
+command = { type = secedeprovince which = TAN value = 1119 }
+command = { type = trigger which = 751060 }
+}
+}
+
+event = {
+id = 751062
+random = no
+country = MON
+style = 2
+picture = "tannutuvadec"
+
+
+name = "The Transamur Ultimatum"
+desc = "The Government of Transamur have sent us an ultimatum to release the Tuvans!"
+action_a = {
+name = "Well, if they insist..."
+command = { type = removecore which = 1119 }
+command = { type = secedeprovince which = PRI value = 1119 }
+}
+}
+
+
+event = {
+id = 751060
+random = no
+country = PRI
+style = 2
+picture = "tannutuvadec"
+
+
+name = "Tuvan Freedom"
+desc = "The Tuvans are now free and at our disposal!"
+action_a = {
+ai_chance = 100
+name = "Huzzah!"
+command = { type = independence which = TAN value = 1 when = 0 }
+command = { type = make_puppet which = TAN }
+command = { type = relation which = TAN value = 100 }
+}
+}
+
+
+event = {
+id = 751061
+random = no
+country = PRI
+
+trigger = {
+OR = {
+ideology = nazi
+ideology = fascist
+}
+headofstate = 527001
+OR = {
+AND = {
+NOT = {
+dissent = 10 }
+}
+random = 3
+AND = {
+dissent = 10
+NOT = {
+dissent = 20
+}
+random = 10
+}
+AND = { dissent = 20
+random = 25
+}
+}
+}
+
+name = "Aleksander Kolchak was overthrown"
+desc = "Aleksander Kolchak, leader of Transamur for more than 12 years, was overthrown by members of the general staff led by Sergei Wojciechowski and was executed by a firing squad. His death opens the field for various possiblities of political change in Transamur including the declaration of a republic, if Sergei Wojciechowski and his staff allows it."
+style = 2
+picture = "Yugoslav coup"
+
+date = { day = 9 month = january year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Sergei Wojciechowski is the new leader of Transamur!"
+ai_chance = 30
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = sleepminister which = 527001 }
+command = { type = sleepminister which = 527047 }
+command = { type = sleepminister which = 4089 }
+command = { type = sleepminister which = 4121 }
+command = { type = sleepminister which = 4127 }
+command = { type = sleepminister which = 4141 }
+command = { type = sleepminister which = 4199 }
+command = { type = sleepminister which = 4198 }
+command = { type = sleepminister which = 522011 }
+command = { type = sleepminister which = 522035 }
+command = { type = sleepteam which = 12707 }
+command = { type = waketeam which = 12721 }
+command = { type = sleepevent which = 758437 }
+command = { type = sleepevent which = 758438 }
+}
+
+
+action_b = {
+name = "A Republic is founded."
+ai_chance = 40
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 527011 }
+command = { type = headofgovernment which = 527013 }
+command = { type = foreignminister which = 527016 }
+command = { type = sleepminister which = 527001 }
+command = { type = sleepminister which = 527047 }
+command = { type = sleepminister which = 4089 }
+command = { type = sleepminister which = 4121 }
+command = { type = sleepminister which = 4127 }
+command = { type = sleepminister which = 4141 }
+command = { type = sleepminister which = 4199 }
+command = { type = sleepminister which = 4198 }
+command = { type = sleepminister which = 522011 }
+command = { type = sleepminister which = 522035 }
+command = { trigger = { puppet = { country = PRI country = JAP  } } type = trigger which = 751063 }
+command = { type = sleepteam which = 12707 }
+command = { type = waketeam which = 12721 }
+command = { type = sleepevent which = 758437 }
+command = { type = sleepevent which = 758438 }
+}
+}
+
+event = {
+id = 751063
+random = no
+country = JAP
+style = 2
+
+trigger = {
+puppet = { country = PRI country = JAP  }
+}
+
+name = "Admiral Kolchak was overthrown!"
+desc = "Admiral Kolchak, the long term leader of the Transamur state has been overthrown and assasinated by members of his own general staff. This was used by the democratic opposition to gain control over the state, effectively turning Transamur from a military junta into a democracy. How shall we react?"
+picture = "Transamur"
+
+action_a = {
+ai_chance = 100
+name = "Congratulate the new government!"
+trigger = { government = democratic }
+command = { type = relation which = PRI value = 200 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Demand the restoration of a military cabinet!"
+trigger = { NOT = { government = democratic } }
+command = { type = relation which = PRI value = -100 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 751064 }
+}
+
+action_c = {
+ai_chance = 50
+name = "It is their internal affair."
+trigger = { NOT = { government = democratic } }
+command = { type = relation which = PRI value = 100 }
+}
+}
+
+event = {
+id = 751064
+random = no
+country = PRI
+style = 2
+
+
+name = "The Japanese are trying to destroy our republic!"
+desc = "The Japanese feel threatened by the sudden restoration of democracy in Transamur and they have issued an ultimatum to us in which they demand the restoration of a military cabinet."
+picture = "kolchak"
+
+
+action_a = {
+ai_chance = 50
+name = "Submit before Japan."
+command = { type = relation which = JAP value = 100 }
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Never!"
+command = { type = event which = 751065 where = JAP when = 1  }
+command = { type = relation which = JAP value = -250 }
+command = { type = end_access which = JAP  }
+command = { trigger = { alliance = { country = JAP country = PRI } } type = leave_alliance when = 1  }
+command = { type = end_non_aggression  which = JAP where = PRI	  }
+command = { type = end_trades which = JAP where = PRI  }
+command = { type = sleepteam which = 12708 }
+command = { type = peace which = MAN value = 1 }
+command = { type = peace which = SIB value = 1 }
+command = { type = peace which = CSX value = 1 }
+command = { type = peace which = KOR value = 1 }
+command = { type = peace which = U30 value = 1 }
+command = { type = peace which = CGX value = 1 }
+command = { type = peace which = CHC value = 1 }
+command = { type = peace which = GER value = 1 }
+}
+}
+
+event = {
+id = 751065
+random = no
+country = JAP
+style = 2
+
+
+name = "Transamur breaks away!"
+desc = "The Transamur Republic has taken great offence at our attempts to regulate their internal affairs and are severing all political ties with us!"
+picture = "Transamur"
+
+
+action_a = {
+ai_chance = 70
+name = "Destroy them!"
+command = { type = war which = PRI }
+command = { type = setflag which = PRI_breaksaway }
+}
+
+action_b = {
+ai_chance = 30
+name = "We can only let them go..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+command = { type = setflag which = PRI_breaksaway }
+}
+}
+
+
+event = {
+id = 751069
+country = PRI
+style = 2
+
+
+trigger = {
+NOT = {
+exists = SIB
+exists = RUS
+}
+
+owned = { province = 1162 data = PRI }
+owned = { province = 1142 data = PRI }
+owned = { province = 1188 data = PRI }
+control = { province = 1191 data = PRI }
+control = { province = 1162 data = PRI }
+control = { province = 1142 data = PRI }
+control = { province = 1188 data = PRI }
+OR = {
+AND = {
+control = { province = 572 data = PRI }
+owned = { province = 572 data = PRI }
+}
+AND = {
+control = { province = 672 data = PRI }
+owned = { province = 672 data = PRI }
+}
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Restoration of Russia"
+desc = "We have successfuly reclaimed the European parts of Russia and we can now restore the Russian republic to its true glory!"
+picture = "russiageo"
+
+action_a = {
+name = "God is with us!"
+command = { type = country which = RUS }
+command = { type = clrflag which = RUS_TSAR }
+command = { type = clrflag which = HoS_Senate }
+command = { type = clrflag which = RUS_MIL }
+command = { type = clrflag which = HoS_Dmitri_P }
+command = { type = clrflag which = RUS_BOL }
+command = { type = clrflag which = RUS_REP }
+command = { type = clrflag which = HoS_Chernov }
+command = { type = clrflag which = HoS_Maklakov }
+command = { type = clrflag which = HoS_Arkhangelskiy }
+command = { type = clrflag which = HoS_Bukharin }
+command = { type = clrflag which = HoS_Williams }
+command = { type = clrflag which = HoS_Kaplan }
+command = { type = clrflag which = HoS_Markov }
+command = { type = clrflag which = RUS_ISO }
+command = { type = clrflag which = RUS_REAL }
+command = { type = clrflag which = CAP_PET }
+command = { type = clrflag which = CAP_MOS }
+command = { type = clrflag which = ORTH_STATE }
+command = { type = clrflag which = secular }
+command = { type = clrflag which = ORTH_GVMT }
+command = { type = local_clrflag which = RUSexp_cea }
+command = { type = local_clrflag which = RUSexp_cau }
+command = { type = local_clrflag which = RUSexp_fae }
+command = { type = local_clrflag which = RUSexp_eas }
+command = { type = local_clrflag which = RUSexp_mie }
+command = { trigger = { minister = 527001 } type = wakeminister which = 4089 }
+command = { trigger = { minister = 527001 } type = wakeminister which = 4121 }
+command = { trigger = { minister = 527001 } type = wakeminister which = 4127 }
+command = { trigger = { minister = 527001 } type = wakeminister which = 4141 }
+command = { trigger = { minister = 527001 } type = wakeminister which = 4199 }
+command = { trigger = { minister = 527001 } type = wakeminister which = 4198 }
+command = { trigger = { minister = 527001 government = fascist } type = headofstate which = 4199 }
+command = { trigger = { minister = 527001 government = fascist } type = headofgovernment which = 4191 }
+command = { trigger = { minister = 527001 government = fascist } type = foreignminister which =  4098 }
+command = { type = name where = RUS which = RUS_REP_NAME }
+command = { type = flag_ext where = RUS which = "_rep" }
+command = { type = manpowerpool value = 500 }
+command = { type = setflag which = RUS_EXP }
+command = { trigger = { government = democratic } type = setflag which = RUS_REP }
+command = { trigger = { government = communist } type = setflag which = RUS_BOL }
+command = { trigger = { government = democratic } type = headofgovernment which = 4110 }
+command = { trigger = { government = democratic } type = foreignminister which =  4225 }
+command = { trigger = { government = democratic } type = headofstate which = 4280  }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = infantry when = 10 }
+command = { type = add_division value = cavalry when = 9 }
+command = { type = add_division value = cavalry when = 9 }
+command = { type = add_division value = cavalry when = 9 }
+command = { type = add_division value = interceptor when = 9 }
+command = { type = add_division value = interceptor when = 9 }
+command = { type = add_division value = heavy_cruiser when = 3 }
+command = { type = add_division value = light_cruiser when = 3 }
+command = { type = add_division value = light_cruiser when = 3 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = transport_pool which = RUS value = 50 }
+command = { type = escort_pool which = RUS value = 10 }
+command = { type = sleepevent which = 771060  }
+command = { type = sleepevent which = 771061  }
+command = { type = sleepevent which = 771067  }
+command = { type = sleepevent which = 771068  }
+command = { type = sleepevent which = 758081  }
+command = { type = sleepevent which = 750080  }
+command = { type = sleepevent which = 750081  }
+command = { type = sleepevent which = 750082  }
+command = { type = addcore which = 1191 }
+command = { type = addcore which = 1196 }
+command = { type = addcore which = 1193 }
+command = { type = addcore which = 1192 }
+command = { type = addcore which = 1195 }
+command = { type = addcore which = 1194 }
+command = { type = addcore which = 1190 }
+command = { type = addcore which = 1185 }
+command = { type = addcore which = 1541 }
+command = { type = addcore which = 1542 }
+command = { type = addcore which = 1543 }
+command = { type = addcore   which = 694  }
+command = { type = addcore   which = 693  }
+command = { type = addcore   which = 695  }
+command = { type = addcore   which = 696  }
+command = { type = addcore   which = 691  }
+command = { type = addcore   which = 692  }
+command = { type = addcore   which = 697  }
+command = { type = addcore   which = 662  }
+command = { type = addcore   which = 698  }
+command = { type = addcore   which = 701  }
+command = { type = addcore   which = 703  }
+command = { type = addcore   which = 705  }
+command = { type = addcore   which = 702  }
+command = { type = addcore   which = 700  }
+command = { type = addcore   which = 699  }
+command = { type = addcore   which = 704  }
+command = { type = addcore   which = 642  }
+command = { type = addcore   which = 659  }
+command = { type = addcore   which = 660  }
+command = { type = addcore   which = 663  }
+command = { type = addcore   which = 661  }
+command = { type = addcore   which = 1167   }
+command = { type = addcore   which = 1168   }
+command = { type = addcore   which = 1169   }
+command = { type = addcore   which = 1146   }
+command = { type = addcore   which = 1147   }
+command = { type = addcore   which = 1158   }
+command = { type = addcore which = 530 }
+command = { type = addcore which = 531 }
+command = { type = addcore which = 532 }
+command = { type = addcore which = 538 }
+command = { type = addcore which = 540 }
+command = { type = addcore which = 519 }
+command = { type = addcore which = 517 }
+command = { type = addcore which = 537 } # just to make sure that Russia gets cores on whole Karelia, if event about peace with Finland fired before
+command = { type = addcore which = 541 }
+command = { type = addcore which = 539 }
+command = { type = addcore which = 534 }
+command = { type = addcore which = 535 }
+command = { type = addcore which = 536 }
+command = { type = addcore which = 643 }
+command = { type = addcore which = 645 }
+command = { type = addcore which = 649 }
+command = { type = addcore which = 644 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1113 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 706  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1115 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 502  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 501  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 498  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 499  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1140 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1114 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1117 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1118 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1116 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1111 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 500  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 503  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 505  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 507  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 504  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 506  }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1108 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1109 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1110 }
+command = { trigger = { owned = { province = 504 data = -1 } } type = addcore which = 1112 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1103 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1105 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1104 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1106 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1107 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1099 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1100 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1101 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1102 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1097 }
+command = { trigger = { owned = { province = 1105 data = -1 } } type = addcore which = 1098 }
+command = { trigger = { owned = { province = 1119 data = -1 } } type = addcore which = 1119 }
+command = { type = addcore which = 501 }
+command = { type = addcore which = 498 }
+command = { type = addcore which = 1115 }
+command = { type = addcore which = 499 }
+command = { type = addcore which = 502 }
+command = { type = clrflag which = RUS_UBE }
+command = { type = clrflag which = RUS_BSD }
+command = { type = clrflag which = RUS_FRB }
+command = { type = clrflag which = RUS_KIS }
+command = { type = clrflag which = RUS_ARA }
+command = { type = clrflag which = RUS_GGF }
+command = { type = clrflag which = RUS_TSR }
+command = { type = clrflag which = RUS_FMS }
+command = { type = clrflag which = RUS_EFE }
+command = { type = clrflag which = RUS_KGD }
+command = { type = clrflag which = RUS_AOD }
+command = { type = clrflag which = RUS_DKU }
+command = { type = clrflag which = RUS_DKC }
+command = { type = clrflag which = RUS_ETC }
+command = { trigger = { control = { province = 1167 data = -1 } control = { province = 1169 data = -1 } control = { province = 1147 data = -1 } control = { province = 1158 data = -1 } } type = setflag which = SIB_OPN }
+command = { trigger = { owned = { province = 1105 data = RUS } owned = { province = 504 data = RUS } } type = setflag which = RUS_CENASIAPEACE }
+command = { trigger = { owned = { province = 1167 data = RUS } owned = { province = 1168 data = RUS } owned = { province = 1169 data = RUS } owned = { province = 1146 data = RUS } owned = { province = 1147 data = RUS } owned = { province = 1158 data = RUS } } type = setflag which = RUS_SIBPEACE }
+command = {
+trigger = {
+OR = {
+AND = {
+NOT = { owned = { province = 694 data = -3 } }
+NOT = { control = { province = 694 data = -3 } }
+}
+AND = {
+NOT = { owned = { province = 709 data = -3 } }
+NOT = { control = { province = 709 data = -3 } }
+}
+AND = {
+flag = RUS_EXP
+NOT = { owned = { province = 711 data = -3 } }
+NOT = { control = { province = 711 data = -3 } }
+}
+AND = {
+NOT = { owned = { province = 713 data = -3 } }
+NOT = { control = { province = 713 data = -3 } }
+}
+AND = {
+NOT = { owned = { province = 504 data = -3 } }
+NOT = { control = { province = 504 data = -3 } }
+}
+AND = {
+NOT = { owned = { province = 1105 data = -3 } }
+NOT = { control = { province = 1105 data = -3 } }
+}
+}
+}
+type = event which = 901971 where = RUS when = 40
+}
+command = {
+trigger = {
+
+owned = { province = 694 data = -3 }
+control = { province = 694 data = -3 }
+
+
+owned = { province = 709 data = -3 }
+control = { province = 709 data = -3 }
+
+
+owned = { province = 711 data = -3 }
+control = { province = 711 data = -3 }
+
+
+owned = { province = 713 data = -3 }
+control = { province = 713 data = -3 }
+
+
+owned = { province = 504 data = -3 }
+control = { province = 504 data = -3 }
+
+
+owned = { province = 1105 data = -3 }
+control = { province = 1105 data = -3 }
+
+}
+type = event which = 901996 where = RUS when = 40
+}
+}
+}
+
+event = {
+id = 751070
+random = no
+country = RUS
+style = 2
+
+trigger = {
+event = 751069
+owned = { province = 572 data = RUS }
+control = { province = 572 data = RUS }
+owned = { province = 553 data = RUS }
+control = { province = 553 data = RUS }
+}
+
+
+name = "The Capital"
+desc = "Either of Russia's historic capitals could become the home of our government. Where should we go?"
+picture = "capitalrus"
+
+date = { day = 1 month = january year = 1936 }
+offset = 20
+deathdate = { day = 16 month = december year = 1960  }
+
+
+action_a = {
+ai_chance = 60
+name = "St. Petersburg!"
+command = {  type =	capital which =  553 }
+command = { type = setflag which = CAP_PET }
+}
+action_b = {
+ai_chance = 40
+name = "Moscow!"
+command = {  type =	capital which =  572 }
+command = { type = setflag which = CAP_MOS }
+
+}
+
+}
+
+
+
+
+event = {
+id = 751076
+random = no
+country = PRI
+style = 2
+save_date = yes
+
+trigger = { government = democratic }
+
+name = "The Duma Elections"
+desc = "After several months of preparations the provisional government has completed the arrangements for the first free election in Transamur since 1920. There are 90 seats in national assembly available and various political parties have begun their campaigns. Currently only three parties have a chance of gaining a majority, thus forming a new government. Which one shall prevail?"
+picture = "rusDumaelect"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 30
+name = "The People`s Far East Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofgovernment which = 527057       }
+command = { type = foreignminister which =  527061	 }
+}
+action = {
+ai_chance =  35
+name = "The Party of Popular Freedom!"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofgovernment which = 527013       }
+command = { type = foreignminister which =  527016	 }
+}
+action = {
+ai_chance =  34
+name = "The The Zemski Krai Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofgovernment which = 527055       }
+command = { type = foreignminister which =  527059	 }
+}
+
+
+action = {
+ai_chance =  1
+name = "The army shall put an end to this chaotic democracy!"
+command = { type = dissent value = 20 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = headofgovernment which = 527014       }
+
+}
+}
+
+event = {
+id = 751077
+random = no
+country = PRI
+style = 2
+
+trigger = {
+event = 751076
+government = democratic
+}
+
+name = "The Presidential Elections"
+desc = "The time has come to elect a new president. All major forces in the country have put forward their candidates and the Duma is ready to assemble to vote on the new president."
+
+picture = "RussianDumaforeign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  35
+name = "Spiridon Merkulov, the leader of the ZK Party!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527054 }
+
+}
+action_b = {
+ai_chance =  35
+name = "Boris Shumyatsky, the PFE Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527053 }
+
+}
+action_c = {
+ai_chance =  30
+name = "Nikolay Smirnov, the PF Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527011 }
+
+}
+action_d = {
+ai_chance =  1
+name = "Gennadij Bukaev, the people's tribune of our time!"
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 527052 }
+
+}
+
+}
+
+event = {
+id = 751078
+random = no
+country = PRI
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+event = { id = 751076 days = 1400 } #4 years
+}
+
+name = "The Duma Elections"
+desc = "According to the Constitution elections are to be held every four years. The state Duma's term has expired and the time has come to elect a new parliament. There are 90 seats in the Duma available and various political parties have begun their campaigns. Only three parties have a chance of gaining the majority, thus forming a new government. Which one shall prevail?"
+picture = "rusDumaelect"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 30
+name = "The People`s Far East Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofgovernment which = 527057       }
+command = { type = foreignminister which =  527061	 }
+}
+action = {
+ai_chance =  35
+name = "The Party of Popular Freedom!"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofgovernment which = 527013       }
+command = { type = foreignminister which =  527016	 }
+}
+action = {
+ai_chance =  34
+name = "The The Zemski Krai Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofgovernment which = 527055       }
+command = { type = foreignminister which =  527059	 }
+}
+
+
+action = {
+ai_chance =  1
+name = "The army shall put an end to this chaotic democracy!"
+command = { type = dissent value = 20 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = headofgovernment which = 527014       }
+
+}
+}
+
+
+event = {
+id = 751079
+random = no
+country = PRI
+style = 2
+
+trigger = {
+event = 751078
+government = democratic
+}
+
+name = "The presidential Elections"
+desc = "The time has come to elect a new president. All major forces in the country have put forward their candidates and the Duma is ready to assemble to vote on the new president."
+
+picture = "RussianDumaforeign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  35
+name = "Spiridon Merkulov, the leader of the ZK Party!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527054 }
+
+}
+action_b = {
+ai_chance =  35
+name = "Boris Shumyatsky, the PFE Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527053 }
+
+}
+action_c = {
+ai_chance =  30
+name = "Nikolay Smirnov, the PF Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527011 }
+
+}
+action_d = {
+ai_chance =  1
+name = "Gennadij Bukaev, the people's tribune of our time!"
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 527052 }
+
+}
+
+}
+
+
+
+event = {
+id = 751080
+random = no
+country = PRI
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+event = { id = 751078 days = 1400 } #4 years
+}
+
+name = "The Duma Elections"
+desc = "According to the Constitution elections are to be held every four years. The state Duma's term has expired and the time has come to elect a new parliament. There are 90 seats in the Duma available and various political parties have begun their campaigns. Only three parties have a chance of gaining the majority, thus forming a new government. Which one shall prevail?"
+picture = "rusDumaelect"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 30
+name = "The People`s Far East Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofgovernment which = 527057       }
+command = { type = foreignminister which =  527061	 }
+}
+action = {
+ai_chance =  35
+name = "The Party of Popular Freedom!"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofgovernment which = 527013       }
+command = { type = foreignminister which =  527016	 }
+}
+action = {
+ai_chance =  34
+name = "The The Zemski Krai Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofgovernment which = 527055       }
+command = { type = foreignminister which =  527059	 }
+}
+
+
+action = {
+ai_chance =  1
+name = "The army shall put an end to this chaotic democracy!"
+command = { type = dissent value = 20 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = headofgovernment which = 527014       }
+
+}
+
+}
+
+
+event = {
+id = 751081
+random = no
+country = PRI
+style = 2
+
+trigger = {
+event = 751080
+government = democratic
+}
+
+name = "The presidential Elections"
+desc = "The time has come to elect a new president. All major forces in the country have put forward their candidates and the Duma is ready to assemble to vote on the new president."
+
+picture = "RussianDumaforeign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  35
+name = "Spiridon Merkulov, the leader of the ZK Party!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527054 }
+
+}
+action_b = {
+ai_chance =  35
+name = "Boris Shumyatsky, the PFE Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527053 }
+
+}
+action_c = {
+ai_chance =  30
+name = "Mirsha Vuchilkov, the PF Party representative!"
+command = { type = dissent value = 8 }
+command = { type = headofstate which = 527012 }
+
+}
+action_d = {
+ai_chance =  1
+name = "Gennadij Bukaev, the people's tribune of our time!"
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 527052 }
+
+}
+}
+
+
+event = {
+id = 751082
+random = no
+country = PRI
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+event = { id = 751080 days = 1400 } #4 years
+}
+
+name = "The Duma Elections"
+desc = "According to the Constitution elections are to be held every four years. The state Duma's term has expired and the time has come to elect a new parliament. There are 90 seats in the Duma available and various political parties have begun their campaigns. Only three parties have a chance of gaining the majority, thus forming a new government. Which one shall prevail?"
+picture = "rusDumaelect"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 30
+name = "The People`s Far East Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofgovernment which = 527057       }
+command = { type = foreignminister which =  527061	 }
+}
+action = {
+ai_chance =  35
+name = "The Party of Popular Freedom!"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofgovernment which = 527013       }
+command = { type = foreignminister which =  527016	 }
+}
+action = {
+ai_chance =  34
+name = "The The Zemski Krai Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofgovernment which = 527055       }
+command = { type = foreignminister which =  527059	 }
+}
+
+
+action = {
+ai_chance =  1
+name = "The army shall put an end to this chaotic democracy!"
+command = { type = dissent value = 20 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = headofgovernment which = 527014       }
+
+}
+}
+
+
+event = {
+id = 751083
+random = no
+country = PRI
+style = 2
+
+trigger = {
+event = 751082
+government = democratic
+}
+
+name = "The presidential Elections"
+desc = "The time has come to elect a new president. All major forces in the country have put forward their candidates and the Duma is ready to assemble to vote on the new president."
+
+picture = "RussianDumaforeign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  35
+name = "Spiridon Merkulov, the leader of the ZK Party!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527054 }
+
+}
+action_b = {
+ai_chance =  35
+name = "Boris Shumyatsky, the PFE Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527053 }
+
+}
+action_c = {
+ai_chance =  30
+name = "Mirsha Vuchilkov, the PF Party representative!"
+command = { type = dissent value = 8 }
+command = { type = headofstate which = 527012 }
+
+}
+action_d = {
+ai_chance =  1
+name = "Gennadij Bukaev, the people's tribune of our time!"
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 527052 }
+
+}
+}
+
+
+event = {
+id = 751084
+random = no
+country = PRI
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+event = { id = 751082 days = 1400 } #4 years
+}
+
+name = "The Duma Elections"
+desc = "According to the Constitution elections are to be held every four years. The state Duma's term has expired and the time has come to elect a new parliament. There are 90 seats in the Duma available and various political parties have begun their campaigns. Only three parties have a chance of gaining the majority, thus forming a new government. Which one shall prevail?"
+picture = "rusDumaelect"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 30
+name = "The People`s Far East Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofgovernment which = 527057       }
+command = { type = foreignminister which =  527061	 }
+}
+action = {
+ai_chance =  35
+name = "The Party of Popular Freedom!"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofgovernment which = 527056       }
+command = { type = foreignminister which =  527016	 }
+}
+action = {
+ai_chance =  34
+name = "The The Zemski Krai Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofgovernment which = 527055       }
+command = { type = foreignminister which =  527059	 }
+}
+
+
+action = {
+ai_chance =  1
+name = "The army shall put an end to this chaotic democracy!"
+command = { type = dissent value = 20 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = headofgovernment which = 527014       }
+
+}
+}
+
+
+event = {
+id = 751085
+random = no
+country = PRI
+style = 2
+
+trigger = {
+event = 751084
+government = democratic
+}
+
+name = "The presidential Elections"
+desc = "The time has come to elect a new president. All major forces in the country have put forward their candidates and the Duma is ready to assemble to vote on the new president."
+
+picture = "RussianDumaforeign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+action_a = {
+ai_chance =  35
+name = "Spiridon Merkulov, the leader of the ZK Party!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527054 }
+
+}
+action_b = {
+ai_chance =  35
+name = "Boris Shumyatsky, the PFE Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527053 }
+
+}
+action_c = {
+ai_chance =  30
+name = "Mirsha Vuchilkov, the PF Party representative!"
+command = { type = dissent value = 4 }
+command = { type = headofstate which = 527012 }
+
+}
+action_d = {
+ai_chance =  1
+name = "Gennadij Bukaev, the people's tribune of our time!"
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 527052 }
+
+}
+}
+
+
+event = {
+id = 751086
+random = no
+country = PRI
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+event = { id = 751084 days = 1400 } #4 years
+}
+
+name = "The Duma Elections"
+desc = "According to the Constitution elections are to be held every four years. The state Duma's term has expired and the time has come to elect a new parliament. There are 90 seats in the Duma available and various political parties have begun their campaigns. Only three parties have a chance of gaining the majority, thus forming a new government. Which one shall prevail?"
+picture = "rusDumaelect"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 30
+name = "The People`s Far East Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofgovernment which = 527057       }
+command = { type = foreignminister which =  527061	 }
+}
+action = {
+ai_chance =  35
+name = "The Party of Popular Freedom!"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofgovernment which = 527056       }
+command = { type = foreignminister which =  527016	 }
+}
+action = {
+ai_chance =  34
+name = "The The Zemski Krai Party!"
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofgovernment which = 527055       }
+command = { type = foreignminister which =  527059	 }
+}
+
+
+action = {
+ai_chance =  1
+name = "The army shall put an end to this chaotic democracy!"
+command = { type = dissent value = 20 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = headofgovernment which = 527014       }
+
+}
+}
+
+
+event = {
+id = 751087
+random = no
+country = PRI
+style = 2
+
+trigger = {
+event = 751086
+government = democratic
+}
+
+name = "The presidential Elections"
+desc = "The time has come to elect a new president. All major forces in the country have put forward their candidates and the Duma is ready to assemble to vote on the new president."
+
+picture = "RussianDumaforeign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  35
+name = "Spiridon Merkulov, the leader of the ZK Party!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527054 }
+
+}
+action_b = {
+ai_chance =  35
+name = "Boris Shumyatsky, the PFE Party representative!"
+command = { type = dissent value = 1 }
+command = { type = headofstate which = 527053 }
+
+}
+action_c = {
+ai_chance =  30
+name = "Mirsha Vuchilkov, the PF Party representative!"
+command = { type = dissent value = 2 }
+command = { type = headofstate which = 527012 }
+
+}
+action_d = {
+ai_chance =  1
+name = "Gennadij Bukaev, the people's tribune of our time!"
+command = { type = dissent value = 3 }
+command = { type = headofstate which = 527052 }
+
+}
+}
+
+
+event = {
+id = 751105
+random = no
+country = PRI
+
+trigger = {
+headofstate = 527001
+random = 40
+}
+
+name = "Aleksander Kolchak Dies"
+desc = "Aleksander Kolchak, the former leader of Transamur, has passed away due to a heart attack. His death opens the field for various possiblities of political change in Transamur including the declaration of a republic, if Sergei Wojciechowski and his staff allows it."
+style = 2
+picture = "minister_died"
+
+date = { day = 9 month = january year = 1948 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Sergei Wojciechowski is the new leader of Transamur!"
+ai_chance = 30
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 527048 }
+command = { type = sleepminister which = 527001 }
+command = { type = sleepminister which = 527047 }
+command = { type = sleepminister which = 4089 }
+command = { type = sleepminister which = 4121 }
+command = { type = sleepminister which = 4127 }
+command = { type = sleepminister which = 4141 }
+command = { type = sleepminister which = 4199 }
+command = { type = sleepminister which = 4198 }
+command = { type = sleepminister which = 522011 }
+command = { type = sleepminister which = 522035 }
+command = { type = sleepteam which = 12707 }
+command = { type = sleepevent which = 751106 }
+command = { type = waketeam which = 12721 }
+command = { type = sleepevent which = 758437 }
+command = { type = sleepevent which = 758438 }
+command = { type = sleepevent which = 751106 }
+}
+
+
+action_b = {
+name = "A Republic is founded!"
+ai_chance = 40
+command = { type = dissent value = 2 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 527011 }
+command = { type = headofgovernment which = 527013 }
+command = { type = foreignminister which = 527016 }
+command = { type = sleepminister which = 527001 }
+command = { type = sleepminister which = 527047 }
+command = { type = sleepminister which = 4089 }
+command = { type = sleepminister which = 4121 }
+command = { type = sleepminister which = 4127 }
+command = { type = sleepminister which = 4141 }
+command = { type = sleepminister which = 4199 }
+command = { type = sleepminister which = 4198 }
+command = { type = sleepminister which = 522011 }
+command = { type = sleepminister which = 522035 }
+command = { type = trigger which = 751063 }
+command = { type = sleepteam which = 12707 }
+command = { type = sleepevent which = 751106 }
+command = { type = waketeam which = 12721 }
+command = { type = sleepevent which = 758437 }
+command = { type = sleepevent which = 758438 }
+command = { type = sleepevent which = 751106 }
+}
+}
+
+event = {
+id = 751106
+random = no
+country = PRI
+
+trigger = {
+NOT = { headofstate = 527001 }
+minister = 527001
+random = 40
+}
+
+name = "Aleksander Kolchak dies"
+desc = "Aleksander Kolchak, the former leader of Transamur, has passed away due to a heart attack. A week of mourning was declared to honor this great hero of the Russian nation."
+style = 2
+picture = "minister_died"
+
+date = { day = 9 month = january year = 1948 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "A sad day for Transamur!"
+command = { type = dissent value = 1 }
+command = { type = sleepminister which = 527001 }
+command = { type = sleepminister which = 527047 }
+command = { type = sleepminister which = 4089 }
+command = { type = sleepminister which = 4121 }
+command = { type = sleepminister which = 4127 }
+command = { type = sleepminister which = 4141 }
+command = { type = sleepminister which = 4199 }
+command = { type = sleepminister which = 4198 }
+command = { type = sleepminister which = 522011 }
+command = { type = sleepminister which = 522035 }
+command = { type = sleepteam which = 12707 }
+command = { type = waketeam which = 12721 }
+command = { type = sleepevent which = 751105 }
+command = { type = sleepevent which = 758437 }
+command = { type = sleepevent which = 758438 }
+command = { type = sleepevent which = 751105 }
+}
+
+
+
+}
+
+
+event = {
+id = 751107
+random = no
+country = RUS
+style = 2
+
+trigger = {
+event = 751069
+}
+
+name = "Status of the Orthodox Church"
+desc = "With the restoration of the Russian republic the Orthodox Church, under the leadership of the vocal Patriarch Mikhail Pol'skii, is demanding the reclarification of its legal status. He wants a constitutional ammendment passed on the issue of the national religion."
+picture = "mikhailpolskii"
+
+date = { day = 4 month = august year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+ai_chance = 40
+name = "Orthodoxy is our State Religion!"
+command = { type = dissent value = -5 }
+command = { type = sleepevent which = 750010 }
+command = { type = sleepevent which = 750008 }
+command = { type = sleepevent which = 750009 }
+command = { type = setflag which = ORTH_STATE }
+}
+
+action_b = {
+ai_chance = 60
+name = "We are modern and secular!"
+command = { type = dissent value = 5  }
+command = { type = sleepevent which = 750010 }
+command = { type = sleepevent which = 750008 }
+command = { type = sleepevent which = 750009 }
+command = { type = setflag which = secular }
+}
+
+action_c = {
+ai_chance = 0
+name = "The Orthodox Church must have a role in Government!"
+command = { type = dissent value = 15  }
+command = { type = domestic which = political_left value = -3 }
+command = { type = headofgovernment which = 4094  }
+command = { type = foreignminister which =  	4190	 }
+command = { type = armamentminister which = 	4104	 }
+command = { type = ministerofsecurity which =  	4195	}
+command = { type = ministerofintelligence which =   4120	 }
+command = { type = sleepevent which = 750010 }
+command = { type = sleepevent which = 750008 }
+command = { type = sleepevent which = 750009 }
+command = { type = setflag which = ORTH_GVMT }
+}
+}
+
+
+event = {
+id = 751129
+country = PRI
+style = 2
+picture = "Transamur"
+
+trigger = {
+puppet = { country = PRI country = JAP  }
+headofstate = 527001
+NOT = {
+government = communist
+government = democratic
+ideology = paternal_autocrat
+atwar = PRI
+}
+}
+
+date = { day = 1 month = april year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1940 }
+
+name = "Growing unrest"
+desc = "Despite the relative stability of our state, which was achieved by vigorous collaboration with our Japanese masters, the majority of the population remain discontented with our form of state. They are not content with the dictatorial rule of admiral Kolchak and demand that democratic and liberal reforms be implemented in Transamur. What shall we do?"
+
+action_a = {
+name = "Introduce full democracy to Transamur!"
+ai_chance = 0
+command = { type = money value = -60 }
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 527011 }
+command = { type = headofgovernment which = 527013 }
+command = { type = foreignminister which = 527016 }
+command = { trigger = { puppet = { country = PRI country = JAP  } } type = trigger which = 751130 }
+}
+
+action_b = {
+name = "Minor reforms should appease these dissenters!"
+ai_chance = 40
+command = { type = money value = -30 }
+command = { type = dissent value = -1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofgovernment which = 527062 }
+command = { type = set_domestic which = freedom value = 5 }
+}
+
+action_c = {
+name = "Keep everything as it is!"
+ai_chance = 60
+command = { type = dissent value = 4 }
+command = { type = set_domestic which = freedom value = -1 }
+}
+}
+
+
+event = {
+id = 751130
+random = no
+country = JAP
+style = 2
+
+name = "Transamur surrendered before dissenters!"
+desc = "Admiral Kolchak, the long term leader of the Transamur state, was forced to step down due to large unrest in Transamur. The democratic opposition used the vacuum left by Kolchak to gain control over the state, effectively transforming Transamur from a military junta into a democracy. How shall we react?"
+picture = "Transamur"
+
+action_a = {
+ai_chance = 100
+name = "Congratulate the new government!"
+trigger = { government = democratic }
+command = { type = relation which = PRI value = 200 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Demand the restoration of a military cabinet!"
+trigger = { NOT = { government = democratic } }
+command = { type = relation which = PRI value = -100 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 751131 }
+}
+
+action_c = {
+ai_chance = 50
+name = "It is their internal affair."
+trigger = { NOT = { government = democratic } }
+command = { type = relation which = PRI value = 100 }
+}
+}
+
+event = {
+id = 751131
+random = no
+country = PRI
+style = 2
+
+
+name = "The Japanese are trying to destroy republic!"
+desc = "The Japanese feel threatened by the sudden restoration of democracy in Transamur and they have issued an ultimatum to us in which they demand the restoration of a military cabinet."
+picture = "kolchak"
+
+
+action_a = {
+ai_chance = 50
+name = "Submit before Japan."
+command = { type = relation which = JAP value = 100 }
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Never!"
+command = { type = event which = 751132 where = JAP when = 1  }
+command = { type = relation which = JAP value = -250 }
+command = { type = end_access which = JAP  }
+command = { trigger = { alliance = { country = JAP country = PRI } } type = leave_alliance when = 1  }
+command = { type = end_non_aggression  which = JAP where = PRI	  }
+command = { type = end_trades which = JAP where = PRI  }
+command = { type = sleepteam which = 12708 }
+command = { type = peace which = MAN value = 1 }
+command = { type = peace which = SIB value = 1 }
+command = { type = peace which = CSX value = 1 }
+command = { type = peace which = KOR value = 1 }
+command = { type = peace which = U30 value = 1 }
+command = { type = peace which = CGX value = 1 }
+command = { type = peace which = CHC value = 1 }
+command = { type = peace which = GER value = 1 }
+}
+}
+
+event = {
+id = 751132
+random = no
+country = JAP
+style = 2
+
+
+name = "Transamur breaks away!"
+desc = "The Transamur Republic has taken great offence at our attempts to regulate their internal affairs and are severing all political ties with us!"
+picture = "Transamur"
+
+action_a = {
+ai_chance = 70
+name = "Destroy them!"
+command = { type = war which = PRI }
+command = { type = setflag which = PRI_breaksaway }
+}
+
+action_b = {
+ai_chance = 30
+name = "We can only let them go..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+command = { type = setflag which = PRI_breaksaway }
+}
+}
+
+
+
+event = {
+id = 751145
+random = no
+country = PRI
+style = 2
+
+name = "Admirals ambitions"
+desc = "Admiral Kolchak was forced to flee to Transamur after his unsuccessful attempt to seize control over Russia in 1925. There with help from Japan he was able to consolidate his power and form his own small Russia which he rules till this day. Hovewer such development was a bitter pill to swallow for once one of the most powerfull men of Russia and Kolchak hopes that current instability in Russia will allow him to become ruler of Russia or at least expand his dominion northwards and eastwards."
+picture = "russianempire1914"
+
+date = { day = 9 month = january year = 1936 }
+
+action_a = {
+name = "We must be ready !"
+command = { }
+}
+}

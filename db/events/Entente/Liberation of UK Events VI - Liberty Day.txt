@@ -1,0 +1,184 @@
+# Liberation of the UK Events VI: General Domestic Events
+#
+# IDs 124000-125999
+#
+# 124000 - The Proclamation of Liberty Day
+# 124001 - The Progressive Government and Liberty Day
+# 124002 - Liberty Day to be Expanded
+# 124003 - Liberty Day
+# 124004 - Liberty Day (at war with CoF)
+
+
+event = {
+id = 124000
+random = no
+country = U07
+style = 2
+
+trigger = {
+day = 19
+month = 0
+NOT = {
+day = 20
+government = communist
+}
+NOT = {
+month = 1
+}
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Proclamation of Liberty Day"
+desc = "EVT_830376_DESC"
+
+action_a = {
+name = "An Englishman's Liberty is Sacred!"
+command = { type = dissent value = -1 }
+command = { type = local_setflag which = UK_LIBERTY_DAY }
+}
+}
+
+
+event = {
+id = 124001
+random = no
+country = U07
+style = 2
+
+trigger = {
+event = 124000
+local_flag = UK_PROG_GOVT
+NOT = {
+government = communist
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Progressive Government and Liberty Day"
+desc = "The newly-elected Progressive government is deciding whether to continue with public celebration of Liberty Day or tone the ceremonies significantly to reduce their overtly anti-Syndicalist nature."
+
+action_a = {
+name = "We Must Not Offend the Syndicalists"
+ai_chance = 40
+command = { type = clrflag which = UK_LIBERTY_DAY }
+command = { type = dissent value = 5 }
+command = { trigger = { government = { type = communist country = FRA } } type = relation which = FRA value = 20 }
+}
+
+action_b = {
+name = "Long Live English Liberty!"
+ai_chance = 60
+command = { type = dissent value = -5 }
+command = { trigger = { government = { type = communist country = FRA } } type = relation which = FRA value = -20 }
+}
+}
+
+
+event = {
+id = 124002
+random = no
+country = U07
+style = 2
+
+trigger = {
+event = 124001
+NOT = {
+local_flag = UK_PROG_GOVT
+local_flag = UK_LIBERTY_DAY
+government = communist
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Liberty Day to be Expanded"
+desc = "With the defeat of the Progressives, the new government has declared that Liberty Day celebrations will be expanded."
+
+action_a = {
+name = "Long Live English Liberty!"
+command = { type = local_setflag which = UK_LIBERTY_DAY }
+}
+}
+
+
+event = {
+id = 124003
+random = no
+persistent = yes
+country = U07
+style = 2
+
+trigger = {
+event = 124000
+day = 19
+month = 0
+NOT = {
+day = 20
+}
+NOT = {
+month = 1
+}
+NOT = {
+war = { country = U07 country = FRA }
+}
+local_flag = UK_LIBERTY_DAY
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Liberty Day"
+desc = "Today marks Liberty Day, when Britons across the country remember their fallen King and those who made the ultimate sacrifice so that liberty could be restored to the British Isles.  The ceremonies also serve as a reminder of the continued threat Syndicalism poses to the world."
+
+action_a = {
+name = "Their Sacrifices Will Not Be in Vain"
+command = { trigger = { government = { type = communist country = FRA } } type = relation which = FRA value = -10 }
+command = { trigger = { government = { type = communist country = RSI } } type = relation which = RSI value = -5 }
+command = { trigger = { government = { type = communist country = CSA } } type = relation which = CSA value = -5 }
+}
+}
+
+
+event = {
+id = 124004
+random = no
+persistent = yes
+country = U07
+style = 2
+
+trigger = {
+event = 124000
+day = 19
+month = 0
+NOT = {
+day = 20
+}
+NOT = {
+month = 1
+}
+war = { country = U07 country = FRA }
+government = { type = communist country = FRA }
+local_flag = UK_LIBERTY_DAY
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Liberty Day"
+desc = "With British forces engaged in a deadly struggle with the Commune of France, this year's Liberty Day celebrations serve to rally the British people to the cause of destroying once and for all the scourge of Syndicalism, and safeguarding the liberty of the people forever."
+
+action_a = {
+name = "Britain Will Be Victorious!"
+command = { type = dissent value = -1 }
+}
+}

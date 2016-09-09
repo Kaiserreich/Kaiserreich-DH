@@ -1,0 +1,2405 @@
+##########
+# Format #
+##########
+#
+# COUNTRY_TAG = { [PARAMETERS] } 
+#
+##############
+# Parameters #
+##############
+#
+# date = { day = DD month = [MONTH_NAME] year = YYYY }			# Country cannot be released before this date
+# expirydate = { day = DD month = [MONTH_NAME] year = YYYY }	# Country cannot be released after this date
+#	MONTH_NAME: january / february / march / april / may / june / july / august / september / october / november / december
+#
+# minimum = { PROV_ID PROV_ID ... PROV_ID } 	# List of provinces (by IDs) that are required for this country to be released. These are considered as Core provinces.
+# extra = { PROV_ID PROV_ID ... PROV_ID } 		# List of provinces (by IDs) that are optional for this country. These are considered as Core provinces.
+# capital = PROV_ID								# ID of the province that is prefered to be capital of the new country. Usually it is part of minimum = { ... } list too.
+# revolt = no/yes[DEFAULT]						# If this country can be created by revolt (released by Rebels) or not. By default this is enabled.
+# liberate = no/yes[DEFAULT]					# If this country can be liberated by other countries or not. By default this is enabled.
+#
+# intrinsic_gov_type = [GOV_TYPE]	
+#	GOV_TYPE: 
+#		nazi / fascist / paternal_autocrat			# These are considered as RIGHT regimes and can be released only by RIGHT policy countries
+#		social_conservative / market_liberal [DEFAULT] / social_liberal / social_democrat	# These are considered as NEUTRAL regimes and can be released by any countries
+#		left_wing_radical / leninist / stalinist	# These are considered as LEFT regimes and can be released only LEFT policy countries
+# 	Defines prefered country regime. Used to refine availabe for relese countries list based on the policy of the current country. 
+#	If there are 2 or more countries sharing TAG or regular_id, the country with closest intrinsic_gov_type will be made available for release.
+#
+# regular_id = [TAG]	
+# 	Defines if this country is a shadow country of [TAG] (like GER and DDR for example). 
+#	Having more then one shadow country while allowed should be avoided when possible and those countries must differ in intrinsic_gov_type setting.
+#	This setting is used on coups/revolts and could trigger country TAG change. 
+#	It is used as a filter on available for release countries list generation making only one country available based on the intrinsic_gov_type - 
+#    the one with the closest Gov. type to the releaser country is made available.
+#	Wars between shadow countries and [TAG] are considered as civil and winner takes all (units, build queue etc.) on annexation.
+#
+# NOTE: intrinsic_gov_type and regular_id usage can be changed from misc.txt ("Filter used on available for release countries list based on regular_id and intrinsic_gov_type" modifier in "diplomacy" section)
+#
+##############################################
+# New (optional) parameters for Darkest Hour #
+##############################################
+#
+# country = { TAG1 TAG2 … TAGx }	# Only countries in that list can release the country
+# no = { TAG1 TAG2 … TAGx }			# Countries in that list cannot release the country
+# not = { TAG1 TAG2 … TAGx }		# The country cannot be released if any of those countries exist at the moment
+# claims = { PROV_ID …} 			# List of provinces (by IDs) that are claimed by this country. These are not required for release and are considered as Claimed provinces.
+# min = X  							# Allows release if at least X provinces of minimum list are controlled by releaser country. By default (no min entry or min = -1) it is equal to provinces in minimum list. 
+# min_extra = X 					# Allows release if at least X provinces of extra list are controlled by releaser country. By default (no min_ extra entry) it is 0. 
+#
+# coup = { TAG1 TAG2 … TAGx }		# Used only when "Used change TAG on coup logic." modifier in misc.txt is set to 1! 
+#	On coup country that have such list defined can change its TAG to countries from that list only 
+#	 (the TAG of country that can be created AND has the closest intrinsic_gov_type to the country that initiated the coup will be used for the switch).
+#
+# value = X.X (0.0 – 1.25) 			# Used by the old release model only (when no min or min_extra are defined). 
+#	When 'score' is above that value the country will be available for release (see below for details). By default (no value) it is 0.51.
+#	A country will be available for liberation if it has at least 0.51 final score (can be changed - see above). 
+#	Capital province gives 0.25 and (available minimum provinces / total minimum) provinces gives the rest. 
+#	Claims, cores and current capital excluded of the liberator are excluded from the above calculation! 
+#	If minimum list is empty, but extra is not, then extra list will be used in place of the minimum. Otherwise extra list is not used.
+#
+##############################################
+#edited by Jaycee for the New Order events
+# edited by Jedrek for easier releasing of puppets
+
+
+AFG = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2171
+	}
+	extra = { 2168 2173 2172 2169 2170 }
+	capital =  2171
+}
+ALB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		359 
+	}
+	extra = { 329 334 362 361 360 }
+	capital =  359
+}
+
+
+ALG = {
+ date = { day = 1 month = january year = 1936 }
+ expirydate = { day = 29 month = december year = 1967 }
+ minimum = { 737 738 739 }
+ extra = { 943 946 947 984 944 985 986}
+ capital =  739
+}
+
+
+ANG = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		888 892 895 
+	}
+	extra = { 887 890 891 893 }
+	capital = 892
+}
+
+ARA = {
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = { 
+ #Egypt 
+ 796 791 786 780 781 782 785 779 799 784 783 778 790 792 788 787 793 794 795 798 
+ 900  #suez 
+ #Syria 
+ 1021 1017 1016 
+ #Jordan 
+ 1022 1025 1024 1026 1023
+ } 
+ extra = { 
+ #Egypt 
+ 1009 1004 1005 789 801 802 800 797 1007 1006
+ #Syria 
+ 1020 1014 
+ #Lebanon 
+ 1019 1018 
+ #Iraq 
+ 1036 1033 1034 1035 1037 1028 1032 1031 1030 
+ #Kuwait 
+ 1041 
+ #Palestine 
+ 1172 1008 1011 1010 
+ #Saudi Arabia 
+ 1040 1047 1049 1046 1045 1044 1048 
+ #Oman 
+ 1052 1039 1043
+ #Yemen 
+ 1050 1053 1051 840 
+ ## 
+ 1013 1038 1027 1029 1015 
+ } 
+ revolt = no 
+ capital = 787 
+ } 
+ARG = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2050 2048 2027 2054
+	}
+	extra = { 2045 2026 2056 2055 2028 2029 2053 2036 2037 2035 2038 2039 2034 2044 2049 2051 2052 2046 2047 }
+	capital =  2048
+}
+ARM = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		711
+	}
+	extra = { 714 712 386 1067 1063 }
+	capital =  711
+}
+AST = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1697 1716 1698 1695 1688 1692 1689 1690 1694 1691 1703 1693 1711 
+ 1712 1715 1704 1705 1706 1717 1707 1710 1708 1709 1713 
+ 1701 1699 1714 1700 1702 1696 
+	}
+	extra = { 1679 #Port Moresby
+	1720 1718 1719 1721 1722 1723 
+	}
+	capital =  1705
+}
+AUS = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		189 190 191 192 195 194 186 187 193 188
+	}
+	extra = {  401 402 403 404 406 346 349 } # Plus Trento, Venice
+	capital =  195
+}
+AZB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		713 
+	}
+	extra = { 712 714 704 }
+	capital =  713
+}
+BEL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		112 113 117 114 115 116  
+	}
+	extra = { 
+	108 110 111
+	}
+        not = { FLA WLL }
+	capital =  116
+}
+BEN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		951
+	}
+	extra = { 
+        961 968 973 959 957 972 958 974 945 942 944 984 947 943 946 949 950 955 948 952 953 954 
+        956 962 970 960  
+        }
+	capital = 951
+}
+BHU = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1456
+	}
+	extra = { 1455 }
+	capital =  1456
+}
+BLR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		257 256 595 598 597 596 599 592 593 590 594 601 600 591  
+	}
+	extra = { 255 247 253 248 251 250 254  } #may be claimed by Poland
+	capital =  599
+}
+BOL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2064 2021 2020 2019 2063
+	}
+	extra = { 2046 2002 2024 }
+	capital =  2020
+}
+BOS = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		355
+	}
+	extra = { 357 353 358 354 356 }
+	capital = 355
+}
+BRA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		 2057 2060 2061 2004   2062 2071 2066 2065 2068 2069 2067 2076 2059 2075 2074 2073 2072 2070
+	}
+	extra = { 2058 2003 2002 2001 2005 2006  }
+	capital =  2075
+}
+
+
+
+
+
+
+BRU = {
+	date = { day = 1 month = january year = 1938 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1398 1399
+	}
+	extra = { 1403 1394 1397 1395 1396 1392 1393 1404 1405 1391 1400 1401 1402 }
+	capital =  1399
+	intrinsic_gov_type = leninist
+}
+
+
+
+BUL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		317 318 321 322 323 326
+
+	}
+	extra = { 307 319 320 324 325 363 370 364 333 334 331 328 384 385 }
+	capital =  321
+}
+BUR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 1411 1409 1420 1419 1415 1410 1417  1412  1407 1408 1406 1414
+	}
+	extra = { 1413 1416 1418 }
+	capital =  1415
+}
+
+CAL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1890 1884 1885 1888 1889 1883 1891 1892 1887 1886 #California
+		1880 1873 1875 1876 1874 1877 1878 1882 1879 1872 #Oregon + Washington
+	}
+	extra = {     
+	}
+	capital = 1888
+	regular_id = USA
+	
+}
+CAM = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		911 909 910 928 925 933
+	}
+	extra = { 916 }
+	capital = 909
+}
+CAN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2110 2129 2113 2114 2148 2149 2112 2127 2130 2108 2111 2109
+	}
+	extra = {  2137 2090 2089 2092 2105 2102 2099 2093 2091 2095 2094 2096 2103 2104 2101 2100 2097 2098 2107 2115 
+ 2106 2119 2117 2116 2123 2122 2121 2120 2125 2124 2135 2128 2132 2131 2134 2126 2133 2136 2138 2118  			}
+	capital =  2108  
+	no = { CSA FRA ENG SOV }
+}
+
+
+CGX = { #AlgOstAsien GMBH
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+revolt = no
+country = { GER U31 } 
+minimum = {
+ 1369 #guangzhgou
+}
+extra = { 
+ 1378  1360 1301 1304 1305 1306 1307 1308 1309 1310 1311 1312 1313 1314 1315 1318 1347 1348 1349 1350
+                1351 1352 1353 1354 1355 1356 1357 1359 1368 1370 1373 1374 1375 1376 1377 1379 1380 1381 1382 1383
+} 
+capital = 1369
+}
+
+
+
+
+CHC = { #shangqing tianguo
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {
+ 1259 #Yan'an
+}
+extra = { 
+ 1255 1260 1269 1271 1256 1263 1257 1258
+ 1321 1323 1238 1333 1342 1345 1239 1343 1337 1334 1336 1339 1335 1246 1251  1242 1254  1332  1252 1253 1248 1249 1250 1327  1243 1244    1329  1330 
+ 1247 1340 1341 1319 1324 1322 1320 1325 1316 1326 1317 1344
+}
+capital = 1259
+}
+
+
+CHI = {
+ date = { day = 1 month = january year = 1936 }
+ expirydate = { day = 29 month = december year = 1967 }
+ minimum = {
+  1369 1370
+ }
+ extra = { 
+ 1217 1261 1303 1339 1334 1336 1340 1341 1319 1323 1322 1324 1325 1326 1316 1317 1344 1342 1337 1338 1345 1346 1347 1348 1357 1358 1359 1360 1354 1353 1318 1355 1309 1311 1312 1310 1304 1302 1258 1262 1257 1296 1292 1293 1297 1298 1305 1306 1291 1313 1307 1308 1356 1349 1335 1314 1315 1267 1256 1320 1321 1299 1343 1300 1301 1350 1351 1352 1333
+ 
+ #Yunnan 
+ 1389 1390 1385 1386 1387 1388 1384
+ 
+ #Guanxi Clique 
+ 1378 1365 1376 1377 1375 1380 1381 1382 1383 1373 1379 1367 1361 1374 1368 
+ 
+ #Shanxi 
+ 1241 1247 1246 1251 1242 1254 1331 1332 1252 1253 1248 1249 1250 1327 1243 1244 1245 1328 1329 1330 
+ 
+ #Manchoukou 
+ 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218 1236 1201 1208 1209 1210 1211 1214 1215 1216 1235 1197 1198 
+ 
+ #Xibei san ma 
+ 1272 1268 1271 1264 1263 1265 1266 1283 1284 1285 
+ 
+ #Communist China 
+ 1270 1260 1255 
+ 
+ #Japan In China 
+ 1202 1238 1240 1239 1219
+ 
+ #European Possessions 
+ 1371 1372 
+ 
+ #Taiwan 
+ 1362 1364 1363
+ 1269 1259 
+
+1294 1286 1287 1288 1289 1278 1295 1290
+1273 1280 1275 1279 1277 1274 1282 1276 1281
+
+ }
+claims = { 1124 1123 1125 1121 1122 1120 1119 }
+ capital = 1369
+ 
+ 
+}
+
+
+
+CHL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2025 2022 2023 2032 
+	}
+	extra = { 
+		2031 2024 96 2030 }
+	capital = 2025 
+}
+
+CMB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1400 1401 1402 1398
+	}
+	extra = {  }
+	capital = 1401
+}
+COL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1990 1991 1987 1986 1994  2009 1756 1985
+	}
+	extra = {  }
+	capital =  1990
+}
+
+
+CON = { #mittelafrika
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+revolt = no
+country = { GER } 
+minimum = {
+  850 851 #Tanzania
+}
+extra = { 
+954 956 952 953 848 849 955 948 950 949 951 929 932 937 939 940 934 935 930 931 938 941 920 927 923 926 924 925 928 936 933 911 909 910 919
+	        914 915 917 918 907 843 844 845 839 841 842 852 846 847 894 899 901 902 897 898 905 906 903 904 861 864 865 862 863
+                859 860 885 886 908 882 883 884 
+
+995 992 963 912 895 890 892 887 891 888 855 856 857 858 854 853 1372 893 913 916
+  
+  
+}
+capital = 850 #Dar es salam
+
+}
+
+
+
+
+COS = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2081 2083
+	}
+	extra = {  }
+	capital =  2081
+}
+CRO = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		345 352
+	}
+	extra = { 337 344 347 350 351 343 406 353 357 358 }
+	capital =  352
+}
+
+CSA = {
+    date = { day = 1 month = january year = 1936 }
+    expirydate = { day = 29 month = december year = 1939 }
+    revolt = no
+    minimum = {
+        1832 1841 1843 1839 1829 1830 1826 1842 1844 1845 1822 1821 1824 1825 1798 1803 1804
+                1797 1795
+}
+    extra = {  }
+    capital = 1832
+    regular_id = USA
+    intrinsic_gov_type = leninist
+}
+
+
+
+CSX = {
+ date = { day = 1 month = january year = 1936 }
+ expirydate = { day = 29 month = december year = 1967 }
+ minimum = {
+  1247
+ }
+ extra = { 
+ 1321 1323 1238 1333 1342 1345 1239 1343 1337 1334 1336 1339 1335 1246 1251 1242 1254 1332 1252 1253 
+ 1248 1249 1250 1327 1243 1244 1329 1330 1340 1341 1319 1324 1322 1320 1325 1316 1326 1317 1344
+ 1255 1260 1269 1271 1256 1263 1257 1258 1259 
+
+ 1369 1378 1360 1301 1304 1305 1306 1307 1308 1309 1310 1311 1312 1313 1314 1315 1318 1347 1348 1349 1350 # AOG territory
+ 1351 1352 1353 1354 1355 1356 1357 1359 1368 1370 1373 1374 1375 1376 1377 1379 1380 1381 1382 1383
+}
+ capital = 1247 
+}
+CUB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1776 1779 1775 1777
+	}
+	extra = { 1778 }
+	capital =  1776
+}
+CXB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1284
+	}
+	extra = { 
+		1268 1270  1264  1272 1265 1266 1283 1285 1273 1279 1280 1281 1277 1274 1275 1282 1276 1269 1271
+	}
+	capital = 1284
+}
+CYN = {
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {
+ 1390 #Kunming
+}
+extra = { 
+ 1389 1384 1385 1387 1386 1388 1292 1293 1291 1300 1303 1261 1262 1296 1297 1298 1299 1302 1267
+}
+capital = 1390 
+}
+
+
+CYP = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		388 
+	}
+	extra = { 387 }
+	capital = 388
+}
+
+
+
+CZE = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+        199 202 207 196 198 201 
+			}
+	extra = { 206 203 205 204 200 197
+ }
+	capital =  207
+}
+
+
+DDR = {
+	date = { day = 1 month = april year = 1967  }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		376 375 374 312 313 314 315
+	}
+		extra = {   }
+	capital = 376
+
+}
+DEN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		217 218 219 294 220 
+	}
+	extra = { 216 150 2 1783 }
+	capital =  294
+}
+DFR = {
+	date = { day = 1 month = april year = 1967 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		74 75 66 67 76 82 83 84 81 85 86 80 87
+	}
+	extra = {   }
+	capital = 86
+
+}
+DOM = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1780
+	}
+	extra = { 1781  }
+	capital =  1780
+}
+EAF = {
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+liberate = no
+revolt = no
+minimum = {
+ 1338 #core legation cities
+}
+extra = { 1358 1371 1346  } 
+capital = 1338 #shanghai
+}
+ECU = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2040 2042 2007 
+	}
+	extra = { 2041 2033 2010 2008 }
+	capital =  2042
+}
+
+EGY = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		790 780 785 779 799 784 783 778 789 792 788 787 786 791 796 800 801 
+ 793 794 797 795 798
+	}
+	extra = { 1009 1004 1005 802 1006 1007 803 804 806 808 809 813 814 811 812 810 807 805
+ 900  
+ 781 782  }
+	capital =  787
+}
+
+ENG = { #Union of Britain
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		23 20 27 26 29 25 28 19 24 16 17 18 15 14 13 
+	}
+	extra = { 10 11 12 6 7 8 4 5 9 21 22
+			}
+	capital = 29
+	intrinsic_gov_type = left_wing_radical
+}
+EQA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		922 920 924 926 923 907 908 912 914 915 921 927 917 918 909 910 911 919 925 928
+	}
+	extra = { 913 }
+	capital = 926
+}
+EST = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		274 270 275 271 272 273
+	}
+	extra = { }
+	capital = 270 #Tallin
+}
+ETH = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		825
+	}
+	extra = { 820 819 821 822 823 818 829 832 833 830 826 831 828 827 815 816 817 824 834 835 836 837 838 }
+	capital = 825
+}
+
+
+
+EUS = { #Carlist Spain
+date = { day = 7 month = october year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {
+441 449 444 448 451 445 443 446 456
+}
+extra = { 453 466 460 457 458 472 474 471 470 467 463 468 464 461 469 348 440 438 436 442 475 437 439 452 447 450 455 462 459 473 465 454 990 991 }
+
+intrinsic_gov_type = fascist
+capital = 451
+}
+
+
+
+
+FIN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		513 511 526 524 525 518 519 521 527 520 514 516 515 523 529 522 528 533 530 
+ 512
+	}
+	extra = { 517 531 532 538 539 541 537 540 534 535 536 }
+	capital =  525
+}
+FLA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		114 115 116 117
+	}
+	extra = { 118 121 51 123 }
+        not = { BEL }
+	capital = 116
+}
+FRA = { #Commune of France
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		37 38 39 40 41 78 42 43 44 45 46 47 48 55 53 50 49 51 52 56 101 103 100 102 99 54 
+                95 97 98 88 64 63 66 60 58 59 57 62 70 69 68 67 83 84 75 73 72 61 65 90 86 89 93 82 79 80 76 77 71 81 92 85 74
+	}
+	extra = { 
+		391,91,87,94,105,106,96,104,107,109 }
+	capital = 55
+	intrinsic_gov_type = leninist
+}
+GAB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		915
+	}
+	extra = { 918 913 912 914 }
+	capital = 915
+}
+GEO = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		708 709
+	}
+	extra = { 710 707  }
+	capital =  709
+}
+GER = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		126 145 127 131 142 147 141 137 174 171 176 146 148 154 151 152 153 156 169 157 163 162 158 172 
+ 170 173 177 138 134 132 178 175 179 160 143 150 140 133 135 136 149 128 129 130 139 180 144
+	}
+	extra = { 167 164 159 183 184 221 224 155 225 226 161 181 222 185 182 261 230
+ # Elsass-Lothringen 
+ 104 107 105 
+ # Luxemburg 
+ 109 
+  216 165 166 168 110
+ }
+	capital =  163
+}
+GLD = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		235 237 236 239 242 241 238 300  240  301
+	}
+	extra = {  }
+	capital = 242
+}
+GRE = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		372 373 377 
+	}
+	extra = { 
+367 371 382 374 368 375 383 364 365 366 369 370 381 380  376 363 
+ 378 # Dodekanisos 
+ 379 # Rhodos  
+ 388 387# Cyprus 
+384 385
+		}
+	capital =  377
+}
+GUA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2088 2087
+	}
+	extra = { 2086 2079 }
+	capital =  2088
+}
+GUI = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		966 965
+	}
+	extra = { 963 967 964 969 968 961 970 960 962 }
+	capital = 966
+}
+GUY = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1997
+	}
+	extra = { 1782 1774 1772 1999 1771 1773 1757 1766 1998 2000 1758 1769 1764 1763 1770 1755 1760 1761 1753 1754 1768 1767 1759 1752 1765 2086 }
+	capital = 1997
+}
+HAI = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1781
+	}
+	extra = { 1780}
+	capital =  1781
+}
+HOL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		118 119 120 121 122 123 124 125
+	}
+	extra = { 
+		1999
+		 }
+	capital =  122
+}
+HON = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2085 2084
+	}
+	extra = {  }
+	capital =  2085
+}
+HUN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		276 277 278 279 280 281 282 283 284
+	}
+	extra = { 209 210 215 286 287 288 292 293 296 341 }
+    claims = { 213 }
+	capital =  284
+}
+ICL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1 3
+	}
+	extra = {   }
+	capital =  1
+}
+
+
+IDC = { # Indochina
+ date = { day = 1 month = january year = 1914 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 1423 1399 } 
+ extra = { 1392 1393 1395 1396 1397 1403 1400 1401 1402 1405 1394 1398 1404 1391 1430 1438
+           1429 1424 1422 1427 1426 1428 1425 1431 1411 1409 1420 1419 1415 
+           1410 1417 1412 1407 1408 1406 1414 1413 1416 1418 1434 1435 1433 1436 1437 1432
+           } 
+ revolt = no 
+ not = { VIE }
+ capital = 1423
+ } 
+
+
+IND = { #princely federation
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {
+ 1487 #hyderabad
+}
+extra = { 1522 1518 1525 1531 1527 1463 1460 1461 1462 1446 1524 
+ 1523 1521 1484 1483 1476  1471 1477 1493 1482 1517 
+ 1512 1494 1501 1502 1513 1503 1495 1504 1451 
+ 1439 1442 1443 1455 1464 1468 1454 1453 1535  
+ 1480 1479 1505 1506 1507 1490 1491 1488 1492 1485 1511 1489 1516 
+ 1519 1497 1515 1499 1500 1496 1498 1475 1474 1470 1473 1472 
+ 1469 1466 1465 1467 1452 1526 1528 1481 1478 1514 1520 1486 
+ 1540 1510 1508 1421 1448 1509 1612 1440 1441 1458 1459 1444 1450 1447 1449 1445 1533 1538 1532 1530 1536 1529 1534 1537 1539
+
+}
+capital =  1487
+}
+INO = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1648 1651 1649 1654 1653 1655 1656 
+			}
+	extra = { 1639 1640 1635 1637 1636 1638 1650 1647 1634 1643 1619 1644 1645 1615 1657 1630 1631 1628 1627 
+ 1632 1633 1660 1658 1659 1620 1621 1622 1616 1617 1599 1600 1641 1601 1642 1595 1596 1598 
+ 1597 1602 1603 1604 1606 1607 1610 1629 1608 1609 1605 
+ 1652 1618 1623 1594 1646 1234 1624 1625 1626 }
+	capital =  1654
+}
+IRE = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		33 32 31 30 34 
+	}
+	extra = { 35 36 }
+	capital =  34
+}
+
+
+IRQ = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        no = { ARA EGY SAU PER OMN SYR TUR OTT }
+        revolt = no
+	minimum = {
+		1034 1035 1037 1028 1032 1031 1030
+	}
+	extra = { 1033 1036 1089 1041 }
+        claims = { 1029 1027 }
+	capital =  1034
+}
+ISR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+        no = { ARA EGY SAU PER OMN SYR TUR OTT }
+	minimum = {
+		1008
+	}
+	extra = { 1011 1013 1010 }
+	capital = 1008
+}
+ITA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		 419
+	}
+	extra = { 
+		87 91 94 435 434 396 399 400 398 407 395 393 408 410 411 413 414 412  416 429
+                418 415 420 423 421 427 424 426 405 422 394 428 425 431 432 433 430 417
+		}
+	capital = 419
+}
+JAP = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1544 1545 1549 1551 1550 1556 1552 1557 1558 1553 1554 1559 1560 1561 1555 1542 1547 1548 1546
+	}
+	extra = { 1543 1562 1563 1564 1662 1661 1663 1664 1672 1683 1541 }
+	capital = 1552
+}
+JOR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+	minimum = {
+		1022 1025 1024 1026 1023
+	}
+	extra = { 1172 }
+	capital = 1022
+}
+KAZ = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {  
+		504
+	}
+	extra = { 706 1113 1118 1115 1116 1117 501 502 498 499 507 505 506 1114 1110 1111 503 500 1108 1109 1112 }
+	capital =  504
+}
+KOR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		 1230 1231 1232 1233 1228 1229 
+	}
+	extra = {
+		1224 1226 1225 1227 1223 1221 1222
+	}
+	capital = 1228
+}
+KUR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1029
+	}
+	extra = { 1084 1036 1063 1064 1060 1027 1062 1082 1014 1015  }
+	capital = 1029
+}
+KYG = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+	     1107 1106
+	}
+	extra = {  }
+	capital =  1107
+}
+LAO = {
+	date = { day = 1 month = january year = 1940 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1405 1394 1391 1404
+	}
+	extra = { 1398 }
+	capital = 1405
+}
+LAT = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        country = { GER U31 } 
+        revolt = no
+	minimum = {
+		264 
+	}
+	extra = { 265 274 270 275 271 272 273 267 269 268 266 }
+	capital = 264 #Riga
+        not = { EST U20 }
+}
+
+LBY = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 } 
+        revolt = no
+	minimum = {
+		761 753 769 770 771 765 766 760 768 762 773 754 755 756 757 751 750 752 
+ 774
+	}
+	extra = { 758 759 763 764 775 767 772 776 777  }
+	capital =  750
+}
+LEB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+        no = { ARA EGY SAU PER OMN SYR TUR OTT }
+	minimum = {
+		1018 1019
+	}
+	extra = { }
+	capital = 1019
+}
+LIB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		969
+	}
+	extra = { }
+	capital = 969
+}
+LIT = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	
+	minimum = {
+		262 259 263 260  
+	}
+	extra = {  258 261 252 255 }
+	capital = 258 #Wilna
+}
+LUX = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		109
+	}
+	capital =  109
+}
+MAD = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1001 1002 1003
+	}
+	extra = {  }
+	capital = 1002
+}
+MAL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		975 972 971 973 985 
+	}
+	extra = { 984 974 976 977 978 979 980 963 982 983 981 986 }
+	capital = 978
+}
+MAN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1208
+	}
+	extra = { 1202 1204 1212 1219 1235 1216 1236 1245 1240 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218 1201 1209 1210 1211 1214 1215 1217 1197 1198 }
+	capital =  1208
+}
+
+
+MEN = { #The Nanjing Government
+
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1337 
+	}
+ extra = { 
+ 1321 1323 1238 1333 1342 1345 1239 1343 1334 1336 1339 1335 1246 1251 1242 1254 1332 1252 1253 
+ 1248 1249 1250 1327 1243 1244 1329 1330 1340 1341 1319 1324 1322 1320 1325 1316 1326 1317 1344
+ 1255 1260 1269 1271 1256 1263 1257 1258 1259 
+
+ 1369 1378 1360 1301 1304 1305 1306 1307 1308 1309 1310 1311 1312 1313 1314 1315 1318 1347 1348 1349 1350 # AOG territory
+ 1351 1352 1353 1354 1355 1356 1357 1359 1368 1370 1373 1374 1375 1376 1377 1379 1380 1381 1382 1383
+        }
+	capital =  1337
+}
+
+MEX = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1966 1965 1970 1968 1974 1972 1971 1973 1967 1975 1976 
+ 1978 1980
+	}
+	extra = { 1981 1982 1979 1977 1969 }
+	capital =  1974
+}
+MLY = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		 1438  
+	}
+	extra = { 1432 1624 1625 1626 1629 1435 1436 1437 1433 1434 }
+	capital =  1438
+}
+MON = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1124 1123 1125 1121 1122 1120
+	}
+	extra = { 1119 }
+	capital =  1124
+}
+MOR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		721 717 724 718 722 725 726 723
+	}
+	extra = { 987 715 988 989 719 716 720  }
+	capital =  718
+}
+MOZ = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		855 856 857 858 853 854 
+	}
+	extra = {  }
+	capital = 855
+}
+MTN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		332 335
+	}
+	extra = {  }
+	capital =  332
+}
+NAM = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		885 886 882 883 884 
+	}
+	extra = {  }
+	capital = 884
+}
+NEP = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1457
+	}
+	extra = {  }
+	capital =  1457
+}
+
+
+NIC = { #united provinces
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {
+ 2080 2082 
+}
+extra = { 2081 2083 2077 2078 889 2084 2085 2079 2088 2086 2087
+
+}
+capital =  2080
+}
+
+
+
+NIG = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		939 929 940 932 938 937
+	}
+	extra = { 941 930 931 933 934 935 936  }
+	capital = 940
+}
+NOR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		484 483 485 487 491 489 486 492 490 493 494 497 495
+	}
+	extra = { 496 488 }
+	capital =  483
+}
+NZL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1720 1718 1719 1721 1722 1723
+	}
+	extra = {  }
+	capital =  1721
+}
+OMN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1052
+	}
+	extra = { 1039 1051 1043 }
+	capital =  1052
+}
+
+OTT = { #Ottoman Empire
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+revolt = no
+minimum = {
+ 1075 #Ankara
+}
+extra = { 
+ 409 1078 1079 1057 1076 1068 1074 1058 1065 386 
+ 1066 1059 1067 1071 1054 385 1077 1062 1063 1064 1060 1061 370 384 1072 1073 1055 1056
+ 1018 1019 1015 1014 1009 1011 1013 1010 1008 1172 1022 1025 1024 1026 1023
+ 1021 1017 1016 1020
+ 1034 1035 1037 1028 1032 1031 1030
+ 1033 1036 1041 1027 1029
+} 
+capital = 409
+}
+
+PAK = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+	1459	
+	}
+	extra = {  1522 1518 1487 1525 1531 1527 1463 1460 1461 1462 1446 1524 
+ 1523 1521 1484 1483 1476  1471 1477 1493 1482 1517 
+ 1512 1494 1501 1502 1513 1503 1495 1504 1451 
+ 1439 1442 1443 1455 1464 1468 1454 1453 1535  
+ 1480 1479 1505 1506 1507 1490 1491 1488 1492 1485 1511 1489 1516 
+ 1519 1497 1515 1499 1500 1496 1498 1475 1474 1470 1473 1472 
+ 1469 1466 1465 1467 1452 1526 1528 1481 1478 1514 1520 1486 
+ 1540 1510 1508 1421 1448 1509 1612 1440 1441 1458 1444 1450 1447 1449 1445 1533 1538 1532 1530 1536 1529 1534 1537 1539 
+  }
+	capital =  1459
+}
+PAL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+        no = { ARA EGY SAU PER OMN SYR TUR OTT }
+	minimum = {
+		1172 
+	}
+	extra = { 1009 1011 1013 1010 1008 }
+	capital = 1172
+}
+PAN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2077 2078
+	}
+	extra = { 889 }
+	capital =  2078
+}
+PAR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2046 2047
+	}
+	extra = {  }
+	capital =  2046
+}
+PER = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1085
+	}
+	extra = { 1095 1083 1084 1087 1081 1080 1082 1089 1091 1090 1088 1086 1092 1094 1093  }
+	capital =  1085
+}
+PHI = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1565
+	}
+	extra = { 1572 1571 1569 1566 1567 1570 1568 1577 1575 1573 1576 1574 1580 1578 1579 }
+	capital =  1565
+}
+POL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		232
+	}
+	extra = { 230 221 231 227 223 233 161 234 243 246 228 229 250 254 235 237 236 239 242 241 238 300 301 240 245 244 249 185 222 183 225 226 181 224 164 168 252 255 247 253 }
+        claims = { 248 251 256 257 258 }
+	capital =  232
+}
+
+POR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		481 476 479 477 478 482 480
+	}
+	extra = { 
+		}
+	capital =  476
+}
+
+PRI = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1193 1191 1196 1185 1195 1192
+	}
+	extra = { 1542 1190 1543 1174 1187 1175 1188 1541 1189 1178 1180 1176 1181 1182 1183 1184 1194  1186  1170 1171 }
+	capital =  1191
+        revolt = no
+}
+
+PRK = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1447
+	}
+	extra = { 1522 1459 1518 1487 1525 1531 1527 1463 1460 1461 1462 1446 1524 
+ 1523 1521 1484 1483 1476  1471 1477 1493 1482 1517 
+ 1512 1494 1501 1502 1513 1503 1495 1504 1451 
+ 1439 1442 1443 1455 1464 1468 1454 1453 1535  
+ 1480 1479 1505 1506 1507 1490 1491 1488 1492 1485 1511 1489 1516 
+ 1519 1497 1515 1499 1500 1496 1498 1475 1474 1470 1473 1472 
+ 1469 1466 1465 1467 1452 1526 1528 1481 1478 1514 1520 1486 
+ 1540 1510 1508 1421 1448 1509 1612 1440 1441 1458 1444 1450 1449 1445 1533 1538 1532 1530 1536 1529 1534 1537 1539  }
+	capital =  1447
+	intrinsic_gov_type = leninist
+}
+PRU = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2017 2015 2016 2011 2014 2018
+	}
+	extra = { 2008 2010 2033 2012 2013 }
+	capital =  2016
+}
+QUE = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+	2116 2123 2122 2121 2120 2125 2124 2117 2119 2127
+	}
+	extra = { 2118 2136 2138 2137 2133 2132 2131 2134 2126 2128 2098 2135 2130 }
+	capital =  2119
+}
+RHO = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		867 866 
+			}
+	extra = { 860 859 863 861 864 862 865 868
+ }
+	capital =  866
+} 
+ROM = {
+ date = { day = 1 month = january year = 1936 }
+ expirydate = { day = 29 month = december year = 1967 }
+ minimum = {
+   316 311
+   
+ }
+ extra = { 312 315 308 314 310 313 306 305 309 299 298 297 303 304 302 300 301 291 293 285 295 286 
+           296 292 289 287 288 307 }
+ capital =  316
+ intrinsic_gov_type = fascist
+
+ 
+}
+
+
+RSI = {
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {
+ 421
+}
+extra = {   
+ 425 422 424 420 416 423 415 414 419 410 412 411 393 408 396 398 407 400 413 417 404 405 402 399 406 403
+401 430 431 434 432 435 394 395 418 426 427 428 433 429 87 91 94
+ }
+capital =  421 #naples
+intrinsic_gov_type = left_wing_radical
+}
+
+
+RUS = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		572 567 570 568 569 571 678
+	}
+	extra = { 
+
+             550 552 566 564 593 573 589 586 587 581 582 580 654 653 655 642 659 663 660 666 667 
+             1134 553 551 549 560 565 535 534 536 537 541 539 557 562 559 561 542 546 547 556 555 
+             563 558 577 575 574 588 585 583 579 652 650 651 657 661 669 665 668 656 658 688 545 
+             543 548 676 677 1132 1133 1136 1137 1138 1139 1141 1142 1143 1144 1145 1156 1157 1069 
+             1070 1166 1161 1163 1170 1176 1174 1175 1187 1188 1189 1186 1181 1182 1183 1184 1178 
+             1180 1177 1179 1164 1165 1148 1155 1171 1152 1154 1135 1149 1140
+             1150 1153 1129 1151 1128 1130 689 1126 1127 1131 687 671 590 600 601 554  576 584 682 679
+             578 670 675 683 664 674 690 672 673 680 681 684 685 686 544 1162
+             647 648 602 604 501 498 1115 499 502
+
+}
+	capital = 572
+
+}
+
+SAF = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		873
+	}
+	extra = { 874 877 879 880 869 870 871 875 881 872 876 878  883 882 886 885 884 }
+	capital =  873
+}
+
+SAL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2079
+	}
+	extra = {  }
+	capital =  2079
+}
+
+SAU = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1040 1047 1045 1044 1038
+	}
+	extra = { 1048 1049 1046 1039 }
+	capital =  1045
+}
+
+SAR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1624
+	}
+	extra = { 1631 1628 1625 1626 1627 1632 1633 1630 1629 1623 }
+	capital =  1624
+}
+SCH = {
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {  392 }
+extra = { 391 389 390 }
+capital = 392
+}
+
+SCA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		486 2167 2166 530 514 2165 220 2163 2164 2162 2158 2161 2160 484 2159 2157 2154 2153 2155 2152 
+ 2156 217 218 219 294 483 485 487 491 489 492 490 493 494 497 496 488 495
+	}
+	extra = { 216 1783 526 524 525 518 519 521 527 520 516 515 517 523 529 522 528 
+ 531 532 533 511 512 513 1 2 3  }
+	capital =  2159
+        revolt = no
+        not = { SWE }
+}
+
+SCO = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		4 5 6 7 11 10 12 8 
+	}
+	extra = { 9 }
+	capital =  12
+	regular_id = ENG
+}
+
+
+SER = { #serbia
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+minimum = {
+ 338  
+}
+extra = { 
+ 339 340 342 327 330 329 331 332 335 336 337 341 328 333 334 354 355 356
+}
+capital =  338 #belgrade
+}
+
+
+
+SIA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1430 1429 1424 1423 1422 1427 1426 1428 1425 
+	}
+	extra = { 1431 1400 1401 1402 }
+	capital =  1423
+}
+SIB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1142
+
+	}
+	extra = { 1155 1157 1148 1140 1143 1144 1145 1152 
+ 1153 1150 1146 1158 1138 1147 1166 1167 1162 1163 1164 1165 1169 1179 1178 1177 1168 
+ 1156 1189 1186 1139 1149 1141 1135 
+ 1154 1180 1181 1182 1183 1184 1176 1174 1188 1175 1187  1137 1136 1151  
+ 1069 1170 1070 1171 1161 501 498 1115 499 502
+   }
+	capital = 1142
+}
+SIE = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		964
+	}
+	extra = {  }
+	capital =  964
+}
+SIK = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1281 
+	}
+	extra = { 1273 1274 1275 1276 1277 1278 1279 1280 1282  }
+	capital =  1281
+}
+SLO = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		208 211 212 214
+	}
+	extra = {  209 210 213 215 }
+	capital =  208
+}
+SLV = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		 349	}
+	extra = { 346 403 404 406 }
+	capital =  349
+}
+
+SOM = {
+ date = { day = 0 month = january year = 1936 }
+ expirydate = { day = 29 month = december year = 1967 }
+ minimum = {
+ 836
+ }
+ extra = { 820 819 821 822 823 818 829 832 833 830 826 831 828 827 815 816 817 824 834 835 837 838 }
+ capital = 836
+ }
+
+
+SOV = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+	550 551 552 553 560 565 566 559 561 557 572 562
+	}
+	extra = {
+539 564 593 573 589 575 577 576 549 558 555 563 590 556 554 569 568 574 567 570 678 571 
+ }
+
+
+	regular_id = RUS
+	intrinsic_gov_type = stalinist
+        capital = 553
+}
+
+SPA = { #Kingdom of Spain
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+           460
+}
+extra = { 
+444 451 441 453 466 456 457 458 472 474 471 470 467 463 468 464 461 469
+348 440 438 436 442 443 475 437 439 452 447 450 
+ 455 448 449 446 462 445 459 473 465 454 990 991 
+}
+	  
+	capital = 460 # Madrid
+	
+}
+
+SPR = { #CNT-FAI
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+  440 437 439 436 459 461 464 438 442 462 465 463
+}
+extra = { 444 451 460 441 453 466 456 457 458 472 474 471 470 467 468 469 348 443 475 452 447 450 455 448 449 446 445 473 454 990 991 }
+
+	intrinsic_gov_type = left_wing_radical
+	capital = 440 # Barcelona
+}
+
+SUD = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		803 804 806 808 809 813 814 811 812 810 807 805
+	}
+	extra = {  }
+	capital =  810
+}
+SWE = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2167 2166 2165 2163 2164 2162 2161 2160 2159 2157 2154 2153 2155 2152 2156 2158
+	}
+	extra = { 526 }
+	capital =  2159
+}
+SYR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+	minimum = {
+		1021 1017 1016 1020 
+	}
+	extra = { 1018 1019 1015 1014 1009 1011 1013 1010 1008 1172 1022 1025 1024 1026 1023 }
+	capital =  1016
+}
+TAJ = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1105
+	}
+	extra = { 1104 }
+	capital =  1105
+}
+
+TAN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1119
+	}
+	extra = {  }
+	capital =  1119
+}
+
+TEX = {
+    date = { day = 1 month = january year = 1936 }
+    expirydate = { day = 29 month = december year = 1939 }
+    revolt = no
+    minimum = {
+        1955 1957 1958 1960  1959 1954 1956 1945 1947 1950
+    }
+    extra = {  }
+    capital =  1955
+    regular_id = USA
+    intrinsic_gov_type = paternal_autocrat
+}
+
+
+ 
+TIB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1286 1287 1288 1289 1295
+	}
+	extra = { 1294 1290 1278 }
+	capital =  1289
+}
+TRA = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		691
+
+			}
+	extra = { 694 693 695 692 697 662 698 699 643 644 645 642 649 706 1113 }
+        claims = { 704 705 701 703 700 696 702 }
+	capital =  691
+}
+TRK = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1097 1098
+	}
+	extra = {  }
+	capital =  1097
+}
+TUN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		741 742 746 745 747 748 749 744
+	}
+	extra = { 740  }
+	capital =  747
+}
+TUR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1075 }
+	extra = { 409 1078 1079 1057 1076 1068 1074 1058 1065 386 
+ 1066 1059 1067 1071 1054 385 1077 1062 1063 1064 1060 1061 370 384 1072 1073 1055 1056 }
+	capital =  1075
+}
+UKR = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		617
+	}
+	extra = { 618 619 620 621 626 625 244 245 249 240 241 242 300 301 238 239 622 623 624 637 638 639 640 641 630 631 633 634 635 636 632 627 646
+        603 605 606 608 610 607 629 628 615 612 614 611 616 609 613 }
+	capital = 617 #Kiev
+        claims = { 643 644 645 649 647 648 602 604 }
+}
+URU = { #Monarchic Romania
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		316 311
+	}
+	extra = { 312 315 308 314 310 313 306 305 309 299 298 297 303 304 302 300 301 291 293 285 295 286
+		  296 292 289 287 288 307
+	}
+	capital = 316
+	
+	
+	}
+
+
+
+USA  = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1809
+	}
+	extra = { 
+ 1953 1833 1949 1948 1952 1951 1950 1947 1956 1954 1955 1960 1958 1963 1961 
+ 1962 1964 1813 1812 1814 1818 1815 1816 1817 1808 1807 1801 1797 1791 1795 1793  
+ 1792 1805 1803 1804 1790 1787 1788 1784 1785 1789 1796 1826 1806 
+ 1810 1811 1820 1819 1942 1943 1940 1939 1936 1937 1944 1931 1825 1821 1842 1845 1802 
+ 1957 1828 1934 1930 1929 1932 1918 1915 1925 1836 1830 1829 1832 1839 
+ 1838 1841 1843 1834 1837 2150 1846 1850 1855 1856 1858 1857 1859 
+ 1860 1914 1913 1919 1910 1911 1924 1928 1926 1920 1921 1922 
+ 1905 1906 1904 1900 1901 1902 1898 1896 1907 1908 1897 1909 
+ 1868 1866 1862 1869 1865 1871 1873 1875 1876 1874 
+ 1877 1878 1882 1879 1880 1895 1893 1892 1899 1886 1887 1883 
+ 1888 1889 1884 2141 2140 2142 2139 
+ 1923 
+ 1831 1847 1935 1945 1885 1872 1863 1864 
+ 2151 2143 2144 2145 2146 2147 1890 1891 1894 1881 
+ 1870 1861 1903 1851 1916 1927 1912 1852 1853 1854 1867 1849 1917 1933 1835 1840 1848 1844 1822 1823 1827 1941 1946 1959 1800 
+ 1794 1824 1798 1799 1786 1938
+}
+	capital = 1809 
+}
+UZB = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1101 1102 1100 1103 1099
+	}
+	extra = { 1097 1098 }
+	capital =  1103
+}
+
+U00 = { #Polish - Lithuanian Commonwealth
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 
+		223 227 228 229 230 231 232 233 234 243 246 250 254 #Poland
+		252 255 258 259 260 262 263 #Lithunia
+	}
+	extra = { 
+		235 237 236 239 242 241 238 300  240  301# Galicia
+		261 #Klaipeda
+	}
+	capital = 232 #Warsaw
+        revolt = no
+        not = { POL } 
+}
+
+U01 = { #Uruguay
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1963 }
+	minimum = { 2052 2051  }
+	extra = {  }
+	capital =  2052
+}
+
+U02 = { #Cretan State
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1963 }
+	minimum = { 382 }
+	extra = { 380 }
+	capital = 382
+}
+
+
+U03 = { #Benikongo
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+
+	minimum = { 930 }
+	extra = { 939 929 940 932 938 937 941 931 933 934 935 936 914 915 918 913 912 911 909 
+        910 928 925 916 893 917 907 908 919 926 923 927 920 924 949 951 948 950 955 952 953 954 956
+        }
+	capital = 930 
+      }
+
+U04 = { #Sahel
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+
+	minimum = { 985 }
+	extra = { 979 980 975 977 976 984 944 947 943 921 922 946 982 986 971 978 983 981 972 974 973 958 945 942 957 959 }
+	capital = 985
+        revolt = no 
+        }
+
+U05 = { #Bantu
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+
+	minimum = { 850 }
+	extra = { 904 903 905 899 906 901 894 902 898 897 843 844 845 839 841 842 852 849 851 846 847 
+                  848 860 859 863 861 864 862 865 868 867 866 
+        }
+	capital = 850
+        revolt = no 
+        }
+
+U06 = { # Federated Union States
+    date = { day = 1 month = january year = 1936 }
+    expirydate = { day = 29 month = december year = 1960 }
+    revolt = no
+    minimum = {
+        1813
+    }
+    extra = { 
+         1957 1958 1955 1960 1959 1954 1956 1945 1947 1950 1952 1951 1948 1949 1953 1961 1962 1963 1964 1940 1935 1946 1936
+         1944 1938 1937 1931 1939 1942 1941 1943 1812 1814 1815 1816 1818 1928 1922 1926 1925 1923 1927 1920 1924
+         1921 1932 1934 1919 1929 1930 1916 1918 1933 1911 1913 1915 1917
+        }
+    capital =  1813
+}
+
+U07 = { # UK
+ date = { day = 1 month = january year = 1936 }
+ expirydate = { day = 29 month = december year = 1967 }
+ minimum = { 23 20 27 26 29 25 28 19 24 16 17 18 15 14 13 }
+ extra = { 10 11 12 6 7 8 4 5 9 21 22 }  
+ capital = 29
+}
+
+U08 = { #Neutral France
+ date = { day = 1 month = january year = 1936 }
+ expirydate = { day = 29 month = december year = 1967 }
+ minimum = {
+  55
+ }
+ extra = { 
+  96 106 104 105 107 87 91 94 37 38 39 40 41 78 42 43 44 45 46 47 48 53 50 49 51 52 56 101 103 100 102 99 54 
+                95 97 98 88 64 63 66 60 58 59 57 62 70 69 68 67 83 84 75 73 72 61 65 90 86 89 93 82 79 80 76 77 71 81 92 85 74 }
+ capital = 55
+}
+
+
+
+U09 = {   # Puerto Rico
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+	minimum = { 1765 }
+	extra = {  }
+	capital = 1765
+}
+
+U10= { #New England
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 1784 1786 1785 1787 1790 1794 1788 1789 1796 1793 1799 1791 1792 1800 }
+	extra = { }
+	capital = 1789
+}
+
+U11 = { # Bavaria
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 179 }
+	extra = { 176 177 178 175 133 135 134 136 174 132 139 }
+	capital = 179
+}
+
+U12 = { #Hyderabad
+
+	date = { day = 1 month = january year = 1936 } 
+        expirydate = { day = 29 month = december year = 1963 } 
+
+ minimum = { 
+ 1487 1489 1486 1490 1491
+ } 
+ extra = { 1492 1488 } 
+ capital = 1487 
+ }  
+
+
+
+U13 = { # Tatarstan
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1964 }
+minimum = { 672 }
+extra = { 674 675 656 671 673 684 664 687 667 668 }      
+capital = 672
+}
+
+
+
+
+U14 = { 	# Prussia
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 163 }
+	extra = { 137 140 230 180 224 225 221 261 171 169 222 170 172 173 157 156 164 168 226 160 153 162 158 159 165 155 161 181 183 184 185 182 166 167 }
+	capital = 163
+}
+
+U15 = {	# Hawaii
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 1734 }
+	extra = { 1736 1737 1735 1738 }
+	capital = 1734
+}
+
+U16 = {	# England
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 23 20 27 26 29 25 28 19 24 16 17 18 15 14 13 }
+	extra = {  }				  
+	capital = 29
+}
+
+U17 = {	# Wales
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = { 21 22 }
+	extra = {  }				  
+	capital = 22
+}
+
+U18 = {	# Rhineland
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+	minimum = { 145 }
+	extra = { 141 144 142 110 143 138 127 128 130 126 129 131 }
+	capital = 145 # Cologne
+}
+
+U19 = {	# North German Federation
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+	minimum = { 154 }
+	extra = { 147 148 149 146 151 216 153 150 152 }
+	capital = 154 # Hamburg
+}
+
+U20 = { #Latvia
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		264 
+	}
+	extra = { 265 266 267 268 269 }
+	capital = 264 #Riga
+}
+
+U21 = { # Brittany
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+        revolt = no
+	minimum = { 38 }
+	extra = { 59 40 41 37 39 }
+	capital = 38
+}
+
+U22 = { # Normandy
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+        revolt = no
+	minimum = { 44 }
+	extra = { 46 47 43 42 45 48 }
+	capital = 44
+}
+
+U23 = { # Occitania
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+        revolt = no
+	minimum = {
+		77
+	}
+	extra = { 67 83 80 79 84 68 75 76 81 82 86 87 89 90 93 92 91 78 71 70 73 74 85 }
+	capital =  77
+}
+
+U24 = { # Austro-Hungary
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+	minimum = { 276 277 278 279 280 281 282 283 284 189 190 191 192 195 194 186 187 193 188 208 211 212 214 210 209 }
+	extra = { 401 402 403 404 406 346 349 199 202 207 196 198 201 206 203 205 204 200 197
+                  357 353 358 354 356 355 337 344 347 350 351 343 345 352 336 341 
+                  285 295 286 296 213 215 235 237 236 239 242 241 
+                  238 300 240 301 289 291 293 287 288 292 }
+	capital = 195
+        revolt = no
+        not = { AUS }
+}
+
+U25 = { # Danube Federation
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+	minimum = { 276 277 278 279 280 281 282 283 284 189 190 191 192 195 194 186 187 193 188 208 211 212 214 210 209 }
+	extra = { 401 402 403 404 406 346 349 199 202 207 196 198 201 206 203 205 204 200 197
+                  357 353 358 354 356 355 337 344 347 350 351 343 345 352 336 341 
+                  285 295 286 296 213 215 235 237 236 239 242 241 
+                  238 300 240 301 289 291 293 287 288 292 }
+	capital = 195
+        revolt = no
+        not = { AUS }
+}
+
+U26 = { # Baltic Confederation
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+	minimum = { 265 274 264 270 275 271 272 273 267 269 268 266 }
+	extra = { 262 259 263 260 258 261 252 255 }
+	capital = 264 # Riga
+        revolt = no
+        not = { LAT }
+}
+
+U27 = { # Peru-Bolivia Confederation
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+        revolt = no
+	minimum = { 2064 2021 2020 2019 2063 2017 2015 2016 2011 2014 2012 2013 2018  }
+	extra = { 2008 2046 2002 2024 }
+	capital =  2016
+}
+
+U28 = { # Socialist Republic of Canada
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		2110 2129 2113 2114 2148 2149 2112 2127 2130 2108 2111 2109 
+	}
+	extra = { 2137 2090 2089 2092 2105 2102 2099 2093 2091 2095 2094 2096 2103 2104 2101 2100 2097 2098 2107 2115 
+ 2106 2119 2117 2116 2123 2122 2121 2120 2125 2124 2135 2128 2132 2131 2134 2126 2133 2136 2138 2118 			}
+	capital =  2108
+	intrinsic_gov_type = left_wing_radical
+	regular_ID = CAN
+}
+
+U29 = { # Algeria
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 727 728 729 730 731 732 733 734 735 736 737 739 743 738 } 
+ extra = { } 
+ capital = 727 
+ } 
+
+U30 = { # Taiwan	
+	date = { day = 1 month = january year = 1934 }
+	expirydate = { day = 29 month = december year = 1990 }
+	minimum = { 1362 1361 1363 1364 }
+	extra = {  }
+	capital =  1362
+}
+
+U31 = { # German Union
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1970 }
+	minimum = {
+		163
+	}
+	extra = { 126 145 127 131 142 147 141 137 174 171 176 146 148 154 151 152 153 156 169 157 162 158 172 
+ 170 173 177 138 134 167 164 159 183 184 221 224 155 225 226 161 181 222 185 182 261 132 178 175 179 160 
+ 143 150 140 133 135 136 149 128 129 130 139 180 144 104 107 105 216 165 166 168 110 230 }
+	capital =  163
+}
+
+U32 = { # Confederation of Great Lakes
+    date = { day = 1 month = january year = 1936 }
+    expirydate = { day = 29 month = december year = 1963 }
+    revolt = no
+    minimum = {
+        1809 
+}
+    extra = { 
+          1848 1845 1832 1841 1831 1843 1839 1823 1829 1830 1826 1842 1844 1819 1827 1828 1811 1817 1820 1822 1821 1824 
+          1825 1798 1803 1804 1797 1795 1806 1810 1805 1801 1807 1808 1802 1840
+         }
+    capital = 1809
+}
+
+U33 = { # Piratiní 
+    date = { day = 1 month = january year = 1936 }
+    expirydate = { day = 29 month = december year = 1963 }
+    revolt = no
+    minimum = {
+        2057
+}
+    extra = { 
+          2058 2060
+         }
+    capital = 2057
+}
+
+U34 = { # Crimea
+     date = { day = 1 month = january year = 1936 }
+    expirydate = { day = 29 month = december year = 1963 }
+     minimum = {
+	638
+}
+     extra = {
+	637 641 639 640 623 624
+}
+     capital = 638
+}	
+
+U35 = { # Chennai Republic
+    date = { day = 1 month = january year = 1900 }
+    expirydate = { day = 29 month = december year = 1963 }
+    minimum = {
+	1499 1500 1506
+}
+    extra = {
+	1493 1494 1495 1496 1498 1501 1503 1504 1505   
+}
+     capital = 1500
+}
+
+
+U36 = { # Brunei
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 1625 } 
+ 
+ extra = { } 
+ capital = 1625 
+ } 
+
+U37 = { # Euskadia
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 
+ 443 
+ } 
+ extra = { 446 67 } 
+ capital = 443 
+ }  
+
+U38 = { # East African Union
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 
+ 848 849 850 851 
+ } 
+ extra = { 843 839 841 842 846 844 847 845 } 
+ capital = 841 
+ } 
+
+U39 = { # Ghana
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 
+ 952 955 956 
+ } 
+ extra = { 954 953 } 
+ capital = 956 
+ } 
+
+U40 = { # Somalia
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 
+ 837 836 838 
+ } 
+ extra = { 832 833 834 835 827 } 
+ capital = 836 
+ }  
+
+ U41 = { # Congo
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 899  } 
+ extra = { 917 893 901 907 908 894 897 906 903 904 902 905 898 } 
+ capital = 899
+ }  
+
+U42 = { # Sri-Lanka
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 1511  } 
+ extra = { 1509 1510 } 
+ capital = 1511
+ }  
+
+U43 = { # Mountainous Republic of the Northern Caucasus
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 702  } 
+ extra = { 704 705 701 703 700 696 707 } 
+ claims = { 693 694 695 }
+ capital = 702
+ }  
+
+U44 = { # Travancore-Cochin
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 1495 1497  } 
+ extra = { } 
+ capital = 1495
+ }    
+
+U45 = { # Mysore
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 1507 1502  } 
+ extra = { 1503 1501 } 
+ capital = 1507
+ }
+
+U46 = { # Malta
+ date = { day = 1 month = january year = 1936 } 
+ expirydate = { day = 29 month = december year = 1963 } 
+ minimum = { 429  } 
+ extra = {  } 
+ capital = 429
+ }  
+
+ U49 = { # South African Federation 
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		880 # The Cape Province & Natal
+	}
+	extra = { 874 877 879 869 870 871 875 881 872 873 876 878  883 882 886 885 884 866 867 868 } # South Africa & Territories
+	capital =  880 # Capetown
+        revolt = no
+        no = { SAF GER CON ENG FRA }
+}
+
+VEN = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1988 1989 1995 1996 1992 1993
+	}
+	extra = { 1998 }
+	capital =  1993
+}
+VIC = {
+date = { day = 1 month = january year = 1936 }
+expirydate = { day = 29 month = december year = 1967 }
+revolt = no
+minimum = {
+729 733 728 730 727 732 736 731 734 735
+}
+extra = {
+96 106 104 105 107 87 91 743 94 37 38 39 40 41 78 42 43 44 45 46 47 48 53 50 49 51 52 56 101 103 100 102 99 54 
+95 97 98 88 64 63 66 60 58 59 57 62 70 69 68 67 83 84 75 73 72 61 65 90 86 89 93 82 79 80 76 77 71 81 
+92 85 74 55 }
+
+capital = 727
+}
+
+VIE = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1399 1403
+	}
+	extra = { 1396 1397 1392 1395 1393 }
+	capital =  1399
+revolt = no 
+}
+WLL = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		113
+	}
+	extra = { 111 108 112 110 52 117 }
+        not = { BEL }
+	capital =  113
+}
+YEM = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+	minimum = {
+		1050
+	}
+	extra = { 1053 }
+	capital =  1050
+}
+YUG = {
+	date = { day = 1 month = january year = 1936 }
+	expirydate = { day = 29 month = december year = 1967 }
+        revolt = no
+	minimum = {
+		338 339 340 342 327 330 337 344 345 352 347 350 351 343 332 357 353 358 355 354 356 335
+	}
+	extra = { 404 403 406 346 349 336 341 329 331 333 334 328  }
+	capital =  338
+}

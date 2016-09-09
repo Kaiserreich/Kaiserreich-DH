@@ -1,0 +1,517 @@
+################################################################################?#
+#Travancore-Cochin Post Princely Defeat
+################################################################################?#
+
+event = {
+id = 198000
+country = U44
+style = 2
+picture = "Travancoreevent"
+decision_picture = "decision_travancore"
+
+decision = {
+NOT = {
+ispuppet = U44
+atwar = U44
+exists = IND
+}
+flag = Mysorerevolt # set by events in Princely Domestic Policy.txt
+flag = Travancorerevolt # set by events in Princely Domestic Policy.txt
+exists = U44 
+}
+
+decision_trigger = {
+control = { province = 1497 data = U44 } #Kochi
+OR = {
+control = { province = 1495 data = U44 } #Trivandrum
+}
+}
+
+trigger = {
+NOT = {
+atwar = U44
+exists = IND
+ispuppet = U44
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+exists = U44
+exists = U45
+control = { province = 1497 data = U44 } #Kochi
+OR = {
+control = { province = 1495 data = U44 } #Trivandrum
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  25
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Civilian Left Demands Free Elections"
+desc = "Nobody sees this."
+
+action_a = {
+ai_chance = 70
+name = "The benevolent Chithira is loved by the people, the royal party wins!"
+command = { type = dissent value = 5 }
+command = { type = relation which = PAK value = 100 }
+command = { type = relation which = PRK value = -100 }
+command = { type = event which = 198001 where = U44 when = 14 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The Travancore Congress Party usurps the royal government!"
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 8 }
+command = { type = headofstate which = 59211 }
+command = { type = headofgovernment which = 59212 }
+command = { type = foreignminister which =  59215 }
+command = { type = ministerofsecurity which = 59217 }
+command = { type = armamentminister which = 59219 }
+command = { type = event which = 198002 where = U44 when = 14 }
+command = { type = dissent value = -5 }
+}
+}
+
+
+event = {
+id = 198001
+country = U44
+style = 2
+picture = "diarchy"
+
+name = "The Case of Travancore-Cochin's Sovereignty"
+desc = "After the dissolution of the Princely Federation, Travancore-Cochin stands - once again - independent. However, the fires of Indian unity haven’t been extinguished and calls still can be heard throughout the capital, demanding our reunion with one of the major successor states. However, the cabinet is weary of making a final decision and it seems that the final say of the beloved young Maharaja might tip the balance."
+
+action_a = {
+ai_chance = 100
+name = "Apply for admission into the Dominion of India!"
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = relation which = PRK value = -150 }
+command = { type = relation which = PAK value = 150 }
+command = { type = leave_alliance }
+command = { type = dissent value = 15 }
+command = { type = event which = 198003 where = PAK when = 10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Bah, our principality shall stand alone!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = PRK value = -150 }
+command = { type = relation which = PAK value = -150 }
+command = { type = relation which = U45 value = 100 }
+command = { type = dissent value = -15 }
+}
+}
+
+
+event = {
+id = 198002
+country = U44
+style = 2
+picture = "diarchy"
+
+name = "The Case of Travancore-Cochin's Sovereignty"
+desc = "After the dissolution of the Princely Federation, Travancore-Cochin stands - once again - independent. However, the fires of Indian unity haven’t been extinguished and calls still can be heard throughout the capital, demanding our reunion with one of the major successor states. However, the cabinet is weary of making a final decision and it seems that the final say of the empowered Congress leadership might tip the balance."
+
+action_a = {
+ai_chance = 80
+name = "Apply for admission into the Bhartiya Commune!"
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = relation which = PRK value = 150 }
+command = { type = relation which = PAK value = -150 }
+command = { type = leave_alliance }
+command = { type = dissent value = 15 }
+command = { type = event which = 198004 where = PRK when = 10 }
+}
+
+action_b = {
+ai_chance = 20
+name = "Apply for admission into the Dominion of India!"
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = relation which = PRK value = -150 }
+command = { type = relation which = PAK value = 150 }
+command = { type = leave_alliance }
+command = { type = dissent value = 15 }
+command = { type = event which = 198003 where = PAK when = 10 }
+}
+
+action_c = {
+ai_chance = 0
+name = "Bah, our principality shall stand alone!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = PRK value = -150 }
+command = { type = relation which = PAK value = -150 }
+command = { type = relation which = U45 value = 100 }
+command = { type = dissent value = -15 }
+}
+}
+
+################################################################################?#
+#Travancore Joins Delhi
+################################################################################?#
+
+event = {
+id = 198003
+country = PAK
+style = 2
+picture = "diarchy"
+
+name = "Travancore-Cochin Inquires About the Terms of Ascension"
+desc = "Following Travancore-Cochin’s successful struggle against Hyderabadi centralism, the country faced a short period of internal unrest when members of the local leftist Congress party pressed for democratic reform. However, this brief time of instability has been brought to a halt with a new government bent on integration with our own state, the true legal successor to the Raj. This development will certainly strengthen our standing both abroad and at home!"
+
+action_a = {
+ai_chance = 99
+name = "Welcome them with open arms, prepare a formal annexation!"
+command = { type = removeclaim which = 1495 }
+command = { type = removeclaim which = 1497 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = make_puppet which = U44 }
+command = { type = relation which = U44 value = 150 }
+command = { type = setflag which = Travancore_delhi }
+command = { type = sleepevent which = 198004 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Bah, let the spoiled Malayalam rot on their beaches!"
+command = { type = relation which = U44 value = -200 }
+command = { type = dissent value = 15 }
+}
+}
+
+################################################################################?#
+#Travancore Joins Calcutta
+################################################################################?#
+event = {
+id = 198004
+country = PRK
+style = 2
+picture = "diarchy"
+
+name = "Travancore-Cochin Inquires About the Terms of Ascension"
+desc = "Following Travancore-Cochin’s successful struggle against Hyderabadi centralism, the country faced a short period of internal unrest when members of the local leftist Congress party pressed for democratic reform. However, this brief time of instability has been brought to a halt with a new government bent on integration with our own state, the true legal successor to the Raj. This development will certainly strengthen our standing both abroad and at home!"
+
+action_a = {
+ai_chance = 99
+name = "Welcome them with open arms, prepare a formal annexation!"
+command = { type = removeclaim which = 1495 }
+command = { type = removeclaim which = 1497 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = make_puppet which = U44 }
+command = { type = relation which = U44 value = 150 }
+command = { type = setflag which = Travancore_calcutta }
+command = { type = sleepevent which = 198003 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Bah, let the spoiled Malayalam rot on their beaches!"
+command = { type = relation which = U44 value = -200 }
+command = { type = dissent value = 15 }
+}
+}
+
+################################################################################?#
+#Delhi annexes Travancore
+################################################################################?#
+
+event = {
+id = 198005
+country = PAK
+style = 2
+picture = "Travancoreevent"
+decision_picture = "decision_travancore"
+
+decision = {
+NOT = {
+war = { country = PAK country = U44 }
+exists = IND
+exists = PRK
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+local_flag = PAK_Mysore_pacified
+event = 198003
+puppet = { country = U44 country = PAK  }
+}
+
+decision_trigger = {
+control = { province = 1497 data = U44 } #Kochi
+OR = {
+control = { province = 1495 data = U44 } #Trivandrum
+}
+}
+
+
+trigger = {
+NOT = {
+war = { country = PAK country = U44 }
+exists = IND
+exists = PRK
+}
+local_flag = PAK_Mysore_pacified
+flag = Mysorerevolt
+flag = Travancorerevolt
+event = 198003
+puppet = { country = U44 country = PAK  }
+control = { province = 1497 data = U44 } #Kochi
+OR = {
+control = { province = 1495 data = U44 } #Trivandrum
+}
+}
+
+name = "Status of Travancore-Cochin"
+desc = "Both of the traitor governments in Calcutta and Hyderabad have been defeated by our righteous arms and in the wake of their demise stands the question of Travancore-Cochin's future. Shall they maintain autonomy or be integrated in our great state?"
+
+date = { day = 0 month = january year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = "Glory to India Resurgent! Demand their incorporation!"
+command = { type = inherit which = U44 value = 1 }
+command = { type = addcore which = 1495 }
+command = { type = addcore which = 1497 }
+command = { type = wakeleader which = 564120 }
+command = { type = wakeleader which = 564121 }
+command = { type = wakeleader which = 564122 }
+command = { type = wakeleader which = 564123 }
+command = { type = wakeleader which = 564124 }
+command = { type = wakeleader which = 564125 }
+command = { type = wakeminister which = 564100 }
+command = { type = wakeminister which = 564101 }
+command = { type = wakeminister which = 564102 }
+command = { type = relation which = U44 value = -10 }
+command = { type = dissent value = -5 }
+command = { type = sleepevent which = 198007 }
+command = { type = local_setflag which = PAK_Travancore_pacified }
+command = { type = belligerence which = PAK value = -10 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Let them retain their petty autonomy."
+command = { type = relation which = U44 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PAK value = -10  }
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 198007 }
+command = { type = local_setflag which = PAK_Travancore_pacified }
+}
+}
+
+################################################################################?#
+#Calcutta annexes Travancore
+################################################################################?#
+
+event = {
+id = 198006
+country = PRK
+style = 2
+picture = "Travancoreevent"
+decision_picture = "decision_travancore"
+
+decision = {
+NOT = {
+war = { country = PRK country = U44 }
+exists = IND
+exists = PAK
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+event = 198003
+puppet = { country = U44 country = PRK  }
+}
+
+decision_trigger = {
+control = { province = 1497 data = U44 } #Kochi
+OR = {
+control = { province = 1495 data = U44 } #Trivandrum
+}
+}
+
+trigger = {
+NOT = {
+war = { country = PRK country = U44 }
+exists = IND
+exists = PAK
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+event = 198004
+puppet = { country = U44 country = PRK  }
+control = { province = 1497 data = U44 } #Kochi
+OR = {
+control = { province = 1495 data = U44 } #Trivandrum
+}
+}
+
+name = "Status of Travancore-Cochin"
+desc = "Both of the traitor governments in Delhi and Hyderabad have been defeated by our righteous arms and in the wake of their demise stands the question of Travancore-Cochin's future. Shall they maintain autonomy or be integrated in our great state?"
+
+date = { day = 0 month = january year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = "Glory to India Resurgent! Demand their incorporation!"
+command = { type = inherit which = U44 value = 1 }
+command = { type = addcore which = 1495 }
+command = { type = addcore which = 1497 }
+command = { type = wakeleader which = 579099 }
+command = { type = wakeleader which = 579100 }
+command = { type = wakeminister which = 569095 }
+command = { type = wakeminister which = 569096 }
+command = { type = wakeminister which = 569097 }
+command = { type = wakeminister which = 569098 }
+command = { type = relation which = U44 value = -10 }
+command = { type = sleepevent which = 198008 }
+command = { type = dissent value = -5 }
+command = { type = belligerence which = PRK value = -10 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Let them retain their petty autonomy."
+command = { type = relation which = U44 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PRK value = -10  }
+command = { type = sleepevent which = 198008 }
+command = { type = dissent value = 15 }
+}
+}
+
+################################################################################?#
+#Delhi overthrows syndie Travancore by force
+################################################################################?#
+
+event = {
+id = 198007
+random = no
+country = PAK
+picture = "Travancoreevent"
+style = 2
+
+trigger = {
+NOT = {
+exists = IND
+exists = PRK
+exists = U44
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+event = 198004
+control = { province = 1497 data = PAK } #Kochi
+OR = {
+control = { province = 1495 data = PAK } #Trivandrum
+}
+}
+
+date = { day = 0 month = june year = 1936 }
+offset = 15
+deathdate = { day = 29 month = august year = 1963 }
+
+name = "The Integration of Travancore-Cochin"
+desc = "We have driven the socialist usurpers out of the erstwhile state of Travancore-Cochin. An important part of the former Raj has once more been returned to the control of the legal central government. However, the exact way this newfound territory should be administrated is still debated within the ruling cabinet."
+
+action_a = {
+ai_chance = 99
+name = "We have driven the Bolshevik scourge into the sea!"
+command = { type = addcore which = 1495 }
+command = { type = addcore which = 1497 }
+command = { type = wakeleader which = 564120 }
+command = { type = wakeleader which = 564121 }
+command = { type = wakeleader which = 564122 }
+command = { type = wakeleader which = 564123 }
+command = { type = wakeleader which = 564124 }
+command = { type = wakeleader which = 564125 }
+command = { type = wakeminister which = 564100 }
+command = { type = wakeminister which = 564101 }
+command = { type = wakeminister which = 564102 }
+command = { type = sleepevent which = 198005 }
+command = { type = local_setflag which = PAK_Travancore_pacified }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Establish a loyal puppet on the Malabar Coast."
+command = { type = independence which = U44 value = 1 when = 1 }
+command = { type = make_puppet which = U44 }
+command = { type = relation which = U44 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PAK value = -15  }
+command = { type = sleepevent which = 198005 }
+command = { type = local_setflag which = PAK_Travancore_pacified }
+command = { type = dissent value = 10 }
+}
+}
+
+################################################################################?#
+#Calcutta overthrows reactionary Travancore by force
+################################################################################?#
+
+event = {
+id = 198008
+random = no
+country = PRK
+picture = "Travancoreevent"
+style = 2
+
+trigger = {
+NOT = {
+exists = IND
+exists = PAK
+exists = U44
+}
+flag = Mysorerevolt
+flag = Travancorerevolt
+event = 198003
+control = { province = 1497 data = PRK } #Kochi
+OR = {
+control = { province = 1495 data = PRK } #Trivandrum
+}
+}
+
+date = { day = 0 month = june year = 1936 }
+offset = 15
+deathdate = { day = 29 month = august year = 1963 }
+
+name = "The Integration of Travancore-Cochin"
+desc = "We have driven the reactionary usurpers out of the erstwhile state of Travancore-Cochin. An important part of the former Raj has once more been returned to the control of the legal central government. However, the exact way this newfound territory should be administrated is still debated within the ruling cabinet."
+
+action_a = {
+ai_chance = 99
+name = "Hoist the red flag in celebation of this day!"
+command = { type = addcore which = 1495 }
+command = { type = addcore which = 1497 }
+command = { type = wakeleader which = 579099 }
+command = { type = wakeleader which = 579100 }
+command = { type = wakeminister which = 569095 }
+command = { type = wakeminister which = 569096 }
+command = { type = wakeminister which = 569097 }
+command = { type = wakeminister which = 569098 }
+command = { type = sleepevent which = 198005 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Establish a loyal puppet on the Malabar Coast."
+command = { type = independence which = U44 value = 1 when = 1 }
+command = { type = make_puppet which = U44 }
+command = { type = relation which = U44 value = 200 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = PRK value = -15  }
+command = { type = sleepevent which = 198005 }
+command = { type = dissent value = 10 }
+}
+}

@@ -1,0 +1,326 @@
+event = {
+id = 346000
+random = no
+country = AUS
+style = 2
+
+date = { day = 1 month = february year = 1938 }
+offset = 30
+deathdate = { day = 29 month = may year = 1938 }
+
+name = "Alamut - newest book of Vladimir Bartol"
+desc = "Slovene people are stubborn people. After so much years of Germanization they still use their funny language! They are resisting our cultural machine! The newest book in the Slovene speaking territories, Bartol, is a story of Turkish and Persian struggles to control the fortress of Alamut. The action is set in the 11th century, when Seljuk Turks started expanding into Asia Minor. It is suspected that the book will be translated into German and many more languages soon."
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 346001
+random = no
+country = FRA
+style = 2
+
+
+date = { day = 1 month = may year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1937 }
+
+name = "Diary of a Country Priest - newest book of Georges Benanos"
+desc = "EVT_9992_DESC"
+
+action_a = {
+name = "I want more!"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 346002
+random = no
+country = VIC
+style = 2
+
+
+date = { day = 1 month = january year = 1938 }
+offset = 60
+deathdate = { day = 29 month = december year = 1938 }
+
+
+name = "Claude Lévi-Strauss - what to do with him?"
+desc = "EVT_9991_DESC"
+picture = "levistraus"
+
+action_a = {
+ai_chance = 60
+name = "Throw him into jail, this time forever!"
+command = { trigger = { government = fascist } type = dissent value = -2 }
+command = { trigger = { government = democratic } type = dissent value = 2 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Let him go, he won't do anything against us!"
+command = { trigger = { government = fascist } type = dissent value = 2 }
+command = { trigger = { government = democratic } type = dissent value = -2 }
+command = { trigger = { NOT = { government = democratic } } type = setflag which = STRAUSS_FREE }
+}
+}
+
+event = {
+id = 346003
+random = no
+country = FRA
+style = 2
+
+
+trigger = {
+flag = STRAUSS_FREE
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 15
+deathdate = { day = 29 month = december year = 1938 }
+
+name = "Lévi-Strauss is free!"
+desc = "Famous socialist antrophologist Lévi-Strauss is free from militaristic French tyranny. We should invite him so he can praise our great socialist government!"
+picture = "levistraus"
+
+action_a = {
+ai_chance = 95
+name = "Invite him!"
+command = { type = dissent value = -1 }
+command = { type = clrflag which = STRAUSS_FREE }
+}
+
+action_b = {
+ai_chance = 5
+name = "We don't need individuals, we are collective!"
+command = { type = dissent value = 2 }
+command = { type = sleepevent which = 346004 }
+command = { type = sleepevent which = 346005 }
+command = { type = sleepevent which = 346006 }
+command = { type = clrflag which = STRAUSS_FREE }
+}
+}
+
+event = {
+id = 346004
+random = no
+country = FRA
+style = 2
+
+
+trigger = {
+random = 50
+event = 346003
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 15
+deathdate = { day = 29 month = december year = 1938 }
+
+name = "Lévi-Strauss Returns to France"
+desc = "One of the greatest minds of this century decided to live in the Commune of France. We shall hail him!"
+picture = "levistraus"
+
+action_a = {
+name = "Great"
+command = { type = dissent value = -1 }
+command = { type = trigger which = 346005 }
+command = { type = sleepevent which = 346006 }
+command = { type = sleepevent which = 346007 }
+command = { type = sleepevent which = 346008 }
+}
+}
+
+event = {
+id = 346005
+random = no
+country = VIC
+style = 2
+
+
+name = "Lévi-Strauss Flees to the Commune of France"
+desc = "This foul rat, Lévi-Strauss decided to flee to the Commune of France! We could've imprisoned him, the world would've been better with one less Marxist."
+picture = "levistraus"
+
+action_a = {
+name = "No!"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 346006
+random = no
+country = FRA
+style = 2
+
+
+trigger = {
+random = 50
+event = 346003
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 15
+deathdate = { day = 29 month = december year = 1938 }
+
+name = "Lévi-Strauss Refuses to Live in the Commune of France"
+desc = "Lévi-Strauss has refused our invitation, stating that the Commune represents a corrupted version of Marxism mixed with the worst forms of authoritarian government."
+picture = "levistraus"
+
+action_a = {
+name = "We will show him who is truly Marxist!"
+command = { type = dissent value = 1 }
+command = { type = sleepevent which = 346005 }
+command = { type = sleepevent which = 346004 }
+}
+}
+
+event = {
+id = 346007
+random = no
+country = RUS
+style = 2
+
+
+trigger = {
+event = 346003
+government = democratic
+NOT = {
+war = { country = GER country = RUS }
+war = { country = FRA country = RUS }
+exists = SOV
+}
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 15
+deathdate = { day = 29 month = december year = 1938 }
+
+name = "Lévi-Strauss decides to live in Russia"
+desc = "Lévi-Strauss decided to come to Russia. He said in an interview that he enjoys the Russian democracy established by Kerensky and defended by the Great White Generals and he wishes to stay forever, not going back unless France will democratize."
+picture = "levistraus"
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -1 }
+command = { type = sleepevent which = 346005 }
+command = { type = sleepevent which = 346004 }
+command = { type = sleepevent which = 346008 }
+}
+}
+
+event = {
+id = 346008
+random = no
+country = USA
+style = 2
+
+
+trigger = {
+event = 346003
+government = democratic
+NOT = {
+exists = CSA
+exists = TEX
+atwar = yes
+}
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 15
+deathdate = { day = 29 month = december year = 1938 }
+
+name = "Lévi-Strauss decides to live in the United States of America"
+desc = "Lévi-Strauss decided to come to the USA. He said in an interview that he enjoys the long tradition of American democracy and he wishes to stay forever, not going back unless France will democratize."
+picture = "levistraus"
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -1 }
+command = { type = sleepevent which = 346005 }
+command = { type = sleepevent which = 346004 }
+command = { type = sleepevent which = 346007 }
+}
+}
+
+##################################################
+#Books of Sartre
+##################################################
+event = {
+id = 346009
+random = no
+country = FRA
+style = 2
+
+
+trigger = {
+lost_national = { country = FRA value = 0 }
+}
+
+date = { day = 1 month = january year = 1946 }
+offset = 90
+deathdate = { day = 29 month = december year = 1946 }
+
+name = "Sartre explains his philosophical stance in his newest book!"
+desc = "In his newest book, Existentialism as a Humanism, Sartre explains the doctrine of Existentialism. For him one of the key points is that the existence of a person comes before his or her essence. In simple terms, this means that, although that person exists, there is nothing to dictate that person's character, goals in life, and so on. Only the person themselves can define their essence."
+
+action_a = {
+name = "Great, however I don't understand this"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 346010
+random = no
+country = FRA
+style = 2
+
+
+trigger = {
+war = { country = FRA country = VIC }
+OR = {
+control = { province = 727 data = FRA }
+control = { province = 727 data = ENG }
+control = { province = 727 data = RSI }
+}
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Sartre has written a book about the war in Algieria"
+desc = "Just when Socialist troops entered Algiers, the capitol of National France, Sartre published his views on liberating the natives of former French colonies. In the book he genuinely says that the pied noirs should come back to mainland France and leave Algieria for the Algierians who are second class citizens in their own homeland. This book is extremely popular and it seems that the government will distribute it to commissars."
+
+action_a = {
+name = "For the liberation of Africa!"
+command = { type = dissent value = -5 }
+command = { type = attrition_mod value = 1 }
+}
+}
+
+
+event = {
+id = 346011
+random = no
+country = CON
+style = 2
+
+name = "Auf den Marmorklippen, A Book by Ernst Júnger."
+desc = "One of the most important politicians in our nation is also a very good writer. This is his latest book."
+picture = "soviet_directive"
+
+date = { day = 22 month = May year = 1939 }
+
+action_a = {
+name = "This one I will buy."
+command = { type = dissent value = -1  }
+}
+}

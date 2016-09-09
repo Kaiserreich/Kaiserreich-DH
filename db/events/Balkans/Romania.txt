@@ -1,0 +1,3637 @@
+
+
+event = {
+id = 90000
+random = no
+country = ROM
+style = 2
+
+decision = {
+NOT = {
+war = { country = ROM country = HUN }
+alliance = { country = ROM country = HUN }
+}
+}
+
+decision_trigger = {
+OR = {
+garrison = { country = ROM province = 312 size = 1 } #Turnu Severin
+garrison = { country = ROM province = 315 size = 1 } #Craiova
+}
+}
+
+trigger = {
+NOT = {
+war = { country = ROM country = HUN }
+alliance = { country = ROM country = HUN }
+}
+OR = {
+AND = { ai = yes random = 3 }
+AND = {
+ai = no
+OR = {
+garrison = { country = ROM province = 312 size = 1 } #Turnu Severin
+garrison = { country = ROM province = 315 size = 1 } #Craiova
+}
+}
+}
+}
+
+name = "The remilitarisation of Oltenia"
+desc = "EVT_9999_DESC"
+picture = "ReoocuOlt"
+decision_picture = "decision_oltenia"
+
+date = { day = 0 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Remilitarise the Oltenia!"
+command = { type = relation which = HUN value = -15 }
+command = { type = relation which = BUL value = -5 }
+command = { type = relation which = GER value = -10 }
+command = { type = relation which = AUS value = -5 }
+command = { type = belligerence which = ROM value = 3 }
+command = { type = dissent value = -2 }
+command = { type = money value = 50 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = trigger which = 90002 } # Hungary Gears up for war
+command = { type = trigger which = 90003 } # Bulgarian reaction
+command = { type = trigger which = 90004 } # German reaction
+command = { type = domestic which = defense_lobby value = 1 }
+}
+}
+
+event = {
+id = 90001
+country = ROM
+style = 2
+
+trigger = {
+NOT = { 
+event = 90000 
+war = { country = ROM country = HUN }
+alliance = { country = ROM country = HUN }
+}
+NOT = {
+OR = {
+garrison = { country = ROM province = 312 size = 1 } #Turnu Severin
+garrison = { country = ROM province = 315 size = 1 } #Craiova
+}
+}
+}
+
+name = "People demand the remilitarisation of Oltenia"
+desc = "The Craiova chapter of our great party held a rally in Bucarest today, demanding that our military protect them from the threat Hungary poses. Doing so will mean defying the 1918 Bucharest peace treaty with the Central Powers though."
+picture = "great_war_manifestion"
+persistent = yes
+
+date = { day = 0 month = february year = 1936 }
+offset = 7
+deathdate = { day = 29 month = march year = 1937 }
+
+action_a = {
+name = "What should we do?"
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 90002
+country = HUN
+
+name = "The remilitarisation of Oltenia"
+desc = "Those treacherous Romanians broke their word and moved their armed forces into Oltenia, despite the Bucharest treaty of 1918 forbidding them to do so. In a reaction to this agression we should take up positions in the vital Carpathian passes we control."
+picture = "ReoocuOlt"
+style = 2
+
+action_a = {
+name = "Guard the mountain passes"
+command = { type = relation which = ROM value = -15 }
+command = { type = construct which = land_fort where = 291 value = 1 } # Timisoara/Temesvár
+command = { type = construct which = land_fort where = 293 value = 1 } # Sibiu/Mármarossziget
+}
+}
+
+event = {
+id = 90003
+country = BUL
+
+name = "The remilitarisation of Oltenia"
+desc = "The National Populist regime dominating Romania broke their obligations and moved their armed forces into Oltenia, despite the Bucharest treaty of 1918 forbidding them to do so."
+picture = "ReoocuOlt"
+style = 2
+
+action_a = {
+name = "How dare they!"
+command = { type = relation which = ROM value = -15 }
+}
+}
+
+event = {
+id = 90004
+country = GER
+
+name = "The remilitarisation of Oltenia"
+desc = "The National Populist regime dominating Romania broke their obligations and moved their armed forces into Oltenia, despite the Bucharest treaty of 1918 forbidding them to do so."
+picture = "ReoocuOlt"
+style = 2
+
+action_a = {
+name = "How dare they!"
+command = { type = relation which = ROM value = -15 }
+}
+}
+
+######################
+#
+# The oil of Ploesti
+#
+######################
+
+event = {
+id = 90005
+country = GER
+
+trigger = {
+event = 90004
+NOT = { 
+war = { country = GER country = ROM }
+alliance = { country = GER country = ROM } 
+}
+}
+
+name = "The oil of Ploesti"
+desc = "After Romania's defeat in the Weltkrieg, we were promised control over the rich oilfields of Ploesti. Our spies report however that the current dictator, Codreanu, is about to nationalize the oilfields. With the current crisis though, any open attempt to stop him would spark fears of war and drive away capital, wrecking us financially. What should we do ?"
+style = 2
+picture = "Industry"
+
+date = { day = 6 month = february year = 1936 }
+offset = 2
+deathdate = { day = 10 month = april year = 1943 }
+
+action_a = {
+name = "Bribe ministers and offer promises"
+ai_chance = 40
+command = { type = money value = -40 }
+command = { type = event which = 90012 where = ROM when = 5  }
+}
+
+action_b = {
+name = "Arrange an 'accident' for Codreanu"
+ai_chance = 40
+command = { type = event which = 90013 where = ROM when = 5  }
+command = { type = money value = -30  }
+}
+
+action_c = {
+name = "Do nothing"
+ai_chance = 10
+command = { type = event which = 90006 where = ROM when = 5  }
+}
+}
+
+
+
+
+event = {
+id = 90006
+country = ROM
+
+name = "Nationalizing the oil industry"
+desc = "After our defeat in the Weltkrieg, we were forced to cede control over the rich oilfields of Ploiesti to Germany. Our great leader, Corneliu Zelea Codreanu, has decided that with the German Empire in chaos over the stock market collapse now is the best time to nationalize them. However, we cannot take on the German Empire directly and so must continue the oil shipments and compensate the German oil companies. We can however tell the public how this is so much better than before."
+style = 2
+picture = "Industry"
+
+action_a = {
+name = "Those fields belong to us"
+command = { type = dissent value = -3 }
+command = { type = trade which = ROM where = GER oil = -30 when = 30600 value = 1 }    #forced trade for 85 more years!
+command = { type = trigger which = 90007 }
+command = { type = money value = -50 } #compensation to German companies
+command = { type = domestic which = free_market value = -1 }
+command = { type = free_money value = -1 } #loss of tax income
+command = { type = relation which = GER value = -20 }
+}
+}
+
+
+event = {
+id = 90007
+country = GER
+
+name = "The Romanians have nationalized the Ploiesti oil fields!"
+desc = "After Romania's defeat in the Weltkrieg, we were promised control over the rich oilfields of Ploiesti. The current dictator, Codreanu, taking advantage of the state of our economy, has just nationalized the oilfields with much fanfare, yet didn't dare stop the oil shipments and also promised to compensate our oil companies. Opposing him at this point would likely frigthen investors even more, potentially killing any chance of stopping our current economic crisis."
+style = 2
+picture = "Industry"
+
+action_a = {
+name = "Okay, but we will be watching you"
+command = { type = dissent value = 1 }
+command = { type = money value = 100 }
+command = { type = relation which = ROM value = -20 }
+}
+}
+
+event = {
+id = 90008
+country = GER
+style = 2
+
+trigger = {
+NOT = {
+ispuppet = URU
+exists = ROM
+}
+control = { province = 311 data = URU }
+NOT = { 
+war = { country = GER country = URU }
+alliance = { country = GER country = URU } 
+}
+}
+
+name = "The oil of Ploesti"
+desc = "After Romania's defeat in the Weltkrieg, we were promised control over the rich oilfields of Ploesti. The former leader of Romania, Codreanu, nationalized the oilfields a few years ago with much fanfare, yet even he didn't dare stop the oil shipments. Now with the monarchists back in power it is time to remind them to honor their commitments."
+picture = "Industry"
+
+date = { day = 0 month = january year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Remind Romanians to ship the oil"
+command = { type = relation which = URU value = -15 }
+command = { type = trigger which = 90009 }
+}
+}
+
+event = {
+id = 90009
+country = URU
+
+name = "The Germans demand their oil shipments"
+desc = "After our defeat in the Weltkrieg, we were forced to cede control over the rich oilfields of Ploesti to Germany. The former leader, Corneliu Codreanu, nationalized the oilfields a few years ago, yet continued the oil shipments. At the moment we are in no position to challenge the German Empire directly, but one day we will end this humiliation."
+style = 2
+picture = "Industry"
+
+action_a = {
+name = "We will keep sending the oil, for now"
+ai_chance = 50
+trigger = {
+NOT = {
+atwar = GER
+}
+}
+command = { type = dissent value = 3 }
+command = { type = trade which = URU where = GER oil = -30 when = 30600 value = 1 }	#forced trade for 85 more years!
+command = { type = trigger which = 90010 }
+command = { type = relation which = GER value = 20 }
+}
+
+action_b = {
+name = "Refuse outright!"
+ai_chance = 50
+trigger = {
+war = { country = FRA country = GER }
+}
+command = { type = dissent value = -3 }
+command = { type = relation which = GER value = -60 }
+command = { type = trigger which = 90011 }
+}
+}
+
+
+event = {
+id = 90010
+country = GER
+
+name = "Romania continue their oil shipments"
+desc = "As expected, the petty Romanian state didn't dare to defy our mighty Empire."
+style = 2
+picture = "Industry"
+
+action_a = {
+name = "We knew they didn't dare defy us"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 90011
+country = GER
+
+name = "Romania refused to renew their oil shipments"
+desc = "Romania refused our rightful demand to renew the oil shipments to the German Empire. What shall we do?"
+style = 2
+picture = "Industry"
+
+action_a = {
+name = "We will not forget this..."
+ai_chance = 100
+command = { type = dissent value = 1 }
+command = { type = relation which = URU value = -60 }
+command = { type = end_trades which = GER where = URU }
+}
+
+action_b = {
+name = "War will solve this!"
+ai_chance = 0
+command = { type = dissent value = 1 }
+command = { type = belligerence which = GER value = 1  }
+command = { type = war which = URU }
+}
+}
+
+
+
+event = {
+id = 90012
+country = ROM
+
+name = "Ministerial concerns"
+desc = "Several of our ministers, including prime minister A.C. Cuza, have expressed concern about the planned nationalization of the oilfields and fear moving against Germany. They also point out the promises made by the german ambassador and urge our great leader to find a compromise."
+style = 2
+picture = "Politics6"
+
+action_a = {
+name = "Cowards!"
+command = { type = event which = 90006 where = ROM when = 5  }
+command = { type = event which = 90018 where = ROM when = 10  }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 90013
+random = no
+country = ROM
+one_action = yes
+style = 2
+picture = "FAUD1"
+
+name = "Assassination attempt"
+desc = "An assassin tried to shoot our great Leader today. Luckily his bodyguards intervened in time and he is unharmed. The assasin was killed in the exchange, but sadly with nothing on him to allow us to identify him."
+
+
+action_a = {
+name = "This was the work of a lone madman"
+ai_chance = 1
+command = { type = event which = 90006 where = ROM when = 5  }
+command = { type = trigger which = 90014 }
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+name = "The attacker must surely have been a Jew."
+ai_chance = 2
+command = { type = event which = 90006 where = ROM when = 5  }
+command = { type = event which = 90015 where = ROM when = 1  }
+command = { type = trigger which = 90014 }
+command = { type = dissent value = 4 }
+}
+
+action_c = {
+name = "It must have been a monarchist"
+ai_chance = 20
+command = { type = event which = 90006 where = ROM when = 5  }
+command = { type = event which = 90016 where = ROM when = 1  }
+command = { type = trigger which = 90014 }
+command = { type = dissent value = 3 }
+}
+
+action_d = {
+name = "Obviously a foreign agent. But from where ?"
+ai_chance = 80
+command = { type = event which = 90006 where = ROM when = 5  }
+command = { type = event which = 90017 where = ROM when = 1  }
+command = { type = trigger which = 90014 }
+command = { type = relation which = HUN value = -15 }
+command = { type = relation which = BUL value = -15 }
+command = { type = relation which = GER value = -15 }
+command = { type = relation which = AUS value = -15 }
+command = { type = relation which = UKR value = -15 }
+command = { type = relation which = FRA value = -15 }
+command = { type = relation which = RUS value = -15 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 90014
+country = GER
+
+name = "Assassination failed"
+desc = "Unfortunately, our assassin has failed. We knew killing Codreanu was a long shot, but it was worth the try. We can expect Codreanu to nationalize the oilfields any day now. If he also stops the shipments, we may have no choice but to invade."
+style = 2
+picture = "assassinationofker"
+
+action_a = {
+name = "It was worth a try"
+command = {  }
+}
+}
+
+########
+#Street violence
+########
+
+event = {
+id = 90015
+country = ROM
+
+name = "Violence against Jews"
+desc = "News that Codreanu's attacker had been a Jew has spread like wildfire. Paramilitary Iron Guard groups have begun attacking Jewish businesses and neighbourhoods and each day the violence and deathtoll is rising."
+style = 2
+picture = "Striker"
+
+action_a = {
+name = "A.C. Cuza order police to end violence"
+ai_chance = 20
+command = { type = dissent value = 1 }
+command = { type = money value = -5 }
+command = { type = supplies value = -20 }
+command = { type = manpowerpool value = -1 }
+command = { type = event which = 90020 where = ROM when = 2  }
+}
+
+action_b = {
+name = "The Jews are the enemy of our people"
+ai_chance = 80
+command = { type = dissent value = 3 }
+command = { type = money value = -25 }
+command = { type = supplies value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = event which = 90019 where = ROM when = 2  }
+}
+}
+
+event = {
+id = 90016
+country = ROM
+
+name = "Violence against suspected monarchists"
+desc = "News that Codreanu's attacker had been a supporter of the old regime has spread like wildfire. Paramilitary Iron Guard groups have begun attacking all those known or suspected to have ties with the ex King or his supporters, as well as settling some old scores in the process"
+style = 2
+picture = "Striker"
+
+action_a = {
+name = "A.C. Cuza order police to end violence"
+ai_chance = 40
+command = { type = dissent value = 1 }
+command = { type = money value = -5 }
+command = { type = supplies value = -20 }
+command = { type = manpowerpool value = -1 }
+command = { type = event which = 90020 where = ROM when = 2  }
+}
+
+action_b = {
+name = "Nothing is worse than traitors in our midst"
+ai_chance = 60
+command = { type = dissent value = 3 }
+command = { type = money value = -25 }
+command = { type = supplies value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = event which = 90019 where = ROM when = 2  }
+}
+}
+
+event = {
+id = 90017
+country = ROM
+
+name = "Violence against foreigners"
+desc = "Individuals and businesses belonging to foreigners, as well as to various ethnic minorities, have begun to come under increasing attack in the streets following the failed plot against Codreanu. Worse, paramilitary Iron Guard groups seem to be at the forefront of such actions "
+style = 2
+picture = "Striker"
+
+action_a = {
+name = "A.C. Cuza order police to end violence"
+ai_chance = 50
+command = { type = dissent value = 1 }
+command = { type = money value = -5 }
+command = { type = supplies value = -20 }
+command = { type = manpowerpool value = -1 }
+command = { type = event which = 90020 where = ROM when = 2  }
+}
+
+action_b = {
+name = "Foreigners are a Plague upon our Nation"
+ai_chance = 50
+command = { type = dissent value = 3 }
+command = { type = money value = -25 }
+command = { type = supplies value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = event which = 90019 where = ROM when = 2  }
+}
+}
+
+event = {
+id = 90018
+country = ROM
+
+name = "Bribery scandal"
+desc = "Party Vice President Sima has accused several ministers, including Prime Minister A.C. Cuza, of receiving bribes and working for Germany, calling them 'the worse kind of traitors' at last nights party meeting. Meanwhile Cuza accused Sima of being a power-hungry backstabber who would sell out his own mother or become a Jew if he thought it might help him. What shall we do ?"
+style = 2
+picture = "Politics5"
+
+action_a = {
+name = "Nothing, but lies !"
+ai_chance = 10
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+name = "Sima is right. A.C. Cuza is a traitor"
+ai_chance = 90
+command = { type = dissent value = 2 }
+command = { type = event which = 90020 where = ROM when = 2  }
+}
+}
+
+
+############
+#
+#Execution of Cuza
+#
+############
+event = {
+id = 90019
+country = ROM
+
+name = "Cuza protests"
+desc = "Prime Minister A.C. Cuza has spoken out against 'the indiscriminate violence perpetrated by paramilitary groups affiliated with the party', and even had the audacity to call for those responsable to be 'brought before justice'. According to party VP Sima, he even began secret talks with party leaders about his bid for party presidency."
+style = 2
+picture = "politics5"
+
+action_a = {
+name = "This traitor must be stopped"
+command = { type = dissent value = 1 }
+command = { type = event which = 90020 where = ROM when = 2  }
+}
+}
+
+event = {
+id = 90020
+country = ROM
+
+name = "Execution of A.C. Cuza"
+desc = "Prime Minister A.C. Cuza has prooven to be a liability and a threat to our great leader's authority, and, by extension, a threat to the Romanian nation."
+style = 2
+picture = "massterror2"
+
+action_a = {
+name = "There is only one fate for enemies of the people"
+command = { type = dissent value = 1 }
+command = { type = headofgovernment which = 22074 } #Sima
+command = { type = sleepminister which = 22002 } #A.C. Cuza
+}
+}
+
+
+
+###################
+#
+# War between Germany and the Commune
+#
+####################
+
+event = {
+id = 90021
+tag = { ROM URU }
+
+trigger = {
+war = { country = FRA country = GER }
+NOT = { 
+war = { country = ROM country = GER }
+war = { country = URU country = GER } 
+}
+OR = {
+AND = {
+country = ROM
+event = 90007
+}
+AND = {
+country = URU
+event = 90010
+}
+}
+}
+
+name = "Stopping the oil shipments"
+desc = "With the Germans and the Syndicalists tearing each other to pieces, we can finally keep our oil to ourselves."
+style = 2
+picture = "Industry"
+
+date = { day = 0 month = february year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+name = "Close the tap"
+ai_chance = 95
+command = { type = end_trades which = ROM where = GER }
+command = { type = end_trades which = URU where = GER }
+command = { type = dissent value = -5 }
+command = { type = relation which = GER value = -10 }
+command = { type = trigger which = 90022 }
+}
+
+action_b = {
+name = "We must maintain good relations with Germany"
+ai_chance = 5
+command = { type = dissent value = 4 }
+command = { type = relation which = GER value = 30 }
+}
+}
+
+event = {
+id = 90022
+country = GER
+
+name = "Romania declared the Bucharest Treaty dead."
+desc = "In our darkest hour the treacherous Romanians decide to stab us in the back and stop their oil shipments. One day they will pay for their treachery."
+style = 2
+picture = "Industry"
+
+action_a = {
+name = "Verdammt"
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 90023
+country = ROM
+style = 2
+picture = "IorgaNicolaus"
+
+trigger = {
+random = 20
+government = fascist
+atwar = no
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 80
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Nicolae Iorga"
+desc = "Nicolae Iorga, a prominent Romanian historian and intellectual, has been a thorn in the side of the Iron Guard since we've taken over. Rumor has it that he and others like him have founded a secret, intellectual group, the Bucharest Circle."
+
+action_a = {
+ai_chance = 70
+name = "Iorga Must be Stopped"
+command = { type = sleepevent which = 90025 }
+}
+
+action_b = {
+ai_chance = 30
+name = "They Don't Sound Like a Threat"
+command = { type = sleepevent which = 90024 }
+}
+}
+
+event = {
+id = 90024
+country = ROM
+style = 2
+picture = "IorgaNicolaus"
+
+trigger = { 
+event = 90023 
+government = fascist
+}
+
+date = { day = 0 month = august year = 1936 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Breakup of the Bucharest Circle"
+desc = "After being tipped off to the meeting place of the Bucharest Circle, we raided the building they we're using as a hideout and imprisoned most of the members."
+
+action_a = {
+name = "Exectute Iorga, imprison the others"
+command = { type = dissent value = 3 }
+command = { type = research_mod value = -2 } #Cause the smart people you just imprisoned#
+}
+}
+
+event = {
+id = 90025
+country = ROM
+style = 2
+picture = "IorgaNicolaus"
+
+trigger = { 
+event = 90023 
+government = fascist
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Bucharest Circle"
+desc = "Members of the Bucharest Circle have begun publishing pamphlets, criticizing the government and causing dissent among the people. If we wait any longer, they could plant the seed of revolution."
+
+action_a = {
+ai_chance = 75
+name = "Break up the Circle and Execute Iorga"
+command = { type = dissent value = 5 }
+command = { type = research_mod value = -2 } #Cause the smart people you just killed#
+command = { type = setflag which = ROM_BUC }
+}
+
+action_b = {
+ai_chance = 25
+name = "Leave them be"
+command = { type = dissent value = -3 }
+command = { type = domestic which = democratic value = 1 }
+command = { type = setflag which = ROM_BUC }
+}
+}
+
+event = {
+id = 90026
+persistent = yes
+country = ROM
+style = 2
+picture = "Romunion"
+
+trigger = {
+day = 24
+month = 1
+NOT = {
+day = 25
+}
+NOT = {
+month = 2
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Union Day"
+desc = "Union Day represents the Union of the Principalities of Moldova and Wallachia on the 24th of January, 1859, when Alexandru Ioan Cuza was elected as 'Domnitor' in both principalities as a way to bypass the ruling that the two cannot unite in a single state. It is regarded as a National Holiday in Romania."
+
+action_a = {
+name = "Everything for the Fatherland!"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 90027
+persistent = yes
+country = URU
+style = 2
+picture = "Romunion"
+
+trigger = {
+day = 24
+month = 1
+NOT = {
+day = 25
+}
+NOT = {
+month = 2
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Union Day"
+desc = "Union Day represents the Union of the Principalities of Moldova and Wallachia on the 24th of January, 1859, when Alexandru Ioan Cuza was elected as 'Domnitor' in both principalities as a way to bypass the ruling that the two cannot unite in a single state. It is regarded as a National Holiday in Romania."
+
+action_a = {
+name = "Everything for the Fatherland!"
+command = { type = dissent value = -1 }
+}
+}
+
+
+
+######################
+#
+# Civil War
+#
+######################
+
+event = {
+id = 90028
+random = no
+country = ROM
+
+trigger = {
+random = 60
+NOT = {
+exists = URU
+atwar = ROM
+}
+OR = {
+flag = ROM_BUC
+dissent = 20
+}
+government = fascist
+}
+
+name = "A conspiracy!"
+desc = "The members of the Bucharest Circle have spread the seeds of an anti-Iron Guard revolution. The people in the north of the country have taken arms against our government!"
+style = 2
+picture = "Romcivwar"
+
+date = { day = 0 month = january year = 1937 }
+offset = 80
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The traitors!"
+command = { type = demobilize which = land when = 0 where = 0 value = 0 } #remove all land units
+command = { type = demobilize which = air when = 0 where = 0 value = 0 } #remove all air units
+command = { type = leave_alliance }
+command = { type = independence which = URU value = 1 when = 0 }
+command = { type = dissent value = 10 }
+command = { type = secedeprovince which = URU value = 302 }
+command = { type = secedeprovince which = URU value = 303 }
+command = { type = secedeprovince which = URU value = 304 }
+command = { type = secedeprovince which = URU value = 305 }
+command = { type = secedeprovince which = URU value = 306 }
+command = { type = secedeprovince which = URU value = 297 }
+command = { type = secedeprovince which = URU value = 298 }
+command = { type = secedeprovince which = URU value = 299 }
+command = { type = secedeprovince which = URU value = 313 }
+command = { type = secedeprovince which = URU value = 292 }
+command = { type = secedeprovince which = URU value = 293 }
+command = { type = secedeprovince which = URU value = 300 }
+command = { type = secedeprovince which = URU value = 301 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = trigger which = 90029 }
+}
+}
+
+
+
+event = {
+id = 90029
+random = no
+country = URU
+
+name = "The Monarchists have rebelled"
+desc = "Under the influence of the Bucharest Circle an attempt to establish a Monarchist Romania, free from Iron Guard oppression, has been  made in the north of the country."
+style = 2
+
+action_a = {
+name = "Horia Sima and Corneliu Zelea Codreanu must fall!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 22331 } #Carol II
+command = { type = headofgovernment which = 22302 } #Tatarescu
+command = { type = foreignminister which = 22358 } #Titulescu
+command = { type = armamentminister which = 22387 } #Bratianu
+command = { type = ministerofsecurity which = 22305 } #Micescu
+command = { type = ministerofintelligence which = 22306 } #Moruzov
+command = { type = chiefofstaff which = 22425 } #Ilcusu
+command = { type = chiefofarmy which = 22442 } #Sanatescu
+command = { type = chiefofnavy which = 22452 } #Caranfil
+command = { type = chiefofair which = 22310 } #Jienescu
+command = { type = non_aggression which = URU where = HUN }
+command = { type = non_aggression which = URU where = SER }
+command = { type = non_aggression which = URU where = MTN }
+command = { type = non_aggression which = URU where = GRE }
+command = { type = ai which = "kaiserreich/Romania.ai" }
+command = { type = supplies value = 10000 }
+command = { type = oilpool value = 25000 }
+command = { type = metalpool value = 25000 }
+command = { type = energypool value = 50000 }
+command = { type = rarematerialspool value = 5000 }
+command = { type = control which = URU value = 302 }
+command = { type = control which = URU value = 303 }
+command = { type = control which = URU value = 304 }
+command = { type = control which = URU value = 305 }
+command = { type = control which = URU value = 306 }
+command = { type = control which = URU value = 297 }
+command = { type = control which = URU value = 298 }
+command = { type = control which = URU value = 299 }
+command = {  type = capital which =  297 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = manpowerpool value = 300 }
+command = { type = war which = ROM }
+command = { type = dissent value = -10 }
+command = { type = set_relation which = GER value = 60 }
+command = { type = set_relation which = RUS value = 100 }
+command = { type = set_relation which = CAN value = 70 }
+command = { type = set_relation which = FRA value = -70 }
+command = { type = set_relation which = ENG value = -50 }
+command = { type = set_relation which = RSI value = -70 }
+command = { type = set_relation which = POL value = 60 }
+command = { type = set_relation which = HUN value = 10 }
+command = { type = set_relation which = UKR value = 50 }
+command = { type = set_relation which = BUL value = -10 }
+command = { type = set_relation which = SER value = 50 }
+command = { type = secedeprovince which = ROM value = 314 }
+command = { type = secedeprovince which = ROM value = 310 }
+command = { type = secedeprovince which = ROM value = 309 }
+command = { type = secedeprovince which = ROM value = 311 }
+command = { type = secedeprovince which = ROM value = 316 }
+command = { type = secedeprovince which = ROM value = 308 }
+command = { type = secedeprovince which = ROM value = 315 }
+command = { type = secedeprovince which = ROM value = 312 }
+command = { type = secedeprovince which = ROM value = 289 }
+command = { type = secedeprovince which = ROM value = 291 }
+command = { type = secedeprovince which = ROM value = 295 }
+command = { type = secedeprovince which = ROM value = 285 }
+command = { type = secedeprovince which = ROM value = 286 }
+}
+}
+
+
+####Foreign interventions
+event = {
+id = 90030
+random = no
+country = SER
+style = 2
+
+decision = {
+atwar = no
+war = { country = ROM country = URU }
+NOT = {    
+ispuppet = ROM
+ispuppet = URU
+ispuppet = SER 
+}
+control = { province = 338 data = SER }
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 500
+money = 50
+}
+
+trigger = {
+atwar = no
+war = { country = ROM country = URU }
+NOT = {    
+ispuppet = ROM
+ispuppet = URU
+ispuppet = SER 
+}
+control = { province = 338 data = SER }
+}
+
+name = "Romanian civil war"
+desc = "Brutal civil war has erupted in Romania after the unsuccesful domestic policy of the Iron Guard brought general dissatisfaction amongst the population. The general dissatisfaction was used by a group of pro-monarchist officers to seize control of Besserabia and the northern parts of Romania. Who shall Serbia support?"
+decision_picture = "decision_foreign_volunteers"
+picture = "foreign_volunteers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "The Legionnaries!"
+ai_chance = 40
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = ROM value = 20 }
+command = { type = relation which = URU value = -20 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -10 }
+command = { type = supplies value = -500 }
+command = { type = trigger which = 90033 } #ROM
+command = { type = belligerence which = SER value = 1 }
+}
+
+action = {
+name = "The Monarchists!"
+ai_chance = 40
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = ROM value = -20 }
+command = { type = relation which = URU value = 20 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -10 }
+command = { type = supplies value = -500 }
+command = { type = trigger which = 90034 } #URU
+command = { type = belligerence which = SER value = 1 }
+}
+
+action = {
+name = "Stay out of it"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+command = { type = belligerence which = SER value = -1 }
+}
+
+action = {
+ai_chance = 0
+name = "Intervene directly in favour of the Legionnaries!"
+command = { type = alliance which = ROM }
+}
+
+action = {
+ai_chance = 0
+name = "Intervene directly in favour of the Monarchists!"
+command = { type = alliance which = URU }
+}
+}
+
+
+event = {
+id = 90031
+random = no
+country = AUS
+style = 2
+
+decision = {
+atwar = no
+war = { country = ROM country = URU }
+NOT = {    
+ispuppet = ROM
+ispuppet = URU
+ispuppet = SER 
+}
+control = { province = 195 data = AUS }
+}
+
+decision_trigger = {
+manpower = 15
+supplies = 500
+money = 50
+}
+
+trigger = {
+atwar = no
+war = { country = ROM country = URU }
+NOT = {    
+ispuppet = ROM
+ispuppet = URU
+ispuppet = SER 
+}
+control = { province = 195 data = AUS }
+}
+
+name = "Romanian civil war"
+desc = "Brutal civil war has erupted in Romania after the unsuccesful domestic policy of the Iron Guard brought general dissatisfaction amongst the population. The general dissatisfaction was used by a group of pro-monarchist officers to seize control of Besserabia and the northern parts of Romania. Who shall Austria support?"
+decision_picture = "decision_foreign_volunteers"
+picture = "foreign_volunteers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+name = "The Legionnaries!"
+ai_chance = 20
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = ROM value = 20 }
+command = { type = relation which = URU value = -20 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -15 }
+command = { type = supplies value = -500 }
+command = { type = trigger which = 90035 } #ROM
+command = { type = belligerence which = AUS value = 1 }
+}
+
+action_b = {
+name = "The Monarchists!"
+ai_chance = 20
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = ROM value = -20 }
+command = { type = relation which = URU value = 20 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -15 }
+command = { type = supplies value = -500 }
+command = { type = trigger which = 90036 } #URU
+command = { type = belligerence which = AUS value = 1 }
+}
+
+action_c = {
+name = "Stay out of it"
+ai_chance = 60
+command = { type = domestic which = interventionism value = -1 }
+command = { type = belligerence which = AUS value = -1 }
+}
+}
+
+
+event = {
+id = 90032
+random = no
+country = UKR
+style = 2
+
+decision = {
+atwar = no
+war = { country = ROM country = URU }
+NOT = {    
+ispuppet = ROM
+ispuppet = URU
+ispuppet = SER 
+}
+control = { province = 617 data = UKR }
+}
+
+decision_trigger = {
+manpower = 15
+supplies = 500
+money = 50
+}
+
+trigger = {
+atwar = no
+war = { country = ROM country = URU }
+NOT = {    
+ispuppet = ROM
+ispuppet = URU
+ispuppet = SER 
+}
+control = { province = 617 data = UKR }
+}
+
+name = "Romanian civil war"
+desc = "Brutal civil war has erupted in Romania after the unsuccesful domestic policy of the Iron Guard brought general dissatisfaction amongst the population. The general dissatisfaction was used by a group of pro-monarchist officers to seize control of Besserabia and the northern parts of Romania. This present us with an opportunity to destroy the Iron Guard by offering support to the pro-monarchist circles. Shall we help them?"
+decision_picture = "decision_foreign_volunteers"
+picture = "foreign_volunteers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Of course!"
+ai_chance = 80
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = ROM value = -20 }
+command = { type = relation which = URU value = 20 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -15 }
+command = { type = supplies value = -500 }
+command = { type = trigger which = 90037 } #URU
+command = { type = belligerence which = UKR value = 1 }
+}
+
+action_b = {
+name = "We're not interested in this region"
+ai_chance = 20
+command = { type = domestic which = interventionism value = -1 }
+command = { type = belligerence which = UKR value = -1 }
+}
+}
+
+event = {
+id = 90033
+random = no
+country = ROM
+
+name = "Serbian Intervention"
+desc = "Serbia believes that our success in the present struggle for Romania is essential for the continued stability of the Balkans and has sent us considerable amounts of supplies and military 'experts' to help us in the fight."
+style = 2
+picture = "SCW_Soviet Intervention"
+
+action_a = {
+name = "Great!"
+command = { type = money value = 100 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 2500 }
+command = { type = add_division which = "Brigada Sârba" value = infantry when = 8 }
+command = { type = add_division which = "Brigada Banateana" value = infantry when = 8 }
+}
+}
+
+
+event = {
+id = 90034
+random = no
+country = URU
+
+name = "Serbian Intervention"
+desc = "Serbia believes that our success in the present struggle for Romania is essential for the continued stability of the Balkans and has sent us considerable amounts of supplies and military 'experts' to help us in the fight."
+style = 2
+picture = "SCW_Soviet Intervention"
+
+action_a = {
+name = "Great!"
+command = { type = money value = -100 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 2500 }
+command = { type = add_division which = "Brigada Sârba" value = infantry when = 8 }
+command = { type = add_division which = "Brigada din Timoc" value = infantry when = 8 }
+}
+}
+
+
+event = {
+id = 90035
+random = no
+country = ROM
+
+name = "Austrian Intervention"
+desc = "Austria believes that our success in the present struggle in Romania is essential for the continued stability of the Balkans and has sent us considerable amounts of supplies and military 'experts' to help us in the fight."
+style = 2
+picture = "Wehrmacht"
+
+action_a = {
+name = "Great!"
+command = { type = money value = -100 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 2500 }
+command = { type = add_division which = "Brigada Austriaca" value = infantry when = 8 }
+command = { type = add_division which = "Interceptoare Austreci" value = interceptor when = 7 }
+}
+}
+
+
+event = {
+id = 90036
+random = no
+country = URU
+
+name = "Austrian Intervention"
+desc = "Austria believes that our success in the present struggle in Romania is essential for the continued stability of the Balkans and has sent us considerable amounts of supplies and military 'experts' to help us in the fight."
+style = 2
+picture = "Wehrmacht"
+
+action_a = {
+name = "Great!"
+command = { type = money value = -100 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 2500 }
+command = { type = add_division which = "Brigada Austriaca" value = infantry when = 8 }
+command = { type = add_division which = "Interceptoare Austreci" value = interceptor when = 7 }
+}
+}
+
+
+event = {
+id = 90037
+random = no
+country = URU
+
+name = "Ukrainian Intervention"
+desc = "Ukraine believes that our success in the present struggle in Romania is essential for the continued stability of the Balkans and has sent us considerable amounts of supplies and military 'experts' to help us in the fight."
+style = 2
+picture = "Wehrmacht"
+
+action_a = {
+name = "Great!"
+command = { type = money value = -100 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 2500 }
+command = { type = add_division which = "Brigada Odessa" value = infantry when = 8 }
+command = { type = add_division which = "Brigada Tiraspol" value = infantry when = 8 }
+command = { type = add_division which = "Brigada Balta" value = infantry when = 8 }
+}
+}
+
+#########################################################################
+#  Romanian Civil War - Russian Intervention
+#########################################################################
+event = {
+id = 90038
+random = no
+country = RUS
+
+decision = {
+war = { country = ROM country = URU }
+OR = {
+AND = {
+NOT = { exists = TRA }
+control = { province = 694 data = RUS }
+}
+AND = {
+exists = TRA
+control = { province = 694 data = TRA }
+OR = {
+puppet = { country = TRA country = RUS }
+alliance = { country = RUS country = TRA }
+}
+}
+}
+NOT = {
+flag = RUS_ISO
+government = communist
+exists = SOV
+OR = {
+war = { country = RUS country = URU }
+war = { country = RUS country = ROM }
+}
+}
+}
+
+decision_trigger = {
+manpower = 15
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = ROM country = URU }
+OR = {
+AND = {
+NOT = { exists = TRA }
+control = { province = 694 data = RUS }
+}
+AND = {
+exists = TRA
+control = { province = 694 data = TRA }
+OR = {
+puppet = { country = TRA country = RUS }
+alliance = { country = RUS country = TRA }
+}
+}
+}
+NOT = {
+flag = RUS_ISO
+government = communist
+exists = SOV
+OR = {
+war = { country = RUS country = URU }
+war = { country = RUS country = ROM }
+}
+}
+}
+
+name = "Civil War in Romania!"
+desc = "Civil War has erupted in Romania against the dictatorship of Horia Sima and Corneliu Zelea Codreanu. Shall Russia support any of the factions?"
+
+style = 2
+picture = "soviet_reinforcements"
+
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+name = "Support the Iron Guard" # Send material and volunteers
+ai_chance = 10
+trigger = {
+government = fascist
+}
+command = { type = relation which = ROM value = 20 }
+command = { type = relation which = URU value = -20 }
+command = { type = relation which = FRA value = -5 }
+command = { type = relation which = ENG value = -5 }
+command = { type = relation which = ITA value = -5 }
+command = { type = relation which = GER value = -5 }
+command = { type = manpowerpool value = -15 }
+command = { type = supplies value = -1000 }
+command = { type = money value = -100 }
+command = { type = trigger which = 90039    }
+command = { type = belligerence which = RUS value = 1 }
+}
+
+action_b = {
+name = "Support the Monarchists" # Send material and volunteers
+ai_chance = 70
+trigger = {
+NOT = { 
+government = fascist 
+}
+}
+command = { type = relation which = URU value = 20 }
+command = { type = relation which = ROM value = -20 }
+command = { type = relation which = ITA value = 5 }
+command = { type = relation which = GER value = 5 }
+command = { type = manpowerpool value = -15 }
+command = { type = supplies value = -1000 }
+command = { type = money value = -100 }
+command = { type = trigger which = 90040   }
+command = { type = belligerence which = RUS value = 1 }
+}
+
+action_c = {
+name = "Romania is of no interest to Russia"
+ai_chance = 5
+command = { type = relation which = URU value = -20 }
+command = { type = relation which = ROM value = 20 }
+command = { type = dissent value = 2 }
+command = { type = belligerence which = RUS value = -1 }
+}
+}
+
+
+
+
+event = {
+id = 90039
+random = no
+country = ROM
+
+name = "Russian Aid Arrives!"
+desc = "Russia believes that our success in the present struggle in Romania is essential for the continued stability of Europe, and has sent us considerable amounts of supplies and military 'experts' to help us in the fight."
+
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!"
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 1500 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+}
+}
+
+event = {
+id = 90040
+random = no
+country = URU
+
+name = "Russian Aid Arrives!"
+desc = "Russia believes that our success in the present struggle in Romania is essential for the continued stability of Europe, and has sent us considerable amounts of supplies and military 'experts' to help us in the fight."
+
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!"
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 1500 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+}
+}
+
+
+
+##################################################  #######################
+#  Romanian Civil War ends - An important experience
+##################################################  #######################
+event = {
+id = 90041
+random = no
+country = RUS
+style = 2
+
+trigger = {
+OR = {
+event = 90039
+event = 90040
+}
+OR = {
+event = 90049
+event = 90054
+}
+}
+
+name = "The End of the Romanian civil war"
+desc = "For good or ill, the Romanian war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+picture = "soviet_replacement"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = relation which = URU value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 90042
+random = no
+country = SER
+style = 2
+
+trigger = {
+OR = {
+event = 90033
+event = 90034
+}
+OR = {
+event = 90049
+event = 90054
+}
+}
+
+name = "The End of the Romanian civil war"
+desc = "For good or ill, the Romanian war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+picture = "soviet_replacement"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = relation which = URU value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 90043
+random = no
+country = AUS
+style = 2
+
+trigger = {
+OR = {
+event = 90035
+event = 90036
+}
+OR = {
+event = 90049
+event = 90054
+}
+}
+
+name = "The End of the Romanian civil war"
+desc = "For good or ill, the Romanian war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+picture = "soviet_replacement"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = relation which = URU value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 90044
+random = no
+country = UKR
+style = 2
+
+trigger = {
+event = 90037
+OR = {
+event = 90049
+event = 90054
+}
+}
+
+name = "The End of the Romanian civil war"
+desc = "For good or ill, the Romanian war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+picture = "soviet_replacement"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = relation which = URU value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 90045
+random = no
+country = URU
+
+trigger = {
+government = democratic
+event = 90049 
+}
+
+name = "The Military Provisional government and the approaching Election"
+desc = "The time has come to begin the preparations for the forthcoming general election. However, some have suggested that perhaps it would be better if the election was postponed and the military remained in control of the country, in the interest of stability of course."
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Continue with the preparations for the elections"
+ai_chance = 75
+command = { type = setflag which = URU_ELECT_YES }
+}
+
+action_b = {
+name = "Cancel the elections, and make the Military Provisional government permanent"
+ai_chance = 25
+command = { type = headofstate which = 22332 } #Carol II
+command = { type = headofgovernment which = 22342 }
+command = { type = foreignminister which =  22359 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = defense_lobby value = 10 }
+command = { type = set_domestic which = interventionism value = 10 }
+}
+}
+
+event = {
+id= 90046
+random = no
+country = URU
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+flag = URU_ELECT_YES
+}
+
+name = "First free elections"
+desc = "After several months of preparations, the provisional government has completed the arrangements for the first free election in the Kingdom of Romania since the civil war. There are 300 seats available in the national assembly and various political parties have begun their campaigns. But currently only three parties have a chance of gaining a majority and thus forming a new government. Which one shall prevail?"
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "National Peasants' Party wins elections"
+ai_chance = 40
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22302 }
+command = { type = foreignminister which = 22303 }
+command = { type = armamentminister which = 22304 }
+command = { type = ministerofsecurity which = 22305 }
+command = { type = ministerofintelligence which = 22306 }
+command = { type = clrflag which = URU_ELECT_YES }
+}
+
+action_b = {
+name = "Social Democratic Party wins elections"
+ai_chance = 40
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22355 }
+command = { type = foreignminister which = 22384 }
+command = { type = ministerofsecurity which = 22402 }
+command = { type = clrflag which = URU_ELECT_YES }
+}
+
+action_c = {
+name = "National Liberal Party wins elections"
+ai_chance = 20
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22341 }
+command = { type = foreignminister which = 22358 }
+command = { type = armamentminister which = 22387 }
+command = { type = ministerofsecurity which = 22399 }
+command = { type = ministerofintelligence which = 22413 }
+command = { type = clrflag which = URU_ELECT_YES }
+}
+
+action_d = {
+ai_chance =  0
+name = "The Army shall put an end to this chaotic democracy"
+command = { type = dissent value = 25 }
+command = { type = headofstate which = 22332 } #Carol II
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = defense_lobby value = 10 }
+command = { type = set_domestic which = interventionism value = 10 }
+command = { type = headofgovernment which = 22342 }
+command = { type = foreignminister which =  22359 }
+command = { type = clrflag which = URU_ELECT_YES }
+}
+}
+
+
+event = {
+id= 90047
+random = no
+country = URU
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+event = { id = 90046 days = 1480 }
+}
+
+name = "Parliamentary elections"
+desc = "The Parliament elected in the first free election after civil war has drawn to a close. There are 300 seats available in the national assembly and the various political parties have begun their campaigns. But currently only three parties have a chance of gaining a majority and thus forming a new government. Which one shall prevail?"
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "National Peasants' Party wins elections"
+ai_chance = 40
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22302 }
+command = { type = foreignminister which = 22303 }
+command = { type = armamentminister which = 22304 }
+command = { type = ministerofsecurity which = 22305 }
+command = { type = ministerofintelligence which = 22306 }
+}
+
+action_b = {
+name = "Social Democratic Party wins elections"
+ai_chance = 40
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22355 }
+command = { type = foreignminister which = 22384 }
+command = { type = ministerofsecurity which = 22402 }
+}
+
+action_c = {
+name = "National Liberal Party wins elections"
+ai_chance = 20
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22341 }
+command = { type = foreignminister which = 22358 }
+command = { type = armamentminister which = 22387 }
+command = { type = ministerofsecurity which = 22399 }
+command = { type = ministerofintelligence which = 22413 }
+}
+
+action_d = {
+ai_chance =  0
+name = "The Army shall put an end to this chaotic democracy"
+command = { type = dissent value = 25 }
+command = { type = headofstate which = 22332 } #Carol II
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = defense_lobby value = 10 }
+command = { type = set_domestic which = interventionism value = 10 }
+command = { type = headofgovernment which = 22342 }
+command = { type = foreignminister which =  22359 }
+}
+}
+
+event = {
+id= 90048
+random = no
+country = URU
+style = 2
+save_date = yes
+
+trigger = {
+government = democratic
+event = { id = 90047 days = 1480 }
+}
+
+name = "Parliamentary elections"
+desc = "The Parliament elected in the previous election has drawn to a close. There are 300 seats available in the national assembly and various political parties have begun their campaigns. But currently only three parties have a chance of gaining a majority and thus forming a new government. Which one shall prevail?"
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "National Peasants' Party wins elections"
+ai_chance = 40
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22302 }
+command = { type = foreignminister which = 22303 }
+command = { type = armamentminister which = 22304 }
+command = { type = ministerofsecurity which = 22305 }
+command = { type = ministerofintelligence which = 22306 }
+}
+
+action_b = {
+name = "Social Democratic Party wins elections"
+ai_chance = 40
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22355 }
+command = { type = foreignminister which = 22384 }
+command = { type = ministerofsecurity which = 22402 }
+}
+
+action_c = {
+name = "National Liberal Party wins elections"
+ai_chance = 20
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 22322 }
+command = { type = headofgovernment which = 22341 }
+command = { type = foreignminister which = 22358 }
+command = { type = armamentminister which = 22387 }
+command = { type = ministerofsecurity which = 22399 }
+command = { type = ministerofintelligence which = 22413 }
+}
+
+action_d = {
+ai_chance =  0
+name = "The Army shall put an end to this chaotic democracy"
+command = { type = dissent value = 25 }
+command = { type = headofstate which = 22332 } #Carol II
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = defense_lobby value = 10 }
+command = { type = set_domestic which = interventionism value = 10 }
+command = { type = headofgovernment which = 22342 }
+command = { type = foreignminister which =  22359 }
+}
+}
+
+
+
+event = {
+id = 90049
+random = no
+country = URU
+
+trigger = {
+event = 90028
+NOT  = {
+ispuppet = URU
+}
+OR = {
+war = { country = ROM country = URU }
+NOT  = {
+exists = ROM
+}
+}
+control = { province = 316 data = URU  }
+NOT  = {
+control = { province = 311 data = ROM }  ## Ploesti
+control = { province = 316 data = ROM  } ## Bucharest
+control = { province = 297 data = ROM } ## Iasi
+control = { province = 304 data = ROM  } ## Chisinev
+
+}
+}
+
+name = "Corneliu Zelea's dictatorship is defeated!"
+desc = "Bucharest and Ploesti along with rest of Romania has fallen before our brave soldiers. The remaining soldiers loyal to Corneliu Zelea are surrendering in droves, and the forces of order are retaking power in the streets of our major cities."
+style = 2
+picture = "kingdomromvic"
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Long live the Kingdom of Romania!"
+command = { type = inherit which = ROM }
+command = {  type = capital which =  316 }
+command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = interceptor when = 8 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = setflag which = URU_VIC }
+}
+}
+
+
+event = {
+id = 90050
+random = no
+country = URU
+
+trigger = {
+flag = URU_VIC
+NOT = {
+exists = ROM
+}
+exists = SER
+}
+
+name = "The Iron Guard Escapes to Serbia"
+desc = "Codreanu and the Iron Guard leadership were forced to flee to the Serbia to escape the wrath of the victorious royalist forces."
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 4
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 20
+name = "They better not return"
+command = { type = dissent value = 1 }
+command = { type = relation which = SER value = -10 }
+}
+
+action_b = {
+ai_chance = 80
+name = "Demand their extradition!"
+command = { type = dissent value = -1 }
+command = { type = relation which = SER value = -20 }
+command = { type = trigger which = 90051 }
+}
+}
+
+event = {
+id = 90051
+random = no
+country = SER
+
+name = "Romania demands extradition of Codreanu"
+desc = "With the civil war in Romania decided in favour of the royalist forces, the defeated leadership of the Iron Guard sought shelter in our homeland. Now the victorious royalists demand that we hand them to Romania, to face trials for their parricide. Shall we extradite them or not?"
+style = 2
+
+action_a = {
+ai_chance = 50
+name = "Extradite them!"
+command = { type = dissent value = 1 }
+command = { type = relation which = URU value = 50 }
+command = { type = trigger which = 90052 }
+}
+
+action_b = {
+ai_chance = 50
+name = "They will stay here!"
+command = { type = dissent value = -1 }
+command = { type = relation which = URU value = -20 }
+}
+}
+
+
+event = {
+id = 90052
+country = URU
+style = 2
+picture = "Corneliu_Zelea_Codreanu"
+
+name = "Leadership of the Iron Guard extradited"
+desc = "Serbia, wishing to maintain positive relations with Romania, handed Codreanu and the entire leadership of the Iron Guard back to Romania. What should we do with these traitors to the Romanian state?"
+
+action_a = {
+name = "Hang them high!"
+ai_chance = 70
+command = { type = dissent value = -2 }
+command = { type = sleepminister which = 22353 }
+command = { type = sleepminister which = 22354 }
+command = { type = sleepminister which = 22382 }
+command = { type = sleepminister which = 22410 }
+command = { type = sleepminister which = 22307 }
+command = { type = sleepminister which = 22348 }
+command = { type = sleepminister which = 22376 }
+command = { type = sleepminister which = 22001 }
+command = { type = sleepminister which = 22002 }
+command = { type = sleepminister which = 22003 }
+command = { type = sleepminister which = 22007 }
+command = { type = sleepminister which = 22032 }
+command = { type = sleepminister which = 22034 }
+command = { type = sleepminister which = 22054 }
+command = { type = sleepleader which = 4303 }
+}
+
+action_b = {
+name = "Imprison them for the rest of their lives!"
+ai_chance = 30
+command = { type = dissent value = 4 }
+}
+}
+
+
+event = {
+id = 90053
+random = no
+country = URU
+
+trigger = {
+flag = URU_VIC
+control = { province = 316 data = URU  }
+}
+
+name = "The Government returns to Bucharest"
+desc = "After years in exile, the rightful government of the Kingdom of Romania has returned to Bucharest."
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The capital city is Bucharest, once again"
+command = { type = capital which = 316 } #Bucharest
+command = { type = dissent value = -1 }
+}
+}
+
+
+event = {
+id = 90054
+random = no
+country = ROM
+
+trigger = {
+event = 90028
+NOT  = {
+ispuppet = ROM
+}
+OR = {
+war = { country = ROM country = URU }
+NOT  = {
+exists = URU
+}
+}
+control = { province = 316 data = ROM  }
+NOT  = {
+control = { province = 311 data = URU }  ## Ploesti
+control = { province = 316 data = URU  } ## Bucharest
+control = { province = 297 data = URU } ## Iasi
+control = { province = 304 data = URU  } ## Chisinev
+}
+}
+
+name = "Royalist coup crushed!"
+desc = "Iasi and Chisinev along with the rest of Moldova has fallen before our brave soldiers. The remaining soldiers loyal to the treacherous royalists are surrendering in droves, and our forces are retaking power in the streets of our major cities."
+style = 2
+picture = "ironguardvic"
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Long live the Iron Guard!"
+command = { type = inherit which = URU }
+command = {  type = capital which =  316 }
+command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = interceptor when = 8 }
+command = { type = add_division value = destroyer when = 4 }
+}
+}
+
+
+####Victory of Socialism
+event = {
+id = 90055
+random = no
+country = UKR
+style = 2
+
+decision = {
+government = communist
+exists = URU
+NOT = {
+government = { type = communist country = URU }
+ispuppet = URU
+exists = ROM
+atwar = UKR
+alliance = { country = UKR country = URU }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+government = communist
+exists = URU
+NOT = {
+government = { type = communist country = URU }
+ispuppet = URU
+exists = ROM
+atwar = UKR
+alliance = { country = UKR country = URU }
+}
+}
+
+name = "Spread the revolution into Romania?"
+desc = "The Kingdom of Romania has succesfully emerged from the civil war with the Iron Guard as the victor. Currently this newborn state is very vulnerable and it wouldn´t be hard to bring it into our sphere of influence using widespread discontent in the rural areas of Romania."
+picture = "spread_revolution"
+decision_picture = "decision_spread_revolution"
+
+date = { day = 0 month = january year = 1937 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Support revolutionary elements"
+ai_chance = 70
+command = { type = event which = 90056 where = URU when = 15 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action_b = {
+name = "No need for this"
+ai_chance = 30
+command = { type = relation which = URU value = 30 }
+}
+}
+
+event = {
+id = 90056
+random = no
+country = URU
+style = 2
+
+name = "General unrests"
+desc = "Agents supported by shipments of weapons from Ukraine have caused widespread unrest in the rural parts of our homeland. The large scale of this unrest prevents a solution via internal security so the army was sent to help maintain order, or so we hope..."
+picture = "soviet_law"
+
+action_a = {
+name = "The government collapses before the revolutionary masses"
+ai_chance = 50
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = leave_alliance }
+command = { type = relation which = UKR value = 200 }
+command = { type = headofstate which = 22337 } #Mihai I
+command = { type = headofgovernment which = 22351 } #Groza
+command = { type = foreignminister which = 22381 } #Parhon
+command = { type = armamentminister which = 22398 } #Luca
+command = { type = ministerofsecurity which = 22412 } #Georgescu
+command = { type = ministerofintelligence which = 22421 } #Nicolai
+command = { type = chiefofstaff which = 22431 } #Lascar
+command = { type = chiefofarmy which = 22444 } #Rascu
+command = { type = chiefofnavy which = 22453 } #Iliesca
+command = { type = chiefofair which = 22461 } #Ionescu
+command = { type = dissent value = 10 }
+command = { type = trigger which = 90058 }
+}
+
+action_b = {
+name = "The army saves Romania from Syndicalism!"
+ai_chance = 50
+command = { type = trigger which = 90057 }
+command = { type = relation which = UKR value = -100 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 90057
+random = no
+country = UKR
+
+name = "Romanian revolution defeated!"
+desc = "Revolutionary agents supported by our government were unable to bring down the capitalist government of Romania. The only available options to us is either bring revolution to Romania by force or step back... for now."
+style = 2
+picture = "soviet_law"
+
+
+action_a = {
+name = "Oh well... better luck next time"
+ai_chance = 85
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+name = "Claim Bessarabia and declare war!"
+ai_chance = 15
+command = { type = dissent value = -5 }
+command = { type = addcore which = 302 }
+command = { type = addcore which = 303 }
+command = { type = addcore which = 304 }
+command = { type = addcore which = 305 }
+command = { type = addcore which = 306 }
+command = { type = war which = URU }
+}
+}
+
+event = {
+id = 90058
+random = no
+country = UKR
+
+name = "New Syndicalist Romania"
+desc = "Weakend roalist regime was unable to withstand heavy pressure from revolting proletariat nad was toppled. A new friendly socialist government has arisen in Romania..."
+style = 2
+picture = "soviet_law"
+
+action_a = {
+name = "Excellent !"
+command = { type = dissent value = -5 }
+command = { type = make_puppet which = URU }
+}
+}
+
+
+####Peace events
+event = {
+id = 90059
+random = no
+country = UKR
+
+trigger = {
+war = { country = UKR country = URU }
+control = { province = 302 data = UKR }
+control = { province = 303 data = UKR }
+control = { province = 304 data = UKR }
+control = { province = 305 data = UKR }
+control = { province = 306 data = UKR }
+control = { province = 297 data = UKR }
+NOT = {
+ispuppet = UKR
+ispuppet = URU
+alliance = { country = URU country = FRA }
+alliance = { country = URU country = RUS }
+alliance = { country = URU country = GER }
+alliance = { country = URU country = RUS }
+alliance = { country = URU country = SOV }
+alliance = { country = URU country = CSA }
+alliance = { country = URU country = USA }
+alliance = { country = URU country = TEX }
+
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = CSA }
+alliance = { country = UKR country = USA }
+alliance = { country = UKR country = TEX }
+}
+}
+
+name = "Romania is defeated"
+desc = "Our glorious army have succesfully conducted a full-scale invasion of Romania and now its armed forces are utterly vanquished. In hopes of preventing a full-scale assault on Bucharest, the Romanian leadership offered us a peace treaty, in which they promise to cede the disputed teritory of Moldavia to us."
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Accept the peace treaty."
+ai_chance = 100
+command = { type = trigger which = 90061 }
+command = { type = addcore which = 302 }
+command = { type = addcore which = 303 }
+command = { type = addcore which = 304 }
+command = { type = addcore which = 305 }
+command = { type = addcore which = 306 }
+}
+
+action_b = {
+name = "Never!"
+ai_chance = 0
+command = { type = dissent value = 5 }
+command = { type = addcore which = 302 }
+command = { type = addcore which = 303 }
+command = { type = addcore which = 304 }
+command = { type = addcore which = 305 }
+command = { type = addcore which = 306 }
+command = { type = belligerence which = UKR value = 1 }
+}
+}
+
+
+event = {
+id = 90060
+random = no
+country = URU
+
+trigger = {
+war = { country = UKR country = URU }
+control = { province = 620 data = URU }
+control = { province = 621 data = URU }
+control = { province = 626 data = URU }
+control = { province = 625 data = URU }
+control = { province = 619 data = URU }
+NOT = {
+ispuppet = UKR
+ispuppet = URU
+alliance = { country = URU country = FRA }
+alliance = { country = URU country = RUS }
+alliance = { country = URU country = GER }
+alliance = { country = URU country = RUS }
+alliance = { country = URU country = SOV }
+alliance = { country = URU country = CSA }
+alliance = { country = URU country = USA }
+alliance = { country = URU country = TEX }
+
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = CSA }
+alliance = { country = UKR country = USA }
+alliance = { country = UKR country = TEX }
+}
+}
+name = "Ukrainian invasion repelled"
+desc = "We have beaten the Ukrainian invaders and succesfully liberated the Romanian ancestral lands of Transnistria. Desperately, Ukraine is offering us peace knowing that there is literally nothing that could prevent our army from marching upon the capital of Ukraine, Kiev."
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Accept the peace offer"
+ai_chance = 5
+command = { type = trigger which = 90062 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "Accept the peace offer and claim Transnistria"
+ai_chance = 95
+command = { type = addcore which = 620 }
+command = { type = addcore which = 621 }
+command = { type = addcore which = 626 }
+command = { type = addcore which = 625 }
+command = { type = addcore which = 619 }
+command = { type = trigger which = 90063 }
+}
+
+action_c = {
+name = "Never!"
+ai_chance = 0
+command = { type = dissent value = 5 }
+command = { type = addcore which = 620 }
+command = { type = addcore which = 621 }
+command = { type = addcore which = 626 }
+command = { type = addcore which = 625 }
+command = { type = addcore which = 619 }
+command = { type = belligerence which = URU value = 1 }
+}
+}
+
+event = {
+id = 90061
+random = no
+country = URU
+
+name = "Humiliating peace"
+desc = "According to the peace treaty we have signed we must cede the territory of Moldavia to Ukraine."
+style = 2
+
+action_a = {
+name = "Alright!"
+ai_chance = 100
+command = { type = peace which = UKR }
+command = { type = secedeprovince which = UKR value = 302 }
+command = { type = secedeprovince which = UKR value = 303 }
+command = { type = secedeprovince which = UKR value = 304 }
+command = { type = secedeprovince which = UKR value = 305 }
+command = { type = secedeprovince which = UKR value = 306 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "Cancel the peace treaty, the turning point is near!"
+ai_chance = 0
+command = { }
+}
+}
+
+event = {
+id = 90062
+random = no
+country = UKR
+
+name = "Peace with Romania"
+desc = "According to the peace treaty we have signed we must withdraw our forces from the parts of Transnistria that are still in our hands, which will be declared a demilitarized zone."
+style = 2
+
+action_a = {
+name = "Alright!"
+ai_chance = 100
+command = { type = peace which = URU }
+}
+
+action_b = {
+name = "Cancel the peace treaty, the turning point is near!"
+ai_chance = 0
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 90063
+random = no
+country = UKR
+
+name = "Humiliating peace"
+desc = "The Romanian leadership has accepted our peace offer but only with the precondition that we hand control over Transnistria to Romania."
+style = 2
+
+action_a = {
+name = "Alright!"
+ai_chance = 90
+command = { type = peace which = URU }
+command = { type = secedeprovince which = URU value = 620 }
+command = { type = secedeprovince which = URU value = 621 }
+command = { type = secedeprovince which = URU value = 626 }
+command = { type = secedeprovince which = URU value = 625 }
+command = { type = secedeprovince which = URU value = 619 }
+command = { type = dissent value = 10 }
+}
+
+action_b = {
+name = "Cancel the peace treaty, the turning point is near!"
+ai_chance = 10
+command = { }
+}
+}
+
+#### Terror events in civil war
+event = {
+id = 90064
+country = ROM
+persistent = yes
+
+trigger = {
+random = 8
+war = { country = ROM country = URU }
+}
+
+name = "Iron Guard Terror"
+desc = "During the ongoing civil war some of our commanders started to use rather doubtful methods to permanently supress the civilian populations suspected of helping our mortal enemies. Such policies, even if they look drastic are neccesary in these dark times."
+style = 2
+picture = "massterror1"
+
+date = { day = 0 month = june year = 1936 }
+offset = 22
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "War is war" # Peasants won't appeciate
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 90065
+country = URU
+persistent = yes
+
+trigger = {
+random = 8
+war = { country = ROM country = URU }
+}
+
+name = "Monarchist terror"
+desc = "During the ongoing civil war some of our commanders started to use rather doubtful methods to permanently supress the civilian populations suspected of helping our mortal enemies. Such policies, even if they look drastic are neccesary in these dark times."
+style = 2
+picture = "massterror1"
+
+date = { day = 0 month = june year = 1936 }
+offset = 22
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "War is war" # Peasants won't appeciate
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 90066
+random = no
+country = URU
+
+decision = {
+NOT = {
+atwar = URU
+exists = ROM
+ispuppet = URU
+}
+control = { province = 307 data = BUL }
+NOT = { puppet = { country = BUL country = URU  } }
+NOT = {
+alliance = { country = URU country = BUL }
+alliance = { country = GER country = BUL }
+guarantee = { country = GER country = BUL }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+NOT = {
+atwar = URU
+exists = ROM
+ispuppet = URU
+}
+control = { province = 307 data = BUL }
+NOT = { puppet = { country = BUL country = URU  } }
+NOT = {
+alliance = { country = URU country = BUL }
+alliance = { country = GER country = BUL }
+guarantee = { country = GER country = BUL }
+}
+}
+
+name = "The Question of Dobrudzha"
+desc = "Since our crushing defeat in Weltkrieg confirmed by the Treaty of Bucharest, Dobrudzha is a part of the Kingdom of Bulgaria. The Romanian minority inhabiting this region is suffering from the constant attempts of Bulgarian magistrates supported from Sofia to completely eradicate any trace of Romanian identity from Dobrudzha. What shall we do?"
+style = 2
+picture = "Dobrudzha"
+decision_picture = "decision_dobrudza"
+
+date = { day = 0 month = march year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Send the proposition of a plebiscite to Bulgaria"
+ai_chance = 50
+command = { type = trigger which = 90067 }
+command = { type = relation which = BUL value = -20 }
+command = { type = addcore which = 307 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Send the army!"
+trigger = {
+alliance = { country = URU country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_c = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90076 }
+}
+
+action_d = {
+name = "We don`t need it"
+ai_chance = 20
+command = { type = relation which = BUL value = 20 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 90067
+random = no
+country = BUL
+style = 2
+
+name = "The Plebiscite of Dobrudzha"
+desc = "Since the end of Weltkrieg, Dobrudzha is a part of our homeland. The new Romanian government has the audacity to ask us to launch a plebiscite to determine the destiny of our rightful territory - Dobrudzha. No doubt, that in case of a real plebiscite, there is a chance that we will lose this province. What shall we do?"
+picture = "Dobrudzha"
+
+action_a = {
+name = "No way"
+ai_chance = 90
+command = { type = trigger which = 90068 }
+command = { type = dissent value = -2 }
+command = { type = relation which = URU value = -20 }
+}
+
+action_b = {
+name = "Allow it, but rig the results"
+ai_chance = 10
+command = { type = event which = 90070 where = URU when = 7 }
+}
+
+action_c = {
+name = "Allow the plebiscite"
+ai_chance = 0
+command = { type = relation which = URU value = 20 }
+command = { type = event which = 90069 where = BUL when = 7 }
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 90068
+country = URU
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Bulgaria refused the plebiscite!"
+desc = "The Bulgarian government doesn`t want to give the people a chance to choose their destiny! What will we do?"
+
+action_a = {
+ai_chance = 50
+name = "Send the army!"
+trigger = {
+alliance = { country = URU country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_b = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90076 }
+}
+
+action_c = {
+ai_chance = 20
+name = "No, we can`t do anything"
+command = { type = relation which = BUL value = 25 }
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 90069
+random = no
+country = BUL
+picture = "Dobrudzha"
+style = 2
+one_action = yes
+
+name = "Plebiscite in Dobrudzha"
+desc = "The people flock to the polling stations, and decide that:"
+ 
+action_a = {
+name = "Dobrudzha is Bulgarian!"
+ai_chance = 45
+command = { type = dissent value = -5 }
+command = { type = trigger which = 90070 }
+}
+
+action_b = {
+name = "Dobrudzha is Romanian!"
+ai_chance = 55
+command = { type = dissent value = 2 }
+command = { type = secedeprovince which = URU value = 307 }
+command = { type = removecore which = 307 }
+}
+}
+
+event = {
+id = 90070
+random = no
+country = URU
+style = 2
+
+name = "Bulgaria rigs the plebiscite!"
+desc = "The government of Bulgaria has seen reason and agreed to give the people of Dobrudzha a plebiscite to determine whether they want to rejoin Romania.  However, we have been informed that there are certain irregularities in the procedure which will probably result in a negative result of the plebiscite. What shall we do?"
+
+action_a = {
+ai_chance = 10
+name = "Never mind, we shall await the results"
+command = { type = trigger which = 90071 }
+}
+
+action_b = {
+ai_chance = 30
+name = "How dare they?  Send the army to claim Dobrudzha!"
+trigger = {
+alliance = { country = URU country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_c = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90076 }
+}
+}
+
+event = {
+id = 90071
+random = no
+country = BUL
+picture = "Dobrudzha"
+style = 2
+one_action = yes
+
+name = "Plebiscite in Dobrudzha"
+desc = "The people flock to the polling stations, which are heavily protected by police patrols and managed by a large officially appointed bureaucratic staff.  They decide that..."
+
+action_a = {
+name = "Dobrudzha is Bulgarian!"
+ai_chance = 100
+command = { type = dissent value = -5 }
+command = { type = trigger which = 90072 }
+}
+
+action_b = {
+name = "Dobrudzha is Romanian!"
+ai_chance = 0
+command = { type = dissent value = 2 }
+command = { type = trigger which = 90073 }
+}
+}
+
+
+event = {
+id = 90072
+country = URU
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Dobrudzha refuses unification."
+desc = "The plebiscite has passed. People of Dobrudzha have refused our proposition. We couldn`t take this province back."
+
+action_a = {
+name = "Awful"
+command = { type = relation which = BUL value = -100 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 90073
+country = URU
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "The results of the plebiscite."
+desc = "The Plebiscite has passed yesterday. Most of the population of Dobrudzha chose our state!"
+
+
+action_a = {
+name = "Great!"
+command = { type = relation which = BUL value = 25 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 90074 }
+}
+}
+
+event = {
+id = 90074
+country = BUL
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Transfer of the territory"
+desc = "As the plebiscite was real, we must transfer Dobrudzha to Monarchist Romania."
+
+action_a = {
+ai_chance = 1
+name = "Democracy has minuses"
+command = { type = relation which = URU value = -5 }
+command = { type = dissent value = 1 }
+command = { type = secedeprovince which = URU value = 307 }
+}
+
+action_b = {
+ai_chance = 99
+name = "Refuse to transfer Dobrudzha!"
+command = { type = relation which = URU value = -50 }
+command = { type = dissent value = 1 }
+command = { type = trigger which = 90075 }
+}
+}
+
+event = {
+id = 90075
+random = no
+country = URU
+style = 2
+
+name = "Bulgaria ignores the result of the plebiscite!"
+desc = "The government of Bulgaria has seen reason and agreed to give the people of Dobrudzha a plebiscite to determine whether they want to rejoin Romania. However, we have been informed that there are certain irregularities in the procedure which will probably result in a negative result of the plebiscite. What shall we do?"
+
+action_a = {
+ai_chance = 10
+name = "There is nothing we can do.."
+command = { type = relation which = URU value = -50 }
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 30
+name = "How dare they?  Send the army to claim Dobrudzha!"
+trigger = {
+alliance = { country = URU country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_c = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90076  }
+}
+}
+
+
+event = {
+id = 90076
+country = BUL
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Revolt in Dobrudzha!"
+desc = "The Romanian minority began a revolt in Dobrudzha! They demand unification with Romania. What will we do?"
+
+action_a = {
+ai_chance = 40
+name = "Send the army!"
+command = { type = revolt which = 307 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Destroy the Romanian threat!"
+command = { type = revolt which = 307 }
+command = { type = war which = URU }
+}
+
+action_c = {
+ai_chance = 20
+name = "Alright, cede this province to Romania"
+command = { type = secedeprovince which = URU value = 307 }
+command = { type = dissent value = 10 }
+}
+}
+
+
+event = {
+id = 90077 
+random = no
+country = ROM
+style = 2
+
+decision = {
+NOT = {
+atwar = ROM
+exists = URU
+ispuppet = ROM
+}
+control = { province = 307 data = BUL }
+NOT = { puppet = { country = BUL country = ROM  } }
+NOT = {
+alliance = { country = ROM country = BUL }
+alliance = { country = GER country = BUL }
+guarantee = { country = GER country = BUL }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+
+NOT = {
+atwar = ROM
+exists = URU
+ispuppet = ROM
+}
+control = { province = 307 data = BUL }
+NOT = { puppet = { country = BUL country = ROM  } }
+NOT = {
+alliance = { country = ROM country = BUL }
+alliance = { country = GER country = BUL }
+guarantee = { country = GER country = BUL }
+}
+}
+
+name = "The Question of Dobrudzha"
+desc = "Since our crushing defeat in Weltkrieg, confirmed by the Treaty of Bucharest, Dobrudzha is a part of the Kingdom of Bulgaria. The Romanian minority inhabiting this region is suffering from the constant attempts of Bulgarian magistrates supported from Sofia to completely eradicate any trace of Romanian identity from Dobrudzha. What shall we do?"
+picture = "Dobrudzha"
+decision_picture = "decision_dobrudza"
+
+date = { day = 0 month = march year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Send the proposition of a plebiscite to Bulgaria"
+ai_chance = 30
+command = { type = trigger which = 90078 }
+command = { type = relation which = BUL value = -20 }
+command = { type = addcore which = 307 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Send the army!"
+trigger = {
+alliance = { country = ROM country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_c = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90087 }
+}
+
+action_d = {
+name = "We don`t need it"
+ai_chance = 20
+command = { type = relation which = BUL value = 20 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 90078
+random = no
+country = BUL
+style = 2
+
+name = "The Plebiscite of Dobrudzha"
+desc = "Since the end of Weltkrieg, Dobrudzha is a part of our homeland. The Romanian government has the audacity to ask us to launch a plebiscite to determine the destiny of our rightful territory - Dobrudzha. No doubt, that in case of a real plebiscite, there is a chance that we will lose this province. What shall we do?"
+picture = "Dobrudzha"
+
+action_a = {
+name = "No way"
+ai_chance = 90
+command = { type = trigger which = 90079 }
+command = { type = dissent value = -2 }
+command = { type = relation which = ROM value = -20 }
+}
+
+action_b = {
+name = "Allow it, but rig the results"
+ai_chance = 10
+command = { type = event which = 90081 where = ROM when = 10 }
+}
+
+action_c = {
+name = "Allow plebiscite"
+ai_chance = 0
+command = { type = relation which = ROM value = 20 }
+command = { type = event which = 90080 where = BUL when = 10 }
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 90079
+country = ROM
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Bulgaria refused the plebiscite!"
+desc = "The Bulgarian government doesn`t want to give the people a chance to choose their destiny! What will we do?"
+
+action_a = {
+ai_chance = 50
+name = "Send the army!"
+trigger = {
+alliance = { country = ROM country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_b = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90087    }
+}
+
+action_c = {
+ai_chance = 20
+name = "No,we can`t do anything"
+command = { type = relation which = BUL value = 25 }
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 90080
+random = no
+country = BUL
+picture = "Dobrudzha"
+style = 2
+one_action = yes
+
+name = "Plebiscite in Dobrudzha"
+desc = "The people flock to the polling stations, and decide that:"
+
+action_a = {
+name = "Dobrudzha is Bulgarian!"
+ai_chance = 45
+command = { type = dissent value = -5 }
+command = { type = trigger which = 90083 }
+}
+
+action_b = {
+name = "Dobrudzha is Romanian!"
+ai_chance = 55
+command = { type = dissent value = 2 }
+command = { type = trigger which = 90084 }
+}
+}
+
+event = {
+id = 90081
+random = no
+country = ROM
+style = 2
+
+name = "Bulgaria rigs the plebiscite!"
+desc = "The government of Bulgaria has seen reason and agreed to give the people of Dobrudzha a plebiscite to determine whether they want to rejoin Romania.  However, we have been informed that there are certain irregularities in the procedure which will probably result in a negative result of the plebiscite. What shall we do?"
+
+action_a = {
+ai_chance = 10
+name = "Never mind, we shall await the results"
+command = { type = trigger which = 90082 }
+}
+
+action_b = {
+ai_chance = 30
+name = "How dare they?  Send the army to claim Dobrudzha!"
+trigger = {
+alliance = { country = ROM country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_c = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90087 }
+}
+}
+
+event = {
+id = 90082
+random = no
+country = BUL
+picture = "Dobrudzha"
+style = 2
+one_action = yes
+
+name = "Plebiscite in Dobrudzha"
+desc = "The people flock to the polling stations, which are heavily protected by police patrols and managed by a large officially appointed bureaucratic staff.  They decide that..."
+
+action_a = {
+name = "Dobrudzha is Bulgarian!"
+ai_chance = 100
+command = { type = dissent value = -5 }
+command = { type = trigger which = 90083 }
+}
+
+action_b = {
+name = "Dobrudzha is Romanian!"
+ai_chance = 0
+command = { type = dissent value = 2 }
+command = { type = trigger which = 90084 }
+}
+}
+
+
+event = {
+id = 90083
+country = ROM
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Dobrudzha refuses unification."
+desc = "The plebiscite has passed. The people of Dobrudzha has refused our proposition. We couldn`t take this province back."
+
+action_a = {
+name = "Awful"
+command = { type = relation which = BUL value = -100 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 90084
+country = ROM
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "The results of the plebiscite."
+desc = "The plebiscite has passed yesterday. Most of the population of Dobrudzha chose our state!"
+
+action_a = {
+name = "Great!"
+command = { type = relation which = BUL value = 25 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 90085 }
+}
+}
+
+event = {
+id = 90085
+country = BUL
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Transfer of the territory"
+desc = "As the plebiscite was real, we must transfer Dobrudzha to Romania."
+
+action_a = {
+ai_chance = 1
+name = "Democracy has minuses"
+command = { type = relation which = ROM value = -5 }
+command = { type = dissent value = 1 }
+command = { type = secedeprovince which = ROM value = 307 }
+}
+
+action_b = {
+ai_chance = 99
+name = "Refuse to transfer Dobrudzha!"
+command = { type = relation which = ROM value = -50 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 90086 }
+}
+}
+
+event = {
+id = 90086
+random = no
+country = ROM
+style = 2
+
+name = "Bulgaria ignores the result of the plebiscite!"
+desc = "The government of Bulgaria has seen reason and agreed to give the people of Dobrudzha a plebiscite to determine whether they want to rejoin Romania. However, we have been informed that there are certain irregularities in the procedure which will probably result in a negative result of the plebiscite. What shall we do?"
+
+action_a = {
+ai_chance = 10
+name = "There is nothing we can do..."
+command = { type = relation which = ROM value = -50 }
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 30
+name = "How dare they?  Send the army to claim Dobrudzha!"
+trigger = {
+alliance = { country = ROM country = SER }
+}
+command = { type = dissent value = -5 }
+command = { type = war which = BUL }
+}
+
+action_c = {
+ai_chance = 50
+name = "Launch a covert operation"
+command = { type = trigger which = 90087 }
+}
+}
+
+
+event = {
+id = 90087
+country = BUL
+picture = "Dobrudzha"
+random = no
+style = 2
+
+name = "Revolt in Dobrudzha!"
+desc = "The Romanian minority began a revolt in Dobrudzha! They demand unification with Romania. What will we do?"
+
+action_a = {
+ai_chance = 60
+name = "Send the army!"
+command = { type = revolt which = 307 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Destroy the Romanian threat!"
+command = { type = revolt which = 307 }
+command = { type = war which = ROM }
+}
+
+action_c = {
+ai_chance = 10
+name = "Alright, cede this province to Romania"
+command = { type = secedeprovince which = ROM value = 307 }
+command = { type = dissent value = 10 }
+}
+}
+
+
+event = {
+id = 90088
+random = no
+country = URU
+style = 2
+
+decision = {
+exists = UKR
+control = { province = 617 data = UKR }
+control = { province = 626 data = UKR }
+control = { province = 304 data = URU }
+control = { province = 307 data = URU }
+control = { province = 288 data = URU }
+NOT = {
+ispuppet = UKR
+exists = ROM
+atwar = URU
+alliance = { country = UKR country = URU }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = FRA }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+exists = UKR
+control = { province = 617 data = UKR }
+control = { province = 626 data = UKR }
+control = { province = 304 data = URU }
+control = { province = 307 data = URU }
+control = { province = 288 data = URU }
+NOT = {
+ispuppet = UKR
+exists = ROM
+atwar = URU
+alliance = { country = UKR country = URU }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = GER }
+}
+}
+
+name = "Status of Transnistria"
+desc = "With Transylvania reclaimed from the clutches of the Austro-Hungarian empire there is only one last piece of territory inhabited by Romanians to be reclaimed by our state. The territory of Transnistria has been part of the Ukraine since its creation in 1918. Since Ukraine is currently outside any relevant military blocs, this presents us with a chance to claim Transnistria!"
+picture = "Odessa"
+decision_picture = "decision_statusofodessa"
+
+date = { day = 0 month = august year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Fight for Odessa!"
+ai_chance = 50
+command = { type = addclaim which = 620 }
+command = { type = addclaim which = 621 }
+command = { type = addclaim which = 626 }
+command = { type = addclaim which = 625 }
+command = { type = addclaim which = 619 }
+command = { type = war which = UKR }
+}
+
+action_b = {
+name = "No, we don`t need it"
+ai_chance = 50
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 90089
+random = no
+country = ROM
+style = 2
+
+decision = {
+exists = UKR
+control = { province = 617 data = UKR }
+control = { province = 626 data = UKR }
+control = { province = 304 data = ROM }
+control = { province = 307 data = ROM }
+control = { province = 288 data = ROM }
+NOT = {
+ispuppet = UKR
+exists = URU
+atwar = ROM
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = CSA }
+alliance = { country = UKR country = USA }
+alliance = { country = UKR country = TEX }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+exists = UKR
+control = { province = 617 data = UKR }
+control = { province = 626 data = UKR }
+control = { province = 304 data = ROM }
+control = { province = 307 data = ROM }
+control = { province = 288 data = ROM }
+NOT = {
+ispuppet = UKR
+exists = URU
+atwar = ROM
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = CSA }
+alliance = { country = UKR country = USA }
+alliance = { country = UKR country = TEX }
+}
+}
+
+name = "Status of Transnistria"
+desc = "With Transylvania reclaimed from the clutches of the Austro-Hungarian empire there is only one last piece of territory inhabited by Romanians to be reclaimed by our state. The territory of Transnistria has been part of the Ukraine since its creation in 1918. Since Ukraine is currently outside any relevant military blocs, this presents us with a chance to claim Transnistria!"
+picture = "Odessa"
+decision_picture = "decision_statusofodessa"
+
+date = { day = 0 month = august year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Fight for Odessa!"
+ai_chance = 50
+command = { type = addclaim which = 620 }
+command = { type = addclaim which = 621 }
+command = { type = addclaim which = 626 }
+command = { type = addclaim which = 625 }
+command = { type = addclaim which = 619 }
+command = { type = war which = UKR }
+}
+
+action_b = {
+name = "No,we don`t need it"
+ai_chance = 50
+command = { type = dissent value = 1 }
+}
+}
+
+####Peace events
+event = {
+id = 90090
+random = no
+country = UKR
+style = 2
+
+trigger = {
+war = { country = UKR country = ROM }
+control = { province = 302 data = UKR }
+control = { province = 303 data = UKR }
+control = { province = 304 data = UKR }
+control = { province = 305 data = UKR }
+control = { province = 306 data = UKR }
+control = { province = 297 data = UKR }
+NOT = {
+ispuppet = UKR
+ispuppet = ROM
+alliance = { country = ROM country = FRA }
+alliance = { country = ROM country = RUS }
+alliance = { country = ROM country = GER }
+alliance = { country = ROM country = RUS }
+alliance = { country = ROM country = SOV }
+alliance = { country = ROM country = CSA }
+alliance = { country = ROM country = USA }
+alliance = { country = ROM country = TEX }
+
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = CSA }
+alliance = { country = UKR country = USA }
+alliance = { country = UKR country = TEX }
+}
+}
+
+name = "Romania is defeated"
+desc = "Our glorious army has succesfully conducted a full-scale invasion of Romania and now its armed forces are utterly vanquished. In the hope of preventing a full-scale assault on Bucharest, the Romanian leadership offered us a peace treaty, in which they promise to cede the disputed teritory of Moldavia to us."
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Accept the peace treaty."
+ai_chance = 100
+command = { type = trigger which = 90092 }
+command = { type = addcore which = 302 }
+command = { type = addcore which = 303 }
+command = { type = addcore which = 304 }
+command = { type = addcore which = 305 }
+command = { type = addcore which = 306 }
+}
+
+action_b = {
+name = "Never!"
+ai_chance = 0
+command = { type = dissent value = 5 }
+command = { type = addcore which = 302 }
+command = { type = addcore which = 303 }
+command = { type = addcore which = 304 }
+command = { type = addcore which = 305 }
+command = { type = addcore which = 306 }
+command = { type = belligerence which = UKR value = 1 }
+}
+}
+
+
+event = {
+id = 90091
+random = no
+country = ROM
+style = 2
+
+trigger = {
+war = { country = UKR country = ROM }
+control = { province = 620 data = ROM }
+control = { province = 621 data = ROM }
+control = { province = 626 data = ROM }
+control = { province = 625 data = ROM }
+control = { province = 619 data = ROM }
+NOT = {
+ispuppet = UKR
+ispuppet = ROM
+alliance = { country = ROM country = FRA }
+alliance = { country = ROM country = RUS }
+alliance = { country = ROM country = GER }
+alliance = { country = ROM country = RUS }
+alliance = { country = ROM country = SOV }
+alliance = { country = ROM country = CSA }
+alliance = { country = ROM country = USA }
+alliance = { country = ROM country = TEX }
+
+alliance = { country = UKR country = FRA }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = GER }
+alliance = { country = UKR country = RUS }
+alliance = { country = UKR country = SOV }
+alliance = { country = UKR country = CSA }
+alliance = { country = UKR country = USA }
+alliance = { country = UKR country = TEX }
+}
+}
+
+name = "Ukrainian invasion repelled"
+desc = "We have beaten the Ukrainian invaders and succesfully liberated the Romanian ancestral lands of Transnistria. Desperately, Ukraine is offering us peace knowing that there is literally nothing that could prevent our army from marching upon the capital of Ukraine, Kiev."
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Accept the peace offer"
+ai_chance = 5
+command = { type = trigger which = 90093 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "Accept the peace offer and claim Transnistria"
+ai_chance = 95
+command = { type = addcore which = 620 }
+command = { type = addcore which = 621 }
+command = { type = addcore which = 626 }
+command = { type = addcore which = 625 }
+command = { type = addcore which = 619 }
+command = { type = trigger which = 90094 }
+}
+
+action_c = {
+name = "Never!"
+ai_chance = 0
+command = { type = dissent value = 5 }
+command = { type = addcore which = 620 }
+command = { type = addcore which = 621 }
+command = { type = addcore which = 626 }
+command = { type = addcore which = 625 }
+command = { type = addcore which = 619 }
+command = { type = belligerence which = ROM value = 1 }
+}
+}
+
+event = {
+id = 90092
+random = no
+country = ROM
+
+name = "Humiliating peace"
+desc = "According to the peace treaty we have signed we must cede the teritory of Moldova to Ukraine."
+style = 2
+
+action_a = {
+name = "Alright!"
+ai_chance = 100
+command = { type = peace which = UKR value = 1 }
+command = { type = secedeprovince which = UKR value = 302 }
+command = { type = secedeprovince which = UKR value = 303 }
+command = { type = secedeprovince which = UKR value = 304 }
+command = { type = secedeprovince which = UKR value = 305 }
+command = { type = secedeprovince which = UKR value = 306 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "Cancel the peace treaty, the turning point is near!"
+ai_chance = 0
+command = { }
+}
+}
+
+event = {
+id = 90093
+random = no
+country = UKR
+
+name = "Peace with Romania"
+desc = "According to the peace treaty we have signed we must withdraw our forces from the parts of Transnistria that are still in our hands which will then be declared a demilitarized zone."
+style = 2
+
+action_a = {
+name = "Alright!"
+ai_chance = 100
+command = { type = peace which = ROM value = 1 }
+}
+
+action_b = {
+name = "Cancel the peace treaty, the turning point is near!"
+ai_chance = 0
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 90094
+random = no
+country = UKR
+
+name = "Humiliating peace"
+desc = "The Romanian leadership has accepted our peace offer but only with the precondition that we hand control over Transnistria to Romania."
+style = 2
+
+action_a = {
+name = "Alright!"
+ai_chance = 90
+command = { type = peace which = ROM value = 1 }
+command = { type = secedeprovince which = ROM value = 620 }
+command = { type = secedeprovince which = ROM value = 621 }
+command = { type = secedeprovince which = ROM value = 626 }
+command = { type = secedeprovince which = ROM value = 625 }
+command = { type = secedeprovince which = ROM value = 619 }
+command = { type = dissent value = 10 }
+}
+
+action_b = {
+name = "Cancel the peace treaty, the turning point is near!"
+ai_chance = 10
+command = { }
+}
+}

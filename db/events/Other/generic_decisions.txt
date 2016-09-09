@@ -1,0 +1,1838 @@
+################################
+# Equipment decisions
+################################
+
+################################
+# Equipment decisions
+################################
+event = { #start winterequip production
+id = 9000000
+random = no
+persistent = yes
+
+decision = {
+technology = 5920	# Infantry equipment - winter
+technology = 5930	# Machinery adaption - winter
+NOT = { local_flag = wequip}
+}
+
+decision_trigger = {
+technology = 5130	# Assembly Line Experimentation
+}
+
+trigger = {
+OR = {
+AND = {
+ai = yes
+OR = {
+technology = 5920	# Infantry equipment - winter
+technology = 5930	# Machinery adaption - winter
+}
+}
+AND = {
+ai = no
+technology = 5920	# Infantry equipment - winter
+technology = 5930	# Machinery adaption - winter
+technology = 5130	# Assembly Line Experimentation
+}
+}
+NOT = { local_flag = wequip}
+OR = {
+ai = no
+country = SOV
+country = CAN
+country = NOR
+country = SWE
+country = FIN
+}
+NOT = {
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+}
+
+name = "9000000_name"
+desc = "9000000_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_winter_equipment_start"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "equip_act"
+ai_chance = 100
+
+command = { type = tc_mod value = -2.5 }
+command = { type = research_mod value = -1 }
+command = { type = build_time which = land when = on_upgrade value = 25 }
+command = { type = build_cost which = land when = on_upgrade value = 0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = 2 }
+command = { type = build_cost which = armor when = on_upgrade value = 2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = 2 }
+command = { type = supply_consumption which = land value = 0.3 where = relative }
+command = { type = local_setflag which = wequip }
+command = { type = event which = 9000003 where = -1 when = 90 }
+}
+}
+
+event = {  #stop winterequip production
+id = 9000001
+random = no
+persistent = yes
+
+decision = {
+local_flag = wequipx
+}
+
+decision_trigger = {
+local_flag = wequipx
+}
+
+trigger = {
+local_flag = wequipx
+OR = {
+ai = no
+country = SOV
+country = CAN
+country = NOR
+country = SWE
+country = FIN
+}
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+
+name = "wuequip_name"
+desc = "wuequip_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_winter_equipment_stop"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "uequip_act"
+ai_chance = 100
+
+command = { type = local_clrflag which = wequip }
+command = { type = local_clrflag which = wequipx }
+
+command = { type = frozen_move which = land value = -6 }
+command = { type = frozen_attack which = land value = -6 }
+command = { type = frozen_defense which = land value = -6 }
+command = { type = snow_move which = land value = -6 }
+command = { type = snow_attack which = land value = -6 }
+command = { type = snow_defense which = land value = -6 }
+
+command = { type = tc_mod value = 2.5 }
+command = { type = research_mod value = 1 }
+command = { type = build_time which = land when = on_upgrade value = -25 }
+command = { type = build_cost which = land when = on_upgrade value = -0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = -2 }
+command = { type = build_cost which = armor when = on_upgrade value = -2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = -2 }
+command = { type = supply_consumption which = land value = -0.3 }
+}
+}
+
+event = { #apply winter equipment boni
+id = 9000003
+random = no
+persistent = yes
+
+name = "equip_name"
+desc = "equip_desc"
+style = 2
+picture = "news_paper"
+
+action = { 	#w
+name = "xequip_act"
+command = { type = local_setflag which = wequipx }
+
+command = { type = frozen_move which = land value = 6 }
+command = { type = frozen_attack which = land value = 6 }
+command = { type = frozen_defense which = land value = 6 }
+command = { type = snow_move which = land value = 6 }
+command = { type = snow_attack which = land value = 6 }
+command = { type = snow_defense which = land value = 6 }
+}
+}
+
+event = { #start jungleequip production
+id = 9000004
+random = no
+persistent = yes
+
+decision = {
+technology = 5940	# Infantry equipment - Jungle
+technology = 5950	# Machinery adaption - Jungle
+NOT = { local_flag = jequip}
+}
+
+decision_trigger = {
+technology = 5130	# Assembly Line Experimentation
+}
+
+trigger = {
+OR = {
+AND = {
+ai = yes
+OR = {
+technology = 5940	# Infantry equipment - Jungle
+technology = 5950	# Machinery adaption - Jungle
+}
+}
+AND = {
+ai = no
+technology = 5940	# Infantry equipment - Jungle
+technology = 5950	# Machinery adaption - Jungle
+technology = 5130	# Assembly Line Experimentation
+}
+}
+NOT = { local_flag = jequip}
+OR = {
+ai = no
+country = BRA
+country = COL
+country = VEN
+country = BOL
+country = ECU
+}
+NOT = {
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+}
+
+name = "9000001_name"
+desc = "9000001_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_jungle_equipment_start"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "equip_act"
+ai_chance = 100
+
+command = { type = tc_mod value = -2.5 }
+command = { type = research_mod value = -1 }
+command = { type = build_time which = land when = on_upgrade value = 25 }
+command = { type = build_cost which = land when = on_upgrade value = 0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = 2 }
+command = { type = build_cost which = armor when = on_upgrade value = 2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = 2 }
+command = { type = supply_consumption which = land value = 0.3 where = relative }
+command = { type = local_setflag which = jequip }
+command = { type = event which = 9000006 where = -1 when = 90 }
+}
+}
+
+event = { #stop jungleequip production
+id = 9000005
+random = no
+persistent = yes
+
+decision = {
+local_flag = jequipx
+}
+
+decision_trigger = {
+local_flag = jequipx
+}
+
+trigger = {
+local_flag = jequipx
+OR = {
+ai = no
+country = BRA
+country = COL
+country = VEN
+country = BOL
+country = ECU
+}
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+
+name = "juequip_name"
+desc = "juequip_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_jungle_equipment_stop"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+
+action = { #issued
+name = "uequip_act"
+ai_chance = 100
+
+command = { type = local_clrflag which = jequip }
+command = { type = local_clrflag which = jequipx }
+
+command = { type = jungle_move which = land value = -2 }
+command = { type = jungle_attack which = land value = -4 }
+command = { type = jungle_defense which = land value = -4 }
+command = { type = forest_move which = land value = -2 }
+command = { type = forest_attack which = land value = -5 }
+command = { type = forest_defense which = land value = -5 }
+
+command = { type = tc_mod value = 2.5 }
+command = { type = research_mod value = 1 }
+command = { type = build_time which = land when = on_upgrade value = -25 }
+command = { type = build_cost which = land when = on_upgrade value = -0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = -2 }
+command = { type = build_cost which = armor when = on_upgrade value = -2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = -2 }
+command = { type = supply_consumption which = land value = -0.3 }
+}
+}
+
+event = { #apply jungleequip boni
+id = 9000006
+random = no
+persistent = yes
+
+name = "equip_name"
+desc = "equip_desc"
+style = 2
+picture = "news_paper"
+
+action = { 	#j
+name = "xequip_act"
+command = { type = local_setflag which = jequipx }
+
+command = { type = jungle_move which = land value = 2 }
+command = { type = jungle_attack which = land value = 4 }
+command = { type = jungle_defense which = land value = 4 }
+command = { type = forest_move which = land value = 2 }
+command = { type = forest_attack which = land value = 5 }
+command = { type = forest_defense which = land value = 5 }
+}
+}
+
+event = { #start desertequip production
+id = 9000007
+random = no
+persistent = yes
+
+decision = {
+technology = 5960	# Infantry equipment - Desert
+technology = 5970	# Machinery adaption - Desert
+NOT = { local_flag = dequip}
+}
+
+decision_trigger = {
+technology = 5130	# Assembly Line Experimentation
+}
+
+trigger = {
+OR = {
+AND = {
+ai = yes
+OR = {
+technology = 5960	# Infantry equipment - Desert
+technology = 5970	# Machinery adaption - Desert
+}
+}
+AND = {
+ai = no
+technology = 5960	# Infantry equipment - Desert
+technology = 5970	# Machinery adaption - Desert
+technology = 5130	# Assembly Line Experimentation
+}
+}
+NOT = { local_flag = dequip}
+OR = {
+ai = no
+country = SAU
+country = ENG
+country = EGY
+}
+NOT = {
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+}
+
+name = "9000002_name"
+desc = "9000002_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_desert_equipment_start"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "equip_act"
+ai_chance = 100
+
+command = { type = tc_mod value = -2.5 }
+command = { type = research_mod value = -1 }
+command = { type = build_time which = land when = on_upgrade value = 25 }
+command = { type = build_cost which = land when = on_upgrade value = 0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = 2 }
+command = { type = build_cost which = armor when = on_upgrade value = 2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = 2 }
+command = { type = supply_consumption which = land value = 0.3 where = relative }
+command = { type = local_setflag which = dequip }
+command = { type = event which = 9000009 where = -1 when = 90 }
+}
+}
+
+event = { #stop desertequip production
+id = 9000008
+random = no
+persistent = yes
+
+decision = {
+local_flag = dequipx
+}
+
+decision_trigger = {
+local_flag = dequipx
+}
+
+trigger = {
+local_flag = dequipx
+OR = {
+ai = no
+country = SAU
+country = ITA
+country = ENG
+country = EGY
+}
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+
+name = "duequip_name"
+desc = "duequip_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_desert_equipment_stop"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+action = { #issued
+name = "uequip_act"
+ai_chance = 100
+
+command = { type = local_clrflag which = dequip }
+command = { type = local_clrflag which = dequipx }
+
+command = { type = desert_move which = land value = -6 }
+command = { type = desert_attack which = land value = -4 }
+command = { type = desert_defense which = land value = -4 }
+
+command = { type = tc_mod value = 2.5 }
+command = { type = research_mod value = 1 }
+command = { type = build_time which = land when = on_upgrade value = -25 }
+command = { type = build_cost which = land when = on_upgrade value = -0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = -2 }
+command = { type = build_cost which = armor when = on_upgrade value = -2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = -2 }
+command = { type = supply_consumption which = land value = -0.3 }
+}
+}
+
+event = { #apply desertequip boni
+id = 9000009
+random = no
+persistent = yes
+
+name = "equip_name"
+desc = "equip_desc"
+style = 2
+picture = "news_paper"
+
+action = { 	#d
+name = "xequip_act"
+command = { type = local_setflag which = dequipx }
+
+command = { type = desert_move which = land value = 6 }
+command = { type = desert_attack which = land value = 4 }
+command = { type = desert_defense which = land value = 4 }
+}
+}
+
+event = { #start sturdyequip production
+id = 9000010
+random = no
+persistent = yes
+
+decision = {
+technology = 5980	# Infantry equipment - rough terrain
+technology = 5990	# Machinery adaption - rough terrain
+NOT = { local_flag = sequip}
+}
+
+decision_trigger = {
+technology = 5130	# Assembly Line Experimentation
+}
+
+trigger = {
+OR = {
+AND = {
+ai = yes
+OR = {
+technology = 5980	# Infantry equipment - rough terrain
+technology = 5990	# Machinery adaption - rough terrain
+}
+}
+AND = {
+ai = no
+technology = 5980	# Infantry equipment - rough terrain
+technology = 5990	# Machinery adaption - rough terrain
+technology = 5130	# Assembly Line Experimentation
+}
+}
+NOT = { local_flag = sequip}
+OR = {
+ai = no
+country = PER
+country = TUR
+country = U02
+country = SCH
+country = ARG
+country = SPA
+country = SPR
+}
+NOT = {
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+}
+
+name = "9000003_name"
+desc = "9000003_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_rough_terrain_equipment_start"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "equip_act"
+ai_chance = 100
+
+command = { type = tc_mod value = -2.5 }
+command = { type = research_mod value = -1 }
+command = { type = build_time which = land when = on_upgrade value = 25 }
+command = { type = build_cost which = land when = on_upgrade value = 0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = 2 }
+command = { type = build_cost which = armor when = on_upgrade value = 2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = 2 }
+command = { type = supply_consumption which = land value = 0.3 where = relative }
+command = { type = local_setflag which = sequip }
+command = { type = event which = 9000012 where = -1 when = 90 }
+}
+}
+
+event = { #stop sturdyequip production
+id = 9000011
+random = no
+persistent = yes
+
+decision = {
+local_flag = sequipx
+}
+
+decision_trigger = {
+local_flag = sequipx
+}
+
+trigger = {
+local_flag = sequipx
+OR = {
+ai = no
+country = PER
+country = TUR
+country = U02
+country = SCH
+country = ARG
+country = SPA
+country = SPR
+}
+OR = {
+resource_shortage = supplies
+resource_shortage = oil
+}
+}
+
+name = "suequip_name"
+desc = "suequip_desc"
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_rough_terrain_equipment_stop"
+
+date = { day = 1 month = january year = 1914 }
+offset = 60
+deathdate = { day = 29 month = december year = 1999 }
+
+action = { #issued
+name = "uequip_act"
+ai_chance = 100
+
+command = { type = local_clrflag which = sequip }
+command = { type = local_clrflag which = sequipx }
+
+command = { type = hill_move which = land value = -2 }
+command = { type = hill_attack which = land value = -2 }
+command = { type = hill_defense which = land value = -2 }
+command = { type = mountain_move which = land value = -3 }
+command = { type = mountain_attack which = land value = -6 }
+command = { type = mountain_defense which = land value = -6 }
+command = { type = muddy_move which = land value = -3 }
+command = { type = muddy_attack which = land value = -6 }
+command = { type = muddy_defense which = land value = -6 }
+
+command = { type = tc_mod value = 2.5 }
+command = { type = research_mod value = 1 }
+command = { type = build_time which = land when = on_upgrade value = -25 }
+command = { type = build_cost which = land when = on_upgrade value = -0.8 }
+command = { type = build_cost which = mechanized when = on_upgrade value = -2 }
+command = { type = build_cost which = armor when = on_upgrade value = -2 }
+command = { type = build_cost which = light_armor when = on_upgrade value = -2 }
+command = { type = supply_consumption which = land value = -0.3 }
+}
+}
+
+event = { #apply sturdyequip boni
+id = 9000012
+random = no
+persistent = yes
+
+name = "equip_name"
+desc = "equip_desc"
+style = 2
+picture = "news_paper"
+
+action = { 	#s
+name = "xequip_act"
+command = { type = local_setflag which = sequipx }
+
+command = { type = muddy_move which = land value = 3 }
+command = { type = muddy_attack which = land value = 6 }
+command = { type = muddy_defense which = land value = 6 }
+command = { type = hill_move which = land value = 2 }
+command = { type = hill_attack which = land value = 2 }
+command = { type = hill_defense which = land value = 2 }
+command = { type = mountain_move which = land value = 3 }
+command = { type = mountain_attack which = land value = 6 }
+command = { type = mountain_defense which = land value = 6 }
+}
+}
+
+################################
+# Generic set of decisions
+################################
+#### Create Public Works
+event = {
+id = 9000021
+random = no
+persistent = yes
+
+decision = {
+atwar = no
+OR = {
+money = 3000
+AND = {
+NOT = { IC = 80 }
+money = 2000
+}
+AND = {
+NOT = { IC = 50 }
+money = 1500
+}
+AND = {
+NOT = { IC = 15 }
+money = 500
+}
+}
+OR = {
+NOT = { policy = { type = free_market value = 8 } }
+headofstate = 240001 # FDR
+}
+}
+
+decision_trigger = {
+OR = {
+money = 6000
+AND = {
+NOT = { IC = 80 }
+money = 4000
+}
+AND = {
+NOT = { IC = 50 }
+money = 3000
+}
+AND = {
+NOT = { IC = 15 }
+money = 1000
+}
+}
+atwar = no
+}
+
+trigger = {
+atwar = no
+money = 6000
+OR = {
+NOT = { policy = { type = free_market value = 8 } }
+headofstate = 240001 # FDR
+}
+}
+
+name = "9000021name"
+desc = "9000021desc"
+style = 2
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+date = { day = 1 month = january year = 1914 }
+offset = 120
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "9000021text"
+command = { type = dissent value = -2 }
+command = { trigger = { IC = 80 } type = money value = -6000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = -4000 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = -3000 }
+command = { trigger = { NOT = { IC = 15 } } type = money value = -1000 }
+command = { trigger = { domestic = { type = free_market value = 5 } } type = domestic which = free_market value = -1 }
+command = { type = event which = 9000040 where = -1 when = 60 }
+}
+}
+
+event = {
+id = 9000040
+random = no
+persistent = yes
+
+name = "9000040name"
+desc = "9000040desc"
+style = 2
+picture = "public_jobs"
+
+action = {
+name = "ACTION_NAME_GREAT"
+command = { type = construct which = ic where = -4 value = 1 }
+command = { }
+}
+}
+
+#### Issue Currency
+event = {
+id = 9000022
+random = no
+persistent = yes
+
+decision = {
+NOT = { money = 150 }
+atwar = no
+}
+
+decision_trigger = {
+NOT = { money = 100 }
+}
+
+trigger = {
+ai = no
+}
+
+name = "9000022name"
+desc = "9000022desc"
+style = 2
+picture = "issue_currency"
+decision_picture = "decision_issue_currency"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000022text"
+command = { type = dissent value = -1 }
+command = { trigger = { IC = 80 } type = money value = 1000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = 800 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = 400 }
+command = { trigger = { NOT = { IC = 15 } } type = money value = 200 }
+command = { type = industrial_modifier which = total value = -1 }
+}
+}
+#### Money Devaluation
+event = {
+id = 9000023
+random = no
+persistent = yes
+
+decision = {
+OR = {
+money = 1000
+AND = {
+NOT = { IC = 80 }
+money = 700
+}
+AND = {
+NOT = { IC = 50 }
+money = 500
+}
+AND = {
+NOT = { IC = 15 }
+money = 150
+}
+}
+atwar = no
+}
+
+decision_trigger = {
+OR = {
+money = 3000
+AND = {
+NOT = { IC = 80 }
+money = 2000
+}
+AND = {
+NOT = { IC = 50 }
+money = 1500
+}
+AND = {
+NOT = { IC = 15 }
+money = 500
+}
+}
+}
+
+trigger = {
+ai = no
+}
+
+name = "9000023name"
+desc = "9000023desc"
+style = 2
+picture = "money_devaluation"
+decision_picture = "decision_money_devaluation"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000023text"
+command = { type = dissent value = 3 }
+command = { trigger = { IC = 80 } type = money value = -3000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = -2000 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = -1500 }
+command = { trigger = { NOT = { IC = 15 } } type = money value = -500 }
+command = { type = industrial_modifier which = total value = 0.5 }
+}
+}
+#### Rationing
+#event = {
+#id = 9000024
+#random = no
+
+#decision = {
+#	atwar = yes
+#}
+
+#decision_trigger = {
+#	atwar = yes
+#}
+
+#trigger = {
+#	random = 10
+#	atwar = yes
+#}
+
+#name = "9000024name"
+#desc = "9000024desc"
+#style = 2
+#picture = "rationing"
+#decision_picture = "decision_rationing"
+
+#date = { day = 1 month = january year = 1914 }
+#offset = 90
+#deathdate = { day = 29 month = december year = 1963 }
+
+#action = {
+#name = "9000024text"
+#command = { type = dissent value = 5 }
+#command = { type = production which = consumer value = -0.1000 }
+#}
+#}
+#### Allow Foreign Volunteers
+event = {
+id = 9000025
+random = no
+persistent = yes
+
+decision = {
+NOT = { local_flag = foreign_volunteers }
+government = democratic
+NOT = { manpower = 200 }
+atwar = yes
+}
+
+decision_trigger = {
+government = democratic
+NOT = { manpower = 100 }
+atwar = yes
+}
+
+trigger = {
+random = 5
+NOT = { local_flag = foreign_volunteers }
+government = democratic
+NOT = { manpower = 100 }
+atwar = yes
+}
+
+name = "9000025name"
+desc = "9000025desc"
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000025text"
+command = { type = manpowerpool value = 1 when = 1 }
+command = { type = relative_manpower value = 0.01 }
+command = { type = morale which = land value = -2 }
+#command = { type = unit when = morale value = -0.500 }
+command = { type = local_setflag which = foreign_volunteers }
+}
+}
+#### Purchase Licensed Unit
+event = {
+id = 9000026
+random = no
+persistent = yes
+
+decision = {
+NOT = { ic = 40 }
+#NOT = { army = 20 }
+manpower = 10
+}
+
+decision_trigger = {
+NOT = { ic = 40 }
+money = 4000
+#NOT = { army = 20 }
+}
+
+trigger = {
+random = 5
+NOT = { ic = 40 }
+money = 6000
+#NOT = { army = 20 }
+}
+
+name = "9000026name"
+desc = "9000026desc"
+style = 2
+picture = "licensed_unit"
+decision_picture = "decision_licensed_unit"
+
+date = { day = 1 month = january year = 1920 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {  trigger = { money = 4000 year = 1939 NOT = {motorized = { country = -1 value = 3 } } }
+ai_chance = 25
+name = "9000026a"
+command = { type = money value = -4000 }
+command = { type = manpowerpool value = -10 }
+command = { type = add_division value = motorized }
+}
+action = {  trigger = { money = 6000 NOT = { armor = { country = -1 value = 3 } } }
+ai_chance = 25
+name = "9000026b"
+command = { type = money value = -6000 }
+command = { type = manpowerpool value = -10 }
+command = { type = add_division value = armor }
+}
+action = {  trigger = { money = 5000 NOT = { interceptor = { country = -1 value = 4 } } }
+ai_chance = 25
+name = "9000026c"
+command = { type = money value = -5000 }
+command = { type = manpowerpool value = -5 }
+command = { type = add_division value = interceptor }
+}
+action = {  trigger = { money = 5000 NOT =  { tactical_bomber = { country = -1 value = 4 } } }
+ai_chance = 25
+name = "9000026d"
+command = { type = money value = -5000 }
+command = { type = manpowerpool value = -5 }
+command = { type = add_division value = tactical_bomber }
+}
+}
+#### Press Censorship
+event = {
+id = 9000027
+random = no
+persistent = yes
+decision = {
+NOT = { local_flag = press_censorship }
+government = democratic
+atwar = yes
+}
+
+decision_trigger = {
+government = democratic
+atwar = yes
+OR = {
+money = 500
+AND = {
+NOT = { IC = 80 }
+money = 400
+}
+AND = {
+NOT = { IC = 50 }
+money = 250
+}
+AND = {
+NOT = { IC = 15 }
+money = 100
+}
+}
+}
+
+trigger = {
+NOT = { local_flag = press_censorship }
+OR = {
+random = 80
+dissent = 3
+}
+government = democratic
+atwar = yes
+money = 500
+}
+
+name = "9000027name"
+desc = "9000027desc"
+style = 2
+picture = "censorship"
+decision_picture = "decision_censorship"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000027text"
+command = { trigger = { domestic = { type = democratic value = 3 } } type = domestic which = democratic value = -1 }
+command = { type = dissent value = -3 }
+#command = { type = dissent value = -0.1000 } # Should be 10%
+command = { trigger = { IC = 80 } type = money value = -500 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = -400 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = -250 }
+command = { trigger = { NOT = { IC = 15 } } type = money value = -100 }
+command = { type = local_setflag which = press_censorship }
+}
+}
+#### War Propaganda
+event = {
+id = 9000028
+random = no
+persistent = yes
+decision = {
+NOT = { local_flag = war_propaganda }
+atwar = yes
+}
+
+decision_trigger = {
+atwar = yes
+OR = {
+money = 500
+AND = {
+NOT = { IC = 80 }
+money = 400
+}
+AND = {
+NOT = { IC = 50 }
+money = 250
+}
+AND = {
+NOT = { IC = 15 }
+money = 100
+}
+}
+}
+
+trigger = {
+NOT = { local_flag = war_propaganda }
+OR = {
+random = 80
+dissent = 3
+}
+atwar = yes
+money = 500
+}
+
+name = "9000028name"
+desc = "9000028desc"
+style = 2
+picture = "war_propaganda"
+decision_picture = "decision_war_propaganda"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000028text"
+command = { trigger = { domestic = { type = freedom value = 3 } } type = domestic which = freedom value = -1 }
+command = { type = dissent value = -3 }
+command = { type = manpowerpool value = 0.1 when = 1 }
+command = { trigger = { IC = 80 } type = money value = -500 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } } type = money value = -400 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } } type = money value = -250 }
+command = { trigger = { NOT = { IC = 15 } } type = money value = -100 }
+command = { type = local_setflag which = war_propaganda }
+}
+}
+#### Ersatz Conversion
+event = {
+id = 9000029
+random = no
+persistent = yes
+
+decision = {
+energy = 4000
+NOT = { rare_materials = 1000 }
+}
+
+decision_trigger = {
+money = 100
+energy = 5000
+NOT = { rare_materials = 300 }
+}
+
+trigger = {
+random = 5
+NOT = { dissent = 5 }
+NOT = { rare_materials = 200 }
+money = 100
+energy = 5000
+}
+
+name = "9000029name"
+desc = "9000029desc"
+style = 2
+picture = "ersatz_conversion"
+decision_picture = "decision_ersatz_conversion"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000029text"
+command = { type = dissent value = 2 }
+command = { type = money value = -100 }
+command = { type = energypool value = -5000 }
+command = { type = rarematerialspool value = 500 }
+}
+}
+#### Invest in National Infrastructures
+event = {
+id = 9000030
+random = no
+persistent = yes
+decision = {
+OR = {
+money = 800
+AND = {
+NOT = { IC = 80 }
+money = 650
+}
+AND = {
+NOT = { IC = 50 }
+money = 400
+}
+AND = {
+NOT = { IC = 15 }
+money = 200
+}
+}
+NOT = { policy = { type = free_market value = 8 } }
+NOT = { local_flag = infra_investment_1 }
+NOT = { local_flag = infra_investment_2 }
+NOT = { local_flag = infra_investment_3 }
+}
+
+decision_trigger = {
+OR = {
+money = 1000
+AND = {
+NOT = { IC = 80 }
+money = 800
+}
+AND = {
+NOT = { IC = 50 }
+money = 600
+}
+AND = {
+NOT = { IC = 15 }
+money = 300
+}
+}
+}
+
+trigger = {
+random = 20
+money = 1000
+#NOT = { policy = { type = free_market value = 8 } }
+NOT = { local_flag = infra_investment_1 }
+NOT = { local_flag = infra_investment_2 }
+NOT = { local_flag = infra_investment_3 }
+}
+
+name = "9000030name"
+desc = "9000030desc"
+style = 2
+picture = "invest_infrastructures"
+decision_picture = "decision_invest_infrastructures"
+
+date = { day = 1 month = january year = 1914 }
+offset = 120
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+trigger = { OR = { AND = { IC = 80 money = 1000 } AND = { IC = 50 NOT = { IC = 80 } money = 800 } AND = { IC = 15 NOT = { IC = 50 } money = 600 } AND = { NOT = { IC = 15 } money = 300 } } }
+ai_chance = 30
+name = "9000030a"
+command = { type = dissent value = -0.5 }
+command = { type = tc_mod value = 0.5 }
+command = { trigger = { IC = 80 money = 1000 } type = money value = -1000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 800 } type = money value = -800 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 600 } type = money value = -600 }
+command = { trigger = { NOT = { IC = 15 } money = 300 } type = money value = -300 }
+command = { type = event which = 9000053 where = -1 when = 30 }
+command = { type = local_setflag which = infra_investment_1 }
+}
+action = {
+trigger = { OR = { AND = { IC = 80 money = 2000 } AND = { IC = 50 NOT = { IC = 80 } money = 1600 } AND = { IC = 15 NOT = { IC = 50 } money = 1200 } AND = { NOT = { IC = 15 } money = 600 } } }
+ai_chance = 30
+name = "9000030b"
+command = { type = dissent value = -1 }
+command = { type = tc_mod value = 1 }
+command = { trigger = { IC = 80 money = 2000 } type = money value = -2000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 1600 } type = money value = -1600 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 1200 } type = money value = -1200 }
+command = { trigger = { NOT = { IC = 15 } money = 600 } type = money value = -600 }
+command = { type = event which = 9000053 where = -1 when = 30 }
+command = { type = local_setflag which = infra_investment_2 }
+}
+action = {
+trigger = { OR = { AND = { IC = 80 money = 4000 } AND = { IC = 50 NOT = { IC = 80 } money = 3200 } AND = { IC = 15 NOT = { IC = 50 } money = 2400 } AND = { NOT = { IC = 15 } money = 1200 } } }
+ai_chance = 40
+name = "9000030c"
+command = { type = dissent value = -2 }
+command = { type = tc_mod value = 2.5 }
+command = { trigger = { IC = 80 money = 4000 } type = money value = -4000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 3200 } type = money value = -3200 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 2400 } type = money value = -2400 }
+command = { trigger = { NOT = { IC = 15 } money = 1200 } type = money value = -1200 }
+command = { trigger = { NOT = { domestic = { type = free_market value = 5 } } } type = domestic which = free_market value = -1 }
+command = { type = event which = 9000053 where = -1 when = 30 }
+command = { type = local_setflag which = infra_investment_3 }
+}
+}
+event = {
+id = 9000053
+random = no
+persistent = yes
+
+name = "9000053name"
+desc = "9000030desc"
+style = 2
+picture = "invest_infrastructures"
+
+action = {
+name = ACTION_NAME_EXCELLENT
+command = { }
+command = { trigger = { local_flag = infra_investment_1 } type = construct which = infrastructure where = -1 value = 10 }
+command = { trigger = { local_flag = infra_investment_1 } type = local_clrflag which = infra_investment_1 }
+command = { trigger = { local_flag = infra_investment_2 } type = construct which = infrastructure where = -1 value = 10 }
+command = { trigger = { local_flag = infra_investment_2 } type = construct which = infrastructure where = -1 value = 10 }
+command = { trigger = { local_flag = infra_investment_2 } type = local_clrflag which = infra_investment_2 }
+command = { trigger = { local_flag = infra_investment_3 } type = construct which = infrastructure where = -1 value = 10 }
+command = { trigger = { local_flag = infra_investment_3 } type = construct which = infrastructure where = -1 value = 10 }
+command = { trigger = { local_flag = infra_investment_3 } type = construct which = infrastructure where = -1 value = 10 }
+command = { trigger = { local_flag = infra_investment_3 } type = construct which = infrastructure where = -1 value = 10 }
+command = { trigger = { local_flag = infra_investment_3 } type = local_clrflag which = infra_investment_3 }
+}
+}
+#### Invest in National Research
+event = {
+id = 9000031
+random = no
+persistent = yes
+decision = {
+OR = {
+money = 800
+AND = {
+NOT = { IC = 80 }
+money = 650
+}
+AND = {
+NOT = { IC = 50 }
+money = 400
+}
+AND = {
+NOT = { IC = 15 }
+money = 200
+}
+}
+NOT = { policy = { type = free_market value = 8 } }
+NOT = { local_flag = research_investment_1 }
+NOT = { local_flag = research_investment_2 }
+NOT = { local_flag = research_investment_3 }
+}
+
+decision_trigger = {
+OR = {
+money = 1000
+AND = {
+NOT = { IC = 80 }
+money = 800
+}
+AND = {
+NOT = { IC = 50 }
+money = 600
+}
+AND = {
+NOT = { IC = 15 }
+money = 300
+}
+}
+}
+
+trigger = {
+random = 60
+money = 1000
+#NOT = { policy = { type = free_market value = 8 } }
+NOT = { local_flag = research_investment_1 }
+NOT = { local_flag = research_investment_2 }
+NOT = { local_flag = research_investment_3 }
+}
+
+name = "9000031name"
+desc = "9000031desc"
+style = 2
+picture = "invest_research"
+decision_picture = "decision_invest_research"
+
+date = { day = 1 month = january year = 1914 }
+offset = 120
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+trigger = { OR = { AND = { IC = 80 money = 1000 } AND = { IC = 50 NOT = { IC = 80 } money = 800 } AND = { IC = 15 NOT = { IC = 50 } money = 600 } AND = { NOT = { IC = 15 } money = 300 } } }
+ai_chance = 30
+name = "9000031a"
+command = { type = dissent value = -0.5 }
+command = { trigger = { NOT = { research_mod = 100 } } type = research_mod value = 0.5 }
+command = { trigger = { research_mod = 100 NOT = { research_mod = 120 } } type = research_mod value = 0.3 }
+command = { trigger = { research_mod = 120 } type = research_mod value = 0.1 }
+command = { trigger = { IC = 80 money = 1000 } type = money value = -1000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 800 } type = money value = -800 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 600 } type = money value = -600 }
+command = { trigger = { NOT = { IC = 15 } money = 300 } type = money value = -300 }
+command = { type = event which = 9000054 where = -1 when = 30 }
+command = { type = local_setflag which = research_investment_1 }
+}
+action = {
+trigger = { OR = { AND = { IC = 80 money = 2000 } AND = { IC = 50 NOT = { IC = 80 } money = 1600 } AND = { IC = 15 NOT = { IC = 50 } money = 1200 } AND = { NOT = { IC = 15 } money = 600 } } }
+ai_chance = 30
+name = "9000031b"
+command = { type = dissent value = -1 }
+command = { trigger = { NOT = { research_mod = 100 } } type = research_mod value = 1 }
+command = { trigger = { research_mod = 100 NOT = { research_mod = 120 } } type = research_mod value = 0.6 }
+command = { trigger = { research_mod = 120 } type = research_mod value = 0.2 }
+command = { trigger = { IC = 80 money = 2000 } type = money value = -2000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 1600 } type = money value = -1600 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 1200 } type = money value = -1200 }
+command = { trigger = { NOT = { IC = 15 } money = 600 } type = money value = -600 }
+command = { type = event which = 9000054 where = -1 when = 30 }
+command = { type = local_setflag which = research_investment_2 }
+}
+action = {
+trigger = { OR = { AND = { IC = 80 money = 4000 } AND = { IC = 50 NOT = { IC = 80 } money = 3200 } AND = { IC = 15 NOT = { IC = 50 } money = 2400 } AND = { NOT = { IC = 15 } money = 1200 } } }
+ai_chance = 40
+name = "9000031c"
+command = { type = dissent value = -2 }
+command = { trigger = { NOT = { research_mod = 100 } } type = research_mod value = 2.5 }
+command = { trigger = { research_mod = 100 NOT = { research_mod = 120 } } type = research_mod value = 1.6 }
+command = { trigger = { research_mod = 120 } type = research_mod value = 0.8 }
+command = { trigger = { IC = 80 money = 4000 } type = money value = -4000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 3200 } type = money value = -3200 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 2400 } type = money value = -2400 }
+command = { trigger = { NOT = { IC = 15 } money = 1200 } type = money value = -1200 }
+command = { trigger = { NOT = { domestic = { type = free_market value = 5 } } } type = domestic which = free_market value = -1 }
+command = { type = event which = 9000054 where = -1 when = 30 }
+command = { type = local_setflag which = research_investment_3 }
+}
+}
+event = {
+id = 9000054
+random = no
+persistent = yes
+
+name = "9000054name"
+desc = "9000031desc"
+style = 2
+picture = "invest_research"
+
+action = {
+name = ACTION_NAME_EXCELLENT
+command = { }
+command = { trigger = { local_flag = research_investment_1 } type = gain_tech which = -1 }
+command = { trigger = { local_flag = research_investment_1 } type = local_clrflag which = research_investment_1 }
+command = { trigger = { local_flag = research_investment_2 } type = gain_tech which = -2 }
+command = { trigger = { local_flag = research_investment_2 } type = local_clrflag which = research_investment_2 }
+command = { trigger = { local_flag = research_investment_3 } type = gain_tech which = -1 }
+command = { trigger = { local_flag = research_investment_3 } type = gain_tech which = -2 }
+command = { trigger = { local_flag = research_investment_3 } type = local_clrflag which = research_investment_3 }
+}
+}
+#### Purge the Army
+event = {
+id = 9000032
+random = no
+persistent = yes
+decision = {
+NOT = { local_flag = purges_army }
+NOT = { government = democratic }
+policy = { type = defense_lobby value = 3 }
+NOT = { AND = { country = SOV event = 2007025 } }
+}
+
+decision_trigger = {
+NOT = { government = democratic }
+policy = { type = defense_lobby value = 3 }
+}
+
+trigger = {
+NOT = { local_flag = purges_army }
+random = 1
+NOT = { government = democratic }
+policy = { type = defense_lobby value = 3 }
+}
+
+name = "9000032name"
+desc = "9000032desc"
+style = 2
+picture = "purge_army"
+decision_picture = "decision_purge_army"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000032text"
+command = { trigger = { NOT = { country = SOV } } type = dissent value = 2 }
+command = { type = morale which = land value = 3 }
+command = { trigger = { NOT = { country = SOV } } type = trigger which = 9000036 }
+command = { trigger = { country = SOV } type = trigger which = 2007025 }
+command = { type = local_setflag which = purges_army }
+}
+}
+event = {
+id = 9000036
+random = no
+persistent = yes
+one_action = yes
+
+name = "9000036name"
+desc = "9000032desc"
+style = 2
+picture = "purge_army"
+
+action = {
+ai_chance = 25
+name = "9000032text"
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { }
+}
+action = {
+ai_chance = 25
+name = "9000032text"
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { }
+}
+action = {
+ai_chance = 25
+name = "9000032text"
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { }
+}
+action = {
+ai_chance = 25
+name = "9000032text"
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { type = sleepleader which = -1 }
+command = { }
+}
+}
+#### Wargames
+event = {
+id = 9000033
+random = no
+persistent = yes
+
+decision = {
+money = 400
+supplies = 100
+policy = { type = defense_lobby value = 3 }
+}
+
+decision_trigger = {
+money = 800
+supplies = 200
+}
+
+trigger = {
+random = 5
+money = 800
+supplies = 200
+policy = { type = defense_lobby value = 3 }
+}
+
+name = "9000033name"
+desc = "9000033desc"
+style = 2
+picture = "wargames"
+decision_picture = "decision_wargames"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000033text"
+command = { type = money value = -800 }
+command = { type = supplies value = -200 }
+command = { type = trigger which = 9000035 }
+}
+}
+event = {
+id = 9000035
+random = no
+persistent = yes
+one_action = yes
+
+name = "9000033name"
+desc = "9000033desc"
+style = 2
+picture = "wargames"
+
+action = {
+ai_chance = 33
+name = "9000033text"
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { }
+}
+action = {
+ai_chance = 34
+name = "9000033text"
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { }
+}
+action = {
+ai_chance = 33
+name = "9000033text"
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { }
+}
+}
+
+#### War Bonds
+event = {
+id = 9000037
+random = no
+decision = {
+atwar = yes
+}
+
+decision_trigger = { }
+
+trigger = {
+random = 50
+atwar = yes
+}
+
+name = "9000037name"
+desc = "9000037desc"
+style = 2
+picture = "War_Bonds"
+decision_picture = "decision_War_Bonds"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "9000037text"
+command = { type = money value = 2000 }
+command = { type = supplies value = 5000 }
+command = { type = 	dissent value = 5  }
+}
+}
+
+#### Free Market Stimulates Research
+event = {
+id = 9000046
+random = yes
+persistent = yes
+
+trigger = { domestic = { type = free_market value = 4 } }
+
+name = "Free Market Stimulates Research"
+desc = "Private investors decided to focus their investments on military and industrial researches. Thanks to their capitals, we have been able to fund new researches in our universities and research centres."
+style = 2
+picture = "invest_research"
+
+action = {
+name = "Ok"
+command = { type = research_mod value = 1 }
+command = { type = dissent value = -1 }
+}
+}
+#### Free Market Stimulates Military Investment
+event = {
+id = 9000047
+random = yes
+persistent = yes
+
+trigger = {
+domestic = { type = free_market value = 4 }
+atwar = yes
+}
+
+name = "Free Market Stimulates Military Investment"
+desc = "Private investors decided to focus their investments on our military projects. Thanks to their capitals, we have been able to open new industries that will be able to deliver new military applications soon."
+style = 2
+picture = "new_deal"
+
+action = {
+name = "Ok"
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = dissent value = -1 }
+}
+}
+
+#### Convert Commerce Convoys Into Troop Carriers
+event = {
+id = 9000051
+
+persistent = yes
+random = no
+
+decision = { atwar = yes convoypool = 100 }
+decision_trigger = { money = 500 supplies = 500 }
+trigger = { ai = no }
+
+name = "Convert Convoys Into Transports"
+desc = "Our country's navy needs more transport ships in order to transport troops for the upcoming military operations. We have the possibility to mobilize the merchant navy and press its ships into military service, but they will not be available for convoy duties anymore."
+style = 2
+picture = "Convoys"
+decision_picture = "decision_convoys"
+
+date = { day = 1 month = january year = 1914 }
+offset = 180
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "Ok"
+command = { type = transport_pool which = -1 value = -50 }
+command = { trigger = { technology = 3810 NOT = { technology = 3820 } } type = add_division value = transport when = 0 }
+command = { trigger = { technology = 3820 NOT = { technology = 3830 } } type = add_division value = transport when = 1 }
+command = { trigger = { technology = 3830 NOT = { technology = 3840 } } type = add_division value = transport when = 2 }
+command = { trigger = { technology = 3840 NOT = { technology = 3850 } } type = add_division value = transport when = 3 }
+command = { trigger = { technology = 3850 NOT = { technology = 3860 } } type = add_division value = transport when = 4 }
+command = { trigger = { technology = 3860 } type = add_division value = transport when = 5 }
+command = { type = money value = -500 }
+command = { type = money value = -500 }
+}
+}
+
+
+
+# Generic decision for countries other than FRA or ENG
+event = {
+id = 1000033
+picture = "womeninarmedforces"
+decision_picture = "decision_womenarmedforces"
+style = 2
+persistent = yes
+
+decision = {
+OR = {
+flag = 3rdI_FRA_issue5_Y
+flag = WOMEN_ARMY_ENG
+}
+NOT = { local_flag = WOMEN_ARMY }
+NOT = { local_flag = WOMEN_NOARMY }
+not = { country = ENG }
+not = { country = FRA }
+}
+
+decision_trigger = {
+NOT = { manpower = 150 }
+atwar = yes
+OR = {
+ideology = stalinist
+ideology = leninist
+ideology = left_wing_radical
+ideology = social_democrat
+}
+}
+
+trigger = {
+not = { country = ENG }
+not = { country = FRA }
+OR = {
+flag = 3rdI_FRA_issue5_Y
+flag = WOMEN_ARMY_ENG
+}
+OR = {
+ideology = stalinist
+ideology = leninist
+ideology = left_wing_radical
+ideology = social_democrat
+}
+NOT = { manpower = 150 }
+NOT = { local_flag = WOMEN_ARMY }
+NOT = { local_flag = WOMEN_NOARMY }
+atwar = yes
+}
+
+
+name = "Women's role in the army"
+desc = "With one of the leading socialist countries openly allowing women into army we have to make a decision about our nation as well. Allowing women to serve in our armed forces will surely boost our manpower - but elements unwilling to change the status quo have to be taken into consideration as well."
+
+date = { day = 1 month = may year = 1936 }
+offset = 50
+deathdate = { day = 1 month = january year = 1970 }
+
+action_a = {
+ai_chance = 30
+name = "They can serve the same way the men do"
+command = { type = dissent value = 10 }
+command = { type = relative_manpower value = 50 }
+command = { type = local_setflag which = WOMEN_ARMY }
+}
+
+action_b = {
+ai_chance = 60
+name = "We allow only volunteer service"
+command = { type = dissent value = 6 }
+command = { type = relative_manpower value = 20 }
+command = { type = local_setflag which = WOMEN_ARMY }
+}
+
+action_c = {
+ai_chance = 10
+name = "This is unacceptable"
+command = { type = dissent value = -1 }
+command = { type = local_setflag which = WOMEN_NOARMY }
+}
+}
+
+
+
+#### Women Work
+event = {
+id = 9000050
+
+random = no
+
+decision = { atwar = yes IC = 100 domestic = { type = freedom value = 7 } }
+decision_trigger = { }
+trigger = { atwar = yes IC = 100 domestic = { type = freedom value = 7 } random = 5 }
+
+name = "9000050name"
+desc = "9000050desc"
+style = 2
+picture = "Women_Work"
+decision_picture = "decision_Women_Work"
+
+date = { day = 1 month = january year = 1939 }
+offset = 180
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "ACTION_NAME_GREAT"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = dissent value = -2 }
+}
+}

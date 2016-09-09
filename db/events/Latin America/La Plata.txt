@@ -1,0 +1,2055 @@
+event = {
+id = 755800
+random = no
+country = ARG
+picture = "arg_leopoldolugones"
+style = 2
+
+date = { day = 15 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = january year = 1936 }
+
+name = "The Virreinato Manifesto"
+desc = "EVT_755800_DESC"
+
+action_a = {
+name = "Now we have an ideological basis!"
+command = { type = relation which = BRA value = -15 }
+command = { type = relation which = CHL value = -15 }
+command = { type = relation which = BOL value = -15 }
+command = { type = relation which = PRU value = -15 }
+}
+}
+
+event = {
+id = 755801
+random = no
+country = ARG
+picture = "Berlin stock exchange"
+style = 2
+
+date = { day = 1 month = march year = 1936 }
+offset = 4
+deathdate = { day = 29 month = march year = 1936 }
+
+name = "Black Monday reaches Buenos Aires"
+desc = "The effects of the Berlin stock exchange crash have arrived in La Plata. Germany and her satellites are our largest economic partners - with their markets closed due to this crisis, our industry will suffer greatly... Already many factories are reducing production and sending off their employees."
+
+action_a = {
+name = "Really?"
+command = { type = industrial_modifier which = total value = -5 }
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 755802
+random = no
+country = ARG
+picture = "Industry2"
+style = 2
+
+date = { day = 15 month = june year = 1936 }
+offset = 5
+deathdate = { day = 29 month = june year = 1936 }
+
+name = "Industrial Recovery Plan"
+desc = "Our Ministry of Industry has come up with a plan to recover part of our industrial output. By granting huge loans to our industrialists, part of our factories will return to work. Meanwhile, our exports will be directed towards other, unnafected markets."
+
+action_a = {
+ai_chance = 75
+name = "La Plata will be the first country out of this crisis"
+command = { type = industrial_modifier which = total value = 4 }
+command = { type = dissent value = -5 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = money value = -300 }
+}
+action_b = {
+ai_chance = 25
+name = "The invisible hand of capitalism will take care of this"
+command = { type = dissent value = 1 }
+command = { type = domestic which = free_market value = 4 }
+}
+}
+
+
+event = {
+id = 755808
+random = no
+country = ARG
+picture = "arg_montevideo"
+style = 2
+
+trigger = {
+control = { province = 2052 data = ARG }
+NOT = {
+exists = U01
+}
+}
+
+date = { day = 15 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = january year = 1937 }
+
+name = "Terrorist Attack in Montevideo!"
+desc = "Tragedy has struck our Uruguayan Republic as a bomb exploded in a police station in downtown Montevideo, killing 5 policemen and 4 civilians and injuring dozens others. Intelligence data reports that this may be an act of an anti-Platinean separatist group!"
+
+action_a = {
+ai_chance = 75
+name = "Investigate the separatist groups"
+command = { type = dissent value = 2 }
+command = { type = construct which = infrastructure where = 2052 value = -10 } #Damaged infrastructure
+command = { type = domestic which = freedom value = -1 }
+command = { type = setflag which = ARG_SEPARATIST }
+}
+action_b = {
+ai_chance = 25
+name = "Announce a police investigation"
+command = { type = dissent value = 2 }
+command = { type = construct which = infrastructure where = 2052 value = -10 } #Damaged infrastructure
+command = { type = domestic which = freedom value = 1 }
+command = { type = sleepevent which = 755809 } #Sleeps 'Uruguayan separatist group uncovered'
+}
+}
+
+event = {
+id = 755809
+random = no
+country = ARG
+picture = "arg_montevideo"
+style = 2
+
+trigger = {
+flag = ARG_SEPARATIST
+control = { province = 2052 data = ARG }
+NOT = {
+exists = U01
+}
+}
+
+date = { day = 15 month = march year = 1937 }
+offset = 5
+deathdate = { day = 29 month = march year = 1937 }
+
+name = "Uruguayan separatist group uncovered"
+desc = "Our security services have uncovered a terrorist group in Rivera, on the Uruguay-Brazil border, who is believed to be linked to the January attack in Montevideo. The twelve men and women will be charged for multiple murders, conspiracy and high treason!"
+
+action_a = {
+name = "Good!"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 755811
+country = ARG
+style = 2
+picture = "arg_cattle"
+
+date = { day = 1 month = july year = 1937 }
+offset = 10
+deathdate = { day = 29 month = july year = 1937 }
+
+name = "A Plan for Agriculture"
+desc = "The large cattle and grains farms of Argentina form a cornerstone of Platinean economy. However, they still haven't fully recovered from the effects of the Berlin Crisis. Our Ministry of Agriculture has developed a plan to increase food output all over the country."
+
+action_a = {
+ai_chance = 90
+name = "Support this initiative"
+command = { type = industrial_modifier which = supplies value = 2 }
+command = { type = money value = -100 }
+command = { type = supplies value = -200 }
+command = { type = dissent value = -2 }
+}
+action_b = {
+ai_chance = 10
+name = "We don't have funds for that, sorry"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 755812
+country = ARG
+style = 2
+picture = "arg_soldiers"
+
+trigger = {
+flag = ARG_SEPARATIST
+control = { province = 2052 data = ARG }
+NOT = {
+exists = U01
+}
+}
+
+date = { day = 1 month = april year = 1938 }
+offset = 10
+deathdate = { day = 29 month = april year = 1938 }
+
+name = "Form a National Guard?"
+desc = "The current crackdown campaing on separatist groups in Paraguay and Uruguay has come to an end. In all, over two hundred extremists have been arrested. Reports from our security services suggest, however, establishing a permanent paramilitary force to deal specifically with these groups."
+
+action_a = {
+ai_chance = 90
+name = "Establish it"
+command = { type = add_corps which = "Guardia de la Unión" value = land where = 2052 }
+command = { type = add_division which = "Guardia de la Unión" value = infantry when = 7 where = police }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = supplies value = -200 }
+command = { type = dissent value = 4 }
+}
+action_b = {
+ai_chance = 10
+name = "That is not needed"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 755813
+country = ARG
+style = 2
+picture = "argentina"
+
+trigger = {
+control = { province = 2052 data = ARG }
+NOT = {
+exists = U01
+exists = PAR
+}
+}
+
+date = { day = 1 month = july year = 1938 }
+offset = 10
+deathdate = { day = 29 month = july year = 1938 }
+
+name = "Citizenship Act"
+desc = "Despite being under occupation for nearly four years, the inhabitants of former Uruguay and Paraguay still aren't considered full citizens of the Union of La Plata. They have no right to vote and face many difficulties on joining the army, for instance. Should we abolish this aberration and integrate them fully into our glorious Federation?"
+
+action_a = {
+ai_chance = 80
+name = "Extend full citizenship to Uruguayans and Paraguayans"
+command = { type = dissent value = -10 }
+command = { type = manpowerpool value = 50 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = setflag which = KELPERS }
+}
+action_b = {
+ai_chance = 20
+name = "They will still be second-class citizens for the time being"
+command = { type = dissent value = 10 }
+command = { type = domestic which = freedom value = -2 }
+}
+}
+
+event = {
+id = 755816
+country = ARG
+style = 2
+picture = "arg_malvinas"
+
+trigger = {
+control = { province = 2045 data = ARG }
+}
+
+date = { day = 1 month = october year = 1938 }
+offset = 10
+deathdate = { day = 29 month = october year = 1938 }
+
+name = "Malvinas Development Plan"
+desc = "EVT_755816_DESC"
+
+action_a = {
+ai_chance = 60
+name = "Establish a military-controlled comitee"
+command = { type = dissent value = -1 }
+command = { type = money value = -150 }
+command = { type = supplies value = -300 }
+command = { type = setflag which = MLV_MILITARY }
+}
+action_b = {
+ai_chance = 39
+name = "The Ministry of Industry will head this plan"
+command = { type = dissent value = -2 }
+command = { type = money value = -150 }
+command = { type = supplies value = -300 }
+command = { type = setflag which = MLV_CIVILIAN }
+}
+action_c = {
+ai_chance = 1
+name = "That would cost too much - Do nothing"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 755817
+country = ARG
+style = 2
+picture = "arg_malvinas"
+
+trigger = {
+flag = MLV_MILITARY
+control = { province = 2045 data = ARG }
+}
+
+date = { day = 1 month = december year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1938 }
+
+name = "The British in the Malvinas"
+desc = "EVT_755817_DESC"
+
+action_a = {
+ai_chance = 70
+name = "We can't trust these foreigners, evict them to Patagonia"
+command = { type = dissent value = 1 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = CAN value = -10 }
+command = { type = clrflag which = KELPERS }
+}
+action_b = {
+ai_chance = 30
+name = "They're just a bunch of harmless sheep farmers, do nothing"
+command = { type = domestic which = freedom value = 1 }
+command = { type = setflag which = KELPERS }
+}
+}
+
+event = {
+id = 755818
+country = ARG
+style = 2
+picture = "arg_malvinas"
+
+trigger = {
+flag = MLV_CIVILIAN
+control = { province = 2045 data = ARG }
+}
+
+date = { day = 1 month = december year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1938 }
+
+name = "Immigration to the Malvinas"
+desc = "We have chosen to create a civilian comitee to head the Malvinas Development Plan. This board will work to transform the archipelago into usable, arable land, and also will seek out new mineral veins. In order to achieve this, it would be wise to encourage a small immigration wave to those islands."
+
+action_a = {
+ai_chance = 70
+name = "Sure, why not?"
+command = { type = money value = -30 }
+command = { type = supplies value = -30 }
+command = { type = construct which = infrastructure where = 2045 value = 10 } #little bit of infrastructure
+}
+action_b = {
+ai_chance = 30
+name = "Who would want to move there? "
+command = { }
+}
+}
+
+event = {
+id = 755819
+country = ARG
+style = 2
+picture = "arg_malvinas"
+
+trigger = {
+flag = MLV_MILITARY
+control = { province = 2045 data = ARG }
+}
+
+date = { day = 1 month = march year = 1939 }
+offset = 10
+deathdate = { day = 29 month = march year = 1939 }
+
+name = "Puerto Argentino Naval Base"
+desc = "The Malvinas Development Comitee is ready to start construction of a new naval station in Puerto Argentino (formerly known by the English name, 'Stanley'). This new base will help us project our power over the whole South Atlantic and deep into the Antartic Ocean!"
+
+action_a = {
+ai_chance = 100
+name = "Sure, why not?"
+command = { type = money value = -150 }
+command = { type = supplies value = -250 }
+command = { type = construct which = infrastructure where = 2045 value = 10 } #little bit of infrastructure
+command = { type = construct which = naval_base where = 2045 value = 2 } #the base itself
+command = { type = dissent value = -5 }
+}
+action_b = {
+ai_chance = 0
+name = "Cancel it!"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 755820
+country = ARG
+style = 2
+picture = "arg_malvinas"
+
+trigger = {
+flag = MLV_CIVILIAN
+control = { province = 2045 data = ARG }
+}
+
+date = { day = 1 month = march year = 1939 }
+offset = 10
+deathdate = { day = 29 month = march year = 1939 }
+
+name = "Mining operations in the Malvinas"
+desc = "The Malvinas Development Comitee is ready to start construction of a new iron mine in the archipelago. Should we proceed?"
+
+action_a = {
+ai_chance = 100
+name = "Sure, why not?"
+command = { type = money value = -100 }
+command = { type = construct which = infrastructure where = 2045 value = 10 } #little bit of infrastructure
+command = { type = add_prov_resource which = 2045 value = 1 where = metal } #the minerals!
+}
+action_b = {
+ai_chance = 0
+name = "Cancel it!"
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 755821
+country = ARG
+style = 2
+picture = "arg_malvinas"
+
+trigger = {
+flag = KELPERS
+control = { province = 2045 data = ARG }
+}
+
+date = { day = 1 month = june year = 1939 }
+offset = 10
+deathdate = { day = 29 month = june year = 1939 }
+
+name = "Kelper Citizenship"
+desc = "Similarly to what we have done in Uruguay and Paraguay, now should be the time to extend Federation citizenship to the British inhabitants of the Malvinas."
+
+action_a = {
+ai_chance = 80
+name = "They are Platineans as much as anybody else"
+command = { type = dissent value = -1 }
+command = { type = domestic which = freedom value = 1 }
+}
+action_b = {
+ai_chance = 20
+name = "We cannot trust them for now"
+command = { type = dissent value = 1 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = CAN value = -10 }
+}
+}
+
+event = {
+id = 755822
+country = ARG
+style = 2
+picture = "economic"
+
+trigger = {
+control = { province = 163 data = GER }
+control = { province = 145 data = GER }
+control = { province = 2108 data = CAN }
+NOT = {
+ispuppet = ARG
+government = communist
+war = { country = ARG country = GER }
+war = { country = ARG country = CAN }
+}
+}
+
+date = { day = 1 month = september year = 1939 }
+offset = 10
+deathdate = { day = 29 month = september year = 1939 }
+
+name = "Foreign capital"
+desc = "Our Ministry of Industry has proposed that we initiate a campaign amongst the major powers of Europe and North America in order to attract foreign industry to La Plata."
+
+action_a = {
+ai_chance = 50
+name = "Sure!"
+command = { type = money value = -50 }
+command = { type = setflag which = ARG_FOREIGN }
+}
+action_b = {
+ai_chance = 50
+name = "We cannot fund this right now"
+command = { type = sleepevent which = 755823 }
+command = { type = sleepevent which = 755824 }
+command = { type = sleepevent which = 755826 }
+command = { type = sleepevent which = 755827 }
+}
+}
+
+event = {
+id = 755823
+country = CAN
+style = 2
+picture = "argentina"
+
+trigger = {
+flag = ARG_FOREIGN
+control = { province = 2108 data = CAN }
+}
+
+date = { day = 1 month = january year = 1940 }
+offset = 10
+deathdate = { day = 29 month = january year = 1940 }
+
+name = "Delegation from La Plata"
+desc = "A group of Platinean politicians and businessmen have arrived today in Ottawa. They want the support of our government in convincing our industrialists to fund new factories in their country."
+
+action_a = {
+ai_chance = 50
+name = "Sure, invest in La-Plata"
+command = { type = supplies value = -10 }
+command = { type = relation which = ARG value = 20 }
+}
+action_b = {
+ai_chance = 50
+name = "What a waste of resources"
+command = { type = relation which = ARG value = -20 }
+command = { type = sleepevent which = 755826 }
+}
+}
+
+event = {
+id = 755824
+country = GER
+style = 2
+picture = "argentina"
+
+trigger = { flag = ARG_FOREIGN
+control = { province = 163 data = GER }
+control = { province = 145 data = GER }
+}
+
+date = { day = 1 month = january year = 1940 }
+offset = 10
+deathdate = { day = 29 month = january year = 1940 }
+
+name = "Delegation from La Plata"
+desc = "A group of Platinean politicians and businessmen have arrived today in Berlin. They want the support of our government in convincing our industrialists to fund new factories in their country."
+
+action_a = {
+ai_chance = 80
+name = "Sure, invest in La-Plata"
+command = { type = supplies value = -10 }
+command = { type = relation which = ARG value = 20 }
+}
+action_b = {
+ai_chance = 20
+name = "What a waste of resources"
+command = { type = relation which = ARG value = -20 }
+command = { type = sleepevent which = 755827 }
+}
+}
+
+event = {
+id = 755826
+country = ARG
+style = 2
+picture = "economic"
+
+date = { day = 1 month = may year = 1940 }
+offset = 10
+deathdate = { day = 29 month = may year = 1940 }
+
+name = "Canadian industries arrive!"
+desc = "In a grand ceremony, a new industrial complex, built with Canadian and Platinean capital, has been inaugurated and will be working at full capacity in just a few weeks."
+
+action_a = {
+name = "Great!"
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 755827
+country = ARG
+style = 2
+picture = "economic"
+
+date = { day = 1 month = may year = 1940 }
+offset = 10
+deathdate = { day = 29 month = may year = 1940 }
+
+name = "German industries arrive!"
+desc = "In a grand ceremony, a new industrial complex, built with German and Platinean capital, has been inaugurated and will be working at full capacity in just a few weeks."
+
+action_a = {
+name = "Great!"
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = dissent value = -1 }
+}
+}
+
+
+event = {
+id = 755803
+random = no
+country = ARG
+picture = "Syndicalists"
+style = 2
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = BOL_REVOLT
+}
+
+date = { day = 1 month = may year = 1936 }
+offset = 5
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Revolution in Bolivia!"
+desc = "The rightfull government of the Republic of Bolivia has been overthrown by syndicalist bands! Already their president has seeked asylum in La Plata. We must find a way to prevent this rebellion from spreading towards us. Our military leaders have suggested increasing our presence in the border areas."
+
+action_a = {
+ai_chance = 40
+name = "Reinforce our positions in northern Argentina"
+command = { type = money value = -100 }
+command = { type = supplies value = -150 }
+command = { type = relation which = BOL value = -20 }
+command = { type = dissent value = 4 }
+command = { type = construct which = land_fort where = 2026 value = 1 } #Salta
+command = { type = construct which = land_fort where = 2046 value = 1 } #Corrientes
+command = { type = domestic which = defense_lobby value = 1 }
+}
+action_b = {
+ai_chance = 75
+name = "Raise new infantry division in the area"
+command = { type = dissent value = 3 }
+command = { type = money value = -200 }
+command = { type = supplies value = -300 }
+command = { type = relation which = BOL value = -40 }
+command = { type = add_division which = "1a. División del Norte" value = infantry when = 8 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+}
+action_c = {
+ai_chance = 5
+name = "Do nothing, they can't harm us"
+command = { type = dissent value = 2 }
+command = { type = relation which = BOL value = 10 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+
+event = {
+id = 755804
+random = no
+country = ARG
+picture = "Syndicalists"
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = ANL
+}
+
+date = { day = 2 month = august year = 1936 }
+offset = 5
+deathdate = { day = 29 month = august year = 1936 }
+
+name = "Syndicalists elected in Brazil"
+desc = "Another South American country has fallen to the socialist hordes, as the Brazilians elected Edgard Leuenroth as their new president. Our largest neighbour is now on the hands of the international syndicalist movement, and sooner or later they will atempt to test our status as the regional power on this continent... We must stand vigilant!"
+
+action_a = {
+ai_chance = 40
+name = "Reinforce our positions in the border areas"
+command = { type = money value = -150 }
+command = { type = supplies value = -250 }
+command = { type = construct which = land_fort where = 2020 value = 1 }
+command = { type = construct which = land_fort where = 2049 value = 1 }
+command = { type = construct which = land_fort where = 2051 value = 1 }
+command = { type = construct which = land_fort where = 2052 value = 1 }
+command = { type = relation which = BRA value = -20 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = sleepevent which = 755805 } #Sleeps 'Integralists elected in Brazil'
+}
+action_b = {
+ai_chance = 75
+name = "Raise new infantry divisions in the area"
+command = { type = dissent value = 1 }
+command = { type = money value = -300 }
+command = { type = supplies value = -400 }
+command = { type = relation which = BRA value = -40 }
+command = { type = add_division which = "1o. Ejército de Frontera" value = infantry when = 8 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = sleepevent which = 755805 } #Sleeps 'Integralists elected in Brazil'
+}
+action_c = {
+ai_chance = 5
+name = "Do nothing, they can't do anything to us"
+command = { type = dissent value = 2 }
+command = { type = relation which = BRA value = 10 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = sleepevent which = 755805 } #Sleeps 'Integralists elected in Brazil'
+}
+}
+
+event = {
+id = 755805
+random = no
+country = ARG
+picture = "bra_flagpb"
+
+trigger = { flag = INT } #Brazil has gone Integralist
+
+date = { day = 2 month = august year = 1936 }
+offset = 5
+deathdate = { day = 29 month = august year = 1936 }
+
+name = "Integralists elected in Brazil"
+desc = "The Brazilians have elected Plínio Salgado, of the virulent nationalist Brazilian Integralist Action, as their new president. Our largest neighbour sooner or later will atempt to test our status as the regional power on this continent... We must stand vigilant!"
+
+action_a = {
+ai_chance = 40
+name = "Reinforce our positions in the border areas"
+command = { type = money value = -150 }
+command = { type = supplies value = -250 }
+command = { type = construct which = land_fort where = 2020 value = 1 }
+command = { type = construct which = land_fort where = 2049 value = 1 }
+command = { type = construct which = land_fort where = 2051 value = 1 }
+command = { type = construct which = land_fort where = 2052 value = 1 }
+command = { type = relation which = BRA value = -20 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = sleepevent which = 755804 } #Sleeps 'Syndicalists elected in Brazil'
+}
+action_b = {
+ai_chance = 75
+name = "Raise new infantry divisions in the area"
+command = { type = dissent value = 1 }
+command = { type = money value = -300 }
+command = { type = supplies value = -400 }
+command = { type = relation which = BRA value = -40 }
+command = { type = add_division which = "1o. Ejército de Frontera" value = infantry when = 8 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = sleepevent which = 755804 } #Sleeps 'Syndicalists elected in Brazil'
+}
+action_c = {
+ai_chance = 5
+name = "Do nothing, they can't do anything to us"
+command = { type = dissent value = 2 }
+command = { type = relation which = BRA value = 10 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = sleepevent which = 755804 } #Sleeps 'Syndicalists elected in Brazil'
+}
+}
+
+
+
+event = {
+id = 95058
+random = no
+country = ARG
+style = 2
+picture = "GeorgeV_Funeral"
+trigger = {
+headofgovernment = 35049 #Marcelo T. Alvear
+}
+date = { day = 23 month = april year = 1942 }
+name = "Our strong leader has died!"
+desc = "After many succesful years as our leader Marcelo Torcuato de Alvear has died. Let's hope our new leader will lead our nation towards glory."
+
+action_a = {
+name = "May god be with him."
+command = { type = sleepminister which = 35049 }
+command = { type = headofgovernment which = 35045 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+
+event = {
+id = 55800
+country = ARG
+style = 2
+picture = "agriculture2"
+
+date = { day = 8 month = july year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1947 }
+
+name = "The Granary of the World"
+desc = "Argentina gained the nickname 'Granary of the World' because the large amounts of wheat exported to Europe and the rest of America. The government has come under some fire for this, many beleive whats made in La Plata should stay in La Plata for the people of La Plata, not the Europeans who are thousands of miles away."
+
+action_a = {
+ai_chance = 75
+name = "Continue to Export our Goods, The World Needs Us!"
+command = { type = domestic which = free_market value = 1 }
+command = { type = relation which = ENG value = 10 }
+command = { type = relation which = SPA value = 10 }
+command = { type = relation which = SPR value = 10 }
+command = { type = relation which = POR value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = relation which = FRA value = 10 }
+command = { type = relation which = USA value = 10 }
+command = { type = relation which = CAN value = 10 }
+command = { type = relation which = ITA value = 10 }
+command = { type = relation which = RSI value = 10 }
+command = { type = relation which = BRA value = 10 }
+command = { type = gain_tech which = 5020 }
+command = { type = gain_tech which = 5030 }
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 25
+name = "Europe will have to find another granary"
+command = { type = domestic which = free_market value = -1 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = SPA value = -10 }
+command = { type = relation which = SPR value = -10 }
+command = { type = relation which = POR value = -10 }
+command = { type = relation which = GER value = -10 }
+command = { type = relation which = FRA value = -10 }
+command = { type = relation which = USA value = -10 }
+command = { type = relation which = CAN value = -10 }
+command = { type = relation which = ITA value = -10 }
+command = { type = relation which = RSI value = -10 }
+command = { type = relation which = BRA value = -10 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 55860
+country = ARG
+style = 2
+picture = "immigrates"
+
+trigger = {
+OR = {
+war = { country = SPA country = EUS }
+war = { country = SPA country = SPR }
+war = { country = EUS country = SPR }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1947 }
+
+name = "Spanish Immigrates come to La Plata"
+desc = "To escape the civil war ravaging the Iberian Peninsula, immigrants from Spain have fled to Latin America."
+
+action_a = {
+name = "Welcome Them With Open Arms"
+command = { type = dissent value = 1 }
+command = { type = manpowerpool value = 20 }
+}
+}
+
+
+event = {
+id = 755829
+random = no
+country = ARG
+picture = "CSA"
+style = 2
+
+name = "Earthquake in La Plata"
+desc = "An earthquake has just hit San Juan, Argentina, killing an estimated 10,000 people in the worst natural disaster in our history. Can we afford doing anything?"
+
+date = { day = 15 month = january year = 1944 }
+
+action_a = {
+name = "Send extra help to the survivours"
+ai_chance = 75
+command = { type = resource which = supplies value = -100 }
+command = { type = money value = -20 }
+command = { type = dissent value = -1 }
+}
+action_b = {
+name = "Who cares?"
+ai_chance = 25
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 755861
+random = no
+country = ARG
+style = 2
+picture = "GeorgeV_Funeral"
+
+trigger = {
+headofstate = 35001 #Agustin Pedro Justo
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 1 month = january year = 1943 }
+offset = 10
+deathdate = { day = 29 month = december year = 1943 }
+
+name = "President Justo has died!"
+desc = "Our great leader has died today! General Agustín Pedro Justo, president of Argentina since 1933 and dictator of the Union of La Plata since her formation, has passed away peacefully during his sleep. During the first few hours after the event, a power vaccumm ensued. This moment may be seized both by Justo's own suporters on the government, who are trying to setup a stable transitional government; and also by his rivals on the army, who will instead attempt a new military coup."
+
+action_a = {
+ai_chance = 50
+name = "Ramón Castillo forms a provisional government"
+command = { type = sleepminister which = 35001 }
+command = { type = sleepminister which = 35002 }
+command = { type = sleepminister which = 35031 }
+command = { type = sleepminister which = 35045 }
+command = { type = sleepminister which = 35173 }
+command = { type = sleepleader which = 120013 }
+command = { type = dissent value = 4 }
+command = { type = trigger which = 755862 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Pedro Pablo Ramirez and Eldemiro Farrel launch a coup"
+command = { type = sleepminister which = 35001 }
+command = { type = sleepminister which = 35002 }
+command = { type = sleepminister which = 35031 }
+command = { type = sleepminister which = 35045 }
+command = { type = sleepminister which = 35173 }
+command = { type = sleepleader which = 120013 }
+command = { type = dissent value = 8 }
+command = { type = trigger which = 755863 }
+}
+}
+
+event = {
+id = 755862
+random = no
+country = ARG
+style = 2
+
+name = "The Plaza de Mayo Riots"
+desc = "While Ramón Castillo was forming his provisional government, the people of Buenos Aires started to gather in front of the Casa Rosada. As the death of Justo was formally announced, the crowd exploded. The police wasn't able to control the increasing violence, which ranged from loud discussions to gunfire. As the riot spread from the Plaza de Mayo across downtown Buenos Aires, it became clear there wouldn't be an easy way out of this situation..."
+picture = "bra_matarazzo2"
+
+action_a = {
+ai_chance = 75
+name = "The military steps in and represses the rioters"
+command = { type = dissent value = 5 }
+command = { type = trigger which = 755865 }
+}
+action_b = {
+ai_chance = 25
+name = "We will survive the storm, deploy the Presidential Guard"
+command = { type = dissent value = 1 }
+command = { type = trigger which = 755864 }
+}
+}
+
+event = {
+id = 755863
+random = no
+country = ARG
+style = 2
+
+name = "The Plaza de Mayo Riots"
+desc = "While Ramirez and Farrel were marching their garrison towards the Casa Rosada, the people of Buenos Aires started to gather on the Plaza de Mayo. As the death of Justo was formally announced by acting-president Ramón Castillo, the crowd exploded. The police wasn't able to control the increasing violence, which ranged from loud discussions to gunfire. As the riot spread from the Plaza de Mayo across downtown Buenos Aires, it became clear there wouldn't be an easy way out of this situation..."
+picture = "bra_matarazzo2"
+
+action_a = {
+ai_chance = 50
+name = "Recall the troops, let the civilians form a transitional government"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 755864 }
+}
+action_b = {
+ai_chance = 50
+name = "March towards the Casa Rosada"
+command = { type = dissent value = 8 }
+command = { type = trigger which = 755865 }
+}
+}
+
+event = {
+id = 755864
+random = no
+country = ARG
+style = 2
+
+name = "The Presidential Guard disperses the rioters"
+desc = "Despite the menace of a military coup by certain sections of the army, the Presidential Guard stepped in and, without excess force, managed to disperse the rioters out of the Plaza de Mayo, while the Police increased patrols in downtown Buenos Aires. As the situation seemed to calm down, acting-president Ramón Castillo was formally inaugurated and announced his new cabinet, while preparing the ground for constitutional reforms and for early elections next year."
+picture = "arg_soldiers"
+
+action_a = {
+name = "It's safe to leave home, it seems!"
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 35033 }
+command = { type = headofgovernment which = 35047 }
+command = { type = dissent value = -2 }
+command = { type = setflag which = ARG_JUSTO_CIVILIAN }
+command = { type = setflag which = ARG_JUSTO_ELECTIONS }
+}
+}
+
+event = {
+id = 755865
+random = no
+country = ARG
+style = 2
+
+name = "Coup!"
+desc = "As Ramón Castillo's attempt at a provisional government couldn't even control the vicinity of the Casa Rosada itself, generals Pedro Pablo Ramirez and Edelmiro Farrel marched with their garrisons towards the Plaza de Mayo. Under the excuse of 'preventing an syndicalist uprising by any means necessary', the rioters were brutally stopped and Castillo's cabinet was deposed. The military was now clearly in control of the country. The question now was, how will they govern?"
+picture = "arg_soldiers"
+
+action_a = {
+name = "At least it's safe to leave home now, it seems!"
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 0 }
+command = { type = headofstate which = 35041 }
+command = { type = headofgovernment which = 35055 }
+command = { type = dissent value = 2 }
+command = { type = setflag which = ARG_JUSTO_MILITARY }
+}
+}
+
+event = {
+id = 755867
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_MILITARY
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 1 month = january year = 1943 }
+offset = 30
+deathdate = { day = 29 month = december year = 1943 }
+
+name = "A new government?"
+desc = "Today, nearly one month since the Plaza de Mayo riots, the top brass of the Platinean military convened in Buenos Aires in order to decide the future of the country. There are two main factions: the more jingoistic and nationalist officers support the continuation of a junta led by Farrel and Ramirez, while some others insist on adding the more moderate Arturo Rawson to this group. Finally, there are the minority, more radical officers, supporting the reformist and corporatist Juan Perón."
+
+action_a = {
+ai_chance = 35
+name = "Mantain the junta under Farrel and Ramirez"
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 0 }
+command = { type = headofstate which = 35041 }
+command = { type = headofgovernment which = 35055 }
+command = { type = dissent value = -1 }
+}
+action_b = {
+ai_chance = 45
+name = "The moderate Arturo Rawson joins the junta"
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 35041 }
+command = { type = headofgovernment which = 35224 }
+command = { type = chiefofstaff which = 35158 }
+command = { type = chiefofarmy which = 35186 }
+command = { type = dissent value = -2 }
+}
+action_c = {
+ai_chance = 20
+name = "Radical officers choose Juan Perón as the new president"
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = headofstate which = 35044 }
+command = { type = headofgovernment which = 35058 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 755868
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_MILITARY
+headofgovernment = 35055 #Ramirez
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 1 month = april year = 1943 }
+offset = 30
+deathdate = { day = 29 month = december year = 1943 }
+
+name = "Democracy for La Plata?"
+desc = "Today, during another meeting of the top officers of our military, some more moderate leaders have pointed at the necessity for elections in 1944, as termed by the Argentinian Constitution of 1898. Should we listen to their demands and, voluntarelly, surrender power next January?"
+picture = "bra_matarazzo2"
+
+action_a = {
+ai_chance = 50
+name = "Of course, we were just a provisional government anyway!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = ARG_JUSTO_ELECTIONS }
+command = { type = sleepevent which = 755869 }
+command = { type = sleepevent which = 755870 }
+}
+action_b = {
+ai_chance = 50
+name = "Who needs elections? This is OUR country now!"
+command = { type = domestic which = freedom value = -2 }
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 755869 }
+command = { type = sleepevent which = 755870 }
+}
+}
+
+event = {
+id = 755869
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_MILITARY
+headofgovernment = 35224 #Rawson
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 1 month = april year = 1943 }
+offset = 30
+deathdate = { day = 29 month = december year = 1943 }
+
+name = "Democracy for La Plata?"
+desc = "Today, during another meeting of the top officers of our military, some more moderate leaders have pointed at the necessity for elections in 1944, as termed by the Argentinian Constitution of 1898. Should we listen to their demands and, voluntarelly, surrender power next January?"
+picture = "bra_matarazzo2"
+
+action_a = {
+ai_chance = 70
+name = "Of course, we were just a provisional government anyway!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = ARG_JUSTO_ELECTIONS }
+command = { type = sleepevent which = 755868 }
+command = { type = sleepevent which = 755870 }
+}
+action_b = {
+ai_chance = 30
+name = "Who needs elections? This is OUR country now!"
+command = { type = domestic which = freedom value = -2 }
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 755868 }
+command = { type = sleepevent which = 755870 }
+}
+}
+
+event = {
+id = 755870
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_MILITARY
+headofgovernment = 35058 #Perón
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 1 month = april year = 1943 }
+offset = 30
+deathdate = { day = 29 month = december year = 1943 }
+
+name = "Democracy for La Plata?"
+desc = "Today, during another meeting of the top officers of our military, some more moderate leaders have pointed at the necessity for elections in 1944, as termed by the Argentinian Constitution of 1898. Should we listen to their demands and, voluntarelly, surrender power next January?"
+picture = "bra_matarazzo2"
+
+action_a = {
+ai_chance = 30
+name = "Of course, we were just a provisional government anyway!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = ARG_JUSTO_ELECTIONS }
+command = { type = sleepevent which = 755869 }
+command = { type = sleepevent which = 755868 }
+}
+action_b = {
+ai_chance = 70
+name = "Who needs elections? This is OUR country now!"
+command = { type = domestic which = freedom value = -2 }
+command = { type = dissent value = 7 }
+command = { type = sleepevent which = 755869 }
+command = { type = sleepevent which = 755868 }
+}
+}
+
+event = {
+id = 755871
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_ELECTIONS
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 0 month = january year = 1944 }
+offset = 5
+deathdate = { day = 29 month = january year = 1944 }
+
+name = "Presidential Elections, 1944"
+desc = "Today was election day in La Plata. Three main coalitions were disputing the presidency of the Union: first, we have the liberals of the Unión Cívica Radical, represented by José Pascual Tamborini and Enrique Mosca. Further to the right, there is the conservative Partido Demócrata, under Robustiano Costas and Vicente Solá. Finally, there is also the far-right corporatist Partido Justicialista, with Juan Domingo Perón and Hortensio Quijano."
+picture = "bra_vote"
+
+action_a = {
+ai_chance = 25
+name = "Unión Cívica Radical - Tamborini and Mosca"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 35267 } #Tamborini
+command = { type = headofgovernment which = 35268 } #Mosca
+command = { type = dissent value = -2 }
+}
+action_b = {
+ai_chance = 40
+name = "Demócratas - Costas and Solá"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 35036 } #Costas
+command = { type = headofgovernment which = 35269 } #Solá
+command = { type = dissent value = -3 }
+}
+action_c = {
+ai_chance = 35
+name = "Justicialistas - Perón and Quijano"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 35044 } #Perón
+command = { type = headofgovernment which = 35266 } #Quijano
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 755872
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_ELECTIONS
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 0 month = january year = 1948 }
+offset = 5
+deathdate = { day = 29 month = january year = 1948 }
+
+name = "Presidential Elections, 1948"
+desc = "Today is voting day in La Plata! Four main parties are disputing the presidency of the Union: first, we have Nicolás Repetto and Manuel Ugarte of the social-democrat Partido Socialista. Next, the liberals of the Unión Cívica Radical, with José Pedro Tamborini and Ricardo Balbín. Further to the right, the conservative Demócratas, represented by Robustiano Costas and Reynaldo Pastor. Finally, there's also the far-right Justicialistas under Juan Perón and Hortensio Quijano."
+picture = "bra_vote"
+
+action_a = {
+ai_chance = 15
+name = "Partido Socialista - Repetto and Ugarte"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 35270 } #Repetto
+command = { type = headofgovernment which = 35271 } #Ugarte
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 25
+name = "Unión Cívica Radical - Tamborini and Balbín"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 35267 } #Tamborini
+command = { type = headofgovernment which = 35272 } #Balbín
+command = { type = dissent value = -2 }
+}
+action_c = {
+ai_chance = 35
+name = "Demócratas - Costas and Pastor"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 35036 } #Costas
+command = { type = headofgovernment which = 35273 } #Pastor
+command = { type = dissent value = -3 }
+}
+action_d = {
+ai_chance = 25
+name = "Justicialistas - Perón and Quijano"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 35044 } #Perón
+command = { type = headofgovernment which = 35266 } #Quijano
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 755873
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_ELECTIONS
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 0 month = january year = 1952 }
+offset = 5
+deathdate = { day = 29 month = january year = 1952 }
+
+name = "Presidential Elections, 1952"
+desc = "Once again, this is voting day in La Plata! Four parties are disputing the presidency of the Union: first, Nicolás Repetto and Américo Ghioldi of the social-democrat Partido Socialista. Next, the liberals of the Unión Cívica Radical, with Ricardo Balbín and Crisólogo Larralde. Further to the right, the conservative Demócratas, represented by Reynaldo Pastor and Vicente Solano Lima. Further to the far-right, the Justicialistas under Juan Perón and Alberto Tessaire."
+picture = "bra_vote"
+
+action_a = {
+ai_chance = 15
+name = "Partido Socialista - Repetto and Ghioldi"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 35270 } #Repetto
+command = { type = headofgovernment which = 35274 } #Ghioldi
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 35
+name = "Unión Cívica Radical - Balbín and Larralde"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 35275 } #Balbín
+command = { type = headofgovernment which = 35276 } #Larralde
+command = { type = dissent value = -2 }
+}
+action_c = {
+ai_chance = 35
+name = "Demócratas - Pastor and Lima"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 35277 } #Pastor
+command = { type = headofgovernment which = 35278 } #Lima
+command = { type = dissent value = -3 }
+}
+action_d = {
+ai_chance = 15
+name = "Justicialistas - Perón and Tessaire"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 35044 } #Perón
+command = { type = headofgovernment which = 35262 } #Tessaire
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 755874
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_ELECTIONS
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 0 month = january year = 1956 }
+offset = 5
+deathdate = { day = 29 month = january year = 1956 }
+
+name = "Presidential Elections, 1956"
+desc = "Once again, this is voting day in La Plata! Four parties are disputing the presidency of the Union: The social-democrat Partido Socialista is represented by Alicia Moreau de Justo and Américo Ghioldi. Next, the liberals of the Unión Cívica Radical, with Arturo Frondizi and Alejandro Gomez. Further to the right, the conservative Demócratas, represented by Pedro Eugénio Aramburu and Álvaro Alsogaray. Further to the far-right, the Justicialistas under Juan Perón and Alberto Tessaire."
+picture = "bra_vote"
+
+action_a = {
+ai_chance = 20
+name = "Partido Socialista - Moreau de Justo and Ghioldi"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 35279 } #Moreau de Justo
+command = { type = headofgovernment which = 35274 } #Ghioldi
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 35
+name = "Unión Cívica Radical - Frondizi and Gomez"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 35280 } #Frondizi
+command = { type = headofgovernment which = 35281 } #Gomez
+command = { type = dissent value = -2 }
+}
+action_c = {
+ai_chance = 30
+name = "Demócratas - Aramburu and Alsogaray"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 35282 } #Aramburu
+command = { type = headofgovernment which = 35283 } #Alsogaray
+command = { type = dissent value = -3 }
+}
+action_d = {
+ai_chance = 15
+name = "Justicialistas - Perón and Tessaire"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 35044 } #Perón
+command = { type = headofgovernment which = 35262 } #Tessaire
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 755875
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_ELECTIONS
+NOT = { ispuppet = ARG }
+}
+
+date = { day = 0 month = january year = 1960 }
+offset = 5
+deathdate = { day = 29 month = january year = 1960 }
+
+name = "Presidential Elections, 1960"
+desc = "This is voting day in La Plata! Four parties are disputing the presidency of the Union: The social-democrat Partido Socialista is represented by Alfredo Lorenzo Palacios and Carlos Sánchez Viamonte. Next, the liberals of the Unión Cívica Radical, with Arturo Frondizi and Oscar Alende. Further to the right, the conservative Demócratas, represented by Vicente Solano Lima and Carlos Sylvestre Begnis. Further to the far-right, the Justicialistas under Juan Perón and Alberto Tessaire."
+picture = "bra_vote"
+
+action_a = {
+ai_chance = 30
+name = "Partido Socialista - Palacios and Viamonte"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 35284 } #Palacios
+command = { type = headofgovernment which = 35285 } #Viamonte
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 30
+name = "Unión Cívica Radical - Frondizi and Alende"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 35280 } #Frondizi
+command = { type = headofgovernment which = 35286 } #Alende
+command = { type = dissent value = -2 }
+}
+action_c = {
+ai_chance = 30
+name = "Demócratas - Lima and Begnis"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 35287 } #Lima
+command = { type = headofgovernment which = 35288 } #Begnis
+command = { type = dissent value = -3 }
+}
+action_d = {
+ai_chance = 10
+name = "Justicialistas - Perón and Tessaire"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 35044 } #Perón
+command = { type = headofgovernment which = 35262 } #Tessaire
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 755876
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_JUSTO_ELECTIONS
+event = 755871 				### 1944 elections already happenend
+control = { province = 2052 data = ARG } ### Montevideo, Uruguay
+control = { province = 2047 data = ARG } ### Asunción, Paraguay
+NOT = {
+atwar = ARG
+ispuppet = ARG
+headofstate = 35044			### Perón
+exists = URU
+exists = PAR
+}
+}
+
+date = { day = 0 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Autonomist protests"
+desc = "Today, in several cities across La Plata, small groups of laborers, students and intelectuals promoted a series of peacefull rallies asking for more democratic measures, in order to get our Union rid of the vestiges of Justo's dictatorship. One of their more polemic measures call for more autonomy for each of the Union's republics, granting them a larger degree of self-government."
+picture = "bra_revolution"
+
+action_a = {
+ai_chance = 70
+name = "They have the right to protest, of course"
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = 1 }
+}
+action_b = {
+ai_chance = 30
+name = "Ignore them"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 755877
+random = no
+country = ARG
+style = 2
+
+trigger = {
+event = 755876
+NOT = {	ispuppet = ARG }
+}
+
+date = { day = 1 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "New Autonomist protests"
+desc = "Today, once again, workers and intellectuals have protested in the streets of La Plata, demanding more democratic measures - including more autonomy for the Union's republics. This time, however, they have been joined by some members of the local political elites, including some members of the local assemblies and even some Senators. They are now officially proposing a debate on the matter."
+picture = "bra_revolution"
+
+action_a = {
+ai_chance = 70
+name = "We should listen to their proposals"
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = 1 }
+command = { type = setflag which = ARG_AUTO }
+}
+action_b = {
+ai_chance = 30
+name = "Send them away, La Plata is one and indivisible"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 755878
+random = no
+country = ARG
+style = 2
+
+trigger = {
+event = 755877
+flag = ARG_AUTO
+control = { province = 2052 data = ARG } ### Montevideo, Uruguay
+control = { province = 2047 data = ARG } ### Asunción, Paraguay
+NOT = {
+ispuppet = ARG
+exists = U01
+exists = PAR
+}
+}
+
+date = { day = 1 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Reforming the Union"
+desc = "It's been several months since several senators and deputies have presented a proposal for increased autonomy in the Uruguayan and Paraguayan republics of La Plata. In essence, the two Republics would be granted self-rule in several areas, while their diplomatic relations, defense and economical policies would still be determined from Buenos Aires. This act is now simply awaiting for our approval."
+picture = "arg_mapa"
+
+action_a = {
+ai_chance = 70
+name = "Dismiss it - That was an unpatriotic proposal after all!"
+command = { type = domestic which = freedom value = -2 }
+command = { type = dissent value = 8 }
+command = { type = clrflag which = ARG_AUTO }
+}
+action_b = {
+ai_chance = 20
+name = "Establish Autonomous Republics in Paraguay and Uruguay"
+command = { type = removecore which = 2046 }
+command = { type = removecore which = 2047 }
+command = { type = removecore which = 2051 }
+command = { type = removecore which = 2052 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = belligerence which = ARG value = -5 }
+command = { type = independence which = PAR value = 1 }
+command = { type = independence which = U01 value = 1 }
+command = { type = trigger which = 755879 }
+command = { type = trigger which = 755880 }
+}
+action_c = {
+ai_chance = 5
+name = "Grant autonomy to Paraguay only"
+command = { type = domestic which = freedom value = 2 }
+command = { type = removecore which = 2046 }
+command = { type = removecore which = 2047 }
+command = { type = dissent value = 2 }
+command = { type = belligerence which = ARG value = -2 }
+command = { type = independence which = PAR value = 1 }
+command = { type = trigger which = 755879 }
+}
+action_d = {
+ai_chance = 5
+name = "Grant autonomy to just Uruguay"
+command = { type = removecore which = 2051 }
+command = { type = removecore which = 2052 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = 2 }
+command = { type = belligerence which = ARG value = -2 }
+command = { type = independence which = U01 value = 1 }
+command = { type = trigger which = 755880 }
+}
+}
+
+event = {
+id = 755879
+country = ARG
+style = 2
+
+name = "The Autonomous Republic of Paraguay"
+desc = "We have declared the autonomy of Paraguay!"
+picture = "arg_mapa"
+
+action_a = {
+name = "Great!"
+command = { type = make_puppet which = PAR }
+command = { type = secedeprovince which = PAR value = 2046 } # Santa Cruz
+command = { type = secedeprovince which = PAR value = 2047 } # Ciudade del Este
+command = { type = removecore which = 2046 }
+command = { type = removecore which = 2047 }
+}
+}
+
+event = {
+id = 755880
+country = ARG
+style = 2
+
+name = "The Autonomous Republic of Uruguay"
+desc = "We have declared the autonomy of uruguay!"
+picture = "arg_mapa"
+
+action_a = {
+name = "Great!"
+command = { type = make_puppet which = U01 }
+command = { type = secedeprovince which = U01 value = 2051 }
+command = { type = secedeprovince which = U01 value = 2052 }
+command = { type = removecore which = 2051 }
+command = { type = removecore which = 2052 }
+}
+}
+
+event = {
+id = 755881
+random = no
+country = ARG
+style = 2
+
+trigger = {
+event = 755878
+flag = ARG_AUTO
+NOT = {	ispuppet = ARG }
+OR = {
+control = { province = 2023 data = ARG } ### Santiago, Chile
+control = { province = 2020 data = ARG } ### La Paz, Bolivia
+control = { province = 2058 data = ARG } ### Porto Alegre, Brazil
+control = { province = 2075 data = ARG } ### Rio de Janeiro, Brazil
+}
+}
+
+date = { day = 1 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The occupied territories"
+desc = "Due to our recent wars, we are still under control of several territories that once belonged to our neighbours, which are a great source of dissent for our Union. Our autonomist senators, together with representatives from these lands, now propose that we settle their situation once and for all - maybe even accepting them into La Plata as full Union Republics."
+picture = "arg_soldiers"
+
+action_a = {
+ai_chance = 30
+name = "The status-quo is just fine, don't you think?"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 10 }
+command = { type = clrflag which = ARG_AUTO }
+}
+action_b = {
+ai_chance = 70
+name = "Accept their proposal and look into the possibilities"
+command = { type = domestic which = freedom value = 1 }
+command = { type = belligerence which = ARG value = -5 }
+command = { type = setflag which = ARG_AUTO2 }
+}
+}
+
+event = {
+id = 755882
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_AUTO
+flag = ARG_AUTO2
+control = { province = 2023 data = ARG } ### Santiago, Chile
+NOT = {
+ispuppet = ARG
+exists = CHL
+}
+}
+
+date = { day = 0 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The situation in Chile"
+desc = "Dissent against the Platinean occupation is growing in Chile. Following the recent autonomy granted to Uruguay and Paraguay, some of our politicians are proposing that we accept Chile as a member of our Union. Some senators, however, believe that we should restore their independence completelly and keep them under control through a military alliance. A few others, especially in the military, propose instead continuing the occupation."
+picture = "arg_soldiers"
+
+action_a = {
+ai_chance = 70
+name = "Accept them as an Union Republic"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -2 }
+command = { type = removeclaim which = 2031 }
+command = { type = removeclaim which = 2032 }
+command = { type = removeclaim which = 2023 }
+command = { type = removeclaim which = 2022 }
+command = { type = independence which = CHL value = 1 }
+command = { type = trigger which = 755883 }
+}
+action_b = {
+ai_chance = 20
+name = "Restore their independence, but keep them under an alliance"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -1 }
+command = { type = removeclaim which = 2031 }
+command = { type = removeclaim which = 2032 }
+command = { type = removeclaim which = 2023 }
+command = { type = removeclaim which = 2022 }
+command = { type = independence which = CHL value = 1 }
+command = { type = trigger which = 755884 }
+}
+action_c = {
+ai_chance = 10
+name = "Continue the military occupation of Chile"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 5 }
+command = { type = belligerence which = ARG value = 5 }
+}
+}
+
+event = {
+id = 755883
+country = ARG
+style = 2
+
+name = "The Autonomous Republic of Chile"
+desc = "We have declared the autonomy of Chile within the Union of La Plata."
+picture = "arg_soldiers"
+
+action_a = {
+name = "Great!"
+command = { type = make_puppet which = CHL }
+}
+}
+
+event = {
+id = 755884
+country = ARG
+style = 2
+
+name = "The Independence of Chile"
+desc = "We have restored the independence of Chile, but will keep an eye on them through a military alliance"
+picture = "arg_soldiers"
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = CHL }
+}
+}
+
+event = {
+id = 755885
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_AUTO
+flag = ARG_AUTO2
+control = { province = 2020 data = ARG } ### La Paz, Bolivia
+NOT = {
+ispuppet = ARG
+exists = BOL
+}
+}
+
+date = { day = 0 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The situation in Bolivia"
+desc = "During our crusade against Syndicalism in South America, we ended up occupying the Republic of Bolivia. Dissent against this situation is growing, however. Some of our politicians, now, are proposing that we accept Bolivia as a full member of our Union. Others insist instead in restoring their independence, but keeping an eye on them through a military alliance. A few others, especially in the military, propose instead that we continue the occupation."
+picture = "arg_mapa"
+
+
+action_a = {
+ai_chance = 45
+name = "Accept them as an Union Republic"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -2 }
+command = { type = independence which = BOL value = 1 }
+command = { type = trigger which = 755886 }
+}
+action_b = {
+ai_chance = 45
+name = "Restore their independence, but keep them under an alliance"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -1 }
+command = { type = independence which = BOL value = 1 }
+command = { type = trigger which = 755887 }
+}
+action_c = {
+ai_chance = 10
+name = "Keep up the occupation"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 5 }
+command = { type = belligerence which = ARG value = 5 }
+}
+}
+
+event = {
+id = 755886
+country = ARG
+style = 2
+
+name = "The Autonomous Republic of Bolivia"
+desc = "We have declared the autonomy of Bolivia within the Union of La Plata."
+picture = "arg_soldiers"
+
+action_a = {
+name = "Great!"
+command = { type = make_puppet which = BOL }
+}
+}
+
+event = {
+id = 755887
+country = ARG
+style = 2
+
+name = "The Independence of Bolivia"
+desc = "We have restored the independence of Bolivia, but will keep an eye on them through a military alliance"
+picture = "arg_soldiers"
+
+action_a = {
+name = "That's smart!"
+command = { type = alliance which = BOL }
+}
+}
+
+event = {
+id = 755888
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_AUTO
+flag = ARG_AUTO2
+control = { province = 2058 data = ARG } ### Porto Alegre, Brazil
+control = { province = 2075 data = ARG } ### Rio de Janeiro, Brazil
+NOT = {
+ispuppet = ARG
+exists = BRA
+}
+}
+
+date = { day = 0 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Occupation of Brazil"
+desc = "Years ago, we defeated the syndicalists of Brazil and occupied their territory. Unrest against our presence is increasing, however. Some of our politicians and Brazilian representatives are requesting an end to this situation. The majority of our cabinet has defended restoring their independence but keeping them under our control through an alliance. A good part of our military, on the other hand, insists that Brazil is still a menace and our occupation should continue for the time being."
+picture = "bra_flagpb"
+
+action_a = {
+ai_chance = 85
+name = "Restore their independence, but keep them under control"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -1 }
+command = { type = independence which = BRA value = 1 }
+command = { type = secedeprovince which = BRA value = 2057 }
+command = { type = secedeprovince which = BRA value = 2058 }
+command = { type = secedeprovince which = BRA value = 2060 }
+command = { type = removeclaim which = 2057 }
+command = { type = removeclaim which = 2058 }
+command = { type = removeclaim which = 2060 }
+command = { type = trigger which = 755892 }
+command = { type = sleepevent which = 755889 }
+command = { type = sleepevent which = 755890 }
+}
+action_b = {
+ai_chance = 15
+name = "Continue the military occupation of Brazil"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 10 }
+command = { type = belligerence which = ARG value = 5 }
+command = { type = sleepevent which = 755889 }
+command = { type = sleepevent which = 755890 }
+}
+}
+
+event = {
+id = 755889
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_AUTO
+flag = ARG_AUTO2
+puppet = { country = BRA country = ARG } ## BRA is puppet of ARG
+control = { province = 2058 data = ARG } ### Porto Alegre, Brazil
+control = { province = 2075 data = ARG } ### Rio de Janeiro, Brazil
+NOT = {	ispuppet = ARG }
+}
+
+date = { day = 0 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Occupation of the Southern Brazil"
+desc = "Years ago, we defeated the syndicalists of Brazil, occupied their territory and imposed a puppet government. Unrest against our presence is growing, however, and some of our politicians are requesting an end to this situation. Our cabinet has defended restoring complete independence for Brazil but keeping them under our control through an alliance. A good part of our military, on the other hand, insists that Brazil is still a menace and our occupation should continue for the time being."
+picture = "bra_flagpb"
+
+action_a = {
+ai_chance = 50
+name = "Dissolve the puppet government, return the provinces, but keep them under an alliance"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -1 }
+command = { type = end_mastery which = BRA }
+command = { type = secedeprovince which = BRA value = 2057 }
+command = { type = secedeprovince which = BRA value = 2058 }
+command = { type = secedeprovince which = BRA value = 2060 }
+command = { type = removeclaim which = 2057 }
+command = { type = removeclaim which = 2058 }
+command = { type = removeclaim which = 2060 }
+command = { type = trigger which = 755892 }
+command = { type = sleepevent which = 755888 }
+command = { type = sleepevent which = 755890 }
+}
+action_b = {
+ai_chance = 10
+name = "Continue the military occupation of southern Brazil"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 5 }
+command = { type = belligerence which = ARG value = 5 }
+command = { type = sleepevent which = 755888 }
+command = { type = sleepevent which = 755890 }
+}
+action_c = {
+ai_chance = 60
+name = "End the puppet regime, incorporate South Brazil into the union"
+command = { type = dissent value = -1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = removeclaim which = 2057 }
+command = { type = removeclaim which = 2058 }
+command = { type = removeclaim which = 2060 }
+command = { type = independence which = U33 value = 1 when = 0 }
+command = { type = end_mastery which = BRA }
+command = { type = sleepevent which = 755888 }
+command = { type = sleepevent which = 755890 }
+command = { type = trigger which = 755892 }
+command = { type = trigger which = 755893 }
+}
+}
+
+event = {
+id = 755890
+random = no
+country = ARG
+style = 2
+
+trigger = {
+flag = ARG_AUTO
+flag = ARG_AUTO2
+puppet = { country = BRA country = ARG } ## BRA is puppet of ARG
+control = { province = 2058 data = BRA } ### Porto Alegre, Brazil
+control = { province = 2075 data = BRA } ### Rio de Janeiro, Brazil
+NOT = {	ispuppet = ARG }
+}
+
+date = { day = 0 month = january year = 1944 }
+offset = 300
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The puppet government of Brazil"
+desc = "Years ago, we defeated the syndicalists of Brazil and imposed a puppet government. Unrest against our presence is growing, however, and some of our politicians are requesting an end to this situation. Our cabinet has defended restoring complete independence for Brazil but keeping them under our control through an alliance. A good part of our military, on the other hand, insists that Brazil is still a menace and our occupation should continue for the time being."
+picture = "bra_flagpb"
+
+action_a = {
+ai_chance = 50
+name = "Dissolve the puppet government, but keep them under an alliance"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -1 }
+command = { type = end_mastery which = BRA }
+command = { type = trigger which = 755892 }
+command = { type = sleepevent which = 755889 }
+command = { type = sleepevent which = 755888 }
+}
+action_b = {
+ai_chance = 50
+name = "Keep up the present situation"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 5 }
+command = { type = belligerence which = ARG value = 5 }
+command = { type = sleepevent which = 755889 }
+command = { type = sleepevent which = 755888 }
+}
+}
+
+event = {
+id = 755892
+country = ARG
+style = 2
+
+name = "Alliance with Brazil"
+desc = "Now will keep an eye on them through a military alliance"
+picture = "bra_flagpb"
+
+action_a = {
+name = "Great !"
+command = { type = alliance which = BRA }
+}
+}
+
+event = {
+id = 755893
+country = ARG
+style = 2
+
+name = "The Autonomous Republic of Piratiní"
+desc = "We have declared the autonomy of Piratiní within the Union of La Plata."
+picture = "bra_flagpb"
+
+action_a = {
+name = "Great!"
+command = { type = make_puppet which = U33 }
+}
+}

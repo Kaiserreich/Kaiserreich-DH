@@ -1,0 +1,1548 @@
+event = {
+id = 58000
+random = no
+country = PER
+picture = "Marshalldead"
+style = 2
+
+trigger = { 
+headofstate = 53001 
+}
+
+date = { day = 26 month = july year = 1944 }
+
+name = "Our glorious Shah is dead!"
+desc = "Today our beloved Shah, His Highness Reza Pahlavi, died peacefully in his grand palace. Long live our new shah, his son, Mohammad Reza Pahlavi!"
+
+action_a = {
+name = "Long live the Shah!"
+command = { type = dissent value = 1  }
+command = { type = sleepminister which = 53001 }
+command = { type = headofstate which = 53032 }
+}
+}
+
+event = {
+id =  58001
+random = no
+country = PER
+picture = "Marshalldead"
+style = 2
+
+trigger = {
+NOT = {
+headofstate = 53001
+event = 58000 #Reza Pahlavi HoS
+}
+}
+
+date = { day = 26 month = july year = 1944 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Our general Reza Pahlavi is dead!"
+desc = "Today our general Reza Pahlavi has died. He will be missed!"
+
+action_a = {
+name = "Oh Allah why!"
+command = { type = dissent value = 1  }
+command = { type = sleepminister which = 53001 }
+command = { type = sleepminister which = 53007 }
+command = { type = sleepleader which = 440016 }
+}
+}
+
+event = {
+id = 58002
+country = PER
+random = no
+
+name = "The Shah's Tobacco Monopoly"
+desc = "The Shah, as a heavy smoker, is fond of tobacco and thinks it's a great idea to nationalize the tobacco plantations and therefore earn money while smoking! But his advisors think it's too expensive and not necessary."
+style = 2
+picture = "Industry"
+
+date = { day = 27 month = september year = 1937 }
+
+action_a = {
+ai_chance = 80
+name = "What an excellent idea!"
+command = { type = free_money value = 0.5 }
+command = { type = money value = -50 }
+}
+
+action_b = {
+ai_chance = 20
+name = "Too expensive for our empire!"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 58003
+country = PER
+random = no
+
+trigger = {
+event = 90022 # Romania declared the Bucharest Treaty dead in Romania.txt
+NOT = {
+ispuppet = PER
+ispuppet = GER
+government = communist
+war = { country = PER country = GER }
+lost_national = { country = PER value = 5 }
+}
+control = { province = 145 data = GER }
+control = { province = 163 data = GER }
+}
+
+name = "German Oil Pressure!"
+desc = "Since Romania stopped supplying Germany with oil they are now seeking even more oil from us! This is an excellent way for us to gain extra money!"
+style = 2
+picture = "oil_supply"
+
+date = { day = 0 month = august year = 1936 }
+offset = 7
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+ai_chance = 30
+name = "You already get enough oil!"
+command = { type = relation which = GER value = -30 }
+command = { type = add_prov_resource which = 1825 value = 20 where = oil }
+}
+
+action_b = {
+ai_chance = 70
+name = "This is an interesting proposition."
+command = { type = relation which = GER value = 30 }
+command = { type = trigger which = 58004 }
+}
+}
+
+event = {
+id = 58004
+country = GER
+random = no
+
+name = "The Persian Oil."
+desc = "Persia is acting friendly and may offer us more oil! But only if we give them proper monetary compensation in return...."
+style = 2
+picture = "oil_supply"
+
+action_a = {
+ai_chance = 30
+name = "We can manage withour their oil if they are so demanding!"
+command = { type = relation which = PER value = 5 }
+command = { type = trigger which = 58006 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Sure, grant them what they want!"
+command = { type = relation which = PER value = 30 }
+command = { type = trigger which = 58005 }
+command = { type = trade which = PER where = GER oil = -5 money = 1 when = 7200 value = 1 }	#forced trade for 20 years!
+}
+}
+
+event = {
+id = 58005
+country = PER
+random = no
+
+name = "Germany Accepts Our Deal!"
+desc = "German Empire accepted our offer of mutually beneficial economical relations between our great nations."
+style = 2
+picture = "oil_supply"
+
+action_a = {
+name = "They gave us money and blueprints!"
+command = { type = relation which = GER value = 30 }
+command = { type = gain_tech which = 5327 }
+command = { type = gain_tech which = 5330 }
+command = { type = gain_tech which = 5200 }
+}
+}
+
+event = {
+id = 58006
+country = PER
+random = no
+
+name = "Germany Declines Our Deal!"
+desc = "Germany turned down on our proposition."
+style = 2
+picture = "oil_supply"
+
+action_a = {
+name = "Their loss!"
+command = { type = relation which = GER value = -5 }
+}
+}
+
+event = {
+id = 58007
+country = PER
+random = no
+save_date = yes
+
+trigger = {
+event = 58005
+NOT = {
+lost_national = { country = PER value = 5 }
+}
+}
+
+name = "Expanding Oil Production"
+desc = "With new money comes new opportunities to expand our rather small ammount of oil refineries. Shall we use the newly acquired money to build some more oil refineries?"
+style = 2
+picture = "oil_supply"
+
+date = { day = 10 month = august year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+ai_chance = 70
+name = "It will be well spent money"
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 30
+name = "The money could be used for better things!"
+command = { type = sleepevent which = 58008 }
+command = { type = sleepevent which = 58009 }
+command = { type = sleepevent which = 58010 }
+}
+}
+
+event = {
+id = 58008
+country = PER
+random = no
+
+trigger = {
+event = { id = 58007 days = 200 }
+control = { province = 1084 data = PER }
+}
+
+name = "The first refinery is finished."
+desc = "The first of three oil refineries is done, let's hope no problems will be discovered."
+style = 2
+picture = "oil_supply"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Excellent"
+command = { type = construct which = ic where = 1084 value = 1 } #Kermanshah
+}
+}
+
+event = {
+id = 58009
+country = PER
+random = no
+
+trigger = {
+event = { id = 58007 days = 400 }
+control = { province = 1083 data = PER }
+}
+
+name = "The second refinery is finished."
+desc = "The second of three oil refineries is done, soon our oil production will be of the best quality ever."
+style = 2
+picture = "oil_supply"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Excellent"
+command = { type = construct which = ic where = 1083 value = 1 } #Tabriz
+}
+}
+
+event = {
+id = 58010
+country = PER
+random = no
+
+trigger = {
+event = { id = 58007 days = 600 }
+control = { province = 1085 data = PER }
+}
+
+name = "The last oil refinery is finished!"
+desc = "Our government's decision to build these three oil refineries turns out to have been a successful one, our production of oil increased by 35 percent!"
+style = 2
+picture = "oil_supply"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Excellent"
+command = { type = construct which = ic where = 1085 value = 1 } #Teheran
+}
+}
+
+
+event = {
+id = 58011
+country = PER
+random = no
+
+trigger = {
+NOT = {
+ispuppet = PER
+atwar = PER
+control = { province = 713 data = -3 }
+control = { province = 711 data = -3 }
+control = { province = 2172 data = -3 }
+government = communist
+}
+control = { province = 1036 data = PER }
+control = { province = 1034 data = PER }
+}
+
+name = "The Persian Restoration !"
+desc = "Ever since the loss against Russia in 1828 Persia had waited for the right moment to regain its former imperial territory, namely Azerbaijan, Armenia and the Herat Region in Afghanistan. With our recent success in the war against the Ottoman Empire, this could easily become a reality!"
+style = 2
+picture = "event_PER"
+
+date = { day = 1 month = august year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "We shall restore Persia to its former glory!"
+ai_chance = 70
+command = { type = dissent value = 1  }
+command = { type = relation which = GER value = -10 }
+command = { type = relation which = RUS value = -10 }
+command = { type = addclaim which = 711 }
+command = { type = addclaim which = 712 }
+command = { type = addclaim which = 713 }
+command = { type = addclaim which = 714 }
+command = { type = addclaim which = 2172 }
+command = { type = domestic which = interventionism value = 8 }
+}
+
+action_b = {
+name = "It's too risky."
+ai_chance = 30
+command = { type = relation which = GER value = 30 }
+command = { type = relation which = RUS value = 30 }
+command = { type = dissent value = 1  }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = sleepevent which = 58012 }
+}
+}
+
+
+event = {
+id = 58012
+country = PER
+random = no
+
+decision = {
+event = 58011
+exists = AZB
+NOT = { war = { country = PER country = AZB } }
+NOT = {
+alliance = { country = PER country = AZB }
+alliance = { country = AZB country = GER }
+alliance = { country = AZB country = SOV }
+alliance = { country = AZB country = RUS }
+atwar = PER
+ispuppet = AZB
+ispuppet = PER
+}
+control = { province = 1036 data = PER }
+control = { province = 1034 data = PER }
+}
+
+decision_trigger = {
+}
+
+trigger = {
+event = 58011
+exists = AZB
+NOT = { war = { country = PER country = AZB } }
+NOT = {
+alliance = { country = PER country = AZB }
+alliance = { country = AZB country = GER }
+alliance = { country = AZB country = SOV }
+alliance = { country = AZB country = RUS }
+atwar = PER
+ispuppet = AZB
+ispuppet = PER
+}
+control = { province = 1036 data = PER }
+control = { province = 1034 data = PER }
+}
+
+name = "Status of Azerbaijan"
+desc = "Following the complete breakdown of the Ottoman Empire and its influence in the middle east, Azerbaijan, once a province of our empire, now stands alone. Without any kind of international protection, it should be easy to force Azerbaijan to submit before us!"
+style = 2
+picture = "caucasusgeo"
+decision_picture = "decision_status_geo"
+
+date = { day = 0 month = january year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 20
+name = "War will resolve this!"
+command = { type = belligerence which = PER value = 10  }
+command = { type = war which = AZB }
+command = { type = dissent value = 4 }
+}
+
+action = {
+ai_chance = 25
+name = "Threaten them with force!"
+command = { type = belligerence which = PER value = 5  }
+command = { type = dissent value = 1 }
+command = { type = trigger which = 58013 }
+}
+
+action = {
+ai_chance = 25
+name = "Negotiate with them"
+command = { type = trigger which = 58016 }
+}
+
+action = {
+ai_chance = 1
+name = "We don't care about Azerbaijan"
+command = { type = belligerence which = PER value = -3  }
+command = { type = dissent value = 4 }
+}
+}
+
+
+event = {
+id = 58013
+country = AZB
+style = 2
+picture = "caucasusgeo"
+
+name = "Persian demands"
+desc = "The increasingly powerful Persian Empire has once again set its sights on the Caucasus. Now the Persian Empire issued a series of demands towards our state which, if accepted, will result in our incorporation into their empire. However an effort to resist the powerful Persian state without international backing is futile from the start..."
+
+action_a = {
+ai_chance = 30
+name = "Accept their terms"
+command = { type = trigger which = 58014 }
+command = { type = dissent value = 4 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Never !"
+command = { type = dissent value = -2 }
+command = { type = relation which = PER value = -20 }
+command = { type = trigger which = 58015 }
+}
+
+action_c = {
+ai_chance = 70
+trigger = {
+exists = RUS
+control = { province = 691 data = RUS }
+NOT = {
+flag = RUS_ISO
+exists = SOV
+exists = SIB
+exists = TRA
+ispuppet = RUS
+atwar = RUS
+}
+}
+name = "Turn to Russia for protection!"
+command = { type = dissent value = -2 }
+command = { type = relation which = PER value = -20 }
+command = { type = trigger which = 58018 }
+}
+}
+
+event = {
+id = 58014
+country = PER
+style = 2
+picture = "caucasusgeo"
+
+name = "Azerbaijani submission"
+desc = "Seeing no other options, the leadership of Azerbaijan accepted our demands, resulting in the incorporation of this state into our growing empire."
+
+
+action = {
+name = "Hooray!"
+command = { type = dissent value = 2 }
+command = { type = inherit which = AZB  }
+}
+}
+
+event = {
+id = 58015
+country = PER
+style = 2
+picture = "Army"
+
+name = "Azerbaijani resistance"
+desc = "Mad Azerbaijani leadership rejected our rightful demands. How shall we react to this insolence?"
+
+action_a = {
+ai_chance = 85
+name = "War will solve this!"
+command = { type = dissent value = -1 }
+command = { type = war which = AZB }
+}
+
+action_b = {
+ai_chance = 15
+name = "Back down!"
+command = { type = dissent value = 2 }
+command = { type = relation which = AZB value = 20 }
+}
+}
+
+event = {
+id = 58016
+country = AZB
+style = 2
+picture = "Peace_conference"
+
+name = "Negotiations with Persians"
+desc = "The increasingly powerful Persian Empire has once again set its sight on the Caucasus. The Persian Empire has displayed willingness to negotiate with our state on the terms of our peaceful incorporation into the Persian sphere of influence. It would be foolish to refuse them outright, since without international protection, we can not hope to face the powerful Persian army. How shall we respond?"
+
+action_a = {
+ai_chance = 70
+name = "Accept Persian demands"
+command = { type = trigger which = 58017 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Never!"
+command = { type = relation which = PER value = -40 }
+command = { type = trigger which = 58015 }
+}
+action_c = {
+ai_chance = 70
+trigger = {
+exists = RUS
+control = { province = 691 data = RUS }
+NOT = {
+flag = RUS_ISO
+exists = SOV
+exists = SIB
+exists = TRA
+ispuppet = RUS
+atwar = RUS
+}
+}
+name = "Turn to Russia for protection!"
+command = { type = dissent value = -2 }
+command = { type = relation which = PER value = -20 }
+command = { type = trigger which = 58018 }
+}
+}
+
+event = {
+id = 58017
+random = no
+country = PER
+style = 2
+
+name = "Azerbaijani submission!"
+desc = "Azerbaijan has decided to accept our demands, and will become a protectorate of our motherland."
+picture = "Peace_conference"
+
+action_a = {
+name = "Excellent !"
+command = { type = dissent value = -10 }
+command = { type = removeclaim which = 712 }
+command = { type = removeclaim which = 713 }
+command = { type = make_puppet which = AZB }
+}
+}
+
+
+event = {
+id = 58018
+country = RUS
+random = no
+
+name = "Persian Empire threatens Azerbaijan !"
+desc = "In 1828 Persia renounced all their claims over the Erivan Khanate, which includes Armenia, the Nakhcivan Khanate and the Talysh Khanate, which includes Azerbaijan. But after the recent gains of Baghdad and Mosul, Persia feels powerful enough to ignore this treaty. They are planning to once again reassert their influence over Azerbaijan. Frightened about Persian demands, Azerbaijan officially asked our state for help against Persian threats. What shall we do?"
+style = 2
+picture = "oil_supply"
+
+action_a = {
+name = "Let them have it."
+ai_chance = 30
+command = { type = relation which = PER value = 30 }
+command = { type = relation which = AZB value = -30 }
+command = { type = dissent value = 5  }
+command = { type = trigger which = 58019 }
+}
+
+action_b = {
+name = "We shall protect Azerbaijan!"
+ai_chance = 70
+command = { type = relation which = PER value = -30 }
+command = { type = relation which = AZB value = 30 }
+command = { type = dissent value = -1  }
+command = { type = guarantee which = RUS where = AZB }
+command = { type = trigger which = 58020 }
+}
+}
+
+
+event = {
+id = 58019
+country = AZB
+style = 2
+picture = "caucasusgeo"
+
+name = "Russia abandons us!"
+desc = "Our attempt to protect our independence with Russian influence ended in failure. But what is worse, Persia was informed about our dealings with Russia and their failure and is planning to launch an assault upon us, if we do not comply with their demands..."
+
+action_a = {
+ai_chance = 70
+name = "Surrender before Persia"
+command = { type = trigger which = 58014 }
+command = { type = dissent value = 4 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Never!"
+command = { type = dissent value = -2 }
+command = { type = relation which = PER value = -20 }
+command = { type = trigger which = 58015 }
+}
+}
+
+event = {
+id = 58020
+country = PER
+random = no
+
+name = "Russia announces protection over Azerbaijan"
+desc = "Russia has recently announced, that in case of any kind of intervention into Azerbaijan, they would back this state. What shall we do now?"
+style = 2
+picture = "soviet_replacement"
+
+
+action_a = {
+name = "Ignore threats, continue with our plans!"
+ai_chance = 5
+command = { type = relation which = RUS value = -30 }
+command = { trigger = { alliance = { country = PER country = EGY } } type = leave_alliance }
+command = { type = dissent value = 2  }
+command = { type = war which = AZB }
+command = { type = trigger which = 58021 }
+}
+
+action_b = {
+name = "We cannot risk a war with Russia"
+ai_chance = 95
+command = { type = relation which = RUS value = 30 }
+command = { type = dissent value = 3  }
+command = { type = trigger which = 58022 }
+}
+}
+
+
+event = {
+id = 58021
+country = RUS
+random = no
+
+name = "Persia Refused!"
+desc = "Persia refused to back down from their planned invasion of Azerbaijan! Even now, Persian armed forces are advancing upon Baku. What shall we do now?"
+style = 2
+picture = "caucasusgeo"
+
+
+action_a = {
+name = "Save the Azer people!"
+ai_chance = 70
+command = { type = dissent value = 1  }
+command = { type = war which = PER }
+command = { trigger = { NOT = { alliance = { country = RUS country = GER } alliance = { country = RUS country = JAP } alliance = { country = RUS country = CAN } alliance = { country = RUS country = FRA } } } type = alliance which = AZB }
+}
+
+action_b = {
+name = "We cannot risk a war with Persia"
+ai_chance = 30
+command = { type = relation which = PER value = 30 }
+command = { type = dissent value = 3  }
+command = { type = trigger which = 58023 }
+}
+}
+
+
+event = {
+id = 58022
+country = RUS
+random = no
+
+name = "Persia backs down"
+desc = "Thanks to our masterful use of diplomacy backed by the mighty Russian armed forces, Persia had no other option but to abandon its expansionist plans on the Caucasus!"
+style = 2
+picture = "caucasusgeo"
+
+action_a = {
+name = "Hurrah!"
+command = { type = dissent value = -1  }
+command = { type = relation which = AZB value = 30 }
+}
+}
+
+event = {
+id = 58023
+country = PER
+random = no
+
+name = "Russia backs down"
+desc = "Thanks to our masterful use of diplomacy backed by the mighty Persian armed forces, Russia had no other option but to abandon its futile attempts to protect Azerbaijan!"
+style = 2
+picture = "caucasusgeo"
+
+action_a = {
+name = "Hurrah!"
+command = { type = dissent value = -1  }
+}
+}
+
+
+
+##############################
+#Cores on former Persian lands
+##############################
+event = {
+id = 58024
+country = PER
+style = 2
+
+trigger = {
+event = { id = 077271 days = 1780 } # Independent Afghanistan in Annexations.txt
+owned = { province = 2172 data = -1 } #Herat
+control = { province = 2172 data = -1 }
+}
+
+name = "Integration of the Herat Region"
+desc = "The civilian population of the Herat Region finally accepted the new reality established via military occupation and the Herat Region is finally under our firm and complete control."
+picture = "soldiers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = " Great !"
+command = { type = dissent value = 1 }
+command = { type = addcore which = 2172 }
+}
+}
+
+event = {
+id = 58025
+country = PER
+style = 2
+
+trigger = {
+event = { id = 077274 days = 1780 } # The Annexation of Armenia in Annexations.txt
+owned = { province = 711 data = -1 } #Yerevan
+control = { province = 711 data = -1 }
+}
+
+name = "Integration of Armenia"
+desc = "The civilian population of Armenia finally accepted the new reality established via military occupation and Armenia is finally under our firm and complete control."
+picture = "soldiers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = " Great !"
+command = { type = dissent value = 3 }
+command = { type = addcore which = 711 }
+command = { type = addcore which = 714 }
+}
+}
+
+event = {
+id = 58026
+country = PER
+style = 2
+
+trigger = {
+event = { id = 077276 days = 1780 } # The Annexation of Azerbaijan in Annexations.txt
+owned = { province = 713 data = -1 } #Baku
+control = { province = 713 data = -1 }
+}
+
+name = "Integration of Azerbaijan"
+desc = "The civilian population of Azerbaijan finally accepted the new reality established via military occupation and Azerbaijan is finally under our firm and complete control."
+picture = "soldiers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = " Great !"
+command = { type = dissent value = 3 }
+command = { type = addcore which = 712 }
+command = { type = addcore which = 713 }
+}
+}
+##############################
+#New Persian domestic events
+##############################
+event = {
+id = 58027
+random = no
+country = PER
+style = 2
+
+trigger = {
+control = { province = 1085 data = PER }
+}
+
+name = "The Persian Constitutionalist Movement"
+desc = "EVT_701000_DESC"
+picture = "persianconstitutuin"
+
+date = { day = 1 month = february year = 1936 }
+
+action_a = {
+name = "The fruits of the revolution mustn't be squandered."
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 58028
+random = no
+country = PER
+style = 2
+
+trigger = {
+control = { province = 1080 data = PER }
+}
+
+name = "Veresk Bridge Inaugurated"
+desc = "A marvel of engineering the Veresk Bridge has finally been inaugurated by Ahmad Shah Qajar himself. Designed and constructed by a team of German and Austro-Hungarian engineers the bridge serves as an important knot in the Trans-Persian railway net, connecting Tehran to the shores of the Caspian Sea."
+picture = "vereshkbridge"
+
+date = { day = 12 month = april year = 1936 }
+
+action_a = {
+name = "Infrastructure is important."
+command = { type = construct which = infrastructure where = 1080 value = 10 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 58029
+random = no
+country = PER
+style = 2
+
+trigger = {
+control = { province = 1085 data = PER }
+}
+
+name = "Disagreements Within the Army"
+desc = "EVT_701002_DESC"
+picture = "persianarmy"
+
+date = { day = 7 month = march year = 1936 }
+
+action_a = {
+ai_chance =  50
+name = "Support the Gendarmerie (firepower doctrine)"
+command = { type = chiefofstaff which = 53202 }
+command = { type = waketeam which = 6115 }
+command = { type = activate which = 6010 }
+command = { type = gain_tech which = 6010  }
+command = { type = gain_tech which = 6020  }
+command = { type = relation which = GER value = 20 }
+command = { type = remove_division which = "Persian Gendarmerie Division" value = PER }
+command = { type = add_corps which = "Tehran Gendarmerie Corps" value = land where = 1085 }
+command = { type = add_division which = "Persian Gendarmerie Division" value = bergsjaeger when = 7 }
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+ai_chance =  50
+name = "Support the Cossack Brigade officers (light infantry)"
+command = { type = chiefofstaff which = 53007 }
+command = { type = waketeam which = 6108 }
+command = { type = activate which = 6390 }
+command = { type = gain_tech which = 6390  }
+command = { type = gain_tech which = 6400  }
+command = { type = remove_division which = "Persian Cossack Battalions 1&2" value = PER }
+command = { type = add_corps which = "Persian Cossack Division" value = land where = 1085 }
+command = { type = add_division which = "Persian Cossack Division" value = cavalry when = 7 }
+command = { type = relation which = CAN value = 20 }
+command = { type = relation which = RUS value = 15 }
+command = { type = dissent value = 2 }
+}
+
+action_c = {
+ai_chance =  0
+name = "Combined arms, motorized infantry and tanks are the future!"
+command = { type = activate which = 6210 }
+command = { type = gain_tech which = 6210  }
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 58030
+random = no
+country = PER
+style = 2
+
+trigger = {
+control = { province = 1085 data = PER }
+}
+
+name = "The Establishment of the Ministry of Energy"
+desc = "Today his majesty declared the establishment of the All Persian ministry of energy. The new ministry has been created to coordinate and improve the usage of our nation's rich amount of national resources."
+picture = "industry2"
+
+date = { day = 2 month = december year = 1936 }
+
+action_a = {
+name = "Infrastructure is important."
+command = { type = waketeam which = 6116 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+}
+}
+#########################################################
+#Election Events
+#########################################################
+event = {
+id = 58031
+random = no
+country = PER
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1085 data = PER }
+control = { province = 1085 data = PER }
+NOT = { ispuppet = PER }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "The Election to the Eleventh Majles"
+desc = "EVT_701100_DESC"
+picture = "persianconstitutuin"
+
+date = { day = 0 month = may year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  40
+name = "The Revival Party and Teymourtash defies the clergy!"
+command = { type = dissent value = 5  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53193 } # Teymourtash
+command = { type = foreignminister which =  53195 } # Mohammad-Ali Foroughi
+command = { type = armamentminister which = 53196 } # Ali-Akbar Davar
+command = { type = ministerofsecurity which = 53191 } # Ahmad Kasravi
+command = { type = domestic which = free_market value = 2 }
+command = { type = local_setflag which = PER_Revivalparty }
+}
+
+action_b = {
+ai_chance =  25
+name = "The Traditionalists secure a majority in parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = headofstate which = 53161 } # Ahmad Shah PA
+command = { type = headofgovernment which = 53165 } # Firouz Mirza Nosrat-ed-Dowleh Qajar
+command = { type = foreignminister which =  53176 } # Samad Khan Momtaz os-Saltaneh
+command = { type = armamentminister which = 53004 } # Mohammad-Taqi Bahar
+command = { type = ministerofsecurity which = 53180 } # Fathollah Khan Akbar
+command = { type = local_setflag which = PER_Traditionalist }
+command = { type = dissent value = -2 }
+}
+
+action_c = {
+ai_chance =  25
+name = "Mosaddegh's National Front carries the day!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53197 } # Mossadegh
+command = { type = foreignminister which =  53198 } # Ali Shayegan
+command = { type = armamentminister which = 53199 } # Ahmad Zirakzadeh
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+command = { type = local_setflag which = PER_Mossadegh }
+}
+
+action_d = {
+ai_chance =  10
+name = "The Leftist Democrat Party surprises all!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53130 } # Mohsen Sadr
+command = { type = foreignminister which =  53203 } # Mohammad Khiabani
+command = { type = armamentminister which = 53159 } # Yadollah Sahabi
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+command = { type = local_setflag which = PER_Democratparty }
+}
+}
+
+event = {
+id = 58032
+random = no
+country = PER
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1085 data = PER }
+control = { province = 1085 data = PER }
+event = { id = 58031 days = 1480 } #1941
+NOT = { ispuppet = PER }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "The Election to the 12th Majles"
+desc = "Four years have passed since the last session of the Majles, Persia's parliament, was inaugurated and as such the good people of our proud nation once more line up for the voting booth?"
+picture = "persianconstitutuin"
+
+date = { day = 0 month = may year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  40
+name = "The Revival Party and Teymourtash defies the clergy!"
+command = { type = dissent value = 5  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53193 } # Teymourtash
+command = { type = foreignminister which =  53195 } # Mohammad-Ali Foroughi
+command = { type = armamentminister which = 53196 } # Ali-Akbar Davar
+command = { type = ministerofsecurity which = 53191 } # Ahmad Kasravi
+command = { type = domestic which = free_market value = 2 }
+command = { type = local_setflag which = PER_Revivalparty }
+}
+
+action_b = {
+ai_chance =  25
+name = "The Traditionalists secure a majority in parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = headofstate which = 53161 } # Ahmad Shah PA
+command = { type = headofgovernment which = 53165 } # Firouz Mirza Nosrat-ed-Dowleh Qajar
+command = { type = foreignminister which =  53176 } # Samad Khan Momtaz os-Saltaneh
+command = { type = armamentminister which = 53004 } # Mohammad-Taqi Bahar
+command = { type = ministerofsecurity which = 53180 } # Fathollah Khan Akbar
+command = { type = local_setflag which = PER_Traditionalist }
+command = { type = dissent value = -2 }
+}
+
+action_c = {
+ai_chance =  25
+name = "Mosaddegh's National Front carries the day!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53197 } # Mossadegh
+command = { type = foreignminister which =  53198 } # Ali Shayegan
+command = { type = armamentminister which = 53199 } # Ahmad Zirakzadeh
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+command = { type = local_setflag which = PER_Mossadegh }
+}
+
+action_d = {
+ai_chance =  10
+name = "The Leftist Democrat Party surprises all!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53130 } # Mohsen Sadr
+command = { type = foreignminister which =  53203 } # Mohammad Khiabani
+command = { type = armamentminister which = 53159 } # Yadollah Sahabi
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+command = { type = local_setflag which = PER_Democratparty }
+}
+}
+
+event = {
+id = 58033
+random = no
+country = PER
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1085 data = PER }
+control = { province = 1085 data = PER }
+event = { id = 58032 days = 1480 } #1945
+NOT = { ispuppet = PER }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "The Election to the 13th Majles"
+desc = "Four years have passed since the last session of the Majles, Persia's parliament, was inaugurated and as such the good people of our proud nation once more line up for the voting booth?"
+picture = "persianconstitutuin"
+
+date = { day = 0 month = may year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+ai_chance =  20
+name = "The Revival Party and Teymourtash defies the clergy!"
+command = { type = dissent value = 5  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53193 } # Teymourtash
+command = { type = foreignminister which =  53195 } # Mohammad-Ali Foroughi
+command = { type = armamentminister which = 53196 } # Ali-Akbar Davar
+command = { type = ministerofsecurity which = 53191 } # Ahmad Kasravi
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance =  25
+name = "The Traditionalists secure a majority in parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = headofstate which = 53161 } # Ahmad Shah PA
+command = { type = headofgovernment which = 53165 } # Firouz Mirza Nosrat-ed-Dowleh Qajar
+command = { type = foreignminister which =  53176 } # Samad Khan Momtaz os-Saltaneh
+command = { type = armamentminister which = 53004 } # Mohammad-Taqi Bahar
+command = { type = ministerofsecurity which = 53180 } # Fathollah Khan Akbar
+command = { type = dissent value = -2 }
+}
+
+action_c = {
+ai_chance =  25
+name = "Mosaddegh's National Front carries the day!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53197 } # Mossadegh
+command = { type = foreignminister which =  53198 } # Ali Shayegan
+command = { type = armamentminister which = 53199 } # Ahmad Zirakzadeh
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+
+action_d = {
+ai_chance =  30
+name = "The Leftist Democrat Party surprises all!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53130 } # Mohsen Sadr
+command = { type = foreignminister which =  53203 } # Mohammad Khiabani
+command = { type = armamentminister which = 53159 } # Yadollah Sahabi
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+}
+
+event = {
+id = 58034
+random = no
+country = PER
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1085 data = PER }
+control = { province = 1085 data = PER }
+event = { id = 58033 days = 1480 } #1949
+NOT = { ispuppet = PER }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "The Election to the 14th Majles"
+desc = "Four years have passed since the last session of the Majles, Persia's parliament, was inaugurated and as such the good people of our proud nation once more line up for the voting booth?"
+picture = "persianconstitutuin"
+
+date = { day = 0 month = may year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  20
+name = "The Revival Party and Teymourtash defies the clergy!"
+command = { type = dissent value = 5  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53193 } # Teymourtash
+command = { type = foreignminister which =  53195 } # Mohammad-Ali Foroughi
+command = { type = armamentminister which = 53196 } # Ali-Akbar Davar
+command = { type = ministerofsecurity which = 53191 } # Ahmad Kasravi
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance =  25
+name = "The Traditionalists secure a majority in parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = headofstate which = 53161 } # Ahmad Shah PA
+command = { type = headofgovernment which = 53165 } # Firouz Mirza Nosrat-ed-Dowleh Qajar
+command = { type = foreignminister which =  53176 } # Samad Khan Momtaz os-Saltaneh
+command = { type = armamentminister which = 53004 } # Mohammad-Taqi Bahar
+command = { type = ministerofsecurity which = 53180 } # Fathollah Khan Akbar
+command = { type = dissent value = -2 }
+}
+
+action_c = {
+ai_chance =  45
+name = "Mosaddegh's National Front carries the day!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53197 } # Mossadegh
+command = { type = foreignminister which =  53198 } # Ali Shayegan
+command = { type = armamentminister which = 53199 } # Ahmad Zirakzadeh
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+
+action_d = {
+ai_chance =  30
+name = "The Leftist Democrat Party surprises all!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53130 } # Mohsen Sadr
+command = { type = foreignminister which =  53203 } # Mohammad Khiabani
+command = { type = armamentminister which = 53159 } # Yadollah Sahabi
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+}
+
+event = {
+id = 58035
+random = no
+country = PER
+style = 2
+save_date = yes
+
+trigger = {
+
+owned = { province = 1085 data = PER }
+control = { province = 1085 data = PER }
+event = { id = 58034 days = 1480 } #1953
+NOT = { ispuppet = PER }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+name = "The Election to the 15th Majles"
+desc = "Four years have passed since the last session of the Majles, Persia's parliament, was inaugurated and as such the good people of our proud nation once more line up for the voting booth?"
+picture = "persianconstitutuin"
+
+date = { day = 0 month = may year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance =  20
+name = "The Revival Party and Teymourtash defies the clergy!"
+command = { type = dissent value = 5  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53193 } # Teymourtash
+command = { type = foreignminister which =  53195 } # Mohammad-Ali Foroughi
+command = { type = armamentminister which = 53196 } # Ali-Akbar Davar
+command = { type = ministerofsecurity which = 53191 } # Ahmad Kasravi
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance =  25
+name = "The Traditionalists secure a majority in parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = headofstate which = 53161 } # Ahmad Shah PA
+command = { type = headofgovernment which = 53165 } # Firouz Mirza Nosrat-ed-Dowleh Qajar
+command = { type = foreignminister which =  53176 } # Samad Khan Momtaz os-Saltaneh
+command = { type = armamentminister which = 53004 } # Mohammad-Taqi Bahar
+command = { type = ministerofsecurity which = 53180 } # Fathollah Khan Akbar
+command = { type = dissent value = -2 }
+}
+
+action_c = {
+ai_chance =  45
+name = "Mosaddegh's National Front carries the day!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53197 } # Mossadegh
+command = { type = foreignminister which =  53198 } # Ali Shayegan
+command = { type = armamentminister which = 53199 } # Ahmad Zirakzadeh
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+
+action_d = {
+ai_chance =  30
+name = "The Leftist Democrat Party surprises all!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53130 } # Mohsen Sadr
+command = { type = foreignminister which =  53203 } # Mohammad Khiabani
+command = { type = armamentminister which = 53159 } # Yadollah Sahabi
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+}
+
+event = {
+id = 58036
+random = no
+country = PER
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1085 data = PER }
+control = { province = 1085 data = PER }
+event = { id = 58035 days = 1480 } #1957
+NOT = { ispuppet = PER }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+name = "The Election to the 16th Majles"
+desc = "Four years have passed since the last session of the Majles, Persia's parliament, was inaugurated and as such the good people of our proud nation once more line up for the voting booth?"
+picture = "persianconstitutuin"
+
+date = { day = 0 month = may year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  20
+name = "The Revival Party and Teymourtash defies the clergy!"
+command = { type = dissent value = 5  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53193 } # Teymourtash
+command = { type = foreignminister which =  53195 } # Mohammad-Ali Foroughi
+command = { type = armamentminister which = 53196 } # Ali-Akbar Davar
+command = { type = ministerofsecurity which = 53191 } # Ahmad Kasravi
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance =  25
+name = "The Traditionalists secure a majority in parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = headofstate which = 53161 } # Ahmad Shah PA
+command = { type = headofgovernment which = 53165 } # Firouz Mirza Nosrat-ed-Dowleh Qajar
+command = { type = foreignminister which =  53176 } # Samad Khan Momtaz os-Saltaneh
+command = { type = armamentminister which = 53004 } # Mohammad-Taqi Bahar
+command = { type = ministerofsecurity which = 53180 } # Fathollah Khan Akbar
+command = { type = dissent value = -2 }
+}
+
+action_c = {
+ai_chance =  45
+name = "Mosaddegh's National Front carries the day!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53197 } # Mossadegh
+command = { type = foreignminister which =  53198 } # Ali Shayegan
+command = { type = armamentminister which = 53199 } # Ahmad Zirakzadeh
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+
+action_d = {
+ai_chance =  30
+name = "The Leftist Democrat Party surprises all!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53130 } # Mohsen Sadr
+command = { type = foreignminister which =  53203 } # Mohammad Khiabani
+command = { type = armamentminister which = 53159 } # Yadollah Sahabi
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+}
+
+event = {
+id = 58037
+random = no
+country = PER
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1085 data = PER }
+control = { province = 1085 data = PER }
+event = { id = 58036 days = 1480 } #1961
+NOT = { ispuppet = PER }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+name = "The Election to the 17th Majles"
+desc = "Four years have passed since the last session of the Majles, Persia's parliament, was inaugurated and as such the good people of our proud nation once more line up for the voting booth?"
+picture = "persianconstitutuin"
+
+date = { day = 0 month = may year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  20
+name = "The Revival Party and Teymourtash defies the clergy!"
+command = { type = dissent value = 5  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53193 } # Teymourtash
+command = { type = foreignminister which =  53195 } # Mohammad-Ali Foroughi
+command = { type = armamentminister which = 53196 } # Ali-Akbar Davar
+command = { type = ministerofsecurity which = 53191 } # Ahmad Kasravi
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance =  25
+name = "The Traditionalists secure a majority in parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = headofstate which = 53161 } # Ahmad Shah PA
+command = { type = headofgovernment which = 53165 } # Firouz Mirza Nosrat-ed-Dowleh Qajar
+command = { type = foreignminister which =  53176 } # Samad Khan Momtaz os-Saltaneh
+command = { type = armamentminister which = 53004 } # Mohammad-Taqi Bahar
+command = { type = ministerofsecurity which = 53180 } # Fathollah Khan Akbar
+command = { type = dissent value = -2 }
+}
+
+action_c = {
+ai_chance =  45
+name = "Mosaddegh's National Front carries the day!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53197 } # Mossadegh
+command = { type = foreignminister which =  53198 } # Ali Shayegan
+command = { type = armamentminister which = 53199 } # Ahmad Zirakzadeh
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+
+action_d = {
+ai_chance =  30
+name = "The Leftist Democrat Party surprises all!"
+command = { type = dissent value = 3  }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = freedom value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = headofstate which = 53201 } # Ahmad Shah ML
+command = { type = headofgovernment which = 53130 } # Mohsen Sadr
+command = { type = foreignminister which =  53203 } # Mohammad Khiabani
+command = { type = armamentminister which = 53159 } # Yadollah Sahabi
+command = { type = ministerofsecurity which = 53200 } # Abol-Ghasem Kashani
+}
+}

@@ -1,0 +1,3195 @@
+#########################
+#### Uber VBH Eventz of d00m######
+##### By Mishgan ######
+
+
+
+##### Introduction Text Events #####
+#####  Just because I felt like it   #####
+
+
+event = {
+id = 915000
+random = no
+country = LAT
+style = 2
+
+trigger = {
+NOT = {
+ai = yes
+}
+}
+
+name = "The United Baltic Duchy"
+desc = "Der ostliche Schutzwall des Kaiserreichs, is how the United Baltic Duchy came to be known. In this rather small client state of the German Empire, the full spectrum of political powers is concentrated with the Baltic German minority, who live mainly in the cities of Riga, Revel, and the islands of Osel and Dago. The rest of the country is populated mainly by Latvians and Estonians."
+picture = "balticduchy"
+
+date = { day = 4 month = january year = 1936 }
+
+action_a = {
+ai_chance = 1
+name = "Interesting, tell me more!"
+command = { type = trigger which = 915001 }
+}
+
+action_b = {
+ai_chance = 99
+name = "Yada, yada, just let me play!"
+command = {  }
+}
+}
+
+
+event = {
+id = 915001
+random = no
+country = LAT
+style = 2
+
+name = "Duchy's Interior Situation"
+desc = "Administratively, the Duchy is subdivided into two Stadte, Riga and Revel, and four Länder, which are Oselland, Estland, Livland, and Kurland. As the country is organized along unitarian lines, the regions have only very little power. Moreover, recent tensions with rural Estonian and Latvian populations has prompted the formation of two specialized security commands for Livland and Estland."
+picture = "balticduchy"
+
+action_a = {
+name = "Just what have I gotten myself into?"
+command = { type = trigger which = 915002 }
+}
+}
+
+
+event = {
+id = 915002
+random = no
+country = LAT
+style = 2
+
+name = "Duchy's Overall Situation"
+desc = "Overall, the Duchy's position is not entirely enviable. Lithuania wants sea access, Russia wants its Baltic provinces back, Finland has pan-Finno-Ugric ideas. In addition, the lack of strong authority over the Lander of Estland, Livland, and Kurland severely hampers the economy. Outstanding interior problems shall have to be resolved before future plans can be adressed."
+picture = "balticduchy"
+
+action_a = {
+name = "Next game, I'm playing Switzerland."
+command = {  }
+}
+}
+
+
+##### Master Choice Event in between AI and Player
+
+event = {
+id = 915100
+random = no
+country = LAT
+style = 2
+
+
+name = "Baltic Germans and their Duchy"
+desc = "As economic stagnation and recession nears, old feuds between largely urban Germans and rural non-Germans gain new strength. Some propose to further encourage Germans to settle the land, others wish to integrate the local population fully into the political life. In the end, the choice is in between fully integrating into the Empire or partially emancipating ourselves from Imperial authority."
+picture = "balticduchy"
+
+date = { day = 8 month = january year = 1936 }
+
+action_a = {
+ai_chance = 50
+name = "Integration"
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = construct which = ic where = 272 value = -1 }
+command = { type = construct which = ic where = 268 value = -1 }
+command = { type = construct which = ic where = 270 value = 1 }
+command = { type = construct which = ic where = 264 value = 1 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Emancipation"
+command = { type = trigger which = 915110 }
+command = { type = construct which = ic where = 272 value = -1 }
+command = { type = construct which = ic where = 268 value = -1 }
+command = { type = construct which = ic where = 270 value = 1 }
+command = { type = construct which = ic where = 264 value = 1 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+}
+}
+
+
+#### The human player chooses his path.
+
+event = {
+id = 915110
+random = no
+country = LAT
+style = 2
+
+trigger = {
+event = 915000
+}
+
+name = "Invite Germans or Befriend Locals?"
+desc = "The Duke and his Cabinet need to choose the best way to attain peace and prosperity for the United Baltic Duchy. Shall they subsidize extensive colonization efforts and draw in German settlers, or shall they open up the government to the non-Germans and devolve additional powers to the regions?"
+picture = "balticduchy"
+
+action_a = {
+name = "We are Germans, encourage settlements!"
+ai_chance = 50
+command = { type = local_setflag which = VBHinteg_step1 }
+}
+
+action_b = {
+name = "Estonians, Latvians, Russians, Germans... We are all Balts!"
+ai_chance = 50
+command = { type = local_setflag which = VBHeman_step2 }
+}
+}
+
+##############################
+##### The Settler's Path #####
+##############################
+
+
+event = {
+id = 915200
+persistent = yes
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHinteg_step1
+control = { province = 163 data = GER }
+puppet = { country = LAT country = GER  }
+}
+
+name = "Advertising for a Better Future!"
+desc = "In this period of economic recession, some less fortunate Germans might be tempted by a new life with new opportunities in the United Baltic Duchy, especially when their expenses are subsidized by the Ducal government. However, the advertising campaign costs money."
+
+date = { day = 15 month = january year = 1937 }
+offset = 15
+deathdate = { day = 15 month = january year = 1945 }  # VBH has all the time to decide...
+
+action_a = {
+ai_chance = 99
+name = "It shall cost what it shall cost."
+command = { type = money value = -10 }
+command = { type = local_clrflag which = VBHinteg_step1 }
+command = { type = local_setflag which = VBHinteg_step2 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+ai_chance = 1
+name = "It is far too early."
+command = { }
+}
+}
+
+event = {
+id = 915210
+persistent = yes
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHinteg_step2
+control = { province = 163 data = GER }
+puppet = { country = LAT country = GER  }
+}
+
+name = "Colonists in Kurland."
+desc = "The Ducal Office of Immigration and Settlement has reported an important number of applications for the Colonist Subsidies. The area of settlement appears to be Kurland, close to the border with Memelland in the Empire proper. This can only come as good news to us and bad news for wannabe rebels and troublemakers playing the false card of national identity!" #Now THAT is RAWR!
+
+date = { day = 1 month = march year = 1937 } #Advertising campaigns take time.
+offset = 15
+deathdate = {day = 1 month = june year = 1945 } #Plety of time to decide!
+
+action_a = {
+ai_chance = 99
+name = "Welcome them with open arms!"
+command = { type = manpowerpool value = 2 }
+command = { type = money value = -10 }
+command = { type = local_clrflag which = VBHinteg_step2 }
+command = { type = local_setflag which = VBHinteg_step3 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 915211}
+}
+
+action_b = {
+ai_chance = 1
+name = "Wait for now, there is time."
+command = { }
+}
+}
+
+
+event = {
+id = 915211 # According to the law of manpower conservation, manpower does not pop out of nowhere. Manpower gained in LAT means manpower lost in GER.
+random = no
+country = GER
+style = 2
+
+name = "Citizens leave for the Baltic."
+desc = "A number of the more impoverished of our citizens have taken up on the offer of Adolf Friedrich I, Duke of Mecklenburg-Schwerin and the United Baltic Duchy, and moved to his Baltic domains."
+picture = "German_mobilization"
+
+action_a = {
+name = "May they find wealth there."
+command = { type = manpowerpool value = -2 }
+}
+}
+
+event = {
+id = 915215 # leaving a whole 4 ID slots for potential event expansions.
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHinteg_step3
+control = { province = 163 data = GER }
+puppet = { country = LAT country = GER  }
+}
+
+name = "Kurland is German!"
+desc = "The Ducal Office of Immigration and Settlement reports that according to the latest census, the number of Ducal citizens of German descent in the Kurland Statistical Area has increased sharply, with settlers cementing the Ducal hold on the areas previously outside of full government control."
+
+date = { day = 1 month = july year = 1938 }
+offset = 100
+deathdate = { day = 1 month = november year = 1946 }
+
+action_a = {
+name = "Kurland ist Deutsch!"
+command = { type = money value = -10 }
+command = { type = manpowerpool value = 5 }
+command = { type = dissent value = 5 } #The Latvians are not happy with all the Brutwurst.
+command = { type = addcore which = 267 } #Mazirbe
+command = { type = addcore which = 268 } #Jelgava
+command = { type = addcore which = 269 } #Jekapils
+command = { type = construct which = ic where = 268 value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 915216 }
+}
+}
+
+event = {
+id = 915216 # GER Manpower hit due to migration
+random = no
+country = GER
+style = 2
+
+name = "Citizens leave for the Baltic."
+desc = "The Government of the United Baltic Duchy informs us that the number of German speakers in one of the Lander has attained sufficient level to exercise full government authority over the area without fear of local uprisings."
+picture = "German_mobilization"
+
+action_a = {
+name = "Excellent news, I guess."
+command = { type = manpowerpool value = -5 }
+}
+}
+
+
+
+
+event = {
+id = 915220
+persistent = yes
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHinteg_step3
+event = 915215 #No Livland colonisation before Kurland ist Deutsch!
+control = { province = 163 data = GER }
+puppet = { country = LAT country = GER  }
+}
+
+name = "Livland draws interest."
+desc = "The Ducal Office of Immigration and Settlement has indicated that the number of subsidy applications for settlers aiming to establish themselves in Livland has been steadily growing. This can be explained by both an increased confidence that the Ducal government can efficiently defend the interests of colonists, as well as by the important number of colonists already in Kurland."
+
+
+date = { day = 1 month = december year = 1938 }
+offset = 15
+deathdate = {day = 1 month = june year = 1949 } #Plety of time to decide!
+
+action_a = {
+ai_chance = 99
+name = "Welcome them with open arms!"
+command = { type = manpowerpool value = 2 }
+command = { type = money value = -10 }
+command = { type = local_clrflag which = VBHinteg_step3 }
+command = { type = local_setflag which = VBHinteg_step4 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 915221}
+}
+
+action_b = {
+ai_chance = 1
+name = "Wait for now, there is time."
+command = { }
+}
+}
+
+
+event = {
+id = 915221 # According to the law of manpower conservation, manpower does not pop out of nowhere. Manpower gained in LAT means manpower lost in GER.
+random = no
+country = GER
+style = 2
+
+name = "Citizens leave for the Baltic."
+desc = "A number of the more impoverished of our citizens have taken up on the offer of Adolf Friedrich I, Duke of Mecklenburg-Schwerin and the United Baltic Duchy, and moved to his Baltic domains."
+picture = "German_mobilization"
+
+action_a = {
+name = "May they find wealth there."
+command = { type = manpowerpool value = -2 }
+}
+}
+
+
+
+event = {
+id = 915225
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHinteg_step4
+control = { province = 163 data = GER }
+puppet = { country = LAT country = GER  }
+}
+
+name = "Livland is German!"
+desc = "The Ducal Office of Immigration and Settlement reports that according to the latest census, the number of Ducal citizens of German descent in the Livland Statistical Area has increased sharply, with settlers cementing the Ducal hold on the areas previously outside of full government control."
+
+date = { day = 1 month = june year = 1939 }
+offset = 100
+deathdate = { day = 1 month = november year = 1949 }
+
+action_a = {
+name = "Livland ist Deutsch!"
+command = { type = money value = -10 }
+command = { type = manpowerpool value = 5 }
+command = { type = dissent value = 5 } #The Estonians and the Voros are not happy with all the Brutwurst.
+command = { type = addcore which = 265 } #Dagaupulis
+command = { type = addcore which = 266 } #Voru
+command = { type = addcore which = 273 } #Gulbene
+command = { type = construct which = ic where = 265 value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 915226 }
+command = { type = setflag which = LAT_colon } #used in Nationalist Lithuania events
+}
+}
+
+event = {
+id = 915226 # GER Manpower hit due to migration
+random = no
+country = GER
+style = 2
+
+name = "Citizens leave for the Baltic."
+desc = "The Government of the United Baltic Duchy informs us that the number of German speakers in one of the Lander has attained sufficient level to exercise full government authority over the area without fear of local uprisings."
+picture = "German_mobilization"
+
+action_a = {
+name = "Excellent news, I guess."
+command = { type = manpowerpool value = -5 }
+}
+}
+
+event = {
+id = 915230
+persistent = yes
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHinteg_step4
+event = 915225 #No Estland colonisation before Livland ist Deutsch!
+control = { province = 163 data = GER }
+puppet = { country = LAT country = GER  }
+}
+
+name = "Estland draws interest."
+desc = "The Ducal Office of Immigration and Settlement has indicated that the number of subsidy applications for settlers aiming to establish themselves in Estland has been steadily growing. This can be explained by both an increased confidence that the Ducal government can efficiently defend the interests of colonists, as well as by the important number of colonists already in Kurland."
+
+
+date = { day = 1 month = may year = 1940 }
+offset = 15
+deathdate = { day = 1 month = june year = 1949 } #Plenty of time to decide!
+
+action_a = {
+ai_chance = 99
+name = "Welcome them with open arms!"
+command = { type = manpowerpool value = 2 }
+command = { type = money value = -20 }
+command = { type = local_clrflag which = VBHinteg_step4 }
+command = { type = local_setflag which = VBHinteg_step5 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 915231}
+}
+
+action_b = {
+ai_chance = 1
+name = "Wait for now, there is time."
+command = { }
+}
+}
+
+event = {
+id = 915231 # According to the law of manpower conservation, manpower does not pop out of nowhere. Manpower gained in LAT means manpower lost in GER.
+random = no
+country = GER
+style = 2
+
+name = "Citizens leave for the Baltic."
+desc = "A number of the more impoverished of our citizens have taken up on the offer of Adolf Friedrich I, Duke of Mecklenburg-Schwerin and the United Baltic Duchy, and moved to his Baltic domains."
+picture = "German_mobilization"
+
+action_a = {
+name = "May they find wealth there."
+command = { type = manpowerpool value = -2 }
+}
+}
+
+event = {
+id = 915235
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHinteg_step5
+control = { province = 163 data = GER }
+puppet = { country = LAT country = GER  }
+}
+
+name = "Estland is German!"
+desc = "The Ducal Office of Immigration and Settlement reports that according to the latest census, the number of Ducal citizens of German descent in the Estland Statistical Area has increased sharply, with settlers cementing the Ducal hold on the areas previously outside of full government control."
+
+date = { day = 1 month = december year = 1940 }
+offset = 100
+deathdate = { day = 1 month = november year = 1949 }
+
+action_a = {
+name = "Estland ist Deutsch!"
+command = { type = money value = -10 }
+command = { type = manpowerpool value = 5 }
+command = { type = dissent value = 5 } #The Latvians and the Voros are not happy with all the Bratwurst.
+command = { type = addcore which = 271 } #Narva
+command = { type = addcore which = 272 } #Tartu
+command = { type = addcore which = 274 } #Parnu
+command = { type = addcore which = 275 } #Kuressaare
+command = { type = construct which = ic where = 272 value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 915236 }
+command = { type = local_clrflag which = VBHinteg_step5 }
+command = { type = local_setflag which = VBHinteg_step6 }
+}
+}
+
+event = {
+id = 915236 # GER Manpower hit due to emmigration
+random = no
+country = GER
+style = 2
+
+name = "Citizens leave for the Baltic."
+desc = "The Government of the United Baltic Duchy informs us that the number of German speakers in one of the Lander has attained sufficient level to exercise full government authority over the area without fear of local uprisings."
+picture = "German_mobilization"
+
+action_a = {
+name = "Excellent news, I guess."
+command = { type = manpowerpool value = -5 }
+}
+}
+
+
+event = {
+id = 915240
+persistent = yes
+random = no
+country = LAT
+style = 2
+
+trigger = {
+puppet = { country = LAT country = GER  }
+local_flag = VBHinteg_step6
+control = { province = 163 data = GER }
+NOT = {
+ispuppet = GER
+}
+}
+
+name = "To Join or Not to Join?"
+desc = "With Kurland, Livland, and Estland all firmly under Ducal control, and with Germans now accounting for roughly a half of the Duchy's total population, the Duchy is now eligible to become an Imperial state. Of course, other options are possible..."
+picture = "balticduchy"
+
+date = { day = 1 month = july year = 1941 }
+offset = 100
+deathdate = { day = 1 month = november year = 1949 }
+
+
+action_a = {
+ai_chance = 75
+name = "Become an Imperial State (Game Over)!"
+command = { type = trigger which = 915250 }
+command = { type = local_clrflag which = VBHinteg_step6 }
+}
+
+action_b = {
+ai_chance = 24
+name = "Maintain the status quo."
+command = { type = relation which = GER value = -25 } # The Kaiser wants your pixelz.
+}
+
+action_c = {
+ai_chance = 1
+name = "Emancipate from Imperial rule."
+command = { type = end_puppet }
+command = { type = relation which = GER value = -300 } # The Kaiser still wants your pixelz.
+command = { type = local_clrflag which = VBHinteg_step6 }
+}
+}
+
+event = {
+id = 915250
+random = no
+country = GER
+style = 2
+
+name = "A new Imperial State!"
+desc = "His Highness Adolf Friedrich the First, Duke of Mecklenburg-Schwerin and of the United Baltic Duchy, has requested from the Reichstag and the Deutsche Kaiser the recognition of his Baltic domains as a Constituent State of the German Empire."
+picture = "balticduchy"
+
+action_a = {
+name = "A Triple Hurray for the German Empire!"
+command = { type = inherit which = LAT value = 1 }
+command = { type = addcore which = 268 }
+command = { type = addcore which = 269 }
+command = { type = addcore which = 264 }
+command = { type = addcore which = 267 }
+command = { type = addcore which = 266 }
+command = { type = addcore which = 265 }
+command = { type = addcore which = 273 }
+command = { type = addcore which = 272 }
+command = { type = addcore which = 271 }
+command = { type = addcore which = 270 }
+command = { type = addcore which = 274 }
+command = { type = addcore which = 275 }
+}
+}
+
+
+##################################################
+#Emancipation path
+##################################################
+event = {
+id = 915251
+random = no
+country = LAT
+style = 2
+
+trigger = {
+local_flag = VBHeman_step2
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 80
+deathdate = { day = 1 month = december year = 1940 }
+
+name = "The future of the United Baltic Duchy"
+desc = "The government must decide how deep and earth-shaking will be political reforms in United Baltic Duchy. The right-wing German circles in our society want to create a parliamentary monarchy with a census based on nationality, while liberals dominating trade and industry want to build a parliamentary monarchy based on total freedom and equality of voters. The Latvians and Estonians want profound reforms, mostly in politics, education, and nationality-based questions. What stance we should take?"
+picture = "balticduchy"
+
+action_a = {
+ai_chance = 0
+name = "Long live the Baltic Confederation!"
+command = { type = setflag which = VBH_LAND_OF_FREE }
+command = { type = addcore which = 268 }
+command = { type = addcore which = 269 }
+command = { type = addcore which = 264 }
+command = { type = addcore which = 267 }
+command = { type = addcore which = 266 }
+command = { type = addcore which = 265 }
+command = { type = addcore which = 273 }
+command = { type = addcore which = 272 }
+command = { type = addcore which = 271 }
+command = { type = addcore which = 270 }
+command = { type = addcore which = 274 }
+command = { type = addcore which = 275 }
+command = { type = country which = U26 }
+command = { type = dissent value = 20 }
+command = { type = headofstate which =   26790 }
+command = { type = local_clrflag which = VBHeman_step2 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Introduce liberal democracy"
+command = { type = setflag which = VBH_LAND_OF_FREE }
+command = { type = addcore which = 268 }
+command = { type = addcore which = 269 }
+command = { type = addcore which = 264 }
+command = { type = addcore which = 267 }
+command = { type = addcore which = 266 }
+command = { type = addcore which = 265 }
+command = { type = addcore which = 273 }
+command = { type = addcore which = 272 }
+command = { type = addcore which = 271 }
+command = { type = addcore which = 270 }
+command = { type = addcore which = 274 }
+command = { type = addcore which = 275 }
+command = { type = local_clrflag which = VBHeman_step2 }
+}
+
+action_c = {
+ai_chance = 60
+name = "Minor concessions for natives should be given"
+command = { type = setflag which = VBH_GERMAN }
+command = { type = addcore which = 268 }
+command = { type = addcore which = 269 }
+command = { type = addcore which = 264 }
+command = { type = addcore which = 267 }
+command = { type = addcore which = 266 }
+command = { type = addcore which = 265 }
+command = { type = addcore which = 273 }
+command = { type = addcore which = 272 }
+command = { type = addcore which = 271 }
+command = { type = addcore which = 270 }
+command = { type = addcore which = 274 }
+command = { type = addcore which = 275 }
+command = { type = local_clrflag which = VBHeman_step2 }
+}
+}
+
+event = {
+id = 915257
+random = no
+country = LAT
+style = 2
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = VBH_GERMAN
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 80
+deathdate = { day = 1 month = december year = 1937 }
+
+name = "Elections time - 1937!"
+desc = "The new parliamentry elections are coming and thanks to our new national election system only two parties were able to make into parliament. The highly xenophobic ' Nationalist German Party' and the 'Conservative Party'. The social democrats, Baltic nationalists, and Liberal democrats were too marginal to have majority."
+
+action_a = {
+ai_chance = 10
+name = "Conservative Party"
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27018 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -5 }
+command = { type = clrflag which = VBH_GERMAN }
+command = { type = setflag which = VBH_LAND_OF_FREE }
+command = { type = sleepevent which =  915252       }
+}
+
+action_b = {
+ai_chance = 90
+name = "Nationalist German Party"
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27016 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 2 }
+command = { type = dissent value = 10 }
+command = { type = clrflag which = VBH_GERMAN }
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = sleepevent which =  915252       }
+}
+}
+
+
+event = {
+id = 915252
+random = no
+country = LAT
+style = 2
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 80
+deathdate = { day = 1 month = december year = 1937 }
+
+name = "Elections time - 1937!"
+desc = "The new parliament elections are coming and only three parties were able to make it into parliament. The highly xenophobic ' Nationalist German Party,' the 'Liberal Party,' and the 'Conservative Party.' The social democrats and Baltic nationalists were too marginal to have a majority."
+
+action_a = {
+ai_chance = 40
+name = "Conservative Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27012 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = VBH_CON }
+}
+
+action_b = {
+ai_chance = 30
+name = "Nationalist German Party"
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27016 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 2 }
+command = { type = dissent value = 10 }
+command = { type = clrflag which = VBH_LAND_OF_FREE }
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Liberal Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27017 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -8 }
+command = { type = setflag which = VBH_LIB }
+}
+}
+
+
+event = {
+id = 915253
+random = no
+country = LAT
+style = 2
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = january year = 1941 }
+offset = 80
+deathdate = { day = 1 month = december year = 1941 }
+
+name = "Elections time - 1941!"
+desc = "The new parliament elections are coming and only three parties were able to make into parliament. The highly xenophobic ' Nationalist German Party,' the 'Liberal Party,' and the 'Conservative Party.' The social democrats and Baltic nationalists were too marginal to have a majority."
+
+action_a = {
+ai_chance = 45
+name = "Conservative Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27012 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = VBH_CON }
+command = { type = clrflag which = VBH_LIB }
+}
+
+action_b = {
+ai_chance = 25
+name = "Nationalist German Party"
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27016 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 2 }
+command = { type = dissent value = 10 }
+command = { type = clrflag which = VBH_LAND_OF_FREE }
+command = { type = trigger which = 915200 } #Advertising
+command = { type = clrflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Liberal Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27017 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -8 }
+command = { type = setflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+}
+}
+
+event = {
+id = 915254
+random = no
+country = LAT
+style = 2
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = january year = 1945 }
+offset = 80
+deathdate = { day = 1 month = december year = 1945 }
+
+name = "Elections time - 1945!"
+desc = "The new parliament elections are coming and only two parties are able to go into parliament, the Conservative Party and the Liberal Party. The nationalists, both Baltic and German were too marginal to have a majority."
+
+action_a = {
+ai_chance = 50
+name = "Conservative Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27012 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = VBH_CON }
+command = { type = clrflag which = VBH_LIB }
+command = { type = clrflag which = VBH_NAT }
+}
+
+action_b = {
+ai_chance = 50
+name = "Liberal Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27017 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -8 }
+command = { type = setflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+command = { type = clrflag which = VBH_NAT }
+
+}
+}
+
+event = {
+id = 915255
+random = no
+country = LAT
+style = 2
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = january year = 1949 }
+offset = 80
+deathdate = { day = 1 month = december year = 1949 }
+
+name = "Elections time - 1949!"
+desc = "The new parliament elections are coming and only three parties are able to go into parliament, the Conservative Party, the Liberal Party, and the Social-Democratic Party. The nationalists, both Baltic and German are too marginal to have a majority."
+
+action_a = {
+ai_chance = 30
+name = "Conservative Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27018 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = VBH_CON }
+command = { type = clrflag which = VBH_LIB }
+command = { type = clrflag which = VBH_SOD }
+}
+
+action_b = {
+ai_chance = 30
+name = "Liberal Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27017 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -8 }
+command = { type = setflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+command = { type = clrflag which = VBH_SOD }
+}
+
+action_b = {
+ai_chance = 30
+name = "Social-democratic Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27071 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -8 }
+command = { type = clrflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+command = { type = setflag which = VBH_SOD }
+
+}
+}
+
+event = {
+id = 915256
+random = no
+country = LAT
+style = 2
+
+trigger = {
+NOT = {
+government = communist
+}
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = january year = 1953 }
+offset = 80
+deathdate = { day = 1 month = december year = 1953 }
+
+name = "Elections time - 1953!"
+desc = "The new parliament elections are coming and four parties are able to go into parliament, the Conservative Party, the Liberal Party, the Nationalist party, and the Social-Democratic Party. The result of the elections is unpredictable."
+
+action_a = {
+ai_chance = 30
+name = "Conservative Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27018 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = VBH_CON }
+command = { type = clrflag which = VBH_LIB }
+command = { type = clrflag which = VBH_SOD }
+command = { type = clrflag which = VBH_NAT }
+}
+
+action_b = {
+ai_chance = 30
+name = "Liberal Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27017 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -8 }
+command = { type = setflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+command = { type = clrflag which = VBH_SOD }
+command = { type = clrflag which = VBH_NAT }
+}
+
+action_c = {
+ai_chance = 30
+name = "Social-democratic Party"
+command = { type = headofstate which =   27086 }
+command = { type = headofgovernment which = 27071 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = dissent value = -8 }
+command = { type = clrflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+command = { type = setflag which = VBH_SOD }
+command = { type = clrflag which = VBH_NAT }
+
+}
+action_d = {
+ai_chance = 10
+name = "Natonalist Party"
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27011 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 2 }
+command = { type = dissent value = -8 }
+command = { type = clrflag which = VBH_LIB }
+command = { type = clrflag which = VBH_CON }
+command = { type = clrflag which = VBH_SOD }
+command = { type = setflag which = VBH_NAT }
+}
+}
+
+event = {
+id = 915277
+random = no
+country = GER
+style = 2
+
+trigger = {
+OR = {
+AND = {
+exists = LAT
+OR = {
+event = 915257
+event = 915252
+flag = VBH_LAND_OF_FREE
+}
+}
+AND = {
+exists = U26
+flag = VBH_LAND_OF_FREE
+}
+}
+}
+
+date = { day = 1 month = september year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Baltic Duchy wants to be more independent from Berlin!"
+desc = "Due to rising tensions with Estonians, Latvians, and other minorities deprived of their political rights, Duke Adolf Friederich decided to accept their demands. This means that his lands won't be an easy target for German colonization anymore, but it will also mean one less source of instability for Mitteleuropa. What is our stance on this?"
+
+action_a = {
+ai_chance = 25
+name = "The Parliament approves of this move!"
+command = { type = dissent value = -1 }
+command = { type = relation which = LAT value = 30 }
+command = { type = relation which = U26 value = 30 }
+}
+action_b = {
+ai_chance = 75
+name = "The Kaiser is angry at the Duke!"
+command = { type = relation which = LAT value = -50 }
+command = { type = relation which = U26 value = -50 }
+command = { trigger = { exists = LAT }  type = trigger which = 915260 }
+command = { trigger = { exists = U26 }  type = trigger which = 915275 }
+}
+
+action_c = {
+ai_chance = 0
+name ="The Government breaks off relations with the rebellious state!"
+command = { trigger = { exists = LAT }  type = trigger which = 915258 }
+command = { trigger = { exists = U26 }  type = trigger which = 915276 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 915258
+random = no
+country = LAT
+style = 2
+
+name = "Germany has turned away!"
+desc = "The German population of the United Baltic Duchy has been in shock over the Kaiser speech, in which he dismissed all links between the German Empire and our country. We have no choice but to appease him, maybe if we throw away the constitution and come back to the old ways?"
+
+action_a = {
+ai_chance = 95
+name = "Revert everything!"
+command = { type = clrflag which = VBH_LAND_OF_FREE }
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27016 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = trigger which = 915259 }
+command = { type = dissent value = 30 }
+}
+
+action_b = {
+ai_chance = 5
+name = "We shall be an independent country for everyone!"
+command = { trigger = { NOT = { exists = U26 } } type = country which = U26 }
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 915252 }
+command = { type = sleepevent which = 915253 }
+command = { type = sleepevent which = 915254 }
+command = { type = sleepevent which = 915255 }
+command = { type = sleepevent which = 915256 }
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = GER where = LAT }
+command = { type = end_access which = LAT where = GER }
+}
+}
+
+event = {
+id = 915259
+random = no
+country = GER
+style = 2
+
+name = "United Baltic Duchy comes back to the idea of being the next Imperial state"
+desc = "It seems that the Kaiser expressing his anger at the United Baltic Duchy Prince had some good results. Now, they abandoned this madness of 'rights for the Balts'"
+
+action_a = {
+name = "Gut!"
+command = { type = relation value = 100 which = LAT }
+}
+}
+
+event = {
+id = 915260
+random = no
+country = LAT
+style = 2
+
+name = "The Kaiser is angry!"
+desc = "After the Kaiser has expressed his disagreement over the type of administration in the United Baltic Duchy, the majority of Germans feel that the UBD must stay on its democratic course and friendship with Germany. Many of them however think of this is a good excuse to revert everything which has been done."
+
+action_a = {
+ai_chance = 45
+name = "Revert everything!"
+command = { type = clrflag which = VBH_LAND_OF_FREE }
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27016 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = trigger which = 915259 }
+command = { type = dissent value = 30 }
+}
+
+action_b = {
+ai_chance = 55
+name = "Tell Kaiser that this is needed for a better future for the United Baltic Duchy!"
+command = { type = relation which = GER value = -30 }
+}
+
+action_c = {
+ai_chance = 0
+name = "We shall be an independent country for everyone!"
+command = { trigger = { NOT = { exists = U26 } } type = country which = U26 }
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 915252 }
+command = { type = sleepevent which = 915253 }
+command = { type = sleepevent which = 915254 }
+command = { type = sleepevent which = 915255 }
+command = { type = sleepevent which = 915256 }
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = GER where = LAT }
+command = { type = end_access which = LAT where = GER }
+}
+}
+
+event = {
+id = 915275
+random = no
+country = U26
+style = 2
+
+name = "The Kaiser is angry!"
+desc = "After the Kaiser has expressed his disagreement over the type of administration in the United Baltic Duchy, the majority of Germans feel that the UBD must stay on its democratic course and friendship with Germany. Many of them however think of this is a good excuse to revert everything which has been done."
+
+action_a = {
+ai_chance = 45
+name = "Revert everything!"
+command = { type = clrflag which = VBH_LAND_OF_FREE }
+command = { type = country which = LAT }
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27016 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = trigger which = 915259 }
+command = { type = dissent value = 30 }
+}
+
+action_b = {
+ai_chance = 55
+name = "Tell Kaiser that this is necessary!"
+command = { type = relation which = GER value = -30 }
+}
+
+action_c = {
+ai_chance = 0
+name = "We shall be an independent country for everyone!"
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 915252 }
+command = { type = sleepevent which = 915253 }
+command = { type = sleepevent which = 915254 }
+command = { type = sleepevent which = 915255 }
+command = { type = sleepevent which = 915256 }
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = GER where = LAT }
+command = { type = end_access which = LAT where = GER }
+}
+}
+
+event = {
+id = 915276
+random = no
+country = U26
+style = 2
+
+name = "Germany has turned away!"
+desc = "The German population of the United Baltic Duchy has been in shock over the Kaiser speech, in which he dismissed all links between the German Empire and our country. We have no choice but to appease him, maybe if we throw away the constitution and come back to the old ways?"
+
+action_a = {
+ai_chance = 95
+name = "Revert everything!"
+command = { type = country which = LAT }
+command = { type = clrflag which = VBH_LAND_OF_FREE }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = removecore which = 268 } # To simulate difference between urban Germans and rural everybody else.
+command = { type = removecore which = 269 }
+command = { type = removecore which = 274 }
+command = { type = removecore which = 267 }
+command = { type = removecore which = 266 }
+command = { type = removecore which = 265 }
+command = { type = removecore which = 273 }
+command = { type = removecore which = 272 }
+command = { type = removecore which = 271 }
+command = { type = removecore which = 275 }
+command = { type = headofstate which =   27001 }
+command = { type = headofgovernment which = 27016 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = local_setflag which = VBHinteg_step1 }
+command = { type = trigger which = 915259 }
+command = { type = dissent value = 30 }
+}
+
+action_b = {
+ai_chance = 5
+name = "We shall be an independent country for everyone!"
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 915252 }
+command = { type = sleepevent which = 915253 }
+command = { type = sleepevent which = 915254 }
+command = { type = sleepevent which = 915255 }
+command = { type = sleepevent which = 915256 }
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = end_access which = GER where = LAT }
+command = { type = end_access which = LAT where = GER }
+}
+}
+
+
+###################################################
+#Various local things
+###################################################
+event = {
+id = 915261
+random = no
+country = LAT
+style = 2
+
+trigger = {
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Reforms of education"
+desc = "With more power to parliament the time has came - we need to rethink the system of education. Now the primary education is in German for everyone and only Germans can get higher education. If we are opening parliament to Balts and Germans, why don't we add Estonian and Latvian as secondary languages and allow higher education for all peoples of the Duchy?"
+
+action_a = {
+ai_chance = 80
+name = "Do it!"
+command = { type = dissent value = -5 }
+command = { type = money value = -10 }
+command = { type = domestic which = freedom value = 1 }
+}
+
+action_b = {
+ai_chance = 20
+name = "Don't do this"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 915262
+random = no
+country = LAT
+style = 2
+
+trigger = {
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = february year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Reform of press law"
+desc = "Liberal circles and general opinion demand repealing the censorship law. While conservatives think that we should not do this, the liberals and Balt activists think that we should at least repeal the most drastic laws against the press."
+
+action_a = {
+ai_chance = 35
+name = "The press should be free!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Some changes will be implemented"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -3 }
+}
+
+action_c = {
+ai_chance = 15
+name = "No changes! The law is good as it is!"
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 915263 }
+}
+}
+
+event = {
+id = 915263
+random = no
+country = LAT
+style = 2
+
+date = { day = 1 month = march year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Newspaper boom!"
+desc = "Recently, many newspapers have been set up, as an effect of the new press law, introducing more freedom to news agencies."
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 915264
+random = no
+country = LAT
+style = 2
+
+trigger = {
+flag = VBH_LAND_OF_FREE
+}
+
+date = { day = 1 month = april year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Crisis in army!"
+desc = "As reforms go on, some generals want to introduce the recruitment of 'natives' or ,speaking the new language, Latvians and Estonians. The Ministry of War agrees that none of them should be able to be more than low-ranking officers."
+
+action_a = {
+ai_chance = 90
+name = "Start recruitment"
+command = {  type = manpowerpool value = 50 }
+}
+
+action_b = {
+ai_chance = 10
+name = "No reforms are needed"
+command = { type = dissent value = 3 }
+command = { type = domestic which = freedom value = -1 }
+}
+}
+
+event = {
+id = 915265
+random = no
+country = LAT
+style = 2
+
+trigger = {
+flag = VBH_LAND_OF_FREE
+event = 915264
+}
+
+date = { day = 1 month = may year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Mutiny of Latvian units"
+desc = "As pessimists predicted, mutiny has started in one of the Latvian-speaking units and soon threatened nearly every non-German and non-Estonian unit. The mutineers want more freedom for the ordinary soldier, better food, higher payment, but radicals speak of 'overthrowing the evil German regime'. We can win over a majority of the mutineers, however some negotiations will be needed."
+
+action_a = {
+ai_chance = 75
+name = "Start negotiations"
+command = { type = dissent value = 1 }
+command = { type = money value = -5 }
+}
+
+action_b = {
+ai_chance = 25
+name = "They don't deserve anything!"
+command = { type = dissent value = 3 }
+}
+}
+
+##########################################################
+#Rebellions
+#version where Lithuanians don't do anything
+##########################################################
+event = {
+id = 915266
+random = no
+country = LAT
+style = 2
+
+trigger = {
+random = 30
+event = 915210
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Rebellion in Kurland"
+desc = "The rural population and some city dwellers in Kurland have decided to rise against the German population. Thankfully, the rebellion is limited only to a few provinces and should be easily crushed."
+
+action_a = {
+name = "Crush dissenters!"
+command = { type = revolt which = 267 }
+command = { type = revolt which = 268 }
+command = { type = revolt which = 269 }
+}
+}
+event = {
+id = 915267
+random = no
+country = LAT
+style = 2
+
+trigger = {
+random = 30
+event = 915220
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Rebellion in Livland"
+desc = "The rural population and some city dwellers in Livland have decided to rise against the German population. Thankfully, the rebellion is limited only to a few provinces and should be easily crushed."
+
+action_a = {
+name = "Crush dissenters!"
+command = { type = revolt which = 265 }
+command = { type = revolt which = 266 }
+command = { type = revolt which = 273 }
+}
+}
+event = {
+id = 915268
+random = no
+country = LAT
+style = 2
+
+trigger = {
+random = 30
+event = 915230
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Rebellion in Estland"
+desc = "The rural population and some city dwellers in Estland have decided to rise against the German population. Thankfully, the rebellion is limited only to a few provinces and should be easily crushed."
+
+action_a = {
+name = "Crush dissenters!"
+command = { type = revolt which = 271 }
+command = { type = revolt which = 272 }
+command = { type = revolt which = 274 }
+}
+}
+
+########
+#Latvia
+########
+event = {
+id = 915269
+country = U20
+picture = "Cernauti"
+style = 2
+
+trigger = {
+NOT = {
+exists = LAT
+lost_national = { country = U20 value = 10 }
+puppet = { country = U20 country = GER  }
+puppet = { country = U20 country = U14  }
+puppet = { country = U20 country = U31  }
+}
+OR = {
+NOT = {
+alliance = { country = U20 country = GER }
+}
+AND = {
+alliance = { country = U20 country = GER }
+ispuppet = GER
+}
+}
+OR = {
+NOT = {
+alliance = { country = U20 country = U14 }
+}
+AND = {
+alliance = { country = U20 country = U14 }
+ispuppet = U14
+}
+}
+OR = {
+NOT = {
+alliance = { country = U20 country = U31 }
+}
+AND = {
+alliance = { country = U20 country = U31 }
+ispuppet = U31
+}
+}
+}
+
+name = "German settlers in Latvia"
+desc = "During the previous years, thousands of Germans were settled in our frontiers, founding many new farms and villages. With our independence regained, however, we could very well seize those lands and redistribute them amongst our own people! However, such a populist move could harm our fragile economy, as a good part of our agricultural production comes from these farms."
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 20 month = february year = 1966 }
+
+action_a = {
+ai_chance = 75
+name = "Seize the farms and expel the Germans"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = -1 }
+command = { type = industrial_modifier which = supplies value = -1 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = -25 }
+command = { type = relation which = U14 value = -25 }
+command = { type = relation which = U31 value = -25 }
+command = { type = trigger which = 915270 }
+}
+action_b = {
+ai_chance = 25
+name = "Those settlers are important for our economy"
+command = { type = dissent value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = industrial_modifier which = supplies value = 1 }
+command = { type = relation which = GER value = 15 }
+command = { type = relation which = U14 value = 15 }
+command = { type = relation which = U31 value = 15 }
+}
+}
+
+event = {
+id = 915270
+tag = { U31 GER U14 }
+picture = "Cernauti"
+style = 2
+
+trigger = {
+control = { province = 163 data = -1 }
+owned = { province = 163 data = -1 }
+}
+
+name = "Refugees from Latvia"
+desc = "During previous years, thousands of German settlers moved to Latvia. Their newly-independent government has decided to expel them..."
+
+action_a = {
+name = "Oh!"
+command = { type = manpowerpool value = 10 }
+command = { type = dissent value = 2 }
+}
+}
+
+#########
+#Estonia
+#########
+event = {
+id = 915271
+country = EST
+picture = "Cernauti"
+style = 2
+
+trigger = {
+NOT = {
+exists = LAT
+lost_national = { country = EST value = 10 }
+puppet = { country = EST country = GER  }
+puppet = { country = EST country = U14  }
+puppet = { country = EST country = U31  }
+}
+OR = {
+NOT = {
+alliance = { country = EST country = GER }
+}
+AND = {
+alliance = { country = EST country = GER }
+ispuppet = GER
+}
+}
+OR = {
+NOT = {
+alliance = { country = EST country = U14 }
+}
+AND = {
+alliance = { country = EST country = U14 }
+ispuppet = U14
+}
+}
+OR = {
+NOT = {
+alliance = { country = EST country = U31 }
+}
+AND = {
+alliance = { country = EST country = U31 }
+ispuppet = U31
+}
+}
+}
+
+name = "German settlers in Estonia"
+desc = "During the existence of the United Baltic Duchy, thousands of Germans were settled in our frontiers, founding many new farms and villages. With our independence regained, however, we could very well seize those lands and redistribute them amongst our own people! However, such a populist move could harm our fragile economy, as a good part of our agricultural production comes from these farms."
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 20 month = february year = 1966 }
+
+action_a = {
+ai_chance = 50
+name = "Seize the farms and expel the Germans"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = -1 }
+command = { type = industrial_modifier which = supplies value = -1 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = -25 }
+command = { type = relation which = U14 value = -25 }
+command = { type = relation which = U31 value = -25 }
+command = { type = trigger which = 915272 }
+}
+action_b = {
+ai_chance = 50
+name = "Those settlers are important for our economy"
+command = { type = dissent value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = industrial_modifier which = supplies value = 1 }
+command = { type = relation which = GER value = 15 }
+command = { type = relation which = U14 value = 15 }
+command = { type = relation which = U31 value = 15 }
+}
+}
+
+event = {
+id = 915272
+tag = { U31 GER U14 }
+picture = "Cernauti"
+style = 2
+
+trigger = {
+control = { province = 163 data = -1 }
+owned = { province = 163 data = -1 }
+}
+
+name = "Refugees from Estonia"
+desc = "During existence of United Baltic Duchy, thousands of German settlers moved to Estonia. Their newly-independent government has decided to expel them..."
+
+action_a = {
+name = "Oh!"
+command = { type = manpowerpool value = 10 }
+command = { type = dissent value = 2 }
+}
+}
+
+
+#########
+#Baltic Confederation
+#########
+event = {
+id = 915273
+country = U26
+picture = "Cernauti"
+style = 2
+
+trigger = {
+NOT = {
+exists = LAT
+lost_national = { country = U26 value = 10 }
+puppet = { country = U26 country = GER  }
+puppet = { country = U26 country = U14  }
+puppet = { country = U26 country = U31  }
+}
+OR = {
+NOT = {
+alliance = { country = U26 country = GER }
+}
+AND = {
+alliance = { country = U26 country = GER }
+ispuppet = GER
+}
+}
+OR = {
+NOT = {
+alliance = { country = U26 country = U14 }
+}
+AND = {
+alliance = { country = U26 country = U14 }
+ispuppet = U14
+}
+}
+OR = {
+NOT = {
+alliance = { country = U26 country = U31 }
+}
+AND = {
+alliance = { country = U26 country = U31 }
+ispuppet = U31
+}
+}
+}
+
+name = "German settlers in Baltic Confederation"
+desc = "During the existence of the United Baltic Duchy, thousands of Germans were settled in our frontiers, founding many new farms and villages. With our independence regained, however, we could very well seize those lands and redistribute them amongst our own people! However, such a populist move could harm our fragile economy, as a good part of our agricultural production comes from these farms."
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 20 month = february year = 1966 }
+
+action_a = {
+ai_chance = 50
+name = "Seize the farms and expel the Germans"
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = -1 }
+command = { type = industrial_modifier which = supplies value = -1 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GER value = -25 }
+command = { type = relation which = U14 value = -25 }
+command = { type = relation which = U31 value = -25 }
+command = { type = trigger which = 915274 }
+}
+action_b = {
+ai_chance = 50
+name = "Those settlers are important for our economy"
+command = { type = dissent value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = industrial_modifier which = supplies value = 1 }
+command = { type = relation which = GER value = 15 }
+command = { type = relation which = U14 value = 15 }
+command = { type = relation which = U31 value = 15 }
+}
+}
+
+event = {
+id = 915274
+tag = { U31 GER U14 }
+picture = "Cernauti"
+style = 2
+
+trigger = {
+control = { province = 163 data = -1 }
+owned = { province = 163 data = -1 }
+}
+
+name = "Refugees from Baltic Confederation"
+desc = "During existence of United Baltic Duchy, thousands of German settlers moved to the area of today Baltic Confederation. Their newly-independent government has decided to expel them..."
+
+action_a = {
+name = "Oh!"
+command = { type = manpowerpool value = 10 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 915285
+country = LAT
+random = no
+style = 2
+
+trigger = {
+OR = {
+flag = RUS_BSD
+flag = RUS_FRB
+}
+event = 915215
+flag = RUS_OKH
+puppet = { country = LAT country = GER  }
+NOT = {
+government = communist
+}
+}
+
+name = "Nationalist movements agitating"
+desc = "The decision of our German masters to speed up the integration of the entire region into the German Empire was met with stern disapproval from the native Latvian and Estonian population. To fight against waves of German settlers which are intended to definitely destroy both nations various radical nationalist groups were reactivated. Their goal is to attain complete freedom from the German Empire."
+picture = "FORA"
+
+date = { day = 1 month = january year = 1936 }
+offset =  20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Should we be worried?"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 915286
+country = LAT
+random = no
+style = 2
+
+trigger = {
+event = 915285
+puppet = { country = LAT country = GER  }
+NOT = {
+government = communist
+}
+}
+
+name = "Russophilic movement established"
+desc = "The decision of our German masters to speed up the integration of the entire region into the German Empire was used by the long-suppressed Russian minority together with several discontent Latvians and Estonians to establish a pan-Russian movement. Its goal is to align our state as closely as possible to the Russia."
+picture = "FORA"
+
+date = { day = 1 month = january year = 1936 }
+offset =  20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Should we be worried?"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 915287
+country = LAT
+random = no
+style = 2
+
+trigger = {
+event = 915286
+puppet = { country = LAT country = GER  }
+NOT = {
+government = communist
+}
+}
+
+name = "Nationalist and Russophilic movements unite"
+desc = "Grave news. It seems that our radical pro-German policy forced nationalist Latvian and Estonian movements to unite with the Russophilic movement in order to save the Baltic from German oppression and dominance and to establish a free Baltic state. The new united nationalist movement was named Soyuz Osvobozdeniya Pribaltiki - SOP and it poses a great danger to our state."
+picture = "FORA"
+
+date = { day = 1 month = january year = 1936 }
+offset =  20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Should we be worried?"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 915278
+country = LAT
+random = no
+style = 2
+
+trigger = {
+event = 915287
+exists = RUS
+puppet = { country = LAT country = GER  }
+NOT = {
+flag = RUS_ISO
+ispuppet = RUS
+war = { country = RUS country = LAT }
+exists = SOV
+government = communist
+}
+}
+
+name = "SOP is becoming popular"
+desc = "The united SOP movement is gaining popularity at an alarming rate, thanks to massive underground propaganda campaigns, which are probably supported by industrial circles from Russia. How shall we react to this new threat to our independence?"
+picture = "FORA"
+
+date = { day = 1 month = january year = 1936 }
+offset =  30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Ask the German Empire for help"
+ai_chance = 80
+command = { type = relation which = RUS value = 20 }
+command = { type = dissent value = -1 }
+command = { type = event which = 915279 where = GER when = 2  }
+}
+
+action_b = {
+name = "They are harmless.."
+ai_chance = 20
+command = { type = dissent value = -1 }
+command = { type = relation which = RUS value = 20 }
+command = { type = event which = 915284 where = RUS when = 5  }
+}
+}
+
+event = {
+id = 915279
+country = GER
+random = no
+style = 2
+
+name = "SOP endangers the United Baltic Duchy"
+desc = "The united SOP movement is gaining popularity at alarming rate, thanks to massive underground propaganda campaigns, which are probably supported by industrial circles from Russia. The government of the United Baltic Duchy asked us for support against this grave threat. How shall we react to this new threat to the integrity of our member state?"
+picture = "FORA"
+
+action_a = {
+name = "Demand Russia to cease all support"
+ai_chance = 80
+command = { type = relation which = RUS value = -20 }
+command = { type = dissent value = -1 }
+command = { type = event which = 915280 where = RUS when = 1  }
+}
+
+action_b = {
+name = "We will attack the source of problems!"
+ai_chance = 0
+trigger = {
+NOT = {
+alliance = { country = GER country = RUS }
+}
+}
+command = { type = dissent value = 15 }
+command = { type = relation which = RUS value = -100 }
+command = { type = end_non_aggression which = RUS where = GER }
+command = { type = end_non_aggression which = GER where = RUS }
+command = { type = war which = RUS }
+}
+
+action_b = {
+name = "Ignore UBD pleas"
+ai_chance = 10
+command = { type = dissent value = 3 }
+command = { type = relation which = LAT value = -20 }
+command = { type = event which = 915284 where = RUS when = 5  }
+}
+}
+
+
+event = {
+id = 915280
+country = RUS
+random = no
+style = 2
+
+name = "German demands"
+desc = "The German Empire, enraged by our supposed support of separatists inside the United Baltic Duchy issued a series of demands, which requests cessation of all support towards various separatist groups inside the German Empire and its member states or face unspecified economical and military response. How shall we react ?"
+picture = "Wehrmacht"
+
+action_a = {
+name = "Ignore their feeble threats"
+ai_chance = 50
+command = { type = relation which = GER value = -40 }
+command = { type = relation which = LAT value = -40 }
+command = { type = end_non_aggression which = RUS where = GER }
+command = { type = end_non_aggression which = GER where = RUS }
+command = { trigger = { alliance = { country = RUS country = GER } } type = leave_alliance }
+command = { type = dissent value = 2 }
+command = { type = event which = 915281 where = GER when = 2  }
+}
+
+action_b = {
+name = "Accept their demands!"
+ai_chance = 50
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 50 }
+command = { type = relation which = LAT value = 50 }
+command = { type = trigger which = 915282  }
+}
+
+}
+
+event = {
+id = 915281
+country = GER
+random = no
+style = 2
+
+name = "Russia ignored our demands"
+desc = "Russia refused our reasonable demands regarding our national integrity. How shall we react to this insolence?"
+picture = "soviet_replacement"
+
+action_a = {
+name = "Cease all contacts between Mitteleuropa and Russia!"
+ai_chance = 40
+command = { type = relation which = RUS value = -100 }
+command = { type = end_non_aggression which = RUS where = GER }
+command = { type = end_non_aggression which = GER where = RUS }
+command = { trigger = { alliance = { country = RUS country = GER } } type = leave_alliance }
+command = { type = end_trades which = GER where = RUS }
+command = { trigger = { alliance = { country = BEL country = GER } } type = end_trades which = BEL where = RUS }
+command = { trigger = { alliance = { country = LAT country = GER } } type = end_trades which = LAT where = RUS }
+command = { trigger = { alliance = { country = BLR country = GER } } type = end_trades which = BLR where = RUS }
+command = { trigger = { alliance = { country = UKR country = GER } }  type = end_trades which = UKR where = RUS }
+command = { trigger = { puppet = { country = CON country = GER  } } type = end_trades which = CON where = RUS }
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_trades which = CGX where = RUS }
+command = { type = dissent value = 2 }
+command = { type = event which = 915283 where = RUS when = 3  }
+}
+
+action_b = {
+name = "Insolent brats! We will show you German might!"
+ai_chance = 50
+command = { type = dissent value = -5 }
+command = { type = relation which = LAT value = 50 }
+command = { type = war which = RUS }
+}
+
+action_c = {
+name = "Back down. We cannot afford conflict with Russia."
+ai_chance = 50
+trigger = {
+exists = FRA
+}
+command = { type = dissent value = 5 }
+command = { type = relation which = LAT value = -20 }
+command = { type = relation which = RUS value = 20 }
+command = { type = event which = 915284 where = RUS when = 5  }
+}
+
+}
+
+event = {
+id = 915282
+country = GER
+random = no
+style = 2
+
+
+name = "Russia accepted our demands"
+desc = "Russia accepted our demands and ceased all activity which was aimed against the territorial integrity of the  United Baltic Duchy."
+picture = "soviet_replacement"
+
+action_a = {
+name = "Another victory for our diplomacy"
+command = { type = dissent value = -5 }
+}
+}
+
+
+event = {
+id = 915283
+country = RUS
+random = no
+style = 2
+
+name = "Mitteleuropa ceases all contacts with us"
+desc = "The German Empire reacted badly to our refusal, they ordered the cessation of all trade and diplomatic contacts between our state and Mitteleuropa. Parts of our industry is already feeling the consequences of such drastic actions. Shall we continue with the support of UBD nationalists or cease it to try to appease the German Empire?"
+picture = "Wehrmacht"
+
+action_a = {
+name = "Continue the support of UBD nationalists"
+ai_chance = 40
+command = { type = relation which = GER value = -40 }
+command = { type = relation which = LAT value = -40 }
+command = { type = end_non_aggression which = RUS where = GER }
+command = { type = end_non_aggression which = GER where = RUS }
+command = { trigger = { alliance = { country = RUS country = GER } } type = leave_alliance }
+command = { type = industrial_modifier which = total value = -4 }
+command = { type = dissent value = 5 }
+command = { type = event which = 915288 where = LAT when = 5  }
+}
+
+action_b = {
+name = "Cease their support !"
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 50 }
+command = { type = relation which = LAT value = 50 }
+command = { type = trigger which = 915282  }
+}
+
+}
+
+event = {
+id = 915284
+country = RUS
+random = no
+style = 2
+
+name = "UBD nationalists are asking for support"
+desc = "Representatives of the SOP - Soyuz Osvobozdeniya Pribaltiki, movement, recently arrived in Petrograd to ask for support in their struggle. What shall we do?"
+picture = "Wehrmacht"
+
+action_a = {
+name = "Offer them official support!"
+ai_chance = 50
+command = { type = relation which = GER value = -40 }
+command = { type = relation which = LAT value = -40 }
+command = { type = end_non_aggression which = RUS where = GER }
+command = { type = end_non_aggression which = GER where = RUS }
+command = { trigger = { alliance = { country = RUS country = GER } } type = leave_alliance }
+command = { type = dissent value = 2 }
+command = { type = event which = 915288 where = LAT when = 5  }
+}
+
+action_b = {
+name = "Ignore them!"
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 50 }
+command = { type = relation which = LAT value = 50 }
+}
+
+}
+
+
+event = {
+id = 915288
+random = no
+country = LAT
+one_action = yes
+
+name = "SOP coup!!"
+desc = "Our large nationalist SOP movement has decided to step up its operations in order to gain control over our state. They even managed to get part of our armed forces on their side and with their help the pro-Russian nationalists entered our capital. Fortunately large parts of our armed forces are still on our side. Will they succeed and save the United Baltic Duchy?"
+style = 2
+picture = "british_protesting"
+
+
+action_a = {
+name = "Putschist overthrows the government!"
+ai_chance = 70
+command = { type = dissent value = 10  }
+command = { type = end_puppet }
+command = { type = leave_alliance when = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = peace which = RSI value = 1 }
+command = { type = peace which = ENG value = 1 }
+command = { type = peace which = CSA value = 1 }
+command = { type = peace which = ICL value = 1 }
+command = { type = peace which = HOL value = 1 }
+command = { type = peace which = BEL value = 1 }
+command = { type = peace which = SPR value = 1 }
+command = { type = peace which = UKR value = 1 }
+command = { type = peace which = POL value = 1 }
+command = { type = peace which = U00 value = 1 }
+command = { type = peace which = GEO value = 1 }
+command = { type = wakeminister which = 27078 }
+command = { type = wakeminister which = 27079 }
+command = { type = wakeminister which = 27080 }
+command = { type = wakeminister which = 27081 }
+command = { type = wakeminister which = 27082 }
+command = { type = wakeminister which = 27083 }
+command = { type = wakeminister which = 27084 }
+command = { type = wakeminister which = 27085 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = name where = LAT which = LAT_RUS_NAME }
+command = { type = flag_ext where = LAT which = "_RUS" }
+command = { type = headofgovernment which = 27083 }
+command = { type = headofstate which = 27082 }
+command = { type = relation which = RUS value = 200 }
+command = { type = relation which = GER value = -200 }
+command = { type = event which = 915289 where = RUS when = 1  }
+command = { type = local_clrflag which = VBHinteg_step1 }
+command = { type = local_clrflag which = VBHinteg_step2 }
+command = { type = local_clrflag which = VBHinteg_step3 }
+command = { type = local_clrflag which = VBHinteg_step4 }
+command = { type = local_clrflag which = VBHinteg_step5 }
+command = { type = local_clrflag which = VBHinteg_step6 }
+command = { type = addcore which = 268 }
+command = { type = addcore which = 269 }
+command = { type = addcore which = 264 }
+command = { type = addcore which = 267 }
+command = { type = addcore which = 266 }
+command = { type = addcore which = 265 }
+command = { type = addcore which = 273 }
+command = { type = addcore which = 272 }
+command = { type = addcore which = 271 }
+command = { type = addcore which = 270 }
+command = { type = addcore which = 274 }
+command = { type = addcore which = 275 }
+}
+
+action_b = {
+name = "Armed forces defeat the nationalists!"
+ai_chance = 30
+command = { type = dissent value = 5  }
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = GER value = 50 }
+command = { type = manpowerpool value = -5 }
+command = { type = money value = -20 }
+command = { type = supplies value = -200 }
+}
+}
+
+
+
+event = {
+id = 915289
+random = no
+country = RUS
+
+name = "Russophile government in Pribaltika established"
+desc = "The Russophile and Latvian-Estonian movement SOP in Pribaltika managed to create a new pro-russian government which immediately gave us an offer of permanently friendly relations between our states which includes signing an alliance treaty and exclusive trade agreements."
+style = 2
+picture = "british_protesting"
+
+
+action_a = {
+name = "Form an alliance with them!"
+ai_chance = 5
+trigger = {
+NOT = {
+alliance = { country = RUS country = JAP }
+alliance = { country = RUS country = GER }
+alliance = { country = RUS country = CAN }
+}
+}
+command = { type = dissent value = 4  }
+command = { type = relation which = LAT value = 200 }
+command = { type = alliance which = LAT }
+command = { type = supplies value = 800 }
+command = { type = money value = 60  }
+command = { type = event which = 915291 where = GER when = 1  }
+command = { type = local_clrflag which = VBHinteg_step1 }
+command = { type = local_clrflag which = VBHinteg_step2 }
+command = { type = local_clrflag which = VBHinteg_step3 }
+command = { type = local_clrflag which = VBHinteg_step4 }
+command = { type = local_clrflag which = VBHinteg_step5 }
+command = { type = local_clrflag which = VBHinteg_step6 }
+}
+
+action_b = {
+name = "Exert our influence over them!"
+ai_chance = 50
+command = { type = dissent value = 1  }
+command = { type = relation which = GER value = -10 }
+command = { type = relation which = LAT value = -10 }
+command = { type = make_puppet which = LAT }
+command = { type = supplies value = 800 }
+command = { type = money value = 60  }
+command = { type = trigger which = 915290 }
+command = { type = event which = 915291 where = GER when = 1  }
+command = { type = local_clrflag which = VBHinteg_step1 }
+command = { type = local_clrflag which = VBHinteg_step2 }
+command = { type = local_clrflag which = VBHinteg_step3 }
+command = { type = local_clrflag which = VBHinteg_step4 }
+command = { type = local_clrflag which = VBHinteg_step5 }
+command = { type = local_clrflag which = VBHinteg_step6 }
+}
+
+action_d = {
+name = "Ignore them...."
+ai_chance = 0
+command = { type = dissent value = 10  }
+command = { type = relation which = LAT value = -100 }
+command = { type = local_clrflag which = VBHinteg_step1 }
+command = { type = local_clrflag which = VBHinteg_step2 }
+command = { type = local_clrflag which = VBHinteg_step3 }
+command = { type = local_clrflag which = VBHinteg_step4 }
+command = { type = local_clrflag which = VBHinteg_step5 }
+command = { type = local_clrflag which = VBHinteg_step6 }
+}
+}
+
+
+event = {
+id = 915290
+country = LAT
+picture= "gerarmedfor"
+name= "Russian protectorate"
+desc= "Our government was reorganized to Russia's liking."
+
+
+
+action_a = {
+name = "At least we exist!"
+
+command = { type = ai which = "kaiserreich/VBH.ai" }
+command = { type = add_division value = interceptor when = 8 }
+
+command = { trigger = { flag = RUS_TSAR government = democratic } type = headofstate which = 27080 }
+command = { trigger = { flag = RUS_TSAR government = fascist } type = headofstate which = 27081 }
+command = { trigger = { NOT = { flag = RUS_TSAR } government = democratic } type = headofstate which = 27079 }
+command = { trigger = { NOT = { flag = RUS_TSAR } government = fascist } type = headofstate which = 27078 }
+command = { trigger = { government = democratic } type = headofgovernment which = 27085 }
+command = { trigger = { government = fascist } type = headofgovernment which = 27083 }
+
+command = { type = set_relation which = RUS value = 150 }
+command = { type = set_relation which = CON value = 50 }
+command = { type = set_relation which = CGX value = 50 }
+command = { type = set_relation which = BUL value = 50 }
+command = { type = set_relation which = CZE value = 50 }
+command = { type = set_relation which = CRO value = 50 }
+
+}
+}
+
+event = {
+id = 915291
+random = no
+country = GER
+style = 2
+picture = "soviet_replacement"
+
+name = "Russian nationalists control the UBD!"
+desc = "Russia has managed to establish its control over the United Baltic Duchy. Can we accept this diminishment of Mitteleuropa ?"
+
+action_a = {
+ai_chance = 20
+name = "There is nothing we can do..."
+command = { type = relation which = RUS value = 50 }
+command = { type = belligerence which = GER value = -10 }
+}
+
+action_b = {
+ai_chance = 60
+name = "Keep an eye on the UBD and sever all ties with Russia!"
+trigger = {
+NOT= {
+event = 915283
+}
+}
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = relation which = RUS value = -100 }
+command = { trigger = { alliance = { country = RUS country = GER } } type = leave_alliance }
+command = { type = end_trades which = GER where = RUS }
+command = { trigger = { alliance = { country = BEL country = GER } } type = end_trades which = BEL where = RUS }
+command = { trigger = { alliance = { country = LAT country = GER } } type = end_trades which = LAT where = RUS }
+command = { trigger = { alliance = { country = BLR country = GER } } type = end_trades which = BLR where = RUS }
+command = { trigger = { alliance = { country = UKR country = GER } }  type = end_trades which = UKR where = RUS }
+command = { trigger = { puppet = { country = CON country = GER  } } type = end_trades which = CON where = RUS }
+command = { trigger = { puppet = { country = CGX country = GER  } } type = end_trades which = CGX where = RUS }
+command = { type = event which = 915296 where = RUS when = 1  }
+}
+
+action_c = {
+ai_chance = 30
+name = "Keep an eye on the UBD."
+trigger = {
+event = 915283
+}
+command = { type = dissent value = 1 }
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = relation which = RUS value = -50 }
+}
+
+action_d = {
+ai_chance = 0
+name = "How dare they insult Germany like this? Attack!"
+command = { type = addclaim which = 268 }
+command = { type = addclaim which = 269 }
+command = { type = addclaim which = 264 }
+command = { type = addclaim which = 267 }
+command = { type = addclaim which = 266 }
+command = { type = addclaim which = 265 }
+command = { type = addclaim which = 273 }
+command = { type = addclaim which = 272 }
+command = { type = addclaim which = 271 }
+command = { type = addclaim which = 270 }
+command = { type = addclaim which = 274 }
+command = { type = addclaim which = 275 }
+command = { type = war which = RUS }
+command = { type = relation which = RUS value = -200 }
+}
+}
+
+
+event = {
+id = 915292
+random = no
+country = RUS
+style = 2
+save_date = yes
+
+
+trigger = {
+flag = RUS_EXP
+owned = { province = 264 data = LAT }
+control = { province = 264 data = LAT }
+puppet = { country = LAT country = RUS  }
+}
+name = "Status of Pribaltika"
+desc = "Our decision to keep an independent Pribaltika, even if under our supervision was met with with stern disapproval from nationalists and social conservatives. They demand the reintegration of Pribaltika into Mother Russia. How shall we react?"
+picture = "british_protesting"
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+ai_chance = 40
+name = "Pribaltika remains independent!"
+command = { type = dissent value = 5 }
+command = { type = belligerence which = RUS value = -5  }
+command = { type = relation which = LAT value = 50 }
+
+}
+
+action_b = {
+ai_chance = 70
+name = "Start the reintegration!"
+command = { type = belligerence which = RUS value = 3  }
+command = { type = relation which = LAT value = -50 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 915293 }
+
+}
+}
+
+event = {
+id = 915293
+country = LAT
+
+
+name = "Reintroduction of the Russian legislature"
+desc = "Russia was forced to reevaluate its stance towards our autonomous status. In preparation for the direct reintegration of our state into Russia we were forced to gradually integrate Russian legislature into our legislative system.."
+style = 2
+picture = "british_protesting"
+
+
+action_a = {
+name = "We must obey"
+command = { type = dissent value = 10  }
+command = { type = revolt which = -1 }
+}
+}
+
+event = {
+id = 915294
+random = no
+country = LAT
+save_date = yes
+
+trigger = {
+flag = RUS_EXP
+event = 915293
+owned = { province = 264 data = LAT }
+control = { province = 264 data = LAT }
+puppet = { country = LAT country = RUS  }
+}
+
+name = "Reintroduction of the Russian language"
+desc = "The reintegration of our state into Russia continues with the reintroduction of the Russian language as the third official language beside Latvian and Estonian."
+style = 2
+picture = "british_protesting"
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 1 month = january year = 1960 }
+
+
+action_a = {
+name = "We must obey"
+command = { type = dissent value = 10  }
+command = { type = revolt which = -1 }
+}
+}
+
+event = {
+id = 915295
+random = no
+country = RUS
+style = 2
+
+
+trigger = {
+NOT = {
+core = { province = 264 data = RUS }
+}
+event = { id = 915294 days = 200 }
+
+puppet = { country = LAT country = RUS  }
+owned = { province = 264 data = LAT }
+control = { province = 264 data = LAT }
+}
+name = "Integration of Pribaltika"
+desc = "Our integration policies in the puppet Baltic state were successful and Pribaltika is prepared to be directly absorbed into the Russian state."
+picture = "british_protesting"
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+name = " Integrate Pribaltika!"
+ai_chance = 90
+command = { type = addcore which = 268 }
+command = { type = addcore which = 269 }
+command = { type = addcore which = 264 }
+command = { type = addcore which = 267 }
+command = { type = addcore which = 266 }
+command = { type = addcore which = 265 }
+command = { type = addcore which = 273 }
+command = { type = addcore which = 272 }
+command = { type = addcore which = 271 }
+command = { type = addcore which = 270 }
+command = { type = addcore which = 274 }
+command = { type = addcore which = 275 }
+command = { type = inherit which = LAT  }
+command = { type = dissent value = 7 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = belligerence which = RUS value = 3  }
+
+}
+action_b = {
+ai_chance = 0
+name = "Pribaltika remains independent!"
+command = { type = dissent value = 5 }
+command = { type = belligerence which = RUS value = -5  }
+
+}
+
+}
+
+event = {
+id = 915296
+country = RUS
+random = no
+style = 2
+
+name = "Mitteleuropa ceases all deals with us"
+desc = "In reaction to our actions in Pribaltika, the German Empire ordered the cessation of all trade and diplomatic contacts between our state and Mitteleuropa. Parts of our industry is already feeling the consequences of such drastic actions."
+picture = "Wehrmacht"
+
+action_a = {
+name = "We shall survive !"
+command = { type = relation which = GER value = -40 }
+command = { type = relation which = LAT value = -40 }
+command = { type = end_non_aggression which = RUS where = GER }
+command = { type = end_non_aggression which = GER where = RUS }
+command = { trigger = { alliance = { country = RUS country = GER } } type = leave_alliance }
+command = { type = industrial_modifier which = total value = -4 }
+command = { type = dissent value = 5 }
+}
+
+}
+
+event = {
+id = 915297
+random = no
+country = LAT
+
+name = "Black Monday hits the United Baltic Duchy!"
+desc = "Almost two weeks ago, the Berlin Stock Exchange plunged into bottomless depths, throwing Germany's economy into an unprecedented crisis. Now the crash's shock waves have reached the United Baltic Duchy. German-owned companies have closed down or laid-off their workers, the Papiermark is losing value, and agricultural exports are shrinking..."
+style = 2
+picture = "stockcrashrus"
+
+date = { day = 18 month = february year = 1936 }
+
+action_a = {
+name = "Let's hope the government will save us from the worst..."
+command = { type = peacetime_ic_mod value = -2 }
+command = { type = dissent value = 5 }
+command = { type = money value = -50 }
+}
+}
+
+
+
+
+################################
+# Extending Ostwall
+################################
+event = {
+id = 915298
+random = no
+country = LAT
+save_date = yes
+
+decision = {
+alliance = { country = LAT country = GER }
+OR = {
+AND = {
+exists = RUS
+owned = { province = 553 data = RUS }
+owned = { province = 572 data = RUS }
+owned = { province = 1162 data = RUS }
+control = { province = 553 data = RUS }
+control = { province = 572 data = RUS }
+control = { province = 1162 data = RUS }
+NOT = {
+exists = SOV
+flag = RUS_ISO
+alliance = { country = LAT country = RUS }
+ispuppet = RUS
+exists = SIB
+exists = U13
+}
+}
+AND = {
+exists = SOV
+owned = { province = 553 data = SOV }
+owned = { province = 572 data = SOV }
+owned = { province = 1162 data = SOV }
+control = { province = 553 data = SOV }
+control = { province = 572 data = SOV }
+control = { province = 1162 data = SOV }
+NOT = {
+exists = RUS
+flag = SOV_ISO
+alliance = { country = LAT country = SOV }
+ispuppet = SOV
+exists = SIB
+exists = U13
+}
+}
+}
+NOT = {
+atwar = LAT
+}
+puppet = { country = LAT country = GER  }
+}
+
+decision_trigger = {
+control = { province = 266 data = LAT }
+control = { province = 273 data = LAT }
+control = { province = 274 data = LAT }
+}
+
+trigger = {
+alliance = { country = LAT country = GER }
+OR = {
+AND = {
+exists = RUS
+owned = { province = 553 data = RUS }
+owned = { province = 572 data = RUS }
+owned = { province = 1162 data = RUS }
+control = { province = 553 data = RUS }
+control = { province = 572 data = RUS }
+control = { province = 1162 data = RUS }
+NOT = {
+exists = SOV
+flag = RUS_ISO
+alliance = { country = LAT country = RUS }
+ispuppet = RUS
+exists = SIB
+exists = U13
+}
+}
+AND = {
+exists = SOV
+owned = { province = 553 data = SOV }
+owned = { province = 572 data = SOV }
+owned = { province = 1162 data = SOV }
+control = { province = 553 data = SOV }
+control = { province = 572 data = SOV }
+control = { province = 1162 data = SOV }
+NOT = {
+exists = RUS
+flag = SOV_ISO
+alliance = { country = LAT country = SOV }
+ispuppet = SOV
+exists = SIB
+exists = U13
+}
+}
+}
+NOT = {
+atwar = LAT
+}
+puppet = { country = LAT country = GER  }
+control = { province = 266 data = LAT }
+control = { province = 273 data = LAT }
+control = { province = 274 data = LAT }
+}
+
+name = "Ostwall fortification program"
+desc = "With Russian armed forces emerging from previous years of neglect as fearsome force it is high time for us to improve our weak border defences. Our top military leaders propose to solve this situation via improving existing net of fortifications along borders with Russia, known as Ostwall. Once finished, such massive fortifications will surely stop any kind of Russian assault."
+style = 2
+picture = "Ostwall"
+decision_picture = "decision_ostwall"
+
+date = { day = 1 month = july year = 1938 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Launch Ostwall fortification program!"
+ai_chance = 90
+command = { trigger = { ai = no } type = money value = -200 }
+command = { trigger = { ai = no } type = metalpool value = -1500 }
+command = { type = local_setflag which = LATost_const }
+}
+
+action = {
+name = "This is not needed..."
+ai_chance = 10
+command = {  }
+}
+}
+
+
+
+
+event = {
+id = 915299
+random = no
+country = LAT
+style = 2
+save_date = yes
+picture = "Ostwall"
+
+
+trigger = {
+event = { id = 915298 days = 250 }
+local_flag = LATost_const
+alliance = { country = LAT country = GER }
+control = { province = 266 data = LAT }
+control = { province = 273 data = LAT }
+control = { province = 274 data = LAT }
+OR = {
+exists = RUS
+exists = SOV
+}
+NOT = {
+alliance = { country = LAT country = SOV }
+alliance = { country = LAT country = RUS }
+}
+puppet = { country = LAT country = GER  }
+}
+
+name = "Improving Ostwall"
+desc = "Our dilligent engineers and soldiers have completed another part of fortification line along borders of United Baltic Duchy with Russia. Shall we continue with its expansion or are such fortifications sufficient ?"
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Further improve our defenses !"
+ai_chance = 100
+command = { type = construct which = land_fort where = 266 value = 1 }
+command = { type = construct which = land_fort where = 273 value = 1 }
+command = { type = construct which = land_fort where = 274 value = 1 }
+command = { trigger = { ai = no } type = money value = -200 }
+command = { trigger = { ai = no } type = metalpool value = -1500 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+}
+
+action_b = {
+name = "This is not needed..."
+ai_chance = 0
+command = { type = local_clrflag which = LATost_const }
+}
+}
+
+
+
+event = {
+id = 915300
+random = no
+country = LAT
+style = 2
+save_date = yes
+picture = "Ostwall"
+
+
+trigger = {
+event = { id = 915299 days = 250 }
+local_flag = LATost_const
+alliance = { country = LAT country = GER }
+control = { province = 266 data = LAT }
+control = { province = 273 data = LAT }
+control = { province = 274 data = LAT }
+OR = {
+exists = RUS
+exists = SOV
+}
+NOT = {
+alliance = { country = LAT country = SOV }
+alliance = { country = LAT country = RUS }
+}
+puppet = { country = LAT country = GER  }
+}
+
+name = "Improving Ostwall"
+desc = "Our dilligent engineers and soldiers have completed another part of fortification line along borders of United Baltic Duchy with Russia. Shall we continue with its expansion or are such fortifications sufficient ?"
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Further improve our defenses !"
+ai_chance = 80
+command = { type = construct which = land_fort where = 266 value = 1 }
+command = { type = construct which = land_fort where = 273 value = 1 }
+command = { type = construct which = land_fort where = 274 value = 1 }
+command = { trigger = { ai = no } type = money value = -200 }
+command = { trigger = { ai = no } type = metalpool value = -1500 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+}
+
+action_b = {
+name = "This is not needed..."
+ai_chance = 20
+command = { type = local_clrflag which = LATost_const }
+}
+}
+
+
+event = {
+id = 915301
+random = no
+country = LAT
+style = 2
+save_date = yes
+picture = "Ostwall"
+
+
+trigger = {
+event = { id = 915300 days = 250 }
+local_flag = LATost_const
+alliance = { country = LAT country = GER }
+control = { province = 266 data = LAT }
+control = { province = 273 data = LAT }
+control = { province = 274 data = LAT }
+control = { province = 264 data = LAT }
+control = { province = 267 data = LAT }
+OR = {
+exists = RUS
+exists = SOV
+}
+NOT = {
+alliance = { country = LAT country = SOV }
+alliance = { country = LAT country = RUS }
+}
+puppet = { country = LAT country = GER  }
+}
+
+name = "Improving Ostwall"
+desc = "Our dilligent engineers and soldiers have completed another part of fortification line along borders of United Baltic Duchy with Russia. Shall we continue with its expansion or are such fortifications sufficient ?"
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Further improve our defenses !"
+ai_chance = 50
+command = { type = construct which = land_fort where = 266 value = 1 }
+command = { type = construct which = land_fort where = 273 value = 1 }
+command = { type = construct which = land_fort where = 274 value = 1 }
+command = { type = construct which = land_fort where = 264 value = 1 }
+command = { type = construct which = land_fort where = 267 value = 1 }
+command = { trigger = { ai = no } type = money value = -250 }
+command = { trigger = { ai = no } type = metalpool value = -1700 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+}
+
+action_b = {
+name = "This is not needed..."
+ai_chance = 50
+command = { type = local_clrflag which = LATost_const }
+}
+}
+
+
+
+event = {
+id = 915302
+random = no
+country = LAT
+style = 2
+picture = "Ostwall"
+
+
+trigger = {
+event = { id = 915301 days = 250 }
+local_flag = LATost_const
+alliance = { country = LAT country = GER }
+control = { province = 266 data = LAT }
+control = { province = 273 data = LAT }
+control = { province = 274 data = LAT }
+control = { province = 264 data = LAT }
+control = { province = 267 data = LAT }
+OR = {
+exists = RUS
+exists = SOV
+}
+NOT = {
+alliance = { country = LAT country = SOV }
+alliance = { country = LAT country = RUS }
+}
+puppet = { country = LAT country = GER  }
+}
+
+name = "Ostwall fortification program completed"
+desc = "Our dilligent engineers and soldiers have completed fortification line along borders of United Baltic Duchy with Russia. With such protections in place, our independence is secured."
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Excellent !"
+command = { type = construct which = land_fort where = 266 value = 1 }
+command = { type = construct which = land_fort where = 273 value = 1 }
+command = { type = construct which = land_fort where = 274 value = 1 }
+command = { type = construct which = land_fort where = 264 value = 1 }
+command = { type = construct which = land_fort where = 267 value = 1 }
+command = { trigger = { ai = no } type = money value = -250 }
+command = { trigger = { ai = no } type = metalpool value = -1700 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+command = { trigger = { ai = LAT NOT = { ai = RUS } } type = add_division value = infantry when = 9 }
+command = { type = local_clrflag which = LATost_const }
+}
+}

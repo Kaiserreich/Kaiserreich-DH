@@ -1,0 +1,762 @@
+# UNIT TYPES DEFINITION FILE
+########
+# ARMY/NAVY/AIR COMPARISONS STATISTIC PAGES
+# eyr = {
+#	land = HeaderStringID1 # 1st column on Army page
+#	land = HeaderStringID2 # 2nd column on Army page
+#	[...list the rest of the land columns you want here]
+#	navy = HeaderStringID3 # 1st column on Naval page
+#	navy = HeaderStringID4 # 2nd column on Naval page
+#	[...list the rest of the naval columns you want here]
+#	air  = HeaderStringID5 # 1st column on Air page
+#	air  = HeaderStringID6 # 2nd column on Air page
+#	[...list the rest of the air columns you want here]
+# }
+########
+# FORMAT
+#
+# UnitTypeName = { 						# Replace UnitTypeName with one of the predefined unit types. 
+#	### REQUIRED PARAMETERS ###
+#	type		= RealUnitType			# Defines the real unit type (infantry, cavalry etc.)
+#	name		= UnitNameID			# Full unit name string (NAME_INFANTRY, NAME_CAVALRY etc.)
+#	short_name	= ShortUnitNameID		# Short unit name string (SNAME_INFANTRY, SNAME_CAVALRY etc.)
+#	desc		= LongDescriptionID		# Long unit description string (LDESC_INFANTRY, LDESC_CAVALRY etc.)
+#	short_desc	= ShortDescriptionID	# Short unit description string (SDESC_INFANTRY, SDESC_CAVALRY etc.)
+#	eyr			= Number				# Defines the group to which this unit type belongs on army/navy/air statistics page
+#	sprite		= SpriteTypeName		# Replace SpriteTypeName with one of predefined sprite name types
+#	transmute	= UnitTypeName			# Used by production AI. Defines what unit to build if the current one is not available ATM. 
+#	gfx_prio	= Number				# Used to define which image to use on counter and sprite for mixed units 
+#	value		= X.X(Number)			# Unit military value. Used in military power and other calculations.
+#	list_prio	= X(Number)				# Priority in lists (tech overview and production pages).
+#										# Units are sorted by groups (land/air/naval).
+#										# -1 - do not list that type, 0+ - priority in lists (lowest first)
+#	### OPTIONAL PARAMETERS ###
+#	ui_prio		= Number				# Sort priority for divisions in unit UI (highest first)
+#	RealUnitType= yes					# Sets this UnitType as default RealUnitType. There can be only one definition for every RealUnitType. 
+#										# 	Used by production AI (militia, infantry), rebels (militia, infantry) 
+#										#	and aliens (infantry, armor, strategic_bomber, interceptor, destroyer, carrier)
+#										#	By default (when not specified) the first "type = RealUnitType" will be set.
+#	production	= yes/no(default)		# Defines if this unit type is allowed(yes) or not(no) for production by default. 
+#										#	When set to [no] (or not defined) the unit type must be unlocked by tech or event for every country.
+# }
+#
+########
+# The UnitTypeName is predefined (130 types in total) and must be used in this order:
+#	infantry, cavalry, motorized, mechanized, light_armor, armor, garrison, hq, paratrooper, marine, 
+#	bergsjaeger, cas, multi_role, interceptor, strategic_bomber, tactical_bomber, naval_bomber, 
+#	transport_plane, battleship, light_cruiser, heavy_cruiser, battlecruiser, destroyer, carrier, 
+#	submarine, transport, flying_bomb, flying_rocket, militia, escort_carrier, nuclear_submarine,
+#	light_carrier, rocket_interceptor, 
+#	d_rsv_33, d_rsv_34, d_rsv_35, d_rsv_36, d_rsv_37, d_rsv_38, d_rsv_39, d_rsv_40,	# Reserved for use by Darkest Hour Full
+#	d_01, d_02, d_03, d_04, d_05, d_06, d_07, d_08, d_09, d_10, d_11, d_12, d_13, d_14, d_15, d_16, 
+#	d_17, d_18, d_19, d_20, d_21, d_22, d_23, d_24, d_25, d_26, d_27, d_28, d_29, d_30, d_31, d_32,
+#	d_33, d_34, d_35, d_36, d_37, d_38, d_39, d_40, d_41, d_42, d_43, d_44, d_45, d_46, d_47, d_48,
+#	d_49, d_50, d_51, d_52, d_53, d_54, d_55, d_56, d_57, d_58, d_59, d_60, d_61, d_62, d_63, d_64,
+#	d_65, d_66, d_67, d_68, d_69, d_70, d_71, d_72, d_73, d_74, d_75, d_76, d_77, d_78, d_79, d_80,
+#	d_81, d_82, d_83, d_84, d_85, d_86, d_87, d_88, d_89, d_90, d_91, d_92, d_93, d_94, d_95, d_96,
+#	d_97, d_98, d_99
+# There should be only one instance of each UnitTypeName!!!
+########
+# The RealUnitType is predefined and can be one of those:
+#	infantry, cavalry, motorized, mechanized, light_armor, armor, garrison, hq, paratrooper,
+#	marine, bergsjaeger, cas, multi_role, interceptor, strategic_bomber, tactical_bomber,
+#	naval_bomber, transport_plane, battleship, light_cruiser, heavy_cruiser, battlecruiser,
+#	destroyer, carrier, submarine, transport, flying_bomb, flying_rocket, militia, escort_carrier
+#	nuclear_submarine
+########
+# The SpriteTypeName is predefined and can be one of those:
+#	infantry, cavalry, motorized, mechanized, l_panzer, panzer, paratrooper, marine, 
+#	bergsjaeger, fighter, escort, interceptor, bomber, tactical, cas, naval, transportplane, 
+#	battleship, battlecruiser, heavy_cruiser, light_cruiser, destroyer, carrier, submarine, 
+#	transport, militia, garrison, hq, flying_bomb, rocket, nuclear_submarine, escort_carrier,
+#	light_carrier, rocket_interceptor, 
+#	d_rsv_33, d_rsv_34, d_rsv_35, d_rsv_36, d_rsv_37, d_rsv_38, d_rsv_39, d_rsv_40,
+#	d_01, d_02, d_03, d_04, d_05, d_06, d_07, d_08, d_09, d_10, d_11, d_12, d_13, d_14, d_15, d_16, 
+#	d_17, d_18, d_19, d_20, d_21, d_22, d_23, d_24, d_25, d_26, d_27, d_28, d_29, d_30, d_31, d_32,
+#	d_33, d_34, d_35, d_36, d_37, d_38, d_39, d_40, d_41, d_42, d_43, d_44, d_45, d_46, d_47, d_48,
+#	d_49, d_50, d_51, d_52, d_53, d_54, d_55, d_56, d_57, d_58, d_59, d_60, d_61, d_62, d_63, d_64,
+#	d_65, d_66, d_67, d_68, d_69, d_70, d_71, d_72, d_73, d_74, d_75, d_76, d_77, d_78, d_79, d_80,
+#	d_81, d_82, d_83, d_84, d_85, d_86, d_87, d_88, d_89, d_90, d_91, d_92, d_93, d_94, d_95, d_96,
+#	d_97, d_98, d_99
+#
+########
+# NOTES:
+#	1. It is possible to redefine the type of named unit types (like cavalry = { type = infantry }).
+#	2. No gaps (like defining d_02 without defining d_01) in UnitTypeName are allowed!
+#	3. On add or remove of unit type, gfx\map\hoi_counter_strip.bmp must be updated to match the number of currently defined unit types.
+########
+
+eyr = {
+	army = EYR_INF	#1
+	army = EYR_CAV	#2
+	army = EYR_MOT	#3
+	army = EYR_MEC	#4
+	army = EYR_LARM	#5
+	army = EYR_ARM	#6
+	army = EYR_PAR	#7
+	army = EYR_MAR	#8
+	army = EYR_BER	#9
+	army = EYR_GAR	#10
+	army = EYR_HQ	#11
+	army = EYR_MIL	#12
+	navy = EYR_CAR	#1
+	navy = EYR_ECAR	#2
+	navy = EYR_BAT	#3
+	navy = EYR_BCRU #4
+	navy = EYR_HCRU #5
+	navy = EYR_LCRU #6
+	navy = EYR_DES	#7
+	navy = EYR_SUB	#8
+	navy = EYR_NSUB	#9
+	navy = EYR_TRA	#10
+	air  = EYR_MUL	#1
+	air  = EYR_INT	#2
+	air  = EYR_CAS	#3
+	air  = EYR_STR	#4
+	air  = EYR_TAC	#5
+	air  = EYR_NAV	#6
+	air  = EYR_TPL	#7
+	air  = EYR_FBO	#8
+	air  = EYR_ROC	#9
+}
+
+infantry = {
+	#ID			0
+	type		= infantry
+	name		= NAME_INFANTRY
+	short_name	= SNAME_INFANTRY
+	desc		= LDESC_INFANTRY
+	short_desc	= SDESC_INFANTRY
+	eyr			= 1
+	sprite		= infantry
+	transmute	= garrison
+	gfx_prio	= 2
+	infantry	= yes
+	value		= 1
+	list_prio	= 10
+}
+
+cavalry = {
+	#ID			1
+	type		= cavalry
+	name		= NAME_CAVALRY
+	short_name	= SNAME_CAVALRY
+	desc		= LDESC_CAVALRY
+	short_desc	= SDESC_CAVALRY
+	eyr			= 2
+	sprite		= cavalry
+	transmute	= motorized
+	gfx_prio	= 6
+	value		= 0.8
+	list_prio	= 70
+}
+
+motorized = {
+	#ID			2
+	type		= motorized
+	name		= NAME_MOTORIZED
+	short_name	= SNAME_MOTORIZED
+	desc		= LDESC_MOTORIZED
+	short_desc	= SDESC_MOTORIZED
+	eyr			= 3
+	sprite		= motorized
+	transmute	= infantry
+	gfx_prio	= 7
+	value		= 1.3
+	list_prio	= 80
+}
+
+mechanized = {
+	#ID			3
+	type		= mechanized
+	name		= NAME_MECHANIZED
+	short_name	= SNAME_MECHANIZED
+	desc		= LDESC_MECHANIZED
+	short_desc	= SDESC_MECHANIZED
+	eyr			= 4
+	sprite		= mechanized
+	transmute	= motorized
+	gfx_prio	= 8
+	value		= 1.7
+	list_prio	= 90
+}
+
+light_armor = {
+	#ID			4
+	type		= light_armor
+	name		= NAME_LIGHT_ARMOR
+	short_name	= SNAME_LIGHT_ARMOR
+	desc		= LDESC_LIGHT_ARMOR
+	short_desc	= SDESC_LIGHT_ARMOR
+	eyr			= 5
+	sprite		= l_panzer
+	transmute	= mechanized
+	gfx_prio	= 9
+	value		= 1.5
+	list_prio	= 100
+}
+
+armor = {
+	#ID			5
+	type		= armor
+	name		= NAME_ARMOR
+	short_name	= SNAME_ARMOR
+	desc		= LDESC_ARMOR
+	short_desc	= SDESC_ARMOR
+	eyr			= 6
+	sprite		= panzer
+	transmute	= light_armor
+	gfx_prio	= 10
+	armor		= yes
+	value		= 3
+	list_prio	= 110
+}
+
+paratrooper = {
+	#ID			6
+	type		= paratrooper
+	name		= NAME_PARATROOPER
+	short_name	= SNAME_PARATROOPER
+	desc		= LDESC_PARATROOPER
+	short_desc	= SDESC_PARATROOPER
+	eyr			= 7
+	sprite		= paratrooper
+	transmute	= infantry
+	gfx_prio	= 5
+	value		= 1.5
+	list_prio	= 60
+}
+
+marine = {
+	#ID			7
+	type		= marine
+	name		= NAME_MARINE
+	short_name	= SNAME_MARINE
+	desc		= LDESC_MARINE
+	short_desc	= SDESC_MARINE
+	eyr			= 8
+	sprite		= marine
+	transmute	= infantry
+	gfx_prio	= 4
+	value		= 1.5
+	list_prio	= 50
+}
+
+bergsjaeger = {
+	#ID			8
+	type		= bergsjaeger
+	name		= NAME_BERGSJAEGER
+	short_name	= SNAME_BERGSJAEGER
+	desc		= LDESC_BERGSJAEGER
+	short_desc	= SDESC_BERGSJAEGER
+	eyr			= 9
+	sprite		= bergsjaeger
+	transmute	= infantry
+	gfx_prio	= 3
+	value		= 1.5
+	list_prio	= 40
+}
+
+garrison = {
+	#ID			9
+	type		= garrison
+	name		= NAME_GARRISON
+	short_name	= SNAME_GARRISON
+	desc		= LDESC_GARRISON
+	short_desc	= SDESC_GARRISON
+	eyr			= 10
+	sprite		= garrison
+	transmute	= militia
+	gfx_prio	= 1
+	value		= 0.5
+	list_prio	= 20
+}
+
+hq = {
+	#ID			10
+	type		= hq
+	name		= NAME_HQ
+	short_name	= SNAME_HQ
+	desc		= LDESC_HQ
+	short_desc	= SDESC_HQ
+	eyr			= 11
+	sprite		= hq
+	transmute	= garrison
+	gfx_prio	= 11
+	value		= 1
+	list_prio	= 120
+}
+
+militia = {
+	#ID			11
+	type		= militia
+	name		= NAME_MILITIA
+	short_name	= SNAME_MILITIA
+	desc		= LDESC_MILITIA
+	short_desc	= SDESC_MILITIA
+	eyr			= 12
+	sprite		= militia
+	transmute	= militia
+	gfx_prio	= 0
+	militia		= yes
+	value		= 0.2
+	production	= yes
+	list_prio	= 30
+}
+
+multi_role = {
+	#ID			12
+	type		= multi_role
+	name		= NAME_MULTI_ROLE
+	short_name	= SNAME_MULTI_ROLE
+	desc		= LDESC_MULTI_ROLE
+	short_desc	= SDESC_MULTI_ROLE
+	eyr			= 1
+	sprite		= fighter
+	transmute	= interceptor
+	gfx_prio	= 3
+	value		= 1
+	list_prio	= 30
+}
+
+interceptor = {
+	#ID			13
+	type		= interceptor
+	name		= NAME_INTERCEPTOR
+	short_name	= SNAME_INTERCEPTOR
+	desc		= LDESC_INTERCEPTOR
+	short_desc	= SDESC_INTERCEPTOR
+	eyr			= 2
+	sprite		= interceptor
+	transmute	= infantry
+	gfx_prio	= 2
+	interceptor	= yes
+	value		= 1
+	list_prio	= 10
+}
+
+strategic_bomber = {
+	#ID			14
+	type		= strategic_bomber
+	name		= NAME_STRATEGIC_BOMBER
+	short_name	= SNAME_STRATEGIC_BOMBER
+	desc		= LDESC_STRATEGIC_BOMBER
+	short_desc	= SDESC_STRATEGIC_BOMBER
+	eyr			= 4
+	sprite		= bomber
+	transmute	= tactical_bomber
+	gfx_prio	= 7
+	strategic_bomber = yes
+	value		= 2
+	list_prio	= 70
+}
+
+tactical_bomber = {
+	#ID			15
+	type		= tactical_bomber
+	name		= NAME_TACTICAL_BOMBER
+	short_name	= SNAME_TACTICAL_BOMBER
+	desc		= LDESC_TACTICAL_BOMBER
+	short_desc	= SDESC_TACTICAL_BOMBER
+	eyr			= 5
+	sprite		= tactical
+	transmute	= multi_role
+	gfx_prio	= 5
+	value		= 2
+	list_prio	= 50
+}
+
+naval_bomber = {
+	#ID			16
+	type		= naval_bomber
+	name		= NAME_NAVAL_BOMBER
+	short_name	= SNAME_NAVAL_BOMBER
+	desc		= LDESC_NAVAL_BOMBER
+	short_desc	= SDESC_NAVAL_BOMBER
+	eyr			= 6
+	sprite		= naval
+	transmute	= tactical_bomber
+	gfx_prio	= 6
+	value		= 1.5
+	list_prio	= 60
+}
+
+cas = {
+	#ID			17
+	type		= cas
+	name		= NAME_CAS
+	short_name	= SNAME_CAS
+	desc		= LDESC_CAS
+	short_desc	= SDESC_CAS
+	eyr			= 3
+	sprite		= cas
+	transmute	= tactical_bomber
+	gfx_prio	= 4
+	value		= 1.5
+	list_prio	= 40
+}
+
+transport_plane = {
+	#ID			18
+	type		= transport_plane
+	name		= NAME_TRANSPORT_PLANE
+	short_name	= SNAME_TRANSPORT_PLANE
+	desc		= LDESC_TRANSPORT_PLANE
+	short_desc	= SDESC_TRANSPORT_PLANE
+	eyr			= 7
+	sprite		= transportplane
+	transmute	= infantry
+	gfx_prio	= 8
+	value		= 0.01
+	list_prio	= 80
+}
+
+flying_bomb = {
+	#ID			19
+	type		= flying_bomb
+	name		= NAME_FLYING_BOMB
+	short_name	= SNAME_FLYING_BOMB
+	desc		= LDESC_FLYING_BOMB
+	short_desc	= SDESC_FLYING_BOMB
+	eyr			= 8
+	sprite		= rocket
+	transmute	= strategic_bomber
+	gfx_prio	= 0
+	value		= 0.5
+	list_prio	= 90
+}
+
+flying_rocket = {
+	#ID			20
+	type		= flying_rocket
+	name		= NAME_FLYING_ROCKET
+	short_name	= SNAME_FLYING_ROCKET
+	desc		= LDESC_FLYING_ROCKET
+	short_desc	= SDESC_FLYING_ROCKET
+	eyr			= 9
+	sprite		= rocket
+	transmute	= flying_bomb
+	gfx_prio	= 1
+	value		= 0.5
+	list_prio	= 100
+}
+
+battleship = {
+	#ID			21
+	type		= battleship
+	name		= NAME_BATTLESHIP
+	short_name	= SNAME_BATTLESHIP
+	desc		= LDESC_BATTLESHIP
+	short_desc	= SDESC_BATTLESHIP
+	eyr			= 3
+	sprite		= battleship
+	transmute	= battlecruiser
+	gfx_prio	= 8
+	value		= 5
+	list_prio	= 50
+}
+
+light_cruiser = {
+	#ID			22
+	type		= light_cruiser
+	name		= NAME_LIGHT_CRUISER
+	short_name	= SNAME_LIGHT_CRUISER
+	desc		= LDESC_LIGHT_CRUISER
+	short_desc	= SDESC_LIGHT_CRUISER
+	eyr			= 6
+	sprite		= light_cruiser
+	transmute	= destroyer
+	gfx_prio	= 4
+	value		= 2
+	list_prio	= 20
+}
+
+heavy_cruiser = {
+	#ID			23
+	type		= heavy_cruiser
+	name		= NAME_HEAVY_CRUISER
+	short_name	= SNAME_HEAVY_CRUISER
+	desc		= LDESC_HEAVY_CRUISER
+	short_desc	= SDESC_HEAVY_CRUISER
+	eyr			= 5
+	sprite		= heavy_cruiser
+	transmute	= light_cruiser
+	gfx_prio	= 5
+	heavy_cruiser = yes
+	value		= 3
+	list_prio	= 30
+}
+
+battlecruiser = {
+	#ID			24
+	type		= battlecruiser
+	name		= NAME_BATTLECRUISER
+	short_name	= SNAME_BATTLECRUISER
+	desc		= LDESC_BATTLECRUISER
+	short_desc	= SDESC_BATTLECRUISER
+	eyr			= 4
+	sprite		= battlecruiser
+	transmute	= heavy_cruiser
+	gfx_prio	= 6
+	value		= 4
+	list_prio	= 40
+}
+
+destroyer = {
+	#ID			25
+	type		= destroyer
+	name		= NAME_DESTROYER
+	short_name	= SNAME_DESTROYER
+	desc		= LDESC_DESTROYER
+	short_desc	= SDESC_DESTROYER
+	eyr			= 7
+	sprite		= destroyer
+	transmute	= submarine
+	gfx_prio	= 3
+	destroyer	= yes
+	value		= 1
+	list_prio	= 10
+}
+
+carrier = {
+	#ID			26
+	type		= carrier
+	name		= NAME_CARRIER
+	short_name	= SNAME_CARRIER
+	desc		= LDESC_CARRIER
+	short_desc	= SDESC_CARRIER
+	eyr			= 1
+	sprite		= carrier
+	transmute	= transport
+	gfx_prio	= 9
+	carrier		= yes
+	value		= 4
+	list_prio	= 80
+}
+
+escort_carrier = {
+	#ID			27
+	type		= escort_carrier
+	name		= NAME_ESCORT_CARRIER
+	short_name	= SNAME_ESCORT_CARRIER
+	desc		= LDESC_ESCORT_CARRIER
+	short_desc	= SDESC_ESCORT_CARRIER
+	eyr			= 2
+	sprite		= escort_carrier
+	transmute	= carrier
+	gfx_prio	= 7
+	value		= 3
+	list_prio	= 60
+}
+
+submarine = {
+	#ID			28
+	type		= submarine
+	name		= NAME_SUBMARINE
+	short_name	= SNAME_SUBMARINE
+	desc		= LDESC_SUBMARINE
+	short_desc	= SDESC_SUBMARINE
+	eyr			= 8
+	sprite		= submarine
+	transmute	= transport
+	gfx_prio	= 1
+	value		= 1
+	list_prio	= 90
+}
+
+nuclear_submarine = {
+	#ID			29
+	type		= nuclear_submarine
+	name		= NAME_NUCLEAR_SUBMARINE
+	short_name	= SNAME_NUCLEAR_SUBMARINE
+	desc		= LDESC_NUCLEAR_SUBMARINE
+	short_desc	= SDESC_NUCLEAR_SUBMARINE
+	eyr			= 9
+	sprite		= nuclear_submarine
+	transmute	= submarine
+	gfx_prio	= 2
+	value		= 1
+	list_prio	= 100
+}
+
+transport = {
+	#ID			30
+	type		= transport
+	name		= NAME_TRANSPORT
+	short_name	= SNAME_TRANSPORT
+	desc		= LDESC_TRANSPORT
+	short_desc	= SDESC_TRANSPORT
+	eyr			= 10
+	sprite		= transport
+	transmute	= infantry
+	gfx_prio	= 0
+	transport	= yes
+	value		= 0.01
+	production	= yes
+	list_prio	= 110
+}
+
+light_carrier = {
+	#ID			31
+	type		= carrier
+	name		= NAME_LIGHT_CARRIER
+	short_name	= SNAME_LIGHT_CARRIER
+	desc		= LDESC_LIGHT_CARRIER
+	short_desc	= SDESC_LIGHT_CARRIER
+	eyr			= 2
+	sprite		= carrier
+	transmute	= transport
+	gfx_prio	= 8
+	value		= 3.5
+	list_prio	= 70
+}
+
+rocket_interceptor = {
+	#ID			32
+	type		= interceptor
+	name		= NAME_ROCKET_INTERCEPTOR
+	short_name	= SNAME_ROCKET_INTERCEPTOR
+	desc		= LDESC_ROCKET_INTERCEPTOR
+	short_desc	= SDESC_ROCKET_INTERCEPTOR
+	eyr			= 2
+	sprite		= interceptor
+	transmute	= interceptor
+	gfx_prio	= 4
+	value		= 1
+	list_prio	= 20
+}
+
+d_rsv_33 = {	# Reserved for use by Darkest Hour Full
+	#ID			33
+	type		= infantry
+	name		= NAME_D_RSV_33
+	short_name	= SNAME_D_RSV_33
+	desc		= LDESC_D_RSV_33
+	short_desc	= SDESC_D_RSV_33
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_rsv_34 = {	# Reserved for use by Darkest Hour Full
+	#ID			34
+	type		= infantry
+	name		= NAME_D_RSV_34
+	short_name	= SNAME_D_RSV_34
+	desc		= LDESC_D_RSV_34
+	short_desc	= SDESC_D_RSV_34
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_rsv_35 = {	# Reserved for use by Darkest Hour Full
+	#ID			35
+	type		= infantry
+	name		= NAME_D_RSV_35
+	short_name	= SNAME_D_RSV_35
+	desc		= LDESC_D_RSV_35
+	short_desc	= SDESC_D_RSV_35
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_rsv_36 = {	# Reserved for use by Darkest Hour Full
+	#ID			36
+	type		= infantry
+	name		= NAME_D_RSV_36
+	short_name	= SNAME_D_RSV_36
+	desc		= LDESC_D_RSV_36
+	short_desc	= SDESC_D_RSV_36
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_rsv_37 = {	# Reserved for use by Darkest Hour Full
+	#ID			37
+	type		= infantry
+	name		= NAME_D_RSV_37
+	short_name	= SNAME_D_RSV_37
+	desc		= LDESC_D_RSV_37
+	short_desc	= SDESC_D_RSV_37
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_rsv_38 = {	# Reserved for use by Darkest Hour Full
+	#ID			38
+	type		= infantry
+	name		= NAME_D_RSV_38
+	short_name	= SNAME_D_RSV_38
+	desc		= LDESC_D_RSV_38
+	short_desc	= SDESC_D_RSV_38
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_rsv_39 = {	# Reserved for use by Darkest Hour Full
+	#ID			39
+	type		= infantry
+	name		= NAME_D_RSV_39
+	short_name	= SNAME_D_RSV_39
+	desc		= LDESC_D_RSV_39
+	short_desc	= SDESC_D_RSV_39
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_rsv_40 = {	# Reserved for use by Darkest Hour Full
+	#ID			40
+	type		= infantry
+	name		= NAME_D_RSV_40
+	short_name	= SNAME_D_RSV_40
+	desc		= LDESC_D_RSV_40
+	short_desc	= SDESC_D_RSV_40
+	eyr			= 0
+	sprite		= infantry
+	transmute	= infantry
+	gfx_prio	= 0
+	value		= 0
+	list_prio	= -1
+}
+
+d_01 = {
+	#ID			41
+	type		= infantry
+	name		= NAME_D_01
+	short_name	= SNAME_D_01
+	desc		= LDESC_D_01
+	short_desc	= SDESC_D_01
+	eyr			= 1
+	sprite		= d_01
+	transmute	= militia
+	gfx_prio	= 2
+	value		= 0.8
+	list_prio	= 11
+}

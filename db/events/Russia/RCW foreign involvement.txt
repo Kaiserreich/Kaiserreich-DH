@@ -1,0 +1,2509 @@
+######################################################
+### Foreing involvement in the Second Russia Civil War
+######################################################
+
+#Index:
+
+# 1.  Finland                    RCWIND01
+# 2.  Ukraine                    RCWIND02
+# 3.  Socialist Ukraine          RCWIND03
+# 4.  Alash-Orda                 RCWIND04
+# 5.  Transamur                  RCWIND05
+# 6.  Don-Kuban Union            RCWIND06
+# 7.  Commune of France          RCWIND07
+# 8.  National France            RCWIND08
+# 9.  Canada                     RCWIND09
+#10.  Union of Britain           RCWIND10
+#11.  Germany                    RCWIND11
+#12.  Japan                      RCWIND12
+
+
+
+###########################
+#########  Finland RCWIND01
+###########################
+
+event = {
+id = 756039
+random = no
+country = FIN
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+atwar = FIN
+government = communist
+ispuppet = FIN
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 500
+money = 50
+}
+
+
+trigger = {
+manpower = 10
+supplies = 500
+money = 50
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+atwar = FIN
+government = communist
+ispuppet = FIN
+}
+}
+
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity: once more, Red and White forces are at war.  We have seen the horrors of Bolshevism once before, and though our own workers may not like it, it is probably in our best interests to help the legitimate Russian government."
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Help the White forces"
+ai_chance = 60
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 756040  }
+command = { type = sleepevent which = 751012 }
+command = { type = clrflag  which = KAR_PANIC }
+
+}
+
+action_b = {
+ai_chance = 40
+name = "Do nothing"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+}
+}
+
+
+event = {
+id = 756040
+random = no
+country = RUS
+
+
+name = "Aid from Finland!"
+desc = "The Finns send us significant number of volunteers and military material that will help us considerably in our struggle against dangerous bolshevik menace threatening to rip apart Russia !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!" #
+command = { type = supplies value = 500 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = FIN }
+}
+}
+
+
+#### Panic in Karelia
+
+event = {
+id = 751012
+random = no
+country = FIN
+style = 2
+
+trigger = {
+OR = {
+ideology = nazi
+ideology = fascist
+}
+flag = KAR_PANIC
+NOT = {
+atwar = FIN
+alliance = { country = FIN country = RUS }
+ispuppet = FIN
+}
+}
+
+name = "Panic in Karelia!"
+desc = "The Russian government has proved itself unable to maintain the security in Karelia.  We have received word that many local leaders want to secede and join Finland ! We will surely be welcomed by the Karelian population very easily, but we could also move to take the port of Murmansk, although the risk of this would be greater."
+picture = "Karelia"
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+ai_chance = 50
+name = "Claim only Karelia"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = belligerence which = FIN value = 10  }
+command = { type = relation which = RUS value = -100 }
+command = { type = relation which = SWE value = -50 }
+command = { type = relation which = NOR value = -50 }
+command = { type = relation which = GER value = -25 } #For weakening Russia against the Bolsheviks
+command = { type = relation which = DEN value = -25 }
+command = { type = relation which = ICL value = -25 }
+command = { type = end_non_aggression which = FIN where = RUS }
+command = { type = end_guarantee which = GER where = FIN }
+command = { type = event which = 751013 where = RUS when = 1  }
+command = { type = event which = 751015 where = SOV when = 1  }
+command = { type = sleepevent which = 756039 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Claim Karelia and Lapland"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = RUS value = -200 }
+command = { type = relation which = GER value = -50 } #For weakening Russia against the Bolsheviks
+command = { type = relation which = SWE value = -50 }
+command = { type = relation which = NOR value = -50 }
+command = { type = relation which = DEN value = -25 }
+command = { type = relation which = ICL value = -25 }
+command = { type = end_non_aggression which = FIN where = RUS }
+command = { type = end_guarantee which = GER where = FIN }
+command = { type = event which = 751014 where = RUS when = 1  }
+command = { type = event which = 751016 where = SOV when = 1  }
+command = { type = sleepevent which = 756039 }
+}
+
+action_c = {
+ai_chance = 20
+name = "No, we must ally with Russia against the Bolshevik threat"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = RUS value = 60 }
+command = { type = leave_alliance }
+command = { type = end_access which = GER }
+command = { type = end_guarantee which = GER where = FIN }
+command = { type = dissent value = 5 }
+command = { type = end_non_aggression which = SOV where = FIN }
+command = { type = end_non_aggression which = FIN where = SOV }
+command = { type = trigger which = 75101402 }
+command = { type = sleepevent which = 756039 }
+}
+
+action_d = {
+ai_chance = 0
+name = "Karelia can provide its own security..."
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 751013
+random = no
+country = RUS
+style = 2
+
+name = "Finland makes its Move!"
+desc = "The Finns have taken claimed authority over our Karelian provinces, but have guaranteed our sovereignty over Murmansk.  How should we react?"
+picture = "Karelia"
+
+action_a = {
+ai_chance = 70
+name =  "At least we still hold Lapland..."
+command = { type = secedeprovince which = FIN value = 538 } # Segezha
+command = { type = secedeprovince which = FIN value = 540 } # Kestenga
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 30
+name = "How dare they!  Attack!"
+command = { type = belligerence which = FIN value = 5 }
+command = { type = war which = FIN }
+}
+}
+
+
+event = {
+id = 751015
+random = no
+country = SOV
+style = 2
+
+name = "Finland makes its Move!"
+desc = "The Finns, using ongoing civil war have taken claimed authority over Karelian provinces, but have guaranteed Russian sovereignty over Murmansk.  How should we react to this act of capitalist agression ?"
+picture = "Karelia"
+
+action_a = {
+ai_chance = 99
+name =  "There is nothing we can do..."
+command = { type = secedeprovince which = FIN value = 538 } # Segezha
+command = { type = secedeprovince which = FIN value = 540 } # Kestenga
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 1
+name = "How dare they!  Attack!"
+command = { type = belligerence which = FIN value = 5 }
+command = { type = war which = FIN }
+}
+}
+
+event = {
+id = 751014
+country = RUS
+style = 2
+
+name = "Finland makes its Move!"
+desc = "The Finns have claimed authority over our Karelian provinces, and have occupied Murmansk and the provinces on the White Sea.  How should we react?"
+picture = "Karelia"
+
+action_a = {
+ai_chance = 50
+name =  "Winning the Civil War is more important than Karelia or Lapland..."
+command = { type = secedeprovince which = FIN value = 538 } # Segezha
+command = { type = secedeprovince which = FIN value = 540 } # Kestenga
+command = { type = secedeprovince which = FIN value = 537 }
+command = { type = secedeprovince which = FIN value = 541 }
+command = { type = secedeprovince which = FIN value = 539 }
+command = { type = secedeprovince which = FIN value = 534 }
+command = { type = secedeprovince which = FIN value = 535 }
+command = { type = secedeprovince which = FIN value = 536 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+ai_chance = 50
+name = "The Finns Wont Get an Inch!"
+command = { type = belligerence which = FIN value = 5 }
+command = { type = dissent value = 3 }
+command = { type = war which = FIN }
+}
+}
+
+event = {
+id = 751016
+random = no
+country = SOV
+style = 2
+
+name = "Finland makes its Move!"
+desc = "The Finns have claimed authority over Karelian provinces, and have occupied Murmansk and the provinces on the White Sea.  How should we react to this act of capitalist agression ?"
+picture = "Karelia"
+
+action_a = {
+ai_chance = 98
+name =  "Winning the Civil War is more important than Karelia or Lapland..."
+command = { type = secedeprovince which = FIN value = 538 } # Segezha
+command = { type = secedeprovince which = FIN value = 540 } # Kestenga
+command = { type = secedeprovince which = FIN value = 537 }
+command = { type = secedeprovince which = FIN value = 541 }
+command = { type = secedeprovince which = FIN value = 539 }
+command = { type = secedeprovince which = FIN value = 534 }
+command = { type = secedeprovince which = FIN value = 535 }
+command = { type = secedeprovince which = FIN value = 536 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+ai_chance = 2
+name = "The Finns Wont Get an Inch!"
+command = { type = belligerence which = FIN value = 5 }
+command = { type = dissent value = 3 }
+command = { type = war which = FIN }
+}
+}
+
+event = {
+id = 75101400
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = FIN }
+control = { province = 537 data = FIN } #Viipuri
+control = { province = 541 data = FIN } #Karelia
+NOT = { control = { province = 539 data = RUS } }
+control = { province = 534 data = FIN }
+control = { province = 535 data = FIN } #Lapland
+control = { province = 536 data = FIN }
+control = { province = 525 data = FIN }
+NOT = {
+war = { country = RUS country = SOV }
+ispuppet = RUS
+ispuppet = FIN
+}
+NOT = {
+alliance = { country = FIN country = GER }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Archangelsk"
+desc = "We've been beaten by the Finns, how did this happen? They've seized the whole White Sea Tundra!"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 75
+name =  "Offer peace treaty, recognize Finish teritorial gains"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 75101502 }
+}
+
+action_b = {
+ai_chance = 25
+name = "No, the war will continue until our army marches through Helsinki!"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 75101401
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = SOV }
+war = { country = RUS country = FIN }
+control = { province = 537 data = FIN } #Viipuri
+control = { province = 541 data = FIN } #Karelia
+NOT = { control = { province = 539 data = RUS } }
+control = { province = 534 data = FIN }
+control = { province = 535 data = FIN } #Lapland
+control = { province = 536 data = FIN }
+control = { province = 525 data = FIN }
+NOT = {
+alliance = { country = FIN country = GER }
+ispuppet = RUS
+ispuppet = FIN
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Archangelsk"
+desc = "We've been beaten by the Finns, how did this happen? They've seized the whole White Sea Tundra!"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 99
+name =  "Offer peace treaty, recognize Finish teritorial gains"
+command = { type = trigger which = 75101502 }
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 1
+name = "No, the war will continue until we march through Helsinki!"
+command = { type = dissent value = 5 }
+}
+}
+
+
+
+event = {
+id = 75101502
+country = FIN
+style = 2
+
+
+name = "The Treaty of Archangelsk"
+desc = "We've succesfully beaten rusian army and conquered whole White Sea Tundra. Now humiliated russian leadership offers us peace in which they promise to recognize our teritorial gains and withdrawn from disputed teritory. How shall we react ?"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 100
+name =  "Accept proposal , this is more than we hoped !"
+command = { type = dissent value = -5 }
+command = { type = peace which = RUS value = 0 }
+command = { type = addcore   which = 537  }
+command = { type = addcore   which = 541  }
+command = { type = addcore   which = 539  }
+command = { type = addcore   which = 534  }
+command = { type = addcore   which = 535  }
+command = { type = addcore   which = 536  }
+command = { type = trigger which = 75101503 }
+}
+action_b = {
+ai_chance = 0
+name = "No, the war will continue until our army marches through Petrograd!"
+command = { type = dissent value = 2 }
+command = { type = addcore   which = 537  }
+command = { type = addcore   which = 541  }
+command = { type = addcore   which = 539  }
+command = { type = addcore   which = 534  }
+command = { type = addcore   which = 535  }
+command = { type = addcore   which = 536  }
+command = { type = belligerence which = FIN value = 5  }
+command = { type = trigger which = 75101504 }
+}
+}
+
+
+event = {
+id = 75101503
+country = RUS
+style = 2
+
+
+name = "The Treaty of Archangelsk"
+desc = "According to the Treaty of Archangelsk we must withdraw our force from remaining parts of the White Sea Tundra and Lapland..."
+picture = "FaRpeace"
+
+action_a = {
+name =  "How humiliating !"
+command = { type = secedeprovince which = FIN value = 537 }
+command = { type = secedeprovince which = FIN value = 541 }
+command = { type = secedeprovince which = FIN value = 539 }
+command = { type = secedeprovince which = FIN value = 534 }
+command = { type = secedeprovince which = FIN value = 535 }
+command = { type = secedeprovince which = FIN value = 536 }
+command = { type = removecore which = 537 }
+command = { type = removecore which = 541 }
+command = { type = removecore which = 539 }
+command = { type = removecore which = 534 }
+command = { type = removecore which = 535 }
+command = { type = removecore which = 536 }
+command = { type = dissent value = 2 }
+}
+
+}
+
+event = {
+id = 75101504
+country = RUS
+style = 2
+
+
+name = "Finland refused to sign peace treaty!"
+desc = "Finland refused our generous peace offer and renewed military actions...."
+picture = "FaRpeace"
+
+action_a = {
+name =  "They will pay for this..."
+command = { type = dissent value = 1 }
+}
+
+}
+
+event = {
+id = 75101402
+country = RUS
+style = 2
+
+name = "The Finns"
+desc = "The Finns wish to help us more directly with our Civil War against the Communard Bastards. They have asked to form an alliance with us until we can destroy Soviet Russia once and for all."
+picture = "FinIntervention"
+
+action_a = {
+ai_chance = 99
+name =  "Good!"
+command = { type = setflag which = RUS_FIN_Coalition }
+command = { type = clrflag  which = KAR_PANIC }
+command = { type = relation which = RUS value = 100 }
+command = { type = alliance which = FIN }
+}
+
+action_b = {
+ai_chance = 1
+name = "The Finns are no better than The Soviet Devil!"
+command = {  }
+}
+}
+
+event = {
+id = 75101403
+country = FIN
+style = 2
+
+trigger = {
+flag = RUS_FIN_Coalition
+NOT = {
+exists = SOV
+}
+alliance = { country = FIN country = RUS }
+
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Russo-Finn Alliance"
+desc = "Now that the Russian Civil War is over, there has been a debate in Finland whether the Alliance should be ratified or we if we can trust the Russians. The alliance has served its original purpose, The Soviets have been beaten once again."
+
+action_a = {
+ai_chance = 95
+name =  "Alliance is no longer needed"
+command = { type = leave_alliance }
+command = { type = sleepevent which = 75101404 }
+command = { type = sleepevent which = 75101405 }
+command = { type = secederegion which = RUS value = Russia }
+}
+
+action_b = {
+ai_chance = 5
+name = "Keep the alliance with our neighbors"
+command = { type = relation which = RUS value = 100 }
+command = { type = sleepevent which = 75101404 }
+command = { type = sleepevent which = 75101405 }
+}
+}
+
+event = {
+id = 75101404
+country = FIN
+style = 2
+
+trigger = {
+
+flag = RUS_FIN_Coalition
+NOT = {
+exists = SOV
+}
+NOT = {
+exists = GER
+}
+alliance = { country = FIN country = RUS }
+
+}
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Russo-Finn Alliance"
+desc = "Now that the Russian Civil War is over, there has been a debate in Finland whether the Alliance should be ratified or we if we can trust the Russians. The alliance has served its original purpose, The Soviets have been beaten once again."
+
+action_a = {
+ai_chance = 5
+name =  "Alliance is no longer needed"
+command = { type = leave_alliance }
+command = { type = sleepevent which = 75101403 }
+command = { type = sleepevent which = 75101405 }
+command = { type = secederegion which = RUS value = Russia }
+}
+action_b = {
+ai_chance = 95
+name = "Keep the alliance with our neighbors"
+command = { type = relation which = RUS value = 100 }
+command = { type = sleepevent which = 75101403 }
+command = { type = sleepevent which = 75101405 }
+}
+}
+
+event = {
+id = 75101405
+country = FIN
+style = 2
+
+trigger = {
+flag = RUS_FIN_Coalition
+exists = SOV
+NOT = {
+exists = RUS
+}
+war = { country = FIN country = SOV }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "Russia is Defeated"
+desc = "Russia has fallen from internal weakness and Civil War. Now, Soviet Russia is our new neighbor."
+
+
+action_a = {
+ai_chance = 95
+name =  "Ask the Soviets for a Peace Treaty..."
+command = { type = trigger which = 75101406 }
+}
+
+action_b = {
+ai_chance = 5
+name = "We won't give the Bolsheviks a minutes rest!"
+command = { }
+}
+}
+
+event = {
+id = 75101406
+country = SOV
+style = 2
+
+name = "The Finns ask for Peace"
+desc = "The treacherous White Finns have asked for peace. They worked together with the White Russians to try and stop the revolution from taking place and now they are afraid, we can smell it."
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 75
+name = "We have more threats at home that we have to take care of first..."
+command = { type = peace which = FIN value = 0 }
+}
+
+action_b = {
+ai_chance = 25
+name =  "We will liberate the Finnish working class and destroy the white Finns!"
+command = { type = ai which = "kaiserreich/switch/RUS_FIN_atwar.ai" }
+}
+}
+
+event = {
+id = 123654935
+random = no
+country = FIN
+style = 2
+picture = "finnish_flag"
+
+trigger = {
+NOT = {
+war = { country = FIN  country = RUS }
+war = { country = FIN  country = SOV }
+alliance = { country = RUS country = GER }
+alliance = { country = RUS country = CAN }
+alliance = { country = RUS country = FIN }
+control = { province = 553 data = RUS } # St. Petersburg
+control = { province = 572 data = RUS } # Moscow
+control = { province = 542 data = RUS } # Arkhangelsk
+control = { province = 663 data = RUS } # Tsaritsin
+control = { province = 668 data = RUS } # Kuybishev
+}
+atwar = RUS
+control = { province = 535 data = RUS } # Murmansk
+control = { province = 537 data = FIN } # Kem
+control = { province = 541 data = FIN } # Belomorsk
+control = { province = 517 data = FIN } # Petsamo
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Murmansk is vulnerable"
+desc = "With their territory overrun by enemy advances, Russian forces have been pushed deep west. We could use the chance to occupy the key port of Murmansk and nearby areas."
+
+action = {
+ai_chance = 100
+name = "Seize the area"
+command = { type = addclaim which = 534 where = FIN }
+command = { type = addclaim which = 535 where = FIN }
+command = { type = addclaim which = 536 where = FIN }
+command = { type = relation which = RUS value = -50 }
+command = { type = trigger which = 123654936 }
+}
+action = {
+ai_chance = 0
+name = "This is too risky"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 123654936
+random = no
+country = RUS
+style = 2
+picture = "finnish_flag"
+
+name = "A threat from Finland"
+desc = "With our territory overrun by enemy advances, the northern city of Murmansk has become a safe haven for our forces, far from the frontlines and secure enough for our government. However, the treacherous Finns have amasse troops on the borders and are preparing to seize this important area from us!"
+
+action = {
+ai_chance = 70
+name = "This is hopeless, surrender the area to the Finns"
+command = { type = secedeprovince which = FIN value = 534 }
+command = { type = secedeprovince which = FIN value = 535 }
+command = { type = secedeprovince which = FIN value = 536 }
+command = { type = dissent value = 5 }
+}
+action = {
+ai_chance = 30
+name = "Ready the troops! Attack!"
+command = { type = dissent value = -1 }
+command = { type =     war which = FIN }
+}
+}
+
+#########  Ukraine RCWIND02
+#########  Socialist Ukraine RCWIND03
+
+#########  Siberia
+
+event = {
+id = 75101515
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = SIB }
+control = { province = 1151 data = SIB }
+control = { province = 1153 data = SIB }
+control = { province = 1142 data = SIB }
+NOT = { control = { province = 1127 data = RUS } }
+NOT = { control = { province = 1128 data = RUS } }
+NOT = { control = { province = 1137 data = RUS } }
+NOT = {
+war = { country = RUS country = SOV }
+ispuppet = RUS
+ispuppet = SIB
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 110
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Novosibirsk"
+desc = "We've been beaten by the Siberians, how did this happen? They've seized large part of the Western Siberia!"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 75
+name =  "Offer peace treaty, recognize Siberian teritorial gains"
+command = { type = dissent value = 6 }
+command = { type = trigger which = 75101517 }
+}
+action_b = {
+ai_chance = 25
+name = "No, the war will continue until our army marches through Novosibirsk!"
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 75101516
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = SOV }
+war = { country = RUS country = SIB }
+control = { province = 1151 data = SIB }
+control = { province = 1153 data = SIB }
+control = { province = 1142 data = SIB }
+NOT = { control = { province = 1127 data = RUS } }
+NOT = { control = { province = 1128 data = RUS } }
+NOT = {
+control = { province = 1137 data = RUS }
+alliance = { country = SOV country = SIB }
+ispuppet = RUS
+ispuppet = SIB
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Novosibirsk"
+desc = "We've been beaten by the Siberians, how did this happen? They've seized large part of the Western Siberia !"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 99
+name =  "Offer peace treaty, recognize Siberian teritorial gains"
+command = { type = trigger which = 75101517 }
+command = { type = dissent value = 5 }
+}
+action_b = {
+ai_chance = 1
+name = "No, the war will continue until we march through Novosibirsk!"
+command = { type = dissent value = 10 }
+}
+}
+
+
+
+event = {
+id = 75101517
+country = SIB
+style = 2
+
+
+name = "The Treaty of Novosibirsk"
+desc = "We've succesfully beaten rusian army and conquered large parts of the Western Siberia. Now humiliated russian leadership offers us peace in which they promise to recognize our teritorial gains and withdrawn from disputed teritory. How shall we react ?"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 100
+name =  "Accept proposal , this is more than we hoped !"
+command = { type = dissent value = -5 }
+command = { type = peace which = RUS value = 0 }
+command = { type = addcore   which = 1132  }
+command = { type = addcore   which = 1133  }
+command = { type = addcore   which = 1127  }
+command = { type = addcore   which = 1128  }
+command = { type = trigger which = 75101518 }
+}
+action_b = {
+ai_chance = 0
+name = "No, the war will continue until our army marches through Petrograd!"
+command = { type = dissent value = 2 }
+command = { type = addcore   which = 1132  }
+command = { type = addcore   which = 1133  }
+command = { type = addcore   which = 1127  }
+command = { type = addcore   which = 1128  }
+command = { type = belligerence which = SIB value = 5  }
+command = { type = trigger which = 75101519 }
+}
+}
+
+
+event = {
+id = 75101518
+country = RUS
+style = 2
+
+
+name = "The Treaty of Novosibirsk"
+desc = "According to the Treaty of Novosibirsk we must withdraw our force from large parts of the Western Siberia...."
+picture = "FaRpeace"
+
+action_a = {
+name =  "How humiliating !"
+command = { type = secedeprovince which = SIB value = 1132 }
+command = { type = secedeprovince which = SIB value = 1133 }
+command = { type = secedeprovince which = SIB value = 1127 }
+command = { type = secedeprovince which = SIB value = 1128 }
+command = { type = secederegion which = SIB value = "Far East Siberia" }
+command = { type = secederegion which = SIB value = "Irkutsk" }
+command = { type = secederegion which = SIB value = "Krasnoyarsk" }
+command = { type = secederegion which = SIB value = "Tomsk" }
+command = { type = secederegion which = SIB value = "Novosibirsk" }
+command = { type = secederegion which = SIB value = "Northern Permafrost" }
+command = { type = secedeprovince which = SIB value = 1151 } #Sverdolsk
+command = { type = secedeprovince which = SIB value = 1153 } #Uray
+command = { type = secedeprovince which = SIB value = 1142 }
+command = { type = removecore which = 1132 }
+command = { type = removecore which = 1133 }
+command = { type = removecore which = 1127 }
+command = { type = removecore which = 1128 }  # Russia is forced to recognize independence of Siberia and withdrawn claims on its teritory...
+command = { type = removecore which = 1142  }
+command = { type = removecore which = 1155  }
+command = { type = removecore which = 1157  }
+command = { type = removecore which = 1148  }
+command = { type = removecore which = 1140  }
+command = { type = removecore which = 1143  }
+command = { type = removecore which = 1144  }
+command = { type = removecore which = 1145  }
+command = { type = removecore which = 1152  }
+command = { type = removecore which = 1153  }
+command = { type = removecore which = 1150  }
+command = { type = removecore which = 1146  }
+command = { type = removecore which = 1158  }
+command = { type = removecore which = 1138  }
+command = { type = removecore which = 1147  }
+command = { type = removecore which = 1166  }
+command = { type = removecore which = 1167  }
+command = { type = removecore which = 1162  }
+command = { type = removecore which = 1163  }
+command = { type = removecore which = 1164  }
+command = { type = removecore which = 1165  }
+command = { type = removecore which = 1169  }
+command = { type = removecore which = 1179  }
+command = { type = removecore which = 1178  }
+command = { type = removecore which = 1177  }
+command = { type = removecore which = 1168  }
+command = { type = removecore which = 1156  }
+command = { type = removecore which = 1189  }
+command = { type = removecore which = 1186  }
+command = { type = removecore which = 1139  }
+command = { type = removecore which = 1149  }
+command = { type = removecore which = 1141  }
+command = { type = removecore which = 1135  }
+command = { type = removecore which = 1138  }
+command = { type = removecore which = 1154  }
+command = { type = removecore which = 1180  }
+command = { type = removecore which = 1181  }
+command = { type = removecore which = 1182  }
+command = { type = removecore which = 1183  }
+command = { type = removecore which = 1184  }
+command = { type = removecore which = 1176  }
+command = { type = removecore which = 1174  }
+command = { type = removecore which = 1188  }
+command = { type = removecore which = 1175  }
+command = { type = removecore which = 1187  }
+command = { type = removecore which = 1137  }
+command = { type = removecore which = 1136  }
+command = { type = removecore which = 1151  }
+command = { type = removecore which = 1069  }
+command = { type = removecore which = 1070  }
+command = { type = removecore which = 1071  }
+command = { type = removecore which = 1061  }
+command = { type = removecore which = 1161  }
+command = { type = removecore which = 1170  }
+command = { type = removecore which = 1171  }
+command = { type = removecore which = 501  }
+command = { type = removecore which = 498  }
+command = { type = removecore which = 1115  }
+command = { type = removecore which = 499  }
+command = { type = removecore which = 502  }
+command = { type = dissent value = 2 }
+}
+
+}
+
+event = {
+id = 75101519
+country = RUS
+style = 2
+
+
+name = "Siberia refused to sign peace treaty!"
+desc = "Siberia refused our generous peace offer and renewed military actions...."
+picture = "FaRpeace"
+
+action_a = {
+name =  "They will pay for this..."
+command = { type = dissent value = 1 }
+}
+
+}
+
+
+#########  Alash-Orda RCWIND04
+
+event = {
+id = 75101505
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = KAZ }
+control = { province = 1133 data = KAZ }
+control = { province = 1134 data = KAZ }
+control = { province = 1132 data = KAZ }
+control = { province = 1137 data = KAZ }
+control = { province = 667 data = KAZ }
+control = { province = 1131 data = KAZ }
+control = { province = 706 data = KAZ }
+control = { province = 498 data = KAZ }
+NOT = {
+war = { country = RUS country = SOV }
+ispuppet = RUS
+ispuppet = KAZ
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Astrakhan"
+desc = "We've been beaten by the Kazakhs, how did this happen? They've seized the whole Volga region !"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 35
+name =  "Offer peace treaty, recognize Kazakhs teritorial gains"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 75101507 }
+}
+action_b = {
+ai_chance = 65
+name = "No, the war will continue until our army marches through Alash-Quala!"
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 75101506
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = SOV }
+war = { country = RUS country = KAZ }
+control = { province = 1133 data = KAZ }
+control = { province = 1134 data = KAZ }
+control = { province = 1132 data = KAZ }
+control = { province = 1137 data = KAZ }
+control = { province = 667 data = KAZ }
+control = { province = 1131 data = KAZ }
+control = { province = 706 data = KAZ }
+control = { province = 498 data = KAZ }
+NOT = {
+ispuppet = RUS
+ispuppet = KAZ
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 70
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Astrakhan"
+desc = "We've been beaten by the Kazakhs, how did this happen? They've seized the whole Volga region!"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 85
+name =  "Offer peace treaty, recognize Kazakhs teritorial gains"
+command = { type = trigger which = 75101507 }
+command = { type = dissent value = 3 }
+}
+action_b = {
+ai_chance = 15
+name = "No, the war will continue until we march through Alash-Quala!"
+command = { type = dissent value = 6 }
+}
+}
+
+event = {
+id = 75101507
+country = KAZ
+style = 2
+
+
+name = "The Treaty of Astrakhan"
+desc = "We've succesfully beaten rusian army and conquered whole Volga region. Now humiliated russian leadership offers us peace in which they promise to recognize our teritorial gains and withdrawn from disputed teritory. How shall we react ?"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 100
+name =  "Accept proposal , this is more than we hoped !"
+command = { type = dissent value = -5 }
+command = { type = peace which = RUS value = 0 }
+command = { type = addcore which = 660  }
+command = { type = addcore which = 666  }
+command = { type = addcore which = 667  }
+command = { type = addcore which = 1133 }
+command = { type = addcore which = 1134 }
+command = { type = addcore which = 1132 }
+command = { type = addcore which = 1136 }
+command = { type = addcore which = 1137 }
+command = { type = addcore which = 1138 }
+command = { type = addcore which = 1139 }
+command = { type = addcore which = 1141 }
+command = { type = trigger which = 75101508 }
+}
+
+action_b = {
+ai_chance = 0
+name = "No, the war will continue until our army marches through Petrograd!"
+command = { type = dissent value = 2 }
+command = { type = addcore which = 660 }
+command = { type = addcore which = 666 }
+command = { type = addcore which = 667 }
+command = { type = addcore which = 664 }
+command = { type = addcore which = 690 }
+command = { type = addcore which = 1134 }
+command = { type = addcore which = 1133 }
+command = { type = addcore which = 1115 }
+command = { type = addcore which = 501 }
+command = { type = addcore which = 502 }
+command = { type = addcore which = 499 }
+command = { type = belligerence which = KAZ value = 5  }
+command = { type = trigger which = 75101509 }
+}
+}
+
+
+event = {
+id = 75101508
+country = RUS
+style = 2
+
+
+
+
+name = "The Treaty of Astrakhan"
+desc = "According to the Treaty of Astrakhan we must withdraw our force from remaining parts of the Volga region...."
+picture = "FaRpeace"
+
+action_a = {
+name =  "How humiliating !"
+command = { type = removecore which = 660 }
+command = { type = removecore which = 666 }
+command = { type = removecore which = 667 }
+command = { type = removecore which = 664 }
+command = { type = removecore which = 690 }
+command = { type = removecore which = 1134 }
+command = { type = removecore which = 1133 }
+command = { type = removecore which = 1115 }
+command = { type = removecore which = 501 }
+command = { type = removecore which = 502 }
+command = { type = removecore which = 499 }
+
+command = { type = secedeprovince which = KAZ value = 660 }
+command = { type = secedeprovince which = KAZ value = 666 }
+command = { type = secedeprovince which = KAZ value = 667 }
+command = { type = secedeprovince which = KAZ value = 664 }
+command = { type = secedeprovince which = KAZ value = 690 }
+command = { type = secedeprovince which = KAZ value = 1134 }
+command = { type = secedeprovince which = KAZ value = 1133 }
+command = { type = secedeprovince which = KAZ value = 1115 }
+command = { type = secedeprovince which = KAZ value = 501 }
+command = { type = secedeprovince which = KAZ value = 502 }
+command = { type = secedeprovince which = KAZ value = 499 }
+command = { type = dissent value = 2 }
+}
+
+}
+
+event = {
+id = 75101509
+country = RUS
+style = 2
+
+
+
+
+name = "Alash-Orda refused to sign peace treaty!"
+desc = "Alash-Orda refused our generous peace offer and renewed military actions...."
+picture = "FaRpeace"
+
+action_a = {
+name =  "They will pay for this..."
+command = { type = dissent value = 1 }
+}
+
+}
+
+#########  Transamur RCWIND05
+#########  Don-Kuban Union RCWIND06
+
+event = {
+id = 75101510
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = TRA }
+control = { province = 663 data = TRA }
+control = { province = 659 data = TRA }
+control = { province = 661 data = TRA }
+NOT = { control = { province = 669 data = RUS } }
+NOT = { control = { province = 655 data = RUS } }
+NOT = {
+war = { country = RUS country = SOV }
+}
+NOT = {
+ispuppet = RUS
+ispuppet = TRA
+alliance = { country = TRA country = GER }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 80
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Tsarytsin"
+desc = "We've been beaten by the Cossacks, how did this happen? They've seized the whole Tsarytsin region !"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 30
+name =  "Offer peace treaty, recognize Cossack teritorial gains"
+command = { type = dissent value = 5 }
+command = { type = trigger which = 75101512 }
+}
+action_b = {
+ai_chance = 70
+name = "No, the war will continue until our army marches through Yekaterinodar!"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 75101511
+country = RUS
+style = 2
+
+trigger = {
+war = { country = RUS country = SOV }
+war = { country = RUS country = TRA }
+control = { province = 663 data = TRA }
+control = { province = 659 data = TRA }
+control = { province = 661 data = TRA }
+NOT = { control = { province = 669 data = RUS } }
+NOT = { control = { province = 655 data = RUS } }
+NOT = {
+ispuppet = RUS
+ispuppet = TRA
+alliance = { country = TRA country = GER }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 1 month = january year = 1960 }
+
+name = "The Treaty of Tsarytsin"
+desc = "We've been beaten by the Cossacks, how did this happen? They've seized the whole Tsarytsin region!"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 90
+name =  "Offer peace treaty, recognize Cossack teritorial gains"
+command = { type = dissent value = 5 }
+command = { type = trigger which = 75101512 }
+}
+action_b = {
+ai_chance = 10
+name = "No, the war will continue until we march through Yekaterinodar!"
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 75101512
+country = TRA
+style = 2
+
+
+name = "The Treaty of Tsarytsin"
+desc = "We've succesfully beaten rusian army and conquered whole Tsarytsin region. Now humiliated russian leadership offers us peace in which they promise to recognize our teritorial gains and withdrawn from disputed teritory. How shall we react ?"
+picture = "FaRpeace"
+
+action_a = {
+ai_chance = 100
+name =  "Accept proposal , this is more than we hoped !"
+command = { type = dissent value = -5 }
+command = { type = peace which = RUS value = 0 }
+command = { type = addcore which = 663 }
+command = { type = addcore which = 659 }
+command = { type = addcore which = 642 }
+command = { type = addcore which = 660 }
+command = { type = addcore which = 661 }
+command = { type = addcore which = 649 }
+command = { type = addclaim which = 669 }
+command = { type = addcore which = 655 }
+command = { type = addclaim which = 657 }
+command = { type = addcore which = 653 }
+command = { type = addcore which = 648 }
+command = { type = trigger which = 75101513 }
+}
+action_b = {
+ai_chance = 0
+name = "No, the war will continue until our army marches through Petrograd!"
+command = { type = dissent value = 2 }
+command = { type = addcore which = 663 }
+command = { type = addcore which = 659 }
+command = { type = addcore which = 642 }
+command = { type = addcore which = 660 }
+command = { type = addcore which = 661 }
+command = { type = addcore which = 649 }
+command = { type = addclaim which = 669 }
+command = { type = addcore which = 655 }
+command = { type = addclaim which = 657 }
+command = { type = addcore which = 653 }
+command = { type = addcore which = 648 }
+
+command = { type = belligerence which = TRA value = 5  }
+command = { type = trigger which = 75101514 }
+}
+}
+
+
+event = {
+id = 75101513
+country = RUS
+style = 2
+
+
+
+
+name = "The Treaty of Tsarytsin"
+desc = "According to the Treaty of Astrakhan we must withdraw our force from remaining parts of the Tsarytsin region...."
+picture = "FaRpeace"
+
+action_a = {
+name =  "How humiliating !"
+command = { type = secedeprovince which = TRA value = 663 }
+command = { type = secedeprovince which = TRA value = 659 }
+command = { type = secedeprovince which = TRA value = 642 }
+command = { type = secedeprovince which = TRA value = 660 }
+command = { type = secedeprovince which = TRA value = 661 }
+command = { type = secedeprovince which = TRA value = 669 }
+command = { type = secedeprovince which = TRA value = 655 }
+command = { type = secedeprovince which = TRA value = 657 }
+command = { type = secedeprovince which = TRA value = 649 }
+command = { type = secedeprovince which = TRA value = 653 }
+command = { type = secedeprovince which = TRA value = 648 }
+command = { type = removecore which = 663 }
+command = { type = removecore which = 659 }
+command = { type = removecore which = 642 }
+command = { type = removecore which = 660 }
+command = { type = removecore which = 661 }
+command = { type = removecore which = 649 }
+command = { type = removecore which = 653 }
+command = { type = removecore which = 648 }
+command = { type = dissent value = 2 }
+}
+
+}
+
+event = {
+id = 75101514
+country = RUS
+style = 2
+
+
+
+
+name = "Don-Kuban union refused to sign peace treaty!"
+desc = "Don-Kuban union refused our generous peace offer and renewed military actions...."
+picture = "FaRpeace"
+
+action_a = {
+name =  "They will pay for this..."
+command = { type = dissent value = 1 }
+}
+
+}
+
+###########################
+#########  Commune of France RCWIND07
+###########################
+
+event = {
+id = 756033
+random = no
+country = FRA
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+war = { country = FRA country = GER }
+war = { country = FRA country = RUS }
+war = { country = FRA country = JAP }
+war = { country = FRA country = ENG }
+war = { country = FRA country = CAN }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+war = { country = FRA country = GER }
+war = { country = FRA country = RUS }
+war = { country = FRA country = JAP }
+war = { country = FRA country = ENG }
+war = { country = FRA country = CAN }
+}
+}
+}
+
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity and now Russian workers have risen to struggle for freedom against capitalist oppression once more. Should we help them, even though the Bolshevik methods are rather extreme? "
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the Russian proletariat"
+ai_chance = 80
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = trigger which = 756034 }
+
+}
+
+action_b = {
+ai_chance = 20
+name = "The Bolshevik methods are too extreme"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+}
+}
+
+
+event = {
+id = 756034
+random = no
+country = SOV
+
+
+name = "Aid from France!"
+desc = "The French send us significant number of volunteers and military material that will help us considerably in our struggle against decadent russian government !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!" # Great!
+command = { type = supplies value = 1000 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = steal_tech which = FRA }
+}
+}
+
+###########################
+#########  National France RCWIND08
+###########################
+
+event = {
+id = 756044
+random = no
+country = VIC
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = VIC country = GER }
+war = { country = VIC country = RUS }
+war = { country = VIC country = JAP }
+war = { country = VIC country = ENG }
+war = { country = VIC country = FRA }
+war = { country = VIC country = ALG }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = VIC country = GER }
+war = { country = VIC country = RUS }
+war = { country = VIC country = JAP }
+war = { country = VIC country = ENG }
+war = { country = VIC country = FRA }
+war = { country = VIC country = ALG }
+}
+}
+}
+
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity: once more, Red and White forces are at war.  We have suffered from the horrors of worker-extremism once before and it is probably in our best interests to help the legitimate Russian government and the the country from the terror of Bolshevism"
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the White forces"
+ai_chance = 30
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 756045 }
+
+}
+
+action_b = {
+ai_chance = 70
+name = "We can't spare anything right now"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+}
+}
+
+event = {
+id = 756045
+random = no
+country = RUS
+
+
+name = "Aid from the French!"
+desc = "The French nationalists send us significant number of volunteers and military material that will help us considerably in our struggle against dangerous bolshevik menace threatening to rip apart Russia !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great !" # Great!
+command = { type = supplies value = 500 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = VIC }
+}
+}
+
+###########################
+#########  Canada RCWIND09
+###########################
+
+event = {
+id = 756042
+random = no
+country = CAN
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = CAN country = GER }
+war = { country = CAN country = RUS }
+war = { country = CAN country = JAP }
+war = { country = CAN country = ENG }
+war = { country = CAN country = FRA }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = CAN country = GER }
+war = { country = CAN country = RUS }
+war = { country = CAN country = JAP }
+war = { country = CAN country = ENG }
+war = { country = CAN country = FRA }
+}
+}
+}
+
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity: once more, Red and White forces are at war.  We have suffered from the horrors of worker-extremism once before and it is probably in our best interests to help the legitimate Russian government and the the country from the terror of Bolshevism"
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the White forces"
+ai_chance = 40
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+command = { type = money value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = trigger which = 756043 }
+
+}
+
+action_b = {
+ai_chance = 60
+name = "We can't spare anything right now"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+}
+}
+
+event = {
+id = 756043
+random = no
+country = RUS
+
+
+name = "Aid from Canada!"
+desc = "The Canadians send us significant number of volunteers and military material that will help us considerably in our struggle against dangerous bolshevik menace threatening to rip apart Russia !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!" # Great!
+command = { type = supplies value = 1000 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = steal_tech which = CAN }
+}
+}
+
+
+###########################
+#########  Union of Britain RCWIND10
+###########################
+
+event = {
+id = 756031
+random = no
+country = ENG
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+
+war = { country = ENG country = RUS }
+war = { country = ENG country = JAP }
+war = { country = ENG country = FRA }
+war = { country = ENG country = POL }
+war = { country = ENG country = GER }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+
+war = { country = ENG country = RUS }
+war = { country = ENG country = JAP }
+war = { country = ENG country = FRA }
+war = { country = ENG country = POL }
+war = { country = ENG country = GER }
+}
+}
+}
+
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity and now Russian workers have risen to struggle for freedom against capitalist oppression once more. Should we help them, even though the Bolshevik methods are rather extreme? "
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the russian proletariat"
+ai_chance = 80
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = trigger which = 756032 }
+
+}
+
+action_b = {
+ai_chance = 20
+name = "The Bolsheviks are too oppressive themselves"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+}
+}
+
+
+event = {
+id = 756032
+random = no
+country = SOV
+
+
+name = "Aid from Britain!"
+desc = "The British send send us significant number of volunteers and military material that will help us considerably in our struggle against decadent russian government !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!" # Great!
+command = { type = supplies value = 1000 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = steal_tech which = ENG }
+}
+}
+
+
+###########################
+#########  Germany RCWIND11
+###########################
+
+event = {
+id = 756035
+random = no
+country = GER
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = POL country = GER }
+war = { country = POL country = RUS }
+war = { country = POL country = JAP }
+war = { country = POL country = ENG }
+war = { country = POL country = FRA }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = POL country = GER }
+war = { country = POL country = RUS }
+war = { country = POL country = JAP }
+war = { country = POL country = ENG }
+war = { country = POL country = FRA }
+}
+}
+}
+
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity: once more, Red and White forces are at war.  We have seen the horrors of Bolshevism once before, and though our own workers may not like it, it is probably in our best interests to help the legitimate Russian government."
+style = 2
+picture = "Wehrmacht"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 1 month = january year = 1936 }
+offset = 5
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "Help the White forces"
+ai_chance = 75
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = non_aggression which = GER where = RUS }
+command = { type = trigger which = 756036 }
+
+}
+
+action_b = {
+name = "Do nothing"
+ai_chance = 25
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+}
+}
+
+
+event = {
+id = 756036
+random = no
+country = RUS
+
+
+name = "Aid from Germany!"
+desc = "The Germans send us significant number of volunteers and military material that will help us considerably in our struggle against dangerous bolshevik menace threatening to rip apart Russia !"
+style = 2
+picture = "Wehrmacht"
+
+action_a = {
+name = "Great !" # Great!
+command = { type = supplies value = 1000 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = steal_tech which = GER }
+}
+}
+
+###########################
+#########  Japan RCWIND12
+###########################
+
+event = {
+id = 756037
+random = no
+country = JAP
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = JAP country = GER }
+war = { country = JAP country = RUS }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = AST }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+government = communist
+war = { country = JAP country = GER }
+war = { country = JAP country = RUS }
+war = { country = JAP country = CSX }
+war = { country = JAP country = CAN }
+war = { country = JAP country = AST }
+}
+}
+}
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity: once more, Red and White forces are at war.  We have seen the horrors of Bolshevism once before, and though our own workers may not like it, it is probably in our best interests to help the legitimate Russian government."
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the White forces"
+ai_chance = 90
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = trigger which = 756038 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Do nothing"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+}
+}
+
+
+event = {
+id = 756038
+random = no
+country = RUS
+
+
+name = "Aid from Japan!"
+desc = "The Japanese send us significant number of volunteers and military material that will help us considerably in our struggle against dangerous bolshevik menace threatening to rip apart Russia !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!" # Great!
+command = { type = supplies value = 1000 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = add_division value = militia when = 4 }
+command = { type = steal_tech which = JAP }
+}
+}
+
+
+####  Reactions to Civil war
+
+
+
+event = {
+id = 756046
+random = no
+country = CSA
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+exists = USA
+exists = TEX
+OR = {
+war = { country = CSA country = CAN }
+war = { country = CSA country = MEX }
+war = { country = CSA country = CAL }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+exists = USA
+exists = TEX
+OR = {
+war = { country = CSA country = CAN }
+war = { country = CSA country = MEX }
+war = { country = CSA country = CAL }
+}
+}
+}
+
+name = "Civil War in Russia"
+desc = "The weak, corrupt and oppressive Russian government, that emerged after the Civil war was unable to rule the country effectively and now the Russia workers have risen up against tiranny, hoping to create a more just and free society. We should help the Russian workers as good as we can. "
+style = 2
+picture = "RedStar"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the russian proletariat!"
+ai_chance = 90
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = trigger which = 756047 }
+
+}
+
+action_b = {
+ai_chance = 10
+name = "Perhaps we shouldn't interfere"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = domestic which = political_left value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+}
+}
+
+event = {
+id = 756047
+random = no
+country = SOV
+
+
+name = "Aid from the Americans!"
+desc = "The syndicates of America send us significant number of volunteers and military material that will help us considerably in our struggle against decadent russian government !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!" # Great!
+command = { type = supplies value = 1000 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = steal_tech which = CSA }
+}
+}
+
+event = {
+id = 756048
+random = no
+country = SPR
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+exists = SPA
+exists = EUS
+atwar = SPR
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 500
+money = 50
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+exists = SPA
+exists = EUS
+atwar = SPR
+}
+}
+
+name = "Civil War in Russia"
+desc = "The workers of Russia, led by the Bolshevics, have risen once more in an attempt to throw down the ineffective Russian government. We ourselves have experienced a bloody struggle for freedom, perhaps we should help the Russians to succeed as well?  "
+style = 2
+decision_picture = "decision_foreign_volunteers"
+picture = "RedStar"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the russian proletariat!"
+ai_chance = 70
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+command = { type = trigger which = 756049 }
+
+}
+
+action_b = {
+ai_chance = 30
+name = "Perhaps we shouldn't interfere"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = domestic which = political_left value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+}
+}
+
+event = {
+id = 756049
+random = no
+country = SOV
+
+
+name = "Aid from the Spanish!"
+desc = "The syndicates of Spain send us significant number of volunteers and military material that will help us considerably in our struggle against decadent russian government !"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!"
+command = { type = supplies value = 500 }
+command = { type = add_division value = militia when = 5 }
+command = { type = add_division value = militia when = 5 }
+command = { type = steal_tech which = SPR }
+}
+}
+
+event = {
+id = 756050
+random = no
+country = SPR
+
+trigger = {
+event = 756049
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = SOV value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 756051
+random = no
+country = CSA
+
+trigger = {
+event = 756047
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = SOV value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 756052
+random = no
+country = JAP
+
+trigger = {
+event = 756038
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = RUS value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 756053
+random = no
+country = GER
+
+trigger = {
+event = 756036
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = RUS value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 756054
+random = no
+country = ENG
+
+trigger = {
+event = 756032
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = SOV value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 756055
+random = no
+country = CAN
+
+trigger = {
+event = 756043
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = RUS value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 756056
+random = no
+country = VIC
+
+trigger = {
+event = 756045
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = RUS value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+event = {
+id = 756057
+random = no
+country = FRA
+
+trigger = {
+event = 756034
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = SOV value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 756058
+random = no
+country = FIN
+
+trigger = {
+event = 756040
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian civil war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great !"
+command = { type = relation which = RUS value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+
+
+
+event = {
+id = 654050
+country = BLR
+style = 2
+
+trigger = {
+exists = SOV
+war = { country = RUS country = SOV }
+NOT = {
+war = { country = SOV country = BLR }
+war = { country = RUS country = BLR }
+atwar = BLR
+}
+}
+
+name = "Syndicalists leaving to join uprising"
+desc = "The eruption of the second Russian Civil War in Russia made part of our Syndicalist population organize themselves and leave the country to join the Soviet struggle. Shall we allow them to leave our country to join the civil war ?"
+picture = "soviet_reinforcements"
+
+date = { day = 1 month = january year = 1936 }
+offset = 5
+deathdate = { day = 30 month = december year= 1963 }
+
+action_a = {
+name = "Let them go...."
+ai_chance = 50
+command = { type = manpowerpool value = -5 }
+command = { type = trigger which = 654051 } #BLR volunteers
+command = { type = relation which = RUS value = -30 }
+}
+
+action_b = {
+name = "This might be playing with fire"
+ai_chance = 50
+command = { type = dissent value = 3 }
+command = { type = relation which = SOV value = -20 }
+command = { type = relation which = RUS value = 20 }
+}
+}
+
+event = {
+id = 654051
+country = SOV
+style = 2
+#triggered by 654050
+
+name = "Syndicalist volunteers from Belarus"
+desc = "Our fight for socialism has attracted the attention of fellow socialists in Belarus. Together they organized themself and many have decided to leave their homes to join our fight for socialism!"
+picture = "soviet_reinforcements"
+
+action_a = {
+name = "We need all the help we can get!"
+command = { type = add_division which = "Belarusian Volunteers" value = militia when = 4 }
+command = { type = manpowerpool value = 5 }
+command = { type = dissent value = -2 }
+}
+}
+
+
+

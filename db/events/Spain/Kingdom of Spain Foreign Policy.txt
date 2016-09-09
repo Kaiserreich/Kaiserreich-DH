@@ -1,0 +1,350 @@
+########################################
+#### Kingdom of Spain Foreign Policy
+########################################
+
+#######post-war
+
+event = {
+id = 3967089
+country = SPA
+style = 2
+picture = "SCW"
+
+
+trigger = {
+atwar = no
+NOT = {
+ispuppet = SPA
+}
+and = {
+flag = spa_postwar
+flag = ger_int_scw
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "What now?"
+desc = "With our victory in the Civil War we are now recovering and it is time to choose the direction of our Kingdom."
+
+action_a = {
+ai_chance = 60
+trigger = {
+exists = GER
+control = { province = 163 data = GER }
+NOT = {
+ispuppet = GER
+}
+}
+name = "We must join with Germany"
+command = { type = dissent value = 5 }
+command = { type = relation which = FRA value = -20 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = GER value = 20 }
+command = { type = trigger which = 3967091 }
+}
+
+action_b = {
+ai_chance = 40
+trigger = {
+event = 3967230
+flag = VIC_SUP_SPA
+exists = CAN
+control = { province = 2108 data = CAN }
+NOT = {
+ispuppet = CAN
+government = { type = communist country = CAN }
+}
+}
+name = "We must join with Entente"
+command = { type = dissent value = 5 }
+command = { type = relation which = FRA value = -20 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = GER value = 20 }
+command = { type = trigger which = 3967232 }
+}
+
+action_c = {
+ai_chance = 40
+name = "We must reorganize our own country"
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 3967090
+country = SPA
+style = 2
+picture = "SCW"
+
+
+trigger = {
+atwar = no
+NOT = {
+ispuppet = SPA
+}
+and = {
+flag = spa_postwar
+not = {
+flag = ger_int_scw
+}
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "What now?"
+desc = "With our victory in the Civil War we are now recovering and it is time to choose the direction of our Kingdom. Germany abandoned us in our struggle so maybe we should progress alone."
+
+action_a = {
+ai_chance = 20
+trigger = {
+exists = GER
+NOT = {
+ispuppet = GER
+}
+}
+name = "We must join with Germany"
+command = { type = dissent value = 5 }
+command = { type = relation which = FRA value = -20 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = GER value = 20 }
+command = { type = trigger which = 3967091 }
+}
+
+action_b = {
+ai_chance = 40
+trigger = {
+event = 3967230
+exists = CAN
+NOT = {
+ispuppet = CAN
+}
+}
+name = "We must join with Entete"
+command = { type = dissent value = 5 }
+command = { type = relation which = FRA value = -20 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = GER value = 20 }
+command = { type = trigger which = 3967232 }
+}
+
+action_b = {
+ai_chance = 80
+name = "We must reorganize our own country"
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 3967091
+random = no
+country = GER
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The Kingdom of Spain wants to join Mitteleuropa"
+desc = "Kingdom of Spain has annouced recently that they want to join Mitteleuropa. How shall we respond ?"
+
+action_a = {
+ai_chance = 95
+name = "YES!"
+command = { type = alliance which = SPA }
+command = { type = relation which = SPA value = 100 }
+command = { type = dissent value = -7 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 3967127 }
+}
+
+action_b = {
+ai_chance = 5
+name = "Rather not."
+command = { type = dissent value = 1 }
+command = { type = relation which = SPA value = -100 }
+}
+}
+event = {
+id = 3967127
+random = no
+country = SPA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The Kingdom of Spain joins Mitteleuropa"
+desc = "The German Empire as the leading state of Mitteleuropa has accepted our request and now we are firm member of the Mitteleuropa alliance."
+
+action_a = {
+name = "Excellent !"
+command = { type = dissent value = -3 }
+command = { type = relation which = FRA value = -100 }
+command = { type = relation which = GER value = 150 }
+command = { type = end_trades which = FRA where = SPA }
+command = { type = end_non_aggression which = SPA where = ENG }
+command = { type = end_non_aggression which = SPA where = FRA }
+command = { type = end_non_aggression which = SPA where = RSI }
+command = { type = end_non_aggression which = SPA where = CSA }
+#maybe new ai?
+}
+}
+
+
+event = {
+id = 3967232
+random = no
+country = CAN
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The Kingdom of Spain wants to join Entete"
+desc = "Kingdom of Spain has annouced recently that they want to join Entete. How shall we respond ?"
+
+action_a = {
+ai_chance = 95
+name = "YES!"
+command = { type = alliance which = SPA }
+command = { type = relation which = SPA value = 100 }
+command = { type = dissent value = -7 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 3967231 }
+}
+
+action_b = {
+ai_chance = 5
+name = "Rather not."
+command = { type = dissent value = 1 }
+command = { type = relation which = SPA value = -100 }
+}
+}
+event = {
+id = 3967231
+random = no
+country = SPA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The Kingdom of Spain joins Entete"
+desc = "The Canada as the leading state of Entete has accepted our request and now we are firm member of the Entete alliance."
+
+action_a = {
+name = "Excellent !"
+command = { type = dissent value = -3 }
+command = { type = relation which = FRA value = -100 }
+command = { type = relation which = CAN value = 150 }
+command = { type = relation which = VIC value = 150 }
+command = { type = end_trades which = FRA where = SPA }
+command = { type = end_non_aggression which = SPA where = ENG }
+command = { type = end_non_aggression which = SPA where = FRA }
+command = { type = end_non_aggression which = SPA where = RSI }
+command = { type = end_non_aggression which = SPA where = CSA }
+#maybe new ai?
+}
+}
+
+event = {
+id = 3967126
+country = SPA
+style = 2
+picture = "MilitaryParade1"
+
+trigger = {
+NOT = {
+ispuppet = SPA
+}
+flag = spa_jaime
+NOT = {
+alliance = { country = SPA country = VIC }
+}
+}
+date = { day = 7 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Claiming the Bourbon Throne"
+desc = "The true Bourbon Throne is without a legitimate holder. King Jaime has a potential to claim the throne and work to unite all of France and Spain under a single banner once again!"
+
+action_a = {
+ai_chance = 0
+name = "Jaime claims the Throne"
+command = { type = setflag which = bourbonj }
+command = { type = relation which = FRA value = -100 }
+command = { type = relation which = VIC value = -100 }
+command = { type = addclaim which = 37 }
+command = { type = addclaim which = 38 }
+command = { type = addclaim which = 39 }
+command = { type = addclaim which = 40 }
+command = { type = addclaim which = 78 }
+command = { type = addclaim which = 41 }
+command = { type = addclaim which = 42 }
+command = { type = addclaim which = 43 }
+command = { type = addclaim which = 44 }
+command = { type = addclaim which = 45 }
+command = { type = addclaim which = 46 }
+command = { type = addclaim which = 47 }
+command = { type = addclaim which = 48 }
+command = { type = addclaim which = 55 }
+command = { type = addclaim which = 53 }
+command = { type = addclaim which = 50 }
+command = { type = addclaim which = 49 }
+command = { type = addclaim which = 51 }
+command = { type = addclaim which = 52 }
+command = { type = addclaim which = 56 }
+command = { type = addclaim which = 101 }
+command = { type = addclaim which = 103 }
+command = { type = addclaim which = 100 }
+command = { type = addclaim which = 102 }
+command = { type = addclaim which = 99 }
+command = { type = addclaim which = 54 }
+command = { type = addclaim which = 95 }
+command = { type = addclaim which = 97 }
+command = { type = addclaim which = 98 }
+command = { type = addclaim which = 88 }
+command = { type = addclaim which = 64 }
+command = { type = addclaim which = 63 }
+command = { type = addclaim which = 66 }
+command = { type = addclaim which = 60 }
+command = { type = addclaim which = 57 }
+command = { type = addclaim which = 58 }
+command = { type = addclaim which = 59 }
+command = { type = addclaim which = 62 }
+command = { type = addclaim which = 70 }
+command = { type = addclaim which = 69 }
+command = { type = addclaim which = 68 }
+command = { type = addclaim which = 67 }
+command = { type = addclaim which = 83 }
+command = { type = addclaim which = 84 }
+command = { type = addclaim which = 75 }
+command = { type = addclaim which = 73 }
+command = { type = addclaim which = 72 }
+command = { type = addclaim which = 61 }
+command = { type = addclaim which = 65 }
+command = { type = addclaim which = 90 }
+command = { type = addclaim which = 86 }
+command = { type = addclaim which = 89 }
+command = { type = addclaim which = 93 }
+command = { type = addclaim which = 82 }
+command = { type = addclaim which = 79 }
+command = { type = addclaim which = 80 }
+command = { type = addclaim which = 76 }
+command = { type = addclaim which = 77 }
+command = { type = addclaim which = 71 }
+command = { type = addclaim which = 81 }
+command = { type = addclaim which = 92 }
+command = { type = addclaim which = 85 }
+command = { type = addclaim which = 74 }
+command = { type = addclaim which = 87 }
+command = { type = addclaim which = 91 }
+command = { type = addclaim which = 96 }
+command = { type = addclaim which = 106 }
+command = { type = addclaim which = 94 }
+}
+
+action_b = {
+ai_chance = 100
+name = "We must focus on Spain"
+command = { type = dissent value = -5 }
+}
+}

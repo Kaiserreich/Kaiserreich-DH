@@ -1,0 +1,2679 @@
+event = {
+id = 55820
+country = USA
+style = 2
+picture = "Americanempire"
+
+trigger = {
+OR = {
+war = { country = USA country = TEX }
+war = { country = USA country = CSA }
+war = { country = USA country = CAL }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1947 }
+
+name = "The Monroe Doctrine"
+desc = "America has now been thrown into civil war, brother fighting brother, and it doesn't look good for the United States. Perhaps it is time to revoke the Monroe Doctrine as we cannot afford war with another until we solve our own problems and end this civil war."
+
+action_a = {
+ai_chance = 100
+name = "We can no longer protect South America"
+command = { type = dissent value = -3 }
+command = { type = relation which = CAN value = -5 }
+command = { type = relation which = MEX value = -5 }
+command = { type = relation which = ARG value = -5 }
+command = { type = relation which = BRA value = -5 }
+command = { type = relation which = NIC value = -5 }
+command = { type = relation which = HON value = -5 }
+command = { type = relation which = VEN value = -5 }
+command = { type = relation which = COL value = -5 }
+command = { type = relation which = PRU value = -5 }
+command = { type = relation which = ECU value = -5 }
+command = { type = relation which = BOL value = -5 }
+command = { type = relation which = CHL value = -5 }
+command = { type = relation which = GUA value = -5 }
+
+command = { type = end_guarantee which = USA where = CAN }
+command = { type = end_guarantee which = USA where = MEX }
+command = { type = end_guarantee which = USA where = ARG }
+command = { type = end_guarantee which = USA where = BRA }
+command = { type = end_guarantee which = USA where = NIC }
+command = { type = end_guarantee which = USA where = HON }
+command = { type = end_guarantee which = USA where = VEN }
+command = { type = end_guarantee which = USA where = COL }
+command = { type = end_guarantee which = USA where = PRU }
+command = { type = end_guarantee which = USA where = ECU }
+command = { type = end_guarantee which = USA where = BOL }
+command = { type = end_guarantee which = USA where = CHL }
+command = { type = end_guarantee which = USA where = GUA }
+command = { type = end_guarantee which = USA where = CUB }
+command = { type = end_guarantee which = USA where = HAI }
+command = { type = end_guarantee which = USA where = DOM }
+command = { type = end_guarantee which = USA where = PAN }
+}
+action_b = {
+ai_chance = 0
+name = "Revoking the Doctrine is not an option"
+command = { type = relation which = CAN value = 10 }
+command = { type = relation which = MEX value = 10 }
+command = { type = relation which = ARG value = 10 }
+command = { type = relation which = BRA value = 10 }
+command = { type = relation which = NIC value = 10 }
+command = { type = relation which = HON value = 10 }
+command = { type = relation which = VEN value = 10 }
+command = { type = relation which = COL value = 10 }
+command = { type = relation which = PRU value = 10 }
+command = { type = relation which = ECU value = 10 }
+command = { type = relation which = BOL value = 10 }
+command = { type = relation which = CHL value = 10 }
+command = { type = relation which = GUA value = 10 }
+command = { type = dissent value = 3 }
+command = { type = belligerence value = -1 }
+command = { type = sleepevent which = 55821 } #Reviving Monroe Doctrine
+}
+}
+
+event = {
+id = 55821
+random = no
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+flag = END_ACW
+event = 55820
+NOT = {
+exists = TEX
+exists = CSA
+exists = U10
+exists = CAL
+ispuppet = USA
+}
+}
+
+name = "Reviving the Monroe Doctrine"
+desc = "We should rethink Latin American policy as the most horrible conflict in North American history has just ended. Other powers installed Syndicalist and German friendly governments while we were fighting ourselves. Now it's time to go and make South America our playground again."
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1970 }
+
+
+action_a = {
+ai_chance = 100
+name = "Uncle Sam comes back to action!"
+command = { type = dissent value = -1 }
+command = { type = belligerence value = 3 }
+command = { type = relation which = CAN value = 10 }
+command = { type = relation which = MEX value = 10 }
+command = { type = relation which = ARG value = 10 }
+command = { type = relation which = BRA value = 10 }
+command = { type = relation which = NIC value = 10 }
+command = { type = relation which = HON value = 10 }
+command = { type = relation which = VEN value = 10 }
+command = { type = relation which = COL value = 10 }
+command = { type = relation which = PRU value = 10 }
+command = { type = relation which = ECU value = 10 }
+command = { type = relation which = BOL value = 10 }
+command = { type = relation which = CHL value = 10 }
+command = { type = relation which = GUA value = 10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Still not an option"
+command = { type = dissent value = 3 }
+command = { type = sleepevent which = 3450020 } #Help for Brasil from US
+command = { type = sleepevent which = 3450054 } #US and Central American War
+command = { type = sleepevent which = 3450052 } #US and Honduras Civil War
+}
+}
+##########################################################
+#US and Grand American War (support only for Brazil
+#Thanks to Straczynski!
+##########################################################
+event = {
+id = 3450050
+random = no
+country = USA
+style = 2
+
+decision = {
+flag = END_ACW
+war = { country = BRA country = ARG }
+NOT = {
+lost_national = { country = USA value = 5 }
+war = { country = USA country = BRA }
+war = { country = USA country = ARG }
+alliance = { country = USA country = ARG }
+alliance = { country = USA country = BRA }
+alliance = { country = USA country = GER } #to avoid confusion when US allied with Germany backs enemy of German ally
+ispuppet = USA
+government = communist
+}
+}
+
+decision_trigger = {
+control = { province = 1809 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1789 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1955 data = USA }
+control = { province = 1845 data = USA }
+NOT = {
+ispuppet = USA
+exists = TEX
+exists = CSA
+exists = CAL
+exists = U10
+}
+}
+
+trigger = {
+control = { province = 1809 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1789 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1955 data = USA }
+control = { province = 1845 data = USA }
+flag = END_ACW
+war = { country = BRA country = ARG }
+NOT = {
+war = { country = USA country = BRA }
+war = { country = USA country = ARG }
+alliance = { country = USA country = ARG }
+alliance = { country = USA country = BRA }
+alliance = { country = USA country = GER } #to avoid confusion when US allied with Germany backs enemy of German ally
+government = communist
+ispuppet = USA
+exists = TEX
+exists = CSA
+exists = CAL
+exists = U10
+government = communist
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "The Platean War - Our Involvement ?"
+desc = "The outbreak of Second South American War surprised US public opinion and government. We were too focused on absurd quarrels between our politicians that we haven't done anything to prevent new war conflict between La-Plata and Brazil. We need to decide which side of conflict shall we support and if it is necessary to become involved at all..."
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+action_a = {
+trigger = {
+government = democratic
+government = { type = democratic country = BRA }
+}
+name = "Democracies should help each other"
+ai_chance = 50
+command = { type = relation which = BRA value = 100 }
+command = { type = manpowerpool value = -20 }
+command = { type = money value = -50 }
+command = { type = dissent value = -2 }
+command = { type = event which = 3450051 where = BRA when = 4  }
+}
+
+action_b = {
+trigger = {
+flag = POSTCW_INT
+government = { type = fascist country = BRA }
+}
+name = "Better Integralist Brazil than La Plata"
+ai_chance = 50
+command = { type = relation which = BRA value = 100 }
+command = { type = manpowerpool value = -20 }
+command = { type = money value = -50 }
+command = { type = dissent value = 1 }
+command = { type = event which = 3450051 where = BRA when = 4  }
+}
+
+action_c = {
+trigger = {
+government = { type = communist country = BRA }
+NOT = {
+government = { type = communist country = ARG }
+}
+}
+name = "Better La Plata than syndicalism"
+ai_chance = 50
+command = { type = relation which = ARG value = 100 }
+command = { type = manpowerpool value = -20 }
+command = { type = dissent value = 1 }
+command = { type = money value = -50 }
+command = { type = event which = 3450102 where = ARG when = 4  }
+}
+
+action_d = {
+name = "Declare neutrality"
+ai_chance = 20
+command = { type = relation which = BRA value = -50 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 3450051
+country = BRA
+style = 2
+picture = "lend_lease"
+
+name = "Help from United States!"
+desc = "The United States decided to send us weapons and soldiers to contain aggressive La Platean regime. Now we can't lose this war."
+
+action_a = {
+name = "It's good to have such ally"
+command = { type = supplies value = 1000 }
+command = { type = money value = 50 }
+command = { type = manpowerpool value = 10 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = steal_tech which = USA }
+}
+}
+
+event = {
+id = 3450102
+country = ARG
+style = 2
+picture = "lend_lease"
+
+name = "Help from United States!"
+desc = "The United States decided to send us weapons and soldiers to contain aggressive La Platean regime. Now we can't lose this war."
+
+action_a = {
+name = "That's good to have such ally"
+command = { type = supplies value = 1000 }
+command = { type = money value = 50 }
+command = { type = manpowerpool value = 10 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = steal_tech which = USA }
+}
+}
+
+event = {
+id = 3450103
+random = no
+country = USA
+
+trigger = {
+event = 3450050
+NOT = {
+government = communist
+war = { country = BRA country = ARG }
+}
+OR = {
+event = 3450051
+event = 3450102
+}
+}
+
+name = "The End of the Platean War"
+desc = "For good or ill, the Platean War is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+style = 2
+picture = "foreign_volunteers"
+
+date = { day = 1 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great !"
+command = { trigger = { event = 3450051 } type = relation which = BRA value = 10 }
+command = { trigger = { event = 3450102 } type = relation which = ARG value = 10 }
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+#############################################################
+#US and Honduras Civil War
+#############################################################
+event = {
+id = 3450052
+random = no
+country = USA
+style = 2
+picture = "urbanwarfare5"
+
+name = "Honduras descends into civil war!"
+desc = "Radical socialists, syndicalists and communists started attacking legitimate government of Honduras. Our intelligence is sure that they are backed by Centroamerica. If we won't contain them, then United Provinces and other Central American countries will turn Communist and subvert our influence in Americas."
+
+action_a = {
+ai_chance = 50
+name = "We must contain Communism in Central America!"
+command = { type = dissent value = -2 }
+command = { type = manpowerpool value = -3 }
+command = { type = money value = -50 }
+command = { type = supplies value = -500 }
+command = { type = event which = 3450053 where = HON when = 3  }
+}
+
+action_c = {
+ai_chance = 50
+name = "Do nothing"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 3450053
+random = no
+country = HON
+style = 2
+picture = "foreign_volunteers"
+
+name = "Weapon and officers from USA!"
+desc = "Our friends from the USA sent us weapons and soldiers to contain aggressive Centroamerica."
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -3 }
+command = { type = money value = 25 }
+command = { type = supplies value = 300 }
+command = { type = manpowerpool value = 3 }
+}
+}
+############################################################
+#US and Central American War
+############################################################
+event = {
+id = 3450054
+random = no
+country = USA
+style = 2
+
+decision = {
+government = { type = communist country = GUA } # Centroamerica must be syndicalist
+OR = {
+AND = {
+war = { country = NIC country = GUA }
+NOT = {
+government = { type = communist country = NIC }
+}
+}
+AND = {
+war = { country = GUA country = MEX }
+NOT = {
+government = { type = communist country = MEX }
+}
+}
+}
+flag = END_ACW
+NOT = {
+ispuppet = USA
+lost_national = { country = USA value = 5 }
+war = { country = USA country = GUA }
+war = { country = USA country = NIC }
+war = { country = USA country = HON }
+war = { country = USA country = MEX }
+alliance = { country = NIC country = USA }
+alliance = { country = MEX country = USA }
+alliance = { country = HON country = USA }
+alliance = { country = GUA country = USA } #it shouldn't be possible but in case...
+}
+}
+
+decision_trigger = {
+control = { province = 1809 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1789 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1955 data = USA }
+control = { province = 1845 data = USA }
+NOT = {
+exists = TEX
+exists = CSA
+exists = CAL
+exists = U10
+}
+}
+
+trigger = {
+government = { type = communist country = GUA } # Centroamerica must be syndicalist
+OR = {
+AND = {
+war = { country = NIC country = GUA }
+NOT = {
+government = { type = communist country = NIC }
+}
+}
+AND = {
+war = { country = GUA country = MEX }
+NOT = {
+government = { type = communist country = MEX }
+}
+}
+}
+NOT = {
+lost_national = { country = USA value = 5 }
+war = { country = USA country = GUA }
+war = { country = USA country = NIC }
+war = { country = USA country = HON }
+war = { country = USA country = MEX }
+alliance = { country = NIC country = USA }
+alliance = { country = MEX country = USA }
+alliance = { country = HON country = USA }
+alliance = { country = GUA country = USA } #it shouldn't be possible but in case...
+}
+control = { province = 1809 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1789 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1955 data = USA }
+control = { province = 1845 data = USA }
+NOT = {
+ispuppet = USA
+exists = TEX
+exists = CSA
+exists = CAL
+exists = U10
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Central American War - Help for Anti-Syndicalist countries ?"
+desc = "Central America is engulfed by war between Centroamerica whose leaders want to paint whole region Red and other countries worried about peace and stability. We, as greatest and strongest state in both Americas have moral duty to stop Centroamerica from dominating this region. We must send people, weapons and money to force Central American nations to accept our domination. Defeating syndicalist Centroamerica is the first step. "
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+action = {
+trigger = {
+war = { country = NIC country = GUA }
+NOT = {
+war = { country = MEX country = GUA }
+}
+}
+name = "Support United Provinces and Honduras against Centroamerica"
+command = { type = supplies value = -750 }
+command = { type = money value = -75 }
+command = { type = manpowerpool value = -5 }
+command = { type = relation which = GUA value = -50 }
+command = { type = relation which = NIC value = 50 }
+command = { type = relation which = HON value = 50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = event which = 3450055 where = NIC when = 3  }
+command = { type = event which = 3450057 where = HON when = 3  }
+}
+
+action = {
+trigger = {
+war = { country = MEX country = GUA }
+NOT = {
+war = { country = NIC country = GUA }
+}
+}
+name = "Support Mexico and Honduras against Centroamerica"
+command = { type = supplies value = -1000 }
+command = { type = money value = -250 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GUA value = -50 }
+command = { type = relation which = MEX value = 50 }
+command = { type = relation which = HON value = 50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = event which = 3450056 where = MEX when = 3  }
+command = { type = event which = 3450057 where = HON when = 3  }
+}
+
+action = {
+trigger = {
+war = { country = MEX country = GUA }
+war = { country = NIC country = GUA }
+}
+name = "Support Mexico, Honduras and United Provinces against Centroamerica"
+command = { type = supplies value = -2000 }
+command = { type = money value = -200 }
+command = { type = manpowerpool value = -20 }
+command = { type = relation which = GUA value = -50 }
+command = { type = relation which = MEX value = 50 }
+command = { type = relation which = HON value = 50 }
+command = { type = relation which = NIC value = 50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = event which = 3450055 where = NIC when = 3  }
+command = { type = event which = 3450056 where = MEX when = 3  }
+command = { type = event which = 3450057 where = HON when = 3  }
+}
+
+action = {
+ai_chance = 15
+name = "Declare neutrality"
+command = { type = dissent value = 2 }
+command = { type = relation which = GUA value = 50 }
+command = { type = relation which = MEX value = -50 }
+command = { type = relation which = HON value = -50 }
+command = { trigger = { war = { country = GUA country = NIC } } type = relation which = NIC value = -50 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+event = {
+id = 3450055
+random = no
+country = NIC
+style = 2
+picture = "foreign_volunteers"
+
+name = "Help from United States"
+desc = "Our friends from United States sent us help to contain and if it is possible, to defeat Syndicalist Centroamerica. "
+
+action = {
+name = "Great!"
+command = { type = supplies value = 1250 }
+command = { type = money value = 50 }
+command = { type = manpowerpool value = 5 }
+}
+}
+
+event = {
+id = 3450056
+random = no
+country = MEX
+style = 2
+picture = "foreign_volunteers"
+
+name = "Help from United States"
+desc = "Our friends from United States sent us help to contain and if it is possible, to defeat Syndicalist Centroamerica. "
+
+action = {
+name = "Great!"
+command = { type = supplies value = 500 }
+command = { type = money value = 125 }
+command = { type = manpowerpool value = 5 }
+}
+}
+
+event = {
+id = 3450057
+random = no
+country = HON
+style = 2
+picture = "foreign_volunteers"
+
+name = "Help from United States"
+desc = "Our friends from United States sent us help to contain and if it is possible, to defeat Syndicalist Centroamerica. "
+
+action = {
+name = "Great!"
+command = { type = supplies value = 250 }
+command = { type = money value = 25 }
+command = { type = manpowerpool value = 5 }
+}
+}
+
+
+event = {
+id = 3450104
+random = no
+country = USA
+
+trigger = {
+event = 3450054
+NOT = {
+government = communist
+war = { country = NIC country = GUA }
+war = { country = HON country = GUA }
+war = { country = MEX country = GUA }
+}
+OR = {
+event = 3450055
+event = 3450056
+event = 3450057
+}
+}
+name = "The End of Central American War"
+desc = "For good or ill, the Central American War is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+style = 2
+picture = "foreign_volunteers"
+
+date = { day = 1 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great !"
+command = { trigger = { NOT = { government = { type = communist country = NIC } } } type = relation which = NIC value = 10 }	# only if United provinces are not syndicalist
+command = { trigger = { NOT = { government = { type = communist country = HON } } } type = relation which = HON value = 10 }	# only if Honduras is not syndicalist
+command = { trigger = { NOT = { government = { type = communist country = MEX } } } type = relation which = MEX value = 10 }	# only if Mexico are not syndicalist
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+######################################################
+#Office of Strategic Services
+######################################################
+event = {
+id = 3450080
+random = no
+country = USA
+style = 2
+
+trigger = {
+flag = END_ACW
+NOT = {
+ispuppet = USA
+exists = TEX
+exists = CSA
+}
+}
+
+date = { day = 1 month = january year = 1940 }
+offset = 60
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Office of Strategic Services"
+desc = "During the turbulence of the 30ies the Army intelligence services were clearly ineffective. To better organize espionage the US government decided to create the Office of Strategic Services which will deal with intelligence and counter-espionage. A lot of people raise objections to such move as they see the OSS as an agency which will be outside any control and too powerful in our state."
+picture = "Diet"
+
+action_a = {
+ai_chance = 95
+name = "The US Government shall have its host of spies!"
+command = { type = dissent value = 3 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = setflag which = USA_OSS }
+}
+
+action_b = {
+ai_chance = 5
+name = "Public opinion forces the US government to discard the OSS"
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -5 }
+}
+}
+######################################################
+#The University of Free World
+######################################################
+event = {
+id = 3450081
+random = no
+country = USA
+style = 2
+
+decision = {
+flag = END_ACW
+NOT = {
+ispuppet = USA
+government = fascist
+headofstate = 6208
+}
+}
+
+decision_trigger = {
+NOT = {
+exists = TEX
+exists = CSA
+}
+}
+
+trigger = {
+flag = END_ACW
+NOT = {
+ispuppet = USA
+government = fascist
+headofstate = 6208
+}
+}
+
+date = { day = 1 month = january year = 1940 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "The University of Free World"
+desc = "We must begin to exercise once again influence on the rest of the world. One of our main strengths is soft power and capital we have accumulated. As one of the greatest economical and cultural powers we should create a college, where future leaders of world will be educated. This is our chance to create new pro-American elites which will bring their countries closer to United States."
+picture = "invest_research"
+decision_picture = "decision_invest_research"
+
+action = {
+ai_chance = 70
+name = "Great idea! It should be supported by government!"
+command = { type = relation which = FRA value = -50 }
+command = { type = relation which = ENG value = -50 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RSI value = -50 }
+command = { type = money value = -25 }
+}
+
+action = {
+ai_chance = 30
+name = "It's better not to ignite another conflict"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 3450082
+random = no
+tag = { BOL BRA CUB CHL ECU GUA MEX PAR PRU U01 U27 U33 VEN }
+style = 2
+#this event won't trigger for La Plata as they are a pro-German country
+
+trigger = {
+OR = { government = fascist government = democratic }
+event = 3450081
+NOT = { government = communist }
+NOT = { local_flag = US_MILITARYAID local_flag = US_CIVILIAN_AID }
+}
+
+date = { day = 1 month = january year = 1940 }
+offset = 60
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "America opens the University of Free World for us"
+desc = "The University of Free World allows brightest students and officers from our country to learn in the US for free. While some people suspect US of training new puppets, it can be profitable for our country. "
+picture = "invest_research"
+
+action = {
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+ai_chance = 75
+name = "We are interested in civilian courses"
+command = { type = relation which = USA value = 100 }
+command = { type = money value = 300 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = local_setflag which = US_CIVILIAN_AID }
+}
+
+action = {
+trigger = {
+government = fascist
+ideology = paternal_autocrat
+}
+ai_chance = 75
+name = "We are interested in military courses"
+command = { type = add_leader_skill which = -1 value = 2 }
+command = { type = add_leader_skill which = -1 value = 2 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = max_organization which = land value = 3 }
+command = { type = morale which = land value = 2 }
+command = { type = attrition_mod value = 3 }
+command = { type = relation which = USA value = 100 }
+command = { type = local_setflag which = US_MILITARYAID }
+}
+
+action = {
+ai_chance = 50
+name = "This is too risky"
+command = { type = relation which = USA value = -100 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 3450101
+random = no
+style = 2
+tag = { BOL BRA CUB CHL ECU GUA MEX PAR PRU U01 U27 U33 VEN }
+
+trigger = {
+event = 3450100
+government = communist
+OR = {
+local_flag = US_MILITARYAID
+local_flag = US_CIVILIANAID
+}
+}
+
+date = { day = 1 month = january year = 1940 }
+offset = 60
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Withdrawal from the University of the Free World"
+desc = "Our new leftist government doesn't need American help. American trained specialist can go to America, they are not needed here!"
+picture = "invest_research"
+
+action = {
+name = "Building socialism needs sacrifices"
+command = { trigger = { local_flag = US_CIVILIANAID } type = construct which = ic where = -1 value = -1 }
+command = { trigger = { local_flag = US_CIVILIANAID } type = construct which = ic where = -1 value = -1 }
+command = { trigger = { local_flag = US_CIVILIANAID } type = construct which = ic where = -1 value = -1 }
+command = { trigger = { local_flag = US_CIVILIANAID } type = construct which = ic where = -1 value = -1 }
+command = { trigger = { local_flag = US_CIVILIANAID } type = construct which = ic where = -1 value = -1 }
+command = { trigger = { local_flag = US_MILITARYAID } type = max_organization which = land value = -3 }
+command = { trigger = { local_flag = US_MILITARYAID } type = morale which = land value = -2 }
+command = { trigger = { local_flag = US_MILITARYAID } type = attrition_mod value = -3 }
+command = { type = money value = -300 }
+command = { type = relation which = USA value = -150 }
+command = { type = dissent value = 2 }
+}
+}
+
+######################################################
+#Question about PSA:
+#When CAL is USA puppet - 906509 - 906515
+#When CAL is in alliance - 906516 - 905619
+######################################################
+#question about PSA
+######################################################
+event = {
+id = 906509
+random = no
+country = USA
+style = 2
+
+decision = {
+puppet = { country = CAL  country = USA }
+NOT = {
+ispuppet = USA
+}
+}
+
+decision_trigger = {
+NOT = {
+atwar = USA
+exists = TEX
+exists = CSA
+}
+}
+
+trigger = {
+puppet = { country = CAL  country = USA }
+NOT = {
+ispuppet = USA
+atwar = USA
+exists = TEX
+exists = CSA
+}
+}
+
+name = "Status of California"
+desc = "EVT_91840_DESC"
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+
+date = { day = 1 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 50
+name = "Demand immediate reincorporation of PSA!"
+command = { type = event which = 906510 where = CAL when = 1  }
+command = { type = relation which = CAL value = -40 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Leave it as it is"
+command = { trigger = { government = democratic } type = dissent value = -5 }
+command = { trigger = { NOT = { government = democratic } } type = dissent value = 1 }
+command = { type = relation which = CAL value = 40 }
+}
+}
+###
+###PSA response
+###
+event = {
+id = 906510
+random = no
+country = CAL
+persistent = yes
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Our independence is in danger !"
+desc = "The USA threatens us with a declaration of war if we don´t accept our reintegration into the United states. Are we ready to die defending our freedom or we will submit in hope of sparing our people the horrors of war ?"
+
+
+action_a = {
+ai_chance = 75
+name = "We will defend our freedom !"
+command = { trigger = { NOT = { alliance = { country = CAL country = USA } } } type = leave_alliance }
+command = { type = end_puppet }
+command = { type = event which = 906511 where = USA when = 1  }
+command = { trigger = { government = democratic } type = dissent value = -7 }
+command = { trigger = { NOT = { government = democratic } } type = dissent value = -2 }
+}
+
+action_b = {
+ai_chance = 25
+name = "Accept USA demands.."
+command = { trigger = { government = democratic } type = dissent value = 7 }
+command = { trigger = { NOT = { government = democratic } } type = dissent value = 2 }
+command = { type = event which = 906512 where = USA when = 1  }
+}
+}
+###
+###USA declaration of war
+###
+event = {
+id = 906511
+random = no
+country = USA
+persistent = yes
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Calfornia refuses our demands!"
+desc = "In response to our attempts aimed against soverignity of the PAcific states, the PSA Senate decided to free themselves from any ties to the United states. What shall we do ?"
+
+action_a = {
+ai_chance = 60
+name = "This means war!"
+command = { type = end_mastery which = CAL }
+command = { type = war which = CAL }
+command = { trigger = { government = democratic } type = dissent value = 7 }
+command = { trigger = { NOT = { government = democratic } } type = dissent value = 2 }
+command = { type = addclaim which = 1890 }
+command = { type = addclaim which = 1884 }
+command = { type = addclaim which = 1885 }
+command = { type = addclaim which = 1888 }
+command = { type = addclaim which = 1889 }
+command = { type = addclaim which = 1883 }
+command = { type = addclaim which = 1891 }
+command = { type = addclaim which = 1892 }
+command = { type = addclaim which = 1887 }
+command = { type = addclaim which = 1886 }
+command = { type = addclaim which = 1880 }
+command = { type = addclaim which = 1873 }
+command = { type = addclaim which = 1875 }
+command = { type = addclaim which = 1876 }
+command = { type = addclaim which = 1874 }
+command = { type = addclaim which = 1877 }
+command = { type = addclaim which = 1878 }
+command = { type = addclaim which = 1882 }
+command = { type = addclaim which = 1879 }
+command = { type = addclaim which = 1872 }
+command = { type = addclaim which = 1893 }
+command = { type = addclaim which = 1894 }
+command = { type = addclaim which = 1895 }
+command = { type = addclaim which = 1861 }
+command = { type = addclaim which = 1870 }
+command = { type = addclaim which = 1871 }
+command = { type = addclaim which = 1869 }
+command = { type = addclaim which = 1881 }
+command = { type = addclaim which = 2141 } #Alaska+Islands
+command = { type = addclaim which = 2147 }
+command = { type = addclaim which = 2140 }
+command = { type = addclaim which = 2174 }
+command = { type = addclaim which = 2142 }
+command = { type = addclaim which = 2139 }
+command = { type = addclaim which = 2143 }
+command = { type = addclaim which = 2144 }
+command = { type = addclaim which = 2145 }
+command = { type = addclaim which = 2146 }
+command = { type = addclaim which = 2150 }
+command = { type = addclaim which = 2151 }
+command = { type = addclaim which = 1734 }
+command = { type = addclaim which = 1736 }
+command = { type = addclaim which = 1737 }
+command = { type = addclaim which = 1735 }
+command = { type = addclaim which = 1738 }
+command = { type = addclaim which = 1739 }
+command = { type = addclaim which = 1673 }
+command = { type = addclaim which = 1745 }
+command = { type = addclaim which = 1747 }
+command = { type = addclaim which = 1751 }
+command = { type = addclaim which = 1733 }
+command = { type = end_non_aggression which = USA where = CAL }
+command = { type = end_non_aggression which = CAL where = USA }
+}
+
+action_b = {
+ai_chance = 15
+name = "We will stop any actions"
+command = { type = end_mastery which = CAL }
+command = { type = dissent value = 5 }
+command = { type = relation which = CAL value = 20 }
+}
+
+action_c = {
+ai_chance = 15
+name = "We will wait for a better time for war"
+command = { type = end_mastery which = CAL }
+command = { type = addclaim which = 1890 }
+command = { type = addclaim which = 1884 }
+command = { type = addclaim which = 1885 }
+command = { type = addclaim which = 1888 }
+command = { type = addclaim which = 1889 }
+command = { type = addclaim which = 1883 }
+command = { type = addclaim which = 1891 }
+command = { type = addclaim which = 1892 }
+command = { type = addclaim which = 1887 }
+command = { type = addclaim which = 1886 }
+command = { type = addclaim which = 1880 }
+command = { type = addclaim which = 1873 }
+command = { type = addclaim which = 1875 }
+command = { type = addclaim which = 1876 }
+command = { type = addclaim which = 1874 }
+command = { type = addclaim which = 1877 }
+command = { type = addclaim which = 1878 }
+command = { type = addclaim which = 1882 }
+command = { type = addclaim which = 1879 }
+command = { type = addclaim which = 1872 }
+command = { type = addclaim which = 1893 }
+command = { type = addclaim which = 1894 }
+command = { type = addclaim which = 1895 }
+command = { type = addclaim which = 1861 }
+command = { type = addclaim which = 1870 }
+command = { type = addclaim which = 1871 }
+command = { type = addclaim which = 1869 }
+command = { type = addclaim which = 1881 }
+command = { type = addclaim which = 2141 } #Alaska+Islands
+command = { type = addclaim which = 2147 }
+command = { type = addclaim which = 2140 }
+command = { type = addclaim which = 2174 }
+command = { type = addclaim which = 2142 }
+command = { type = addclaim which = 2139 }
+command = { type = addclaim which = 2143 }
+command = { type = addclaim which = 2144 }
+command = { type = addclaim which = 2145 }
+command = { type = addclaim which = 2146 }
+command = { type = addclaim which = 2150 }
+command = { type = addclaim which = 2151 }
+command = { type = addclaim which = 1734 }
+command = { type = addclaim which = 1736 }
+command = { type = addclaim which = 1737 }
+command = { type = addclaim which = 1735 }
+command = { type = addclaim which = 1738 }
+command = { type = addclaim which = 1739 }
+command = { type = addclaim which = 1673 }
+command = { type = addclaim which = 1745 }
+command = { type = addclaim which = 1747 }
+command = { type = addclaim which = 1751 }
+command = { type = addclaim which = 1733 }
+}
+}
+###
+###PSA submits
+###
+event = {
+id = 906512
+random = no
+country = USA
+persistent = yes
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The PSA submission"
+desc = "Seeing no other options, the PSA leadership was forced to accept our demands. The western coast in under our control once more !"
+
+
+action_a = {
+name = "Annex it!"
+command = { type = inherit which = CAL }
+command = { type = addcore which = 1890 }
+command = { type = addcore which = 1884 }
+command = { type = addcore which = 1885 }
+command = { type = addcore which = 1888 }
+command = { type = addcore which = 1889 }
+command = { type = addcore which = 1883 }
+command = { type = addcore which = 1891 }
+command = { type = addcore which = 1892 }
+command = { type = addcore which = 1887 }
+command = { type = addcore which = 1886 }
+command = { type = addcore which = 1880 }
+command = { type = addcore which = 1873 }
+command = { type = addcore which = 1875 }
+command = { type = addcore which = 1876 }
+command = { type = addcore which = 1874 }
+command = { type = addcore which = 1877 }
+command = { type = addcore which = 1878 }
+command = { type = addcore which = 1882 }
+command = { type = addcore which = 1879 }
+command = { type = addcore which = 1872 }
+command = { type = addcore which = 1893 }
+command = { type = addcore which = 1894 }
+command = { type = addcore which = 1895 }
+command = { type = addcore which = 1861 }
+command = { type = addcore which = 1870 }
+command = { type = addcore which = 1871 }
+command = { type = addcore which = 1869 }
+command = { type = addcore which = 1881 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2141 } #Alaska+Islands
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2147 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2140 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2142 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2139 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2143 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2144 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2145 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2146 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2150 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2151 }
+command = { trigger = { control = { province = 2142 data = USA } } type = addcore which = 2174 }
+command = { trigger = { control = { province = 1734 data = USA } } type = addcore which = 1734 } #Hawaii
+command = { trigger = { control = { province = 1734 data = USA } } type = addcore which = 1736 }
+command = { trigger = { control = { province = 1734 data = USA } } type = addcore which = 1737 }
+command = { trigger = { control = { province = 1734 data = USA } } type = addcore which = 1735 }
+command = { trigger = { control = { province = 1734 data = USA } } type = addcore which = 1738 }
+command = { type = dissent value = 2 }
+}
+}
+
+
+######################################################
+#PSA in the alliance with USA
+######################################################
+event = {
+id = 906516
+random = no
+country = USA
+style = 2
+
+decision = {
+alliance = { country = CAL country = USA }
+NOT = {
+ispuppet = USA
+ispuppet = CAL
+}
+}
+
+decision_trigger = {
+NOT = {
+atwar = USA
+exists = TEX
+exists = CSA
+}
+}
+
+trigger = {
+alliance = { country = CAL country = USA }
+NOT = {
+ispuppet = USA
+ispuppet = CAL
+atwar = USA
+exists = TEX
+exists = CSA
+}
+}
+
+
+name = "Fate of the PSA-USA alliance"
+desc = "After we won the Civil War, we can decide what to do about the PSA. Our governement is divded between supporters of PSA and isolationists who are reluctant about allying with California. A small minority in the Senate supported by high ranking officials in our military support a forcible solution which will lead to annexing the PSA."
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+
+date = { day = 1 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 45
+name = "Alliance is no longer needed !"
+command = { type = trigger which = 906517 }
+command = { type = leave_alliance }
+command = { type = relation which = CAL value = -40 }
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 45
+trigger = {
+flag = CAL_CIV_GOV
+government = democratic
+}
+name = "USA will support democratic allies !"
+command = { type = dissent value = -5 }
+command = { type = relation which = CAL value = 50 }
+}
+
+action_c = {
+ai_chance = 10
+name = "California has always had been in Union, so it shall be now !"
+command = { type = relation which = CAL value = -40 }
+command = { type = trigger which = 906510 }
+}
+}
+
+event = {
+id = 906517
+random = no
+country = CAL
+style = 2
+picture = "diplomatic_campaign"
+
+name = "USA dissolved alliance."
+desc = "USA decided to disband the alliance. Now we stand alone against our not-so friendly neighbours."
+
+action_a = {
+name = "We will remember this"
+command = { type = relation which = USA value = -50 }
+}
+}
+
+
+#####################################################
+#PSA and USA have no deals -
+#####################################################
+event = {
+id = 906520
+random = no
+country = USA
+style = 2
+
+decision = {
+government = democratic
+NOT = {
+ispuppet = USA
+ispuppet = CAL
+alliance = { country = CAL country = USA }
+}
+exists = CAL
+}
+
+decision_trigger = {
+NOT = {
+atwar = USA
+exists = TEX
+exists = CSA
+}
+}
+
+trigger ={
+government = democratic
+NOT = {
+atwar = USA
+ispuppet = USA
+ispuppet = CAL
+alliance = { country = CAL country = USA }
+exists = TEX
+exists = CSA
+}
+exists = CAL
+}
+
+name = "Fate of the West Coast"
+desc = "Now that the Combined Syndicates and the American Union State are defeated, we can introduce a policy regarding the Pacific States of America. PSA mostly consists of California, Oregon, and Washington. We have to clearly state whether we will try to subjugate the PSA, or we will recognize their independence."
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+date = { day = 1 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 15
+name = "PSA is a rebel state like the CSA or the AUS"
+command = { type = dissent value = 7 }
+command = { type = end_non_aggression which = USA where = CAL }
+command = { type = end_non_aggression which = CAL where = USA }
+command = { type = war which = CAL }
+command = { type = addclaim which = 1890 }
+command = { type = addclaim which = 1884 }
+command = { type = addclaim which = 1885 }
+command = { type = addclaim which = 1888 }
+command = { type = addclaim which = 1889 }
+command = { type = addclaim which = 1883 }
+command = { type = addclaim which = 1891 }
+command = { type = addclaim which = 1892 }
+command = { type = addclaim which = 1887 }
+command = { type = addclaim which = 1886 }
+command = { type = addclaim which = 1880 }
+command = { type = addclaim which = 1873 }
+command = { type = addclaim which = 1875 }
+command = { type = addclaim which = 1876 }
+command = { type = addclaim which = 1874 }
+command = { type = addclaim which = 1877 }
+command = { type = addclaim which = 1878 }
+command = { type = addclaim which = 1882 }
+command = { type = addclaim which = 1879 }
+command = { type = addclaim which = 1872 }
+command = { type = addclaim which = 1893 }
+command = { type = addclaim which = 1894 }
+command = { type = addclaim which = 1895 }
+command = { type = addclaim which = 1861 }
+command = { type = addclaim which = 1870 }
+command = { type = addclaim which = 1871 }
+command = { type = addclaim which = 1869 }
+command = { type = addclaim which = 1881 }
+command = { type = addclaim which = 2141 } #Alaska+Islands
+command = { type = addclaim which = 2147 }
+command = { type = addclaim which = 2140 }
+command = { type = addclaim which = 2174 }
+command = { type = addclaim which = 2142 }
+command = { type = addclaim which = 2139 }
+command = { type = addclaim which = 2143 }
+command = { type = addclaim which = 2144 }
+command = { type = addclaim which = 2145 }
+command = { type = addclaim which = 2146 }
+command = { type = addclaim which = 2150 }
+command = { type = addclaim which = 2151 }
+command = { type = addclaim which = 1734 }
+command = { type = addclaim which = 1736 }
+command = { type = addclaim which = 1737 }
+command = { type = addclaim which = 1735 }
+command = { type = addclaim which = 1738 }
+command = { type = addclaim which = 1739 }
+command = { type = addclaim which = 1673 }
+command = { type = addclaim which = 1745 }
+command = { type = addclaim which = 1747 }
+command = { type = addclaim which = 1751 }
+command = { type = addclaim which = 1733 }
+command = { type = sleepevent which = 906521 }
+}
+
+action_b = {
+ai_chance = 15
+name = "We won't attack them but we won't recognize them"
+command = { type = dissent value = 1 }
+command = { type = addclaim which = 1890 }
+command = { type = addclaim which = 1884 }
+command = { type = addclaim which = 1885 }
+command = { type = addclaim which = 1888 }
+command = { type = addclaim which = 1889 }
+command = { type = addclaim which = 1883 }
+command = { type = addclaim which = 1891 }
+command = { type = addclaim which = 1892 }
+command = { type = addclaim which = 1887 }
+command = { type = addclaim which = 1886 }
+command = { type = addclaim which = 1880 }
+command = { type = addclaim which = 1873 }
+command = { type = addclaim which = 1875 }
+command = { type = addclaim which = 1876 }
+command = { type = addclaim which = 1874 }
+command = { type = addclaim which = 1877 }
+command = { type = addclaim which = 1878 }
+command = { type = addclaim which = 1882 }
+command = { type = addclaim which = 1879 }
+command = { type = addclaim which = 1872 }
+command = { type = addclaim which = 1893 }
+command = { type = addclaim which = 1894 }
+command = { type = addclaim which = 1895 }
+command = { type = addclaim which = 1861 }
+command = { type = addclaim which = 1870 }
+command = { type = addclaim which = 1871 }
+command = { type = addclaim which = 1869 }
+command = { type = addclaim which = 1881 }
+command = { type = addclaim which = 2141 } #Alaska+Islands
+command = { type = addclaim which = 2147 }
+command = { type = addclaim which = 2140 }
+command = { type = addclaim which = 2174 }
+command = { type = addclaim which = 2142 }
+command = { type = addclaim which = 2139 }
+command = { type = addclaim which = 2143 }
+command = { type = addclaim which = 2144 }
+command = { type = addclaim which = 2145 }
+command = { type = addclaim which = 2146 }
+command = { type = addclaim which = 2150 }
+command = { type = addclaim which = 2151 }
+command = { type = addclaim which = 1734 }
+command = { type = addclaim which = 1736 }
+command = { type = addclaim which = 1737 }
+command = { type = addclaim which = 1735 }
+command = { type = addclaim which = 1738 }
+command = { type = addclaim which = 1739 }
+command = { type = addclaim which = 1673 }
+command = { type = addclaim which = 1745 }
+command = { type = addclaim which = 1747 }
+command = { type = addclaim which = 1751 }
+command = { type = addclaim which = 1733 }
+command = { type = relation which = CAL value = -20 }
+command = { type = sleepevent which = 906521 }
+}
+
+action_c = {
+ai_chance = 35
+name = "Recognize independence of the PSA"
+command = { type = dissent value = 5 }
+command = { type = relation which = CAL value = 50 }
+command = { type = sleepevent which = 906521 }
+}
+
+action_d = {
+ai_chance = 5
+name = "PSA could be our ally"
+trigger = {
+NOT = {
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = GER }
+alliance = { country = CAL country = RUS }
+alliance = { country = CAL country = JAP }
+}
+}
+command = { type = trigger which = 906522 }
+command = { type = dissent value = 6 }
+command = { type = relation which = CAL value = 100 }
+command = { type = sleepevent which = 906521 }
+}
+}
+
+event = {
+id = 906521
+random = no
+country = USA
+style = 2
+
+decision = {
+government = fascist
+NOT = {
+ispuppet = USA
+ispuppet = CAL
+alliance = { country = CAL country = USA }
+}
+exists = CAL
+}
+
+decision_trigger = {
+NOT = {
+atwar = USA
+exists = TEX
+exists = CSA
+}
+}
+
+trigger ={
+government = fascist
+NOT = {
+atwar = USA
+ispuppet = USA
+ispuppet = CAL
+alliance = { country = CAL country = USA }
+exists = TEX
+exists = CSA
+}
+exists = CAL
+}
+
+name = "California's future"
+desc = "Now that the Combined Syndicates and the American Union State are defeated, we can introduce a policy regarding the Pacific States of America. PSA mostly consists of California, Oregon, and Washington. We have to clearly state whether we will try to subjugate the PSA, or we will recognize their independence."
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+date = { day = 1 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 40
+name = "PSA is a rebel state like the CSA or the AUS"
+command = { type = dissent value = 2 }
+command = { type = end_non_aggression which = USA where = CAL }
+command = { type = end_non_aggression which = CAL where = USA }
+command = { type = war which = CAL }
+command = { type = addclaim which = 1890 }
+command = { type = addclaim which = 1884 }
+command = { type = addclaim which = 1885 }
+command = { type = addclaim which = 1888 }
+command = { type = addclaim which = 1889 }
+command = { type = addclaim which = 1883 }
+command = { type = addclaim which = 1891 }
+command = { type = addclaim which = 1892 }
+command = { type = addclaim which = 1887 }
+command = { type = addclaim which = 1886 }
+command = { type = addclaim which = 1880 }
+command = { type = addclaim which = 1873 }
+command = { type = addclaim which = 1875 }
+command = { type = addclaim which = 1876 }
+command = { type = addclaim which = 1874 }
+command = { type = addclaim which = 1877 }
+command = { type = addclaim which = 1878 }
+command = { type = addclaim which = 1882 }
+command = { type = addclaim which = 1879 }
+command = { type = addclaim which = 1872 }
+command = { type = addclaim which = 1893 }
+command = { type = addclaim which = 1894 }
+command = { type = addclaim which = 1895 }
+command = { type = addclaim which = 1861 }
+command = { type = addclaim which = 1870 }
+command = { type = addclaim which = 1871 }
+command = { type = addclaim which = 1869 }
+command = { type = addclaim which = 1881 }
+command = { type = addclaim which = 2141 } #Alaska+Islands
+command = { type = addclaim which = 2147 }
+command = { type = addclaim which = 2140 }
+command = { type = addclaim which = 2174 }
+command = { type = addclaim which = 2142 }
+command = { type = addclaim which = 2139 }
+command = { type = addclaim which = 2143 }
+command = { type = addclaim which = 2144 }
+command = { type = addclaim which = 2145 }
+command = { type = addclaim which = 2146 }
+command = { type = addclaim which = 2150 }
+command = { type = addclaim which = 2151 }
+command = { type = addclaim which = 1734 }
+command = { type = addclaim which = 1736 }
+command = { type = addclaim which = 1737 }
+command = { type = addclaim which = 1735 }
+command = { type = addclaim which = 1738 }
+command = { type = addclaim which = 1739 }
+command = { type = addclaim which = 1673 }
+command = { type = addclaim which = 1745 }
+command = { type = addclaim which = 1747 }
+command = { type = addclaim which = 1751 }
+command = { type = addclaim which = 1733 }
+command = { type = sleepevent which = 906520 }
+}
+
+action_b = {
+ai_chance = 35
+name = "We won't attack them but we won't recognize them"
+command = { type = dissent value = 4 }
+command = { type = addclaim which = 1890 }
+command = { type = addclaim which = 1884 }
+command = { type = addclaim which = 1885 }
+command = { type = addclaim which = 1888 }
+command = { type = addclaim which = 1889 }
+command = { type = addclaim which = 1883 }
+command = { type = addclaim which = 1891 }
+command = { type = addclaim which = 1892 }
+command = { type = addclaim which = 1887 }
+command = { type = addclaim which = 1886 }
+command = { type = addclaim which = 1880 }
+command = { type = addclaim which = 1873 }
+command = { type = addclaim which = 1875 }
+command = { type = addclaim which = 1876 }
+command = { type = addclaim which = 1874 }
+command = { type = addclaim which = 1877 }
+command = { type = addclaim which = 1878 }
+command = { type = addclaim which = 1882 }
+command = { type = addclaim which = 1879 }
+command = { type = addclaim which = 1872 }
+command = { type = addclaim which = 1893 }
+command = { type = addclaim which = 1894 }
+command = { type = addclaim which = 1895 }
+command = { type = addclaim which = 1861 }
+command = { type = addclaim which = 1870 }
+command = { type = addclaim which = 1871 }
+command = { type = addclaim which = 1869 }
+command = { type = addclaim which = 1881 }
+command = { type = addclaim which = 2141 } #Alaska+Islands
+command = { type = addclaim which = 2147 }
+command = { type = addclaim which = 2140 }
+command = { type = addclaim which = 2174 }
+command = { type = addclaim which = 2142 }
+command = { type = addclaim which = 2139 }
+command = { type = addclaim which = 2143 }
+command = { type = addclaim which = 2144 }
+command = { type = addclaim which = 2145 }
+command = { type = addclaim which = 2146 }
+command = { type = addclaim which = 2150 }
+command = { type = addclaim which = 2151 }
+command = { type = addclaim which = 1734 }
+command = { type = addclaim which = 1736 }
+command = { type = addclaim which = 1737 }
+command = { type = addclaim which = 1735 }
+command = { type = addclaim which = 1738 }
+command = { type = addclaim which = 1739 }
+command = { type = addclaim which = 1673 }
+command = { type = addclaim which = 1745 }
+command = { type = addclaim which = 1747 }
+command = { type = addclaim which = 1751 }
+command = { type = addclaim which = 1733 }
+command = { type = relation which = CAL value = -20 }
+command = { type = sleepevent which = 906520 }
+}
+
+action_c = {
+ai_chance = 15
+name = "Recognize independence of the PSA"
+command = { type = dissent value = 5 }
+command = { type = relation which = CAL value = 50 }
+command = { type = sleepevent which = 906520 }
+}
+
+action_d = {
+ai_chance = 10
+name = "PSA could be our ally"
+command = { type = trigger which = 906522 }
+command = { type = dissent value = 8 }
+command = { type = relation which = CAL value = 100 }
+command = { type = sleepevent which = 906520 }
+}
+}
+
+
+event = {
+id = 906522
+random = no
+country = CAL
+style = 2
+picture = "diplomatic_campaign"
+
+name = "USA proposes an alliance!"
+desc = "The leaders of the USA are eager to promote stability and peace in our region after the horrible Second Civil War. Despite calls to fight the rebels the USA is ready to form an alliance with us."
+
+action_a = {
+ai_chance = 75
+name = "Yes, of course!"
+command = { type = alliance which = USA }
+}
+
+action_b = {
+ai_chance = 5
+name = "Never!"
+command = { type = relation which = USA value = -100 }
+}
+
+action_c = {
+ai_chance = 20
+name = " How about a non-aggresion pact?"
+command = { type = trigger which = 906523 }
+}
+}
+
+event = {
+id = 906523
+random = no
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "California proposes a non-aggresion pact"
+desc = "It seems that the Californians are not ready to build a strong American alliance. They suggested a non-aggresion pact instead."
+
+action_a ={
+ai_chance = 75
+name = "Hpmh, we will take it"
+command = { type = non_aggression which = USA where = CAL }
+command = { type = relation which = CAL value = 50 }
+}
+
+action_b ={
+ai_chance = 20
+name = "No, it's not enough"
+command = { type = relation which = CAL value = -30 }
+}
+}
+
+
+
+
+
+
+
+###USA and Second Weltkrieg
+
+event = {
+id = 3450000
+random = no
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+decision = {
+war = { country = GER country = FRA }
+war = { country = CAN country = ENG }
+NOT = {
+government = communist
+alliance = { country = CAN country = USA }
+alliance = { country = GER country = CAN }
+}
+}
+
+
+
+decision_trigger = {
+NOT = {
+government = communist
+atwar = USA
+ispuppet = USA
+exists = TEX
+exists = CSA
+exists = CAL
+exists = U10
+}
+}
+
+trigger = {
+war = { country = GER country = FRA }
+war = { country = CAN country = ENG }
+NOT = {
+government = communist
+ispuppet = USA
+atwar = USA
+exists = TEX
+exists = CSA
+exists = CAL
+exists = U10
+alliance = { country = CAN country = USA }
+alliance = { country = GER country = CAN }
+}
+}
+
+date = { day = 1 month = january year = 1939 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "United States role in WWII"
+desc = "EVT_91855_DESC"
+
+action = {
+ai_chance = 40
+name = "We must join arms with the Entente"
+command = { type = dissent value = 15 }
+command = { type = sleepevent which = 3450006 }
+command = { type = sleepevent which = 3450011 }
+command = { type = set_relation which = CAN value = 200 }
+command = { type = trigger which = 3450001 }
+command = { type = domestic which = interventionism value = 4 }
+}
+
+action  = {
+ai_chance = 30
+trigger = {
+relation = { which = GER value = 100 }
+NOT = {
+lost_vp = { country = GER value = 10 }
+war = { country = CAN country = GER }
+}
+}
+name = "We should join Mitteleuropa"
+command = { type = dissent value = 20 }
+command = { type = sleepevent which = 3450006 }
+command = { type = sleepevent which = 3450011 }
+command = { type = set_relation which = GER value = 200 }
+command = { type = trigger which = 3450012 }
+command = { type = domestic which = interventionism value = 4 }
+}
+
+action  = {
+ai_chance = 50
+name = "Maximize support for Canada, but maintain our neutrality... for now."
+command = { type = setflag which = US_SUP_CAN }
+command = { type = supplies value = -1000 }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = relation which = CAN value = 50 }
+command = { type = industrial_modifier which = supplies value = -2 }
+command = { type = dissent value = 1 }
+command = { type = domestic which = interventionism value = 2 }
+}
+
+action = {
+ai_chance = 30
+trigger = {
+relation = { which = GER value = 10 }
+NOT = {
+lost_vp = { country = GER value = 10 }
+war = { country = CAN country = GER }
+}
+}
+name = "We should lend Germany a hand, but not join war...for now at least"
+command = { type = setflag which = US_SUP_GER }
+command = { type = supplies value = -1000 }
+command = { type = industrial_modifier which = supplies value = -10 }
+command = { type = relation which = GER value = 50 }
+command = { type = sleepevent which = 3450006 }
+command = { type = dissent value = 2 }
+command = { type = domestic which = interventionism value = 2 }
+}
+
+action  = {
+ai_chance = 20
+name = "Declare neutrality"
+command = { type = dissent value = -3 }
+command = { type = free_money value = 20 }
+command = { type = sleepevent which = 3450006 }
+command = { type = sleepevent which = 3450011 }
+command = { type = set_domestic which = interventionism value = 1 }
+}
+}
+
+event = {
+id = 3450001
+country = CAN
+style = 2
+picture = "Americanempire"
+
+name = "The US Wishes To Join the Entente"
+desc = "For the first time in history - the US supports Canada and the other nations of the Entente in their struggle to retake their homelands. Now, with the US military and economical might behind us the Syndicalist menace won't last long!"
+
+action_a = {
+name = "Onwards, in the defence of liberty!"
+ai_chance = 100
+command = { type = dissent value = -10 }
+command = { type = alliance which = USA }
+command = { type = set_relation which = USA value = 200 }
+command = { type = clrflag which = US_SUP_CAN }
+command = { type = trigger which = 3450014 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Rather not."
+command = { type = dissent value = 4 }
+command = { type = relation which = USA value = -100 }
+}
+}
+
+event = {
+id = 3450014
+random = no
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The US Joins the Entente"
+desc = "The nations of the Entente are happy to see us joining the war - Lafayette, we're on our way!"
+
+action_a = {
+name = "A great news !"
+command = { type = dissent value = -3 }
+command = { type = relation which = FRA value = -150 }
+command = { type = relation which = ENG value = -150 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = RUS } } type = relation which = RUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = relation which = SAF value = 150 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = HOL } } type = relation which = HOL value = 150 }
+command = { trigger = { alliance = { country = CAN country = IRE } } type = relation which = IRE value = 150 }
+command = { trigger = { alliance = { country = CAN country = ICL } } type = relation which = ICL value = 150 }
+command = { trigger = { alliance = { country = CAN country = ITA } } type = relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = relation which = GUY value = 150 }
+command = { type = end_trades which = ENG where = USA }
+command = { type = end_trades which = FRA where = USA }
+#maybe new ai?
+}
+}
+
+event = {
+id = 3450012
+country = GER
+style = 2
+picture = "diplomatic_campaign"
+
+name = "United States wants to join Mitteleuropa"
+desc = "For the first time in history - US supports Germany and countries of Mitteleuropa in struggle against Syndicalist Internationale. This unexpected alliance will remodel world into the shape we want."
+
+action_a = {
+name = "Great, now we can't lose this war"
+ai_chance = 100
+command = { type = dissent value = -10 }
+command = { type = alliance which = USA }
+command = { type = set_relation which = USA value = 200 }
+command = { type = clrflag which = US_SUP_GER }
+command = { type = trigger which = 3450013 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Rather not."
+command = { type = dissent value = 4 }
+command = { type = relation which = USA value = -100 }
+}
+}
+
+event = {
+id = 3450013
+random = no
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "United States joins Mitteleuropa"
+desc = "Germans are happy to see us joining the common cause - destroying the evil Syndicalists. Now we are part of Mittleeuropa"
+
+action_a = {
+name = "A great news !"
+command = { type = dissent value = -3 }
+command = { type = relation which = FRA value = -150 }
+command = { type = relation which = ENG value = -150 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = VIC value = -20 }
+command = { type = relation which = GER value = 200 }
+command = { trigger = { alliance = { country = GER country = UKR } } type = relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = GER country = BLR } } type = relation which = BLR value = 150 }
+command = { trigger = { alliance = { country = GER country = BUR } } type = relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = GER country = BEL } } type = relation which = BEL value = 150 }
+command = { trigger = { alliance = { country = GER country = U24 } } type = relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = GER country = U25 } } type = relation which = U25 value = 150 }
+command = { trigger = { alliance = { country = GER country = AUS } } type = relation which = AUS value = 150 }
+command = { trigger = { alliance = { country = GER country = OTT } } type = relation which = OTT value = 150 }
+command = { trigger = { alliance = { country = GER country = TRA } } type = relation which = TRA value = 150 }
+command = { trigger = { alliance = { country = GER country = ITA } } type = relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = GER country = CGX } } type = relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = GER country = VIE } } type = relation which = VIE value = 150 }
+command = { trigger = { alliance = { country = GER country = CSX } } type = relation which = CSX value = 150 }
+command = { trigger = { alliance = { country = GER country = RUS } } type = relation which = RUS value = 150 }
+command = { type = end_trades which = ENG where = USA }
+command = { type = end_trades which = FRA where = USA }
+#maybe new ai?
+}
+}
+
+event = {
+id = 3450002
+country = CAN
+persistent = yes
+style = 2
+picture = "lend_lease"
+
+trigger = {
+flag = US_SUP_CAN
+exists = USA
+OR = {
+war = { country = ENG country = CAN }
+war = { country = FRA country = CAN }
+war = { country = SPR country = CAN }
+war = { country = RSI country = CAN }
+}
+NOT = {
+ispuppet = USA
+ispuppet = CAN
+alliance = { country = USA country = CAN }
+war = { country = USA country = CAN }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Help from America!"
+
+desc = "Due to the largely isolationist nature of Americans, the United States can't join our alliance and participate in the war directly. However, our brothers in the US sent us large stocks of military material to help us in our fight against godless Syndicalism."
+action_a = {
+name = "Thank you, America!"
+command = { type = supplies value = 1000 }
+command = { type = steal_tech which = USA }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = 1 }
+}
+}
+
+event = {
+id = 3450003
+country = GER
+persistent = yes
+style = 2
+picture = "lend_lease"
+
+trigger = {
+flag = US_SUP_GER
+exists = USA
+OR = {
+war = { country = ENG country = GER }
+war = { country = FRA country = GER }
+war = { country = SPR country = GER }
+war = { country = RSI country = GER }
+}
+NOT = {
+ispuppet = USA
+ispuppet = GER
+alliance = { country = USA country = GER }
+war = { country = USA country = GER }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Help from America!"
+desc = "Due to largely isolationist nature of Americans and their war weariness after last civil war, United States can't join our alliance and participate in war directly, our brothers from US sent us large stocks of military material to help us in fight against godless syndicalism."
+
+action_a = {
+name = "Thank you America!"
+command = { type = supplies value = 1000 }
+command = { type = steal_tech which = USA }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = 1 }
+}
+}
+
+event = {
+id = 3450004
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+war = { country = USA country = TEX }
+war = { country = USA country = CSA }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Office of War Information"
+desc = "We need a bureau, whose primary task will be war-time propaganda. Top circles in Washington are convinced that we can't win this war, if we don't convince the population of the US that armed resistance against the federal government is futile."
+
+action_a = {
+ai_chance = 90
+name = "We need it"
+command = { type = dissent value = -2 }
+command = { type = domestic which = freedom value = -3 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = suppression which = police value = 10 }
+command = { type = money value = -100 }
+command = { type = belligerence which = USA value = 2 }
+}
+
+action_b = {
+ai_chance = 10
+name = "It's useless"
+command = { type = sleepevent which = 3450005 }
+command = { type = belligerence which = USA value = -2 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 3450005
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+event = 3450004
+NOT = {
+atwar = USA
+exists = TEX
+exists = CSA
+}
+flag = END_ACW
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Dissolving the Office of War Information ?"
+desc = "The Office of War Information did a lot of good job, however we need to reconsider it's further mantaining. We know that major conflict is going to break out in Europe and we may need the Office of War Information to convince US citizens that we should join this war."
+
+action_a = {
+ai_chance = 80
+name = "No, we may need it in the future"
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 20
+name = "Yes, we won't need it"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 3 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = sleepevent which = 3450006 }
+}
+
+action_c ={
+trigger = {
+government = fascist
+}
+ai_chance = 100
+name = "Change it into 'Bureau of Information'"
+command = { type = dissent value = 3 }
+command = { type = belligerence which = USA value = 5 }
+}
+}
+
+event = {
+id = 3450006
+country = USA
+style = 2
+save_date = yes
+picture = "diplomatic_campaign"
+
+trigger = {
+event = 3450005
+flag = US_SUP_CAN
+NOT = {
+atwar = USA
+ispuppet = USA
+government = communist
+alliance = { country = USA country = CAN }
+alliance = { country = USA country = GER }
+}
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Pro-Entete propaganda campaigns?"
+desc = "Due to significant resistance from our population we have decided to delay our admission into the Entente. Some government officials have suggested that we launch a propaganda campaign in favour of the Entente to cultivate popular support for our wish to join them."
+
+action_a = {
+ai_chance = 99
+name = "We shall convince Americans"
+command = { type = dissent value = 3 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = sleepevent which = 3450011 }
+command = { type = belligerence which = USA value = 2 }
+command = { type = relation which = CAN value = 50 }
+}
+
+action_b = {
+ai_chance = 1
+name = "There is no need for this"
+command = { type = dissent value = -4 }
+command = { type = sleepevent which = 3450011 }
+}
+}
+
+event = {
+id = 3450011
+country = USA
+style = 2
+save_date = yes
+picture = "diplomatic_campaign"
+
+trigger = {
+event = 3450005
+flag = US_SUP_GER
+NOT = {
+atwar = USA
+ispuppet = USA
+government = communist
+alliance = { country = USA country = CAN }
+alliance = { country = USA country = GER }
+}
+}
+
+date = { day = 1 month = january year = 1938 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Pro-Mitteleuropa propaganda campaigns?"
+desc = "Due to significant resistance from our population we have decided to delay our admission into Mitteleuropa alliance to unspecified future. Isolationism of our citizens is a reason why we need pro-Mitteleuropa propaganda campaign. Many citizens of US don't see any sense in joining the war and it will be job for the Office of War Information to convince them otherwise. "
+
+action_a = {
+ai_chance = 99
+name = "We shall convince Americans"
+command = { type = dissent value = 3 }
+command = { type = peacetime_ic_mod value = 30 }
+command = { type = sleepevent which = 3450006 }
+command = { type = belligerence which = USA value = 2 }
+command = { type = relation which = GER value = 50 }
+}
+
+action_b = {
+ai_chance = 1
+name = "There is no need for this"
+command = { type = dissent value = -4 }
+command = { type = sleepevent which = 3450006 }
+}
+}
+
+
+
+event = {
+id = 3450019
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+event = { id = 3450006 days = 300 }
+NOT = {
+government = communist
+atwar = USA
+ispuppet = USA
+alliance = { country = CAN country = USA }
+alliance = { country = GER country = CAN }
+}
+}
+
+name = "Pro-Entete campaign was succesful"
+desc = "Succesfull propaganda campaign by the Office of war information has managed to convince majority of american population that our entry into ongoing conflict on the side of Mitteleuropa alliance is necessary in order to secure better future for America, free from shadows of syndicalism ! Now we can finally request formal admission into Entete alliance !"
+
+action_a = {
+name = "Finalize our admission into Entete"
+ai_chance = 100
+command = { type = dissent value = 1 }
+command = { type = set_relation which = CAN value = 200 }
+command = { type = trigger which = 3450001 }
+command = { type = domestic which = interventionism value = 4 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Continue with material support"
+command = { type = dissent value = -1 }
+command = { type = relation which = CAN value = -40 }
+}
+}
+
+event = {
+id = 3450020
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+event = { id = 3450011 days = 300 }
+NOT = {
+government = communist
+atwar = USA
+ispuppet = USA
+alliance = { country = CAN country = USA }
+alliance = { country = GER country = CAN }
+}
+}
+
+name = "Pro-Mitteleuropa campaign was succesful"
+desc = "Succesfull propaganda campaign by the Office of war information has managed to convince majority of american population that our entry into ongoing conflict on the side of Mitteleuropa alliance is necessary in order to secure better future for America, free from shadows of syndicalism ! Now we can finally request formal admission into Mitteleuropa alliance !"
+
+action_a = {
+name = "Finalize our admission into Mitteleuropa"
+ai_chance = 100
+command = { type = dissent value = 4 }
+command = { type = set_relation which = GER value = 200 }
+command = { type = trigger which = 3450012 }
+command = { type = domestic which = interventionism value = 4 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Continue with material support"
+command = { type = dissent value = -2 }
+command = { type = relation which = GER value = -40 }
+}
+}
+
+event = {
+id = 3450007
+country = USA
+style = 2
+picture = "Syndicalists"
+
+trigger = {
+atwar = GER
+OR = {
+AND = {
+control = { province = 131 data = SOV }
+government = { type = communist country = SOV }
+}
+AND = {
+control = { province = 131 data = FRA }
+government = { type = communist country = FRA }
+}
+AND = {
+control = { province = 131 data = RSI }
+government = { type = communist country = RSI }
+}
+AND = {
+control = { province = 131 data = ENG }
+government = { type = communist country = ENG }
+}
+AND = {
+control = { province = 131 data = GEO }
+government = { type = communist country = GEO }
+} #why not? :P
+}
+NOT = {
+atwar = yes
+government = communist
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Syndies in Cologne!"
+desc = "Our reporters sent us horrible news. Syndicalist forces have entered the Cologne City, which means that Imperial Germany is likely to lose this war. This is a sign that we shouldn't stay out of war."
+
+action_a = {
+name = "Oh no!"
+command = { type = peacetime_ic_mod value = 40 }
+command = { type = belligerence which = USA value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}
+
+event = {
+id = 3450008
+country = USA
+style = 2
+picture = "Syndicalists"
+
+trigger = {
+atwar = GER
+OR = {
+AND = {
+control = { province = 163 data = SOV }
+government = { type = communist country = SOV }
+}
+AND = {
+control = { province = 163 data = FRA }
+government = { type = communist country = FRA }
+}
+AND = {
+control = { province = 163 data = RSI }
+government = { type = communist country = RSI }
+}
+AND = {
+control = { province = 163 data = ENG }
+government = { type = communist country = ENG }
+}
+AND = {
+control = { province = 163 data = GEO }
+government = { type = communist country = GEO }
+} #why not? :P
+}
+NOT = {
+atwar = yes
+government = communist
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Berlin has fallen!"
+desc = "Our reporters sent us horrible news. Syndicalist forces have entered Berlin which means that Imperial Germany lost this war. This is a sign that we should lend either Canada or German Empire a hand to save world from Syndicalist threat."
+
+action_a = {
+name = "Oh no!"
+command = { type = peacetime_ic_mod value = 60 }
+command = { type = belligerence which = USA value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}
+
+
+event = {
+id = 3450022
+country = USA
+style = 2
+picture = "Syndicalists"
+
+trigger = {
+atwar = VIC
+OR = {
+AND = {
+control = { province = 727 data = SOV }
+government = { type = communist country = SOV }
+}
+AND = {
+control = { province = 727 data = FRA }
+government = { type = communist country = FRA }
+}
+AND = {
+control = { province = 727 data = RSI }
+government = { type = communist country = RSI }
+}
+AND = {
+control = { province = 727 data = ENG }
+government = { type = communist country = ENG }
+}
+AND = {
+control = { province = 727 data = GEO }
+government = { type = communist country = GEO }
+} #why not? :P
+}
+OR = {
+AND = {
+control = { province = 163 data = SOV }
+government = { type = communist country = SOV }
+}
+AND = {
+control = { province = 163 data = FRA }
+government = { type = communist country = FRA }
+}
+AND = {
+control = { province = 163 data = RSI }
+government = { type = communist country = RSI }
+}
+AND = {
+control = { province = 163 data = ENG }
+government = { type = communist country = ENG }
+}
+AND = {
+control = { province = 163 data = U14 }
+government = { type = communist country = U14 }
+}
+AND = {
+control = { province = 163 data = U31 }
+government = { type = communist country = U31 }
+}
+AND = {
+control = { province = 163 data = GEO }
+government = { type = communist country = GEO }
+} #why not? :P
+}
+NOT = {
+atwar = yes
+government = communist
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 90
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Algiers has fallen!"
+desc = "The Syndicalist forces have entered Algiers, which means that they are going to conquer Africa. Our indifference is going to cost us a lot!"
+
+action_a = {
+name = "Oh no!"
+command = { type = peacetime_ic_mod value = 70 }
+command = { type = belligerence which = USA value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}
+
+
+
+event = {
+id = 3450009
+country = USA
+style = 2
+picture = "Americanempire"
+
+trigger = {
+OR = {
+war = { country = CAN country = SOV }
+war = { country = CAN country = FRA }
+war = { country = CAN country = RSI }
+war = { country = CAN country = ENG }
+war = { country = CAN country = GEO }
+}
+lost_national = { country = CAN value = 10 }
+OR = {
+control = { province = 2132 data = SOV }
+control = { province = 2132 data = FRA }
+control = { province = 2132 data = RSI }
+control = { province = 2132 data = ENG }
+control = { province = 2132 data = GEO }
+}
+OR = {
+control = { province = 2134 data = SOV }
+control = { province = 2134 data = FRA }
+control = { province = 2134 data = RSI }
+control = { province = 2134 data = ENG }
+control = { province = 2134 data = GEO }
+}
+OR = {
+control = { province = 2117 data = SOV }
+control = { province = 2117 data = FRA }
+control = { province = 2117 data = RSI }
+control = { province = 2117 data = ENG }
+control = { province = 2117 data = GEO }
+}
+NOT = {
+alliance = { country = CAN country = SOV }
+alliance = { country = CAN country = FRA }
+alliance = { country = CAN country = RSI }
+alliance = { country = CAN country = ENG }
+alliance = { country = CAN country = GEO }
+atwar = USA
+ispuppet = CAN
+ispuppet = USA
+exists = CSA
+exists = TEX
+government = communist
+}
+control = { province = 1809 data = USA }
+control = { province = 1832 data = USA }
+control = { province = 1955 data = USA }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "Syndies in North America!"
+desc = "We have received reports that Syndicalist forces have just landed on Canadian shores. This means that entire North American continent is in grave danger of falling into clutches of syndicalist. We must take an decisive action unless we want to be the next target of syndicalist hordes !"
+
+action_a = {
+ai_chance = 100
+name = "Send an ultimatum"
+command = { trigger = { war = { country = CAN country = SOV }  OR = { control = { province = 2132 data = SOV } control = { province = 2134 data = SOV } control = { province = 2117 data = SOV } } } type = trigger which = 3450010 }
+command = { trigger = { war = { country = CAN country = FRA }  OR = { control = { province = 2132 data = FRA } control = { province = 2134 data = FRA } control = { province = 2117 data = FRA } } } type = trigger which = 3450015 }
+command = { trigger = { war = { country = CAN country = RSI }  OR = { control = { province = 2132 data = RSI } control = { province = 2134 data = RSI } control = { province = 2117 data = RSI } } } type = trigger which = 3450016 }
+command = { trigger = { war = { country = CAN country = ENG }  OR = { control = { province = 2132 data = ENG } control = { province = 2134 data = ENG } control = { province = 2117 data = ENG } } } type = trigger which = 3450017 }
+command = { trigger = { war = { country = CAN country = GEO }  OR = { control = { province = 2132 data = GEO } control = { province = 2134 data = GEO } control = { province = 2117 data = GEO } } } type = trigger which = 3450018 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Do nothing"
+command = { type = dissent value = 20 }
+}
+}
+
+event = {
+id = 3450010
+country = SOV
+style = 2
+picture = "American_Infantry"
+
+name = "Americans send us the ultimatum"
+desc = "We have received an ultimatum from diplomatic representative of the United States. They demand withdrawal of our forces from Canada and immediate ceasefire between us and Canadians unless we want to face full might of the United states against us. What should we do ?"
+
+action_a = {
+ai_chance = 99
+name = "Ignore ultimatum, continue with advance !"
+command = { type = war which = USA }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 1
+name = "OK, we sign a ceasefire."
+command = { type = peace which = CAN value = 0 }
+command = { type = relation which = USA value = 50 }
+command = { type = relation which = CAN value = 50 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 3450015
+country = FRA
+style = 2
+picture = "American_Infantry"
+
+name = "Americans send us the ultimatum"
+desc = "We have received an ultimatum from diplomatic representative of the United States. They demand withdrawal of our forces from Canada and immediate ceasefire between us and Canadians unless we want to face full might of the United states against us. What should we do ?"
+
+action_a = {
+ai_chance = 99
+name = "Ignore ultimatum, continue with advance !"
+command = { type = war which = USA }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 1
+name = "OK, we sign a ceasefire."
+command = { type = peace which = CAN value = 0 }
+command = { type = relation which = USA value = 50 }
+command = { type = relation which = CAN value = 50 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 3450016
+country = RSI
+style = 2
+picture = "American_Infantry"
+
+name = "Americans send us the ultimatum"
+desc = "We have received an ultimatum from diplomatic representative of the United States. They demand withdrawal of our forces from Canada and immediate ceasefire between us and Canadians unless we want to face full might of the United states against us. What should we do ?"
+
+action_a = {
+ai_chance = 99
+name = "Ignore ultimatum, continue with advance !"
+command = { type = war which = USA }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 1
+name = "OK, we sign a ceasefire."
+command = { type = peace which = CAN value = 0 }
+command = { type = relation which = USA value = 50 }
+command = { type = relation which = CAN value = 50 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 3450017
+country = ENG
+style = 2
+picture = "American_Infantry"
+
+name = "Americans send us the ultimatum"
+desc = "We have received an ultimatum from diplomatic representative of the United States. They demand withdrawal of our forces from Canada and immediate ceasefire between us and Canadians unless we want to face full might of the United states against us. What should we do ?"
+
+action_a = {
+ai_chance = 99
+name = "Ignore ultimatum, continue with advance !"
+command = { type = war which = USA }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 1
+name = "OK, we sign a ceasefire."
+command = { type = peace which = CAN value = 0 }
+command = { type = relation which = USA value = 50 }
+command = { type = relation which = CAN value = 50 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 3450018
+country = GEO
+style = 2
+picture = "American_Infantry"
+
+name = "Americans send us the ultimatum"
+desc = "We have received an ultimatum from diplomatic representative of the United States. They demand withdrawal of our forces from Canada and immediate ceasefire between us and Canadians unless we want to face full might of the United states against us. What should we do ?"
+
+action_a = {
+ai_chance = 99
+name = "Ignore ultimatum, continue with advance !"
+command = { type = war which = USA }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 1
+name = "OK, we sign a ceasefire."
+command = { type = peace which = CAN value = 0 }
+command = { type = relation which = USA value = 50 }
+command = { type = relation which = CAN value = 50 }
+command = { type = dissent value = 3 }
+}
+}
+

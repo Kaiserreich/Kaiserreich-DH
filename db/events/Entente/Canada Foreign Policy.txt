@@ -1,0 +1,2656 @@
+#############################################
+###### Treaty with Ireland #
+#############################################
+event = {
+id = 106000
+random = no
+country = CAN
+
+decision = {
+exists = IRE
+NOT = {
+government = communist
+ispuppet = CAN
+ispuppet = IRE
+war = { country = CAN country = IRE }
+alliance = { country = IRE country = FRA }
+}
+}
+
+decision_trigger = {
+NOT = {
+war = { country = CAN country = USA }
+war = { country = CAN country = CSA }
+war = { country = CAN country = TEX }
+war = { country = CAN country = CAL }
+}
+OR = {
+flag = IRE_ENT # set by event in Additional_UoB.txt
+alliance = { country = CAN country = IRE }
+non_aggression = { country = CAN country = IRE }
+}
+}
+
+trigger = {
+exists = IRE
+NOT = {
+government = communist
+war = { country = CAN country = USA }
+war = { country = CAN country = CSA }
+war = { country = CAN country = TEX }
+war = { country = CAN country = CAL }
+ispuppet = CAN
+ispuppet = IRE
+war = { country = CAN country = IRE }
+alliance = { country = IRE country = FRA }
+}
+OR = {
+flag = IRE_ENT # set by event in Additional_UoB.txt
+alliance = { country = CAN country = IRE }
+non_aggression = { country = CAN country = IRE }
+}
+}
+
+name = "Treaty with Ireland"
+desc = "With the Syndicalists awakening all across the world, it is crucial for the Entente to help potential allies whenever possible. With Irish sympathies swayed towards Canada, a possibility to gain a strong foothold just under the socialists' noses appears."
+style = 2
+picture = "ireland"
+decision_picture = "decision_ersatz_conversion"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Propose a military buildup plan to Ireland"
+ai_chance = 30
+command = { type = relation which = IRE value = 15 }
+command = { type = trigger which = 106011 }
+}
+
+action_b = {
+name = "Propose economic aid to Ireland"
+ai_chance = 30
+command = { type = relation which = IRE value = 15 }
+command = { type = trigger which = 106012 }
+}
+
+action_c = {
+name = "Propose full-scale aid"
+ai_chance = 30
+command = { type = relation which = IRE value = 30 }
+command = { type = trigger which = 106013 }
+}
+
+action_d = {
+name = "We have nothing to spare"
+ai_chance = 10
+command = { type = relation which = IRE value = -5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 106001
+random = no
+country = IRE
+
+name = "The Canadians propose help"
+desc = "The Canadians have proposed help in strenghtening the Irish military. According to the proposed treaty, Canada is obliged to construct a number of ships for the Republican Navy, as well as provide weapons and expertise for land and air forces. In exchange, Ireland is to pay a symbolic price - to the help's scale, of course."
+style = 2
+picture = "Supplies2"
+
+action = {
+name = "Very well, with the Entente we stand!"
+ai_chance = 65
+trigger = {
+flag = CAN_IRE_MILALI
+}
+command = { type = alliance which = CAN }
+command = { type = relation which = CAN value = 150 }
+command = { type = money value = -250 }
+command = { type = supplies value = 1000 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106004 } # Buildup initiated
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 35
+trigger = {
+flag = CAN_IRE_MILALI
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+
+action = {
+name = "Very well, they can have military access"
+ai_chance = 75
+trigger = {
+flag = CAN_IRE_MILACS
+}
+command = { type = access which = CAN }
+command = { type = relation which = CAN value = 75 }
+command = { type = money value = -250 }
+command = { type = supplies value = 1000 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106004 } # Buildup initiated
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 25
+trigger = {
+flag = CAN_IRE_MILACS
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+
+action = {
+name = "Very well, we shall both benefit from this"
+ai_chance = 100
+trigger = {
+flag = CAN_IRE_MILNON
+}
+command = { type = relation which = CAN value = 35 }
+command = { type = money value = -250 }
+command = { type = supplies value = 1000 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106004 } # Buildup initiated
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 0
+trigger = {
+flag = CAN_IRE_MILNON
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+}
+
+event = {
+id = 106002
+random = no
+country = IRE
+
+name = "The Canadians propose help"
+desc = "The Canadians have proposed help in strenghtening the Irish military. According to the proposed treaty, Canada is obliged to send a number of industrial machines, as well as to provide us with technology and licences needed to produce our own."
+style = 2
+picture = "Supplies2"
+
+action = {
+name = "Very well, with the Entente we stand!"
+ai_chance = 55
+trigger = {
+flag = CAN_IRE_ECOALI
+}
+command = { type = alliance which = CAN }
+command = { type = relation which = CAN value = 150 }
+command = { type = money value = -250 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106005 } # Confirmation
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 45
+trigger = {
+flag = CAN_IRE_ECOALI
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+
+action = {
+name = "Very well, they can have military access"
+ai_chance = 75
+trigger = {
+flag = CAN_IRE_ECOACS
+}
+command = { type = access which = CAN }
+command = { type = relation which = CAN value = 75 }
+command = { type = money value = -250 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106005 } # Confirmation
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 25
+trigger = {
+flag = CAN_IRE_ECOACS
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+
+action = {
+name = "Very well, we shall both benefit from this"
+ai_chance = 100
+trigger = {
+flag = CAN_IRE_ECONON
+}
+command = { type = relation which = CAN value = 35 }
+command = { type = money value = -250 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106005 } # Confirmation
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 0
+trigger = {
+flag = CAN_IRE_ECONON
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+}
+
+event = {
+id = 106003
+random = no
+country = IRE
+
+name = "The Canadians propose help"
+desc = "The Canadians have proposed help in strenghtening the Irish military. According to the proposed treaty, Canada is obliged to send a number of industrial machines, as well as provide us with technology and licences needed to produce our own. Canada is also obliged to construct a number of ships for the Republican Navy, plus weapons for land and air forces. In exchange, Ireland is to pay a symbolic price - to the help's scale, of course."
+style = 2
+picture = "Supplies2"
+
+action = {
+name = "Very well, with the Entente we stand!"
+ai_chance = 75
+trigger = {
+flag = CAN_IRE_FULALI
+}
+command = { type = alliance which = CAN }
+command = { type = relation which = CAN value = 150 }
+command = { type = money value = -350 }
+command = { type = supplies value = 1000 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106006 } # Buildup initiated + confirmation
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 25
+trigger = {
+flag = CAN_IRE_FULALI
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+
+action = {
+name = "Very well, they can have military access"
+ai_chance = 90
+trigger = {
+flag = CAN_IRE_FULACS
+}
+command = { type = access which = CAN }
+command = { type = relation which = CAN value = 75 }
+command = { type = money value = -350 }
+command = { type = supplies value = 1000 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106006 } # Buildup initiated + confirmation
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 10
+trigger = {
+flag = CAN_IRE_FULACS
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+
+action = {
+name = "Very well, we shall both benefit from this"
+ai_chance = 100
+trigger = {
+flag = CAN_IRE_FULNON
+}
+command = { type = relation which = CAN value = 35 }
+command = { type = money value = -350 }
+command = { type = supplies value = 1000 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = steal_tech which = CAN }
+command = { type = trigger which = 106006 } # Buildup initiated + confirmation
+}
+
+action = {
+name = "Sadly, we must reject"
+ai_chance = 0
+trigger = {
+flag = CAN_IRE_FULNON
+}
+command = { type = relation which = CAN value = -5 }
+command = { type = trigger which = 106007 } # Offer turned down
+}
+}
+
+event = {
+id = 106004
+random = no
+country = CAN
+
+name = "The Irish accept our offer"
+desc = "The Irish have agreed to our offer. According to the treaty, we are to supply them with four cruisers, a dozen destroyers, and a number of aircraft and armour."
+style = 2
+picture = "Supplies2"
+
+action_a = {
+name = "Begin the construction, then!"
+command = { type = supplies value = -1500 }
+command = { type = money value = 250 }
+command = { type = industrial_modifier which = total value = -15 }
+command = { type = setflag which = CAN_IRE_buildup }
+command = { type = clrflag which = CAN_IRE_MILALI }
+command = { type = clrflag which = CAN_IRE_MILACS }
+command = { type = clrflag which = CAN_IRE_MILNON }
+}
+}
+
+event = {
+id = 106005
+random = no
+country = CAN
+
+name = "The Irish accept our offer"
+desc = "The Irish have agreed to our offer. According to the treaty, we are to supply industrial machines and licences required to construct additional ones in Ireland."
+style = 2
+picture = "Supplies2"
+
+action_a = {
+name = "Very well then"
+command = { type = supplies value = -500 }
+command = { type = money value = 250 }
+command = { type = clrflag which = CAN_IRE_ECOALI }
+command = { type = clrflag which = CAN_IRE_ECOACS }
+command = { type = clrflag which = CAN_IRE_ECONON }
+}
+}
+
+event = {
+id = 106006
+random = no
+country = CAN
+
+name = "The Irish accept our offer"
+desc = "The Irish have agreed to our offer. According to the treaty, we are to supply industrial machines and licences required to constructed additional ones in Ireland. Additionally, we are obliged to construct and deliver four cruisers, a dozen destroyers, and a number of aircraft and armour."
+style = 2
+picture = "Supplies2"
+
+action_a = {
+name = "Begin the construction, then!"
+command = { type = supplies value = -2000 }
+command = { type = money value = 250 }
+command = { type = industrial_modifier which = total value = -15 }
+command = { type = setflag which = CAN_IRE_buildup }
+command = { type = clrflag which = CAN_IRE_FULALI }
+command = { type = clrflag which = CAN_IRE_FULACS }
+command = { type = clrflag which = CAN_IRE_FULNON }
+}
+}
+
+event = {
+id = 106007
+random = no
+country = CAN
+
+name = "The Irish reject our offer"
+desc = "Unfortunately, the Irish decided to turn our offer down. Still, our obligations towards Ireland remain the same."
+style = 2
+picture = "ireland"
+
+action_a = {
+name = "Oh well..."
+command = { type = relation which = IRE value = -5 }
+command = { type = clrflag which = CAN_IRE_MILALI }
+command = { type = clrflag which = CAN_IRE_MILACS }
+command = { type = clrflag which = CAN_IRE_MILNON }
+command = { type = clrflag which = CAN_IRE_ECOALI }
+command = { type = clrflag which = CAN_IRE_ECOACS }
+command = { type = clrflag which = CAN_IRE_ECONON }
+command = { type = clrflag which = CAN_IRE_FULALI }
+command = { type = clrflag which = CAN_IRE_FULACS }
+command = { type = clrflag which = CAN_IRE_FULNON }
+}
+}
+
+event = {
+id = 106008
+random = no
+country = CAN
+
+trigger = {
+flag = CAN_IRE_buildup
+NOT = {
+event = 106010 # Buildup aborted
+}
+}
+
+name = "Delivery to Ireland is ready"
+desc = "We have finally finished preparations of all the material ordered by the Irish. The transport is ready to be delivered."
+style = 2
+picture = "dd_transfer"
+
+date = { day = 0 month = june year = 1938 }
+offset = 300
+deathdate = { day = 29 month = december year = 1939 }
+
+action_a = {
+name = "OK"
+command = { type = clrflag which = CAN_IRE_buildup }
+command = { type = industrial_modifier which = total value = 15 }
+command = { type = supplies value = -500 }
+command = { type = trigger which = 106009 }
+}
+}
+
+event = {
+id = 106009
+random = no
+country = IRE
+
+name = "Canadian weapons arrive"
+desc = "The ships, armour, and aircraft we have ordered in Canada have finally reached our ports. Apart from a squadron of fighters and bombers and a number of tanks, we have recieved four cruisers and a dozen destroyers."
+style = 2
+picture = "dd_transfer"
+
+action_a = {
+name = "Splendid"
+command = { type = supplies value = 500 }
+command = { type = add_division value = heavy_cruiser when = 4 }
+command = { type = add_division value = heavy_cruiser when = 4 }
+command = { type = add_division value = light_cruiser when = 4 }
+command = { type = add_division value = light_cruiser when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = interceptor when = 7 }
+command = { type = add_division value = tactical_bomber when = 4 }
+command = { type = add_division value = light_armor when = 1 }
+}
+}
+
+event = {
+id = 106010
+random = no
+country = CAN
+
+trigger = {
+flag = CAN_IRE_buildup
+NOT = {
+event = 106008 # Buildup completed
+}
+OR = {
+NOT = {
+exists = IRE
+}
+war = { country = CAN country = IRE }
+alliance = { country = IRE country = ENG }
+alliance = { country = IRE country = FRA }
+alliance = { country = IRE country = CSA }
+alliance = { country = IRE country = GER }
+ispuppet = IRE
+}
+}
+
+name = "Delivery to Ireland is not possible"
+desc = "Unfortunately, with Ireland no longer able or willing to receive our aid, the whole programme had to be aborted. Luckily, the equipment and craft already produced remains in our hands and is ready to be used."
+style = 2
+picture = "dd_transfer"
+
+date = { day = 0 month = june year = 1938 }
+offset = 5
+deathdate = { day = 29 month = december year = 1939 }
+
+action_a = {
+name = "Better than nothing"
+command = { type = clrflag which = CAN_IRE_buildup }
+command = { type = industrial_modifier which = total value = 15 }
+command = { type = add_division value = heavy_cruiser when = 4 }
+command = { type = add_division value = heavy_cruiser when = 4 }
+command = { type = add_division value = light_cruiser when = 4 }
+command = { type = add_division value = light_cruiser when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = destroyer when = 4 }
+command = { type = add_division value = interceptor when = 7 }
+command = { type = add_division value = tactical_bomber when = 4 }
+command = { type = add_division value = light_armor when = 1 }
+}
+}
+
+
+event = {
+id = 106011
+random = no
+country = CAN
+
+name = "Terms of the treaty"
+desc = "Now that we have decided to aid Ireland's military, what shall we request in exchange?"
+style = 2
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Request that Ireland join the Entente"
+ai_chance = 50
+trigger = {
+NOT = {
+alliance = { country = IRE country = CAN }
+}
+}
+command = { type = setflag which = CAN_IRE_MILALI }
+command = { type = trigger which = 106001 }
+}
+
+action_b = {
+name = "Request military access in Ireland"
+ai_chance = 40
+trigger = {
+NOT = {
+alliance = { country = IRE country = CAN }
+}
+}
+command = { type = setflag which = CAN_IRE_MILACS }
+command = { type = trigger which = 106001 }
+}
+
+action_c = {
+name = "Make no requests"
+ai_chance = 10
+command = { type = setflag which = CAN_IRE_MILNON }
+command = { type = trigger which = 106001 }
+}
+}
+
+event = {
+id = 106012
+random = no
+country = CAN
+
+name = "Terms of the treaty"
+desc = "Now that we have decided to aid Ireland's economy, what shall we request in exchange?"
+style = 2
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Request that Ireland join the Entente"
+ai_chance = 30
+trigger = {
+NOT = {
+alliance = { country = IRE country = CAN }
+}
+}
+command = { type = setflag which = CAN_IRE_ECOALI }
+command = { type = trigger which = 106002 }
+}
+
+action_b = {
+name = "Request military access in Ireland"
+ai_chance = 60
+trigger = {
+NOT = {
+alliance = { country = IRE country = CAN }
+}
+}
+command = { type = setflag which = CAN_IRE_ECOACS }
+command = { type = trigger which = 106002 }
+}
+
+action_c = {
+name = "Make no requests"
+ai_chance = 10
+command = { type = setflag which = CAN_IRE_ECONON }
+command = { type = trigger which = 106002 }
+}
+}
+
+event = {
+id = 106013
+random = no
+country = CAN
+
+name = "Terms of the treaty"
+desc = "Now that we have decided to aid Ireland's military and economy, what shall we request in exchange?"
+style = 2
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Request that Ireland join the Entente"
+ai_chance = 60
+trigger = {
+NOT = {
+alliance = { country = IRE country = CAN }
+}
+}
+command = { type = setflag which = CAN_IRE_FULALI }
+command = { type = trigger which = 106003 }
+}
+
+action_b = {
+name = "Request military access in Ireland"
+ai_chance = 35
+trigger = {
+NOT = {
+alliance = { country = IRE country = CAN }
+}
+}
+command = { type = setflag which = CAN_IRE_FULACS }
+command = { type = trigger which = 106003 }
+}
+
+action_c = {
+name = "Make no requests"
+ai_chance = 5
+command = { type = setflag which = CAN_IRE_FULNON }
+command = { type = trigger which = 106003 }
+}
+}
+
+#############################################
+###### Disturbing development in the USA # made by viader
+#############################################
+
+event = {
+id = 106014
+country = CAN
+style = 2
+picture = "diplomatic_campaign"
+
+date = { day = 20 month = july year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Disturbances in the USA!"
+desc = "EVT_9988_DESC"
+
+action_a = {
+ai_chance = 20
+name = "Send a note to President Hoover"
+command = { type = trigger which = 106016 } #American response
+}
+
+action_b = {
+ai_chance = 80
+name = "Send a private letter to MacArthur!"
+command = { type = trigger which = 106017 }
+}
+}
+
+event = {
+id = 106015
+country = CAN
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+flag = MAC_SECURITY
+}
+
+date = { day = 20 month = july year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The USA hands the power to the Army"
+desc = "General MacArthur has been entrusted with the safety of the United States Government. While he seems to be a vainglorious braggart, MacArthur is sure to stamp out violent Syndicalism should it arise. While the Canadian government would have preferred it if a democratic transfer of power to a new civilian president had happened, we can now rest easy that someone we can do business with is in power."
+
+action_a = {
+ai_chance = 100
+name = "MacArthur is a son of a bitch, but he is our kind of son of a bitch!"
+command = { type = trigger which = 106018 }
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+ai_chance = 0
+name = "We shall restore democracy!"
+command = { trigger = { non_aggression = { country = CAN country = USA } } type = non_aggression which = CAN where = USA }
+command = { type = war which = USA }
+command = { type = dissent value = 10 }
+}
+
+action_c = {
+ai_chance = 0
+name = "Boycott the USA, close the border!"
+command = { type = dissent value = 5 }
+command = { type = relation which = USA value = -100 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+command = { type = construct which = ic where = -1 value = -1 }
+}
+}
+
+event = {
+id = 106016
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Edward VIII sends a letter to Hoover"
+desc = "With rising unstability in US, the new king of British Empire, Edward VIII decided to send a private letter to President Herbert Hoover. While the media don't know the contents of the letter, it is speculated that King warned the President that in case of 'choosing the radicals' Canada and her allies will need to take drastic measures, as they don't want to spoil the stability on the Canadian-American border."
+
+action_a ={
+name = "Yeah, and what I can do?"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 106017
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Edward VIII sends a letter to Mac Arthur"
+desc = "Internal problems of the US have led King Edward VIII and PM King to talk to the man behind the strongest political environment in US - the Army. In a private letter Edward VIII has said that he wants stability for America, and he doesn't view a putsch to save America as something which Canada would not support. The letter emphasis the solidarity between Canada and US, in these dark times."
+
+action_a = {
+name = "Uh oh"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 106018
+country = USA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Canada supports us!"
+desc = "The British King, Edward VIII, said yesterday, via his loyal contacts in Washington, that he fully understands that special situations need special measures such as throwing away the Constitution. That being said, he said that the Canadian military won't help Americans in figthing the enemies of the regime but they can try to arrest all enemies of the American regime."
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -1 }
+command = { type = relation value = 40 which = CAN }
+}
+}
+
+
+event = {
+id = 106019
+country = CAN
+style = 2
+picture = "English_recruitment_office"
+decision_picture = "decision_english_declaration_war"
+
+decision = {
+war = { country = GER country = ENG }
+NOT = {
+atwar = CAN
+ispuppet = CAN
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+war = { country = GER country = ENG }
+NOT = {
+atwar = CAN
+ispuppet = CAN
+}
+
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Union of Britain at War."
+desc = "EVT_91839_DESC"
+
+action_a = {
+name = "Attack!"
+ai_chance = 90
+command = { type = war which = ENG }
+}
+
+action_b = {
+name = "Attack the German Empire instead !"
+ai_chance = 10
+command = { type = war which = GER }
+command = { trigger = { alliance = { country = CAN country = VIC } NOT = { alliance = { country = CON country = FRA } } } type = war which = CON }
+}
+
+action_c = {
+name = "No! We are not strong enough."
+ai_chance = 0
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+
+#############################################################
+#Canada and Honduras Civil War
+#############################################################
+event = {
+id = 106020 # triggered by event in Honduras.txt
+random = no
+country = CAN
+style = 2
+picture = "urbanwarfare5"
+
+name = "Honduras descends into civil war!"
+desc = "Radical socialists, syndicalists and communists started attacking legitimate government of Honduras. Our intelligence is sure that they are backed by Centroamerica. If we won't contain them, then United Provinces and other Central American countries will turn Communist and subvert our influence in Americas."
+
+action_a = {
+ai_chance = 75
+name = "Honduras cannot fall!"
+command = { type = dissent value = -2 }
+command = { type = manpowerpool value = -3 }
+command = { type = money value = -50 }
+command = { type = supplies value = -500 }
+command = { type = event which = 106021 where = HON when = 2  }
+}
+
+action_c = {
+ai_chance = 25
+name = "Do nothing"
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 106021
+random = no
+country = HON
+style = 2
+picture = "militaryparade1"
+
+name = "Weapons and officers from Canada!"
+desc = "Our friends from Canada sent us weapons and soldiers to contain aggressive Centroamerica"
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -2 }
+command = { type = money value = 25 }
+command = { type = supplies value = 300 }
+command = { type = manpowerpool value = 3 }
+}
+}
+
+############################################################
+#Canada and Central American War
+############################################################
+event = {
+id = 106022
+random = no
+country = CAN
+
+decision = {
+government = { type = communist country = GUA } # Centroamerica must be syndicalist
+OR = {
+AND = {
+war = { country = NIC country = GUA }
+NOT = {
+government = { type = communist country = NIC }
+}
+}
+AND = {
+war = { country = GUA country = MEX }
+NOT = {
+government = { type = communist country = MEX }
+}
+}
+}
+control = { province = 2108 data = CAN } # Ottawa
+control = { province = 2111 data = CAN } # Toronto
+NOT = {
+ispuppet = CAN
+war = { country = CAN country = GUA }
+war = { country = CAN country = NIC }
+war = { country = CAN country = HON }
+alliance = { country = NIC country = CAN }
+alliance = { country = MEX country = CAN }
+alliance = { country = HON country = CAN }
+alliance = { country = GUA country = CAN } #it shouldn't be possible but in case...
+}
+}
+
+decision_trigger = {
+NOT = {
+lost_national = { country = CAN value = 5 }
+exists = CSA
+war = { country = CAN country = USA }
+war = { country = CAN country = CAL }
+war = { country = CAN country = TEX }
+}
+}
+
+trigger = {
+government = { type = communist country = GUA } # Centroamerica must be syndicalist
+OR = {
+AND = {
+war = { country = NIC country = GUA }
+NOT = {
+government = { type = communist country = NIC }
+}
+}
+AND = {
+war = { country = GUA country = MEX }
+NOT = {
+government = { type = communist country = MEX }
+}
+}
+}
+control = { province = 2108 data = CAN } # Ottawa
+control = { province = 2111 data = CAN } # Toronto
+NOT = {
+ispuppet = CAN
+lost_national = { country = CAN value = 5 }
+exists = CSA
+war = { country = CAN country = GUA }
+war = { country = CAN country = NIC }
+war = { country = CAN country = MEX }
+war = { country = CAN country = CSA }
+war = { country = CAN country = USA }
+war = { country = CAN country = CAL }
+war = { country = CAN country = TEX }
+alliance = { country = NIC country = CAN }
+alliance = { country = MEX country = CAN }
+alliance = { country = HON country = CAN }
+alliance = { country = GUA country = CAN } #it shouldn't be possible but in case...
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Central American War - Help for Anti-Syndicalist countries ?"
+desc = "The Central American War opens us new possibilities to fight Syndicalist backed regime of Centroamerica. If we won't help Honduras and other countries, then whole region will fall to godless Communists. We must stop Syndicalists before they march to Ottawa!"
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+action = {
+trigger = {
+war = { country = NIC country = GUA }
+NOT = {
+war = { country = MEX country = GUA }
+}
+}
+name = "Support United Provinces and Honduras against Centroamerica"
+command = { type = supplies value = -750 }
+command = { type = money value = -75 }
+command = { type = manpowerpool value = -5 }
+command = { type = relation which = GUA value = -50 }
+command = { type = relation which = NIC value = 50 }
+command = { type = relation which = HON value = 50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = event which = 106024 where = NIC when = 1  }
+command = { type = event which = 106025 where = HON when = 1  }
+}
+
+action = {
+trigger = {
+war = { country = MEX country = GUA }
+NOT = {
+war = { country = NIC country = GUA }
+}
+}
+name = "Support Mexico and Honduras against Centroamerica"
+command = { type = supplies value = -1000 }
+command = { type = money value = -250 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = GUA value = -50 }
+command = { type = relation which = MEX value = 50 }
+command = { type = relation which = HON value = 50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = event which = 106023 where = MEX when = 1  }
+command = { type = event which = 106025 where = HON when = 1  }
+}
+
+action = {
+trigger = {
+war = { country = MEX country = GUA }
+war = { country = NIC country = GUA }
+}
+name = "Support Mexico, Honduras and United Provinces against Centroamerica"
+command = { type = supplies value = -2000 }
+command = { type = money value = -200 }
+command = { type = manpowerpool value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = GUA value = -50 }
+command = { type = relation which = MEX value = 50 }
+command = { type = relation which = HON value = 50 }
+command = { type = relation which = NIC value = 50 }
+command = { type = event which = 106023 where = MEX when = 1  }
+command = { type = event which = 106024 where = NIC when = 1  }
+command = { type = event which = 106025 where = HON when = 1  }
+}
+
+action = {
+ai_chance = 15
+name = "Declare neutrality"
+command = { type = dissent value = 1 }
+command = { type = relation which = GUA value = 50 }
+command = { type = relation which = MEX value = -50 }
+command = { type = relation which = HON value = -50 }
+command = { trigger = { war = { country = GUA country = NIC } } type = relation which = NIC value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 106023
+random = no
+country = MEX
+style = 2
+picture = "foreign_volunteers"
+
+name = "Help from Canada"
+desc = "Our friends from Canada sent us weapons and soldiers to contain aggressive Centroamerica"
+
+action = {
+name = "Great!"
+command = { type = supplies value = 1250 }
+command = { type = money value = 125 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+event = {
+id = 106024
+random = no
+country = NIC
+style = 2
+picture = "foreign_volunteers"
+
+name = "Help from Canada"
+desc = "Our friends from Canada sent us weapons and soldiers to contain aggressive Centroamerica"
+
+action = {
+name = "Great!"
+command = { type = supplies value = 500 }
+command = { type = money value = 50 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+event = {
+id = 106025
+random = no
+country = HON
+style = 2
+picture = "foreign_volunteers"
+
+name = "Help from Canada"
+desc = "Our friends from Canada sent us weapons and soldiers to contain aggressive Centroamerica"
+
+action = {
+name = "Great!"
+command = { type = supplies value = 250 }
+command = { type = money value = 25 }
+command = { type = manpowerpool value = 10 }
+}
+}
+
+
+event = {
+id = 106026
+random = no
+country = CAN
+
+trigger = {
+event = 106022
+NOT = {
+government = communist
+war = { country = NIC country = GUA }
+war = { country = HON country = GUA }
+war = { country = MEX country = GUA }
+}
+OR = {
+event = 106023
+event = 106024
+event = 106025
+}
+}
+name = "The End of Central American War"
+desc = "For good or ill, the Central American War is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+style = 2
+picture = "foreign_volunteers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great !"
+command = { trigger = { NOT = { government = { type = communist country = NIC } } } type = relation which = NIC value = 10 }	# only if United provinces are not syndicalist
+command = { trigger = { NOT = { government = { type = communist country = HON } } } type = relation which = HON value = 10 }	# only if Honduras is not syndicalist
+command = { trigger = { NOT = { government = { type = communist country = MEX } } } type = relation which = MEX value = 10 }	# only if Mexico are not syndicalist
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+### AI invasion bonus
+event = {
+id = 106027
+random = no
+country = CAN
+
+trigger = {
+OR = {
+AND = {
+control = { province = 27 data = CAN } #Portsmouth
+owned = { province = 27 data = ENG }
+}
+AND = {
+control = { province = 19 data = CAN } #Bristol
+owned = { province = 19 data = ENG }
+}
+AND = {
+control = { province = 26 data = CAN } #Dover
+owned = { province = 26 data = ENG }
+}
+AND = {
+control = { province = 22 data = CAN } #Cardiff
+owned = { province = 22 data = ENG }
+}
+AND = {
+control = { province = 17 data = CAN } #Manchester
+owned = { province = 17 data = ENG }
+}
+}
+war = { country = ENG country = CAN }
+ai = yes
+}
+
+name = "Operation Monck"
+picture = "boat"
+style = 2
+desc = "Finally, the forces of the King return home!"
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+name = "The second Glorious Revolution begins!"
+command = { trigger = { control = { province = 27 data = CAN } } type = add_corps which = "1st British Invasion Corps" value = land when = -1 where = 27 }
+command = { trigger = { control = { province = 27 data = CAN } } type = add_division which = "1st Tank Brigade 'Royal Cavaliers'" value = light_armor when = 1 }
+command = { trigger = { control = { province = 27 data = CAN } } type = add_division which = "24th Infantry Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 27 data = CAN } } type = add_division which = "3rd Black Guard Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 27 data = CAN } } type = add_division which = "Prince Albert's Rifles" value = infantry when = 5 }
+command = { trigger = { control = { province = 27 data = CAN } } type = add_division which = "1st Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 27 data = CAN } } type = add_division which = "2nd Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 19 data = CAN } } type = add_corps which = "1st British Invasion Corps" value = land when = -1 where = 19 }
+command = { trigger = { control = { province = 19 data = CAN } } type = add_division which = "1st Tank Brigade 'Royal Cavaliers'" value = light_armor when = 1 }
+command = { trigger = { control = { province = 19 data = CAN } } type = add_division which = "24th Infantry Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 19 data = CAN } } type = add_division which = "3rd Black Guard Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 19 data = CAN } } type = add_division which = "Prince Albert's Rifles" value = infantry when = 5 }
+command = { trigger = { control = { province = 19 data = CAN } } type = add_division which = "1st Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 19 data = CAN } } type = add_division which = "2nd Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 26 data = CAN } } type = add_corps which = "1st British Invasion Corps" value = land when = -1 where = 26 }
+command = { trigger = { control = { province = 26 data = CAN } } type = add_division which = "1st Tank Brigade 'Royal Cavaliers'" value = light_armor when = 1 }
+command = { trigger = { control = { province = 26 data = CAN } } type = add_division which = "24th Infantry Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 26 data = CAN } } type = add_division which = "3rd Black Guard Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 26 data = CAN } } type = add_division which = "Prince Albert's Rifles" value = infantry when = 5 }
+command = { trigger = { control = { province = 26 data = CAN } } type = add_division which = "1st Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 26 data = CAN } } type = add_division which = "2nd Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 22 data = CAN } } type = add_corps which = "1st British Invasion Corps" value = land when = -1 where = 22 }
+command = { trigger = { control = { province = 22 data = CAN } } type = add_division which = "1st Tank Brigade 'Royal Cavaliers'" value = light_armor when = 1 }
+command = { trigger = { control = { province = 22 data = CAN } } type = add_division which = "24th Infantry Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 22 data = CAN } } type = add_division which = "3rd Black Guard Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 22 data = CAN } } type = add_division which = "Prince Albert's Rifles" value = infantry when = 5 }
+command = { trigger = { control = { province = 22 data = CAN } } type = add_division which = "1st Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 22 data = CAN } } type = add_division which = "2nd Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 17 data = CAN } } type = add_corps which = "1st British Invasion Corps" value = land when = -1 where = 17 }
+command = { trigger = { control = { province = 17 data = CAN } } type = add_division which = "1st Tank Brigade 'Royal Cavaliers'" value = light_armor when = 1 }
+command = { trigger = { control = { province = 17 data = CAN } } type = add_division which = "24th Infantry Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 17 data = CAN } } type = add_division which = "3rd Black Guard Division" value = infantry when = 5 }
+command = { trigger = { control = { province = 17 data = CAN } } type = add_division which = "Prince Albert's Rifles" value = infantry when = 5 }
+command = { trigger = { control = { province = 17 data = CAN } } type = add_division which = "1st Guard Division" value = d_01 when = 5 }
+command = { trigger = { control = { province = 17 data = CAN } } type = add_division which = "2nd Guard Division" value = d_01 when = 5 }
+command = { type = dissent value = -5 }
+command = { type = transport_pool which = CAN value = 200 }
+command = { type = escort_pool which = CAN value = 100 }
+command = { type = manpowerpool value = 200 }
+command = { type = supplies value = 5000 }
+}
+}
+
+
+### Occupying Greenland
+
+event = {
+id = 106028
+picture = "british_naval_reinforcements"
+decision_picture = "decision_mornarica"
+style = 2
+country = CAN
+
+decision = {
+control = { province = 1783 data = DEN } #Greenland
+NOT = {
+ispuppet = CAN
+participant = { country = DEN value = 1 } #Denmark isn't in the Entente
+war = { country = CAN country = DEN }
+lost_national = { value = 10 }
+}
+}
+
+decision_trigger = {
+OR = {
+AND = {
+control = { province = 217 data = FRA } #Aalborg
+control = { province = 220 data = FRA } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = FRA country = DEN }
+}
+AND = {
+control = { province = 217 data = ENG } #Aalborg
+control = { province = 220 data = ENG } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = ENG country = DEN }
+}
+AND = {
+control = { province = 217 data = RUS } #Aalborg
+control = { province = 220 data = RUS } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = RUS country = DEN }
+}
+AND = {
+control = { province = 217 data = SOV } #Aalborg
+control = { province = 220 data = SOV } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = SOV country = DEN }
+}
+AND = {
+control = { province = 217 data = GER } #Aalborg
+control = { province = 220 data = GER } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = GER country = DEN }
+}
+}
+}
+
+trigger = {
+control = { province = 1783 data = DEN } #Greenland
+OR = {
+AND = {
+control = { province = 217 data = FRA } #Aalborg
+control = { province = 220 data = FRA } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = FRA country = DEN }
+}
+AND = {
+control = { province = 217 data = ENG } #Aalborg
+control = { province = 220 data = ENG } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = ENG country = DEN }
+}
+AND = {
+control = { province = 217 data = RUS } #Aalborg
+control = { province = 220 data = RUS } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = RUS country = DEN }
+}
+AND = {
+control = { province = 217 data = SOV } #Aalborg
+control = { province = 220 data = SOV } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = SOV country = DEN }
+}
+AND = {
+control = { province = 217 data = GER } #Aalborg
+control = { province = 220 data = GER } #Aarhus
+owned = { province = 217 data = DEN } #Aalborg
+owned = { province = 220 data = DEN } #Aarhus
+war = { country = GER country = DEN }
+}
+}
+NOT = {
+ispuppet = CAN
+participant = { country = DEN value = 1 } #Denmark isn't in the Entente
+war = { country = CAN country = DEN }
+lost_national = { value = 10 }
+}
+}
+
+name = "Occupying the Danish North Atlantic Possessions"
+desc = "Mainland Denmark is threatened by imminent occupation by hostile forces, leaving the Danish North Atlantic colonies wide open for potential invasion as well. The government is adamant that the forces hostile to our state can’t be allowed a foothold so close to Canadian homewaters and has thus begun drafting plans for a pre-emptive occupation of the territories in question."
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 100
+name = "Do it!"
+command = { type = belligerence which = CAN value = 2 }
+command = { type = event which = 106029 where = DEN when = 1 } #Danish reaction
+command = { type = relation which = DEN value = -50 }
+command = { type = relation which = GER value = -50 }
+}
+
+action = {
+ai_chance = 0
+name = "Remember the vikings? We should leave this well alone"
+command = { type = relation which = DEN value = 25 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 106029
+picture = "british_naval_reinforcements"
+style = 2
+country = DEN
+
+name = "Canada Occupies the Danish North Atlantic Possessions"
+desc = "Amidst the panic caused by the enemy onslaught, our representative in America, Henrik Kauffmann, has reported to us that Canadian troops are about to occupy the Atlantic parts of the Rigsfallesskab. Disaster!"
+
+action = {
+ai_chance = 100
+name = "Better them than the Reds..."
+command = { trigger = { control = { province = 1783 data = DEN  } } type = secedeprovince which = CAN value = 1783 }    # Greenland
+command = { trigger = { control = { province = 1 data = DEN  } owned = { province = 1 data = DEN  } control = { province = 3 data = DEN  } owned = { province = 3 data = DEN  } } type = secedeprovince which = CAN value = 3 }    # Akureyri
+command = { trigger = { control = { province = 1 data = DEN  } owned = { province = 1 data = DEN  } control = { province = 2 data = DEN  } owned = { province = 2 data = DEN  } } type = secedeprovince which = CAN value = 2 }    # Torshavn
+command = { trigger = { control = { province = 1 data = DEN  } owned = { province = 1 data = DEN  } } type = secedeprovince which = CAN value = 1 }    # Reykjavik
+command = { type = relation which = CAN value = -25 }
+command = { type = dissent value = 2 }
+command = { type = trigger which = 106030 } #Occupation
+}
+
+action = {
+ai_chance = 0
+name = "Fight back!"
+command = { trigger = { control = { province = 1783 data = DEN  } } type = secedeprovince which = CAN value = 1783 }    # Greenland
+command = { trigger = { control = { province = 1 data = DEN  } owned = { province = 1 data = DEN  } control = { province = 3 data = DEN  } owned = { province = 3 data = DEN  } } type = secedeprovince which = CAN value = 3 }    # Akureyri
+command = { trigger = { control = { province = 1 data = DEN  } owned = { province = 1 data = DEN  } control = { province = 2 data = DEN  } owned = { province = 2 data = DEN  } } type = secedeprovince which = CAN value = 2 }    # Torshavn
+command = { trigger = { control = { province = 1 data = DEN  } owned = { province = 1 data = DEN  } } type = secedeprovince which = CAN value = 1 }    # Reykjavik
+command = { type = war which = CAN }
+command = { type = dissent value = 5 }
+command = { type = relation which = CAN value = -200 }
+}
+}
+
+event = {
+id = 106030
+picture = "Training"
+style = 2
+country = CAN
+
+name = "Canada Occupies the Danish North Atlantic Possessions"
+desc = "Good news from the Admiralty! The Danish crown administrators of their Atlantic colonies have fully cooperated with our troops as they debarked to take over the defence of Atlantic against any aggressors!"
+
+action = {
+name = "Brittania Rules the Waves!"
+command = { trigger = { control = { province = 1783 data = CAN  } } type = addclaim which = 1783 }
+command = { trigger = { control = { province = 1 data = CAN  } } type = addclaim which = 1 }
+command = { trigger = { control = { province = 2 data = CAN  } } type = addclaim which = 2 }
+command = { trigger = { control = { province = 3 data = CAN  } } type = addclaim which = 3 }
+command = { trigger = { ai = yes control = { province = 1783 data = CAN  } } type = add_corps which = "Greenland Defence Force" value = land when = -1 where = 1783 }
+command = { trigger = { ai = yes control = { province = 1783 data = CAN  } } type = add_division which = "Greenland Police Battalion" value = garrison when = 1 }
+command = { trigger = { ai = yes control = { province = 1 data = CAN  } } type = add_corps which = "Iceland Defence Force" value = land when = -1 where = 1 }
+command = { trigger = { ai = yes control = { province = 1 data = CAN  } } type = add_division which = "Iceland Police Battalion" value = garrison when = 1 }
+command = { type = dissent value = -1 }
+}
+}
+
+
+
+
+################################################################################?####################################################################
+# Anti-Syndicalist Volunteers in Ireland #
+##########################################
+
+event = {
+id = 106031
+random = no
+country = CAN
+
+decision = {
+OR = {
+control = { province = 36 data = ENG } # Belfast
+alliance = { country = ENG country = IRE }
+puppet = { country = IRE country = ENG  }
+government = { type = communist country = IRE }
+}
+exists = ENG
+exists = CAN
+NOT = {
+alliance = { country = ENG country = GER }
+war = { country = ENG country = IRE }
+}
+}
+
+decision_trigger = {
+supplies = 1500
+money = 50
+}
+
+trigger = {
+OR = {
+control = { province = 36 data = ENG } # Belfast
+alliance = { country = ENG country = IRE }
+puppet = { country = IRE country = ENG  }
+government = { type = communist country = IRE }
+}
+exists = ENG
+exists = CAN
+NOT = {
+alliance = { country = ENG country = GER }
+alliance = { country = CAN country = IRE }
+war = { country = ENG country = IRE }
+ispuppet = CAN
+}
+}
+
+
+name = "Syndicalists in Ireland"
+desc = "EVT_830081_DESC"
+style = 2
+picture = "Brittank"
+decision_picture = "decision_fateofireland"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 65
+name = "Smuggle arms to loyalist Ulster."
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = IRE value = -10 }
+command = { type = manpowerpool value = -3 }
+command = { type = money value = -50 }
+command = { type = supplies value = -1500 }
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = setflag which = OP_CAN_UVF }
+}
+
+action = {
+ai_chance = 30
+name = "Supply the Irish Nationalists as well."
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = IRE value = -10 }
+command = { type = manpowerpool value = -5 }
+command = { type = money value = -50 }
+command = { type = supplies value = -2500 }
+command = { type = dissent value = 2 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = setflag which = OP_CAN_UVFINA }
+}
+
+action = {
+ai_chance = 5
+name = "It is too risky....."
+command = { type = relation which = ENG value = 10 }
+command = { type = relation which = IRE value = 10 }
+command = { type = dissent value = 1 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+# UVF
+event = {
+id = 106032
+country = CAN
+style = 2
+
+trigger = {
+flag = OP_CAN_UVF
+war = { country = ENG country = CAN }
+NOT = {
+alliance = { country = CAN country = IRE }
+alliance = { country = GER country = IRE }
+}
+}
+
+name = "Loyalist rebellion in Ireland!"
+desc = "Following our successful smuggling of weapons and commandos into Ulster our forces in Northern Ireland are ready to rise up against the Godless Syndicalists, paving the way for our reconquest of Ireland and the first stepping stone to London."
+picture = "resistance"
+
+date = { day = 0 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "For the King!"
+command = { type = add_corps which = "Ulster Volunteers" value = land when = -1 where = 36 }
+command = { type = add_division which = "Ulster Volunteer Force" value = militia when = 5 }
+command = { type = add_division which = "Ulster Defence Association" value = militia when = 5 }
+command = { type = add_division which = "1690 Orangemen Battalion" value = militia when = 5 }
+command = { type = dissent value = -2 }
+command = { type = trigger which = 106033 }
+command = { type = trigger which = 106034 }
+}
+}
+
+event = {
+id = 106033
+country = ENG
+style = 2
+picture = "resistance"
+
+name = "Loyalist rebellion in Ireland!"
+desc = "Scum loyal to the King across the sea have taken up arms in Ulster. If they are not swiftly crushed then they could form a bridgehead for the Royalists to seize all of Ireland and put them within striking distance of Britain."
+
+action_a = {
+name = "We will put an end to them!"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 106034
+country = IRE
+style = 2
+picture = "resistance"
+
+name = "Loyalist rebellion in Ireland!"
+desc = "Scum loyal to the King across the sea have taken up arms in Ulster. If they are not swiftly crushed then they could form a bridgehead for the Royalists to seize all of Ireland and put them within striking distance of Britain."
+
+action_a = {
+name = "We will put an end to them!"
+command = { type = dissent value = 5 }
+}
+}
+
+# UVF & INA
+event = {
+id = 106035
+country = CAN
+style = 2
+
+trigger = {
+flag = OP_CAN_UVFINA
+war = { country = ENG country = CAN }
+NOT = {
+alliance = { country = CAN country = IRE }
+alliance = { country = GER country = IRE }
+}
+}
+
+name = "Rebellion in Ireland!"
+desc = "Following our successful smuggling of weapons and commandos into Ulster our forces in Northern Ireland are ready to rise up against the Godless Syndicalists, paving the way for our reconquest of Ireland and the first stepping stone to London. Meanwhile, in the south, the Irish National Army has taken up arms as well, fighting alongside our forces in hope of restoring a democratic Irish Republic."
+picture = "resistance"
+
+date = { day = 0 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Free Ireland!"
+command = { type = add_corps which = "Ulster Volunteers" value = land when = -1 where = 36 }
+command = { type = add_division which = "Ulster Volunteer Force" value = militia when = 5 }
+command = { type = add_division which = "Ulster Defence Association" value = militia when = 5 }
+command = { type = add_division which = "1690 Orangemen Battalion" value = militia when = 5 }
+command = { type = add_corps which = "Irish National Army" value = land when = -1 where = 31 }
+command = { type = add_division which = "1st Irish Division" value = militia when = 5 }
+command = { type = add_division which = "2nd Irish Division" value = militia when = 5 }
+command = { type = add_division which = "3rd Irish Division" value = militia when = 5 }
+command = { type = dissent value = -2 }
+command = { type = trigger which = 106036 }
+command = { type = trigger which = 106037 }
+}
+}
+
+event = {
+id = 106036
+country = ENG
+style = 2
+picture = "resistance"
+
+name = "Rebellion in Ireland!"
+desc = "Scum loyal to the King across the sea have taken up arms in Ulster, as well as the bourgeois 'Irish National Army' in the south. If they are not swiftly crushed then they could form a bridgehead for the Royalists to seize all of Ireland and put them within striking distance of Britain."
+
+action_a = {
+name = "We will put an end to them!"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 106037
+country = IRE
+style = 2
+picture = "resistance"
+
+name = "Rebellion in Ireland!"
+desc = "Scum loyal to the King across the sea have taken up arms in Ulster, as well as the bourgeois 'Irish National Army' in the south. If they are not swiftly crushed then they could form a bridgehead for the Royalists to seize all of Ireland and put them within striking distance of Britain."
+
+action_a = {
+name = "We will put an end to them!"
+command = { type = dissent value = 8 }
+}
+}
+
+# IRA rising in Dublin - Full Republican support
+event = {
+id = 106038
+tag = { IRE ENG }
+style = 2
+picture = "resistance"
+
+trigger = {
+flag = OP_CAN_UVF
+war = { country = ENG country = CAN }
+event = 106032
+control = { province = 34 } # Dublin
+}
+
+name = "IRA uprising in Dublin"
+desc = "Forces loyal to the deposed Irish dictator Michael Collins have today launched attacks across the capital of Ireland and our own men are struggling to contain them."
+
+date = { day = 0 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Damn!"
+command = { type = revolt which = 34 }
+command = { type = revolt which = 34 }
+command = { type = dissent value = 10 }
+}
+}
+
+# IRA rising in Dublin - Split Republican support
+event = {
+id = 106039
+tag = { IRE ENG }
+style = 2
+picture = "resistance"
+
+trigger = {
+flag = OP_CAN_UVFINA
+war = { country = ENG country = CAN }
+event = 106035
+control = { province = 34 } # Dublin
+}
+
+name = "IRA uprising in Dublin"
+desc = "Forces loyal to the deposed Irish dictator Michael Collins have today launched attacks across the capital of Ireland and our own men are struggling to contain them."
+
+date = { day = 0 month = january year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Damn!"
+command = { type = revolt which = 34 }
+command = { type = dissent value = 5 }
+}
+}
+
+
+################################################################################?##################################################################
+# Orange Order Uprising in Glasgow #
+####################################
+
+event = {
+id = 106040
+country = CAN
+style = 2
+picture = "Demonstrations"
+
+trigger = {
+OR = { 
+event = 106032
+event = 106035 
+}
+control = { province = 36 data = CAN } # Belfast
+OR = {
+control = { province = 23 data = CAN }
+control = { province = 20 data = CAN }
+control = { province = 25 data = CAN }
+control = { province = 26 data = CAN }
+control = { province = 27 data = CAN }
+control = { province = 13 data = CAN }
+control = { province = 15 data = CAN }
+control = { province = 16 data = CAN }
+control = { province = 12 data = CAN }
+control = { province = 7 data = CAN }
+control = { province = 5 data = CAN }
+control = { province = 6 data = CAN }
+control = { province = 8 data = CAN }
+control = { province = 11 data = CAN }
+control = { province = 10 data = CAN }
+control = { province = 17 data = CAN }
+control = { province = 19 data = CAN }
+control = { province = 22 data = CAN }
+}
+war = { country = ENG country = CAN }
+NOT = { exists = IRE }
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Orange Order rising in Glasgow"
+desc = "The Orange Order based in Glasgow has had a long history with Ulster. When we supplied the Ulster loyalists, members of the UDA managed to distribute some of them to some of the Order's branches in Glasgow. Now that we have made landings in Britain and the final battle has begun, they have risen up to fight for their King and their God."
+
+action_a = {
+name = "For the King!"
+command = { type = add_corps which = "Glasgow Volunteers" value = land when = -1 where = 11 }
+command = { type = add_division which = "1798 Orangemen Battalion" value = militia when = 4 }
+command = { type = add_division which = "Glasgow Defence Association" value = militia when = 4 }
+command = { type = trigger which = 106041 }
+}
+}
+
+event = {
+id = 106041
+country = ENG
+style = 2
+picture = "Demonstrations"
+
+name = "Rebellion in Glasgow!"
+desc = "The sectarian mob has risen up against the forces of our Union and are trying to seize control of the streets of Glasgow. We must move quickly to smash these rebels before they link up with the imperialists."
+
+action_a = {
+name = "Traitors!"
+command = { type = dissent value = 3 }
+}
+}
+
+################################################################################?####################################################################
+# Lawrence's Rebellion #
+########################
+
+event = {
+id = 106042
+country = ENG
+style = 2
+picture = "training"
+
+trigger = { 
+event = 214050 # in Britain.txt
+government = communist
+NOT = {
+government = { type = communist country = CAN }
+}
+}
+
+name = "Rumours in the south"
+desc = "It has reached the ears of our secret services, that there may be a plot afoot. The story is that there are plans in motion for a rising in support of the Royalists, should they invade. More worrying still is that several high profile individuals have been implicated, although we have yet to ascertain to what extent."
+
+date = { day = 1 month = january year = 1936 }
+offset = 75
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 55
+name = "Keep a close eye on those involved and round up the confirmed traitors."
+command = { type = manpowerpool value = -15 }
+command = { type = dissent value = 4 }
+}
+
+action_b = {
+ai_chance = 45
+name = "Never! He's a hero of the revolution!"
+command = { type = dissent value = -3 }
+command = { type = setflag which = CAN_Lawrence }
+}
+}
+
+event = {
+id = 106043
+country = CAN
+style = 2
+picture = "Lawrence"
+
+trigger = {
+event = 214050 # in Britain.txt
+flag = CAN_Lawrence
+NOT = {
+government = communist
+}
+OR = {
+control = { province = 23 data = CAN }
+control = { province = 20 data = CAN }
+control = { province = 25 data = CAN }
+control = { province = 26 data = CAN }
+control = { province = 27 data = CAN }
+control = { province = 13 data = CAN }
+control = { province = 15 data = CAN }
+control = { province = 16 data = CAN }
+control = { province = 12 data = CAN }
+control = { province = 7 data = CAN }
+control = { province = 5 data = CAN }
+control = { province = 6 data = CAN }
+control = { province = 8 data = CAN }
+control = { province = 11 data = CAN }
+control = { province = 10 data = CAN }
+control = { province = 17 data = CAN }
+control = { province = 19 data = CAN }
+control = { province = 22 data = CAN }
+}
+war = { country = ENG country = CAN }
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Lawrence launches a counter-revolution!"
+desc = "Major Lawrence is secretly a loyal son of the Empire and launches a counter-revolution! He has organised risings across the west of England and Wales. Onwards to London!"
+
+action_a = {
+name = "Huzzah! Lawrence of Britannia"
+command = { type = add_corps which = "South Wales Volunteers" value = land when = -1 where = 22 }
+command = { type = add_division which = "Cardiff Volunteers" value = militia when = 5 }
+command = { type = add_corps which = "Bristol Volunteers" value = land when = -1 where = 19 }
+command = { type = add_division which = "1. Home Guard Division" value = infantry when = 10 }
+command = { type = add_division which = "2. Home Guard Division" value = infantry when = 10 }
+command = { type = add_division which = "Bristol Volunteers" value = militia when = 5 }
+command = { type = add_corps which = "Exceter Volunteers" value = land when = -1 where = 20 }
+command = { type = add_division which = "Exceter Volunteers" value = militia when = 5 }
+command = { type = add_corps which = "Plymouth Volunteers" value = land when = -1 where = 23 }
+command = { type = add_division which = "Plymouth Volunteers" value = militia when = 5 }
+command = { type = add_corps which = "North Wales Volunteers" value = land when = -1 where = 21 }
+command = { type = add_division which = "Caernarfon Volunteers" value = militia when = 5 }
+command = { type = trigger which = 106044 }
+}
+}
+
+event = {
+id = 106044 
+country = ENG
+style = 2
+picture = "SovietResistance"
+
+name = "The Royalists have risen against us!"
+desc = "Across the entire Western region of England, as well as Wales, soldiers have defected to the Royalist cause! Major Lawrence, the filthy traitor, must have been building a network of underground support there for months. Not to worry! We will drive them into the Atlantic yet."
+
+action_a = {
+name = "Traitors! All of them!"
+command = { type = manpowerpool value = -50 }
+command = { type = dissent value = 10 }
+}
+}
+
+################################################################################?###################################################################
+# Transfer of Loyalist Militias to the UK #
+###########################################
+
+event = {
+id = 106045
+country = CAN
+style = 2
+picture = "training"
+
+trigger = { 
+event = 114002 # in Liberation of UK Events I - Creation of the UK.txt
+OR = { 
+event = 106040
+event = 106043 
+}
+}
+
+name = "Transfer of the British Volunteers to the UK"
+desc = "With the victory won and the UK restored, we should hand over control over the loyalist militias that rose up against the syndicalist government to the new British authorities."
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "OK."
+command = { type = remove_division which = "1798 Orangemen Battalion" value = CAN }
+command = { type = remove_division which = "Glasgow Defence Association" value = CAN }
+command = { type = remove_division which = "Cardiff Volunteers" value = CAN }
+command = { type = remove_division which = "Bristol Volunteers" value = CAN }
+command = { type = remove_division which = "Exceter Volunteers" value = CAN }
+command = { type = remove_division which = "Plymouth Volunteers" value = CAN }
+command = { type = remove_division which = "Caernarfon Volunteers" value = CAN }
+command = { type = remove_division which = "1. Home Guard Division" value = CAN }
+command = { type = remove_division which = "2. Home Guard Division" value = CAN }
+command = { type = trigger which = 106046 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 106046
+country = U07
+style = 2
+picture = "training"
+
+name = "Transfer of the British Volunteers to the UK"
+desc = "With the victory won and the UK restored, control over the loyalist militias that rose up against the syndicalist government has been passed from the Canadians to the new British authorities. The question now arises, what should we do with these men?"
+
+action_a = {
+ai_chance = 20
+name = "Take them as they are."
+command = { trigger = { event = 106040 } type = add_division which = "1798 Orangemen Battalion" value = militia when = 5 }
+command = { trigger = { event = 106040 } type = add_division which = "Glasgow Defence Association" value = militia when = 5 }
+command = { trigger = { event = 106043 } type = add_division which = "Cardiff Volunteers" value = militia when = 5 }
+command = { trigger = { event = 106043 } type = add_division which = "1. Home Guard Division" value = infantry when = 10 }
+command = { trigger = { event = 106043 } type = add_division which = "2. Home Guard Division" value = infantry when = 10 }
+command = { trigger = { event = 106043 } type = add_division which = "Bristol Volunteers" value = militia when = 5 }
+command = { trigger = { event = 106043 } type = add_division which = "Exceter Volunteers" value = militia when = 5 }
+command = { trigger = { event = 106043 } type = add_division which = "Plymouth Volunteers" value = militia when = 5 }
+command = { trigger = { event = 106043 } type = add_division which = "Caernarfon Volunteers" value = militia when = 5 }
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+ai_chance = 20
+name = "Let them return home."
+command = { type = manpowerpool value = 60 }
+command = { type = dissent value = -5 }
+}
+
+action_c = {
+ai_chance = 60
+name = "Re-organise them into the basis of a new Home Guard."
+command = { type = add_division which = "1. Home Guard Division" value = infantry when = 10 }
+command = { type = add_division which = "2. Home Guard Division" value = infantry when = 10 }
+command = { type = add_division which = "3. Home Guard Division" value = infantry when = 10 }
+command = { type = add_division which = "4. Home Guard Division" value = infantry when = 10 }
+command = { trigger = { event = 106040 } type = add_division which = "5. Home Guard Division" value = infantry when = 10 }
+command = { trigger = { event = 106040 } type = add_division which = "6. Home Guard Division" value = infantry when = 10 }
+command = { type = manpowerpool value = -20 }
+command = { type = dissent value = 2 }
+}
+}
+
+################################################################################?###################################################################
+# The Irish Question (Volunteer Variant) #
+##########################################
+# UVF only
+event = {
+id = 106047
+random = no
+country = U07
+style = 2
+
+trigger = {
+NOT = {
+exists = IRE
+}
+owned = { province = 34 data = U07 } #Dublin
+owned = { province = 36 data = U07 } #Belfast
+control = { province = 34 data = U07 } #Dublin
+control = { province = 36 data = U07 } #Belfast
+event = 106032
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1964 }
+
+name = "The Administration of Ireland"
+desc = "With all of Ireland under British control, the question now arises as to the administration of the island.  The two options are direct rule or limited self-government, with the British government retaining control over foreign policy.  The strong preference of the Loyalist faction which fought alongside us in the recent conflict is for Ireland to be reunified with the UK, but this would surely be an unpopular move outside of the North."
+
+action_a = {
+name = "Direct Rule"
+ai_chance = 50
+command = { type = setflag which = UK_IRA_ALL }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "Limited Self-Government"
+ai_chance = 50
+command = { type = independence which = IRE value = 1 when = 0 }
+command = { type = trigger which = 126037 } # in Liberation of UK Events VII - The Irish Question.txt
+command = { type = event which = 106048 where = U07 when = 1 }
+}
+}
+
+event = {
+id = 106048
+random = no
+country = U07
+style = 2
+
+name = "The Ulster Question"
+desc = "With the principle of limited Irish self-government established, the next question is whether Ulster should remain part of Britain, or be transferred to the new Irish state."
+
+action_a = {
+name = "Ulster is British"
+ai_chance = 70
+command = { type = addclaim which = 33 }
+command = { type = addclaim which = 35 }
+command = { type = addclaim which = 36 }
+command = { type = setflag which = UK_IRA_ULSTER }
+command = { type = trigger which = 830444 }
+}
+
+action_b = {
+name = "Annex the Protestant-majority counties of Ulster"
+ai_chance = 25
+command = { type = addclaim which = 35 }
+command = { type = addclaim which = 36 }
+command = { type = setflag which = UK_IRA_ULSTER }
+command = { type = trigger which = 830420 }
+}
+
+action_c = {
+name = "A United Ireland"
+ai_chance = 5
+command = { type = dissent value = 1 }
+}
+}
+
+# UVF & INA
+event = {
+id = 106049
+random = no
+country = U07
+style = 2
+
+trigger = {
+NOT = {
+exists = IRE
+}
+owned = { province = 34 data = U07 } #Dublin
+owned = { province = 36 data = U07 } #Belfast
+control = { province = 34 data = U07 } #Dublin
+control = { province = 36 data = U07 } #Belfast
+event = 106035
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1964 }
+
+name = "The Administration of Ireland"
+desc = "With all of Ireland under British control, the question now arises as to the administration of the island.  The two options are direct rule or limited self-government, with the British government retaining control over foreign policy.  The strong preference of the Loyalist faction which fought alongside us in the recent conflict is for Ireland to be reunified with the UK, but we also promised the leadership of the Irish National Army a restoration of an Irish State."
+
+action_a = {
+name = "Direct Rule"
+ai_chance = 20
+command = { type = setflag which = UK_IRA_ALL }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "Limited Self-Government"
+ai_chance = 30
+command = { type = independence which = IRE value = 1 when = 0 }
+command = { type = trigger which = 126037 } # in Liberation of UK Events VII - The Irish Question.txt
+command = { type = event which = 106048 where = U07 when = 1 }
+}
+
+action_c = {
+name = "Begin negotiations with the Irish Provisional Government."
+ai_chance = 50
+command = { type = independence which = IRE value = 1 when = 0 }
+command = { type = trigger which = 106050 } # Irish Provisional Government
+command = { type = trigger which = 106051 } # Negotiations
+}
+}
+
+event = {
+id = 106050
+random = no
+country = IRE
+style = 2
+
+name = "The Irish Provisional Government"
+desc = ". . . noone will see this . . ."
+
+action_a = {
+name = "Ok"
+command = { type = supplies value = 10 }
+command = { type = oilpool value = 50 }
+command = { type = metalpool value = 50 }
+command = { type = energypool value = 50 }
+command = { type = rarematerialspool value = 50 }
+command = { type = money value = 5 }
+command = { type = manpowerpool value = 5 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 25037 } #Frank McDermott
+command = { type = headofgovernment which = 25043 } #Sean Lemass
+command = { type = foreignminister which = 25003 } #Eamon DeValera
+command = { type = armamentminister which = 25075 } #Patrick A Mulcahy
+command = { type = ministerofsecurity which = 25098 } #Frank McDermott
+command = { type = ministerofintelligence which = 25105 } #Denis McCullough
+command = { type = chiefofstaff which = 25123 } #Michael Brennan
+command = { type = chiefofarmy which = 25134 } #Emmet Dalton
+command = { type = chiefofnavy which = 25009 } #H.T. Green
+command = { type = chiefofair which = 25156 } #P. Quinn
+command = { type = add_corps which = "I Irish Corps" value = land where = 34 } #Dublin
+command = { type = add_division which = "1st Division" value = infantry when = 10 }
+command = { type = add_division which = "2nd Division" value = infantry when = 10 }
+command = { type = add_corps which = "1st Transport Flotilla" value = naval where = 34 } #Dublin
+command = { type = add_division which = "1st Transport Flotilla" value = transport when = 1 }
+command = { type = transport_pool which = IRE value = 20 }
+command = { type = escort_pool which = IRE value = 2 }
+}
+}
+
+# Negotiated Irish Question
+
+event = {
+id = 106051
+country = U07
+style = 2
+
+name = "The Irish Question"
+desc = "We have decided to try and reach a negotiated settlement with the Irish Provisional Government, comprisied of the leadership of the I.N.A. and the political parties National Centre and Fianna Fáil. While liberals are arguing that we should just restore the Irish Republic, this may be a perfect opportunity to broach the issue of Ireland's place in the Empire."
+
+action_a = {
+ai_chance = 35
+name = "Offer a fully restored Irish Republic, in exchange for Northern Ireland."
+command = { type = trigger which = 106062 }
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+ai_chance = 35
+name = "Offer readmission to the Empire." # 1936 borders
+command = { type = trigger which = 106052 }
+command = { type = dissent value = -1 }
+}
+
+action_c = {
+ai_chance = 15
+name = "Restore the Irish Republic along it's pre-war borders."
+command = { type = trigger which = 106065 }
+command = { type = dissent value = -1 }
+}
+
+action_d = {
+ai_chance = 15
+name = "Offer readmission to the Empire and demand the North."
+command = { type = trigger which = 106057 }
+command = { type = dissent value = -1 }
+}
+}
+
+# Readmission
+event = {
+id = 106052
+random = no
+country = IRE
+style = 2
+
+name = "Britain Offers Membership in the Empire"
+desc = "The British have offered to restore an independent Irish State, but are requesting that we rejoin the Empire. While this will likely be an unpopular move, even unacceptable in some circles, we owe them much and we may not be in a position to refuse."
+
+action_a = {
+name = "Negotiate for Economic Assistance"
+ai_chance = 75
+command = { type = trigger which = 106053 }
+}
+
+action_b = {
+name = "Refuse"
+ai_chance = 25
+command = { type = relation which = U07 value = -20 }
+command = { type = trigger which = 106054 }
+}
+}
+
+event = {
+id = 106053
+random = no
+country = U07
+style = 2
+
+name = "Ireland Negotiates"
+desc = "The Irish government has expressed an openness regarding our proposal for membership within the Empire, but have asked that it be accompanied by economic aid."
+
+action_a = {
+name = "Accept the Irish Conditions"
+ai_chance = 80
+command = { type = trigger which = 106055 }
+command = { type = money value = -20 }
+command = { type = supplies value = -250 }
+command = { type = oilpool value = -250 }
+command = { type = energypool value = -250 }
+}
+
+action_b = {
+name = "Reject the Irish Conditions"
+ai_chance = 20
+command = { type = relation which = U07 value = -10 }
+command = { type = trigger which = 106056 }
+}
+}
+
+event = {
+id = 106054
+random = no
+country = U07
+style = 2
+
+name = "Ireland Refuses the Empire"
+desc = "The Irish government has declined our proposal, wishing to remain outside the Empire.  Though not severe, it is a setback for the government's foreign policy."
+
+action_a = {
+name = "Ok"
+command = { type = dissent value = 3 }
+command = { type = relation which = IRE value = -10 }
+}
+}
+
+event = {
+id = 106055
+random = no
+country = IRE
+style = 2
+
+name = "Britain Accepts Our Bargain"
+desc = "The British government have accepted the Irish request for economic aid, and thus Ireland has joined the Empire, while the economic aid has mollified most of the opponents of the alliance."
+
+action_a = {
+name = "Ok"
+command = { type = set_relation which = U07 value = 100 }
+command = { type = dissent value = 2 }
+command = { type = construct which = ic where = 34 value = 1 } #Dublin
+command = { type = money value = 20 }
+command = { type = supplies value = 250 }
+command = { type = oilpool value = 250 }
+command = { type = energypool value = 250 }
+command = { type = alliance which = U07 }
+}
+}
+
+event = {
+id = 106056
+random = no
+country = IRE
+style = 2
+
+name = "Britain Refuses Our Bargain"
+desc = "The British government have refused the Irish request for economic aid.  As a result, the British proposal is a dead letter, and Ireland remains outside the Empire."
+
+action_a = {
+name = "Ok"
+command = { type = relation which = U07 value = -10 }
+}
+}
+
+# Readmission & Ulster
+event = {
+id = 106057
+random = no
+country = IRE
+style = 2
+
+name = "Britain Offers Membership in the Empire"
+desc = "The British have offered to restore an independent Irish State, but are requesting that we rejoin the Empire and that we transfer control of the North directly to them. While this will likely be an unpopular move, even unacceptable in some circles, we owe them much and we may not be in a position to refuse."
+
+action_a = {
+name = "Negotiate for Economic Assistance"
+ai_chance = 50
+command = { type = trigger which = 106058 }
+}
+
+action_b = {
+name = "Refuse"
+ai_chance = 50
+command = { type = relation which = U07 value = -20 }
+command = { type = trigger which = 106059 }
+}
+}
+
+event = {
+id = 106058
+random = no
+country = U07
+style = 2
+
+name = "Ireland Negotiates"
+desc = "The Irish government has expressed an openness regarding our proposal for democratization and membership within the Empire, but have asked that it be accompanied by economic aid."
+
+action_a = {
+name = "Accept the Irish Conditions"
+ai_chance = 80
+command = { type = trigger which = 106060 }
+command = { type = money value = -40 }
+command = { type = supplies value = -250 }
+command = { type = oilpool value = -250 }
+command = { type = energypool value = -250 }
+}
+
+action_b = {
+name = "Reject the Irish Conditions"
+ai_chance = 20
+command = { type = relation which = U07 value = -20 }
+command = { type = trigger which = 830403 } # in Liberation of UK Events VII - The Irish Question.txt
+}
+}
+
+event = {
+id = 106059
+random = no
+country = U07
+style = 2
+
+name = "Ireland Refuses the Empire"
+desc = "The Irish government has declined our proposal, wishing to remain outside the Empire while refusing to democratize.  This is a notable setback for the government's foreign policy."
+
+action_a = {
+name = "Ok"
+command = { type = dissent value = 5 }
+command = { type = relation which = IRE value = -20 }
+}
+}
+
+event = {
+id = 106060
+random = no
+country = IRE
+style = 2
+
+name = "Britain Accepts Our Bargain"
+desc = "The British government have accepted the Irish request for economic aid, and thus Ireland has joined the Empire and democratized, while the economic aid has mollified most of the opponents of the alliance."
+
+action_a = {
+name = "Ok"
+command = { type = set_relation which = U07 value = 100 }
+command = { type = dissent value = 4 }
+command = { type = construct which = ic where = 34 value = 1 } #Dublin
+command = { type = construct which = ic where = 31 value = 1 } #Cork
+command = { type = money value = 40 }
+command = { type = supplies value = 250 }
+command = { type = oilpool value = 250 }
+command = { type = energypool value = 250 }
+command = { type = domestic which = democratic value = 2 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = alliance which = U07 }
+command = { type = trigger which = 106048 }
+}
+}
+
+event = {
+id = 106061
+random = no
+country = IRE
+style = 2
+
+name = "Britain Refuses Our Bargain"
+desc = "The British government have refused the Irish request for economic aid.  As a result, the British proposal is a dead letter, and Ireland remains outside the Empire."
+
+action_a = {
+name = "Ok"
+command = { type = relation which = U07 value = -10 }
+}
+}
+
+# Offer a fully restored Irish Republic, in exchange for Northern Ireland.
+event = {
+id = 106062
+random = no
+country = IRE
+style = 2
+
+name = "Britain offers an Irish Republic, in exchange for Northern Ireland"
+desc = "The British have offered to restore an independent Irish Republic, but are requesting that we transfer control of the North directly to them. While this will likely be an unpopular move, even unacceptable in some circles, we owe them much and we may not be in a position to refuse."
+
+action_a = {
+name = "Accept"
+ai_chance = 80
+command = { type = trigger which = 106015 }
+}
+
+action_b = {
+name = "Refuse"
+ai_chance = 20
+command = { type = relation which = U07 value = -20 }
+command = { type = trigger which = 106064 }
+}
+}
+
+event = {
+id = 106063
+random = no
+country = U07
+style = 2
+
+name = "Ireland Accepts!"
+desc = "The Provisional Irish Government has accepted our request to transfer Northern Ireland over to us. This is a great day!"
+
+action_a = {
+name = "Ok"
+command = { type = dissent value = -5 }
+command = { type = relation which = IRE value = 20 }
+command = { type = trigger which = 106048 }
+}
+}
+
+event = {
+id = 106064
+random = no
+country = U07
+style = 2
+
+name = "Ireland Refuses!"
+desc = "The Provisional Irish Government has rejected our request to transfer Northern Ireland over to us. This is not what we expected."
+
+action_a = {
+name = "Ok"
+command = { type = dissent value = 5 }
+command = { type = relation which = IRE value = -20 }
+}
+}
+
+# Offer a fully restored Irish Republic.
+event = {
+id = 106065
+random = no
+country = IRE
+style = 2
+
+name = "Britain offers an Irish Republic"
+desc = "The British have offered to restore an independent Irish Republic! This is so much more than we could have hoped for!"
+
+action_a = {
+name = "We Accept!"
+command = { type = trigger which = 106066 }
+command = { type = setflag which = IRE_UVF }
+}
+}
+
+event = {
+id = 106066
+random = no
+country = U07
+style = 2
+
+name = "Ireland Accepts!"
+desc = "The Provisional Irish Government has accepted our offer of recognising an independent Irish Republic, this is a great day for peace and Anglo-Irish relations!"
+
+action_a = {
+name = "Great"
+command = { type = dissent value = -5 }
+command = { type = relation which = IRE value = 20 }
+}
+}
+
+################################################################################??###################################################################
+# Transfer of Irish Militias #
+##############################
+
+event = {
+id = 106067
+country = CAN
+style = 2
+picture = "training"
+
+trigger = { 
+event = 106031
+OR = { 
+event = 106047
+event = 106049 
+}
+}
+
+name = "Transfer of the Irish militias"
+desc = "The Irish militias that fought alongside our armed forces are now transferring over to the new authorities in Ireland."
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "OK."
+command = { type = remove_division which = "Ulster Volunteer Force" value = CAN }
+command = { type = remove_division which = "Ulster Defence Association" value = CAN }
+command = { type = remove_division which = "1690 Orangemen Battalion" value = CAN }
+command = { type = remove_division which = "1st Irish Division" value = CAN }
+command = { type = remove_division which = "2nd Irish Division" value = CAN }
+command = { type = remove_division which = "3rd Irish Division" value = CAN }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 106068
+tag = { IRE U07 }
+style = 2
+picture = "training"
+
+trigger = { 
+event = 106067
+control = { province = 36 } # Belfast
+}
+
+name = "Transfer of the Ulster militias"
+desc = "The Ulster militias that fought alongside our armed forces are now transferring over to the new authorities in Ireland."
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 10
+name = "Take them as they are."
+command = { type = add_division which = "Ulster Volunteer Force" value = militia when = 5 }
+command = { type = add_division which = "Ulster Defence Association" value = militia when = 5 }
+command = { type = add_division which = "1690 Orangemen Battalion" value = militia when = 5 }
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Let them return home."
+command = { type = manpowerpool value = 20 }
+command = { type = dissent value = -1 }
+}
+
+action_c = {
+ai_chance = 50
+name = "Re-organise them into new units."
+command = { type = add_corps which = "Ulster Territorial" value = land when = -1 where = 36 }
+command = { type = add_division which = "1. Ulster Division" value = garrison when = 4 }
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 106069
+tag = { IRE U07 }
+style = 2
+picture = "training"
+
+trigger = { 
+event = 106067
+control = { province = 34 } # Dublin
+}
+
+name = "Transfer of the I.N.A."
+desc = "The Irish National Army are now transferring over to the new authorities in Ireland."
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 10
+name = "Take them as they are."
+command = { type = add_corps which = "Irish National Army" value = land when = -1 where = 34 }
+command = { type = add_division which = "1st Territorial Division" value = militia when = 5 }
+command = { type = add_division which = "2nd Territorial Division" value = militia when = 5 }
+command = { type = add_division which = "3rd Territorial Division" value = militia when = 5 }
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Let them return home."
+command = { type = manpowerpool value = 20 }
+command = { type = dissent value = -1 }
+}
+
+action_c = {
+ai_chance = 50
+name = "Re-organise them into new units."
+command = { type = add_corps which = "Irish National Army" value = land when = -1 where = 34 }
+command = { type = add_division which = "Irish Guards Division" value = infantry when = 10 }
+command = { type = dissent value = -2 }
+}
+}

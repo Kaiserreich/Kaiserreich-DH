@@ -1,0 +1,387 @@
+# Japan Pacific War AI by Lothos
+
+max_front_ratio = 1.1 
+max_garrison_prop = 0.40
+min_garrison_prop = 0.30
+neutrality = 50.000 
+war = 35
+strat_redeploy_threshold = 25 
+exp_force_ratio = 0.05
+exp_force_ratios = {
+	SIA = 1.0
+} 
+no_exp_forces_to = { GER ITA ROM HUN SLO YUG BUL FIN }
+
+###################################
+# Diplomacy
+###################################
+combat = {
+	CHI = 50
+	CSX = 50
+	SIK = 50
+	CXB = 50
+	CYN = 50
+	CGX = 50
+	CHC = 50
+	USA = 100
+	ENG = 100
+	HOL = 100
+	PHI = 100
+	AUS = 100
+	NZL = 100
+	FRA = 100
+}
+###################################
+# Construction and Tech Research
+###################################
+#Default values
+construction = { 
+	max_factor = 0.10 
+
+	AA_batteries = atwar
+	max_AA_level = 4
+	AA_provs = { 
+		1184 # Tokyo
+		1185 # Nagoya
+		1183 # Niigata
+		1187 # Osaka
+		1188 # Hiroshima
+		1190 # Fukuoka
+		1670 # Rabaul
+	}
+
+	coastal_fort = atwar
+	max_coastal_level = 2
+	coastal_fort_provs = {
+		
+		1613 # Truk
+		1621 # Palau
+		1627 # Saipan
+		
+		1608 # Kwajelin
+		1670 # Rabaul
+		
+	} 
+
+	radar_station = yes
+	max_radar = 2
+	radar_provs = {
+		1599 # Iwo Jima
+		1613 # Truk
+		1621 # Palau
+		1627 # Saipan
+		1601 # Eniwetok
+		1608 # Kwajelin
+		1670 # Rabaul
+		1193 # Okinawa
+		1184 # Tokyo
+		1185 # Nagoya
+		1183 # Niigata
+		1187 # Osaka
+		1188 # Hiroshima
+		1190 # Fukuoka
+	} 
+	air_base = yes
+	max_air_base = 4
+	air_base_provs = {
+		1670 # Rabaul
+		1599 # Iwo Jima
+		1627 # Saipan
+		1621 # Palau
+	} 
+
+	naval_base = atwar
+	max_naval_base = 10 
+	naval_base_provs = {
+		1670 # Rabaul
+	} 
+
+	land_fort = no
+	max_land_level = 2
+	fort_borders = { } 
+
+	ic_at_war = yes 
+	force_ic_until = 1938
+	ic_end_year = 1940
+	IC_provs = {
+		1184 # Tokyo
+		1185 # Nagoya
+		1183 # Niigata
+		1187 # Osaka
+		1188 # Hiroshima
+		1190 # Fukuoka
+	} 
+}
+military = { 
+	relative_build_scheme 	= no
+	max_batch_peace 	= 360 
+	max_batch_war 		= 180 
+	max_batch_home_front 	= 180
+
+	#### Divisions etc...
+	infantry 	= 14
+	cavalry 	= 0
+	motorized 	= 2
+	mechanized 	= 0
+	light_armor 	= 0
+	armor 		= 1
+	paratrooper 	= 0
+	marine 		= 3
+	bergsjaeger 	= 0
+	garrison	= 9
+      	hq 		= 3
+	militia 	= 0
+	d_01            = 8
+#				38 %
+	interceptor 	= 4
+	multi_role 	= 2
+	escort 		= 2
+	cas 		= 0
+	strategic_bomber = 0
+	tactical_bomber = 4
+	naval_bomber 	= 4
+	transport_plane = 0
+	flying_bomb 	= 0
+	flying_rocket 	= 0
+#				16 %
+	battleship 	= 1
+	carrier 	= 5
+	destroyer 	= 16
+	light_cruiser 	= 6
+	heavy_cruiser 	= 3
+	battlecruiser 	= 0
+	submarine 	= 5
+	transports 	= 10
+#				46 %
+}
+
+###################################
+# Ground Combat, Leaders and Garrisons
+###################################
+garrison = {
+	defend_overseas_beaches = yes
+	home_multiplier 	= 0.5
+	overseas_multiplier 	= 1.0
+	home_peace_cap 		= 10
+	war_zone_odds 		= 2.0
+	key_point_prio_mult	= 0.5
+	revolt_risk_mult	= 0.5
+
+	# PRIORITIES:
+	beach			= 30	# Beach level 2
+	capital			= 30	# Our capital
+	human_border		= 0	# Ignored for allied human players
+	war_target		= 50	# The next country targeted for attack by this AI
+	
+	opposing_alliance	= 50	# For neutrals, all alliances are "opposing"
+	claim_threat		= 0	# If we are neutral, countries with claims on us get this
+	unstable_border		= 0	# Bordering countries at war with someone else get this
+
+	# Borders with specific countries
+	country_priorities = {
+		CHI = 50
+		CSX = 50
+		SIK = 50
+		CXB = 50
+		CYN = 50
+		CGX = 50
+		CHC = 50
+		VIC = -1
+		MAN = -1
+		MON = -1
+		SIA = -1
+		SOV = 15
+		POR = -1
+		ENG = 50
+		FRA = 50
+		HOL = 10
+		USA = 50
+		PHI = 50
+		AST = 10
+		NZL = 10
+	}
+	province_priorities = {
+		1337 = 75 # Saigon
+		1328 = 75 # Hanoi
+		1322 = 75 # Kaohsung
+		1613 = 75 # Truk
+		1601 = 75 # Eniwetok
+		1608 = 75 # Kwajelin
+		1670 = 75 # Rabaul
+	}
+	area_multiplier = {
+		1785 = 1.5 # Marcus Island
+		1625 = 1.5 # Rota
+		1192 = 1.5 # Anami
+		1194 = 1.5 # Jeju
+		1784 = 1.5 # Bonin Island
+	}
+}
+front = { 
+	recklessness 		= 1 # 0-3
+	distrib_vs_ai 		= even
+	distrib_vs_human 	= even
+
+	enemy_reinf_days	= 6
+	reserve_prop		= 0.1
+	panic_ratio_vs_ai	= 2.5
+	panic_ratio_vs_human	= 2.5
+	base_attack_odds	= 1.5
+	min_attack_odds		= 1.2
+	max_attack_odds		= 3.0
+	reinforce_odds		= 1.2
+	withdraw_odds		= 0.6
+
+	strength 	= 1.0
+	organisation 	= 1.0
+	soft_attack 	= 1.0
+	hard_attack 	= 1.0
+	ground_defense 	= 1.0
+	dig_in 		= 1.0 # Against defender
+
+	frozen_attack 	= 1.0
+	snow_attack 	= 1.0
+	blizzard_attack = 1.0
+	storm_attack 	= 1.0
+	muddy_attack 	= 1.0
+
+	
+	
+	occupied 	= 0.7
+	owned 		= 0.7
+
+	jungle_attack 	= 1.0
+	mountain_attack = 1.0
+	swamp_attack 	= 1.0
+	forest_attack 	= 1.0
+	hill_attack 	= 1.0
+	urban_attack 	= 1.0
+	river 		= 1.0
+} 
+###################################
+# Invasions and Naval
+###################################
+invasion = {
+	invasion	= yes
+
+ 	base		= 0.1	#Relative modifier. (lower = specific targets much more important.)
+	random		= 8.0	#How big a random range.  (1.0 = 1%)
+	coastal		= 0.1	#increase to avoid coastal forts more.
+	beach		= 0.1	#higher, avoid worst beaches.
+	distance	= 10.0	#higher = avoid long distance.
+	max_distance    = 40.0  #About the distance from Rostock to Narvik
+	pocket		= 20.0	#prioritise pockets, ie provinces with no adjacent controlled by same.
+	island		= 2.0	#prioritise taking pure islands.
+	enemy		= 2.0	#higher = much more vary of troops in province.
+	adjacentenemy 	= 2.0	#higher = much more vary of troops nearby
+	air_base	= 1.5 
+      	naval_base 	= 0.1 
+      	air_support 	= 3.0 
+      	redirect 	= priority
+	ignore		= no
+	help_allies 	= no 	#[yes/no]
+      
+	staging_province = {
+		1337 # Saigon
+		1322 # Kaohsung
+		1613 # Truk
+		1187 # Osaka
+		1196 # Busan
+		1670 # Rabaul
+		1353 # Singapore
+		1627 # Saipan
+		1621 # Palau
+	}
+	target = {
+		# Japanese Heartland
+		1562  = 4000  #Amami
+		
+		1362  = 4000  #Taibei
+		1361  = 4000  #Gaoxiong
+		1662  = 4000  #Bonin Islands
+		1661  = 4000  #Iwo Jima
+		1543  = 4000  #Etorufu
+		1542  = 4000  #Toyohara
+		
+
+		#Philippines
+		
+		1567  = 3750  #Lingayen Gulf
+		1568  = 3750  #Lamon Bay
+		1577  = 3750  #Legaspi
+		1579  = 3750  #Davao
+		
+		
+		1575  = 3500  #Samar
+		1573  = 3500  #Leyte
+		1574  = 3500  #Negros
+		1576  = 3500  #Panay
+		1571  = 3500  #Mindoro
+		1572  = 3500  #Palawan
+
+		#Outer Japanese Islands
+		1686  = 3250  #Saipan
+		1685  = 3250  #Tinian
+		1684  = 3250  #Rota
+		1683  = 3250  #Guam
+		1670  = 3250  #Palau
+		1672  = 3250  #Marcus Island
+
+		#Netherlands East Indies
+		1639  = 3250  #Bagka Island
+		
+		1649  = 3000  #Semarang
+		
+		1653  = 3000  #Soerabaja
+		1656  = 3000  #Madura
+		
+		
+		1636  = 2750  #Palembang
+		
+		1635  = 2750  #Dumai
+		
+
+		#Borneo
+		1625  = 2500  #Mini
+		1624  = 2500  #Kuching
+		1631  = 2500  #Pontianak
+		
+		
+		1632  = 2500  #Samarinda
+		1627  = 2500  #Tarakan
+		
+
+		#Singapore
+		1436  = 2500  #Kota Bahru
+		
+		1435  = 2500  #Alor Star
+		
+		1432  = 2500  #Singapore
+
+		#Britain
+		1371  = 2250  #Hong Kong
+
+		#Indonesia
+		1659  = 2000  #Menado
+		
+		1657  = 2000  #Makassar
+		
+	} 
+} 
+admiral = { 
+	min_org		= 100	# NEW: Percent of org gained back before the unit can leave port
+	min_dmg		= 98    # NEW: Percent of dmg gained back before the unit can leave port
+	return_org 	= 60 	# NEW: PERCENT OF ORG LOST BEFORE RETURNING TO PORT applies to all fleets/ships
+	return_dmg 	= 80 	# NEW: PERCENT OF DMG LOST BEFORE RETURNING TO PORT for repairs applies to all fleets/ships
+
+	target = { } 
+	core = {
+		2589
+		2193
+		2187
+		2192
+		2194
+		2213
+		2185
+	} 
+}

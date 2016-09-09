@@ -1,0 +1,1336 @@
+##################
+# Agrarian reform
+##################
+event = {
+id = 9120000
+random = no
+country = BOS
+
+trigger = {
+puppet = { country = BOS country = AUS  }
+owned = { province = 355 data = BOS }
+owned = { province = 354 data = BOS }
+owned = { province = 356 data = BOS }
+owned = { province = 358 data = BOS }
+owned = { province = 353 data = BOS }
+owned = { province = 357 data = BOS }
+NOT = { atwar = BOS }
+}
+
+
+name = "Serbs and Croats demand agrarian reform in Bosnia"
+desc = "3500658desc"
+style = 2
+picture = "agreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Start with the reform at once!"
+ai_chance = 15
+command = { type = dissent value = 4 }
+command = { type = event which = 9120001 where = AUS when = 1  }
+command = { type = relation which = SER value = 30 }
+command = { type = relation which = CRO value = 30 }
+}
+
+action_b = {
+name = "Refuse such absurd demand !"
+ai_chance = 85
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+command = { type = relation which = SER value = -30 }
+command = { type = relation which = CRO value = -30 }
+command = { type = setflag which = agreform_refused }
+}
+}
+
+
+event = {
+id = 9120001
+random = no
+country = AUS
+
+
+name = "Bosniaks elites appeals against agrarian reform"
+desc = "Bosniak elites, enraged with effort of the current governor of Bosnia Georg Dragicevic to enact agrarian reform have filled an official complaint to imperial ministry of finance which de facto administers this imperial province."
+style = 2
+picture = "agreforma"
+
+action_a = {
+name = "Their complaints are absurd !"
+ai_chance = 20
+command = { type = dissent value = 1 }
+command = { type = event which = 9120002 where = BOS when = 1  }
+command = { type = relation which = SER value = 30 }
+}
+
+action_b = {
+name = "Such reform is detrimental to stability of Bosnia !"
+ai_chance = 80
+command = { type = dissent value = 1 }
+command = { type = trigger which = 9120004 }
+command = { type = trigger which = 9120005 }
+command = { type = relation which = SER value = -30 }
+}
+
+}
+
+
+event = {
+id = 9120002
+random = no
+country = BOS
+
+
+name = "Austrian ministry of finance rejected appeal of Bosniak elites"
+desc = "Despite furious effort of Bosniak elites, imperial ministry of finance fearing prolonged effect of agrarian status quo in Bosnia have given us green light to carry out this reform and ignore all complaints from Bosniaks."
+style = 2
+picture = "agreforma"
+
+action_a = {
+name = "Great !"
+command = { type = trigger which = 9120003 }
+}
+
+
+}
+
+
+event = {
+id = 9120003
+random = no
+country = BOS
+save_date = yes
+
+
+name = "Bosniak elites threatens with cessation of support"
+desc = "Despite support for agrarian reform from Vienna, Bosniak elites have not ceased their campaign against this reform. They now threaten us with complete cessation of support for Austria authorities if agrarian reform is enacted."
+style = 2
+picture = "agreforma"
+
+action_a = {
+name = "Ignore their threats carry out the agrarian reform !"
+ai_chance = 50
+command = { type = money value = -300 }
+command = { type = province_revoltrisk which = 354 value = 10 }
+command = { type = province_revoltrisk which = 355 value = 10 }
+command = { type = province_revoltrisk which = 356 value = 10 }
+command = { type = province_revoltrisk which = 353 value = 10 }
+command = { type = province_revoltrisk which = 358 value = 10 }
+command = { type = province_revoltrisk which = 357 value = 10 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = 7 }
+command = { type = setflag which = agreform }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = sleepevent which = 92080 } # in Serbia.txt
+command = { type = sleepevent which = 9120022 }
+command = { type = sleepevent which = 9120023 }
+command = { type = sleepevent which = 9120024 }
+command = { type = sleepevent which = 9120025 }
+command = { type = sleepevent which = 9120026 }
+command = { type = wakeminister which = 546043 }
+command = { type = headofgovernment which = 546043 }
+command = { type = foreignminister which =  546041  }
+command = { type = relation which = SER value = 30 }
+command = { type = relation which = CRO value = 30 }
+}
+
+action_b = {
+name = "We must not upset the Muslim elite"
+ai_chance = 50
+command = { type = domestic which = freedom value = -1 }
+command = { type = relation which = SER value = -30 }
+command = { type = relation which = CRO value = -30 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+command = { type = setflag which = agreform_refused }
+}
+
+
+}
+
+
+event = {
+id = 9120004
+random = no
+country = BOS
+
+
+name = "Austrian ministry of finance reject agrarian reform"
+desc = "Despite our effort, imperial ministry of finance fearing lost of support from Bosniak elites decided to outright reject agrarian reform."
+style = 2
+picture = "agreforma"
+
+action_a = {
+name = "Damn it !"
+command = { type = relation which = SER value = -30 }
+command = { type = relation which = CRO value = -30 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = setflag which = agreform_refused }
+}
+
+
+}
+
+
+event = {
+id = 9120005
+random = no
+country = AUS
+
+name = "A new governor for Bosnia ?"
+desc = "Georg Dragicevic, current governor of Bosnia has caused a great deal of unrest among crucial Bosniak elites with his atempt to enact agrarian reform. His stay on this important position despite his capabilities may be detrimental to our plans for Bosnia. What shall we do ?"
+style = 2
+picture = "agreforma"
+
+action_a = {
+name = "Keep current governor"
+ai_chance = 30
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+name = "Replace him !"
+ai_chance = 70
+command = { type = dissent value = 1 }
+command = { type = event which = 9120006 where = BOS when = 1  }
+}
+
+}
+
+event = {
+id = 9120006
+random = no
+country = BOS
+
+name = "A new governor of Bosnia"
+desc = "Georg Dragicevic, current governor of Bosnia was dismissed from his possition for his attempt to enact agrarian reform. In his place was nominated Vladimir Laxa and officials in Vienna hopes that his nomination would placate Bosniak elites and allow empire to continue with its policies in Bosnia."
+style = 2
+picture = "agreforma"
+
+action_a = {
+name = "A new times in Bosnia..."
+command = { type = relation which = SER value = -30 }
+command = { type = relation which = CRO value = -30 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 3 }
+command = { type = wakeminister which = 546040 }
+command = { type = headofstate which = 546040 }
+}
+
+
+}
+
+event = {
+id = 9120007
+random = no
+country = SER
+
+trigger = {
+puppet = { country = BOS country = AUS  }
+NOT = { atwar = SER }
+event = 90572
+flag = agreform_refused
+
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Bosnians serbs are oppressed"
+desc = "Serbian minority in Bosnia, enraged by ongoing economical crisis and steadfast refusal of Austrian authorities to enact agrarian reform has once more turned to homeland for protection. Various nationalist groups such as Narodna Odbrana are asking our government for support in their effort to preserve Serbian minority in Bosnia and eventually reunite with Serbia !"
+style = 2
+picture = "narodnaodbrana"
+
+action_a = {
+name = "Offer them support"
+ai_chance = 70
+command = { type = relation which = AUS value = -30 }
+command = { type = relation which = HUN value = -30 }
+command = { type = relation which = BOS value = -30 }
+command = { type = clrflag which = agreform_refused }
+command = { type = event which = 9120008 where = BOS when = 30  }
+}
+
+action_b = {
+name = "This is too risky....."
+ai_chance = 30
+command = { type = dissent value = 1 }
+command = { type = clrflag which = agreform_refused }
+}
+
+}
+
+event = {
+id = 9120008
+random = no
+country = BOS
+
+
+name = "Activisation of Serbian nationalist"
+desc = "Serbian minority in Bosnia, enraged by ongoing economical crisis and our steadfast refusal to enact agrarian reform has once more turned to Serbia for protection. With help from Serbia, various nationalist organisations in Bosnia such as Narodna Odbrana intensified their activity aimed against territorial integrity of our empire !"
+style = 2
+picture = "narodnaodbrana"
+
+action_a = {
+name = "Damn it !"
+command = { type = dissent value = 3 }
+command = { type = relation which = SER value = -30 }
+command = { type = event which = 9120010 where = AUS when = 2  }
+command = { type = setflag which = bosnia_nationalist }
+}
+
+
+}
+
+
+
+event = {
+id = 9120010
+random = no
+country = AUS
+
+
+name = "Activisation of Serbian nationalist"
+desc = "EVT_91854_DESC"
+style = 2
+picture = "narodnaodbrana"
+
+action_a = {
+name = "Demand Serbia to cease all support !"
+ai_chance = 70
+command = { type = relation which = SER value = -30 }
+command = { type = event which = 9120011 where = SER when = 2  }
+}
+
+action_b = {
+name = "They are harmless..."
+ai_chance = 30
+command = { type = dissent value = 1 }
+command = { type = relation which = BOS value = -10 }
+command = { type = relation which = CRO value = -10 }
+}
+
+
+}
+
+
+event = {
+id = 9120011
+country = SER
+random = no
+style = 2
+
+name = "Austrian demands"
+desc = "The Austro-Hungarian empire, enraged by our supposed support of various nationalist groups inside Bosnia issued a series of demands, which requests cessation of all support towards various separatist groups inside Austria-Hungary or we shall face unspecified economical and military response. How shall we react ?"
+picture = "austrianvictory"
+
+action_a = {
+name = "Ignore their feeble threats"
+ai_chance = 50
+command = { type = relation which = AUS value = -40 }
+command = { type = relation which = BOS value = -40 }
+command = { type = end_non_aggression which = SER where = AUS }
+command = { type = end_non_aggression which = AUS where = SER }
+command = { type = end_non_aggression which = BOS where = SER }
+command = { type = end_non_aggression which = SER where = BOS }
+command = { type = end_non_aggression which = HUN where = SER }
+command = { type = end_non_aggression which = SER where = HUN }
+command = { type = dissent value = 2 }
+command = { type = event which = 9120013 where = AUS when = 2  }
+}
+
+action_b = {
+name = "Accept their demands!"
+ai_chance = 50
+command = { type = dissent value = 5 }
+command = { type = relation which = AUS value = 50 }
+command = { type = relation which = BOS value = 50 }
+command = { type = trigger which = 9120012  }
+command = { type = clrflag which = bosnia_nationalist }
+}
+
+}
+
+event = {
+id = 9120012
+country = AUS
+random = no
+style = 2
+
+
+name = "Serbia accepted our demands"
+desc = "Serbia accepted our demands and ceased all activity which was aimed against the territorial integrity of our empire."
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Another victory for our diplomacy"
+command = { type = dissent value = -5 }
+}
+}
+
+
+event = {
+id = 9120013
+country = AUS
+random = no
+style = 2
+
+name = "Serbia ignored our demands"
+desc = "Serbia refused our reasonable demands regarding our national integrity. Many hotheads in our general staff demands immediate military action to punish Serbia. However with economical crisi and nearing Ausgleich most members of our cabinet are arguing for economical and diplomatic offensive against Serbia, which should force Serbia to abandon its futile efforts. How shall we react to this insolence?"
+picture = "serbianarmy"
+
+action_a = {
+name = "Cease all contacts between Austria and Serbia!"
+ai_chance = 50
+command = { type = relation which = SER value = -50 }
+command = { type = end_trades which = SER where = AUS }
+command = { type = end_trades which = SER where = BOS }
+command = { type = end_trades which = SER where = HUN }
+command = { type = end_trades which = SER where = GLD }
+command = { type = end_trades which = SER where = CZE }
+command = { type = dissent value = -2 }
+command = { type = event which = 9120014 where = SER when = 3  }
+}
+
+action_b = {
+name = "Insolent brats! We will show you Austrian might!"
+ai_chance = 0
+command = { type = dissent value = 20 }
+command = { type = relation which = BOS value = 50 }
+command = { type = relation which = HUN value = 50 }
+command = { type = war which = SER }
+}
+
+action_c = {
+name = "Back down. We cannot afford conflict with Serbia"
+ai_chance = 50
+command = { type = dissent value = 3 }
+command = { type = relation which = BOS value = -20 }
+command = { type = relation which = SER value = 20 }
+}
+
+}
+
+
+event = {
+id = 9120014
+country = SER
+random = no
+style = 2
+
+name = "Austria-Hungary ceases all contacts with us"
+desc = "The Austro-Hungarian Empire reacted badly to our refusal, they ordered the cessation of all trade and diplomatic contacts between our state and them. Parts of our industry is already feeling the consequences of such drastic actions. Shall we continue with the support of Bosnian nationalists or cease it to try to appease Austro-Hungarian empire ?"
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Continue the support of Bosnian nationalists"
+ai_chance = 40
+command = { type = relation which = AUS value = -40 }
+command = { type = relation which = BOS value = -40 }
+command = { type = industrial_modifier which = total value = -3 }
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+name = "Cease their support !"
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = relation which = AUS value = 50 }
+command = { type = relation which = BOS value = 50 }
+command = { type = trigger which = 9120012  }
+command = { type = clrflag which = bosnia_nationalist }
+}
+
+}
+
+event = {
+id = 9120015
+random = no
+country = BOS
+one_action = yes
+
+trigger = {
+flag = bosnia_nationalist
+control = { province = 355 data = BOS }
+war = { country = AUS country = HUN }
+OR = {
+puppet = { country = BOS country = HUN }
+puppet = { country = BOS country = AUS }
+AND = {
+NOT = {
+puppet = { country = BOS country = HUN }
+puppet = { country = BOS country = AUS }
+}
+atwar = BOS
+}
+}
+}
+
+name = "Serbian nationalist coup!!"
+desc = "Various serbian nationalist groups lead by Narodna odbrana have decided to step up their operations in order to gain control over our state. They even managed to get part of our armed forces on their side and with their help entered our capital. Fortunately large parts of our armed forces are still on our side. Will they succeed and save Bosnia ?"
+style = 2
+picture = "narodnaodbrana"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Putschist overthrows the government!"
+ai_chance = 70
+command = { type = dissent value = 10  }
+command = { type = end_puppet }
+command = { type = leave_alliance }
+command = { type = peace which = SER value = 1 }
+command = { type = peace which = ROM value = 1 }
+command = { type = peace which = URU value = 1 }
+command = { type = peace which = ITA value = 1 }
+command = { type = peace which = MTN value = 1 }
+command = { type = peace which = CRO value = 1 }
+command = { type = peace which = HUN value = 1 }
+command = { type = peace which = AUS value = 1 }
+command = { type = peace which = CZE value = 1 }
+command = { type = peace which = GLD value = 1 }
+command = { type = peace which = POL value = 1 }
+command = { type = peace which = GRE value = 1 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofgovernment which = 546044 }
+command = { type = headofstate which = 546042 }
+command = { type = relation which = SER value = 200 }
+command = { type = relation which = AUS value = -200 }
+command = { type = relation which = HUN value = -200 }
+command = { type = event which = 9120016 where = SER when = 1  }
+command = { type = clrflag which = bosnia_nationalist }
+}
+
+action_b = {
+name = "Armed forces defeat nationalists!"
+ai_chance = 30
+command = { type = dissent value = 5  }
+command = { type = relation which = SER value = -50 }
+command = { type = relation which = AUS value = 50 }
+command = { type = manpowerpool value = -5 }
+command = { type = money value = -20 }
+command = { type = supplies value = -200 }
+command = { type = clrflag which = bosnia_nationalist }
+}
+}
+
+event = {
+id = 9120016
+random = no
+country = SER
+style = 2
+
+name = "Pro-Serbian government in Bosnia established"
+desc = "The Serbian nationalist groups inside Bosnia managed to overthrown existing government and create new government which immediately offered us an grand opportunity to integrate Bosnia into Serbia. What shall we do ?"
+picture = "narodnaodbrana"
+
+action_a = {
+ai_chance = 90
+name = "Integrate Bosnia into Serbia !"
+command = { type = inherit which = BOS }
+command = { type = addcore  which =  357 }
+command = { type = addcore  which =  353 }
+command = { type = addcore  which =  358 }
+command = { type = addcore  which =  355 }
+command = { type = addcore  which =  354 }
+command = { type = addcore  which =  356 }
+command = { type = waketeam which = 15811 }
+command = { type = waketeam which = 15812 }
+command = { type = waketeam which = 15813 }
+command = { type = relation which = CRO value = -100 }
+command = { type = relation which = AUS value = -100 }
+command = { type = relation which = HUN value = -100 }
+command = { type = relation which = GER value = -50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 901063 } # in Ausgleich.txt
+}
+
+action_b = {
+ai_chance = 0
+name = "No, we must not anger our neighbors"
+command = { type = dissent value = 10 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = AUS value = 100 }
+command = { type = relation which = CRO value = 100 }
+command = { type = relation which = HUN value = 100 }
+command = { type = relation which = GER value = 50 }
+command = { type = relation which = BOS value = -100 }
+command = { trigger = { NOT = { war = { country = AUS country = BOS } } } type = trigger which = 901064 } # in Ausgleich.txt
+}
+}
+
+###############
+event = {
+id = 9120009
+random = no
+country = BOS
+
+trigger = {
+flag = agreform
+owned = { province = 355 data = BOS }
+owned = { province = 354 data = BOS }
+owned = { province = 356 data = BOS }
+owned = { province = 358 data = BOS }
+owned = { province = 353 data = BOS }
+owned = { province = 357 data = BOS }
+NOT = { atwar = BOS }
+OR = {
+event = { id = 3500657 days = 660 } #2 years
+event = { id = 9120003 days = 660 } #2 years
+event = { id = 9120022 days = 660 } #2 years
+event = { id = 9120023 days = 660 } #2 years
+event = { id = 9120024 days = 660 } #2 years
+event = { id = 9120025 days = 660 } #2 years
+event = { id = 9120026 days = 660 } #2 years
+}
+}
+
+name = "Positive effects of the agrarian reform"
+desc = "Our decision to implement the reform has proven correct in the long term. The agrarian system is much more productive and profitable,and this reflects positivly on our entire economy."
+style = 2
+picture = "agreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "We knew it!"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = construct which = ic where = 355 value = 1 }
+command = { type = dissent value = -3 }
+command = { type = clrflag which = agreform }
+command = { type = relative_manpower value = 10 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = province_revoltrisk which = 354 value = -10 }
+command = { type = province_revoltrisk which = 355 value = -10 }
+command = { type = province_revoltrisk which = 356 value = -10 }
+command = { type = province_revoltrisk which = 353 value = -10 }
+command = { type = province_revoltrisk which = 358 value = -10 }
+command = { type = province_revoltrisk which = 357 value = -10 }
+command = { type = sleepevent which = 92080 } # in Serbia.txt
+command = { type = sleepevent which = 9120017 }
+command = { type = sleepevent which = 9120018 }
+command = { type = sleepevent which = 9120019 }
+command = { type = sleepevent which = 9120020 }
+command = { type = sleepevent which = 9120021 }
+}
+}
+
+
+event = {
+id = 9120017
+random = no
+country = HUN
+
+trigger = {
+flag = agreform
+owned = { province = 355 data = HUN }
+owned = { province = 354 data = HUN }
+owned = { province = 356 data = HUN }
+owned = { province = 358 data = HUN }
+owned = { province = 353 data = HUN }
+owned = { province = 357 data = HUN }
+NOT = { atwar = HUN }
+OR = {
+event = { id = 3500657 days = 660 } #2 years
+event = { id = 9120003 days = 660 } #2 years
+event = { id = 9120022 days = 660 } #2 years
+event = { id = 9120023 days = 660 } #2 years
+event = { id = 9120024 days = 660 } #2 years
+event = { id = 9120025 days = 660 } #2 years
+event = { id = 9120026 days = 660 } #2 years
+}
+}
+
+name = "Positive effects of the agrarian reform"
+desc = "Our decision to implement the reform has proven correct in the long term. The agrarian system is much more productive and profitable,and this reflects positivly on our entire economy."
+style = 2
+picture = "agreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "We knew it!"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = construct which = ic where = 355 value = 1 }
+command = { type = dissent value = -3 }
+command = { type = clrflag which = agreform }
+command = { type = relative_manpower value = 10 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = province_revoltrisk which = 354 value = -10 }
+command = { type = province_revoltrisk which = 355 value = -10 }
+command = { type = province_revoltrisk which = 356 value = -10 }
+command = { type = province_revoltrisk which = 353 value = -10 }
+command = { type = province_revoltrisk which = 358 value = -10 }
+command = { type = province_revoltrisk which = 357 value = -10 }
+command = { type = sleepevent which = 92080 } # in Serbia.txt
+command = { type = sleepevent which = 9120009 }
+command = { type = sleepevent which = 9120018 }
+command = { type = sleepevent which = 9120019 }
+command = { type = sleepevent which = 9120020 }
+command = { type = sleepevent which = 9120021 }
+}
+}
+
+
+
+event = {
+id = 9120018
+random = no
+country = AUS
+
+trigger = {
+flag = agreform
+owned = { province = 355 data = AUS }
+owned = { province = 354 data = AUS }
+owned = { province = 356 data = AUS }
+owned = { province = 358 data = AUS }
+owned = { province = 353 data = AUS }
+owned = { province = 357 data = AUS }
+NOT = { atwar = AUS }
+OR = {
+event = { id = 3500657 days = 660 } #2 years
+event = { id = 9120003 days = 660 } #2 years
+event = { id = 9120022 days = 660 } #2 years
+event = { id = 9120023 days = 660 } #2 years
+event = { id = 9120024 days = 660 } #2 years
+event = { id = 9120025 days = 660 } #2 years
+event = { id = 9120026 days = 660 } #2 years
+}
+}
+
+name = "Positive effects of the agrarian reform"
+desc = "Our decision to implement the reform has proven correct in the long term. The agrarian system is much more productive and profitable,and this reflects positivly on our entire economy."
+style = 2
+picture = "agreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "We knew it!"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = construct which = ic where = 355 value = 1 }
+command = { type = dissent value = -3 }
+command = { type = clrflag which = agreform }
+command = { type = relative_manpower value = 10 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = province_revoltrisk which = 354 value = -10 }
+command = { type = province_revoltrisk which = 355 value = -10 }
+command = { type = province_revoltrisk which = 356 value = -10 }
+command = { type = province_revoltrisk which = 353 value = -10 }
+command = { type = province_revoltrisk which = 358 value = -10 }
+command = { type = province_revoltrisk which = 357 value = -10 }
+command = { type = sleepevent which = 92080 } # in Serbia.txt
+command = { type = sleepevent which = 9120009 }
+command = { type = sleepevent which = 9120017 }
+command = { type = sleepevent which = 9120019 }
+command = { type = sleepevent which = 9120020 }
+command = { type = sleepevent which = 9120021 }
+}
+}
+
+event = {
+id = 9120019
+random = no
+country = CRO
+
+trigger = {
+flag = agreform
+owned = { province = 355 data = CRO }
+owned = { province = 354 data = CRO }
+owned = { province = 356 data = CRO }
+owned = { province = 358 data = CRO }
+owned = { province = 353 data = CRO }
+owned = { province = 357 data = CRO }
+NOT = { atwar = CRO }
+OR = {
+event = { id = 3500657 days = 660 } #2 years
+event = { id = 9120003 days = 660 } #2 years
+event = { id = 9120022 days = 660 } #2 years
+event = { id = 9120023 days = 660 } #2 years
+event = { id = 9120024 days = 660 } #2 years
+event = { id = 9120025 days = 660 } #2 years
+event = { id = 9120026 days = 660 } #2 years
+}
+}
+
+name = "Positive effects of the agrarian reform"
+desc = "Our decision to implement the reform has proven correct in the long term. The agrarian system is much more productive and profitable,and this reflects positivly on our entire economy."
+style = 2
+picture = "agreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "We knew it!"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = construct which = ic where = 355 value = 1 }
+command = { type = dissent value = -3 }
+command = { type = clrflag which = agreform }
+command = { type = relative_manpower value = 10 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = province_revoltrisk which = 354 value = -10 }
+command = { type = province_revoltrisk which = 355 value = -10 }
+command = { type = province_revoltrisk which = 356 value = -10 }
+command = { type = province_revoltrisk which = 353 value = -10 }
+command = { type = province_revoltrisk which = 358 value = -10 }
+command = { type = province_revoltrisk which = 357 value = -10 }
+command = { type = sleepevent which = 92080 } # in Serbia.txt
+command = { type = sleepevent which = 9120009 }
+command = { type = sleepevent which = 9120017 }
+command = { type = sleepevent which = 9120018 }
+command = { type = sleepevent which = 9120021 }
+command = { type = sleepevent which = 9120020 }
+}
+}
+
+event = {
+id = 9120020
+random = no
+country = U24
+
+trigger = {
+flag = agreform
+owned = { province = 355 data = U24 }
+owned = { province = 354 data = U24 }
+owned = { province = 356 data = U24 }
+owned = { province = 358 data = U24 }
+owned = { province = 353 data = U24 }
+owned = { province = 357 data = U24 }
+NOT = { atwar = U24 }
+OR = {
+event = { id = 3500657 days = 660 } #2 years
+event = { id = 9120003 days = 660 } #2 years
+event = { id = 9120022 days = 660 } #2 years
+event = { id = 9120023 days = 660 } #2 years
+event = { id = 9120024 days = 660 } #2 years
+event = { id = 9120025 days = 660 } #2 years
+event = { id = 9120026 days = 660 } #2 years
+}
+}
+
+name = "Positive effects of the agrarian reform"
+desc = "Our decision to implement the reform has proven correct in the long term. The agrarian system is much more productive and profitable,and this reflects positivly on our entire economy."
+style = 2
+picture = "agreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We knew it!"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = construct which = ic where = 355 value = 1 }
+command = { type = dissent value = -3 }
+command = { type = clrflag which = agreform }
+command = { type = relative_manpower value = 10 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = province_revoltrisk which = 354 value = -10 }
+command = { type = province_revoltrisk which = 355 value = -10 }
+command = { type = province_revoltrisk which = 356 value = -10 }
+command = { type = province_revoltrisk which = 353 value = -10 }
+command = { type = province_revoltrisk which = 358 value = -10 }
+command = { type = province_revoltrisk which = 357 value = -10 }
+command = { type = sleepevent which = 92080 } # in Serbia.txt
+command = { type = sleepevent which = 9120009 }
+command = { type = sleepevent which = 9120017 }
+command = { type = sleepevent which = 9120018 }
+command = { type = sleepevent which = 9120019 }
+command = { type = sleepevent which = 9120021 }
+}
+}
+
+event = {
+id = 9120021
+random = no
+country = U25
+
+trigger = {
+flag = agreform
+owned = { province = 355 data = U25 }
+owned = { province = 354 data = U25 }
+owned = { province = 356 data = U25 }
+owned = { province = 358 data = U25 }
+owned = { province = 353 data = U25 }
+owned = { province = 357 data = U25 }
+NOT = { atwar = U25 }
+OR = {
+event = { id = 3500657 days = 660 } #2 years
+event = { id = 9120003 days = 660 } #2 years
+event = { id = 9120022 days = 660 } #2 years
+event = { id = 9120023 days = 660 } #2 years
+event = { id = 9120024 days = 660 } #2 years
+event = { id = 9120025 days = 660 } #2 years
+event = { id = 9120026 days = 660 } #2 years
+}
+}
+
+name = "Positive effects of the agrarian reform"
+desc = "Our decision to implement the reform has proven correct in the long term. The agrarian system is much more productive and profitable,and this reflects positivly on our entire economy."
+style = 2
+picture = "agreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We knew it!"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = construct which = ic where = 355 value = 1 }
+command = { type = dissent value = -3 }
+command = { type = clrflag which = agreform }
+command = { type = relative_manpower value = 10 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = province_revoltrisk which = 354 value = -10 }
+command = { type = province_revoltrisk which = 355 value = -10 }
+command = { type = province_revoltrisk which = 356 value = -10 }
+command = { type = province_revoltrisk which = 353 value = -10 }
+command = { type = province_revoltrisk which = 358 value = -10 }
+command = { type = province_revoltrisk which = 357 value = -10 }
+command = { type = sleepevent which = 92080 } # in Serbia.txt
+command = { type = sleepevent which = 9120009 }
+command = { type = sleepevent which = 9120017 }
+command = { type = sleepevent which = 9120018 }
+command = { type = sleepevent which = 9120019 }
+command = { type = sleepevent which = 9120020 }
+}
+}
+
+
+event = {
+id = 9120022
+random = no
+country = HUN
+save_date = yes
+
+decision = {
+core = { province = 355 data = HUN }
+owned = { province = 355 data = HUN }
+owned = { province = 354 data = HUN }
+owned = { province = 356 data = HUN }
+owned = { province = 358 data = HUN }
+owned = { province = 353 data = HUN }
+owned = { province = 357 data = HUN }
+NOT = {
+atwar = HUN
+flag = agreform
+}
+}
+
+decision_trigger = {
+money = 300
+}
+
+trigger = {
+
+owned = { province = 355 data = HUN }
+owned = { province = 354 data = HUN }
+owned = { province = 356 data = HUN }
+owned = { province = 358 data = HUN }
+owned = { province = 353 data = HUN }
+owned = { province = 357 data = HUN }
+NOT = {
+atwar = HUN
+flag = agreform
+}
+core = { province = 355 data = HUN }
+
+}
+
+
+name = "The agrarian reform in Bosnia"
+desc = "3500657desc"
+style = 2
+picture = "agreforma"
+decision_picture = "decisionagreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Start with the reform at once!"
+ai_chance = 50
+command = { type = money value = -300 }
+command = { type = province_revoltrisk which = 354 value = 10 }
+command = { type = province_revoltrisk which = 355 value = 10 }
+command = { type = province_revoltrisk which = 356 value = 10 }
+command = { type = province_revoltrisk which = 353 value = 10 }
+command = { type = province_revoltrisk which = 358 value = 10 }
+command = { type = province_revoltrisk which = 357 value = 10 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = 4 }
+command = { type = setflag which = agreform }
+command = { type = sleepevent which = 9120000 }
+command = { type = sleepevent which = 3500657 }
+command = { type = sleepevent which = 9120023 }
+command = { type = sleepevent which = 9120024 }
+command = { type = sleepevent which = 9120025 }
+command = { type = sleepevent which = 9120026 }
+}
+
+action_b = {
+name = "We must not upset the Muslim elite."
+ai_chance = 50
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+}
+
+}
+
+event = {
+id = 9120023
+random = no
+country = CRO
+save_date = yes
+
+decision = {
+core = { province = 355 data = CRO }
+owned = { province = 355 data = CRO }
+owned = { province = 354 data = CRO }
+owned = { province = 356 data = CRO }
+owned = { province = 358 data = CRO }
+owned = { province = 353 data = CRO }
+owned = { province = 357 data = CRO }
+NOT = {
+atwar = CRO
+flag = agreform
+}
+}
+
+decision_trigger = {
+money = 300
+}
+
+trigger = {
+
+owned = { province = 355 data = CRO }
+owned = { province = 354 data = CRO }
+owned = { province = 356 data = CRO }
+owned = { province = 358 data = CRO }
+owned = { province = 353 data = CRO }
+owned = { province = 357 data = CRO }
+NOT = {
+atwar = CRO
+flag = agreform
+}
+core = { province = 355 data = CRO }
+
+}
+
+
+name = "The agrarian reform in Bosnia"
+desc = "3500657desc"
+style = 2
+picture = "agreforma"
+decision_picture = "decisionagreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Start with the reform at once!"
+ai_chance = 75
+command = { type = money value = -300 }
+command = { type = province_revoltrisk which = 354 value = 10 }
+command = { type = province_revoltrisk which = 355 value = 10 }
+command = { type = province_revoltrisk which = 356 value = 10 }
+command = { type = province_revoltrisk which = 353 value = 10 }
+command = { type = province_revoltrisk which = 358 value = 10 }
+command = { type = province_revoltrisk which = 357 value = 10 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = 4 }
+command = { type = setflag which = agreform }
+command = { type = sleepevent which = 9120000 }
+command = { type = sleepevent which = 3500657 }
+command = { type = sleepevent which = 9120022 }
+command = { type = sleepevent which = 9120024 }
+command = { type = sleepevent which = 9120025 }
+command = { type = sleepevent which = 9120026 }
+}
+
+action_b = {
+name = "We must not upset the Muslim elite."
+ai_chance = 25
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+}
+
+}
+
+
+event = {
+id = 9120024
+random = no
+country = AUS
+save_date = yes
+
+decision = {
+core = { province = 355 data = AUS }
+owned = { province = 355 data = AUS }
+owned = { province = 354 data = AUS }
+owned = { province = 356 data = AUS }
+owned = { province = 358 data = AUS }
+owned = { province = 353 data = AUS }
+owned = { province = 357 data = AUS }
+NOT = {
+atwar = AUS
+flag = agreform
+}
+}
+
+decision_trigger = {
+money = 300
+}
+
+trigger = {
+
+owned = { province = 355 data = AUS }
+owned = { province = 354 data = AUS }
+owned = { province = 356 data = AUS }
+owned = { province = 358 data = AUS }
+owned = { province = 353 data = AUS }
+owned = { province = 357 data = AUS }
+NOT = {
+atwar = AUS
+flag = agreform
+}
+core = { province = 355 data = AUS }
+
+}
+
+
+name = "The agrarian reform in Bosnia"
+desc = "3500659desc"
+style = 2
+picture = "agreforma"
+decision_picture = "decisionagreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Start with the reform at once!"
+ai_chance = 40
+command = { type = money value = -300 }
+command = { type = province_revoltrisk which = 354 value = 10 }
+command = { type = province_revoltrisk which = 355 value = 10 }
+command = { type = province_revoltrisk which = 356 value = 10 }
+command = { type = province_revoltrisk which = 353 value = 10 }
+command = { type = province_revoltrisk which = 358 value = 10 }
+command = { type = province_revoltrisk which = 357 value = 10 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = 4 }
+command = { type = setflag which = agreform }
+command = { type = sleepevent which = 9120000 }
+command = { type = sleepevent which = 3500657 }
+command = { type = sleepevent which = 9120022 }
+command = { type = sleepevent which = 9120023 }
+command = { type = sleepevent which = 9120025 }
+command = { type = sleepevent which = 9120026 }
+}
+
+action_b = {
+name = "We must not upset the Muslim elite."
+ai_chance = 60
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+}
+
+}
+
+event = {
+id = 9120025
+random = no
+country = U24
+save_date = yes
+
+decision = {
+core = { province = 355 data = U24 }
+owned = { province = 355 data = U24 }
+owned = { province = 354 data = U24 }
+owned = { province = 356 data = U24 }
+owned = { province = 358 data = U24 }
+owned = { province = 353 data = U24 }
+owned = { province = 357 data = U24 }
+NOT = {
+atwar = U24
+flag = agreform
+}
+}
+
+decision_trigger = {
+money = 300
+}
+
+trigger = {
+
+owned = { province = 355 data = U24 }
+owned = { province = 354 data = U24 }
+owned = { province = 356 data = U24 }
+owned = { province = 358 data = U24 }
+owned = { province = 353 data = U24 }
+owned = { province = 357 data = U24 }
+NOT = {
+atwar = U24
+flag = agreform
+}
+core = { province = 355 data = U24 }
+
+}
+
+
+name = "The agrarian reform in Bosnia"
+desc = "3500659desc"
+style = 2
+picture = "agreforma"
+decision_picture = "decisionagreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Start with the reform at once!"
+ai_chance = 75
+command = { type = money value = -300 }
+command = { type = province_revoltrisk which = 354 value = 10 }
+command = { type = province_revoltrisk which = 355 value = 10 }
+command = { type = province_revoltrisk which = 356 value = 10 }
+command = { type = province_revoltrisk which = 353 value = 10 }
+command = { type = province_revoltrisk which = 358 value = 10 }
+command = { type = province_revoltrisk which = 357 value = 10 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = 4 }
+command = { type = setflag which = agreform }
+command = { type = sleepevent which = 9120000 }
+command = { type = sleepevent which = 3500657 }
+command = { type = sleepevent which = 9120022 }
+command = { type = sleepevent which = 9120023 }
+command = { type = sleepevent which = 9120024 }
+command = { type = sleepevent which = 9120026 }
+}
+
+action_b = {
+name = "We must not upset the Muslim elite."
+ai_chance = 25
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+}
+
+}
+
+event = {
+id = 9120026
+random = no
+country = U25
+save_date = yes
+
+decision = {
+core = { province = 355 data = U25 }
+owned = { province = 355 data = U25 }
+owned = { province = 354 data = U25 }
+owned = { province = 356 data = U25 }
+owned = { province = 358 data = U25 }
+owned = { province = 353 data = U25 }
+owned = { province = 357 data = U25 }
+NOT = {
+atwar = U25
+flag = agreform
+}
+}
+
+decision_trigger = {
+money = 300
+}
+
+trigger = {
+
+owned = { province = 355 data = U25 }
+owned = { province = 354 data = U25 }
+owned = { province = 356 data = U25 }
+owned = { province = 358 data = U25 }
+owned = { province = 353 data = U25 }
+owned = { province = 357 data = U25 }
+NOT = {
+atwar = U25
+flag = agreform
+}
+core = { province = 355 data = U25 }
+
+}
+
+
+name = "The agrarian reform in Bosnia"
+desc = "3500659desc"
+style = 2
+picture = "agreforma"
+decision_picture = "decisionagreforma"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Start with the reform at once!"
+ai_chance = 75
+command = { type = money value = -300 }
+command = { type = province_revoltrisk which = 354 value = 10 }
+command = { type = province_revoltrisk which = 355 value = 10 }
+command = { type = province_revoltrisk which = 356 value = 10 }
+command = { type = province_revoltrisk which = 353 value = 10 }
+command = { type = province_revoltrisk which = 358 value = 10 }
+command = { type = province_revoltrisk which = 357 value = 10 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = 4 }
+command = { type = setflag which = agreform }
+command = { type = sleepevent which = 9120000 }
+command = { type = sleepevent which = 3500657 }
+command = { type = sleepevent which = 9120022 }
+command = { type = sleepevent which = 9120023 }
+command = { type = sleepevent which = 9120024 }
+command = { type = sleepevent which = 9120025 }
+}
+
+action_b = {
+name = "We must not upset the Muslim elite."
+ai_chance = 25
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+}
+
+}

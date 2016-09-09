@@ -1,0 +1,745 @@
+# Liberation of the UK Events III: The First General Election
+#
+# IDs 118000-119999
+#
+# 118000 - The Military Provisional Government and the Approaching Election
+# 118001 - The First Free Election [1936-37 through 1960-64 Versions]
+# 118002 - The Conservative Party Wins
+# 118003 - The National Party Wins
+# 118004 - The Liberal Party Wins
+# 118005 - The Progressive Party Wins
+# 118006 to 118007 - The Second General Election 
+# 118008 - The Conservative Party Wins
+# 118009 to 118011 - The National Party Wins
+# 118012 - The Liberal Party Wins
+# 118013 - The Progressive Party Wins
+# 118014 to 118015 - The Third General Election 
+
+###############
+#First election
+###############
+event = {
+id = 118000
+random = no
+country = U07
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 116006 days = 30 }
+OR = {
+flag = UK_MILPROVGOV
+local_flag = UK_ELECT1_YES
+}
+event = 116006 # The Creation of the Progressive Party in Liberation of UK Events II - The Provisional Government 
+}
+
+name = "The Provisional Government and the Approaching Election"
+desc = "The time has come to begin the preparations for the forthcoming general election. However, some have suggested that perhaps it would be better if the election was postponed and the military remained in control of the country, in the interest of stability of course."
+picture = "rusdumaelect"
+
+
+date = { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Continue the preparations for the election"
+ai_chance = 90
+command = { type = local_setflag which = UK_ELECT1_CAMPAIGN }
+command = { type = clrflag which = UK_MILPROVGOV }
+command = { type = local_clrflag which = UK_ELECT1_YES }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+name = "Cancel the election, and make the Military Provisional government permanent"
+ai_chance = 10
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = defense_lobby value = 10 }
+command = { type = set_domestic which = interventionism value = 10 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = local_setflag which = UK_MIL_GOVT }
+command = { type = clrflag which = UK_MILPROVGOV }
+command = { type = local_clrflag which = UK_ELECT1_YES }
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 118001
+random = no
+country = U07
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 118000 days = 60 }
+local_flag = UK_ELECT1_CAMPAIGN
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT= {
+ispuppet = U07
+}
+}
+
+name = "British General Election"
+desc = "After several months of preparations, the provisional government has completed arrangements for the first free election in Great Britain since the liberation. The King has formally issued the writ for the 660 seats in the House of Commons, and the various political parties have begun their campaigns."
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 40
+name = "Elect the Conservative Party"
+command = { type = dissent value = 1 }
+command = { type = trigger which = 118002 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Elect the National Party"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 118003 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Elect the Liberal Party"
+command = { type = dissent value = 1 }
+command = { type = trigger which = 118004 }
+}
+
+action_d = {
+ai_chance = 45
+name = "Elect the Progressive Party"
+trigger = {
+local_flag = UK_PROVGOV_PROG_ALLOWED
+}
+command = { type = dissent value = -3 }
+command = { type = trigger which = 118005 }
+}
+}
+
+event = {
+id = 118002
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Conservative Party Wins"
+desc = "The results of the first general election since liberation have been announced, and the Conservative Party has emerged victorious, while the King has appointed Lord Beaverbrook Prime Minister."
+
+action_a = {
+name = "PM Beaverbrook forms his cabinet"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = free_market value = 10 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = set_domestic which = defense_lobby value = 10 }
+command = { type = set_domestic which = interventionism value = 9 }
+command = { type = local_clrflag which = UK_ELECT1_CAMPAIGN }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557417 } #Lord Beaverbrook
+command = { type = foreignminister which = 557429 } #Mark Sykes
+command = { type = armamentminister which = 557452 } #Montagu Norman
+command = { type = ministerofsecurity which = 557481 } #Duke of Devonshire
+command = { type = local_setflag which = UK_CON_GOVT }
+}
+}
+
+event = {
+id = 118003
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The National Party Wins"
+desc = "The results of the first general election since liberation have been announced, and the National Party has emerged victorious, while the King has appointed Henry Page Croft Prime Minister."
+
+action_a = {
+name = "PM Page Croft forms his cabinet"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = free_market value = 8 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = defense_lobby value = 10 }
+command = { type = set_domestic which = interventionism value = 10 }
+command = { type = local_clrflag which = UK_ELECT1_CAMPAIGN }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557415 } #Henry Page Croft
+command = { type = foreignminister which = 557425 } #Richard Cooper
+command = { type = armamentminister which = 557448 } #Murray Sueter
+command = { type = ministerofsecurity which = 557480 } #Archibald Ramsay
+command = { type = local_setflag which = UK_NAT_GOVT }
+}
+}
+
+event = {
+id = 118004
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Liberal Party Wins"
+desc = "The results of the first general election since liberation have been announced, and the Liberal Party has emerged victorious, while the King has appointed Herbert Samuel Prime Minister."
+
+action_a = {
+name = "PM Samuel forms his cabinet"
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 10 }
+command = { type = set_domestic which = freedom value = 10 }
+command = { type = set_domestic which = defense_lobby value = 4 }
+command = { type = set_domestic which = interventionism value = 4 }
+command = { type = local_clrflag which = UK_ELECT1_CAMPAIGN }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557418 } #Herbert Samuel
+command = { type = foreignminister which = 557438 } #Walter Runciman
+command = { type = armamentminister which = 557453 } #Isaac Foot
+command = { type = ministerofsecurity which = 557484 } #Ivor Brown
+command = { type = ministerofintelligence which = 557505 } #George Lambert
+command = { type = local_setflag which = UK_LIB_GOVT }
+}
+}
+
+event = {
+id = 118005
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Progressive Party Wins"
+desc = "The results of the first general election since liberation have been announced, and the Progressive Party has emerged victorious, while the King has reluctantly appointed Richard Acland Prime Minister."
+
+action_a = {
+name = "PM Acland forms his cabinet"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = set_domestic which = freedom value = 8 }
+command = { type = set_domestic which = defense_lobby value = 8 }
+command = { type = set_domestic which = interventionism value = 8 }
+command = { type = local_clrflag which = UK_ELECT1_CAMPAIGN }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557421 } #Richard Acland
+command = { type = foreignminister which = 557439 } #J. B. Priestley
+command = { type = armamentminister which = 557475 } #R. H. Tawney
+command = { type = ministerofsecurity which = 557489 } #H. G. Wells
+command = { type = ministerofintelligence which = 557507 } #Victor Rothschild
+command = { type = local_setflag which = UK_PROG_GOVT }
+}
+}
+
+
+# Liberation of the UK - The Second General Election
+
+event = {
+id = 118006
+random = no
+country = U07
+style = 2
+save_date = yes
+picture = "rusdumaelect"
+
+trigger = {
+NOT= {
+ispuppet = U07
+}
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+event = { id = 118001 days = 1440 } #1st Election
+NOT = {
+local_flag = UK_RAMSAY_ACCEPTED # set by event in Liberation of UK Events VIII - The National Party
+}
+}
+
+name = "The Second Free Election"
+desc = "The Parliament elected in the first free election after liberation has drawn to a close.  The King has formally issued the writ for the 660 seats in the House of Commons, and the various political parties have begun their campaigns."
+
+date = { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "It is Time for the People to Choose"
+command = { type = local_setflag which = UK_ELECT2_CAMPAIGN }
+command = { type = local_clrflag which = UK_CON_GOVT }
+command = { type = local_clrflag which = UK_NAT_GOVT }
+command = { type = local_clrflag which = UK_LIB_GOVT }
+command = { type = local_clrflag which = UK_PROG_GOVT }
+}
+}
+
+event = {
+id = 118007
+random = no
+country = U07
+style = 2
+save_date = yes
+
+trigger = {
+local_flag = UK_ELECT2_CAMPAIGN
+event = { id = 118006 days = 40 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT= {
+ispuppet = U07
+}
+}
+
+name = "British General Election"
+desc = "After a long pre-electoral campaign the time has come to choose our representatives for the next four years."
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 50
+name = "Elect the Conservative Party"
+command = { type = dissent value = 1 }
+command = { type = trigger which = 118008 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Elect the National Party"
+command = { type = dissent value = 3 }
+command = { trigger = { NOT = { local_flag = UK_NAT_SUETER local_flag = UK_NAT_RAMSAY } } type = trigger which = 118009 } # UK_NAT_SUETER, UK_NAT_RAMSAY flags set by events in Liberation of UK Events VIII - The National Party
+command = { trigger = { local_flag = UK_NAT_SUETER } type = trigger which = 118010 }
+command = { trigger = { local_flag = UK_NAT_RAMSAY } type = trigger which = 118011 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Elect the Liberal Party"
+command = { type = dissent value = 1 }
+command = { type = trigger which = 118012 }
+}
+
+action_d = {
+ai_chance = 30
+name = "Elect the Progressive Party"
+trigger = {
+local_flag = UK_PROVGOV_PROG_ALLOWED
+}
+command = { type = dissent value = -3 }
+command = { type = trigger which = 118013 }
+}
+}
+
+event = {
+id = 118008
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Conservative Party Wins"
+desc = "The results of the second general election since liberation have been announced, and the Conservative Party has emerged victorious, while the King has appointed Lord Beaverbrook Prime Minister."
+
+action_a = {
+name = "PM Beaverbrook forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557417 } #Lord Beaverbrook
+command = { type = foreignminister which = 557429 } #Mark Sykes
+command = { type = armamentminister which = 557452 } #Montagu Norman
+command = { type = ministerofsecurity which = 557481 } #Duke of Devonshire
+command = { type = local_setflag which = UK_CON_GOVT }
+}
+}
+
+event = {
+id = 118009
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The National Party Wins"
+desc = "The results of the second general election since liberation have been announced, and the National Party has emerged victorious, while the King has appointed Henry Page Croft Prime Minister."
+
+action_a = {
+name = "PM Croft forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557415 } #Henry Page Croft
+command = { type = foreignminister which = 557425 } #Richard Cooper
+command = { type = armamentminister which = 557448 } #Murray Sueter
+command = { type = ministerofsecurity which = 557480 } #Archibald Ramsay
+command = { type = local_setflag which = UK_NAT_GOVT }
+}
+}
+
+event = {
+id = 118010
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The National Party Wins"
+desc = "The results of the second general election since liberation have been announced, and the National Party has emerged victorious, while the King has appointed Murray Sueter Prime Minister."
+
+action_a = {
+name = "PM Sueter forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557414 } #Murray Sueter
+command = { type = foreignminister which = 557424 } #9th Earl of Bessborough
+command = { type = armamentminister which = 557447 } #John Carnegie
+command = { type = ministerofsecurity which = 557479 } #Ernest Shackleton
+command = { type = local_setflag which = UK_NAT_GOVT }
+}
+}
+
+event = {
+id = 118011
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The National Party Wins"
+desc = "The results of the second general election since liberation have been announced, and the National Party has emerged victorious, while the King has appointed Archibald Maule Ramsay Prime Minister."
+
+action_a = {
+name = "PM Ramsay forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557412 } #Archibald Maule Ramsay
+command = { type = foreignminister which = 557422 } #Baron Ampthill
+command = { type = armamentminister which = 557441 } #Noel Pemberton-Billing
+command = { type = ministerofsecurity which = 557476 } #Alexander Scotland
+command = { type = ministerofintelligence which = 557500 } #John Amery
+command = { type = local_setflag which = UK_NAT_GOVT }
+}
+}
+
+event = {
+id = 118012
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Liberal Party Wins"
+desc = "The results of the second general election since liberation have been announced, and the Liberal Party has emerged victorious, while the King has appointed Herbert Samuel Prime Minister."
+
+action_a = {
+name = "PM Samuel forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557418 } #Herbert Samuel
+command = { type = foreignminister which = 557438 } #Walter Runciman
+command = { type = armamentminister which = 557453 } #Isaac Foot
+command = { type = ministerofsecurity which = 557484 } #Ivor Brown
+command = { type = ministerofintelligence which = 557505 } #George Lambert
+command = { type = local_setflag which = UK_LIB_GOVT }
+}
+}
+
+event = {
+id = 118013
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Progressive Party Wins"
+desc = "The results of the second general election since liberation have been announced, and the Progressive Party has emerged victorious, while the King has appointed Richard Acland Prime Minister."
+
+action_a = {
+name = "PM Acland forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557421 } #Richard Acland
+command = { type = foreignminister which = 557439 } #J. B. Priestley
+command = { type = armamentminister which = 557475 } #R. H. Tawney
+command = { type = ministerofsecurity which = 557489 } #H. G. Wells
+command = { type = ministerofintelligence which = 557507 } #Victor Rothschild
+command = { type = local_setflag which = UK_PROG_GOVT }
+}
+}
+
+
+
+# Liberation of the UK - The Third General Election
+
+
+event = {
+id = 118014
+random = no
+country = U07
+style = 2
+save_date = yes
+picture = "rusdumaelect"
+
+trigger = {
+NOT= {
+ispuppet = U07
+}
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+event = { id = 118007 days = 1440 } #2nd Election
+NOT = {
+local_flag = UK_RAMSAY_ACCEPTED
+}
+}
+
+name = "The Third Free Election"
+desc = "The Parliament elected in the second free election after liberation has drawn to a close.  The King has formally issued the writ for the 660 seats in the House of Commons, and the various political parties have begun their campaigns."
+
+date = { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "It is Time for the People to Choose"
+command = { type = local_setflag which = UK_ELECT3_CAMPAIGN }
+command = { type = local_clrflag which = UK_CON_GOVT }
+command = { type = local_clrflag which = UK_NAT_GOVT }
+command = { type = local_clrflag which = UK_LIB_GOVT }
+command = { type = local_clrflag which = UK_PROG_GOVT }
+}
+}
+
+event = {
+id = 118015
+random = no
+country = U07
+style = 2
+
+trigger = {
+local_flag = UK_ELECT3_CAMPAIGN
+event = { id = 118014 days = 40 } #1st Election
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT= {
+ispuppet = U07
+}
+}
+
+name = "British General Election"
+desc = "After a long pre-electoral campaign the time has come to choose our representatives for the next four years."
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 50
+name = "Elect the Conservative Party"
+command = { type = dissent value = 1 }
+command = { type = trigger which = 118016 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Elect the National Party"
+command = { type = dissent value = 3 }
+command = { trigger = { NOT = { local_flag = UK_NAT_SUETER local_flag = UK_NAT_RAMSAY } } type = trigger which = 118017 }
+command = { trigger = { local_flag = UK_NAT_SUETER } type = trigger which = 118018 }
+command = { trigger = { local_flag = UK_NAT_RAMSAY } type = trigger which = 118019 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Elect the Liberal Party"
+command = { type = dissent value = 1 }
+command = { type = trigger which = 118020 }
+}
+
+action_d = {
+ai_chance = 30
+name = "Elect the Progressive Party"
+trigger = {
+local_flag = UK_PROVGOV_PROG_ALLOWED
+}
+command = { type = dissent value = -3 }
+command = { type = trigger which = 118021 }
+}
+}
+
+event = {
+id = 118016
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Conservative Party Wins"
+desc = "The results of the third general election since liberation have been announced, and the Conservative Party has emerged victorious, while the King has appointed Lord Beaverbrook Prime Minister."
+
+action_a = {
+name = "PM Beaverbrook forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557417 } #Lord Beaverbrook
+command = { type = foreignminister which = 557429 } #Mark Sykes
+command = { type = armamentminister which = 557452 } #Montagu Norman
+command = { type = ministerofsecurity which = 557481 } #Duke of Devonshire
+command = { type = local_setflag which = UK_CON_GOVT }
+}
+}
+
+event = {
+id = 118017
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The National Party Wins"
+desc = "The results of the third general election since liberation have been announced, and the National Party has emerged victorious, while the King has appointed Henry Page Croft Prime Minister."
+
+action_a = {
+name = "PM Croft forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557415 } #Henry Page Croft
+command = { type = foreignminister which = 557425 } #Richard Cooper
+command = { type = armamentminister which = 557448 } #Murray Sueter
+command = { type = ministerofsecurity which = 557480 } #Archibald Ramsay
+command = { type = local_setflag which = UK_NAT_GOVT }
+}
+}
+
+event = {
+id = 118018
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The National Party Wins"
+desc = "The results of the third general election since liberation have been announced, and the National Party has emerged victorious, while the King has appointed Murray Sueter Prime Minister."
+
+action_a = {
+name = "PM Sueter forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557414 } #Murray Sueter
+command = { type = foreignminister which = 557424 } #9th Earl of Bessborough
+command = { type = armamentminister which = 557447 } #John Carnegie
+command = { type = ministerofsecurity which = 557479 } #Ernest Shackleton
+command = { type = local_setflag which = UK_NAT_GOVT }
+}
+}
+
+event = {
+id = 118019
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The National Party Wins"
+desc = "The results of the third general election since liberation have been announced, and the National Party has emerged victorious, while the King has appointed Archibald Maule Ramsay Prime Minister."
+
+action_a = {
+name = "PM Ramsay forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557412 } #Archibald Maule Ramsay
+command = { type = foreignminister which = 557422 } #Baron Ampthill
+command = { type = armamentminister which = 557441 } #Noel Pemberton-Billing
+command = { type = ministerofsecurity which = 557476 } #Alexander Scotland
+command = { type = ministerofintelligence which = 557500 } #John Amery
+command = { type = local_setflag which = UK_NAT_GOVT }
+}
+}
+
+event = {
+id = 118020
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Liberal Party Wins"
+desc = "The results of the third general election since liberation have been announced, and the Liberal Party has emerged victorious, while the King has appointed Herbert Samuel Prime Minister."
+
+action_a = {
+name = "PM Samuel forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557418 } #Herbert Samuel
+command = { type = foreignminister which = 557438 } #Walter Runciman
+command = { type = armamentminister which = 557453 } #Isaac Foot
+command = { type = ministerofsecurity which = 557484 } #Ivor Brown
+command = { type = ministerofintelligence which = 557505 } #George Lambert
+command = { type = local_setflag which = UK_LIB_GOVT }
+}
+}
+
+event = {
+id = 118021
+random = no
+country = U07
+style = 2
+picture = "rusdumaelect"
+
+name = "The Progressive Party Wins"
+desc = "The results of the third general election since liberation have been announced, and the Progressive Party has emerged victorious, while the King has appointed Richard Acland Prime Minister."
+
+action_a = {
+name = "PM Acland forms his cabinet"
+command = { type = local_clrflag which = UK_ELECT2_CAMPAIGN }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557421 } #Richard Acland
+command = { type = foreignminister which = 557439 } #J. B. Priestley
+command = { type = armamentminister which = 557475 } #R. H. Tawney
+command = { type = ministerofsecurity which = 557489 } #H. G. Wells
+command = { type = ministerofintelligence which = 557507 } #Victor Rothschild
+command = { type = local_setflag which = UK_PROG_GOVT }
+}
+}
+

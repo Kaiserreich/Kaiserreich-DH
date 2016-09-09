@@ -1,0 +1,598 @@
+# Adapted from ast_1941
+# reworked by Spocky for DAIM
+# based on the original files (HoI2 1.1) by Lothos
+# reuse is welcome as long as file origin is correctly stated    edit DB for KR
+
+switch = no
+max_front_ratio = 2.0 
+max_garrison_prop = 0.30
+min_garrison_prop = 0.20
+neutrality = 85
+war = 0
+upgrading = 0.2
+reinforcement = 0.2
+strat_redeploy_threshold = 25
+
+exp_force_ratio = 0.25
+exp_force_ratios = {
+	
+} 
+no_exp_forces_to = {  }
+
+###################################
+# Diplomacy
+###################################
+combat = { }
+# Special resistance against "influence" by the listed nations. Value range = [0 - 10]  
+resistance = {  
+	JAP = 8
+	RUS = 6
+	FRA = 5
+	ENG = 5
+	GER = 5
+	U28 = 4
+}
+befriend = {
+CAN = 50
+VIC = 40
+PAK = 20
+U10 = 20
+GUY = 20
+TEX = 40
+}
+protect = { }
+target = { } 
+trade = {
+	cancel_deal_threshold = 1.6
+
+	energy 		= -1
+	rare_materials 	= -1
+	metal 		= -1
+	oil 		= -1
+	supplies 	= -1
+	money 		= -1
+
+	favored = {
+CAN = 50
+VIC = 40
+PAK = 20
+TEX = 40
+	}
+	embargo = {
+		ENG FRA RSI SOV U28
+	}
+}
+tech_sharing = {
+	favored = {
+CAN = 50
+VIC = 40
+
+TEX = 40
+	}
+	embargo = {
+		ENG FRA RSI SOV U28
+	}
+	not = { }
+	prioritized = {
+		# Agriculture
+		5020 = 100
+		5030 = 100
+		5040 = 100
+
+		# Inf support
+		1310 = 100
+		1320 = 100
+		1330 = 100
+		1340 = 100
+		1350 = 100
+		1360 = 100
+
+		# Production
+		5050 = 100
+		5060 = 100
+		5070 = 100
+		5080 = 100
+		5090 = 100
+		5100 = 100
+		5110 = 100
+		5120 = 100
+		5130 = 100
+		5150 = 100
+		5180 = 100
+
+		# Naval Bomber
+		4190 = 100
+		4200 = 100
+		4210 = 100
+
+		# Marines
+		1150 = 100
+		1160 = 100
+		1170 = 100
+		1180 = 100
+	}
+}
+
+###################################
+# Spying
+###################################
+spyprefs =
+{
+	percentage_on_spies 		= 0.1
+	percentage_foreign_mission 	= 0.5
+
+	# Used for Homeland Defense Spying
+	spyprefsdata = 
+	{
+		NumberOfSpies = 7
+		counter_espionage =  10
+		country = AST
+	}
+	# Defaul Spy parms used for countries the AI is atwar with but has no specific entry
+	spyprefsdata = {
+		country_priorities	= 3
+		NumberOfSpies		= 3
+		min_number_of_spies = 1
+		steal_blueprint 	= 10
+		minister_assassination = 1
+		smear_campaign 		= 3
+		coup 				= 0
+		sabotage_industry 	= 5
+		nuclear_sabotage 	= 0
+		found_partisans 	= 0
+		massmedia 			= 3
+		counter_espionage 	= 5
+		disrupt_techteam	= 5
+		country 			= JAP
+	}
+}
+
+###################################
+# Construction and Tech Research
+###################################
+#Default values
+construction = { 
+	max_factor = 0.250
+
+
+	AA_batteries = at_war
+	max_AA_level = 3
+	AA_provs = { 
+		1705 # Melbourne
+		1707 # Canberra
+		1704 # Sydney
+                1721
+		1697 # Auckland
+	}
+
+	coastal_fort = no
+	max_coastal_level = 3
+	coastal_fort_provs = { } 
+
+	radar_station = no 
+	max_radar = 5 
+	radar_provs = { } 
+
+	air_base = at_war
+	max_air_base = 4
+	air_base_provs = {
+		1607 # Rabaul
+		1726 # Port Moresby
+		1698 # Lae
+                1721
+	} 
+
+	naval_base = at_war
+	max_naval_base = 4
+	naval_base_provs = {
+		1607 # Rabaul
+		1726 # Port Moresby
+		1698 # Lae
+                1721
+	} 
+
+	land_fort = no
+	max_land_level = 2
+	fort_borders = { } 
+
+	ic_at_war = no
+	force_ic_until = 1935
+	ic_end_year = 1940
+	IC_provs = {
+		1705 # Melbourne
+		1707 # Canberra
+		1704 # Sydney
+                1721
+		1697 # Auckland
+	} 
+}
+
+military = { 
+	relative_build_scheme 	= no
+	max_batch_peace 	= 860 
+	max_batch_war 		= 780 
+	max_batch_home_front 	= 380
+
+	#### Divisions etc...
+	infantry 	= 27
+	cavalry 	= 0
+	motorized 	= 0
+	mechanized 	= 0
+	light_armor 	= 0
+	armor 		= 0
+	paratrooper 	= 0
+	marine 		= 20
+	bergsjaeger 	= 0
+	garrison	= 0
+      	hq 		= 5
+	militia 	= 0
+#				57 %
+	interceptor 	= 5
+	multi_role 	= 0
+
+	cas 		= 0
+	strategic_bomber = 0
+	tactical_bomber = 0
+	naval_bomber 	= 5
+	transport_plane = 0
+	flying_bomb 	= 0
+	flying_rocket 	= 0
+#				10 %
+	battleship 	= 6
+	carrier 	= 0
+	destroyer 	= 9
+	light_cruiser 	= 8
+	heavy_cruiser 	= 0
+	battlecruiser 	= 0
+	submarine 	= 5
+	transports 	= 5
+#				33 %
+#       new units DH and KR
+		escort_carrier	= 0
+		nuclear_submarine = 0
+		d_01		= 0        #  Light Infantry
+
+	#### Brigades
+	artillery 			= 20
+	sp_artillery 		= 0
+	rocket_artillery		= 0
+	sp_rct_artillery 		= 0
+	anti_tank 		= 4
+	tank_destroyer 		= 2
+	light_armor_brigade 	= 0
+	heavy_armor 		= 0
+	super_heavy_armor 		= 0
+	armored_car 		= 0
+	anti_air 			= 4
+	police 			= 0
+	engineer 			= 5
+	b_01			= 5   #  anti tank in KR  new brigades 
+	amph_armor 		= 0   
+	cavalry_brigade		= 5
+	glider_armor		= 0
+	glider_artillery	= 0 
+	sp_anti_air		= 0
+	super_heavy_artillery	= 0 
+
+
+	cag = 100.000 
+	    escort = 100.0000
+
+            naval_asw = 10.0000 
+            naval_anti_air_s = 20.0000 
+            naval_radar_s = 10.0000 
+            naval_fire_controll_s = 20.0000 
+            naval_improved_hull_s = 10.0000 
+            naval_torpedoes_s = 10.0000 
+            naval_anti_air_l = 10.0000 
+            naval_radar_l = 0.0000 
+            naval_fire_controll_l = 10.0000 
+            naval_improved_hull_l = 0.0000 
+            naval_torpedoes_l = 0.0000
+}
+
+technology = { 
+	endgoal 	= { } 
+	preference = {
+		# Tools
+		5810 5820 5050 5830 5060 5070 5130 5110 5120 5840 5850 5860
+
+		# Engineering
+		5800 5080 5090 5100 5900 5910
+		
+		#Assembly lines
+		5140 5180
+		
+		# Computers
+		5310 54010 54020 54030 5320 5330 5340
+		
+		#EQUIPMENT Jungle
+		5940 5950
+
+		# Electronic Computers
+		7140 7150 7160
+
+		#Infantry
+		1010 1020 1030 1040 1050 1060 1070 1080 1090 1100 1110 1120 1130 1140 1150 13000 13010 13020
+
+
+	# Armored Cars
+	2860 2870 2880 2020 2150 2160 2890 11110
+
+	# Field Artillery Support
+	2290 2300 2310 2900 2910 2920 2930 2940 2320 2330 2340 2360 2950 2350
+
+	# Self-Propelled Artillery
+	2220 2230 2240 2250 11030 11040 2960 2966
+
+	# Static Anti-Air
+	2800 2450 21180 21190 21200 2460 2470 2480 2490 2500 11080
+
+	# Anti-Tank Artillery
+	2400 2410 2420 2430
+
+		# Tactical bombers 
+		4120 4130 4140 4150 4160 15100 15110 4640 4650
+		
+		# Interceptors
+		4550 4010 4020 4030 4060 4090 15000 15010 4560 4570
+
+		# Marines
+		1560 1570 1580 1590 1600 1610 1620 1630 1640 1650 1660
+
+		# Naval Doctrines
+		8200 8250 8260
+
+		# Defensive Focus Grand Battleplan Path (FRA / UK)
+		6560 6030 6110 6120 6130 6140 6170 14070
+
+		# Air Doctrines
+		9040 9050 9060 9070 9080 9090 9100 9110 9120 9130 9190 9210 9220 9230 9240 9250 9350
+	} 
+	ignore 	= {
+		# Vehicle Assembly & Rocket Assembly
+		5170
+
+		# CAS
+		4400 4170 4280 4450 4180 15120 15130 
+
+		# Airborne
+		1670 1680 1690 1700 1710 1720 1730 1740
+
+		# Cavalry
+		13060 13070 13080 1310 1320 1330 1340 1350 1360 1370 1380 1390
+
+		# Mountain Unit techs
+		1160 1170 1180 1190 1200 1210 1220 1230 1240 1250 1260 1270 1280 1290 1300 13030 13040 13050
+
+		# Motorized
+		1396 1400 1410 1420 1430 1440 1450 1460 
+
+		# Air Transports
+		4290 4250 4260 4270 15180 15190
+
+		# Strategic bombers
+		4220 4230 4240
+
+		# Carrier Air groups *Turbojet CAG, Imp.Turbojet CAG
+		4900 4910 4920 4930 4940 4950 4960
+		
+		# Atomic Research
+		5470 5480 5490 5500 5510 5520 5530 5540
+
+		# Rocket, Test and Research
+		5560 7550 7560 7570 7580 7590
+
+		# Oil Refining
+		5190 5200 5210 5220 5230 5240
+		
+		# Bas Decimetric
+		5410 5420 5430 5440 5450 5460
+
+		# Light tanks
+		7600 7610 2010 2630 2640 2650 2030 2040 2050
+
+		# Medium tanks
+		2070 2080 2090 2140 11000 2660 11010 2670
+
+		# Mechanized
+		1470 1480 1490 1510 1520
+
+		# Heavy Tanks and Semi-Modern Tank
+		2620 2100 2110 2120
+
+		# Tank destroyers
+		2170 2180 2850 2190 2200 2210 11020
+
+
+		# SP Rocket Artillery
+		2980 2260 2270 2280 11050 11060 2990 
+		
+
+	# Battleships
+	3410 3420 3430 3440 3450 3456 3460 3470 3480 12040
+
+	# Submarines
+	3610 3620 3630 3640 3650 3660 3670 3680 3690 3700 3710
+
+	# Battlecruisers
+	3310 3320 3330 3340 3350 12030
+
+	# Super Heavy Battleships
+		3490 12050
+
+	# Light Carriers
+	12100 12110 12120 12130 12140 12150 12160
+
+
+		# Carrier
+		3510 3520 3530 3540 3550 12060 3560 3570
+
+
+		
+		# Strategic Air Doctrines 9140
+		9150 9160 9170 9180 9430 9440 9450 9460
+	}
+ 
+	armor 		= 3
+	infantry 	= 5
+	industry 	= 4
+	aircraft 	= 1
+	naval 		= 3
+	land_doctrines 	= 2
+	secret_weapons 	= 0
+	air_doctrines 	= 1
+	naval_doctrines = 1	
+}
+###################################
+# Ground Combat, Leaders and Garrisons
+###################################
+leader_ratio = {
+	land_field_marshal 	=0.02
+	land_general 		=0.031
+	land_lt_general 	=0.41
+
+	sea_grand_admiral 	=0.02
+	sea_admiral 		=0.061
+	sea_vice_admiral 	=0.401
+
+	air_marshal 		=0.02
+	air_general 		=0.091
+	air_lt_General 		=0.11
+}
+garrison = {
+	defend_overseas_beaches = yes
+	home_multiplier 	= 1.0
+	overseas_multiplier 	= 0.5
+	home_peace_cap 		= 80
+	war_zone_odds 		= 2.0
+	key_point_prio_mult	= 0
+	revolt_risk_mult	= 1.0
+
+	# PRIORITIES:
+	beach			= 60	# Beach level 2
+	capital			= 80	# Our capital
+	human_border		= 100	# Ignored for allied human players
+	war_target		= 50	# The next country targeted for attack by this AI
+	
+	opposing_alliance	= 50	# For neutrals, all alliances are "opposing"
+	claim_threat		= 0	# If we are neutral, countries with claims on us get this
+	unstable_border		= 0	# Bordering countries at war with someone else get this
+
+	# Borders with specific countries
+	country_priorities = {
+		GER = 100
+		JAP = 100
+		HOL = 50
+	}
+	province_priorities = {	}
+	area_multiplier = { }
+}
+front = { 
+	recklessness 		= 2 # 0-3
+	distrib_vs_ai 		= op_defensive
+	distrib_vs_human 	= op_defensive
+
+	enemy_reinf_days	= 4
+	reserve_prop		= 0.2
+	panic_ratio_vs_ai	= 2.5
+	panic_ratio_vs_human	= 2.5
+	base_attack_odds	= 1.5
+	min_attack_odds		= 1.2
+	max_attack_odds		= 2.5
+	reinforce_odds		= 1.2
+	withdraw_odds		= 0.75
+
+	strength 	= 1.0
+	organisation 	= 1.0
+	soft_attack 	= 1.0
+	hard_attack 	= 1.0
+	ground_defense 	= 1.0
+	dig_in 		= 1.25 # Against defender
+
+      	enemy_handicap = { } 
+      	passivity = { } 
+} 
+
+
+
+###################################
+# Invasions and Naval
+###################################
+invasion = {
+	invasion	= yes
+ 	base		= 1.5	#Relative modifier. (lower = specific targets much more important.)
+	random		= 0.01	#How big a random range.  (1.0 = 1%)
+	coastal		= 2.0	#increase to avoid coastal forts more.
+	beach		= 1.0	#higher, avoid worst beaches.
+	distance	= 5.0	#higher = avoid long distance.
+	max_distance    = 30.0  #About the distance from Rostock to Narvik
+	pocket		= 1.0	#prioritise pockets, ie provinces with no adjacent controlled by same.
+	island		= 1.0	#prioritise taking pure islands.
+	enemy		= 3.0	#higher = much more vary of troops in province.
+	adjacentenemy 	= 3.0	#higher = much more vary of troops nearby
+	air_base	= 1.0 
+      	naval_base 	= 1.0 
+      	air_support 	= 1.0 
+      	redirect 	= nearest
+	ignore		= no
+	staging_province = {
+	
+	}
+      
+}	
+admiral = {
+	min_org		= 100	# NEW: Percent of org gained back before the unit can leave port
+	min_dmg		= 28    # NEW: Percent of dmg gained back before the unit can leave port
+	return_org 	= 60 	# NEW: PERCENT OF ORG LOST BEFORE RETURNING TO PORT applies to all fleets/ships
+	return_dmg 	= 80 	# NEW: PERCENT OF DMG LOST BEFORE RETURNING TO PORT for repairs applies to all fleets/ships
+
+ignore = {
+
+
+# Caribbean
+"Yucatan Strait"
+"Central Carribean"
+"Windward Islands"
+"West Gulf of Mexico"
+"East Gulf of Mexico"
+"Florida Strait"
+
+# Baltic Sea
+"Bothnian Bay"
+"Northern Baltic"
+"Southern Baltic"
+
+
+# North Sea
+"Kattegat"
+"Southeast Northsea"
+"West Northsea"
+"Central Northsea"
+"Norwegian Sea"
+"East North Sea"
+"Barents Sea"
+
+
+# South Atlantic
+"Coast of Brazil"
+"Cap Verde"
+"Gulf of Guinea"
+"Coast of Africa"
+"Coast of Bissao"
+"Guiana Basin"
+"South-Central Mid-Atlantic Ridge"
+"Atlantic-Indian Ridge"
+"Coast of South Africa"
+"Coast of Angola-Namibia"
+"Angola Plain"
+"Argentine Plain"
+"Coast of Argentina"
+"Coast of Uruguay"
+"Coast of Guyana"
+"Coast of Recife"
+"Pernambuco Plain"
+"Ascension Fracture Zone"
+	}
+}
+	

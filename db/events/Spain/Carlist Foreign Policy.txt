@@ -1,0 +1,529 @@
+########################################
+#### Carlist Foreign Policy
+########################################
+
+event = {
+id = 91233
+random = no
+country = ITA
+picture = "church2"
+style = 2
+
+trigger = {
+exists = EUS
+control = { province = 460 data = EUS }
+NOT = {
+exists = SPR
+exists = SPA
+ispuppet = EUS
+ispuppet = ITA
+}
+OR = {
+headofstate = 3234 #Pius XII
+headofstate = 3249 #John XXIII
+headofstate = 3251 #Julius IV
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Carlist City of Madrid"
+desc = "The Pope has been interested since the end of the Spanish Civil War in visiting Madrid."
+
+action_a = {
+ai_chance =  100
+name = "Announce His Holiness' plan to visit Spain!"
+command = { }
+}
+action_b = {
+ai_chance =  0
+name = "Bah! Roma is where His Holiness will stay!"
+command = { type = sleepevent which = 91234 }
+command = { type = sleepevent which = 91235 }
+}
+}
+
+event = {
+id = 91234
+random = no
+country = EUS
+picture = "PiusXI"
+style = 2
+
+trigger = { event = 91233 }
+
+date = { day = 1 month = january year = 1936 }
+offset =  7
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Pope Announces his trip to Madrid"
+desc = "The Pope has recently announced he would like to make a trip to Carlist Madrid celebrating the Carlist Victory in the Spanish Civil War."
+
+action_a = {
+ai_chance = 100
+name = "The Pope Would Honor us with his presence? Welcome him!"
+command = { type = dissent value = -3 }
+command = { type = relation which = ITA value = 25 }
+}
+action_b = {
+ai_chance =  0
+name = "We're not interested !"
+command = { type = relation which = ITA value = -10 }
+command = { type = sleepevent which = 91247 }
+command = { type = sleepevent which = 91235 }
+}
+}
+
+event = {
+id = 91235
+random = no
+country = ITA
+picture = "carlists"
+style = 2
+
+trigger = { event = 91234 }
+
+date = { day = 1 month = january year = 1936 }
+offset =  14
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Pope Visits Madrid"
+desc = "The Popes plane landed down yesterday, and he is taking part in a parade in his honor."
+
+action_a = {
+name = "His Holiness has arrived!"
+command = { type = dissent value = -3 }
+command = { type = relation which = EUS value = 25 }
+}
+}
+
+######################
+# The Mediterranean bloc
+######################
+
+event = {
+id = 91247
+country = EUS
+style = 2
+picture = "Carlists"
+
+
+trigger = {
+exists = ITA
+control = { province = 460 data = EUS }
+NOT = {
+ispuppet = EUS
+ispuppet = ITA
+exists = SPA
+exists = SPR
+}
+NOT = { war = { country = EUS country = ITA } }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Mediterranean bloc"
+desc = "As our nation rises from the horrors of the Civil War, we are finding increased faith in the people, of both our government and our glorious armed forces. There has been serious talk amongst the military and national leaders of this country to use our strength to defend our interests across the Mediterranean."
+
+action_a = {
+name = "Try to form a new bloc in Mediterranean"
+ai_chance = 100
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 91248 }
+command = { type = setflag which = EUS_pope }
+}
+
+action_b = {
+name = "It was a violent civil war... we must rebuild."
+ai_chance = 0
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 91248
+country = ITA
+style = 2
+picture = "Carlists"
+
+
+trigger = {
+flag = EUS_pope
+NOT = { government = communist }
+NOT = { ispuppet = ITA }
+NOT = { war = { country = EUS country = ITA } }
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Mediterranean bloc"
+desc = "As the strength of the Carlists increase after the bloody Spanish Civil War, their gratitude towards us for our involvement in the civil war has risen. They are now offering us to form a new military bloc to protect our mutual national interests. How shall we respond ?"
+
+action_a = {
+name = "Accept their offer"
+ai_chance = 100
+command = { type = leave_alliance when = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = setflag which = carlpap }
+command = { type = relation which = EUS value = 100 }
+command = { type = alliance which = EUS }
+}
+action_b = {
+name = "Refuse !"
+ai_chance = 0
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 91249000
+country = EUS
+style = 2
+picture = "Carlists"
+
+
+trigger = {
+NOT = {
+exists = ITA
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Pope in Exile"
+desc = "With Italy in ruins, the Pope and his entourage has come to Spain, seeking refuge in our lands until Rome is once again secured."
+
+action_a = {
+name = "He is always welcome here."
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 91249
+country = EUS
+style = 2
+picture = "Carlists"
+
+
+trigger = {
+flag = carlpap
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Mediterranean bloc"
+desc = "National leaders now believe it is time to start insuring the prosperity of fellow Mediterranean nations."
+
+action_a = {
+name = "Send out the envoys!"
+ai_chance = 100
+command = { type = domestic which = interventionism value = 1 }
+command = { trigger = { NOT = { event = 3967240 ispuppet = POR } NOT = { war = { country = EUS country = POR } } } type = trigger which = 91252 } #Portugal
+command = { trigger = { NOT = { ispuppet = VIC } NOT = { event = 3967230 } NOT = { war = { country = EUS country = VIC } } } type = trigger which = 91253 } #Nationalist France
+command = { trigger = { NOT = { ispuppet = CRO } NOT = { war = { country = EUS country = CRO } } } type = trigger which = 91250 } #Croatia
+command = { type = setflag which = carleuro }
+}
+
+action_b = {
+name = "This was a bad idea..."
+ai_chance = 0
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 20 }
+}
+}
+
+
+event = {
+id = 91250
+country = CRO
+style = 2
+picture = "Carlists"
+
+trigger = {
+NOT = { government = communist }
+}
+
+name = "The Mediterranean bloc"
+desc = "After the end of the Spanish Civil War, Carlist Spain has proposed the creation of a Mediterrean Block, an economic and military alliance among the nations of the Mediterranena Sea."
+
+action_a = {
+name = "Just observe them..."
+ai_chance = 50
+command = { type = dissent value = -5 }
+command = { type = relation which = EUS value = 100 }
+}
+
+action_b = {
+name = "We must join in their cause!"
+ai_chance = 50
+command = { type = leave_alliance when = 1 }
+command = { type = dissent value = -5 }
+command = { type = relation which = EUS value = 100 }
+command = { type = alliance which = EUS }
+command = { type = guarantee which = EUS where = CRO }
+}
+}
+
+
+event = {
+id = 91252
+country = POR
+style = 2
+picture = "Carlists"
+
+trigger = {
+NOT = { government = communist }
+}
+
+name = "The Mediterranean bloc"
+desc = "After the end of the Spanish Civil War, Carlist Spain has proposed the creation of a Mediterrean Bloc, an economic and military alliance among the nations of the Mediterranena Sea."
+
+action_a = {
+name = "Just observe them..."
+ai_chance = 40
+command = { type = dissent value = -5 }
+command = { type = relation which = EUS value = 100 }
+}
+action_b = {
+name = "We must join in their cause!"
+ai_chance = 60
+command = { type = dissent value = -5 }
+command = { type = leave_alliance when = 1 }
+command = { type = relation which = EUS value = 100 }
+command = { type = embargo which = POR where = EUS value = 0 }
+command = { type = alliance which = EUS }
+command = { type = guarantee which = EUS where = POR }
+}
+}
+
+event = {
+id = 91253
+country = VIC
+style = 2
+picture = "Carlists"
+
+trigger = {
+NOT = { government = communist }
+}
+
+name = "The Mediterranean bloc"
+desc = "After the end of the Spanish Civil War, Carlist Spain has proposed the creation of a Mediterrean Bloc, an economic and military alliance among the nations of the Mediterranena Sea."
+
+action_a = {
+name = "Just observe them..."
+ai_chance = 50
+trigger = {
+OR = {
+exists = CAN
+exists = U07
+}
+}
+command = { type = dissent value = -5 }
+command = { type = relation which = EUS value = 100 }
+}
+action_b = {
+name = "Leave Canada and join in their cause!"
+ai_chance = 50
+trigger = {
+NOT = { exists = U07 } # Why would they leave alliance with Canada, if they have already taken British Isles
+}
+command = { type = leave_alliance when = 1 }
+command = { type = dissent value = -5 }
+command = { type = relation which = EUS value = 100 }
+command = { type = relation which = CAN value = -50 }
+command = { type = relation which = AST value = -25 }
+command = { type = guarantee which = EUS where = VIC }
+command = { type = alliance which = EUS }
+}
+}
+
+######################
+# SPANISH INQUISITION
+######################
+
+event = {
+id = 91254
+country = EUS
+style = 2
+picture = "Church2"
+
+
+trigger = {
+flag = carlpap
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Spanish Inquisition"
+desc = "A group of Spanish officials, priests, and representatives from Italy have gathered to discuss the large numbers of syndicalists, atheists, and dissenters in Iberia. These 'problems' will plague Carlist Spain in the future if not dealt with now. The representatives have considered heavily a new Spanish Inquisition..."
+
+action_a = {
+name = "Nobody expects the Spanish Inquisition!"
+ai_chance = 65
+command = { type = dissent value = 5 }
+command = { type = setflag which = iberinq }
+command = { type = relation which = FRA value = -20 }
+}
+
+action_b = {
+name = "They are Spaniards, too"
+ai_chance = 35
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 91255
+country = EUS
+style = 2
+picture = "Church2"
+
+
+trigger = {
+flag = iberinq
+exists = POR
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Portuguese Anarchists"
+desc = "The Spanish Inquisition is in full swing! Officials have been rounding up dissenters of all shapes and forcing them into jails and nationalized labor. Many members of the CNT-FAI have been fleeing to Portugal, seeking shelter amongst the Portuguese anarchists, the União Anarquista Portuguesa. Many priests and officials in Portugal and Spain are demanding action."
+
+action_a = {
+name = "Contact Portugal for Spreading the Inquisition"
+ai_chance = 90
+command = { type = trigger which = 91256 }
+}
+
+action_b = {
+name = "What the Portuguese do is not our business"
+ai_chance = 10
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 91256
+country = POR
+style = 2
+picture = "Carlists"
+
+name = "Portuguese Anarchists"
+desc = "Across the border, the Spanish Inquisition is in full swing! As a result of the oppression, many Spanish anarchists are taking refuge amongst the Portuguese anarchists, the União Anarquista Portuguesa. This is worrying many priests and officials in both countries. The Spanish wish for us to adopt their Inquisition to combat it."
+
+action_a = {
+name = "Start the Inquisiton!"
+ai_chance = 90
+command = { type = trigger which = 91257 }
+command = { type = dissent value = 5 }
+command = { type = relation which = FRA value = -20 }
+command = { type = relation which = EUS value = 20 }
+}
+
+action_b = {
+name = "Bah! The Spaniards are backward..."
+ai_chance = 10
+command = { type = dissent value = 10 }
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 91257
+country = ITA
+style = 2
+picture = "Carlists"
+
+trigger = {
+NOT = { government = communist }
+NOT = { war = { country = ITA country = POR } }
+}
+
+name = "The Spanish Inquisition"
+desc = "In Iberia, the Spanish Inquisition is in full swing! Both Portugal and Spain have adopted brutal methods to destroy the anarchists. We must ally with Portugal to make sure things are going well..."
+
+action_a = {
+name = "An alliance is in order"
+command = { type = alliance which = POR }
+}
+}
+
+
+
+#########
+#Carlists exploit the German vs France war
+#########
+
+event = {
+id = 3967078
+country = EUS
+style = 2
+picture = "MilitaryParade1"
+decision_picture = "decision_fall_gelb"
+
+decision = {
+war = { country = GER country = FRA }
+alliance = { country = EUS country = VIC }
+NOT = {
+ispuppet = EUS
+exists = SPA
+exists = SPR
+}
+}
+
+decision_trigger = {
+NOT = {
+atwar = EUS
+}
+}
+
+trigger = {
+war = { country = GER country = FRA }
+alliance = { country = EUS country = VIC }
+NOT = {
+ispuppet = EUS
+atwar = EUS
+exists = SPA
+exists = SPR
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "German and France fight!"
+desc = "Europe is engulfed in war again. Now is the time to liberate France from the clutches of Syndicalism ! We should call for a Holy Crusade !"
+
+action_a = {
+ai_chance = 90
+name = "Attack!"
+command = { type = end_non_aggression which = EUS where = ENG }
+command = { type = end_non_aggression which = EUS where = FRA }
+command = { type = end_non_aggression which = EUS where = RSI }
+command = { type = end_non_aggression which = EUS where = CSA }
+command = { type = war which = FRA }
+}
+
+action_b = {
+ai_chance = 10
+name = "We must stay out of this"
+command = { type = dissent value = -5 }
+}
+}
+

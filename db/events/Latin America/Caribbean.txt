@@ -1,0 +1,1003 @@
+##############################################
+###    Haitian-Dominican Conflict (by Straczynski)
+### Based on the original "Parsley Massacre" chain by Kibbles
+##############################################
+
+event = {
+id = 55550
+country = DOM
+style = 2
+picture = "Army"
+
+date = { day = 10 month = march year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Antihaitianismo"
+desc = "Since the XIXth century, Haiti and our Republic have considered themselves rivals over political mastery of Hispaniola. Over the past few decades, a large Haitian minority has settled on the border areas of the Dominican Republic, often being accused of criminal activity. Under the current dictatorship of Rafael Trujillo, this 'anti-haitianismo' policy has gained much ground, including promises for further 'dominicanization' of the border areas - that is, the forced eviction of Haitian settlers."
+
+action = {
+name = "Continue the Anti-Haitian policies"
+ai_chance = 95
+command = { type = relation which = HAI value = -50 }
+command = { type = setflag which = hispaniola_persecution }
+command = { type = dissent value = 1 }
+}
+
+action = {
+name = "We'd better cease this persecution"
+ai_chance = 5
+command = { type = dissent value = 2 }
+command = { type = relation which = HAI value = 10 }
+command = { type = domestic which = freedom value = 1 }
+}
+}
+
+event = {
+id = 55551
+country = DOM
+style = 2
+picture = "Army"
+
+trigger = {
+event = 55550
+flag = hispaniola_persecution
+}
+
+date = { day = 1 month = january year = 1937 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Massacre in Bánica"
+desc = "Over the past months, our president Rafael Trujillo has steped-up his anti-Haitian policies, including giving security forces a free-reign on dealing with illegal migrant workers on the border areas. Today, in Dajabón, he has declared that the 'Haitian question' is being solved, as army troops have massacred roughly three hundred Haitians settlers in the border town of San Francisco de Bánica."
+
+action = {
+name = "Praise the officers who took part on the operation and continue our repressive policies"
+ai_chance = 90
+command = { type = relation which = HAI value = -50 }
+command = { type = dissent value = 1 }
+command = { type = trigger which = 55552 }
+}
+
+action = {
+name = "Maybe we've gone too far this time, apologise to the Haitians"
+ai_chance = 10
+command = { type = dissent value = 4 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = clrflag which = hispaniola_persecution }
+command = { type = trigger which = 55556 }
+}
+}
+
+event = {
+id = 55552
+country = HAI
+style = 2
+picture = "Army"
+
+name = "Haitians massacred in Bánica"
+desc = "Dominican president Rafael Trujillo has steped-up his anti-Haitian policies, including giving security forces a free-reign on dealing with illegal migrant workers on the border areas. Today, in Dajabón, he has declared that the 'Haitian question' is being solved, as army troops have massacred roughly three hundred Haitians settlers in the border town of San Francisco de Bánica. Not only that, but the officers who took part in this operation were decorated - a signal that more repression is sure to come."
+
+action = {
+name = "Demand apologies and compensation"
+ai_chance = 90
+command = { type = trigger which = 55553 }
+}
+
+action = {
+name = "There's nothing that we can do, right now"
+ai_chance = 10
+command = { type = dissent value = 8 }
+command = { type = setflag which = haiti_dissent }
+}
+}
+
+event = {
+id = 55553
+country = DOM
+style = 2
+
+name = "Compensation to Haiti?"
+desc = "As news of the Bánica massacre reached Port-au-Prince, the outraged Haitian government has demanded apologies and heavy monetary compensation."
+
+action = {
+name = "They must be joking"
+ai_chance = 95
+command = { type = trigger which = 55555 }
+}
+action = {
+name = "We must accept their demands"
+ai_chance = 5
+command = { type = dissent value = 5 }
+command = { type = clrflag which = hispaniola_persecution }
+command = { type = trigger which = 55554 }
+command = { type = money value = -100 }
+}
+}
+
+event = {
+id = 55554
+country = HAI
+style = 2
+
+name = "The Dominican Republic has accepted our demands"
+desc = "As news of the Bánica massacre reached Port-au-Prince, our outraged government has demanded apologies and heavy monetary compensation. The Dominicans have bowed to our demands!"
+
+action = {
+name = "Great!"
+command = { type = dissent value = -1 }
+command = { type = money value = 100 }
+}
+}
+
+event = {
+id = 55555
+country = HAI
+style = 2
+
+name = "The Dominicans have refused our demands"
+desc = "As news of the Bánica massacre reached Port-au-Prince, the outraged Haitian government has demanded apologies and heavy monetary compensation. Our demands have been reject, however. What shall we do?"
+
+action = {
+name = "Ready the troops and call up the reserves, we must attack!"
+ai_chance = 10
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = DOM }
+command = { type = add_division value = infantry when = 5 }
+command = { type = add_division value = infantry when = 5 }
+command = { type = dissent value = -10 }
+}
+
+action = {
+name = "There is nothing that we can do right now"
+ai_chance = 90
+command = { type = dissent value = 8 }
+command = { type = setflag which = haiti_dissent }
+}
+}
+
+event = {
+id = 55556
+country = HAI
+style = 2
+picture = "Army"
+
+name = "Haitians massacred in Bánica"
+desc = "News have reached Port-au-Prince that Dominican army troops, ordered to deal with Haitian migrant workers, have massacred roughly three hundred Haitians settlers in the border town of San Francisco de Bánica. The Dominican foreign office was quick, however, to clarify that the troops weren't acting under orders from the central government, and have sent apologies to us..."
+
+action = {
+name = "Apologies are not enough - demand monetary compensation"
+ai_chance = 50
+command = { type = trigger which = 55553 }
+}
+action = {
+name = "Demand Trujillo step down as President"
+ai_chance = 50
+command = { type = trigger which = 55557 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}
+
+event = {
+id = 55557
+country = DOM
+style = 2
+
+name = "Haitian demands"
+desc = "As news of the Bánica massacre reached Port-au-Prince, the outraged Haitian government has demanded that president Trujillo steps down, under threat of war!"
+
+action = {
+ai_chance = 60
+name = "Resign, but appoint Peynado in my place"
+command = { type = headofstate which = 49031 } # Peynado
+command = { type = headofgovernment which = 49002 } # Peynado
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = dissent value = 10 }
+command = { type = trigger which = 555581 }
+}
+action = {
+name = "Their Demands are unreasonable!"
+ai_chance = 50
+command = { type = trigger which = 55558 }
+}
+}
+
+event = {
+id = 55558
+country = HAI
+style = 2
+picture = "constitutional"
+
+name = "The Dominican Republic refuses our demands"
+desc = "Trujillo has refused the demands we have sent. What course of action should we take?"
+
+action = {
+name = "Justice must prevail, ready the troops!"
+ai_chance = 75
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = DOM }
+command = { type = add_division value = infantry when = 5 }
+command = { type = add_division value = infantry when = 5 }
+command = { type = dissent value = -10 }
+}
+action = {
+name = "They will just see it, one day!"
+ai_chance = 25
+command = { type = dissent value = 8 }
+command = { type = setflag which = haiti_dissent }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 555581
+country = HAI
+style = 2
+picture = "constitutional"
+
+name = "The Republic accepts our Demands"
+desc = "Trujillo has accepted our demands.  He has been replaced with Jacinto Bienvenido Peynado as president of the Dominican Republic."
+
+action = {
+name = "Conflict is avoided through dplomacy!"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 55559
+country = DOM
+style = 2
+picture = "parsley"
+
+trigger = {
+event = 55551
+flag = hispaniola_persecution
+}
+
+date = { day = 1 month = october year = 1937 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Parsley Massacre"
+desc = "Our security forces, under president Trujillo's orders, have continued the persecution of Haitians on the border areas. Over the past few days, army troops have massacred nearly twenty-thousand Haitian migrant workers, mostly sugarcane and coffee planters, in the vicinity of Dajabón. Dozens of villages have been razed and its inhabitants killed, rumors says, over the inability of French- and Creole-speaking Haitians to properly pronounce the Spanish word for'parsley' - 'perejil'."
+
+action = {
+name = "Hmm, let's see how this develops..."
+command = { type = relation which = HAI value = -100 }
+command = { type = clrflag which = hispaniola_persecution }
+command = { type = trigger which = 55560 }
+}
+}
+
+event = {
+id = 55560
+country = HAI
+style = 2
+picture = "parsley"
+
+name = "The Parsley Massacre"
+desc = "Dominican troops under president Trujillo's orders have continued the persecution of Haitians on the border areas. Over the past few days, their forces have massacred nearly twenty-thousand Haitian migrant workers, mostly sugarcane and coffee planters, in the vicinity of Dajabón. Dozens of villages have been razed and its inhabitants killed,with guns, machetes, clubs and knives by Dominican soldiers and irregular militias, some while trying to flee to Haiti by crossing the Artibonite River."
+
+action = {
+name = "Demand Trujillo step down as President"
+ai_chance = 45
+command = { type = trigger which = 55561 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -5 }
+}
+
+action = {
+name = "Justice must prevail, ready the troops!"
+ai_chance = 50
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = DOM }
+command = { type = add_division value = infantry when = 5 }
+command = { type = add_division value = infantry when = 5 }
+command = { type = dissent value = -10 }
+}
+
+action = {
+name = "There is nothing that we can do, unfortunately"
+ai_chance = 5
+command = { type = dissent value = 15 }
+command = { type = setflag which = haiti_dissent }
+}
+}
+
+event = {
+id = 55561
+country = DOM
+style = 2
+picture = "parsley"
+
+name = "Haiti demands the resignation of President Trujillo"
+desc = "As news of the Parsley Massacre reached Haiti, their government has demanded that President Trujillo resigns! How outrageous!"
+
+action = {
+ai_chance = 30
+name = "Resign, but appoint Peynado in my place"
+command = { type = headofstate which = 49031 } # Peynado
+command = { type = headofgovernment which = 49002 } # Peynado
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = dissent value = 10 }
+}
+
+action = {
+ai_chance = 60
+name = "This is our chance to unite all of Hispaniola under one flag!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = build_division which = infantry }
+command = { type = build_division which = infantry }
+command = { type = war which = HAI }
+command = { type = dissent value = -10 }
+}
+
+action = {
+ai_chance = 10
+name = "Their Demands are Unreasonable!"
+command = { type = trigger which = 55562 }
+}
+}
+
+event = {
+id = 55562
+country = HAI
+style = 2
+
+name = "The Dominican Republic refuses our demands"
+desc = "Trujillo has refused our demands. What course of action should we take?"
+
+action = {
+name = "Justice must prevail, ready the troops!"
+ai_chance = 85
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = DOM }
+command = { type = add_division value = infantry when = 6 }
+command = { type = add_division value = infantry when = 6 }
+command = { type = dissent value = -10 }
+}
+
+action = {
+name = "They will just see it, one day!"
+ai_chance = 15
+command = { type = dissent value = 8 }
+command = { type = setflag which = haiti_dissent }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 55563
+country = GUY
+style = 2
+picture = "american_supplies"
+
+trigger = {
+war = { country = DOM country = HAI }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Haitian-Dominican War - Caribbean Intervention"
+desc = "Talks have broken down between Haiti and the Dominican Republic, and now the entire island of Hispaniola has been thrown into war. We have made ourselves the protectors of the Caribbean, ensuring peace and tranquility, and we have failed. Now, it is time to correct our mistake - action must be taken."
+
+action = {
+ai_chance = 25
+name = "Send Supplies and Volunteers to the Haitians"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = DOM value = -50 }
+command = { type = relation which = HAI value = 50 }
+command = { type = supplies value = -1000 }
+command = { type = oilpool value = -150 }
+command = { type = manpowerpool value = -12 }
+command = { type = belligerence value = 1 }
+command = { type = trigger which = 55564 }
+}
+action = {
+ai_chance = 25
+name = "Support the Dominicans"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = DOM value = 50 }
+command = { type = relation which = HAI value = -50 }
+command = { type = supplies value = -1000 }
+command = { type = oilpool value = -150 }
+command = { type = manpowerpool value = -12 }
+command = { type = belligerence value = 1 }
+command = { type = trigger which = 55565 }
+}
+action = {
+ai_chance = 50
+name = "This is not our business"
+command = { type = domestic which = interventionism value = -1 }
+}
+action = {
+trigger = {
+OR = {
+government = fascist
+ideology =  social_conservative
+}
+}
+ai_chance = 0
+name = "The Federation must expand - Seize Hispaniola!"
+command = { type = add_corps which = "1st Transport Fleet" value = naval where = 1997 }
+command = { type = add_division which = "Bermuda Transport" value = transport when = 1 }
+command = { type = add_division which = "Long Island Transport" value = transport when = 1 }
+command = { type = add_division which = "New Providence Transport" value = transport when = 1 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = add_division value = infantry when = 7 }
+command = { type = add_division value = infantry when = 7 }
+command = { type = addclaim which = 1781 }
+command = { type = addclaim which = 1780 }
+command = { type = war which = HAI }
+command = { type = war which = DOM }
+}
+}
+
+event = {
+id = 55564
+country = HAI
+style = 2
+picture = "lend_lease"
+
+name = "The Federation intervenes"
+desc = "The Caribbean Federation has decided to send up supplies and volunteers to aid in our war effort against the Dominican Republic. They have sent two divisons of militia and one divison of infantry, as well as supplies and resources."
+
+action = {
+name = "Great!"
+command = { type = supplies value = 500 }
+command = { type = oilpool value = 150 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = infantry when = 8 }
+}
+}
+
+event = {
+id = 55565
+country = DOM
+style = 2
+picture = "lend_lease"
+
+name = "The Federation intervenes"
+desc = "The Caribbean Federation has decided to send up supplies and volunteers to aid in our war effort against Haiti. They have sent two divisons of militia and one divison of infantry, as well as supplies and resources."
+
+action = {
+name = "Great!"
+command = { type = supplies value = 500 }
+command = { type = oilpool value = 150 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = infantry when = 8 }
+}
+}
+
+event = {
+id = 55566
+country = HAI
+style = 2
+picture = "regime_falls"
+
+trigger = {
+control = { province = 1780 data = HAI }
+NOT = { exists = DOM }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Republic is defeated"
+desc = "Our long time enemies, the Dominican Republic, have been defeated. We can either liberate them with a government on our model, or take steps to formally annex them into our nation."
+
+action = {
+name = "Establish a puppet regime in the Dominican Republic"
+ai_chance = 30
+command = { type = belligerence which = -3 }
+command = { type = independence which = DOM value = 1 when = 0 }
+command = { type = make_puppet which = DOM }
+command = { type = province_revoltrisk which = 1780 value = 10 } #Santo Domingo
+command = { type = trigger which = 55567 }
+}
+
+action = {
+name = "We've fought for that territory, we're keeping it"
+ai_chance = 70
+command = { type = belligerence value = 3 }
+command = { type = addclaim which = 1780 }
+command = { type = dissent value = 5 }
+command = { type = province_revoltrisk which = 1780 value = 20 } #Santo Domingo
+}
+}
+
+event = {
+id = 55567
+country = DOM
+
+name = "Rebuilding the Republic"
+desc = "..."
+
+action = {
+name = "..."
+command = { type = sleepminister which = 49001 } #Trujillo
+command = { type = sleepminister which = 49005 } #Trujillo
+command = { type = sleepminister which = 49007 } #Trujillo
+command = { type = sleepminister which = 49008 } #Trujillo
+command = { type = sleepminister which = 49039 } #Trujillo
+command = { type = sleepminister which = 49057 } #Trujillo
+command = { type = sleepminister which = 49088 } #Trujillo
+command = { type = sleepminister which = 49096 } #Trujillo
+command = { type = sleepminister which = 49067 } #Trujillo
+command = { type = sleepminister which = 49075 } #Trujillo
+command = { type = sleepminister which = 49098 } #Trujillo
+command = { type = sleepminister which = 49031 } #Peynado
+command = { type = sleepminister which = 49002 } #Peynado
+command = { type = sleepminister which = 49064 } #Peynado
+command = { type = sleepleader which = 190010 } #Trujillo
+command = { type = sleepleader which = 190011 } #Trujillo
+command = { type = sleepleader which = 190016 } #Trujillo
+}
+}
+
+event = {
+id = 55568
+country = DOM
+style = 2
+picture = "regime_falls"
+
+trigger = {
+control = { province = 1781 data = DOM }
+NOT = { exists = HAI }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The Republic is victorious"
+desc = "Haiti has been defeated and now we control the entire island of Hispaniola! We have found little resistance to our occupation and the Haitian government has fled to Jamaica. The factories were taken intact and will soon be operational. Now we can either liberate them with a government on our model, or take steps to formally annex them into our nation."
+
+action = {
+name = "Establish a puppet regime in Haiti"
+ai_chance = 30
+command = { type = belligerence which = -3 }
+command = { type = independence which = HAI value = 1 when = 0 }
+command = { type = make_puppet which = HAI }
+command = { type = province_revoltrisk which = 1781 value = 10 } #Port-au-Prince
+command = { type = trigger which = 55569 }
+}
+
+action = {
+name = "All of Hispaniola is now under our flag"
+ai_chance = 70
+command = { type = belligerence value = 3 }
+command = { type = addclaim which = 1781 }
+command = { type = dissent value = 5 }
+command = { type = province_revoltrisk which = 1781 value = 20 } #Port-au-Prince
+}
+}
+
+event = {
+id = 55569
+country = HAI
+
+name = "Rebuilding Haiti"
+desc = "..."
+
+action = {
+name = "..."
+command = { type = sleepminister which = 78001 }
+command = { type = sleepminister which = 78002 }
+command = { type = sleepminister which = 78009 }
+command = { type = sleepminister which = 78017 }
+command = { type = sleepminister which = 78018 }
+command = { type = sleepminister which = 78019 }
+command = { type = sleepminister which = 78020 }
+command = { type = sleepminister which = 78021 }
+}
+}
+
+event = {
+id = 55570
+country = HAI
+style = 2
+picture = "military_parade"
+
+trigger = {
+flag = haiti_dissent
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1977 }
+
+name = "Military coup!"
+desc = "Following our inability to properly deal with the Dominicans following the massacres of Haitian workers there, several military leaders under the leadership of Alfred Auguste Nemours have revolted! Army units are now about to march on the streets of Port-au-Prince!"
+
+action = {
+ai_chance = 50
+name = "The presidential palace is raided, the coup is succesfull"
+command = { type = relation which = DOM value = -50 }
+command = { type = dissent value = 3 }
+command = { type = clrflag which = haiti_dissent }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = sleepminister which = 78001 }
+command = { type = sleepminister which = 78002 }
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 78120 } #Nemours
+command = { type = headofgovernment which = 78121 } #Nemours
+command = { type = foreignminister which = 78046 } #Leger
+command = { type = chiefofstaff which = 78118 } #Nemours
+command = { type = chiefofarmy which = 78117 } #Nemours
+command = { type = chiefofnavy which = 78106 } #Frederic
+command = { type = chiefofair which = 78137 } #Weymann
+command = { type = setflag which = haiti_dictatorship }
+}
+
+action = {
+ai_chance = 50
+name = "Loyal units repel the attack, the Republic is safe for now"
+command = { type = relation which = DOM value = 10 }
+command = { type = dissent value = -1 }
+command = { type = clrflag which = haiti_dissent }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = sleepminister which = 78009 }
+command = { type = sleepminister which = 78017 }
+command = { type = sleepminister which = 78018 }
+command = { type = sleepminister which = 78019 }
+command = { type = sleepminister which = 78020 }
+command = { type = sleepminister which = 78021 }
+}
+}
+
+event = {
+id = 55571
+country = HAI
+style = 2
+picture = "military_parade"
+
+trigger = {
+NOT = {
+ispuppet = HAI
+flag = haiti_dictatorship
+}
+headofstate = 78001
+}
+
+date = { day = 1 month = march year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1936 }
+
+name = "Haitian 1936 Referendum"
+desc = "In late 1935, Sténio Vincent, president of Haiti since 1930, had announced for today a referendum on whether he would be allowed to continue holding the post until 1944. If not, presidential elections will be called next year."
+
+action = {
+ai_chance = 40
+name = "Yes - Allow Sténio Vicent to hold the presidency for another term"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -2 }
+command = { type = sleepevent which = 55572 }
+}
+
+action = {
+ai_chance = 60
+name = "No - Call for elections in 1937"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 2 }
+}
+}
+
+event = {
+id = 55572
+country = HAI
+style = 2
+picture = "military_parade"
+
+trigger = {
+NOT = {
+ispuppet = HAI
+flag = haiti_dictatorship
+government = communist
+ideology = nazi
+}
+}
+
+date = { day = 1 month = march year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1937 }
+
+name = "Haitian Elections, 1937"
+desc = "According to the results of the 1936 referendum, presidential elections were called. Sténio Vincent himself is running, under his National Party ticket, but is opposed by Élie Lescot, of the conservative Patriotic Coalition. The underdog Social-Democrats have also fielded Démosthenes Pétrus Calixte, a former Garde commander, but are not expected to pose a serious threat..."
+
+action = {
+ai_chance = 50
+name = "National Party - Sténio Vincent"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 78001 } #Vincent
+command = { type = headofgovernment which = 78002 } #Vincent
+}
+action = {
+ai_chance = 45
+name = "Patriotic Coalition - Élie Lescot"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 78001 }
+command = { type = headofgovernment which = 78002 }
+}
+action = {
+ai_chance = 5
+name = "Social Democratic Party - Démosthenes Pétrus Calixte"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofstate which = 78037 }
+command = { type = headofgovernment which = 78146 }
+}
+}
+
+event = {
+id = 55573
+country = HAI
+style = 2
+picture = "military_parade"
+
+trigger = {
+NOT = {
+ispuppet = HAI
+flag = haiti_dictatorship
+government = communist
+ideology = nazi
+}
+}
+
+date = { day = 1 month = march year = 1944 }
+offset = 5
+deathdate = { day = 29 month = december year = 1944 }
+
+name = "Haitian Elections, 1944"
+desc = "Today, it's election day in Haiti, as voters all over the countries are ready to select the next president. Three main parties are participating: the National Party, supported by the military, with Franck Lavaud... The Patriotic Coalition, with Élie Lescot... And the Social Democrats, with Démosthenes Pétrus Calixte."
+
+action = {
+ai_chance = 40
+name = "National Party - Franck Lavaud"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 78035 }
+command = { type = headofgovernment which = 78147 }
+}
+action = {
+ai_chance = 45
+name = "Patriotic Coalition - Élie Lescot"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 78001 }
+command = { type = headofgovernment which = 78002 }
+}
+action = {
+ai_chance = 15
+name = "Social Democratic Party - Démosthenes Pétrus Calixte"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofstate which = 78037 }
+command = { type = headofgovernment which = 78146 }
+}
+}
+
+event = {
+id = 55574
+country = HAI
+style = 2
+picture = "military_parade"
+
+trigger = {
+NOT = {
+ispuppet = HAI
+flag = haiti_dictatorship
+government = communist
+ideology = nazi
+}
+}
+
+date = { day = 1 month = march year = 1951 }
+offset = 5
+deathdate = { day = 29 month = december year = 1951 }
+
+name = "Haitian Elections, 1951"
+desc = "Once again, it's election day in Haiti. Three main candidates are disputing the votes: Frank Lavaud, of the National Party... Paul Magloire, of the Patriotic Coalition... And Dumarsais Estimé, of the Social Democratic Party"
+
+action = {
+ai_chance = 40
+name = "National Party - Franck Lavaud"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 78144 }
+command = { type = headofgovernment which = 78147 }
+}
+action = {
+ai_chance = 45
+name = "Patriotic Coalition - Élie Lescot"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 78001 }
+command = { type = headofgovernment which = 78043 }
+}
+action = {
+ai_chance = 15
+name = "Social Democratic Party - Dumarsais Estimé"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofstate which = 78034 }
+command = { type = headofgovernment which = 78042 }
+}
+}
+
+event = {
+id = 55575
+country = HAI
+style = 2
+picture = "military_parade"
+
+trigger = {
+NOT = {
+ispuppet = HAI
+flag = haiti_dictatorship
+government = communist
+ideology = nazi
+}
+}
+
+date = { day = 1 month = march year = 1958 }
+offset = 5
+deathdate = { day = 29 month = december year = 1958 }
+
+name = "Haitian Elections, 1958"
+desc = "Once again, it's election day in Haiti. This time, four main candidates are disputing the votes: François Duvalier, of the National Party... Louis Dejoie, of the Patriotic Coalition... Clement Jumelle, of the liberal Industrial Party... And Max Hudicourt, of the Social Democratic Party"
+
+action = {
+ai_chance = 30
+name = "National Party  - François Duvalier"
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 78148 }
+command = { type = headofgovernment which = 78149 }
+}
+action = {
+ai_chance = 30
+name = "Patriotic Coalition -  Louis Dejoie"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = headofstate which = 78033 }
+command = { type = headofgovernment which = 78040 }
+}
+action = {
+ai_chance = 25
+name = "Industrial Party - Clement Jumelle"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 78150}
+command = { type = headofgovernment which = 78151 }
+}
+action = {
+ai_chance = 15
+name = "Social Democratic Party - Max Hudicourt"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofstate which = 78143 }
+command = { type = headofgovernment which = 78144 }
+}
+}
+
+event = {
+id = 55555990
+country = DOM
+style = 2
+
+trigger = {
+war = { country = DOM country = HAI }
+random = 3
+ai = DOM
+ai = HAI
+}
+
+date = { day = 3 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "AI_EVENT"
+desc = "..."
+
+action_a = {
+name = "Collapse"
+command = { type = max_organization which = land value = -50 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = sleepevent which = 55555991 }
+}
+}
+
+event = {
+id = 55555991
+country = HAI
+style = 2
+
+trigger = {
+war = { country = DOM country = HAI }
+random = 3
+ai = DOM
+ai = HAI
+}
+
+date = { day = 3 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "AI_EVENT"
+desc = "..."
+
+action_a = {
+name = "Collapse"
+command = { type = max_organization which = land value = -50 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = remove_division which = -1 }
+command = { type = sleepevent which = 55555990 }
+}
+}
+
+
+### AUS refugees in Cuba
+event = {
+id = 55555992
+random = no
+country = CUB
+trigger = {
+flag = ACW_AUS
+NOT = {
+exists = TEX
+}
+NOT = {
+government = communist
+}
+}
+
+name = "American Union Refugees"
+desc = "The surrender of the AUS meant that thousands of refugees fled the country. Many of them used Florida to pass through to Cuba to escape capture. The refugees brought with them a lot of posessions and money that they had managed to liberate from the AUS before the surrender. They are more than willing to share some of the wealth with the people of Cuba."
+style = 2
+
+date = { day = 1 month = july year = 1937 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Their loss is our gain"
+command = { type = money value = 100 }
+command = { type = manpowerpool value = 20 }
+command = { type = supplies value = 30 }
+}
+}

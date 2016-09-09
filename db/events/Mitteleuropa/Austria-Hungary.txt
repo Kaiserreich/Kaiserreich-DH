@@ -1,0 +1,897 @@
+##################################
+###### Reclaiming Transylvania - by Attalus and Matej von Jakubèo
+##################################
+
+event ={
+id = 4966679
+random = no
+country = U24
+style = 2
+
+decision = {
+control = { province = 195 data = U24 }
+OR = {
+control = { province = 285 data = ROM }
+control = { province = 286 data = ROM }
+control = { province = 296 data = ROM }
+control = { province = 287 data = ROM }
+control = { province = 289 data = ROM }
+control = { province = 295 data = ROM }
+control = { province = 288 data = ROM }
+control = { province = 291 data = ROM }
+control = { province = 292 data = ROM }
+control = { province = 293 data = ROM }
+control = { province = 285 data = URU }
+control = { province = 286 data = URU }
+control = { province = 296 data = URU }
+control = { province = 287 data = URU }
+control = { province = 289 data = URU }
+control = { province = 295 data = URU }
+control = { province = 288 data = URU }
+control = { province = 291 data = URU }
+control = { province = 292 data = URU }
+control = { province = 293 data = URU }
+}
+OR = {
+exists = ROM
+exists = URU
+}
+NOT = {
+exists = HUN
+exists = AUS
+exists = CRO
+exists = CZE
+exists = U25
+ispuppet = URU
+ispuppet = ROM
+}
+}
+
+decision_trigger = {
+NOT = {
+atwar = U24
+alliance = { country = U24 country = ROM }
+alliance = { country = U24 country = URU }
+}
+control = { province = 207 data = U24 }
+control = { province = 208 data = U24 }
+control = { province = 284 data = U24 }
+}
+
+trigger = {
+control = { province = 195 data = U24 }
+control = { province = 207 data = U24 }
+control = { province = 208 data = U24 }
+control = { province = 284 data = U24 }
+OR = {
+control = { province = 285 data = ROM }
+control = { province = 286 data = ROM }
+control = { province = 296 data = ROM }
+control = { province = 287 data = ROM }
+control = { province = 289 data = ROM }
+control = { province = 295 data = ROM }
+control = { province = 288 data = ROM }
+control = { province = 291 data = ROM }
+control = { province = 292 data = ROM }
+control = { province = 293 data = ROM }
+control = { province = 285 data = URU }
+control = { province = 286 data = URU }
+control = { province = 296 data = URU }
+control = { province = 287 data = URU }
+control = { province = 289 data = URU }
+control = { province = 295 data = URU }
+control = { province = 288 data = URU }
+control = { province = 291 data = URU }
+control = { province = 292 data = URU }
+control = { province = 293 data = URU }
+}
+OR = {
+exists = ROM
+exists = URU
+}
+NOT = {
+exists = HUN
+exists = AUS
+exists = CRO
+exists = CZE
+exists = U25
+alliance = { country = U24 country = ROM }
+alliance = { country = U24 country = URU }
+atwar = U24
+ispuppet = URU
+ispuppet = ROM
+}
+}
+
+name = "Status of Transylvania"
+desc = "The Civil War saw the opportunists in Bucharest take control over Transylvania. We may have let them take it because of the ongoing civil war but now, with flames of civil war finally extinguished, time has to regain control over integral part of our homeland either by diplomacy or force !"
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 80
+name = "Send an ultimatum to Bucharest."
+trigger = {
+exists = ROM
+NOT = {
+exists = URU
+}
+}
+command = { type = event which = 4966680 where = ROM when = 2  }
+command = { type = relation which = ROM value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action = {
+ai_chance = 80
+name = "Send an ultimatum to Bucharest."
+trigger = {
+exists = URU
+NOT = {
+exists = ROM
+}
+}
+command = { type = event which = 4966681 where = URU when = 2  }
+command = { type = relation which = URU value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+
+action = {
+ai_chance = 80
+name = "Send an ultimatum to each warring side."
+trigger = {
+exists = URU
+exists = ROM
+war = { country = URU country = ROM }
+}
+command = { type = event which = 4966681 where = URU when = 2  }
+command = { type = event which = 4966680 where = ROM when = 2  }
+command = { type = relation which = URU value = -20 }
+command = { type = relation which = ROM value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action = {
+ai_chance = 15
+name = "Invade them directly, it's ours after all!"
+command = { type = war which = URU }
+command = { type = war which = ROM }
+command = { type = dissent value = 5 }
+command = { type = belligerence which = U24 value = 10 }
+command = { type = domestic which = interventionism value = 3 }
+}
+
+action = {
+ai_chance = 1
+name = "It belong to them...."
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = belligerence which = U24 value = -10  }
+command = { type = relation which = URU value = 20 }
+command = { type = relation which = ROM value = 20 }
+}
+}
+
+
+event = {
+id = 4966680
+random = no
+country = ROM
+style = 2
+
+name = "The Austria-Hungary demands Transylvania"
+desc = "Vienna demands we give back the lands we reconquered on the Hungarians during the Civil War otherwise we can expect immediate invasion ! How shall we react to this outrageous demand ?"
+picture = "austrohunarmy_march"
+
+action = {
+ai_chance = 30
+name = "We can't risk to anger Vienna..."
+trigger = {
+exists = ROM
+NOT = {
+exists = URU
+}
+}
+command = { type = secedeprovince which = U24 value = 291 }
+command = { type = secedeprovince which = U24 value = 293 }
+command = { type = secedeprovince which = U24 value = 289 }
+command = { type = secedeprovince which = U24 value = 295 }
+command = { type = secedeprovince which = U24 value = 285 }
+command = { type = secedeprovince which = U24 value = 292 }
+command = { type = secedeprovince which = U24 value = 286 }
+command = { type = secedeprovince which = U24 value = 296 }
+command = { type = secedeprovince which = U24 value = 287 }
+command = { type = secedeprovince which = U24 value = 288 }
+command = { type = secedeprovince which = U24 value = 300 }
+command = { type = secedeprovince which = U24 value = 301 }
+command = { type = dissent value = 5 }
+command = { type = event which = 4966682 where = U24 when = 1  }
+}
+
+action = {
+ai_chance = 100
+name = "We can't risk to anger Vienna..."
+trigger = {
+exists = URU
+exists = ROM
+war = { country = URU country = ROM }
+}
+command = { type = secedeprovince which = U24 value = 291 }
+command = { type = secedeprovince which = U24 value = 293 }
+command = { type = secedeprovince which = U24 value = 289 }
+command = { type = secedeprovince which = U24 value = 295 }
+command = { type = secedeprovince which = U24 value = 285 }
+command = { type = secedeprovince which = U24 value = 292 }
+command = { type = secedeprovince which = U24 value = 286 }
+command = { type = secedeprovince which = U24 value = 296 }
+command = { type = secedeprovince which = U24 value = 287 }
+command = { type = secedeprovince which = U24 value = 288 }
+command = { type = secedeprovince which = U24 value = 300 }
+command = { type = secedeprovince which = U24 value = 301 }
+command = { type = dissent value = 5 }
+command = { type = event which = 4966682 where = U24 when = 1  }
+}
+
+action = {
+ai_chance = 70
+name = "Transylvania is ours and will always be ours!"
+trigger = {
+exists = ROM
+NOT = {
+exists = URU
+}
+}
+command = { type = event which = 4966684 where = U24 when = 1  }
+}
+
+action = {
+ai_chance = 0
+name = "Transylvania is ours and will always be ours!"
+trigger = {
+exists = URU
+exists = ROM
+war = { country = URU country = ROM }
+}
+command = { type = event which = 4966684 where = U24 when = 1  }
+}
+}
+
+
+event = {
+id = 4966681
+random = no
+country = URU
+style = 2
+
+name = "The Austria-Hungary demands Transylvania"
+desc = "Vienna demands we give back the lands we reconquered on the Hungarians during the Civil War otherwise we can expect immediate invasion ! How shall we react to this outrageous demand ?"
+picture = "austrohunarmy_march"
+
+action = {
+ai_chance = 30
+name = "We can't risk to anger Vienna..."
+trigger = {
+exists = URU
+NOT = {
+exists = ROM
+}
+}
+command = { type = secedeprovince which = U24 value = 291 }
+command = { type = secedeprovince which = U24 value = 293 }
+command = { type = secedeprovince which = U24 value = 289 }
+command = { type = secedeprovince which = U24 value = 295 }
+command = { type = secedeprovince which = U24 value = 285 }
+command = { type = secedeprovince which = U24 value = 292 }
+command = { type = secedeprovince which = U24 value = 286 }
+command = { type = secedeprovince which = U24 value = 296 }
+command = { type = secedeprovince which = U24 value = 287 }
+command = { type = secedeprovince which = U24 value = 288 }
+command = { type = secedeprovince which = U24 value = 300 }
+command = { type = secedeprovince which = U24 value = 301 }
+command = { type = dissent value = 5 }
+command = { type = event which = 4966683 where = U24 when = 1  }
+}
+
+action = {
+ai_chance = 100
+name = "We can't risk to anger Vienna..."
+trigger = {
+exists = URU
+exists = ROM
+war = { country = URU country = ROM }
+}
+command = { type = secedeprovince which = U24 value = 291 }
+command = { type = secedeprovince which = U24 value = 293 }
+command = { type = secedeprovince which = U24 value = 289 }
+command = { type = secedeprovince which = U24 value = 295 }
+command = { type = secedeprovince which = U24 value = 285 }
+command = { type = secedeprovince which = U24 value = 292 }
+command = { type = secedeprovince which = U24 value = 286 }
+command = { type = secedeprovince which = U24 value = 296 }
+command = { type = secedeprovince which = U24 value = 287 }
+command = { type = secedeprovince which = U24 value = 288 }
+command = { type = secedeprovince which = U24 value = 300 }
+command = { type = secedeprovince which = U24 value = 301 }
+command = { type = dissent value = 5 }
+command = { type = event which = 4966683 where = U24 when = 1  }
+}
+
+action = {
+ai_chance = 70
+name = "Transylvania is ours and will always be ours!"
+trigger = {
+exists = URU
+NOT = {
+exists = ROM
+}
+}
+command = { type = event which = 4966685 where = U24 when = 1  }
+}
+
+action = {
+ai_chance = 0
+name = "Transylvania is ours and will always be ours!"
+trigger = {
+exists = URU
+exists = ROM
+war = { country = URU country = ROM }
+}
+command = { type = event which = 4966685 where = U24 when = 1  }
+}
+}
+
+event = {
+id = 4966682
+random = no
+country = U24
+style = 2
+
+name = "Iron Guard has accepted our demands !"
+desc = "Government of the Iron Guard Romania has folded to our demands and given back the contested region of Transylvania."
+picture = "austrohunarmy_march"
+
+action_a = {
+name = "Gott erhalte den Kaiser!"
+command = { type = dissent value = -2 }
+command = { type = relation which = ROM value = 20 }
+}
+}
+
+event = {
+id = 4966683
+random = no
+country = U24
+style = 2
+
+name = "Kingdom of Romania has accepted our demands !"
+desc = "Government of the Kingdom of Romania has folded to our demands and given back the contested region of Transylvania."
+picture = "austrohunarmy_march"
+
+action_a = {
+name = "Gott erhalte den Kaiser!"
+command = { type = dissent value = -2 }
+command = { type = relation which = URU value = 20 }
+}
+}
+
+event = {
+id = 4966684
+random = no
+country = U24
+style = 2
+
+name = "Iron Guard has refused our demands!"
+desc = "Bucharest has refused to give back the lands taken during the Austrian Civil War! Only war can allow us to regain Transylvania from tratcherous Romania !"
+picture = "austrohunarmy_march"
+
+action_a = {
+name = "It means war!"
+ai_chance = 80
+command = { type = dissent value = 1 }
+command = { type = war which = ROM }
+command = { trigger = { exists = URU war = { country = URU country = ROM } } type = war which = URU }
+command = { type = belligerence which = U24 value = 5 }
+}
+
+action_b = {
+name = "No territory is worth another war..."
+ai_chance = 20
+trigger = {
+NOT = {
+war = { country = U24 country = ROM }
+war = { country = U24 country = URU }
+}
+}
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 4966685
+random = no
+country = U24
+style = 2
+
+name = "Kingdom of Romania has refused our demands!"
+desc = "Bucharest has refused to give back the lands taken during the Austrian Civil War! Only war can allow us to regain Transylvania from tratcherous Romania !"
+picture = "austrohunarmy_march"
+
+action_a = {
+name = "It means war!"
+ai_chance = 80
+command = { type = dissent value = 1 }
+command = { trigger = { exists = ROM war = { country = URU country = ROM } } type = war which = ROM }
+command = { type = war which = URU }
+command = { type = belligerence which = U24 value = 5 }
+}
+
+action_b = {
+name = "No territory is worth war..."
+ai_chance = 20
+trigger = {
+NOT = {
+war = { country = U24 country = ROM }
+war = { country = U24 country = URU }
+}
+}
+command = { type = dissent value = 4 }
+}
+}
+
+
+
+###########################
+#Greece joining Entente ? # - Canadian variant by Attalus and Matej von Jakubèo
+###########################
+
+event = {
+id = 4966686
+random = no
+country = CAN
+style = 2
+
+decision = {
+participant = { country = CAN value = 1 }
+NOT = {
+ispuppet = CAN
+alliance = { country = CAN country = GRE }
+alliance = { country = SER country = GRE }
+alliance = { country = CAN country = U07 }
+alliance = { country = U24 country = RUS }
+alliance = { country = U24 country = GER }
+alliance = { country = U24 country = JAP }
+}
+control = { province = 371 data = U24 }
+control = { province = 207 data = U24 }
+control = { province = 208 data = U24 }
+control = { province = 284 data = U24 }
+NOT = {
+atwar = GRE
+exists = U25
+exists = AUS
+exists = HUN
+}
+}
+
+decision_trigger = {
+participant = { country = U24 value = 1 }
+alliance = { country = CAN country = U24 }
+}
+
+trigger = {
+participant = { country = CAN value = 1 }
+participant = { country = U24 value = 1 }
+alliance = { country = CAN country = U24 }
+NOT = {
+ispuppet = CAN
+alliance = { country = CAN country = GRE }
+alliance = { country = SER country = GRE }
+alliance = { country = CAN country = U07 }
+alliance = { country = U24 country = RUS }
+alliance = { country = U24 country = GER }
+alliance = { country = U24 country = JAP }
+}
+control = { province = 371 data = U24 }
+control = { province = 207 data = U24 }
+control = { province = 208 data = U24 }
+control = { province = 284 data = U24 }
+NOT = {
+atwar = GRE
+exists = U25
+exists = AUS
+exists = HUN
+}
+}
+
+name = "An opportunity in Greece"
+desc = "The Kingdom of Greece was one of the members of the Entente during the First Weltkrieg and our defeat cost the kingdom the region of Macedonia, Crete and the Ionian Islands which were occupied by Mitteleuropan states. With the recent development, Greece remains alone in the Balkans. The Austria-Hungary still holds onto the Ionian islands and we could use them as a bait to make Greece join our global alliance and further extend our influence into Mediterranean."
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "Contact Vienna."
+ai_chance = 95
+command = { type = event which = 4966687 where = U24 when = 1  }
+command = { type = relation which = U24 value = -10 }
+command = { type = sleepevent which = 4966692 }
+}
+
+action_b = {
+name = "Greece is of no value to the Entente."
+ai_chance = 5
+command = { type = relation which = U24 value = 10 }
+command = { type = sleepevent which = 4966692 }
+}
+}
+
+event = {
+id = 4966687
+random = no
+country = U24
+style = 2
+
+name = "A request from Ottawa"
+desc = "The Canadians are asking us to release the Ionian Islands to the Greeks to make Athens join our alliance. The islands are poor and have been a heavy cost for the Empire since their occupation so it will not pose problems to relinquish them."
+
+action_a = {
+ai_chance = 85
+name = "Accept Canadian Offer"
+command = { type = event which = 4966688 where = CAN when = 1  }
+command = { type = relation which = CAN value = 10 }
+}
+
+action_b = {
+ai_chance = 15
+name = "We will not give up what WE won!"
+command = { type = event which = 4966689 where = CAN when = 1  }
+command = { type = relation which = CAN value = -10 }
+}
+}
+
+event = {
+id = 4966688
+random = no
+country = CAN
+style = 2
+
+name = "Vienna accepts"
+desc = "The Federation has agreed with our plan. We can now contact Greece properly."
+
+action_a = {
+ai_chance = 100
+name = "Send an herald to Athens!"
+command = { type = event which = 4966690 where = GRE when = 1  }
+command = { type = relation which = U24 value = -10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "After all we don't need Greece..."
+command = { type = relation which = U24 value = 10 }
+}
+}
+
+event = {
+id = 4966689
+random = no
+country = CAN
+style = 2
+
+name = "Vienna refuses!"
+desc = "The Federation has refused our plan. Our hopes of befriending the Greeks are null now."
+
+action_a = {
+name = "Drat !"
+command = { type = relation which = U24 value = -50 }
+}
+}
+
+event = {
+id = 4966690
+random = no
+country = GRE
+style = 2
+
+name = "A Canadian proposal"
+desc = "The leaders of the Entente have contacted us to join arms with our old allies from the Weltkrieg. The Austria-Hungary is even ready to give up the occupation of Kefalonia in exchange for us once again joining Entete ! How shall we react to this offer ?"
+
+action_a = {
+name = "This time we shall succeed!"
+ai_chance = 80
+command = { type = set_relation which = CAN value = 180 }
+command = { type = set_relation which = U24 value = 150 }
+command = { type = addcore   which = 371 }
+command = { type = alliance which = CAN }
+command = { type = dissent value = 1 }
+command = { type = event which = 4966691 where = U24 when = 1 }
+}
+
+action_b = {
+name = "We shall not take part in international entanglements..."
+ai_chance = 20
+command = { type = relation which = CAN value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 4966691
+random = no
+country = U24
+style = 2
+
+name = "Giving up Kefalonia"
+desc = "The Greeks have joined the Entente and we have agreed to cede back the Ionian Islands"
+
+action_a = {
+name = "Goodbye Corfu !"
+command = { type = secedeprovince which = GRE value = 371 }
+}
+}
+
+
+###########################
+#Greece joining Entente ? # British variant by Attalus and Matej von Jakubèo
+###########################
+
+event = {
+id = 4966692
+random = no
+country = U07
+style = 2
+
+decision = {
+participant = { country = CAN value = 1 }
+alliance = { country = CAN country = U07 }
+NOT = {
+alliance = { country = CAN country = GRE }
+alliance = { country = SER country = GRE }
+alliance = { country = U24 country = RUS }
+alliance = { country = U24 country = GER }
+alliance = { country = U24 country = JAP }
+}
+control = { province = 371 data = U24 }
+control = { province = 207 data = U24 }
+control = { province = 208 data = U24 }
+control = { province = 284 data = U24 }
+NOT = {
+atwar = GRE
+exists = U25
+exists = AUS
+exists = HUN
+}
+}
+
+decision_trigger = {
+participant = { country = U24 value = 1 }
+alliance = { country = CAN country = U24 }
+}
+
+trigger = {
+participant = { country = CAN value = 1 }
+participant = { country = U24 value = 1 }
+alliance = { country = CAN country = U24 }
+alliance = { country = CAN country = U07 }
+NOT = {
+alliance = { country = CAN country = GRE }
+alliance = { country = SER country = GRE }
+alliance = { country = U24 country = RUS }
+alliance = { country = U24 country = GER }
+alliance = { country = U24 country = JAP }
+}
+control = { province = 371 data = U24 }
+control = { province = 207 data = U24 }
+control = { province = 208 data = U24 }
+control = { province = 284 data = U24 }
+NOT = {
+atwar = GRE
+exists = U25
+exists = AUS
+exists = HUN
+}
+}
+
+name = "An opportunity in Greece"
+desc = "The Kingdom of Greece was one of the members of the Entente during the First Weltkrieg and our defeat cost the kingdom the region of Macedonia, Crete and the Ionian Islands which were occupied by Mitteleuropan states. With the recent development, Greece remains alone in the Balkans. The Austria-Hungary still holds onto the Ionian islands and we could use them as a bait to make Greece join our global alliance and further extend our influence into Mediterranean."
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "Contact Vienna."
+ai_chance = 95
+command = { type = event which = 4966693 where = U24 when = 1  }
+command = { type = relation which = U24 value = -10 }
+command = { type = sleepevent which = 4966686 }
+}
+
+action_b = {
+name = "Greece is of no value to the Entente."
+ai_chance = 5
+command = { type = relation which = U24 value = 10 }
+command = { type = sleepevent which = 4966686 }
+}
+}
+
+event = {
+id = 4966693
+random = no
+country = U24
+style = 2
+
+name = "A request from Ottawa"
+desc = "The Canadians are asking us to release the Ionian Islands to the Greeks to make Athens join our alliance. The islands are poor and have been a heavy cost for the Empire since their occupation so it will not pose problems to relinquish them."
+
+action_a = {
+ai_chance = 85
+name = "Accept Canadian Offer"
+command = { type = event which = 4966694 where = U07 when = 1  }
+command = { type = relation which = U07 value = 10 }
+}
+
+action_b = {
+ai_chance = 15
+name = "We will not give up what WE won!"
+command = { type = event which = 4966695 where = U07 when = 1  }
+command = { type = relation which = U07 value = -10 }
+}
+}
+
+event = {
+id = 4966694
+random = no
+country = U07
+style = 2
+
+name = "Vienna accepts"
+desc = "The Federation has agreed with our plan. We can now contact Greece properly."
+
+action_a = {
+ai_chance = 100
+name = "Send an herald to Athens!"
+command = { type = event which = 966696 where = GRE when = 1  }
+command = { type = relation which = U24 value = -10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "After all we don't need Greece..."
+command = { type = relation which = U24 value = 10 }
+}
+}
+
+event = {
+id = 4966695
+random = no
+country = U07
+style = 2
+
+name = "Vienna refuses!"
+desc = "The Federation has refused our plan. Our hopes of befriending the Greeks are null now."
+
+action_a = {
+name = "Drat !"
+command = { type = relation which = U24 value = -50 }
+}
+}
+
+event = {
+id = 4966696
+random = no
+country = GRE
+style = 2
+
+name = "A Canadian proposal"
+desc = "The leaders of the Entente have contacted us to join arms with our old allies from the Weltkrieg. The Austria-Hungary is even ready to give up the occupation of Kefalonia in exchange for us once again joining Entete ! How shall we react to this offer ?"
+
+action_a = {
+name = "This time we shall succeed!"
+ai_chance = 80
+command = { type = ai which = "kaiserreich/switch/GRE_ALLENT.ai" }
+command = { type = set_relation which = U07 value = 180 }
+command = { type = set_relation which = CAN value = 180 }
+command = { type = set_relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = CAN country = GER } } type = set_relation which = GER value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = AFG } } type = set_relation which = AFG value = 150 }
+command = { trigger = { alliance = { country = CAN country = NEP } } type = set_relation which = NEP value = 150 }
+command = { trigger = { alliance = { country = CAN country = TIB } } type = set_relation which = TIB value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = CAN country = CAL } } type = set_relation which = CAL value = 150 }
+command = { trigger = { alliance = { country = CAN country = U10 } } type = set_relation which = U10 value = 150 }
+command = { trigger = { alliance = { country = CAN country = CUB } } type = set_relation which = CUB value = 150 }
+command = { trigger = { alliance = { country = CAN country = BLR } } type = set_relation which = BLR value = 150 }
+command = { trigger = { alliance = { country = CAN country = UKR } } type = set_relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = CAN country = LIT } } type = set_relation which = LIT value = 150 }
+command = { trigger = { alliance = { country = CAN country = LAT } } type = set_relation which = LAT value = 150 }
+command = { trigger = { alliance = { country = CAN country = AUS } } type = set_relation which = AUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = HUN } } type = set_relation which = HUN value = 150 }
+command = { trigger = { alliance = { country = CAN country = CZE } } type = set_relation which = CZE value = 150 }
+command = { trigger = { alliance = { country = CAN country = POL } } type = set_relation which = POL value = 150 }
+command = { trigger = { alliance = { country = CAN country = U00 } } type = set_relation which = U00 value = 150 }
+command = { trigger = { alliance = { country = CAN country = FIN } } type = set_relation which = FIN value = 150 }
+command = { trigger = { alliance = { country = CAN country = TRA } } type = set_relation which = TRA value = 150 }
+command = { trigger = { alliance = { country = CAN country = U26 } } type = set_relation which = U26 value = 150 }
+command = { trigger = { alliance = { country = CAN country = U25 } } type = set_relation which = U25 value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUL } } type = set_relation which = BUL value = 150 }
+command = { trigger = { alliance = { country = CAN country = URU } } type = set_relation which = URU value = 150 }
+command = { trigger = { alliance = { country = CAN country = SER } } type = set_relation which = SER value = 150 }
+command = { trigger = { alliance = { country = CAN country = GRE } } type = set_relation which = GRE value = 150 }
+command = { trigger = { alliance = { country = CAN country = GLD } } type = set_relation which = GLD value = 150 }
+command = { trigger = { alliance = { country = CAN country = CRO } } type = set_relation which = CRO value = 150 }
+command = { trigger = { alliance = { country = CAN country = BOS } } type = set_relation which = BOS value = 150 }
+command = { trigger = { alliance = { country = CAN country = MTN } } type = set_relation which = MTN value = 150 }
+command = { trigger = { alliance = { country = CAN country = OTT } } type = set_relation which = OTT value = 150 }
+command = { trigger = { alliance = { country = CAN country = DEN } } type = set_relation which = DEN value = 150 }
+command = { trigger = { alliance = { country = CAN country = ALB } } type = set_relation which = ALB value = 150 }
+command = { trigger = { alliance = { country = CAN country = ARM } } type = set_relation which = ARM value = 150 }
+command = { trigger = { alliance = { country = CAN country = LBY } } type = set_relation which = LBY value = 150 }
+command = { trigger = { alliance = { country = CAN country = EGY } } type = set_relation which = EGY value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAU } } type = set_relation which = SAU value = 150 }
+command = { trigger = { alliance = { country = CAN country = PER } } type = set_relation which = PER value = 150 }
+command = { trigger = { alliance = { country = CAN country = OMN } } type = set_relation which = OMN value = 150 }
+command = { trigger = { alliance = { country = CAN country = CON } } type = set_relation which = CON value = 150 }
+command = { trigger = { alliance = { country = CAN country = ITA } } type = set_relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = CAN country = CGX } } type = set_relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = CAN country = SPA } } type = set_relation which = SPA value = 150 }
+command = { trigger = { alliance = { country = CAN country = POR } } type = set_relation which = POR value = 150 }
+command = { trigger = { alliance = { country = CAN country = EUS } } type = set_relation which = EUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = PHI } } type = set_relation which = PHI value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = CAN country = CSX } } type = set_relation which = CSX value = 150 }
+command = { trigger = { alliance = { country = CAN country = YEM } } type = set_relation which = YEM value = 150 }
+command = { trigger = { alliance = { country = CAN country = BEL } } type = set_relation which = BEL value = 150 }
+command = { trigger = { alliance = { country = CAN country = FLA } } type = set_relation which = FLA value = 150 }
+command = { trigger = { alliance = { country = CAN country = WLL } } type = set_relation which = WLL value = 150 }
+command = { trigger = { alliance = { country = CAN country = TEX } } type = set_relation which = TEX value = 150 }
+command = { trigger = { alliance = { country = CAN country = IRE } } type = set_relation which = IRE value = 150 }
+command = { trigger = { alliance = { country = CAN country = INO } } type = set_relation which = INO value = 150 }
+command = { trigger = { alliance = { country = CAN country = JAP } } type = set_relation which = JAP value = 150 }
+command = { trigger = { alliance = { country = CAN country = USA } } type = set_relation which = USA value = 150 }
+command = { type = addcore   which = 371 }
+command = { type = alliance which = U07 }
+command = { type = dissent value = 1 }
+command = { type = event which = 4966697 where = U24 when = 1 }
+}
+
+action_b = {
+name = "We shall not take part in international entanglements..."
+ai_chance = 20
+command = { type = relation which = U07 value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 4966697
+random = no
+country = U24
+style = 2
+
+name = "Giving up Kefalonia"
+desc = "The Greeks have joined the Entente and we have agreed to cede back the Ionian Islands"
+
+action_a = {
+name = "Goodbye Corfu !"
+command = { type = secedeprovince which = GRE value = 371 }
+}
+}

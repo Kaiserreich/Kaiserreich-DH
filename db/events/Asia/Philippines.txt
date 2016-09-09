@@ -1,0 +1,2219 @@
+event = {
+id = 60000
+country = PHI
+style = 2
+
+trigger = {
+OR = {
+event = 909500 										#"Independence of the Philippines" in USA Colonies.txt
+event = 909503											#"The Philippine Commonwealth" in USA Colonies.txt
+}
+OR = {
+war = { country = USA country = CSA }		#USA at war with the Combined Syndicates
+war = { country = USA country = TEX }		#USA at war with the Union State
+}
+NOT = {
+ispuppet = PHI
+government = communist
+alliance = { country = PHI country = CAN }
+alliance = { country = PHI country = JAP }
+alliance = { country = PHI country = FRA }
+alliance = { country = PHI country = USA }
+alliance = { country = PHI country = GER }
+} 							#Philippines is not puppet of anyone
+}
+
+name = "Syndicalist uprising in Manilla"
+desc = "As we have peacefully achieved independence from the United States due to their chaotic Civil War, our young Commonwealth is already facing the dangers of syndicalism. Inspired by both the Combined Syndicates' uprising in America and by the Bhartiya Commune in India, a group of disgruntled army officers have ordered their units to march towards our capital, where they have joined forces with bands of peasants and industrial workers. They are planning to establish a socialist republic on our archipelago!"
+picture = "spread_revolution"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 30
+name = "Rebels seize the capital and prepare to establish a syndicalist regime"
+command = { type = event which = 60001 where = PHI when = 1 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Order our forces to resist the uprising"
+command = { type = event which = 60004 where = PHI when = 1 }
+}
+}
+
+event = {
+id = 60001
+country = PHI
+style = 2
+
+name = "A counter-coup?"
+desc = "Despite the syndicalist-sympatizing units seizing most of downtown Manilla, most of the armed forces are still siding with the legal government. Will they join the revolutionaries?"
+picture = "American_Infantry"
+
+action_a = {
+ai_chance = 20
+name = "The army joins the rebels and the government is toppled"
+command = { type = dissent value = 5 }
+command = { type = trigger which = 60002 }
+}
+
+action_b = {
+ai_chance = 80
+name = "Loyal units storm the capital and evict the syndicalists"
+command = { type = dissent value = 10 }
+command = { type = trigger which = 60003 }
+}
+}
+
+event = {
+id = 60002
+country = PHI
+style = 2
+
+name = "II Himagsikang Pilipino"
+desc = "The Phillipine armed forces have declared their loyalty to the new government and a socialist republic has been declared. This is the ushering of a new era for out land!"
+picture = "spread_revolution"
+
+action_a = {
+name = "Viva Rebolusyon!"
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = setflag which = PHI_SOCIALIST }
+command = { type = headofstate which = 50021 }
+command = { type = headofgovernment which = 50022 }
+command = { type = foreignminister which = 50023 }
+command = { type = armamentminister which = 50091 }
+command = { type = ministerofsecurity which = 50089 }
+command = { type = ministerofintelligence which = 50026 }
+}
+}
+
+event = {
+id = 60003
+country = PHI
+style = 2
+
+name = "The Revolution is Defeated"
+desc = "As the armed forces declared their support for our government, the rebellious units quickly lost support. After one of our generals drove an armoured column towards downtown Manilla, the syndicalists officially surrendered, ending the threat of a left-wing coup in our country. With the army occupying key points in the city, however, a new menace looms over the horizon: there are talks that the military may attempt to take the chance to seize power for themselves and establish a dictatorship of their own..."
+picture = "American_Infantry"
+
+action_a = {
+ai_chance = 50
+name = "The army restores the legal government to power"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = setflag which = PHI_DEMOCRACY }
+}
+
+action_b = {
+ai_chance = 65
+name = "A military dictatorship is established"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -2 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = setflag which = PHI_DICTATOR }
+command = { type = headofstate which = 50092 }
+command = { type = headofgovernment which = 50093 }
+}
+}
+
+event = {
+id = 60004
+country = PHI
+style = 2
+
+name = "Democracy prevails"
+desc = "As the armed forces declared their support for our government, the rebellious units quickly lost support. After one of our generals drove an armoured column towards downtown Manilla, the syndicalists officially surrendered, ending the threat of a left-wing coup in our country."
+
+action_a = {
+name = "Great!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = setflag which = PHI_DEMOCRACY }
+}
+}
+
+
+event = {
+id = 60005
+country = PHI
+style = 2
+
+trigger = {
+atwar = no
+OR = {
+flag = PHI_DEMOCRACY
+flag = PHI_DICTATOR
+flag = PHI_SOCIALIST
+}
+NOT = { ispuppet = PHI }
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Economical crisis approaching"
+desc = "Following the loss of the American protection due to their civil war, our country has lost a great source of income and our economy is nearing a crisis. Our politicians have come up with several plans, which involve increasing our industrial capacity, moving our economy with an expansion of our armed forces, or developing our mining and forestry sectors. Which shall we choose?"
+
+action_a = {
+ai_chance = 33
+name = "Expand our armed forces, this will move our economy"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = setflag which = PHI_ARMY }
+command = { type = event which = 60006 where = PHI when = 50 }
+}
+
+action_b = {
+ai_chance = 34
+name = "We must expand our industrial capacity"
+command = { type = domestic which = free_market value = -2 }
+command = { type = setflag which = PHI_INDUSTRY }
+command = { type = event which = 60006 where = PHI when = 50 }
+}
+
+action_c = {
+ai_chance = 33
+name = "Explore our natural resources - mining and forestry"
+command = { type = domestic which = free_market value = -1 }
+command = { type = setflag which = PHI_MINING }
+command = { type = event which = 60006 where = PHI when = 50 }
+}
+}
+
+event = {
+id = 60006
+country = PHI
+style = 2
+
+name = "Economical development plan"
+desc = "As we have decided to undertake a plan to develop our economy and prevent any major crisis, we must now decide who will help us on this project. Shall we look for foreign support, or can the Philippines do this all by themselves?"
+
+action = {
+ai_chance = 20
+trigger = {
+NOT = {
+alliance = { country = PHI country = CAN }
+alliance = { country = PHI country = JAP }
+alliance = { country = PHI country = FRA }
+alliance = { country = PHI country = USA }
+}
+OR = {
+flag = PHI_DEMOCRACY
+flag = PHI_DICTATOR
+}
+}
+name = "Germany is the world's mightiest nation, they shall help us on this"
+command = { trigger = { flag = PHI_ARMY } type = trigger which = 60007 }
+command = { trigger = { flag = PHI_INDUSTRY } type = trigger which = 60008 }
+command = { trigger = { flag = PHI_MINING } type = trigger which = 60009 }
+command = { type = relation which = JAP value = -60 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = AST value = -20 }
+}
+
+action = {
+ai_chance = 80
+trigger = {
+NOT = {
+alliance = { country = PHI country = CAN }
+alliance = { country = PHI country = GER }
+alliance = { country = PHI country = FRA }
+alliance = { country = PHI country = USA }
+}
+OR = {
+flag = PHI_DEMOCRACY
+flag = PHI_DICTATOR
+}
+}
+name = "Japan is our natural partner"
+command = { trigger = { flag = PHI_ARMY } type = trigger which = 60025 }
+command = { trigger = { flag = PHI_INDUSTRY } type = trigger which = 60026 }
+command = { trigger = { flag = PHI_MINING } type = trigger which = 60027 }
+command = { type = relation which = GER value = -40 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = AST value = -20 }
+}
+
+action = {
+ai_chance = 20
+trigger = {
+NOT = {
+alliance = { country = PHI country = GER }
+alliance = { country = PHI country = JAP }
+alliance = { country = PHI country = FRA }
+alliance = { country = PHI country = USA }
+}
+alliance = { country = AST country = CAN }
+OR = {
+flag = PHI_DEMOCRACY
+flag = PHI_DICTATOR
+}
+}
+name = "Seek finacing from Australasia and the Entente"
+command = { trigger = { flag = PHI_ARMY } type = trigger which = 60045 }
+command = { trigger = { flag = PHI_INDUSTRY } type = trigger which = 60046 }
+command = { trigger = { flag = PHI_MINING } type = trigger which = 60047 }
+command = { type = relation which = JAP value = -20 }
+command = { type = relation which = GER value = -20 }
+}
+
+action = {
+ai_chance = 80
+trigger = {
+flag = PHI_SOCIALIST
+government = communist
+NOT = {
+alliance = { country = PHI country = CAN }
+alliance = { country = PHI country = JAP }
+alliance = { country = PHI country = GER }
+alliance = { country = PHI country = USA }
+}
+}
+name = "The Commune of France shall help us"
+command = { trigger = { flag = PHI_ARMY } type = trigger which = 60062 }
+command = { trigger = { flag = PHI_INDUSTRY } type = trigger which = 60063 }
+command = { trigger = { flag = PHI_MINING } type = trigger which = 60064 }
+command = { type = relation which = GER value = -50 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = CAN value = -50 }
+command = { type = relation which = AST value = -50 }
+}
+
+action = {
+ai_chance = 20
+trigger = {
+NOT = {
+alliance = { country = PHI country = CAN }
+alliance = { country = PHI country = JAP }
+alliance = { country = PHI country = FRA }
+alliance = { country = PHI country = GER }
+}
+NOT = {
+exists = CAL
+exists = TEX
+exists = CSA
+}
+flag = PHI_DEMOCRACY
+}
+name = "The Americans are our historical partners"
+command = { trigger = { flag = PHI_ARMY } type = trigger which = 60074 }
+command = { trigger = { flag = PHI_INDUSTRY } type = trigger which = 60075 }
+command = { trigger = { flag = PHI_MINING } type = trigger which = 60076 }
+command = { type = relation which = JAP value = -20 }
+}
+
+action = {
+ai_chance = 1
+trigger = {
+OR = {
+flag = PHI_DEMOCRACY
+flag = PHI_DICTATOR
+flag = PHI_SOCIALIST
+}
+}
+name = "Maybe we should forget this whole idea"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 60007
+country = GER
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the recently-independent Philippines have approached us, as their president has come up with a plan to prevent a minor economical crisis in their country: they plan to expand their armed forces, thus increasing their industrial output and creating jobs for their people. They wish Germany finance them on this task, which could prove useful: not only we'd prevent an economical crisis in that country, but we will gain a new friend, countering Japanese influence on the Asia-Pacific area."
+
+action_a = {
+ai_chance = 80
+name = "We will finance the expansion and modernization of their army"
+command = { type = event which = 60010 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -500 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 60008
+country = GER
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the recently-independent Philippines have approached us. They are looking for our help with expanding their industrial output, aiming on becoming a major economical power on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering Japanese influence on the Asia-Pacific area."
+
+action_a = {
+ai_chance = 80
+name = "Finance the expansion of their industry"
+command = { type = event which = 60011 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60009
+country = GER
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the recently-independent Philippines have approached our government with a request. They are looking for our help with expanding their mining and forestry industries, aiming on becoming a major provider of natural resources on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering Japanese influence on the Asia-Pacific area."
+
+action_a = {
+ai_chance = 80
+name = "Finance the exploration of their natural resources"
+command = { type = event which = 60012 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60010
+country = PHI
+style = 2
+
+name = "New units raised with German aid"
+desc = "After nearly one year, new infantry units are ready to be deployed. These divisions were developed in our own country, with help from industrial specialists from the German Empire. Thanks to this aid programme, we were able to open new industrial parks, which will benefit our economy as a whole."
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = peacetime_ic_mod value = 10 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = setflag which = PHI_GERMAN }
+}
+}
+
+event = {
+id = 60011
+country = PHI
+style = 2
+
+name = "New factories built with German aid"
+desc = "After nearly one year, a new industrial complex has been inaugurated in Manila. These factories were built with financing and the help of industrial experts from the German Empire. This will benefit our economy as a whole!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = construct which = ic where = 1565 value = 3 }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_GERMAN }
+}
+}
+
+event = {
+id = 60012
+country = PHI
+style = 2
+
+name = "Economical expansion - German aid"
+desc = "After nearly one year, thanks to the critical help of the German Empire, our government has opened a new set of mines and lumber exploration areas. This will benefit our economy as a whole, as we aim on becoming a major provider of natural resources in Southeast Asia!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_prov_resource which = -1 value = 4 where = metal }
+command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_GERMAN }
+}
+}
+
+event = {
+id = 60013
+country = GER
+style = 2
+picture = "philippines"
+
+trigger = {
+NOT = { 
+war = { country = GER country = FRA } 
+war = { country = GER country = PHI } 
+}
+flag = PHI_GERMAN
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "A naval base in the Philippines?"
+desc = "Following our first economical aid package to the Philippines, we have created a large network of contacts there. German business are thriving on this new market, but we could also use these new friends to advance  the geostrategic interests of the Reich. Some circles of the Kriegsmarine believe that we should convince their government to allow the establishment of a major naval base in the north of the archipelago, in order to keep a better track of the Japanese Navy and their Imperial advances."
+
+action = {
+ai_chance = 70
+name = "Propose a deal to their government"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 60014 }
+}
+
+action = {
+ai_chance = 30
+name = "Don't we have enough bases in Asia already?"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = PHI value = -20 }
+command = { type = clrflag which = PHI_GERMAN }
+}
+}
+
+event = {
+id = 60014
+country = PHI
+style = 2
+
+name = "A proposal from Germany"
+desc = "Following their first economical aid package, German business have been thriving on our Republic. Now, the Reich wishes to incorporate these accords into their geostrategic interests. The German Imperial Navy has contacted our government, with the proposal of establishing a naval base on the north of our main island, Luzon. Some politicians fear the growing German influence on our country, but a good part of our cabinet believe that we could use their help on a new round of economical expansion plans."
+
+action = {
+ai_chance = 30
+name = "Refuse! Our country is not for sale!"
+command = { type = clrflag which = PHI_GERMAN }
+command = { type = dissent value = -5 }
+}
+
+action = {
+ai_chance = 70
+name = "We want their financing for a new industrial complex, then"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 60015 }
+}
+}
+
+event = {
+id = 60015
+country = GER
+style = 2
+picture = "philippines"
+
+name = "Philippinean demands"
+desc = "The government of the Philippines has accepted our proposal for the establishment of a German naval base in their territory, on the condition that we help them with the financing of a new industrial complex."
+
+action = {
+ai_chance = 20
+name = "This isn't even worth the trouble"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = PHI value = -20 }
+command = { type = clrflag which = PHI_GERMAN }
+}
+
+action = {
+ai_chance = 80
+name = "It's a deal!"
+command = { type = event which = 60016 where = PHI when = 250 }
+command = { type = relation which = PHI value = 50 }
+command = { type = money value = -500 }
+}
+}
+
+event = {
+id = 60016
+country = PHI
+style = 2
+
+name = "German base inaugurated"
+desc = "The new base of the German Imperial Navy has been inaugurated today in the province of Cagayan. As previously agreed, the German Empire has helped us with the construction of new industries, which have also been put to work today."
+
+action = {
+name = "Great!"
+command = { type = trigger which = 60017 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = naval_base where = 1570 value = 3 }
+command = { type = access which = GER }
+command = { type = relation which = JAP value = -50 }
+}
+}
+
+event = {
+id = 60017
+country = GER
+style = 2
+picture = "philippines"
+
+name = "New base in the Philippines"
+desc = "As previously agreed with the Republic of the Philippines, the new base of the Kriegsmarine in the island of Luzon has been inaugurated today. This new facility will help us conducting new operations in the Pacific and put the Japanese Imperial Navy in check!"
+
+action = {
+name = "Great!"
+command = { trigger = { NOT = { alliance = { country = GER country = PHI } } alliance = { country = GER country = BUR }  } type = trigger which = 60018 }
+command = { type = relation which = JAP value = -50 }
+}
+}
+
+
+event = {
+id = 60018
+country = GER
+style = 2
+picture = "philippines"
+
+name = "An alliance with the Philippines?"
+desc = "A few years ago, when Thailand entered a military alliance with Japan, we managed to counter this move by convincing Burma to join our own military bloc. Due to our growing influence on the Philippines, some within our cabinet believe that we should invite their government to Mitteleuropa as well."
+
+action = {
+ai_chance = 20
+name = "Not interested"
+command = {  }
+}
+
+action = {
+ai_chance = 80
+name = "Make the proposal"
+command = { type = trigger which = 60019 }
+}
+}
+
+event = {
+id = 60019
+country = PHI
+style = 2
+
+name = "Join the German Bloc?"
+desc = "A few years ago, Thailand signed a military alliance with the Japanese Empire. Seeing their influence in Asia threatned, the Germans invited the Kingdom of Burma to their Mitteleuropa bloc. Now, this offer has been repeated to us. Should accept their invitation? Even though we will certainly profit through many trade deals with Germany and her sphere of influence, we may be dragged into an unwanted conflict against Japan."
+
+action = {
+ai_chance = 20
+name = "This is too dangerous, we are not interested"
+command = { type = relation which = GER value = -50 }
+command = { type = relation which = JAP value = 20 }
+}
+
+action = {
+ai_chance = 80
+name = "Accept their proposal"
+command = { type = end_access which = GER }
+command = { type = trigger which = 60020 }
+command = { type = dissent value = 5 }
+command = { type = set_relation which = GER value = 180 }
+command = { trigger = { alliance = { country = GER country = UKR } } type = set_relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = GER country = BLR } } type = set_relation which = BLR value = 150 }
+command = { trigger = { alliance = { country = GER country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = GER country = BEL } } type = set_relation which = BEL value = 150 }
+command = { trigger = { alliance = { country = GER country = U24 } } type = set_relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = GER country = U25 } } type = set_relation which = U25 value = 150 }
+command = { trigger = { alliance = { country = GER country = AUS } } type = set_relation which = AUS value = 150 }
+command = { trigger = { alliance = { country = GER country = OTT } } type = set_relation which = OTT value = 150 }
+command = { trigger = { alliance = { country = GER country = TRA } } type = set_relation which = TRA value = 150 }
+command = { trigger = { alliance = { country = GER country = ITA } } type = set_relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = GER country = CGX } } type = set_relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = GER country = VIE } } type = set_relation which = VIE value = 150 }
+command = { trigger = { alliance = { country = GER country = CSX } } type = set_relation which = CSX value = 150 }
+command = { trigger = { alliance = { country = GER country = RUS } } type = set_relation which = RUS value = 150 }
+}
+}
+
+event = {
+id = 60020
+country = GER
+style = 2
+picture = "philippines"
+
+name = "The Philippines join the Mitteleuropa Bloc"
+desc = "The Philippines have accepted our offer!"
+
+action = {
+name = "Great!"
+command = { type = end_access which = PHI }
+command = { type = alliance which = PHI }
+command = { type = set_relation which = PHI value = 180 }
+}
+}
+
+event = {
+id = 60021
+country = PHI
+style = 2
+picture = "philippines"
+
+trigger = {
+NOT = {
+war = { country = PHI country = FRA }
+war = { country = PHI country = JAP }
+}
+alliance = { country = GER country = PHI }
+control = { province = 1626 data = GER }
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Sabah Dispute"
+desc = "Due to several complex colonial treaties involving Spain and Great Britain in the XIXth century, the Philippines has a legal claim to the territory of Sabah, now incorporated as the northern part of the German colony of Borneo. We know that, due to the 1936 Economical Crisis, Germany was willing to cede control of some of its colonies due to their great costs. Perhaps we could use the opportunity and ask our allies for the territory to be returned to us?"
+
+action = {
+ai_chance = 60
+name = "Make a proposal to Germany"
+command = { type = addclaim which = 1626 }
+command = { type = trigger which = 60022 }
+}
+
+action = {
+ai_chance = 30
+name = "This would cost too much, just present our claims"
+command = { type = addclaim which = 1626 }
+command = { type = dissent value = 1 }
+}
+
+action = {
+ai_chance = 10
+name = "We're not interested in Sabah, let the Germans keep it"
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 10 }
+}
+}
+
+event = {
+id = 60022
+country = GER
+style = 2
+picture = "philippines"
+
+name = "Philippine claims to Sabah"
+desc = "Due to several complex colonial treaties involving Spain and Great Britain in the XIXth century, the Philippines has a legal claim to the territory of Sabah, now incorporated as the northern part of the German colony of Borneo. We have been approached by Philippinean representatives, who are inquiring whether we'd be interested to transfer sovereignty of the territory to them."
+
+action = {
+ai_chance = 20
+name = "Cede Sabah to our allies as a gesture of goodwill"
+command = { type = relation which = PHI value = 50 }
+command = { type = dissent value = 1 }
+command = { type = secedeprovince which = PHI value = 1626 }
+}
+
+action = {
+ai_chance = 40
+name = "We will cede the territory if they're willing to pay for it"
+command = { type = trigger which = 60023 }
+command = { type = dissent value = 1 }
+}
+
+action = {
+ai_chance = 40
+name = "North Borneo is an important part of our colonial empire, we must keep it"
+command = { type = relation which = PHI value = -10 }
+}
+}
+
+event = {
+id = 60023
+country = PHI
+style = 2
+
+name = "German Proposal"
+desc = "The German Empire has declared that they are willing to cede us the territory of Sabah, if we pay them for it!"
+
+action = {
+ai_chance = 75
+name = "Accept their demands"
+command = { type = money value = -500 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 60024 }
+}
+
+action = {
+ai_chance = 25
+name = "This is more than we can afford, sorry"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 60024
+country = GER
+style = 2
+picture = "philippines"
+
+name = "The Transfer of Sabah"
+desc = "The Philippines have accepted our conditions for the deal."
+
+action = {
+name = "Ok"
+command = { type = relation which = PHI value = 50 }
+command = { type = secedeprovince which = PHI value = 1626 }
+}
+}
+
+event = {
+id = 60025
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the recently-independent Philippines have approached us, as they have come up with a plan to prevent a minor economical crisis in their country: they plan to expand their armed forces, thus increasing their industrial output and creating jobs for their people. They wish Japan finance them on this task. This could prove useful: not only we'd prevent an economical crisis in that country, but we will gain a new friend, countering German influence on our neighborhood."
+
+action_a = {
+ai_chance = 90
+name = "We will finance the expansion and modernization of their army"
+command = { type = event which = 60028 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -500 }
+}
+
+action_b = {
+ai_chance = 10
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 60026
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "This morning, representatives from the recently-independent Republic of the Philippines have approached our government with a request. They are looking for our help with expanding their industrial output, aiming on becoming a major economical power on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering German influence on our neighborhood."
+
+action_a = {
+ai_chance = 90
+name = "Finance the expansion of their industry"
+command = { type = event which = 60029 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 10
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60027
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "This morning, representatives from the recently-independent Republic of the Philippines have approached our government with a request. They are looking for our help with expanding their mining and forestry industries, aiming on becoming a major provider of natural resources on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering German influence on our neighborhood."
+
+action_a = {
+ai_chance = 90
+name = "Finance the exploration of their natural resources"
+command = { type = event which = 60030 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 10
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60028
+country = PHI
+style = 2
+
+name = "New units raised with Japanese aid"
+desc = "After nearly one year, new infantry units are ready to be deployed. These divisions were developed in our own country, with help of industrial specialists from the Japanese Empire. Thanks to this aid programme, we were able to open new industrial parks, which will benefit our economy as a whole."
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = peacetime_ic_mod value = 10 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = setflag which = PHI_JAPAN }
+}
+}
+
+event = {
+id = 60029
+country = PHI
+style = 2
+
+name = "New factories built with Japanese aid"
+desc = "After nearly one year, a new industrial complex has been inaugurated in Manila. These factories were built with financing and the help of industrial experts from the Japanese Empire. This will benefit our economy as a whole!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = construct which = ic where = 1565 value = 3 }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_JAPAN }
+}
+}
+
+event = {
+id = 60030
+country = PHI
+style = 2
+
+name = "Economical expansion - Japanese aid"
+desc = "After nearly one year, thanks to the critical help of the Japanese Empire, our government has opened a new set of mines and lumber exploration areas. This will benefit our economy as a whole, as we aim on becoming a major provider of natural resources in Southeast Asia!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_prov_resource which = -1 value = 4 where = metal }
+command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_JAPAN }
+}
+}
+
+event = {
+id = 60031
+country = JAP
+style = 2
+picture = "philippines"
+
+trigger = { 
+flag = PHI_JAPAN
+exists = PHI 
+NOT = {
+war = { country = JAP country = PHI }
+}
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "A naval base in the Philippines?"
+desc = "Following our first economical aid package to the Republic of the Philippines, we have created a large network of contacts there. Japanese business are thriving on this new market, but we could also use these new friends to advance the geostrategic interests of the Empire. Some circles of the Navy believe that we should convince their government to allow the establishment of a major naval base in the west of the archipelago, in order to keep a better track of the German Empire and their advances."
+
+action = {
+ai_chance = 90
+name = "Propose a deal to their government"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 60032 }
+}
+
+action = {
+ai_chance = 10
+name = "Southeast Asia is already well covered with our present bases"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = PHI value = -20 }
+command = { type = clrflag which = PHI_JAPAN }
+}
+}
+
+event = {
+id = 60032
+country = PHI
+style = 2
+
+name = "A proposal from Japan"
+desc = "Following their first economical aid package, Japanese business have been thriving on our Republic. Now, Tokyo wishes to incorporate these accords into their geostrategic interests. The Imperial Navy has contacted our government, with the proposal of establishing a naval base on our western island of Palawan. Some politicians fear the growing Japanese influence on our country, but a good part of our cabinet believe that we could use their help on a new round of economical expansion plans."
+
+action = {
+ai_chance = 20
+name = "Refuse! Our country is not for sale!"
+command = { type = clrflag which = PHI_JAPAN }
+command = { type = dissent value = -5 }
+}
+
+action = {
+ai_chance = 80
+name = "We want their financing for a new industrial complex, then"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 60033 }
+}
+}
+
+event = {
+id = 60033
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "Philippinean demands"
+desc = "The government of the Philippines has accepted our proposal for the establishment of a Japanese naval base in their territory, on the condition that we help them with the financing of a new industrial complex."
+
+action = {
+ai_chance = 10
+name = "This isn't even worth the trouble"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = PHI value = -20 }
+command = { type = clrflag which = PHI_JAPAN }
+}
+
+action = {
+ai_chance = 90
+name = "It's a deal!"
+command = { type = event which = 60034 where = PHI when = 250 }
+command = { type = relation which = PHI value = 50 }
+command = { type = money value = -500 }
+}
+}
+
+event = {
+id = 60034
+country = PHI
+style = 2
+
+name = "Japanese base inaugurated"
+desc = "The new base of the Japanese Imperial Navy has been inaugurated today in the province of Palawan. As previously agreed, the Japanese Empire has helped us with the construction of new industries, which have also been put to work today."
+
+action = {
+name = "Great!"
+command = { type = trigger which = 60035 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = access which = JAP }
+command = { type = construct which = naval_base where = 1572 value = 3 }
+command = { type = relation which = GER value = -50 }
+}
+}
+
+event = {
+id = 60035
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "New base in the Philippines"
+desc = "As previously agreed with the Republic of the Philippines, the new base of the Imperial Navy in the island of Palawan has been inaugurated today. This new facility will help us conducting new operations in the Southwestern Pacific and put the Germans in check!"
+
+action = {
+name = "Great!"
+command = { trigger = { OR = { alliance = { country = GER country = BUR } alliance = { country = JAP country = SIA } } NOT = { alliance = { country = JAP country = PHI } } } type = trigger which = 60036 }
+command = { type = relation which = GER value = -50 }
+}
+}
+
+event = {
+id = 60036
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "An alliance with the Philippines?"
+desc = "A few years ago, in order to keep German interests in Asia contained, we have persuaded Thailand to enter a military alliance with us. Due to our growing influence on the Philippines, some within our cabinet believe that we should invite their government to our bloc as well."
+
+action = {
+ai_chance = 10
+name = "Not interested"
+command = {  }
+}
+
+action = {
+ai_chance = 90
+name = "Make the proposal"
+command = { type = trigger which = 60037 }
+}
+}
+
+event = {
+id = 60037
+country = PHI
+style = 2
+
+name = "Join the Japanese Bloc?"
+desc = "A few years ago, Thailand signed a military alliance with the Japanese Empire. Now, this offer has been repeated to us. Should accept their invitation? Even though we will certainly profit through many trade deals with Japan and her sphere of influence, we may be dragged into an unwanted conflict against the German Empire..."
+
+action = {
+ai_chance = 10
+name = "This is too dangerous, we are not interested"
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = GER value = 20 }
+}
+
+action = {
+ai_chance = 90
+name = "Accept their proposal"
+command = { type = end_access which = JAP }
+command = { type = trigger which = 60038 }
+command = { type = dissent value = 5 }
+command = { type = set_relation which = JAP value = 180 }
+command = { trigger = { alliance = { country = JAP country = MAN } } type = set_relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = JAP country = CSX } } type = set_relation which = CSX value = 150 }
+command = { trigger = { alliance = { country = JAP country = EAF } } type = set_relation which = EAF value = 150 }
+command = { trigger = { alliance = { country = JAP country = MAN } } type = set_relation which = MAN value = 150 }
+command = { trigger = { alliance = { country = JAP country = PRI } } type = set_relation which = PRI value = 150 }
+command = { trigger = { alliance = { country = JAP country = RUS } } type = set_relation which = RUS value = 150 }
+command = { trigger = { alliance = { country = JAP country = U30 } } type = set_relation which = U30 value = 150 }
+command = { trigger = { alliance = { country = JAP country = KOR } } type = set_relation which = KOR value = 150 }
+command = { trigger = { alliance = { country = JAP country = CGX } } type = set_relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = JAP country = CHI } } type = set_relation which = CHI value = 150 }
+command = { trigger = { alliance = { country = JAP country = SIA } } type = set_relation which = SIA value = 150 }
+command = { trigger = { alliance = { country = JAP country = AST } } type = set_relation which = AST value = 150 }
+}
+}
+
+event = {
+id = 60038
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "The Philippines join the Co-Prosperity Sphere"
+desc = "The Philippines have accepted our offer!"
+
+action = {
+name = "Great!"
+command = { type = end_access which = PHI }
+command = { type = set_relation which = PHI value = 180 }
+command = { type = alliance which = PHI }
+}
+}
+
+event = {
+id = 60039
+country = PHI
+style = 2
+
+trigger = {
+NOT = {
+war = { country = PHI country = GER }
+}
+OR = {
+alliance = { country = JAP country = PHI }
+alliance = { country = FRA country = PHI }
+alliance = { country = PRK country = PHI }
+alliance = { country = CAN country = PHI }
+alliance = { country = USA country = PHI }
+}
+control = { province = 1626 data = GER }
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Sabah Dispute"
+desc = "Due to several complex colonial treaties involving Spain and Great Britain in the XIXth century, the Philippines has a legal claim to the territory of Sabah, now incorporated as the northern part of the German colony of Borneo. Since we are currently protected by a foreign power, this would be a nice moment to formally present our claims."
+
+action = {
+ai_chance = 30
+name = "Sabah is rightfully ours, present our claims"
+command = { type = addclaim which = 1626 }
+command = { type = dissent value = -1 }
+command = { type = relation which = GER value = -20 }
+command = { type = trigger which = 60040 }
+}
+
+action = {
+ai_chance = 10
+name = "We're not interested in Sabah, let the Germans keep it"
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 10 }
+}
+}
+
+event = {
+id = 60040
+country = GER
+style = 2
+picture = "philippines"
+
+name = "Philippinean claims to Sabah"
+desc = "Due to several complex colonial treaties involving Spain and Great Britain in the XIXth century, the Philippines has a legal claim to the territory of Sabah, now incorporated as the northern part of the German colony of Borneo. Today, their government has reinforced their claims to the region, which have sparked several riots there."
+
+action = {
+name = "Wait, what?"
+command = { type = dissent value = 1 }
+command = { type = province_revoltrisk which = 1626 value = 15 }
+}
+}
+
+event = {
+id = 60041
+country = PHI
+style = 2
+
+trigger = {
+alliance = { country = JAP country = PHI }
+control = { province = 1626 data = JAP }
+control = { province = 1625 data = JAP }
+control = { province = 1624 data = JAP }
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+
+name = "Claiming Sabah"
+desc = "Due to several complex colonial treaties involving Spain and Great Britain in the XIXth century, the Philippines has a legal claim to the territory of Sabah, currently occupied by the Japanese Empire. This would be a nice moment to claim the land for us."
+
+action_a = {
+ai_chance = 99
+name = "Sabah is rightfully ours, present our claims"
+command = { type = addclaim which = 1626 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 60042 }
+}
+
+action_b = {
+ai_chance = 1
+name = "We're not interested in Sabah, let Japan keep it"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 60042
+country = JAP
+style = 2
+picture = "philippines"
+
+name = "The Phillipines claim Sabah"
+desc = "Due to several complex colonial treaties involving Spain and Great Britain in the XIXth century, the Philippines has a legal claim to the territory of Sabah, currently occupied by us. They have taken the opportunity to reinforce the claims."
+
+action = {
+ai_chance = 99
+name = "Of course, transfer Sabah to them"
+command = { type = relation which = PHI value = 50 }
+command = { type = dissent value = 1 }
+command = { type = secedeprovince which = PHI value = 1626 }
+}
+
+action = {
+ai_chance = 1
+name = "Sabah is a part of the Empire"
+command = { type = dissent value = 1 }
+command = { type = province_revoltrisk which = 1626 value = 15 }
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60043
+country = PHI
+style = 2
+picture = "philippines"
+
+trigger = {
+NOT = {
+control = { province = 163 data = GER } #Berlin
+alliance = { country = GER country = PHI }
+war = { country = GER country = PHI }
+}
+control = { province = 1626 data = GER } #Jesselton
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+
+name = "Seizing the moment"
+desc = "Due to several complex colonial treaties involving Spain and Great Britain in the XIXth century, the Philippines has a legal claim to the territory of Sabah, currently occupied by the German Empire. With the Reich involved in a large war which they appear to be losing, this could be the time for our troops to capture the disputed territory - surely Germany will struggle to oppose us!"
+
+action = {
+ai_chance = 90
+name = "Send in the troops, occupy Sabah"
+command = { type = addclaim which = 1626 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 60044 }
+}
+
+action = {
+ai_chance = 10
+name = "Germany may be weak, but this is too dangerous nonetheless"
+command = { type = dissent value = 5 }
+command = { type = relation which = GER value = 10 }
+}
+}
+
+event = {
+id = 60044
+country = GER
+style = 2
+picture = "philippines"
+
+name = "The Phillipines attack North Borneo"
+desc = "Taking advantage of our setbacks in our war in Europe, the Philippines has sent troops to occupy Sabah, in our colony of North Borneo!"
+
+action = {
+ai_chance = 99
+name = "We cannot opose them, evacuate our personell"
+command = { type = dissent value = 1 }
+command = { type = secedeprovince which = PHI value = 1626 }
+}
+
+action = {
+ai_chance = 1
+name = "This will not go unpunished! War!"
+command = { type = dissent value = 1 }
+command = { type = province_revoltrisk which = 1626 value = 15 }
+command = { type = war which = PHI }
+}
+}
+
+event = {
+id = 60045
+country = AST
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the Philippines have approached us, as they have come up with a plan to prevent a minor economical crisis in their country: they wish to expand their armed forces, thus increasing their industrial output and creating jobs for their people. They wish Australasia finance them on this task, which could prove useful: not only we'd prevent an economical crisis in that country, but we will gain a new friend, countering Japanese and German influence on the Asia-Pacific area."
+
+action_a = {
+ai_chance = 50
+name = "We will finance the expansion and modernization of their army"
+command = { type = event which = 60048 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -500 }
+}
+
+action_b = {
+ai_chance = 50
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 60046
+country = AST
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "This morning, representatives from the recently-independent Republic of the Philippines have approached our government with a request. They are looking for our help with expanding their industrial output, aiming on becoming a major economical power on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering Japanese and German influence on the Asia-Pacific area."
+
+action_a = {
+ai_chance = 50
+name = "Finance the expansion of their industry"
+command = { type = event which = 60049 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 50
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60047
+country = AST
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "This morning, representatives from the recently-independent Republic of the Philippines have approached our government with a request. They are looking for our help with expanding their mining and forestry industries, aiming on becoming a major provider of natural resources on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering German and Japanese influence on the Asia-Pacific area."
+
+action_a = {
+ai_chance = 50
+name = "Finance the exploration of their natural resources"
+command = { type = event which = 60050 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 50
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60048
+country = PHI
+style = 2
+
+name = "New units raised with Australasian aid"
+desc = "After nearly one year, new infantry units are ready to be deployed. These divisions were developed in our own country, with help from industrial specialists from the Australasian Confederation. Thanks to this aid programme, we were able to open new industrial parks, which will benefit our economy as a whole."
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = peacetime_ic_mod value = 10 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = setflag which = PHI_ENTENTE }
+}
+}
+
+event = {
+id = 60049
+country = PHI
+style = 2
+
+name = "New factories built with Australasian aid"
+desc = "After nearly one year, a new industrial complex has been inaugurated in Manila. These factories were built with financing and the help of industrial experts from the Australasian Confederation. This will benefit our economy as a whole!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = construct which = ic where = 1565 value = 3 }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_ENTENTE }
+}
+}
+
+event = {
+id = 60050
+country = PHI
+style = 2
+
+name = "Economical expansion - Australasian aid"
+desc = "After nearly one year, thanks to the critical help of the Australasian Confederation, our government has opened a new set of mines and lumber exploration areas. This will benefit our economy as a whole, as we aim on becoming a major provider of natural resources in Southeast Asia!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_prov_resource which = -1 value = 4 where = metal }
+command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_ENTENTE }
+}
+}
+
+event = {
+id = 60051
+country = AST
+style = 2
+picture = "philippines"
+
+trigger = {
+NOT = {
+war = { country = GER country = AST }
+war = { country = JAP country = AST }
+war = { country = PHI country = AST }
+}
+flag = PHI_ENTENTE
+alliance = { country = AST country = CAN }
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "A naval base in the Philippines?"
+desc = "Following our first economical aid package to the Republic of the Philippines, we have created a large network of contacts there. Australasian business are thriving on this new market, but we could also use these new friends to advance the geostrategic interests of the British Empire. Some circles of the Royal Australasian Navy believe that we should convince their government to allow the establishment of a major naval base in the north of the archipelago, so we should make Canada take notice of this."
+
+action = {
+name = "Make sure the Canadians hear our proposal"
+command = { type = trigger which = 60052 }
+}
+}
+
+event = {
+id = 60052
+country = CAN
+style = 2
+picture = "philippines"
+
+name = "Bases in the Philippines?"
+desc = "The Australasian Confederation has been establishing a close relationship with the Republic of the Philippines due to a series of economical aid programmes. Now, Canberra has proposed that we use these new contacts to attempt to establish a naval base in the archipelago, potentially expanding the capacity of our forces to check the advances of the German and Japanese interests there."
+
+action = {
+ai_chance = 50
+name = "Propose a deal to their government"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 60053 }
+}
+action = {
+ai_chance = 50
+name = "Southeast Asia is already well covered with our present bases"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = PHI value = -20 }
+command = { type = clrflag which = PHI_ENTENTE }
+}
+}
+
+event = {
+id = 60053
+country = PHI
+style = 2
+picture = "philippines"
+
+name = "A proposal from the Entente"
+desc = "Following their first economical aid package, Australasian business have been thriving on our Republic. Now, the Entente wishes to incorporate these accords into their geostrategic interests. The Australasian and Canadian navies have contacted our government with the proposal of establishing a naval base on the north of Luzon. Some politicians fear the growing foreign influence on our country, but others believe that we could use their help on a new round of economical expansion plans."
+
+action = {
+ai_chance = 50
+name = "Refuse! Our country is not for sale!"
+command = { type = clrflag which = PHI_ENTENTE }
+command = { type = dissent value = -5 }
+}
+
+action = {
+ai_chance = 50
+name = "We want their financing for a new industrial complex, then"
+command = { type = dissent value = 2 }
+command = { type = trigger which = 60054 }
+}
+}
+
+event = {
+id = 60054
+country = CAN
+style = 2
+picture = "philippines"
+
+name = "Philippinean demands"
+desc = "The government of the Philippines has accepted our proposal for the establishment of a naval base in their territory, on the condition that we help them with the financing of a new industrial complex."
+
+action = {
+ai_chance = 20
+name = "This isn't even worth the trouble"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = PHI value = -20 }
+command = { type = clrflag which = PHI_ENTENTE }
+}
+
+action = {
+ai_chance = 80
+name = "It's a deal!"
+command = { type = event which = 60055 where = PHI when = 250 }
+command = { type = relation which = PHI value = 50 }
+command = { type = money value = -500 }
+}
+}
+
+event = {
+id = 60055
+country = PHI
+style = 2
+picture = "philippines"
+
+name = "Entente base inaugurated"
+desc = "The new base of the Canadian and Australasian Navies has been inaugurated today in the province of Cagayan. As previously agreed, Canada has helped us with the construction of new industries, which have also been put to work today."
+
+action = {
+name = "Great!"
+command = { type = trigger which = 60056 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = naval_base where = 1570 value = 3 }
+command = { type = relation which = JAP value = -50 }
+}
+}
+
+event = {
+id = 60056
+country = AST
+style = 2
+picture = "philippines"
+
+name = "New base in the Philippines"
+desc = "As previously agreed with the Republic of the Philippines, the new base of the Australsian Navy in the island of Luzon has been inaugurated today. This new facility will help us conducting new operations in the Pacific and put the Japanese and the Germans in check!"
+
+action = {
+name = "Great!"
+command = { type = trigger which = 60057 }
+command = { type = access which = PHI }
+command = { type = relation which = JAP value = -50 }
+}
+}
+
+event = {
+id = 60057
+country = CAN
+style = 2
+picture = "philippines"
+
+name = "New base in the Philippines"
+desc = "As previously agreed with the Republic of the Philippines, the new base of the Canadian Navy in the island of Luzon has been inaugurated today. This new facility will help us conducting new operations in the Pacific and put the Japanese and the Germans in check!"
+
+action = {
+name = "Great!"
+command = { trigger = { alliance = { country = GER country = BUR } NOT = { alliance = { country = CAN country = PHI } } } type = trigger which = 60058 }
+command = { type = access which = PHI }
+command = { type = relation which = JAP value = -50 }
+}
+}
+
+event = {
+id = 60058
+country = CAN
+style = 2
+picture = "philippines"
+
+name = "An alliance with the Philippines?"
+desc = "Currently, two major power blocs are present in Southeast Asia: the German Empire has established their presence through their colonies and through an alliance with Burma, while the Japanese cemented an alliance with Thailand. This has left our allies, Australasia, vulnerable to any attack. We should reinforce our position in the region by inviting the Philippines to the Entente."
+
+action = {
+ai_chance = 20
+name = "Not interested"
+command = {  }
+}
+
+action = {
+ai_chance = 80
+name = "Make the proposal"
+command = { type = trigger which = 60059 }
+}
+}
+
+event = {
+id = 60059
+country = PHI
+style = 2
+
+name = "Join the Entente?"
+desc = "Two major power blocs are present in Southeast Asia: Germany has established their presence through their colonies and an alliance with Burma, while Japan cemented an alliance with Thailand. This made Australasia vulnerable to any attack. Now, Canada and the Confederation have invited us to their alliance. Should we accept? Even though we will certainly profit through trade deals with Canada and her sphere of influence, we may be dragged into an unwanted conflict against Japan or Germany."
+
+action = {
+ai_chance = 20
+name = "This is too dangerous, we are not interested"
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = AST value = -20 }
+}
+
+action = {
+ai_chance = 80
+name = "Accept their proposal"
+command = { type = end_access which = CAN }
+command = { type = set_relation which = CAN value = 180 }
+command = { trigger = { alliance = { country = CAN country = U07 } } type = set_relation which = U07 value = 180 }
+command = { trigger = { alliance = { country = CAN country = GER } } type = set_relation which = GER value = 150 }
+command = { trigger = { alliance = { country = CAN country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = CAN country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAF } } type = set_relation which = SAF value = 150 }
+command = { trigger = { alliance = { country = CAN country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = AFG } } type = set_relation which = AFG value = 150 }
+command = { trigger = { alliance = { country = CAN country = NEP } } type = set_relation which = NEP value = 150 }
+command = { trigger = { alliance = { country = CAN country = TIB } } type = set_relation which = TIB value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = CAN country = CAL } } type = set_relation which = CAL value = 150 }
+command = { trigger = { alliance = { country = CAN country = U10 } } type = set_relation which = U10 value = 150 }
+command = { trigger = { alliance = { country = CAN country = CUB } } type = set_relation which = CUB value = 150 }
+command = { trigger = { alliance = { country = CAN country = BLR } } type = set_relation which = BLR value = 150 }
+command = { trigger = { alliance = { country = CAN country = UKR } } type = set_relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = CAN country = LIT } } type = set_relation which = LIT value = 150 }
+command = { trigger = { alliance = { country = CAN country = LAT } } type = set_relation which = LAT value = 150 }
+command = { trigger = { alliance = { country = CAN country = AUS } } type = set_relation which = AUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = HUN } } type = set_relation which = HUN value = 150 }
+command = { trigger = { alliance = { country = CAN country = CZE } } type = set_relation which = CZE value = 150 }
+command = { trigger = { alliance = { country = CAN country = POL } } type = set_relation which = POL value = 150 }
+command = { trigger = { alliance = { country = CAN country = U00 } } type = set_relation which = U00 value = 150 }
+command = { trigger = { alliance = { country = CAN country = FIN } } type = set_relation which = FIN value = 150 }
+command = { trigger = { alliance = { country = CAN country = TRA } } type = set_relation which = TRA value = 150 }
+command = { trigger = { alliance = { country = CAN country = U26 } } type = set_relation which = U26 value = 150 }
+command = { trigger = { alliance = { country = CAN country = U24 } } type = set_relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = CAN country = U25 } } type = set_relation which = U25 value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUL } } type = set_relation which = BUL value = 150 }
+command = { trigger = { alliance = { country = CAN country = URU } } type = set_relation which = URU value = 150 }
+command = { trigger = { alliance = { country = CAN country = SER } } type = set_relation which = SER value = 150 }
+command = { trigger = { alliance = { country = CAN country = GRE } } type = set_relation which = GRE value = 150 }
+command = { trigger = { alliance = { country = CAN country = GLD } } type = set_relation which = GLD value = 150 }
+command = { trigger = { alliance = { country = CAN country = CRO } } type = set_relation which = CRO value = 150 }
+command = { trigger = { alliance = { country = CAN country = BOS } } type = set_relation which = BOS value = 150 }
+command = { trigger = { alliance = { country = CAN country = MTN } } type = set_relation which = MTN value = 150 }
+command = { trigger = { alliance = { country = CAN country = OTT } } type = set_relation which = OTT value = 150 }
+command = { trigger = { alliance = { country = CAN country = DEN } } type = set_relation which = DEN value = 150 }
+command = { trigger = { alliance = { country = CAN country = ALB } } type = set_relation which = ALB value = 150 }
+command = { trigger = { alliance = { country = CAN country = ARM } } type = set_relation which = ARM value = 150 }
+command = { trigger = { alliance = { country = CAN country = LBY } } type = set_relation which = LBY value = 150 }
+command = { trigger = { alliance = { country = CAN country = EGY } } type = set_relation which = EGY value = 150 }
+command = { trigger = { alliance = { country = CAN country = SAU } } type = set_relation which = SAU value = 150 }
+command = { trigger = { alliance = { country = CAN country = PER } } type = set_relation which = PER value = 150 }
+command = { trigger = { alliance = { country = CAN country = OMN } } type = set_relation which = OMN value = 150 }
+command = { trigger = { alliance = { country = CAN country = CON } } type = set_relation which = CON value = 150 }
+command = { trigger = { alliance = { country = CAN country = ITA } } type = set_relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = CAN country = CGX } } type = set_relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = CAN country = SPA } } type = set_relation which = SPA value = 150 }
+command = { trigger = { alliance = { country = CAN country = POR } } type = set_relation which = POR value = 150 }
+command = { trigger = { alliance = { country = CAN country = EUS } } type = set_relation which = EUS value = 150 }
+command = { trigger = { alliance = { country = CAN country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = CAN country = PHI } } type = set_relation which = PHI value = 150 }
+command = { trigger = { alliance = { country = CAN country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = CAN country = CSX } } type = set_relation which = CSX value = 150 }
+command = { trigger = { alliance = { country = CAN country = YEM } } type = set_relation which = YEM value = 150 }
+command = { trigger = { alliance = { country = CAN country = BEL } } type = set_relation which = BEL value = 150 }
+command = { trigger = { alliance = { country = CAN country = FLA } } type = set_relation which = FLA value = 150 }
+command = { trigger = { alliance = { country = CAN country = WLL } } type = set_relation which = WLL value = 150 }
+command = { trigger = { alliance = { country = CAN country = TEX } } type = set_relation which = TEX value = 150 }
+command = { trigger = { alliance = { country = CAN country = IRE } } type = set_relation which = IRE value = 150 }
+command = { trigger = { alliance = { country = CAN country = INO } } type = set_relation which = INO value = 150 }
+command = { trigger = { alliance = { country = CAN country = JAP } } type = set_relation which = JAP value = 150 }
+command = { trigger = { alliance = { country = CAN country = USA } } type = set_relation which = USA value = 150 }
+command = { type = trigger which = 60060 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 60060
+country = AST
+style = 2
+picture = "philippines"
+
+name = "The Philippines join the Entente"
+desc = "The Philippines have accepted the Canadian offer and entered the Entente!"
+
+action = {
+name = "Great!"
+command = { type = end_access which = PHI }
+command = { type = set_relation which = PHI value = 180 }
+command = { type = trigger which = 60061 }
+}
+}
+
+event = {
+id = 60061
+country = CAN
+style = 2
+picture = "philippines"
+
+name = "The Philippines join the Entente"
+desc = "The Philippines have accepted our offer!"
+
+action = {
+name = "Great!"
+command = { type = end_access which = PHI }
+command = { type = set_relation which = PHI value = 180 }
+command = { type = alliance which = PHI }
+}
+}
+
+event = {
+id = 60062
+country = FRA
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the Philippines have approached us with a plan to prevent a minor economical crisis in their country: they plan to expand their armed forces, thus increasing their industrial output, and wish the Commune helps them on this task. This could prove useful: not only we'd prevent an economical crisis in that country, but we will gain a new friend, countering Japanese and German influence on the Asia-Pacific area and a gaining a springboard for the spread of the Revolution in the region."
+
+action_a = {
+ai_chance = 80
+name = "We will help them expanding and modernizing of their army"
+command = { type = event which = 60065 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -500 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We have no interest in Asia yet"
+command = { type = relation which = PHI value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 60063
+country = FRA
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the Philippines have approached us, as they are looking for our help with expanding their industrial output, aiming on becoming a major economical power on Southeast Asia. Should we help them on their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering Japanese and German influence on the area and a gaining a springboard for the spread of the Revolution in the region."
+
+action_a = {
+ai_chance = 80
+name = "Help them with the expansion of their industry"
+command = { type = event which = 60066 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We have no interest in Asia yet"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60064
+country = FRA
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the Philippines have approached our government with a request. They are looking for our help with expanding their mining and forestry industries, aiming on becoming a major provider of natural resources on Southeast Asia. Should we help them? Not only we'd prevent a minor economical crisis in that country, but we will potentially gain a new friend, countering Japanese and German influence on the Asia-Pacific area and a gaining springboard for the spread of the Revolution in the region."
+
+action_a = {
+ai_chance = 80
+name = "Finance the exploration of their natural resources"
+command = { type = event which = 60067 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We have no interest in Asia yet"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60065
+country = PHI
+style = 2
+
+name = "New units raised with French aid"
+desc = "After nearly one year, new infantry units are ready to be deployed. These divisions were developed in our own country, with help from industrial specialists from the Commune of France. Thanks to this aid programme, we were able to open new industrial parks, which will benefit our economy as a whole."
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = peacetime_ic_mod value = 10 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = setflag which = PHI_SYNDIE }
+}
+}
+
+event = {
+id = 60066
+country = PHI
+style = 2
+
+name = "New factories built with French aid"
+desc = "After nearly one year, a new industrial complex has been inaugurated in Manila. These factories were built with financing and the help of industrial experts from the Commune of France. This will benefit our economy as a whole!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = construct which = ic where = 1565 value = 3 }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_SYNDIE }
+}
+}
+
+event = {
+id = 60067
+country = PHI
+style = 2
+
+name = "Economical expansion - French aid"
+desc = "After nearly one year, thanks to the critical help of the Commune of France, our government has opened a new set of mines and lumber exploration areas. This will benefit our economy as a whole, as we aim on becoming a major provider of natural resources in Southeast Asia!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_prov_resource which = -1 value = 4 where = metal }
+command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_SYNDIE }
+}
+}
+
+event = {
+id = 60068
+country = FRA
+style = 2
+picture = "philippines"
+
+trigger = {
+NOT = {
+war = { country = FRA country = GER }
+war = { country = FRA country = PHI }
+war = { country = GER country = PHI }
+war = { country = JAP country = PHI }
+war = { country = CAN country = PHI }
+alliance = { country = PHI country = FRA }
+alliance = { country = PHI country = SOV }
+alliance = { country = PHI country = RUS }
+alliance = { country = PHI country = JAP }
+alliance = { country = PHI country = CAN }
+alliance = { country = PHI country = USA }
+alliance = { country = PHI country = GER }
+ispuppet = PHI
+}
+government = { type = communist country = PHI }
+exists = PHI
+exists = PRK
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Syndicalism in East Asia"
+desc = "After our aid programme to the Philippines, some members of our cabinet have thought of considering that nation as our springboard for the spread of Syndicalism in East Asia. Therefore, we should invite them to join our military alliance, the Internationale. Some ministers see East Asia as too much a distant objective for us, but instead propose that we pass the responsibility to the Bhartiya Commune."
+
+action = {
+ai_chance = 0
+name = "Invite them to the Internationale"
+command = { type = trigger which = 60072 }
+}
+
+action = {
+ai_chance = 90
+name = "Promote an alliance of Bhartiya and the Philippines"
+command = { type = trigger which = 60069 }
+}
+
+action = {
+ai_chance = 10
+name = "Syndicalism in Asia is a distant goal, not something for now"
+command = { type = relation which = PHI value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 60069
+country = PRK
+style = 2
+picture = "philippines"
+
+name = "An alliance with the Philippines?"
+desc = "The Commune of France, craddle of the Syndicalist Revolution, has been undertaking economical aid programmes with a new socialist republic in Asia, the Philippines. If that young republic ever falls into a war against the burgeoisie powers, however, France is too far to do much help. Therefore, they have asked us to enter talks with the Philippines and attempt to establish an alliance of syndicalist nations in Asia."
+
+action = {
+ai_chance = 10
+name = "Not interested, sorry"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = PHI value = -20 }
+command = { type = relation which = FRA value = -20 }
+}
+
+action = {
+ai_chance = 90
+name = "Make the proposal"
+command = { type = trigger which = 60070 }
+}
+}
+
+event = {
+id = 60070
+country = PHI
+style = 2
+picture = "philippines"
+
+name = "An alliance in syndicalist Asia?"
+desc = "The Commune of France, craddle of the Syndicalist Revolution, has been observing with great interest the socialist reforms we've been undertaking on the Philippines. Even if we are a bastion of socialism in Asia, France is too far away, and wouldn't be able to do much in case we get involved in a war. Therefore, they have convinced the Bhartiya Commune to enter talks with us and attempt to establish an alliance of syndicalist nations in Asia."
+
+action = {
+ai_chance = 10
+name = "This is too dangerous, we are not interested"
+command = { type = relation which = FRA value = -20 }
+command = { type = relation which = PRK value = -20 }
+}
+
+action = {
+ai_chance = 90
+name = "Accept their proposal"
+command = { type = trigger which = 60071 }
+command = { type = dissent value = 1 }
+command = { type = set_relation which = PRK value = 200 }
+}
+}
+
+event = {
+id = 60071
+country = PRK
+style = 2
+picture = "philippines"
+
+name = "The Philippines joins our Alliance"
+desc = "The Philippines have accepted our offer!"
+
+action = {
+name = "Great!"
+command = { type = set_relation which = PHI value = 150 }
+command = { type = alliance which = PHI }
+}
+}
+
+event = {
+id = 60072
+country = PHI
+style = 2
+picture = "philippines"
+
+name = "Joining the Internationale"
+desc = "The Commune of France, craddle of the Syndicalist Revolution, has been observing with great interest the socialist reforms we've been undertaking on the Philippines. They have invited us to join their alliance."
+
+action = {
+ai_chance = 10
+name = "This is too dangerous, we are not interested"
+command = { type = relation which = FRA value = -20 }
+}
+
+action = {
+ai_chance = 90
+name = "Accept their proposal"
+command = { type = trigger which = 60073 }
+command = { type = dissent value = 1 }
+command = { type = set_relation which = FRA value = 180 }
+command = { trigger = { alliance = { country = FRA country = ENG } } type = set_relation which = ENG value = 180 }
+command = { trigger = { alliance = { country = FRA country = RSI } } type = set_relation which = RSI value = 150 }
+command = { trigger = { alliance = { country = FRA country = NOR } } type = set_relation which = NOR value = 150 }
+command = { trigger = { alliance = { country = FRA country = DEN } } type = set_relation which = DEN value = 150 }
+command = { trigger = { alliance = { country = FRA country = SPR } } type = set_relation which = SPR value = 150 }
+command = { trigger = { alliance = { country = FRA country = CSA } } type = set_relation which = CSA value = 150 }
+command = { trigger = { alliance = { country = FRA country = MEX } } type = set_relation which = MEX value = 150 }
+command = { trigger = { alliance = { country = FRA country = CAN } } type = set_relation which = CAN value = 150 }
+command = { trigger = { alliance = { country = FRA country = U28 } } type = set_relation which = U28 value = 150 }
+command = { trigger = { alliance = { country = FRA country = QUE } } type = set_relation which = QUE value = 150 }
+command = { trigger = { alliance = { country = FRA country = U00 } } type = set_relation which = U00 value = 150 }
+command = { trigger = { alliance = { country = FRA country = U24 } } type = set_relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = FRA country = POL } } type = set_relation which = POL value = 150 }
+command = { trigger = { alliance = { country = FRA country = UKR } } type = set_relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = FRA country = SWE } } type = set_relation which = SWE value = 150 }
+command = { trigger = { alliance = { country = FRA country = SCA } } type = set_relation which = SCA value = 150 }
+}
+}
+
+event = {
+id = 60073
+country = FRA
+style = 2
+picture = "philippines"
+
+name = "The Philippines joins our Alliance"
+desc = "The Philippines have accepted our offer!"
+
+action = {
+name = "Great!"
+command = { type = set_relation which = PHI value = 180 }
+command = { type = alliance which = PHI }
+}
+}
+
+event = {
+id = 60074
+country = USA
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "Representatives from the Philippines have approached us with a plan to prevent a minor economical crisis in their country: they are planning to expand their armed forces, thus increasing their industrial output and creating jobs for their people. They wish that the United States finance them on this task. This could prove useful: not only we'd prevent an economical crisis in that country, but we will potentially regain the Philippines to our sphere of influence."
+
+action_a = {
+ai_chance = 80
+name = "We will finance the expansion and modernization of their army"
+command = { type = event which = 60077 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -500 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 60075
+country = USA
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "This morning, representatives from the recently-independent Republic of the Philippines have approached our government with a request. They are looking for our help with expanding their industrial output, aiming on becoming a major economical power on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially regain the Philippines to our sphere of influence."
+
+action_a = {
+ai_chance = 80
+name = "Finance the expansion of their industry"
+command = { type = event which = 60078 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60076
+country = USA
+style = 2
+picture = "philippines"
+
+name = "A request from the Philippines"
+desc = "This morning, representatives from the recently-independent Republic of the Philippines have approached our government with a request. They are looking for our help with expanding their mining and forestry industries, aiming on becoming a major provider of natural resources on Southeast Asia. Should we finance their projects? Not only we'd prevent a minor economical crisis in that country, but we will potentially regain the Philippines to our sphere of influence."
+
+action_a = {
+ai_chance = 80
+name = "Finance the exploration of their natural resources"
+command = { type = event which = 60079 where = PHI when = 350 }
+command = { type = relation which = PHI value = 100 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We'd gain nothing with this"
+command = { type = relation which = PHI value = -50 }
+}
+}
+
+event = {
+id = 60077
+country = PHI
+style = 2
+
+name = "New units raised with American aid"
+desc = "After nearly one year, new infantry units are ready to be deployed. These divisions were developed in our own country, with help from industrial specialists from the USA. Thanks to this aid programme, we were able to open new industrial parks, which will benefit our economy as a whole."
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = peacetime_ic_mod value = 10 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = setflag which = PHI_USA }
+}
+}
+
+event = {
+id = 60078
+country = PHI
+style = 2
+
+name = "New factories built with American aid"
+desc = "After nearly one year, a new industrial complex has been inaugurated in Manila. These factories were built with financing and the help of industrial experts from the USA. This will benefit our economy as a whole!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = construct which = ic where = 1565 value = 3 }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_USA }
+}
+}
+
+event = {
+id = 60079
+country = PHI
+style = 2
+
+name = "Economical expansion - American aid"
+desc = "After nearly one year, thanks to the critical help of the USA, our government has opened a new set of mines and lumber exploration areas. This will benefit our economy as a whole, as we aim on becoming a major provider of natural resources in Southeast Asia!"
+
+action = {
+name = "This is good!"
+command = { type = dissent value = -1 }
+command = { type = add_prov_resource which = -1 value = 4 where = metal }
+command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = peacetime_ic_mod value = 5 }
+command = { type = setflag which = PHI_USA }
+}
+}
+
+event = {
+id = 60080
+country = USA
+style = 2
+picture = "philippines"
+
+trigger = {
+NOT = {
+war = { country = USA country = PHI }
+war = { country = FRA country = PHI }
+war = { country = GER country = PHI }
+war = { country = JAP country = PHI }
+war = { country = CAN country = PHI }
+}
+NOT = { 
+alliance = { country = USA country = PHI } 
+}
+flag = PHI_USA
+exists = PHI
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Re-establishing old ties"
+desc = "After our aid programme to the Philippines, some members of our cabinet have considered reestablishing our protection over that country. Even if reestablishing the old US-controlled Commonwealth would be nearly impossible, we should at least try to get them into an alliance with us."
+
+action = {
+ai_chance = 50
+name = "Contact them"
+command = { type = trigger which = 60081 }
+}
+
+action = {
+ai_chance = 50
+name = "We no longer have interests in East Asia"
+command = { type = relation which = PHI value = -50 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 60081
+country = PHI
+style = 2
+
+name = "A proposal from the Americans"
+desc = "Even if our two countries no longer have any political ties as they had before the American Civil War, the United States has been observing with great interest the reforms we've been undertaking on the Philippines. In order to begin reestablishing our past ties, they have proposed a military alliance."
+
+action = {
+ai_chance = 10
+name = "This is a return to colonialism, we're not interested"
+command = { type = relation which = USA value = -20 }
+}
+
+action = {
+ai_chance = 90
+name = "Accept their proposal"
+command = { type = trigger which = 60082 }
+command = { type = set_relation which = USA value = 150 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 60082
+country = USA
+style = 2
+picture = "philippines"
+
+name = "The Philippines joins our Alliance"
+desc = "The Philippines have accepted our offer!"
+
+action = {
+name = "Great!"
+command = { type = set_relation which = PHI value = 150 }
+command = { type = alliance which = PHI }
+}
+}

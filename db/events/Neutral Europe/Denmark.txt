@@ -1,0 +1,1501 @@
+########################################
+#### Denmark
+########################################
+
+### Denmark has economic collapse
+event = {
+id = 95000
+country = DEN
+random = no
+
+name = "Trade Collapse"
+desc = "With the collapse of the German economy, Denmark is now in a dire position. The German trade that has flowed through our ports is now being sharply reduced. A strong response is needed to secure the situation."
+picture = "Unemployment3"
+style = 2
+
+date = { day = 5 month = october year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance = 75
+name = "Reduce spending"
+command = { type = peacetime_ic_mod value = -10 }
+command = { type = money value = -40  }
+}
+action_b = {
+ai_chance = 25
+name = "Reforms are the answer"
+command = { type = peacetime_ic_mod value = -5 }
+command = { type = setflag which = denreforms }
+}
+}
+
+### The Economy collapses
+event = {
+id = 95001
+country = DEN
+random = no
+
+trigger = {
+OR = {
+event = 95000
+event = 95004
+}
+NOT = { flag = denreforms }
+}
+
+name = "Economy Collapses"
+desc = "The economy has collapsed and the reduction in spending has not helped. Unemployment is rising and trade has almost come to a halt."
+picture = "Unemployment3"
+style = 2
+
+date = { day = 12 month = november year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Terrible news"
+command = { type = peacetime_ic_mod value = -5 }
+}
+}
+
+### Economic reforms
+event = {
+id = 95002
+country = DEN
+random = no
+
+trigger = {
+event = 95001
+}
+name = "5 Days in December"
+desc = "With unemployment out of control and the government being unable to restrain the collapse of the economy, there is a mood of revolution in the air. The Kaiser has expressed concern about what is happening in Denmark and the people are looking for a solution. Christian X, King of Denmark, took command of the government to restore order."
+style = 2
+picture = "politics4"
+
+date = { day = 8 month = december year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "The King has taken control"
+command = { type = dissent value = 5 }
+}
+}
+
+### The New Path
+event = {
+id = 95003
+country = DEN
+random = no
+
+trigger = {
+event = 95002
+}
+name = "A New Path for Denmark"
+desc = "With the economic conditions at their worst at the end of 1936 the King has decided to attempt to reform the country. He has put forth two plans: The first is to use the position of Denmark and the now idle facilities of move ore and other resources from Sweden onto the continent. The second plan is to expand out into the North Atlantic to increase the fishing industry in Iceland and Greenland."
+style = 2
+picture = "economic"
+
+date = { day = 2 month = january year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1954 }
+
+
+action_a = {
+ai_chance = 75
+name = "Look to Sweden"
+command = { type = setflag which = densweref }
+}
+action_b = {
+ai_chance = 25
+trigger = {
+NOT = {
+exists = ICL
+}
+control = { province = 1 data = DEN }
+}
+name = "The North Atlantic is the future"
+command = { type = setflag which = dennoratl }
+}
+}
+
+### Reforms fail
+event = {
+id = 95004
+country = DEN
+random = no
+
+trigger = {
+flag = denreforms
+}
+
+name = "The Reforms Fail"
+desc = "The proposed reforms have failed to alleviate the situation and have left the country in shambles. The economy is on the brink of collapse."
+style = 2
+picture = "economic"
+
+date = { day = 2 month = november year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "The reforms fail"
+command = { type = peacetime_ic_mod value = -2 }
+command = { type = clrflag which = denreforms }
+}
+}
+
+### Denmark industrial reforms
+event = {
+id = 95005
+country = DEN
+random = no
+picture = "Factory"
+
+trigger = {
+flag = densweref
+}
+
+name = "Industrial Reforms"
+desc = "To accomodate the reforms that the King has put forward we have begun building the necessary industry to support the incoming resources."
+style = 2
+
+date = { day = 10 month = january year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "The economy is getting there"
+command = { type = peacetime_ic_mod value = 2 }
+}
+}
+
+### More industrial reforms
+event = {
+id = 95006
+country = DEN
+random = no
+
+trigger = {
+event = 95005
+}
+
+name = "Industrial Reforms"
+desc = "More factories are ready for our venture."
+style = 2
+picture = "Industry2"
+
+date = { day = 12 month = february year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "More industry"
+command = { type = peacetime_ic_mod value = 2 }
+}
+}
+
+### The spring industry
+event = {
+id = 95007
+country = DEN
+random = no
+
+trigger = {
+event = 95006
+}
+
+name = "The Spring of Industry"
+desc = "During the March of 1937, Denmark had a great economic boom to accomodate all the ore coming from Sweden. Soon Germany and Norway were also using the Danish ports to move resources."
+style = 2
+picture = "Industry"
+
+date = { day = 22 month = march year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "Forward"
+command = { type = peacetime_ic_mod value = 4 }
+command = { type = construct which = IC where = 219 value = 1 }
+command = { type = construct which = IC where = 294 value = 1 }
+}
+}
+
+### The Summer Fuel Crisis
+event = {
+id = 95008
+country = DEN
+random = no
+
+trigger = {
+event = 95007
+}
+
+name = "The Summer Fuel Crisis"
+desc = "With the massive expansion of industry the fuel that we had stockpiled is no longer adequate. We will need to cut back on the fuel that is going to Iceland."
+style = 2
+picture = "economic"
+
+date = { day = 14 month = august year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "Just for a little"
+command = { type = setflag which = nofuelice }
+}
+}
+
+### Protests in Iceland
+event = {
+id = 95009
+country = DEN
+random = no
+picture = "politics2"
+
+trigger = {
+event = 83119
+flag = nofuelice
+}
+
+name = "Protests in Iceland"
+desc = "The fuel rationing in Iceland has caused much of its fishing fleet to become useless and the unemployed fisherman have taken to the streets of Reykjavik in protest. The King is disturbed by this as both Canada and Britain have been looking upon the island with interest."
+style = 2
+
+date = { day = 1 month = december year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "Interesting development"
+command = { type = dissent value = 1 }
+}
+}
+
+### Industrial Expansion 1938
+event = {
+id = 95010
+country = DEN
+random = no
+
+trigger = {
+event = 95009
+}
+
+name = "Industrial Expansion of '38"
+desc = "The beginning of 1938 saw the laying down of the final strategy to bring the industry of Denmark up to the King's requested level."
+style = 2
+picture = "economic"
+
+date = { day = 4 month = february year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "Forward industry"
+command = { type = peacetime_ic_mod value = 3 }
+command = { type = construct which = IC where = 294 value = 1 }
+}
+}
+
+### Iceland criticizes Danish policies
+event = {
+id = 95011
+country = DEN
+random = no
+
+trigger = {
+event = 83120
+NOT = {
+exists = ICL
+}
+control = { province = 1 data = DEN }
+}
+
+name = "Iceland is Critical of the King"
+desc = "The King's policies are not going over as favourably as we had hoped in Iceland. The government of Iceland has become extremely critical of the handling of the economy by the King. It is not acceptable for Iceland to do this."
+style = 2
+picture = "iceland1"
+
+date = { day = 8 month = april year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "It is hard to blame them"
+command = { type = clrflag which = nofuelice }
+}
+}
+
+### Industrial Reform
+event = {
+id = 95012
+country = DEN
+random = no
+
+trigger = {
+event = 95011
+}
+
+name = "Industrial Reforms"
+desc = "More industry has been converted."
+style = 2
+picture = "Industry"
+
+date = { day = 21 month = april year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "Forward Industry"
+command = { type = peacetime_ic_mod value = 2 }
+}
+}
+
+### Industrial Reform/ Final
+event = {
+id = 95013
+country = DEN
+random = no
+
+trigger = {
+event = 95012
+}
+
+name = "Final Industrial Reforms"
+desc = "Our industry has finally finished being converted to the King's specifications."
+style = 2
+picture = "Industry2"
+
+date = { day = 13 month = may year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "Finally"
+command = { type = peacetime_ic_mod value = 2 }
+}
+}
+
+### Iceland demands independence
+event = {
+id = 95014
+country = DEN
+random = no
+# triggered by Iceland event 83121 NOT TRUE! ALWAYS FIRES!!!
+
+trigger = {
+NOT = { exists = ICL }
+control = { province = 1 data = DEN }
+}
+
+name = "Icelandic Independance"
+desc = "The Icelandic government has voted to petition for independance. Many in the Danish government believe that this may by the best option as it would alleviate many of the responsibilities they have in the North Atlantic. The King also seems to be favourable to this as he believes that Denmark's future is on the continent and not in the North Atlantic."
+style = 2
+
+date = { day = 10 month = august year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+picture = "iceland1"
+
+action_a = {
+ai_chance = 100
+name = "Grant them independence"
+command = { type = independence which = ICL value = 1 when = 0 }
+command = { type = dissent value = 3 }
+command = { type = trigger which = 95044  }
+}
+
+action_b = {
+ai_chance = 0
+name = "Keep the island. We need it"
+command = { type = revolt which = 1 } #Reykjavik
+command = { type = revolt which = 3 } #Höfn
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 95044
+random = no
+country = ICL
+style = 2
+
+name = "Independent Iceland"
+desc = "Nobody will read this!"
+
+action = {
+name = "Really, nobody!"
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = headofstate which = 581019 }
+command = { type = headofgovernment which = 581022 }
+command = { type = foreignminister which = 581026 }
+command = { type = add_division value = militia when = 4 }
+}
+}
+
+### Advancing the industrial in the North Atl
+event = {
+id = 95015
+country = DEN
+random = no
+
+trigger = {
+flag = dennoratl
+}
+
+name = "Advancing Industry in the North Atlantic"
+desc = "We have begun our expansion of the fishing industry in the North Atlantic."
+style = 2
+picture = "Factory"
+
+date = { day = 10 month = january year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "More fish"
+command = { type = peacetime_ic_mod value = 4 }
+command = { type = construct which = IC where = 1 value = 1 }
+command = { type = construct which = IC where = 3 value = 1 }
+}
+}
+
+### Industry adjustments needed
+event = {
+id = 95016
+country = DEN
+random = no
+
+trigger = {
+event = 95015
+}
+
+name = "Industry in the North Atlantic"
+desc = "More expansion of the fishing industry in the North Atlantic."
+style = 2
+picture = "Factory"
+
+date = { day = 4 month = june year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+name = "More fish"
+command = { type = peacetime_ic_mod value = 3 }
+}
+}
+
+### Advancing the industrial in the North Atl
+event = {
+id = 95017
+country = DEN
+random = no
+
+trigger = {
+event = 95016
+}
+
+name = "Industry in the North Atlantic"
+desc = "More expansion of the fishing industry in the North Atlantic."
+style = 2
+picture = "Factory"
+
+date = { day = 17 month = october year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "More fish"
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = construct which = IC where = -1 value = 1 }
+}
+}
+
+### Advancing the industrial in the North Atl
+event = {
+id = 95018
+country = DEN
+random = no
+
+trigger = {
+event = 95017
+}
+
+name = "Industry in the North Atlantic"
+desc = "Expansion of the fishing industry in the North Atlantic is going as planned."
+style = 2
+picture = "Factory"
+
+date = { day = 22 month = january year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "More fish"
+command = { type = peacetime_ic_mod value = 1 }
+}
+}
+
+### Industrial reforms complete
+event = {
+id = 95019
+country = DEN
+random = no
+
+trigger = {
+event = 95018
+}
+name = "Industrial Reforms Completed"
+desc = "The industrial reforms of the King have been completed, the economy is stable and the political issues in Denmark seem to be under control. The people are very happy with the King."
+style = 2
+picture = "Industry"
+
+date = { day = 17 month = march year = 1938 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "More fish"
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = construct which = IC where = -1 value = 1 }
+}
+}
+
+event = {
+id = 95030
+random = no
+country = DEN
+picture = "GeorgeV_Funeral"
+style = 2
+
+trigger = {
+headofgovernment = 16002 #Thorvald Stauning
+}
+
+date = { day = 3 month = may year = 1942 }
+
+name = "Our Head of Government is dead!!"
+desc = "Today our beloved Head of Government Thorvald Stauning died peacefully in his bed."
+
+action_a = {
+name = "May he rest in peace!"
+command = { type = money value = -50  }
+command = { type = dissent value = 1  }
+command = { type = sleepminister which = 16002 }
+command = { type = headofgovernment which = 16039 }
+}
+}
+
+
+event = {
+id = 95032
+random = no
+country = DEN
+picture = "GeorgeV_Funeral"
+style = 2
+
+trigger = {
+headofstate = 16001 #Christian X
+}
+
+date = { day = 20 month = april year = 1947 }
+
+name = "The Passing of Christian X"
+desc = "Today our royal majesty, his highness Christian X died peacefully in the royal chamber. Long live our new king, His royal highness Frederik IX!"
+
+action_a = {
+name = "Long live the king!"
+command = { type = dissent value = 1  }
+command = { type = sleepminister which = 16001 }
+command = { type = headofstate which = 16138 }
+}
+}
+
+event = {
+id = 95038
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN
+}
+}
+
+name = "The 1936 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and this election will also decide who will form the next government cabinet. The four parties with a chance of winning: the Social Democrats (the favorites of the commentators), Venstre (a Market Liberal party), Radikale Venstre (a splinter of Venstre, favoring more leftist economic and social views), and the Conservative People's Party. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1936 }
+offset = 15
+deathdate = { day = 26 month = may year = 1936 }
+
+action_a = {
+ai_chance = 50
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16001 } #H.M. Christian X
+command = { type = headofgovernment which = 16002 } #Thorvald Stauning
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 20
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16137 } #H.M. Christian X
+command = { type = headofgovernment which = 16013 } #Christmas Moller
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 20
+name = "Venstre wins it!"
+command = { type = headofstate which = 16137 } #H.M. Christian X
+command = { type = headofgovernment which = 16014 } #Thomas Madsen-Mygdal
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 10
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16001 } #H.M. Christian X
+command = { type = headofgovernment which = 16015 } #Peter Munch
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+event = {
+id = 95039
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN
+}
+}
+
+name = "The 1940 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and the election will also decide who will form the next governmental cabinet. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1940 }
+offset = 15
+deathdate = { day = 26 month = may year = 1940 }
+
+action_a = {
+ai_chance = 50
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16001 } #H.M. Christian X
+command = { type = headofgovernment which = 16002 } #Thorvald Stauning
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 20
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16137 } #H.M. Christian X
+command = { type = headofgovernment which = 16013 } #Christmas Moller
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 20
+name = "Venstre wins it!"
+command = { type = headofstate which = 16137 } #H.M. Christian X
+command = { type = headofgovernment which = 16014 } #Thomas Madsen-Mygdal
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 10
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16001 } #H.M. Christian X
+command = { type = headofgovernment which = 16015 } #Peter Munch
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+event = {
+id = 95040
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN
+}
+}
+
+name = "The 1944 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and the election will also decide who will form the next governmental cabinet. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1944 }
+offset = 15
+deathdate = { day = 26 month = may year = 1944 }
+
+action_a = {
+ai_chance = 35
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16001 } #H.M. Christian X
+command = { type = headofgovernment which = 16143 } #Hans Hedtoft
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 20
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16137 } #H.M. Christian X
+command = { type = headofgovernment which = 16013 } #Christmas Moller
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 25
+name = "Venstre wins it!"
+command = { type = headofstate which = 16012 } #H.M. Christian X
+command = { type = headofgovernment which = 16043 } #Knud Kristensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 10
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16001 } #H.M. Christian X
+command = { type = headofgovernment which = 16015 } #Peter Munch
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+event = {
+id = 95033
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN }
+}
+
+name = "The 1948 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and the election will also decide who will form the next governmental cabinet. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1948 }
+offset = 15
+deathdate = { day = 26 month = may year = 1948 }
+
+action_a = {
+ai_chance = 45
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16138 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16143 } #Hans Hedtoft
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 15
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16016 } #Vilhelm Fibiger
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 25
+name = "Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16043 } #Knud Kristensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 5
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16017 } #Jorgen Jorgensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+event = {
+id = 95034
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN
+}
+}
+
+name = "The 1952 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and the election will also decide who will form the next governmental cabinet. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1952 }
+offset = 15
+deathdate = { day = 26 month = may year = 1952 }
+
+action_a = {
+ai_chance = 45
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16138 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16143 } #Hans Hedtoft
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 15
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16016 } #Vilhelm Fibiger
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 25
+name = "Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16043 } #Knud Kristensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 5
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16017 } #Jorgen Jorgensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+event = {
+id = 95035
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN
+}
+}
+
+name = "The 1956 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and the election will also decide who will form the next governmental cabinet. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1956 }
+offset = 15
+deathdate = { day = 26 month = may year = 1956 }
+
+action_a = {
+ai_chance = 45
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16138 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16143 } #Hans Hedtoft
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 15
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16016 } #Vilhelm Fibiger
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 25
+name = "Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16043 } #Knud Kristensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 5
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16017 } #Jorgen Jorgensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+event = {
+id = 95036
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN
+}
+}
+name = "The 1960 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and the election will also decide who will form the next governmental cabinet. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1960 }
+offset = 15
+deathdate = { day = 26 month = may year = 1960 }
+
+action_a = {
+ai_chance = 45
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16138 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16143 } #Hans Hedtoft
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 15
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16016 } #Vilhelm Fibiger
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 25
+name = "Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16043 } #Knud Kristensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 5
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16017 } #Jorgen Jorgensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+event = {
+id = 95037
+country = DEN
+random = no
+style = 2
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = {
+ispuppet = DEN
+}
+}
+
+name = "The 1964 Folketing election"
+desc = "The election of the Folketing (People's Assembly) has begun, and the election will also decide who will form the next governmental cabinet. Who will win?"
+picture = "rusdumaelect"
+
+date = { day = 26 month = april year = 1964 }
+offset = 15
+deathdate = { day = 26 month = may year = 1964 }
+
+action_a = {
+ai_chance = 45
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 16138 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16143 } #Hans Hedtoft
+command = { type = foreignminister which = 16049 } #Hans Hedtoft
+command = { type = armamentminister which = 16004 } #Alsing Andersen
+command = { type = ministerofsecurity which = 16005 } #Karl Kristian Steincke
+command = { type = ministerofintelligence which = 16088 } #Ejnar Warum
+command = { type = set_domestic which = democratic value = 10 }
+command = { type = set_domestic which = political_left value = 10 }
+}
+action_b = {
+ai_chance = 15
+name = "The Conservative People's party wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16016 } #Vilhelm Fibiger
+command = { type = foreignminister which = 16050 } #Ole Bjorn Kraft
+command = { type = armamentminister which = 16063 } #Soren Brorsen
+command = { type = ministerofsecurity which = 16078 } #Harald Petersen
+command = { type = ministerofintelligence which = 16011 } #Harald Petersen
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 4 }
+}
+action_c = {
+ai_chance = 25
+name = "Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16043 } #Knud Kristensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16064 } #Knud Kristensen
+command = { type = ministerofsecurity which = 16079 } #Didrik G. Nyholm
+command = { type = ministerofintelligence which = 16092 } #Niels Frederiksen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 5 }
+}
+action_d = {
+ai_chance = 5
+name = "Radikale Venstre wins it!"
+command = { type = headofstate which = 16139 } #H.M. Frederik IX
+command = { type = headofgovernment which = 16017 } #Jorgen Jorgensen
+command = { type = foreignminister which = 16051 } #Otto Carl Mohr
+command = { type = armamentminister which = 16061 } #Gunnar Larsen
+command = { type = ministerofsecurity which = 16074 } #Peter Christian Schou
+command = { type = ministerofintelligence which = 16087 } #Laust Jensen Moltesen
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 7 }
+}
+}
+
+
+event = {
+id = 95041
+random = no
+country = DEN
+style = 2
+
+trigger = {
+exists = GER
+NOT = { ispuppet = GER }
+NOT = { war = { country = DEN country = GER } }
+participant = { country = GER value = 2 }
+war = { country = GER country = FRA }
+war = { country = GER country = ENG }
+OR = {
+war = { country = DEN country = ENG }
+war = { country = DEN country = FRA }
+}
+NOT = {
+government = communist
+alliance = { country = CAN country = DEN }
+alliance = { country = GER country = DEN }
+alliance = { country = JAP country = DEN }
+alliance = { country = FRA country = DEN }
+alliance = { country = RUS country = DEN }
+alliance = { country = SOV country = DEN }
+alliance = { country = USA country = DEN }
+}
+NOT = { ispuppet = DEN }
+}
+
+name = "Denmark is under attack!"
+desc = "The combined forces of the Internationale have launched an invasion of our homeland. This invasion directly threatens our national existence and way of life. Since we are not strong enough to repel the invasion on our own we should ask the German Empire for help."
+picture = "diplomatic_campaign"
+
+date = { day = 1 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+
+action_a = {
+ai_chance = 100
+name = "Ask the German Empire for help"
+command = { type = trigger which = 95042 }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 0
+name = "We shall solve this on our own!"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 95042
+random = no
+country = GER
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Denmark begs for protection"
+desc = "The combined forces of the Internationale have launched an invasion of Denmark. Unable to deal with the intruders on their own, the government of Denmark begs us for protection against the Syndicalist menace. What shall we do?"
+
+action_a = {
+ai_chance = 100
+name = "We shall protect them!"
+command = { type = alliance which = DEN }
+command = { type = relation which = DEN value = 100 }
+command = { type = dissent value = -3 }
+command = { type = trigger which = 95043 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Rather not."
+command = { type = dissent value = 1 }
+command = { type = relation which = DEN value = -100 }
+}
+}
+
+event = {
+id = 95043
+random = no
+country = DEN
+style = 2
+picture = "diplomatic_campaign"
+
+name = "German Empire will protect us"
+desc = "Germans are happy to see us joining the common case - destroying the evil Syndicalists. Now we are part of Mitteleuropa."
+
+action_a = {
+name = "We will win!"
+command = { type = dissent value = -3 }
+command = { type = relation which = FRA value = -150 }
+command = { type = relation which = ENG value = -150 }
+}
+}
+
+
+# Syndie Denmark and Schleswig
+
+event = {
+id = 95100
+picture = "schleswig"
+style = 2
+country = DEN
+
+trigger = {
+participant = { country = DEN value = 3 } #Denmark is part of the Syndicalist Internationale
+OR = {
+flag = GER_CON_Capitulation
+flag = GER_Capitulation
+
+}
+OR = {
+AND = {
+participant = { country = U19 value = 3 } #North German Federation is part of the Syndicalist Internationale
+control = { province = 216 data = U19  }
+}
+AND = {
+participant = { country = U31 value = 3 } #German Union is part of the Syndicalist Internationale
+control = { province = 216 data = U31  }
+}
+}
+NOT = { war = { country = FRA country = DEN } }
+NOT = { war = { country = FRA country = U14 } }
+
+}
+
+name = "Requesting a Plebiscite in Schleswig"
+desc = "With Europe liberated into Socialist bliss, we might persuade the French vanguard-nation to allow a proletarian plebiscite in Schleswig, the first European region targeted by Prussian imperialism. This would enhance the popularity of our government considerably."
+
+date = { day = 1 month = january year = 1941 }
+offset = 120
+deathdate = { day = 1 month = december year = 1960 }
+
+action_a = {
+ai_chance = 90
+name = "A Syndicalist Denmark, is a united Denmark!"
+command = { type = trigger which = 95101 } #Russian response
+command = { type = addclaim which = 216 }
+command = { type = addclaim which = 150 }
+
+}
+action_b = {
+ai_chance = 10
+name = "Proletarian unity is more important than border adjustments.."
+command = { type = relation which = U31 value = 10 }
+command = { type = relation which = U19 value = 10 }
+}
+}
+
+event = {
+id = 95101
+picture = "schleswig"
+style = 2
+country = FRA
+
+name = "Denmark and the Schleswig Question"
+desc = "The new Socialist government in Copenhagen has requested that the Internationale oversee a plebiscite on the borders of the disputed Schleswig province. Should we back the Danish request or let the German puppet state maintain control?"
+
+action_a = {
+ai_chance = 90
+name = "The Internationale shall oversee this plebiscite!"
+command = { trigger = { control = { province = 216 data = U19  } } type = event which = 95102 where = U19 when = 16 }	# Plebiscite result
+command = { trigger = { control = { province = 216 data = U31  } } type = event which = 95103 where = U31 when = 19 }	# Plebiscite result
+command = { type = relation which = DEN value = 25 }
+command = { type = relation which = U19 value = -10 }
+command = { type = relation which = U31 value = -10 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Such national squabbles are awfully bourgeois!"
+command = { type = relation which = DEN value = -25 }
+command = { type = relation which = U19 value = 10 }
+command = { type = relation which = U31 value = 10 }
+}
+
+}
+
+event = {
+id = 95102
+picture = "schleswig"
+style = 2
+country = U19
+one_action = yes
+
+name = "The Schleswig Plebiscite - Results"
+desc = "Throughout the former Imperial province of Schleswig, the people have done their socialist duty and voted on whether or not they should belong to the Danish nation."
+
+action = {
+name = "All of Schleswig votes German!!"
+ai_chance = 20
+command = { type = dissent value = -5 }
+
+}
+action = {
+name = "Northern Schleswig votes for Denmark!"
+ai_chance = 60
+command = { type = dissent value = 2 }
+command = { type = secedeprovince which = DEN value = 216 }
+command = { type = removecore which = 216 }
+command = { type = event which = 95104 where = DEN when = 4 }	# Plebiscite result Denmark
+
+}
+
+action = {
+name = "All of Schleswig votes for Denmark!"
+ai_chance = 20
+command = { type = dissent value = 5 }
+command = { type = secedeprovince which = DEN value = 150 }
+command = { type = secedeprovince which = DEN value = 216 }
+command = { type = removecore which = 216 }
+command = { type = removecore which = 150 }
+command = { type = event which = 95104 where = DEN when = 4 }	# Plebiscite result Denmark
+
+}
+
+}
+
+event = {
+id = 95103
+picture = "schleswig"
+style = 2
+country = U31
+one_action = yes
+
+name = "The Schleswig Plebiscite - Results"
+desc = "Throughout the former Imperial province of Schleswig, the people have done their socialist duty and voted on whether or not they should belong to the Danish nation."
+
+action = {
+name = "All of Schleswig votes German!!"
+ai_chance = 20
+command = { type = dissent value = -5 }
+
+}
+action = {
+name = "Northern Schleswig votes for Denmark!"
+ai_chance = 60
+command = { type = dissent value = 2 }
+command = { type = secedeprovince which = DEN value = 216 }
+command = { type = removecore which = 216 }
+command = { type = event which = 95104 where = DEN when = 4 }	# Plebiscite result Denmark
+
+}
+
+action = {
+name = "All of Schleswig votes for Denmark!"
+ai_chance = 20
+command = { type = dissent value = 5 }
+command = { type = secedeprovince which = DEN value = 150 }
+command = { type = secedeprovince which = DEN value = 216 }
+command = { type = removecore which = 216 }
+command = { type = removecore which = 150 }
+command = { type = event which = 95104 where = DEN when = 4 }	# Plebiscite result Denmark
+
+}
+
+}
+
+event = {
+id = 95104
+picture = "schleswig"
+style = 2
+country = DEN
+
+name = "Schleswig Returns to the Fatherland!"
+desc = "The people of Schleswig has overwhelmingly voted to return to the Fatherland after more than 80 years under the German heel! This is a great victory for international popular sovereignty!"
+
+action = {
+name = "Hurrah!"
+ai_chance = 100
+command = { type = dissent value = -5 }
+command = { trigger = { control = { province = 216 data = DEN  } } type = addcore which = 216 }
+command = { trigger = { control = { province = 150 data = DEN  } } type = addcore which = 150 }
+command = { trigger = { control = { province = 216 data = GER  } } type = removeclaim which = 216 }
+command = { trigger = { control = { province = 150 data = GER  } } type = removeclaim which = 150 }
+}
+
+}

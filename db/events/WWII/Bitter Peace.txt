@@ -1,0 +1,3410 @@
+event = {
+id = 950000
+random = no
+country = RUS
+
+trigger = {
+war = { country = GER country = RUS }
+random = 35
+lost_national = { country = RUS value = 30 }
+NOT = {
+ispuppet = RUS
+ispuppet = GER
+exists = SOV
+lost_VP = { country = GER value = 10 }
+control = { province = 264 data = -1 }
+control = { province = 270 data = -1 }
+control = { province = 553 data = -1 } #St. Petersburg has fallen
+control = { province = 572 data = -1 } #Moscow has fallen
+OR = {
+control = { province = 663 data = -1 } #Tsaritsyn has fallen
+control = { province = 672 data = -1 } #Kazan has fallen
+}
+}
+}
+
+name = "The Bitter Peace"
+desc = "The war with the Germans now seems hopeless. It may be time to sue for peace."
+style = 2
+picture = "Bitter Peace"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "How humiliating! Sue for peace."
+ai_chance = 100
+command = { type = dissent value = 10 }
+command = { type = leave_alliance when = 1 }
+command = { type = sleepevent which = 950002 }
+command = { type = event which = 950001 where = GER when = 1  }
+}
+
+action_b = {
+name = "Mother Russia shall fight to the bitter end!"
+ai_chance = 0
+command = { type = sleepevent which = 950002 }
+command = { type = dissent value = 30 }
+}
+}
+
+event = {
+id = 950001
+random = no
+country = GER
+style = 2
+picture = "Bitter Peace"
+
+name = "The Russians sue for Peace"
+desc = "EVT_9001652_DESC"
+
+action_a = {
+name = "Better than we expected, accept the conditions!"
+ai_chance = 100
+command = { type = peace which = RUS value = 0 }
+command = { type = dissent value = -20 }
+command = { type = belligerence which = GER value = -15 }
+command = { type = trigger which = 950005 }
+command = { type = trigger which = 950008 }
+command = { type = trigger which = 950011 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = RUS  } } } } type = trigger which = 950014 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = RUS  } } } } type = trigger which = 950017 }
+command = { trigger = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = RUS  } } } type = trigger which = 950020 }
+command = { type = trigger which = 950023 }
+command = { type = trigger which = 950026 }
+command = { type = trigger which = 950029 }
+command = { type = trigger which = 950094 }
+command = { type = trigger which = 950090 }
+command = { type = flag_ext where = RUS } #reset Russian flag
+}
+action_b = {
+name = "No Peace with the Russians!"
+ai_chance = 0
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 950002
+random = no
+country = SOV
+
+trigger = {
+war = { country = GER country = SOV }
+random = 35
+lost_national = { country = SOV value = 30 }
+NOT = {
+ispuppet = GER
+exists = RUS
+ispuppet = SOV
+control = { province = 264 data = -1 }
+control = { province = 270 data = -1 }
+control = { province = 553 data = -1 } #St. Petersburg has fallen
+control = { province = 572 data = -1 } #Moscow has fallen
+lost_VP = { country = GER value = 10 }
+OR = {
+control = { province = 663 data = -1 } #Tsaritsyn has fallen
+control = { province = 672 data = -1 } #Kazan has fallen
+}
+}
+}
+
+name = "The Bitter Peace"
+desc = "The war with the Germans now seems hopeless. It may be time to sue for peace."
+style = 2
+picture = "Bitter Peace"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "How humiliating! Sue for peace."
+ai_chance = 100
+command = { type = dissent value = 10 }
+command = { type = leave_alliance when = 1 }
+command = { type = sleepevent which = 950000 }
+command = { type = event which = 950003 where = GER when = 1  }
+}
+
+action_b = {
+name = "Mother Russia shall fight to the bitter end!"
+ai_chance = 0
+command = { type = sleepevent which = 950000 }
+command = { type = dissent value = 30 }
+}
+}
+
+event = {
+id = 950003
+random = no
+country = GER
+style = 2
+picture = "Bitter Peace"
+
+name = "The Russians sue for peace"
+desc = "EVT_9001652_DESC"
+
+action_a = {
+name = "Better than we expected, accept the conditions"
+ai_chance = 100
+command = { type = peace which = SOV value = 0 }
+command = { type = dissent value = -20 }
+command = { type = belligerence which = GER value = -15 }
+command = { type = trigger which = 950004 }
+}
+action_b = {
+name = "No peace with the Russians!"
+ai_chance = 0
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 950004
+random = no
+country = SOV
+style = 2
+#picture = "Russiacounterrev"
+
+name = "The end of the Soviet state"
+desc = "At the start of the peace deal negotiations the Germans have demanded that we abolish the Soviet state. We have no choice but to comply; they will simply crush us if we refuse."
+
+action_a = {
+name = "Goodbye Soviet Russia!"
+command = { type = flag_ext where = SOV } #reset Soviet flag
+command = { type = name where = SOV }
+command = { type = country which = RUS }
+command = { type = addcore which = 550  }
+command = { type = addcore which = 552  }
+command = { type = addcore which = 566  }
+command = { type = addcore which = 564  }
+command = { type = addcore which = 593  }
+command = { type = addcore which = 573  }
+command = { type = addcore which = 589  }
+command = { type = addcore which = 586  }
+command = { type = addcore which = 587  }
+command = { type = addcore which = 581  }
+command = { type = addcore which = 582  }
+command = { type = addcore which = 580  }
+command = { type = addcore which = 654  }
+command = { type = addcore which = 1167 }
+command = { type = addcore which = 1168 }
+command = { type = addcore which = 1169 }
+command = { type = addcore which = 1146 }
+command = { type = addcore which = 1147 }
+command = { type = addcore which = 1158 }
+command = { type = addcore which = 1191 }
+command = { type = addcore which = 1196 }
+command = { type = addcore which = 1193 }
+command = { type = addcore which = 1192 }
+command = { type = addcore which = 1195 }
+command = { type = addcore which = 1194 }
+command = { type = addcore which = 1190 }
+command = { type = addcore which = 1185 }
+command = { type = addcore which = 653  }
+command = { type = addcore which = 655  }
+command = { type = addcore which = 642  }
+command = { type = addcore which = 659  }
+command = { type = addcore which = 663  }
+command = { type = addcore which = 660  }
+command = { type = addcore which = 666  }
+command = { type = addcore which = 667  }
+command = { type = addcore which = 1134 }
+command = { type = addcore which = 553  }
+command = { type = addcore which = 551  }
+command = { type = addcore which = 549  }
+command = { type = addcore which = 560  }
+command = { type = addcore which = 565  }
+command = { type = addcore which = 535  }
+command = { type = addcore which = 534  }
+command = { type = addcore which = 536  }
+command = { type = addcore which = 537  }
+command = { type = addcore which = 541  }
+command = { type = addcore which = 539  }
+command = { type = addcore which = 557  }
+command = { type = addcore which = 562  }
+command = { type = addcore which = 559  }
+command = { type = addcore which = 561  }
+command = { type = addcore which = 542  }
+command = { type = addcore which = 546  }
+command = { type = addcore which = 547  }
+command = { type = addcore which = 556  }
+command = { type = addcore which = 555  }
+command = { type = addcore which = 563  }
+command = { type = addcore which = 558  }
+command = { type = addcore which = 577  }
+command = { type = addcore which = 575  }
+command = { type = addcore which = 574  }
+command = { type = addcore which = 588  }
+command = { type = addcore which = 585  }
+command = { type = addcore which = 583  }
+command = { type = addcore which = 538  }
+command = { type = addcore which = 540  }
+command = { type = addcore which = 579  }
+command = { type = addcore which = 652  }
+command = { type = addcore which = 650  }
+command = { type = addcore which = 651  }
+command = { type = addcore which = 657  }
+command = { type = addcore which = 661  }
+command = { type = addcore which = 669  }
+command = { type = addcore which = 665  }
+command = { type = addcore which = 668  }
+command = { type = addcore which = 656  }
+command = { type = addcore which = 658  }
+command = { type = addcore which = 688  }
+command = { type = addcore which = 545  }
+command = { type = addcore which = 543  }
+command = { type = addcore which = 548  }
+command = { type = addcore which = 676  }
+command = { type = addcore which = 677  }
+command = { type = addcore which = 1132 }
+command = { type = addcore which = 1133 }
+command = { type = addcore which = 1136 }
+command = { type = addcore which = 1137 }
+command = { type = addcore which = 1138 }
+command = { type = addcore which = 1139 }
+command = { type = addcore which = 1141 }
+command = { type = addcore which = 1142 }
+command = { type = addcore which = 1143 }
+command = { type = addcore which = 1144 }
+command = { type = addcore which = 1145 }
+command = { type = addcore which = 1156 }
+command = { type = addcore which = 1157 }
+command = { type = addcore which = 1069 }
+command = { type = addcore which = 1070 }
+command = { type = addcore which = 1166 }
+command = { type = addcore which = 1161 }
+command = { type = addcore which = 1163 }
+command = { type = addcore which = 1170 }
+command = { type = addcore which = 1176 }
+command = { type = addcore which = 1174 }
+command = { type = addcore which = 1175 }
+command = { type = addcore which = 1187 }
+command = { type = addcore which = 1188 }
+command = { type = addcore which = 1189 }
+command = { type = addcore which = 1186 }
+command = { type = addcore which = 1181 }
+command = { type = addcore which = 1182 }
+command = { type = addcore which = 1183 }
+command = { type = addcore which = 1184 }
+command = { type = addcore which = 1178 }
+command = { type = addcore which = 1180 }
+command = { type = addcore which = 1177 }
+command = { type = addcore which = 1179 }
+command = { type = addcore which = 1164 }
+command = { type = addcore which = 1165 }
+command = { type = addcore which = 1148 }
+command = { type = addcore which = 1155 }
+command = { type = addcore which = 1171 }
+command = { type = addcore which = 1152 }
+command = { type = addcore which = 1154 }
+command = { type = addcore which = 1135 }
+command = { type = addcore which = 1149 }
+command = { type = addcore which = 1150 }
+command = { type = addcore which = 1153 }
+command = { type = addcore which = 1129 }
+command = { type = addcore which = 1151 }
+command = { type = addcore which = 1128 }
+command = { type = addcore which = 1130 }
+command = { type = addcore which = 689  }
+command = { type = addcore which = 1126 }
+command = { type = addcore which = 1127 }
+command = { type = addcore which = 1131 }
+command = { type = addcore which = 687  }
+command = { type = addcore which = 671  }
+command = { type = addcore which = 590  }
+command = { type = addcore which = 600  }
+command = { type = addcore which = 601  }
+command = { type = addcore which = 554  }
+command = { type = addcore which = 576  }
+command = { type = addcore which = 584  }
+command = { type = addcore which = 682  }
+command = { type = addcore which = 679  }
+command = { type = addcore which = 578  }
+command = { type = addcore which = 670  }
+command = { type = addcore which = 675  }
+command = { type = addcore which = 683  }
+command = { type = addcore which = 664  }
+command = { type = addcore which = 674  }
+command = { type = addcore which = 690  }
+command = { type = addcore which = 672  }
+command = { type = addcore which = 673  }
+command = { type = addcore which = 680  }
+command = { type = addcore which = 681  }
+command = { type = addcore which = 684  }
+command = { type = addcore which = 685  }
+command = { type = addcore which = 686  }
+command = { type = addcore which = 544  }
+command = { type = addcore which = 1162 }
+command = { type = addcore which = 498  }
+command = { type = addcore which = 1115  }
+command = { type = addcore which = 501  }
+command = { type = addcore which = 499  }
+command = { type = addcore which = 502 }
+command = { type = trigger which = 950005 }
+command = { type = trigger which = 950008 }
+command = { type = trigger which = 950011 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = RUS  } } } } type = trigger which = 950014 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = RUS  } } } } type = trigger which = 950017 }
+command = { trigger = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = RUS  } } } type = trigger which = 950020 }
+command = { type = trigger which = 950023 }
+command = { type = trigger which = 950026 }
+command = { type = trigger which = 950029 }
+command = { type = trigger which = 950094 }
+command = { type = trigger which = 950090 }
+command = { type = secedeprovince which = GER value = 711 }
+command = { type = secedeprovince which = GER value = 714 }
+command = { type = secedeprovince which = GER value = 712 }
+command = { type = secedeprovince which = GER value = 713 }
+command = { type = secedeprovince which = GER value = 707 }
+command = { type = secedeprovince which = GER value = 708 }
+command = { type = secedeprovince which = GER value = 709 }
+command = { type = secedeprovince which = GER value = 710 }
+command = { type = secedeprovince which = GER value = 1067 }
+command = { type = secedeprovince which = GER value = 1076 }
+command = { type = secedeprovince which = GER value = 1078 }
+command = { type = secedeprovince which = GER value = 384 }
+command = { type = secedeprovince which = GER value = 385 }
+command = { type = secedeprovince which = GER value = 409 }
+}
+}
+
+#White Ruthenia
+event = {
+id = 950005
+country = GER
+style = 2
+picture = "Bolshevik Parade"
+
+trigger = {
+OR = {
+puppet = { country = BLR country = RUS }
+AND = {
+NOT = { exists = BLR }
+owned = { province = 599 data = RUS }
+}
+}
+}
+
+name = "White Ruthenia"
+desc = "White Ruthenia is currently occupied by the Russians. Shall we free them from Russian domination, giving us a valuable buffer state, or will we let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians let them go!"
+command = { type = trigger which = 950006 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950006
+country = RUS
+style = 2
+picture = "Bolshevik Parade"
+
+name = "The liberation of White Ruthenia"
+desc = "The Germans have demanded that we give up White Ruthenia."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = BLR } } type = independence which = BLR value = 1 when = 0 }
+command = { type = end_mastery which = BLR }
+command = { type = secedeprovince which = BLR value = 596 }
+command = { type = secedeprovince which = BLR value = 595 }
+command = { type = secedeprovince which = BLR value = 597 }
+command = { type = secedeprovince which = BLR value = 248 }
+command = { type = secedeprovince which = BLR value = 251 }
+command = { type = secedeprovince which = BLR value = 247 }
+command = { type = secedeprovince which = BLR value = 253 }
+command = { type = secedeprovince which = BLR value = 250 }
+command = { type = secedeprovince which = BLR value = 254 }
+command = { type = secedeprovince which = BLR value = 257 }
+command = { type = secedeprovince which = BLR value = 592 }
+command = { type = secedeprovince which = BLR value = 591 }
+command = { type = secedeprovince which = BLR value = 594 }
+command = { type = secedeprovince which = BLR value = 598 }
+command = { type = sleepminister which = 517060 }
+command = { type = sleepminister which = 517061 }
+command = { type = sleepminister which = 517062 }
+command = { type = sleepminister which = 517063 }
+command = { type = sleepminister which = 971264 }
+command = { type = sleepminister which = 971265 }
+command = { type = sleepminister which = 971266 }
+command = { type = sleepminister which = 971267 }
+command = { type = trigger which = 950007 }
+}
+}
+
+event = {
+id = 950007
+country = GER
+style = 2
+picture = "Bolshevik Parade"
+
+name = "The return of White Ruthenia"
+desc = "White Ruthenia has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back!"
+command = { type = make_puppet which = BLR }
+command = { type = alliance which = BLR }
+}
+}
+
+#United Baltic Duchy
+event = {
+id = 950008
+country = GER
+style = 2
+picture = "allied_supply_captured"
+
+trigger = {
+OR = {
+puppet = { country = LAT country = RUS }
+AND = {
+NOT = { exists = LAT }
+owned = { province = 264 data = RUS }
+}
+}
+}
+
+name = "The United Baltic Duchy"
+desc = "The United Baltic Duchy is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or will we let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians let them go!"
+command = { type = trigger which = 950009 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950009
+country = RUS
+style = 2
+picture = "allied_supply_captured"
+
+name = "The liberation of the United Baltic Duchy"
+desc = "The Germans have demanded that we give up the United Baltic Duchy."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = LAT } } type = independence which = LAT value = 1 when = 0 }
+command = { type = end_mastery which = LAT }
+command = { type = secedeprovince which = LAT value = 264 }
+command = { type = secedeprovince which = LAT value = 265 }
+command = { type = secedeprovince which = LAT value = 274 }
+command = { type = secedeprovince which = LAT value = 270 }
+command = { type = secedeprovince which = LAT value = 275 }
+command = { type = secedeprovince which = LAT value = 271 }
+command = { type = secedeprovince which = LAT value = 272 }
+command = { type = secedeprovince which = LAT value = 273 }
+command = { type = secedeprovince which = LAT value = 267 }
+command = { type = secedeprovince which = LAT value = 269 }
+command = { type = secedeprovince which = LAT value = 268 }
+command = { type = secedeprovince which = LAT value = 266 }
+command = { type = sleepminister which = 27078 }
+command = { type = sleepminister which = 27079 }
+command = { type = sleepminister which = 27080 }
+command = { type = sleepminister which = 27081 }
+command = { type = sleepminister which = 27082 }
+command = { type = sleepminister which = 27083 }
+command = { type = sleepminister which = 27084 }
+command = { type = sleepminister which = 27085 }
+command = { type = sleepminister which = 27086 }
+command = { type = trigger which = 950010 }
+}
+}
+
+event = {
+id = 950010
+country = GER
+style = 2
+picture = "allied_supply_captured"
+
+name = "The return of the United Baltic Duchy"
+desc = "The United Baltic Duchy has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back!"
+command = { type = make_puppet which = LAT }
+command = { type = alliance which = LAT }
+}
+}
+
+#Ukraine
+event = {
+id = 950011
+country = GER
+style = 2
+picture = "greek_soldiers"
+
+trigger = {
+OR = {
+puppet = { country = UKR country = RUS }
+AND = {
+NOT = { exists = UKR }
+owned = { province = 617 data = RUS }
+}
+}
+}
+
+name = "The Ukraine"
+desc = "The Ukraine is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or will we let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950012 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950012
+country = RUS
+style = 2
+picture = "greek_soldiers"
+
+name = "The liberation of the Ukraine"
+desc = "The Germans have demanded that we give up the Ukraine."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = UKR } } type = independence which = UKR value = 1 when = 0 }
+command = { type = end_mastery which = UKR }
+command = { type = secedeprovince which = UKR value = 618 }
+command = { type = secedeprovince which = UKR value = 619 }
+command = { type = secedeprovince which = UKR value = 620 }
+command = { type = secedeprovince which = UKR value = 621 }
+command = { type = secedeprovince which = UKR value = 626 }
+command = { type = secedeprovince which = UKR value = 625 }
+command = { type = secedeprovince which = UKR value = 622 }
+command = { type = secedeprovince which = UKR value = 627 }
+command = { type = secedeprovince which = UKR value = 605 }
+command = { type = secedeprovince which = UKR value = 606 }
+command = { type = secedeprovince which = UKR value = 607 }
+command = { type = secedeprovince which = UKR value = 629 }
+command = { type = secedeprovince which = UKR value = 608 }
+command = { type = secedeprovince which = UKR value = 610 }
+command = { type = secedeprovince which = UKR value = 628 }
+command = { type = secedeprovince which = UKR value = 615 }
+command = { type = secedeprovince which = UKR value = 612 }
+command = { type = secedeprovince which = UKR value = 614 }
+command = { type = secedeprovince which = UKR value = 611 }
+command = { type = secedeprovince which = UKR value = 616 }
+command = { type = secedeprovince which = UKR value = 609 }
+command = { type = secedeprovince which = UKR value = 617 }
+command = { type = secedeprovince which = UKR value = 613 }
+command = { type = secedeprovince which = UKR value = 639 }
+command = { type = secedeprovince which = UKR value = 640 }
+command = { type = secedeprovince which = UKR value = 641 }
+command = { type = secedeprovince which = UKR value = 602 }
+command = { type = secedeprovince which = UKR value = 603 }
+command = { type = secedeprovince which = UKR value = 604 }
+command = { type = secedeprovince which = UKR value = 646 }
+command = { type = secedeprovince which = UKR value = 647 }
+command = { type = secedeprovince which = UKR value = 633 }
+command = { type = secedeprovince which = UKR value = 648 }
+command = { type = secedeprovince which = UKR value = 649 }
+command = { type = secedeprovince which = UKR value = 643 }
+command = { type = secedeprovince which = UKR value = 644 }
+command = { type = secedeprovince which = UKR value = 645 }
+command = { type = secedeprovince which = UKR value = 634 }
+command = { type = secedeprovince which = UKR value = 635 }
+command = { type = secedeprovince which = UKR value = 631 }
+command = { type = secedeprovince which = UKR value = 630 }
+command = { type = secedeprovince which = UKR value = 623 }
+command = { type = secedeprovince which = UKR value = 624 }
+command = { type = secedeprovince which = UKR value = 632 }
+command = { type = secedeprovince which = UKR value = 636 }
+command = { type = secedeprovince which = UKR value = 642 }
+command = { type = secedeprovince which = UKR value = 244 }
+command = { type = secedeprovince which = UKR value = 245 }
+command = { type = secedeprovince which = UKR value = 249 }
+command = { type = trigger which = 950013 }
+}
+}
+
+event = {
+id = 950013
+country = GER
+style = 2
+picture = "greek_soldiers"
+
+name = "The return of the Ukraine."
+desc = "The Ukraine has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back!"
+command = { type = make_puppet which = UKR }
+command = { type = alliance which = UKR }
+}
+}
+
+#Poland
+event = {
+id = 950014
+country = GER
+style = 2
+picture = "poland"
+
+trigger = {
+NOT = { event = 99801010 }
+OR = {
+puppet = { country = POL country = RUS }
+AND = {
+NOT = { exists = POL }
+owned = { province = 232 data = RUS }
+}
+}
+}
+
+name = "Poland"
+desc = "Poland is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or will we let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950015 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950015
+country = RUS
+style = 2
+picture = "poland"
+
+name = "The liberation of Poland"
+desc = "The Germans have demanded that we give up Poland."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = POL } } type = independence which = POL value = 1 when = 0 }
+command = { type = end_mastery which = POL }
+command = { type = secedeprovince which = POL value = 230 }
+command = { type = secedeprovince which = POL value = 231 }
+command = { type = secedeprovince which = POL value = 227 }
+command = { type = secedeprovince which = POL value = 223 }
+command = { type = secedeprovince which = POL value = 233 }
+command = { type = secedeprovince which = POL value = 234 }
+command = { type = secedeprovince which = POL value = 246 }
+command = { type = secedeprovince which = POL value = 228 }
+command = { type = secedeprovince which = POL value = 232 }
+command = { type = secedeprovince which = POL value = 229 }
+command = { type = secedeprovince which = POL value = 250 }
+command = { type = secedeprovince which = POL value = 254 }
+command = { type = secedeprovince which = POL value = 235 }
+command = { type = secedeprovince which = POL value = 237 }
+command = { type = secedeprovince which = POL value = 236 }
+command = { type = secedeprovince which = POL value = 239 }
+command = { type = secedeprovince which = POL value = 242 }
+command = { type = secedeprovince which = POL value = 241 }
+command = { type = secedeprovince which = POL value = 238 }
+command = { type = secedeprovince which = POL value = 300 }
+command = { type = secedeprovince which = POL value = 240 }
+command = { type = secedeprovince which = POL value = 301 }
+command = { type = sleepminister which = 13185 }
+command = { type = sleepminister which = 13186 }
+command = { type = sleepminister which = 13187 }
+command = { type = sleepminister which = 13168 }
+command = { type = trigger which = 950016 }
+}
+}
+
+event = {
+id = 950016
+country = GER
+style = 2
+picture = "poland"
+
+name = "The return of Poland"
+desc = "Poland has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back!"
+command = { type = make_puppet which = POL }
+command = { type = alliance which = POL }
+}
+}
+
+#Lithuania
+event = {
+id = 950017
+country = GER
+style = 2
+picture = "Politics6"
+
+trigger = {
+NOT = { event = 99801010 }
+OR = {
+puppet = { country = LIT country = RUS }
+AND = {
+NOT = { exists = LIT }
+owned = { province = 258 data = RUS }
+}
+}
+}
+
+name = "Lithuania"
+desc = "Lithuania is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or will we let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950018 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950018
+country = RUS
+style = 2
+picture = "Politics6"
+
+name = "The liberation of Lithuania"
+desc = "The Germans have demanded that we give up Lithuania."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = LIT } } type = independence which = LIT value = 1 when = 0 }
+command = { type = end_mastery which = LIT }
+command = { type = secedeprovince which = LIT value = 259 }
+command = { type = secedeprovince which = LIT value = 260 }
+command = { type = secedeprovince which = LIT value = 262 }
+command = { type = secedeprovince which = LIT value = 263 }
+command = { type = secedeprovince which = LIT value = 252 }
+command = { type = secedeprovince which = LIT value = 255 }
+command = { type = secedeprovince which = LIT value = 258 }
+command = { type = sleepminister which = 28149 }
+command = { type = sleepminister which = 28150 }
+command = { type = sleepminister which = 28151 }
+command = { type = sleepminister which = 28152 }
+command = { type = sleepminister which = 28153 }
+command = { type = sleepminister which = 28154 }
+command = { type = sleepminister which = 28155 }
+command = { type = trigger which = 950019 }
+}
+}
+
+event = {
+id = 950019
+country = GER
+style = 2
+picture = "Politics6"
+
+name = "The return of Lithuania"
+desc = "Lithuania has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back!"
+command = { type = make_puppet which = LIT }
+command = { type = alliance which = LIT }
+}
+}
+
+#Commonwealth
+event = {
+id = 950020
+country = GER
+style = 2
+picture = "politics2"
+
+trigger = {
+event = 99801010
+OR = {
+puppet = { country = U00 country = RUS }
+AND = {
+NOT = { exists = U00 }
+owned = { province = 232 data = RUS }
+owned = { province = 258 data = RUS }
+}
+}
+}
+
+name = "The Polish-Lithuanian Commonwealth"
+desc = "The Polish-Lithuanian Commonwealth is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950021 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950021
+country = RUS
+style = 2
+picture = "politics2"
+
+name = "The liberation of the Commonwealth"
+desc = "The Germans have demanded that we give up the Commonwealth."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = U00 } } type = independence which = U00 value = 1 when = 0 }
+command = { type = end_mastery which = U00 }
+command = { type = secedeprovince which = U00 value = 230 }
+command = { type = secedeprovince which = U00 value = 231 }
+command = { type = secedeprovince which = U00 value = 227 }
+command = { type = secedeprovince which = U00 value = 223 }
+command = { type = secedeprovince which = U00 value = 233 }
+command = { type = secedeprovince which = U00 value = 234 }
+command = { type = secedeprovince which = U00 value = 246 }
+command = { type = secedeprovince which = U00 value = 228 }
+command = { type = secedeprovince which = U00 value = 232 }
+command = { type = secedeprovince which = U00 value = 229 }
+command = { type = secedeprovince which = U00 value = 250 }
+command = { type = secedeprovince which = U00 value = 254 }
+command = { type = secedeprovince which = U00 value = 235 }
+command = { type = secedeprovince which = U00 value = 237 }
+command = { type = secedeprovince which = U00 value = 236 }
+command = { type = secedeprovince which = U00 value = 239 }
+command = { type = secedeprovince which = U00 value = 242 }
+command = { type = secedeprovince which = U00 value = 241 }
+command = { type = secedeprovince which = U00 value = 238 }
+command = { type = secedeprovince which = U00 value = 300 }
+command = { type = secedeprovince which = U00 value = 240 }
+command = { type = secedeprovince which = U00 value = 301 }
+command = { type = secedeprovince which = U00 value = 259 }
+command = { type = secedeprovince which = U00 value = 260 }
+command = { type = secedeprovince which = U00 value = 262 }
+command = { type = secedeprovince which = U00 value = 263 }
+command = { type = secedeprovince which = U00 value = 252 }
+command = { type = secedeprovince which = U00 value = 255 }
+command = { type = secedeprovince which = U00 value = 258 }
+command = { type = trigger which = 950022 }
+}
+}
+
+event = {
+id = 950022
+country = GER
+style = 2
+picture = "politics2"
+
+name = "The return of the Commonwealth"
+desc = "The Commonwealth has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back"
+command = { type = make_puppet which = U00 }
+command = { type = alliance which = U00 }
+}
+}
+
+#Sweden
+event = {
+id = 950023
+country = GER
+style = 2
+picture = "POWs2"
+
+trigger = {
+OR = {
+puppet = { country = SWE country = RUS }
+AND = {
+NOT = { exists = SWE }
+owned = { province = 2159 data = RUS }
+}
+}
+}
+
+name = "Sweden"
+desc = "Sweden is currently under Russian control. Shall free them from Russian domination, giving us a valuable buffer state, or let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950024 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950024
+country = RUS
+style = 2
+picture = "POWs2"
+
+name = "The liberation of Sweden"
+desc = "The Germans have demanded that we give up Sweden."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = SWE } } type = independence which = SWE value = 1 when = 0 }
+command = { type = end_mastery which = SWE }
+command = { type = secedeprovince which = SWE value = 2152 }
+command = { type = secedeprovince which = SWE value = 2155 }
+command = { type = secedeprovince which = SWE value = 2154 }
+command = { type = secedeprovince which = SWE value = 2156 }
+command = { type = secedeprovince which = SWE value = 2157 }
+command = { type = secedeprovince which = SWE value = 2153 }
+command = { type = secedeprovince which = SWE value = 2161 }
+command = { type = secedeprovince which = SWE value = 2160 }
+command = { type = secedeprovince which = SWE value = 2158 }
+command = { type = secedeprovince which = SWE value = 2159 }
+command = { type = secedeprovince which = SWE value = 2165 }
+command = { type = secedeprovince which = SWE value = 2162 }
+command = { type = secedeprovince which = SWE value = 2164 }
+command = { type = secedeprovince which = SWE value = 2163 }
+command = { type = secedeprovince which = SWE value = 2167 }
+command = { type = secedeprovince which = SWE value = 2166 }
+command = { type = trigger which = 950025 }
+}
+}
+
+event = {
+id = 950025
+country = GER
+style = 2
+picture = "POWs2"
+
+name = "The return of Sweden"
+desc = "Sweden has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back"
+command = { type = make_puppet which = SWE }
+command = { type = alliance which = SWE }
+}
+}
+
+#Don-Kuban Union
+event = {
+id = 950026
+country = GER
+style = 2
+picture = "Railway3"
+
+trigger = {
+OR = {
+puppet = { country = TRA country = RUS }
+AND = {
+NOT = { exists = TRA }
+owned = { province = 691 data = RUS }
+}
+}
+}
+
+name = "Don-Kuban Union"
+desc = "The Don-Kuban Union is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or let the Russians keep it?"
+
+action_a = {
+ai_chance = 50
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950027 }
+}
+action_b = {
+ai_chance = 50
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950027
+country = RUS
+style = 2
+picture = "Railway3"
+
+name = "The liberation of the Don-Kuban Union"
+desc = "The Germans have demanded that we give up the Don-Kuban Union."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = TRA } } type = independence which = TRA value = 1 when = 0 }
+command = { type = end_mastery which = TRA }
+command = { type = secedeprovince which = TRA value = 694 }
+command = { type = secedeprovince which = TRA value = 693 }
+command = { type = secedeprovince which = TRA value = 695 }
+command = { type = secedeprovince which = TRA value = 696 }
+command = { type = secedeprovince which = TRA value = 691 }
+command = { type = secedeprovince which = TRA value = 692 }
+command = { type = secedeprovince which = TRA value = 697 }
+command = { type = secedeprovince which = TRA value = 662 }
+command = { type = secedeprovince which = TRA value = 698 }
+command = { type = secedeprovince which = TRA value = 701 }
+command = { type = secedeprovince which = TRA value = 703 }
+command = { type = secedeprovince which = TRA value = 705 }
+command = { type = secedeprovince which = TRA value = 702 }
+command = { type = secedeprovince which = TRA value = 700 }
+command = { type = secedeprovince which = TRA value = 699 }
+command = { type = secedeprovince which = TRA value = 704 }
+command = { type = secedeprovince which = TRA value = 642 }
+command = { type = secedeprovince which = TRA value = 643 }
+command = { type = secedeprovince which = TRA value = 644 }
+command = { type = secedeprovince which = TRA value = 645 }
+command = { type = trigger which = 950028 }
+}
+}
+
+event = {
+id = 950028
+country = GER
+style = 2
+picture = "Railway3"
+
+name = "The return of the Don-Kuban Union"
+desc = "The Don-Kuban Union has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back"
+command = { type = make_puppet which = TRA }
+command = { type = alliance which = TRA }
+}
+}
+
+#Finland
+event = {
+id = 950029
+country = GER
+style = 2
+picture = "finnish_flag"
+
+trigger = {
+OR = {
+puppet = { country = FIN country = RUS }
+AND = {
+NOT = { exists = FIN }
+owned = { province = 525 data = RUS }
+}
+}
+}
+
+name = "Finland"
+desc = "Finland is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or let the Russians keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950030 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950030
+country = RUS
+style = 2
+picture = "finland"
+
+name = "The liberation of Finland"
+desc = "The Germans have demanded that we give up Finland."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = FIN } } type = independence which = FIN value = 1 when = 0 }
+command = { type = end_mastery which = FIN }
+command = { type = secedeprovince which = FIN value = 529 }
+command = { type = secedeprovince which = FIN value = 530 }
+command = { type = secedeprovince which = FIN value = 531 }
+command = { type = secedeprovince which = FIN value = 525 }
+command = { type = secedeprovince which = FIN value = 524 }
+command = { type = secedeprovince which = FIN value = 512 }
+command = { type = secedeprovince which = FIN value = 527 }
+command = { type = secedeprovince which = FIN value = 528 }
+command = { type = secedeprovince which = FIN value = 533 }
+command = { type = secedeprovince which = FIN value = 532 }
+command = { type = secedeprovince which = FIN value = 538 }
+command = { type = secedeprovince which = FIN value = 520 }
+command = { type = secedeprovince which = FIN value = 526 }
+command = { type = secedeprovince which = FIN value = 521 }
+command = { type = secedeprovince which = FIN value = 523 }
+command = { type = secedeprovince which = FIN value = 518 }
+command = { type = secedeprovince which = FIN value = 540 }
+command = { type = secedeprovince which = FIN value = 522 }
+command = { type = secedeprovince which = FIN value = 519 }
+command = { type = secedeprovince which = FIN value = 514 }
+command = { type = secedeprovince which = FIN value = 515 }
+command = { type = secedeprovince which = FIN value = 516 }
+command = { type = secedeprovince which = FIN value = 511 }
+command = { type = secedeprovince which = FIN value = 513 }
+command = { type = secedeprovince which = FIN value = 517 }
+command = { type = sleepminister which = 29164 }
+command = { type = sleepminister which = 29166 }
+command = { type = sleepminister which = 29168 }
+command = { type = sleepminister which = 29169 }
+command = { type = trigger which = 950031 }
+}
+}
+
+event = {
+id = 950031
+country = GER
+style = 2
+picture = "finland"
+
+name = "The return of Finland"
+desc = "Finland has been liberated and is once more loyal to us."
+
+action_a = {
+name = "Welcome back"
+command = { type = make_puppet which = FIN }
+command = { type = alliance which = FIN }
+}
+}
+
+#Idel-Ural
+event = {
+id = 950094
+country = GER
+style = 2
+picture = "militaryparade1"
+
+trigger = {
+OR = {
+puppet = { country = U13 country = RUS }
+AND = {
+NOT = { exists = U13 }
+owned = { province = 672 data = RUS }
+}
+}
+}
+
+name = "Idel-Ural"
+desc = "Idel-Ural, a historical region mostly inhabitated by Tatars, is currently under Russian control. Shall we free them from Russian domination, giving us a valuable buffer state, or let the Russians keep it?"
+
+action_a = {
+ai_chance = 0
+name = "Demand the Russians give it up"
+command = { type = trigger which = 950095 }
+}
+action_b = {
+ai_chance = 100
+name = "The Russians can keep it"
+command = { }
+}
+}
+
+event = {
+id = 950095
+country = RUS
+style = 2
+picture = "militaryparade1"
+
+name = "The liberation of Idel-Ural"
+desc = "The Germans have demanded that we give up Idel-Ural."
+
+action_a = {
+name = "We have no choice"
+command = { trigger = { NOT = { exists = U13 } } type = independence which = U13 value = 1 when = 0 }
+command = { type = end_mastery which = U13 }
+command = { type = secedeprovince which = U13 value = 674 }
+command = { type = secedeprovince which = U13 value = 675 }
+command = { type = secedeprovince which = U13 value = 656 }
+command = { type = secedeprovince which = U13 value = 671 }
+command = { type = secedeprovince which = U13 value = 673 }
+command = { type = secedeprovince which = U13 value = 684 }
+command = { type = secedeprovince which = U13 value = 664 }
+command = { type = secedeprovince which = U13 value = 687 }
+command = { type = secedeprovince which = U13 value = 667 }
+command = { type = secedeprovince which = U13 value = 668 }
+command = { type = trigger which = 950096 }
+}
+}
+
+event = {
+id = 950096
+country = GER
+style = 2
+picture = "militaryparade1"
+
+name = "Idel-Ural"
+desc = "Idel-Ural has been liberated. A welcome addition to Mitteleuropa!"
+
+action_a = {
+name = "A fine addition!"
+command = { type = make_puppet which = U13 }
+command = { type = alliance which = U13 }
+}
+}
+
+#Russia setup
+event = {
+id = 950090
+country = GER
+style = 2
+picture = "Russia"
+
+name = "The Future of Russia"
+desc = "With the negotiations concerning Russia's territory complete it is now time to begin planning its political course. The majority of our government has united in supporting Louis Ferdinand, the second son of Wilhelm III, as he is married to a daughter of Cyril Romanov. Several ministers, however, have recommended that the pro-German Pavel Bermondt-Avalov should lead Russia instead. What shall we do?"
+
+action_a = {
+name = "Prince Louis Ferdinand will rule as Ivan VII!"
+ai_chance = 80
+command = { type = relation which = RUS value = -50 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 950091 }
+}
+action_b = {
+name = "Appoint Pavel Bermondt-Avalov."
+ai_chance = 20
+command = { type = relation which = RUS value = 20 }
+command = { type = dissent value = 1 }
+command = { type = trigger which = 950092 }
+}
+}
+
+event = {
+id = 950091
+country = RUS
+style = 2
+picture = "Tsar"
+
+name = "A Hohenzollern Tsar"
+desc = "The Germans have installed a Hohenzollern on the throne of Russia and while he has converted to the Orthodox faith it is not likely that 'Ivan VII' will have an easy time ruling Russia."
+
+action_a = {
+name = "Things could be worse, I guess."
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 4305 }
+command = { type = headofgovernment which = 4306 }
+command = { type = name where = RUS which = RUS_EMP_NAME }
+command = { type = flag_ext where = RUS which = "_emp" }
+command = { type = setflag which = RUS_TSAR }
+command = { type = clrflag which = HoS_Senate }
+command = { type = clrflag which = HoS_Dmitri_P }
+command = { type = clrflag which = RUS_BOL }
+command = { type = clrflag which = RUS_REP }
+command = { type = clrflag which = HoS_Chernov }
+command = { type = clrflag which = HoS_Maklakov }
+command = { type = clrflag which = HoS_Arkhangelskiy }
+command = { type = clrflag which = HoS_Bukharin }
+command = { type = clrflag which = HoS_Williams }
+command = { type = clrflag which = HoS_Kaplan }
+command = { type = clrflag which = HoS_Markov }
+command = { trigger = { war = { country = RUS country = JAP } NOT = { war = { country = GER country = JAP } } } type = peace which = JAP value = 0 }
+command = { trigger = { war = { country = RUS country = CAN } NOT = { war = { country = GER country = CAN } } } type = peace which = CAN value = 0 }
+command = { trigger = { war = { country = RUS country = FRA } NOT = { war = { country = GER country = FRA } } } type = peace which = FRA value = 0 }
+command = { type = peace which = TRA value = 0 }
+command = { type = peace which = FIN value = 0 }
+command = { type = peace which = KAZ value = 0 }
+command = { type = peace which = SIB value = 0 }
+command = { type = peace which = KYG value = 0 }
+command = { type = peace which = UKR value = 0 }
+command = { type = peace which = MON value = 0 }
+command = { type = peace which = CSX value = 0 }
+command = { type = addcore which = 1167 }
+command = { type = addcore which = 1168 }
+command = { type = addcore which = 1169 }
+command = { type = addcore which = 1146 }
+command = { type = addcore which = 1147 }
+command = { type = addcore which = 1158 }
+command = { type = addcore which = 1191 }
+command = { type = addcore which = 1196 }
+command = { type = addcore which = 1193 }
+command = { type = addcore which = 1192 }
+command = { type = addcore which = 1195 }
+command = { type = addcore which = 1194 }
+command = { type = addcore which = 1190 }
+command = { type = addcore which = 1185 }
+command = { type = addcore which = 1140 }
+command = { type = addcore which = 1541 }
+command = { type = addcore which = 1542 }
+command = { type = addcore which = 1543 }
+command = { type = secedeprovince which = GER value = 711 }
+command = { type = secedeprovince which = GER value = 714 }
+command = { type = secedeprovince which = GER value = 712 }
+command = { type = secedeprovince which = GER value = 713 }
+command = { type = secedeprovince which = GER value = 707 }
+command = { type = secedeprovince which = GER value = 708 }
+command = { type = secedeprovince which = GER value = 709 }
+command = { type = secedeprovince which = GER value = 710 }
+command = { type = secedeprovince which = GER value = 1067 }
+command = { type = secedeprovince which = GER value = 1076 }
+command = { type = secedeprovince which = GER value = 1078 }
+command = { type = secedeprovince which = GER value = 384 }
+command = { type = secedeprovince which = GER value = 385 }
+command = { type = secedeprovince which = GER value = 409 }
+command = { type = trigger which = 950093 }
+}
+}
+
+event = {
+id = 950092
+country = RUS
+style = 2
+picture = "syria"
+
+name = "Our new Prime Minister"
+desc = "Pavel Bermondt-Avalov was 'recommended' to lead Russia by the Germans and shortly after he became our new leader. He has the support of the people, if only because we are now no longer fighting the Germans."
+
+action_a = {
+name = "Better this than an occupation."
+command = { type = dissent value = 1 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 4307 }
+command = { type = headofgovernment which = 4308 }
+command = { type = clrflag which = HoS_Senate }
+command = { type = clrflag which = HoS_Dmitri_P }
+command = { type = clrflag which = RUS_BOL }
+command = { type = clrflag which = RUS_REP }
+command = { type = clrflag which = HoS_Chernov }
+command = { type = clrflag which = HoS_Maklakov }
+command = { type = clrflag which = HoS_Arkhangelskiy }
+command = { type = clrflag which = HoS_Bukharin }
+command = { type = clrflag which = HoS_Williams }
+command = { type = clrflag which = HoS_Kaplan }
+command = { type = clrflag which = HoS_Markov }
+command = { trigger = { war = { country = RUS country = JAP } NOT = { war = { country = GER country = JAP } } } type = peace which = JAP value = 0 }
+command = { trigger = { war = { country = RUS country = CAN } NOT = { war = { country = GER country = CAN } } } type = peace which = CAN value = 0 }
+command = { trigger = { war = { country = RUS country = FRA } NOT = { war = { country = GER country = FRA } } } type = peace which = FRA value = 0 }
+command = { type = peace which = TRA value = 0 }
+command = { type = peace which = FIN value = 0 }
+command = { type = peace which = KAZ value = 0 }
+command = { type = peace which = SIB value = 0 }
+command = { type = peace which = KYG value = 0 }
+command = { type = peace which = UKR value = 0 }
+command = { type = peace which = MON value = 0 }
+command = { type = peace which = CSX value = 0 }
+command = { type = addcore which = 1167 }
+command = { type = addcore which = 1168 }
+command = { type = addcore which = 1169 }
+command = { type = addcore which = 1146 }
+command = { type = addcore which = 1147 }
+command = { type = addcore which = 1158 }
+command = { type = addcore which = 1191 }
+command = { type = addcore which = 1196 }
+command = { type = addcore which = 1193 }
+command = { type = addcore which = 1192 }
+command = { type = addcore which = 1195 }
+command = { type = addcore which = 1194 }
+command = { type = addcore which = 1190 }
+command = { type = addcore which = 1185 }
+command = { type = addcore which = 1140 }
+command = { type = addcore which = 1541 }
+command = { type = addcore which = 1542 }
+command = { type = addcore which = 1543 }
+command = { type = secedeprovince which = GER value = 711 }
+command = { type = secedeprovince which = GER value = 714 }
+command = { type = secedeprovince which = GER value = 712 }
+command = { type = secedeprovince which = GER value = 713 }
+command = { type = secedeprovince which = GER value = 707 }
+command = { type = secedeprovince which = GER value = 708 }
+command = { type = secedeprovince which = GER value = 709 }
+command = { type = secedeprovince which = GER value = 710 }
+command = { type = secedeprovince which = GER value = 1067 }
+command = { type = secedeprovince which = GER value = 1076 }
+command = { type = secedeprovince which = GER value = 1078 }
+command = { type = secedeprovince which = GER value = 384 }
+command = { type = secedeprovince which = GER value = 385 }
+command = { type = secedeprovince which = GER value = 409 }
+command = { type = trigger which = 950093 }
+}
+}
+
+event = {
+id = 950093
+country = GER
+style = 2
+picture = "militaryparade1"
+
+name = "The new Russia"
+desc = "The new government of Russia has firmly been established and we can assume control over it."
+
+action_a = {
+name = "Why didn't we do this last time?"
+command = { type = make_puppet which = RUS }
+command = { type = alliance which = RUS }
+}
+}
+
+
+###############
+#French variant
+###############
+event = {
+id = 950100
+random = no
+country = SOV
+
+trigger = {
+NOT = {
+exists = RUS
+ispuppet = SOV
+ispuppet = FRA
+}
+war = { country = FRA country = SOV }
+random = 35
+lost_national = { country = SOV value = 20 }
+NOT = {
+control = { province = 264 data = -1 }
+control = { province = 270 data = -1 }
+control = { province = 553 data = -1 } #St. Petersburg has fallen
+control = { province = 572 data = -1 } #Moscow has fallen
+OR = {
+control = { province = 663 data = -1 } #Tsaritsyn has fallen
+control = { province = 672 data = -1 } #Kazan has fallen
+}
+}
+NOT = { lost_VP = { country = FRA value = 20 } }
+}
+
+name = "The Bitter Peace"
+desc = "The war with the French now seems hopeless. It may be time to sue for peace."
+style = 2
+picture = "Bitter Peace"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "How humiliating! Sue for peace!"
+ai_chance = 100
+command = { type = dissent value = 10 }
+command = { type = leave_alliance when = 1 }
+command = { type = sleepevent which = 950102 }
+command = { type = event which = 950101 where = FRA when = 1  }
+}
+
+action_b = {
+name = "Mother Russia shall fight to the bitter end!"
+ai_chance = 0
+command = { type = sleepevent which = 950102 }
+command = { type = dissent value = 30 }
+}
+}
+
+event = {
+id = 950101
+random = no
+country = FRA
+style = 2
+picture = "Bitter Peace"
+
+name = "The Russians sue for Peace"
+desc = "It was a day of celebrations in Paris. The Russians have surrendered! Champagne and Russian Caviar was served at the Élysée Palace as the decision was about to be made whether to accept the proposal or if we will blow our noses at the silly Ruskies."
+
+action_a = {
+name = "The Revolution is unstoppable!"
+ai_chance = 100
+command = { type = peace which = SOV value = 0 }
+command = { type = flag_ext where = SOV } #reset Russian flag
+command = { type = dissent value = -20 }
+command = { type = sleepevent which = 950102 }
+command = { type = belligerence which = FRA value = -15 }
+command = { type = trigger which = 950105 }
+command = { type = trigger which = 950108 }
+command = { type = trigger which = 950111 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = SOV  } } } } type = trigger which = 950114 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = SOV  } } } } type = trigger which = 950117 }
+command = { trigger = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = SOV  } } } type = trigger which = 950120 }
+command = { type = trigger which = 950123 }
+command = { type = trigger which = 950126 }
+command = { type = trigger which = 950129 }
+command = { type = trigger which = 950194 }
+command = { type = trigger which = 950190 }
+}
+action_b = {
+name = "No peace with the Russians!"
+ai_chance = 0
+command = { type = sleepevent which = 950102 }
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 950102
+random = no
+country = RUS
+
+trigger = {
+NOT = {
+exists = SOV
+ispuppet = RUS
+ispuppet = FRA
+}
+war = { country = FRA country = RUS }
+random = 35
+lost_national = { country = RUS value = 20 }
+NOT = {
+control = { province = 264 data = -1 }
+control = { province = 270 data = -1 }
+control = { province = 553 data = -1 } #St. Petersburg has fallen
+control = { province = 572 data = -1 } #Moscow has fallen
+OR = {
+control = { province = 663 data = -1 } #Tsaritsyn has fallen
+control = { province = 672 data = -1 } #Kazan has fallen
+}
+}
+NOT = { lost_VP = { country = FRA value = 20 } }
+}
+
+name = "The Bitter Peace"
+desc = "The war with the French now seems hopeless. It may be time to sue for peace."
+style = 2
+picture = "Bitter Peace"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "How humiliating! Sue for peace!"
+ai_chance = 100
+command = { type = dissent value = 10 }
+command = { type = leave_alliance when = 1 }
+command = { type = sleepevent which = 950100 }
+command = { type = event which = 950103 where = FRA when = 1  }
+}
+
+action_b = {
+name = "Mother Russia shall fight to the bitter end!"
+ai_chance = 0
+command = { type = sleepevent which = 950100 }
+command = { type = dissent value = 30 }
+}
+}
+
+event = {
+id = 950103
+random = no
+country = FRA
+style = 2
+picture = "Bitter Peace"
+
+name = "The Russians sue for peace"
+desc = "It was a day of celebrations in Paris. The Russians have surrendered! Champagne and Russian Caviar was served at the Élysée Palace as the decision was about to be made whether to accept the proposal or if we will blow our noses at the silly Ruskies."
+
+action_a = {
+name = "The Revolution is unstoppable!"
+ai_chance = 100
+command = { type = peace which = RUS value = 0 }
+command = { type = dissent value = -20 }
+command = { type = belligerence which = FRA value = -15 }
+command = { type = sleepevent which = 950100 }
+command = { type = trigger which = 950104 }
+}
+action_b = {
+name = "No peace with the Russians!"
+ai_chance = 0
+command = { type = sleepevent which = 950100 }
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 950104
+random = no
+country = RUS
+style = 2
+picture = "RussianRevolution2"
+
+name = "The end of bourgeois Russia"
+desc = "At the start of the peace deal negotiations the French have demanded that we abolish the bourgeois Russian state. We have no choice but to comply; They will simply crush us if we refuse."
+
+action_a = {
+name = "Goodbye Russia!"
+command = { type = flag_ext where = RUS } #reset Russian flag
+command = { type = name where = RUS }
+command = { type = country which = SOV }
+command = { type = addcore which = 550  }
+command = { type = addcore which = 552  }
+command = { type = addcore which = 566  }
+command = { type = addcore which = 564  }
+command = { type = addcore which = 538  }
+command = { type = addcore which = 540  }
+command = { type = addcore which = 593  }
+command = { type = addcore which = 573  }
+command = { type = addcore which = 589  }
+command = { type = addcore which = 586  }
+command = { type = addcore which = 587  }
+command = { type = addcore which = 581  }
+command = { type = addcore which = 582  }
+command = { type = addcore which = 580  }
+command = { type = addcore which = 654  }
+command = { type = addcore which = 1167 }
+command = { type = addcore which = 1168 }
+command = { type = addcore which = 1169 }
+command = { type = addcore which = 1146 }
+command = { type = addcore which = 1147 }
+command = { type = addcore which = 1158 }
+command = { type = addcore which = 1191 }
+command = { type = addcore which = 1196 }
+command = { type = addcore which = 1193 }
+command = { type = addcore which = 1192 }
+command = { type = addcore which = 1195 }
+command = { type = addcore which = 1194 }
+command = { type = addcore which = 1190 }
+command = { type = addcore which = 1185 }
+command = { type = addcore which = 653  }
+command = { type = addcore which = 655  }
+command = { type = addcore which = 642  }
+command = { type = addcore which = 659  }
+command = { type = addcore which = 663  }
+command = { type = addcore which = 660  }
+command = { type = addcore which = 666  }
+command = { type = addcore which = 667  }
+command = { type = addcore which = 1134 }
+command = { type = addcore which = 553  }
+command = { type = addcore which = 551  }
+command = { type = addcore which = 549  }
+command = { type = addcore which = 560  }
+command = { type = addcore which = 565  }
+command = { type = addcore which = 535  }
+command = { type = addcore which = 534  }
+command = { type = addcore which = 536  }
+command = { type = addcore which = 537  }
+command = { type = addcore which = 541  }
+command = { type = addcore which = 539  }
+command = { type = addcore which = 557  }
+command = { type = addcore which = 562  }
+command = { type = addcore which = 559  }
+command = { type = addcore which = 561  }
+command = { type = addcore which = 542  }
+command = { type = addcore which = 546  }
+command = { type = addcore which = 547  }
+command = { type = addcore which = 556  }
+command = { type = addcore which = 555  }
+command = { type = addcore which = 563  }
+command = { type = addcore which = 558  }
+command = { type = addcore which = 577  }
+command = { type = addcore which = 575  }
+command = { type = addcore which = 574  }
+command = { type = addcore which = 588  }
+command = { type = addcore which = 585  }
+command = { type = addcore which = 583  }
+command = { type = addcore which = 579  }
+command = { type = addcore which = 652  }
+command = { type = addcore which = 650  }
+command = { type = addcore which = 651  }
+command = { type = addcore which = 657  }
+command = { type = addcore which = 661  }
+command = { type = addcore which = 669  }
+command = { type = addcore which = 665  }
+command = { type = addcore which = 668  }
+command = { type = addcore which = 656  }
+command = { type = addcore which = 658  }
+command = { type = addcore which = 688  }
+command = { type = addcore which = 545  }
+command = { type = addcore which = 543  }
+command = { type = addcore which = 548  }
+command = { type = addcore which = 676  }
+command = { type = addcore which = 677  }
+command = { type = addcore which = 1132 }
+command = { type = addcore which = 1133 }
+command = { type = addcore which = 1136 }
+command = { type = addcore which = 1137 }
+command = { type = addcore which = 1138 }
+command = { type = addcore which = 1139 }
+command = { type = addcore which = 1141 }
+command = { type = addcore which = 1142 }
+command = { type = addcore which = 1143 }
+command = { type = addcore which = 1144 }
+command = { type = addcore which = 1145 }
+command = { type = addcore which = 1156 }
+command = { type = addcore which = 1157 }
+command = { type = addcore which = 1069 }
+command = { type = addcore which = 1070 }
+command = { type = addcore which = 1166 }
+command = { type = addcore which = 1161 }
+command = { type = addcore which = 1163 }
+command = { type = addcore which = 1170 }
+command = { type = addcore which = 1176 }
+command = { type = addcore which = 1174 }
+command = { type = addcore which = 1175 }
+command = { type = addcore which = 1187 }
+command = { type = addcore which = 1188 }
+command = { type = addcore which = 1189 }
+command = { type = addcore which = 1186 }
+command = { type = addcore which = 1181 }
+command = { type = addcore which = 1182 }
+command = { type = addcore which = 1183 }
+command = { type = addcore which = 1184 }
+command = { type = addcore which = 1178 }
+command = { type = addcore which = 1180 }
+command = { type = addcore which = 1177 }
+command = { type = addcore which = 1179 }
+command = { type = addcore which = 1164 }
+command = { type = addcore which = 1165 }
+command = { type = addcore which = 1148 }
+command = { type = addcore which = 1155 }
+command = { type = addcore which = 1171 }
+command = { type = addcore which = 1152 }
+command = { type = addcore which = 1154 }
+command = { type = addcore which = 1135 }
+command = { type = addcore which = 1149 }
+command = { type = addcore which = 1150 }
+command = { type = addcore which = 1153 }
+command = { type = addcore which = 1129 }
+command = { type = addcore which = 1151 }
+command = { type = addcore which = 1128 }
+command = { type = addcore which = 1130 }
+command = { type = addcore which = 689  }
+command = { type = addcore which = 1126 }
+command = { type = addcore which = 1127 }
+command = { type = addcore which = 1131 }
+command = { type = addcore which = 687  }
+command = { type = addcore which = 671  }
+command = { type = addcore which = 590  }
+command = { type = addcore which = 600  }
+command = { type = addcore which = 601  }
+command = { type = addcore which = 554  }
+command = { type = addcore which = 576  }
+command = { type = addcore which = 584  }
+command = { type = addcore which = 682  }
+command = { type = addcore which = 679  }
+command = { type = addcore which = 578  }
+command = { type = addcore which = 670  }
+command = { type = addcore which = 675  }
+command = { type = addcore which = 683  }
+command = { type = addcore which = 664  }
+command = { type = addcore which = 674  }
+command = { type = addcore which = 690  }
+command = { type = addcore which = 672  }
+command = { type = addcore which = 673  }
+command = { type = addcore which = 680  }
+command = { type = addcore which = 681  }
+command = { type = addcore which = 684  }
+command = { type = addcore which = 685  }
+command = { type = addcore which = 686  }
+command = { type = addcore which = 544  }
+command = { type = addcore which = 1162 }
+command = { type = addcore which = 498  }
+command = { type = addcore which = 1115  }
+command = { type = addcore which = 501  }
+command = { type = addcore which = 499  }
+command = { type = addcore which = 502 }
+command = { type = sleepevent which = 757009 }
+command = { type = sleepevent which = 756020 }
+command = { type = trigger which = 950105 }
+command = { type = trigger which = 950108 }
+command = { type = trigger which = 950111 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = SOV  } } } } type = trigger which = 950114 }
+command = { trigger = { NOT = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = SOV  } } } } type = trigger which = 950117 }
+command = { trigger = { OR = { event = 9980031 event = 9980032 puppet = { country = U00 country = SOV  } } } type = trigger which = 950120 }
+command = { type = trigger which = 950123 }
+command = { type = trigger which = 950126 }
+command = { type = trigger which = 950129 }
+command = { type = trigger which = 950194 }
+command = { type = trigger which = 950190 }
+command = { type = secederegion which = FRA value = "Afghanistan" when = 1 }
+command = { type = secederegion which = FRA value = "Austria" when = 1 }
+command = { type = secederegion which = FRA value = "Balkan" when = 1 }
+command = { type = secederegion which = FRA value = "Baltic States" when = 1 }
+command = { type = secederegion which = FRA value = "Benelux" when = 1 }
+command = { type = secederegion which = FRA value = "Belarus" when = 1 }
+command = { type = secederegion which = FRA value = "Czechoslovakia" when = 1 }
+command = { type = secederegion which = FRA value = "Denmark" when = 1 }
+command = { type = secederegion which = FRA value = "Finland" when = 1 }
+command = { type = secederegion which = FRA value = "Germany" when = 1 }
+command = { type = secederegion which = FRA value = "Hungary" when = 1 }
+command = { type = secederegion which = FRA value = "India" when = 1 }
+command = { type = secederegion which = FRA value = "Italy" when = 1 }
+command = { type = secederegion which = FRA value = "Norway" when = 1 }
+command = { type = secederegion which = FRA value = "Poland" when = 1 }
+command = { type = secederegion which = FRA value = "Romania" when = 1 }
+command = { type = secederegion which = FRA value = "Sweden" when = 1 }
+command = { type = secederegion which = FRA value = "Spain" when = 1 }
+command = { type = secederegion which = FRA value = "Ukraine" when = 1 }
+}
+}
+
+#White Ruthenia
+event = {
+id = 950105
+country = FRA
+style = 2
+picture = "Bolshevik Parade"
+
+trigger = {
+OR = {
+puppet = { country = BLR country = SOV }
+AND = {
+NOT = { exists = BLR }
+owned = { province = 212 data = SOV }
+}
+}
+}
+
+name = "White Ruthenia"
+desc = "White Ruthenia is currently under Russian control. Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950106 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950106
+country = SOV
+style = 2
+picture = "Bolshevik Parade"
+
+name = "The liberation of White Ruthenia"
+desc = "The French have demanded that we give up White Ruthenia."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = BLR } } type = independence which = BLR value = 1 when = 0 }
+command = { type = end_mastery which = BLR }
+command = { type = secedeprovince which = BLR value = 596 }
+command = { type = secedeprovince which = BLR value = 595 }
+command = { type = secedeprovince which = BLR value = 597 }
+command = { type = secedeprovince which = BLR value = 248 }
+command = { type = secedeprovince which = BLR value = 251 }
+command = { type = secedeprovince which = BLR value = 247 }
+command = { type = secedeprovince which = BLR value = 253 }
+command = { type = secedeprovince which = BLR value = 250 }
+command = { type = secedeprovince which = BLR value = 254 }
+command = { type = secedeprovince which = BLR value = 257 }
+command = { type = secedeprovince which = BLR value = 592 }
+command = { type = secedeprovince which = BLR value = 591 }
+command = { type = secedeprovince which = BLR value = 594 }
+command = { type = secedeprovince which = BLR value = 598 }
+command = { type = trigger which = 950107 }
+}
+}
+
+event = {
+id = 950107
+country = FRA
+style = 2
+picture = "Bolshevik Parade"
+
+name = "The rebirth of White Ruthenia"
+desc = "White Ruthenia has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International!"
+command = { type = make_puppet which = BLR }
+command = { type = alliance which = BLR }
+}
+}
+
+#Baltic National State
+event = {
+id = 950108
+country = FRA
+style = 2
+picture = "allied_supply_captured"
+
+trigger = { OR = {
+puppet = { country = LAT country = SOV }
+AND = {
+NOT = { exists = LAT }
+owned = { province = 197 data = SOV } } } }
+
+name = "The former Baltic Duchy"
+desc = "What was once the United Baltic Duchy is currently under Russian control  Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950109 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950109
+country = SOV
+style = 2
+picture = "allied_supply_captured"
+
+name = "The liberation of the former Baltic Duchy"
+desc = "The French have demanded that we give up the lands that comprise the former Baltic Duchy."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = LAT } } type = independence which = U26 value = 1 when = 0 }
+command = { type = end_mastery which = U26 }
+command = { type = secedeprovince which = U26 value = 264 }
+command = { type = secedeprovince which = U26 value = 265 }
+command = { type = secedeprovince which = U26 value = 274 }
+command = { type = secedeprovince which = U26 value = 270 }
+command = { type = secedeprovince which = U26 value = 275 }
+command = { type = secedeprovince which = U26 value = 271 }
+command = { type = secedeprovince which = U26 value = 272 }
+command = { type = secedeprovince which = U26 value = 273 }
+command = { type = secedeprovince which = U26 value = 267 }
+command = { type = secedeprovince which = U26 value = 269 }
+command = { type = secedeprovince which = U26 value = 268 }
+command = { type = secedeprovince which = U26 value = 266 }
+command = { type = trigger which = 950110 }
+}
+}
+
+event = {
+id = 950110
+country = FRA
+style = 2
+picture = "allied_supply_captured"
+
+name = "The rebirth of the Baltic National Government"
+desc = "The Baltic has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International!"
+command = { type = make_puppet which = U26 }
+command = { type = alliance which = U26 }
+}
+}
+
+#Ukraine
+event = {
+id = 950111
+country = FRA
+style = 2
+picture = "greek_soldiers"
+
+trigger = { OR = {
+puppet = { country = UKR country = SOV }
+AND = {
+NOT = { exists = UKR }
+owned = { province = 238 data = SOV } } } }
+
+name = "The Ukraine"
+desc = "The Ukraine is currently under Russian control. Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950112 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950112
+country = SOV
+style = 2
+picture = "greek_soldiers"
+
+name = "The liberation of the Ukraine"
+desc = "The French have demanded that we give up the Ukraine."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = UKR } } type = independence which = UKR value = 1 when = 0 }
+command = { type = end_mastery which = UKR }
+command = { type = secedeprovince which = UKR value = 618 }
+command = { type = secedeprovince which = UKR value = 619 }
+command = { type = secedeprovince which = UKR value = 620 }
+command = { type = secedeprovince which = UKR value = 621 }
+command = { type = secedeprovince which = UKR value = 626 }
+command = { type = secedeprovince which = UKR value = 625 }
+command = { type = secedeprovince which = UKR value = 622 }
+command = { type = secedeprovince which = UKR value = 627 }
+command = { type = secedeprovince which = UKR value = 605 }
+command = { type = secedeprovince which = UKR value = 606 }
+command = { type = secedeprovince which = UKR value = 607 }
+command = { type = secedeprovince which = UKR value = 629 }
+command = { type = secedeprovince which = UKR value = 608 }
+command = { type = secedeprovince which = UKR value = 610 }
+command = { type = secedeprovince which = UKR value = 628 }
+command = { type = secedeprovince which = UKR value = 615 }
+command = { type = secedeprovince which = UKR value = 612 }
+command = { type = secedeprovince which = UKR value = 614 }
+command = { type = secedeprovince which = UKR value = 611 }
+command = { type = secedeprovince which = UKR value = 616 }
+command = { type = secedeprovince which = UKR value = 609 }
+command = { type = secedeprovince which = UKR value = 617 }
+command = { type = secedeprovince which = UKR value = 613 }
+command = { type = secedeprovince which = UKR value = 639 }
+command = { type = secedeprovince which = UKR value = 640 }
+command = { type = secedeprovince which = UKR value = 641 }
+command = { type = secedeprovince which = UKR value = 602 }
+command = { type = secedeprovince which = UKR value = 603 }
+command = { type = secedeprovince which = UKR value = 604 }
+command = { type = secedeprovince which = UKR value = 646 }
+command = { type = secedeprovince which = UKR value = 647 }
+command = { type = secedeprovince which = UKR value = 633 }
+command = { type = secedeprovince which = UKR value = 648 }
+command = { type = secedeprovince which = UKR value = 649 }
+command = { type = secedeprovince which = UKR value = 643 }
+command = { type = secedeprovince which = UKR value = 644 }
+command = { type = secedeprovince which = UKR value = 645 }
+command = { type = secedeprovince which = UKR value = 634 }
+command = { type = secedeprovince which = UKR value = 635 }
+command = { type = secedeprovince which = UKR value = 631 }
+command = { type = secedeprovince which = UKR value = 630 }
+command = { type = secedeprovince which = UKR value = 623 }
+command = { type = secedeprovince which = UKR value = 624 }
+command = { type = secedeprovince which = UKR value = 632 }
+command = { type = secedeprovince which = UKR value = 636 }
+command = { type = secedeprovince which = UKR value = 642 }
+command = { type = secedeprovince which = UKR value = 244 }
+command = { type = secedeprovince which = UKR value = 245 }
+command = { type = secedeprovince which = UKR value = 249 }
+command = { type = trigger which = 950113 }
+}
+}
+
+event = {
+id = 950113
+country = FRA
+style = 2
+picture = "greek_soldiers"
+
+name = "The rebirth of Ukraine"
+desc = "Ukraine has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International!"
+command = { type = make_puppet which = UKR }
+command = { type = alliance which = UKR }
+}
+}
+
+#Poland
+event = {
+id = 950114
+country = FRA
+style = 2
+picture = "poland"
+
+trigger = {
+NOT = { event = 99801010 }
+OR = {
+puppet = { country = POL country = SOV }
+AND = {
+NOT = { exists = POL }
+owned = { province = 485 data = SOV } } } }
+
+name = "Poland"
+desc = "Poland is currently under Russian control. Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950115 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950115
+country = SOV
+style = 2
+picture = "poland"
+
+name = "The liberation of Poland"
+desc = "The French have demanded that we give up Poland."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = POL } } type = independence which = POL value = 1 when = 0 }
+command = { type = end_mastery which = POL }
+command = { type = secedeprovince which = POL value = 230 }
+command = { type = secedeprovince which = POL value = 231 }
+command = { type = secedeprovince which = POL value = 227 }
+command = { type = secedeprovince which = POL value = 223 }
+command = { type = secedeprovince which = POL value = 233 }
+command = { type = secedeprovince which = POL value = 234 }
+command = { type = secedeprovince which = POL value = 246 }
+command = { type = secedeprovince which = POL value = 228 }
+command = { type = secedeprovince which = POL value = 232 }
+command = { type = secedeprovince which = POL value = 229 }
+command = { type = secedeprovince which = POL value = 250 }
+command = { type = secedeprovince which = POL value = 254 }
+command = { type = secedeprovince which = POL value = 235 }
+command = { type = secedeprovince which = POL value = 237 }
+command = { type = secedeprovince which = POL value = 236 }
+command = { type = secedeprovince which = POL value = 239 }
+command = { type = secedeprovince which = POL value = 242 }
+command = { type = secedeprovince which = POL value = 241 }
+command = { type = secedeprovince which = POL value = 238 }
+command = { type = secedeprovince which = POL value = 300 }
+command = { type = secedeprovince which = POL value = 240 }
+command = { type = secedeprovince which = POL value = 301 }
+command = { type = trigger which = 950116 }
+}
+}
+
+event = {
+id = 950116
+country = FRA
+style = 2
+picture = "poland"
+
+name = "The rebirth of Poland"
+desc = "Poland has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International!"
+command = { type = make_puppet which = POL }
+command = { type = alliance which = POL }
+}
+}
+
+#Lithuania
+event = {
+id = 950117
+country = FRA
+style = 2
+picture = "Politics6"
+
+trigger = {
+NOT = { event = 99801010 }
+OR = {
+puppet = { country = LIT country = SOV }
+AND = {
+NOT = { exists = LIT }
+owned = { province = 208 data = SOV } } } }
+
+name = "Lithuania"
+desc = "Lithuania is currently under Russian control. Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950118 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950118
+country = SOV
+style = 2
+picture = "Politics6"
+
+name = "The liberation of Lithuania"
+desc = "The French have demanded we give up Lithuania."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = LIT } } type = independence which = LIT value = 1 when = 0 }
+command = { type = end_mastery which = LIT }
+command = { type = secedeprovince which = LIT value = 259 }
+command = { type = secedeprovince which = LIT value = 260 }
+command = { type = secedeprovince which = LIT value = 262 }
+command = { type = secedeprovince which = LIT value = 263 }
+command = { type = secedeprovince which = LIT value = 252 }
+command = { type = secedeprovince which = LIT value = 255 }
+command = { type = secedeprovince which = LIT value = 258 }
+command = { type = trigger which = 950119 }
+}
+}
+
+event = {
+id = 950119
+country = FRA
+style = 2
+picture = "Politics6"
+
+name = "The rebirth of Lithuania"
+desc = "Lithuania has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International!"
+command = { type = make_puppet which = LIT }
+command = { type = alliance which = LIT }
+}
+}
+
+#Commonwealth
+event = {
+id = 950120
+country = FRA
+style = 2
+picture = "politics2"
+
+trigger = {
+event = 99801010
+OR = {
+puppet = { country = U00 country = SOV }
+AND = {
+NOT = { exists = U00 }
+owned = { province = 485 data = SOV }
+owned = { province = 208 data = SOV } } } }
+
+name = "The Polish-Lithuanian Commonwealth"
+desc = "The Polish-Lithuanian Commonwealth is currently under Russian control. Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950121 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950121
+country = SOV
+style = 2
+picture = "politics2"
+
+name = "The liberation of the Commonwealth"
+desc = "The French have demanded that we give up the Commonwealth."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = U00 } } type = independence which = U00 value = 1 when = 0 }
+command = { type = end_mastery which = U00 }
+command = { type = secedeprovince which = U00 value = 230 }
+command = { type = secedeprovince which = U00 value = 231 }
+command = { type = secedeprovince which = U00 value = 227 }
+command = { type = secedeprovince which = U00 value = 223 }
+command = { type = secedeprovince which = U00 value = 233 }
+command = { type = secedeprovince which = U00 value = 234 }
+command = { type = secedeprovince which = U00 value = 246 }
+command = { type = secedeprovince which = U00 value = 228 }
+command = { type = secedeprovince which = U00 value = 232 }
+command = { type = secedeprovince which = U00 value = 229 }
+command = { type = secedeprovince which = U00 value = 250 }
+command = { type = secedeprovince which = U00 value = 254 }
+command = { type = secedeprovince which = U00 value = 235 }
+command = { type = secedeprovince which = U00 value = 237 }
+command = { type = secedeprovince which = U00 value = 236 }
+command = { type = secedeprovince which = U00 value = 239 }
+command = { type = secedeprovince which = U00 value = 242 }
+command = { type = secedeprovince which = U00 value = 241 }
+command = { type = secedeprovince which = U00 value = 238 }
+command = { type = secedeprovince which = U00 value = 300 }
+command = { type = secedeprovince which = U00 value = 240 }
+command = { type = secedeprovince which = U00 value = 301 }
+command = { type = secedeprovince which = U00 value = 259 }
+command = { type = secedeprovince which = U00 value = 260 }
+command = { type = secedeprovince which = U00 value = 262 }
+command = { type = secedeprovince which = U00 value = 263 }
+command = { type = secedeprovince which = U00 value = 252 }
+command = { type = secedeprovince which = U00 value = 255 }
+command = { type = secedeprovince which = U00 value = 258 }
+command = { type = trigger which = 950122 }
+}
+}
+
+event = {
+id = 950122
+country = FRA
+style = 2
+picture = "politics2"
+
+name = "The rebirth of the Commonwealth"
+desc = "The Commonwealth has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International!"
+command = { type = make_puppet which = U00 }
+command = { type = alliance which = U00 }
+}
+}
+
+#Sweden
+event = {
+id = 950123
+country = FRA
+style = 2
+picture = "Railway3"
+
+trigger = {
+OR = {
+puppet = { country = SWE country = SOV }
+AND = {
+NOT = { exists = SWE }
+owned = { province = 101 data = SOV } } } }
+
+name = "Sweden"
+desc = "Sweden is currently under Russian control. Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950124 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950124
+country = SOV
+style = 2
+picture = "Railway3"
+
+name = "The cession of Sweden"
+desc = "The French have demanded that we give up Sweden."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = SWE } } type = independence which = SWE value = 1 when = 0 }
+command = { type = end_mastery which = SWE }
+command = { type = secedeprovince which = SWE value = 2152 }
+command = { type = secedeprovince which = SWE value = 2155 }
+command = { type = secedeprovince which = SWE value = 2154 }
+command = { type = secedeprovince which = SWE value = 2156 }
+command = { type = secedeprovince which = SWE value = 2157 }
+command = { type = secedeprovince which = SWE value = 2153 }
+command = { type = secedeprovince which = SWE value = 2161 }
+command = { type = secedeprovince which = SWE value = 2160 }
+command = { type = secedeprovince which = SWE value = 2158 }
+command = { type = secedeprovince which = SWE value = 2159 }
+command = { type = secedeprovince which = SWE value = 2165 }
+command = { type = secedeprovince which = SWE value = 2162 }
+command = { type = secedeprovince which = SWE value = 2164 }
+command = { type = secedeprovince which = SWE value = 2163 }
+command = { type = secedeprovince which = SWE value = 2167 }
+command = { type = secedeprovince which = SWE value = 2166 }
+command = { type = trigger which = 950125 }
+}
+}
+
+event = {
+id = 950125
+country = FRA
+style = 2
+picture = "Railway3"
+
+name = "The rebirth of Sweden"
+desc = "Sweden has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International!"
+command = { type = make_puppet which = SWE }
+command = { type = alliance which = SWE }
+}
+}
+
+#Don-Kuban Union
+event = {
+id = 950126
+country = FRA
+style = 2
+
+trigger = {
+OR = {
+puppet = { country = TRA country = SOV }
+AND = {
+NOT = { exists = TRA }
+owned = { province = 256 data = SOV } } } }
+
+name = "Don-Kuban Union"
+desc = "The Don-Kuban Union is currently under Russian control. Shall we demand free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 50
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950127 }
+}
+action_b = {
+ai_chance = 50
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950127
+country = SOV
+style = 2
+
+name = "The liberation of the Don-Kuban Union"
+desc = "The French have demanded that we give up the Don-Kuban Union."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = TRA } } type = independence which = TRA value = 1 when = 0 }
+command = { type = end_mastery which = TRA }
+command = { type = secedeprovince which = TRA value = 694 }
+command = { type = secedeprovince which = TRA value = 693 }
+command = { type = secedeprovince which = TRA value = 695 }
+command = { type = secedeprovince which = TRA value = 696 }
+command = { type = secedeprovince which = TRA value = 691 }
+command = { type = secedeprovince which = TRA value = 692 }
+command = { type = secedeprovince which = TRA value = 697 }
+command = { type = secedeprovince which = TRA value = 662 }
+command = { type = secedeprovince which = TRA value = 698 }
+command = { type = secedeprovince which = TRA value = 701 }
+command = { type = secedeprovince which = TRA value = 703 }
+command = { type = secedeprovince which = TRA value = 705 }
+command = { type = secedeprovince which = TRA value = 702 }
+command = { type = secedeprovince which = TRA value = 700 }
+command = { type = secedeprovince which = TRA value = 699 }
+command = { type = secedeprovince which = TRA value = 704 }
+command = { type = secedeprovince which = TRA value = 642 }
+command = { type = secedeprovince which = TRA value = 643 }
+command = { type = secedeprovince which = TRA value = 644 }
+command = { type = secedeprovince which = TRA value = 645 }
+command = { type = trigger which = 950128 }
+}
+}
+
+event = {
+id = 950128
+country = FRA
+style = 2
+
+name = "The rebirth of the Don-Kuban Union"
+desc = "The Don-Kuban Union has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International"
+command = { type = make_puppet which = TRA }
+command = { type = alliance which = TRA }
+}
+}
+
+#Finland
+event = {
+id = 950129
+country = FRA
+style = 2
+picture = "finnish_flag"
+
+trigger = {
+OR = {
+puppet = { country = FIN country = SOV }
+AND = {
+NOT = { exists = FIN }
+owned = { province = 256 data = SOV } } } }
+
+name = "Finland"
+desc = "Finland is currently under Russian control. Shall we free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 100
+name = "Demand that the Russians give it up!"
+command = { type = trigger which = 950130 }
+}
+action_b = {
+ai_chance = 0
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950130
+country = SOV
+style = 2
+picture = "finland"
+
+name = "The liberation of Finland"
+desc = "The French have demanded that we give up Finland."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = FIN } } type = independence which = FIN value = 1 when = 0 }
+command = { type = end_mastery which = FIN }
+command = { type = secedeprovince which = FIN value = 529 }
+command = { type = secedeprovince which = FIN value = 530 }
+command = { type = secedeprovince which = FIN value = 531 }
+command = { type = secedeprovince which = FIN value = 525 }
+command = { type = secedeprovince which = FIN value = 524 }
+command = { type = secedeprovince which = FIN value = 512 }
+command = { type = secedeprovince which = FIN value = 527 }
+command = { type = secedeprovince which = FIN value = 528 }
+command = { type = secedeprovince which = FIN value = 533 }
+command = { type = secedeprovince which = FIN value = 532 }
+command = { type = secedeprovince which = FIN value = 538 }
+command = { type = secedeprovince which = FIN value = 520 }
+command = { type = secedeprovince which = FIN value = 526 }
+command = { type = secedeprovince which = FIN value = 521 }
+command = { type = secedeprovince which = FIN value = 523 }
+command = { type = secedeprovince which = FIN value = 518 }
+command = { type = secedeprovince which = FIN value = 540 }
+command = { type = secedeprovince which = FIN value = 522 }
+command = { type = secedeprovince which = FIN value = 519 }
+command = { type = secedeprovince which = FIN value = 514 }
+command = { type = secedeprovince which = FIN value = 515 }
+command = { type = secedeprovince which = FIN value = 516 }
+command = { type = secedeprovince which = FIN value = 511 }
+command = { type = secedeprovince which = FIN value = 513 }
+command = { type = secedeprovince which = FIN value = 517 }
+command = { type = trigger which = 950131 }
+}
+}
+
+event = {
+id = 950131
+country = FRA
+style = 2
+picture = "finland"
+
+name = "The rebirth of Finland"
+desc = "Finland has been turned over to us and is now loyal to the International cause!"
+
+action_a = {
+name = "Welcome to the International"
+command = { type = make_puppet which = FIN }
+command = { type = alliance which = FIN }
+}
+}
+
+#Idel-Ural
+event = {
+id = 950194
+country = FRA
+style = 2
+picture = "militaryparade1"
+
+trigger = {
+OR = {
+puppet = { country = U13 country = SOV }
+AND = {
+NOT = { exists = U13 }
+owned = { province = 672 data = SOV } } } }
+
+name = "Idel-Ural"
+desc = "Idel-Ural, a historical region mostly inhabitated by Tatars, is currently under Russian control. Shall free them from Russian domination or let them keep it?"
+
+action_a = {
+ai_chance = 0
+name = "Demand that the Russians give it up."
+command = { type = trigger which = 950195 }
+}
+action_b = {
+ai_chance = 100
+name = "The Russians can keep it."
+command = { }
+}
+}
+
+event = {
+id = 950195
+country = SOV
+style = 2
+picture = "militaryparade1"
+
+name = "The liberation of Idel-Ural"
+desc = "The French have demanded we give up Idel-Ural."
+
+action_a = {
+name = "We have no choice."
+command = { trigger = { NOT = { exists = U13 } } type = independence which = U13 value = 1 when = 0 }
+command = { type = end_mastery which = U13 }
+command = { type = secedeprovince which = U13 value = 674 }
+command = { type = secedeprovince which = U13 value = 675 }
+command = { type = secedeprovince which = U13 value = 656 }
+command = { type = secedeprovince which = U13 value = 671 }
+command = { type = secedeprovince which = U13 value = 673 }
+command = { type = secedeprovince which = U13 value = 684 }
+command = { type = secedeprovince which = U13 value = 664 }
+command = { type = secedeprovince which = U13 value = 687 }
+command = { type = secedeprovince which = U13 value = 667 }
+command = { type = secedeprovince which = U13 value = 668 }
+command = { type = trigger which = 950196 }
+}
+}
+
+event = {
+id = 950196
+country = FRA
+style = 2
+picture = "militaryparade1"
+
+name = "Idel-Ural"
+desc = "Idel-Ural has been trasnfered to us. A welcomed addition to the International."
+
+action_a = {
+name = "Welcome to the International"
+command = { type = make_puppet which = U13 }
+command = { type = alliance which = U13 }
+}
+}
+
+#Russia setup
+event = {
+id = 950190
+country = FRA
+style = 2
+picture = "SovConscript"
+
+name = "The Future of Soviet Russia"
+desc = "With the negotiations concerning Russia's territory complete it is now time to begin planning their course. There are two men who agree with our Syndicalist views: Nikolay Shvernik and Mikhail Tomsky. Who shall we appoint to lead the Soviets?"
+
+action_a = {
+ai_chance = 50
+name = "Put Nikolay Shvernik into power."
+command = { type = trigger which = 950191 }
+}
+action_b = {
+ai_chance = 50
+name = "Put Mikhail Tomsky into power."
+command = { type = trigger which = 950192 }
+}
+}
+
+event = {
+id = 950191
+country = SOV
+style = 2
+picture = "Sovietpower"
+
+name = "Shvernik has been put in control"
+desc = "Nikolay Shvernik has been put into power by the French and we have to ally with them."
+
+action_a = {
+name = "We have no choice."
+command = { type = headofstate which = 4001 }
+command = { type = headofgovernment which = 4073 }
+command = { trigger = { war = { country = SOV country = JAP } NOT = { war = { country = FRA country = JAP } } } type = peace which = JAP value = 0 }
+command = { trigger = { war = { country = SOV country = CAN } NOT = { war = { country = FRA country = CAN } } } type = peace which = CAN value = 0 }
+command = { type = peace which = TRA value = 0 }
+command = { type = peace which = FIN value = 0 }
+command = { type = peace which = KAZ value = 0 }
+command = { type = peace which = KYG value = 0 }
+command = { type = peace which = UKR value = 0 }
+command = { type = peace which = MON value = 0 }
+command = { type = peace which = SIB value = 0 }
+command = { type = peace which = CSX value = 0 }
+command = { type = addcore which = 550  }
+command = { type = addcore which = 552  }
+command = { type = addcore which = 566  }
+command = { type = addcore which = 564  }
+command = { type = addcore which = 593  }
+command = { type = addcore which = 573  }
+command = { type = addcore which = 589  }
+command = { type = addcore which = 586  }
+command = { type = addcore which = 587  }
+command = { type = addcore which = 581  }
+command = { type = addcore which = 582  }
+command = { type = addcore which = 580  }
+command = { type = addcore which = 654  }
+command = { type = addcore which = 653  }
+command = { type = addcore which = 655  }
+command = { type = addcore which = 642  }
+command = { type = addcore which = 659  }
+command = { type = addcore which = 663  }
+command = { type = addcore which = 660  }
+command = { type = addcore which = 666  }
+command = { type = addcore which = 667  }
+command = { type = addcore which = 1134 }
+command = { type = addcore which = 553  }
+command = { type = addcore which = 551  }
+command = { type = addcore which = 549  }
+command = { type = addcore which = 560  }
+command = { type = addcore which = 565  }
+command = { type = addcore which = 535  }
+command = { type = addcore which = 534  }
+command = { type = addcore which = 536  }
+command = { type = addcore which = 537  }
+command = { type = addcore which = 541  }
+command = { type = addcore which = 539  }
+command = { type = addcore which = 557  }
+command = { type = addcore which = 562  }
+command = { type = addcore which = 559  }
+command = { type = addcore which = 561  }
+command = { type = addcore which = 542  }
+command = { type = addcore which = 546  }
+command = { type = addcore which = 547  }
+command = { type = addcore which = 556  }
+command = { type = addcore which = 555  }
+command = { type = addcore which = 563  }
+command = { type = addcore which = 558  }
+command = { type = addcore which = 577  }
+command = { type = addcore which = 575  }
+command = { type = addcore which = 574  }
+command = { type = addcore which = 588  }
+command = { type = addcore which = 585  }
+command = { type = addcore which = 583  }
+command = { type = addcore which = 579  }
+command = { type = addcore which = 652  }
+command = { type = addcore which = 650  }
+command = { type = addcore which = 651  }
+command = { type = addcore which = 657  }
+command = { type = addcore which = 661  }
+command = { type = addcore which = 669  }
+command = { type = addcore which = 665  }
+command = { type = addcore which = 668  }
+command = { type = addcore which = 656  }
+command = { type = addcore which = 658  }
+command = { type = addcore which = 688  }
+command = { type = addcore which = 545  }
+command = { type = addcore which = 543  }
+command = { type = addcore which = 548  }
+command = { type = addcore which = 676  }
+command = { type = addcore which = 677  }
+command = { type = addcore which = 1132 }
+command = { type = addcore which = 1133 }
+command = { type = addcore which = 1136 }
+command = { type = addcore which = 1137 }
+command = { type = addcore which = 1138 }
+command = { type = addcore which = 1139 }
+command = { type = addcore which = 1141 }
+command = { type = addcore which = 1142 }
+command = { type = addcore which = 1143 }
+command = { type = addcore which = 1144 }
+command = { type = addcore which = 1145 }
+command = { type = addcore which = 1156 }
+command = { type = addcore which = 1157 }
+command = { type = addcore which = 1069 }
+command = { type = addcore which = 1070 }
+command = { type = addcore which = 1166 }
+command = { type = addcore which = 1161 }
+command = { type = addcore which = 1163 }
+command = { type = addcore which = 1170 }
+command = { type = addcore which = 1176 }
+command = { type = addcore which = 1174 }
+command = { type = addcore which = 1175 }
+command = { type = addcore which = 1187 }
+command = { type = addcore which = 1188 }
+command = { type = addcore which = 1189 }
+command = { type = addcore which = 1186 }
+command = { type = addcore which = 1181 }
+command = { type = addcore which = 1182 }
+command = { type = addcore which = 1183 }
+command = { type = addcore which = 1184 }
+command = { type = addcore which = 1178 }
+command = { type = addcore which = 1180 }
+command = { type = addcore which = 1177 }
+command = { type = addcore which = 1179 }
+command = { type = addcore which = 1164 }
+command = { type = addcore which = 1165 }
+command = { type = addcore which = 1148 }
+command = { type = addcore which = 1155 }
+command = { type = addcore which = 1171 }
+command = { type = addcore which = 1152 }
+command = { type = addcore which = 1154 }
+command = { type = addcore which = 1135 }
+command = { type = addcore which = 1149 }
+command = { type = addcore which = 1150 }
+command = { type = addcore which = 1153 }
+command = { type = addcore which = 1129 }
+command = { type = addcore which = 1151 }
+command = { type = addcore which = 1128 }
+command = { type = addcore which = 1130 }
+command = { type = addcore which = 689  }
+command = { type = addcore which = 1126 }
+command = { type = addcore which = 1127 }
+command = { type = addcore which = 1131 }
+command = { type = addcore which = 687  }
+command = { type = addcore which = 671  }
+command = { type = addcore which = 590  }
+command = { type = addcore which = 600  }
+command = { type = addcore which = 601  }
+command = { type = addcore which = 554  }
+command = { type = addcore which = 576  }
+command = { type = addcore which = 584  }
+command = { type = addcore which = 682  }
+command = { type = addcore which = 679  }
+command = { type = addcore which = 578  }
+command = { type = addcore which = 670  }
+command = { type = addcore which = 675  }
+command = { type = addcore which = 683  }
+command = { type = addcore which = 664  }
+command = { type = addcore which = 674  }
+command = { type = addcore which = 690  }
+command = { type = addcore which = 672  }
+command = { type = addcore which = 673  }
+command = { type = addcore which = 680  }
+command = { type = addcore which = 681  }
+command = { type = addcore which = 684  }
+command = { type = addcore which = 685  }
+command = { type = addcore which = 686  }
+command = { type = addcore which = 544  }
+command = { type = addcore which = 1162 }
+command = { type = addcore which = 1167 }
+command = { type = addcore which = 1168 }
+command = { type = addcore which = 1169 }
+command = { type = addcore which = 1146 }
+command = { type = addcore which = 1147 }
+command = { type = addcore which = 1158 }
+command = { type = addcore which = 1191 }
+command = { type = addcore which = 1196 }
+command = { type = addcore which = 1193 }
+command = { type = addcore which = 1192 }
+command = { type = addcore which = 1195 }
+command = { type = addcore which = 1194 }
+command = { type = addcore which = 1190 }
+command = { type = addcore which = 1185 }
+command = { type = addcore which = 1140 }
+command = { type = addcore which = 1541 }
+command = { type = addcore which = 1542 }
+command = { type = addcore which = 1543 }
+command = { type = addcore which = 498  }
+command = { type = addcore which = 1115  }
+command = { type = addcore which = 501  }
+command = { type = addcore which = 499  }
+command = { type = addcore which = 502 }
+command = { type = secedeprovince which = FRA value = 711 }
+command = { type = secedeprovince which = FRA value = 714 }
+command = { type = secedeprovince which = FRA value = 712 }
+command = { type = secedeprovince which = FRA value = 713 }
+command = { type = secedeprovince which = FRA value = 707 }
+command = { type = secedeprovince which = FRA value = 708 }
+command = { type = secedeprovince which = FRA value = 709 }
+command = { type = secedeprovince which = FRA value = 710 }
+command = { type = secedeprovince which = FRA value = 1067 }
+command = { type = secedeprovince which = FRA value = 1076 }
+command = { type = secedeprovince which = FRA value = 1078 }
+command = { type = secedeprovince which = FRA value = 384 }
+command = { type = secedeprovince which = FRA value = 385 }
+command = { type = secedeprovince which = FRA value = 409 }
+command = { type = clrflag which = SOV_EXP }
+command = { type = trigger which = 950193 }
+}
+}
+
+event = {
+id = 950192
+country = SOV
+style = 2
+picture = "Sovietpower"
+
+name = "Tomsky has been put in control"
+desc = "Mikhail Tomsky has been put into power by the French and we have to ally with them."
+
+action_a = {
+name = "We have no choice."
+command = { type = headofstate which = 4001 }
+command = { type = headofgovernment which = 4074 }
+command = { trigger = { war = { country = SOV country = JAP } NOT = { war = { country = FRA country = JAP } } } type = peace which = JAP value = 0 }
+command = { trigger = { war = { country = SOV country = CAN } NOT = { war = { country = FRA country = CAN } } } type = peace which = CAN value = 0 }
+command = { type = peace which = TRA value = 0 }
+command = { type = peace which = FIN value = 0 }
+command = { type = peace which = KAZ value = 0 }
+command = { type = peace which = KYG value = 0 }
+command = { type = peace which = UKR value = 0 }
+command = { type = peace which = MON value = 0 }
+command = { type = peace which = SIB value = 0 }
+command = { type = peace which = CSX value = 0 }
+command = { type = addcore which = 550  }
+command = { type = addcore which = 552  }
+command = { type = addcore which = 566  }
+command = { type = addcore which = 564  }
+command = { type = addcore which = 593  }
+command = { type = addcore which = 573  }
+command = { type = addcore which = 589  }
+command = { type = addcore which = 586  }
+command = { type = addcore which = 587  }
+command = { type = addcore which = 581  }
+command = { type = addcore which = 582  }
+command = { type = addcore which = 580  }
+command = { type = addcore which = 654  }
+command = { type = addcore which = 653  }
+command = { type = addcore which = 655  }
+command = { type = addcore which = 642  }
+command = { type = addcore which = 659  }
+command = { type = addcore which = 663  }
+command = { type = addcore which = 660  }
+command = { type = addcore which = 666  }
+command = { type = addcore which = 667  }
+command = { type = addcore which = 1134 }
+command = { type = addcore which = 553  }
+command = { type = addcore which = 551  }
+command = { type = addcore which = 549  }
+command = { type = addcore which = 560  }
+command = { type = addcore which = 565  }
+command = { type = addcore which = 535  }
+command = { type = addcore which = 534  }
+command = { type = addcore which = 536  }
+command = { type = addcore which = 537  }
+command = { type = addcore which = 541  }
+command = { type = addcore which = 539  }
+command = { type = addcore which = 557  }
+command = { type = addcore which = 562  }
+command = { type = addcore which = 559  }
+command = { type = addcore which = 561  }
+command = { type = addcore which = 542  }
+command = { type = addcore which = 546  }
+command = { type = addcore which = 547  }
+command = { type = addcore which = 556  }
+command = { type = addcore which = 555  }
+command = { type = addcore which = 563  }
+command = { type = addcore which = 558  }
+command = { type = addcore which = 577  }
+command = { type = addcore which = 575  }
+command = { type = addcore which = 574  }
+command = { type = addcore which = 588  }
+command = { type = addcore which = 585  }
+command = { type = addcore which = 583  }
+command = { type = addcore which = 579  }
+command = { type = addcore which = 652  }
+command = { type = addcore which = 650  }
+command = { type = addcore which = 651  }
+command = { type = addcore which = 657  }
+command = { type = addcore which = 661  }
+command = { type = addcore which = 669  }
+command = { type = addcore which = 665  }
+command = { type = addcore which = 668  }
+command = { type = addcore which = 656  }
+command = { type = addcore which = 658  }
+command = { type = addcore which = 688  }
+command = { type = addcore which = 545  }
+command = { type = addcore which = 543  }
+command = { type = addcore which = 548  }
+command = { type = addcore which = 676  }
+command = { type = addcore which = 677  }
+command = { type = addcore which = 1132 }
+command = { type = addcore which = 1133 }
+command = { type = addcore which = 1136 }
+command = { type = addcore which = 1137 }
+command = { type = addcore which = 1138 }
+command = { type = addcore which = 1139 }
+command = { type = addcore which = 1141 }
+command = { type = addcore which = 1142 }
+command = { type = addcore which = 1143 }
+command = { type = addcore which = 1144 }
+command = { type = addcore which = 1145 }
+command = { type = addcore which = 1156 }
+command = { type = addcore which = 1157 }
+command = { type = addcore which = 1069 }
+command = { type = addcore which = 1070 }
+command = { type = addcore which = 1166 }
+command = { type = addcore which = 1161 }
+command = { type = addcore which = 1163 }
+command = { type = addcore which = 1170 }
+command = { type = addcore which = 1176 }
+command = { type = addcore which = 1174 }
+command = { type = addcore which = 1175 }
+command = { type = addcore which = 1187 }
+command = { type = addcore which = 1188 }
+command = { type = addcore which = 1189 }
+command = { type = addcore which = 1186 }
+command = { type = addcore which = 1181 }
+command = { type = addcore which = 1182 }
+command = { type = addcore which = 1183 }
+command = { type = addcore which = 1184 }
+command = { type = addcore which = 1178 }
+command = { type = addcore which = 1180 }
+command = { type = addcore which = 1177 }
+command = { type = addcore which = 1179 }
+command = { type = addcore which = 1164 }
+command = { type = addcore which = 1165 }
+command = { type = addcore which = 1148 }
+command = { type = addcore which = 1155 }
+command = { type = addcore which = 1171 }
+command = { type = addcore which = 1152 }
+command = { type = addcore which = 1154 }
+command = { type = addcore which = 1135 }
+command = { type = addcore which = 1149 }
+command = { type = addcore which = 1150 }
+command = { type = addcore which = 1153 }
+command = { type = addcore which = 1129 }
+command = { type = addcore which = 1151 }
+command = { type = addcore which = 1128 }
+command = { type = addcore which = 1130 }
+command = { type = addcore which = 689  }
+command = { type = addcore which = 1126 }
+command = { type = addcore which = 1127 }
+command = { type = addcore which = 1131 }
+command = { type = addcore which = 687  }
+command = { type = addcore which = 671  }
+command = { type = addcore which = 590  }
+command = { type = addcore which = 600  }
+command = { type = addcore which = 601  }
+command = { type = addcore which = 554  }
+command = { type = addcore which = 576  }
+command = { type = addcore which = 584  }
+command = { type = addcore which = 682  }
+command = { type = addcore which = 679  }
+command = { type = addcore which = 578  }
+command = { type = addcore which = 670  }
+command = { type = addcore which = 675  }
+command = { type = addcore which = 683  }
+command = { type = addcore which = 664  }
+command = { type = addcore which = 674  }
+command = { type = addcore which = 690  }
+command = { type = addcore which = 672  }
+command = { type = addcore which = 673  }
+command = { type = addcore which = 680  }
+command = { type = addcore which = 681  }
+command = { type = addcore which = 684  }
+command = { type = addcore which = 685  }
+command = { type = addcore which = 686  }
+command = { type = addcore which = 544  }
+command = { type = addcore which = 1162 }
+command = { type = addcore which = 1167 }
+command = { type = addcore which = 1168 }
+command = { type = addcore which = 1169 }
+command = { type = addcore which = 1146 }
+command = { type = addcore which = 1147 }
+command = { type = addcore which = 1158 }
+command = { type = addcore which = 1191 }
+command = { type = addcore which = 1196 }
+command = { type = addcore which = 1193 }
+command = { type = addcore which = 1192 }
+command = { type = addcore which = 1195 }
+command = { type = addcore which = 1194 }
+command = { type = addcore which = 1190 }
+command = { type = addcore which = 1185 }
+command = { type = addcore which = 1140 }
+command = { type = addcore which = 1541 }
+command = { type = addcore which = 1542 }
+command = { type = addcore which = 1543 }
+command = { type = addcore which = 498  }
+command = { type = addcore which = 1115  }
+command = { type = addcore which = 501  }
+command = { type = addcore which = 499  }
+command = { type = addcore which = 502 }
+command = { type = secedeprovince which = FRA value = 711 }
+command = { type = secedeprovince which = FRA value = 714 }
+command = { type = secedeprovince which = FRA value = 712 }
+command = { type = secedeprovince which = FRA value = 713 }
+command = { type = secedeprovince which = FRA value = 707 }
+command = { type = secedeprovince which = FRA value = 708 }
+command = { type = secedeprovince which = FRA value = 709 }
+command = { type = secedeprovince which = FRA value = 710 }
+command = { type = secedeprovince which = FRA value = 1067 }
+command = { type = secedeprovince which = FRA value = 1076 }
+command = { type = secedeprovince which = FRA value = 1078 }
+command = { type = secedeprovince which = FRA value = 384 }
+command = { type = secedeprovince which = FRA value = 385 }
+command = { type = secedeprovince which = FRA value = 409 }
+command = { type = clrflag which = SOV_EXP }
+command = { type = trigger which = 950193 }
+}
+}
+
+event = {
+id = 950193
+country = FRA
+style = 2
+picture = "SovConscript"
+
+name = "Soviet Russia has formed"
+desc = "With the formation of the new Soviet leadership, Soviet Russia is ready to stand with us!"
+
+action_a = {
+name = "Vive l'Internationale!"
+command = { type = make_puppet which = SOV }
+command = { type = alliance which = SOV }
+}
+}
+
+
+event = {
+id = 9001667
+random = no
+country = SOV
+
+trigger = {
+war = { country = JAP country = SOV }
+NOT = {
+exists = RUS
+ispuppet = JAP
+ispuppet = SOV
+}
+random = 35
+OR = {
+control = { province = 1148 data = JAP }	# Okhotsk
+AND = {
+control = { province = 1148 data = PRI }
+OR = {
+alliance = { country = JAP country = PRI }
+puppet = { country = PRI country = JAP  }
+}
+}
+AND = {
+control = { province = 1148 data = SIB }
+OR = {
+alliance = { country = JAP country = SIB }
+puppet = { country = SIB country = JAP  }
+AND = {
+puppet = { country = SIB country = PRI  }
+puppet = { country = PRI country = JAP  }
+}
+}
+}
+}
+OR = {
+control = { province = 1135 data = JAP }	# Okhotsk
+AND = {
+control = { province = 1135 data = PRI }
+OR = {
+alliance = { country = JAP country = PRI }
+puppet = { country = PRI country = JAP  }
+}
+}
+AND = {
+control = { province = 1135 data = SIB }
+OR = {
+alliance = { country = JAP country = SIB }
+puppet = { country = SIB country = JAP  }
+AND = {
+puppet = { country = SIB country = PRI  }
+puppet = { country = PRI country = JAP  }
+}
+}
+}
+}
+OR = {
+control = { province = 1151 data = JAP }	# Okhotsk
+AND = {
+control = { province = 1151 data = PRI }
+OR = {
+alliance = { country = JAP country = PRI }
+puppet = { country = PRI country = JAP  }
+}
+}
+AND = {
+control = { province = 1151 data = SIB }
+OR = {
+alliance = { country = JAP country = SIB }
+puppet = { country = SIB country = JAP  }
+AND = {
+puppet = { country = SIB country = PRI  }
+puppet = { country = PRI country = JAP  }
+}
+}
+}
+}
+OR = {
+control = { province = 1179 data = JAP }	# Okhotsk
+AND = {
+control = { province = 1179 data = PRI }
+OR = {
+alliance = { country = JAP country = PRI }
+puppet = { country = PRI country = JAP  }
+}
+}
+AND = {
+control = { province = 1179 data = SIB }
+OR = {
+alliance = { country = JAP country = SIB }
+puppet = { country = SIB country = JAP  }
+AND = {
+puppet = { country = SIB country = PRI  }
+puppet = { country = PRI country = JAP  }
+}
+}
+}
+}
+OR = {
+control = { province = 687 data = JAP }	# Okhotsk
+AND = {
+control = { province = 687 data = PRI }
+OR = {
+alliance = { country = JAP country = PRI }
+puppet = { country = PRI country = JAP  }
+}
+}
+AND = {
+control = { province = 687 data = SIB }
+OR = {
+alliance = { country = JAP country = SIB }
+puppet = { country = SIB country = JAP  }
+AND = {
+puppet = { country = SIB country = PRI  }
+puppet = { country = PRI country = JAP  }
+}
+}
+}
+}
+OR = {
+control = { province = 672 data = JAP }	# Kazan
+AND = {
+control = { province = 672 data = PRI }
+OR = {
+alliance = { country = JAP country = PRI }
+puppet = { country = PRI country = JAP  }
+}
+}
+AND = {
+control = { province = 672 data = SIB }
+OR = {
+alliance = { country = JAP country = SIB }
+puppet = { country = SIB country = JAP  }
+AND = {
+puppet = { country = SIB country = PRI  }
+puppet = { country = PRI country = JAP  }
+}
+}
+}
+}
+control = { province = 1552 data = JAP }
+}
+
+name = "The Bitter Peace"
+desc = "The war with the Japanese now seems hopeless. It may be time to sue for peace and try to save at least the European part of our state."
+style = 2
+picture = "Bitter Peace"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "They can have their damn frozen wasteland!"
+ai_chance = 100
+command = { type = set_domestic which = interventionism value = 3 }
+command = { type = trigger which = 9001668 }
+command = { type = dissent value = 10 }
+}
+action_b = {
+name = "Mother Russia shall fight to the bitter end!"
+ai_chance = 0
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 9001668
+random = no
+country = JAP
+style = 2
+picture = "Bitter Peace"
+
+name = "The Soviets Sue For Peace"
+desc = "Military parades were held through the streets of Tokyo since early this morning. A peace offering has arrived from the Soviets who are offering to end the war in exchange for a very large amount of territory. The territory encompasses everything east of the Ural mountains."
+
+action_a = {
+name = "All hail the glorious and invincible Nippon!"
+ai_chance = 99
+command = { type = peace which = SOV value = 0 }
+command = { type = trigger which = 9001669 }
+command = { type = dissent value = -25 }
+command = { type = add_prov_resource which = -4 value = 50 where = energy }
+command = { type = belligerence which = JAP value = -50 }
+}
+action_b = {
+name = "No Peace with the Soviets!"
+ai_chance = 1
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 9001669
+random = no
+country = SOV
+
+name = "The Bitter Peace"
+desc = "The Japanese have accepted the peace offer."
+style = 2
+picture = "Bitter Peace"
+
+action_a = {
+name = "So be it!"
+command = { type = dissent value = 10 }
+#Far East Siberia
+# Transamur's territories
+command = { type = secedeprovince which = JAP value = 1187  }
+command = { type = secedeprovince which = JAP value = 1188  }
+command = { type = secedeprovince which = JAP value = 1175  }
+command = { type = secedeprovince which = JAP value = 1189  }
+command = { type = secedeprovince which = JAP value = 1174  }
+command = { type = secedeprovince which = JAP value = 1176  }
+command = { type = secedeprovince which = JAP value = 1170  }
+command = { type = secedeprovince which = JAP value = 1171  }
+command = { type = secedeprovince which = JAP value = 1178  }
+command = { type = secedeprovince which = JAP value = 1180  }
+command = { type = secedeprovince which = JAP value = 1186  }
+command = { type = secedeprovince which = JAP value = 1181  }
+command = { type = secedeprovince which = JAP value = 1182  }
+command = { type = secedeprovince which = JAP value = 1183  }
+command = { type = secedeprovince which = JAP value = 1184  }
+# Siberia
+command = { type = secedeprovince which = JAP value = 1177 }
+command = { type = secedeprovince which = JAP value = 1179 }
+command = { type = secedeprovince which = JAP value = 1161 }
+command = { type = secedeprovince which = JAP value = 1163 }
+command = { type = secedeprovince which = JAP value = 1070 }
+command = { type = secedeprovince which = JAP value = 1164 }
+command = { type = secedeprovince which = JAP value = 1155 }
+command = { type = secedeprovince which = JAP value = 1165 }
+command = { type = secedeprovince which = JAP value = 1157 }
+command = { type = secedeprovince which = JAP value = 1069 }
+command = { type = secedeprovince which = JAP value = 1070 }
+command = { type = secedeprovince which = JAP value = 1166 }
+command = { type = secedeprovince which = JAP value = 1162 }
+command = { type = secedeprovince which = JAP value = 1167 }
+command = { type = secedeprovince which = JAP value = 1168 }
+command = { type = secedeprovince which = JAP value = 1169 }
+command = { type = secedeprovince which = JAP value = 1147 }
+command = { type = secedeprovince which = JAP value = 1158 }
+command = { type = secedeprovince which = JAP value = 1146 }
+command = { type = secedeprovince which = JAP value = 1156 }
+command = { type = secedeprovince which = JAP value = 1152 }
+command = { type = secedeprovince which = JAP value = 1153 }
+command = { type = secedeprovince which = JAP value = 1154 }
+command = { type = secedeprovince which = JAP value = 1148 }
+command = { type = secedeprovince which = JAP value = 1144 }
+command = { type = secedeprovince which = JAP value = 1145 }
+command = { type = secedeprovince which = JAP value = 1142 }
+command = { type = secedeprovince which = JAP value = 1143 }
+command = { type = secedeprovince which = JAP value = 1141 }
+command = { type = secedeprovince which = JAP value = 1149 }
+command = { type = secedeprovince which = JAP value = 1135 }
+command = { type = secedeprovince which = JAP value = 1138 }
+command = { type = secedeprovince which = JAP value = 1139 }
+command = { type = secedeprovince which = JAP value = 1150 }
+command = { type = secedeprovince which = JAP value = 1136 }
+command = { type = secedeprovince which = JAP value = 1137 }
+command = { type = secedeprovince which = JAP value = 1151 }
+command = { type = secedeprovince which = JAP value = 501 }
+command = { type = secedeprovince which = JAP value = 498 }
+command = { type = secedeprovince which = JAP value = 1115 }
+command = { type = secedeprovince which = JAP value = 499 }
+command = { type = secedeprovince which = JAP value = 502 }
+command = { type = set_relation which = JAP value = 0 }
+command = { type = set_relation which = PRI value = 0 }
+command = { type = set_relation which = MAN value = 0 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = SOV value = -50 }
+command = { type = end_mastery which = MON }
+command = { type = end_mastery which = TAN }
+command = { type = non_aggression which = JAP where = SOV }
+}
+}

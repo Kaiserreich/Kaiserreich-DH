@@ -1,0 +1,900 @@
+# Liberation of the UK Events I: The Creation of the UK
+# IDs 114000-115999
+#
+# 114000 - The Demise of the Union of Britain
+# 114001 - The Liberation of the United Kingdom (CAN)
+# 114002 - The Liberation of the United Kingdom (UK)
+# 114003 - The Government Returns to London
+# 114004 - The Imperial General Staff and the Dominions
+# 114005 - The Liberation of the United Kingdom (CAN)
+# 114006 - The Liberation of the United Kingdom (AST)
+# 114007 - The Liberation of the United Kingdom (NZL)
+# 114008 - The Liberation of the United Kingdom (PAK)
+# 114009 - The Liberation of the United Kingdom (GUY)
+# 114010 - The Liberation of the United Kingdom (VIC)
+# 114011 - The Liberation of the United Kingdom (SAF)
+# 114012 - The Liberation of the United Kingdom (USA)
+
+# 114013 - Refugees from the Union of Britain
+# 114014 - Refugees from the Commune of France
+
+
+event = {
+id = 114000
+tag = { USA PAK VIC AST GUY SAF RUS U25 CAL NZL JAP TEX GER U31 U08 }
+persistent = yes
+style = 2
+
+trigger = {
+OR = {
+region = { region = ENGLAND country = -1 data = 2 value = 1 } #controls any province in England
+region = { region = SCOTLAND country = -1 data = 2 value = 1 } #controls any province in SCOTLAND
+}
+alliance = { country = CAN country = -1 } #allied to Canada
+participant = { country = -1 value = 1 } #member of the Entente
+NOT = {
+ispuppet = CAN
+exists = ENG
+exists = U07
+}
+}
+
+name = "The Demise of the Union of Britain"
+desc = "The socialist scourge has been purged from the British Isles and as such, we should return the provinces to our good friends, the Canadians."
+picture = "UKMap"
+
+date = { day = 0 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1970 }
+
+action = {
+ai_chance =  100
+name = "Return the provinces to the Canadians"
+command = { type = secederegion which = CAN value = ENGLAND when = 1 }
+command = { type = secederegion which = CAN value = SCOTLAND when = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = CAN value = 150 }
+command = { type = dissent value = -1  }
+}
+
+action = {
+ai_chance =  0
+name = "We shall create a new order in Britain!"
+command = { type = relation which = CAN value = -50 }
+command = { type = dissent value = 5  }
+}
+}
+
+##########################
+## Actual Liberation
+##########################
+
+event = {
+id = 114001
+random = no
+country = CAN
+style = 2
+picture = "ENG_rally"
+
+trigger = {
+NOT = {
+exists = ENG
+}
+OR = {
+owned = { province = 23 data = CAN } #Stornaway
+owned = { province = 20 data = CAN } #Scapa Flow
+owned = { province = 27 data = CAN } #Inverness
+owned = { province = 26 data = CAN } #Aberdeen
+owned = { province = 29 data = CAN } #Dunfernline
+owned = { province = 25 data = CAN } #Glasgow
+owned = { province = 28 data = CAN } #Edinburgh
+owned = { province = 19 data = CAN } #Sunderland
+owned = { province = 22 data = CAN } #Blackpool
+owned = { province = 21 data = CAN } #Sheffield
+owned = { province = 24 data = CAN } #Liverpool
+owned = { province = 16 data = CAN } #Cardiff
+owned = { province = 17 data = CAN } #Birmingham
+owned = { province = 18 data = CAN } #Norwich
+owned = { province = 15 data = CAN } #London
+owned = { province = 14 data = CAN } #Dover
+owned = { province = 13 data = CAN } #Portsmouth
+owned = { province = 10 data = CAN } #Bristol
+owned = { province = 11 data = CAN } #Plymouth
+owned = { province = 12 data = CAN }
+owned = { province = 7 data = CAN }
+owned = { province = 8 data = CAN }
+owned = { province = 6 data = CAN }
+owned = { province = 5 data = CAN }
+owned = { province = 4 data = CAN }
+owned = { province = 9 data = CAN }
+}
+}
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the Royal Family has returned to Britain in triumph.  It is a glorious day for Britain and the Empire.  God save the King!"
+
+date =  { day = 0 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Restore the United Kingdom"
+ai_chance = 100
+command = { type = independence which = U07 value = 1 when = 0 }
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = trigger which = 114002 }
+command = { type = dissent value = -10 }
+command = { type = sleepleader which = 52518 } #Brooke-Popham
+command = { type = sleepleader which = 52521 } #Carton de Wiart
+command = { type = sleepleader which = 52573 } #Mountbatten
+command = { type = sleepleader which = 52656 } #Gloucester
+command = { type = sleepleader which = 52657 } #Kent
+command = { type = sleepleader which = 52658 } #Connaught
+command = { type = sleepleader which = 52659 } #Windsor A.
+command = { type = sleepleader which = 52660 } #Russell G.
+command = { type = sleepleader which = 52662 } #Hartington
+command = { type = sleepleader which = 52664 } #Churchill
+}
+
+action = {
+name = "Maintain a Canadian military occupation." #Who's the colonials now, eh?
+ai_chance = 0
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 114002
+random = no
+country = U07
+style = 2
+
+name = "The Liberation of the United Kingdom"
+desc = "The United Kingdom will regain its honour!"
+
+action_a = {
+name = "Finally we are back !"
+command = { type = ai which = "kaiserreich/United Kingdom.ai" }
+command = { type = supplies value = 100 }
+command = { type = oilpool value = 100 }
+command = { type = metalpool value = 500 }
+command = { type = energypool value = 500 }
+command = { type = rarematerialspool value = 500 }
+command = { type = money value = 100 }
+command = { type = manpowerpool value = 50 }
+command = { type = alliance which = CAN }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557401 } #Harold Nicolson
+command = { type = foreignminister which = 557402 } #Halford Mackinder
+command = { type = armamentminister which = 557403 } #Lionel Robbins
+command = { type = ministerofsecurity which = 557404 } #John Reith
+command = { type = ministerofintelligence which = 557405 } #Hugh Trevor-Roper
+command = { type = chiefofstaff which = 557406 } #Prince Henry
+command = { type = chiefofarmy which = 557407 } #Prince Henry
+command = { type = chiefofnavy which = 557408 } #Lord Mountbatten
+command = { type = chiefofair which = 557409 } #Prince George
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = cavalry when = 9 }
+command = { type = add_division value = cavalry when = 9 }
+command = { type = add_division value = interceptor when = 8 }
+command = { type = add_division value = interceptor when = 8 }
+command = { type = add_division value = destroyer when = 5 }
+command = { type = add_division value = destroyer when = 5 }
+command = { type = add_division value = destroyer when = 5 }
+command = { type = add_division value = destroyer when = 5 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = AST } } type = set_relation which = AST value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = NZL } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = SAF } } type = set_relation which = SAF value = 200 }
+command = { type = end_puppet }
+command = { type = event which = 114004 where = U07 when = 1 }
+command = { trigger = { alliance = { country = CAN country = U07 } } type = event which = 114005 where = CAN when = 1 }
+command = { trigger = { alliance = { country = AST country = U07 } } type = event which = 114006 where = AST when = 1 }
+command = { trigger = { alliance = { country = NZL country = U07 } } type = event which = 114007 where = NZL when = 1 }
+command = { trigger = { alliance = { country = PAK country = U07 } } type = event which = 114008 where = PAK when = 1 }
+command = { trigger = { alliance = { country = GUY country = U07 } } type = event which = 114009 where = GUY when = 1 }
+command = { trigger = { alliance = { country = VIC country = U07 } } type = event which = 114010 where = VIC when = 1 }
+command = { trigger = { alliance = { country = SAF country = U07 } } type = event which = 114011 where = SAF when = 1 }
+command = { trigger = { alliance = { country = USA country = U07 } } type = event which = 114012 where = USA when = 1 }
+}
+}
+
+event = {
+id = 114003
+random = no
+country = U07
+style = 2
+picture = "London"
+
+trigger = {
+alliance = { country = U07 country = CAN }
+NOT = {
+ispuppet = U07
+}
+control = { province = 29 data = U07  }
+control = { province = 25 data = U07  }
+control = { province = 28 data = U07  }
+control = { province = 26 data = U07  }
+control = { province = 27 data = U07  }
+}
+
+name = "The Government Returns to London"
+desc = "After years in exile, the British government has returned to London.  The Royal Family is now staying in Buckingham Palace, and government officials are returning to their places in Whitehall."
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "London, the Capital of the Empire"
+command = { type = capital which = 29 } #London
+command = { type = dissent value = -1 }
+command = { type = alliance_leader which = U07 where = 2 } #United Kingdom leader of the Entente!
+}
+}
+
+event = {
+id = 114004
+random = no
+country = U07
+style = 2
+
+name = "The Imperial General Staff and the Dominions"
+desc = "With the restoration of the United Kingdom the British Imperial General Staff has begun to re-locate to Britain. Should we use this opportunity to retain control of any unified command structure that may have been created thus far?"
+
+action_a = {
+name = "Yes"
+ai_chance = 1
+command = { trigger = { alliance = { country = U07 country = CAN } } type = military_control which = U07 where = CAN value = 1 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = military_control which = U07 where = PAK value = 1 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = military_control which = U07 where = GUY value = 1 }
+command = { trigger = { alliance = { country = U07 country = AST } } type = military_control which = U07 where = AST value = 1 }
+}
+
+action_b = {
+name = "No"
+trigger = { ai = no }
+ai_chance = 99
+command = {  }
+}
+
+action_c = {
+name = "No"
+trigger = { ai = yes }
+ai_chance = 99
+command = {  }
+}
+}
+
+
+event = {
+id = 114005
+random = no
+country = CAN
+style = 2
+picture = "britishcommonwealth"
+
+name = "The British Empire is Restored"
+desc = "With the Union of Britain destroyed, the bonds can be strengthened between the newly-liberated United Kingdom and the Dominions of the Empire."
+
+action_a = {
+name = "The British Empire Stands United"
+command = { type = access which = U07 }
+command = { type = guarantee which = U07 where = CAN }
+command = { type = set_relation which = U07 value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = AST value = 200 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = NZL } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = SAF } } type = set_relation which = SAF value = 200 }
+}
+}
+
+
+event = {
+id = 114006
+random = no
+country = AST
+style = 2
+picture = "ENG_rally"
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the Royal Family has returned to Britain in triumph. It is a glorious day for Britain and the Empire. God save the King!"
+
+action_a = {
+name = "The British Empire Stands United"
+command = { type = secedeprovince which = U07 value = 23 } #Stornaway
+command = { type = secedeprovince which = U07 value = 20 } #Scapa Flow
+command = { type = secedeprovince which = U07 value = 27 } #Inverness
+command = { type = secedeprovince which = U07 value = 26 } #Aberdeen
+command = { type = secedeprovince which = U07 value = 29 } #Dunfernline
+command = { type = secedeprovince which = U07 value = 25 } #Glasgow
+command = { type = secedeprovince which = U07 value = 28 } #Edinburgh
+command = { type = secedeprovince which = U07 value = 19 } #Sunderland
+command = { type = secedeprovince which = U07 value = 22 } #Blackpool
+command = { type = secedeprovince which = U07 value = 21 } #Sheffield
+command = { type = secedeprovince which = U07 value = 24 } #Liverpool
+command = { type = secedeprovince which = U07 value = 16 } #Cardiff
+command = { type = secedeprovince which = U07 value = 17 } #Birmingham
+command = { type = secedeprovince which = U07 value = 18 } #Norwich
+command = { type = secedeprovince which = U07 value = 15 } #London
+command = { type = secedeprovince which = U07 value = 14 } #Dover
+command = { type = secedeprovince which = U07 value = 13 } #Portsmouth
+command = { type = secedeprovince which = U07 value = 10 } #Bristol
+command = { type = secedeprovince which = U07 value = 11 } #Plymouth
+command = { type = secedeprovince which = U07 value = 12 } #Cork
+command = { type = secedeprovince which = U07 value = 7 } #Galway
+command = { type = secedeprovince which = U07 value = 8 } #Sligo
+command = { type = secedeprovince which = U07 value = 6 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 5 } #Belfast
+command = { type = secedeprovince which = U07 value = 4 } #Portadown
+command = { type = secedeprovince which = U07 value = 9 } #Dublin
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = access which = U07 }
+command = { type = guarantee which = U07 where = AST }
+command = { type = set_relation which = U07 value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = NZL } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = SAF } } type = set_relation which = SAF value = 200 }
+command = { type = dissent value = -10 }
+}
+}
+
+
+event = {
+id = 114007
+random = no
+country = NZL
+style = 2
+picture = "ENG_rally"
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the Royal Family has returned to Britain in triumph.  It is a glorious day for Britain and the Empire.  God save the King!"
+
+action_a = {
+name = "The British Empire Stands United"
+command = { type = secedeprovince which = U07 value = 23 } #Stornaway
+command = { type = secedeprovince which = U07 value = 20 } #Scapa Flow
+command = { type = secedeprovince which = U07 value = 27 } #Inverness
+command = { type = secedeprovince which = U07 value = 26 } #Aberdeen
+command = { type = secedeprovince which = U07 value = 29 } #Dunfernline
+command = { type = secedeprovince which = U07 value = 25 } #Glasgow
+command = { type = secedeprovince which = U07 value = 28 } #Edinburgh
+command = { type = secedeprovince which = U07 value = 19 } #Sunderland
+command = { type = secedeprovince which = U07 value = 22 } #Blackpool
+command = { type = secedeprovince which = U07 value = 21 } #Sheffield
+command = { type = secedeprovince which = U07 value = 24 } #Liverpool
+command = { type = secedeprovince which = U07 value = 16 } #Cardiff
+command = { type = secedeprovince which = U07 value = 17 } #Birmingham
+command = { type = secedeprovince which = U07 value = 18 } #Norwich
+command = { type = secedeprovince which = U07 value = 15 } #London
+command = { type = secedeprovince which = U07 value = 14 } #Dover
+command = { type = secedeprovince which = U07 value = 13 } #Portsmouth
+command = { type = secedeprovince which = U07 value = 10 } #Bristol
+command = { type = secedeprovince which = U07 value = 11 } #Plymouth
+command = { type = secedeprovince which = U07 value = 12 } #Cork
+command = { type = secedeprovince which = U07 value = 7 } #Galway
+command = { type = secedeprovince which = U07 value = 8 } #Sligo
+command = { type = secedeprovince which = U07 value = 6 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 5 } #Belfast
+command = { type = secedeprovince which = U07 value = 4 } #Portadown
+command = { type = secedeprovince which = U07 value = 9 } #Dublin
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = access which = U07 }
+command = { type = guarantee which = U07 where = NZL }
+command = { type = set_relation which = U07 value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = AST } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = SAF } } type = set_relation which = SAF value = 200 }
+command = { type = dissent value = -10 }
+}
+}
+
+
+event = {
+id = 114008
+random = no
+country = PAK
+style = 2
+picture = "ENG_rally"
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the Royal Family has returned to Britain in triumph.  It is a glorious day for Britain and the Empire.  God save the King!"
+
+action_a = {
+name = "The British Empire Stands United"
+command = { type = secedeprovince which = U07 value = 23 } #Stornaway
+command = { type = secedeprovince which = U07 value = 20 } #Scapa Flow
+command = { type = secedeprovince which = U07 value = 27 } #Inverness
+command = { type = secedeprovince which = U07 value = 26 } #Aberdeen
+command = { type = secedeprovince which = U07 value = 29 } #Dunfernline
+command = { type = secedeprovince which = U07 value = 25 } #Glasgow
+command = { type = secedeprovince which = U07 value = 28 } #Edinburgh
+command = { type = secedeprovince which = U07 value = 19 } #Sunderland
+command = { type = secedeprovince which = U07 value = 22 } #Blackpool
+command = { type = secedeprovince which = U07 value = 21 } #Sheffield
+command = { type = secedeprovince which = U07 value = 24 } #Liverpool
+command = { type = secedeprovince which = U07 value = 16 } #Cardiff
+command = { type = secedeprovince which = U07 value = 17 } #Birmingham
+command = { type = secedeprovince which = U07 value = 18 } #Norwich
+command = { type = secedeprovince which = U07 value = 15 } #London
+command = { type = secedeprovince which = U07 value = 14 } #Dover
+command = { type = secedeprovince which = U07 value = 13 } #Portsmouth
+command = { type = secedeprovince which = U07 value = 10 } #Bristol
+command = { type = secedeprovince which = U07 value = 11 } #Plymouth
+command = { type = secedeprovince which = U07 value = 12 } #Cork
+command = { type = secedeprovince which = U07 value = 7 } #Galway
+command = { type = secedeprovince which = U07 value = 8 } #Sligo
+command = { type = secedeprovince which = U07 value = 6 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 5 } #Belfast
+command = { type = secedeprovince which = U07 value = 4 } #Portadown
+command = { type = secedeprovince which = U07 value = 9 } #Dublin
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = access which = U07 }
+command = { type = guarantee which = U07 where = PAK }
+command = { type = set_relation which = U07 value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = NZL } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = AST } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = SAF } } type = set_relation which = SAF value = 200 }
+command = { type = dissent value = -10 }
+}
+}
+
+
+event = {
+id = 114009
+random = no
+country = GUY
+style = 2
+picture = "ENG_rally"
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the Royal Family has returned to Britain in triumph.  It is a glorious day for Britain and the Empire.  God save the King!"
+
+action_a = {
+name = "The British Empire Stands United"
+command = { type = secedeprovince which = U07 value = 23 } #Stornaway
+command = { type = secedeprovince which = U07 value = 20 } #Scapa Flow
+command = { type = secedeprovince which = U07 value = 27 } #Inverness
+command = { type = secedeprovince which = U07 value = 26 } #Aberdeen
+command = { type = secedeprovince which = U07 value = 29 } #Dunfernline
+command = { type = secedeprovince which = U07 value = 25 } #Glasgow
+command = { type = secedeprovince which = U07 value = 28 } #Edinburgh
+command = { type = secedeprovince which = U07 value = 19 } #Sunderland
+command = { type = secedeprovince which = U07 value = 22 } #Blackpool
+command = { type = secedeprovince which = U07 value = 21 } #Sheffield
+command = { type = secedeprovince which = U07 value = 24 } #Liverpool
+command = { type = secedeprovince which = U07 value = 16 } #Cardiff
+command = { type = secedeprovince which = U07 value = 17 } #Birmingham
+command = { type = secedeprovince which = U07 value = 18 } #Norwich
+command = { type = secedeprovince which = U07 value = 15 } #London
+command = { type = secedeprovince which = U07 value = 14 } #Dover
+command = { type = secedeprovince which = U07 value = 13 } #Portsmouth
+command = { type = secedeprovince which = U07 value = 10 } #Bristol
+command = { type = secedeprovince which = U07 value = 11 } #Plymouth
+command = { type = secedeprovince which = U07 value = 12 } #Cork
+command = { type = secedeprovince which = U07 value = 7 } #Galway
+command = { type = secedeprovince which = U07 value = 8 } #Sligo
+command = { type = secedeprovince which = U07 value = 6 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 5 } #Belfast
+command = { type = secedeprovince which = U07 value = 4 } #Portadown
+command = { type = secedeprovince which = U07 value = 9 } #Dublin
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = access which = U07 }
+command = { type = guarantee which = U07 where = GUY }
+command = { type = set_relation which = U07 value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = NZL } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = AST } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = SAF } } type = set_relation which = SAF value = 200 }
+command = { type = dissent value = -10 }
+}
+}
+
+
+event = {
+id = 114010
+random = no
+country = VIC
+style = 2
+picture = "ENG_rally"
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the British Royal Family has returned in triumph.  It is a glorious day for our allies!"
+
+action_a = {
+name = "The British Empire Stands United"
+command = { type = secedeprovince which = U07 value = 23 } #Stornaway
+command = { type = secedeprovince which = U07 value = 20 } #Scapa Flow
+command = { type = secedeprovince which = U07 value = 27 } #Inverness
+command = { type = secedeprovince which = U07 value = 26 } #Aberdeen
+command = { type = secedeprovince which = U07 value = 29 } #Dunfernline
+command = { type = secedeprovince which = U07 value = 25 } #Glasgow
+command = { type = secedeprovince which = U07 value = 28 } #Edinburgh
+command = { type = secedeprovince which = U07 value = 19 } #Sunderland
+command = { type = secedeprovince which = U07 value = 22 } #Blackpool
+command = { type = secedeprovince which = U07 value = 21 } #Sheffield
+command = { type = secedeprovince which = U07 value = 24 } #Liverpool
+command = { type = secedeprovince which = U07 value = 16 } #Cardiff
+command = { type = secedeprovince which = U07 value = 17 } #Birmingham
+command = { type = secedeprovince which = U07 value = 18 } #Norwich
+command = { type = secedeprovince which = U07 value = 15 } #London
+command = { type = secedeprovince which = U07 value = 14 } #Dover
+command = { type = secedeprovince which = U07 value = 13 } #Portsmouth
+command = { type = secedeprovince which = U07 value = 10 } #Bristol
+command = { type = secedeprovince which = U07 value = 11 } #Plymouth
+command = { type = secedeprovince which = U07 value = 12 } #Cork
+command = { type = secedeprovince which = U07 value = 7 } #Galway
+command = { type = secedeprovince which = U07 value = 8 } #Sligo
+command = { type = secedeprovince which = U07 value = 6 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 5 } #Belfast
+command = { type = secedeprovince which = U07 value = 4 } #Portadown
+command = { type = secedeprovince which = U07 value = 9 } #Dublin
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = access which = U07 }
+command = { type = guarantee which = U07 where = VIC }
+command = { type = set_relation which = U07 value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = NZL } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = AST } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = SAF } } type = set_relation which = SAF value = 200 }
+command = { type = dissent value = -10 }
+}
+}
+
+
+event = {
+id = 114011
+random = no
+country = SAF
+style = 2
+picture = "ENG_rally"
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the Royal Family has returned to Britain in triumph.  It is a glorious day for Britain and the Empire.  God save the King!"
+
+action_a = {
+name = "The British Empire Stands United"
+command = { type = secedeprovince which = U07 value = 23 } #Stornaway
+command = { type = secedeprovince which = U07 value = 20 } #Scapa Flow
+command = { type = secedeprovince which = U07 value = 27 } #Inverness
+command = { type = secedeprovince which = U07 value = 26 } #Aberdeen
+command = { type = secedeprovince which = U07 value = 29 } #Dunfernline
+command = { type = secedeprovince which = U07 value = 25 } #Glasgow
+command = { type = secedeprovince which = U07 value = 28 } #Edinburgh
+command = { type = secedeprovince which = U07 value = 19 } #Sunderland
+command = { type = secedeprovince which = U07 value = 22 } #Blackpool
+command = { type = secedeprovince which = U07 value = 21 } #Sheffield
+command = { type = secedeprovince which = U07 value = 24 } #Liverpool
+command = { type = secedeprovince which = U07 value = 16 } #Cardiff
+command = { type = secedeprovince which = U07 value = 17 } #Birmingham
+command = { type = secedeprovince which = U07 value = 18 } #Norwich
+command = { type = secedeprovince which = U07 value = 15 } #London
+command = { type = secedeprovince which = U07 value = 14 } #Dover
+command = { type = secedeprovince which = U07 value = 13 } #Portsmouth
+command = { type = secedeprovince which = U07 value = 10 } #Bristol
+command = { type = secedeprovince which = U07 value = 11 } #Plymouth
+command = { type = secedeprovince which = U07 value = 12 } #Cork
+command = { type = secedeprovince which = U07 value = 7 } #Galway
+command = { type = secedeprovince which = U07 value = 8 } #Sligo
+command = { type = secedeprovince which = U07 value = 6 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 5 } #Belfast
+command = { type = secedeprovince which = U07 value = 4 } #Portadown
+command = { type = secedeprovince which = U07 value = 9 } #Dublin
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = access which = U07 }
+command = { type = guarantee which = U07 where = SAF }
+command = { type = set_relation which = U07 value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAN } } type = set_relation which = CAN value = 200 }
+command = { trigger = { alliance = { country = U07 country = GUY } } type = set_relation which = VIC value = 200 }
+command = { trigger = { alliance = { country = U07 country = PAK } } type = set_relation which = PAK value = 200 }
+command = { trigger = { alliance = { country = U07 country = NZL } } type = set_relation which = GUY value = 200 }
+command = { trigger = { alliance = { country = U07 country = USA } } type = set_relation which = USA value = 200 }
+command = { trigger = { alliance = { country = U07 country = AST } } type = set_relation which = NZL value = 200 }
+command = { trigger = { alliance = { country = U07 country = CAL } } type = set_relation which = CAL value = 200 }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = set_relation which = RUS value = 200 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = set_relation which = U24 value = 200 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = set_relation which = U25 value = 200 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = set_relation which = VIC value = 200 }
+command = { type = dissent value = -10 }
+}
+}
+
+
+event = {
+id = 114012
+random = no
+country = USA
+style = 2
+picture = "ENG_rally"
+
+name = "The Liberation of the United Kingdom"
+desc = "After years of exile and struggle, the armed forces of the Union of Britain have been defeated and its leaders fled, while the British Royal Family has returned in triumph.  It is a glorious day for our allies!"
+
+action_a = {
+name = "The British Empire Stands United"
+ai_chance = 100
+command = { type = secedeprovince which = U07 value = 23 } #Stornaway
+command = { type = secedeprovince which = U07 value = 20 } #Scapa Flow
+command = { type = secedeprovince which = U07 value = 27 } #Inverness
+command = { type = secedeprovince which = U07 value = 26 } #Aberdeen
+command = { type = secedeprovince which = U07 value = 29 } #Dunfernline
+command = { type = secedeprovince which = U07 value = 25 } #Glasgow
+command = { type = secedeprovince which = U07 value = 28 } #Edinburgh
+command = { type = secedeprovince which = U07 value = 19 } #Sunderland
+command = { type = secedeprovince which = U07 value = 22 } #Blackpool
+command = { type = secedeprovince which = U07 value = 21 } #Sheffield
+command = { type = secedeprovince which = U07 value = 24 } #Liverpool
+command = { type = secedeprovince which = U07 value = 16 } #Cardiff
+command = { type = secedeprovince which = U07 value = 17 } #Birmingham
+command = { type = secedeprovince which = U07 value = 18 } #Norwich
+command = { type = secedeprovince which = U07 value = 15 } #London
+command = { type = secedeprovince which = U07 value = 14 } #Dover
+command = { type = secedeprovince which = U07 value = 13 } #Portsmouth
+command = { type = secedeprovince which = U07 value = 10 } #Bristol
+command = { type = secedeprovince which = U07 value = 11 } #Plymouth
+command = { type = secedeprovince which = U07 value = 12 } #Cork
+command = { type = secedeprovince which = U07 value = 7 } #Galway
+command = { type = secedeprovince which = U07 value = 8 } #Sligo
+command = { type = secedeprovince which = U07 value = 6 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 5 } #Belfast
+command = { type = secedeprovince which = U07 value = 4 } #Portadown
+command = { type = secedeprovince which = U07 value = 9 } #Dublin
+command = { type = secedeprovince which = U07 value = 31 } #Cork
+command = { type = secedeprovince which = U07 value = 30 } #Galway
+command = { type = secedeprovince which = U07 value = 34 } #Sligo
+command = { type = secedeprovince which = U07 value = 32 } #Letterkenny
+command = { type = secedeprovince which = U07 value = 33 } #Belfast
+command = { type = secedeprovince which = U07 value = 35 } #Portadown
+command = { type = secedeprovince which = U07 value = 36 } #Dublin
+command = { type = set_relation which = U07 value = 200 }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+name = "Actually, I Think We'll Keep These Provinces"
+trigger = {
+OR = {
+owned = { province = 23 data = USA } #Stornaway
+owned = { province = 20 data = USA } #Scapa Flow
+owned = { province = 27 data = USA } #Inverness
+owned = { province = 26 data = USA } #Aberdeen
+owned = { province = 29 data = USA } #Dunfernline
+owned = { province = 25 data = USA } #Glasgow
+owned = { province = 28 data = USA } #Edinburgh
+owned = { province = 19 data = USA } #Sunderland
+owned = { province = 22 data = USA } #Blackpool
+owned = { province = 21 data = USA } #Sheffield
+owned = { province = 24 data = USA } #Liverpool
+owned = { province = 16 data = USA } #Cardiff
+owned = { province = 17 data = USA } #Birmingham
+owned = { province = 18 data = USA } #Norwich
+owned = { province = 15 data = USA } #London
+owned = { province = 14 data = USA } #Dover
+owned = { province = 13 data = USA } #Portsmouth
+owned = { province = 10 data = USA } #Bristol
+owned = { province = 11 data = USA } #Plymouth
+owned = { province = 12 data = USA }
+owned = { province = 7 data = USA }
+owned = { province = 8 data = USA }
+owned = { province = 6 data = USA }
+owned = { province = 5 data = USA }
+owned = { province = 4 data = USA }
+owned = { province = 9 data = USA }
+}
+}
+ai_chance = 0
+command = { type = dissent value = 5 }
+command = { type = leave_alliance }
+}
+}
+
+event = {
+id = 114013
+random = no
+country = FRA
+style = 2
+picture = "ENG_rally"
+
+trigger = {
+event = 114001
+exists = U07
+NOT = {
+owned = { province = 23 data = FRA } #Stornaway
+owned = { province = 20 data = FRA } #Scapa Flow
+owned = { province = 27 data = FRA } #Inverness
+owned = { province = 26 data = FRA } #Aberdeen
+owned = { province = 29 data = FRA } #Dunfernline
+owned = { province = 25 data = FRA } #Glasgow
+owned = { province = 28 data = FRA } #Edinburgh
+owned = { province = 19 data = FRA } #Sunderland
+owned = { province = 22 data = FRA } #Blackpool
+owned = { province = 21 data = FRA } #Sheffield
+owned = { province = 24 data = FRA } #Liverpool
+owned = { province = 16 data = FRA } #Cardiff
+owned = { province = 17 data = FRA } #Birmingham
+owned = { province = 18 data = FRA } #Norwich
+owned = { province = 15 data = FRA } #London
+owned = { province = 14 data = FRA } #Dover
+owned = { province = 13 data = FRA } #Portsmouth
+owned = { province = 10 data = FRA } #Bristol
+owned = { province = 11 data = FRA } #Plymouth
+owned = { province = 12 data = FRA }
+owned = { province = 7 data = FRA }
+owned = { province = 8 data = FRA }
+owned = { province = 6 data = FRA }
+owned = { province = 5 data = FRA }
+owned = { province = 4 data = FRA }
+owned = { province = 9 data = FRA }
+}
+government = communist
+}
+
+name = "Refugees from the Union of Britain"
+desc = "The Royalists have somehow managed to defeat the Union of Britain.  As a result, persecuted Syndicalists have fled across the Channel, seeking refuge on our shores.  In addition, small elements of the former armed forces of the Union of Britain have reached the safety of our country, pledged to one day return to Britain and once again defeat the Royalists."
+
+date =  { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We Welcome Our Brothers in Syndicalism!"
+command = { type = add_corps which = "Free UoB Fleet" value = naval where = 38 } #Cherbourg
+command = { type = add_division which = "RNS Union of Britain" value = light_cruiser when = 2 }
+command = { type = add_division which = "1st Destroyer Flotilla" value = destroyer when = 2 }
+command = { type = add_division which = "1st Submarine Flotilla" value = submarine when = 1 }
+command = { type = add_division which = "Snowden Flotilla" value = transport when = 1 }
+command = { type = add_corps which = "Free UoB Corps" value = land where = 38 } #Cherbourg
+command = { type = add_division which = "1st UoB Division" value = infantry when = 1 }
+command = { type = add_division which = "2nd UoB Division" value = infantry when = 1 }
+command = { type = add_corps which = "UoB Tactical Wing" value = air where = 38 } #Cherbourg
+command = { type = add_division which = "UoB Tactical Wing" value = tactical_bomber when = 2 }
+command = { type = manpowerpool value = 10 }
+command = { type = gain_tech which = -1 }
+}
+}
+
+event = {
+id = 114014
+random = no
+country = ENG
+style = 2
+
+trigger = {
+NOT = {
+owned = { province = 37 data = ENG }
+owned = { province = 43 data = ENG }
+owned = { province = 45 data = ENG }
+owned = { province = 49 data = ENG }
+exists = FRA
+}
+control = { province = 29 data = ENG }
+control = { province = 26 data = ENG }
+government = communist
+}
+
+name = "Refugees from the Commune of France"
+desc = "The imperialist have somehow managed to defeat the Commune of France.  As a result, persecuted Syndicalists have fled across the Channel, seeking refuge on our shores.  In addition, small elements of the former armed forces of the Commune of France have reached the safety of our country, pledged to one day return to France and once again defeat the imperialists."
+
+date =  { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We Welcome Our Brothers in Syndicalism!"
+command = { trigger = { NOT = { alliance = { country = ENG country = RUS } alliance = { country = ENG country = SOV } alliance = { country = ENG country = CSA } } } type = alliance_leader which = ENG where = 3 } #Union of Britain leader of the International!
+command = { type = add_corps which = "Free CoF Fleet" value = naval where = 26 } #Dover
+command = { type = add_division which = "Commune of France" value = light_cruiser when = 2 }
+command = { type = add_division which = "1st Destroyer Flotilla" value = destroyer when = 2 }
+command = { type = add_division which = "1st Submarine Flotilla" value = submarine when = 1 }
+command = { type = add_division which = "Faure Flotilla" value = transport when = 1 }
+command = { type = add_corps which = "Free CoF Corps" value = land where = 26 } #Dover
+command = { type = add_division which = "1st CoF Division" value = infantry when = 1 }
+command = { type = add_division which = "2nd CoF Division" value = infantry when = 1 }
+command = { type = add_corps which = "CoF Tactical Wing" value = air where = 26 } #Dover
+command = { type = add_division which = "CoF Tactical Wing" value = tactical_bomber when = 2 }
+command = { type = manpowerpool value = 10 }
+command = { type = gain_tech which = -1 }
+}
+}
+

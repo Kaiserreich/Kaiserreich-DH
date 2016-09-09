@@ -1,0 +1,454 @@
+
+
+
+event = {
+id = 110000
+random = no
+country = SAF
+
+name = "John R.R. Tolkien: The Downfall of Numenor."
+desc = "EVT_666801_DESC"
+style = 2
+picture = "Tolkien"
+
+date = { day = 6 month = november year = 1938 }
+
+action_a = {
+name = "A fascinating book"
+command = { }
+}
+}
+
+event = {
+id = 110001
+random = no
+country = CAN
+
+name = "John R.R. Tolkien: The Downfall of Numenor."
+desc = "EVT_666801_DESC"
+style = 2
+picture = "Tolkien"
+
+date = { day = 6 month = november year = 1938 }
+
+action_a = {
+name = "A fascinating book"
+command = { }
+}
+}
+
+event = {
+id = 110002
+random = no
+country = PAK
+
+name = "Rudyard Kipling dies"
+desc = "British author Rudyard Kipling died today in Delhi, at 70. A staunch supporter of colonialism, the author of The Jungle Book, Kim, If and The Man Who Would Be King had left Britain after the Revolution to return to his native India. His only regret was to not being able to return to his native town of Bombay, now in hands of the hostile Princely Federation."
+style = 2
+picture = "Kipling"
+
+date = { day = 18 month = january year = 1936 }
+
+action_a = {
+name = "The British Empire mourns a great writer"
+command = { type = dissent value = 1  }
+}
+}
+
+event = {
+id = 110003
+random = no
+country = VIC
+
+name = "Charles Nicolle dies"
+desc = "French bacteriologist Charles Nicolle died today in Tunis at 69. Director of the Pasteur Institute in Tunis, where he stayed after the Great War, he studied there the transmission of epidemic typhus, eventually discovering that lice were responsible for it. Along with his works on Malta and tick fevers, this earned him the Nobel Prize for Medicine in 1928."
+style = 2
+picture = "minister_died"
+
+date = { day = 28 month = february year = 1936 }
+
+action_a = {
+name = "We should spread typhus on the Communards!"
+command = { type = dissent value = 1  }
+}
+}
+
+event = {
+id = 110004
+random = no
+country = CAN
+
+name = "Gilbert K. Chesterton dies"
+desc = "British writer Gilbert Keith Chesterton died today in his exile in Ottawa, at 62. A prolific author whose most-known novel is certainly The Man Who Was Thursday, he was a devout Roman Catholic and a Christian apologist, two reasons that forced him to leave England to avoid persecution after the Syndicalist Revolution."
+style = 2
+picture = "minister_died"
+
+date = { day = 14 month = june year = 1936 }
+
+action_a = {
+name = "The Prince of Paradox died"
+command = { type = dissent value = 1  }
+}
+}
+
+event = {
+id = 110005
+random = no
+country = VIC
+
+name = "Jacques Bainville dies"
+desc = "French historian Jacques Bainville died today in Algiers. A follower of Charles Maurras who he followed in Africa, he was mostly known for his accurate descriptions of foreign policies."
+style = 2
+picture = "minister_died"
+
+date = { day = 9 month = february year = 1936 }
+
+action_a = {
+name = "A great patriot died today"
+command = { type = dissent value = 1  }
+}
+}
+
+event = {
+id = 110006
+random = no
+country = CAN
+
+name = "Edmund Allenby dies"
+desc = "General Allenby died today in his exile at Ottawa, aged 75. Retired since 1925, he was mostly known as the commander-in-chief of the British expeditionary forces in the Middle East. After achieving major victories thanks to Arab help, such as taking Jerusalem, he was forced to withdraw as the Great War went bad for England. By honouring him with state funerals, King Edward VIII wants to show his desire for revenge."
+style = 2
+picture = "minister_died"
+
+date = { day = 29 month = september year = 1936 }
+
+action_a = {
+name = "A war hero died today"
+command = { type = dissent value = 1  }
+}
+}
+
+#########################
+## Canada's old ships by AC ##
+#########################
+# 110007 CAN  Old useless ships
+# 110008 PAK  Canada selling old ships
+# 110009 GUY Canada selling old ships
+# 110010 CAN  Delhi bought our ships
+# 110011 CAN  The Caribbean Federation bought our ships
+# 110012 CAN  Delhi refused to buy our ships
+# 110013 CAN  The Caribbean Federation refused to buy our ships
+# 110014 PAK  Canada selling old ships
+# 110015 GUY Canada selling old ships
+# 110016 CAN  Nobody wants our ships
+
+event = {
+id = 110007
+random = no
+country = CAN
+style = 2
+
+trigger = {
+exists = GUY
+exists = PAK
+alliance = { country = CAN country = GUY }
+alliance = { country = CAN country = PAK }
+NOT = {
+atwar = CAN
+}
+random = 20
+}
+
+name = "Old useless ships"
+desc = "There are some old ships in our fleet that were converted for civilian use at the end of the Weltkrieg, before the revolution in the Home Isles. Now they are too old and inefficient and they have been given back to the control of the Royal Navy. They are one short-range light cruiser, one short-range destroyer and one transport ship. We could keep them, but it would be more advantageous to either sell them or scrap them."
+picture = "boat"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Scrap them for metal and supplies"
+ai_chance = 20
+command = { type = metalpool value = 500 }
+command = { type = supplies value = 200 }
+}
+
+action_b = {
+name = "Sell them to Delhi"
+ai_chance = 40
+command = { type = trigger which = 110008 }
+}
+
+action_c = {
+name = "Sell them to the Caribbean Federation"
+ai_chance = 35
+command = { type = trigger which = 110009 }
+}
+
+action_d = {
+name = "They can still be useful"
+ai_chance = 5
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+}
+}
+
+event = {
+id = 110008
+random = no
+country = PAK
+style = 2
+
+name = "Canada selling old ships"
+desc = "Canada made an offer: we can buy three of their oldest ships (a light cruiser, a destroyer and a transport ship). They are old and inefficient, but it could be a start for a real naval program."
+picture = "boat"
+
+action_a = {
+name = "Buy them"
+ai_chance = 80
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+command = { type = money value = -100 }
+command = { type = supplies value = -100 }
+command = { type = trigger which = 110010 }
+}
+
+action_b = {
+name = "We can't afford them"
+ai_chance = 20
+command = { type = trigger which = 110012 }
+}
+}
+
+event = {
+id = 110009
+random = no
+country = GUY
+style = 2
+
+name = "Canada selling old ships"
+desc = "Canada made an offer: we can buy three of their oldest ships (a light cruiser, a destroyer and a transport ship). They are old and inefficient, but we could still use them in our Navy."
+picture = "boat"
+
+action_a = {
+name = "Buy them"
+ai_chance = 80
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+command = { type = money value = -100 }
+command = { type = supplies value = -100 }
+command = { type = trigger which = 110011 }
+}
+
+action_b = {
+name = "We can't afford them"
+ai_chance = 20
+command = { type = trigger which = 110013 }
+}
+}
+
+event = {
+id = 110010
+random = no
+country = CAN
+style = 2
+
+name = "Delhi bought our ships"
+desc = "Delhi accepted our offer and bought our old ships! We can now use their money and supplies to produce newer and better models."
+picture = "boat"
+
+action_a = {
+name = "Good"
+command = { type = money value = 100 }
+command = { type = supplies value = 100 }
+}
+}
+
+event = {
+id = 110011
+random = no
+country = CAN
+style = 2
+
+name = "The Caribbean Federation bought our ships"
+desc = "The Caribbean Federation accepted our offer and bought our old ships! We can now use their money and supplies to produce newer and better models."
+picture = "boat"
+
+action_a = {
+name = "Good"
+command = { type = money value = 100 }
+command = { type = supplies value = 100 }
+}
+}
+
+event = {
+id = 110012
+random = no
+country = CAN
+style = 2
+
+name = "Delhi refused to buy our ships"
+desc = "Delhi refused to buy our old ships! We can now scrap them or offer them to the Caribben Federation."
+picture = "boat"
+
+action_a = {
+name = "Scrap them for metal and supplues"
+ai_chance = 40
+command = { type = metalpool value = 500 }
+command = { type = supplies value = 200 }
+}
+
+action_b = {
+name = "Sell them to the Caribbean Federation"
+ai_chance = 55
+command = { type = trigger which = 110014 }
+}
+
+action_c = {
+name = "We can still use them"
+ai_chance = 5
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+}
+}
+
+event = {
+id = 110013
+random = no
+country = CAN
+style = 2
+
+name = "The Caribbean Federation refused to buy our ships"
+desc = "The Caribbean Federation refused to buy our old ships! We can now scrap them or offer them to Delhi."
+picture = "boat"
+
+action_a = {
+name = "Scrap them for metal and supplues"
+ai_chance = 40
+command = { type = metalpool value = 500 }
+command = { type = supplies value = 200 }
+}
+
+action_b = {
+name = "Sell them to Delhi"
+ai_chance = 55
+command = { type = trigger which = 110015 }
+}
+
+action_c = {
+name = "We can still use them"
+ai_chance = 5
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+}
+}
+
+event = {
+id = 110014
+random = no
+country = GUY
+style = 2
+
+name = "Canada selling old ships"
+desc = "Canada made an offer: we can buy three of their oldest ships (a light cruiser, a destroyer and a transport ship). They are old and inefficient, but we could still use them in our Navy."
+picture = "boat"
+
+action_a = {
+name = "Buy them"
+ai_chance = 80
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+command = { type = money value = -100 }
+command = { type = supplies value = -100 }
+command = { type = trigger which = 110011 }
+}
+
+action_b = {
+name = "We can't afford them"
+ai_chance = 20
+command = { type = trigger which = 110016 }
+}
+}
+
+event = {
+id = 110015
+random = no
+country = PAK
+style = 2
+
+name = "Canada selling old ships"
+desc = "Canada made an offer: we can buy three of their oldest ships (a light cruiser, a destroyer and a transport ship). They are old and inefficient, but it could be a start for a real naval program."
+picture = "boat"
+
+action_a = {
+name = "Buy them"
+ai_chance = 80
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+command = { type = money value = -100 }
+command = { type = supplies value = -100 }
+command = { type = trigger which = 110010 }
+}
+
+action_b = {
+name = "We can't afford them"
+ai_chance = 20
+command = { type = trigger which = 110016 }
+}
+}
+
+event = {
+id = 110016
+random = no
+country = CAN
+style = 2
+
+name = "Nobody wants our ships"
+desc = "Neither Delhi nor the Caribbean Federation want to buy our old ships: now we can only scrap them or keep them."
+picture = "boat"
+
+action_a = {
+name = "Scrap them for metal and supplues"
+ai_chance = 80
+command = { type = metalpool value = 500 }
+command = { type = supplies value = 200 }
+}
+
+action_b = {
+name = "We can still use them"
+ai_chance = 20
+command = { type = add_division which = "1st Reserve Fleet" value = light_cruiser when = 5 }
+command = { type = add_division which = "2nd Reserve Fleet" value = destroyer when = 4 }
+command = { type = add_division which = "3rd Reserve Fleet" value = transport when = 1 }
+}
+}
+
+#########################
+##end of Canada's old ships ##
+########################
+
+event = {
+id = 110017
+random = no
+country = AST
+picture = "San Antonio"
+style = 2
+
+date = { day = 26 month = january year = 1940 }
+
+name = "Warmest day ever hits Brisbane, Australasia!"
+desc = "Today at 12AM the city Brisbane had it's hottest day ever. At the top the temperature was 43.2 degrees Celsius (109.76 Fahrenheit)."
+
+action_a = {
+name = "Oh god it's hot!"
+command = { type = dissent value = 1  }
+}
+}
+

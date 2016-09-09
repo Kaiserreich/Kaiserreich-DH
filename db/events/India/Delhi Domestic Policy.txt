@@ -1,0 +1,4033 @@
+#################################################################################
+#Delhi Government
+#################################################################################
+####  by Milites
+####
+
+event = {
+id = 184000
+random = no
+country = PAK
+style = 2
+picture = "British_Raj"
+
+trigger = {
+NOT = { 
+atwar = PAK  
+}
+}
+
+date = { day = 2 month = january year = 1936 }
+
+name = "1936, Delhi's Darkest Hour"
+desc = "The Delhi government is the self-proclaimed legal successor state to the British Raj, yet within its borders different fractions vie for power. The progressive rajas and burgeoisie are content with authoritarian dominion status, but radical nationalists and independence activists are still calling for the expulsion of the British. Tensions are running high inside the Red Fort as well as in the nation's central parliament"
+
+action_a = {
+name = "Quite a pickle, I say."
+command = { type = trigger which = 184001 }
+}
+}
+
+
+event = {
+id = 184001
+random = no
+country = PAK
+style = 2
+picture = "British_Raj"
+
+name = "Remnants of the Raj"
+desc = "A curious mix of princely states and old British colonial administration, Delhi is governed by the Weltkrieg hero Maharaja Ganga Singh and his government of Raj administrators and north-western native princes. However, it has been a decade since revolution threw India into anarchy and it has become painfully obvious that the need for reform is dire."
+
+action_a = {
+name = "For God, Emperor and India!"
+command = { }
+}
+}
+
+################################################################################?#
+#Death of George V - Delhi in Chaos
+################################################################################?#
+
+event = {
+id = 184002
+random = no
+country = PAK
+style = 2
+picture = "GeorgeV_Funeral"
+
+trigger = {
+headofstate = 564001
+}
+
+date = { day = 19 month = january year = 1936 }
+
+name = "The Passing of King George V"
+desc = "The ousted king of Britain, George V, finally succumbed to the illness that had plagued him since revolution swept through the home isles. As the head of state of the Dominion of India, Delhi, his death will certainly cause trouble amongst the competing fractions of the former Raj, but for now the Chamber of Princes will head a regency till the coronation of his son, Edward."
+
+action_a = {
+name = "The Entente enters a state of mourning..."
+command = { type = sleepminister which = 564001 }
+command = { type = headofstate which = 564076 }
+command = { type = dissent value = 5 }
+command = { type = setflag which = coronationcrisis }
+}
+}
+
+
+event = {
+id = 184003
+country = PAK
+picture = "EdwardVIIIcrowned"
+style = 2
+
+trigger = { 
+event = 104007 # in Canada Domestic Policy.txt
+}
+
+date = { day = 10 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1953 }
+
+name = "Edward VIII Ascends the Imperial Throne"
+desc = "In Canada, the Prince of Wales has succeeded his father as King and Emperor of all the dominions of the British Empire, however, the Chamber of Princes has not yet accepted him as such and there are rumblings within the army, notably the anti-British rajas lead by Sayajirao Gaekwad, that India no longer needs a foreign monarch, no matter how ceremonial the role has become."
+
+action_a = {
+name = "Arrange for an Imperial Durbar to formalise his coronation!"
+command = { type = relation which = CAN value = 75 }
+command = { type = relation which = AST value = 60 }
+command = { type = relation which = GUY value = 50 }
+command = { type = relation which = VIC value = 40 }
+command = { type = dissent value = 5 }
+command = { type = setflag which = PAKDOMINION1 }
+}
+}
+
+################################################################################?#
+#Fifth Anglo-Afghan War
+################################################################################?#
+
+event = {
+id = 184004
+country = AFG
+style = 2
+picture = "afghanwar"
+decision_picture = "decision_afghanwar"
+
+decision = {
+exists = PAK
+NOT = {
+ispuppet = PAK
+alliance = { country = AFG country = PAK }
+atwar = AFG
+}
+flag = coronationcrisis
+}
+
+decision_trigger = {
+control = { province = 2171 data = AFG } #Kabul
+OR = {
+control = { province = 1537 data = AFG } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+exists = PAK
+NOT = {
+ispuppet = PAK
+alliance = { country = PAK country = AFG }
+atwar = AFG
+}
+flag = coronationcrisis
+control = { province = 2171 data = AFG } #Kabul
+OR = {
+control = { province = 1537 data = AFG } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = february year = 1936 }
+offset =  30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Amanullah Khan and the Indian Crisis of Succession"
+desc = "In the remnants of the Raj to our south, dissent has sprung up like wildflowers in the wake of Edward VIII's succession. In Kabul, we have our own troubles keeping the latent discontent of reform down. A repeat of the victorius Fourth Anglo-Afghan War might cement our own position whilst winning new lands and subjects for the crown!"
+
+action_a = {
+ai_chance = 100
+name = "The time is ripe, let us repeat the victory of 1926!"
+command = { type = war which = PAK }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Bah! What do Indians have but cows?"
+command = { type = dissent value = 15 }
+}
+}
+
+################################################################################?#
+#Fifth Anglo-Afghan War - Afghan Victory
+################################################################################?#
+
+event = {
+id = 184005
+random = no
+country = AFG
+
+trigger = {
+war = { country = AFG country = PAK }
+control = { province = 2171 data = AFG }
+control = { province = 2169 data = AFG }
+control = { province = 1530 data = AFG }
+control = { province = 1459 data = AFG }
+control = { province = 1533 data = AFG }
+}
+
+name = "The Third Treaty of Rawalpindi"
+desc = "Victory is ours! The decadent British lapdogs in Delhi have been utterly routed and our forces are entrenched in the smouldering remains of their capital. Now might be the best time to demand concessions, whilst we still carry the lead."
+style = 2
+picture = "afghanwar"
+
+date = { day = 1 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = june year = 1960 }
+
+action_a = {
+ai_chance = 98
+name = "Let us claim Kashmir and carve a path to the Mouth of the Indus!"
+command = { type = trigger which = 184006 }
+command = { type = addcore which = 1539 }
+command = { type = addcore which = 1540 }
+command = { type = addcore which = 1534 }
+command = { type = addcore which = 1538 }
+command = { type = addcore which = 1533 }
+command = { type = dissent value = -3 }
+}
+
+action_b = {
+ai_chance = 1
+name = "I shall be the emancipator and liberator of all Mohammedans in the Indus Valley!"
+command = { type = dissent value = 5 }
+command = { type = trigger which = 184007 }
+command = { type = addcore which = 1539 }
+command = { type = addcore which = 1540 }
+command = { type = addcore which = 1534 }
+command = { type = addcore which = 1538 }
+command = { type = addcore which = 1533 }
+command = { type = addcore which = 1530 }
+command = { type = addcore which = 1536 }
+}
+
+action_c = {
+ai_chance = 1
+name = "No peace with idol-worshippers, let us complete our conquest!"
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 184006
+country = PAK
+style = 2
+picture = "afghanwar"
+
+name = "Demands of the Emir"
+desc = "Curses! The Afghan dogs have completely overpowered us and have reduced our proud nation to humiliation. Now the Afghan Emir demands our surrender of the princely state of Kashmir and access to the Mouth of the Indus. Although these are harsh terms, it might be wise to comply - lest our rivals on the continent act on our exposed situation."
+
+action_a = {
+ai_chance = 90
+name = "We yield because we have no other choice..."
+command = { type = dissent value = 6 }
+command = { type = peace which = AFG value = 0 }
+command = { type = secedeprovince which = AFG value = 1539 }
+command = { type = secedeprovince which = AFG value = 1540 }
+command = { type = secedeprovince which = AFG value = 1534 }
+command = { type = secedeprovince which = AFG value = 1538 }
+command = { type = secedeprovince which = AFG value = 1533 }
+}
+
+action_b = {
+ai_chance = 10
+name = "They must be joking, Hindustan Zindabad!"
+command = { type = dissent value = 20 }
+}
+}
+
+
+event = {
+id = 184007
+country = PAK
+style = 2
+picture = "afghanwar"
+
+name = "Demands of the Emir"
+desc = "Curses! The Afghan dogs have completely overpowered us and have reduced our proud nation to humiliation. Now the Afghan Emir demands our surrender of the princely state of Kashmir and access to the Mouth of the Indus. Although these are harsh terms, it might be wise to comply - lest our rivals on the continent act on our exposed situation."
+
+action_a = {
+ai_chance = 40
+name = "We yield because we have no other choice..."
+command = { type = dissent value = 6 }
+command = { type = peace which = AFG value = 0 }
+command = { type = secedeprovince which = AFG value = 1539 }
+command = { type = secedeprovince which = AFG value = 1540 }
+command = { type = secedeprovince which = AFG value = 1534 }
+command = { type = secedeprovince which = AFG value = 1538 }
+command = { type = secedeprovince which = AFG value = 1533 }
+command = { type = secedeprovince which = AFG value = 1530 }
+command = { type = secedeprovince which = AFG value = 1536 }
+}
+
+action_b = {
+ai_chance = 60
+name = "They must be joking, Hindustan Zindabad!"
+command = { type = dissent value = 5 }
+}
+}
+
+################################################################################?#
+#Fifth Anglo-Afghan War - Indian Victory
+################################################################################?#
+
+event = {
+id = 184008
+random = no
+country = PAK
+
+trigger = {
+
+war = { country = AFG country = PAK }
+control = { province = 1537 data = PAK }
+control = { province = 1529 data = PAK }
+}
+
+name = "The Third Treaty of Rawalpindi"
+desc = "Amanullah Khan's ambition of furthering Afghan influence in India has been crushed. The troops of the Dominion have crossed the Durrand Line, retaken the lost North-West Frontier Provinces and the cities of Peshawar and Quetta whilst threatening Kabul itself. The Afghan state is in complete disarray and her populace begging for peace. All remaining for us to do, is to proclaim our demands to the vanquished."
+style = 2
+picture = "afghanwar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 75
+name = "Let us reclaim our lost cities of Peshawar and Quetta!"
+command = { type = trigger which = 184009 }
+command = { type = addcore which = 1529 }
+command = { type = addcore which = 1537 }
+command = { type = waketeam which = 12525 }
+command = { type = dissent value = -3 }
+}
+
+action_b = {
+ai_chance = 25
+name = "Let us finish the Great Game and completely pacify the Afghans!"
+command = { type = supplies value = 500 }
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 184009
+country = AFG
+style = 2
+picture = "British_raj"
+
+name = "The Third Treaty of Rawalpindi"
+desc = "Catastrophe! Our campaign against the Delhi Government has been crowned with spectacular failure and our armies forced through the Pass of Khyber, fleeing in panick. The vice-roy, Ganga Singh, has offered peace - demanding a restoration of the pre-1926 borders. Unfortunately we seem unable to decline, lest our very nation be destroyed..."
+
+action_a = {
+ai_chance = 100
+name = "We yield because we have no other choice..."
+command = { type = dissent value = 5 }
+command = { type = peace which = PAK value = 0 }
+command = { type = peace which = GER value = 0 }
+command = { type = peace which = CAN value = 0 }
+command = { type = secedeprovince which = PAK value = 1529 }
+command = { type = secedeprovince which = PAK value = 1537 }
+command = { type = removecore which = 1529 }
+command = { type = removecore which = 1537 }
+command = { type = removeclaim which = 1538 }
+command = { type = sleepteam which = 7604 }
+command = { type = non_aggression which = AFG where = PAK }
+command = { type = event which = 50000 where = AFG when = 14 } #In Afghanistan file
+}
+
+action_b = {
+ai_chance = 0
+name = "We shall fight you to the end, idol-worshippers!"
+command = { type = dissent value = 15 }
+}
+}
+
+################################################################################?#
+#Imperial Durbar 1936
+################################################################################?#
+
+event = {
+id = 184010
+random = no
+country = PAK
+picture = "indiandurbar"
+style = 2
+
+trigger = {
+flag = PAKDOMINION1
+owned = { province = 1459 data = PAK }
+owned = { province = 1529 data = PAK }
+owned = { province = 1537 data = PAK }
+control = { province = 1459 data = PAK }
+}
+
+date = { day = 0 month = june year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Imperial Durbar of 1936"
+desc = "Last held in 1911 in honour of the late George V, the Imperial Durbar was a mass event celebrating the coronation of a new British monarch as well as a moment for important proclamations regarding the state. Now, with Afghanistan defeated by Indians and the British Empire still in danger, many expect the new monarch, Edward, to have his powers further weakened by an empowered legislature."
+
+action_a = {
+ai_chance = 60
+name = "Hail the King-Emperor, but legally establish him as a figurehead!"
+command = { type = relation which = CAN value = 25 }
+command = { type = dissent value = -5 }
+command = { type = sleepminister which = 564076 }
+command = { type = headofstate which = 564079 }
+command = { type = setflag which = PAKDOMINION2 }
+command = { type = clrflag which = coronationcrisis }
+}
+
+action_b = {
+ai_chance = 40
+name = "Delegate the King-Emperor's duties to an Indian vice-roy!"
+command = { type = relation which = CAN value = 5 }
+command = { type = dissent value = -3 }
+command = { type = sleepminister which = 564076 }
+command = { type = headofstate which = 564083 }
+command = { type = domestic which = democratic value = 1 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = wakeminister which = 564103 }
+command = { type = wakeminister which = 564104 }
+command = { type = wakeminister which = 564105 }
+command = { type = wakeminister which = 564106 }
+command = { type = setflag which = PAKViceroy }
+command = { type = clrflag which = coronationcrisis }
+}
+}
+
+################################################################################?#
+#Dominion Elections
+################################################################################?#
+
+event = {
+id = 184011
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+flag = PAKDOMINION2
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "The Dominion Elections"
+desc = "With the Imperial Durbar well passed and victory won in Afghanistan, Ganga Singh has acknowledged the need for fresh elections to be called for the country's central parliament. With a new democratically elected legislature, the course of reforms will be able to continue apace and the many difficulties facing our nation delegated to the pages of history."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance =  35
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 564081 } #Edward, ML
+command = { type = headofgovernment which = 564060 } #V. S. Srinivasa Sastri
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { type = armamentminister which = 564038 } #J.R.D. Tata
+command = { type = dissent value = -3  }
+command = { type = setflag which = PAKLiberal }
+}
+
+action = {
+ai_chance =  10
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 564080 } #Edward, SL
+command = { type = headofgovernment which = 564065 } #Narasimha Chintaman Kelkar
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564068 } #Kanaiyalal Maneklal Munshi
+command = { type = dissent value = -2 }
+command = { type = setflag which = PAKSwaraj }
+}
+
+action = {
+ai_chance =  25
+name = "Jinnah's leftists sweep into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 564082 } #Edward, SD
+command = { type = headofgovernment which = 564069 } #Muhammad Ali Jinnah
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+command = { type = setflag which = PAKJinnah }
+}
+
+action = {
+ai_chance =  30
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 564079 } #Edward, SC
+command = { type = headofgovernment which = 564073 } #Sir Sikander Hayat Khan
+command = { type = foreignminister which =  564035 } #Malik Khizar Hayat Tiwana
+command = { type = ministerofsecurity which = 564074 } #Sir Chhotu Ram
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+command = { type = setflag which = PAKUnionist }
+}
+}
+
+################################################################################?#
+#Dominion Elections - Viceroy
+################################################################################?#
+
+event = {
+id = 184012
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+flag = PAKViceroy
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "The Dominion Elections"
+desc = "With the Imperial Durbar well passed and victory won in Afghanistan, Ganga Singh has acknowledged the need for fresh elections to be called for the country's central parliament. With a new democratically elected legislature, the course of reforms will be able to continue apace and the many difficulties facing our nation delegated to the pages of history."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance =  35
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 564104 } #Ganga Singh, ML
+command = { type = headofgovernment which = 564060 } #V. S. Srinivasa Sastri
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { type = armamentminister which = 564038 } #J.R.D. Tata
+command = { type = dissent value = -3  }
+command = { type = setflag which = PAKLiberal }
+}
+
+action = {
+ai_chance =  10
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 564105 } #Ganga Singh, SL
+command = { type = headofgovernment which = 564065 } #Narasimha Chintaman Kelkar
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564068 } #Kanaiyalal Maneklal Munshi
+command = { type = dissent value = -2 }
+command = { type = setflag which = PAKSwaraj }
+}
+
+action = {
+ai_chance =  25
+name = "Jinnah's leftists sweep into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = headofstate which = 564106 } #Ganga Singh, SD
+command = { type = headofgovernment which = 564069 } #Muhammad Ali Jinnah
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+command = { type = setflag which = PAKJinnah }
+}
+
+action = {
+ai_chance =  30
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 564083 } #Ganga Singh, SC
+command = { type = headofgovernment which = 564073 } #Sir Sikander Hayat Khan
+command = { type = foreignminister which =  564035 } #Malik Khizar Hayat Tiwana
+command = { type = ministerofsecurity which = 564074 } #Sir Chhotu Ram
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+command = { type = setflag which = PAKUnionist }
+}
+}
+
+################################################################################?#
+#Status of the Diarchy - Liberal
+################################################################################?#
+
+event = {
+id = 184013
+country = PAK
+style = 2
+picture = "diarchy"
+decision_picture = "decision_diarchy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKLiberal
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKLiberal
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = august year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Princes, Provinces and Presidencies"
+desc = "EVT_101014_DESC"
+
+action_a = {
+ai_chance = 50
+name = "Grant the princes a pension, but abolish their sovereignty!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = event which = 184025 where = PAK when = 14 }
+}
+
+action_b = {
+ai_chance = 35
+name = "Abolish indirect rule and expropriate the princes!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = free_market value = 2 }
+command = { type = event which = 184026 where = PAK when = 14 }
+}
+
+action_c = {
+ai_chance = 15
+name = "Let the maharajs play rulers in peace, their loyalty is certain!"
+command = { type = event which = 184027 where = PAK when = 14 }
+command = { type = dissent value = 3 }
+}
+}
+
+################################################################################?#
+#Status of the Diarchy - Swaraj
+################################################################################?#
+
+event = {
+id = 184014
+country = PAK
+style = 2
+picture = "diarchy"
+decision_picture = "decision_diarchy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKSwaraj
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKSwaraj
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = august year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Princes, Provinces and Presidencies"
+desc = "EVT_101015_DESC"
+
+action_a = {
+ai_chance = 35
+name = "Grant the princes a pension, but abolish their sovereignty!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = event which = 184025 where = PAK when = 14 }
+}
+
+action_b = {
+ai_chance = 35
+name = "Abolish indirect rule and expropriate the princes!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = free_market value = 2 }
+command = { type = event which = 184026 where = PAK when = 14 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Let the maharajs play rulers in peace, their loyalty is certain!"
+command = { type = dissent value = 3 }
+command = { type = event which = 184027 where = PAK when = 14 }
+}
+}
+################################################################################?#
+#Status of the Diarchy - Jinnah
+################################################################################?#
+
+event = {
+id = 184015
+country = PAK
+style = 2
+picture = "diarchy"
+decision_picture = "decision_diarchy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKJinnah
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKJinnah
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = august year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Princes, Provinces and Presidencies"
+desc = "EVT_101016_DESC"
+
+action_a = {
+ai_chance = 25
+name = "Grant the princes a pension, but abolish their sovereignty!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = event which = 184025 where = PAK when = 14 }
+}
+
+action_b = {
+ai_chance = 65
+name = "Abolish indirect rule and expropriate the princes!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = free_market value = 2 }
+command = { type = event which = 184026 where = PAK when = 14 }
+}
+
+action_c = {
+ai_chance = 10
+name = "Let the maharajs play rulers in peace, their loyalty is certain!"
+command = { type = event which = 184027 where = PAK when = 14 }
+command = { type = dissent value = 3 }
+}
+}
+
+################################################################################?#
+#Status of the Diarchy - Jinnah
+################################################################################?#
+
+event = {
+id = 184016
+country = PAK
+style = 2
+picture = "diarchy"
+decision_picture = "decision_diarchy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKUnionist
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKUnionist
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = august year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Princes, Provinces and Presidencies"
+desc = "EVT_101017_DESC"
+
+action_a = {
+ai_chance = 25
+name = "Grant the princes a pension, but abolish their sovereignty!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = event which = 184025 where = PAK when = 14 }
+}
+
+action_b = {
+ai_chance = 65
+name = "The princes are the backbone of the state, strenghten their autonomy!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = event which = 184026 where = PAK when = 14 }
+}
+
+action_c = {
+ai_chance = 10
+name = "We do not need the princes, expropriate them all!"
+command = { type = dissent value = 10 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = free_market value = 2 }
+command = { type = event which = 184027 where = PAK when = 14 }
+}
+}
+
+################################################################################?#
+#Reforming the economy - Liberal
+################################################################################?#
+
+event = {
+id = 184017
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKLiberal
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKLiberal
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = november year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Economy Act"
+desc = "EVT_101018_DESC"
+
+action_a = {
+ai_chance = 50
+name = "Indian freedom and Indian greatness demand a liberal economy!"
+command = { type = dissent value = -1 }
+command = { type = money value = 350 }
+command = { type = domestic which = free_market value = 3 }
+}
+
+action_b = {
+ai_chance = 35
+name = "An emancipated people needs a balanced economic system!"
+command = { type = dissent value = -2 }
+command = { type = money value = 20 }
+command = { type = set_domestic which = free_market value = 6 }
+}
+
+action_c = {
+ai_chance = 15
+name = "Our strenght is based on the economy, enforce state control!"
+command = { type = dissent value = 3 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+################################################################################?#
+#Reforming the economy - Swaraj
+################################################################################?#
+
+event = {
+id = 184018
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKSwaraj
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKSwaraj
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = november year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Economy Act"
+desc = "EVT_101019_DESC"
+
+action_a = {
+ai_chance = 50
+name = "Let us strenghten the private sector with public welfare!"
+command = { type = dissent value = -2 }
+command = { type = money value = 400 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = domestic which = freedom value = 1 }
+}
+
+action_b = {
+ai_chance = 35
+name = "The free market shall emancipate the Indian people!"
+command = { type = dissent value = 2 }
+command = { type = money value = 20 }
+command = { type = domestic which = free_market value = 3 }
+}
+
+action_c = {
+ai_chance = 15
+name = "State control of the economy shall guarantee equality!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+################################################################################?#
+#Reforming the economy - Jinnah
+################################################################################?#
+
+event = {
+id = 184019
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKJinnah
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKJinnah
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = november year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Economy Act"
+desc = "EVT_101020_DESC"
+
+action_a = {
+ai_chance = 50
+name = "The economy serves the people, let the people own it!"
+command = { type = dissent value = -3 }
+command = { type = money value = 100 }
+command = { type = domestic which = free_market value = -2 }
+command = { type = domestic which = freedom value = 1 }
+}
+
+action_b = {
+ai_chance = 35
+name = "Enforce a free market for a free people!"
+command = { type = dissent value = 3 }
+command = { type = money value = 200 }
+command = { type = domestic which = free_market value = 3 }
+}
+
+action_c = {
+ai_chance = 15
+name = "Let us take a moderate approach!"
+command = { type = dissent value = 1 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = domestic which = freedom value = 2 }
+}
+}
+
+################################################################################?#
+#Reforming the economy - Unionist
+################################################################################?#
+
+event = {
+id = 184020
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKUnionist
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKUnionist
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = november year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Economy Act"
+desc = "EVT_101021_DESC"
+
+action_a = {
+ai_chance = 50
+name = "The economic power of the elite is the shield of the poor!"
+command = { type = dissent value = 2 }
+command = { type = money value = 300 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+}
+
+action_b = {
+ai_chance = 35
+name = "A free market shall empower both peasant and prince!"
+command = { type = dissent value = 5 }
+command = { type = money value = 200 }
+command = { type = domestic which = free_market value = 3 }
+command = { type = domestic which = freedom value = 1 }
+}
+
+action_c = {
+ai_chance = 15
+name = "Let us take a moderate approach!"
+command = { type = dissent value = 1 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = domestic which = freedom value = 2 }
+}
+}
+
+################################################################################?#
+#Indian Industry Act 1937 - Liberal
+################################################################################?#
+
+event = {
+id = 184021
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKLiberal
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKLiberal
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = february year = 1937 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Industry Act 1937"
+desc = "EVT_101022_DESC"
+
+action_a = {
+ai_chance = 50
+name = "Trade unionism is nothing short but Syndicalism, restrict it!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance = 35
+name = "Let us enforce workers' rights, moderately, but progressively!"
+command = { type = dissent value = -1 }
+command = { type = money value = 20 }
+command = { type = gain_tech which = 5060 }
+command = { type = domestic which = free_market value = -1 }
+}
+
+action_c = {
+ai_chance = 15
+name = "The proletariat shall no longer suffer, support the trade unions!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+################################################################################?#
+#Indian Industry Act 1937 - Swaraj
+################################################################################?#
+
+event = {
+id = 184022
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKSwaraj
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKSwaraj
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = february year = 1937 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Industry Act 1937"
+desc = "EVT_101023_DESC"
+
+action_a = {
+ai_chance = 40
+name = "Trade unionism is nothing short but Syndicalism, restrict it!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Let us enforce workers' rights moderately, but progressively!"
+command = { type = dissent value = -1 }
+command = { type = money value = 20 }
+command = { type = gain_tech which = 5060 }
+command = { type = domestic which = free_market value = -1 }
+}
+
+action_c = {
+ai_chance = 10
+name = "The proletariat shall no longer suffer, support the trade unions!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+################################################################################?#
+#Indian Industry Act 1937 - Unionist
+################################################################################?#
+
+event = {
+id = 184023
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKJinnah
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKJinnah
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = february year = 1937 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Industry Act 1937"
+desc = "EVT_101023_DESC"
+
+action_a = {
+ai_chance = 20
+name = "Trade unionism is nothing short but Syndicalism, restrict it!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance = 60
+name = "Let us enforce workers' rights moderately, but progressively!"
+command = { type = dissent value = -1 }
+command = { type = money value = 20 }
+command = { type = gain_tech which = 5060 }
+command = { type = domestic which = free_market value = -1 }
+}
+
+action_c = {
+ai_chance = 20
+name = "The proletariat shall no longer suffer, support the trade unions!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+################################################################################?#
+#Indian Industry Act 1937 - Jinnah
+################################################################################?#
+
+event = {
+id = 184024
+country = PAK
+style = 2
+picture = "indianeconomy"
+decision_picture = "decision_indianeconomy"
+
+decision = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKUnionist
+}
+
+decision_trigger = {
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+war = { country = PAK country = AFG }
+}
+flag = PAKUnionist
+control = { province = 1529 data = PAK } #Quetta
+OR = {
+control = { province = 1537 data = PAK } #Peshawar
+control = { province = 1459 data = PAK }
+}
+}
+
+date = { day = 0 month = february year = 1937 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Indian Industry Act 1937"
+desc = "EVT_101025_DESC"
+
+action_a = {
+ai_chance = 60
+name = "Trade unionism is nothing short but Syndicalism, restrict it!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = free_market value = 2 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Let us enforce workers' rights moderately, but progressively!"
+command = { type = dissent value = -1 }
+command = { type = money value = 20 }
+command = { type = gain_tech which = 5060 }
+command = { type = domestic which = free_market value = -1 }
+}
+
+action_c = {
+ai_chance = 10
+name = "The proletariat shall no longer suffer, support the trade unions!"
+command = { type = dissent value = -5 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+################################################################################?#
+#The Case of the Princely Armies - Option A
+################################################################################?#
+
+event = {
+id = 184025
+country = PAK
+style = 2
+picture = "princelyarmies"
+
+name = "The Case of the Princely Armies"
+desc = "EVT_101026_DESC"
+
+action_a = {
+ai_chance = 39
+name = "Assimilate the princely troops under parliament's control!"
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = remove_division which = "Bikaner Camel Corps" value = PAK }
+command = { type = remove_division which = "Dungar Lancers" value = PAK }
+command = { type = remove_division which = "Sadul Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Jammu and Kashmir Infantry" value = PAK }
+command = { type = remove_division which = "1st Bahawalpar Infantry" value = PAK }
+command = { type = remove_division which = "2nd Bahawalpar Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Gwalior Jayaji Lancers" value = PAK }
+command = { type = remove_division which = "1st Gwalior Maharani Sakhya Raja's Own Battalion" value = PAK }
+command = { type = remove_division which = "2nd Gwalior Maharaja Jajaji Rao's Battalion" value = PAK }
+command = { type = remove_division which = "Kapurthala Jagatjit Infantry" value = PAK }
+command = { type = remove_division which = "Kapurthala Paramjit Infantry" value = PAK }
+command = { type = event which = 184029 where = PAK when = 90 }
+command = { type = dissent value = 3 }
+}
+
+action_a = {
+ai_chance = 60
+name = "Maintain nomial princely sovereignty and reinforce their troops!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = remove_division which = "Bikaner Camel Corps" value = PAK }
+command = { type = remove_division which = "Dungar Lancers" value = PAK }
+command = { type = remove_division which = "Sadul Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Jammu and Kashmir Infantry" value = PAK }
+command = { type = remove_division which = "1st Bahawalpar Infantry" value = PAK }
+command = { type = remove_division which = "2nd Bahawalpar Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Gwalior Jayaji Lancers" value = PAK }
+command = { type = remove_division which = "1st Gwalior Maharani Sakhya Raja's Own Battalion" value = PAK }
+command = { type = remove_division which = "2nd Gwalior Maharaja Jajaji Rao's Battalion" value = PAK }
+command = { type = remove_division which = "Kapurthala Jagatjit Infantry" value = PAK }
+command = { type = remove_division which = "Kapurthala Paramjit Infantry" value = PAK }
+command = { type = event which = 184028 where = PAK when = 90 }
+command = { type = relation which = IND value = 10 }
+command = { type = dissent value = 2 }
+}
+
+action_a = {
+ai_chance = 1
+name = "Heed the reactionary landowners, maintain the status quo!"
+command = { type = domestic which = defense_lobby value = -3 }
+command = { type = dissent value = 10 }
+}
+}
+
+################################################################################?#
+#The Case of the Princely Armies - Option B
+################################################################################?#
+
+event = {
+id = 184026
+country = PAK
+style = 2
+picture = "princelyarmies"
+
+name = "The Case of the Princely Armies"
+desc = "EVT_101026_DESC"
+
+action_a = {
+ai_chance = 60
+name = "Assimilate the princely troops under parliament's control!"
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = remove_division which = "Bikaner Camel Corps" value = PAK }
+command = { type = remove_division which = "Dungar Lancers" value = PAK }
+command = { type = remove_division which = "Sadul Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Jammu and Kashmir Infantry" value = PAK }
+command = { type = remove_division which = "1st Bahawalpar Infantry" value = PAK }
+command = { type = remove_division which = "2nd Bahawalpar Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Gwalior Jayaji Lancers" value = PAK }
+command = { type = remove_division which = "1st Gwalior Maharani Sakhya Raja's Own Battalion" value = PAK }
+command = { type = remove_division which = "2nd Gwalior Maharaja Jajaji Rao's Battalion" value = PAK }
+command = { type = remove_division which = "Kapurthala Jagatjit Infantry" value = PAK }
+command = { type = remove_division which = "Kapurthala Paramjit Infantry" value = PAK }
+command = { type = event which = 184028 where = PAK when = 120 }
+command = { type = dissent value = 3 }
+}
+
+action_a = {
+ai_chance = 39
+name = "Maintain nomial princely sovereignty and reinforce their troops!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = remove_division which = "Bikaner Camel Corps" value = PAK }
+command = { type = remove_division which = "Dungar Lancers" value = PAK }
+command = { type = remove_division which = "Sadul Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Jammu and Kashmir Infantry" value = PAK }
+command = { type = remove_division which = "1st Bahawalpar Infantry" value = PAK }
+command = { type = remove_division which = "2nd Bahawalpar Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Gwalior Jayaji Lancers" value = PAK }
+command = { type = remove_division which = "1st Gwalior Maharani Sakhya Raja's Own Battalion" value = PAK }
+command = { type = remove_division which = "2nd Gwalior Maharaja Jajaji Rao's Battalion" value = PAK }
+command = { type = remove_division which = "Kapurthala Jagatjit Infantry" value = PAK }
+command = { type = remove_division which = "Kapurthala Paramjit Infantry" value = PAK }
+command = { type = event which = 184029 where = PAK when = 120 }
+command = { type = relation which = IND value = 10 }
+command = { type = dissent value = 2 }
+}
+
+action_a = {
+ai_chance = 1
+name = "Heed the reactionary landowners, maintain the status quo!"
+command = { type = domestic which = defense_lobby value = -3 }
+command = { type = dissent value = 10 }
+}
+}
+
+################################################################################?#
+#The Case of the Princely Armies - Option C
+################################################################################?#
+
+event = {
+id = 184027
+country = PAK
+style = 2
+picture = "princelyarmies"
+
+name = "The Case of the Princely Armies"
+desc = "EVT_101026_DESC"
+
+action_a = {
+ai_chance = 70
+name = "Assimilate the princely troops under parliament's control!"
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = remove_division which = "Bikaner Camel Corps" value = PAK }
+command = { type = remove_division which = "Dungar Lancers" value = PAK }
+command = { type = remove_division which = "Sadul Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Jammu and Kashmir Infantry" value = PAK }
+command = { type = remove_division which = "1st Bahawalpar Infantry" value = PAK }
+command = { type = remove_division which = "2nd Bahawalpar Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Gwalior Jayaji Lancers" value = PAK }
+command = { type = remove_division which = "1st Gwalior Maharani Sakhya Raja's Own Battalion" value = PAK }
+command = { type = remove_division which = "2nd Gwalior Maharaja Jajaji Rao's Battalion" value = PAK }
+command = { type = remove_division which = "Kapurthala Jagatjit Infantry" value = PAK }
+command = { type = remove_division which = "Kapurthala Paramjit Infantry" value = PAK }
+command = { type = event which = 184029 where = PAK when = 90 }
+command = { type = dissent value = 3 }
+}
+
+action_a = {
+ai_chance = 29
+name = "Maintain nomial princely sovereignty and reinforce their troops!"
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = remove_division which = "Bikaner Camel Corps" value = PAK }
+command = { type = remove_division which = "Dungar Lancers" value = PAK }
+command = { type = remove_division which = "Sadul Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Jammu and Kashmir Infantry" value = PAK }
+command = { type = remove_division which = "1st Bahawalpar Infantry" value = PAK }
+command = { type = remove_division which = "2nd Bahawalpar Light Infantry" value = PAK }
+command = { type = remove_division which = "1st Gwalior Jayaji Lancers" value = PAK }
+command = { type = remove_division which = "1st Gwalior Maharani Sakhya Raja's Own Battalion" value = PAK }
+command = { type = remove_division which = "2nd Gwalior Maharaja Jajaji Rao's Battalion" value = PAK }
+command = { type = remove_division which = "Kapurthala Jagatjit Infantry" value = PAK }
+command = { type = remove_division which = "Kapurthala Paramjit Infantry" value = PAK }
+command = { type = event which = 184028 where = PAK when = 90 }
+command = { type = relation which = IND value = 10 }
+command = { type = dissent value = 2 }
+}
+
+action_a = {
+ai_chance = 1
+name = "Heed the reactionary landowners, maintain the status quo!"
+command = { type = domestic which = defense_lobby value = -3 }
+command = { type = dissent value = 10 }
+}
+}
+
+################################################################################?#
+#Refitting - Princely version.
+################################################################################?#
+
+event = {
+id = 184028
+country = PAK
+style = 2
+picture = "princelyarmies"
+
+name = "The Refitting of the Princely Armies"
+desc = "Following months’ worth of preparation the armed forces of the petty princes loyal to the Delhi government have been refitted and reinforced with new armament and recruits. Their arrival solidifies the prestige of our government considerably and strengthens the bond between the executive and our princely vassals. With such an abundance of support, who would dare challenge our troops for battle?"
+
+action_a = {
+name = "By my sword and shield!"
+command = { type = dissent value = 2 }
+command = { type = add_corps which = "Bikaner State Forces" value = land where = 1527 }
+command = { type = add_division which = "Bikaner Camel Corps" value = cavalry when = 8 }
+command = { type = add_division which = "Dungar Lancers" value = cavalry when = 8 }
+command = { type = add_division which = "Sadul Light Infantry" value = infantry when = 7 }
+command = { type = add_corps which = "Jammu and Kashmir State Forces" value = land where = 1540 }
+command = { type = add_division which = "1st Jammu and Kashmir Infantry" value = infantry when = 7 }
+command = { type = add_corps which = "Bahawalpar State Forces" value = land where = 1536 }
+command = { type = add_division which = "1st Bahawalpar Infantry" value = infantry when = 7 where = light_armor_brigade }
+command = { type = add_division which = "2nd Bahawalpar Light Infantry" value = militia when = 4 }
+command = { type = add_corps which = "Gwalior State Forces" value = land where = 1523 }
+command = { type = add_division which = "1st Gwalior Jayaji Lancers" value = cavalry when = 8 where = artillery }
+command = { type = add_division which = "1st Gwalior Maharani Sakhya Raja's Own Battalion" value = infantry when = 7 where = artillery }
+command = { type = add_division which = "2nd Gwalior Maharaja Jajaji Rao's Battalion" value = infantry when = 7 }
+command = { type = add_corps which = "Kapurthala State Forces" value = land where = 1530 }
+command = { type = add_division which = "Kapurthala Jagatjit Infantry" value = infantry when = 7 }
+command = { type = add_division which = "Kapurthala Paramjit Infantry" value = infantry when = 7 }
+command = { type = manpowerpool value = -50 }
+}
+}
+
+################################################################################?#
+#Refitting - Government version.
+################################################################################?#
+
+event = {
+id = 184029
+country = PAK
+style = 2
+picture = "princelyarmies"
+
+name = "The Refitting of the Princely Armies"
+desc = "Following months’ worth of preparation the armed forces of the petty princes loyal to the Delhi government have been refitted and reinforced with new armament and recruits. Their arrival solidifies the prestige of our government considerably and strengthens the bond between the executive and our princely vassals. With such an abundance of support, who would dare challenge our troops for battle?"
+
+action_a = {
+name = "By my sword and shield!"
+command = { type = dissent value = 2 }
+command = { type = add_corps which = "1st Rajput Union Corps" value = land where = 1527 }
+command = { type = add_division which = "Bikaner Camel Corps" value = cavalry when = 8 }
+command = { type = add_division which = "1st Rajput Cavalry Division" value = cavalry when = 8 }
+command = { type = add_division which = "Rajput State Infantry" value = infantry when = 7 }
+command = { type = add_corps which = "Jammu and Kashmir Union Forces" value = land where = 1540 }
+command = { type = add_division which = "1st Jammu and Kashmir Infantry" value = infantry when = 7 }
+command = { type = add_corps which = "1st Punjabi Corps" value = land where = 1536 }
+command = { type = add_division which = "1st Bahawalpar Infantry" value = infantry when = 7 where = light_armor_brigade }
+command = { type = add_division which = "2nd Bahawalpar Light Infantry" value = militia when = 4 }
+command = { type = add_corps which = "1st Maratha Corps" value = land where = 1523 }
+command = { type = add_division which = "1st Maratha Jayaji Lancers" value = cavalry when = 8 where = artillery }
+command = { type = add_division which = "1st Maratha Infantry Division" value = infantry when = 7 where = artillery }
+command = { type = add_division which = "2nd Maratha Infantry Division" value = infantry when = 7 }
+command = { type = add_corps which = "2nd Punjabi Corps" value = land where = 1530 }
+command = { type = add_division which = "1st Kapurthala Infantry" value = infantry when = 7 }
+command = { type = add_division which = "2nd Kapurthala Infantry" value = infantry when = 7 }
+command = { type = manpowerpool value = -50 }
+}
+}
+
+################################################################################?#
+#What to do with Princely military commanders
+################################################################################?#
+
+event = {
+id = 184030
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1487 data = PAK }
+control = { province = 1487 data = PAK }
+owned = { province = 1488 data = PAK }
+control = { province = 1488 data = PAK }
+NOT = {
+exists = IND
+war = { country = PAK country = PRK }
+war = { country = PAK country = BUR }
+war = { country = PAK country = U35 }
+}
+}
+
+name = "The Fate of Princely India's Officer Corps"
+desc = "Although defeated in the field, the officer corps of Princely India proved its worth on several occasions against our troops. With Hyderabad occupied and the territories of the former Raj almost unified, these men, true patriots, are longing to resume their service to India. However, a great deal of our loyal commanders fear the consequences of so readily accepting former enemies into the army."
+picture = "princelyarmies"
+
+date = { day = 0 month = january year = 1936 }
+offset = 120
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance =  80
+name = "Grant all non-royal officers a commission."
+command = { type = domestic which = freedom value = 1 }
+command = { type = wakeleader which = 564131 }
+command = { type = wakeleader which = 564132 }
+command = { type = wakeleader which = 564133 }
+command = { type = wakeleader which = 564134 }
+command = { type = wakeleader which = 564135 }
+command = { type = wakeleader which = 564136 }
+command = { type = wakeleader which = 564137 }
+command = { type = wakeleader which = 564138 }
+command = { type = wakeleader which = 564139 }
+command = { type = wakeleader which = 564140 }
+command = { type = wakeleader which = 564141 }
+command = { type = wakeleader which = 564142 }
+command = { type = wakeleader which = 564143 }
+command = { type = wakeleader which = 564144 }
+command = { type = wakeleader which = 564145 }
+command = { type = wakeleader which = 564146 }
+command = { type = wakeleader which = 564147 }
+command = { type = wakeleader which = 564148 }
+command = { type = wakeleader which = 564149 }
+command = { type = wakeleader which = 564150 }
+command = { type = wakeleader which = 564151 }
+command = { type = wakeleader which = 564152 }
+command = { type = wakeleader which = 564153 }
+command = { type = wakeleader which = 564154 }
+command = { type = wakeleader which = 564155 }
+command = { type = wakeleader which = 564156 }
+command = { type = wakeleader which = 564164 }
+command = { type = wakeleader which = 564165 }
+command = { type = wakeleader which = 564166 }
+command = { type = wakeminister which = 564107 }
+command = { type = wakeminister which = 564108 }
+command = { type = wakeminister which = 564109 }
+command = { type = wakeminister which = 564110 }
+command = { type = gain_tech which = -1 } # get random tech blueprints
+command = { type = dissent value = 5  } # Traitors in our ranks?
+}
+
+action = {
+ai_chance =  15
+name = "We need all of them to make India mighty once again."
+command = { type = domestic which = freedom value = 2 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = wakeleader which = 564131 }
+command = { type = wakeleader which = 564132 }
+command = { type = wakeleader which = 564133 }
+command = { type = wakeleader which = 564134 }
+command = { type = wakeleader which = 564135 }
+command = { type = wakeleader which = 564136 }
+command = { type = wakeleader which = 564137 }
+command = { type = wakeleader which = 564138 }
+command = { type = wakeleader which = 564139 }
+command = { type = wakeleader which = 564140 }
+command = { type = wakeleader which = 564141 }
+command = { type = wakeleader which = 564142 }
+command = { type = wakeleader which = 564143 }
+command = { type = wakeleader which = 564144 }
+command = { type = wakeleader which = 564145 }
+command = { type = wakeleader which = 564146 }
+command = { type = wakeleader which = 564147 }
+command = { type = wakeleader which = 564148 }
+command = { type = wakeleader which = 564149 }
+command = { type = wakeleader which = 564150 }
+command = { type = wakeleader which = 564151 }
+command = { type = wakeleader which = 564152 }
+command = { type = wakeleader which = 564153 }
+command = { type = wakeleader which = 564154 }
+command = { type = wakeleader which = 564155 }
+command = { type = wakeleader which = 564156 }
+command = { type = wakeleader which = 564157 }
+command = { type = wakeleader which = 564158 }
+command = { type = wakeleader which = 564159 }
+command = { type = wakeleader which = 564160 }
+command = { type = wakeleader which = 564161 }
+command = { type = wakeleader which = 564162 }
+command = { type = wakeleader which = 564163 }
+command = { type = wakeleader which = 564164 }
+command = { type = wakeleader which = 564165 }
+command = { type = wakeleader which = 564166 }
+command = { type = wakeminister which = 564107 }
+command = { type = wakeminister which = 564108 }
+command = { type = wakeminister which = 564109 }
+command = { type = wakeminister which = 564110 }
+command = { type = gain_tech which = -1 } # get random tech blueprints
+command = { type = gain_tech which = -1 } # get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = dissent value = 10  }
+}
+
+action = {
+ai_chance =  5
+name = "These men are beyond redemption, lock them away for ever!"
+command = { type = dissent value = -1  }
+command = { type = domestic which = freedom value = -2 }
+}
+}
+
+################################################################################?#
+#What to do with the Bhartiya Commune's military commanders/Moderate politicians
+################################################################################?#
+
+event = {
+id = 184031
+random = no
+country = PAK
+style = 2
+
+trigger = {
+owned = { province = 1447 data = PAK }
+control = { province = 1447 data = PAK }
+owned = { province = 1444 data = PAK }
+control = { province = 1444 data = PAK }
+NOT = {
+exists = PRK
+war = { country = PAK country = IND }
+war = { country = PAK country = BUR }
+}
+}
+
+name = "The Fate of Socialist India's Officer Corps"
+desc = "The Syndicalist threat on the subcontinent has been crushed under the caterpillar tracks of our armoured vehicles. However, some of the commanders who once owed their loyalty to the Calcutta government are willing to give up their political perversions in order to serve Mother India once more. The issue is a dangerous one, given the unforgiving hatred once shared between our two states, and many of our loyal officers deeply resent serving with former enemies."
+picture = "princelyarmies"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance =  75
+name = "Let the least politically tainted officers have a commission."
+command = { type = domestic which = freedom value = 1 }
+command = { type = wakeleader which = 564170 }
+command = { type = wakeleader which = 564171 }
+command = { type = wakeleader which = 564172 }
+command = { type = wakeleader which = 564173 }
+command = { type = wakeleader which = 564174 }
+command = { type = gain_tech which = -1 } # get random tech blueprints
+command = { type = dissent value = 5  } # Traitors in our ranks?
+}
+
+action = {
+ai_chance =  25
+name = "These men are beyond redemption, lock them away for ever!"
+command = { type = dissent value = -1  }
+command = { type = domestic which = freedom value = -2 }
+}
+
+action = {
+trigger = {
+OR = {
+headofgovernment = 564069
+headofgovernment = 564122
+}
+}
+ai_chance =  50
+name = "To make India great, we need all and everyone!"
+command = { type = dissent value = 10  }
+command = { type = wakeleader which = 564170 }
+command = { type = wakeleader which = 564171 }
+command = { type = wakeleader which = 564172 }
+command = { type = wakeleader which = 564173 }
+command = { type = wakeleader which = 564174 }
+command = { type = wakeminister which = 564113 }
+command = { type = wakeminister which = 564114 }
+command = { type = wakeminister which = 564115 }
+command = { type = wakeminister which = 564116 }
+command = { type = gain_tech which = -1 } # get random tech blueprints
+command = { type = gain_tech which = -1 } # get random tech blueprints
+command = { type = domestic which = freedom value = 2 }
+}
+}
+
+#####################################################
+#Death of Ganga Singh, Sir Sikander Hayat Khan and others
+#####################################################
+
+event = {
+id = 184032
+random = no
+country = PAK
+style = 2
+picture = "sikanderevent"
+
+trigger = {
+OR = {
+flag = PAKDOMINION2
+flag = PAKVICEROY
+}
+}
+
+date = { day = 25 month = december year = 1942 }
+
+name = "Death of Sir Sikander Hayat Khan"
+desc = "One of the greatest statesmen of India, Sir Sikander Hayat Khan, passed away last night at his home in Multan, the Punjab. A great leader and politician, Hayat Khan had led the Unionist Party for several years and campaigned vigorously for the conservative ideals of his party. He is succeeded as chairman by the popular Jat leader, Sir Chhotu Ram."
+
+action = {
+name = "Fare thee well."
+command = { trigger = { headofgovernment = 564073 } type = headofgovernment which = 564112 }
+command = { type = sleepminister which = 564073 }
+command = { type = sleepminister which = 564028 }
+command = { type = sleepleader which = 564032 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 184033
+random = no
+country = PAK
+style = 2
+picture = "Sastri"
+
+date = { day = 17 month = april year = 1946 }
+
+name = "Death of V. S. Srinivasa Sastri"
+desc = "The astute and brilliant leader of the popular Indian Liberal Party, V. S. Srinivasa Sastri passed away late last night after a prolonged period of illness surrounded by his close kin and friends. He is succeeded as leader of the Liberal Party by the young economist Minocher Rustom Masani."
+
+action = {
+name = "The Liberal Party mourns its greatest leader."
+command = { trigger = { headofgovernment = 564060 } type = headofgovernment which = 564139 }
+command = { type = sleepminister which = 564060 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 184034
+random = no
+country = PAK
+style = 2
+picture = "Gangasinghevent"
+
+date = { day = 2 month = february year = 1943 }
+
+name = "The Passing of Ganga Singh"
+desc = "Maybe the greatest Indian to have lived since the birth of the Raj, Maharaja Ganga Singh passed away at his royal palace in Bikaner State late last night. Having led a distinguished career within the British and Indian armies, Singh was the man who forged a stable legal government in the mad current of socialist rebellion and princely treachery. Now, with India stronger than ever, his place will be incredibly hard to fill."
+
+action = {
+trigger = { flag = PAKDOMINION2 }
+ai_chance =  100
+name = "The people of India enters a state of mourning."
+command = { type = sleepminister which = 564002 }
+command = { type = sleepminister which = 564007 }
+command = { type = sleepminister which = 564103 }
+command = { type = sleepminister which = 564104 }
+command = { type = sleepminister which = 564105 }
+command = { type = sleepminister which = 564106 }
+command = { type = sleepleader which = 564031 }
+command = { type = sleepteam which = 12507 }
+command = { type = dissent value = 3 }
+}
+
+action = {
+trigger = { flag = PAKVICEROY }
+ai_chance =  20
+name = "B. R. Ambedkar, the living saint, succeeds him as Viceroy."
+command = { type = headofstate which = 564117 }
+command = { type = sleepminister which = 564002 }
+command = { type = sleepminister which = 564007 }
+command = { type = sleepminister which = 564083 }
+command = { type = sleepminister which = 564103 }
+command = { type = sleepminister which = 564104 }
+command = { type = sleepminister which = 564105 }
+command = { type = sleepminister which = 564106 }
+command = { type = sleepleader which = 564031 }
+command = { type = sleepteam which = 12507 }
+command = { type = dissent value = 3 }
+command = { type = local_setflag which = viceroy_Ambedkar }
+}
+
+action = {
+trigger = { flag = PAKVICEROY }
+ai_chance =  30
+name = "J. R. D. Tata, the brilliant magnate, succeeds him as Viceroy."
+command = { type = headofstate which = 564119 }
+command = { type = sleepminister which = 564002 }
+command = { type = sleepminister which = 564007 }
+command = { type = sleepminister which = 564083 }
+command = { type = sleepminister which = 564103 }
+command = { type = sleepminister which = 564104 }
+command = { type = sleepminister which = 564105 }
+command = { type = sleepminister which = 564106 }
+command = { type = sleepleader which = 564031 }
+command = { type = sleepteam which = 12507 }
+command = { type = dissent value = 3 }
+command = { type = local_setflag which = viceroy_Tata }
+}
+
+action = {
+trigger = { flag = PAKVICEROY }
+ai_chance =  50
+name = "A. C. Chatterjee, the stern diplomat, succeeds him as Viceroy."
+command = { type = headofstate which = 564118 }
+command = { type = sleepminister which = 564002 }
+command = { type = sleepminister which = 564007 }
+command = { type = sleepminister which = 564083 }
+command = { type = sleepminister which = 564103 }
+command = { type = sleepminister which = 564104 }
+command = { type = sleepminister which = 564105 }
+command = { type = sleepminister which = 564106 }
+command = { type = sleepleader which = 564031 }
+command = { type = sleepteam which = 12507 }
+command = { type = dissent value = 3 }
+command = { type = local_setflag which = viceroy_Chatterjee }
+}
+}
+
+
+event = {
+id = 184035
+random = no
+country = PAK
+style = 2
+picture = "Gaekwad"
+
+date = { day = 6 month = february year = 1939 }
+
+name = "Death of Sayajirao Gaekwad III of Baroda"
+desc = "An imposing and resolute ruler, Sayajirao Gaekwad passed away this morning in his palace in Baroda. Mourned by many, Sayajirao was an independent-minded ruler with little regard for the British or their Raj. He is succeeded by his grandson and famous spend-thrift Pratap Singh Gaekwad who is known to share his grandfather's nationalist sentiments."
+
+action = {
+name = "Fare thee well."
+command = { type = sleepminister which = 564043 }
+command = { type = sleepleader which = 564034 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 184036
+random = no
+country = PAK
+style = 2
+picture = "Jinnahfuneral"
+
+trigger = {
+headofgovernment = 564069
+}
+
+date = { day = 11 month = september year = 1948 }
+
+name = "The Passing of Muhammad Ali Jinnah"
+desc = "Perhaps the greatest politician of modern India and a tireless believer in Indian unity and constitutional politics, Muhammad Ali Jinnah passed away quietly in his sleep last night. A towering personality, Jinnah had shaped the Delhi government since its inception and safeguarded Indian democracy in the face of Syndicalism and princely feudalism. He is succeeded as head of the Home Rule Party by V.K. Krishna Menon."
+
+action = {
+name = "The nation mourns the loss of its beloved prime minister!"
+command = { type = sleepminister which = 564069 }
+command = { type = headofgovernment which = 564122 }
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 184037
+random = no
+country = PAK
+style = 2
+picture = "Jinnahfuneral"
+
+trigger = {
+NOT = {
+headofgovernment = 564069
+}
+}
+
+date = { day = 11 month = september year = 1948 }
+
+name = "The Passing of Muhammad Ali Jinnah"
+desc = "Perhaps the greatest politician of modern India and a tireless believer in Indian unity and constitutional politics, Muhammad Ali Jinnah passed away quietly in his sleep last night. A towering personality, Jinnah had shaped the Delhi government since its inception and safeguarded Indian democracy in the face of Syndicalism and princely feudalism. He is succeeded as head of the Home Rule Party by V.K. Krishna Menon."
+
+action = {
+name = "The greatest Indian gentleman is no more."
+command = { type = sleepminister which = 564069 }
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 184038
+random = no
+country = PAK
+style = 2
+picture = "Khengarideath"
+
+date = { day = 15 month = january year = 1942 }
+
+name = "Death of Khengarji III of Cutch"
+desc = "A progressive and venerable prince, Khengarji III of Cutch passed away this evening at his residence in Bhuj, Gujarat. Having ruled his state wisely for 67 years, the late prince will be mourned by many."
+
+action = {
+name = "Fare thee well."
+command = { type = sleepminister which = 564044 }
+command = { type = sleepminister which = 564053 }
+command = { type = sleepleader which = 564035 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 184039
+random = no
+country = PAK
+style = 2
+picture = "Jinnahfuneral"
+
+date = { day = 8 month = july year = 1936 }
+
+name = "Passing of Sir Mian Fazl-i-Husain"
+desc = "The architecht of the gentry/peasant (kisan) political alliance that laid the groundwork for the powerful Unionist Party, Sir Mian Fazl-i-Husain has passed away after a prolonged period of illness. Having been absent from the day to day running of the party for a prolonged period of time owing to his illness, Fazl-i-Husain will never the less be sorely missed within conservative circles."
+
+action = {
+name = "The Unionist Party soldiers on!"
+command = { type = sleepminister which = 564075 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+#####################################################
+#Flavour events
+#####################################################
+
+event = {
+id = 184040
+random = no
+country = PAK
+style = 2
+
+trigger = {
+owned = { province = 1500 data = PAK }
+control = { province = 1500 data = PAK }
+alliance = { country = PAK country = VIC }
+NOT = {
+exists = U35
+war = { country = PAK country = IND }
+}
+}
+
+name = "Status of the Former French Colonies in India"
+desc = "France had been the only major rival to Britain's colonial ambition on India and despite the latter's ultimate triumph, the French remained entrenched in several small enclaves. With the inclusion of the late Madras Republic's territory we now control the largest of these former French possessions, Pondicherry. It has been suggested that we restore some sort of autonomy to the city as a gesture of goodwill to our French allies, although this could be mistaken for tacit approval of foreign colonialism."
+picture = "pondicherry"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1966 }
+
+action = {
+ai_chance =  50
+name = "We can afford our French friends some special rights."
+command = { type = domestic which = freedom value = 1 }
+command = { type = money value = 20 } # French investments
+command = { type = gain_tech which = -1 } # get random tech blueprints
+command = { type = relation which = VIC value = 50 }
+command = { type = dissent value = 2  } # Special rights for Europeans?
+}
+
+action = {
+ai_chance =  30
+name = "Merge the concessions into proper Indian states."
+command = { type = dissent value = -1  }
+command = { type = relation which = VIC value = -10 }
+}
+
+action = {
+ai_chance =  20
+name = "Ban all French institutions and enforce Indian values!"
+command = { type = dissent value = -3  }
+command = { type = domestic which = freedom value = -1 }
+command = { type = relation which = VIC value = -50 }
+}
+}
+
+
+event = {
+id = 184041
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+owned = { province = 1447 data = PAK }
+control = { province = 1447 data = PAK }
+owned = { province = 1487 data = PAK }
+control = { province = 1487 data = PAK }
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+event = 101069
+event = 184030
+NOT = {
+exists = IND
+exists = PRK
+war = { country = PAK country = BUR }
+}
+}
+
+name = "The Bombay Plan"
+desc = "EVT_101040_DESC"
+picture = "bombayplan"
+
+date = { day = 0 month = january year = 1941 }
+offset = 120
+deathdate = { day = 29 month = december year = 1966 }
+
+
+action = {
+ai_chance =  60
+name = "Coordinate the private and public sectors across United India!"
+command = { type = dissent value = -2  }
+command = { type = domestic which = freedom value = 1 }
+command = { type = money value = -2000 } # payment!
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = domestic which = free_market value = -1 }
+}
+
+action = {
+ai_chance =  40
+name = "Minimize state intervention and let the market restore itself."
+command = { type = dissent value = 1  }
+command = { type = money value = 200 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = domestic which = free_market value = 1 }
+}
+
+action = {
+trigger = { headofgovernment = 564069 }
+ai_chance =  70
+name = "Initiate regular five year plans to solidify our industry!"
+command = { type = dissent value = -3  }
+command = { type = domestic which = freedom value = 1 }
+command = { type = money value = -2000 } # payment!
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = domestic which = free_market value = -2 }
+command = { type = local_setflag which = Delhi_5_year_plan } #events to follow
+}
+}
+
+
+event = {
+id = 184042
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+owned = { province = 1447 data = PAK }
+control = { province = 1447 data = PAK }
+owned = { province = 1487 data = PAK }
+control = { province = 1487 data = PAK }
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+event = { id = 184041 days = 1825 }
+local_flag = Delhi_5_year_plan
+NOT = {
+exists = IND
+exists = PRK
+war = { country = PAK country = BUR }
+}
+}
+
+name = "Result of the First 5-Year Plan"
+desc = "As the leaders of the Home Rule Party had hoped, the first five-year plan has proven to be a massive success. Our subsidies for the enlargement of the national industrial output has resulted in factories, roads and other infrastructural projects mushrooming across the sub-continent! India is well on her way to become an industrial power of magnitude!"
+picture = "bombayplan"
+
+date = { day = 0 month = january year = 1941 }
+offset = 120
+deathdate = { day = 29 month = december year = 1966 }
+
+action = {
+ai_chance =  100
+name = "Keep up the good work!"
+command = { type = dissent value = -3  }
+command = { type = money value = -2000 } # payment!
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+
+action = {
+ai_chance =  0
+name = "We have had enough of this pseudo-socialism!"
+command = { type = dissent value = 2  }
+command = { type = domestic which = free_market value = 3 }
+command = { type = money value = -2000 } # payment!
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = local_clrflag which = Delhi_5_year_plan }
+command = { type = sleepevent which = 184043 }
+}
+}
+
+
+event = {
+id = 184043
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+owned = { province = 1447 data = PAK }
+control = { province = 1447 data = PAK }
+owned = { province = 1487 data = PAK }
+control = { province = 1487 data = PAK }
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+event = { id = 184042 days = 1825 }
+local_flag = Delhi_5_year_plan
+NOT = {
+exists = IND
+exists = PRK
+war = { country = PAK country = BUR }
+}
+}
+
+
+name = "Result of the Second 5-Year Plan"
+desc = "As the leaders of the Home Rule Party had hoped, the second five-year plan has proven to be a massive success. Our subsidies for the enlargement of the national industrial output has resulted in factories, roads and other infrastructural projects mushrooming across the sub-continent! India is well on her way to become an industrial power of magnitude!"
+picture = "industry"
+
+date = { day = 0 month = january year = 1941 }
+offset = 120
+deathdate = { day = 29 month = december year = 1966 }
+
+action = {
+ai_chance =  100
+name = "Keep up the good work!"
+command = { type = dissent value = -3  }
+command = { type = money value = -2000 } # payment!
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+}
+
+action = {
+ai_chance =  0
+name = "We have had enough of this pseudo-socialism!"
+command = { type = dissent value = 2  }
+command = { type = domestic which = free_market value = 3 }
+command = { type = money value = -2000 } # payment!
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = local_clrflag which = Delhi_5_year_plan }
+command = { type = sleepevent which = 184044 }
+}
+}
+
+
+event = {
+id = 184044
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+owned = { province = 1447 data = PAK }
+control = { province = 1447 data = PAK }
+owned = { province = 1487 data = PAK }
+control = { province = 1487 data = PAK }
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+event = { id = 184043 days = 1825 }
+local_flag = Delhi_5_year_plan
+NOT = {
+exists = IND
+exists = PRK
+war = { country = PAK country = BUR }
+}
+}
+
+name = "Result of the Last 5-Year Plan"
+desc = "The final five-year plan has proven to be another massive success. Our subsidies for the enlargement of the national industrial output has resulted in factories, roads and other infrastructural projects mushrooming across the sub-continent!"
+picture = "bombayplan"
+
+date = { day = 0 month = january year = 1941 }
+offset = 120
+deathdate = { day = 29 month = december year = 1966 }
+
+action = {
+name = "How grand our continent has become!"
+command = { type = dissent value = -3  }
+command = { type = domestic which = freedom value = 1 }
+command = { type = money value = -2000 } # payment!
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = local_clrflag which = Delhi_5_year_plan }
+}
+}
+
+
+event = {
+id = 184045
+random = no
+country = PAK
+style = 2
+
+trigger = {
+core = { province = 1459 data = PAK }
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+core = { province = 1447 data = PAK }
+owned = { province = 1447 data = PAK }
+control = { province = 1447 data = PAK }
+core = { province = 1487 data = PAK }
+owned = { province = 1487 data = PAK }
+control = { province = 1487 data = PAK }
+core = { province = 1517 data = PAK }
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+event = 101069
+event = 184030
+NOT = {
+exists = IND
+exists = PRK
+war = { country = PAK country = BUR }
+}
+}
+
+name = "A New India Arises"
+desc = "EVT_101042_DESC"
+picture = "delhivictor"
+
+date = { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1966 }
+
+
+action = {
+name = "Jai Hind!"
+command = { type = dissent value = -5  }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = name where = PAK which = PAK_UNI_NAME }
+}
+}
+
+
+event = {
+id = 184046
+random = no
+country = PAK
+style = 2
+picture = "Kisankanya"
+
+date = { day = 11 month = august year = 1937 }
+
+name = "Premiere of Kisan Kanya - First Indian Colour Film"
+desc = "A rural drama directed by Moti B. Gidwani, Kisan Kanya focuses on the plight of poor farmers struggling against exploitative moneylenders and corrupt landlords. Although its subject has made it very popular amongst the peasant/gentry alliance of the Unionist Party, Kisan Kanya mostly captivates on account of it being the first domestic colour film produced in India."
+
+action = {
+name = "Oooh - look at the colours!"
+command = { type = dissent value = -0.5 }
+}
+}
+
+
+event = {
+id = 184047
+random = no
+tag = { PAK PRK }
+style = 2
+picture = "NeechaNagar"
+
+trigger = {
+core = { province = 1459 data = -1 }
+core = { province = 1447 data = -1 }
+core = { province = 1487 data = -1 }
+core = { province = 1517 data = -1 }
+}
+
+
+date = { day = 11 month = september year = 1946 }
+
+name = "Premiere of Neecha Nagar"
+desc = "A pioneering effort within social realism in Indian cinema, Neecha Negar (Lowly City) tells the story of social injustice in rural India. By taking an expressionist look on the gulf between rich and poor in today’s society, the film has garnered some popularity among domestic movie-goers, but has also achieved considerable prestige with foreign critics - a first for any Indian film."
+
+action = {
+name = "What a gripping tale!"
+command = { type = dissent value = -0.5 }
+}
+}
+
+
+event = {
+id = 184048
+random = no
+tag = { IND PAK PRK }
+style = 2
+picture = "Earthquake"
+
+trigger = {
+control = { province = 1442 data = -1 } #Imphal
+}
+
+date = { day = 14 month = august year = 1950 }
+
+name = "The 1950 Assam Earthquake"
+desc = "Today one of the most destructive earthquakes of modern history struck the province of Assam resulting in well over 1500 casualties! Originating in Tibet, the quake measured some 8.6 on the Richter scale and has, besides the loss of human life, destroyed a large amount of villages in the province."
+
+action = {
+name = "My God, how horrible!"
+command = { type = construct which = infrastructure where = 1442 value = -10 }
+command = { type = dissent value = 2 }
+}
+}
+
+#####################################################
+#Integration of the PF if not cored
+#####################################################
+
+event = {
+id = 184049
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+owned = { province = 1482 data = PAK }
+control = { province = 1482 data = PAK }
+NOT = {
+exists = IND
+exists = PRK
+war = { country = PAK country = AFG }
+war = { country = PAK country = BUR }
+war = { country = PAK country = U35 }
+}
+}
+
+
+name = "Integration in the Former Bombay Presidency"
+desc = "We have brought about the complete collapse of the princely state and established control over the southern-most part of the sub-continent. Now, however, we must decide how to integrate the provinces previously ailing under feudal rule. Should we swiftly and harshly replace the apparatus of governance with our own or gradually implement societal changes, making transition easier for the local elites?"
+picture = "Marathaevent"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance =  70
+name = "Take a moderate approach to integration."
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -2 }
+command = { type = addclaim which = 1478 }
+command = { type = addclaim which = 1482 }
+command = { type = addclaim which = 1484 }
+command = { type = addclaim which = 1485 }
+command = { type = addclaim which = 1486 }
+command = { type = addclaim which = 1492 }
+command = { type = addclaim which = 1508 }
+command = { type = addclaim which = 1512 }
+command = { type = addclaim which = 1513 }
+command = { type = addclaim which = 1514 }
+command = { type = addclaim which = 1515 }
+command = { type = addclaim which = 1516 }
+command = { type = addclaim which = 1517 }
+command = { type = addclaim which = 1520 }
+command = { type = local_setflag which = PAK_Maratha_mild }
+}
+
+action = {
+ai_chance =  30
+name = "Commence integration immediately and harshly!"
+command = { type = province_revoltrisk which = 1478 value = 50 }
+command = { type = province_revoltrisk which = 1482 value = 50 }
+command = { type = province_revoltrisk which = 1484 value = 50 }
+command = { type = province_revoltrisk which = 1485 value = 50 }
+command = { type = province_revoltrisk which = 1486 value = 50 }
+command = { type = province_revoltrisk which = 1492 value = 50 }
+command = { type = province_revoltrisk which = 1508 value = 50 }
+command = { type = province_revoltrisk which = 1512 value = 50 }
+command = { type = province_revoltrisk which = 1513 value = 50 }
+command = { type = province_revoltrisk which = 1514 value = 50 }
+command = { type = province_revoltrisk which = 1515 value = 50 }
+command = { type = province_revoltrisk which = 1516 value = 50 }
+command = { type = province_revoltrisk which = 1517 value = 50 }
+command = { type = province_revoltrisk which = 1520 value = 50 }
+command = { type = addclaim which = 1478 }
+command = { type = addclaim which = 1482 }
+command = { type = addclaim which = 1484 }
+command = { type = addclaim which = 1485 }
+command = { type = addclaim which = 1486 }
+command = { type = addclaim which = 1492 }
+command = { type = addclaim which = 1508 }
+command = { type = addclaim which = 1512 }
+command = { type = addclaim which = 1513 }
+command = { type = addclaim which = 1514 }
+command = { type = addclaim which = 1515 }
+command = { type = addclaim which = 1516 }
+command = { type = addclaim which = 1517 }
+command = { type = addclaim which = 1520 }
+command = { type = domestic which = freedom value = -2 }
+command = { type = dissent value = 4 }
+command = { type = local_setflag which = PAK_Maratha_harsh }
+}
+}
+
+
+event = {
+id = 184050
+country = PAK
+style = 2
+
+trigger = {
+local_flag = PAK_Maratha_mild
+random = 45
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+owned = { province = 1516 data = PAK }
+control = { province = 1516 data = PAK }
+}
+
+name = "Integration of the Bombay Presidency"
+desc = "We have successfully managed to integrate the Marathi peoples of the former Bombay Presidency. From Victoria Terminal in Bombay to the peaks of the Deccan Traps, the legality of our government is respected and honoured. India now truly seems well under way to complete unity!"
+picture = "Marathaevent"
+
+date = { day = 0 month = january year = 1936 }
+offset = 110
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = waketeam which = 12538 }
+command = { type = waketeam which = 12539 }
+command = { type = addcore which = 1478 }
+command = { type = addcore which = 1482 }
+command = { type = addcore which = 1484 }
+command = { type = addcore which = 1485 }
+command = { type = addcore which = 1486 }
+command = { type = addcore which = 1492 }
+command = { type = addcore which = 1508 }
+command = { type = addcore which = 1512 }
+command = { type = addcore which = 1513 }
+command = { type = addcore which = 1514 }
+command = { type = addcore which = 1515 }
+command = { type = addcore which = 1516 }
+command = { type = addcore which = 1517 }
+command = { type = addcore which = 1520 }
+command = { type = dissent value = -5 }
+command = { type = local_clrflag which = PAK_Maratha_mild }
+}
+}
+
+
+event = {
+id = 184051
+country = PAK
+style = 2
+
+trigger = {
+local_flag = PAK_Maratha_harsh
+random = 30
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+owned = { province = 1516 data = PAK }
+control = { province = 1516 data = PAK }
+}
+
+name = "Integration of the Bombay Presidency"
+desc = "We have successfully managed to integrate the Marathi peoples of the former Bombay Presidency. From Victoria Terminal in Bombay to the peaks of the Deccan Traps, the legality of our government is respected and honoured. India now truly seems well under way to complete unity!"
+picture = "Marathaevent"
+
+date = { day = 0 month = january year = 1936 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = waketeam which = 12538 }
+command = { type = waketeam which = 12539 }
+command = { type = addcore which = 1478 }
+command = { type = addcore which = 1482 }
+command = { type = addcore which = 1484 }
+command = { type = addcore which = 1485 }
+command = { type = addcore which = 1486 }
+command = { type = addcore which = 1492 }
+command = { type = addcore which = 1508 }
+command = { type = addcore which = 1512 }
+command = { type = addcore which = 1513 }
+command = { type = addcore which = 1514 }
+command = { type = addcore which = 1515 }
+command = { type = addcore which = 1516 }
+command = { type = addcore which = 1517 }
+command = { type = addcore which = 1520 }
+command = { type = province_revoltrisk which = 1478 value = -50 }
+command = { type = province_revoltrisk which = 1482 value = -50 }
+command = { type = province_revoltrisk which = 1484 value = -50 }
+command = { type = province_revoltrisk which = 1485 value = -50 }
+command = { type = province_revoltrisk which = 1486 value = -50 }
+command = { type = province_revoltrisk which = 1492 value = -50 }
+command = { type = province_revoltrisk which = 1508 value = -50 }
+command = { type = province_revoltrisk which = 1512 value = -50 }
+command = { type = province_revoltrisk which = 1513 value = -50 }
+command = { type = province_revoltrisk which = 1514 value = -50 }
+command = { type = province_revoltrisk which = 1515 value = -50 }
+command = { type = province_revoltrisk which = 1516 value = -50 }
+command = { type = province_revoltrisk which = 1517 value = -50 }
+command = { type = province_revoltrisk which = 1520 value = -50 }
+command = { type = dissent value = -5 }
+command = { type = local_clrflag which = PAK_Maratha_harsh }
+}
+}
+
+
+event = {
+id = 184052
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+owned = { province = 1507 data = PAK }
+control = { province = 1507 data = PAK }
+owned = { province = 1495 data = PAK }
+control = { province = 1495 data = PAK }
+event = { id = 184049 days = 35 }
+OR = {
+NOT = { exists = U35 }
+puppet = { country = U35 country = PAK  }
+}
+NOT = {
+core = { province = 1487 data = PAK }
+exists = U12
+exists = U44
+exists = U45
+exists = IND
+exists = PRK
+war = { country = PAK country = U35 }
+war = { country = PAK country = BUR }
+war = { country = PAK country = AFG }
+}
+}
+
+name = "Integration in the Dravidian Princely States"
+desc = "The southern princely states were always somewhat politically detached from the federal government in Hyderabad. This makes it harder for us to establish an efficient central administration. Never the less, that is what we will have to achieve."
+picture = "Mysoredurbar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance =  60
+name = "Take a moderate approach to integration."
+command = { type = addclaim which = 1487 }
+command = { type = addclaim which = 1488 }
+command = { type = addclaim which = 1489 }
+command = { type = addclaim which = 1490 }
+command = { type = addclaim which = 1491 }
+command = { type = addclaim which = 1494 }
+command = { type = addclaim which = 1495 }
+command = { type = addclaim which = 1496 }
+command = { type = addclaim which = 1497 }
+command = { type = addclaim which = 1498 }
+command = { type = addclaim which = 1501 }
+command = { type = addclaim which = 1502 }
+command = { type = addclaim which = 1503 }
+command = { type = addclaim which = 1504 }
+command = { type = addclaim which = 1505 }
+command = { type = addclaim which = 1507 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = -2 }
+command = { type = local_setflag which = PAK_Drav_mild }
+}
+
+action = {
+ai_chance =  30
+name = "We must be firm with these southern princelings!"
+command = { type = province_revoltrisk which = 1487 value = 50 }
+command = { type = province_revoltrisk which = 1488 value = 50 }
+command = { type = province_revoltrisk which = 1489 value = 50 }
+command = { type = province_revoltrisk which = 1490 value = 50 }
+command = { type = province_revoltrisk which = 1494 value = 50 }
+command = { type = province_revoltrisk which = 1495 value = 50 }
+command = { type = province_revoltrisk which = 1496 value = 50 }
+command = { type = province_revoltrisk which = 1497 value = 50 }
+command = { type = province_revoltrisk which = 1498 value = 50 }
+command = { type = province_revoltrisk which = 1491 value = 50 }
+command = { type = province_revoltrisk which = 1501 value = 50 }
+command = { type = province_revoltrisk which = 1502 value = 50 }
+command = { type = province_revoltrisk which = 1503 value = 50 }
+command = { type = province_revoltrisk which = 1504 value = 50 }
+command = { type = province_revoltrisk which = 1505 value = 50 }
+command = { type = province_revoltrisk which = 1507 value = 50 }
+command = { type = addclaim which = 1487 }
+command = { type = addclaim which = 1488 }
+command = { type = addclaim which = 1489 }
+command = { type = addclaim which = 1490 }
+command = { type = addclaim which = 1491 }
+command = { type = addclaim which = 1494 }
+command = { type = addclaim which = 1495 }
+command = { type = addclaim which = 1496 }
+command = { type = addclaim which = 1497 }
+command = { type = addclaim which = 1498 }
+command = { type = addclaim which = 1501 }
+command = { type = addclaim which = 1502 }
+command = { type = addclaim which = 1503 }
+command = { type = addclaim which = 1504 }
+command = { type = addclaim which = 1505 }
+command = { type = addclaim which = 1507 }
+command = { type = domestic which = freedom value = -2 }
+command = { type = dissent value = 4 }
+command = { type = local_setflag which = PAK_Drav_harsh }
+}
+}
+
+
+event = {
+id = 184053
+country = PAK
+style = 2
+
+trigger = {
+local_flag = PAK_Drav_mild
+random = 45
+owned = { province = 1501 data = PAK }
+control = { province = 1501 data = PAK }
+owned = { province = 1507 data = PAK }
+control = { province = 1507 data = PAK }
+}
+
+name = "Integration of the Southern Princely States"
+desc = "The proud peoples of southern India have finally accepted our government as the single source of all-Indian authority! Glory to India!"
+picture = "Mysoredurbar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 110
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = waketeam which = 12531 }
+command = { type = waketeam which = 12532 }
+command = { type = addcore which = 1487 }
+command = { type = addcore which = 1488 }
+command = { type = addcore which = 1489 }
+command = { type = addcore which = 1490 }
+command = { type = addcore which = 1491 }
+command = { type = addcore which = 1494 }
+command = { type = addcore which = 1495 }
+command = { type = addcore which = 1496 }
+command = { type = addcore which = 1497 }
+command = { type = addcore which = 1498 }
+command = { type = addcore which = 1501 }
+command = { type = addcore which = 1502 }
+command = { type = addcore which = 1503 }
+command = { type = addcore which = 1504 }
+command = { type = addcore which = 1505 }
+command = { type = addcore which = 1507 }
+command = { type = dissent value = -5 }
+command = { type = local_clrflag which = PAK_Drav_mild }
+}
+}
+
+
+event = {
+id = 184054
+country = PAK
+style = 2
+
+trigger = {
+local_flag = PAK_Drav_harsh
+random = 30
+owned = { province = 1501 data = PAK }
+control = { province = 1501 data = PAK }
+owned = { province = 1507 data = PAK }
+control = { province = 1507 data = PAK }
+}
+
+name = "Integration of the Southern Princely States"
+desc = "The proud peoples of southern India have finally accepted our government as the single source of all-Indian authority! Glory to India!"
+picture = "Mysoredurbar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 155
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Great!"
+command = { type = waketeam which = 12531 }
+command = { type = waketeam which = 12532 }
+command = { type = addcore which = 1487 }
+command = { type = addcore which = 1488 }
+command = { type = addcore which = 1489 }
+command = { type = addcore which = 1490 }
+command = { type = addcore which = 1491 }
+command = { type = addcore which = 1494 }
+command = { type = addcore which = 1495 }
+command = { type = addcore which = 1496 }
+command = { type = addcore which = 1497 }
+command = { type = addcore which = 1498 }
+command = { type = addcore which = 1501 }
+command = { type = addcore which = 1502 }
+command = { type = addcore which = 1503 }
+command = { type = addcore which = 1504 }
+command = { type = addcore which = 1505 }
+command = { type = addcore which = 1507 }
+command = { type = province_revoltrisk which = 1487 value = -50 }
+command = { type = province_revoltrisk which = 1488 value = -50 }
+command = { type = province_revoltrisk which = 1489 value = -50 }
+command = { type = province_revoltrisk which = 1490 value = -50 }
+command = { type = province_revoltrisk which = 1494 value = -50 }
+command = { type = province_revoltrisk which = 1495 value = -50 }
+command = { type = province_revoltrisk which = 1496 value = -50 }
+command = { type = province_revoltrisk which = 1497 value = -50 }
+command = { type = province_revoltrisk which = 1498 value = -50 }
+command = { type = province_revoltrisk which = 1491 value = -50 }
+command = { type = province_revoltrisk which = 1501 value = -50 }
+command = { type = province_revoltrisk which = 1502 value = -50 }
+command = { type = province_revoltrisk which = 1503 value = -50 }
+command = { type = province_revoltrisk which = 1504 value = -50 }
+command = { type = province_revoltrisk which = 1505 value = -50 }
+command = { type = province_revoltrisk which = 1507 value = -50 }
+command = { type = dissent value = -5 }
+command = { type = local_clrflag which = PAK_Drav_harsh }
+}
+}
+
+#####################################################
+#Upgrading tech teams after unification
+#####################################################
+
+event = {
+id = 184055
+random = no
+country = PAK
+style = 2
+
+trigger = {
+core = { province = 1459 data = PAK }
+owned = { province = 1459 data = PAK }
+control = { province = 1459 data = PAK }
+core = { province = 1447 data = PAK }
+owned = { province = 1447 data = PAK }
+control = { province = 1447 data = PAK }
+core = { province = 1487 data = PAK }
+owned = { province = 1487 data = PAK }
+control = { province = 1487 data = PAK }
+core = { province = 1517 data = PAK }
+owned = { province = 1517 data = PAK }
+control = { province = 1517 data = PAK }
+event = 184045
+NOT = {
+exists = IND
+exists = PRK
+war = { country = PAK country = BUR }
+war = { country = PAK country = U35 }
+}
+}
+
+
+name = "Expanding the Indian Air Force"
+desc = "With our unification of the Indian sub-continent, it has been proposed in parliament that we convey a greater amount of funds towards the Indian Air Force in order to construct an air armada capable of covering the nation in its entirety. The proposal is popular with the military, although some ministers mutter about militarization and the cost of new air crafts."
+picture = "Indianairforce"
+
+date = { day = 0 month = january year = 1942 }
+offset = 150
+deathdate = { day = 29 month = december year = 1966 }
+
+
+action = {
+ai_chance =  80
+name = "To the skies!"
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = dissent value = -1 }
+command = { type = money value = -135 }
+command = { type = sleepteam which = 12510  }
+command = { type = waketeam which = 12511  }
+command = { type = build_time which = cas value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = interceptor value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = multi_role value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = naval_bomber value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = strategic_bomber value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = tactical_bomber value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = transport_plane value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = cag value = -5 where = relative when = on_upgrade }
+command = { type = build_time which = escort value = -5 where = relative when = on_upgrade }
+}
+
+action = {
+ai_chance =  20
+name = "That would be too expensive."
+command = { type = dissent value = 5 }
+}
+}
+
+#####################################################
+#Economic changes SD/ML
+#####################################################
+
+#Market Liberal
+
+event = {
+id = 184056
+random = no
+persistent = yes
+country = PAK
+style = 2
+picture = "indianeconomy"
+
+trigger = {
+core = { province = 1459 data = PAK } #Delhi
+core = { province = 1517 data = PAK } #Bombay
+core = { province = 1447 data = PAK } #Hyderabad
+core = { province = 1487 data = PAK } #Calcutta
+NOT = { policy = { type = free_market value = 8 } }
+AND = {
+OR = {
+headofgovernment = 564060 #V. S. Srinivasa Sastri
+headofgovernment = 564139 #Minocher Rustom Masani
+}
+}
+}
+
+name = "Proposition of Free Market Reforms"
+desc = "Having swept into parliament, the Liberal Party backbenchers are clamoring for economic reform with many party bosses joining in. However, the scope of any potential privatization or even the dissolution of the so-called ‘License Raj’ is still up for debate since a too rapid break with the current system is sure to cause much consternation with the populace."
+
+date = { day = 0 month = may year = 1936 }
+offset = 200
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+ai_chance = 40
+name = "Decapitate the License Raj in one swift stroke!"
+command = { type = dissent value = 9 }
+command = { type = domestic which = free_market value = 9 }
+command = { type = money value = 250 }
+}
+
+action_b = {
+ai_chance = 60
+name = "Initiate reform with considerate care"
+command = { type = dissent value = 5 }
+command = { type = domestic which = free_market value = 4 }
+command = { type = money value = 125 }
+}
+}
+
+#Social Democrat
+
+event = {
+id = 184057
+random = no
+persistent = yes
+country = PAK
+style = 2
+picture = "indianeconomy"
+
+trigger = {
+core = { province = 1459 data = PAK } #Delhi
+core = { province = 1517 data = PAK } #Bombay
+core = { province = 1447 data = PAK } #Hyderabad
+core = { province = 1487 data = PAK } #Calcutta
+policy = { type = free_market value = 8 }
+AND = {
+OR = {
+headofgovernment = 564069 #Muhammad Ali Jinnah
+headofgovernment = 564122 #V. K. Krishna Menon
+}
+}
+}
+
+name = "Proposition of Social Welfare Reforms"
+desc = "Its electoral victory owing partially to its promise of social reform and the development of a consolidated welfare state, the MPs of the Home Rule Party have begun discussing just how India’s new centre-left government should go about recalibrating the economy. However, liberal economists and major industrialists are deeply opposed to any mixed-market reform."
+
+date = { day = 0 month = may year = 1936 }
+offset = 150
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+ai_chance = 40
+name = "Government control of key industries and a strong welfare state!"
+command = { type = dissent value = 3 }
+command = { type = domestic which = free_market value = -3 }
+}
+
+action = {
+ai_chance = 50
+name = "Initiate a coherrent public welfare programme!"
+command = { type = dissent value = -2 }
+command = { type = domestic which = free_market value = -2 }
+}
+
+action = {
+ai_chance = 10
+name = "The current system is functioning well enough"
+command = { type = dissent value = 6 }
+}
+}
+
+#####################################################
+#States Reorganization Act 1948
+#####################################################
+
+event = {
+id = 184058
+random = no
+country = PAK
+style = 2
+picture = "Indiamap"
+
+trigger = {
+core = { province = 1459 data = PAK } #Delhi
+core = { province = 1517 data = PAK } #Bombay
+core = { province = 1447 data = PAK } #Hyderabad
+core = { province = 1487 data = PAK } #Calcutta
+}
+
+name = "The Movement for Linguistic States"
+desc = "EVT_1010112_DESC"
+
+date = { day = 0 month = june year = 1945 }
+offset = 150
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+name = "Quite interesting, I say!"
+command = { type = dissent value = 0.5 }
+}
+}
+
+
+event = {
+id = 184059
+random = no
+country = PAK
+style = 2
+picture = "Indiamap"
+
+trigger = {
+event = { id = 184062 days = 90 } #Election 1948
+core = { province = 1459 data = PAK } #Delhi
+core = { province = 1517 data = PAK } #Bombay
+core = { province = 1447 data = PAK } #Hyderabad
+core = { province = 1487 data = PAK } #Calcutta
+}
+
+name = "The States Reorganization Act"
+desc = "EVT_1010113_DESC"
+
+date = { day = 0 month = may year = 1948 }
+offset = 120
+deathdate = { day = 29 month = december year = 1964 }
+
+
+action = {
+ai_chance = 70
+name = "Reorganize the constituent states along linguistic lines!"
+command = { type = dissent value = -1 }
+command = { type = domestic which = freedom value = 1 }
+}
+
+action = {
+ai_chance = 30
+name = "Maintain the current system."
+command = { type = dissent value = 0.5 }
+command = { type = domestic which = freedom value = -1 }
+}
+
+action = {
+trigger = { headofgovernment = 564142 } #Malik Khizar Hayat Tiwana SC
+ai_chance = 30
+name = "A union of linguistic states and local princely confederations!"
+command = { type = dissent value = -1 }
+command = { type = domestic which = freedom value = 1 }
+}
+}
+
+
+#####################################################
+#Election 1940
+#####################################################
+
+event = {
+id = 184060
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+OR = {
+AND = {
+flag = PAKDOMINION2
+event = { id = 184011 days = 1480 }
+}
+AND = {
+flag = PAKViceroy
+event = { id = 184012 days = 1480 }
+}
+}
+}
+
+name = "Elections for Parliament, 1940"
+desc = "It has been four years since the last democratic elections took place in our fair state. From the mouth of the Indus to the peaks of the Himalayas our trusted officials and commissioners are busy erecting voting booths for the millions of honest Indians that certainly will do their democratic duty and participate in the election. Campaigns have been fought and speeches held and the parties of democratic India eagerly await the results."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1940 }
+offset = 5
+deathdate = { day = 29 month = december year = 1940 }
+
+action = {
+ai_chance =  30
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564081 } #Edward VIII, ML
+command = { trigger = { flag = PAKViceroy } type = headofstate which = 564104 } #Ganga Singh, ML
+command = { type = headofgovernment which = 564060 } #V. S. Srinivasa Sastri
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { type = armamentminister which = 564038 } #J.R.D. Tata
+command = { type = dissent value = -3  }
+command = { type = clrflag which = PAKLiberal }
+command = { type = clrflag which = PAKSwaraj }
+command = { type = clrflag which = PAKJinnah }
+command = { type = clrflag which = PAKUnionist }
+}
+
+action = {
+ai_chance =  15
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564080 } #Edward VIII, SL
+command = { trigger = { flag = PAKViceroy } type = headofstate which = 564105 } #Ganga Singh, SL
+command = { type = headofgovernment which = 564065 } #Narasimha Chintaman Kelkar
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564129 } #Kasturbhai Lalbhai
+command = { type = dissent value = -2 }
+command = { type = clrflag which = PAKLiberal }
+command = { type = clrflag which = PAKSwaraj }
+command = { type = clrflag which = PAKJinnah }
+command = { type = clrflag which = PAKUnionist }
+}
+
+action = {
+ai_chance =  30
+name = "The leftist Home Rule Party sweeps into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564082 } #Edward VIII, SD
+command = { trigger = { flag = PAKViceroy } type = headofstate which = 564106 } #Ganga Singh, SD
+command = { type = headofgovernment which = 564069 } #Muhammad Ali Jinnah
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+command = { type = clrflag which = PAKLiberal }
+command = { type = clrflag which = PAKSwaraj }
+command = { type = clrflag which = PAKJinnah }
+command = { type = clrflag which = PAKUnionist }
+}
+
+action = {
+ai_chance =  25
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564079 } #Edward VIII, SC
+command = { trigger = { flag = PAKViceroy } type = headofstate which = 564104 } #Ganga Singh, ML
+command = { type = headofgovernment which = 564073 } #Sir Sikander Hayat Khan
+command = { type = foreignminister which =  564035 } #Malik Khizar Hayat Tiwana
+command = { type = ministerofsecurity which = 564074 } #Sir Chhotu Ram
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+command = { type = clrflag which = PAKLiberal }
+command = { type = clrflag which = PAKSwaraj }
+command = { type = clrflag which = PAKJinnah }
+command = { type = clrflag which = PAKUnionist }
+}
+}
+
+#####################################################
+#Election 1944
+#####################################################
+
+event = {
+id = 184061
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 184060 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+
+name = "Elections for Parliament, 1944"
+desc = "It has been four years since the last democratic elections took place in our fair state. From the mouth of the Indus to the peaks of the Himalayas our trusted officials and commissioners are busy erecting voting booths for the millions of honest Indians that certainly will do their democratic duty and participate in the election. Campaigns have been fought and speeches held and the parties of democratic India eagerly await the results."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1944 }
+offset = 5
+deathdate = { day = 29 month = december year = 1944 }
+
+
+action = {
+ai_chance =  30
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564081 } #Edward VIII, ML
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564060 } #V. S. Srinivasa Sastri
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { trigger = { headofstate = 564119 } type = armamentminister which = 564087 } #If J.R.D Tata is governor general then armaments minister becomes B.R. Shenoy
+command = { trigger = { NOT = { headofstate = 564119 } } type = armamentminister which = 564038 } #J.R.D. Tata
+command = { type = dissent value = -3  }
+}
+
+action = {
+ai_chance =  15
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564080 } #Edward VIII, SL
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564137 } #B. G. Kher
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564129 } #Kasturbhai Lalbhai
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance =  30
+name = "The leftist Home Rule Party sweeps into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564082 } #Edward VIII, SD
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564069 } #Muhammad Ali Jinnah
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+}
+
+action = {
+ai_chance =  25
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564079 } #Edward VIII, SC
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564112 } #Sir Chhotu Ram
+command = { type = foreignminister which =  564035 } #Malik Khizar Hayat Tiwana
+command = { type = ministerofsecurity which = 564111 } #Ghazanfar Ali Khan
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+}
+}
+
+#####################################################
+#Election 1948
+#####################################################
+
+event = {
+id = 184062
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 184061 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Elections for Parliament, 1948"
+desc = "It has been four years since the last democratic elections took place in our fair state. From the mouth of the Indus to the peaks of the Himalayas our trusted officials and commissioners are busy erecting voting booths for the millions of honest Indians that certainly will do their democratic duty and participate in the election. Campaigns have been fought and speeches held and the parties of democratic India eagerly await the results."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1948 }
+offset = 5
+deathdate = { day = 29 month = december year = 1948 }
+
+action = {
+ai_chance =  25
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564081 } #Edward VIII, ML
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564139 } #Minocher Rustom Masani
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { trigger = { headofstate = 564119 } type = armamentminister which = 564087 } #If J.R.D Tata is governor general then armaments minister becomes B.R. Shenoy
+command = { trigger = { NOT = { headofstate = 564119 } } type = armamentminister which = 564038 } #J.R.D. Tata
+command = { type = dissent value = -3  }
+}
+
+action = {
+ai_chance =  25
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564080 } #Edward VIII, SL
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564137 } #B. G. Kher
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564129 } #Kasturbhai Lalbhai
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance =  35
+name = "The leftist Home Rule Party sweeps into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564082 } #Edward VIII, SD
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { trigger = { NOT = { event = 184037 event = 184040 } } type = headofgovernment which = 564069 } #Muhammad Ali Jinnah
+command = { trigger = { event = 184037 event = 184040 } type = headofgovernment which = 564122 } #V. K. Krishna Menon 
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+}
+
+action = {
+ai_chance =  25
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564079 } #Edward VIII, SC
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564142 } #Malik Khizar Hayat Tiwana
+command = { type = foreignminister which =  564143 } #Muhammad Zafarullah Khan
+command = { type = ministerofsecurity which = 564111 } #Ghazanfar Ali Khan
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+}
+}
+
+#####################################################
+#Election 1952
+#####################################################
+
+event = {
+id = 184063
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 184062 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Elections for Parliament, 1952"
+desc = "It has been four years since the last democratic elections took place in our fair state. From the mouth of the Indus to the peaks of the Himalayas our trusted officials and commissioners are busy erecting voting booths for the millions of honest Indians that certainly will do their democratic duty and participate in the election. Campaigns have been fought and speeches held and the parties of democratic India eagerly await the results."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1952 }
+offset = 5
+deathdate = { day = 29 month = december year = 1952 }
+
+action = {
+ai_chance =  25
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564081 } #Edward VIII, ML
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564139 } #Minocher Rustom Masani
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { trigger = { headofstate = 564119 } type = armamentminister which = 564087 } #If J.R.D Tata is governor general then armaments minister becomes B.R. Shenoy
+command = { trigger = { NOT = { headofstate = 564119 } } type = armamentminister which = 564038 } #J.R.D. Tata
+command = { type = dissent value = -3  }
+}
+
+action = {
+ai_chance =  25
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564080 } #Edward VIII, SL
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564137 } #B. G. Kher
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564129 } #Kasturbhai Lalbhai
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance =  35
+name = "The leftist Home Rule Party sweeps into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564082 } #Edward VIII, SD
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564122 } #V. K. Krishna Menon 
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+}
+
+action = {
+ai_chance =  15
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564079 } #Edward VIII, SC
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564142 } #Malik Khizar Hayat Tiwana
+command = { type = foreignminister which =  564143 } #Muhammad Zafarullah Khan
+command = { type = ministerofsecurity which = 564111 } #Ghazanfar Ali Khan
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+}
+}
+
+#####################################################
+#Election 1956
+#####################################################
+
+event = {
+id = 184064
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 184063 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+
+name = "Elections for Parliament, 1956"
+desc = "It has been four years since the last democratic elections took place in our fair state. From the mouth of the Indus to the peaks of the Himalayas our trusted officials and commissioners are busy erecting voting booths for the millions of honest Indians that certainly will do their democratic duty and participate in the election. Campaigns have been fought and speeches held and the parties of democratic India eagerly await the results."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1956 }
+offset = 2
+deathdate = { day = 29 month = december year = 1956 }
+
+action = {
+ai_chance =  25
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564081 } #Edward VIII, ML
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564139 } #Minocher Rustom Masani
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { trigger = { headofstate = 564119 } type = armamentminister which = 564087 } #If J.R.D Tata is governor general then armaments minister becomes B.R. Shenoy
+command = { trigger = { NOT = { headofstate = 564119 } } type = armamentminister which = 564038 } #J.R.D. Tata
+command = { type = dissent value = -3  }
+}
+
+action = {
+ai_chance =  25
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564080 } #Edward VIII, SL
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564138 } #Kanaiyalal Maneklal Munshi
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564129 } #Kasturbhai Lalbhai
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance =  35
+name = "The leftist Home Rule Party sweeps into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564082 } #Edward VIII, SD
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564122 } #V. K. Krishna Menon 
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+}
+
+action = {
+ai_chance =  15
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564079 } #Edward VIII, SC
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564142 } #Malik Khizar Hayat Tiwana
+command = { type = foreignminister which =  564143 } #Muhammad Zafarullah Khan
+command = { type = ministerofsecurity which = 564111 } #Ghazanfar Ali Khan
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+}
+}
+
+#####################################################
+#Election 1960
+#####################################################
+
+event = {
+id = 184065
+random = no
+country = PAK
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 184064 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+
+name = "Elections for Parliament, 1960"
+desc = "It has been four years since the last democratic elections took place in our fair state. From the mouth of the Indus to the peaks of the Himalayas our trusted officials and commissioners are busy erecting voting booths for the millions of honest Indians that certainly will do their democratic duty and participate in the election. Campaigns have been fought and speeches held and the parties of democratic India eagerly await the results."
+picture = "indianelection"
+
+date = { day = 0 month = january year = 1960 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+ai_chance =  30
+name = "The Indian Liberal Party scores a landslide!"
+command = { type = domestic which = freedom value = 2 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564081 } #Edward VIII, ML
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564139 } #Minocher Rustom Masani
+command = { type = foreignminister which =  564061 } #Sir Tej Bahadur Sapru
+command = { type = ministerofsecurity which = 564005 } #Sir C. P. Ramaswami Iyer
+command = { trigger = { headofstate = 564119 } type = armamentminister which = 564087 } #If J.R.D Tata is governor general then armaments minister becomes B.R. Shenoy
+command = { trigger = { NOT = { headofstate = 564119 } } type = armamentminister which = 564038 } #Jehangir Ratanji Dadabhoy Tata
+command = { type = dissent value = -3  }
+}
+
+action = {
+ai_chance =  25
+name = "The Swaraj Party carries the day!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564080 } #Edward VIII, SL
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564138 } #Kanaiyalal Maneklal Munshi
+command = { type = foreignminister which =  564066 } #Sir Shah Nawaz Bhutto
+command = { type = ministerofsecurity which = 564067 } #M. R. Jayakar
+command = { type = armamentminister which = 564129 } #Kasturbhai Lalbhai
+command = { type = dissent value = -2 }
+}
+
+action = {
+ai_chance =  35
+name = "The leftist Home Rule Party sweeps into parliament!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564082 } #Edward VIII, SD
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564122 } #V. K. Krishna Menon 
+command = { type = foreignminister which =  564070 } #Huseyn Shaheed Suhrawardy
+command = { type = ministerofsecurity which = 564071 } #K. P. Kesava Menon
+command = { type = armamentminister which = 564072 } #Ghanshyam Das Birla
+command = { type = dissent value = -3 }
+}
+
+action = {
+ai_chance =  10
+name = "The farmer-gentry alliance of the Unionist Party triumphs!"
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { trigger = { flag = PAKDOMINION2 } type = headofstate which = 564079 } #Edward VIII, SC
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Ambedkar } type = headofstate which = 564117 } #B. R. Ambedkar
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Chatterjee } type = headofstate which = 564118 } #Sir Atul Chandra Chatterjee
+command = { trigger = { flag = PAKViceroy local_flag = viceroy_Tata } type = headofstate which = 564119 } #J.R.D. Tata
+command = { type = headofgovernment which = 564142 } #Malik Khizar Hayat Tiwana
+command = { type = foreignminister which =  564143 } #Muhammad Zafarullah Khan
+command = { type = ministerofsecurity which = 564111 } #Ghazanfar Ali Khan
+command = { type = armamentminister which = 564004 } #C.D. Deshmuk
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 184066
+random = no
+country = PAK
+style = 2
+picture = "bhupinder_passing"
+
+date = { day = 23 month = march year = 1938 }
+
+name = "Passing of Bhupinder Singh of Patiala"
+desc = "The much beloved and progressive ruler of the princely state of Patiala in the Punjab, Maharaja Bhupinder Singh, passed away yesterday, surrounded by his family. A veteran of the Weltkrieg, Bhupinder Singh was a close friend and comrade of Ganga Singh of Bikaner. He is succeeded as maharaja by his eldest son, Yadavindra Singh."
+
+action = {
+name = "What a tragic event!"
+command = { type = sleepleader which = 564079 }
+command = { type = sleepminister which = 564008 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 184067
+random = no
+country = PAK
+style = 2
+picture = "Valleta"
+save_date = yes
+
+decision = {
+NOT = {
+ispuppet = PAK
+lost_national = { country = PAK value = 15 }
+}
+core = { province = 1500 data = PAK } #Madras
+control = { province = 1500 data = PAK } #Madras
+core = { province = 1459 data = PAK } #Delhi
+core = { province = 1517 data = PAK } #Bombay
+core = { province = 1447 data = PAK } #Hyderabad
+core = { province = 1487 data = PAK } #Calcutta
+NOT = {
+exists = U35
+}
+}
+
+decision_trigger = {
+core = { province = 1500 data = PAK } #Madras
+control = { province = 1500 data = PAK } #Madras
+core = { province = 1459 data = PAK } #Delhi
+core = { province = 1517 data = PAK } #Bombay
+core = { province = 1447 data = PAK } #Hyderabad
+core = { province = 1487 data = PAK } #Calcutta
+NOT = {
+exists = U35
+}
+}
+
+trigger = {
+NOT = {
+ispuppet = PAK
+lost_national = { country = PAK value = 15 }
+}
+core = { province = 1500 data = PAK } #Madras
+control = { province = 1500 data = PAK } #Madras
+core = { province = 1459 data = PAK } #Delhi
+core = { province = 1517 data = PAK } #Bombay
+core = { province = 1447 data = PAK } #Hyderabad
+core = { province = 1487 data = PAK } #Calcutta
+NOT = {
+exists = U35
+}
+}
+
+name = "Further Development of Madras Harbour"
+desc = "Once an important naval hub, the harbour of the city of Madras has fallen into disrepair after years under princely ineptitude. Situated on the Bay of Bengal, the port facilities could nonetheless be restored and expanded as to present united India with a strong naval and shipping base for power projection as well as trade in the Far East."
+
+date = { day = 0 month = may year = 1943 }
+offset = 120
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+ai_chance = 70
+name = "Madras shall become India's gateway to the Far East!"
+command = { type = manpowerpool value = -5 }
+command = { type = supplies value = -10000 }
+command = { type = metalpool value = -5000 }
+command = { type = money value = -2500 }
+command = { type = dissent value = -1 }
+}
+
+action = {
+ai_chance = 30
+name = "We shan't displace Bombay and Karachi's mercantile position!"
+command = { type = dissent value = 1.5 }
+}
+}
+
+
+event = {
+id = 184068
+country = PAK
+
+trigger = {
+event = 184067
+event = { id = 184067 days = 365 }
+control = { province = 1500 data = PAK } #Madras
+}
+
+name = "Madras Harbour Expansion Completed"
+desc = "Workers have busied themselves for a year with improving the naval facilities of Madras' harbour and we've started to see results! Gun batteries now protect shiny new piers ready for commercial as well as military vessels. This is a great day for India and the Empire!"
+style = 2
+picture = "Valleta"
+
+date = { day = 0 month = june year = 1936 }
+offset = 22
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+name = "Madras Curry shall soon be everywhere!"
+command = { type = construct which = ic where = 1500 value = 1 } #Madras
+command = { type = construct which = infrastructure where = 1500 value = 20 }
+command = { type = construct which = coastal_fort where = 1500 value = 2 }
+command = { type = construct which = naval_base where = 1500 value = 3 }
+}
+}
+
+#####################################################
+#Unlocking the Karachi Garrison 
+#####################################################
+
+event = {
+id = 184069
+random = no
+country = PAK
+
+decision = {
+ai = no
+}
+
+decision_trigger = {
+ai = no
+}
+
+trigger = {
+ai = no
+}
+
+name = "Mobilize the Karachi Division"
+desc = "The high command has decided that the 11th Sindh Rifles currently garrisoning the Karachi dockyards are to be mobilized for deployment to other parts of our fair dominion."
+style = 2
+picture = "trainingindia"
+decision_picture = "decision_oltenia"
+
+date = { day = 0 month = january year = 1914 }
+offset = 1
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+name = "There's more to India than the beauty of Karachi, boys!"
+command = { type = money value = -5 }
+command = { type = supplies value = -50 }
+command = { type = unlock_division which = 12703 value = 68 }
+}
+}

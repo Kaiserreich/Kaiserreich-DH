@@ -1,0 +1,1014 @@
+###
+### Peace negotiation events between defeated Germany and British-led Entente
+###
+### by Milites
+###
+###### The London Peace Conference / the Treaty of Versailles
+###### So far only covering Entente victory
+###
+### GER 112000 : Request an Armistice with the Entente
+### U07 112001 : Armistice with Germany
+### RUS 112002 : Armistice with Germany
+### VIC 112003 : Armistice with Germany
+### U24 112004 : Armistice with Germany
+### U25 112005 : Armistice with Germany
+### U07 112006 : The London Peace Conference
+###
+###### Harsh conditions
+### RUS 112007 : Russian claims on Germany
+### VIC 112008 : National French claims on Germany
+### U24 112009 : Austria-Hungarian claims on Germany
+### U25 112010 : Danubian Federation claims on Germany
+### GER 112011 : The London Peace Conference - harsh conditions
+### CON 112012 : The Maiming of Mittelafrika
+### RUS 112013 : Dividends from the Treaty of London
+### U24 112014 : Dividends from the Treaty of London
+### U25 112015 : Dividends from the Treaty of London
+###
+###### Mild conditions
+### RUS 112016 : Russian claims on Germany
+### VIC 112017 : National French claims on Germany
+### U24 112018 : Austria-Hungarian claims on Germany
+### U25 112019 : Danubian Federation claims on Germany
+### GER 112020 : The London Peace Conference - mild conditions
+###
+####### Fate of Belgium
+###
+### U07 112021 : The Fate of Belgium
+### BEL 112022 : Independent Belgium
+###
+#######
+
+
+
+#Requesting an armistice : based on DH Full 1914 surrender event
+event = {
+id = 112000
+country = GER
+
+trigger = {
+war = { country = GER country = U07 }
+NOT = {
+flag = GER_Capitulation
+ispuppet = U07
+alliance = { country = GER country = RUS }
+alliance = { country = GER country = USA }
+}
+OR = {
+#Berlin has fallen
+AND = {
+dissent = 35
+NOT = { control = { province = 163 data = GER } }
+OR = {
+lost_VP = { value = 20 }
+lost_IC = { value = 20 }
+}
+}
+AND = {
+dissent = 25
+NOT = { control = { province = 163 data = GER } }
+OR = {
+lost_VP = { value = 30 }
+lost_IC = { value = 30 }
+}
+}
+AND = {
+dissent = 20
+NOT = { control = { province = 163 data = GER } }
+OR = {
+lost_VP = { value = 35 }
+lost_IC = { value = 35 }
+}
+}
+AND = {
+OR = {
+dissent = 10
+random = 25
+}
+NOT = { control = { province = 163 data = GER } }
+OR = {
+lost_VP = { value = 40 }
+lost_IC = { value = 40 }
+}
+}
+#many provinces lost and high dissent
+AND = {
+dissent = 35
+OR = {
+lost_VP = { value = 50 }
+lost_IC = { value = 50 }
+}
+}
+AND = {
+dissent = 30
+OR = {
+lost_VP = { value = 55 }
+lost_IC = { value = 55 }
+}
+}
+AND = {
+dissent = 25
+OR = {
+lost_VP = { value = 60 }
+lost_IC = { value = 60 }
+}
+}
+AND = {
+dissent = 20
+OR = {
+lost_VP = { value = 65 }
+lost_IC = { value = 65 }
+}
+}
+}
+}
+
+name = "Seeking an Armistice With the Entente"
+desc = "We have suffered a crushing defeat by the accursed Entente Cordiale. The Kaiserreich is torn asunder by internal conflict and rioting is becoming very common in the larger cities. Should we approach the British about the terms of an armistice?"
+style = 2
+picture = "POWs"
+
+date = { day = 0 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1969 }
+
+action = {
+name = "Seek terms with the Entente" # the Darkest Hour of the Kaiserreich
+ai_chance = 80
+command = { type = dissent value = 10 }
+command = { trigger = { exists = U24 } type = end_access which = U24 }
+command = { trigger = { exists = U25 } type = end_access which = U25 }
+command = { trigger = { exists = AUS } type = end_access which = AUS }
+command = { type = peace which = U07 value = 1 }
+command = { type = trigger which = 112001 } #U07 Armistice with Germany
+command = { type = secedearea which = U07 value = Flanders }
+command = { type = secedearea which = U07 value = Wallonia }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = trigger which = 112002 } #RUS Armistice with Germany
+command = { trigger = { alliance = { country = U07 country = VIC } } type = trigger which = 112003 } #VIC Armistice with Germany
+command = { trigger = { alliance = { country = U07 country = U24 } } type = trigger which = 112004 } #U24 Armistice with Germany
+command = { trigger = { alliance = { country = U07 country = U25 } } type = trigger which = 112005 } #U25 Armistice with Germany
+command = { trigger = { alliance = { country = U07 country = RUS } } type = peace which = RUS value = 1 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = peace which = VIC value = 1 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secederegion which = U07 value = France }
+command = { type = access which = U07 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = access which = VIC }
+command = { trigger = { alliance = { country = U07 country = RUS } } type = access which = RUS }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = access which = U24 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = access which = U25 }
+}
+
+action = {
+name = "A peace with perfidious Albion would only be the peace of the grave!"
+ai_chance = 20
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 112001   # U07 armistice with Germany
+country = U07
+
+# Triggered by 112000
+
+name = "Armistice With Germany"
+desc = "EVT_200201_DESC"
+style = 2
+picture = "Entente1"
+
+action = {
+name = "Hurrah!"
+command = { type = dissent value = -3 }
+command = { trigger = { OR = { puppet = { country = BEL country = GER } puppet = { country = WLL country = GER } puppet = { country = FLA country = GER } } } type = event which = 112021 where = U07 when = 7 } # The Fate of Belgium
+command = { trigger = { puppet = { country = BEL country = GER } } type = inherit which = BEL }
+command = { trigger = { puppet = { country = FLA country = GER } } type = inherit which = FLA }
+command = { trigger = { puppet = { country = WLL country = GER } } type = inherit which = WLL }
+command = { trigger = { AND = { alliance = { country = U07 country = VIC } puppet = { country = U08 country = GER } } } type = inherit which = U08 }
+command = { trigger = { AND = { alliance = { country = U07 country = VIC } puppet = { country = U21 country = GER } } } type = inherit which = U21 }
+command = { trigger = { AND = { alliance = { country = U07 country = VIC } puppet = { country = U22 country = GER } } } type = inherit which = U22 }
+command = { trigger = { AND = { alliance = { country = U07 country = VIC } puppet = { country = U23 country = GER } } } type = inherit which = U23 }
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secederegion which = VIC value = France }
+command = { type = event which = 112006 where = U07 when = 24 } # The London Peace Conference
+}
+}
+
+event = {
+id = 112002   # RUS armistice with Germany
+country = RUS
+
+# Triggered by 112000
+
+name = "Armistice With Germany"
+desc = "EVT_200202_DESC"
+style = 2
+picture = "Entente3"
+
+action = {
+name = "Finally the shame of Brest-Litovsk is no more!"
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 112003   # VIC armistice with Germany
+country = VIC
+
+# Triggered by 112000
+
+name = "Armistice With Germany"
+desc = "EVT_200203_DESC"
+style = 2
+picture = "Entente1"
+
+action = {
+name = "Le Prussianisme has been dealt its final blow!"
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 112004   # U24 armistice with Germany
+country = U24
+
+# Triggered by 112000
+
+name = "Armistice With Germany"
+desc = "After a long and bitter struggle, the Entente has finally brought the German Empire to its knees. Austria-Hungary will be rewarded!"
+style = 2
+picture = "austrohunarmy_march"
+
+action = {
+name = "We have torn down the proud Hohenzollerns!!"
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 112005   # U25 armistice with Germany
+country = U25
+
+# Triggered by 112000
+
+name = "Armistice With Germany"
+desc = "After a long and bitter struggle, the Entente has finally brought the German Empire to its knees. The Danubian Federation will be rewarded!"
+style = 2
+picture = "austrohunarmy_march"
+
+action = {
+name = "We have torn down the proud Hohenzollerns!!"
+command = { type = dissent value = -3 }
+}
+}
+
+################ the London Peace Conference
+
+event = {
+id = 112006
+country = U07
+
+# Triggered by 112001
+
+name = "The London Peace Conference"
+desc = "EVT_200204_DESC"
+style = 2
+picture = "Entente4"
+
+action = {
+ai_chance = 93
+name = "Impose harsh conditions!"
+command = { trigger = { alliance = { country = U07 country = RUS } } type = trigger which = 112007 } #RUS claims on Germany
+command = { trigger = { alliance = { country = U07 country = VIC } } type = trigger which = 112008 } #VIC claims on Germany
+command = { trigger = { alliance = { country = U07 country = U24 } } type = trigger which = 112009 } #U24 claims on Germany
+command = { trigger = { alliance = { country = U07 country = U25 } } type = trigger which = 112010 } #U25 claims on Germany
+command = { type = event which = 112011 where = GER when = 8 } #The Treaty of London
+command = { type = sleepevent which = 112020 }
+command = { type = dissent value = -20 }
+}
+
+action_b = {
+ai_chance = 7
+name = "Impose mild conditions!"
+command = { trigger = { alliance = { country = U07 country = RUS } } type = trigger which = 112016 } #RUS claims on Germany
+command = { trigger = { alliance = { country = U07 country = VIC } } type = trigger which = 112017 } #VIC claims on Germany
+command = { trigger = { alliance = { country = U07 country = U24 } } type = trigger which = 112018 } #U24 claims on Germany
+command = { trigger = { alliance = { country = U07 country = U25 } } type = trigger which = 112019 } #U25 claims on Germany
+command = { type = event which = 112020 where = GER when = 8 } #The Treaty of London
+command = { type = sleepevent which = 112011 }
+command = { type = dissent value = -20 }
+}
+}
+
+event = {
+id = 112007
+country = RUS
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Russian Terms"
+desc = "EVT_200205_DESC"
+style = 2
+picture = "Entente3"
+
+action_a = {
+ai_chance = 60
+name = "Demand a complete reversal of the Brest-Litovsk Treaty!"
+command = { type = belligerence which = RUS value = 5  }
+command = { type = setflag which = LPC_RUS_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Demand our 1914 borders AND East Prussia!"
+command = { type = belligerence which = RUS value = 10  }
+command = { type = setflag which = LPC_RUS_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112008
+country = VIC
+
+# Triggered by 112006
+
+name = "The London Peace Conference - French Terms"
+desc = "EVT_200206_DESC"
+style = 2
+picture = "Entente4"
+
+action_a = {
+ai_chance = 30
+name = "Demand the return of our colonies and Alsace-Lorraine!"
+command = { type = belligerence which = VIC value = 5  }
+command = { type = setflag which = LPC_VIC_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Demand Alsace-Lorraine, our colonies AND occupy the Rhineland!"
+command = { type = belligerence which = RUS value = 10  }
+command = { type = setflag which = LPC_VIC_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112009
+country = U24
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Austro-Hungarian Terms"
+desc = "Austria-Hungary played a vital part in defeating the German Empire. What should we demand?"
+style = 2
+picture = "Entente4"
+
+action_a = {
+ai_chance = 30
+name = "Demand the annexation of the Catholic Kingdom of Bavaria!"
+command = { type = belligerence which = U24 value = 5  }
+command = { type = setflag which = LPC_U24_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Demand the annexation of the Bavaria, Wurttemberg and Baden!"
+command = { type = belligerence which = U24 value = 10  }
+command = { type = setflag which = LPC_U24_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112010
+country = U25
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Danubian Terms"
+desc = "The Danubian peoples played a vital part in defeating the German Empire. What should we demand?"
+style = 2
+picture = "Entente4"
+
+action_a = {
+ai_chance = 30
+name = "Demand the annexation of the Catholic Kingdom of Bavaria!"
+command = { type = belligerence which = U24 value = 5  }
+command = { type = setflag which = LPC_U25_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Demand the annexation of the Bavaria, Wurttemberg and Baden!"
+command = { type = belligerence which = U24 value = 10  }
+command = { type = setflag which = LPC_U25_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112011
+country = GER
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Results"
+desc = "We have been presented with the terms of the victorious Entente and must now follow them. This is the darkest hour of the Kaiserreich."
+style = 2
+picture = "Entente4"
+
+action_a = {
+name = "Vae Victis."
+command = { type = belligerence which = GER value = -10  }
+#Guinea + Solomon + Bismarck Archipelago to Australian Federation if possible, otherwise to U07
+command = { trigger = { alliance = { country = U07 country = AST } } type = secederegion which = AST value = "New Guinea" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secederegion which = AST value = "Bismarck Archipelago" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secederegion which = AST value = "North Solomon Islands" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secedeprovince which = NZL value = 1731 } #Apia - Samoa
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secederegion which = U07 value = "New Guinea" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secederegion which = U07 value = "Bismarck Archipelago" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secederegion which = U07 value = "North Solomon Islands" }
+#The other German Pacific islands
+command = { trigger = { alliance = { country = JAP country = U07 } } type = secederegion which = JAP value = "Asian Pacific" }
+command = { trigger = { NOT = { alliance = { country = JAP country = U07 } } alliance = { country = USA country = U07 }} type = secederegion which = USA value = "Asian Pacific" }
+command = { trigger = { NOT = { alliance = { country = JAP country = U07 } alliance = { country = USA country = U07 } } alliance = { country = U07 country = VIC }} type = secederegion which = U07 value = "Asian Pacific" }
+command = { trigger = { NOT = { alliance = { country = JAP country = U07 } alliance = { country = USA country = U07 } alliance = { country = U07 country = VIC } } } type = secederegion which = U07 value = "Asian Pacific" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secedearea which = U07 value = "Guadalcanal" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secedearea which = U07 value = "Central Solomons" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secedearea which = AST value = "Guadalcanal" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secedearea which = AST value = "Central Solomons" }
+# Other former British colonies
+command = { type = secedeprovince which = U07 value = 964 when = 1 } #Freetown
+command = { type = secedeprovince which = U07 value = 993 when = 1 } #Ascunsion
+command = { type = secedeprovince which = U07 value = 896 when = 1 } #St. Helena
+command = { type = secedeprovince which = U07 value = 429 when = 1 } #Malta
+command = { type = secedeprovince which = U07 value = 1007 when = 1 } #Port Said
+command = { type = secedeprovince which = U07 value = 900 when = 1 } #Suez
+command = { type = secedeprovince which = U07 value = 1050 when = 1 } #Aden
+command = { type = secedeprovince which = U07 value = 1053 when = 1 } #Zeila
+command = { type = secedeprovince which = U07 value = 832 when = 1 } #Berbera
+command = { type = secedeprovince which = U07 value = 833 when = 1 } #Socotra
+command = { type = secedeprovince which = U07 value = 840 when = 1 } #Seychelles
+command = { type = secedeprovince which = U07 value = 999 when = 1 } #Mauritius
+command = { type = secedeprovince which = U07 value = 1000 when = 1 } #Diego Garcia
+command = { type = secedeprovince which = U07 value = 1613 when = 1 } #Jesselton
+command = { type = secedeprovince which = U07 value = 1614 when = 1 } #Milne Bay
+command = { type = secedeprovince which = U07 value = 1437 when = 1 } #Owen Stanley Mountains
+command = { type = secedeprovince which = U07 value = 1438 when = 1 } #Kerema
+command = { type = secedeprovince which = U07 value = 1432 when = 1 } #Shortland Island
+command = { type = secedeprovince which = U07 value = 1624 when = 1 } #Vella Lavella
+command = { type = secedeprovince which = U07 value = 1625 when = 1 } #Kolombangara
+command = { type = secedeprovince which = U07 value = 1626 when = 1 } #New Georgia
+command = { type = secedeprovince which = U07 value = 1328 when = 1 } #Guadalcanal
+command = { type = secedeprovince which = U07 value = 1331 when = 1 } #Santa Cruz Islands
+command = { type = secedeprovince which = U07 value = 1605 when = 1 } #Makin
+command = { type = secedeprovince which = U07 value = 1602 when = 1 } #Abaing
+command = { type = secedeprovince which = U07 value = 1234 when = 1 } #Tarawa
+command = { type = secedeprovince which = U07 value = 1603 when = 1 } #Maiana
+command = { type = secedeprovince which = U07 value = 1610 when = 1 } #Apamama
+command = { type = secedeprovince which = U07 value = 1725 when = 1 } #Nanouti
+command = { type = secedeprovince which = U07 value = 1726 when = 1 } #Tabiteuea
+command = { type = secedeprovince which = U07 value = 1727 when = 1 } #Arorae
+command = { type = secedeprovince which = U07 value = 1724 when = 1 } #Tamana
+command = { type = secedeprovince which = U07 value = 1587 when = 1 } #Christmas Island
+# Ceylon to PAK, if allied
+command = { trigger = { alliance = { country = U07 country = PAK } }
+type = secedeprovince which = PAK value = 1509 when = 1 } #Mahavil
+command = { trigger = { alliance = { country = U07 country = PAK } }
+type = secedeprovince which = PAK value = 1510 when = 1 } #Kandy
+command = { trigger = { alliance = { country = U07 country = PAK } }
+type = secedeprovince which = PAK value = 1511 when = 1 } #Colombo
+# Ceylon to U07 if PAK not allied
+command = { trigger = { NOT = { alliance = { country = U07 country = PAK } } }
+type = secedeprovince which = U07 value = 1509 when = 1 } #Mahavil
+command = { trigger = { NOT = { alliance = { country = U07 country = PAK } } }
+type = secedeprovince which = U07 value = 1510 when = 1 } #Kandy
+command = { trigger = { NOT = { alliance = { country = U07 country = PAK } } }
+type = secedeprovince which = U07 value = 1511 when = 1 } #Colombo
+# Removing cores and seceding Alsace-Lorraine
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 96 } # Longwy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 104 } # Metz
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 105 } # Colmar
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 106 } # Nancy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 107 } # Strasbourg
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 96 when = 1 } # Longwy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 104 when = 1 } # Metz
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 105 when = 1 } # Colmar
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 106 when = 1 } # Nancy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 107 when = 1 } # Strasbourg
+# Seceding the left bank of the Rhine if demanded by VIC
+command = { trigger = { flag = LPC_VIC_HARSH } type = secedearea which = VIC value = Rhineland }
+# Returning African colonies if CON exists
+command = { trigger = { exists = CON alliance = { country = U07 country = VIC } } type = trigger which = 112012 } # CON secedes French colonies
+# Returning African colonies if CON doesn't exists
+command = { type = secedearea which = VIC value = "Madagascar" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = U07 value = "GOLD COAST" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Slave Coast" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Ivory Coast" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Guinean Coast" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Cameroonian Jungle" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Central Africa Plains" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "North Nigeria" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "South Nigeria" when = 1 }
+command = { trigger = { NOT = { exists = MOR } } type = secederegion which = VIC value = "Morocco" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedeprovince which = VIC value = 922 when = 1 } #Faya
+command = { trigger = { NOT = { exists = CON } } type = secedeprovince which = VIC value = 833 when = 1 } #Djibouti
+# Removing claims in Belgium
+command = { type = removeclaim which = 108 } # Liege
+command = { type = removeclaim which = 111 } # Arlon
+#Russian rewards
+command = { trigger = { flag = LPC_RUS_HARSH } type = secedearea which = RUS value = "East Prussia" when = 1 }
+command = { trigger = { flag = LPC_RUS_HARSH } type = secedeprovince which = RUS value = 261 when = 1 } #Klaipedia
+command = { trigger = { flag = LPC_RUS_HARSH } type = secedeprovince which = RUS value = 181 when = 1 } #Danzig
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = secedeprovince which = RUS value = 222 when = 1 } #Torun
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = secedeprovince which = RUS value = 226 when = 1 } #Gdynia
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = secedeprovince which = RUS value = 230 when = 1 } #Plock
+command = { trigger = { alliance = { country = U07 country = RUS } } type = trigger which = 112013 } # RUS claims Eastern Europe
+#Russian rewards, if the countries have been annexed by GER
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { exists = FIN } } type = secederegion which = RUS value = "Finland" when = 1 }
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { exists = LAT exists = U26 exists = EST } } type = secederegion which = RUS value = "Baltic States" when = 1 }
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { war = { country = RUS country = U07 } } } type = secederegion which = RUS value = "Belarus" when = 1 }
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { war = { country = RUS country = U07 } } } type = secederegion which = RUS value = "Ukraine" when = 1 }
+#Austro-Hungarian rewards
+command = { trigger = { flag = LPC_U24_MILD } type = secedearea which = U24 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U24_HARSH } type = secedearea which = U24 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U24_HARSH } type = secedearea which = U24 value = "BADEN_WURTTEMBERG" when = 1 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = trigger which = 112014 } # U24 claims
+#Danubian Federation rewards
+command = { trigger = { flag = LPC_U25_MILD } type = secedearea which = U25 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U25_HARSH } type = secedearea which = U25 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U25_HARSH } type = secedearea which = U25 value = "BADEN_WURTTEMBERG" when = 1 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = trigger which = 112015 } # U25 claims
+#Poland if member of the Entente
+#Schleswig border adjustment
+command = { trigger = { exists = DEN NOT = { war = { country = DEN country = U07 } } NOT = { puppet = { country = DEN country = GER } } }
+type = secedeprovince which = DEN value = 216 } #Abenra
+command = { trigger = { alliance = { country = U07 country = DEN } } type = secedeprovince which = DEN value = 216 } #Abenra
+command = { trigger = { alliance = { country = U07 country = DEN } } type = secedeprovince which = DEN value = 150 } #Flensburg
+#revert gains from previous treaties with SCH
+command = { trigger = { NOT = { exists = SCH } } type = independence which = SCH value = 1 when = 1 }
+command = { type = secedearea which = SCH value = Switzerland when = 1 }
+#limitations on ships
+command = { type = demobilize which = battleship when = 0 where = 0 value = 12 }
+command = { type = demobilize which = battlecruiser when = 0 where = 0 value = 12 }
+command = { type = demobilize which = heavy_cruiser when = 0 where = 0 value = 12 }
+command = { type = demobilize which = light_cruiser when = 0 where = 0 value = 12 }
+command = { type = demobilize which = destroyer when = 0 where = 0 value = 24 }
+command = { type = demobilize which = submarine when = 0 where = 0 value = 6 }
+#Leave alliance
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 112012
+country = CON
+
+# Triggered by 112011
+
+name = "The Maiming of Mittelafrika"
+desc = "As per the London Peace Treaty, we must secede large tracts of former French colonies to the National French fools."
+style = 2
+picture = "Entente4"
+
+action_a = {
+name = "It was fun while it lasted."
+command = { type = secedearea which = U07 value = "GOLD COAST" when = 1 }
+command = { type = secedearea which = VIC value = "Slave Coast" when = 1 }
+command = { type = secedearea which = VIC value = "Ivory Coast" when = 1 }
+command = { type = secedearea which = VIC value = "North Nigeria" when = 1 }
+command = { type = secedearea which = VIC value = "South Nigeria" when = 1 }
+command = { type = secedearea which = VIC value = "Guinean Coast" when = 1 }
+command = { type = secedearea which = VIC value = "Cameroonian Jungle" when = 1 }
+command = { type = secedearea which = VIC value = "Central Africa Plains" when = 1 }
+command = { type = secedearea which = VIC value = "Madagascar" when = 1 }
+command = { type = secederegion which = VIC value = "Morocco" when = 1 }
+command = { type = secedeprovince which = VIC value = 922 when = 1 } #Faya
+command = { type = secedeprovince which = VIC value = 833 when = 1 } #Djibouti
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 112013
+country = RUS
+
+# Triggered by 112011
+
+name = "Dividends from the Treaty of London"
+desc = "With the ink still wet on the peace treaty, Russian troops move in to assume absolute control!"
+style = 2
+picture = "Entente4"
+
+action_a = {
+name = "It will all belong to Mother Russia!"
+command = { trigger = { OR = { alliance = { country = GER country = UKR } puppet = { country = UKR country = GER } } } type = inherit which = UKR }
+command = { trigger = { OR = { alliance = { country = GER country = BLR } puppet = { country = BLR country = GER } } } type = inherit which = BLR }
+command = { trigger = { OR = { alliance = { country = GER country = LAT } puppet = { country = LAT country = GER } } } type = inherit which = LAT }
+command = { trigger = { OR = { alliance = { country = GER country = LIT } puppet = { country = LIT country = GER } } } type = inherit which = LIT }
+command = { trigger = { OR = { alliance = { country = GER country = POL } puppet = { country = POL country = GER } } } type = inherit which = POL }
+command = { trigger = { OR = { alliance = { country = GER country = GLD } puppet = { country = GLD country = GER } } } type = inherit which = GLD }
+command = { trigger = { OR = { alliance = { country = GER country = FIN } puppet = { country = FIN country = GER } } } type = inherit which = FIN }
+command = { trigger = { flag = LPC_RUS_HARSH } type = addclaim which = 181 } # Danzig
+command = { trigger = { flag = LPC_RUS_HARSH } type = addclaim which = 182 } # Tilsit
+command = { trigger = { flag = LPC_RUS_HARSH } type = addclaim which = 183 } # Elbing
+command = { trigger = { flag = LPC_RUS_HARSH } type = addclaim which = 184 } # Konigsberg
+command = { trigger = { flag = LPC_RUS_HARSH } type = addclaim which = 185 } # Allenstein
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = addclaim which = 222 } # Torun
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = addclaim which = 226 } # Gdynia
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = addclaim which = 230 } # Plock
+command = { trigger = { flag = LPC_RUS_HARSH } type = addclaim which = 261 } # Klaipedia
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 112014
+country = U24
+
+# Triggered by 112011
+
+name = "Dividends from the Treaty of London" #Austro-Hungarian claims
+desc = "With the ink still wet on the peace treaty, Austro-Hungarian troops move in to assume absolute control!"
+style = 2
+picture = "Entente4"
+
+action_a = {
+name = "Bavarians are just Austrians with better beer after all."
+command = { type = dissent value = -5 }
+command = { trigger = { flag = LPC_U24_MILD } type = addclaim which = 174 } # Bayreuth
+command = { trigger = { flag = LPC_U24_MILD } type = addclaim which = 175 } # Regensburg
+command = { trigger = { flag = LPC_U24_MILD } type = addclaim which = 176 } # Landshut
+command = { trigger = { flag = LPC_U24_MILD } type = addclaim which = 177 } # Nuremberg
+command = { trigger = { flag = LPC_U24_MILD } type = addclaim which = 178 } # Augsburg
+command = { trigger = { flag = LPC_U24_MILD } type = addclaim which = 179 } # Munich
+command = { trigger = { flag = LPC_U24_MILD } type = addclaim which = 180 } # Wurzburg
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 174 } # Bayreuth
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 175 } # Regensburg
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 176 } # Landshut
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 177 } # Nuremberg
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 178 } # Augsburg
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 179 } # Munich
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 180 } # Wurzburg
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 132 } # Freiburg
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 133 } # Konstanz
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 134 } # Stuttgart
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 135 } # Tubingen
+command = { trigger = { flag = LPC_U24_HARSH } type = addclaim which = 136 } # Karlsruhe
+}
+}
+
+event = {
+id = 112015
+country = U25
+
+# Triggered by 112011
+
+name = "Dividends from the Treaty of London" #Danubian claims
+desc = "With the ink still wet on the peace treaty, the troops of the Danubian Federation move in to assume absolute control!"
+style = 2
+picture = "Entente4"
+
+action_a = {
+name = "Bavarians are just Austrians with better beer after all."
+command = { type = dissent value = -5 }
+command = { trigger = { flag = LPC_U25_MILD } type = addclaim which = 174 } # Bayreuth
+command = { trigger = { flag = LPC_U25_MILD } type = addclaim which = 175 } # Regensburg
+command = { trigger = { flag = LPC_U25_MILD } type = addclaim which = 176 } # Landshut
+command = { trigger = { flag = LPC_U25_MILD } type = addclaim which = 177 } # Nuremberg
+command = { trigger = { flag = LPC_U25_MILD } type = addclaim which = 178 } # Augsburg
+command = { trigger = { flag = LPC_U25_MILD } type = addclaim which = 179 } # Munich
+command = { trigger = { flag = LPC_U25_MILD } type = addclaim which = 180 } # Wurzburg
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 174 } # Bayreuth
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 175 } # Regensburg
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 176 } # Landshut
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 177 } # Nuremberg
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 178 } # Augsburg
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 179 } # Munich
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 180 } # Wurzburg
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 132 } # Freiburg
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 133 } # Konstanz
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 134 } # Stuttgart
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 135 } # Tubingen
+command = { trigger = { flag = LPC_U25_HARSH } type = addclaim which = 136 } # Karlsruhe
+}
+}
+
+################ Mild conditions
+event = {
+id = 112016
+country = RUS
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Russian Terms"
+desc = "EVT_200205_DESC"
+style = 2
+picture = "Entente3"
+
+action_a = {
+ai_chance = 70
+name = "Demand a complete reversal of the Brest-Litovsk Treaty!"
+command = { type = belligerence which = RUS value = 5  }
+command = { type = setflag which = LPC_RUS_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Demand our 1914 borders AND East Prussia!"
+command = { type = belligerence which = RUS value = 10  }
+command = { type = setflag which = LPC_RUS_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112017
+country = VIC
+
+# Triggered by 112006
+
+name = "The London Peace Conference - French Terms"
+desc = "EVT_200206_DESC"
+style = 2
+picture = "Entente4"
+
+action_a = {
+ai_chance = 70
+name = "Demand the return of our colonies and Alsace-Lorraine!"
+command = { type = belligerence which = VIC value = 5  }
+command = { type = setflag which = LPC_VIC_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Demand Alsace-Lorraine, our colonies AND occupy the Rhineland!"
+command = { type = belligerence which = RUS value = 10  }
+command = { type = setflag which = LPC_VIC_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112018
+country = U24
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Austro-Hungarian Terms"
+desc = "Austria-Hungary played a vital part in defeating the German Empire. What should we demand?"
+style = 2
+picture = "Entente4"
+
+action_a = {
+ai_chance = 70
+name = "Demand the annexation of the Catholic Kingdom of Bavaria!"
+command = { type = belligerence which = U24 value = 5  }
+command = { type = setflag which = LPC_U24_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Demand the annexation of the Bavaria, Württemberg and Baden!"
+command = { type = belligerence which = U24 value = 10  }
+command = { type = setflag which = LPC_U24_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112019
+country = U25
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Danubian Terms"
+desc = "The Danubian peoples played a vital part in defeating the German Empire. What should we demand?"
+style = 2
+picture = "Entente4"
+
+action_a = {
+ai_chance = 70
+name = "Demand the annexation of the Catholic Kingdom of Bavaria!"
+command = { type = belligerence which = U24 value = 5  }
+command = { type = setflag which = LPC_U25_MILD }
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Demand the annexation of the Bavaria, Württemberg and Baden!"
+command = { type = belligerence which = U24 value = 10  }
+command = { type = setflag which = LPC_U25_HARSH }
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 112020
+country = GER
+
+# Triggered by 112006
+
+name = "The London Peace Conference - Results"
+desc = "We have been presented with the terms of the victorious Entente and must now follow them. This is the darkest hour of the Kaiserreich."
+style = 2
+picture = "Entente4"
+
+action_a = {
+name = "Vae Victis."
+command = { type = belligerence which = GER value = -10  }
+#Guinea + Solomon + Bismarck Archipelago to Australian Federation if possible, otherwise to U07
+command = { trigger = { alliance = { country = U07 country = AST } } type = secederegion which = AST value = "New Guinea" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secederegion which = AST value = "Bismarck Archipelago" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secederegion which = AST value = "North Solomon Islands" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secedeprovince which = NZL value = 1731 } #Apia - Samoa
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secederegion which = U07 value = "New Guinea" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secederegion which = U07 value = "Bismarck Archipelago" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secederegion which = U07 value = "North Solomon Islands" }
+#The other German Pacific islands
+command = { trigger = { alliance = { country = JAP country = U07 } } type = secederegion which = JAP value = "Asian Pacific" }
+command = { trigger = { NOT = { alliance = { country = JAP country = U07 } } alliance = { country = USA country = U07 }} type = secederegion which = USA value = "Asian Pacific" }
+command = { trigger = { NOT = { alliance = { country = JAP country = U07 } alliance = { country = USA country = U07 } } alliance = { country = U07 country = VIC }} type = secederegion which = U07 value = "Asian Pacific" }
+command = { trigger = { NOT = { alliance = { country = JAP country = U07 } alliance = { country = USA country = U07 } alliance = { country = U07 country = VIC } } } type = secederegion which = U07 value = "Asian Pacific" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secedearea which = U07 value = "Guadalcanal" }
+command = { trigger = { OR = { NOT = { exists = AST } war = { country = AST country = U07 } } } type = secedearea which = U07 value = "Central Solomons" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secedearea which = AST value = "Guadalcanal" }
+command = { trigger = { alliance = { country = U07 country = AST } } type = secedearea which = AST value = "Central Solomons" }
+# Other former British colonies
+command = { type = secedeprovince which = U07 value = 964 when = 1 } #Freetown
+command = { type = secedeprovince which = U07 value = 993 when = 1 } #Ascunsion
+command = { type = secedeprovince which = U07 value = 896 when = 1 } #St. Helena
+command = { type = secedeprovince which = U07 value = 429 when = 1 } #Malta
+command = { type = secedeprovince which = U07 value = 1007 when = 1 } #Port Said
+command = { type = secedeprovince which = U07 value = 900 when = 1 } #Suez
+command = { type = secedeprovince which = U07 value = 1050 when = 1 } #Aden
+command = { type = secedeprovince which = U07 value = 1053 when = 1 } #Zeila
+command = { type = secedeprovince which = U07 value = 832 when = 1 } #Berbera
+command = { type = secedeprovince which = U07 value = 833 when = 1 } #Socotra
+command = { type = secedeprovince which = U07 value = 840 when = 1 } #Seychelles
+command = { type = secedeprovince which = U07 value = 999 when = 1 } #Mauritius
+command = { type = secedeprovince which = U07 value = 1000 when = 1 } #Diego Garcia
+command = { type = secedeprovince which = U07 value = 1613 when = 1 } #Jesselton
+command = { type = secedeprovince which = U07 value = 1614 when = 1 } #Milne Bay
+command = { type = secedeprovince which = U07 value = 1437 when = 1 } #Owen Stanley Mountains
+command = { type = secedeprovince which = U07 value = 1438 when = 1 } #Kerema
+command = { type = secedeprovince which = U07 value = 1432 when = 1 } #Shortland Island
+command = { type = secedeprovince which = U07 value = 1624 when = 1 } #Vella Lavella
+command = { type = secedeprovince which = U07 value = 1625 when = 1 } #Kolombangara
+command = { type = secedeprovince which = U07 value = 1626 when = 1 } #New Georgia
+command = { type = secedeprovince which = U07 value = 1328 when = 1 } #Guadalcanal
+command = { type = secedeprovince which = U07 value = 1331 when = 1 } #Santa Cruz Islands
+command = { type = secedeprovince which = U07 value = 1605 when = 1 } #Makin
+command = { type = secedeprovince which = U07 value = 1602 when = 1 } #Abaing
+command = { type = secedeprovince which = U07 value = 1234 when = 1 } #Tarawa
+command = { type = secedeprovince which = U07 value = 1603 when = 1 } #Maiana
+command = { type = secedeprovince which = U07 value = 1610 when = 1 } #Apamama
+command = { type = secedeprovince which = U07 value = 1725 when = 1 } #Nanouti
+command = { type = secedeprovince which = U07 value = 1726 when = 1 } #Tabiteuea
+command = { type = secedeprovince which = U07 value = 1727 when = 1 } #Arorae
+command = { type = secedeprovince which = U07 value = 1724 when = 1 } #Tamana
+command = { type = secedeprovince which = U07 value = 1587 when = 1 } #Christmas Island
+# Ceylon to PAK, if allied
+command = { trigger = { alliance = { country = U07 country = PAK } }
+type = secedeprovince which = PAK value = 1509 when = 1 } #Mahavil
+command = { trigger = { alliance = { country = U07 country = PAK } }
+type = secedeprovince which = PAK value = 1510 when = 1 } #Kandy
+command = { trigger = { alliance = { country = U07 country = PAK } }
+type = secedeprovince which = PAK value = 1511 when = 1 } #Colombo
+# Ceylon to U07 if PAK not allied
+command = { trigger = { NOT = { alliance = { country = U07 country = PAK } } }
+type = secedeprovince which = U07 value = 1509 when = 1 } #Mahavil
+command = { trigger = { NOT = { alliance = { country = U07 country = PAK } } }
+type = secedeprovince which = U07 value = 1510 when = 1 } #Kandy
+command = { trigger = { NOT = { alliance = { country = U07 country = PAK } } }
+type = secedeprovince which = U07 value = 1511 when = 1 } #Colombo
+# Removing cores and seceding Alsace-Lorraine
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 96 } # Longwy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 104 } # Metz
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 105 } # Colmar
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 106 } # Nancy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = removecore which = 107 } # Strasbourg
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 96 when = 1 } # Longwy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 104 when = 1 } # Metz
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 105 when = 1 } # Colmar
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 106 when = 1 } # Nancy
+command = { trigger = { alliance = { country = U07 country = VIC } } type = secedeprovince which = VIC value = 107 when = 1 } # Strasbourg
+# Seceding the left bank of the Rhine if demanded by VIC
+command = { trigger = { flag = LPC_VIC_HARSH } type = secedearea which = VIC value = Rhineland }
+# Returning African colonies if CON exists
+command = { trigger = { exists = CON alliance = { country = U07 country = VIC } } type = trigger which = 112012 } # CON secedes French colonies
+# Returning African colonies if CON doesn't exists
+command = { type = secedearea which = VIC value = "Madagascar" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = U07 value = "GOLD COAST" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Slave Coast" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Ivory Coast" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Guinean Coast" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Cameroonian Jungle" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "Central Africa Plains" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "North Nigeria" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedearea which = VIC value = "South Nigeria" when = 1 }
+command = { trigger = { NOT = { exists = MOR } } type = secederegion which = VIC value = "Morocco" when = 1 }
+command = { trigger = { NOT = { exists = CON } } type = secedeprovince which = VIC value = 922 when = 1 } #Faya
+command = { trigger = { NOT = { exists = CON } } type = secedeprovince which = VIC value = 833 when = 1 } #Djibouti
+# Removing claims in Belgium
+command = { type = removeclaim which = 108 } # Liege
+command = { type = removeclaim which = 111 } # Arlon
+#Russian rewards
+command = { trigger = { flag = LPC_RUS_HARSH } type = secedearea which = RUS value = "East Prussia" when = 1 }
+command = { trigger = { flag = LPC_RUS_HARSH } type = secedeprovince which = RUS value = 261 when = 1 } #Klaipedia
+command = { trigger = { flag = LPC_RUS_HARSH } type = secedeprovince which = RUS value = 181 when = 1 } #Danzig
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = secedeprovince which = RUS value = 222 when = 1 } #Torun
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = secedeprovince which = RUS value = 226 when = 1 } #Gdynia
+command = { trigger = { flag = LPC_RUS_HARSH NOT = { alliance = { country = U07 country = POL } } } type = secedeprovince which = RUS value = 230 when = 1 } #Plock
+command = { trigger = { alliance = { country = U07 country = RUS } } type = trigger which = 112013 } # RUS claims Eastern Europe
+#Russian rewards, if the countries have been annexed by GER
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { exists = FIN } } type = secederegion which = RUS value = "Finland" when = 1 }
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { exists = LAT exists = U26 exists = EST } } type = secederegion which = RUS value = "Baltic States" when = 1 }
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { war = { country = RUS country = U07 } } } type = secederegion which = RUS value = "Belarus" when = 1 }
+command = { trigger = { alliance = { country = U07 country = RUS } NOT = { war = { country = RUS country = U07 } } } type = secederegion which = RUS value = "Ukraine" when = 1 }
+#Austro-Hungarian rewards
+command = { trigger = { flag = LPC_U24_MILD } type = secedearea which = U24 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U24_HARSH } type = secedearea which = U24 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U24_HARSH } type = secedearea which = U24 value = "BADEN WURTTEMBERG" when = 1 }
+command = { trigger = { alliance = { country = U07 country = U24 } } type = trigger which = 112014 } # U24 claims
+#Danubian Federation rewards
+command = { trigger = { flag = LPC_U25_MILD } type = secedearea which = U25 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U25_HARSH } type = secedearea which = U25 value = "BAVARIA" when = 1 }
+command = { trigger = { flag = LPC_U25_HARSH } type = secedearea which = U25 value = "BADEN WURTTEMBERG" when = 1 }
+command = { trigger = { alliance = { country = U07 country = U25 } } type = trigger which = 112015 } # U25 claims
+command = { type = dissent value = 10 }
+}
+}
+
+################ Belgium
+
+event = {
+id = 112021
+country = U07
+
+# Triggered by 112001
+
+name = "The Fate of Belgium"
+desc = "With the defeat of the Kaiserreich, we have torn down the unpopular German satrapy of Flanders-Wallonia. Should we restore gallant little Belgium to its rightful place in the Entente?"
+style = 2
+picture = "Belprop"
+
+action_a = {
+ai_chance = 100
+name = "Gallant little Belgium rises once again!"
+command = { type = belligerence which = U07 value = -5  }
+command = { type = independence which = BEL value = 1 when = 0 }
+command = { type = make_puppet which = BEL }
+command = { type = name where = BEL which = BEL_NOR_NAME }
+command = { type = flag_ext where = BEL which = "_nor" }
+command = { type = independence which = LUX value = 1 when = 1 }
+command = { type = make_puppet which = LUX }
+command = { type = trigger which = 112022 } #BEL cabinet
+command = { type = dissent value = -10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Maintain a military occupation of the Channel Ports!"
+command = { type = belligerence which = U07 value = 10  }
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 112022
+country = BEL
+
+# Triggered by 112001
+
+name = "Independent Belgium"
+desc = "Flemmings and Walloons rally round the king!"
+style = 2
+picture = "Belprop"
+
+action_a = {
+name = "Gallant little Belgium rises once again!"
+command = { type = set_relation which = U07 value = 200 }
+command = { type = set_relation which = VIC value = 200 }
+command = { type = set_relation which = RUS value = 200 }
+command = { type = set_relation which = PAK value = 200 }
+command = { type = set_relation which = USA value = 200 }
+command = { trigger = { government = fascist year = 1936 } type = headofstate which = 15135 } # Leopold III
+command = { trigger = { government = democratic year = 1936 } type = headofstate which = 15001 } # Leopold III
+command = { trigger = { government = fascist year = 1947 } type = headofstate which = 15118 } # Badouin I
+command = { trigger = { government = democratic year = 1947 } type = headofstate which = 15136 } # Badouin I
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = dissent value = -10 }
+}
+
+}

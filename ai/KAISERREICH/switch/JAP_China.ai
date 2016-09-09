@@ -1,0 +1,306 @@
+# reworked by Kibbles for Kaiserreich#   Dr Bob
+# based on the original files (HoI2 1.1) by Lothos
+# reuse is welcome as long as file origin is correctly stated
+
+max_garrison_prop = 0.20
+min_garrison_prop = 0.10
+reinforcement = 0.01
+upgrading = 0.1
+
+###################################
+# Diplomacy
+###################################
+combat = {
+				CSX = 200
+				CHC = 150
+				CYN = 50
+}
+trade = {
+	cancel_deal_threshold	= 1.6
+	energy 			= -1
+	rare_materials 		= -1
+	metal 			= -1
+	oil 			= -1
+	supplies 			= 11
+	money 			= -1
+}
+target = {
+				1337 = 150
+				1336 = 150
+				1249 = 150
+				1419 = 150
+				1415 = 150
+				1254 = 150
+}
+
+###################################
+# Construction and Tech Research
+###################################
+#Default values
+construction = {
+	max_factor = 0.000
+
+}
+military = {
+	relative_build_scheme 	= no
+	max_batch_peace 		= 540
+	max_batch_war 		= 540
+	max_batch_home_front 	= 540
+
+	#### Divisions etc...
+	infantry 		= 30
+	cavalry 		= 10
+	motorized 		= 0
+	mechanized 		= 0
+	light_armor 		= 0
+	armor 			= 5
+	paratrooper 		= 0
+	marine 			= 15
+	bergsjaeger 		= 15
+	garrison		= 0
+      	hq 			= 5
+	militia 		= 0
+
+#				80 %
+	interceptor 		= 3
+	multi_role 		= 2
+	cas 			= 0
+	strategic_bomber 		= 0
+	tactical_bomber		= 4
+	naval_bomber 		= 1
+	transport_plane 		= 0
+	flying_bomb 		= 0
+	flying_rocket 		= 0
+#				10 %
+	battleship 		= 0
+	carrier 			= 10
+	escort_carrier		= 0
+	destroyer 			= 0
+	light_cruiser 		= 0
+	heavy_cruiser 		= 0
+	battlecruiser 		= 0
+	submarine 		= 0
+
+	transports 		= 0
+#				10 %
+
+
+	#### Brigades
+	artillery 			= 40
+	sp_artillery 		= 0
+	rocket_artillery		= 0
+	sp_rct_artillery 		= 0
+	anti_tank 		= 0
+	tank_destroyer 		= 0
+	light_armor_brigade 	= 0
+	heavy_armor 		= 0
+	super_heavy_armor 		= 0
+	armored_car 		= 20
+	anti_air 			= 0
+	police 			= 10
+	engineer 			= 10
+
+	cag 			= 100.000
+}
+###################################
+# Ground Combat, Leaders and Garrisons
+###################################
+garrison = {
+	defend_overseas_beaches 	= yes
+	home_multiplier 		= 0.5
+	overseas_multiplier 		= 1.0
+	home_peace_cap 		= 31
+	war_zone_odds 		= 1.5
+	key_point_prio_mult	= 0
+	revolt_risk_mult		= 0.1
+
+	# PRIORITIES:
+	beach			= 20	# Beach level 2
+	capital			= 20	# Our capital
+	human_border		= 50	# Ignored for allied human players
+	war_target		= 100	# The next country targeted for attack by this AI
+
+	opposing_alliance		= 50	# For neutrals, all alliances are "opposing"
+	claim_threat		= 0	# If we are neutral, countries with claims on us get this
+	unstable_border		= 0	# Bordering countries at war with someone else get this
+
+	# Borders with specific countries
+	country_priorities = {
+		CSX = 200 #Qing
+		GER = 100
+		CGX = 90 #AOG
+		CHC = 90 #Shangqing Tiango
+		RUS = 25
+		CYN = 20 #Yunnan
+		MON = 20
+		HOL = 10
+		USA = 10
+		PRI = -1 #Transmur
+		EAF = -1 #Legation Cities
+		MAN = -1
+		SIA = -1
+		POR = -1
+	}
+}
+front = {
+	recklessness 		= 2 # 0-3
+	distrib_vs_ai 		= op_defensive
+	distrib_vs_human 		= op_defensive
+
+	enemy_reinf_days		= 4
+
+	panic_ratio_vs_ai		= 2.5
+	panic_ratio_vs_human	= 2.5
+	base_attack_odds		= 1.333
+	min_attack_odds		= 1.1
+	max_attack_odds		= 2.5
+	reinforce_odds		= 1.2
+	withdraw_odds		= 0.75
+
+	reserve_prop 		= 0.2
+
+      	passivity = {
+		CYN = 100
+	}
+}
+###################################
+# Invasions and Naval
+###################################
+invasion = {
+	invasion		= yes
+ 	base		= 0.1	#Relative modifier. (lower = specific targets much more important.)
+	random		= 0.01	#How big a random range.  (1.0 = 1%)
+	coastal		= 0.1	#increase to avoid coastal forts more.
+	beach		= 0.1	#higher, avoid worst beaches.
+	distance		= 20.0	#higher = avoid long distance.
+	pocket		= 20.0	#prioritise pockets, ie provinces with no adjacent controlled by same.
+	island		= 0.1	#prioritise taking pure islands.
+	enemy		= 2.0	#higher = much more vary of troops in province.
+	adjacentenemy 	= 2.0	#higher = much more vary of troops nearby
+	air_base		= 1.5 
+      	naval_base 	= 0.1 
+      	air_support 	= 3.0 
+      	redirect 		= priority
+	ignore		= no
+
+	staging_province = {
+		1236 # Changde
+		1239 # Erenhot
+
+	}
+	target = {
+		1415 = 1000
+	}
+}
+admiral = {
+	min_org			=100	# NEW: Percent of org gained back before the unit can leave port
+	min_dmg			=28    # NEW: Percent of dmg gained back before the unit can leave port
+	return_org 		=60 	# NEW: PERCENT OF ORG LOST BEFORE RETURNING TO PORT applies to all fleets/ships
+	return_dmg 		=80 	# NEW: PERCENT OF DMG LOST BEFORE RETURNING TO PORT for repairs applies to all fleets/ships
+	min_core_attack_fleets 	= 1		# Minimum amount of attack fleets to defend CORE provinces (default 0)
+	num_attack_fleets		= 2 	# ENG/USA default 3, JAP default 2 everyone else is 1
+
+
+ignore = {
+
+# Mediterranean
+"Adriatic Sea"
+"Aegean Sea"
+"Black Sea"
+"Tyrrhenian Sea"
+"Costa del Sol"
+"Algerian Coast"
+"Egyptian Coast"
+"Gulf of Lyon"
+
+
+# Caribbean
+"Yucatan Strait"
+"Central Carribean"
+"Windward Islands"
+"West Gulf of Mexico"
+"East Gulf of Mexico"
+"Florida Strait"
+
+# Baltic Sea
+"Bothnian Bay"
+"Northern Baltic"
+"Southern Baltic"
+
+
+# North Sea
+"Kattegat"
+"English Channel"
+"Southeast Northsea"
+"West Northsea"
+"Central Northsea"
+"Norwegian Sea"
+"Western Approaches"
+"Greenland Coast"
+"Faroes Gap"
+"North Atlantic"
+"Bay of Biscay"
+"Azores"
+"Portugese Coast"
+"Cap St Vincent"
+"Cape Finisterre"
+"Irish West Coast"
+"The Hebreides"
+
+# North Atlantic
+"Barents Sea"
+"Irish Sea"
+"Denmark Strait"
+"Central Atlantic"
+"Hudson Bay"
+"Bermuda Triangle"
+"Northern Sea of Labrador"
+"Southern Sea of Labrador"
+"Grand Banks"
+"The Seamounts"
+"Canadian Maritimes"
+"US Maritimes"
+"Central Mid-Atlantic Ridge"
+"East North Sea"
+"Arctic Ocean"
+
+# South Atlantic
+"Coast of Brazil"
+"Cap Verde"
+"Gulf of Guinea"
+"Coast of Africa"
+"Coast of Bissao"
+"Guiana Basin"
+"South-Central Mid-Atlantic Ridge"
+"Atlantic-Indian Ridge"
+"Coast of South Africa"
+"Coast of Angola-Namibia"
+"Angola Plain"
+"Argentine Plain"
+"Coast of Argentina"
+"Coast of Uruguay"
+"Coast of Guyana"
+"Coast of Recife"
+"Pernambuco Plain"
+"Ascension Fracture Zone"
+	}
+
+	target = {
+		2518 = 200
+		2517 = 200
+		2515 = 200
+		2516 = 150
+		2523 = 100
+		2524 = 100
+	}
+	core = {
+		2491
+		2492
+		2489
+		2497
+		2498
+		2494
+		2515
+	}
+	base = { 1553 }
+}

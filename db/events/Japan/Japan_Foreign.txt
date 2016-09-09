@@ -1,0 +1,1029 @@
+#################################################################
+#	Japan Foreign Policy Events
+#	Events by Hasagwan, Kibbles, thegreatplant, Capt. Rhodes and Arturius
+#	last edit: 15.09.2009
+#################################################################
+
+# reserved ID's: 340200 - 340299
+
+
+##  General choice of foreign policy
+# 	340200	Foreign Policy - National Populist
+# 	340201	Foreign Policy - Democratic
+
+##  Expansion Path
+# 	340202 Whereto?	# fourth option inactive
+#	340203 Whereto? - After desist from Russia
+
+## Japan Russian Cooperation (by viader)
+#	340210
+#	340211
+#	340212
+#	340213
+#	340214
+#	340215
+
+## 	Isolationist Path # not ready yet?
+
+
+
+
+
+## General Choice of Foreign Policy
+
+#  Foreign Policy - National Populist
+
+event = {
+id = 340200
+country = JAP
+style = 2
+picture = "Japan"
+
+trigger = {
+OR = {
+government = fascist
+government = communist
+}
+control = { province = 1228 data = -3 }
+control = { province = 1219 data = -3 }
+NOT = {
+ispuppet = JAP
+atwar = JAP
+event = 340201
+war = { country = JAP country = KOR }
+war = { country = JAP country = PRI }
+war = { country = JAP country = U30 }
+war = { country = JAP country = MAN }
+}
+}
+
+date = { day = 1 month = march year = 1937 }
+offset = 5
+deathdate = { day = 10 month = december year = 1944 }
+
+name = "The Rising Sun"
+desc = "With the political problems at home surpressed, it is time for the Land of the Rising Sun to look beyond her borders. We have many choices, each with their own rewards and challenges. Once we decide which path to take, we can later go more into depth on how to obtain it."
+
+action_a = {
+ai_chance = 100
+name = "Let the sun rise!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = belligerence value = 5 }
+command = { type = dissent value = -5 }
+command = { type = setflag which = JAP_EXP }
+command = { type = sleepevent which = 340201 }
+}
+
+action_b = {
+ai_chance = 0
+name = "We must return to our old ways of isolationism, Japan is a world in itself"
+command = { type = domestic which = interventionism value = -9 }
+command = { type = domestic which = defense_lobby value = -9 }
+command = { type = relation which = GER value = 25 }
+command = { type = relation which = MON value = 25 }
+command = { type = relation which = CSX value = 25 }
+command = { type = setflag which = JAP_ISO }
+command = { type = dissent value = 5 }
+command = { type = belligerence value = -25 }
+command = { type = sleepevent which = 340201 }
+}
+}
+
+#  Foreign Policy - Democratic
+
+event = {
+id = 340201
+country = JAP
+style = 2
+picture = "Japan"
+
+trigger = {
+government = democratic
+control = { province = 1228 data = -3 }
+control = { province = 1219 data = -3 }
+NOT = {
+ispuppet = JAP
+atwar = JAP
+event = 340200
+war = { country = JAP country = KOR }
+war = { country = JAP country = PRI }
+war = { country = JAP country = U30 }
+war = { country = JAP country = MAN }
+}
+}
+
+date = { day = 1 month = march year = 1937 }
+offset = 5
+deathdate = { day = 10 month = december year = 1944 }
+
+name = "The Rising Sun"
+desc = "With the political problems at home surpressed, it is time for the Land of the Rising Sun to look beyond her borders. We have many choices, each with their own rewards and challenges. Once we decide which path to take, we can later go more into depth on how to obtain it."
+
+action_a = {
+ai_chance = 90
+name = "Let the sun rise!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = belligerence value = 5 }
+command = { type = dissent value = 1 }
+command = { type = setflag which = JAP_EXP }
+command = { type = sleepevent which = 340200 }
+}
+
+action_b = {
+ai_chance = 10
+name = "We must return to our old ways of isolationism, Japan is a world in itself"
+command = { type = domestic which = interventionism value = -9 }
+command = { type = domestic which = defense_lobby value = -9 }
+command = { type = relation which = GER value = 25 }
+command = { type = relation which = MON value = 25 }
+command = { type = relation which = CSX value = 25 }
+command = { type = dissent value = 1 }
+command = { type = setflag which = JAP_ISO }
+command = { type = belligerence value = -25 }
+command = { type = sleepevent which = 340200 }
+}
+}
+
+### Expansion Path
+
+# Whereto?
+
+
+event = {
+id = 340202
+country = JAP
+style = 2
+picture = "Japan"
+
+trigger = {
+flag = JAP_EXP
+}
+
+date = { day = 1 month = march year = 1937 }
+offset = 5
+deathdate = { day = 10 month = december year = 1944 }
+
+name = "The Rising Sun"
+desc = "With the political problems at home surpressed, it is time for the Land of the Rising Sun to look beyond her borders. We have many choices, each with their own rewards and challenges. Once we decide which path to take, we can later go more into depth on how to obtain it."
+
+action_a = {
+trigger = {
+exists = GER
+OR = {
+control = { province = 1328 data = GER }
+control = { province = 1432 data = GER }
+control = { province = 1395 data = GER }
+}
+}
+ai_chance = 40
+name = "We must bring down the German goliath !"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = GER value = -50 }
+command = { type = relation which = CAN value = 25 }
+command = { type = relation which = AST value = 25 }
+command = { type = setflag which = JAP_GER }
+}
+action_b = {
+trigger = {
+OR = {
+NOT = {
+control = { province = 1162 data = -3 }
+}
+NOT = {
+control = { province = 1124 data = -3 }
+}
+}
+}
+
+ai_chance = 35
+name = "North of us is a great untamed land which is ripe for the taking!"
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = MON value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = setflag which = JAP_RUS }
+}
+
+action_c = {
+ai_chance = 5
+name = "Colonialism has served us well in the past, it will serve now as well !"
+trigger = {
+OR = {
+NOT = {
+control = { province = 1565 data = -3 }
+}
+NOT = {
+control = { province = 1647 data = -3 }
+}
+NOT = {
+control = { province = 1734 data = -3 }
+}
+NOT = {
+control = { province = 1705 data = -3 }
+}
+}
+}
+command = { type = relation which = USA value = -50 }
+command = { type = relation which = AST value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = setflag which = JAP_COLONY }
+}
+
+}
+
+# Whereto? - After desist from Russia
+
+
+event = {
+id = 340203
+country = JAP
+style = 2
+picture = "Japan"
+
+name = "The Rising Sun"
+desc = "With the political problems at home surpressed, it is time for the Land of the Rising Sun to look beyond her borders. We have many choices, each with their own rewards and challenges. Once we decide which path to take, we can later go more into depth on how to obtain it."
+
+action_a = {
+trigger = {
+exists = GER
+OR = {
+control = { province = 1328 data = GER }
+control = { province = 1432 data = GER }
+control = { province = 1395 data = GER }
+NOT = {
+control = { province = 1247 data = -3 }
+}
+}
+}
+ai_chance = 90 # ai_chance = 35
+name = "We must bring down the German goliath if we want to carve an Empire!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = GER value = -50 }
+command = { type = relation which = CAN value = 25 }
+command = { type = relation which = AST value = 25 }
+command = { type = setflag which = JAP_GER }
+}
+action_b = {
+ai_chance = 10 # ai_chance = 30
+name = "Colonialism has served us well in the past, let us look beyond to greener lands!"
+trigger = {
+OR = {
+NOT = {
+control = { province = 1565 data = -3 }
+}
+NOT = {
+control = { province = 1647 data = -3 }
+}
+NOT = {
+control = { province = 1734 data = -3 }
+}
+NOT = {
+control = { province = 1705 data = -3 }
+}
+}
+}
+command = { type = relation which = USA value = -50 }
+command = { type = relation which = AST value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = setflag which = JAP_COLONY }
+}
+}
+
+
+event = {
+id = 340204
+country = JAP
+style = 2
+picture = "Japan"
+
+
+name = "The Rising Sun"
+desc = "With Siberia secured, it is time for the Land of the Rising Sun to look beyond her borders. We have many choices, each with their own rewards and challenges. Once we decide which path to take, we can later go more into depth on how to obtain it."
+
+action_a = {
+trigger = {
+exists = GER
+OR = {
+control = { province = 1328 data = GER }
+control = { province = 1432 data = GER }
+control = { province = 1395 data = GER }
+NOT = {
+control = { province = 1247 data = -3 }
+}
+}
+}
+ai_chance = 90 # ai_chance = 35
+name = "We must bring down the German goliath if we want to carve an Empire!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = GER value = -50 }
+command = { type = relation which = CAN value = 25 }
+command = { type = relation which = AST value = 25 }
+command = { type = clrflag which  = RUS_DEFEATED_BY_JAP }
+command = { type = setflag which = JAP_GER }
+}
+action_b = {
+ai_chance = 10 # ai_chance = 30
+name = "Colonialism has served us well in the past, let us look beyond to greener lands!"
+trigger = {
+OR = {
+NOT = {
+control = { province = 1565 data = -3 }
+}
+NOT = {
+control = { province = 1647 data = -3 }
+}
+NOT = {
+control = { province = 1734 data = -3 }
+}
+NOT = {
+control = { province = 1705 data = -3 }
+}
+}
+}
+command = { type = relation which = USA value = -50 }
+command = { type = relation which = AST value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = clrflag which = RUS_DEFEATED_BY_JAP }
+command = { type = setflag which = JAP_COLONY }
+}
+
+action_c = {
+ai_chance = 10
+name = "Abandon expansionism, we have achieved our goals !"
+command = { type = domestic which = interventionism value = -9 }
+command = { type = domestic which = defense_lobby value = -9 }
+command = { type = relation which = GER value = 25 }
+command = { type = relation which = MON value = 25 }
+command = { type = relation which = CSX value = 25 }
+command = { type = clrflag which = JAP_EXP }
+command = { type = clrflag which = JAP_MONRUS_CAMP }
+command = { type = clrflag which = JAP_MON_CAMP }
+command = { type = clrflag which = JAP_RUS_CAMP }
+command = { type = clrflag which = JAP_SIB_CAMP }
+command = { type = setflag which = JAP_ISO }
+command = { type = belligerence value = -25 }
+}
+}
+
+
+event = {
+id = 340205
+country = JAP
+style = 2
+picture = "Japan"
+
+
+name = "The Rising Sun"
+desc = "With territory of China secured, it is time for the Land of the Rising Sun to look beyond her borders. We have many choices, each with their own rewards and challenges. Once we decide which path to take, we can later go more into depth on how to obtain it."
+
+action_a = {
+trigger = {
+OR = {
+NOT = {
+control = { province = 1162 data = -3 }
+}
+NOT = {
+control = { province = 1124 data = -3 }
+}
+}
+}
+
+ai_chance = 35
+name = "North of us is a great untamed land which is ripe for the taking!"
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = MON value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = setflag which = JAP_RUS }
+command = { type = clrflag which = JAP_GER1 }
+command = { type = clrflag which = JAP_GER2 }
+}
+
+action_b = {
+ai_chance = 10 # ai_chance = 30
+name = "Colonialism has served us well in the past, let us look beyond to greener lands!"
+trigger = {
+OR = {
+NOT = {
+control = { province = 1565 data = -3 }
+}
+NOT = {
+control = { province = 1647 data = -3 }
+}
+NOT = {
+control = { province = 1734 data = -3 }
+}
+NOT = {
+control = { province = 1705 data = -3 }
+}
+}
+}
+command = { type = relation which = USA value = -50 }
+command = { type = relation which = AST value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = clrflag which = RUS_DEFEATED_BY_JAP }
+command = { type = clrflag which = JAP_GER1 }
+command = { type = clrflag which = JAP_GER2 }
+command = { type = setflag which = JAP_COLONY }
+}
+
+action_c = {
+ai_chance = 10
+name = "Abandon expansionism, we have achieved our goals !"
+command = { type = domestic which = interventionism value = -9 }
+command = { type = domestic which = defense_lobby value = -9 }
+command = { type = relation which = GER value = 25 }
+command = { type = relation which = MON value = 25 }
+command = { type = relation which = CSX value = 25 }
+command = { type = clrflag which = JAP_EXP }
+command = { type = clrflag which = JAP_GER1 }
+command = { type = clrflag which = JAP_GER2 }
+command = { type = setflag which = JAP_ISO }
+command = { type = belligerence value = -25 }
+}
+}
+
+
+event = {
+id = 340206
+country = JAP
+style = 2
+picture = "Japan"
+
+
+name = "The Rising Sun"
+desc = "With southern pacific secured, it is time for the Land of the Rising Sun to look beyond her borders. We have many choices, each with their own rewards and challenges. Once we decide which path to take, we can later go more into depth on how to obtain it."
+
+action_a = {
+trigger = {
+OR = {
+NOT = {
+control = { province = 1162 data = -3 }
+}
+NOT = {
+control = { province = 1124 data = -3 }
+}
+}
+}
+
+ai_chance = 35
+name = "North of us is a great untamed land which is ripe for the taking!"
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = MON value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = setflag which = JAP_RUS }
+}
+
+action_b = {
+trigger = {
+exists = GER
+OR = {
+control = { province = 1328 data = GER }
+control = { province = 1432 data = GER }
+control = { province = 1395 data = GER }
+NOT = {
+control = { province = 1247 data = -3 }
+}
+}
+}
+ai_chance = 90 # ai_chance = 35
+name = "We must bring down the German goliath if we want to carve an Empire!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = GER value = -50 }
+command = { type = relation which = CAN value = 25 }
+command = { type = relation which = AST value = 25 }
+command = { type = clrflag which  = RUS_DEFEATED_BY_JAP }
+command = { type = setflag which = JAP_GER }
+}
+
+action_c = {
+ai_chance = 10
+name = "Abandon expansionism, we have achieved our goals !"
+command = { type = domestic which = interventionism value = -9 }
+command = { type = domestic which = defense_lobby value = -9 }
+command = { type = relation which = GER value = 25 }
+command = { type = relation which = MON value = 25 }
+command = { type = relation which = CSX value = 25 }
+command = { type = clrflag which = JAP_EXP }
+command = { type = setflag which = JAP_ISO }
+command = { type = belligerence value = -25 }
+}
+}
+
+
+# Whereto? - After desist from Southern Pacific
+
+
+event = {
+id = 340209
+country = JAP
+style = 2
+picture = "Japan"
+
+name = "The Rising Sun"
+desc = "With Southern pacific too well protected, we must change course of our expansionism and maybe return to southern pacific, once German Empire is occupied elsewhere...."
+
+action_a = {
+trigger = {
+exists = GER
+OR = {
+control = { province = 1328 data = GER }
+control = { province = 1432 data = GER }
+control = { province = 1395 data = GER }
+NOT = {
+control = { province = 1247 data = -3 }
+}
+}
+}
+ai_chance = 90 # ai_chance = 35
+name = "We must bring down the German goliath if we want to carve an Empire!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = GER value = -50 }
+command = { type = relation which = CAN value = 25 }
+command = { type = relation which = AST value = 25 }
+command = { type = setflag which = JAP_GER }
+}
+action_b = {
+trigger = {
+OR = {
+NOT = {
+control = { province = 1162 data = -3 }
+}
+NOT = {
+control = { province = 1124 data = -3 }
+}
+}
+}
+
+ai_chance = 35
+name = "North of us is a great untamed land which is ripe for the taking!"
+command = { type = relation which = RUS value = -50 }
+command = { type = relation which = MON value = -50 }
+command = { type = relation which = GER value = 25 }
+command = { type = setflag which = JAP_RUS }
+}
+}
+
+
+
+event = {
+id = 340207
+country = JAP
+style = 2
+picture = "ekonomija"
+
+trigger = {
+NOT = {
+ispuppet = JAP
+}
+OR = {
+puppet = { country = MAN country = JAP  }
+control = { province = 1208 data = -3 }
+}
+}
+
+date = { day = 7 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1936 }
+
+name = "EVT_661961_NAME" #Economic exploatation of Fengtieng republic
+desc = "EVT_661961_DESC"
+
+action = {
+name = "EVT_661961_actionnameA"
+command = { type = relation which = MAN value = -10 }
+command = { type = dissent value = -1 }
+command = { type = belligerence which = JAP value = 2  }
+command = { type = money value = 200 }
+command = { type = supplies value = 1000 }
+command = { type = oilpool value = 1000 }
+command = { type = metalpool value = 1000 }
+command = { type = rarematerialspool value = 1000 }
+command = { trigger = { ai = JAP } type = free_ic value = 5 }
+command = { trigger = { NOT = { ai = JAP } } type = free_ic value = 2 }
+}
+
+
+}
+
+
+event = {
+id = 340208
+country = JAP
+style = 2
+picture = "ekonomija"
+
+trigger = {
+event = 340207
+NOT = {
+puppet = { country = MAN country = JAP  }
+control = { province = 1208 data = -3 }
+}
+}
+
+date = { day = 1 month = february year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Economic exploatation of Fengtieng republic is no longer possible"
+desc = "Terrible news ! Due to loss of control over Fengtieng republic, we can no longer exploitate its industry to suppor our own."
+
+action = {
+name = "Drat !"
+command = { type = dissent value = 1 }
+command = { trigger = { ai = JAP } type = free_ic value = -5 }
+command = { trigger = { NOT = { ai = JAP } } type = free_ic value = -2 }
+}
+
+
+}
+
+
+####################################
+#1938 ~ 1963 - Colonisation of Korea
+####################################
+event = {
+id = 260088
+random = no
+country = JAP
+save_date = yes
+style = 2
+
+trigger = {
+event = 252058 #JAP : Dealing with Agrarian Crisis
+local_flag = JAP_AGR_COL
+NOT = { local_flag = JAP_AGR_KOREA }
+OR = {
+AND = {
+puppet = { country = KOR country = JAP }
+owned = { province = 1221 data = KOR }
+control = { province = 1221 data = KOR }
+owned = { province = 1228 data = KOR }
+control = { province = 1228 data = KOR }
+}
+AND = {
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+}
+}
+}
+
+name = "EVT_260088_NAME"	#Increasing Emigration to Korea
+desc = "EVT_260088_DESC"	#The government has begun to provide subsidies for colonial emigration. Backed by government policy, many farmers from depressed areas are emigrating to overseas. One of their main destinations is Korea, the closest overseas colony to the Japanese Main Islands.
+picture = "Korea"
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "OK"
+command = { type = free_money value = -1 }
+command = { type = local_setflag which = JAP_AGR_KOREA }
+}
+}
+
+event = {
+id = 260089
+random = no
+country = JAP
+style = 2
+
+trigger = {
+event = { id = 260088 days = 1440 } #JAP : Increasing Emigration to Korea
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+local_flag = JAP_AGR_KOREA
+}
+
+name = "EVT_260089_NAME"	#Colonisation of Korea
+desc = "EVT_260089_DESC"	#With millions of Japanese colonists settling in Korea, the Japanese authority has solidified its rule over the Peninsula.
+picture = "Korea"
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "OK"
+command = { type = free_money value = 1 }
+command = { type = addcore which = 1221 }
+command = { type = addcore which = 1222 }
+command = { type = addcore which = 1223 }
+command = { type = addcore which = 1224 }
+command = { type = addcore which = 1225 }
+command = { type = addcore which = 1226 }
+command = { type = addcore which = 1227 }
+command = { type = addcore which = 1228 }
+command = { type = addcore which = 1229 }
+command = { type = addcore which = 1230 }
+command = { type = addcore which = 1231 }
+command = { type = addcore which = 1232 }
+command = { type = addcore which = 1233 }
+command = { type = local_setflag which = JAP_AGR_KOREA_CORE }
+command = { type = local_clrflag which = JAP_AGR_KOREA }
+}
+}
+
+event = {
+id = 260090
+random = no
+country = JAP
+style = 2
+
+trigger = {
+event = { id = 260088 days = 1440 } #JAP : Increasing Emigration to Korea
+puppet = { country = KOR country = JAP }
+owned = { province = 1221 data = KOR }
+control = { province = 1221 data = KOR }
+owned = { province = 1228 data = KOR }
+control = { province = 1228 data = KOR }
+local_flag = JAP_SETTLE_KOREA
+}
+
+name = "EVT_260090_NAME"	#Economic Integration of Korea
+desc = "EVT_260090_DESC"	#With millions of Japanese colonists settling in Korea, the local economy has been overtaken and effectively integrated into the Japanese economy.
+picture = "Korea"
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "OK"
+command = { type = free_money value = 2.5 }
+command = { type = free_supplies value = 24 }
+command = { type = local_setflag which = JAP_AGR_KOREA_PUPPET }
+command = { type = local_clrflag which = JAP_AGR_KOREA }
+}
+}
+
+event = {
+id = 260091
+random = no
+country = JAP
+style = 2
+
+trigger = {
+OR = {
+AND = {
+local_flag = JAP_AGR_KOREA
+NOT = {
+AND = {
+puppet = { country = KOR country = JAP }
+owned = { province = 1221 data = KOR }
+control = { province = 1221 data = KOR }
+owned = { province = 1228 data = KOR }
+control = { province = 1228 data = KOR }
+}
+AND = {
+owned = { province = 1221 data = JAP }
+control = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+control = { province = 1228 data = JAP }
+}
+}
+}
+AND = {
+local_flag = JAP_AGR_KOREA_CORE
+NOT = {
+owned = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+}
+}
+AND = {
+local_flag = JAP_AGR_KOREA_PUPPET
+NOT = { puppet = { country = KOR country = JAP } }
+}
+}
+}
+
+name = "EVT_260091_NAME"	#Loss of Korea
+desc = "EVT_260091_DESC"	#The loss of Korea has destroyed the local Japanese community. Japanese settlers are fleeing en masse to avoid reprisal from Koreans.
+picture = "war_refugees"
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+trigger = { local_flag = JAP_AGR_KOREA }
+name = "OK"
+command = { type = local_clrflag which = JAP_AGR_KOREA }
+command = { type = free_money value = 1 }
+}
+action_b = {
+trigger = { local_flag = JAP_AGR_KOREA_CORE }
+name = "OK"
+command = { type = removecore which = 1221 }
+command = { type = removecore which = 1222 }
+command = { type = removecore which = 1223 }
+command = { type = removecore which = 1224 }
+command = { type = removecore which = 1225 }
+command = { type = removecore which = 1226 }
+command = { type = removecore which = 1227 }
+command = { type = removecore which = 1228 }
+command = { type = removecore which = 1229 }
+command = { type = removecore which = 1230 }
+command = { type = removecore which = 1231 }
+command = { type = removecore which = 1232 }
+command = { type = removecore which = 1233 }
+command = { type = local_clrflag which = JAP_AGR_KOREA_CORE }
+}
+action_c = {
+trigger = { local_flag = JAP_AGR_KOREA_PUPPET }
+name = "OK"
+command = { type = free_money value = -1.5 }
+command = { type = free_supplies value = -24 }
+command = { type = local_clrflag which = JAP_AGR_KOREA_PUPPET }
+}
+}
+
+#####################################
+#1938 ~ 1963 - Colonisation of Taiwan
+#####################################
+event = {
+id = 260092
+random = no
+country = JAP
+save_date = yes
+style = 2
+
+trigger = {
+event = 252058 #JAP : Dealing with Agrarian Crisis
+local_flag = JAP_AGR_COL
+NOT = { local_flag = JAP_AGR_TAIWAN }
+OR = {
+AND = {
+puppet = { country = U30 country = JAP }
+owned = { province = 1361 data = U30 }
+control = { province = 1361 data = U30 }
+owned = { province = 1362 data = U30 }
+control = { province = 1362 data = U30 }
+}
+AND = {
+owned = { province = 1361 data = JAP }
+control = { province = 1361 data = JAP }
+owned = { province = 1362 data = JAP }
+control = { province = 1362 data = JAP }
+}
+}
+}
+
+name = "EVT_260092_NAME"	#Increasing Emigration to Taiwan
+desc = "EVT_260092_DESC"	#The government has begun to provide subsidies for colonial emigration. Backed by government policy, many farmers from depressed areas are emigrating to overseas. One of their main destinations is Taiwan, the most fertile and richest colony in the Japanese Empire.
+picture = "Taiwan"
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "OK"
+command = { type = free_money value = -0.5 }
+command = { type = local_setflag which = JAP_AGR_TAIWAN }
+}
+}
+
+event = {
+id = 260093
+random = no
+country = JAP
+style = 2
+
+trigger = {
+event = { id = 260092 days = 720 } #JAP : Increasing Emigration to Taiwan
+owned = { province = 1361 data = JAP }
+control = { province = 1361 data = JAP }
+owned = { province = 1362 data = JAP }
+control = { province = 1362 data = JAP }
+local_flag = JAP_AGR_TAIWAN
+}
+
+name = "EVT_260093_NAME"	#Colonisation of Taiwan
+desc = "EVT_260093_DESC"	#With millions of Japanese colonists settling in Taiwan, the Japanese authority has solidified its rule over the Island.
+picture = "Taiwan"
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "OK"
+command = { type = free_money value = 0.5 }
+command = { type = addcore which = 1361 }
+command = { type = addcore which = 1362 }
+command = { type = addcore which = 1363 }
+command = { type = addcore which = 1364 }
+command = { type = local_setflag which = JAP_AGR_TAIWAN_CORE }
+command = { type = local_clrflag which = JAP_AGR_TAIWAN }
+}
+}
+
+event = {
+id = 260094
+random = no
+country = JAP
+style = 2
+
+trigger = {
+event = { id = 260092 days = 720 } #JAP : Increasing Emigration to Taiwan
+puppet = { country = U30 country = JAP }
+owned = { province = 1361 data = U30 }
+control = { province = 1361 data = U30 }
+owned = { province = 1362 data = U30 }
+control = { province = 1362 data = U30 }
+local_flag = JAP_SETTLE_TAIWAN
+}
+
+name = "EVT_260094_NAME"	#Economic Integration of Taiwan
+desc = "EVT_260094_DESC"	#With millions of Japanese colonists settling in Taiwan, the local economy has been overtaken and effectively integrated into the Japanese economy.
+picture = "Taiwan"
+
+date = { day = 1 month = january year = 1942 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+name = "OK"
+command = { type = free_money value = 1 }
+command = { type = free_supplies value = 8 }
+command = { type = local_setflag which = JAP_AGR_TAIWAN_PUPPET }
+command = { type = local_clrflag which = JAP_AGR_TAIWAN }
+}
+}
+
+event = {
+id = 260095
+random = no
+country = JAP
+style = 2
+
+trigger = {
+OR = {
+AND = {
+local_flag = JAP_AGR_TAIWAN
+NOT = {
+AND = {
+puppet = { country = U30 country = JAP }
+owned = { province = 1361 data = U30 }
+control = { province = 1361 data = U30 }
+owned = { province = 1362 data = U30 }
+control = { province = 1362 data = U30 }
+}
+AND = {
+owned = { province = 1361 data = JAP }
+owned = { province = 1362 data = JAP }
+}
+}
+}
+AND = {
+local_flag = JAP_AGR_TAIWAN_CORE
+NOT = {
+owned = { province = 1221 data = JAP }
+owned = { province = 1228 data = JAP }
+}
+}
+AND = {
+local_flag = JAP_AGR_TAIWAN_PUPPET
+NOT = { puppet = { country = U30 country = JAP } }
+}
+}
+}
+
+name = "EVT_260095_NAME"	#Loss of Taiwan
+desc = "EVT_260095_DESC"	#The loss of Taiwan has destroyed the local Japanese community. Japanese settlers are fleeing en masse to avoid reprisal from Taiwanese.
+picture = "war_refugees"
+
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 30 month = december year = 1963 }
+
+action_a = {
+trigger = { local_flag = JAP_AGR_TAIWAN }
+name = "OK"
+command = { type = free_money value = 0.5 }
+command = { type = local_clrflag which = JAP_AGR_TAIWAN }
+}
+action_b = {
+trigger = { local_flag = JAP_AGR_TAIWAN_CORE }
+name = "OK"
+command = { type = removecore which = 1361 }
+command = { type = removecore which = 1362 }
+command = { type = removecore which = 1363 }
+command = { type = removecore which = 1364 }
+command = { type = local_clrflag which = JAP_AGR_TAIWAN_CORE }
+}
+action_c = {
+trigger = { local_flag = JAP_AGR_TAIWAN_PUPPET }
+name = "OK"
+command = { type = free_money value = -0.5 }
+command = { type = free_supplies value = -8 }
+command = { type = local_clrflag which = JAP_AGR_TAIWAN_PUPPET }
+}
+}
+

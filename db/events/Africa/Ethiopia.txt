@@ -1,0 +1,5785 @@
+event = {
+id = 2000
+random = no
+country = GER
+picture = "Railway2"
+
+trigger = {
+exists = ETH
+exists = CON
+NOT = {
+war = { country = GER country = CON }
+war = { country = GER country = ETH }
+war = { country = CON country = ETH }
+}
+}
+
+name = EVT_2000_NAME # The DPAEB and the approaching bankruptcy
+desc = EVT_2000_DESC # The Deutsche Pan-Afrikanisches Eisenbahn (DPAEB) railway was established in the early 20th century, linking Addis Abeba to Djibouti. After a series of German-backed expansions, it is currently mainly used to transport ore from the Congo Basin, in Mittelafrika, to Djibouti. Now, the general economic downturn in the world has meant that less ore is being purchased, resulting in fewer transports for the DPAEB. The situation has now reached such a level that it is nearing bankruptcy.
+style = 2
+
+date = { day = 8 month = june year = 1936 }
+
+action_a = {
+ai_chance = 20
+name = ACTIONNAME_2000_A # Keep it running
+command = { type = dissent value = 1 }
+command = { type = money value = -100 }
+command = { type = relation which = ETH value = 20 }
+command = { type = relation which = CON value = 20 }
+command = { type = event which = 2003 where = GER when = 360  }
+}
+
+action_b = {
+ai_chance = 80
+name = ACTIONNAME_2000_B # Sell the railway
+command = { type = relation which = ETH value = 10 }
+command = { type = relation which = CON value = 10 }
+command = { type = money value = 100 }
+command = { type = trigger which = 2001 }
+command = { type = trigger which = 2002 }
+}
+}
+
+event = {
+id = 2001
+random = no
+country = ETH
+
+name = EVT_2001_NAME # The DPAEB is sold
+desc = EVT_2001_DESC # The Deutsche Pan-Afrikanisches Eisenbahn (DPAEB) railway was established in the early 20th century, linking Addis Abeba, in Ethiopia, to Djibouti. After a series of German-backed expansions, it is currently mainly used to transport ore from the Congo Basin, in Mittelafrika, to Djibouti. The present economic downturn in the world has meant that less ore is being purchased, resulting in fewer transports for the DPAEB. The situation has now reached such a level that Germany has decided to sell the railway.
+style = 2
+picture = "Railway2"
+
+action = {
+name = ACTIONNAME_2001_A # Buy the Ethiopian section of the railway
+ai_chance = 50
+command = { type = money value = -50 }
+command = { type = event which = 2006 where = ETH when = 500  }
+}
+
+action = {
+name = ACTIONNAME_2001_B # We must let German companies buy the railway
+ai_chance = 50
+command = { type = dissent value = 1 }
+command = { type = event which = 2008 where = ETH when = 500  }
+}
+}
+
+event = {
+id = 2002
+random = no
+country = CON
+
+name = EVT_2001_NAME # The DPAEB is sold
+desc = EVT_2001_DESC # The Deutsche Pan-Afrikanisches Eisenbahn (DPAEB) railway was established in the early 20th century, linking Addis Abeba, in Ethiopia, to Djibouti. After a series of German-backed expansions, it is currently mainly used to transport ore from the Congo Basin, in Mittelafrika, to Djibouti. The present economic downturn in the world has meant that less ore is being purchased, resulting in fewer transports for the DPAEB. The situation has now reached such a level that Germany has decided to sell the railway.
+style = 2
+picture = "Railway2"
+
+action = {
+name = ACTIONNAME_2002_A # Buy the Mittelafrikan section of the railway
+ai_chance = 50
+command = { type = money value = -50 }
+}
+
+action = {
+name = ACTIONNAME_2002_B # An European consortium ends up buying the railway
+ai_chance = 50
+command = { type = dissent value = 1 }
+command = { type = event which = 2020 where = CON when = 500  }
+}
+}
+
+event = {
+id = 2003
+random = no
+country = GER
+
+name = EVT_2003_NAME # The DPAEB goes bankrupt!
+desc = EVT_2003_DESC # Out decision to keep the Deutsche Pan-Afrikanisches Eisenbahn (DPAEB) running was indeed a short sighted one. The DPAEB, despite our attempts to revive it, has gone bankrupt!
+style = 2
+picture = "transfer"
+
+action_a = {
+name = ACTIONNAME_2003_A # Damn!
+command = { type = dissent value = 1 }
+command = { type = money value = -50 }
+command = { type = trigger which = 2004 }
+command = { type = trigger which = 2005 }
+}
+}
+
+event = {
+id = 2004
+random = no
+country = CON
+
+name = EVT_2004_NAME # The DPAEB goes bankrupt!
+desc = EVT_2004_DESC # The Deutsche Pan-Afrikanisches Eisenbahn has gone bankrupt! Our main export link, running from the Congo to Djibouti, has been forced to close down. Large amounts of people now stand without a job.
+style = 2
+picture = "transfer"
+
+action_a = {
+name = ACTIONNAME_2004_A # Damn...
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2005
+random = no
+country = ETH
+picture = "transfer"
+style = 2
+
+name = EVT_2005_NAME # The DPAEB goes bankrupt!
+desc = EVT_2005_DESC # The Deutsche Pan-Afrikanisches Eisenbahn has gone bankrupt! This major transport link, running from the Congo to Djibouti through Abyssinia, has been forced to close down. Large amounts of people now stand without a job.
+
+action_a = {
+name = ACTIONNAME_2005_A # Such a tragedy!
+command = { type = dissent value = 5 }
+command = { type = sleepteam which = 6507 } # Sleeps DPAEB
+}
+}
+
+event = {
+id = 2006
+random = no
+country = ETH
+picture = "transfer"
+style = 2
+
+name = EVT_2006_NAME # New branch lines
+desc = EVT_2006_DESC # The formerly German-owned DPAEB railway, now completelly controlled by the Ethiopian government, has laid a series of new branch lines linking Addis Abeba to a number of cities in the surrounding countryside!
+
+action_a = {
+name = ACTIONNAME_2006_A # Great!
+command = { type = dissent value = -1 }
+command = { type = construct which = infrastructure where = 820 value = 20 }
+command = { type = construct which = infrastructure where = 831 value = 20 }
+command = { type = money value = -100 }
+}
+}
+
+event = {
+id = 2007
+picture = "Captured_Supplies3"
+country = ETH
+
+trigger = { 
+event = 2005 
+}
+
+name = EVT_2007_NAME # Drought!
+desc = EVT_2007_DESC # A great drought is sweeping through eastern Abyssinia. With the economy already weakened by the decline of the DPAEB, we are facing mass starvation as crops fail.
+style = 2
+
+date = { day = 8 month = june year = 1937 }
+offset = 60
+deathdate = { day = 29 month = september year = 1937 }
+
+action_a = {
+name = ACTIONNAME_2007_A # Damn!
+command = { type = supplies value = -200 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2008
+random = no
+country = ETH
+save_date = yes
+
+name = EVT_2008_NAME # The Cattle Dispute
+desc = EVT_2008_DESC # The newly-privatized DPAEB in eastern Ethiopia has announced a plan to expand towards Mogadishu, in the Indian Ocean coast. As the European engineers started surveying the countryside in search for the optimum route, they came into contact with the traditional nobility of the area. Upon hearing that their traditional grazing lands would be the site of major construction works, the herders protested to the government.
+style = 2
+picture = "news_paper"
+
+action_a = {
+ai_chance = 75
+name = ACTIONNAME_2008_A # Ignore their protests, let the DPAEB expand
+command = { type = event which = 2009 where = ETH when = 300  }
+command = { type = dissent value = 1 }
+command = { type = local_setflag which = ETH_HERDIGN }
+}
+
+action_b = {
+ai_chance = 25
+name = ACTIONNAME_2008_B # Take the side of the herders
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 2009
+random = no
+country = ETH
+
+trigger = {
+local_flag = ETH_HERDIGN
+event = { id = 2008 days = 300 }
+}
+
+name = EVT_2009_NAME # The Cattle War
+desc = EVT_2009_DESC # The Addis Abeba-Mogadishu railroad was bound to create trouble. Concerned about the railroad being drawn across their land, the nobility in eastern Ethiopia have ordered the cattle herders to begin attacking the workers. The private consortium has brought in guards, and have killed a number of herders. Swift action is required unless this is going to escalate even further.
+style = 2
+picture = "coup"
+
+date = { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 60
+name = ACTIONNAME_2009_A # Take the side of the private consortium
+command = { type = event which = 2010 where = ETH when = 15  }
+command = { type = local_setflag which = ETH_MOGA }
+command = { type = dissent value = 5 }
+command = { type = local_clrflag which = ETH_HERDIGN }
+}
+
+action_b = {
+ai_chance = 30
+name = ACTIONNAME_2009_B # Take the side of the herders and local nobility
+command = { type = dissent value = -5 }
+command = { type = money value = -100 }
+command = { type = local_clrflag which = ETH_HERDIGN }
+}
+
+action_c = {
+ai_chance = 10
+name = ACTIONNAME_2009_C # Compromise
+command = { type = dissent value = 5 }
+command = { type = money value = -50 }
+command = { type = supplies value = -50 }
+command = { type = local_clrflag which = ETH_HERDIGN }
+}
+}
+
+event = {
+id = 2010
+random = no
+country = ETH
+
+name = EVT_2010_NAME # Open rebellion!
+desc = EVT_2010_DESC # A number of local nobles in the eastern highlands have raised militias to attack the works of the DPAEB!
+style = 2
+picture = "coup"
+
+action_a = {
+name = ACTIONNAME_2010_A # Attack them!
+command = { type = revolt which = 826 }
+command = { type = revolt which = 828 }
+command = { type = revolt which = 827 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2011
+random = no
+country = ETH
+picture = "Selassie"
+
+trigger = {
+atwar = no
+OR = {
+headofstate = 65001
+headofstate = 65293
+}
+}
+
+name = EVT_2011_NAME # Reforms in Abyssinia
+desc = EVT_2011_DESC # Our emperor Haile Selassie is known to have abitions of modernization for the country. This includes not only plans to build new factories and infrastructure and modernize our army, but also several legal and institutional reforms to improve the quality of life for our people. However, the broadening of these reforms will mean an end to many priviledges of the Orthodox Church and the nobility, which will attract much resistance from the conservative circles.
+style = 2
+
+date = { day = 0 month = june year = 1938 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 80
+name = ACTIONNAME_2011_A # Ignore their protests, start the reforms
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = local_setflag which = ETH_REF }
+command = { type = event which = 2111 where = ETH when = 100  }
+}
+
+action_b = {
+ai_chance = 20
+name = ACTIONNAME_2011_B # We value our traditions, forget about these reforms
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 2012
+country = ETH
+picture = "Selassie"
+style = 2
+
+name = EVT_2012_NAME # Haile Selassie and the conservatives
+desc = EVT_2012_DESC # As the imperial government has announced its intention of starting a number of modernizing reforms, the conservative politicians and the nobility has expressed their discontent, fearing this will incur in a loss of influence for them.
+
+action_a = {
+ai_chance = 50
+name = ACTIONNAME_2012_A # The reforms will continue
+command = { type = dissent value = 5 }
+command = { type = event which = 2015 where = ETH when = 3 }
+}
+
+action_b = {
+ai_chance = 50
+name = ACTIONNAME_2012_B # Try to appease nobility
+command = { type = dissent value = -1 }
+command = { type = event which = 2013 where = ETH when = 2 }
+}
+}
+
+event = {
+id = 2013
+random = no
+country = ETH
+
+name = EVT_2013_NAME # The extent of noble power
+desc = EVT_2013_DESC # As the emperor has decided to work together with the nobles, the question arose as to how much power would be given to their hands...
+style = 2
+picture = "news_paper"
+
+action_a = {
+name = ACTIONNAME_2013_A # Give them some important civil and military offices
+ai_chance = 50
+command = { type = armamentminister which = 65095 } #Ras Hailu Tekle Haimanot
+command = { type = ministerofsecurity which = 65096 } #Lij Asrate
+command = { type = ministerofintelligence which = 65097 } #Haile Selassie Gugsa
+command = { type = chiefofarmy which = 65082 } #Ras Kassa
+command = { type = chiefofnavy which = 65009 } #Ras Seyum
+command = { type = chiefofair which = 65099 } #Fitauri Zawde Gobena
+command = { type = event which = 2014 where = ETH when = 30  }
+command = { type = local_setflag which = ETH_MNC }
+}
+
+action_b = {
+name = ACTIONNAME_2013_B # The nobles serve their country best in the military
+ai_chance = 20
+command = { type = chiefofstaff which = 65098 } #Ras Kebbede
+command = { type = chiefofarmy which = 65082 } #Ras Kassa
+command = { type = chiefofnavy which = 65009 } #Ras Seyum
+command = { type = chiefofair which = 65099 } #Fitauri Zawde Gobena
+command = { type = event which = 2014 where = ETH when = 30  }
+command = { type = local_setflag which = ETH_MNC }
+}
+
+action_c = {
+name = ACTIONNAME_2013_C # Give them control over the civil offices
+ai_chance = 20
+command = { type = foreignminister which = 65094 } #Ras Hailu Tekle Haimanot
+command = { type = armamentminister which = 65095 } #Ras Hailu Tekle Haimanot
+command = { type = ministerofsecurity which = 65096 } #Lij Asrate
+command = { type = ministerofintelligence which = 65097 } #Haile Selassie Gugsa
+command = { type = event which = 2014 where = ETH when = 30  }
+command = { type = local_setflag which = ETH_MNC }
+}
+
+action_d = {
+name = ACTIONNAME_2013_D # Total noble control
+ai_chance = 10
+command = { type = headofgovernment which = 65100 } #Haile Selassie Gugsaind
+command = { type = foreignminister which = 65094 } #Ras Hailu Tekle Haimanot
+command = { type = armamentminister which = 65095 } #Ras Hailu Tekle Haimanot
+command = { type = ministerofsecurity which = 65096 } #Lij Asrate
+command = { type = ministerofintelligence which = 65097 } #Haile Selassie Gugsa
+command = { type = chiefofstaff which = 65098 } #Ras Kebbede
+command = { type = chiefofarmy which = 65082 } #Ras Kassa
+command = { type = chiefofnavy which = 65009 } #Ras Seyum
+command = { type = chiefofair which = 65099 } #Fitauri Zawde Gobena
+command = { type = event which = 2014 where = ETH when = 30  }
+command = { type = local_setflag which = ETH_TNC }
+}
+}
+
+event = {
+id = 2014
+random = no
+country = ETH
+
+name = EVT_2014_NAME # The fate of the reforms
+desc = EVT_2014_DESC # Having secured control over several vital government offices, the nobility has begun pressing for the discontinuation of most of the liberal reforms of Haile Selassie I. If the negus negast decides to continue the reforms, they might use their power against him.
+style = 2
+picture = "news_paper"
+
+action = {
+name = ACTIONNAME_2014_A # Discontinue the more liberal reforms
+trigger = {
+local_flag = ETH_MNC
+}
+ai_chance = 50
+command = { type = peacetime_ic_mod value = -1 }
+command = { type = industrial_modifier which = total value = -5 }
+command = { type = dissent value = 2 }
+command = { type = local_clrflag which = ETH_REF }
+command = { type = local_clrflag which = ETH_MNC }
+}
+
+action = {
+name = ACTIONNAME_2014_B # The nobles be damned, the reforms will continue
+trigger = {
+local_flag = ETH_MNC
+}
+ai_chance = 50
+command = { type = event which = 2015 where = ETH when = 3 }
+command = { type = dissent value = 3 }
+command = { type = local_clrflag which = ETH_MNC }
+}
+
+action = {
+name = ACTIONNAME_2014_A # Discontinue the more liberal reforms
+trigger = {
+local_flag = ETH_TNC
+}
+ai_chance = 95
+command = { type = peacetime_ic_mod value = -1 }
+command = { type = industrial_modifier which = total value = -5 }
+command = { type = dissent value = 2 }
+command = { type = local_clrflag which = ETH_REF }
+command = { type = local_clrflag which = ETH_TNC }
+}
+
+action = {
+name = ACTIONNAME_2014_B # The nobles be damned, the reforms will continue
+trigger = {
+local_flag = ETH_TNC
+}
+ai_chance = 5
+command = { type = event which = 2015 where = ETH when = 3 }
+command = { type = dissent value = 8 }
+command = { type = local_clrflag which = ETH_TNC }
+}
+}
+
+event = {
+id = 2015
+country = ETH
+style = 2
+picture = "DesertCalvary"
+
+name = EVT_2015_NAME # The time of troubles
+desc = EVT_2015_DESC # Faced with the stubborn refusal of Haile Selassie I to end his reforms, several of the aristocrats and conservative politicians have ordered their militias to take up arms against the emperor, most notably in the disgruntled eastern provinces.
+
+action = {
+name = ACTIONNAME_2015_A # Hell! To arms!
+command = { type = independence which = SOM value = 1 when = 0 }
+command = { type = province_keypoints which = 830 value = 1 }
+command = { type = province_keypoints which = 815 value = 1 }
+command = { type = sleepminister which = 65097 } #Haile Selassie Gugsa
+command = { type = sleepminister which = 65100 } #Haile Selassie Gugsa
+command = { type = sleepminister which = 65128 } #Tekle Markos Wolde Gabriel
+command = { type = sleepminister which = 65129 } #Kantiba Wosene Zamanel
+command = { type = sleepminister which = 65130 } #Kantiba Wosene Zamanel
+command = { type = sleepminister which = 65131 } #Abdulkadir Mohamed Saleh Kebire
+command = { type = sleepminister which = 65132 } #Abdulkadir Mohamed Saleh Kebire
+command = { type = sleepminister which = 65133 } #Abdulkadir Mohamed Saleh Kebire
+command = { type = sleepminister which = 65134 } #Haile Kebbede
+command = { type = sleepminister which = 65135 } #Haile Kebbede
+command = { type = sleepminister which = 65136 } #Haile Kebbede
+command = { type = sleepminister which = 65137 } #Haile Kebbede
+command = { type = sleepminister which = 65138 } #Haile Kebbede
+command = { type = sleepminister which = 65139 } #Mohamoud Ali Shire
+command = { type = sleepminister which = 65140 } #Mohamoud Ali Shire
+command = { type = sleepminister which = 65141} #Hailu Tekle Haymanot
+command = { type = sleepminister which = 65142 } #Hailu Tekle Haymanot
+command = { type = sleepminister which = 65143 } #Hailu Tekle Haymanot
+command = { type = sleepminister which = 65144 } #Getachew Abate
+command = { type = sleepminister which = 65145 } #Getachew Abate
+command = { type = sleepminister which = 65146 } #Getachew Abate
+command = { type = sleepminister which = 65147 } #Getachew Abate
+command = { type = sleepminister which = 65099 } #Fitauri Zawde Gobena
+command = { type = sleepminister which = 65148 } #Fitauri Zawde Gobena
+command = { type = sleepminister which = 65149 } #Kassa Haile Darge
+command = { type = sleepminister which = 65150 } #Kassa Haile Darge
+command = { type = sleepminister which = 65151 } #Kassa Haile Darge
+command = { type = sleepminister which = 65152 } #Zerai Deres
+command = { type = sleepminister which = 65153 } #Zerai Deres
+command = { type = sleepminister which = 65154 } #Dirie Hirsi
+command = { type = sleepminister which = 65155 } #Dirie Hirsi
+command = { type = sleepminister which = 65156 } #Kifle Yaqob
+command = { type = sleepminister which = 65157 } #Kifle Yaqob
+command = { type = sleepminister which = 65158 } #Seyum Mangasha
+command = { type = sleepminister which = 65159 } #Seyum Mangasha
+command = { type = sleepminister which = 65160 } #Seyum Mangasha
+command = { type = sleepleader which = 3300 }
+command = { type = sleepleader which = 3301 }
+command = { type = sleepleader which = 3302 }
+command = { type = sleepleader which = 3303 }
+command = { type = sleepleader which = 3304 }
+command = { type = sleepleader which = 3305 }
+command = { type = sleepleader which = 3306 }
+command = { type = sleepleader which = 3307 }
+command = { type = sleepleader which = 3308 }
+command = { type = sleepleader which = 3309 }
+command = { type = sleepleader which = 3310 }
+command = { type = sleepleader which = 3311 }
+command = { type = sleepleader which = 3312 }
+command = { type = sleepleader which = 3313 }
+command = { type = sleepleader which = 3314 }
+command = { type = sleepleader which = 3315 }
+command = { type = sleepleader which = 3316 }
+command = { type = sleepleader which = 3317 }
+command = { type = sleepleader which = 3318 }
+command = { type = sleepleader which = 3319 }
+command = { type = sleepleader which = 3320 }
+command = { type = sleepleader which = 3321 }
+command = { type = sleepteam which = 6506 }	#Mogadisciu Military School
+command = { type = secedeprovince which = SOM value = 829 }
+command = { type = secedeprovince which = SOM value = 830 }
+command = { type = secedeprovince which = SOM value = 836 }
+command = { type = secedeprovince which = SOM value = 826 }
+command = { type = secedeprovince which = SOM value = 831 }
+command = { type = secedeprovince which = SOM value = 827 }
+command = { type = secedeprovince which = SOM value = 834 }
+command = { type = secedeprovince which = SOM value = 835 }
+command = { type = secedeprovince which = SOM value = 836 }
+command = { type = secedeprovince which = SOM value = 837 }
+command = { type = secedeprovince which = SOM value = 838 }
+command = { type = trigger which = 2016 }
+}
+}
+
+event = {
+id = 2016
+random = no
+country = SOM
+
+name = EVT_2016_NAME # To Arms!
+desc = EVT_2016_DESC # No one should see this....
+style = 2
+
+action_a = {
+name = ACTIONNAME_2016_A # Forward to glory!
+command = { type = capital which =  836 }
+command = { type = headofstate which = 575001 }
+command = { type = headofgovernment which = 575005 }
+command = { type = province_keypoints which = 834 value = 1 }
+command = { type = secedeprovince which = ETH value = 815 }
+command = { type = secedeprovince which = ETH value = 816 }
+command = { type = secedeprovince which = ETH value = 817 }
+command = { type = secedeprovince which = ETH value = 821 }
+command = { type = secedeprovince which = ETH value = 823 }
+command = { type = secedeprovince which = ETH value = 819 }
+command = { type = secedeprovince which = ETH value = 820 }
+command = { type = secedeprovince which = ETH value = 825 }
+command = { type = secedeprovince which = ETH value = 818 }
+command = { type = secedeprovince which = ETH value = 828 }
+command = { type = secedeprovince which = ETH value = 822 }
+command = { type = secedeprovince which = ETH value = 824 }
+command = { type = secedeprovince which = ETH value = 816 }
+command = { type = secedeprovince which = ETH value = 817 }
+command = { type = secedeprovince which = ETH value = 821 }
+command = { type = secedeprovince which = ETH value = 823 }
+command = { type = secedeprovince which = ETH value = 819 }
+command = { type = secedeprovince which = ETH value = 820 }
+command = { type = secedeprovince which = ETH value = 825 }
+command = { type = secedeprovince which = ETH value = 818 }
+command = { type = secedeprovince which = ETH value = 828 }
+command = { type = secedeprovince which = ETH value = 822 }
+command = { type = secedeprovince which = ETH value = 824 }
+command = { type = add_division which = "Muqdisho Sefari" value = militia when = 4 }
+command = { type = add_division which = "Tigray Sefari" value = infantry when = 6 }
+command = { type = add_division which = "Shabellaha Sefari" value = militia when = 4 }
+command = { type = add_division which = "Sahel Sefari" value = militia when = 4 }
+command = { type = trigger which = 2017 }
+}
+}
+
+event = {
+id = 2017
+random = no
+country = ETH
+
+name = EVT_2017_NAME # Defections within the Army
+desc = EVT_2017_DESC # Elements within our army have switched allegiance to the rebellious lords!
+style = 2
+picture = "coup"
+
+action_a = {
+name = ACTIONNAME_2017_A # They will be punished severely!
+command = { type = switch_allegiance which = -1 where = SOM }
+command = { type = switch_allegiance which = -1 where = SOM }
+command = { type = war which = SOM }
+}
+}
+
+event = {
+id = 2018
+country = SOM
+style = 2
+
+trigger = {
+event = 2019
+NOT = {
+exists = ETH
+government = communist
+ispuppet = SOM
+}
+OR = {
+event = 2015
+event = 2010
+}
+control = { province = 825 data = SOM }
+}
+
+date = { day = 0 month = june year = 1937 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = EVT_2018_NAME # The New Emperor
+desc = EVT_2018_DESC # The rebelling princes and their militias have control over the Ethiopian capital of Addis Abeba. We must now select a new negus negast, to be appointed from among the princes. Chief contestants are the prince of all Tigray, Ras Seyom Mengesha and Dejazmatch Haile Selassie Gugsa, great-grandson of Yohannes IV.
+
+action_a = {
+ai_chance = 60
+name = ACTIONNAME_2018_A # Ras Seyom Mengesha (Yohannes V)
+command = { type = headofstate which = 575004 }
+command = { type = headofgovernment which = 575008 }
+command = { type = sleepevent which = 2015 }
+command = { type = sleepevent which = 2010 }
+}
+
+action_b = {
+ai_chance = 40
+name = ACTIONNAME_2018_B # Dejazmatch Haile Selassie Gugsa (Menelek III)
+command = { type = headofstate which = 575004 }
+command = { type = headofgovernment which = 575008 }
+command = { type = sleepevent which = 2015 }
+command = { type = sleepevent which = 2010 }
+}
+}
+
+event = {
+id = 2019
+country = SOM
+style = 2
+
+trigger = {
+OR = {
+event = 2015
+event = 2010
+}
+NOT = { 
+exists = ETH
+ispuppet = SOM 
+}
+control = { province = 825 data = SOM }
+}
+
+date = { day = 0 month = june year = 1937 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = EVT_2019_NAME # Ethiopia is no more!
+desc = EVT_2019_DESC  # The decrepit regime of Ethiopia is no more. Haile Selassie has been deposed and fled the country, and his reforms brought to a halt!
+
+action_a = {
+name = ACTIONNAME_2019_A #
+command = { type = waketeam which = 13400 }
+command = { type = waketeam which = 13404 }
+command = { type = waketeam which = 13405 }
+command = { type = waketeam which = 13408 }
+command = { type = waketeam which = 13413 }
+command = { type = waketeam which = 13414 }
+command = { type = waketeam which = 13415 }
+command = { type = waketeam which = 13416 }
+command = { type = waketeam which = 13417 }
+command = { type = waketeam which = 13418 }
+}
+}
+
+event = {
+id = 2020
+random = no
+country = CON
+
+name = EVT_2020_NAME # The Railway and the Demands it Placed
+desc = EVT_2020_DESC # The privatization of the DPAEB was a major economic gain for Mittelafrika, but a great political loss. The railway company simply grew too powerful for the Staathalter to handle, and it began getting itself political influence. It began by demanding to have a say in all actions performed by the Staathalter, and continued by demanding total control over the Mittelafrikan economy.
+style = 2
+picture = "news_paper"
+
+action_a = {
+name = ACTIONNAME_2020_A # It is dirty, but we need the railway
+ai_chance = 80
+#command = { type = armamentsminister which = xxx } # Some sort of railway representative. Resource industrialist? Will lead to BAD events further on
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+name = ACTIONNAME_2020_B # They can take their railway and put it where the sun doesn't shine!
+ai_chance = 20
+command = { type = dissent value = 10 }
+command = { type = money value = -20 }
+command = { type = supplies which = -10 }
+}
+}
+
+event = {
+id = 2021
+random = no
+country = ETH
+
+trigger = {
+local_flag = ETH_REF
+control = { province = 163 data = GER }
+NOT = {
+atwar = GER
+ispuppet = GER
+ispuppet = ETH
+government = communist
+}
+}
+
+name = EVT_2021_NAME # Industrial aid from Germany ?
+desc = EVT_2021_DESC # Ethiopia has a recent history of colaboration with the German Empire. The German-backed DPAEB Railway, for instance, is an important transport link for our country. But in order to further modernize, we need even more help from them. Should we approach their foreign office and propose a new set of foreign investment in Ethiopia ?
+style = 2
+picture = "diplomatic_campaign"
+
+date = { day = 0 month = june year = 1938 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 70
+name = ACTIONNAME_2021_A #
+command = { type = event which = 2022 where = GER when = 1 }
+}
+
+action_b = {
+ai_chance = 30
+name = ACTIONNAME_2021_B #
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 2022
+random = no
+country = GER
+
+name = EVT_2022_NAME # Investments in Ethiopia
+desc = EVT_2022_DESC # Ethiopia has a recent history of colaboration with the German Empire. The German-backed DPAEB Railway, for instance, is an important transport link for that country. Their foreign office has approached us requesting a new round of investments for their industry. Should we listen to them ?
+style = 2
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 80
+name = ACTIONNAME_2022_A # Sure, investments are good for Germany and Ethiopia
+command = { type = event which = 2023 where = ETH when = 80  }
+command = { type = relation which = ETH value = 50 }
+command = { type = money value = -100 }
+command = { type = supplies value = -300 }
+}
+
+action_b = {
+ai_chance = 20
+name = ACTIONNAME_2022_B # Forget about this, we have our own economy to worry about
+command = { type = dissent value = 1 }
+command = { type = relation which = ETH value = -10 }
+}
+}
+
+event = {
+id = 2023
+random = no
+country = ETH
+
+name = EVT_2023_NAME # German help arrives
+desc = EVT_2023_DESC # German industrialists and engineers have arrived in our ports today bringing much-needed machines and industrial blueprints. These equipments, albeit obsolete by European standards, will mean a lot for our economy!
+style = 2
+picture = "new_deal"
+
+action_a = {
+name = ACTIONNAME_2023_A # Great!
+command = { type = dissent value = -2 }
+command = { type = supplies value = 300 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = GER }
+command = { type = steal_tech which = GER }
+command = { type = add_prov_resource which = -1 value = 2 where = metal }
+command = { type = add_prov_resource which = -1 value = 3 where = metal }
+command = { type = add_prov_resource which = -1 value = 2 where = energy }
+command = { type = add_prov_resource which = -1 value = 3 where = energy }
+command = { type = add_prov_resource which = -1 value = 2 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 3 where = rare_materials }
+}
+}
+
+event = {
+id = 2024
+random = no
+country = ETH
+style = 2
+
+trigger = {
+local_flag = ETH_MOGA
+NOT = {
+exists = SOM
+}
+control = { province = 825 data = ETH }
+control = { province = 836 data = ETH }
+}
+
+name = EVT_2024_NAME # Addis Abeba - Mogadishu Railroad complete!
+desc = EVT_2024_DESC # After much trouble, the railway linking our capital Addis Abeba to the Indian Ocean port of Mogadishu has been completed! This will bring us much revenue and will expand our industry!
+
+date = { day = 0 month = january year = 1948 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2024_A # Good!
+command = { type = dissent value = -5 }
+command = { type = money value = 200 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = industrial_modifier which = total value = 3 }
+command = { type = construct which = infrastructure where = 825 value = 20 }
+command = { type = construct which = infrastructure where = 828 value = 20 }
+command = { type = construct which = infrastructure where = 835 value = 20 }
+command = { type = construct which = infrastructure where = 836 value = 20 }
+command = { type = local_clrflag which = ETH_MOGA }
+}
+}
+
+event = {
+id = 2025
+random = no
+country = ETH
+
+trigger = {
+control = { province = 817 data = ETH }
+}
+
+name = EVT_2025_NAME # Revolt in Eritrea!
+desc = EVT_2025_DESC # Despite our best effort muslim tribes in Eritrea have started an uprising against our government!
+style = 2
+picture = "coup"
+
+date = { day = 0 month = january year = 1945 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2025_A # Attack them!
+command = { type = revolt which = 817 }
+command = { type = revolt which = 815 }
+command = { type = revolt which = 816 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2026
+random = no
+country = ETH
+
+trigger = {
+control = { province = 823 data = ETH }
+}
+
+name = EVT_2026_NAME # Revolt in Tigray!
+desc = EVT_2026_DESC # Despite our best effort the Tigray peoples of the northern provinces have started an uprising against our government!
+style = 2
+picture = "coup"
+
+date = { day = 0 month = january year = 1948 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2026_A # How dare they!
+command = { type = revolt which = 823 }
+command = { type = revolt which = 823 }
+command = { type = revolt which = 821 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2027
+random = no
+country = ETH
+
+trigger = {
+control = { province = 836 data = ETH }
+}
+
+name = EVT_2027_NAME # Somali Revolt!
+desc = EVT_2027_DESC # Muslim clerics in our Somali provinces have rallied the people with visions of restored Dervish state and started an uprising against our rule!
+style = 2
+picture = "coup"
+
+date = { day = 0 month = january year = 1948 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2027_A # How could this happen? Nevermind, attack!
+command = { trigger = { control = { province = 836 data = ETH } } type = revolt which = 836 }
+command = { trigger = { control = { province = 836 data = ETH } } type = revolt which = 836 }
+command = { trigger = { control = { province = 836 data = ETH } } type = revolt which = 836 }
+command = { trigger = { control = { province = 834 data = ETH } } type = revolt which = 834 }
+command = { trigger = { control = { province = 834 data = ETH } } type = revolt which = 834 }
+command = { trigger = { control = { province = 835 data = ETH } } type = revolt which = 835 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2028
+random = no
+country = ETH
+style = 2
+
+trigger = {
+local_flag = ETH_REF
+control = { province = 827 data = ETH }
+}
+
+name = EVT_2028_NAME # Oil found in Ogaden
+desc = EVT_2028_DESC # With the help of European engineers, a major petroleum deposit has been found in the Ogaden region!
+
+date = { day = 0 month = january year = 1940 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2028_A # Amazing
+command = { type = dissent value = -1 }
+command = { type = money value = 200 }
+command = { type = add_prov_resource which = 827 value = 4 where = oil }
+command = { type = waketeam which = 6511 }
+}
+}
+
+event = {
+id = 2029
+random = no
+country = ETH
+style = 2
+
+trigger = {
+local_flag = ETH_REF
+}
+
+name = EVT_2029_NAME # Land Reform program ?
+desc = EVT_2029_DESC # As part of our modernizing reforms, the emperor has suggested the implementation of a land reform programme, which would free more area for agricultural production and also undermine the influence of the conservative nobility.
+
+date = { day = 0 month = january year = 1941 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2029_A # Go ahead
+ai_chance = 50
+command = { type = dissent value = 1 }
+command = { type = money value = -100 }
+command = { type = industrial_modifier which = supplies value = 3 }
+command = { type = industrial_modifier which = total value = 3 }
+}
+
+action_b = {
+ai_chance = 50
+name = ACTIONNAME_2029_B # Don't upset the nobles
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 2030
+random = no
+country = ETH
+style = 2
+
+trigger = {
+local_flag = ETH_REF
+}
+
+name = EVT_2030_NAME # Church Reforms
+desc = EVT_2030_DESC # As we continue our series of reforms, we must touch a sensitive subject. The Ethiopian Orthodox Tewahedo Church, the oficial state church of the empire, holds great expanses of land and riches in the country. They should be subject to taxation as everyone else!
+
+date = { day = 0 month = january year = 1943 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 30
+name = ACTIONNAME_2030_A # We'd gain nothing by antagonizing the Church
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+ai_chance = 70
+name = ACTIONNAME_2030_B # Proceed with taxing Church property
+command = { type = dissent value = 5 }
+command = { type = free_money value = 2 }
+}
+}
+
+event = {
+id = 2031
+random = no
+country = ETH
+
+trigger = {
+local_flag = ETH_REF
+OR = {
+headofstate = 65001
+headofstate = 65293
+}
+NOT = {
+government = communist
+ideology = nazi
+ideology = fascist
+}
+}
+
+name = EVT_2031_NAME # The new Constitution
+desc = EVT_2031_DESC # The Emperor has decided the rewriting of our 1931 constitution. The chapter which is bringing problems is the one regarding the type of government: while the conservative ministers want the rule by Imperial Decree, the liberals want laws proposed and enacted by a parliament freely-elected by all the Imperial subjects.
+style = 2
+picture = "Selassie"
+
+date = { day = 0 month = january year = 1943 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2031_A # Rule by Imperial Decree
+ai_chance = 30
+command = { type = domestic which = democratic value = -1 }
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+name = ACTIONNAME_2031_B # Ethiopia needs free elections
+ai_chance = 70
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = dissent value = -1 }
+command = { type = local_setflag which = ETH_DEMO }
+}
+}
+
+event = {
+id = 2032
+random = no
+country = ETH
+
+trigger = {
+NOT = {
+government = communist
+ideology = nazi
+}
+local_flag = ETH_DEMO
+}
+
+name = EVT_2032_NAME # Elections, 1945
+desc = EVT_2032_DESC # Today it's election day in our great nation. The main parties that are participating are: the Mesafint/Mekwanint Party, the right-wing 'Forum for Democratic Dialogue in Ethiopia', the center-right 'United Ethiopian Democratic Forces', the center-left 'Coalition for Unity and Democracy' & the left-wing 'Ethiopian People's Democratic Front'
+style = 2
+
+date = { day = 2 month = march year = 1945 }
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_A # Mesafint/Mekwanint Party
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 65001 } 	#Haile Selassie
+command = { type = headofgovernment which = 65294 } #Tekle Hawariat Tekle Mariyam
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_B # Forum for Democratic Dialogue in Ethiopia
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65001 }	#Haile Selassie
+command = { type = headofgovernment which = 65039 }	#Imru Haile Selassie
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_C # United Ethiopian Democratic Forces
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65211 }	#Asfaha Wolde Mikael
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_D # Coalition for Unity and Democracy
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65295 }	#Maascio Zewede
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_E # Ethiopian People's Democratic Front
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65353 } #Tekle Wolde Hawaryat
+}
+}
+
+event = {
+id = 2033
+random = no
+country = ETH
+
+trigger = {
+NOT = {
+government = communist
+ideology = nazi
+}
+local_flag = ETH_DEMO
+}
+
+name = EVT_2033_NAME # Elections, 1950
+desc = EVT_2032_DESC # Today it's election day in our great nation. The main parties that are participating are: the Mesafint/Mekwanint Party, the right-wing 'Forum for Democratic Dialogue in Ethiopia', the center-right 'United Ethiopian Democratic Forces', the center-left 'Coalition for Unity and Democracy' & the left-wing 'Ethiopian People's Democratic Front'
+style = 2
+
+date = { day = 2 month = march year = 1950 }
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_A # Mesafint/Mekwanint Party
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 65001 } 	#Haile Selassie
+command = { type = headofgovernment which = 65294 } #Tekle Hawariat Tekle Mariyam
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_B # Forum for Democratic Dialogue in Ethiopia
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65001 }	#Haile Selassie
+command = { type = headofgovernment which = 65039 }	#Imru Haile Selassie
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_C # United Ethiopian Democratic Forces
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65211 }	#Asfaha Wolde Mikael
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_D # Coalition for Unity and Democracy
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65295 }	#Maascio Zewede
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_E # Ethiopian People's Democratic Front
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65353 } #Tekle Wolde Hawaryat
+}
+}
+
+event = {
+id = 2034
+random = no
+country = ETH
+
+trigger = {
+NOT = {
+government = communist
+ideology = nazi
+}
+local_flag = ETH_DEMO
+}
+
+name = EVT_2034_NAME # Elections, 1955
+desc = EVT_2032_DESC # Today it's election day in our great nation. The main parties that are participating are: the Mesafint/Mekwanint Party, the right-wing 'Forum for Democratic Dialogue in Ethiopia', the center-right 'United Ethiopian Democratic Forces', the center-left 'Coalition for Unity and Democracy' & the left-wing 'Ethiopian People's Democratic Front'
+style = 2
+
+date = { day = 2 month = march year = 1955 }
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_A # Mesafint/Mekwanint Party
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 65001 } 	#Haile Selassie
+command = { type = headofgovernment which = 65294 } #Tekle Hawariat Tekle Mariyam
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_B # Forum for Democratic Dialogue in Ethiopia
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65001 }	#Haile Selassie
+command = { type = headofgovernment which = 65039 }	#Imru Haile Selassie
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_C # United Ethiopian Democratic Forces
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65211 }	#Asfaha Wolde Mikael
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_D # Coalition for Unity and Democracy
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65295 }	#Maascio Zewede
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_E # Ethiopian People's Democratic Front
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65353 } #Tekle Wolde Hawaryat
+}
+}
+
+event = {
+id = 2035
+random = no
+country = ETH
+
+trigger = {
+NOT = {
+government = communist
+ideology = nazi
+}
+local_flag = ETH_DEMO
+}
+
+name = EVT_2035_NAME # Elections, 1960
+desc = EVT_2032_DESC # Today it's election day in our great nation. The main parties that are participating are: the Mesafint/Mekwanint Party, the right-wing 'Forum for Democratic Dialogue in Ethiopia', the center-right 'United Ethiopian Democratic Forces', the center-left 'Coalition for Unity and Democracy' & the left-wing 'Ethiopian People's Democratic Front'
+style = 2
+
+date = { day = 2 month = march year = 1960 }
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_A # Mesafint/Mekwanint Party
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { government = fascist } } type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 65001 } 	#Haile Selassie
+command = { type = headofgovernment which = 65294 } #Tekle Hawariat Tekle Mariyam
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_B # Forum for Democratic Dialogue in Ethiopia
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_conservative } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65001 }	#Haile Selassie
+command = { type = headofgovernment which = 65039 }	#Imru Haile Selassie
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_C # United Ethiopian Democratic Forces
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = market_liberal } } type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65211 }	#Asfaha Wolde Mikael
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_D # Coalition for Unity and Democracy
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = democratic value = 8 }
+command = { trigger = { NOT = { ideology = social_liberal } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65295 }	#Maascio Zewede
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2032_E # Ethiopian People's Democratic Front
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = democratic value = 4 }
+command = { trigger = { NOT = { ideology = social_democrat } } type = set_domestic which = political_left value = 6 }
+command = { type = headofstate which = 65293 }	#Haile Selassie
+command = { type = headofgovernment which = 65353 } #Tekle Wolde Hawaryat
+}
+}
+
+# Mittelafrikan involvement on the ETH civil war. Haile Selassie was backed by Germany and Mittelafrika, I guess they wouldn't like to see Imperial Abyssinia win
+
+event = {
+id = 2036
+random = no
+country = CON
+
+decision = {
+puppet = { country = CON country = GER }
+war = { country = ETH country = SOM }
+NOT = {
+alliance = { country = ETH country = CON }
+alliance = { country = SOM country = CON }
+war = { country = CON country = SOM }
+war = { country = CON country = ETH }
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 500
+money = 50
+}
+
+trigger = {
+puppet = { country = CON country = GER }
+war = { country = ETH country = SOM }
+NOT = {
+alliance = { country = ETH country = CON }
+alliance = { country = SOM country = CON }
+war = { country = CON country = SOM }
+war = { country = CON country = ETH }
+}
+}
+
+name = EVT_2036_NAME # Civil war in Ethiopia
+desc = EVT_2036_DESC # The nobles in Ethiopia, angry at Haile Selassie I and his reforms, decided to rise up and fight him under the flag of Imperial Abyssinia. We've always backed Haile Selassie, perhaps we should send supplies and volunteers to help him win the civil war. On the other hand, we have many troubles of our own.
+style = 2
+picture = "askaris"
+decision_picture = "decision_foreign_volunteers"
+
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2036_A # We have enough troubles on our own
+ai_chance = 50
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+name = ACTIONNAME_2036_B # Send him supplies and volunteers
+ai_chance = 50
+command = { type = domestic which = interventionism value = 1 }
+command = { type = money value = -50 }
+command = { type = supplies value = -500 }
+command = { type = manpowerpool value = -10 }
+command = { type = trigger which = 2037 }
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 2037
+random = no
+country = ETH
+
+name = EVT_2037_NAME # Help from Mittelafrika
+desc = EVT_2037_DESC # Our friends in Mittelafrika decided to send us supplies and volunteers. With their help, we'll destroy these damned nobles!
+style = 2
+picture = "askaris"
+
+action_a = {
+name = ACTIONNAME_2037_A # We will win!
+command = { type = money value = 10 }
+command = { type = supplies value = 500 }
+command = { type = manpowerpool value = 10 }
+command = { type = add_division which = "Mittelafrika volunteers" value = infantry when = 7 }
+}
+}
+
+event = {
+id = 2038
+random = no
+country = CON
+
+trigger = {
+puppet = { country = CON country = GER }
+event = 2018
+exists = SOM
+NOT = {
+exists = ETH
+alliance = { country = SOM country = CON }
+puppet = { country = SOM country = CON }
+alliance = { country = SOM country = GER }
+puppet = { country = SOM country = GER }
+}
+}
+
+name = EVT_2038_NAME # The victory of Imperial Abyssinia
+desc = EVT_2038_DESC # The rebel nobles won the civil war in Ethiopia and Haile Selassie was forced to leave the country. Should we accept this outcome or should we restore order in the Horn of Afrika ?
+style = 2
+picture = "askaris"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2038_A # We have enough troubles on our own
+ai_chance = 100
+command = { type = domestic which = interventionism value = -1 }
+command = { type = set_relation which = SOM value = 50 }
+}
+
+action_b = {
+name = ACTIONNAME_2038_B # To war!
+ai_chance = 0
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = GER value = -50 }
+command = { type = dissent value = 10 }
+command = { type = war which = SOM }
+}
+}
+
+event = {
+id = 2039
+random = no
+country = CON
+
+decision = {
+control = { province = 825 data = -1 }
+control = { province = 831 data = -1 }
+puppet = { country = CON country = GER }
+}
+
+decision_trigger = {
+NOT = {
+exists = ETH
+exists = SOM
+}
+}
+
+trigger = {
+control = { province = 825 data = -1 }
+control = { province = 831 data = -1 }
+puppet = { country = CON country = GER }
+NOT = {
+exists = ETH
+exists = SOM
+}
+}
+
+name = EVT_2039_NAME # The fate of the Horn of Afrika
+desc = EVT_2039_DESC # After our successful campaign in the Horn of Africa we now have the task to establish new local administrative authority in order to restore peace, however there are several options for our choice....
+style = 2
+picture = "askaris"
+decision_picture = "decision_diplomatic_campaign"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2039_A # The lands belong to the Ethiopian Empire
+ai_chance = 100
+command = { type = independence which = ETH value = 1 when = 0 }
+command = { type = trigger which = 2040 }
+}
+
+action_b = {
+name = ACTIONNAME_2039_B # We will directly rule these lands!
+ai_chance = 0
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 2040
+random = no
+country = ETH
+
+name = EVT_2040_NAME # The rebirth of Ethiopia
+desc = EVT_2040_DESC # No one should see this....
+style = 2
+
+action_a = {
+name = ACTIONNAME_2040_A # Great!
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = headofstate which = 65001 } # Haile Selassie I
+command = { type = sleepminister which = 65097 } #Haile Selassie Gugsa
+command = { type = sleepminister which = 65100 } #Haile Selassie Gugsa
+command = { type = sleepminister which = 65128 } #Tekle Markos Wolde Gabriel
+command = { type = sleepminister which = 65129 } #Kantiba Wosene Zamanel
+command = { type = sleepminister which = 65130 } #Kantiba Wosene Zamanel
+command = { type = sleepminister which = 65131 } #Abdulkadir Mohamed Saleh Kebire
+command = { type = sleepminister which = 65132 } #Abdulkadir Mohamed Saleh Kebire
+command = { type = sleepminister which = 65133 } #Abdulkadir Mohamed Saleh Kebire
+command = { type = sleepminister which = 65134 } #Haile Kebbede
+command = { type = sleepminister which = 65135 } #Haile Kebbede
+command = { type = sleepminister which = 65136 } #Haile Kebbede
+command = { type = sleepminister which = 65137 } #Haile Kebbede
+command = { type = sleepminister which = 65138 } #Haile Kebbede
+command = { type = sleepminister which = 65139 } #Mohamoud Ali Shire
+command = { type = sleepminister which = 65140 } #Mohamoud Ali Shire
+command = { type = sleepminister which = 65141} #Hailu Tekle Haymanot
+command = { type = sleepminister which = 65142 } #Hailu Tekle Haymanot
+command = { type = sleepminister which = 65143 } #Hailu Tekle Haymanot
+command = { type = sleepminister which = 65144 } #Getachew Abate
+command = { type = sleepminister which = 65145 } #Getachew Abate
+command = { type = sleepminister which = 65146 } #Getachew Abate
+command = { type = sleepminister which = 65147 } #Getachew Abate
+command = { type = sleepminister which = 65099 } #Fitauri Zawde Gobena
+command = { type = sleepminister which = 65148 } #Fitauri Zawde Gobena
+command = { type = sleepminister which = 65149 } #Kassa Haile Darge
+command = { type = sleepminister which = 65150 } #Kassa Haile Darge
+command = { type = sleepminister which = 65151 } #Kassa Haile Darge
+command = { type = sleepminister which = 65152 } #Zerai Deres
+command = { type = sleepminister which = 65153 } #Zerai Deres
+command = { type = sleepminister which = 65154 } #Dirie Hirsi
+command = { type = sleepminister which = 65155 } #Dirie Hirsi
+command = { type = sleepminister which = 65156 } #Kifle Yaqob
+command = { type = sleepminister which = 65157 } #Kifle Yaqob
+command = { type = sleepminister which = 65158 } #Seyum Mangasha
+command = { type = sleepminister which = 65159 } #Seyum Mangasha
+command = { type = sleepminister which = 65160 } #Seyum Mangasha
+command = { type = sleepleader which = 3300 }
+command = { type = sleepleader which = 3301 }
+command = { type = sleepleader which = 3302 }
+command = { type = sleepleader which = 3303 }
+command = { type = sleepleader which = 3304 }
+command = { type = sleepleader which = 3305 }
+command = { type = sleepleader which = 3306 }
+command = { type = sleepleader which = 3307 }
+command = { type = sleepleader which = 3308 }
+command = { type = sleepleader which = 3309 }
+command = { type = sleepleader which = 3310 }
+command = { type = sleepleader which = 3311 }
+command = { type = sleepleader which = 3312 }
+command = { type = sleepleader which = 3313 }
+command = { type = sleepleader which = 3314 }
+command = { type = sleepleader which = 3315 }
+command = { type = sleepleader which = 3316 }
+command = { type = sleepleader which = 3317 }
+command = { type = sleepleader which = 3318 }
+command = { type = sleepleader which = 3319 }
+command = { type = sleepleader which = 3320 }
+command = { type = sleepleader which = 3321 }
+command = { type = trigger which = 2041 }
+}
+}
+
+event = {
+id = 2041
+random = no
+country = CON
+
+name = EVT_2041_NAME # The rebirth of Ethiopia
+desc = EVT_2041_DESC # We decided to restore the Ethiopian Empire under the rule of Haile Selassie, but we'll keep them under our control.
+style = 2
+picture = "askaris"
+
+action_a = {
+name = ACTIONNAME_2041_A # Good
+command = { type = make_puppet which =  ETH }
+}
+}
+
+# Ethiopia / SOM grabbing German territory.
+
+event = {
+id = 2042
+random = no
+country = ETH
+
+trigger = {
+exists = GER
+NOT = {
+exists = SOM
+}
+OR = {
+flag = GER_CON_Capitulation
+flag = GER_Capitulation
+}
+NOT = {
+puppet = { country = ETH country = GER }
+alliance = { country = GER country = ETH }
+war = { country = GER country = ETH }
+}
+control = { province = 832 data = GER }
+control = { province = 833 data = GER }
+control = { province = 818 data = ETH }
+}
+
+name = EVT_2042_NAME # German Empire in disarray
+desc = EVT_2042_DESC # With the German Empire in turmoil, we have a great oportunity to seize German Somalia. There is very little that the German Empire can do to stop us at this point.
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 100
+name = ACTIONNAME_2042_A # Seize German Somalia!
+command = { type = addclaim which = 832 }
+command = { type = addclaim which = 833 }
+command = { type = relation which = GER value = -100 }
+command = { type = event which = 2043 where = GER when = 2 }
+}
+
+action_b = {
+ai_chance = 0
+name = ACTIONNAME_2042_B # Rather not
+command = { type = relation which = GER value = 100 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2043
+random = no
+country = GER
+
+name = EVT_2043_NAME # Ethiopia occupies German Somalia!
+desc = EVT_2043_DESC # Ethiopia has exploited the ongoing chaos to occupy German Somalia. There is very little that we can do to stop them at this point.
+style = 2
+
+action_a = {
+ai_chance = 100
+name = ACTIONNAME_2043_A # There is nothing we can do
+command = { type = secedeprovince which = ETH value = 832 }
+command = { type = secedeprovince which = ETH value = 833 }
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 0
+name = ACTIONNAME_2043_B # This means WAR!
+command = { type = war which = ETH }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2044
+random = no
+country = SOM
+
+trigger = {
+exists = GER
+NOT = {
+exists = ETH
+}
+OR = {
+flag = GER_CON_Capitulation
+flag = GER_Capitulation
+}
+NOT = {
+puppet = { country = SOM country = GER }
+alliance = { country = GER country = SOM }
+war = { country = GER country = SOM }
+}
+control = { province = 832 data = GER }
+control = { province = 833 data = GER }
+control = { province = 818 data = SOM }
+}
+
+name = EVT_2042_NAME # German Empire in disarray
+desc = EVT_2042_DESC # With the German Empire in turmoil, we have a great oportunity to seize German Somalia. There is very little that the German Empire can do to stop us at this point.
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 100
+name = ACTIONNAME_2042_A # Seize German Somalia!
+command = { type = addclaim which = 832 }
+command = { type = addclaim which = 833 }
+command = { type = relation which = GER value = -100 }
+command = { type = event which = 2045 where = GER when = 2 }
+}
+action_b = {
+ai_chance = 0
+name = ACTIONNAME_2042_B # Rather not
+command = { type = relation which = GER value = 100 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2045
+random = no
+country = GER
+
+name = EVT_2043_NAME # Ethiopia occupies German Somalia!
+desc = EVT_2043_DESC # Ethiopia has exploited the ongoing chaos to occupy German Somalia. There is very little that we can do to stop them at this point.
+style = 2
+
+action_a = {
+ai_chance = 100
+name = ACTIONNAME_2043_A # There is nothing we can do
+command = { type = secedeprovince which = SOM value = 832 }
+command = { type = secedeprovince which = SOM value = 833 }
+command = { type = dissent value = 1 }
+}
+action_b = {
+ai_chance = 0
+name = ACTIONNAME_2043_B # This means WAR!
+command = { type = war which = SOM }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2046
+random = no
+tag = { ETH SOM }
+
+trigger = {
+owned = { province = 832 data = -1 }
+control = { province = 832 data = -1 }
+NOT = {
+core = { province = 832 data = -1 }
+}
+}
+
+name = EVT_2046_NAME # Hargeisa is ours
+desc = EVT_2046_DESC # We have recently gained control of Hargeisa. Lands once ours are coming back home.
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2046_A # Lets Party!
+command = { type = addcore which = 832 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 2047
+random = no
+tag = { ETH SOM }
+
+trigger = {
+owned = { province = 833 data = -1 }
+control = { province = 833 data = -1 }
+NOT = {
+core = { province = 833 data = -1 }
+}
+}
+
+name = EVT_2047_NAME # Djibouti is ours
+desc = EVT_2047_DESC # We have recently gained control of Djibouti. Lands once ours are coming back home.
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2047_A # Lets Party!
+command = { type = addcore which = 833 }
+command = { type = dissent value = -1 }
+}
+}
+
+### Japanese-Ethiopian Friendship
+
+event = {
+id = 2048
+random = no
+country = ETH
+style = 2
+picture = "ETH_Japan"
+
+trigger = {
+local_flag = ETH_REF
+exists = JAP
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+}
+}
+
+name = EVT_2048_NAME # Prince Abeba's Voyage to Japan
+desc = EVT_2048_DESC # One of the role models for Haile Selassie's reforms is Japan. Just like Ethiopia, Japan is a monarchy that succesfully resisted European attempts at colonization, while at the same time opening itself to the international scene. In order to create closer ties between Japan and Ethiopia, our ambassador in Tokyo, Hiruy Wolde Selassie, has arranged for a nephew of the emperor, Prince Araya Abebe, to tour the Japanese Home Islands. Our traditional allies, the Germans, may not like this endeavour, however.
+
+date = { day = 0 month = january year = 1936 }
+offset = 400
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+trigger = {
+exists = GER
+NOT = { 
+war = { country = ETH country = GER } 
+}
+}
+ai_chance = 50
+name = ACTIONNAME_2048_A # We'd gain nothing by antagonizing the Germans
+command = { type = dissent value = 1 }
+command = { type = relation which = GER value = 20 }
+}
+
+action = {
+ai_chance = 50
+name = ACTIONNAME_2048_B # Let this trip begin
+command = { type = dissent value = -1 }
+command = { type = money value = -50 }
+command = { type = event which = 2049 where = ETH when = 40  }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = JAP value = 20 }
+}
+}
+
+event = {
+id = 2049
+random = no
+country = ETH
+style = 2
+picture = "ETH_Japan"
+
+name = EVT_2049_NAME # Lij Araya Abeba arrives in Tokyo
+desc = EVT_2049_DESC  # Our prince Araya Abeba has just arrived in Tokyo, capital of Japan, and was received by our ambassador there, the honorable Hiruy Wolde Selassie.
+
+action = {
+name = ACTIONNAME_2049_A # Hope he has a good time there!
+command = { type = event which = 2050 where = JAP when = 1  }
+}
+}
+
+event = {
+id = 2050
+random = no
+country = JAP
+style = 2
+picture = "ETH_Japan"
+
+name = EVT_2050_NAME # An African prince in Japan
+desc = EVT_2050_DESC # At the invitation of the Ethiopian ambassador to our country, Prince Araya Abeba, nephew of Emperor Haile Selassie, is conducting a private tour of Japan. Our country has a small ammount of investment in Ethiopia, and our intelligentsia has developed an interest in that nation lately - after all, Ethiopia, just like Japan, resisted several attempts of European imperialism. Some Japanese business leaders suggest that we could use this tour to create closer bonds between our countries.
+
+action = {
+ai_chance = 70
+name = ACTIONNAME_2050_A # This could be interesting, arrange a meeting with him
+command = { type = event which = 2051 where = ETH when = 10  }
+command = { type = relation which = ETH value = 20 }
+}
+
+action = {
+ai_chance = 30
+name = ACTIONNAME_2050_B # This is just a waste of time
+command = { type = event which = 2053 where = ETH when = 10  }
+}
+}
+
+event = {
+id = 2051
+random = no
+country = ETH
+style = 2
+picture = "ETH_Japan"
+
+name = EVT_2051_NAME # Meeting with Japanese business leaders
+desc = EVT_2051_DESC # Prince Araya Abeba has been touring Japan for ten days already. This morning, in Kyoto, a group of businessmen led by one mr. Sumioka Tomoyoshi has met with the prince and his entourage and announced major investments in the 'Nagasaki Echiopia Keizai Chosa-kai Nikkei-Sha' - the Japanese-owned company manageing cotton, tea and coffee plantations in the outskirts of our capital. 
+
+action = {
+name = ACTIONNAME_2051_A # See, I told you this trip was worth something
+command = { type = event which = 2052 where = ETH when = 1  }
+command = { type = relation which = JAP value = 20 }
+command = { type = waketeam which = 6512 }
+}
+}
+
+event = {
+id = 2052
+random = no
+country = ETH
+style = 2
+picture = "ETH_Japan"
+
+name = EVT_2052_NAME # Prince Araya Abeba's tour comes to an end
+desc = EVT_2052_DESC # The Japan tour of the hon. Lij Araya Abeba has come to an end. After meeting with a number of minor Japanese government officials and dignataries, he embarked on his ship back to Ethiopia. Just before embarking, he declared to an reporter of the Tokyo Shinbum that he was impressed with the advances of Japanese society and expressed his ambition to marry a Japanese lady! 'It has been my long-cherished ambition', he declared. 'Of all first-class nations, Japan has the strongest appeal'.
+
+action = {
+name = ACTIONNAME_2052_A # ...that was unexpected... And awkward...
+command = { type = trigger which = 2054 }
+}
+}
+
+event = {
+id = 2053
+random = no
+country = ETH
+style = 2
+picture = "ETH_Japan"
+
+name = EVT_2053_NAME # Prince Araya Abeba's tour comes to an end
+desc = EVT_2053_DESC # The Japan tour of the hon. Lij Araya Abeba has come to an end. After meeting with a number of minor Japanese government officials and dignataries, he embarked on his ship back to Ethiopia. Just before embarking, he declared to an reporter of the Tokyo Shinbum that he was impressed with the advances of Japanese society. In the end, this trip improved relations between our two empires a bit.
+
+action = {
+name = ACTIONNAME_2053_A # He will bring us some presents as well
+command = { type = relation which = JAP value = 10 }
+}
+}
+
+event = {
+id = 2054
+random = no
+country = JAP
+style = 2
+picture = "ETH_Japan"
+
+name = EVT_2054_NAME # Prince Araya Abeba's tour comes to an end
+desc = EVT_2054_DESC # The Japanese tour of Ethiopian prince Araya Abeba has come to an end. After meeting with a number of minor Japanese government officials and dignataries, he embarked on his ship back to his homeland. Just before embarking, he declared to an reporter of the Tokyo Shinbum that he was impressed with the advances of Japanese society and expressed his ambition to marry a Japanese lady! 'It has been my long-cherished ambition', he declared. 'Of all first-class nations, Japan has the strongest appeal'.
+
+action = {
+name = ACTIONNAME_2054_A # He said WHAT!??!?
+command = { type = event which = 2055 where = JAP when = 30  }
+}
+}
+
+event = {
+id = 2055
+random = no
+country = JAP
+style = 2
+picture = "ETH_Marriage"
+
+name = EVT_2055_NAME # A Japanese bride for an African prince ?
+desc = EVT_2055_DESC # Ethiopian prince Araya Abeba's interest to marry a Japanese woman has caused quite a sensation. One Tokyo newspaper, the Chunichi Shimbun, has even reported that scores of Japanese ladies have been sending them letters and pictures, in hope of conquering the sweet heart of Lord Abeba and becoming a Princess of Ethiopia! One Kyoto businessman, mr. Sumioka Tomoyoshi, reportedly with ties to Japanese immigrants in Ethiopia, has declared that one woman has caught the prince's attention: 28-year-old Kuroda Masako, second daughter of Viscount Kuroda Hiroyuki. Now, many Japanese government officials are also beginning to see important geopolitical advantages in this arrangement - marrying an woman of our lower nobility into the Ethiopian royal family would be an opportunity to increase our presence in Africa and also hurt the interests of the European colonial powers in that continent - the German Empire, most notably!
+
+action = {
+trigger = {
+NOT = {
+war = { country = JAP country = GER }
+}
+}
+ai_chance = 33
+name = ACTIONNAME_2055_A # This is too absurd, prohibit any attempt at that
+command = { type = relation which = ETH value = -50 }
+command = { type = trigger which = 2056 }
+}
+
+action = {
+ai_chance = 33
+name = ACTIONNAME_2055_B # This is a private affair, the government has nothing to do with that
+command = { type = relation which = ETH value = 10 }
+command = { type = trigger which = 2057 }
+}
+
+action = {
+ai_chance = 33
+name = ACTIONNAME_2055_C # The Emperor himself gives the idea his blessing
+command = { type = relation which = ETH value = 10 }
+command = { type = trigger which = 2058 }
+}
+}
+
+event = {
+id = 2056
+random = no
+country = ETH
+style = 2
+picture = "ETH_Marriage"
+
+name = EVT_2056_NAME # Japanese government vetoes Lij Abeba's marriage
+desc = EVT_2056_DESC # Ethiopian prince Araya Abeba's interest to marry a Japanese woman has caused quite a sensation in Japan. One Kyoto businessman, mr. Sumioka Tomoyoshi, reportedly with ties to Japanese immigrants in Ethiopia, has declared that one woman has caught the prince's attention: 28-year-old Kuroda Masako, second daughter of Viscount Kuroda Hiroyuki. The Japanese government, however, has forbidden this matter to be discussed, out of fear that such a move would antagonize European interests in the area...
+
+action = {
+name = ACTIONNAME_2056_A # Such a pity!
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 2057
+random = no
+country = ETH
+style = 2
+picture = "ETH_Marriage"
+save_date = yes
+
+name = EVT_2057_NAME # A Japanese bride for Lij Abeba
+desc = EVT_8991670_DESC # Prince Araya Abeba's interest to marry a Japanese woman has caused quite a sensation there! One Tokyo newspaper, the Chunichi Shimbun, has even reported that scores of Japanese ladies have been sending them letters and pictures, in hope of conquering the sweet heart of Lord Abeba and becoming a Princess of Ethiopia! One Kyoto businessman, mr. Sumioka Tomoyoshi, reportedly with ties to Japanese immigrants in Ethiopia, has declared that one woman has caught the prince's attention: 28-year-old Kuroda Masako, second daughter of Viscount Kuroda Hiroyuki. The Japanese government, however, has made it quite clear that this marriage is a private matter between Lij Abeba and mrs. Kuroda - they fear that, by giving an official blessing to the union, Germany would see this as meddling into their sphere of influence in Africa...
+
+action = {
+trigger = { 
+NOT = { 
+war = { country = ETH country = GER } 
+} 
+}
+ai_chance = 30
+name = ACTIONNAME_2057_A # We shouldn't annoy the Germans, really
+command = { type = relation which = JAP value = -10 }
+command = { type = relation which = GER value = 10 }
+command = { type = dissent value = 1 }
+}
+
+action = {
+ai_chance = 70
+name = ACTIONNAME_2057_B # Allow this marriage to take place
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = -10 }
+command = { type = local_setflag which = ETHJ_SMLMAR }
+}
+}
+
+event = {
+id = 2058
+random = no
+country = ETH
+style = 2
+picture = "ETH_Marriage"
+save_date = yes
+
+name = EVT_2058_NAME # A Japanese bride for Lord Abeba ?
+desc = EVT_2058_DESC # Prince Araya Abeba's interest to marry a Japanese woman has caused quite a sensation there! One Tokyo newspaper, the Chunichi Shimbun, has even reported that scores of Japanese ladies have been sending them letters and pictures, in hope of conquering the sweet heart of Lord Abeba and becoming a Princess of Ethiopia! One Kyoto businessman, mr. Sumioka Tomoyoshi, reportedly with ties to Japanese immigrants in Ethiopia, has declared that one woman has caught the prince's attention: 28-year-old Kuroda Masako, second daughter of Viscount Kuroda Hiroyuki. Now, many Japanese government officials are also beginning to see important geopolitical advantages in this arrangement - Japan would gain much influence in Africa through this wedding! Ethiopia would also gain a lot potentially, as this marriage could serve to bring Japanese capital and expertise into our country. However, other powers would not be happy with this move - Germany, mainly, would be quite upset by seeing us drift into the Japanese sphere.
+
+action = {
+trigger = {
+NOT = {
+war = { country = ETH country = GER }
+}
+}
+ai_chance = 33
+name = ACTIONNAME_2058_A # We shouldn't annoy the Germans, really
+command = { type = relation which = JAP value = -10 }
+command = { type = relation which = GER value = 10 }
+command = { type = dissent value = 1 }
+}
+
+action = {
+ai_chance = 33
+name = ACTIONNAME_2058_B # This is their private matter, the government has nothing to do with that
+command = { type = dissent value = -1 }
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = -10 }
+command = { type = local_setflag which = ETHJ_SMLMAR }
+}
+
+action = {
+ai_chance = 33
+name = ACTIONNAME_2058_C # The Negus Negast allows the marriage to proceed
+command = { type = relation which = JAP value = 20 }
+command = { type = relation which = GER value = -20 }
+command = { type = dissent value = -1 }
+command = { type = local_setflag which = ETHJ_GRNMAR }
+}
+}
+
+event = {
+id = 2059
+random = no
+country = ETH
+style = 2
+picture = "ETH_Marriage"
+
+trigger = {
+local_flag = ETHJ_SMLMAR
+OR = {
+event = { id = 2057 days = 260 }
+event = { id = 2058 days = 260 }
+}
+exists = JAP
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+} 
+}
+
+name = EVT_2059_NAME # The marriage of Lij Araya Abeba and Mrs. Kuroda Masako 
+desc = EVT_2059_DESC # After nearly one year of preparations, Prince Araya Abeba, nephew of Emperor Haile Selassie I, has married Kuroda Masako, a lady of the Japanese nobility. The private ceremony was conducted at the St. George's Cathedral in Addis Abeba. After a long honeymoon, it is expected that the couple will settle in an official residence in the capital, from where Princess Kuroda will attempt to create closer ties between Ethiopia and Japan. Also, the wedding has attracted a small boom of Japanese tourists to Ethiopia, who will spend some money on our country.
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = ACTIONNAME_2059_A # I always cry at weddings!
+command = { type = relation which = JAP value = 10 }
+command = { type = money value = 10 }
+command = { type = dissent value = -1 }
+command = { type = waketeam which = 6512 } #Nikkei-Sha
+command = { type = local_clrflag which = ETHJ_SMLMAR }
+command = { type = trigger which = 2060 }
+}
+}
+
+event = {
+id = 2060
+random = no
+country = JAP
+style = 2
+picture = "ETH_Marriage" 
+
+name = EVT_2060_NAME # The marriage of Lij Araya Abeba and Mrs. Kuroda Masako
+desc = EVT_2060_DESC # After nearly one year of preparations, Prince Araya Abeba, nephew of Emperor Haile Selassie I of Ethiopia, has married Kuroda Masako, a lady of the Japanese nobility. The private ceremony was conducted at the St. George's Cathedral in Addis Abeba. After a long honeymoon, it is expected that the couple will settle in an official residence in the capital, from where Princess Kuroda will attempt to create closer ties between Ethiopia and Japan.
+
+action = {
+name = ACTIONNAME_2060_A # A toast to the newlyweds! Kanpai!
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 2061
+random = no
+country = ETH
+style = 2
+picture = "ETH_Marriage"
+
+trigger = {
+local_flag = ETHJ_GRNMAR
+event = { id = 2058 days = 260 }
+exists = JAP
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+} 
+}
+
+name = EVT_2061_NAME # The Royal Wedding of Lij Araya Abeba and Mrs. Kuroda Masako
+desc = EVT_2061_DESC # After nearly one year of preparations, a great day for our nation has come: Lij Araya Abebe, nephew of our Emperor Haile Selassie I, has married miss Kuroda Masako, the second daughter of Japanese Viscount Kuroda Hiroyuki. A grand ceremony, conducted by Yohannes XV, patriarch of the Ethiopian Orthodox Church, took place at the St. George's Cathedral in Addis Abeba. His Majesty, Haile Selassie himself, was present at the ceremony as a guest of honor, together with the Japanese ambassador to Ethiopia. The couple then paraded in a chariot across the city, escorted by the Imperial Bodyguards. After a long honeymoon, it is expected that they will settle in an official residence in the capital, from where Princess Kuroda will attempt to create closer ties between Ethiopia and Japan at the interest of both countries.
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = ACTIONNAME_2061_A # I always cry at weddings!
+command = { type = relation which = JAP value = 50 }
+command = { type = money value = -100 }
+command = { type = dissent value = -5 }
+command = { type = local_clrflag which = ETHJ_GRNMAR }
+command = { type = trigger which = 2062 }
+}
+}
+
+event = {
+id = 2062
+random = no
+country = JAP
+style = 2
+picture = "ETH_Marriage"
+
+name = EVT_2062_NAME # The Royal Wedding of Lij Araya Abeba and Mrs. Kuroda Masako
+desc = EVT_2062_DESC # After nearly one year of preparations, a great day for the Japanese and Ethiopian empires: Lij Araya Abebe, nephew of Emperor Haile Selassie I, has married miss Kuroda Masako, the second daughter of Viscount Kuroda Hiroyuki. A grand ceremony, conducted by Yohannes XV, patriarch of the Ethiopian Orthodox Church, took place at the St. George's Cathedral in Addis Abeba. Emperor Haile Selassie was present at the ceremony as a guest of honor, together with the Japanese ambassador to Ethiopia. The couple then paraded in a chariot across the city, escorted by the Imperial Bodyguards. After a long honeymoon, it is expected that they will settle in an official residence in the capital, from where Princess Kuroda will attempt to create closer ties between Ethiopia and Japan at the interest of both countries. Cost of the ceremony where shared between the Japanese and Ethiopian governments.
+
+action = {
+name = ACTIONNAME_2062_A # I always cry at weddings!
+command = { type = money value = -100 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 2063
+random = no
+country = ETH
+
+decision = {
+event = 2062
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+} 
+}
+
+decision_trigger = {
+OR = {
+control = { province = 1221 data = JAP }
+AND = {
+control = { province = 1221 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1228 data = JAP }
+AND = {
+control = { province = 1228 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1191 data = JAP }
+AND = {
+control = { province = 1191 data = PRI }
+OR = {
+puppet = { country = PRI country = JAP }
+alliance = { country = PRI country = JAP }
+}
+}
+AND = {
+control = { province = 1191 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1208 data = JAP }
+AND = {
+control = { province = 1208 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1247 data = JAP }
+AND = {
+control = { province = 1247 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+control = { province = 1219 data = JAP }
+AND = {
+control = { province = 1219 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+}
+}
+
+trigger = {
+event = 2062
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+} 
+OR = {
+control = { province = 1221 data = JAP }
+AND = {
+control = { province = 1221 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1228 data = JAP }
+AND = {
+control = { province = 1228 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1191 data = JAP }
+AND = {
+control = { province = 1191 data = PRI }
+OR = {
+puppet = { country = PRI country = JAP }
+alliance = { country = PRI country = JAP }
+}
+}
+AND = {
+control = { province = 1191 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1208 data = JAP }
+AND = {
+control = { province = 1208 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1247 data = JAP }
+AND = {
+control = { province = 1247 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+control = { province = 1219 data = JAP }
+AND = {
+control = { province = 1219 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+}
+}
+
+name = EVT_2063_NAME # The Ethiopian-Japanese relations
+desc = EVT_2063_DESC # After the royal wedding between Lij Abeba and Princess Kuroda, Ethiopian and Japanese diplomats have met to discuss the relations between our two countries. As Ethiopia is economically and militarily weaker, we could ask the Japanese to help us in an industrialization process in exchange for raw materials and also to protect our independence...
+style = 2
+picture = "ETH_Japan"
+decision_picture = "decision_ethjapan"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2063_A # We need all the help we can get from them
+ai_chance = 50
+command = { type = event which = 2064 where = JAP when = 1 }
+}
+
+action_b = {
+name = ACTIONNAME_2063_B # Ask for industrialization for raw materials
+ai_chance = 20
+command = { type = event which = 2065 where = JAP when = 1 }
+}
+
+action_c = {
+name = ACTIONNAME_2063_C # Military protection
+ai_chance = 20
+command = { type = event which = 2066 where = JAP when = 1 }
+}
+}
+
+event = {
+id = 2064
+random = no
+country = JAP
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2064_DESC # After the royal wedding between Lij Abeba and Princess Kuroda, Ethiopian and Japanese diplomats have met to discuss the relations between our two countries. Ethiopia has asked us to help them industrialize in exchange for raw materials, and they also asked for protection agains foreign threats.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2064_A # We will help and protect our friend
+ai_chance = 50
+command = { type = trigger which = 2067 }
+}
+
+action_b = {
+name = ACTIONNAME_2064_B # Offer just industrial help
+ai_chance = 20
+command = { type = trigger which = 2068 }
+}
+
+action_c = {
+name = ACTIONNAME_2064_C # Offer just military protection
+ai_chance = 20
+command = { type = trigger which = 2069 }
+}
+
+action_d = {
+name = ACTIONNAME_2064_D # We can't help them...
+ai_chance = 10
+command = { type = dissent value = 2 }
+command = { type = relation which = ETH value = -50 }
+command = { type = trigger which = 2070 }
+}
+}
+
+event = {
+id = 2065
+random = no
+country = JAP
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2065_DESC # After the royal wedding between Lij Abeba and Princess Kuroda, Ethiopian and Japanese diplomats have met to discuss the relations between our two countries. Ethiopia has asked us to help them industrialize in exchange for raw materials.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2065_A # We will help our friend
+ai_chance = 50
+command = { type = trigger which = 2071 }
+}
+
+action_b = {
+name = ACTIONNAME_2065_B # Offer military protection instead
+ai_chance = 20
+command = { type = trigger which = 2072 }
+}
+
+action_c = {
+name = ACTIONNAME_2065_C # Offer help and protection
+ai_chance = 20
+command = { type = trigger which = 2073 }
+}
+
+action_d = {
+name = ACTIONNAME_2065_D # We can't help them
+ai_chance = 10
+command = { type = dissent value = 2 }
+command = { type = relation which = ETH value = -50 }
+command = { type = trigger which = 2070 }
+}
+}
+
+event = {
+id = 2066
+random = no
+country = JAP
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2066_DESC # After the royal wedding between Lij Abeba and Princess Kuroda, Ethiopian and Japanese diplomats have met to discuss the relations between our two countries. Ethiopia has asked us to protect their independence in case of an external aggression.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2066_A # We will protect our friend
+ai_chance = 50
+command = { type = trigger which = 2074 }
+}
+
+action_b = {
+name = ACTIONNAME_2066_B # Offer industrial help instead
+ai_chance = 20
+command = { type = trigger which = 2075 }
+}
+
+action_c = {
+name = ACTIONNAME_2066_C # Offer help and protection
+ai_chance = 20
+command = { type = trigger which = 2076 }
+}
+
+action_d = {
+name = ACTIONNAME_2066_D # We can't help, sorry
+ai_chance = 10
+command = { type = dissent value = 2 }
+command = { type = relation which = ETH value = -50 }
+command = { type = trigger which = 2070 }
+}
+}
+
+event = {
+id = 2067
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2067_DESC # The Japanese have accepted to help us in our industrialization process in exchange for raw materials, and also agreed to protect our independence.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2067_A # Hurrah
+command = { type = dissent value = -2 }
+command = { type = relation which = JAP value = 50 }
+command = { type = local_setflag which = JAP_helps_ETH }
+command = { type = local_setflag which = JAP_protects_ETH }
+command = { type = setflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2068
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2068_DESC # The Japanese have proposed to only help us in our industrialization process, but will not protect us militarily.
+style = 2
+picture = "ETH_Japan"
+
+
+action_a = {
+name = ACTIONNAME_2068_A # Better than nothing
+ai_chance = 80
+command = { type = dissent value = -1 }
+command = { type = relation which = JAP value = 30 }
+command = { type = local_setflag which = JAP_helps_ETH }
+}
+
+action_b = {
+name = ACTIONNAME_2068_B # We don't need any help in that case
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = relation which = JAP value = -30 }
+}
+}
+
+event = {
+id = 2069
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2069_DESC # The Japanese have proposed to only protect us on defense matters, but will not help us in our industrialization process.
+style = 2
+picture = "ETH_Japan"
+
+
+action_a = {
+name = ACTIONNAME_2068_A # Better than nothing
+ai_chance = 80
+command = { type = dissent value = -1 }
+command = { type = relation which = JAP value = 30 }
+command = { type = local_setflag which = JAP_protects_ETH }
+command = { type = setflag which = ETHJAP_MILP }
+}
+
+action_b = {
+name = ACTIONNAME_2068_B # We don't need any help in that case
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = relation which = JAP value = -30 }
+}
+}
+
+event = {
+id = 2070
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2070_DESC # Despite our best effort on improving relations between Japan and Ethiopia, the Japanese have refused to protect or help us. Shame on them!
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2070_A # Indeed, shame on them!
+command = { type = dissent value = 5 }
+command = { type = relation which = JAP value = -50 }
+}
+}
+
+event = {
+id = 2071
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2071_DESC # The Japanese have accepted to help us in our industrialization process.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2067_A # Hurrah
+command = { type = dissent value = -1 }
+command = { type = relation which = JAP value = 30 }
+command = { type = local_setflag which = JAP_helps_ETH }
+}
+}
+
+event = {
+id = 2072
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2072_DESC # The Japanese have proposed to protect us militarly instead of helping us in our industrialization process.
+style = 2
+picture = "ETH_Japan"
+
+
+action_a = {
+name = ACTIONNAME_2068_A # Better than nothing
+ai_chance = 80
+command = { type = dissent value = -1 }
+command = { type = relation which = JAP value = 30 }
+command = { type = local_setflag which = JAP_protects_ETH }
+}
+
+action_b = {
+name = ACTIONNAME_2068_B # We don't need any help in that case
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = relation which = JAP value = -30 }
+}
+}
+
+event = {
+id = 2073
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2073_DESC # Incredible, the Japanese have accepted to help us in our industrialization process in exchange for raw materials and also offered to protect our independence.
+style = 2
+picture = "ETH_Japan"
+
+
+action_a = {
+name = ACTIONNAME_2067_A # Hurrah
+command = { type = dissent value = -2 }
+command = { type = relation which = JAP value = 50 }
+command = { type = local_setflag which = JAP_helps_ETH }
+command = { type = local_setflag which = JAP_protects_ETH }
+command = { type = setflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2074
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2074_DESC # The Japanese have accepted to protect us militarily.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2067_A # Hurrah
+command = { type = dissent value = -1 }
+command = { type = relation which = JAP value = 30 }
+command = { type = local_setflag which = JAP_protects_ETH }
+command = { type = setflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2075
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2075_DESC # The Japanese have proposed to help us in our industrialization instead of protecting us militarily.
+style = 2
+picture = "ETH_Japan"
+
+
+action_a = {
+name = ACTIONNAME_2068_A # Better than nothing
+ai_chance = 80
+command = { type = dissent value = -1 }
+command = { type = relation which = JAP value = 30 }
+command = { type = local_setflag which = JAP_helps_ETH }
+}
+
+action_b = {
+name = ACTIONNAME_2068_B # We don't need any help in that case
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = relation which = JAP value = -30 }
+}
+}
+
+event = {
+id = 2076
+random = no
+country = ETH
+
+name = EVT_2064_NAME # The Ethiopian-Japanese relations
+desc = EVT_2076_DESC # Incredible - the Japanese have accepted to protect our independence and also offered to help us in our industrialization process in exchange for raw materials.
+style = 2
+picture = "ETH_Japan"
+
+
+action_a = {
+name = ACTIONNAME_2067_A # Hurrah
+command = { type = dissent value = -2 }
+command = { type = relation which = JAP value = 50 }
+command = { type = local_setflag which = JAP_helps_ETH }
+command = { type = local_setflag which = JAP_protects_ETH }
+command = { type = setflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2077
+random = no
+country = ETH
+
+decision = {
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+} 
+atwar = no
+local_flag = JAP_helps_ETH
+}
+
+decision_trigger = {
+money = 150
+energy = 400
+metal = 400
+rare_materials = 400
+oil = 400
+}
+
+trigger = {
+atwar = no
+local_flag = JAP_helps_ETH
+money = 250
+energy = 500
+metal = 500
+rare_materials = 500
+oil = 500
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+}
+}
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2077_DESC # The first step towards building up our negligible industry is to expand our natural resources, as we are barely able to supply our existing industry. The Japanese industrial experts, once paid and supplied will start their work with reorganization of our existing mines and mining system. It is as well possible that during their course of work they will also discover the presence of oil, natural gas, rare materials and special ores in several of our provinces as large parts of our state are geologically unexplored.
+style = 2
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = ACTIONNAME_2077_A # Excellent idea ! Proceed !
+ai_chance = 99
+command = { type = dissent value = -2 }
+command = { type = money value = -200 }
+command = { type = energypool value = -400 }
+command = { type = metalpool value = -400 }
+command = { type = rarematerialspool value = -400 }
+command = { type = oilpool value = -400 }
+command = { type = event which = 2078 where = ETH when = 200 }
+command = { type = local_clrflag which = JAP_helps_ETH }
+command = { type = local_setflag which = JAP_helps_ETH1 }
+command = { type = trigger which = 2079 }
+}
+
+action = {
+name = ACTIONNAME_2077_B # No ! It is too expensive...
+ai_chance = 1
+command = { type = dissent value = 1 }
+command = { type = local_clrflag which = JAP_helps_ETH }
+}
+}
+
+event = {
+id = 2078
+random = no
+country = ETH
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2078_DESC # Thanks to Japanese help, our resource base has been greatly expanded. We now have much solid base upon which we can expand our negligible industry.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = add_prov_resource which = 817 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 819 value = 1 where = metal }
+command = { type = add_prov_resource which = 819 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 821 value = 1 where = metal }
+command = { type = add_prov_resource which = 821 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 824 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 825 value = 1 where = metal }
+command = { type = add_prov_resource which = 825 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 826 value = 1 where = metal }
+command = { type = add_prov_resource which = 826 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 826 value = 1 where = oil }
+command = { type = add_prov_resource which = 827 value = 1 where = oil }
+command = { type = add_prov_resource which = 828 value = 1 where = oil }
+command = { type = add_prov_resource which = 830 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 830 value = 1 where = metal }
+command = { type = add_prov_resource which = 834 value = 2 where = oil }
+command = { type = add_prov_resource which = 838 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 838 value = 1 where = metal }
+}
+}
+
+event = {
+id = 2079
+random = no
+country = JAP
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2079_DESC # With help of our industrial experts the Ethiopian have started to re-organize their existing mines and mining system. Our experts also predict that during their course of work they will also discover the presence of oil, natural gas, rare materials and special ores in several Ethiopian provinces as large parts of Ethiopia are geologically unexplored.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = money value = -200 }
+command = { type = energypool value = 400 }
+command = { type = metalpool value = 400 }
+command = { type = rarematerialspool value = 400 }
+command = { type = oilpool value = 400 }
+command = { type = relation which = ETH value = 10 }
+}
+}
+
+event = {
+id = 2080
+random = no
+country = ETH
+
+decision = {
+atwar = no
+local_flag = JAP_helps_ETH1
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+} 
+}
+
+decision_trigger = {
+event = 2078
+money = 150
+energy = 400
+metal = 400
+rare_materials = 400
+oil = 400
+}
+
+trigger = {
+event = 2078
+atwar = no
+local_flag = JAP_helps_ETH1
+money = 250
+energy = 500
+metal = 500
+rare_materials = 500
+oil = 500
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+} 
+}
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2080_DESC # The second step towards bulding up our indsutry is to improve and expand existing infrastructure, especially those that connect the major cities of Ethiopia. The Japanese experts, once paid and supplied will start their work and assist our engineers with this grand project.
+style = 2
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = ACTIONNAME_2080_A # New roads for our nation
+ai_chance = 99
+command = { type = dissent value = -2 }
+command = { type = money value = -200 }
+command = { type = energypool value = -400 }
+command = { type = metalpool value = -400 }
+command = { type = rarematerialspool value = -400 }
+command = { type = oilpool value = -400 }
+command = { type = event which = 2081 where = ETH when = 200 }
+command = { type = local_clrflag which = JAP_helps_ETH1 }
+command = { type = local_setflag which = JAP_helps_ETH2 }
+command = { type = trigger which = 2082 }
+}
+
+action = {
+name = ACTIONNAME_2077_B # No ! It is too expensive...
+ai_chance = 1
+command = { type = dissent value = 1 }
+command = { type = local_clrflag which = JAP_helps_ETH1 }
+}
+}
+
+event = {
+id = 2081
+random = no
+country = ETH
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2081_DESC # Today, thanks to Japanese help, new roads have been inaugurated
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = construct which = infrastructure where = 825 value = 30 }
+command = { type = construct which = infrastructure where = 820 value = 30 }
+command = { type = construct which = infrastructure where = 821 value = 30 }
+command = { type = construct which = infrastructure where = 817 value = 30 }
+command = { type = construct which = infrastructure where = 815 value = 30 }
+command = { type = construct which = infrastructure where = 828 value = 30 }
+command = { type = construct which = infrastructure where = 826 value = 30 }
+command = { type = construct which = infrastructure where = 837 value = 30 }
+command = { type = construct which = infrastructure where = 836 value = 30 }
+}
+}
+
+event = {
+id = 2082
+random = no
+country = JAP
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2082_DESC # The Ethiopian have started to build new roads with our help. They have sent us requested supplies and resources, as agreed.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = money value = -300 }
+command = { type = energypool value = 400 }
+command = { type = metalpool value = 400 }
+command = { type = rarematerialspool value = 400 }
+command = { type = oilpool value = 400 }
+command = { type = relation which = ETH value = 10 }
+}
+}
+
+event = {
+id = 2083
+random = no
+country = ETH
+
+decision = {
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+} 
+atwar = no
+local_flag = JAP_helps_ETH2
+}
+
+decision_trigger = {
+event = 2081
+money = 150
+energy = 400
+metal = 400
+rare_materials = 400
+oil = 400
+}
+
+trigger = {
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+} 
+event = 2081
+atwar = no
+local_flag = JAP_helps_ETH2
+money = 250
+energy = 500
+metal = 500
+rare_materials = 500
+oil = 500
+}
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2083_DESC # The third step in build of our industry is to expand the production of energy, so we can have the power to keep our industries at work. With help of Japanese experts this can be surely be acomplished.
+style = 2
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = ACTIONNAME_2083_A # Power to the masses
+ai_chance = 99
+command = { type = dissent value = -2 }
+command = { type = money value = -200 }
+command = { type = energypool value = -400 }
+command = { type = metalpool value = -400 }
+command = { type = rarematerialspool value = -400 }
+command = { type = oilpool value = -400 }
+command = { type = event which = 2084 where = ETH when = 200 }
+command = { type = local_clrflag which = JAP_helps_ETH2 }
+command = { type = local_setflag which = JAP_helps_ETH3 }
+command = { type = trigger which = 2085 }
+}
+
+action = {
+name = ACTIONNAME_2077_B # No ! It is too expensive...
+ai_chance = 1
+command = { type = dissent value = 1 }
+command = { type = local_clrflag which = JAP_helps_ETH2 }
+}
+}
+
+event = {
+id = 2084
+random = no
+country = ETH
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2084_DESC # Today, thanks to Japanese help, new power plants have been inaugurated.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = add_prov_resource which = 820 value = 1 where = energy }
+command = { type = add_prov_resource which = 822 value = 1 where = energy }
+command = { type = add_prov_resource which = 825 value = 1 where = energy }
+command = { type = add_prov_resource which = 826 value = 1 where = energy }
+command = { type = add_prov_resource which = 831 value = 1 where = energy }
+command = { type = add_prov_resource which = 838 value = 1 where = energy }
+}
+}
+
+event = {
+id = 2085
+random = no
+country = JAP
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2085_DESC # The Ethiopian have started to build new power plants with our help. They have sent us our resources.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = money value = -300 }
+command = { type = energypool value = 400 }
+command = { type = metalpool value = 400 }
+command = { type = rarematerialspool value = 400 }
+command = { type = oilpool value = 400 }
+command = { type = relation which = ETH value = 10 }
+}
+}
+
+event = {
+id = 2086
+random = no
+country = ETH
+persistent = yes
+
+decision = {
+atwar = no
+local_flag = JAP_helps_ETH3
+NOT = {
+ic = 50
+local_flag = ETHBUILDFACT
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+}
+}
+
+decision_trigger = {
+event = 2084
+money = 150
+energy = 400
+metal = 400
+rare_materials = 400
+oil = 400
+}
+
+trigger = {
+event = 2084
+atwar = no
+local_flag = JAP_helps_ETH3
+money = 250
+energy = 500
+metal = 500
+rare_materials = 500
+oil = 500
+NOT = {
+ic = 50
+local_flag = ETHBUILDFACT
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+}
+}
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2086_DESC # With recent astounding development of our infrastructure and energy and our power system we have finally laid groundwork to start building a new industry with Japanese help. # With recent astounding development of our infrastructure and energy and our power system we have finally laid groundwork to start building a new industry with Japanese help. # With recent astounding development of our infrastructure and energy and our power system we have finally laid groundwork to start building a new industry with Japanese help.
+style = 2
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = ACTIONNAME_2086_A # A new industry for our nation
+ai_chance = 99
+command = { type = dissent value = -2 }
+command = { type = money value = -200 }
+command = { type = energypool value = -400 }
+command = { type = metalpool value = -400 }
+command = { type = rarematerialspool value = -400 }
+command = { type = oilpool value = -400 }
+command = { type = local_setflag which = ETHBUILDFACT }
+command = { type = event which = 2087 where = ETH when = 250 }
+command = { type = trigger which = 2088 }
+}
+
+action = {
+name = ACTIONNAME_2077_B # No ! It is too expensive...
+ai_chance = 1
+command = { type = dissent value = 1 }
+command = { type = local_clrflag which = JAP_helps_ETH3 }
+}
+}
+
+event = {
+id = 2087
+random = no
+persistent = yes
+country = ETH
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2087_DESC # Today, thanks to Japanese help, a new industrial complex has been inaugurated.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = local_clrflag which = ETHBUILDFACT }
+}
+}
+
+event = {
+id = 2088
+random = no
+country = JAP
+persistent = yes
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2088_DESC # The Ethiopian have started to build a new industry with our help. They have sent us our resources.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = money value = -300 }
+command = { type = energypool value = 400 }
+command = { type = metalpool value = 400 }
+command = { type = rarematerialspool value = 400 }
+command = { type = oilpool value = 400 }
+command = { type = relation which = ETH value = 10 }
+}
+}
+
+event = {
+id = 2089
+random = no
+country = ETH
+
+trigger = {
+local_flag = JAP_helps_ETH3
+ic = 50
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+}
+}
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2089_DESC # We have reached a very high industrial level and therefore we decide to stop asking for help from the Japanese.
+style = 2
+picture = "public_jobs"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = ACTIONNAME_2089_A # Thank you, Japan!
+command = { type = dissent value = -2 }
+command = { type = energypool value = -400 }
+command = { type = metalpool value = -400 }
+command = { type = rarematerialspool value = -400 }
+command = { type = oilpool value = -400 }
+command = { type = local_clrflag which = JAP_helps_ETH3 }
+command = { type = trigger which = 2090 }
+}
+}
+
+event = {
+id = 2090
+random = no
+country = JAP
+
+name = EVT_2077_NAME # The Ethiopian-Japanese Industries
+desc = EVT_2090_DESC # The Ethiopian have reached a very high industrial level and therefore they decide to stop asking our help. They have sent us some resources as gift.
+style = 2
+picture = "public_jobs"
+
+action = {
+name = ACTIONNAME_2078_A # Great !
+command = { type = energypool value = 400 }
+command = { type = metalpool value = 400 }
+command = { type = rarematerialspool value = 400 }
+command = { type = oilpool value = 400 }
+command = { type = relation which = ETH value = 10 }
+}
+}
+
+event = {
+id = 2091
+country = JAP
+style = 2
+
+decision = {
+flag = ETHJAP_MILP
+owned = { province = 836 data = ETH }
+control = { province = 836 data = ETH }
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+alliance = { country = GER country = ETH }
+}
+OR = {
+control = { province = 1221 data = JAP }
+AND = {
+control = { province = 1221 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1228 data = JAP }
+AND = {
+control = { province = 1228 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1191 data = JAP }
+AND = {
+control = { province = 1191 data = PRI }
+OR = {
+puppet = { country = PRI country = JAP }
+alliance = { country = PRI country = JAP }
+}
+}
+AND = {
+control = { province = 1191 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1208 data = JAP }
+AND = {
+control = { province = 1208 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1247 data = JAP }
+AND = {
+control = { province = 1247 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+control = { province = 1219 data = JAP }
+AND = {
+control = { province = 1219 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+} 
+}
+
+decision_trigger = {
+}
+
+trigger = {
+flag = ETHJAP_MILP
+owned = { province = 836 data = ETH }
+control = { province = 836 data = ETH }
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = JAP country = ETH }
+alliance = { country = GER country = ETH }
+} 
+OR = {
+control = { province = 1221 data = JAP }
+AND = {
+control = { province = 1221 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1228 data = JAP }
+AND = {
+control = { province = 1228 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1191 data = JAP }
+AND = {
+control = { province = 1191 data = PRI }
+OR = {
+puppet = { country = PRI country = JAP }
+alliance = { country = PRI country = JAP }
+}
+}
+AND = {
+control = { province = 1191 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1208 data = JAP }
+AND = {
+control = { province = 1208 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1247 data = JAP }
+AND = {
+control = { province = 1247 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+control = { province = 1219 data = JAP }
+AND = {
+control = { province = 1219 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+name = EVT_2091_NAME # A naval base in Ethiopia ?
+desc = EVT_2091_DESC # Following our decision to protect Ethiopia in case of attack Philippines, we have created a large network of contacts there. Japanese business are thriving on this new market, but we could also use these new friends to advance  the geostrategic interests of the Reich. Some circles of navy believe that we should convince their government to allow the establishment of a major naval base in Mogadishu, which will allow us to strike German shipping lanes around Africa.
+picture = "ETH_Japan"
+decision_picture = "decision_ethjapan"
+
+action = {
+ai_chance = 95
+name = ACTIONNAME_2091_A # Propose a deal to their government
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = event which = 2092 where = ETH when = 1 }
+}
+
+action = {
+ai_chance = 5
+name = ACTIONNAME_2091_B # This is too risky...
+command = { type = domestic which = interventionism value = -1 }
+command = { type = clrflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2092
+country = ETH
+style = 2
+
+name = EVT_2092_NAME # A proposal from Japan
+desc = EVT_2092_DESC # Following their decision to provide protection to our state, Japan business have been thriving in Ethiopia. Now, Japan wishes to incorporate these accords into their geostrategic interests. The Japanese Imperial Navy has contacted our government, with the proposal of establishing a naval base in Mogadishu. Some politicians fear the growing German influence on our country, but a good part of our cabinet believe that we could use their help on a new round of economical expansion plans.
+picture = "ETH_Japan"
+
+action = {
+ai_chance = 15
+name = ACTIONNAME_2092_A # Refuse! Our country is not for sale!
+command = { type = clrflag which = ETHJAP_MILP }
+command = { type = dissent value = -1 }
+}
+
+action = {
+ai_chance = 70
+name = ACTIONNAME_2092_B # We want their financing for a new industrial complex, then
+command = { type = dissent value = 1 }
+command = { type = trigger which = 2093 }
+}
+}
+
+event = {
+id = 2093
+country = JAP
+style = 2
+picture = "ETH_Japan"
+
+name = EVT_2093_NAME # Ethiopian demands
+desc = EVT_2093_DESC # The government of the Ethiopia has accepted our proposal for the establishment of a Japan naval base in their territory, on the condition that we help them with the financing of a new industrial complex.
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2093_A # This isn't even worth the trouble
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = ETH value = -20 }
+command = { type = clrflag which = ETHJAP_MILP }
+}
+
+action = {
+ai_chance = 80
+name = ACTIONNAME_2093_B # It's a deal!
+command = { type = event which = 2094 where = ETH when = 150 }
+command = { type = relation which = ETH value = 50 }
+command = { type = money value = -500 }
+}
+}
+
+event = {
+id = 2094
+country = ETH
+style = 2
+picture = "british_naval_reinforcements"
+
+name = EVT_2094_NAME # Japanese base inaugurated
+desc = EVT_2094_DESC # The new base of the Japanese Imperial Navy has been inaugurated today in Mogadishu. As previously agreed, the Japanese Empire has helped us with the construction of new industries, which have also been put to work today.
+
+action = {
+name = ACTIONNAME_2094_A # Great!
+command = { type = trigger which = 2095 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = ic where = -4 value = 1 }
+command = { type = construct which = naval_base where = 836 value = 3 }
+command = { type = access which = JAP }
+command = { trigger = { alliance = { country = RUS country = JAP } } type = access which = RUS }
+command = { type = relation which = JAP value = -50 }
+command = { type = clrflag which = ETHJAP_MILP }
+}
+}
+
+
+event = {
+id = 2095
+country = GER
+style = 2
+picture = "british_naval_reinforcements"
+
+name = EVT_2095_NAME # Japanese naval presence in horn of Africa
+desc = EVT_2095_DESC # The new base of the Japanese Imperial Navy has been inaugurated today in Mogadishu. This places all our crucial shipping lanes around Africa under direct threat of Japanese atttack in case of war with them....
+
+action = {
+name = ACTIONNAME_2095_A # Damn them !
+command = { type = dissent value = 1 }
+command = { type = relation which = ETH value = -50 }
+command = { type = relation which = JAP value = -50 }
+}
+}
+
+event = {
+id = 2096
+random = no
+country = ETH
+persistent = yes
+
+decision = {
+local_flag = JAP_protects_ETH
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = ETH country = -1 }
+}
+}
+
+decision_trigger = {
+under_attack = -1
+}
+
+trigger = {
+local_flag = JAP_protects_ETH
+under_attack = -1
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+war = { country = JAP country = ETH }
+alliance = { country = ETH country = -1 }
+}
+}
+
+name = EVT_2096_NAME # The Ethiopian-Japanese military alliance
+desc = EVT_2096_DESC # After the wedding of Lij Ababa and Princess Kuroda, the Japanese declared that they would protect our independence. We are under attack, so we could use the chance and call for our ally.
+style = 2
+picture = "ETH_Japan"
+decision_picture = "decision_ethjapan"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2096_A # We need all the help we can get
+ai_chance = 100
+command = { type = trigger which = 2097 }
+}
+
+action_b = {
+name = ACTIONNAME_2096_B # We will make it on our own
+ai_chance = 0
+command = { type = dissent value = 10 }
+command = { type = local_clrflag which = JAP_protects_ETH }
+}
+}
+
+event = {
+id = 2097
+random = no
+country = JAP
+persistent = yes
+
+name = EVT_2097_NAME # The Ethiopian-Japanese military alliance
+desc = EVT_2097_DESC # After the Imperial wedding we declared that we will protect Ethiopian independence. Now they are under attack and need our help.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2097_A # We must protect our interests in Africa
+ai_chance = 90
+command = { type = alliance which = ETH }
+command = { type = set_relation which = ETH value = 200 }
+command = { type = trigger which = 2127 }
+}
+
+action_b = {
+name = ACTIONNAME_2097_B # They are on their own, sorry
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = trigger which = 2098 }
+command = { type = clrflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2098
+random = no
+country = ETH
+
+name = EVT_2098_NAME # The End of Ethiopian-Japanese military alliance
+desc = EVT_2098_DESC # The Japanese have refused to help us. We will never forget this backstab!
+style = 2
+picture = "Selassie"
+
+action_a = {
+name = ACTIONNAME_2098_A # Damn!
+command = { type = local_clrflag which = JAP_protects_ETH }
+command = { type = set_relation which = JAP value = -150 }
+}
+}
+
+event = {
+id = 2127
+random = no
+country = ETH
+
+name = EVT_2127_NAME # The Ethiopian-Japanese military alliance
+desc = EVT_2127_DESC # Due to our previous agreements and current geopolitical situation we have agreed to join alliance with Japan.
+style = 2
+picture = "Selassie"
+
+action_a = {
+name = ACTIONNAME_2127_A # Excellent !
+command = { type = set_relation which = JAP value = 180 }
+command = { type = ai which = "kaiserreich/switch/ETH_ALLJAP.ai" }
+command = { trigger = { alliance = { country = JAP country = CSX } } type = set_relation which = CSX value = 180 }
+command = { trigger = { OR = { alliance = { country = JAP country = MAN } puppet = { country = MAN country = JAP } } } type = set_relation which = MAN value = 150 }
+command = { trigger = { alliance = { country = JAP country = KOR } } type = set_relation which = KOR value = 150 }
+command = { trigger = { alliance = { country = JAP country = U30 } } type = set_relation which = U30 value = 150 }
+command = { trigger = { alliance = { country = JAP country = MON } } type = set_relation which = MON value = 150 }
+command = { trigger = { alliance = { country = JAP country = EAF } } type = set_relation which = EAF value = 150 }
+command = { trigger = { alliance = { country = JAP country = CHI } } type = set_relation which = CHI value = 150 }
+command = { trigger = { alliance = { country = JAP country = MEN } } type = set_relation which = MEN value = 150 }
+command = { trigger = { alliance = { country = JAP country = CHC } } type = set_relation which = CHC value = 150 }
+command = { trigger = { alliance = { country = JAP country = CGX } } type = set_relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = JAP country = CYN } } type = set_relation which = CYN value = 150 }
+command = { trigger = { alliance = { country = JAP country = TIB } } type = set_relation which = TIB value = 150 }
+command = { trigger = { alliance = { country = JAP country = CXB } } type = set_relation which = CXB value = 150 }
+command = { trigger = { alliance = { country = JAP country = SIK } } type = set_relation which = SIK value = 150 }
+command = { trigger = { alliance = { country = JAP country = TAN } } type = set_relation which = TAN value = 150 }
+command = { trigger = { alliance = { country = JAP country = SIA } } type = set_relation which = SIA value = 150 }
+command = { trigger = { alliance = { country = JAP country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = JAP country = PHI } } type = set_relation which = PHI value = 150 }
+command = { trigger = { alliance = { country = JAP country = U15 } } type = set_relation which = U15 value = 150 }
+command = { trigger = { alliance = { country = JAP country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = JAP country = INO } } type = set_relation which = INO value = 150 }
+command = { trigger = { alliance = { country = JAP country = CAL } } type = set_relation which = CAL value = 150 }
+command = { trigger = { alliance = { country = JAP country = U42 } } type = set_relation which = U42 value = 150 }
+command = { trigger = { alliance = { country = JAP country = RUS } } type = set_relation which = RUS value = 150 }
+}
+}
+
+event = {
+id = 2099
+random = no
+country = ETH
+persistent = yes
+
+trigger = {
+local_flag = JAP_protects_ETH
+OR = {
+alliance = { country = ETH country = GER }
+alliance = { country = ETH country = FRA }
+alliance = { country = ETH country = USA }
+ispuppet = ETH
+}
+NOT = {
+puppet = { country = ETH country = JAP }
+alliance = { country = ETH country = JAP }
+}
+}
+
+name = EVT_2099_NAME # The End of Ethiopian-Japanese military alliance
+desc = EVT_2099_DESC # We have decided to join another military alliance, therefore Japan will not protect us anymore.
+style = 2
+picture = "ETH_Japan"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2099_A # We are still friends… Right ?
+command = { type = local_clrflag which = JAP_protects_ETH }
+command = { type = clrflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2100
+random = no
+country = ETH
+persistent = yes
+
+trigger = {
+local_flag = JAP_protects_ETH
+NOT = {
+control = { province = 1221 data = JAP }
+AND = {
+control = { province = 1221 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1228 data = JAP }
+AND = {
+control = { province = 1228 data = KOR }
+OR = {
+puppet = { country = KOR country = JAP }
+alliance = { country = KOR country = JAP }
+}
+}
+control = { province = 1191 data = JAP }
+AND = {
+control = { province = 1191 data = PRI }
+OR = {
+puppet = { country = PRI country = JAP }
+alliance = { country = PRI country = JAP }
+}
+}
+AND = {
+control = { province = 1191 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1208 data = JAP }
+AND = {
+control = { province = 1208 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1208 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+control = { province = 1247 data = JAP }
+AND = {
+control = { province = 1247 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1247 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+control = { province = 1219 data = JAP }
+AND = {
+control = { province = 1219 data = MAN }
+OR = {
+puppet = { country = MAN country = JAP }
+alliance = { country = MAN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CSX }
+OR = {
+puppet = { country = CSX country = JAP }
+alliance = { country = CSX country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHI }
+OR = {
+puppet = { country = CHI country = JAP }
+alliance = { country = CHI country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = CHC }
+OR = {
+puppet = { country = CHC country = JAP }
+alliance = { country = CHC country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = MEN }
+OR = {
+puppet = { country = MEN country = JAP }
+alliance = { country = MEN country = JAP }
+}
+}
+AND = {
+control = { province = 1219 data = RUS }
+OR = {
+puppet = { country = RUS country = JAP }
+alliance = { country = RUS country = JAP }
+}
+}
+}
+}
+
+name = EVT_2100_NAME # The defeat of Japan
+desc = EVT_2100_DESC # Terrible news ! The Japanese Empire has been recently overwhelming defeated in a war and the Japanese Ambassador has come to speak with the Emperor and the Prime-Minister.
+style = 2
+picture = "ETH_Japan"
+
+date = { day = 0 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2100_A # We are ready for the worst
+command = { trigger = { local_flag = JAP_protects_ETH } type = setflag which = JAP_protects_ETH1 }
+command = { trigger = { OR = { local_flag = JAP_helps_ETH local_flag = JAP_helps_ETH1 local_flag = JAP_helps_ETH2 local_flag = JAP_helps_ETH3 } } type = setflag which = JAP_helps_ETH4 }
+command = { type = trigger which = 2101 }
+}
+}
+
+event = {
+id = 2101
+random = no
+country = JAP
+persistent = yes
+
+name = EVT_2101_NAME # The defeat of Japan
+desc = EVT_2101_DESC # With our defeat we must choose what to do with our relations with Ethiopia as we are no longer capable of supporting Ethiopia as before....
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2101_A # Cut all our relations 
+ai_chance = 70
+command = { type = clrflag which = JAP_protects_ETH1 }
+command = { type = clrflag which = JAP_helps_ETH4 }
+command = { type = trigger which = 2102 }
+}
+
+action_b = {
+trigger = {
+flag = JAP_protects_ETH1
+flag = JAP_helps_ETH4
+}
+name = ACTIONNAME_2101_B # Mantain only economical relations
+ai_chance = 30
+command = { type = clrflag which = JAP_protects_ETH1 }
+command = { type = clrflag which = JAP_helps_ETH4 }
+command = { type = trigger which = 2103 }
+}
+
+action_c = {
+trigger = {
+NOT = { 
+flag = JAP_protects_ETH1 
+}
+flag = JAP_helps_ETH4
+}
+name = ACTIONNAME_2101_C # Keep everything as it is
+ai_chance = 30
+command = { type = clrflag which = JAP_protects_ETH1 }
+command = { type = clrflag which = JAP_helps_ETH4 }
+command = { type = dissent value = 7 }
+command = { type = trigger which = 2104 }
+}
+}
+
+event = {
+id = 2102
+random = no
+country = ETH
+persistent = yes
+
+name = EVT_2101_NAME # The defeat of Japan
+desc = EVT_2102_DESC # The Japanese Ambassador has come to tell us that due to its overwhelming defeat, Japan can not help or protect Ethiopia anymore.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2102_A # We are still friends
+command = { type = local_clrflag which = JAP_protects_ETH }
+command = { type = local_clrflag which = JAP_helps_ETH }
+command = { type = local_clrflag which = JAP_helps_ETH1 }
+command = { type = local_clrflag which = JAP_helps_ETH2 }
+command = { type = local_clrflag which = JAP_helps_ETH3 }
+}
+}
+
+event = {
+id = 2103
+random = no
+country = ETH
+persistent = yes
+
+name = EVT_2101_NAME # The defeat of Japan
+desc = EVT_2103_DESC # The Japanese Ambassador has come to tell us that due to its overwhelming defeat, Japan can not protect Ethiopia anymore but will mantain it's economical ties.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2102_A # We are still friends
+command = { type = local_clrflag which = JAP_protects_ETH }
+}
+}
+
+event = {
+id = 2104
+random = no
+country = ETH
+persistent = yes
+
+name = EVT_2101_NAME # The defeat of Japan
+desc = EVT_2104_DESC # The Japanese Ambassador has come to tell us that the overwhelming defeat of Japan will not affect our mutual economical ties.
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2104_A # Great !
+command = { }
+}
+}
+
+event = {
+id = 2105
+random = no
+country = ETH
+persistent = yes
+
+trigger = {
+war = { country = ETH country = JAP }
+OR = {
+local_flag = JAP_protects_ETH
+local_flag = JAP_helps_ETH
+local_flag = JAP_helps_ETH1
+local_flag = JAP_helps_ETH2
+local_flag = JAP_helps_ETH3
+}
+}
+
+name = EVT_2105_NAME # War with Japan
+desc = EVT_2105_DESC # We are at war with the Japanese - yeah, go figure. All our relations have been broken!
+style = 2
+picture = "ETH_Japan"
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2105_A # War, terrible War
+command = { type = local_clrflag which = JAP_protects_ETH }
+command = { type = local_clrflag which = JAP_helps_ETH }
+command = { type = local_clrflag which = JAP_helps_ETH1 }
+command = { type = local_clrflag which = JAP_helps_ETH2 }
+command = { type = local_clrflag which = JAP_helps_ETH3 }
+command = { type = end_access which = JAP }
+command = { trigger = { alliance = { country = RUS country = JAP } } type = end_access which = RUS }
+command = { type = clrflag which = ETHJAP_MILP }
+}
+}
+
+event = {
+id = 2106
+random = no
+country = ETH
+persistent = yes
+
+decision = {
+local_flag = JAP_protects_ETH
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+alliance = { country = ETH country = JAP }
+alliance = { country = ETH country = GER }
+war = { country = JAP country = ETH }
+war = { country = GER country = ETH }
+}
+}
+
+decision_trigger = {
+war = { country = GER country = JAP }
+}
+
+trigger = {
+local_flag = JAP_protects_ETH
+war = { country = GER country = JAP }
+NOT = {
+ispuppet = JAP
+ispuppet = ETH
+government = communist
+government = { type = communist country = JAP }
+alliance = { country = ETH country = JAP }
+alliance = { country = ETH country = GER }
+war = { country = JAP country = ETH }
+war = { country = GER country = ETH }
+}
+}
+
+name = EVT_2106_NAME # Japan and Germany at war
+desc = EVT_2106_DESC # The pro-Japanese camp of our government, under the influence of Princess Kuroda and Hiruy Wolde Selassie, has been lobbying for our entrance in the current war on the side of Japan. We could use the opportunity to reconquer rightfull Ethiopian territory currently held by Germany - and much more!
+style = 2
+picture = "ETH_Japan"
+decision_picture = "decision_ethjapan"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_2106_A # Yes, join the war on the side of Japan
+ai_chance = 60
+command = { type = relation which = JAP value = 50 }
+command = { type = addclaim which = 832 }
+command = { type = addclaim which = 833 }
+command = { type = trigger which = 2107 }
+}
+
+action_b = {
+name = ACTIONNAME_2106_B # We just can't afford this risk
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = relation which = JAP value = -50 }
+command = { type = relation which = GER value = 10 }
+}
+}
+
+event = {
+id = 2107
+random = no
+country = JAP
+persistent = yes
+
+name = EVT_2107_NAME # An alliance with Ethiopia ?
+desc = EVT_2107_DESC # The pro-Japanese camp of the Ethiopian government, under the influence of Princess Kuroda and Hiruy Wolde Selassie, has been defending the entrance of Ethiopia on our war against Germany! Should we bring them into our alliance ?
+style = 2
+picture = "ETH_Japan"
+
+action_a = {
+name = ACTIONNAME_2107_A # Yes, welcome them into the Co-Prosperity Sphere
+ai_chance = 99
+command = { type = alliance which = ETH }
+command = { type = set_relation which = ETH value = 200 }
+command = { type = trigger which = 2127 }
+}
+
+action_b = {
+name = ACTIONNAME_2107_B # We just can't afford another front on this war
+ai_chance = 1
+command = { type = dissent value = 5 }
+}
+}
+
+################# Foreign Policy
+event = {
+id = 2108
+random = no
+country = ETH
+picture = "ETH_Generic"
+
+name = EVT_2108_NAME # Ethiopia, an Empire at the Crossroads
+desc = EVT_2108_DESC # Ethiopia, also known as Abyssinia, was the only African state which managed to remain independent during the XIXth century Scramble for Africa, succesfully defeating an Italian invasion in 1896. This victory kickstarted the proccess of modernization in the Ethiopian Empire, in order to bring the country close to European standards regarding its economy, army and administration. In 1918, under empress Zauditu, the Ethiopian Empire entered the Weitkrieg on the side of the Germans, succesfully annexing the Italian colonies of Somaliland and Eritrea. Another sign of Ethiopia's modernization was the expansion of the DPAEB railroad, a vital transport link for the country. In 1930, Empress Zauditu died with no surviving children, which prompted her cousin Ras Tafari Makonnen to ascend the throne as Emperor Haile Selassie. The new monarch announced his intention to start a new series of reforms to bring Ethiopia 'into the west'. These initiatives, however, were fiercely opposed by the conservative nobility of the nation, who had been greatly strengthened by the annexation of the Italian colonies and the subsequent expansion of the army. Haile Selassie also faces opposition from the important Italian business community in Eritrea, who feel that any disturbance to the status quo will mean an end to their privileges. The imperial government, meanwhile, has suffered another blow in 1935, when a report by the German Ministry of Trade announced the fragile economical situation of the DPAEB, which puts the entire Ethiopian economy at risk - thus definitely proving the unefficiency of Ethiopia rallying to the German sphere. With an worldwide economical crisis approaching, Ethiopia may need to decide whether to continue its current relationship with Germany, seek new trade partners or pursue her own independent foreign policy.
+style = 2
+
+date = { day = 5 month = january year = 1936 }
+
+action = {
+name = ACTIONNAME_2108_A # Such an interesting country!
+command = {  }
+}
+}
+
+event = {
+id = 2109
+random = no
+country = ETH
+picture = "Berlin stock exchange"
+
+name = EVT_2109_NAME # Black Monday hits Ethiopia
+desc = EVT_2109_DESC # A major economical crisis has hit the German Empire. The Berlin Stock Exchange has hit an all-time low and, as a consequence, hundreds of enterprises across Europe are going bankrupt and millions of workers are left unemployed worldwide. The crisis will reflect in our country as well, since European markets will be shut for Ethiopian natural resources for the time...
+style = 2
+
+date = { day = 14 month = february year = 1936 }
+
+action = {
+name = ACTIONNAME_2109_A # This is a tragedy!
+command = { type = dissent value = 5 }
+command = { type = industrial_modifier which = total value = -5 }
+command = { type = money value = -100 }
+command = { type = end_trades which = ETH where = GER }
+command = { type = end_trades which = ETH where = POR }
+command = { type = end_trades which = ETH where = SPA }
+command = { type = end_trades which = ETH where = ITA }
+command = { type = end_trades which = ETH where = DEN }
+command = { type = end_trades which = ETH where = IRE }
+command = { type = end_trades which = ETH where = SWE }
+command = { type = end_trades which = ETH where = NOR }
+command = { type = end_trades which = ETH where = FIN }
+command = { type = end_trades which = ETH where = AUS }
+command = { type = end_trades which = ETH where = CZE }
+command = { type = end_trades which = ETH where = HUN }
+command = { type = end_trades which = ETH where = SER }
+command = { type = end_trades which = ETH where = CRO }
+command = { type = end_trades which = ETH where = BOS }
+command = { type = end_trades which = ETH where = ALB }
+command = { type = end_trades which = ETH where = OTT }
+command = { type = end_trades which = ETH where = GRE }
+command = { type = end_trades which = ETH where = BUL }
+command = { type = end_trades which = ETH where = ROM }
+command = { type = end_trades which = ETH where = POL }
+command = { type = end_trades which = ETH where = BLR }
+command = { type = end_trades which = ETH where = RUS }
+command = { type = end_trades which = ETH where = UKR }
+command = { type = event which = 2126 where = ETH when = 370  } 
+}
+}
+
+event = {
+id = 2110
+random = no
+country = ETH
+picture = "ETH_Book"
+
+trigger = {
+atwar = no
+}
+
+name = EVT_2110_NAME # The Panafricanist Movement
+desc = EVT_2110_DESC # A number of Ethiopian intelectuals, such as dr. Workneh Eshete and young diplomat Lorenzo Taezaz, have recently subscribed to the ideals of Panafricanism. The Panafricanist movement believes on the solidarity among the peoples of Africa and peoples of African descent throughout the world and cooperation against colonial exploitation. The particular interpretation of Panafricanism as promoted by dr. Eshete on his new book 'Africa in the 20th Century', puts a heavy emphasis on the role of Ethiopia, the only African country not subject to colonization by European powers, as the champion of African interests and a possible leader for the liberation of the continent.
+style = 2
+
+date = { day = 1 month = december year = 1936 }
+
+action = {
+ai_chance = 50
+name = ACTIONNAME_2110_A # Just ignore those people
+command = { type = relation which = GER value = 10 }
+command = { type = relation which = CON value = 10 }
+command = { type = relation which = VIC value = 10 }
+}
+
+action = {
+ai_chance = 50
+name = ACTIONNAME_2110_B # That could be a good read
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CON value = -20 }
+command = { type = relation which = VIC value = -20 }
+command = { type = relation which = EGY value = 20 }
+command = { type = relation which = LIB value = 20 }
+command = { type = setflag which = ETH_Pan }
+}
+}
+
+event = {
+id = 2111
+random = no
+country = ETH
+picture = "ETH_Generic"
+
+name = EVT_2111_NAME # New foreign directions
+desc = EVT_2111_DESC # The economical crisis of early 1936 has demonstrated the fragility of our current foreign trade system and the problems of our continuing relations with the German Empire. As part of the emperor's series of reforms in our country, we must rethink our diplomatic policies. Should we stick to our current approach of favouring our contacts with Germany and the Mitteleuropa system? Other powers, some as far away as Japan, also have interests in Ethiopia and would favour a deeper relationship with us. Or maybe we should listen to the excentric ideas of dr. Eshete and his Panafricanism school of thought ?
+style = 2
+
+action = {
+ai_chance = 20
+trigger = { 
+control = { province = 163 data = GER } 
+}
+name = ACTIONNAME_2111_A # We value our good relations with Germany
+command = { type = event which = 2012 where = ETH when = 100  } # Triggers the rest of the reforms chain
+command = { type = relation which = GER value = 30 }
+command = { type = relation which = CON value = 30 }
+command = { type = sleepevent which = 2048 } # Kills the Japan chain
+command = { type = sleepevent which = 2049 }
+command = { type = sleepevent which = 2050 }
+command = { type = sleepevent which = 2051 }
+command = { type = sleepevent which = 2052 }
+command = { type = sleepevent which = 2054 }
+command = { type = sleepevent which = 2055 }
+command = { type = sleepevent which = 2056 }
+command = { type = sleepevent which = 2057 }
+command = { type = sleepevent which = 2058 }
+command = { type = sleepevent which = 2059 }
+command = { type = sleepevent which = 2060 }
+command = { type = sleepevent which = 2061 }
+command = { type = sleepevent which = 2062 }
+command = { type = sleepevent which = 2053 }
+command = { type = sleepevent which = 2063 }
+command = { type = sleepevent which = 2064 }
+command = { type = sleepevent which = 2065 }
+command = { type = sleepevent which = 2066 }
+command = { type = sleepevent which = 2067 }
+command = { type = sleepevent which = 2068 }
+command = { type = sleepevent which = 2069 }
+command = { type = sleepevent which = 2070 }
+command = { type = sleepevent which = 2071 }
+command = { type = sleepevent which = 2072 }
+command = { type = sleepevent which = 2073 }
+command = { type = sleepevent which = 2074 }
+command = { type = sleepevent which = 2075 }
+command = { type = sleepevent which = 2076 }
+command = { type = sleepevent which = 2077 }
+command = { type = sleepevent which = 2078 }
+command = { type = sleepevent which = 2079 }
+command = { type = sleepevent which = 2080 }
+command = { type = sleepevent which = 2081 }
+command = { type = sleepevent which = 2082 }
+command = { type = sleepevent which = 2083 }
+command = { type = sleepevent which = 2084 }
+command = { type = sleepevent which = 2085 }
+command = { type = sleepevent which = 2086 }
+command = { type = sleepevent which = 2087 }
+command = { type = sleepevent which = 2088 }
+command = { type = sleepevent which = 2089 }
+command = { type = sleepevent which = 2090 }
+command = { type = sleepevent which = 2091 }
+command = { type = sleepevent which = 2092 }
+command = { type = sleepevent which = 2093 }
+command = { type = sleepevent which = 2094 }
+command = { type = sleepevent which = 2095 }
+command = { type = sleepevent which = 2096 }
+command = { type = sleepevent which = 2097 }
+command = { type = sleepevent which = 2098 }
+command = { type = sleepevent which = 2099 }
+command = { type = sleepevent which = 2100 }
+command = { type = sleepevent which = 2101 }
+command = { type = sleepevent which = 2102 }
+command = { type = sleepevent which = 2103 }
+command = { type = sleepevent which = 2104 }
+command = { type = sleepevent which = 2105 }
+command = { type = sleepevent which = 2106 }
+command = { type = sleepevent which = 2107 }
+command = { type = sleepevent which = 2118 } # Kills the Panafrican Chain
+command = { type = sleepevent which = 2119 }
+command = { type = sleepevent which = 2120 }
+command = { type = sleepevent which = 2121 }
+command = { type = sleepevent which = 2122 }
+command = { type = sleepevent which = 2123 }
+command = { type = sleepevent which = 2124 }
+command = { type = sleepevent which = 2125 }
+command = { type = setflag which = ETH_Ger }
+command = { type = clrflag which = ETH_Pan }
+}
+
+action = {
+ai_chance = 40
+name = ACTIONNAME_2111_B # Japan is an inspiration to us, craft closer bonds with Tokyo
+command = { type = event which = 2012 where = ETH when = 100  } # Triggers the rest of the reforms chain
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CON value = -20 }
+command = { type = relation which = JAP value = 30 }
+command = { type = sleepevent which = 2021 } # Kills the pro-German chains
+command = { type = sleepevent which = 2022 }
+command = { type = sleepevent which = 2023 }
+command = { type = sleepevent which = 2028 }
+command = { type = sleepevent which = 2036 }
+command = { type = sleepevent which = 2037 }
+command = { type = sleepevent which = 2038 }
+command = { type = sleepevent which = 2112 }
+command = { type = sleepevent which = 2113 }
+command = { type = sleepevent which = 2114 }
+command = { type = sleepevent which = 2115 }
+command = { type = sleepevent which = 2116 }
+command = { type = sleepevent which = 2117 }
+command = { type = sleepevent which = 2118 } # Kills the Panafrican Chain
+command = { type = sleepevent which = 2119 }
+command = { type = sleepevent which = 2120 }
+command = { type = sleepevent which = 2121 }
+command = { type = sleepevent which = 2122 }
+command = { type = sleepevent which = 2123 }
+command = { type = sleepevent which = 2124 }
+command = { type = sleepevent which = 2125 }
+command = { type = clrflag which = ETH_Pan }
+}
+
+action = {
+trigger = { 
+flag = ETH_Pan 
+}
+ai_chance = 40
+name = ACTIONNAME_2111_C # Listen to dr. Eshete, follow the Panafricanist ideals
+command = { type = event which = 2012 where = ETH when = 100  } # Triggers the rest of the reforms chain
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CON value = -20 }
+command = { type = relation which = VIC value = -20 }
+command = { type = relation which = EGY value = 20 }
+command = { type = relation which = LIB value = 20 }
+command = { type = sleepevent which = 2021 } # Kills the pro-German chains
+command = { type = sleepevent which = 2022 }
+command = { type = sleepevent which = 2023 }
+command = { type = sleepevent which = 2028 }
+command = { type = sleepevent which = 2036 }
+command = { type = sleepevent which = 2037 }
+command = { type = sleepevent which = 2038 }
+command = { type = sleepevent which = 2112 }
+command = { type = sleepevent which = 2113 }
+command = { type = sleepevent which = 2114 }
+command = { type = sleepevent which = 2115 }
+command = { type = sleepevent which = 2116 }
+command = { type = sleepevent which = 2117 }
+command = { type = sleepevent which = 2063 } # Kills the Pro-Japan chains - except for the marriage
+command = { type = sleepevent which = 2064 } # The marriage may still occur, but it won't have a chance to develop into military or economical cooperation
+command = { type = sleepevent which = 2065 }
+command = { type = sleepevent which = 2066 }
+command = { type = sleepevent which = 2067 }
+command = { type = sleepevent which = 2068 }
+command = { type = sleepevent which = 2069 }
+command = { type = sleepevent which = 2070 }
+command = { type = sleepevent which = 2071 }
+command = { type = sleepevent which = 2072 }
+command = { type = sleepevent which = 2073 }
+command = { type = sleepevent which = 2074 }
+command = { type = sleepevent which = 2075 }
+command = { type = sleepevent which = 2076 }
+command = { type = sleepevent which = 2077 }
+command = { type = sleepevent which = 2078 }
+command = { type = sleepevent which = 2079 }
+command = { type = sleepevent which = 2080 }
+command = { type = sleepevent which = 2081 }
+command = { type = sleepevent which = 2082 }
+command = { type = sleepevent which = 2083 }
+command = { type = sleepevent which = 2084 }
+command = { type = sleepevent which = 2085 }
+command = { type = sleepevent which = 2086 }
+command = { type = sleepevent which = 2087 }
+command = { type = sleepevent which = 2088 }
+command = { type = sleepevent which = 2089 }
+command = { type = sleepevent which = 2090 }
+command = { type = sleepevent which = 2091 }
+command = { type = sleepevent which = 2092 }
+command = { type = sleepevent which = 2093 }
+command = { type = sleepevent which = 2094 }
+command = { type = sleepevent which = 2095 }
+command = { type = sleepevent which = 2096 }
+command = { type = sleepevent which = 2097 }
+command = { type = sleepevent which = 2098 }
+command = { type = sleepevent which = 2099 }
+command = { type = sleepevent which = 2100 }
+command = { type = sleepevent which = 2101 }
+command = { type = sleepevent which = 2102 }
+command = { type = sleepevent which = 2103 }
+command = { type = sleepevent which = 2104 }
+command = { type = sleepevent which = 2105 }
+command = { type = sleepevent which = 2106 }
+}
+
+action = {
+ai_chance = 20
+name = ACTIONNAME_2111_D # Isolationism - We shouldn't get involved in the international mess
+command = { type = event which = 2012 where = ETH when = 100  } # Triggers the rest of the reforms chain
+command = { type = sleepevent which = 2036 } # Kills the pro-German chains - Except for the industrial aid thing
+command = { type = sleepevent which = 2037 }
+command = { type = sleepevent which = 2038 }
+command = { type = sleepevent which = 2112 }
+command = { type = sleepevent which = 2113 }
+command = { type = sleepevent which = 2114 }
+command = { type = sleepevent which = 2115 }
+command = { type = sleepevent which = 2116 }
+command = { type = sleepevent which = 2117 }
+command = { type = sleepevent which = 2063 } # Kills the Pro-Japan chains - except for the marriage
+command = { type = sleepevent which = 2064 } # The marriage may still occur, but it won't have a chance to develop into military or economical cooperation
+command = { type = sleepevent which = 2065 }
+command = { type = sleepevent which = 2066 }
+command = { type = sleepevent which = 2067 }
+command = { type = sleepevent which = 2068 }
+command = { type = sleepevent which = 2069 }
+command = { type = sleepevent which = 2070 }
+command = { type = sleepevent which = 2071 }
+command = { type = sleepevent which = 2072 }
+command = { type = sleepevent which = 2073 }
+command = { type = sleepevent which = 2074 }
+command = { type = sleepevent which = 2075 }
+command = { type = sleepevent which = 2076 }
+command = { type = sleepevent which = 2077 }
+command = { type = sleepevent which = 2078 }
+command = { type = sleepevent which = 2079 }
+command = { type = sleepevent which = 2080 }
+command = { type = sleepevent which = 2081 }
+command = { type = sleepevent which = 2082 }
+command = { type = sleepevent which = 2083 }
+command = { type = sleepevent which = 2084 }
+command = { type = sleepevent which = 2085 }
+command = { type = sleepevent which = 2086 }
+command = { type = sleepevent which = 2087 }
+command = { type = sleepevent which = 2088 }
+command = { type = sleepevent which = 2089 }
+command = { type = sleepevent which = 2090 }
+command = { type = sleepevent which = 2091 }
+command = { type = sleepevent which = 2092 }
+command = { type = sleepevent which = 2093 }
+command = { type = sleepevent which = 2094 }
+command = { type = sleepevent which = 2095 }
+command = { type = sleepevent which = 2096 }
+command = { type = sleepevent which = 2097 }
+command = { type = sleepevent which = 2098 }
+command = { type = sleepevent which = 2099 }
+command = { type = sleepevent which = 2100 }
+command = { type = sleepevent which = 2101 }
+command = { type = sleepevent which = 2102 }
+command = { type = sleepevent which = 2103 }
+command = { type = sleepevent which = 2104 }
+command = { type = sleepevent which = 2105 }
+command = { type = sleepevent which = 2106 }
+command = { type = sleepevent which = 2107 }
+command = { type = sleepevent which = 2118 } # Kills the Panafrican Chain
+command = { type = sleepevent which = 2119 }
+command = { type = sleepevent which = 2120 }
+command = { type = sleepevent which = 2121 }
+command = { type = sleepevent which = 2122 }
+command = { type = sleepevent which = 2123 }
+command = { type = sleepevent which = 2124 }
+command = { type = sleepevent which = 2125 }
+command = { type = clrflag which = ETH_Pan }
+}
+}
+
+
+#### German Support chain
+
+event = {
+id = 2112
+random = no
+country = ETH
+picture = "ETH_Generic"
+
+trigger = {
+flag = ETH_Ger
+atwar = no
+control = { province = 163 data = GER } #Berlin held by Germany
+control = { province = 145 data = GER } #Essen held by Germany
+NOT = {
+ispuppet = GER
+ispuppet = ETH
+government = communist
+government = { type = communist country = GER }
+alliance = { country = ETH country = JAP }
+exists = SOM 
+}
+}
+
+name = EVT_2112_NAME # Support from Germany
+desc = EVT_2112_DESC # After the Negus Negast has decided to continue our good relations with Germany, the military has come up with an idea for improving our military: ask for Germany to setup a military mission in Ethiopia in order to teach our officers modern European-style battlefield tactics and produce modern equipment.
+style = 2
+
+date = { day = 0 month = june year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 90
+name = ACTIONNAME_2112_A # Yes, ask for their support
+command = { type = event which = 2113 where = GER when = 2  }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action_b = {
+ai_chance = 10
+name = ACTIONNAME_2112_B # We'd gain nothing with that
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 2113
+random = no
+country = GER
+picture = "ETH_Generic"
+
+name = EVT_2113_NAME # A German Mission to Ethiopia ?
+desc = EVT_2113_DESC # The Ethiopian Empire, a close ally of ours and of our clients of Mittelafrika, has approached us with the proposal to establish a military mission in their capital, Addis Abeba, and train their officer corps into modern European tactics. This could be an opportunity to gain even more influence over this strategic country in the Horn of Africa.
+style = 2
+
+action_a = {
+ai_chance = 95
+name = ACTIONNAME_2113_A # Yes, send some officers to Ethiopia
+command = { type = relation which = ETH value = 20 }
+command = { type = event which = 2114 where = ETH when = 50  }
+command = { type = money value = -200 }
+}
+
+action_b = {
+ai_chance = 5
+name = ACTIONNAME_2113_B # No, we'd gain nothing with that
+command = { type = relation which = ETH value = -20 }
+}
+}
+
+event = {
+id = 2114
+random = no
+country = ETH
+picture = "African_troops"
+
+name = EVT_2114_NAME #  German Military Mission to Ethiopia
+desc = EVT_2114_DESC # The German army has setup a small military mission in our country. This ensemble of officers is now ready to train our troops in modern tactics which will bring the Ethiopian Imperial Army to worldwide standards!
+style = 2
+
+action_a = {
+name = ACTIONNAME_2114_A # Amazing!
+command = { type = waketeam which = 6516 }
+command = { type = relation which = GER value = 30 }
+}
+}
+
+event = {
+id = 2115
+random = no
+country = GER
+
+decision = {
+exists = ETH
+event = 2114
+NOT = {
+exists = SOM
+war = { country = ETH country = GER }
+alliance = { country = GER country = ETH }
+government = communist
+government = { type = communist country = ETH }
+ispuppet = GER
+ispuppet = ETH
+}
+}
+
+decision_trigger = {
+OR = {
+war = { country = VIC country = GER }    #Germany at war with the northern African countries...
+war = { country = EGY country = GER }
+war = { country = SUD country = GER }
+war = { country = CON country = GER }
+war = { country = U03 country = GER }    # ...or any of the main African revolters, really.
+war = { country = U04 country = GER }
+war = { country = U05 country = GER }
+}
+}
+
+trigger = {
+exists = ETH
+event = 2114
+OR = {
+war = { country = VIC country = GER }    #Germany at war with the northern African countries...
+war = { country = EGY country = GER }
+war = { country = SUD country = GER }
+war = { country = CON country = GER }
+war = { country = U03 country = GER }    # ...or any of the main African revolters, really.
+war = { country = U04 country = GER }
+war = { country = U05 country = GER }
+}
+NOT = {
+exists = SOM
+war = { country = ETH country = GER }
+alliance = { country = GER country = ETH }
+government = communist
+government = { type = communist country = ETH }
+ispuppet = GER
+ispuppet = ETH
+}
+}
+
+name = EVT_2115_NAME # Alliance with Ethiopia ?
+desc = EVT_2115_DESC # We have recently established a military mission in the Ethiopian Empire, a close partner of ours in Africa. Now that our conflict has escalated to the African continent, we could use an alliance with them.
+style = 2
+picture = "African_troops"
+decision_picture = "decision_ethirendenta"
+
+date = { day = 0 month = january year = 1938 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 95
+name = ACTIONNAME_2115_A # Yes, try to bring Ethiopia into Mitteleuropa
+command = { type = event which = 2116 where = ETH when = 1  }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action_b = {
+ai_chance = 5
+name = ACTIONNAME_2115_B # We don't want to open yet another front in this war
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 2116
+random = no
+country = ETH
+picture = "ETH_Generic"
+
+name = EVT_2116_NAME # An Alliance with Germany
+desc = EVT_2116_DESC # The German Empire is pressuring us to join their current war in Africa. We would surelly benefit from joining their alliance, but some within the military believe that our army is too fragile to even defend our homeland, let alone conduct campaigns abroad !
+style = 2
+
+action_a = {
+ai_chance = 95
+name = ACTIONNAME_2116_A # Join arms with Germany
+command = { type = dissent value = 5 }
+command = { type = trigger which = 2117 }
+command = { type = ai which = "kaiserreich/switch/ETH_ALLGER.ai" }
+command = { type = set_relation which = GER value = 180 }
+command = { trigger = { alliance = { country = GER country = U07 } } type = set_relation which = U07 value = 180 }
+command = { trigger = { alliance = { country = GER country = CAN } } type = set_relation which = CAN value = 150 }
+command = { trigger = { alliance = { country = GER country = VIC } } type = set_relation which = VIC value = 150 }
+command = { trigger = { alliance = { country = GER country = PAK } } type = set_relation which = PAK value = 150 }
+command = { trigger = { alliance = { country = GER country = SAF } } type = set_relation which = SAF value = 150 }
+command = { trigger = { alliance = { country = GER country = GUY } } type = set_relation which = GUY value = 150 }
+command = { trigger = { alliance = { country = GER country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = GER country = AFG } } type = set_relation which = AFG value = 150 }
+command = { trigger = { alliance = { country = GER country = NEP } } type = set_relation which = NEP value = 150 }
+command = { trigger = { alliance = { country = GER country = TIB } } type = set_relation which = TIB value = 150 }
+command = { trigger = { alliance = { country = GER country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = GER country = CAL } } type = set_relation which = CAL value = 150 }
+command = { trigger = { alliance = { country = GER country = U10 } } type = set_relation which = U10 value = 150 }
+command = { trigger = { alliance = { country = GER country = CUB } } type = set_relation which = CUB value = 150 }
+command = { trigger = { alliance = { country = GER country = BLR } } type = set_relation which = BLR value = 150 }
+command = { trigger = { alliance = { country = GER country = UKR } } type = set_relation which = UKR value = 150 }
+command = { trigger = { alliance = { country = GER country = LIT } } type = set_relation which = LIT value = 150 }
+command = { trigger = { alliance = { country = GER country = LAT } } type = set_relation which = LAT value = 150 }
+command = { trigger = { alliance = { country = GER country = AUS } } type = set_relation which = AUS value = 150 }
+command = { trigger = { alliance = { country = GER country = HUN } } type = set_relation which = HUN value = 150 }
+command = { trigger = { alliance = { country = GER country = CZE } } type = set_relation which = CZE value = 150 }
+command = { trigger = { alliance = { country = GER country = POL } } type = set_relation which = POL value = 150 }
+command = { trigger = { alliance = { country = GER country = U00 } } type = set_relation which = U00 value = 150 }
+command = { trigger = { alliance = { country = GER country = FIN } } type = set_relation which = FIN value = 150 }
+command = { trigger = { alliance = { country = GER country = TRA } } type = set_relation which = TRA value = 150 }
+command = { trigger = { alliance = { country = GER country = U26 } } type = set_relation which = U26 value = 150 }
+command = { trigger = { alliance = { country = GER country = U24 } } type = set_relation which = U24 value = 150 }
+command = { trigger = { alliance = { country = GER country = U25 } } type = set_relation which = U25 value = 150 }
+command = { trigger = { alliance = { country = GER country = BUL } } type = set_relation which = BUL value = 150 }
+command = { trigger = { alliance = { country = GER country = URU } } type = set_relation which = URU value = 150 }
+command = { trigger = { alliance = { country = GER country = SER } } type = set_relation which = SER value = 150 }
+command = { trigger = { alliance = { country = GER country = GRE } } type = set_relation which = GRE value = 150 }
+command = { trigger = { alliance = { country = GER country = GLD } } type = set_relation which = GLD value = 150 }
+command = { trigger = { alliance = { country = GER country = CRO } } type = set_relation which = CRO value = 150 }
+command = { trigger = { alliance = { country = GER country = BOS } } type = set_relation which = BOS value = 150 }
+command = { trigger = { alliance = { country = GER country = MTN } } type = set_relation which = MTN value = 150 }
+command = { trigger = { alliance = { country = GER country = OTT } } type = set_relation which = OTT value = 150 }
+command = { trigger = { alliance = { country = GER country = DEN } } type = set_relation which = DEN value = 150 }
+command = { trigger = { alliance = { country = GER country = ALB } } type = set_relation which = ALB value = 150 }
+command = { trigger = { alliance = { country = GER country = ARM } } type = set_relation which = ARM value = 150 }
+command = { trigger = { alliance = { country = GER country = LBY } } type = set_relation which = LBY value = 150 }
+command = { trigger = { alliance = { country = GER country = EGY } } type = set_relation which = EGY value = 150 }
+command = { trigger = { alliance = { country = GER country = SAU } } type = set_relation which = SAU value = 150 }
+command = { trigger = { alliance = { country = GER country = PER } } type = set_relation which = PER value = 150 }
+command = { trigger = { alliance = { country = GER country = OMN } } type = set_relation which = OMN value = 150 }
+command = { trigger = { alliance = { country = GER country = CON } } type = set_relation which = CON value = 150 }
+command = { trigger = { alliance = { country = GER country = ITA } } type = set_relation which = ITA value = 150 }
+command = { trigger = { alliance = { country = GER country = CGX } } type = set_relation which = CGX value = 150 }
+command = { trigger = { alliance = { country = GER country = SPA } } type = set_relation which = SPA value = 150 }
+command = { trigger = { alliance = { country = GER country = POR } } type = set_relation which = POR value = 150 }
+command = { trigger = { alliance = { country = GER country = EUS } } type = set_relation which = EUS value = 150 }
+command = { trigger = { alliance = { country = GER country = AST } } type = set_relation which = AST value = 150 }
+command = { trigger = { alliance = { country = GER country = PHI } } type = set_relation which = PHI value = 150 }
+command = { trigger = { alliance = { country = GER country = BUR } } type = set_relation which = BUR value = 150 }
+command = { trigger = { alliance = { country = GER country = CSX } } type = set_relation which = CSX value = 150 }
+command = { trigger = { alliance = { country = GER country = YEM } } type = set_relation which = YEM value = 150 }
+command = { trigger = { alliance = { country = GER country = BEL } } type = set_relation which = BEL value = 150 }
+command = { trigger = { alliance = { country = GER country = FLA } } type = set_relation which = FLA value = 150 }
+command = { trigger = { alliance = { country = GER country = WLL } } type = set_relation which = WLL value = 150 }
+command = { trigger = { alliance = { country = GER country = TEX } } type = set_relation which = TEX value = 150 }
+command = { trigger = { alliance = { country = GER country = IRE } } type = set_relation which = IRE value = 150 }
+command = { trigger = { alliance = { country = GER country = INO } } type = set_relation which = INO value = 150 }
+command = { trigger = { alliance = { country = GER country = JAP } } type = set_relation which = JAP value = 150 }
+command = { trigger = { alliance = { country = GER country = USA } } type = set_relation which = USA value = 150 }
+command = { trigger = { alliance = { country = GER country = U17 } } type = set_relation which = U17 value = 150 }
+command = { trigger = { alliance = { country = GER country = SCO } } type = set_relation which = SCO value = 150 }
+command = { trigger = { alliance = { country = GER country = U16 } } type = set_relation which = U16 value = 150 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action_b = {
+ai_chance = 5
+name = ACTIONNAME_2116_B #
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = GER value = -100 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 2117
+random = no
+country = GER
+picture = "ETH_Generic"
+
+name = EVT_2117_NAME # Ethiopia joins Mitteleuropa
+desc = EVT_2117_DESC # The Ethiopian Empire has agreed to join our alliance !
+style = 2
+
+action_a = {
+name = ACTIONNAME_2117_A # Great!
+command = { type = alliance which = ETH }
+command = { type = set_relation which = ETH value = 180 }
+}
+}
+
+#### Panafrican chain
+
+event = {
+id = 2118
+random = no
+country = ETH
+picture = "ETH_Generic"
+
+trigger = {
+flag = ETH_Pan
+event = 2111
+OR = {
+AND = {
+exists = CON
+OR = {
+control = { province = 842 data = CON } # Mombasa
+control = { province = 841 data = CON } # Nairobi
+control = { province = 848 data = CON } # Mwanza
+control = { province = 902 data = CON } # Luluabourg
+control = { province = 905 data = CON } # Costermansville
+control = { province = 847 data = CON } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+alliance = { country = CON country = ETH }
+}
+}
+AND = {
+exists = GER
+OR = {
+control = { province = 842 data = GER } # Mombasa
+control = { province = 841 data = GER } # Nairobi
+control = { province = 848 data = GER } # Mwanza
+control = { province = 902 data = GER } # Luluabourg
+control = { province = 905 data = GER } # Costermansville
+control = { province = 847 data = GER } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+}
+}
+AND = {
+exists = VIC
+OR = {
+control = { province = 976 data = VIC } # Bamako
+control = { province = 974 data = VIC } # Mopti
+control = { province = 972 data = VIC } # Segou
+control = { province = 973 data = VIC } # Sikasso
+}
+NOT = {
+alliance = { country = VIC country = ETH }
+}
+}
+}
+NOT = {
+exists = SOM
+ispuppet = ETH
+}
+}
+
+name = EVT_2118_NAME # Our commitment to Panafricanism
+desc = EVT_2118_DESC # The Negus Negast has announced the commitment of the Ethiopian Empire to the ideals of Panafricanism. Now, intellectuals from all over Africa are demanding that we make clear what will be the degree of Ethiopian involvement on the anti-colonialist struggles of the continent. 
+style = 2
+
+date = { day = 0 month = june year = 1938 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 75
+name = ACTIONNAME_2118_A # We must support and finance independence struggles in Africa
+command = { type = domestic which = interventionism value = 3 }
+command = { type = belligerence which = ETH value = 5  }
+}
+
+action = {
+ai_chance = 25
+name = ACTIONNAME_2118_B # Forget about this, this entire idea was a mistake
+command = { type = domestic which = interventionism value = -2 }
+command = { type = clrflag which = ETH_Pan }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 2119
+random = no
+country = ETH
+style = 2
+
+
+decision = {
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+ispuppet = ETH
+}
+OR = {
+AND = {
+exists = CON
+OR = {
+control = { province = 842 data = CON } # Mombasa
+control = { province = 841 data = CON } # Nairobi
+control = { province = 848 data = CON } # Mwanza
+}
+NOT = {
+alliance = { country = GER country = ETH }
+alliance = { country = CON country = ETH }
+}
+}
+AND = {
+exists = GER
+OR = {
+control = { province = 842 data = GER } # Mombasa
+control = { province = 841 data = GER } # Nairobi
+control = { province = 848 data = GER } # Mwanza
+}
+NOT = {
+alliance = { country = GER country = ETH }
+}
+}
+}
+}
+
+decision_trigger = {
+manpower = 5
+supplies = 500
+money = 50
+}
+
+trigger = {
+manpower = 5
+supplies = 500
+money = 50
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+ispuppet = ETH
+}
+OR = {
+AND = {
+exists = CON
+OR = {
+control = { province = 842 data = CON } # Mombasa
+control = { province = 841 data = CON } # Nairobi
+control = { province = 848 data = CON } # Mwanza
+}
+NOT = {
+alliance = { country = GER country = ETH }
+alliance = { country = CON country = ETH }
+}
+}
+AND = {
+exists = GER
+OR = {
+control = { province = 842 data = GER } # Mombasa
+control = { province = 841 data = GER } # Nairobi
+control = { province = 848 data = GER } # Mwanza
+}
+NOT = {
+alliance = { country = GER country = ETH }
+}
+}
+}
+}
+
+name = EVT_2119_NAME # Independence struggles in East Africa
+desc = EVT_2119_DESC # Representatives of the East African independence movements have been contacted by our intelligence services. They are asking for support from our intelligence services in rebelling against their German colonial masters.
+picture = "askaris2"
+decision_picture = "decision_ethirendenta"
+
+date = { day = 0 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 75
+name = ACTIONNAME_2119_A # Yes, give them our covert support
+command = { trigger = { exists = CON } type = event which = 2120 where = CON when = 50  }
+command = { trigger = { NOT = { exists = CON } } type = event which = 2120 where = GER when = 50  }
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -500 }
+}
+
+action = {
+ai_chance = 25
+name = ACTIONNAME_2119_B # We can't continue with this
+command = { type = domestic which = interventionism value = -2 }
+command = { type = clrflag which = ETH_Pan }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2120
+random = no
+tag = { CON GER }
+
+name = EVT_2120_NAME # Revolts in East Africa
+desc = EVT_2120_DESC # Our East African provinces have entered a sudden rebellion! It is suspected that foreign agents are behind this...
+style = 2
+
+action = {
+name = ACTIONNAME_2120_A # Damn!
+command = { trigger = { control = { province = 842 data = -1 } } type = revolt which = 842 }
+command = { trigger = { control = { province = 842 data = -1 } } type = revolt which = 842 }
+command = { trigger = { control = { province = 842 data = -1 } } type = revolt which = 842 }
+command = { trigger = { control = { province = 841 data = -1 } } type = revolt which = 841 }
+command = { trigger = { control = { province = 841 data = -1 } } type = revolt which = 841 }
+command = { trigger = { control = { province = 848 data = -1 } } type = revolt which = 848 }
+command = { trigger = { control = { province = 848 data = -1 } } type = revolt which = 848 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 2121
+random = no
+country = ETH
+style = 2
+
+
+decision = {
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+ispuppet = ETH
+}
+OR = {
+AND = {
+exists = CON
+OR = {
+control = { province = 902 data = CON } # Luluabourg
+control = { province = 905 data = CON } # Costermansville
+control = { province = 847 data = CON } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+alliance = { country = CON country = ETH }
+}
+}
+AND = {
+exists = GER
+OR = {
+control = { province = 902 data = GER } # Luluabourg
+control = { province = 905 data = GER } # Costermansville
+control = { province = 847 data = GER } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+}
+}
+}
+}
+
+decision_trigger = {
+manpower = 5
+supplies = 500
+money = 50
+}
+
+trigger = {
+manpower = 5
+supplies = 500
+money = 50
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+ispuppet = ETH
+}
+OR = {
+AND = {
+exists = CON
+OR = {
+control = { province = 902 data = CON } # Luluabourg
+control = { province = 905 data = CON } # Costermansville
+control = { province = 847 data = CON } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+alliance = { country = CON country = ETH }
+}
+}
+AND = {
+exists = GER
+OR = {
+control = { province = 902 data = GER } # Luluabourg
+control = { province = 905 data = GER } # Costermansville
+control = { province = 847 data = GER } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+}
+}
+}
+}
+
+name = EVT_2121_NAME # Independence struggles in the Congo
+desc = EVT_2121_DESC # Representatives of the independence movements in the Congo basin area have been contacted by our intelligence services. They are asking for support from our intelligence services in rebelling against their German colonial masters.
+picture = "askaris2"
+decision_picture = "decision_ethirendenta"
+
+date = { day = 0 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 75
+name = ACTIONNAME_2121_A # We must support and finance their struggle
+command = { trigger = { exists = CON }    type = event which = 2122 where = CON when = 50  }
+command = { trigger = { NOT = { exists = CON } } type = event which = 2122 where = GER when = 50  }
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -500 }
+}
+
+action = {
+ai_chance = 25
+name = ACTIONNAME_2121_B # We can't continue with this
+command = { type = domestic which = interventionism value = -2 }
+command = { type = clrflag which = ETH_Pan }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2122
+random = no
+tag = { CON GER }
+
+name = EVT_2122_NAME # Revolts in Central Africa
+desc = EVT_2122_DESC # Our Congo provinces have entered a sudden rebellion! It is suspected that foreign agents are behind this once again!
+style = 2
+
+action = {
+name = ACTIONNAME_2122_A # Damn!
+command = { trigger = { control = { province = 902 data = -1 } } type = revolt which = 902 }
+command = { trigger = { control = { province = 902 data = -1 } } type = revolt which = 902 }
+command = { trigger = { control = { province = 902 data = -1 } } type = revolt which = 902 }
+command = { trigger = { control = { province = 905 data = -1 } } type = revolt which = 905 }
+command = { trigger = { control = { province = 905 data = -1 } } type = revolt which = 905 }
+command = { trigger = { control = { province = 847 data = -1 } } type = revolt which = 847 }
+command = { trigger = { control = { province = 847 data = -1 } } type = revolt which = 847 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 2123
+random = no
+country = ETH
+style = 2
+
+
+decision = {
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+ispuppet = ETH
+alliance = { country = VIC country = ETH }
+}
+exists = VIC
+OR = {
+control = { province = 976 data = VIC } # Bamako
+control = { province = 974 data = VIC } # Mopti
+control = { province = 972 data = VIC } # Segou
+control = { province = 973 data = VIC } # Sikasso
+}
+}
+
+decision_trigger = {
+manpower = 5
+supplies = 500
+money = 50
+}
+
+trigger = {
+manpower = 5
+supplies = 500
+money = 50
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+ispuppet = ETH
+alliance = { country = VIC country = ETH }
+}
+exists = VIC
+OR = {
+control = { province = 976 data = VIC } # Bamako
+control = { province = 974 data = VIC } # Mopti
+control = { province = 972 data = VIC } # Segou
+control = { province = 973 data = VIC } # Sikasso
+}
+}
+
+name = EVT_2123_NAME # Independence struggles in the Sahel
+desc = EVT_2123_DESC # Representants of the independence movements in the Sahel area of northern Africa have been contacted by our intelligence services. They are asking for support from our intelligence services in rebelling against their National French colonial masters.
+picture = "askaris2"
+decision_picture = "decision_ethirendenta"
+
+date = { day = 0 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 75
+name = ACTIONNAME_2123_A # Give them our support!
+command = { type = event which = 2124 where = VIC when = 50  }
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -5 }
+command = { type = resource which = supplies value = -500 }
+}
+
+action = {
+ai_chance = 25
+name = ACTIONNAME_2123_B # We can't continue with this
+command = { type = domestic which = interventionism value = -2 }
+command = { type = clrflag which = ETH_Pan }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 2124
+random = no
+country = VIC
+
+name = EVT_2124_NAME# Revolts in the Sahel
+desc = EVT_2124_DESC # Our Sahelian provinces have entered a sudden rebellion! It is suspected that foreign agents are behind this!
+style = 2
+
+action = {
+name = ACTIONNAME_2124_A # Damn!
+command = { trigger = { control = { province = 976 data = VIC } } type = revolt which = 976 }
+command = { trigger = { control = { province = 976 data = VIC } } type = revolt which = 976 }
+command = { trigger = { control = { province = 976 data = VIC } } type = revolt which = 976 }
+command = { trigger = { control = { province = 974 data = VIC } } type = revolt which = 974 }
+command = { trigger = { control = { province = 974 data = VIC } } type = revolt which = 974 }
+command = { trigger = { control = { province = 972 data = VIC } } type = revolt which = 972 }
+command = { trigger = { control = { province = 973 data = VIC } } type = revolt which = 973 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 2125
+random = no
+country = ETH
+style = 2
+
+decision = {
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+ispuppet = ETH
+}
+OR = {
+AND = {
+exists = CON
+OR = {
+control = { province = 842 data = CON } # Mombasa
+control = { province = 841 data = CON } # Nairobi
+control = { province = 848 data = CON } # Mwanza
+control = { province = 902 data = CON } # Luluabourg
+control = { province = 905 data = CON } # Costermansville
+control = { province = 847 data = CON } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+alliance = { country = CON country = ETH }
+}
+}
+AND = {
+exists = GER
+OR = {
+control = { province = 842 data = GER } # Mombasa
+control = { province = 841 data = GER } # Nairobi
+control = { province = 848 data = GER } # Mwanza
+control = { province = 902 data = GER } # Luluabourg
+control = { province = 905 data = GER } # Costermansville
+control = { province = 847 data = GER } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+ispuppet = GER
+}
+}
+}
+}
+
+decision_trigger = {
+NOT = {
+control = { province = 163 data = GER }
+}
+}
+
+trigger = {
+flag = ETH_Pan
+event = 2118
+atwar = no
+NOT = {
+exists = SOM
+control = { province = 163 data = GER }
+ispuppet = ETH
+}
+OR = {
+AND = {
+exists = CON
+OR = {
+control = { province = 842 data = CON } # Mombasa
+control = { province = 841 data = CON } # Nairobi
+control = { province = 848 data = CON } # Mwanza
+control = { province = 902 data = CON } # Luluabourg
+control = { province = 905 data = CON } # Costermansville
+control = { province = 847 data = CON } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+alliance = { country = CON country = ETH }
+}
+}
+AND = {
+exists = GER
+OR = {
+control = { province = 842 data = GER } # Mombasa
+control = { province = 841 data = GER } # Nairobi
+control = { province = 848 data = GER } # Mwanza
+control = { province = 902 data = GER } # Luluabourg
+control = { province = 905 data = GER } # Costermansville
+control = { province = 847 data = GER } # Usumbura
+}
+NOT = {
+alliance = { country = GER country = ETH }
+ispuppet = GER
+}
+}
+}
+}
+
+name = EVT_2125_NAME # Liberation of German Africa ?
+desc = EVT_2125_DESC # Years ago, the Negus Negast has announced the commitment of the Ethiopian Empire to the ideals of Panafricanism. As the German Empire is falling in Europe, this is a perfect opportunity to conduct a War of African Liberation against the Kaiserreich and their colonies!
+picture = "askaris2"
+decision_picture = "decision_ethirendenta"
+
+date = { day = 0 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 75
+name = ACTIONNAME_2125_A # We must liberate Africa for the Africans - Attack!
+command = { type = dissent value = 5 }
+command = { trigger = { NOT = { alliance = { country = GER country = ETH } } } type = war which = GER }
+command = { trigger = { NOT = { alliance = { country = CON country = ETH } } } type = war which = CON }
+command = { type = addclaim which = 832 }
+command = { type = addclaim which = 833 }
+}
+
+action = {
+ai_chance = 25
+name = ACTIONNAME_2125_B # Germany may be weakened, but they're still dangerous
+command = { type = domestic which = interventionism value = -2 }
+command = { type = clrflag which = ETH_Pan }
+command = { type = dissent value = 5 }
+}
+}
+
+### End of Economical Crisis
+
+event = {
+id = 2126
+random = no
+country = ETH
+picture = "Berlin stock exchange"
+
+name = EVT_2126_NAME # One year after the Berlin Crisis
+desc = EVT_2126_DESC # It's been one year since the Black Monday crisis hit the Berlin Stock Exchange and, as a consequence, most of the world's economy. Over the past twelve months, European markets have reopenned to Ethiopian trade and, thus, our economy has recovered. It will be some time before our industrial capacity fully reaches pre-crisis levels, but we're on the right path at least!
+style = 2
+
+action = {
+name = ACTIONNAME_2126_A # Good!
+command = { type = dissent value = -2 }
+command = { type = industrial_modifier which = total value = 4 }
+}
+}
+
+
+
+# From id 2128 till id 3999 free

@@ -1,0 +1,428 @@
+#################################################################
+#	Japan - Legation cities Events
+#	Events by Hasagwan and Kibbles
+#	last edit: 15.09.2009
+#################################################################
+
+# reserves IDs: 344500 - 344999
+
+## If triads in power
+# 344500
+# 344501
+# 344502
+# 344503
+
+## If crack down on triads
+# 344530
+# 344531
+# 344532
+# 344533
+# 344534
+# 344535
+# 344536
+
+
+
+
+
+## If triads in power
+event = {
+id = 344500
+random = no
+country = EAF
+style = 2
+picture = "japanese_officers"
+
+trigger = {
+flag = TRIAD_POWER
+NOT = {
+government = communist
+alliance = { country = JAP country = EAF }
+alliance = { country = GER country = EAF }
+alliance = { country = RUS country = EAF }
+flag = JAP_ISO
+war = { country = EAF country = JAP }
+war = { country = EAF country = CGX }
+ispuppet = EAF
+ispuppet = JAP
+}
+}
+
+date = { day = 1 month = august year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Look to the Yakuza"
+desc = "Our cousins the Yakuza have taken a fair amount of power in Japan and are moving it towards a militaristic and expansionist path. Maybe a deal could be brokered and we could enter their sphere"
+
+action_a = {
+name = "They are to dangerous"
+ai_chance = 40
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = -2 }
+}
+
+action_b = {
+name = "Seek an agreement"
+ai_chance = 60
+command = { type = domestic which = interventionism value = 1 }
+command = { type = setflag which = triad_yak }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 344501
+random = no
+country = JAP
+style = 2
+picture = "augusta"
+
+trigger = {
+flag = triad_yak
+government = fascist
+NOT = {
+war = { country = EAF country = JAP }
+war = { country = EAF country = CGX }
+ispuppet = EAF
+ispuppet = JAP
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "An interesting offer"
+desc = "The Triad rulers of the Legation Cities have approached the Yakuza members of our government about a possible alliance in the interest of profits and exending our sphere our influence"
+
+action_a = {
+ai_chance = 80
+name = "A Union of Organizations!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = non_aggression which = JAP where = EAF }
+command = { type = relation which = EAF value = 50 }
+command = { type = access which = EAF }
+command = { type = alliance which = EAF }
+command = { type = trigger which = 344503 }
+command = { type = sleepevent which = 344502 }
+}
+
+action_b = {
+ai_chance = 20
+name = "Turn them away"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = EAF value = -50 }
+command = { type = sleepevent which = 344502 }
+}
+}
+
+event = {
+id = 344502
+random = no
+country = JAP
+style = 2
+picture = "augusta"
+
+date = { day = 1 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+trigger = {
+flag = triad_yak
+government = democratic
+NOT = {
+war = { country = EAF country = JAP }
+war = { country = EAF country = CGX }
+ispuppet = EAF
+ispuppet = JAP
+}
+}
+
+name = "An interesting offer"
+desc = "The Triad rulers of the Legation Cities have approached the Yakuza members of our government about a possible alliance in the interest of profits and exending our sphere our influence"
+
+action_a = {
+ai_chance = 40
+name = "A Union of Organizations!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = non_aggression which = JAP where = EAF }
+command = { type = relation which = EAF value = 50 }
+command = { type = access which = EAF }
+command = { type = alliance which = EAF }
+command = { type = trigger which = 344503 }
+command = { type = sleepevent which = 344501 }
+}
+
+action_b = {
+ai_chance = 60
+name = "Turn them away"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = EAF value = -50 }
+command = { type = sleepevent which = 344501 }
+}
+}
+
+event = {
+id = 344503
+random = no
+country = EAF
+style = 2
+save_date = yes
+picture = "japanese_officers"
+
+name = "An alliance is formed"
+desc = "The Chinese Triads and the Japanese Yakuza in line with their governments have reached an agreement that will set the new future of Asia in motion!"
+
+action_a = {
+name = "For a New Asia!"
+command = { type = free_money value = .5 }
+command = { type = free_supplies value = 5 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = AST value = -20 }
+command = { type = relation which = VIC value = -20 }
+command = { type = relation which = RUS value = -20 }
+command = { type = relation which = USA value = -20 }
+command = { type = relation which = CGX value = -20 }
+command = { type = relation which = CSX value = -20 }
+}
+}
+###if crack down on triads
+event = {
+id = 344530
+random = no
+country = JAP
+style = 2
+picture = "augusta"
+
+trigger = {
+event = { id = 344503 days = 100 }
+NOT = {
+ispuppet = JAP
+ispuppet = EAF
+}
+alliance = { country = JAP country = EAF }
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Troubles in the Legation Cities"
+desc = "Recently the triads have come under increased crack downs by the Legate Cities. The triads have called for help from Japan for a long time. Seeing their chance, Japan arranged for one of the riots to destroy their embassy in Shanghai. Using this outrage, Japan demanded the right to move troops into the city to restore order and prevent further loss of Japanese property or lives."
+
+action_a = {
+ai_chance = 30
+name = "Use Imperial troops to secure the cities"
+command = { type = setflag which = leg_troops }
+command = { type = money value = -10 }
+command = { type = supplies value = -250 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = AST value = -20 }
+command = { type = relation which = USA value = -20 }
+command = { type = relation which = CSX value = -20 }
+command = { type = relation which = CGX value = -20 }
+command = { type = relation which = RUS value = -20 }
+command = { type = relation which = EAF value = -75 }
+}
+
+action_b = {
+ai_chance = 50
+name = "Field triad peacekeepers as well"
+command = { type = setflag which = leg_triad }
+command = { type = money value = -50 }
+command = { type = supplies value = -500 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = AST value = -20 }
+command = { type = relation which = USA value = -20 }
+command = { type = relation which = CSX value = -20 }
+command = { type = relation which = CGX value = -20 }
+command = { type = relation which = RUS value = -20 }
+command = { type = relation which = EAF value = -75 }
+}
+
+action_c = {
+ai_chance = 20
+name = "Stay out of this mess"
+command = { type = relation which = EAF value = 25 }
+}
+}
+
+event = {
+id = 344531
+random = no
+country = EAF
+style = 2
+picture = "japanese_officers"
+
+trigger = {
+flag = leg_troops
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Japanese embassy is damaged"
+desc = "The recent riots have caused a great deal of damage to the Japanese embassy. Now they have begun deploying troops into our cities to protect Japanese property and lives. This situation is highly volatile."
+
+action_a = {
+ai_chance = 50
+name = "We can do nothing to stop them"
+command = { type = trigger which = 344532  }
+command = { type = headofgovernment which = 550052   }
+command = { type = foreignminister which = 550057   }
+}
+
+action_b = {
+ai_chance = 50
+name = "Order our forces to evict the Japanese troops"
+command = { type = leave_alliance }
+command = { type = trigger which = 344533  }
+}
+}
+
+event = {
+id = 344532
+random = no
+country = JAP
+style = 2
+picture = "augusta"
+
+name = "Almost bloodless coup"
+desc = "The Legate Cities have capitulated and Japanese troops spread throughout the area. In a matter of a week, Japan was in control of all key areas of the Legate Cities and forced a regime change."
+
+action_a = {
+name = "The Empire prevails!"
+command = { type = make_puppet which = EAF }
+command = { type = relation which = EAF value = 150 }
+}
+}
+
+event = {
+id = 344533
+random = no
+country = JAP
+style = 2
+picture = "augusta"
+
+name = "Legate cities try to evict our forces"
+desc = "The Legate Cities have ordered their troops to evict our own forces. A violent confrontation is all but inevitable as our men would rather die than give ground without the order to withdraw."
+
+action_a = {
+ai_chance = 65
+name = "Force the showdown"
+command = { type = trigger which = 344534  }
+}
+
+action_b = {
+ai_chance = 35
+name = "Stand down and change plans"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 344534
+random = no
+country = EAF
+style = 2
+picture = "japanese_officers"
+
+name = "Japan forces a showdown"
+desc = "Japan refuses to remove their troops and continues with their plans. We must either remove them by force or back down."
+
+action_a = {
+ai_chance = 40
+name = "Order our troops to attack"
+command = { type = war which = JAP }
+command = { type = trigger which = 344536  }
+}
+
+action_b = {
+ai_chance = 60
+name = "We can do nothing to stop them"
+command = { type = trigger which = 344532  }
+command = { type = headofgovernment which = 550052   }
+command = { type = foreignminister which = 550057   }
+}
+}
+
+event = {
+id = 344535
+random = no
+country = EAF
+style = 2
+picture = "japanese_officers"
+
+trigger = {
+flag = leg_triad
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Japanese embassy is damaged"
+desc = "The recent riots have caused a great deal of damage to the Japanese embassy. Now Japan has begun deploying troops into our cities to protect Japanese property and lives. To add insult and injury, they are employing the triads to serve as a police force."
+
+action_a = {
+ai_chance = 40
+name = "We can do nothing to stop them"
+command = { type = trigger which = 344532  }
+command = { type = headofgovernment which = 550052   }
+command = { type = foreignminister which = 550057   }
+}
+
+action_b = {
+ai_chance = 60
+name = "Order our forces to evict the Japanese troops"
+command = { type = leave_alliance }
+command = { type = trigger which = 344536  }
+}
+}
+
+event = {
+id = 344536
+random = no
+country = JAP
+style = 2
+picture = "augusta"
+
+trigger = {
+flag = leg_triad
+}
+
+
+name = "Legation Council forces attack our Peacekeepers!"
+desc = "The Legation Council has officially ordered their forces to evict Japanese troops from the cities. It is time to crush them!"
+
+action_a = {
+ai_chance = 60
+name = "Call up the Triads to fight!"
+command = { type = war which = EAF }
+command = { type = add_corps which = "Triad Militia" value = land where = 1338 }
+command = { type = add_division which = "Triad Enforcers" value = militia when = 4  where = police }
+command = { type = add_corps which = "Triad Militia" value = land where = 1358 }
+command = { type = add_division which = "Triad Enforcers" value = militia when = 4  where = police }
+command = { type = add_corps which = "Triad Militia" value = land where = 1371 }
+command = { type = add_division which = "Triad Enforcers" value = militia when = 4  where = police }
+command = { type = add_corps which = "Triad Militia" value = land where = 1346 }
+command = { type = add_division which = "Triad Enforcers" value = militia when = 4  where = police }
+command = { type = money value = -20 }
+command = { type = supplies value = -2000 }
+command = { type = manpowerpool value = -5 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Just absorb their numbers"
+command = { type = war which = EAF }
+command = { type = supplies value = 500 }
+command = { type = manpowerpool value = 25 }
+}
+}

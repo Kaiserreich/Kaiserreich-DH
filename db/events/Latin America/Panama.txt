@@ -1,0 +1,371 @@
+######################################################
+### Central America (by Kibbles)
+######################################################
+
+event = {
+id = 292000
+country = NIC
+style = 2
+picture = "constitutional"
+
+name = "The Provinces relations with Panama"
+desc = "We have always been on good terms with Panama, our neighbor to the south. Now, with an increasingly belligerent Colombia to the south, and an expansionist Centroamerica to the northwest, it may be time to band together with Panama, to ensure we both survive."
+
+date = { day = 0 month = april year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1936 }
+
+action_a = {
+ai_chance = 90
+name = "Send an Alliance Proposition to Panama"
+command = { type = relation which = COL value = -10 } #Colombia
+command = { type = relation which = GUA value = -15 } #Centroamerica
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 292001 }
+}
+
+action_b = {
+ai_chance = 10
+name = "The Provinces Are Better Off Without Panama!"
+command = {  } 
+}
+}
+
+event = {
+id = 292001
+country = PAN
+style = 2
+picture = "constitutional"
+
+name = "The Provinces Propose an Alliance"
+desc = "The United Provinces have proposed a formal alliance between our two countries. With Colombia increasing the size of their armed forces, it may be time to ally with the Provinces. We need them now more than ever."
+
+action_a = {
+ai_chance = 95
+name = "Now, we stand back to back with the United Provinces"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = COL value = -15 } #Colombia
+command = { type = relation which = GUA value = -10 } #Centroamerica
+command = { type = dissent value = -3 }
+command = { type = trigger which = 292002 }
+}
+
+action_b = {
+ai_chance = 5
+name = "We Must Turn Them Down..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 3 }
+command = { type = relation which = NIC value = -25 } #United Provinces
+}
+}
+
+event = {
+id = 292002
+country = NIC
+style = 2
+picture = "technology_stolen"
+
+name = "Panama Accepts our Proposal"
+desc = "The Government of Panama has agreed to our alliance proposal, now we can sleep safer at night, with less of a threat coming from the radicals in Centroamerica or the imperialists in Colombia."
+
+action_a = {
+name = "Great!"
+command = { type = alliance which = PAN }
+}
+}
+
+event = {
+id = 292003
+random = no
+country = GUA
+style = 2
+
+trigger = {
+government = communist
+exists = PAN
+NOT = {
+ispuppet = GUA
+government = { type = communist country = PAN }
+}
+}
+
+name = "Spreading syndicalism in Central America"
+desc = "Weakinening influence of the USA on Central America, is presenting us with an unique opportunity to spready syndicalism into strategically important Panama. President of Panama Harmodio Madrid, despite his popularity, has made quite few enemies and we can perhaps support them to permanently silence him. Once current president of Panama is no more, we should be able to use chaos in country to gain full control over it."
+picture = "urbanwarfare2"
+
+date = { day = 7 month = april year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1937 }
+
+action_a = {
+ai_chance = 98
+name = "Secretly nurture syndicalist movement in Panama"
+command = { type = manpowerpool value = -2 }
+command = { type = resource which = supplies value = -200 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = USA value = -30 }
+command = { type = relation which = PAN value = -30 }
+command = { type = relation which = NIC value = -30 }
+}
+
+action_b = {
+ai_chance = 2
+name = "There are some things that just shouldn't be tried..."
+command = { type = dissent value = 1 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = USA value = 10 }
+command = { type = relation which = PAN value = 10 }
+command = { type = relation which = NIC value = 10 }
+command = { type = sleepevent which = 292004 }
+}
+}
+
+event = {
+id = 292004
+country = PAN
+style = 2
+picture = "constitutional"
+
+trigger = {
+atwar = no
+}
+
+date = { day = 29 month = april year = 1936 }
+
+name = "The Assassination of President Madrid"
+desc = "Our beloved President has been killed by a Syndicalist gunman. Panama City has collapsed into rioting and Syndicalist militias, probably funded by Centroamerica, are attempting to take over the country."
+
+action_a = {
+name = "Awful!"
+command = { type = leave_alliance }
+command = { type = sleepminister which = 95001 }
+command = { type = sleepminister which = 95002 }
+command = { type = dissent value = 10 }
+}
+}
+
+event = {
+id = 292005
+country = NIC
+style = 2
+picture = "constitutional"
+
+trigger = {
+atwar = no
+}
+
+date = { day = 9 month = may year = 1936 }
+
+name = "The government of Panama Collapses"
+desc = "After the assassination of President Madrid, Panama collapsed into battles between Left-Wing guerillas and government forces. We must secure Panama before the chaos spreads across our borders! The United States, which are attempting to halt spreading of syndicalism in Central America have promised us their support in this matter."
+
+action_a = {
+ai_chance = 90
+name = "Occupy Panama, we must bring an end to the chaos"
+command = { type = event which = 292006 where = PAN when = 4  }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+ai_chance = 10
+name = "We musn't interfere"
+command = { type = dissent value = 7 }
+command = { type = event which = 292008 where = PAN when = 4  }
+}
+}
+
+event = {
+id = 292006
+country = PAN
+style = 2
+picture = "constitutional"
+
+name = "UP troops enter Panama City"
+desc = "Troops from the United Provinces have entered our state to help us maintain order in protect our nation from syndicalist menace."
+
+action_a = {
+ai_chance = 90
+name = "Join with the United Provinces to maintain order in Panama"
+command = { type = trigger which = 292007 }
+}
+
+action_b = {
+ai_chance = 10
+name = "We'll fight the occupation!"
+command = { type = war which = NIC }
+}
+}
+
+event = {
+id = 292007
+country = NIC
+style = 2
+picture = "constitutional"
+
+name = "Panama joins the United Provinces"
+desc = "Rather than fall to syndicalism, Panama has decided to become a part of the United Provinces."
+
+action_a = {
+name = "Excellent"
+command = { type = addcore which = 2078 }
+command = { type = addcore which = 2077 }
+command = { type = addcore which = 889 }
+command = { type = inherit which = PAN value = 1 }
+command = { type = trigger which = 292011 }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 292008
+country = PAN
+style = 2
+picture = "politics2"
+
+name = "Syndicalist Revolution!"
+desc = "After death of president Madrid events in Panama have reached the boiling point, and socialists have stormed the capital with Centroamerican equipment and volunteers and are attempting to install socialist government !"
+
+action_a = {
+name = "The government falls!"
+ai_chance = 70
+command = { type = relation which = ENG value = 50 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = FRA value = 50 }
+command = { type = relation which = RSI value = 50 }
+command = { type = relation which = GEO value = 50 }
+command = { type = relation which = CSA value = 50 }
+command = { type = relation which = GUA value = 100 }
+command = { type = relation which = ARG value = -100 }
+command = { type = relation which = COL value = -100 }
+command = { type = relation which = NIC value = -100 }
+command = { type = relation which = USA value = -100 }
+command = { type = domestic which = free_market value = -9 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = trigger which = 292012 }
+}
+
+action_b = {
+name = "The Socialists are crushed!"
+ai_chance = 30
+command = { type = dissent value = 5 }
+command = { type = trigger which = 292011 }
+command = { type = relation which = USA value = 50 }
+}
+}
+
+
+event = {
+id = 292009
+random = no
+country = NIC
+style = 2
+
+trigger = {
+control = { province = 2077 data = NIC }
+control = { province = 2080 data = NIC }
+war = { country = NIC country = PAN }
+NOT = {
+ispuppet = NIC
+ispuppet = PAN
+}
+}
+
+name = "Panama sues for peace"
+desc = "Armed forces of the United provinces have launched successfully invasion of Panama. Defeated remnants of the Panamanian armed forces have retread to their capital while political leaderships begs us for peace. How shall we react ?"
+picture = "militaryparade1"
+
+date = { day = 15 month = may year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1937 }
+
+action_a = {
+ai_chance = 90
+name = "Integrate them directly !"
+command = { type = inherit which = PAN  }
+command = { type = addcore which = 2078 }
+command = { type = addcore which = 2077 }
+command = { type = addcore which = 889 }
+}
+
+action_b = {
+ai_chance = 10
+name = "They may exist. Under supervision.."
+command = { type = peace which = PAN value = 1 }
+command = { type = make_puppet which = PAN }
+}
+}
+
+
+
+event = {
+id = 292010
+country = USA
+style = 2
+picture = "constitutional"
+
+trigger = {
+event = 292004
+}
+
+date = { day = 1 month = may year = 1936 }
+
+name = "Chaos in Panama"
+desc = "Yesterday, President Harmodio Madrid of Panama was assassinated by a syndicalist. Reports from our agents in the Canal Zone indicate that the country is in the midst of a syndicalist revolution, the success of which would put both the Canal and our interests in Central America in great jeopardy. The UPCA army is being mobilized and President Sacasa is prepared to send them in to stop the reds."
+
+action_a = {
+ai_chance = 100
+name = "Give UPAC the green light."
+command = { type = dissent value = 1 }
+command = { type = relation which = PAN value = 10 }
+command = { type = relation which = NIC value = 20 }
+command = { type = relation which = GUA value = -20 }
+command = { type = belligerence which = USA value = 1  }
+}
+
+action_a = {
+ai_chance = 0
+name = "No ! Violence wont solve anything."
+command = { type = dissent value = 1 }
+command = { type = relation which = PAN value = -10 }
+command = { type = relation which = NIC value = -20 }
+command = { type = relation which = GUA value = 10 }
+command = { type = belligerence which = USA value = -1  }
+command = { type = event which = 292008 where = PAN when = 7  }
+command = { type = sleepevent which = 292005 }
+}
+}
+
+event = {
+id = 292011
+country = USA
+style = 2
+picture = "panamacanal"
+
+name = "Panama is secure!"
+desc = "Our effort and influence prevented another syndicalist revolution in Panama, which threatened strategically important Panama canal."
+
+action_a = {
+name = "Phew!"
+command = { type = dissent value = -1 }
+command = { type = relation which = NIC value = 70 }
+command = { type = relation which = GUA value = -20 }
+}
+}
+
+event = {
+id = 292012
+country = USA
+style = 2
+picture = "partisan_revolt"
+
+name = "Syndicalist revolution in Panama!"
+desc = "Despite our best effort, the syndicalist with help from Centroamerica took control over Panama ! Even the strategically important Panama canal is now under threat of potential syndicalist infiltration."
+
+action_a = {
+name = "Damn it all!"
+command = { type = dissent value = 2 }
+command = { type = relation which = NIC value = -10 }
+command = { type = relation which = GUA value = -20 }
+}
+}

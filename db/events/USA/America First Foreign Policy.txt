@@ -1,0 +1,897 @@
+########################################
+#### America First Foreign Policy
+########################################
+# 91722 - 91732
+
+### The Long Doctrine
+event = {
+id = 91722
+random = no
+country = TEX
+trigger = {
+flag = END_ACW
+NOT = {
+exists = USA
+exists = CSA
+ispuppet = TEX
+atwar = TEX
+}
+}
+
+name = "The Long Doctrine"
+desc = "With the American Union State firmly established, defeating the syndicates in Central and South America was necessary to ensure the security of the new state. A strong position would allow for interventionism against the syndicates before they could successfully secure a position in the Western Hemisphere. Some were concerned that the AUS was spreading itself thin and that internal issues should be addressed first."
+style = 2
+
+date = { day = 20 month = february year = 1939 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Syndicalism must be stopped."
+ai_chance = 99
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = ENG value = -50 }
+command = { type = relation which = FRA value = -50 }
+command = { type = relation which = RSI value = -50 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = CAL value = 50 }
+command = { type = relation which = CAN value = 50 }
+command = { type = relation which = JAP value = 50 }
+command = { type = relation which = GER value = 50 }
+command = { type = trigger which = 91732 }
+command = { type = trigger which = 91733 }
+command = { type = trigger which = 91734 }
+command = { type = trigger which = 91735 }
+}
+action_b = {
+name = "America first."
+ai_chance = 1
+command = { type = dissent value = 1 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+### The American Union Navy
+event = {
+id = 91723
+random = no
+country = TEX
+trigger = {
+flag = END_ACW
+NOT = {
+exists = USA
+exists = CSA
+ispuppet = TEX
+atwar = TEX
+}
+}
+
+name = "The American Union Navy"
+desc = "The American Union was one of the weakest naval powers of the world. The AUS would be unable to guard its trade routes should a war erupt. There were different schools of thought on the issue as some wanted a blue water navy that could go toe to toe with European powers and others believed that a strong raider force would be preferable as it would be cheaper and easier to build."
+style = 2
+
+date = { day = 15 month = march year = 1939 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "A large blue water navy is the key."
+ai_chance = 66
+command = { type = build_time which = battleship when = on_upgrade value = -5 where = relative }
+command = { type = build_time which = carrier when = on_upgrade value = -5 where = relative }
+command = { type = build_time which = heavy_cruiser when = on_upgrade value = -5 where = relative }
+}
+action_b = {
+name = "Raiders will strike our enemies everywhere."
+ai_chance = 34
+command = { type = build_cost which = battlecruiser when = on_upgrade value = -5 where = relative }
+command = { type = build_cost which = light_cruiser when = on_upgrade value = -5 where = relative }
+command = { type = build_cost which = submarine when = on_upgrade value = -5 where = relative }
+}
+}
+
+### The Syndicate Threat
+event = {
+id = 91724
+random = no
+country = TEX
+trigger = {
+OR = {
+war = { country = FRA country = GER }
+war = { country = SOV country = GER }
+war = { country = ENG country = GER }
+}
+NOT = {
+exists = USA
+exists = CSA
+ispuppet = TEX
+atwar = TEX
+}
+OR = {
+control = { province = 163 data = FRA }
+control = { province = 163 data = SOV }
+control = { province = 163 data = RSI }
+control = { province = 163 data = ENG }
+}
+}
+
+name = "The Syndicate Threat"
+desc = "With the fall of Berlin serious questions about the American Union's security were raised. Syndicate domination of Europe was not in the American Union's best interest. Debate as to what action the AUS should take was becoming a major issue. Most were in favour of supporting Germany in its war against the syndicates but an isolationist movement was forming to keep America out of a foreign war."
+style = 2
+picture = "spread_revolution"
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We should remain neutral"
+ai_chance = 10
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CAN value = -25 }
+command = { type = relation which = GER value = -25 }
+}
+action_b = {
+name = "We need to send support!"
+ai_chance = 65
+command = { type = dissent value = 3 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = supplies which = -4000 }
+command = { type = manpowerpool value = -10 }
+command = { type = relation which = FRA value = -25 }
+command = { type = relation which = GER value = 25 }
+command = { type = trigger which = 91738 }
+}
+action_c = {
+name = "War!"
+ai_chance = 25
+trigger = {
+war = { country = GER country = CAN }
+}
+command = { trigger = { exists = FRA } type = war which = FRA }
+command = { type = dissent value = 7 }
+command = { type = domestic which = interventionism value = 3 }
+command = { type = relation which = CAN value = 70 }
+command = { type = relation which = GER value = 70 }
+command = { type = relation which = VIC value = 70 }
+command = { type = relation which = PAK value = 70 }
+}
+
+action_d = {
+name = "Join Mitteleuropa!"
+ai_chance = 25
+trigger = {
+NOT = { war = { country = GER country = CAN } }
+}
+command = { type = alliance which = GER }
+command = { type = dissent value = 7 }
+command = { type = domestic which = interventionism value = 3 }
+command = { type = relation which = CAN value = 70 }
+command = { type = relation which = GER value = 70 }
+command = { type = relation which = VIC value = 70 }
+command = { type = relation which = PAK value = 70 }
+}
+}
+
+### Seizing New England AUS Canada
+event = {
+id = 91725
+random = no
+country = TEX
+
+decision = {
+flag = END_ACW
+exists = U10
+NOT = {
+exists = USA
+exists = CSA
+alliance = { country = TEX country = U10 }
+}
+NOT = {
+war = { country = TEX country = U10 }
+war = { country = TEX country = CAL }
+war = { country = TEX country = MEX }
+}
+garrison = { country = TEX province = 1795 type = land size = 3 area = yes } #New York
+garrison = { country = TEX province = 1845 type = land size = 3 area = yes } #Detroit
+NOT = {
+lost_vp = { country = TEX value = 10 }
+}
+
+}
+
+decision_trigger = {
+garrison = { country = TEX province = 1795 type = land size = 3 area = yes } #New York
+garrison = { country = TEX province = 1845 type = land size = 3 area = yes } #Detroit
+}
+
+trigger = {
+flag = END_ACW
+exists = U10
+NOT = {
+exists = USA
+exists = CSA
+alliance = { country = TEX country = U10 }
+}
+NOT = {
+war = { country = TEX country = U10 }
+war = { country = TEX country = CAL }
+war = { country = TEX country = MEX }
+}
+garrison = { country = TEX province = 1795 type = land size = 3 area = yes } #New York
+garrison = { country = TEX province = 1845 type = land size = 3 area = yes } #Detroit
+NOT = {
+lost_vp = { country = TEX value = 10 }
+}
+OR = {
+AND = {
+random = 50
+month = 4
+NOT = {
+month = 6
+}
+}
+AND = {
+random = 75
+month = 6
+NOT = {
+month = 8
+}
+}
+AND = {
+month = 8
+NOT = {
+month = 10
+}
+}
+}
+}
+
+name = "The Issue of New England"
+desc = "The independence of the state of New England had been a contentious issue for the government of the AUS. The reintegration of the state back into the American Union had been made the highest priority and it was unlikely that the government would be deterred by a possible war with the Entente. The stakes were high for the American Union State."
+style = 2
+picture = "American_Infantry"
+decision_picture = "decision_grand_offensive2"
+
+date = { day = 11 month = may year = 1940 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Demand their return"
+ai_chance = 98
+command = { type = setflag which = AUS_NE_DEM }
+
+command = { type = addcore   which = 1784   }
+command = { type = addcore   which = 1786   }
+command = { type = addcore   which = 1785   }
+command = { type = addcore   which = 1787   }
+command = { type = addcore   which = 1790   }
+command = { type = addcore   which = 1794   }
+command = { type = addcore   which = 1788   }
+command = { type = addcore   which = 1789   }
+command = { type = addcore   which = 1796   }
+command = { type = addcore   which = 1793   }
+command = { type = addcore   which = 1799   }
+command = { type = addcore   which = 1791   }
+command = { type = addcore   which = 1792   }
+command = { type = addcore   which = 1800   }
+command = { type = relation which = CAN value = -50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -1 }
+}
+action_b = {
+name = "We should not risk it"
+ai_chance = 2
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+}
+}
+
+### If Canada is allied with New England
+event = {
+id = 91726
+random = no
+country = CAN
+trigger = {
+flag = AUS_NE_DEM
+alliance = { country = CAN country = U10 }
+not = {
+alliance = { country = TEX country = CAN }
+}
+}
+
+name = "Canada Responds to the AUS Demands"
+desc = "The alliance between New England and Canada had been one of opportunity but the demand made by the AUS caused strain. The conservatives led by the King were unwilling to alienate Long over New England but others did not wish to abandon New England after what they had been through."
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The King is right. We need the AUS"
+ai_chance = 70
+command = { type = trigger which = 91727 }
+command = { type = dissent value = -1 }
+command = { type = domestic which = political_left value = -1 }
+command = { type = clrflag which = AUS_NE_DEM }
+}
+action_b = {
+name = "We must stand by our friends"
+ai_chance = 30
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent which = 3 }
+}
+}
+
+### New England Stands Alone
+event = {
+id = 91727
+random = no
+country = U10
+## triggered by 91726
+
+name = "New England Stands Alone"
+desc = "The Entente has abandoned New England to the hands of the AUS. The people of New England have very little hope of overcoming the AUS and the feeling in the state is that they have very little hope."
+style = 2
+
+action_a = {
+name = "We have no choice..."
+ai_chance = 90
+command = { type = leave_alliance }
+command = { type = trigger which = 91728 }
+}
+action_b = {
+name = "...but to fight!"
+ai_chance = 10
+command = { type = leave_alliance }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 91729 }
+}
+}
+
+### New England surrender
+event = {
+id = 91728
+random = no
+country = TEX
+## triggered by 91727
+
+name = "New England Accepts Our Demands"
+desc = "New England has surrendered to our demands and they have been reintegrated into the American Union."
+style = 2
+
+action_a = {
+name = "Excellent"
+command = { type = inherit which = U10 }
+command = { type = dissent value = -1 }
+}
+}
+
+### New England refuses to surrender
+event = {
+id = 91729
+random = no
+country = TEX
+## triggered by 91727
+
+name = "New England Refuses Our Demands"
+desc = "New England has refused to accept our demands and it is causing a great deal of dissent in the country. The people do not wish another war but it may be inevitable because of how New England has responded."
+style = 2
+
+action_a = {
+name = "Outrageous. We will destroy them."
+ai_chance = 98
+command = { type = war which = U10 }
+command = { type = dissent value = 5 }
+}
+action_b = {
+name = "Another war is intolerable."
+ai_chance = 2
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = -1 }
+}
+}
+
+### The Entente stands with New England
+event = {
+id = 91730
+random = no
+country = U10
+trigger = {
+flag = AUS_NE_DEM
+event = 91726
+}
+
+name = "Entente supports New England!"
+desc = "The Entente will support New England against the AUS. But, the people of New England feel they still have very little hope of overcoming the AUS and the feeling in the state is that they should surrender anyway."
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We have no choice..."
+ai_chance = 40
+command = { type = leave_alliance }
+command = { type = trigger which = 91728 }
+}
+action_b = {
+name = "...but to fight!"
+ai_chance = 60
+command = { type = leave_alliance }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 91729 }
+}
+}
+
+### New England no allies.
+event = {
+id = 91731
+random = no
+country = U10
+trigger = {
+not = {
+flag = AUS_NE_DEM
+event = 91726
+}
+event = 91725
+}
+
+name = "New England Stands Alone"
+desc = "New England stands alone against the AUS and most of the people in New England are unwilling to fight the AUS. Surrender seems inevitable."
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We have no choice..."
+ai_chance = 99
+command = { type = trigger which = 91728 }
+}
+action_b = {
+name = "...but to fight!"
+ai_chance = 1
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 91729 }
+}
+}
+
+event = {
+id = 91732
+country = MEX
+random = no
+style = 2
+
+trigger = {
+government = communist
+}
+
+name = "The Long Doctrine"
+desc = "The new American Union State has proclaimed a policy aimed at extinguishing Syndicalism throughout the Americas.  Such a policy is an obvious threat to Mexico."
+
+action_a = {
+name = "A new threat arises"
+command = { type = relation which = TEX value = -75 }
+}
+}
+
+event = {
+id = 91733
+country = BRA
+random = no
+style = 2
+
+trigger = {
+government = communist
+}
+
+name = "The Long Doctrine"
+desc = "The new American Union State has proclaimed a policy aimed at extinguishing Syndicalism throughout the Americas.  Such a policy is an obvious threat to Brazil."
+
+action_a = {
+name = "A new threat arises"
+command = { type = relation which = TEX value = -75 }
+}
+}
+
+event = {
+id = 91734
+country = GUA
+random = no
+style = 2
+
+trigger = {
+government = communist
+}
+
+name = "The Long Doctrine"
+desc = "The new American Union State has proclaimed a policy aimed at extinguishing Syndicalism throughout the Americas.  Such a policy is an obvious threat to Centroamerica."
+
+action_a = {
+name = "A new threat arises"
+command = { type = relation which = TEX value = -75 }
+}
+}
+
+event = {
+id = 91735
+country = BOL
+random = no
+style = 2
+
+trigger = {
+government = communist
+}
+
+name = "The Long Doctrine"
+desc = "The new American Union State has proclaimed a policy aimed at extinguishing Syndicalism throughout the Americas.  Such a policy is an obvious threat to Bolivia."
+
+action_a = {
+name = "A new threat arises"
+command = { type = relation which = TEX value = -75 }
+}
+}
+
+### THE PSA and the TEX
+event = {
+id = 91736
+country = TEX
+random = no
+trigger = {
+flag = END_ACW
+exists = CAL
+NOT = {
+alliance = { country = CAL country = TEX }
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = JAP }
+ispuppet = TEX
+atwar = TEX
+exists = USA
+exists = CSA
+}
+}
+
+name = "The Pacific Question"
+desc = "The American Union state had been victorious in the war and now was forced to deal with the PSA. The Pacific states were rich in resources and the government was unfriendly to the AUS so removing that threat was an option but some less radical elements believed that the AUS had been at war enough and that a further war would put unnecessary strain on the delicate hold the government had."
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "War will end this!"
+ai_chance = 90
+command = { type = dissent value = 3 }
+command = { type = war which = CAL }
+}
+action_b = {
+name = "We should try and coexist with neighbours."
+ai_chance = 10
+command = { type = relation which = CAL value = 100 }
+command = { type = dissent value = 1 }
+}
+}
+
+### THE Mexico and the TEX
+event = {
+id = 91737
+country = TEX
+random = no
+trigger = {
+event = 91732
+event = 91722
+flag = END_ACW
+exists = MEX
+control = { province = 1888 data = TEX }
+control = { province = 1955 data = TEX }
+control = { province = 1832 data = TEX }
+NOT = {
+alliance = { country = MEX country = TEX }
+alliance = { country = MEX country = CAN }
+alliance = { country = MEX country = GER }
+ispuppet = TEX
+ispuppet = MEX
+atwar = TEX
+exists = USA
+exists = CAL
+exists = CSA
+}
+}
+
+name = "The Mexican Question"
+desc = "With territory of the former USA under our firm control, time has come to directly implement the Long doctrine and eradicate syndicalism from America. We should start with our southern neighbour - Mexico. The incompetence of the previous governments allowed Syndicalism to root deeply within Mexican society. The only way how to solve this matter is direct military confrontation..."
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "War will end this!"
+ai_chance = 90
+command = { type = dissent value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = war which = MEX }
+}
+action_b = {
+name = "We should try and coexist with neighbours."
+ai_chance = 10
+command = { type = relation which = MEX value = 100 }
+command = { type = dissent value = 3 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+event = {
+id = 91738
+country = GER
+style = 2
+
+name = "Aid from the AUS!"
+desc = "The American Union State, fearing Syndicalist dominance over Europe, decided to support our armed struggle with large amounts of military supplies and volunteers eager to see Syndicalism crushed."
+picture = "Supplies1"
+
+action_a = {
+name = "Better than nothing!"
+command = { type = relation which = TEX value = 100 }
+command = { type = supplies value = 4000 }
+command = { type = manpowerpool value = 10 }
+}
+}
+########################################
+#### TEX demanding the return of colonies
+#### 91739 -
+#### Adapted by Milites
+########################################
+
+event = {
+id = 91739
+random = no
+country = TEX
+picture = "pennsylvania"
+trigger = {
+flag = END_ACW
+owned = { province = 889 data = CAN } # Canal Zone
+control = { province = 889 data = CAN }
+
+
+NOT = {
+ispuppet = TEX
+war = { country = TEX country = CAN }
+}
+}
+
+name = "Our place in the sun"
+desc = "The occupation of American overseas territory by foreign powers during the Civil War was an affront to the Union State. The establishment of Canadian authority over the Panama Canal Zone, however, was a provocation that could not be overlooked. The victorious government now looked to restore those lands seized by their neighbour to the north."
+style = 2
+
+date = { day = 9 month = march year = 1939 }
+offset = 30
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = "Demand the return of the canal zone!"
+ai_chance = 90
+command = { type = relation which = CAN value = -50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 91740 }
+}
+
+action_b = {
+name = "Our concern is elsewhere"
+ai_chance = 10
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+}
+}
+
+# Canada's reply
+
+event = {
+id = 91740
+random = no
+country = CAN
+picture = "pennsylvania"
+
+# triggered by 91739
+
+name = "The Demands of the American Union State"
+desc = "The victorious government of the American Union State has requested we return control of the Panama Canal back to them."
+style = 2
+
+action_a = {
+name = "We must comply"
+ai_chance = 80
+command = { type = relation which = TEX value = 25 }
+command = { type = secedeprovince which = TEX value = 889 }
+command = { type = dissent value = 1 }
+command = { type = trigger which = 91741 }
+}
+
+action_b = {
+name = "They'll get over it"
+ai_chance = 20
+command = { type = relation which = TEX value = -50 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 91742 }
+}
+}
+
+# Canada accepts!
+
+event = {
+id = 91741
+random = no
+country = USA
+
+# triggered by 91740
+
+name = "The Return of the Canal Zone"
+desc = "The Canadians have agreed! Barbecues and hot dogs for everyone!"
+style = 2
+
+action_a = {
+name = "American control returns to the Canal"
+command = { type = addcore which = 889 }
+command = { type = relation which = CAN value = 25 }
+command = { type = dissent value = -1 }
+}
+}
+
+# Canada refuses!
+
+event = {
+id = 91742
+random = no
+country = TEX
+
+# triggered by 91740
+
+name = "The Candadians Retain the Canal!"
+desc = "The Canadians have refused!"
+style = 2
+
+action_a = {
+name = "This slight will not go unanswered"
+ai_chance = 97
+command = { type = relation which = CAN value = -15 }
+command = { type = addcore which = 889 }
+}
+
+action_b = {
+name = "This hubris will be met with arms!"
+ai_chance = 3
+command = { type = war which = CAN }
+command = { type = addcore which = 889 }
+}
+}
+
+event = {
+id = 91743
+random = no
+country = TEX
+
+trigger = {
+flag = END_ACW
+owned = { province = 1778 data = CUB } # Guantanamo
+control = { province = 1778 data = CUB }
+
+
+NOT = {
+ispuppet = TEX
+war = { country = USA country = TEX }
+war = { country = USA country = TEX }
+}
+}
+
+name = "The Case of Guantanamo Bay Naval Base"
+desc = "The occupation of American overseas territory by foreign powers during the Civil War was an affront to the American Union State. The establishment of Cuban authority over the Guantanamo bay naval base, however, was a provocation that could not be overlooked. The victorious government now looked to restore those lands seized by their neighbour to the south."
+style = 2
+picture = "guantanamobaynav"
+
+date = { day = 9 month = march year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = "Demand return of the naval base"
+ai_chance = 90
+command = { type = relation which = CUB value = -50 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = end_non_aggression which = TEX where = CUB }
+command = { type = end_non_aggression which = CUB where = TEX }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 91744 }
+}
+
+action_b = {
+name = "Our concern is elsewhere"
+ai_chance = 10
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 91744
+random = no
+country = CUB
+picture = "pennsylvania"
+
+name = "The Demands of the American Union State"
+desc = "The victorious government of the American Union State has requested we return control of the Guantanamo naval bay base back to them."
+style = 2
+
+action_a = {
+name = "We must comply"
+ai_chance = 80
+command = { type = relation which = TEX value = 25 }
+command = { type = secedeprovince which = TEX value = 1778 }
+command = { type = dissent value = 1 }
+command = { type = trigger which = 91745 }
+}
+
+action_b = {
+name = "They'll get over it"
+ai_chance = 20
+command = { type = relation which = USA value = -50 }
+command = { type = dissent value = -1 }
+command = { type = trigger which = 91746 }
+}
+}
+
+event = {
+id = 91745
+random = no
+country = TEX
+
+name = "The Cubans Have Complied"
+desc = "The Cubans have agreed to our request!"
+style = 2
+
+action_a = {
+name = "American control returns to Cuba"
+command = { type = addcore which = 1778 }
+command = { type = relation which = CUB value = 25 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 91746
+random = no
+country = TEX
+
+name = "The Cubans Defies Us!"
+desc = "The Cubans have refused! What insolence to show the leaders of the Freest World!!"
+style = 2
+
+action_a = {
+name = "This slight will not go unanswered"
+ai_chance = 80
+command = { type = relation which = CUB value = -15 }
+command = { type = addcore which = 1778 }
+}
+
+action_b = {
+name = "This hubris will be met with arms!"
+ai_chance = 20
+command = { type = war which = CUB }
+command = { type = addcore which = 1778 }
+}
+}

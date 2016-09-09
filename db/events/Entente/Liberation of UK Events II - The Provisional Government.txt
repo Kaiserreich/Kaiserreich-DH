@@ -1,0 +1,291 @@
+# Liberation of the UK Events II: The Provisional Government
+#
+# IDs 116000-117999
+#
+# 116000 - Choosing a Provisional Government
+# 116001 - Rooting Out Syndicalism
+# 116002 - The Treatment of POWs
+# 116003 - The Returning Aristocracy
+# 116004 - Workers' Organization and Trade Unions
+# 116005 - The Houses of Parliament
+# 116006 - The Creation of the Progressive Party
+
+event = {
+id = 116000
+random = no
+country = U07
+style = 2
+
+trigger = {
+event = 114002 # The Liberation of the United Kingdom in Liberation of UK Events I - Creation of the UK
+NOT = {
+ispuppet = U07
+government = communist
+}
+}
+
+name = "Choosing a Provisional Government"
+desc = "EVT_830170_DESC"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Keep the existing Civilian Provisional Government"
+ai_chance = 60
+command = { type = local_setflag which = UK_ELECT1_YES }
+}
+
+action_b = {
+name = "Create a Military Provisional Government, with Ironside as Chief of Staff"
+ai_chance = 20
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557416 } #Lord Mountbatten
+command = { type = foreignminister which = 557432 } #Adrian Carton de Wiart
+command = { type = armamentminister which = 557449 } #John Siddeley
+command = { type = ministerofsecurity which = 557483 } #Desmond Morton
+command = { type = chiefofstaff which = 557514 } #Edmund Ironside
+command = { type = chiefofarmy which = 557515 } #Edmund Ironside
+command = { type = chiefofnavy which = 557536 } #Roger Keyes
+command = { type = chiefofair which = 557544 } #Hugh Trenchard
+command = { type = waketeam which = 557423 } #Edmund Ironside
+command = { type = waketeam which = 557435 } #Roger Keyes
+command = { type = waketeam which = 557425 } #Hugh Trenchard
+command = { type = trigger which = 120008 } #Return of Ironside, Keyes, & Trenchard (CAN) in Liberation of UK Events IV - The Return of the Exiles.txt
+command = { type = setflag which = UK_MILPROVGOV }
+}
+
+action_c = {
+name = "Create a Military Provisional Government, with Auchinleck as Chief of Staff"
+ai_chance = 20
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 557400 } #Edward VIII
+command = { type = headofgovernment which = 557416 } #Lord Mountbatten
+command = { type = foreignminister which = 557432 } #Adrian Carton de Wiart
+command = { type = armamentminister which = 557449 } #John Siddeley
+command = { type = ministerofsecurity which = 557483 } #Desmond Morton
+command = { type = chiefofstaff which = 557515 } #Claude Auchinleck
+command = { type = chiefofarmy which = 557526 } #Claude Auchinleck
+command = { type = chiefofnavy which = 557536 } #Roger Keyes
+command = { type = chiefofair which = 557544 } #Hugh Trenchard
+command = { type = waketeam which = 557420 } #Claude Auchinleck
+command = { type = waketeam which = 557435 } #Roger Keyes
+command = { type = waketeam which = 557425 } #Hugh Trenchard
+command = { type = trigger which = 120009 } #Return of Auchinleck, Keyes, & Trenchard (CAN) in Liberation of UK Events IV - The Return of the Exiles.txt
+command = { type = setflag which = UK_MILPROVGOV }
+}
+}
+
+event = {
+id = 116001
+random = no
+country = U07
+style = 2
+
+trigger = {
+NOT = {
+ispuppet = U07
+government = communist
+}
+event = 116000
+}
+
+name = "Rooting Out Syndicalism"
+desc = "EVT_830171_DESC"
+
+date =  { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "By Any Means Necessary"
+ai_chance = 70
+command = { type = domestic which = political_left value = -1 }
+command = { type = dissent value = 4 }
+command = { type = local_setflag which = UK_PROVGOV_HABEAS_CORPUS_SUSPENDED }
+}
+
+action_b = {
+name = "Civil Liberties Must Be Upheld"
+ai_chance = 30
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 116002
+random = no
+country = U07
+style = 2
+
+trigger = {
+NOT = {
+ispuppet = U07
+}
+event = 116001
+}
+
+name = "The Treatment of POWs"
+desc = "EVT_830172_DESC"
+
+date =  { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We Are All Britons Now"
+ai_chance = 40
+command = { type = domestic which = political_left value = 1 }
+command = { type = dissent value = 1 }
+command = { type = local_setflag which = UK_PROVGOV_POWS_FREED }
+}
+
+action_b = {
+name = "They Can Never Be Forgiven"
+ai_chance = 60
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 116003
+random = no
+country = U07
+style = 2
+
+trigger = {
+event = 116002
+}
+
+name = "The Returning Aristocracy"
+desc = "EVT_830173_DESC"
+
+date =  { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The Old Rural Order is Revived"
+ai_chance = 80
+command = { type = domestic which = political_left value = -1 }
+command = { type = dissent value = 2 }
+command = { type = setflag which = UK_PROVGOV_LAND_RETURNED }
+}
+
+action_b = {
+name = "The Land Belongs to All"
+ai_chance = 20
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 116004
+random = no
+country = U07
+style = 2
+
+trigger = {
+event = 116003
+NOT = {
+government = communist
+}
+}
+
+name = "Workers' Organization and Trade Unions"
+desc = "EVT_830174_DESC"
+
+date =  { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Unions Still Have a Place in the United Kingdom"
+ai_chance = 25
+command = { type = domestic which = political_left value = 1 }
+command = { type = dissent value = 2 }
+command = { type = local_setflag which = UK_PROVGOV_UNIONS_YES }
+}
+
+action_b = {
+name = "Ban All Forms of Union Activity"
+ai_chance = 75
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 116005
+random = no
+country = U07
+style = 2
+
+trigger = {
+event = 116004
+NOT = {
+government = communist
+}
+}
+
+name = "The Houses of Parliament"
+desc = "EVT_830175_DESC"
+
+date =  { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "The House of Lords is as Important as the House of Commons"
+ai_chance = 50
+command = { type = domestic which = political_left value = -1 }
+command = { type = local_setflag which = UK_PROVGOV_LORDS_ALLOWED }
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+name = "Only One Chamber is Needed"
+ai_chance = 50
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 116006
+random = no
+country = U07
+style = 2
+save_date = yes
+
+trigger = {
+event = 116005
+NOT = {
+government = communist
+}
+}
+
+name = "The Creation of the Progressive Party"
+desc = "EVT_830176_DESC"
+
+date =  { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "It is up to the People to Judge the Progressives"
+ai_chance = 50
+command = { type = domestic which = political_left value = 1 }
+command = { type = local_setflag which = UK_PROVGOV_PROG_ALLOWED }
+}
+
+action_b = {
+name = "Ban Them"
+ai_chance = 50
+command = { type = dissent value = 3 }
+}
+}
+

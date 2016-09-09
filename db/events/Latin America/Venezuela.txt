@@ -1,0 +1,722 @@
+event = {
+id = 655500
+country = VEN
+picture = "gold"
+style = 2
+
+trigger = {
+flag = BOL_REVOLT
+flag = ANL
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1941 }
+
+name = "Dissent"
+desc = "Neighboring Brasil and Bolivia have both been taken over by Sydnicalist governments, which has caused the air here in Venezuela to be tense. Along side the mountains are giant barrios where life is a struggle for everyday people."
+
+action_a = {
+name = "A Wind of Change will blow down from the mountain side barrios"
+command = { type = setflag which = VEN_SOCIALIST }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 655501
+country = VEN
+picture = "gold"
+style = 2
+
+trigger = {
+flag = VEN_SOCIALIST
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1941 }
+
+name = "Dissent turns into Revolt"
+desc = "A Mass Protest turned into an Angry Mob as the people came down from the barrios on the mountain side to protest and demand a new constitution that was voted against yesterday. Encouraged by the governments of Bolivia and Brasil, they have repeated the pattern and surrounded the Presidential Palace."
+
+action_a = {
+ai_chance = 70
+name = "Give into their Demands!"
+command = { type = trigger which = 655502 }
+command = { type = dissent value = 10 }
+}
+action_b = {
+ai_chance = 30
+name = "Crush this Rebellion!"
+command = { type = clrflag which = VEN_SOCIALIST }
+command = { type = dissent value = 20 }
+}
+}
+
+event = {
+id = 655502
+country = VEN
+picture = "gold"
+style = 2
+
+name = "The New Government of Venezuela"
+desc = "Juna Bautista Fuenmayor forms his cabinet."
+
+action_a = {
+name = "Juan Bautista Fuenmayor and the Socialist Party!"
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = set_domestic which = free_market value = 1 }
+command = { type = headofstate which = 38011 }
+command = { type = headofgovernment which = 38026 }
+command = { type = foreignminister which = 38037 }
+command = { type = ministerofsecurity which = 38053 }
+command = { type = ministerofintelligence which = 38026 }
+command = { type = armamentminister which = 38051 }
+
+command = { type = dissent value = -10 }
+}
+}
+
+event = {
+id = 655503
+country = VEN
+style = 2
+picture = "southamerica"
+
+trigger =  {
+flag = VEN_SOCIALIST
+flag = ANL
+government = communist
+NOT = {
+alliance = { country = VEN country = ARG }
+alliance = { country = VEN country = BRA }
+alliance = { country = VEN country = COL }
+alliance = { country = BRA country = ARG }
+alliance = { country = BRA country = FRA }
+alliance = { country = BRA country = ENG }
+ispuppet = ARG
+ispuppet = BRA
+ispuppet = VEN
+atwar = VEN
+}
+exists = ARG
+exists = BRA
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Alliance with Brazil ?"
+desc = "The world is a dangerous place, so we need alliances with sworn enemies of the capitalism. Venezuela and Brazil could benefit from joining forces in a crusade for a new, brave world. Anti-socialist warmongers from La Plata are seeking war to crush the successful Brazilian and Venezuelan revolutions, so we need to combine our powers to defend the spoils of our proletarian uprisings!"
+
+action_a = {
+ai_chance = 70
+name = "Propose an Alliance with Brazil"
+command = { type = trigger which = 655504 } # Brazilian response
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = 2 }
+}
+
+
+action_b = {
+ai_chance = 15
+name = "Rather not"
+command = { type = relation which = ARG value = -10 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 655504
+country = BRA
+style = 2
+picture = "southamerica"
+
+name = "Alliance with Venezuela ?"
+desc = "Venezuela has proposed an axis be formed, a defensive alliance between Brazil and Venezuela against capitalist menace. What should we tell them?"
+
+action_a = {
+ai_chance = 95
+name = "Accept their offer !"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = alliance which = VEN }
+command = { type = relation which = VEN value = 50 }
+command = { type = relation which = ARG value = -10 }
+}
+
+action_b = {
+ai_chance = 5
+name = "Refuse their alliance, we don't need anyone!"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = VEN value = -25 }
+command = { type = relation which = ARG value = 10 }
+}
+}
+
+event = {
+id = 55801
+country = VEN
+style = 2
+picture = "Venezuelan_Oil"
+
+date = { day = 5 month = april year = 1936 }
+
+name = "The Venezuelan Oil Industry"
+desc = "Oil has always been a chief export of Venezula, as far back as we can remember. It has been proposed that we take the Oil Industry from the hands of foreign companies and sell the oil to them ourselves. Our profits would increase and we would have taken another step towards true independence and self dependence."
+
+action_a = {
+ai_chance = 90
+name = "The Oil Refined Here is Ours, Nationalize!,"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = supplies value = -500 }
+command = { type = dissent value = -3 }
+command = { type = relation which = HOL value = -10 }
+command = { type = relation which = ENG value = -10 }
+command = { type = relation which = SPA value = -10 }
+command = { type = relation which = SPR value = -10 }
+command = { type = relation which = POR value = -10 }
+command = { type = relation which = GER value = -10 }
+command = { type = relation which = FRA value = -10 }
+command = { type = relation which = USA value = -10 }
+command = { type = relation which = CAN value = -10 }
+command = { type = relation which = ITA value = -10 }
+command = { type = relation which = RSI value = -10 }
+command = { type = relation which = BRA value = -10 }
+command = { type = free_oil value = 5  }
+command = { type = free_money value = 3 }
+}
+action_b = {
+ai_chance = 10
+name = "We would not want to upset foreign interests"
+command = { type = relation which = HOL value = 5 }
+command = { type = relation which = ENG value = 5 }
+command = { type = relation which = SPA value = 5 }
+command = { type = relation which = SPR value = 5 }
+command = { type = relation which = POR value = 5 }
+command = { type = relation which = GER value = 5 }
+command = { type = relation which = FRA value = 5 }
+command = { type = relation which = USA value = 5 }
+command = { type = relation which = CAN value = 5 }
+command = { type = relation which = ITA value = 5 }
+command = { type = relation which = RSI value = 5 }
+command = { type = relation which = BRA value = 5 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 557304
+country = VEN
+random = no
+style = 2
+
+trigger = {
+government = democratic
+NOT = {
+OR = {
+headofstate = 38016 #Isaías Medina Angarita
+ispuppet = VEN
+}
+}
+}
+
+name = "The 1941 Presidental election"
+desc = "While currently the President is elected by the Legislature, it's not any easier than a national election and therefore anyone can win. However, there is onyl two canidates in this election, either Isaías Medina Angarita or the current President with the former likely going to win..."
+picture = "politics3"
+
+date = { day = 1 month = may year = 1941 }
+offset = 15
+deathdate = { day = 29 month = may year = 1941 }
+
+action_a = {
+ai_chance = 80
+name = "Isaías Medina Angarita is our man!"
+command = { type = headofstate which = 38016 } #Isaías Medina Angarita
+command = { type = headofgovernment which = 38028 } #Isaías Medina Angarita
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 20
+name = "The current President is fine"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 557305
+country = VEN
+random = no
+style = 2
+
+trigger = {
+government = democratic
+headofstate = 38016 #Isaías Medina Angarita
+NOT = { ispuppet = VEN }
+}
+
+name = "A day in Autumn"
+desc = "With Medina Angarita having been our President for some time now, his policies have increasling pleased no one. Because of this, critics of him have begun plotting a coup detat headed by Rómulo Betancourt..."
+picture = "Coup2"
+
+date = { day = 1 month = may year = 1941 }
+offset = 15
+deathdate = { day = 29 month = may year = 1941 }
+
+action_a = {
+ai_chance = 75
+name = "Rómulo Betancourt takes over!"
+command = { type = headofstate which = 38017 } #Rómulo Betancourt
+command = { type = headofgovernment which = 38029 } #Rómulo Betancourt
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 25
+name = "Medina Angarita continues to lead the nation"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 557306
+country = VEN
+random = no
+style = 2
+
+trigger = {
+government = democratic
+NOT = { ispuppet = VEN }
+}
+
+name = "The 1947 Presidental election"
+desc = "This election will go down in Venezulan history because this is the first election the people directly elect the President! Because the Social Democrats forced this and other social reforms, they are viewed quite with high regard by the people and are likely to be the Christian Democrats..."
+picture = "election"
+
+date = { day = 15 month = december year = 1947 }
+offset = 15
+deathdate = { day = 15 month = january year = 1947 }
+
+action_a = {
+ai_chance = 70
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 38019 } #Rómulo Gallegos Freire
+command = { type = headofgovernment which = 38031 } #Rómulo Gallegos Freire
+command = { type = foreignminister which = 38040 } #Carlos Morales Acorzia
+command = { type = armamentminister which = 38051 } #Jose Vicente Rangel
+command = { type = ministerofsecurity which = 38061 } #Concepcion Quijada Gonzalez
+command = { type = ministerofintelligence which = 38070 } #Luis Monsalvo Mareno
+command = { type = chiefofstaff which = 38077 } #Raúl Leoni Otero
+command = { type = chiefofarmy which = 38082 } #Nelson Verde Graterol
+command = { type = chiefofnavy which = 38090 } #Antonio Casas Gonzalez
+command = { type = chiefofair which = 38096 } #José Polares Pavon
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = domestic which = free_market value = -1 }
+}
+action_b = {
+ai_chance = 30
+name = "The Christian Democrats win it!"
+command = { type = headofstate which = 38018 } #Rafael Caldera
+command = { type = headofgovernment which = 38030 } #Rafael Caldera
+command = { type = foreignminister which = 38041 } #Gonzalo Barrios
+command = { type = armamentminister which = 38050 } #Julio Garcia Jarpa
+command = { type = ministerofsecurity which = 38063 } #Isidoro Ruiz Tuerro
+command = { type = ministerofintelligence which = 38071 } #Robert Letts Sanchez
+command = { type = chiefofstaff which = 38076 } #Gustavo Gonzalez Lopez
+command = { type = chiefofarmy which = 38081 } #Tomas Contreras Villalobos
+command = { type = chiefofnavy which = 38089 } #Carlos Ramos Díaz
+command = { type = chiefofair which = 38095 } #Miguel Díaz Fraile
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = domestic which = free_market value = 1 }
+}
+}
+
+
+event = {
+id = 557307
+country = VEN
+random = no
+style = 2
+
+trigger = {
+government = democratic
+NOT = { ispuppet = VEN }
+}
+
+name = "The 1954 Presidental election"
+desc = "It is time for the next Presidential election. The radicals of the Social Democrats, discontent with the relative moderation of the party, split and formed their own Syndicalist party. However, it is much more likely for the weakened Social Democrats or even the Christians to win..."
+picture = "election"
+
+date = { day = 15 month = december year = 1954 }
+offset = 15
+deathdate = { day = 15 month = january year = 1954 }
+
+action_a = {
+ai_chance = 40
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 38019 } #Rómulo Gallegos Freire
+command = { type = headofgovernment which = 38031 } #Rómulo Gallegos Freire
+command = { type = foreignminister which = 38040 } #Carlos Morales Acorzia
+command = { type = armamentminister which = 38051 } #Jose Vicente Rangel
+command = { type = ministerofsecurity which = 38061 } #Concepcion Quijada Gonzalez
+command = { type = ministerofintelligence which = 38070 } #Luis Monsalvo Mareno
+command = { type = chiefofstaff which = 38077 } #Raúl Leoni Otero
+command = { type = chiefofarmy which = 38082 } #Nelson Verde Graterol
+command = { type = chiefofnavy which = 38090 } #Antonio Casas Gonzalez
+command = { type = chiefofair which = 38096 } #José Polares Pavon
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = domestic which = free_market value = -1 }
+}
+action_b = {
+ai_chance = 40
+name = "The Christian Democrats win it!"
+command = { type = headofstate which = 38018 } #Rafael Caldera
+command = { type = headofgovernment which = 38030 } #Rafael Caldera
+command = { type = foreignminister which = 38041 } #Gonzalo Barrios
+command = { type = armamentminister which = 38050 } #Julio Garcia Jarpa
+command = { type = ministerofsecurity which = 38063 } #Isidoro Ruiz Tuerro
+command = { type = ministerofintelligence which = 38071 } #Robert Letts Sanchez
+command = { type = chiefofstaff which = 38076 } #Gustavo Gonzalez Lopez
+command = { type = chiefofarmy which = 38081 } #Tomas Contreras Villalobos
+command = { type = chiefofnavy which = 38089 } #Carlos Ramos Díaz
+command = { type = chiefofair which = 38095 } #Miguel Díaz Fraile
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = domestic which = free_market value = 1 }
+}
+action_c = {
+ai_chance = 20
+name = "The Syndicalists win it!"
+command = { type = headofstate which = 38023 } #Wolfgang Larrazábal Ugueto
+command = { type = headofgovernment which = 38034 } #Wolfgang Larrazábal Ugueto
+command = { type = foreignminister which = 38037 } #Pedro Leon Castro
+command = { type = armamentminister which = 38051 } #Jose Vicente Rangel
+command = { type = ministerofsecurity which = 38062 } #Adolfo Gonzalez Aquilar
+command = { type = ministerofintelligence which = 38065 } #Pedro Leon Castro
+command = { type = chiefofstaff which = 38074 } #Antonio Casas Gonzalez
+command = { type = chiefofarmy which = 38084 } #Wolfgang Larrazábal Ugueto
+command = { type = chiefofnavy which = 38090 } #Antonio Casas Gonzalez
+command = { type = chiefofair which = 38092 } #Humberto S. Torres Vilera
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+event = {
+id = 557308
+country = VEN
+random = no
+style = 2
+
+trigger = {
+government = democratic
+NOT = { ispuppet = VEN }
+}
+
+name = "The 1961 Presidental election"
+desc = "Wow... did you really play till 1961 as Venezula? Regardless, the three political parties all have essentially the same chance of winning..."
+picture = "election"
+
+date = { day = 15 month = december year = 1961 }
+offset = 15
+deathdate = { day = 15 month = january year = 1961 }
+
+action_a = {
+ai_chance = 35
+name = "The Social Democrats win it!"
+command = { type = headofstate which = 38019 } #Rómulo Gallegos Freire
+command = { type = headofgovernment which = 38031 } #Rómulo Gallegos Freire
+command = { type = foreignminister which = 38040 } #Carlos Morales Acorzia
+command = { type = armamentminister which = 38051 } #Jose Vicente Rangel
+command = { type = ministerofsecurity which = 38061 } #Concepcion Quijada Gonzalez
+command = { type = ministerofintelligence which = 38070 } #Luis Monsalvo Mareno
+command = { type = chiefofstaff which = 38077 } #Raúl Leoni Otero
+command = { type = chiefofarmy which = 38082 } #Nelson Verde Graterol
+command = { type = chiefofnavy which = 38090 } #Antonio Casas Gonzalez
+command = { type = chiefofair which = 38096 } #José Polares Pavon
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 8 }
+command = { type = domestic which = free_market value = -1 }
+}
+action_b = {
+ai_chance = 35
+name = "The Christian Democrats win it!"
+command = { type = headofstate which = 38018 } #Rafael Caldera
+command = { type = headofgovernment which = 38030 } #Rafael Caldera
+command = { type = foreignminister which = 38041 } #Gonzalo Barrios
+command = { type = armamentminister which = 38050 } #Julio Garcia Jarpa
+command = { type = ministerofsecurity which = 38063 } #Isidoro Ruiz Tuerro
+command = { type = ministerofintelligence which = 38071 } #Robert Letts Sanchez
+command = { type = chiefofstaff which = 38076 } #Gustavo Gonzalez Lopez
+command = { type = chiefofarmy which = 38081 } #Tomas Contreras Villalobos
+command = { type = chiefofnavy which = 38089 } #Carlos Ramos Díaz
+command = { type = chiefofair which = 38095 } #Miguel Díaz Fraile
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = domestic which = free_market value = 1 }
+}
+action_c = {
+ai_chance = 30
+name = "The Syndicalists win it!"
+command = { type = headofstate which = 38023 } #Wolfgang Larrazábal Ugueto
+command = { type = headofgovernment which = 38034 } #Wolfgang Larrazábal Ugueto
+command = { type = foreignminister which = 38037 } #Pedro Leon Castro
+command = { type = armamentminister which = 38051 } #Jose Vicente Rangel
+command = { type = ministerofsecurity which = 38062 } #Adolfo Gonzalez Aquilar
+command = { type = ministerofintelligence which = 38065 } #Pedro Leon Castro
+command = { type = chiefofstaff which = 38074 } #Antonio Casas Gonzalez
+command = { type = chiefofarmy which = 38084 } #Wolfgang Larrazábal Ugueto
+command = { type = chiefofnavy which = 38090 } #Antonio Casas Gonzalez
+command = { type = chiefofair which = 38092 } #Humberto S. Torres Vilera
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 7 }
+command = { type = domestic which = free_market value = -2 }
+}
+}
+
+event = {
+id = 557309
+random = no
+country = VEN
+style = 2
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+date = { year = 1936 month = may day = 19 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38035 } #Pedro Itriago Chacín
+}
+}
+
+event = {
+id = 557310
+random = no
+country = VEN
+style = 2
+
+trigger = { NOT = {
+event = 557311
+headofstate = 38020 } } #Carlos Delgado Chalbaud
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+date = { year = 1950 month = november day = 13 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38020 } #Carlos Delgado Chalbaud
+command = { type = sleepminister which = 38079 } #Carlos Delgado Chalbaud
+command = { type = sleepleader which = 270004 } #Carlos Delgado Chalbaud
+}
+}
+
+event = {
+id = 557311
+random = no
+country = VEN
+style = 2
+
+trigger = { headofstate = 38020 } #Carlos Delgado Chalbaud
+
+name = "Carlos Delgado Chalbaud has died!"
+desc = "Carlos Delgado Chalbaud, our President has died! A week of mourning has been declared and German Suarez Flamerich has become the interm President."
+picture = "minister_died"
+
+date = { year = 1950 month = november day = 13 }
+
+action_a = {
+name = "Memento mori"
+command = { type = sleepminister which = 38020 } #Carlos Delgado Chalbaud
+command = { type = sleepminister which = 38079 } #Carlos Delgado Chalbaud
+command = { type = sleepleader which = 270004 } #Carlos Delgado Chalbaud
+command = { type = headofstate which = 38021 } #German Suarez Flamerich
+}
+}
+
+event = {
+id = 557312
+random = no
+country = VEN
+style = 2
+
+trigger = {
+NOT = { OR = {
+event = 557313
+event = 557314
+event = 557315 } }
+NOT = { OR = {
+headofstate = 38014 #Juan Bautista Pérez
+headofgovernment = 38002 } } } #Juan Bautista Pérez
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+date = { year = 1952 month = may day = 7 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38014 } #Juan Bautista Pérez
+command = { type = sleepminister which = 38005 } #Juan Bautista Pérez
+}
+}
+
+event = {
+id = 557313
+random = no
+country = VEN
+style = 2
+
+trigger = {
+NOT = { OR = {
+event = 557312
+event = 557314
+event = 557315 } }
+headofstate = 38014 #Juan Bautista Pérez
+NOT = { headofgovernment = 38002 } } #Juan Bautista Pérez
+
+name = "Juan Bautista Pérez has died!"
+desc = "The president of our nation, Juan Bautista Pérez, has died! A week of mourning has been declared and Eleazar López Contreras has become the interm President."
+picture = "minister_died"
+
+date = { year = 1952 month = may day = 7 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38014 } #Juan Bautista Pérez
+command = { type = sleepminister which = 38005 } #Juan Bautista Pérez
+command = { type = headofstate which = 38001 } #Eleazar López Contreras
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 557314
+random = no
+country = VEN
+style = 2
+
+trigger = {
+NOT = { OR = {
+event = 557312
+event = 557313
+event = 557315 } }
+NOT = { headofstate = 38014 } #Juan Bautista Pérez
+headofgovernment = 38002 } #Juan Bautista Pérez
+
+name = "Juan Bautista Pérez has died!"
+desc = "Juan Bautista Pérez, the head of government, has died! A day of mourning has been declared and Eleazar López Contreras has filled in his position."
+picture = "minister_died"
+
+date = { year = 1952 month = may day = 7 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38014 } #Juan Bautista Pérez
+command = { type = sleepminister which = 38005 } #Juan Bautista Pérez
+command = { type = headofgovernment which = 38024 } #Eleazar López Contreras
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 557315
+random = no
+country = VEN
+style = 2
+
+trigger = {
+NOT = { OR = {
+event = 557312
+event = 557313
+event = 557314 } }
+headofstate = 38014 #Juan Bautista Pérez
+headofgovernment = 38002 } #Juan Bautista Pérez
+
+name = "Juan Bautista Pérez has died!"
+desc = "The president of our nation, Juan Bautista Pérez, has died! A week of mourning has been declared and Eleazar López Contreras has become the interm President."
+picture = "minister_died"
+
+date = { year = 1952 month = may day = 7 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38014 } #Juan Bautista Pérez
+command = { type = sleepminister which = 38005 } #Juan Bautista Pérez
+command = { type = headofstate which = 38001 } #Eleazar López Contreras
+command = { type = headofgovernment which = 38024 } #Eleazar López Contreras
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 557316
+random = no
+country = VEN
+style = 2
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+date = { year = 1953 month = february day = 1 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38039 } #Gustavo Herrera Grau
+}
+}
+
+event = {
+id = 557317
+random = no
+country = VEN
+style = 2
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+date = { year = 1955 month = august day = 28 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38056 } #Cesar Zumeta
+}
+}
+
+event = {
+id = 557318
+random = no
+country = VEN
+style = 2
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+date = { year = 1959 month = august day = 21 }
+
+action_a = {
+name = "OK"
+command = { type = sleepminister which = 38005 } #Santiago Key Ayala
+}
+}
+

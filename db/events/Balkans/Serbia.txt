@@ -1,0 +1,4484 @@
+
+
+event = {
+id = 92000
+random = no
+country = SER
+style = 2
+
+trigger = {
+NOT = { 
+government = communist
+ispuppet = SER 
+}
+headofstate = 547054 #Petar Bojovic
+} 
+
+name = "The decision of Bojovic"
+desc = "With the Ausgliech happening within a week, Petar Bojovic, the Regent of the Kingdom of Serbia for now a decade, has the chance to finally free Serbia of any Austrian pretensions. The most obvious choice is to install Aleksandar, the former Crown Prince of Serbia, as the new King. However, there are rumblings that the Kingdom should formally abolished, and Bojovic could just as well keep power..."
+picture = "diet"
+
+date = { day = 8 month = february year = 1937 }
+
+action_a = {
+name = "Crown Prince Aleksandar shall become the King"
+ai_chance = 65
+command = { type = dissent value = 2 }
+command = { type = relation which = AUS value = -50 }
+command = { type = trigger which = 92001 }
+command = { type = name where = SER which = SER_KIN_NAME }
+}
+
+action_b = {
+name = "Slobodan Jovanovic will create a Republic"
+ai_chance = 25
+command = { type = dissent value = 7 }
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = headofstate which = 547061 } #Slobodan Jovanovic
+command = { type = headofgovernment which = 547065 } #Ljubomir Davidovic
+command = { type = setflag which = SER_REP }
+}
+
+action_c = {
+name = "Bojovic shall continue to guide the nation"
+ai_chance = 10
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 92001
+random = no
+country = SER
+style = 2
+
+name = "The form of Monarchy"
+desc = "Crown Prince Aleksandar, the legitimate King of Serbia, has finally been allowed to take the throne. However, he has been pressed on how exactly he will rule, within the confines of a constitution or by royal prerogative. He is expected to answer the Assembly shortly."
+picture = "tsar"
+
+action_a = {
+ai_chance = 60
+name = "Absolutism will keep us strong"
+command = { type = dissent value = 2 }
+command = { type = headofstate which = 547060 } #Aleksandar II
+command = { type = headofgovernment which = 547074 } #Petar Zivkovic
+command = { type = foreignminister which =  547015 } # Bogoljub Jevtic
+command = { type = armamentminister which = 547081 } # Svetislav Milosavljevic
+command = { type = ministerofsecurity which = 547076 } # Milan Srskic
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Constitutionalism is for the best"
+command = { type = dissent value = 2 }
+command = { type = headofstate which = 547059 } #Aleksandar II
+command = { type = headofgovernment which = 547069 } #Nikola Uzunovic
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = setflag which = SER_CONMON }
+}
+}
+
+event = {
+id = 92002
+random = no
+country = AUS
+style = 2
+
+decision = {
+NOT = { 
+government = communist 
+}
+exists = SER
+event = 901000
+puppet = { country = HUN country = AUS  }
+NOT = {
+exists = U24
+exists = U25
+ispuppet = SER
+ispuppet = AUS
+event = 901035 #Germany favours Hungary
+} 
+atwar = no
+}
+
+decision_trigger = {
+}
+
+trigger = {
+NOT = { 
+government = communist 
+}
+exists = SER
+event = 901000
+puppet = { country = HUN country = AUS  }
+NOT = {
+exists = U24
+exists = U25
+ispuppet = SER
+ispuppet = AUS
+event = 901035 #Germany favours Hungary
+} 
+atwar = no
+}
+
+name = "Reaserting control over Serbia"
+desc = "With the end of the Ausgliech, we can once again focus our attention towards the Balkans. Serbia, used the opportunity after the last Ausgleich to escape from our sphere of influence. Now we have a chance to restore our influence within Serbia by diplomatic means..."
+picture = "austvict"
+decision_picture = "decision_peace_conference"
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1942 }
+
+action = {
+ai_chance = 50
+trigger = {
+minister = 547057
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = AUS }
+}
+}
+}
+name = "Demand that Danilo Petrovic become their King!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92005 }
+command = { type = sleepevent which = 85650 } # Montenegrians demand independence ! in Ausgleich.txt
+}
+
+action = {
+ai_chance = 50
+trigger = {
+NOT = { 
+minister = 547057 
+}
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = U24 }
+}
+}
+}
+name = "Demand that Mihailo Petrovic become their King!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92006 }
+command = { type = sleepevent which = 85650 } # Montenegrians demand independence ! in Ausgleich.txt
+}
+
+action = {
+ai_chance = 50
+trigger = {
+NOT = {
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = AUS }
+}
+}
+}
+}
+name = "Demand their submission!"
+command = { type = relation which = SER value = -50 }
+command = { trigger = { NOT = { exists = BOS } owned = { province = 355 data = SER } } type = addclaim  which =  357 }
+command = { trigger = { NOT = { exists = BOS } owned = { province = 355 data = SER } } type = addclaim  which =  353 }
+command = { trigger = { NOT = { exists = BOS } owned = { province = 355 data = SER } } type = addclaim  which =  358 }
+command = { trigger = { NOT = { exists = BOS } owned = { province = 355 data = SER } } type = addclaim  which =  355 }
+command = { trigger = { NOT = { exists = BOS } owned = { province = 355 data = SER } } type = addclaim  which =  354 }
+command = { trigger = { NOT = { exists = BOS } owned = { province = 355 data = SER } } type = addclaim  which =  356 }
+command = { trigger = { owned = { province = 343 data = SER } } type = addclaim  which =  343 }
+command = { trigger = { owned = { province = 350 data = SER } } type = addclaim  which =  350 }
+command = { trigger = { owned = { province = 351 data = SER } } type = addclaim  which =  351 }
+command = { trigger = { owned = { province = 337 data = SER } } type = addclaim  which =  337 }
+command = { trigger = { owned = { province = 336 data = SER } } type = addclaim  which =  336 }
+command = { trigger = { owned = { province = 331 data = SER } } type = addclaim  which =  331 }
+command = { type = trigger which = 92007 }
+}
+
+action = {
+ai_chance = 50
+name = "Leave them be"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 92003
+random = no
+country = U24
+style = 2
+
+decision = {
+NOT = { 
+government = communist 
+}
+exists = SER
+NOT = {
+exists = AUS
+exists = HUN
+exists = U25
+exists = CRO
+ispuppet = SER
+ispuppet = U24
+}
+atwar = no
+}
+
+decision_trigger = {
+
+}
+
+trigger = {
+NOT = { 
+government = communist 
+}
+exists = SER
+NOT = {
+exists = AUS
+exists = HUN
+exists = U25
+exists = CRO
+ispuppet = SER
+ispuppet = U24
+}
+atwar = no
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1942 }
+
+name = "Reaserting control over Serbia"
+desc = "With the end of the Ausgliech, we can once again focus our attention towards the Balkans. Serbia, used the opportunity after the last Ausgleich to escape from our sphere of influence. Now we have a chance to restore our influence within Serbia by diplomatic means..."
+picture = "austvict"
+decision_picture = "decision_peace_conference"
+
+action = {
+ai_chance = 50
+trigger = {
+minister = 547057
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = U24 }
+}
+}
+}
+name = "Demand that Danilo Petrovic become their King!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92005 }
+command = { type = sleepevent which = 85650 } # Montenegrians demand independence ! in Ausgleich.txt
+}
+
+action = {
+ai_chance = 50
+trigger = {
+NOT = { 
+minister = 547057 
+}
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = U24 }
+}
+}
+}
+name = "Demand that Mihailo Petrovic become their King!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92006 }
+command = { type = sleepevent which = 85650 } # Montenegrians demand independence ! in Ausgleich.txt
+}
+
+action = {
+ai_chance = 50
+trigger = {
+NOT = {
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = U24 }
+}
+}
+}
+}
+name = "Demand their submission!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92007 }
+}
+
+action = {
+ai_chance = 10
+name = "Leave them be"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 92004
+random = no
+country = U25
+style = 2
+
+decision = {
+NOT = { 
+government = communist 
+}
+exists = SER
+NOT = {
+exists = AUS
+exists = CRO
+exists = HUN
+exists = U24
+ispuppet = SER
+ispuppet = U25
+}
+atwar = no
+}
+
+decision_trigger = {
+}
+
+trigger = {
+NOT = { 
+government = communist 
+}
+exists = SER
+NOT = {
+exists = AUS
+exists = CRO
+exists = HUN
+exists = U24
+ispuppet = SER
+ispuppet = U25
+}
+atwar = no
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1942 }
+
+name = "Reaserting control over Serbia"
+desc = "With the end of the Ausgliech, we can once again focus our attention towards the Balkans. Serbia, used the opportunity after the last Ausgleich to escape from our sphere of influence. Now we have a chance to restore our influence within Serbia by diplomatic means..."
+picture = "austvict"
+decision_picture = "decision_peace_conference"
+
+action = {
+ai_chance = 50
+trigger = {
+minister = 547057
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = U25 }
+}
+}
+}
+name = "Demand that Danilo Petrovic become their King!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92005 }
+command = { type = sleepevent which = 85650 } # Montenegrians demand independence ! in Ausgleich.txt
+}
+
+
+action = {
+ai_chance = 50
+trigger = {
+NOT = { 
+minister = 547057 
+}
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = U24 }
+}
+}
+}
+name = "Demand that Mihailo Petrovic become their King!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92006 }
+command = { type = sleepevent which = 85650 } # Montenegrians demand independence ! in Ausgleich.txt
+}
+
+action = {
+ai_chance = 50
+trigger = {
+NOT = {
+OR = {
+NOT = { 
+exists = MTN 
+}
+AND = {
+exists = MTN
+puppet = { country = MTN country = U25 }
+}
+}
+}
+}
+name = "Demand their submission!"
+command = { type = relation which = SER value = -50 }
+command = { type = trigger which = 92007 }
+}
+
+action = {
+ai_chance = 10
+name = "Leave them be"
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 92005
+random = no
+country = SER
+style = 2
+
+name = "The Austrian demand"
+desc = "The Austrian delegation has come to us and have demanded that Danilo Petrovic-Njegos, the former Crown Prince of Montenegro, become our King. There is very little we can do against the Austrians..."
+picture = "vienna_diktat"
+
+action_a = {
+ai_chance = 60
+name = "Danilo is our King..."
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 547057 } # Danilo I
+command = { type = headofgovernment which = 547098 } # Milan Nedic
+command = { type = foreignminister which =  547003 } # Aleksandar Cincar-Markovic
+command = { type = armamentminister which = 547021 } # Dragisa Cvetkovic
+command = { type = ministerofsecurity which = 547024 } # Milan Acimovic
+command = { type = ministerofintelligence which = 547029 } # Dragomir Jovanovic
+command = { type = chiefofarmy which = 547038 } # Milan Nedic
+command = { type = name where = SER which = SER_KIN_NAME }
+command = { trigger = { event = 92002 } type = trigger which = 92013 }
+command = { trigger = { event = 92003 } type = trigger which = 92014 }
+command = { trigger = { event = 92004 } type = trigger which = 92015 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 357 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 353 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 358 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 355 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 354 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 356 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 343 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 350 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 351 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 337 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 336 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 331 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 357 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 353 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 358 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 355 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 354 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 356 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 343 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 350 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 351 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 337 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 336 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 331 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 357 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 353 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 358 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 355 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 354 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 356 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 343 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 350 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 351 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 337 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 336 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 331 }
+
+command = { type = removecore   which =  357  }
+command = { type = removecore   which =  353  }
+command = { type = removecore   which =  358  }
+command = { type = removecore   which =  355  }
+command = { type = removecore   which =  354  }
+command = { type = removecore   which =  356  }
+command = { type = removecore   which =  343  }
+command = { type = removecore   which =  350  }
+command = { type = removecore   which =  351  }
+command = { type = removecore   which =  337  }
+command = { type = removecore   which =  336  }
+command = { type = removecore   which =  331  }
+command = { type = removeclaim which = 357 }
+command = { type = removeclaim which = 353 }
+command = { type = removeclaim which = 358 }
+command = { type = removeclaim which = 355 }
+command = { type = removeclaim which = 354 }
+command = { type = removeclaim which = 356 }
+command = { type = removeclaim which = 337 }
+command = { type = removeclaim which = 344 }
+command = { type = removeclaim which = 345 }
+command = { type = removeclaim which = 352 }
+command = { type = removeclaim which = 347 }
+command = { type = removeclaim which = 350 }
+command = { type = removeclaim which = 351 }
+command = { type = removeclaim which = 343 }
+command = { type = removeclaim which = 406 }
+command = { type = removeclaim which = 341 }
+command = { type = removeclaim which = 336 }
+command = { type = removeclaim which = 332 }
+command = { type = removeclaim which = 335 }
+command = { type = removeclaim which = 331 }
+command = { type = removeclaim which = 328 }
+command = { type = removeclaim which = 333 }
+command = { type = removeclaim which = 334 }
+command = { type = removeclaim which = 346 }
+command = { type = removeclaim which = 349 }
+command = { type = removeclaim which = 403 }
+command = { type = removeclaim which = 404 }
+command = { type = clrflag which = SER_CONMON }
+command = { type = clrflag which = SER_REP }
+}
+
+action_b = {
+ai_chance = 100
+trigger = {
+exists = RUS
+control = { province = 553 data = RUS } #Petrograd
+control = { province = 572 data = RUS } #Moscow
+control = { province = 617 data = RUS } #Kiev
+control = { province = 1142 data = RUS } #Novosibirsk
+NOT = {
+flag = RUS_BOL
+flag = RUS_ISO
+government = communist
+exists = SOV
+exists = SIB
+exists = UKR
+alliance = { country = U24 country = RUS }
+alliance = { country = AUS country = RUS }
+alliance = { country = U25 country = RUS }
+}
+NOT = {
+AND = {
+ai = RUS
+war = { country = RUS country = GER }
+}
+}
+NOT = {
+AND = {
+ai = RUS
+war = { country = RUS country = JAP }
+}
+}
+}
+name = "Seek Russia's support"
+command = { type = dissent value = -5 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = relation which = U25 value = -50 }
+command = { type = trigger which = 92008 }
+}
+
+action_c = {
+ai_chance = 40
+name = "Never!"
+command = { type = dissent value = -2 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = relation which = U25 value = -50 }
+command = { type = add_division value = cavalry when = 6 }
+command = { type = add_division value = infantry when = 9 }
+command = { trigger = { event = 92002 } type = trigger which = 92016 }
+command = { trigger = { event = 92003 } type = trigger which = 92017 }
+command = { trigger = { event = 92004 } type = trigger which = 92018 }
+}
+}
+
+event = {
+id = 92006
+random = no
+country = SER
+style = 2
+
+name = "The Austrian demand"
+desc = "The Austrian delegation has come to us and have demanded that Mihailo, a member of the Montenegrin Petrovic-Njegos dynasty, become our King. There is very little we can do against the Austrians..."
+picture = "vienna_diktat"
+
+action_a = {
+ai_chance = 60
+name = "Mihailo is our King..."
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 547058 } # Mihailo I
+command = { type = headofgovernment which = 547098 } # Milan Nedic
+command = { type = foreignminister which =  547003 } # Aleksandar Cincar-Markovic
+command = { type = armamentminister which = 547021 } # Dragisa Cvetkovic
+command = { type = ministerofsecurity which = 547024 } # Milan Acimovic
+command = { type = ministerofintelligence which = 547029 } # Dragomir Jovanovic
+command = { type = chiefofarmy which = 547038 } # Milan Nedic
+command = { type = name where = SER which = SER_KIN_NAME }
+command = { trigger = { event = 92002 } type = trigger which = 92013 }
+command = { trigger = { event = 92003 } type = trigger which = 92014 }
+command = { trigger = { event = 92004 } type = trigger which = 92015 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 357 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 353 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 358 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 355 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 354 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 356 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 343 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 350 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 351 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 337 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 336 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 331 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 357 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 353 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 358 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 355 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 354 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 356 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 343 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 350 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 351 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 337 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 336 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 331 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 357 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 353 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 358 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 355 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 354 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 356 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 343 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 350 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 351 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 337 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 336 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 331 }
+
+command = { type = removecore   which =  357  }
+command = { type = removecore   which =  353  }
+command = { type = removecore   which =  358  }
+command = { type = removecore   which =  355  }
+command = { type = removecore   which =  354  }
+command = { type = removecore   which =  356  }
+command = { type = removecore   which =  343  }
+command = { type = removecore   which =  350  }
+command = { type = removecore   which =  351  }
+command = { type = removecore   which =  337  }
+command = { type = removecore   which =  336  }
+command = { type = removecore   which =  331  }
+command = { type = removeclaim which = 357 }
+command = { type = removeclaim which = 353 }
+command = { type = removeclaim which = 358 }
+command = { type = removeclaim which = 355 }
+command = { type = removeclaim which = 354 }
+command = { type = removeclaim which = 356 }
+command = { type = removeclaim which = 337 }
+command = { type = removeclaim which = 344 }
+command = { type = removeclaim which = 345 }
+command = { type = removeclaim which = 352 }
+command = { type = removeclaim which = 347 }
+command = { type = removeclaim which = 350 }
+command = { type = removeclaim which = 351 }
+command = { type = removeclaim which = 343 }
+command = { type = removeclaim which = 406 }
+command = { type = removeclaim which = 341 }
+command = { type = removeclaim which = 336 }
+command = { type = removeclaim which = 332 }
+command = { type = removeclaim which = 335 }
+command = { type = removeclaim which = 331 }
+command = { type = removeclaim which = 328 }
+command = { type = removeclaim which = 333 }
+command = { type = removeclaim which = 334 }
+command = { type = removeclaim which = 346 }
+command = { type = removeclaim which = 349 }
+command = { type = removeclaim which = 403 }
+command = { type = removeclaim which = 404 }
+command = { type = clrflag which = SER_CONMON }
+command = { type = clrflag which = SER_REP }
+}
+
+action_b = {
+ai_chance = 100
+trigger = {
+exists = RUS
+control = { province = 553 data = RUS } #Petrograd
+control = { province = 572 data = RUS } #Moscow
+control = { province = 617 data = RUS } #Kiev
+control = { province = 1142 data = RUS } #Novosibirsk
+NOT = {
+flag = RUS_BOL
+flag = RUS_ISO
+government = communist
+exists = SOV
+exists = SIB
+exists = UKR
+alliance = { country = U24 country = RUS }
+alliance = { country = AUS country = RUS }
+alliance = { country = U25 country = RUS }
+}
+NOT = {
+AND = {
+ai = RUS
+war = { country = RUS country = GER }
+}
+}
+NOT = {
+AND = {
+ai = RUS
+war = { country = RUS country = JAP }
+}
+}
+}
+name = "Seek Russia's support"
+command = { type = dissent value = -5 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = relation which = U25 value = -50 }
+command = { type = trigger which = 92008 }
+}
+
+action_c = {
+ai_chance = 40
+name = "Never!"
+command = { type = dissent value = -2 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = relation which = U25 value = -50 }
+command = { type = add_division value = cavalry when = 6 }
+command = { type = add_division value = infantry when = 9 }
+command = { trigger = { event = 92002 } type = trigger which = 92016 }
+command = { trigger = { event = 92003 } type = trigger which = 92017 }
+command = { trigger = { event = 92004 } type = trigger which = 92018 }
+}
+}
+
+event = {
+id = 92007
+random = no
+country = SER
+style = 2
+
+name = "The Austrian demand"
+desc = "The Austrian delegation has come to us and have demanded our complete submission before the Austrian Empire. There is very little we can do against the Austrians..."
+picture = "vienna_diktat"
+
+action_a = {
+ai_chance = 60
+name = "Capitulate before them..."
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = headofstate which = 547001 } # Milan Nedic
+command = { type = headofgovernment which = 547063 } # Milan Acimovic
+command = { type = foreignminister which =  547003 } # Aleksandar Cincar-Markovic
+command = { type = armamentminister which = 547021 } # Dragisa Cvetkovic
+command = { type = ministerofsecurity which = 547024 } # Milan Acimovic
+command = { type = ministerofintelligence which = 547029 } # Dragomir Jovanovic
+command = { type = chiefofarmy which = 547038 } # Milan Nedic
+command = { trigger = { event = 92002 } type = trigger which = 92013 }
+command = { trigger = { event = 92003 } type = trigger which = 92014 }
+command = { trigger = { event = 92004 } type = trigger which = 92015 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 357 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 353 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 358 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 355 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 354 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 356 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 343 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 350 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 351 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 337 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 336 }
+command = { trigger = { event = 92002 } type = secedeprovince which = AUS value = 331 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 357 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 353 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 358 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 355 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 354 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 356 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 343 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 350 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 351 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 337 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 336 }
+command = { trigger = { event = 92003 } type = secedeprovince which = U24 value = 331 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 357 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 353 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 358 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 355 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 354 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 356 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 343 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 350 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 351 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 337 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 336 }
+command = { trigger = { event = 92004 } type = secedeprovince which = U25 value = 331 }
+
+command = { type = removecore   which =  357  }
+command = { type = removecore   which =  353  }
+command = { type = removecore   which =  358  }
+command = { type = removecore   which =  355  }
+command = { type = removecore   which =  354  }
+command = { type = removecore   which =  356  }
+command = { type = removecore   which =  343  }
+command = { type = removecore   which =  350  }
+command = { type = removecore   which =  351  }
+command = { type = removecore   which =  337  }
+command = { type = removecore   which =  336  }
+command = { type = removecore   which =  331  }
+command = { type = removeclaim which = 357 }
+command = { type = removeclaim which = 353 }
+command = { type = removeclaim which = 358 }
+command = { type = removeclaim which = 355 }
+command = { type = removeclaim which = 354 }
+command = { type = removeclaim which = 356 }
+command = { type = removeclaim which = 337 }
+command = { type = removeclaim which = 344 }
+command = { type = removeclaim which = 345 }
+command = { type = removeclaim which = 352 }
+command = { type = removeclaim which = 347 }
+command = { type = removeclaim which = 350 }
+command = { type = removeclaim which = 351 }
+command = { type = removeclaim which = 343 }
+command = { type = removeclaim which = 406 }
+command = { type = removeclaim which = 341 }
+command = { type = removeclaim which = 336 }
+command = { type = removeclaim which = 332 }
+command = { type = removeclaim which = 335 }
+command = { type = removeclaim which = 331 }
+command = { type = removeclaim which = 328 }
+command = { type = removeclaim which = 333 }
+command = { type = removeclaim which = 334 }
+command = { type = removeclaim which = 346 }
+command = { type = removeclaim which = 349 }
+command = { type = removeclaim which = 403 }
+command = { type = removeclaim which = 404 }
+command = { type = clrflag which = SER_CONMON }
+command = { type = clrflag which = SER_REP }
+}
+
+action_b = {
+ai_chance = 100
+trigger = {
+control = { province = 553 data = RUS }
+control = { province = 572 data = RUS }
+control = { province = 617 data = RUS }
+control = { province = 1142 data = RUS }
+NOT = {
+flag = RUS_BOL
+flag = RUS_ISO
+government = communist
+exists = SOV
+exists = SIB
+exists = UKR
+alliance = { country = U24 country = RUS }
+alliance = { country = U25 country = RUS }
+alliance = { country = AUS country = RUS }
+}
+NOT = { AND = { ai = yes war = { country = RUS country = GER } } }
+NOT = { AND = { ai = yes war = { country = RUS country = JAP } } }
+}
+name = "Seek Russia's support"
+command = { type = dissent value = -5 }
+command = { type = add_division value = cavalry when = 6 }
+command = { type = add_division value = infantry when = 9 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = relation which = U25 value = -50 }
+command = { type = trigger which = 92008 }
+}
+
+action_c = {
+ai_chance = 40
+name = "Never!"
+command = { type = dissent value = -2 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = relation which = U25 value = -50 }
+command = { type = add_division value = cavalry when = 6 }
+command = { type = add_division value = infantry when = 9 }
+command = { trigger = { event = 92002 } type = trigger which = 92016 }
+command = { trigger = { event = 92003 } type = trigger which = 92017 }
+command = { trigger = { event = 92004 } type = trigger which = 92018 }
+}
+}
+
+event = {
+id = 92008	
+country = RUS
+
+name = "Support Serbia ?"
+desc = "The independence of Serbia is endangered by a resurgent Austria, which became very belligerent after the conclusion of Ausgleich. Currently they have issued an ultimatum to Serbia, in which they demand the complete submission of Serbia before Austria. The Serbian leaders, knowing that they can´t win this war are, once again, asking Russia for support..."
+style = 2
+picture = "German_mobilization2"
+
+action = {
+name = "Support Serbia!"
+ai_chance = 60
+command = { type = belligerence value = 2 }
+command = { type = dissent value = 2 }
+command = { type = guarantee which = RUS where = SER }
+command = { trigger = { event = 92002 } type = trigger which = 92009 }
+command = { trigger = { event = 92003 } type = trigger which = 92010 }
+command = { trigger = { event = 92004 } type = trigger which = 92011 }
+}
+
+action = {
+name = "Do not support Serbia"
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = relation which = SER value = -20 }
+command = { trigger = { event = 92002 } type = trigger which = 92013 }
+command = { trigger = { event = 92003 } type = trigger which = 92014 }
+command = { trigger = { event = 92004 } type = trigger which = 92015 }
+}
+}
+
+event = {
+id = 92009	
+country = AUS
+
+name = "Russia supports Serbia!"
+desc = "The desperate Serbian leaders, fearing Austrian armed forces, have asked Russia for support. Unfortunately Russia responded positively to their beggings, and now the independence of Serbia is guaranteed by Russia. What shall we do now?"
+style = 2
+picture = "German_mobilization2"
+
+action = {
+name = "Ignore the Russian guarantee!"
+ai_chance = 30
+trigger = {
+alliance = { country = AUS country = HUN }
+}
+command = { type = war which = SER }
+command = { type = trigger which = 92012 }
+command = { type = belligerence value = 2 }
+command = { type = dissent value = 2 }
+}
+
+action = {
+name = "Leave Serbia... For now..."
+ai_chance = 70
+command = { type = dissent value = 5 }
+command = { type = relation which = SER value = 20 }
+}
+}
+
+event = {
+id = 92010	
+country = U24
+
+name = "Russia supports Serbia!"
+desc = "The desperate Serbian leaders, fearing Austro-Hungarian armed forces, have asked Russia for support. Unfortunately Russia responded positively to their beggings, and now the independence of Serbia is guaranteed by Russia. What shall we do now?"
+style = 2
+picture = "German_mobilization2"
+
+action = {
+name = "Ignore the Russian guarantee!"
+ai_chance = 60
+command = { type = war which = SER }
+command = { type = trigger which = 92012 }
+command = { type = belligerence value = 2 }
+command = { type = dissent value = 2 }
+}
+
+action = {
+name = "Leave Serbia... For now..."
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = relation which = SER value = 20 }
+}
+}
+
+event = {
+id = 92011	
+country = U25
+
+name = "Russia supports Serbia!"
+desc = "The desperate Serbian leaders, fearing the armed forces of the Danubian federation, have asked Russia state for support. Unfortunately Russia responded positively to their beggings, and now the independence of Serbia is guaranteed by Russia. What shall we do now?"
+style = 2
+picture = "German_mobilization2"
+
+action = {
+name = "Ignore the Russian guarantee!"
+ai_chance = 60
+command = { type = war which = SER }
+command = { type = trigger which = 92012 }
+command = { type = belligerence value = 2 }
+command = { type = dissent value = 2 }
+}
+
+action = {
+name = "Leave Serbia... For now..."
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = relation which = SER value = 20 }
+}
+}
+
+event = {
+id = 92012
+country = RUS
+style = 2
+picture = "German_mobilization2"
+
+
+name = "The Austrians ignore our guarantee"
+desc = "Our guarantee of Serbian independence has been ignored by Vienna. Currently their armed forces are making their way to the Serbian capital of Belgrade. We can either go through with it and declare war, bringing Serbia into our alliance or we can stand down and let Serbia fall."
+
+action_a = {
+ai_chance = 70
+name = "They have made their choice, war it is!"
+command = { trigger = { event = 92009 } type = war which = AUS }
+command = { trigger = { event = 92010 } type = war which = U24 }
+command = { trigger = { event = 92011 } type = war which = U25 }
+command = { type = alliance which = SER }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Back Down! We've changed our minds!"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 92013
+random = no
+country = AUS
+style = 2
+
+name = "The Serbians have folded"
+desc = "The Serbians have wisely folded before our might and Serbia is once again part of our sphere of influence."
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Very good"
+command = { type = make_puppet which = SER }
+command = { type = relation which = SER value = 20 }
+}
+}
+
+event = {
+id = 92014
+random = no
+country = U24
+style = 2
+
+name = "The Serbians have folded"
+desc = "The Serbians have wisely folded before our might and Serbia is once again part of our sphere of influence."
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Very good"
+command = { type = make_puppet which = SER }
+command = { type = relation which = SER value = 20 }
+}
+}
+
+event = {
+id = 92015
+random = no
+country = U25
+style = 2
+
+name = "The Serbians have folded"
+desc = "The Serbians have wisely folded before our might and Serbia is once again part of our sphere of influence."
+picture = "diplomatic_campaign"
+
+action_a = {
+name = "Very good"
+command = { type = make_puppet which = SER }
+command = { type = relation which = SER value = 20 }
+}
+}
+
+event = {
+id = 92016
+random = no
+country = AUS
+style = 2
+
+name = "The Serbians resist us!"
+desc = "The Serbians have unwisely refused our righteous demand for their submission before our empire! How shall we react?"
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 50
+name = "They shall suffer!"
+trigger = {
+puppet = { country = HUN country = AUS  }
+}
+command = { type = alliance which = HUN }
+command = { type = war which = SER }
+}
+
+action_b = {
+ai_chance = 50
+name = "Leave them alone"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 92017
+random = no
+country = U24
+style = 2
+
+name = "The Serbians resist us!"
+desc = "The Serbians have unwisely refused our righteous demand for their submission before our empire! How shall we react?"
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 70
+name = "They shall suffer!"
+command = { type = war which = SER }
+}
+
+action_b = {
+ai_chance = 50
+name = "Leave them alone"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 92018
+random = no
+country = U25
+style = 2
+
+name = "The Serbians resist us!"
+desc = "The Serbians have unwisely refused our righteous demand for their submission before our empire! How shall we react?"
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 70
+name = "They shall suffer!"
+command = { type = war which = SER }
+}
+
+action_b = {
+ai_chance = 50
+name = "Leave them alone"
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 92019
+random = no
+country = U24
+style = 2
+
+decision = {
+NOT = { 
+government = communist 
+}
+exists = MTN
+NOT = {
+atwar = U24
+exists = AUS
+exists = CRO
+exists = HUN
+exists = U25
+ispuppet = MTN
+ispuppet = U24
+}
+OR = {
+NOT = { 
+exists = SER 
+}
+puppet = { country = SER country = U24 }
+}
+}
+
+decision_trigger = {
+}
+
+trigger = {
+NOT = { 
+government = communist 
+}
+NOT = {
+atwar = U24
+exists = AUS
+exists = CRO
+exists = HUN
+exists = U25
+ispuppet = MTN
+ispuppet = U24
+}
+OR = {
+NOT = { 
+exists = SER 
+}
+puppet = { country = SER country = U24 }
+}
+exists = MTN
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1942 }
+
+name = "Reaserting control over Montenegro"
+desc = "With the end of the Ausgliech, we can once again focus our attention towards the Balkans. Montenegro, used the opportunity during the Austro-Hungarian civil war to secede from our empire. Now with our power over the Danubian basin secured we can demand their reintegration..."
+picture = "austvict"
+decision_picture = "decision_peace_conference"
+
+action_a = {
+ai_chance = 90
+name = "Demand their submission!"
+command = { type = relation which = MTN value = -50 }
+command = { type = trigger which = 92021 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Leave them be"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 92020
+random = no
+country = U25
+style = 2
+
+decision = {
+NOT = { 
+government = communist 
+}
+exists = MTN
+NOT = {
+atwar = U25
+exists = AUS
+exists = CRO
+exists = HUN
+exists = U24
+ispuppet = MTN
+ispuppet = U25
+}
+OR = {
+NOT = { 
+exists = SER 
+}
+puppet = { country = SER country = U25 }
+}
+}
+
+decision_trigger = {
+}
+
+
+trigger = {
+NOT = { 
+government = communist 
+}
+NOT = {
+atwar = U25
+exists = AUS
+exists = CRO
+exists = HUN
+exists = U24
+ispuppet = MTN
+ispuppet = U25
+}
+OR = {
+NOT = { 
+exists = SER 
+}
+puppet = { country = SER country = U25 }
+}
+exists = MTN
+}
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1942 }
+
+name = "Reaserting control over Montenegro"
+desc = "With the end of the Ausgliech, we can once again focus our attention towards the Balkans. Montenegro, used the opportunity during the Austro-Hungarian civil war to secede from our empire. Now with our power over the Danubian basin secured we can demand their reintegration..."
+picture = "austvict"
+decision_picture = "decision_peace_conference"
+
+action_a = {
+ai_chance = 90
+name = "Demand their submission!"
+command = { type = relation which = MTN value = -50 }
+command = { type = trigger which = 92021 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Leave them be"
+command = { type = dissent value = 2 }
+}
+}
+
+
+event = {
+id = 92021
+random = no
+country = MTN
+style = 2
+
+name = "The Austrian demand"
+desc = "The Austrian delegation has come to us and have demanded our complete submission before the Austrian empire. There is very little we can do against the Austrians..."
+picture = "vienna_diktat"
+
+action_a = {
+ai_chance = 90
+name = "Capitulate before them..."
+command = { type = dissent value = 5 }
+command = { trigger = { event = 92019 } type = trigger which = 92022 }
+command = { trigger = { event = 92020 } type = trigger which = 92023 }
+
+}
+
+action_b = {
+ai_chance = 10
+name = "Never!"
+command = { type = dissent value = -2 }
+command = { type = relation which = AUS value = -50 }
+command = { type = relation which = U24 value = -50 }
+command = { type = relation which = U25 value = -50 }
+command = { trigger = { event = 92019 } type = trigger which = 92024 }
+command = { trigger = { event = 92020 } type = trigger which = 92025 }
+}
+}
+
+
+event = {
+id = 92022
+random = no
+country = U24
+style = 2
+
+name = "The Montenegrians have folded"
+desc = "The Montenegrians have wisely folded before our might. We can now decide if Montengro will once again be directly integrated into our empire or remain independent..."
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 100
+name = "Annex it!"
+command = { type = inherit which = MTN  }
+command = { type = addclaim  which =  332 }
+command = { type = addclaim  which =  335 }
+command = { type = province_revoltrisk which = 332 value = 50 }
+command = { type = province_revoltrisk which = 335 value = 50 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Montenegro shall remain independent!"
+command = { type = make_puppet which = MTN }
+command = { type = relation which = MTN value = 20 }
+}
+}
+
+event = {
+id = 92023
+random = no
+country = U25
+style = 2
+
+name = "The Montenegrians have folded"
+desc = "The Montenegrians have wisely folded before our might. We can now decide if Montengro will once again be directly integrated into our empire or remain independent..."
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 100
+name = "Annex it!"
+command = { type = inherit which = MTN  }
+command = { type = addclaim  which =  332 }
+command = { type = addclaim  which =  335 }
+command = { type = province_revoltrisk which = 332 value = 50 }
+command = { type = province_revoltrisk which = 335 value = 50 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Montenegro shall remain independent!"
+command = { type = make_puppet which = MTN }
+command = { type = relation which = MTN value = 20 }
+}
+}
+
+event = {
+id = 92024
+random = no
+country = U24
+style = 2
+
+name = "The Montenegrians resist us!"
+desc = "The Montenegrians have unwisely refused our righteous demand for their submission before our empire! How shall we react?"
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 90
+name = "They shall suffer!"
+command = { type = war which = MTN }
+command = { type = addclaim  which =  332 }
+command = { type = addclaim  which =  335 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Leave them alone"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 92025
+random = no
+country = U25
+style = 2
+
+name = "The Montenegrians resist us!"
+desc = "The Montenegrians have unwisely refused our righteous demand for their submission before our empire! How shall we react?"
+picture = "diplomatic_campaign"
+
+action_a = {
+ai_chance = 90
+name = "They shall suffer!"
+command = { type = war which = MTN }
+command = { type = addclaim  which =  332 }
+command = { type = addclaim  which =  335 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Leave them alone"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 92026
+random = no
+country = U24
+style = 2
+
+trigger = {
+event = 92022
+NOT = {
+core = { province = 332 data = U24 }
+}
+owned = { province = 332 data = U24 }
+control = { province = 332 data = U24 }
+}
+
+name = "Resistance in Montenegro supressed"
+desc = "With the remaining Montengrian armed bands destroyed by gendarmerie, this territory is now fully absorbed into our empire."
+picture = "militaryparade1"
+
+date = { day = 0 month = january year = 1937 }
+offset = 300
+deathdate = { day = 29 month = january year = 1963 }
+
+action_a = {
+name = " Great!"
+command = { type = addcore which = 332 }
+command = { type = addcore which = 335 }
+command = { type = province_revoltrisk which = 332 value = -50 }
+command = { type = province_revoltrisk which = 335 value = -50 }
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 92027
+random = no
+country = U25
+style = 2
+
+trigger = {
+event = 92023
+NOT = {
+core = { province = 332 data = U25 }
+}
+owned = { province = 332 data = U25 }
+control = { province = 332 data = U25 }
+}
+
+name = "Resistance in Montenegro supressed"
+desc = "With the remaining Montengrian armed bands destroyed by gendarmerie, this territory is now fully absorbed into our empire."
+picture = "militaryparade1"
+
+date = { day = 0 month = january year = 1937 }
+offset = 300
+deathdate = { day = 29 month = january year = 1963 }
+
+action_a = {
+name = " Great!"
+command = { type = addcore which = 332 }
+command = { type = addcore which = 335 }
+command = { type = province_revoltrisk which = 332 value = -50 }
+command = { type = province_revoltrisk which = 335 value = -50 }
+command = { type = dissent value = 3 }
+}
+}
+
+#Post Ausgliech nonsense
+
+
+event = {
+id = 92028
+random = no
+country = SER
+style = 2
+
+trigger = {
+OR = {
+headofstate = 547060 #Aleksander II
+headofstate = 547059 #Aleksander II
+}
+} 
+
+name = "The King has died!"
+desc = "Aleksandar II, our King, has died in his sleep. A week of mourning has been declared and his son Petar has assumed the throne."
+picture = "minister_died"
+
+date = { day = 8 month = may year = 1943 }
+
+action_a = {
+name = "Long live Petar II"
+command = { type = sleepminister which = 547059 } #Aleksander II
+command = { type = sleepminister which = 547060 } #Aleksander II
+command = { type = sleepminister which = 20106 } #Aleksander II
+command = { type = sleepminister which = 20107 } #Aleksander II
+command = { trigger = { government = fascist } type = headofstate which = 547042 } # Petar II autocratic
+command = { trigger = { government = democratic } type = headofstate which = 547041 } # Petar II democrat
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 92029
+random = no
+country = SER
+style = 2
+
+trigger = {
+NOT = {
+headofstate = 547059 #Aleksander II
+headofstate = 547060 #Aleksander II
+} 
+}  
+
+name = "The former Crown Prince Aleksandar has died"
+desc = "The son of Petar I, our King during the Weltkrieg, Aleksandar, has died in his sleep. His son Petar has become the head of the Karadjordjevic house."
+picture = "minister_died"
+
+date = { day = 8 month = may year = 1943 }
+
+action_a = {
+name = "Good, he's gone!"
+command = { type = sleepminister which = 547059 } #Aleksander II
+command = { type = sleepminister which = 547060 } #Aleksander II
+command = { type = sleepminister which = 20106 } #Aleksander II
+command = { type = sleepminister which = 20107 } #Aleksander II
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 92030
+random = no
+country = SER
+style = 2
+
+trigger = {
+OR = {
+headofstate = 547057 #Danilo I
+headofstate = 547052 #Danilo I
+}
+} 
+
+name = "The King has died!"
+desc = "Danilo I, our King, has died in his sleep. A week of mourning has been declared and his nephew Mihailo has assumed the throne."
+picture = "minister_died"
+
+date = { day = 24 month = september year = 1939 }
+
+action_a = {
+name = "Long live Mihailo I"
+command = { type = sleepminister which = 547057 } #Danilo I
+command = { type = sleepminister which = 547052 } #Danilo I
+command = { type = sleepminister which = 544036 } #Danilo I
+command = { type = sleepminister which = 544011 } #Danilo I
+command = { type = sleepminister which = 20109 } #Danilo I
+command = { type = sleepminister which = 20111 } #Danilo I
+command = { trigger = { government = fascist } type = headofstate which = 547058 } # Mihailo I autocratic
+command = { trigger = { government = democratic } type = headofstate which = 547053 } # Mihailo I democrat
+command = { type = dissent value = 1 }
+command = { type = sleepevent which = 92036 }
+command = { type = sleepevent which = 92037 }
+command = { type = sleepevent which = 3240513 }
+}
+}
+
+event = {
+id = 92031
+random = no
+country = SER
+style = 2
+
+trigger = {
+NOT = {
+exists = MTN
+headofstate = 547057
+headofstate = 547052
+}
+} #Danilo I
+
+name = "The former Crown Prince of Montenegro has died"
+desc = "The former Crown Prince of Montenegro, Danilo, has died in his sleep. His nephew Mihailo has assumed leadership of the Montenegrin Royal House."
+picture = "minister_died"
+
+date = { day = 24 month = september year = 1939 }
+
+action_a = {
+name = "Why does this concern us?"
+command = { type = sleepminister which = 547057 } #Danilo I
+command = { type = sleepminister which = 547052 } #Danilo I
+command = { type = sleepminister which = 544036 } #Danilo I
+command = { type = sleepminister which = 544011 } #Danilo I
+command = { type = sleepminister which = 20109 } #Danilo I
+command = { type = sleepminister which = 20111 } #Danilo I
+command = { type = sleepevent which = 92036 }
+command = { type = sleepevent which = 92037 }
+command = { type = sleepevent which = 3240512 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 92032
+random = no
+country = SER
+style = 2
+
+trigger = { 
+headofstate = 547001 
+} #Petar Bojovic
+
+name = "Petar Bojovic has died!"
+desc = "The leader of our nation for almost two decades has died today. In his last will he specified for Draza Mihailovic to become the new Regent of Serbia. However, several ministers are calling for the former Royal House of Serbia, the Karadjordjevics, to be restored to the Throne. What shall we do?"
+picture = "minister_died"
+
+date = { day = 20 month = january year = 1945 }
+
+action_a = {
+ai_chance = 30
+name = "Draza Mihailovic is the new Regent!"
+command = { type = sleepminister which = 547054 } #Petar Bojovic
+command = { type = sleepminister which = 547064 } #Petar Bojovic
+command = { type = sleepminister which = 20112 } #Petar Bojovic
+command = { type = sleepminister which = 20113 } #Petar Bojovic
+command = { type = headofstate which = 547043 } #Draza Mihajlovic
+command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Petar Karadjordjevic shall become King"
+command = { type = sleepminister which = 547054 } #Petar Bojovic
+command = { type = sleepminister which = 547064 } #Petar Bojovic
+command = { type = sleepminister which = 20112 } #Petar Bojovic
+command = { type = sleepminister which = 20113 } #Petar Bojovic
+command = { type = trigger which = 92033 }
+command = { type = name where = SER which = SER_KIN_NAME }
+}
+}
+
+event = {
+id = 92033
+random = no
+country = SER
+style = 2
+
+name = "The form of Monarchy"
+desc = "Petar Karadjordjevic, grandson of our last King, has finally been allowed to take the throne. However, he has been pressed on how exactly he will rule, within the confines of a constitution or by royal prerogative. He is expected to answer the Assembly shortly."
+picture = "tsar"
+
+action_a = {
+ai_chance = 60
+name = "Absolutism will keep us strong"
+command = { type = dissent value = 2 }
+command = { type = headofstate which = 547042 } #Petar II
+command = { type = headofgovernment which = 547062 } #Dusan Simovic
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Constitutionalism is for the best"
+command = { type = dissent value = 2 }
+command = { type = headofstate which = 547041 } #Petar II
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = setflag which = SER_CONMON }
+}
+}
+
+event = {
+id = 92034
+random = no
+country = SER
+style = 2
+
+trigger = { 
+NOT = { 
+headofstate = 547054 
+} 
+} #Petar Bojovic
+
+name = "Petar Bojovic has died!"
+desc = "The former Regent of our nation has died today and a day of mourning has been declared."
+picture = "minister_died"
+
+date = { day = 20 month = january year = 1945 }
+
+action_a = {
+name = "We will miss him"
+command = { type = sleepminister which = 547054 } #Petar Bojovic
+command = { type = sleepminister which = 547064 } #Petar Bojovic
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 92035
+random = no
+country = SER
+style = 2
+
+trigger = {
+OR = {
+owned = { province = 332 data = SER }
+owned = { province = 361 data = SER }
+owned = { province = 359 data = SER }
+owned = { province = 343 data = SER }
+owned = { province = 351 data = SER }
+owned = { province = 350 data = SER }
+}
+}
+
+name = "Serbia gains access to the Adriatic sea"
+desc = "At last we have been able to fufill the dream of countless Serbian generations, free access to the Adriatic sea!"
+picture = "panamacanal"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Good"
+command = { type = dissent value = -5 }
+command = { type = waketeam which = 15815 }
+}
+}
+
+event = {
+id = 92036
+random = no
+country = MTN
+style = 2
+
+trigger = {
+NOT = {
+headofstate = 544011 # Danilo I
+headofstate = 544036 # Danilo I
+}
+}
+
+name = "Danilo I Petrovic-Njegos passed away"
+desc = "The potential successor to the Montenegrian and Serbian throne has passed away. A day of national mourning is declared..."
+picture = "minister_died"
+
+date = { day = 24 month = september year = 1939 }
+
+action_a = {
+name = "Memento mori"
+command = { type = dissent value = 1  }
+command = { type = sleepevent which = 92037 }
+command = { type = sleepminister which = 547057 } #Danilo I
+command = { type = sleepminister which = 547052 } #Danilo I
+command = { type = sleepminister which = 544036 } #Danilo I
+command = { type = sleepminister which = 544011 } #Danilo I
+command = { type = sleepminister which = 20109 } #Danilo I
+command = { type = sleepminister which = 20111 } #Danilo I
+}
+}
+
+event = {
+id = 92037
+random = no
+country = MTN
+
+name = "Danilo I Petrovic-Njegos passed away"
+desc = "Our beloved king and son of Nikola I, Danilo I Petrovic-Njegos has passed away! Now it is his nephew, Mihailo, who will take up the mantle as our glorious king Mihailo I. Long live Mihailo I!!"
+picture = "minister_died"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 544011 # Danilo I
+headofstate = 544036 # Danilo I
+}
+}
+
+date = { day = 24 month = september year = 1939 }
+
+action_a = {
+name = "The King is dead! Long live the King!"
+command = { trigger = { government = fascist } type = headofstate which = 544035 }
+command = { trigger = { government = democratic } type = headofstate which = 544037 }
+command = { type = sleepminister which = 547057 } #Danilo I
+command = { type = sleepminister which = 547052 } #Danilo I
+command = { type = sleepminister which = 544036 } #Danilo I
+command = { type = sleepminister which = 544011 } #Danilo I
+command = { type = sleepminister which = 20109 } #Danilo I
+command = { type = sleepminister which = 20111 } #Danilo I
+command = { type = sleepevent which = 92036 }
+}
+}
+
+event = {
+id = 92038
+random = no
+country = SER
+style = 2
+
+name = "Milutin Nedic has died!"
+desc = "The hero of the Balkan wars and the Weltkrieg has died today. A day of national mourning is declared.."
+picture = "minister_died"
+
+date = { day = 25 month = january year = 1949 }
+
+action_a = {
+name = "We will miss him"
+command = { type = sleepleader which = 547024 } #Milutin Nedic
+command = { type = sleepminister which = 547008 } #Milutin Nedic
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 92039
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_CONMON
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "The King calls for Elections!"
+desc = "After Vojvoda Petar Bojovic stepped down as regent in favour of prince Aleksandar, the new king of Serbia called for elections to be held in accordance with his wish for a constitutional monarchy. Belgrade is draped in red, white and blue colours as the day of the elections draws nearer."
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  40
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -2  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547065 } # Ljubomir Davidovic
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+}
+
+action_b = {
+ai_chance =  60
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547069 } # Nikola Uzunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547004 } # Milan Stojadinovic
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The King shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { trigger = { minister = 547060 } type = headofstate which = 547060 } # Aleksander II
+command = { trigger = { NOT = { minister = 547060 } } type = headofstate which = 547042 } # Petar II
+command = { type = headofgovernment which = 547074 } # Petar Zivkovic
+command = { type = foreignminister which =  547015 } # Bogoljub Jevtic
+command = { type = armamentminister which = 547081 } # Svetislav Milosavljevic
+command = { type = ministerofsecurity which = 547076 } # Milan Srskic
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = clrflag which = SER_CONMON }
+}
+}
+
+
+event = {
+id = 92040
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_REP
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+
+name = "The President calls for Elections!"
+desc = "After Vojvoda Petar Bojovic stepped down as regent in favour of provisional president Jovanovic, the president called for elections to be held in accordance with his wish for a parliamentary republic. Belgrade is draped in red, white and blue colours as the day of the elections draws nearer."
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  50
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547092 } #Ljubomir Davidovic
+command = { type = headofgovernment which = 547014 } # Milan Grol
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_b = {
+ai_chance =  50
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -2 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547091 } #Milan Stojadinovic
+command = { type = headofgovernment which = 547099 } # Milos Trifunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547080 } # Ninko Peric
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The Army shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 547043 } #Draza Mihajlovic
+command = { type = headofgovernment which = 547062 } #Dusan Simovic
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = clrflag which = SER_REP }
+}
+}
+
+
+event = {
+id = 92041
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_CONMON
+event = { id = 92039 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Parliamentary elections"
+desc = "According to the Constitution, the elections are to be held every four years. The term of the current National Assembly has expired and the time has come to elect a new National Assembly. There are 120 seats available in the National Assembly and various political parties have begun their campaigns. But currently only two parties have a chance of gaining a majority and thus forming a new government. Which one shall prevail?"
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  40
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -2  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547065 } # Ljubomir Davidovic
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+}
+
+action_b = {
+ai_chance =  60
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547069 } # Nikola Uzunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547004 } # Milan Stojadinovic
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The King shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { trigger = { minister = 547060 } type = headofstate which = 547060 } # Aleksander II
+command = { trigger = { NOT = { minister = 547060 } } type = headofstate which = 547042 } # Petar II
+command = { type = headofgovernment which = 547074 } # Petar Zivkovic
+command = { type = foreignminister which =  547015 } # Bogoljub Jevtic
+command = { type = armamentminister which = 547081 } # Svetislav Milosavljevic
+command = { type = ministerofsecurity which = 547076 } # Milan Srskic
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = clrflag which = SER_CONMON }
+}
+}
+
+
+event = {
+id = 92042
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_REP
+event = { id = 92040 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Parliamentary elections"
+desc = "According to the Constitution, the elections are to be held every four years. The term of the current National Assembly has expired and the time has come to elect a new National Assembly. There are 120 seats available in the National Assembly and various political parties have begun their campaigns. But currently only two parties have a chance of gaining a majority and thus forming a new government. Which one shall prevail?"
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  50
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547092 } #Ljubomir Davidovic
+command = { type = headofgovernment which = 547014 } # Milan Grol
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_b = {
+ai_chance =  50
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -2 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547091 } #Milan Stojadinovic
+command = { type = headofgovernment which = 547099 } # Milos Trifunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547080 } # Ninko Peric
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The Army shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 547043 } #Draza Mihajlovic
+command = { type = headofgovernment which = 547062 } #Dusan Simovic
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = clrflag which = SER_REP }
+}
+}
+
+
+event = {
+id = 92043
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_CONMON
+event = { id = 92041 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Parliamentary elections"
+desc = "According to the Constitution, the elections are to be held every four years. The term of the current National Assembly has expired and the time has come to elect a new National Assembly. There are 120 seats available in the National Assembly and various political parties have begun their campaigns. But currently only two parties have a chance of gaining a majority and thus forming a new government. Which one shall prevail?"
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  40
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -2  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547065 } # Ljubomir Davidovic
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+}
+
+action_b = {
+ai_chance =  60
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547069 } # Nikola Uzunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547004 } # Milan Stojadinovic
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The King shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { trigger = { minister = 547060 } type = headofstate which = 547060 } # Aleksander II
+command = { trigger = { NOT = { minister = 547060 } } type = headofstate which = 547042 } # Petar II
+command = { type = headofgovernment which = 547074 } # Petar Zivkovic
+command = { type = foreignminister which =  547015 } # Bogoljub Jevtic
+command = { type = armamentminister which = 547081 } # Svetislav Milosavljevic
+command = { type = ministerofsecurity which = 547076 } # Milan Srskic
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = clrflag which = SER_CONMON }
+}
+}
+
+
+event = {
+id = 92044
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_REP
+event = { id = 92042 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Parliamentary elections"
+desc = "According to the Constitution, the elections are to be held every four years. Term of the current National Assembly has expired and the time has come to elect a new National Assembly. There are 120 seats in the National Assembly available and various political parties have begun their campaigns. But currently only two parties have chance of gaining majority and thus forming new government. Which one shall prevail ? "
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  50
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547092 } #Ljubomir Davidovic
+command = { type = headofgovernment which = 547014 } # Milan Grol
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_b = {
+ai_chance =  50
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -2 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547091 } #Milan Stojadinovic
+command = { type = headofgovernment which = 547099 } # Milos Trifunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547080 } # Ninko Peric
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The Army shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 547043 } #Draza Mihajlovic
+command = { type = headofgovernment which = 547062 } #Dusan Simovic
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = clrflag which = SER_REP }
+}
+}
+
+
+event = {
+id = 92045
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_CONMON
+event = { id = 92043 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Parliamentary elections"
+desc = "According to the Constitution, the elections are to be held every four years. The term of the current National Assembly has expired and the time has come to elect a new National Assembly. There are 120 seats available in the National Assembly and various political parties have begun their campaigns. But currently only two parties have a chance of gaining a majority and thus forming a new government. Which one shall prevail?"
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  40
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -2  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547014 } # Milan Grol
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+}
+
+action_b = {
+ai_chance =  60
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -3 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { trigger = { minister = 547059 } type = headofstate which = 547059 } # Aleksandar II
+command = { trigger = { NOT = { minister = 547059 } } type = headofstate which = 547041 } # Petar II
+command = { type = headofgovernment which = 547069 } # Nikola Uzunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547004 } # Milan Stojadinovic
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The King shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { trigger = { minister = 547060 } type = headofstate which = 547060 } # Aleksander II
+command = { trigger = { NOT = { minister = 547060 } } type = headofstate which = 547042 } # Petar II
+command = { type = headofgovernment which = 547062 } #Dusan Simovic
+command = { type = foreignminister which =  547015 } # Bogoljub Jevtic
+command = { type = armamentminister which = 547081 } # Svetislav Milosavljevic
+command = { type = ministerofsecurity which = 547076 } # Milan Srskic
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = clrflag which = SER_CONMON }
+}
+}
+
+
+event = {
+id = 92046
+random = no
+country = SER
+style = 2
+save_date = yes
+
+trigger = {
+flag = SER_REP
+event = { id = 92044 days = 1480 }
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+}
+
+name = "Parliamentary elections"
+desc = "According to the Constitution, the elections are to be held every four years. Term of the current National Assembly has expired and the time has come to elect a new National Assembly. There are 120 seats in the National Assembly available and various political parties have begun their campaigns. But currently only two parties have chance of gaining majority and thus forming new government. Which one shall prevail ? "
+picture = "rusdumaelect"
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance =  50
+name = "The Democratic Party will bring liberal values to Serbia!"
+command = { type = dissent value = -3  }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547012 } #Jasa Prodanovic
+command = { type = headofgovernment which = 547014 } # Milan Grol
+command = { type = foreignminister which =  547017 } # Milan Grol
+command = { type = armamentminister which = 547067 } # Kosta Kumanudi
+command = { type = ministerofsecurity which = 547028 } # Milorad Draskovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_b = {
+ai_chance =  50
+name = "The People's Radical Party scores a landslide!"
+command = { type = dissent value = -2 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = headofstate which = 547091 } #Milan Stojadinovic
+command = { type = headofgovernment which = 547099 } # Milos Trifunovic
+command = { type = foreignminister which =  547018 } # Momcilo Nincic
+command = { type = armamentminister which = 547080 } # Ninko Peric
+command = { type = ministerofsecurity which = 547027 } # Bozidar Maksimovic
+command = { type = set_domestic which = free_market value = 5 }
+}
+
+action_c = {
+ai_chance =  1
+name = "The Army shall put an end to this chaotic democracy"
+command = { type = dissent value = 15 }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 547043 } #Draza Mihajlovic
+command = { type = headofgovernment which = 547062 } #Dusan Simovic
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = clrflag which = SER_REP }
+}
+}
+
+
+event = {
+id = 92047
+random = no
+country = SER
+style = 2
+
+trigger = {
+NOT = {
+ispuppet = SER
+}
+}
+
+name = "Foreign policy"
+desc = "Our regime is established, and we can now begin to consider our stance with regard to the rest of the world. We can once again try to pursue the Greater Serbia policy - to enlarge Serbia with territories containing Serbian populations, which is greatly popular in political and military circles, or we might try to create a federation of the Southern Slavic nation under the leadership of Serbia."
+picture = "balkanpenins"
+
+date = { day = 10 month = february year = 1937 }
+offset = 4
+deathdate = { day = 15 month = april year = 1937 }
+
+action_a = {
+ai_chance = 0
+name = "Isolationism will protect Serbia"
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = dissent value = 10 }
+command = { type = belligerence which = SER value = -10  }
+command = { type = relation which = GER value = 20 }
+command = { type = relation which = BUL value = 20 }
+command = { type = relation which = AUS value = 20 }
+command = { type = relation which = HUN value = 20 }
+command = { type = relation which = CRO value = 20 }
+command = { type = relation which = BOS value = 20 }
+command = { type = relation which = ROM value = -20 }
+command = { type = relation which = URU value = -20 }
+command = { type = relation which = GRE value = -20 }
+command = { type = sleepevent which = 90900 }
+command = { type = sleepevent which = 901166 }
+command = { type = sleepevent which = 901171 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Our aim is Greater Serbia"
+command = { type = set_domestic which = interventionism value = 6 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = belligerence which = SER value = 4  }
+command = { type = dissent value = -5 }
+command = { type = relation which = GER value = -5 }
+command = { type = relation which = BUL value = -20 }
+command = { type = relation which = AUS value = -20 }
+command = { type = relation which = HUN value = -20 }
+command = { type = relation which = CRO value = -20 }
+command = { type = relation which = BOS value = -20 }
+command = { type = relation which = ROM value = 20 }
+command = { type = relation which = URU value = 20 }
+command = { type = relation which = GRE value = 20 }
+command = { type = addclaim which = 357 }
+command = { type = addclaim which = 353 }
+command = { type = addclaim which = 358 }
+command = { type = addclaim which = 355 }
+command = { type = addclaim which = 354 }
+command = { type = addclaim which = 356 }
+command = { type = addclaim which = 341 }
+command = { type = addclaim which = 336 }
+command = { type = addclaim which = 332 }
+command = { type = addclaim which = 335 }
+command = { type = addclaim which = 343 }
+command = { type = addclaim which = 350 }
+command = { type = addclaim which = 351 }
+command = { type = addclaim which = 337 }
+command = { type = addclaim which = 331 }
+command = { type = addclaim which = 328 }
+command = { type = addclaim which = 333 }
+command = { type = addclaim which = 334 }
+command = { type = setflag which = SER_GRS }
+}
+
+action_c = {
+ai_chance = 30
+name = "Our aim is the Slavic Federation"
+command = { type = set_domestic which = interventionism value = 9 }
+command = { type = domestic which = defense_lobby value = 3 }
+command = { type = dissent value = 5 }
+command = { type = belligerence which = SER value = 5  }
+command = { type = relation which = GER value = -5 }
+command = { type = relation which = BUL value = -30 }
+command = { type = relation which = AUS value = -30 }
+command = { type = relation which = HUN value = -30 }
+command = { type = relation which = CRO value = -10 }
+command = { type = relation which = BOS value = -10 }
+command = { type = relation which = ROM value = 20 }
+command = { type = relation which = URU value = 20 }
+command = { type = relation which = GRE value = 20 }
+command = { type = addclaim which = 357 }
+command = { type = addclaim which = 353 }
+command = { type = addclaim which = 358 }
+command = { type = addclaim which = 355 }
+command = { type = addclaim which = 354 }
+command = { type = addclaim which = 356 }
+command = { type = addclaim which = 337 }
+command = { type = addclaim which = 344 }
+command = { type = addclaim which = 345 }
+command = { type = addclaim which = 352 }
+command = { type = addclaim which = 347 }
+command = { type = addclaim which = 350 }
+command = { type = addclaim which = 351 }
+command = { type = addclaim which = 343 }
+command = { type = addclaim which = 406 }
+command = { type = addclaim which = 341 }
+command = { type = addclaim which = 336 }
+command = { type = addclaim which = 332 }
+command = { type = addclaim which = 335 }
+command = { type = addclaim which = 331 }
+command = { type = addclaim which = 328 }
+command = { type = addclaim which = 333 }
+command = { type = addclaim which = 334 }
+command = { type = addclaim which = 346 }
+command = { type = addclaim which = 349 }
+command = { type = addclaim which = 403 }
+command = { type = addclaim which = 404 }
+command = { type = setflag which = SER_YUG }
+}
+}
+
+event = {
+id = 92048
+random = no
+country = SER
+style = 2
+
+name = "Status of the Orthodox Church"
+desc = "The Orthodox Church, under the leadership of the vocal Patriarch Varnava Rosic, is demanding a reclarification of its legal status in the Serbian state.  He wants a constitutional ammendment passed on the issue of the national religion."
+picture = "serbiaort"
+
+date = { day = 4 month = august year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+ai_chance = 70
+name = "Orthodoxy is our State Religion"
+command = { type = dissent value = -5 }
+command = { type = relation which = RUS value = 30 }
+command = { type = relation which = ROM value = 30 }
+command = { type = relation which = URU value = 30 }
+command = { type = relation which = MTN value = 30 }
+command = { type = relation which = GRE value = 30 }
+command = { type = relation which = UKR value = 30 }
+command = { type = relation which = MTN value = 30 }
+command = { type = relation which = BUL value = 10 }
+}
+
+action_b = {
+ai_chance = 30
+name = "We are modern and secular"
+command = { type = dissent value = 3  }
+command = { type = relation which = RUS value = -20 }
+command = { type = relation which = ROM value = -20 }
+command = { type = relation which = URU value = -20 }
+command = { type = relation which = MTN value = -20 }
+command = { type = relation which = GRE value = -20 }
+command = { type = relation which = UKR value = -20 }
+command = { type = relation which = MTN value = -20 }
+command = { type = relation which = BUL value = -10 }
+}
+
+action_c = {
+ai_chance = 0
+name = "The Orthodox Church must have a role in Government!"
+trigger = {
+NOT = {
+government = communist
+government = democratic
+ideology = paternal_autocrat
+}
+}
+command = { type = dissent value = 7  }
+command = { type = domestic which = political_left value = -3 }
+command = { type = headofgovernment which = 547068  }
+command = { type = relation which = RUS value = 40 }
+command = { type = relation which = ROM value = 40 }
+command = { type = relation which = URU value = 40 }
+command = { type = relation which = MTN value = 40 }
+command = { type = relation which = GRE value = 40 }
+command = { type = relation which = UKR value = 40 }
+command = { type = relation which = MTN value = 40 }
+command = { type = relation which = BUL value = 15 }
+}
+}
+
+
+event = {
+id = 92049
+random = no
+country = SER
+
+trigger = {
+control = { province = 352 data = SER }
+control = { province = 355 data = SER }
+control = { province = 338 data = SER }
+flag = SER_YUG
+
+NOT = {
+atwar = SER
+exists = CRO
+exists = BOS
+exists = YUG
+}
+}
+
+name = "Federation of the Southern Slavic Nations?"
+desc = "Serbia has succesfully prevailed against everyone who was trying to prevent the unification of the western Balkans under our banner. We can now create Yugoslavia to finally unite the Slavic nations of the Balkan peninsula and bring peace to this troubled region!"
+style = 2
+picture = "balkanpenins"
+
+date = { day = 0 month = january year = 1937 }
+offset = 80
+deathdate = { day = 29 month = december year = 1970 }
+
+action_a = {
+ai_chance = 99
+name = "Create Kingdom of Serbs, Croats and Slovenes!"
+command = { type = dissent value = 3 }
+
+command = {
+trigger = {
+OR = {
+headofstate = 547041
+headofstate = 547042
+headofstate = 547052
+headofstate = 547053
+headofstate = 547057
+headofstate = 547058
+headofstate = 547059
+headofstate = 547060
+}
+}
+type = setflag which = SER_YKI
+}
+command = { trigger = { flag = SER_YKI } type = name where = SER which = SER_YUGKIN_NAME }
+command = { trigger = { flag = SER_YKI } type = flag_ext where = SER which = "_fedkin" }
+command = { type = clrflag which = SER_YKI }
+command = {
+trigger = {
+NOT = {
+headofstate = 547041
+headofstate = 547042
+headofstate = 547052
+headofstate = 547053
+headofstate = 547057
+headofstate = 547058
+headofstate = 547059
+headofstate = 547060
+}
+}
+type = name where = SER which = SER_YUGREP_NAME }
+command = {
+trigger = {
+NOT = {
+headofstate = 547041
+headofstate = 547042
+headofstate = 547052
+headofstate = 547053
+headofstate = 547057
+headofstate = 547058
+headofstate = 547059
+headofstate = 547060
+}
+}
+type = flag_ext where = SER which = "_fed" }
+command = { type = waketeam which = 15816 }
+command = { type = waketeam which = 15817 }
+command = { type = waketeam which = 15818 }
+command = { type = waketeam which = 15819 }
+command = { type = waketeam which = 15820 }
+command = { type = waketeam which = 15821 }
+command = { type = waketeam which = 15822 }
+command = { type = waketeam which = 15823 }
+
+command = { type = wakeleader which = 547047 }
+command = { type = wakeleader which = 547048 }
+command = { type = wakeleader which = 547049 }
+command = { type = wakeleader which = 547050 }
+command = { type = wakeleader which = 547051 }
+command = { type = waketeam which = 15811 }
+command = { type = waketeam which = 15812 }
+command = { type = waketeam which = 15813 }
+command = { type = addcore  which =  357 }
+command = { type = addcore  which =  353 }
+command = { type = addcore  which =  358 }
+command = { type = addcore  which =  355 }
+command = { type = addcore  which =  354 }
+command = { type = addcore  which =  356 }
+command = { type = addcore  which =  332 }
+command = { type = addcore  which =  335 }
+command = { type = addcore  which =  343 }
+command = { type = addcore  which =  350 }
+command = { type = addcore  which =  351 }
+command = { type = addcore  which =  337 }
+command = { type = addcore  which =  336 }
+command = { type = addcore  which =  341 }
+command = { type = addcore  which =  331 }
+command = { type = addcore  which =  333 }
+command = { type = addcore  which =  334 }
+command = { type = addcore  which =  328 }
+command = { type = dissent value = 4 }
+command = { type = industrial_modifier which = total value = 4 }
+command = { trigger = { control = { province = 347 data = SER } } type = province_revoltrisk which = 347 value = -50 }
+command = { trigger = { control = { province = 344 data = SER } } type = province_revoltrisk which = 344 value = -50 }
+command = { trigger = { control = { province = 345 data = SER } } type = province_revoltrisk which = 345 value = -50 }
+command = { trigger = { control = { province = 352 data = SER } } type = province_revoltrisk which = 352 value = -50 }
+command = { trigger = { control = { province = 346 data = SER } } type = province_revoltrisk which = 346 value = -50 }
+command = { trigger = { control = { province = 349 data = SER } } type = province_revoltrisk which = 349 value = -50 }
+command = { trigger = { control = { province = 403 data = SER } } type = province_revoltrisk which = 403 value = -50 }
+command = { trigger = { control = { province = 404 data = SER } } type = province_revoltrisk which = 404 value = -50 }
+command = { trigger = { control = { province = 406 data = SER } } type = province_revoltrisk which = 406 value = -50 }
+}
+
+action_c = {
+ai_chance = 1
+name = "We are not ready for this"
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 92050
+country = SER
+style = 2
+picture = "Peace_conference"
+decision_picture = "decision_peace_conference"
+
+decision = {
+NOT = { 
+war = { country = SER country = MTN } 
+}
+exists = MTN
+NOT = {
+atwar = SER
+exists = YUG
+ispuppet = SER
+ispuppet = MTN
+}
+OR = {
+flag = SER_YUG
+flag = SER_GRS
+}
+control = { province = 338 data = SER }
+control = { province = 332 data = MTN }
+}
+
+decision_trigger = {
+}
+
+trigger = {
+NOT = { 
+war = { country = SER country = MTN } 
+}
+exists = MTN
+NOT = {
+atwar = SER
+exists = YUG
+ispuppet = SER
+ispuppet = MTN
+}
+OR = {
+flag = SER_YUG
+flag = SER_GRS
+}
+control = { province = 338 data = SER }
+control = { province = 332 data = MTN }
+}
+
+
+name = "Status of Montenegro"
+desc = "Now with our state finally stabilized, we must choose our stance towards the independent state of Montenegro. We can either try to bring them into the fold using the direct threat of military power or via more a subtle way of negotiations. Another option is to create an independent military bloc with Montenegro. What shall we do?"
+
+date = { day = 0 month = january year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+ai_chance = 20
+name = "War will resolve this!"
+trigger = {
+NOT = { 
+puppet = { country = MTN country = SER  }
+alliance = { country = SER country = MTN } 
+}
+}
+command = { type = belligerence which = SER value = 10  }
+command = { type = war which = MTN }
+command = { type = dissent value = 4 }
+}
+
+action = {
+ai_chance = 25
+name = "Threaten them with force!"
+trigger = {
+NOT = { 
+puppet = { country = MTN country = SER  }
+alliance = { country = SER country = MTN } 
+}
+}
+command = { type = belligerence which = SER value = 5  }
+command = { type = dissent value = 1 }
+command = { type = trigger which = 92051 }
+}
+
+action = {
+ai_chance = 25
+name = "Negotiate with them"
+trigger = {
+NOT = { 
+alliance = { country = AUS country = MTN } 
+}
+}
+command = { type = trigger which = 92054 }
+}
+
+action = {
+ai_chance = 25
+trigger = {
+NOT = { 
+alliance = { country = SER country = MTN }
+alliance = { country = MTN country = OTT }
+alliance = { country = MTN country = BUL }
+alliance = { country = MTN country = FRA } 
+}
+}
+name = "Offer an alliance to Montenegro"
+command = { type = trigger which = 92057 }
+command = { type = relation which = MTN value = 20 }
+}
+
+action = {
+ai_chance = 1
+name = "We don't care about Montenegro"
+command = { type = belligerence which = SER value = -3  }
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 92051
+country = MTN
+style = 2
+picture = "Peace_conference"
+
+name = "Serbian demands"
+desc = "The increasingly powerful Serbian state has once again set its sights upon the shores of the Adriatic Sea. Now Serbia issued a series of demands towards our state which, if accepted, will result in our incorporation into Serbia. However any effort to resist the powerful Serbian state without international backing is futile from the start..."
+
+action_a = {
+ai_chance = 30
+name = "Accept their terms"
+command = { type = trigger which = 92052 }
+command = { type = dissent value = 4 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Never!"
+command = { type = dissent value = -2 }
+command = { type = relation which = SER value = -20 }
+command = { trigger = { alliance = { country = SER country = MTN } } type = leave_alliance when = 1 }
+command = { type = trigger which = 92053 }
+}
+}
+
+event = {
+id = 92052
+country = SER
+style = 2
+picture = "TH_ChetCit"
+
+name = "Montenegrin submission"
+desc = "Seeing no other options, the Montenegrin leaders accepted our demands"
+
+action = {
+name = "Hooray!"
+command = { type = dissent value = 2 }
+command = { type = inherit which = MTN  }
+command = { type = addclaim which = 332  }
+command = { type = addclaim which = 335  }
+}
+}
+
+event = {
+id = 92053
+country = SER
+style = 2
+picture = "Army"
+
+name = "Montenegrian resistance"
+desc = "The mad Montenegrin leaders rejected our rightful demands. How shall we react to this insolence?"
+
+action_a = {
+ai_chance = 85
+name = "War will solve this!"
+command = { type = dissent value = -1 }
+command = { type = war which = MTN }
+command = { type = addclaim which = 332  }
+command = { type = addclaim which = 335  }
+}
+
+action_b = {
+ai_chance = 15
+name = "Back down!"
+command = { type = dissent value = 2 }
+command = { type = relation which = MTN value = 20 }
+}
+}
+
+event = {
+id = 92054
+country = MTN
+style = 2
+picture = "Peace_conference"
+
+name = "Negotiations with Serbs"
+desc = "The increasingly powerful Serbian state has once again set its sights upon the shores of the Adriatic Sea. Serbia displayed willingness to negotiate the terms of our gradual integration into Serbia. How shall we react?"
+
+action_a = {
+ai_chance = 70
+name = "Agree, but Danilo must rule Serbia"
+trigger = {
+OR = {
+headofstate = 544011
+headofstate = 544036
+}
+}
+command = { trigger = { alliance = { country = SER country = MTN } } type = leave_alliance }
+command = { type = trigger which = 92055 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Agree, but Mihailo must rule Serbia"
+trigger = {
+OR = {
+headofstate = 544035
+headofstate = 544037
+}
+}
+command = { trigger = { alliance = { country = SER country = MTN } } type = leave_alliance }
+command = { type = trigger which = 92055 }
+}
+
+action_c = {
+ai_chance = 30
+name = "Agree, but demand concessions!"
+command = { type = relation which = SER value = -5 }
+command = { trigger = { alliance = { country = SER country = MTN } } type = leave_alliance }
+command = { type = trigger which = 92056 }
+}
+
+action_d = {
+ai_chance = 30
+name = "Never!"
+command = { type = relation which = SER value = -40 }
+command = { trigger = { alliance = { country = SER country = MTN } } type = leave_alliance }
+command = { type = trigger which = 92053 }
+}
+}
+
+event = {
+id = 92055
+random = no
+country = SER
+style = 2
+
+name = "Montenegrian demands!"
+desc = "Montenegro has decided to accept our offer, expressing willingness to allow the incorporation of Montenegro into our motherland if a member of the Montenegrin royal family is crowned as the king of Serbia. How shall we react?"
+picture = "Peace_conference"
+
+action_a = {
+ai_chance = 30
+name = "Accept the demand!"
+trigger = {
+NOT = {
+headofstate = 547059
+headofstate = 547060
+headofstate = 547041
+headofstate = 547042
+}
+}
+command = { type = dissent value = 5 }
+command = { trigger = { minister = 547052 government = democratic } type = headofstate which = 547052  }
+command = { trigger = { minister = 547052 government = fascist } type = headofstate which = 547057  }
+command = { trigger = { minister = 547053 government = democratic } type = headofstate which = 547053  }
+command = { trigger = { minister = 547058 government = fascist } type = headofstate which = 547058  }
+command = { type = inherit which = MTN }
+command = { type = clrflag  which = SER_REP }
+command = { trigger = { government = democratic } type = setflag which = SER_CONMON }
+command = { type = name where = SER which = SER_KIN_NAME }
+command = { type = addcore which = 332  }
+command = { type = addcore which = 335  }
+}
+
+action_b = {
+ai_chance = 10
+name = "What is this lunacy?  Send in the troops"
+command = { type = war which = MTN }
+command = { type = relation which = MTN value = -100 }
+command = { type = relation which = CRO value = -50 }
+command = { type = belligerence which = SER  value = 5 }
+}
+
+action_c = {
+ai_chance = 20
+name = "Refuse the offer"
+command = { type = relation which = MTN value = -40 }
+}
+}
+
+event = {
+id = 92056
+random = no
+country = SER
+style = 2
+
+name = "Montenegrian demands!"
+desc = "Montenegro has decided to accept our offer, expressing willingness to allow the incorporation of Montenegro into our motherland, in return for several concessions meant as a way to protect Montenegrins from gradual assimilation. How shall we react?"
+picture = "Peace_conference"
+
+action_a = {
+ai_chance = 30
+name = "Accept the demands!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = inherit which = MTN }
+command = { type = addcore which = 332  }
+command = { type = addcore which = 335  }
+}
+
+action_b = {
+ai_chance = 10
+name = "What is this lunacy?  Send in the troops"
+command = { type = war which = MTN }
+command = { type = relation which = MTN value = -100 }
+command = { type = relation which = CRO value = -50 }
+command = { type = belligerence which = SER  value = 5 }
+}
+
+action_c = {
+ai_chance = 20
+name = "Refuse the offer"
+command = { type = relation which = MTN value = -40 }
+}
+}
+
+
+event = {
+id = 92057
+random = no
+country = MTN
+style = 2
+picture = "Peace_conference"
+
+name = "Serbia offers us an alliance!"
+desc = "The Serbs have sent word that they consider our two states to be alike, and that we should join their bloc to promote our mutual interests.  What should we do?"
+
+action_a = {
+ai_chance = 80
+name = "Of course, all Slavs together!"
+command = { type = relation which = SER value = 200 }
+command = { type = trigger which = 92058 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We cannot trust the treacherous Serbs!"
+command = { type = relation which = SER value = -200 }
+command = { type = trigger which = 92059  }
+}
+}
+
+event = {
+id = 92058
+random = no
+country = SER
+style = 2
+picture = "TH_ChetCit"
+
+name = "A new power in the east!"
+desc = "The government of Montenegro have accepted our offer and joined our bloc. With such a powerful alliance emerging on the Balkan peninsula the future of our state looks promising..."
+
+action_a = {
+name = "Excellent!"
+command = { type = alliance which = MTN }
+command = { type = relation which = MTN value = 200 }
+}
+}
+
+event = {
+id = 92059
+random = no
+country = SER
+style = 2
+picture = "Peace_conference"
+
+name = "Montenegro turned us down!"
+desc = "In their arrogance, the government of Montenegro turned down our offer, saying that the ideological and national rift between us is too great for an alliance to form. How shall we react to this humiliation?"
+
+action_a = {
+ai_chance = 95
+name = "They will pay for their foolishness!"
+command = { type = war which = MTN }
+}
+
+action_d = {
+ai_chance = 5
+name = "Let them rot"
+command = { type = dissent value = 5 }
+command = { type = relation which = MTN value = 10 }
+}
+}
+
+
+
+event = {
+id = 92060
+random = no
+country = SER
+style = 2
+
+trigger = {
+random = 20
+control = { province = 355 data = SER }
+owned = { province = 355 data = SER }
+NOT = {
+exists = BOS
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Bosnian minority is causing problems!"
+desc = "Yesterday, various politicians and major Islamic religious figures have ignited strikes and riots through parts of Bosnia and Hercegovina. Production in cities, factories, and oil refineries has been stopped, and school pupils are on hunger strike. The leaders of this city-wide strike have annouced that they will fight for an independent Bosnia, no matter what repression they will meet."
+picture = "Politics6"
+
+action_a = {
+ai_chance = 30
+name = "Negotiate"
+command = { type = money value = -5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = supplies value = -500 }
+command = { type = setflag which = BOS_NEG }
+}
+
+action_b ={
+ai_chance = 70
+name = "Send the army to Sarajevo"
+command = { type = dissent value = 5 }
+command = { type = removecore which = 355 }
+command = { type = province_revoltrisk which = 355 value = 80 }
+command = { type = addclaim   which =  355  }
+command = { type = setflag which = BOS_UPR }
+}
+}
+
+
+event = {
+id = 92061
+random = no
+country = SER
+style = 2
+
+trigger = {
+flag = BOS_UPR
+control = { province = 355 data = SER }
+owned = { province = 355 data = SER }
+NOT = {
+exists = BOS
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Bosniak minority supressed!"
+desc = "After a long and brutal contest in the mountainous parts of Bosnia and Hercegovina we have finally subdued this troublesome minority. At least for now..."
+picture = "militaryparade1"
+
+action_a = {
+name = "Bosniaks will trouble us no more!"
+command = { type = province_revoltrisk which = 355 value = 0 }
+command = { type = addcore   which =  355  }
+command = { type = dissent value = -5 }
+command = { type = clrflag which = BOS_UPR }
+}
+}
+
+event = {
+id = 92062
+random = no
+country = SER
+style = 2
+
+trigger = {
+flag = BOS_NEG
+control = { province = 355 data = SER }
+owned = { province = 355 data = SER }
+NOT = {
+exists = BOS
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Negotiations with Bosniak leaders"
+desc = "In effort to prevent potential conflict which could disrupt the stability of the newly-acquired territories of Bosnia-Hercegovina we have entered negotiations with various Bosniak leaders. What shall we offer them?"
+picture = "Politics6"
+
+action_a = {
+ai_chance = 50
+name = "Offer them religious and cultural autonomy"
+command = { type = domestic which = freedom value = 2 }
+command = { type = dissent value = 3 }
+command = { type = money value = -20 }
+command = { type = clrflag which = BOS_NEG }
+}
+
+action_b = {
+ai_chance = 50
+name = "Demand the end of the strikes and riots instead!"
+command = { type = dissent value = 5 }
+command = { type = removecore which = 355 }
+command = { type = province_revoltrisk which = 355 value = 80 }
+command = { type = addclaim   which =  355  }
+command = { type = clrflag which = BOS_NEG }
+command = { type = setflag which = BOS_UPR }
+}
+}
+
+event = {
+id = 92063
+persistent = yes
+country = SER
+style = 2
+picture = "vidovdanser"
+
+trigger = {
+day = 27
+month = 5
+NOT = {
+day = 28
+}
+NOT = {
+month = 6
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Vidovdan"
+desc = "Vidovdan represents the day to commemorate Saint Prince Lazar and the Serbian holy martyrs who gave their lives to defend the true faith during the epic Battle of Kosovo against the Ottoman Empire on June 28, 1389. It is regarded as a National Holiday in Serbia."
+
+action_a = {
+name = "Serbia will never forget its heroes!"
+command = { type = dissent value = -1 }
+}
+}
+
+
+
+#### Colonization of Northern Albania
+
+event = {
+id = 92064
+save_date = yes
+random = no
+country = SER
+style = 2
+
+decision = {
+NOT = {
+exists = ALB
+atwar = SER
+ispuppet = SER
+}
+}
+
+decision_trigger = {
+owned = { province = 361 data = SER }
+control = { province = 361 data = SER }
+}
+
+trigger = {
+owned = { province = 361 data = SER }
+control = { province = 361 data = SER }
+NOT = {
+exists = ALB
+atwar = SER
+ispuppet = SER
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Start the colonization of Northern Albania?"
+desc = "Now that we have achieved our historical dream of liberating Skadar,Drac and gaining access to the Adriatic sea,we must decide what to do with the Albanian majority which is hostile to us. Majority of military officers as well as right winged parties request direct colonization of this province as a mean to fully integrate it into motherland. However doing so would significantly anger local Albanian population and would request permanent military presence for a long time."
+picture = "kolonizacija"
+decision_picture = "decision_kolonizacija"
+
+action_a = {
+name = "Start the colonization,Serbs must become a majority!"
+ai_chance = 90
+command = { type = dissent value = 5 }
+command = { type = province_revoltrisk which = 361 value = 50 }
+command = { type = belligerence which = SER value = 2  }
+command = { type = money value = -10 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = revolt which = 361 }
+}
+
+action_b = {
+name = "Serbs and Albanians should live together as friends."
+ai_chance = 10
+command = { type = dissent value = 4 }
+}
+}
+
+#############
+event = {
+id = 92065
+save_date = yes
+random = no
+country = SER
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+event = { id = 92064 days = 200 }
+owned = { province = 361 data = SER }
+control = { province = 361 data = SER }
+NOT = { exists = ALB
+atwar = SER
+ispuppet = SER
+}
+
+}
+
+name = "Colonists in Skadar."
+desc = "After a few months The Royal Office of Immigration and Settlement has reported the first results of our colonization program. The area that attracted the most colonists appears to be Skadar. "
+picture = "kolonizacija"
+
+action_a = {
+name = "Good!"
+command = { type = money value = -10 }
+command = { type = dissent value = 3 }
+command = { type = revolt which = 361 }
+}
+}
+###################
+event = {
+id = 92066
+random = no
+country = SER
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+trigger = {
+event = { id = 92065 days = 700 }
+owned = { province = 361 data = SER }
+control = { province = 361 data = SER }
+NOT = { exists = ALB
+atwar = SER
+ispuppet = SER
+}
+}
+
+name = "Skadar is Serbian !"
+desc = "After years since the start of our colonization program, the number of ethnic Serbs in Skadar has increased sharply.We are no longer a minority here!"
+picture = "kolonizacija"
+
+action_a = {
+name = "Skadar je ponovo Srpski!"
+command = { type = money value = -10 }
+command = { type = dissent value = 5 }
+command = { type = addcore which = 361 } #Shkoder
+command = { type = province_revoltrisk which = 361 value = -50 }
+command = { type = construct which = infrastructure where = 361 value = 10 }
+}
+}
+####################
+event = {
+id = 92067
+save_date = yes
+random = no
+country = SER
+style = 2
+
+trigger = {
+owned = { province = 359 data = SER }
+control = { province = 359 data = SER }
+event = 92066
+NOT = {
+exists = ALB
+atwar = SER
+ispuppet = SER
+}
+}
+
+name = "Expand the colonization Tirana?"
+desc = "With Skadar becoming Serbian in majority,we can move on to the heart of Albania itself.This time though,we will face even more hostilities from the locals,since our aggressive colonization united them against us.What should we do ?"
+picture = "kolonizacija"
+
+date = { day = 0 month = july year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Tirana will also be Serbian!"
+ai_chance = 60
+command = { type = dissent value = 10 }
+command = { type = belligerence which = SER value = 5  }
+command = { type = province_revoltrisk which = 359 value = 90 }
+command = { type = money value = -50 }
+command = { type = supplies value = -200 }
+command = { type = manpowerpool value = -10 }
+command = { type = revolt which = 359 }
+}
+
+action_b = {
+name = "We already had enough,leave the Albanians alone"
+ai_chance = 40
+command = { type = dissent value = 5 }
+}
+}
+####################
+event = {
+id = 92068
+random = no
+country = SER
+style = 2
+
+trigger = {
+event = { id = 92067 days = 2920 }
+owned = { province = 359 data = SER }
+control = { province = 359 data = SER }
+NOT = {
+exists = ALB
+}
+}
+
+name = "Tirana is Serbian !"
+desc = "After years since the start of our colonization program, the number of ethnic Serbs in Tirana has increased sharply.We are no longer a minority here!"
+picture = "kolonizacija"
+
+date = { day = 0 month = july year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Tirana je Srpska!"
+command = { type = money value = -10 }
+command = { type = dissent value = 5 }
+command = { type = addcore which = 359 } #Tirana
+command = { type = province_revoltrisk which = 359 value = -50 }
+command = { type = construct which = infrastructure where = 359 value = 10 }
+}
+}
+
+
+
+######################
+#new economic policy-every resemblance with the NEP is unintentional :p -
+########################
+event = {
+id = 92069
+random = no
+country = SER
+save_date = yes
+style = 2
+
+decision = {
+NOT = { 
+atwar = SER 
+}
+}
+
+decision_trigger = {
+supplies = 800
+money = 100
+metal = 1000
+}
+
+trigger = {
+NOT = { 
+atwar = SER 
+}
+}
+
+name = "The new economic policy"
+desc = "Now that we have decided our new political course,it's time to concentrate on our fledgling economy.As a nation of peasants,we can choose to improve and modernize our agriculture.Or we can push for a modern industrial complex in order to challange other advanced nations."
+picture = "ekonomija"
+decision_picture = "decision_selo"
+
+date = { day = 0 month = march year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1942 }
+
+action_a = {
+name = "Farming is good for us,support our peasants"
+ai_chance = 50
+command = { type = local_setflag which = SER_agriculture }
+command = { type = gain_tech which = 5030 }
+command = { type = gain_tech which = 5040 }
+command = { type = metalpool value = -1000 }
+command = { type = energypool value = -1200 }
+command = { type = supplies value = -1000 }
+command = { type = money value = -120 }
+}
+
+action_b = {
+name = "Modern industry is the way of the future"
+ai_chance = 50
+command = { type = local_setflag which = SER_industry }
+command = { type = gain_tech which = 5060 }
+command = { type = gain_tech which = 5070 }
+command = { type = metalpool value = -1600 }
+command = { type = energypool value = -2000 }
+command = { type = supplies value = -800 }
+command = { type = money value = -250 }
+}
+}
+
+event = {
+id = 92070
+random = no
+country = SER
+
+trigger = {
+local_flag = SER_agriculture
+event = { id = 92069 days = 540 } #1,5 years
+}
+
+name = "The growth of agriculture."
+desc = "Our efforts are beginning to show results. The state of our Agriculture has improved dramatically,and the whole Serbian economical system is getting benefits from it. "
+style = 2
+picture = "peasants"
+
+date = { day = 0 month = december year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year= 1963 }
+
+action_a = {
+name = "Excellent"
+command = { type = relative_manpower value = 10 }
+command = { type = industrial_modifier which = total value = 3 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 4 }
+command = { type = dissent value = -3 }
+command = { type = local_clrflag which = SER_agriculture }
+}
+}
+
+event = {
+id = 92071
+random = no
+country = SER
+trigger = {
+local_flag = SER_industry
+event = { id = 92069 days = 540 } #1,5 years
+}
+
+name = "The growth of industry."
+desc = "Our efforts are beginning to show results. The state of our industry has improved dramatically,and the whole Serbian economical system is getting benefits from it. "
+style = 2
+picture = "ekonomija"
+
+date = { day = 1 month = december year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year= 1960 }
+
+action_a = {
+name = "Excellent"
+command = { type = add_prov_resource which = -1 value = 7 where = metal }
+command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 5 where = energy }
+command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = dissent value = -2 }
+command = { type = peacetime_ic_mod value = 5 }
+command = { trigger = { event = 92072 } type = local_clrflag which = SER_industry }
+}
+}
+
+event = {
+id = 92072
+random = no
+country = SER
+style = 2
+
+trigger = {
+local_flag = SER_industry
+control = { province = 339 data = SER }
+}
+
+name = "The expansion of the Bor mining complex"
+desc = "As a part of our industrialization program,a new larger pit has been officially opened today at the Bor mining complex. This expansion and modernization of our production capacities will enormously help to support our growing industry."
+picture = "bor"
+
+date = { day = 0 month = december year = 1937 }
+offset = 150
+deathdate = { day = 29 month = december year= 1963 }
+
+action_a = {
+name = "Excellent"
+command = { type = add_prov_resource which = 339 value = 10 where = metal }
+command = { type = add_prov_resource which = 339 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = 339 value = 5 where = energy }
+command = { type = construct which = ic where = 339 value = 2 }
+command = { type = dissent value = -1 }
+command = { trigger = { event = 92071 } type = local_clrflag which = SER_industry }
+}
+}
+
+
+##################
+# Serbian Navy
+##################
+event = {
+id = 92073
+random = no
+country = SER
+save_date = yes
+style = 2
+
+decision = {
+event = 92035
+OR = {
+owned = { province = 332 data = SER }
+owned = { province = 361 data = SER }
+owned = { province = 359 data = SER }
+owned = { province = 343 data = SER }
+owned = { province = 351 data = SER }
+owned = { province = 350 data = SER }
+}
+NOT = { 
+atwar = SER 
+}
+}
+
+decision_trigger = {
+supplies = 800
+money = 100
+metal = 1000
+technology = { country = SER value = 3050 }
+technology = { country = SER value = 3130 }
+}
+
+trigger = {
+OR = {
+owned = { province = 332 data = SER }
+owned = { province = 361 data = SER }
+owned = { province = 359 data = SER }
+owned = { province = 343 data = SER }
+owned = { province = 351 data = SER }
+owned = { province = 350 data = SER }
+}
+NOT = { 
+atwar = SER 
+}
+event = 92035
+}
+
+name = "The birth of the Serbian navy"
+desc = "Now that we have finally gained access to the sea, we need to think about protecting our coast. If we focus our newly gained resources, we will be able to produce destroyers and cruisers, which will form the backbone of our navy."
+picture = "mornarica"
+decision_picture = "decision_mornarica"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We have waited long enough !"
+ai_chance = 75
+command = { type = money value = -100 }
+command = { type = metalpool value = -500 }
+command = { type = belligerence which = SER value = 1 }
+command = { type = relation which = AUS value = -20 }
+command = { type = relation which = U24 value = -20 }
+command = { type = relation which = U25 value = -20 }
+command = { type = relation which = ITA value = -20 }
+command = { type = relation which = RSI value = -20 }
+command = { type = dissent value = 2 }
+}
+
+action_b = {
+name = "This is too expensive !"
+ai_chance = 25
+command = { type = belligerence which = SER value = -1 }
+command = { type = dissent value = -2 }
+command = { type = sleepevent which = 92074 }
+}
+}
+#############
+event = {
+id = 92074
+random = no
+country = SER
+style = 2
+
+trigger = {
+OR = {
+owned = { province = 332 data = SER }
+owned = { province = 361 data = SER }
+owned = { province = 359 data = SER }
+owned = { province = 343 data = SER }
+owned = { province = 351 data = SER }
+owned = { province = 350 data = SER }
+}
+event = { id = 92073 days = 350 }
+}
+
+date = { day = 0 month = june year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The first ships are ready."
+desc = "After a long wait, all preparations are being made for the inauguration of our new vessels. This is the first step on our road to rule the Adriatic sea !"
+picture = "mornarica"
+
+action_a = {
+name = "A useful addition to our forces."
+command = { type = add_division which = "1.Razaracka Flota" value = destroyer when = 5 }
+command = { type = add_division which = "2.Razaracka Flota" value = destroyer when = 5 }
+command = { type = add_division which = "Morava" value = light_cruiser when = 4 }
+command = { type = gain_tech which = 3070 } # destroyer
+command = { type = gain_tech which = 3060 } # destroyer
+command = { type = gain_tech which = 3150 } # light cruiser
+command = { type = gain_tech which = 3160 } # light cruiser
+command = { type = dissent value = -1 }
+command = { type = money value = -20 }
+}
+}
+
+
+
+#############
+event = {
+id = 92075
+random = no
+country = SER
+style = 2
+
+trigger = {
+division_exists = { type = 20001 id = 110 }
+NOT = {
+war = { country = SER country = CAN }
+OR = {
+AND = {
+NOT = {
+government = communist
+government = { type = communist country = CAN }
+}
+}
+AND = {
+government = communist
+government = { type = communist country = CAN }
+}
+}
+}
+OR = {
+owned = { province = 332 data = SER }
+owned = { province = 361 data = SER }
+owned = { province = 359 data = SER }
+owned = { province = 343 data = SER }
+owned = { province = 351 data = SER }
+owned = { province = 350 data = SER }
+}
+event = 92074
+}
+
+date = { day = 0 month = june year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The flag ship of the Serbian navy."
+desc = "Even though our navy started of well,we still lack the means for producing larger ships. In order to reach full capability,our navy requiers a flag ship,which will be the pride of our country. Our naval officers have already made a proposal to buy and overhaul a Canadian old cruiser. What shall we do ?"
+picture = "mornarica"
+
+action_a = {
+name = "Make a bid for the ship and the overhaul"
+ai_chance = 60
+command = { type = trigger which = 92076 }
+}
+
+action_b = {
+name = "Only pay for the ship"
+ai_chance = 40
+command = { type = trigger which = 92077 }
+}
+
+action_c = {
+name = "Our navy is fine as it is"
+ai_chance = 20
+command = { type = dissent value = 1 }
+command = { type = belligerence which = SER value = -1 }
+}
+}
+
+#############
+event = {
+id = 92076
+random = no
+country = CAN
+style = 2
+
+
+name = "Serbians offer to buy an overhauled HMS Lion"
+desc = "Serbia,which is in a process of industrialization and rearmament,has offered to buy and pay for the overhaul of our HMS Lion battlecruiser which will become the flagship of their navy.How shall we respond ?"
+picture = "mornarica"
+
+action_a = {
+name = "We could profit from selling this old junk."
+ai_chance = 80
+command = { type = relation which = SER value = 20 }
+command = { type = remove_division which = 20001 value = 110 } # HMS Lion
+command = { type = metalpool value = 1000 }
+command = { type = energypool value = 800 }
+command = { type = supplies value = 800 }
+command = { type = money value = 120 }
+command = { type = rarematerialspool value = 200 }
+command = { type = event which = 92078 where = SER when = 350  }
+}
+
+action_b = {
+name = "Nay,every ship is needed!"
+ai_chance = 20
+command = { type = relation which = SER value = -50 }
+}
+}
+#############
+event = {
+id = 92077
+random = no
+country = CAN
+style = 2
+
+name = "Serbians offer to buy HMS Lion"
+desc = "Serbia,which is in a process of industrialization and rearmament,has offered to buy our HMS Lion battlecruiser which will become the flagship of their navy.How shall we respond ?"
+picture = "mornarica"
+
+action_a = {
+name = "We could profit from selling this old junk."
+ai_chance = 80
+command = { type = relation which = SER value = 20 }
+command = { type = remove_division which = 20001 value = 110 } # HMS Lion
+command = { type = metalpool value = 500 }
+command = { type = energypool value = 400 }
+command = { type = supplies value = 400 }
+command = { type = money value = 80 }
+command = { type = rarematerialspool value = 100 }
+command = { type = event which = 92079 where = SER when = 10  }
+}
+
+action_b = {
+name = "Nay,every ship is needed!"
+ai_chance = 20
+command = { type = relation which = SER value = -50 }
+}
+}
+#############
+event = {
+id = 92078
+random = no
+country = SER
+style = 2
+
+name = "The Serbian pride arrives !"
+desc = "After a long wait,our new modernized flagship is finally in our waters. We have renamed it to Car Dusan Silni,after our famous emperor.May it bring the same glory and might to our nation,as he did in our past!"
+picture = "mornarica"
+
+action_a = {
+name = "A day for a celebration!"
+command = { type = relation which = CAN value = 20 }
+command = { type = add_division which = "Car Dusan Silni" value = battlecruiser when = 2 }
+command = { type = metalpool value = -1000 }
+command = { type = energypool value = -800 }
+command = { type = supplies value = -800 }
+command = { type = money value = -120 }
+command = { type = rarematerialspool value = -200 }
+command = { type = dissent value = -1 }
+command = { type = belligerence which = SER value = 1 }
+}
+}
+#############
+event = {
+id = 92079
+random = no
+country = SER
+
+name = "The Serbian pride arrives !"
+desc = "After a long wait,our new flagship is finally in our waters. We have renamed it to Car Dusan Silni,after our famous emperor.May it bring the same glory and might to our nation,as he did in our past!"
+style = 2
+picture = "mornarica"
+
+action_a = {
+name = "A day for a celebration!"
+command = { type = relation which = CAN value = 20 }
+command = { type = add_division which = "Car Dusan Silni" value = battlecruiser when = 0 }
+command = { type = metalpool value = -500 }
+command = { type = energypool value = -400 }
+command = { type = supplies value = -400 }
+command = { type = money value = -80 }
+command = { type = rarematerialspool value = -100 }
+command = { type = dissent value = -1 }
+command = { type = belligerence which = SER value = 1 }
+}
+}
+
+##################
+# Agrarian reform
+##################
+event = {
+id = 92080
+random = no
+country = SER
+save_date = yes
+style = 2
+
+decision = {
+core = { province = 355 data = SER }
+owned = { province = 355 data = SER }
+owned = { province = 354 data = SER }
+owned = { province = 356 data = SER }
+owned = { province = 358 data = SER }
+owned = { province = 353 data = SER }
+owned = { province = 357 data = SER }
+NOT = {
+atwar = SER
+flag = agreform # set by event in Bosnia.txt
+}
+}
+
+decision_trigger = {
+money = 300
+}
+
+trigger = {
+
+owned = { province = 355 data = SER }
+owned = { province = 354 data = SER }
+owned = { province = 356 data = SER }
+owned = { province = 358 data = SER }
+owned = { province = 353 data = SER }
+owned = { province = 357 data = SER }
+NOT = {
+atwar = SER
+flag = agreform
+}
+core = { province = 355 data = SER }
+}
+
+
+name = "The agrarian reform in Bosnia"
+desc = "3500657desc"
+picture = "agreforma"
+decision_picture = "decision_new_deal"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Start with the reform at once!"
+ai_chance = 75
+command = { type = money value = -300 }
+command = { type = province_revoltrisk which = 354 value = 10 }
+command = { type = province_revoltrisk which = 355 value = 10 }
+command = { type = province_revoltrisk which = 356 value = 10 }
+command = { type = province_revoltrisk which = 353 value = 10 }
+command = { type = province_revoltrisk which = 358 value = 10 }
+command = { type = province_revoltrisk which = 357 value = 10 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = dissent value = 4 }
+command = { type = setflag which = agreform }
+command = { type = sleepevent which = 9120000 } # events in Bosnia.txt
+command = { type = sleepevent which = 9120022 }
+command = { type = sleepevent which = 9120023 }
+command = { type = sleepevent which = 9120024 }
+command = { type = sleepevent which = 9120025 }
+command = { type = sleepevent which = 9120026 }
+}
+
+action_b = {
+name = "We must not upset the Muslim elite."
+ai_chance = 25
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 6 }
+command = { type = money value = 100 }
+}
+}
+
+###############
+event = {
+id = 92081
+random = no
+country = SER
+style = 2
+
+trigger = {
+flag = agreform
+owned = { province = 355 data = SER }
+owned = { province = 354 data = SER }
+owned = { province = 356 data = SER }
+owned = { province = 358 data = SER }
+owned = { province = 353 data = SER }
+owned = { province = 357 data = SER }
+NOT = { atwar = SER }
+OR = {
+event = { id = 92080 days = 660 } #2 years
+event = { id = 9120003 days = 660 } #2 years # in Bosnia.txt
+event = { id = 9120022 days = 660 } #2 years
+event = { id = 9120023 days = 660 } #2 years
+event = { id = 9120024 days = 660 } #2 years
+event = { id = 9120025 days = 660 } #2 years
+event = { id = 9120026 days = 660 } #2 years
+}
+}
+
+name = "Positive effects of the agrarian reform"
+desc = "Our decision to implement the reform has proven correct in the long term. The agrarian system is much more productive and profitable,and this reflects positivly on our entire economy."
+picture = "agreforma"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We knew it!"
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = construct which = ic where = 355 value = 1 }
+command = { type = dissent value = -3 }
+command = { type = clrflag which = agreform }
+command = { type = relative_manpower value = 10 }
+command = { type = manpowerpool value = 25 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = province_revoltrisk which = 354 value = -10 }
+command = { type = province_revoltrisk which = 355 value = -10 }
+command = { type = province_revoltrisk which = 356 value = -10 }
+command = { type = province_revoltrisk which = 353 value = -10 }
+command = { type = province_revoltrisk which = 358 value = -10 }
+command = { type = province_revoltrisk which = 357 value = -10 }
+command = { type = sleepevent which = 9120009 }
+command = { type = sleepevent which = 9120017 }
+command = { type = sleepevent which = 9120018 }
+command = { type = sleepevent which = 9120019 }
+command = { type = sleepevent which = 9120020 }
+command = { type = sleepevent which = 9120021 }
+}
+}
+
+#########################################################################
+#  New parliament building
+#########################################################################
+event = {
+id = 92082
+random = no
+country = SER
+
+
+name = "The oppening of the new parliament building"
+desc = "Construction on the building started in 1907, with the cornerstone being laid by King Peter I. Weltkrieg delayed the construction, and the original plans to the building were lost,but the reconstruction of the plans were made by Pavle Ilkic. The interior was designed by Nikolaj Krasnov in the manner of academic traditionalism. The construction of the building was completed in 1936 and the first session in the new edifice was held on October 20 of the same year."
+style = 2
+picture = "domj"
+
+date = { day = 19 month = october year = 1936 }
+
+
+action = {
+name = "Welcome"
+command = { trigger = { ai = no } type = money value = -50 }
+command = { type = dissent value = -1 }
+}
+}
+#########################################################################
+#  Monument to the Unknown Hero
+#########################################################################
+event = {
+id = 92083
+random = no
+country = SER
+style = 2
+
+trigger = {
+OR = {
+headofstate = 547059
+headofstate = 547060
+}
+}
+
+name = "Monument to the Unknown Hero"
+desc = "3500661desc"
+picture = "avala"
+
+date = { day = 28 month = june year = 1938 }
+
+action = {
+name = "Welcome"
+command = { trigger = { ai = no } type = money value = -50 }
+command = { type = dissent value = -1 }
+}
+}
+
+###### Montenegrian plea for help
+### Montenegrin Resistance
+
+event = {
+id = 92084
+country = MTN
+style = 2
+random = no
+
+trigger = {
+war = { country = SER country = MTN }
+OR = {
+exists = AUS
+exists = U24    #AH
+exists = U25    #Danubians
+}
+NOT = {
+alliance = { country = AUS country = FRA }
+alliance = { country = U24 country = FRA }
+alliance = { country = U25 country = FRA }
+alliance = { country = AUS country = ENG }
+alliance = { country = U24 country = ENG }
+alliance = { country = U25 country = ENG }
+puppet = { country = AUS country = FRA }
+puppet = { country = U24 country = FRA }
+puppet = { country = U25 country = FRA }
+puppet = { country = AUS country = ENG }
+puppet = { country = U24 country = ENG }
+puppet = { country = U25 country = ENG }
+puppet = { country = AUS country = GER }
+puppet = { country = U24 country = GER }
+puppet = { country = U25 country = GER }
+alliance = { country = AUS country = SER }
+alliance = { country = U24 country = SER }
+alliance = { country = U25 country = SER }
+puppet = { country = AUS country = SER }
+puppet = { country = U24 country = SER }
+puppet = { country = U25 country = SER }
+puppet = { country = SER country = AUS }
+puppet = { country = SER country = U24 }
+puppet = { country = SER country = U25 }
+war = { country = AUS country = MTN }
+war = { country = U24 country = MTN }
+war = { country = U25 country = MTN }
+war = { country = AUS country = SER }
+war = { country = U24 country = SER }
+war = { country = U25 country = SER }
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Montenegrin Resistance"
+desc = "Our small nation is under attack by the vile Serbs. With their troops advancing towards our capital, some volunteer militias are being organized as a last line of defense. But we could do more. Maybe it's time to call for help from the major power in the region: Our former masters, the Austrians!"
+
+action = {
+ai_chance = 50
+name = "Call up the volunteers"
+command = { type = dissent value = -5 }
+command = { type = morale which = land value = 5 }
+command = { type = add_corps which = "Volonterski vojsku" value = land where = 332 }
+command = { type = add_division which = "1. Vojska volontera" value = militia when = 5 }
+command = { type = add_division which = "2. Vojska volontera" value = militia when = 5 }
+command = { type = add_division which = "3. Vojska volontera" value = militia when = 5 }
+}
+
+action = {
+ai_chance = 50
+name = "We need help from the Austrians"
+command = { type = dissent value = 5 }
+command = { trigger = { exists = AUS } type = event which = 92085 where = AUS when = 0 }
+command = { trigger = { exists = U24 } type = event which = 92085 where = U24 when = 0 }
+command = { trigger = { exists = U25 } type = event which = 92085 where = U25 when = 0 }
+}
+}
+
+event = {
+id = 92085
+tag = { AUS U24 U25 }
+style = 2
+random = no
+
+name = "A plea from Montenegro"
+desc = "The independent state of Montenegro, previously a part of our Empire, is under attack from the Serbians and pledged for our intervention. We could use the opportunity to either gain a new ally or to press them back into our fold. Or maybe we could take the chance and attack both Montenegro and Serbia to reassert our mastery over the Balkans!"
+
+action = {
+ai_chance = 10
+name = "Send some volunteers to Montenegro"
+command = { type = trigger which = 92086 }
+command = { type = relation which = MTN value = 50 }
+}
+
+action = {
+ai_chance = 30
+name = "Invite Montenegro to an alliance, Serbia is a menace to the region"
+command = { type = relation which = MTN value = 100 }
+command = { type = removecore which = 332 }
+command = { type = removecore which = 335 }
+command = { type = removeclaim which = 332 }
+command = { type = removeclaim which = 335 }
+command = { type = alliance which = MTN }
+}
+
+action = {
+ai_chance = 40
+name = "Montenegro must be brought back into the fold"
+command = { type = relation which = MTN value = -100 }
+command = { trigger = { exists = AUS } type = event which = 92087 where = AUS when = 0 }
+command = { trigger = { exists = U24 } type = event which = 92087 where = U24 when = 0 }
+command = { trigger = { exists = U25 } type = event which = 92087 where = U25 when = 0 }
+}
+
+action = {
+ai_chance = 10
+name = "Seize the chance and attack Montenegro"
+command = { type = dissent value = 2 }
+command = { type = war which = MTN }
+}
+
+action = {
+ai_chance = 10
+name = "Use the opportunity to attack both Montenegro and Serbia"
+command = { type = dissent value = 5 }
+command = { type = war which = MTN }
+command = { type = war which = SER }
+}
+}
+
+event = {
+id = 92086
+country = MTN
+style = 2
+random = no
+
+name = "Volunteers from Austria"
+desc = "After hearing our pleas, Austria has quickly assembled a small volunteer unit, which is ready to move to the frontlines!"
+
+action = {
+name = "Well, it IS something, at least!"
+command = { type = add_corps which = "Vojska austrijskih volontera" value = land where = 332 }
+command = { type = add_division which = "1. Austrijski Volonteri" value = infantry when = 10 }
+}
+}
+
+event = {
+id = 92087
+tag = { AUS U24 U25 }
+style = 2
+random = no
+
+name = "The Future of Montenegro"
+desc = "We have decided that the fate of Montenegro lies within Vienna's sphere of influence. How shall we proceed ? We can either attempt to rule them directly or make them an autonomous region of the Crown."
+
+action = {
+ai_chance = 60
+name = "Direct annexation"
+command = { type = trigger which = 92088 }
+}
+
+action = {
+ai_chance = 40
+name = "Offer them an autonomous status"
+command = { type = trigger which = 92091 }
+}
+}
+
+event = {
+id = 92088
+country = MTN
+style = 2
+random = no
+
+name = "Ultimatum from Vienna"
+desc = "The Emperor in Vienna has decided to help us on our war against Serbia, on one simple but outrageous condition: We must renounce our independence and rejoin Austria!"
+
+action = {
+ai_chance = 90
+name = "We'd rather die than submit to the Austrians"
+command = { trigger = { exists = AUS } type = event which = 92089 where = AUS when = 0 }
+command = { trigger = { exists = U24 } type = event which = 92089 where = U24 when = 0 }
+command = { trigger = { exists = U25 } type = event which = 92089 where = U25 when = 0 }
+}
+
+action = {
+ai_chance = 10
+name = "This is likely our only chance to survive, submit"
+command = { trigger = { exists = AUS } type = event which = 92090 where = AUS when = 0 }
+command = { trigger = { exists = U24 } type = event which = 92090 where = U24 when = 0 }
+command = { trigger = { exists = U25 } type = event which = 92090 where = U25 when = 0 }
+}
+}
+
+event = {
+id = 92089
+tag = { AUS U24 U25 }
+style = 2
+random = no
+
+name = "The Montenegrins refuse"
+desc = "The government of Montenegro has refused our offer and said they'd rather die than rejoin Austria..."
+
+action = {
+ai_chance = 70
+name = "So be it - Invade Montenegro"
+command = { type = dissent value = 2 }
+command = { type = war which = MTN }
+}
+
+action = {
+ai_chance = 30
+name = "Leave them be, then"
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+event = {
+id = 92090
+tag = { AUS U24 U25 }
+style = 2
+random = no
+
+name = "The Montenegrins accept"
+desc = "The government of Montenegro has accepted our offer. As soon as their puny king officially surrendered the state to Austria, our troops crossed the borders and fired the first rounds against Serbian soldiers..."
+
+action = {
+name = "For the glory of Austria, attack!"
+command = { type = inherit which = MTN }
+command = { type = war which = SER }
+}
+}
+
+event = {
+id = 92091
+country = MTN
+style = 2
+random = no
+
+name = "Ultimatum from Vienna"
+desc = "The Emperor in Vienna has decided to help us on our war against Serbia, on one simple but outrageous condition: We must renounce our sovereignity and rejoin Austria as a crown land..."
+
+action = {
+ai_chance = 40
+name = "We'd rather die than submit to the Austrians"
+command = { trigger = { exists = AUS } type = event which = 92089 where = AUS when = 0 }
+command = { trigger = { exists = U24 } type = event which = 92089 where = U24 when = 0 }
+command = { trigger = { exists = U25 } type = event which = 92089 where = U25 when = 0 }
+}
+action = {
+ai_chance = 60
+name = "This is likely our only chance to survive, submit"
+command = { trigger = { exists = AUS } type = event which = 92092 where = AUS when = 0 }
+command = { trigger = { exists = U24 } type = event which = 92092 where = U24 when = 0 }
+command = { trigger = { exists = U25 } type = event which = 92092 where = U25 when = 0 }
+command = { type = name where = MTN which = "Montenegro" }
+}
+}
+
+event = {
+id = 92092
+country = AUS
+style = 2
+random = no
+
+name = "The Montenegrins Accept"
+desc = "The government of Montenegro has accepted our offer. As soon as their puny king officially surrendered the state to Austria, our troops crossed the borders and fired the first rounds against Serbian soldiers..."
+
+action = {
+name = "For the glory of Austria, attack!"
+command = { type = make_puppet which = MTN }
+command = { type = alliance which = MTN }
+command = { type = war which = SER }
+}
+}

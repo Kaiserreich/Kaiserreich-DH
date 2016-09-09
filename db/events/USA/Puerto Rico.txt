@@ -1,0 +1,648 @@
+#############################################
+###### The fate of Puerto Rico #
+#############################################
+event = {
+id = 9000875
+random = no
+country = USA
+
+trigger = {
+OR = {
+exists = CSA
+exists = TEX
+}
+OR = {
+war = { country = USA country = CSA }
+war = { country = USA country = TEX }
+}
+control = { province = 1765 data = USA } # Puerto Rico
+NOT = {
+# US Eastern Coast & Panama
+war = { country = USA country = CAN }
+control = { province = 1953 data = USA }
+control = { province = 1952 data = USA }
+control = { province = 1960 data = USA }
+control = { province = 1963 data = USA }
+control = { province = 1812 data = USA }
+control = { province = 1809 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1797 data = USA }
+control = { province = 1789 data = USA }
+control = { province = 1931 data = USA }
+control = { province = 1944 data = USA }
+control = { province = 889 data = USA }
+}
+
+}
+
+name = "The fate of Puerto Rico"
+desc = "With the East Coast and the Panama Canal out of our control, we must decide on the fate of Puerto Rico. The most reasonable option is to give to the Entante, but it is feared that such an act will cause additional dissent in our already deperate population."
+style = 2
+picture = "caribbean"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Give it to the Entente"
+ai_chance = 50
+trigger = {
+exists = CAN
+NOT = {
+war = { country = USA country = CAN }
+government = { type = communist country = CAN }
+}
+}
+command = { type = dissent value = 3 }
+command = { type = secedeprovince which = CAN value = 1765 }
+command = { type = trigger which = 9000876 }
+}
+action_b = {
+name = "Fortify the island"
+ai_chance = 50
+command = { type = province_keypoints which = 1765 value = 1 }
+command = { type = construct which = IC where = 1765 value = -1 }
+command = { type = add_corps which = "Puerto Rico National Guard" value = land where = 1765 }
+command = { type = add_division which = "Puerto Rico National Guard" value = d_01 when = 8 }
+command = { type = construct which = coastal_fort where = 1765 value = 1 }
+command = { type = dissent value = -3 }
+}
+}
+
+#############################################
+######  # Puerto Rico given to the Entente
+#############################################
+event = {
+id = 9000876
+random = no
+country = CAN
+
+name = "Puerto Rico given to the Entente"
+desc = "The US government has decided to give us the island of Puerto Rico. There is talk among our military that the island provides a perfect position for our fleet to operate in the Southern Atlantic. Still, others believe it should belong to our Carribean friends."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "Puerto Rico shall become a part of the Federation"
+ai_chance = 60
+command = { type = secedeprovince which = GUY value = 1765 }
+command = { type = relation which = GUY value = 15 }
+command = { type = trigger which = 9000877 }
+}
+action_b = {
+name = "Prepare to turn the island into a naval base"
+ai_chance = 40
+command = { type = province_keypoints which = 1765 value = 1 }
+command = { type = construct which = naval_base where = 1765 value = 4 }
+command = { type = construct which = IC where = 1765 value = -1 }
+}
+}
+
+event = {
+id = 9000877
+random = no
+country = GUY
+
+name = "Puerto Rico given to the Federation"
+desc = "Canada has declared that the former US island of Puerto Rico shall become a Federation possession. It is a great day for the whole Carribean!"
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "Time to celebrate!"
+command = { type = dissent value = -2 }
+command = { type = addcore which = 1765 }
+command = { type = waketeam which = 15215 }
+command = { type = relation which = CAN value = 15 }
+}
+}
+
+#############################################
+###### Post-Civil War; USA want Puerto Rico back #
+#############################################
+event = {
+id = 9000878
+random = no
+country = USA
+trigger = {
+flag = END_ACW
+exists = CAN
+owned = { province = 1765 data = CAN } # Puerto Rico
+NOT = { puppet = { country = USA country = CAN  } }
+}
+
+name = "Requesting Puerto Rico back"
+desc = "With the Civil War ending in US victory, a time has come to reassert our claim on Puerto Rico."
+style = 2
+picture = "caribbean"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+name = "We want the island back"
+ai_chance = 60
+command = { type = trigger which = 9000879 }
+}
+action_b = {
+name = "Do not push the issue"
+ai_chance = 40
+command = { type = dissent value = 5 }
+command = { type = removecore which = 895 }
+command = { type = relation which = CAN value = 5 }
+}
+}
+
+event = {
+id = 9000879
+random = no
+country = CAN
+
+name = "United States want Puerto Rico back"
+desc = "The Americans have asked us to return their former island of Puerto Rico."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We have never been occupants - give the island back"
+ai_chance = 75
+command = { type = relation which = USA value = 25 }
+command = { type = secedeprovince which = USA value = 1765 }
+command = { type = trigger which = 9000880 }
+}
+action_b = {
+name = "We cannot give up such a base!"
+ai_chance = 25
+command = { type = relation which = USA value = -75 }
+command = { type = trigger which = 9000881 }
+}
+}
+
+event = {
+id = 9000880
+random = no
+country = USA
+
+name = "Puerto Rico is ours again!"
+desc = "The Entente has given us back Puerto Rico!"
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We shall restore the US piece by piece!"
+command = { type = dissent value = -5 }
+command = { type = relation which = CAN value = 25 }
+}
+}
+
+event = {
+id = 9000881
+random = no
+country = USA
+
+name = "Canada retains Puerto Rico"
+desc = "The Canadians have refused to return the island to us."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We'll retake it one way or another!"
+ai_chance = 40
+command = { type = relation which = CAN value = -50 }
+command = { type = dissent value = -1 } # Jingo!
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 1 }
+}
+action_b = {
+name = "Back off..."
+ai_chance = 60
+command = { type = relation which = CAN value = -50 }
+command = { type = removecore which = 1765 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+# Federation variant
+event = {
+id = 9000882
+random = no
+country = USA
+trigger = {
+flag = END_ACW
+exists = GUY
+owned = { province = 1765 data = GUY } # Puerto Rico
+NOT = { puppet = { country = USA country = CAN  } }
+}
+
+name = "Requesting Puerto Rico back"
+desc = "With the Civil War ending in US victory, a time has come to reassert our claim on Puerto Rico."
+style = 2
+picture = "caribbean"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+name = "We want the island back"
+ai_chance = 80
+command = { type = trigger which = 9000883 }
+}
+action_b = {
+name = "Do not push the issue"
+ai_chance = 20
+command = { type = dissent value = 5 }
+command = { type = removecore which = 895 }
+command = { type = relation which = GUY value = 5 }
+}
+}
+
+event = {
+id = 9000883
+random = no
+country = GUY
+
+name = "United States want Puerto Rico back"
+desc = "The Americans have asked us to return their former island of Puerto Rico."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "It is a rightful possesion of the US"
+ai_chance = 30
+command = { type = relation which = USA value = 25 }
+command = { type = secedeprovince which = USA value = 1765 }
+command = { type = removecore which = 1765 }
+command = { type = trigger which = 9000884 }
+}
+action_b = {
+name = "This is a part of the Federation and so it shall remain!"
+ai_chance = 70
+command = { type = relation which = USA value = -75 }
+command = { type = trigger which = 9000885 }
+}
+}
+
+event = {
+id = 9000884
+random = no
+country = USA
+
+name = "Puerto Rico is ours again!"
+desc = "The Entente has given us back Puerto Rico!"
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We shall restore the US piece by piece!"
+command = { type = dissent value = -5 }
+command = { type = relation which = GUY value = 25 }
+}
+}
+
+event = {
+id = 9000885
+random = no
+country = USA
+
+name = "The Carribean Federation retains Puerto Rico"
+desc = "The Carribeans have refused to return the island to us."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We'll retake it one way or another!"
+ai_chance = 60
+command = { type = relation which = GUY value = -50 }
+command = { type = relation which = CAN value = -25 }
+command = { type = dissent value = -1 } # Jingo!
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 1 }
+}
+action_b = {
+name = "Back off..."
+ai_chance = 40
+command = { type = relation which = GUY value = -50 }
+command = { type = relation which = CAN value = -25 }
+command = { type = removecore which = 1765 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+#############################################
+###### Post-Civil War; AUS wants Puerto Rico back #
+#############################################
+event = {
+id = 9000886
+random = no
+country = TEX
+trigger = {
+flag = END_ACW
+exists = CAN
+owned = { province = 1765 data = CAN } # Puerto Rico
+}
+
+name = "Requesting Puerto Rico back"
+desc = "With the Civil War ending in AUS victory, a time has come to reassert our claim on Puerto Rico."
+style = 2
+picture = "caribbean"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+name = "We want the island back"
+ai_chance = 80
+command = { type = trigger which = 9000887 }
+}
+action_b = {
+name = "Do not push the issue"
+ai_chance = 20
+command = { type = dissent value = 5 }
+command = { type = removecore which = 1765 }
+command = { type = relation which = CAN value = 5 }
+}
+}
+
+event = {
+id = 9000887
+random = no
+country = CAN
+
+name = "American Union State want Puerto Rico back"
+desc = "The Americans have demanded that we return their former island of Puerto Rico."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We have never been occupants - give the island back"
+ai_chance = 25
+command = { type = relation which = TEX value = 25 }
+command = { type = secedeprovince which = TEX value = 1765 }
+command = { type = trigger which = 9000888 }
+}
+action_b = {
+name = "We cannot give up such a base!"
+ai_chance = 75
+command = { type = relation which = TEX value = -75 }
+command = { type = trigger which = 9000889 }
+}
+}
+
+event = {
+id = 9000888
+random = no
+country = TEX
+
+name = "Puerto Rico is ours again!"
+desc = "The Entente has given us back Puerto Rico!"
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We shall restore the States piece by piece!"
+command = { type = dissent value = -5 }
+command = { type = relation which = CAN value = 25 }
+}
+}
+
+event = {
+id = 9000889
+random = no
+country = TEX
+
+name = "Canada retains Puerto Rico"
+desc = "The Canadians have refused to return the island to us."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We'll retake it one way or another!"
+ai_chance = 80
+command = { type = relation which = CAN value = -50 }
+command = { type = dissent value = -1 } # Jingo!
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 1 }
+}
+action_b = {
+name = "Back off..."
+ai_chance = 20
+command = { type = relation which = CAN value = -50 }
+command = { type = removecore which = 1765 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+# Federation variant
+event = {
+id = 9000890
+random = no
+country = TEX
+trigger = {
+flag = END_ACW
+exists = GUY
+owned = { province = 1765 data = GUY } # Puerto Rico
+}
+
+name = "Requesting Puerto Rico back"
+desc = "With the Civil War ending in AUS victory, a time has come to reassert our claim on Puerto Rico."
+style = 2
+picture = "caribbean"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+name = "We want the island back"
+ai_chance = 95
+command = { type = trigger which = 9000891 }
+}
+action_b = {
+name = "Do not push the issue"
+ai_chance = 5
+command = { type = dissent value = 5 }
+command = { type = removecore which = 1765 }
+command = { type = relation which = GUY value = 5 }
+}
+}
+
+event = {
+id = 9000891
+random = no
+country = GUY
+
+name = "American Union State wants Puerto Rico back"
+desc = "The Americans have demanded that we return their former island of Puerto Rico."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "It is a rightful possesion of the AUS"
+ai_chance = 15
+command = { type = relation which = TEX value = 25 }
+command = { type = secedeprovince which = TEX value = 1765 }
+command = { type = removecore which = 895 }
+command = { type = trigger which = 9000892 }
+}
+action_b = {
+name = "This is a part of the Federation and so it shall remain!"
+ai_chance = 85
+command = { type = relation which = TEX value = -75 }
+command = { type = trigger which = 9000893 }
+}
+}
+
+event = {
+id = 9000892
+random = no
+country = TEX
+
+name = "Puerto Rico is ours again!"
+desc = "The Entente has given us back Puerto Rico!"
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We shall restore the States piece by piece!"
+command = { type = dissent value = -5 }
+command = { type = relation which = GUY value = 25 }
+}
+}
+
+event = {
+id = 9000893
+random = no
+country = TEX
+
+name = "The Carribean Federation retains Puerto Rico"
+desc = "The Carribeans have refused to return the island to us."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "We'll retake it one way or another!"
+ai_chance = 90
+command = { type = relation which = GUY value = -50 }
+command = { type = relation which = CAN value = -25 }
+command = { type = dissent value = -1 } # Jingo!
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 1 }
+}
+action_b = {
+name = "Back off..."
+ai_chance = 10
+command = { type = relation which = GUY value = -50 }
+command = { type = relation which = CAN value = -25 }
+command = { type = removecore which = 1765 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+#############################################
+###### Ultimate capture of Puerto Rico #
+#############################################
+event = {
+id = 9000894
+random = no
+country = USA
+trigger = {
+OR = {
+exists = CSA
+exists = TEX
+}
+OR = {
+war = { country = USA country = CSA }
+war = { country = USA country = TEX }
+}
+event = 9000875 # Fate of Puerto Rico
+control = { province = 1765 data = USA } # Puerto Rico
+NOT = {
+control = { province = 1953 data = USA }
+control = { province = 1952 data = USA }
+control = { province = 1960 data = USA }
+control = { province = 1963 data = USA }
+control = { province = 1812 data = USA }
+control = { province = 1809 data = USA }
+control = { province = 1795 data = USA }
+control = { province = 1797 data = USA }
+control = { province = 1789 data = USA }
+control = { province = 1931 data = USA }
+control = { province = 1944 data = USA }
+control = { province = 889 data = USA }
+# US Urban Areas
+control = { province = 1922 data = USA }
+control = { province = 1912 data = USA }
+control = { province = 1833 data = USA }
+control = { province = 1820 data = USA }
+
+}
+}
+
+name = "Unability to hold Puerto Rico"
+desc = "With the Civil War being lost by the US, we are no longer capable of holding the island of Puerto Rico"
+style = 2
+picture = "caribbean"
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 1 month = january year = 1960 }
+
+action_a = {
+name = "Give it up"
+command = { type = dissent value = 2 }
+command = { type = secedeprovince which = CAN value = 1765 }
+command = { type = trigger which = 9000895 }
+}
+}
+
+event = {
+id = 9000895
+random = no
+country = CAN
+
+name = "Puerto Rico given to the Entente"
+desc = "The US government has decided to give us the island of Puerto Rico. There is talk among our military that the island provides a perfect position for our fleet to operate in the Southern Atlantic. Still, others believe it should belong to our Carribean friends."
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "Puerto Rico shall become a part of the Federation"
+ai_chance = 60
+command = { type = secedeprovince which = GUY value = 1765 }
+command = { type = relation which = GUY value = 15 }
+command = { type = trigger which = 9000896 }
+}
+action_b = {
+name = "Prepare to turn the island into a naval base"
+ai_chance = 40
+command = { type = province_keypoints which = 1765 value = 1 }
+command = { type = construct which = naval_base where = 1765 value = 4 }
+command = { type = construct which = IC where = 1765 value = -1 }
+}
+}
+
+event = {
+id = 9000896
+random = no
+country = GUY
+
+name = "Puerto Rico given to the Federation"
+desc = "Canada has declared that the former US island of Puerto Rico shall become a Federation possession. It is a great day for the whole Carribean!"
+style = 2
+picture = "Caribbean"
+
+action_a = {
+name = "Time to celebrate!"
+command = { type = dissent value = -2 }
+command = { type = addcore which = 1765 }
+command = { type = relation which = CAN value = 15 }
+}
+}

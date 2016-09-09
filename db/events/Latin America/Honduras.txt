@@ -1,0 +1,1085 @@
+######################################################
+### Honduras (by Kibbles)
+######################################################
+
+event = {
+id = 284000
+country = HON
+style = 2
+picture = "Banana"
+
+date = { day = 0 month = june year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Panama Disease is killing the Banana Crop"
+desc = "Honduras, the leading Banana exporter has been struck by whats being called 'The Panama Disease'. It is a fungus attacks the roots of the banana plant and kills it, and without our Banana exports we're nothing. The Communards are licking their chops, waiting for an economic crisis to seize power. We've got to find a way to stop this outbreak before Bananas aren't the only thing dying in masses. We can try to invest in a new crop, use more fungicide or develop new Cultivars, or other species of the Banana."
+
+action_a = {
+ai_chance = 35
+name = "Order the farmers to grow new crops!" #We must abandon the banana
+command = { type = dissent value = 5 }
+command = { type = setflag which = CROPS }
+command = { type = domestic which = free_market value = -2 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Fungicide will kill this disease"
+command = { type = local_setflag which = FUNGICIDE } #The fungus is immune to Fungicide!
+command = { type = money value = -25 }
+command = { type = dissent value = -3 }
+}
+
+action_c = {
+ai_chance = 25
+name = "Develop new Cultivars that are immune to the fungus"
+command = { type = local_setflag which = CULTIVAR } #No Cultivar is immune to the fungus retard! It was a trick question!
+command = { type = money value = -100 }
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 284001
+country = HON
+style = 2
+picture = "Banana"
+
+trigger = { 
+local_flag = FUNGICIDE 
+}
+
+date = { day = 15 month = august year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Panama Disease is Immune to Fungicide"
+desc = "After the outbreak of the Panama Disease, we tried to use fungicides to get rid of the outbreak, but the fungus seems to be immune."
+
+action_a = {
+ai_chance = 30
+name = "Well, theres nothing we can do now..."
+command = { type = dissent value = 10 }
+command = { type = local_clrflag which = FUNGICIDE }
+}
+
+action_b = {
+ai_chance = 70
+name = "Order the farmers to grow new crops!" #We must abandon the banana
+command = { type = dissent value = 5 }
+command = { type = setflag which = CROPS }
+command = { type = domestic which = free_market value = -2 }
+command = { type = local_clrflag which = FUNGICIDE }
+}
+}
+
+event = {
+id = 284002
+country = HON
+style = 2
+picture = "Banana"
+
+trigger = { 
+local_flag = CULTIVAR 
+}
+
+date = { day = 15 month = september year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1947 }
+
+name = "The New Cultivars aren't Immune"
+desc = "After the outbreak of the Panama Disease, we tried to invent new Cultivars that were immune to the fungus, but they too have been struck."
+
+action_a = {
+ai_chance = 30
+name = "Well, theres nothing we can do now..."
+command = { type = dissent value = 10 }
+command = { type = local_clrflag which = FUNGICIDE }
+}
+
+action_b = {
+ai_chance = 70
+name = "Order the farmers to grow new crops!" #We must abandon the banana
+command = { type = dissent value = 5 }
+command = { type = setflag which = CROPS }
+command = { type = domestic which = free_market value = -2 }
+command = { type = local_clrflag which = FUNGICIDE }
+}
+}
+
+event = {
+id = 284003
+country = HON
+style = 2
+
+trigger = { 
+flag = CROPS 
+}
+
+date = { day = 15 month = april year = 1937 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The New Economy of Honduras"
+desc = "After the outbreak of the Panama disease, we forced the farmers to grow new crops, it was a tough choice but it seems the only way to keep the economy from collapsing. The transition will be slow, but the Panama Disease is an unsolveable problem."
+
+action_a = {
+name = "It will be a slow transition, but Honduras will endure!"
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 284004
+country = GUA
+style = 2
+picture = "militia"
+
+trigger = {
+flag = CROPS
+government = communist
+exists = HON
+NOT = {
+government = { type = communist country = HON }
+ispuppet = GUA
+alliance = { country = GUA country = HON }
+}
+}
+
+date = { day = 15 month = june year = 1938 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Farmers of Honduras are Oppressed"
+desc = "After the outbreak of the Panama disease in Honduras, the government began telling the farmers what to grow, how much to grow and where to grow it. Centroamerica will not stand for such injustices against the farmers and the peasants, what course of action shall we take?"
+
+action = {
+trigger = {
+government = { type = communist country = MEX }
+atwar = no
+}
+ai_chance = 50
+name = "Begin funding and training left-wing dissidents"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = supplies value = -250 }
+command = { type = money value = -50 }
+command = { type = setflag which = GUA_Rebels }
+command = { type = clrflag which = CROPS }
+}
+
+action = {
+trigger = {
+NOT = {
+government = { type = communist country = MEX }
+atwar = no
+}
+}
+ai_chance = 20
+name = "Begin funding and training left-wing dissidents"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = supplies value = -250 }
+command = { type = money value = -50 }
+command = { type = setflag which = GUA_Rebels }
+command = { type = clrflag which = CROPS }
+}
+
+action = {
+trigger = {
+government = { type = communist country = MEX }
+atwar = no
+}
+ai_chance = 5
+name = "We must build Syndicalism further at home first"
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = clrflag which = CROPS }
+}
+
+action = {
+trigger = {
+NOT = {
+government = { type = communist country = MEX }
+atwar = no
+}
+}
+ai_chance = 80
+name = "We must build Syndicalism further at home first"
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = clrflag which = CROPS }
+}
+
+action = {
+trigger = {
+government = { type = communist country = MEX }
+atwar = no
+}
+ai_chance = 50
+name = "They must be liberated, we will be the champion of the people!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = NIC value = -50 }
+command = { type = relation which = PAN value = -25 }
+command = { type = relation which = USA value = -25 }
+command = { type = clrflag which = CROPS }
+command = { type = setflag which = GUA_HON }
+command = { type = war which = HON }
+}
+
+action = {
+trigger = {
+NOT = {
+government = { type = communist country = MEX }
+atwar = no
+}
+}
+ai_chance = 5
+name = "They must be liberated, we will be the champion of the people!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = NIC value = -50 }
+command = { type = relation which = PAN value = -25 }
+command = { type = relation which = USA value = -25 }
+command = { type = clrflag which = CROPS }
+command = { type = setflag which = GUA_HON }
+command = { type = war which = HON }
+}
+}
+
+event = {
+id = 284005
+country = HON
+style = 2
+
+trigger = {
+ai = yes
+flag = GUA_REBELS
+government = { type = communist country = GUA }
+NOT = {
+government = communist
+}
+}
+
+date = { day = 19 month = january year = 1939 }
+
+name = "The Honduras Civil War"
+desc = "..."
+
+action_a = {
+ai_chance = 95
+name = "This will not be the first Left-Wing uprising we have crushed!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = supplies value = -250 }
+command = { type = money value = -50 }
+command = { type = local_setflag which = HCW }
+command = { trigger = { exists = USA NOT = { exists = TEX exists = CSA ispuppet = USA lost_national = { country = USA value = 5 } government = { type = communist country = USA } } flag = END_ACW } type = trigger which = 3450052 } #US response to the Honduras Civil War in USA foreign policy.txt
+command = { trigger = { exists = CAN NOT = { ispuppet = CAN lost_national = { country = CAN value = 5 } government = { type = communist country = CAN } } } type = trigger which = 106020 } #Canada response to the Honduras Civil War in Canada Foreign Policy.txt
+}
+
+action_b = {
+ai_chance = 5
+name = "We're tired of the blood shed, its not worth it, we go without a fight"
+command = { type = set_domestic which = democratic value = 2 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = free_market value = 9 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = setflag which = HCW_Defeat }
+}
+}
+
+event = {
+id = 284006
+country = HON
+style = 2
+
+trigger = {
+ai = yes
+local_flag = HCW
+}
+
+date = { day = 3 month = march year = 1939 }
+
+name = "The Battle For San Pedro Sula Valley"
+desc = "..."
+
+action_a = {
+ai_chance = 90
+name = "Send the Tegucigalpa Garrison to the Valley"
+command = { type = local_setflag which = Valley_YES }
+}
+action_b = {
+ai_chance = 10
+name = "They will make due with what they have!"
+command = { type = local_setflag which = Valley_NO }
+}
+}
+
+event = {
+id = 284007
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Valley_YES 
+}
+
+date = { day = 14 month = march year = 1939 }
+
+name = "The Battle For San Pedro Sula Valley"
+desc = "..."
+
+action = {
+ai_chance  = 30
+name = "Northwest Honduras has been purged of the Guerillas!"
+command = { type = local_setflag which = NW_HON_SECURED }
+}
+
+action = {
+ai_chance = 100
+trigger = {
+OR = {
+event = 3450053 #US help for Honduras in USA foreign policy.txt
+event = 96401 #Canadian help for Honduras in Canada Foreign Policy
+}
+}
+name = "Northwest Honduras has been purged of the Guerillas!"
+command = { type = local_setflag which = NW_HON_SECURED }
+}
+
+action = {
+ai_chance  = 70
+name = "Northwest Honduras has been taken by the Rebels"
+command = { type = local_setflag which = NW_HON_LOST }
+}
+}
+
+event = {
+id = 284008
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Valley_NO 
+}
+
+date = { day = 14 month = march year = 1939 }
+
+name = "The Battle For San Pedro Sula Valley"
+desc = "..."
+
+action_a = {
+ai_chance  = 40
+name = "Northwest Honduras has been purged of the Rebels!"
+command = { type = local_setflag which = NW_HON_SECURED }
+}
+
+action_b = {
+ai_chance  = 60
+name = "Northwest Honduras has been taken by the Guerrilas"
+command = { type = local_setflag which = NW_HON_LOST }
+}
+}
+
+event = {
+id = 284009
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Valley_YES 
+}
+
+date = { day = 14 month = june year = 1939 }
+
+name = "The Battle of Copan"
+desc = "..."
+
+action = {
+ai_chance = 40
+name = "Siege the mountains before clearing them out"
+command = { type = local_setflag which = Copan_YES }
+}
+action = {
+ai_chance = 100
+trigger = {
+OR = {
+event = 3450053 #US help for Honduras in USA foreign policy.txt
+event = 96401 #Canadian help for Honduras in Canada Foreign Policy.txt
+}
+}
+name = "Siege the mountains before clearing them out"
+command = { type = local_setflag which = Copan_YES }
+}
+
+action = {
+ai_chance = 60
+name = "We must rush in to clear the mountains before they are fortified!"
+command = { type = local_setflag which = Copan_NO }
+}
+}
+
+event = {
+id = 284010
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Copan_YES 
+}
+
+date = { day = 19 month = june year = 1939 }
+
+name = "The Battle of Copan"
+desc = "..."
+
+action_a = {
+ai_chance = 75
+name = "We have caught them off guard, it is only a matter of time"
+command = { }
+}
+
+action_b = {
+ai_chance = 25
+name = "The Rebels wont budge, the plan isn't working!"
+command = { type = local_setflag which = Copan_NO }
+command = { type = local_clrflag which = Copan_YES }
+}
+}
+
+event = {
+id = 284011
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Copan_YES 
+}
+
+date = { day = 19 month = june year = 1939 }
+
+name = "The Battle of Copan"
+desc = "..."
+
+action_a = {
+ai_chance = 75
+name = "The rebels are routing! Chase them back into Centroamerica!"
+command = { type = setflag which = HCW_Victory }
+}
+
+action_b = {
+ai_chance = 25
+name = "The Rebels have fortified, the operation has failed"
+command = { type = local_setflag which = Copan_NO }
+command = { type = local_clrflag which = Copan_YES }
+}
+}
+
+event = {
+id = 284012
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Copan_No 
+}
+
+date = { day = 25 month = june year = 1939 }
+
+name = "The Battle of Copan takes a turn for the worst"
+desc = "..."
+
+action_a = {
+ai_chance = 50
+name = "This is going to be a long siege..."
+command = { type = local_setflag which = Copan_Siege }
+}
+
+action_b = {
+ai_chance = 50
+name = "We must overwhelm them, continue sending infantry"
+command = { type = local_setflag which = Copan_Overwhelm }
+command = { type = local_clrflag which = Copan_No }
+}
+}
+
+event = {
+id = 284013
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Copan_Siege 
+}
+
+date = { day = 25 month = september year = 1939 }
+
+name = "The Siege of the Copan Mountains"
+desc = "..."
+
+action = {
+ai_chance = 40
+name = "The Rebels have been driven from the mountains!"
+command = { type = setflag which = HCW_Victory }
+}
+
+action = {
+ai_chance = 100
+trigger = {
+OR = {
+event = 3450053 #US help for Honduras in USA foreign policy.txt
+event = 96401 #Canadian help for Honduras in Canada Foreign Policy.txt
+}
+}
+name = "The Rebels have been driven from the mountains!"
+command = { type = setflag which = HCW_Victory }
+}
+
+action = {
+ai_chance = 60
+name = "The Rebels have regrouped and launched a counter-offensive"
+command = { type = local_setflag which = NW_HON_LOST }
+command = { type = local_clrflag which = Copan_Siege }
+}
+}
+
+event = {
+id = 284014
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Copan_Overwhelm 
+}
+
+date = { day = 25 month = september year = 1939 }
+
+name = "The Siege of the Copan Mountains"
+desc = "..."
+
+action = {
+ai_chance = 20
+name = "The Rebels have been driven from the mountains!"
+command = { type = setflag which = HCW_Victory }
+}
+
+action = {
+ai_chance = 100
+trigger = {
+OR = {
+event = 3450053 #US help for Honduras in USA foreign policy.txt
+event = 96401 #Canadian help for Honduras in Canada Foreign Policy.txt
+}
+}
+name = "The Rebels have been driven from the mountains!"
+command = { type = setflag which = HCW_Victory }
+}
+
+action = {
+ai_chance = 80
+name = "The Rebels have regrouped and launched a counter-offensive"
+command = { type = local_setflag which = NW_HON_LOST }
+command = { type = local_clrflag which = Copan_Siege }
+}
+}
+
+event = {
+id = 284015
+country = HON
+style = 2
+
+trigger = {
+ai = yes
+flag = HCW_Victory
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Civil War is Over"
+desc = "..."
+
+action_a = {
+name = "Honduras has prevailed!"
+command = { type = dissent value = -10 }
+command = { type = clrflag which = NW_HON_SECURED } #HCW Flags
+command = { type = clrflag which = NW_HON_LOST }
+command = { type = clrflag which = Copan_YES }
+command = { type = clrflag which = Copan_NO }
+command = { type = clrflag which = Copan_Overwhelm }
+command = { type = clrflag which = Copan_Siege }
+}
+}
+
+event = {
+id = 284016
+country = GUA
+
+trigger = {
+flag = HCW_Victory
+NOT = {
+war = { country = GUA country = HON }
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Honduras Syndicalists lost civil war"
+desc = "We have lost our chance to subvertly install Syndicalist government in Honduras as government troops are overcoming rebels, sponsored by us. Now we must decide if we want to ignite war or stay peaceful. "
+
+action = {
+trigger = {
+atwar = no
+NOT = {
+government = { type = communist country = MEX }
+}
+}
+ai_chance = 50
+name = "We shall liberate workers of Honduras!"
+command = { type = war which = HON }
+}
+
+action = {
+trigger = {
+government = { type = communist country = MEX }
+atwar = no
+owned = { province = 2078 data = GUA } #Ciudad de Panama
+}
+ai_chance = 100
+name = "We shall liberate workers of Honduras!"
+command = { type = war which = HON }
+command = { type = dissent value = -5 }
+}
+
+action = {
+trigger = {
+atwar = yes
+}
+ai_chance = 70
+name = "We are not prepared for another front to fight on"
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 284017
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Valley_NO 
+}
+
+date = { day = 25 month = september year = 1939 }
+
+name = "The Battle of Comoyagua"
+desc = "..."
+
+action_a = {
+name = "If we dont make a stand at Comoyagua, Tegucigalpa will fall"
+command = { type = local_setflag which = Comoyagua }
+}
+}
+
+event = {
+id = 284018
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Valley_NO 
+local_flag = Comoyagua 
+}
+
+date = { day = 3 month = october year = 1939 }
+
+name = "The Outcome of Comoyagua"
+desc = "..."
+
+action_a = {
+ai_chance = 50
+name = "Comoyagua is lost! The rebels will soon attack Tegucigalpa!"
+command = { type = local_setflag which = Tegucigalpa }
+}
+
+action_b = {
+ai_chance = 50
+name = "Comoyagua has been held, push them back!"
+command = { type = local_setflag which = Valley_YES }
+}
+}
+
+event = {
+id = 284019
+country = HON
+style = 2
+
+trigger = { 
+local_flag = Tegucigalpa 
+}
+
+date = { day = 3 month = october year = 1939 }
+
+name = "The Siege of Tegucigalpa"
+desc = "..."
+
+action_a = {
+ai_chance = 50
+name = "The Rebels have taken the capital! The army surrenders!"
+command = { type = setflag which = HCW_Defeat }
+}
+
+action_b = {
+ai_chance = 50
+name = "The rebels are defeated, push them back!"
+command = { type = local_setflag which = Valley_YES }
+}
+}
+
+event = {
+id = 284020
+country = HON
+style = 2
+
+trigger = {
+ai = yes
+flag = HCW_Defeat
+government = communist
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1947 }
+
+name = "The Rebels Overrun Tegucigalpa"
+desc = "..."
+
+action_a = {
+name = "The Power is in the hands of the people! Socialism prevails!"
+command = { type = relation which = ENG value = 50 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = FRA value = 50 }
+command = { type = relation which = RSI value = 50 }
+command = { type = relation which = GEO value = 50 }
+command = { type = relation which = CSA value = 50 }
+command = { type = relation which = ARG value = -100 }
+command = { type = relation which = COL value = -100 }
+command = { type = relation which = NIC value = -100 }
+command = { type = relation which = PAN value = -100 }
+command = { type = relation which = TEX value = -100 }
+command = { type = domestic which = free_market value = -9 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 9 }
+}
+}
+
+event = {
+id = 284021
+country = GUA
+style = 2
+
+trigger = {
+flag = HCW_Defeat
+government = communist
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Rebels have won the Civil War"
+desc = "The Guerillas we have funded, supplied and armed have overrun the government and have begun the transformation into a Syndicalist state."
+
+action_a = {
+ai_chance = 25
+name = "We will oversee Honduras' transformation"
+command = { type = relation which = HON value = 200 }
+command = { type = setflag which = HON_Puppet }
+command = { type = make_puppet which = HON }
+command = { type = dissent value = -5 }
+}
+
+action_b = {
+ai_chance = 75
+name = "Integrate them!"
+command = { type = relation which = ARG value = -100 }
+command = { type = relation which = COL value = -100 }
+command = { type = relation which = NIC value = -100 }
+command = { type = relation which = PAN value = -100 }
+command = { type = relation which = TEX value = -100 }
+command = { trigger = { NOT = { flag = Toledano } } type = relation which = MEX value = -100 }
+command = { type = waketeam which = 7908 }
+command = { type = waketeam which = 7903 }
+command = { type = setflag which = HON_INT }
+command = { type = inherit which = HON }
+}
+}
+
+event = {
+id = 284022
+random = no
+country = NIC
+picture = "milicianos"
+style = 2
+
+trigger = {
+government = { type = communist country = GUA }
+war = { country = HON country = GUA }
+control = { province = 2088 data = GUA }
+NOT = {
+atwar = NIC
+government = { type = communist country = HON }
+war = { country = MEX country = GUA }
+government = communist
+ispuppet = GUA
+ispuppet = HON
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Honduras and Centroamerica at War!"
+desc = "We must decide if we can wage a war to contain aggressive tendencies of Centroamerica. Today Honduras, tomorrow us ?"
+
+action_a = {
+ai_chance = 50
+name = "We will crush Centroamerica!"
+command = { type = war which = GUA }
+command = { trigger = { NOT = { alliance = { country = CAN country = HON } alliance = { country = MEX country = HON } } } type = alliance which = HON }
+}
+
+action_b = {
+ai_chance = 50
+name = "We aren't ready to attack Centroamerica!"
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 284023
+country = NIC
+picture = "milicianos"
+style = 2
+
+trigger = {
+government = { type = communist country = GUA }
+war = { country = GUA country = MEX }
+control = { province = 2088 data = GUA }
+control = { province = 2085 data = GUA }
+NOT = {
+government = communist
+ispuppet = HON
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Mexico and Centroamerica at War!"
+desc = "Mexico has gone to war with Centroamerica, this may be a good chance to destroy Centroamerica and liberate Honduras from the Communard bastards."
+
+action_a = {
+ai_chance = 95
+name = "We must destroy Centroamerica!"
+command = { type = war which = GUA }
+}
+
+action_b = {
+ai_chance = 5
+name = "Let Mexico and Centroamerica fight it out"
+command = { }
+}
+}
+
+event = {
+id = 284024
+country = NIC
+picture = "street"
+style = 2
+
+trigger = {
+control = { province = 2085 data = NIC }
+control = { province = 2084 data = NIC }
+NOT = {
+exists = HON
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Question of Honduras"
+desc = "Now that we control Honduras, what should we do?"
+
+action_a = {
+ai_chance = 100
+name = "Integrate Honduras into the United Provinces"
+command = { type = addcore which = 2085 }
+command = { type = addcore which = 2084 }
+}
+
+action_b = {
+ai_chance = 0
+name = "Liberate Honduras!"
+command = { type = independence which = HON value = 1 when = 0 }
+}
+}
+
+
+event = {
+id = 284025
+country = NIC
+picture = "street"
+style = 2
+
+trigger = {
+NOT = {
+exists = GUA
+}
+control = { province = 2086 data = NIC } #Belize City
+control = { province = 2088 data = NIC }
+control = { province = 2087 data = NIC } #Guatemala
+control = { province = 2079 data = NIC }
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The United Provinces Victory in the Central American War"
+desc = "The United Provinces have emerged victorious in the Central American War! We know control all of Central America, either directly or indirectly."
+
+action_a = {
+name = "Central America is Ours!"
+command = { type = addcore which = 2086 }
+command = { type = addcore which = 2088 }
+command = { type = addcore which = 2087 }
+command = { type = addcore which = 2079 }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 284026
+country = GUA
+picture = "street"
+style = 2
+
+trigger = {
+NOT = {
+exists = NIC
+}
+control = { province = 2080 data = GUA }
+control = { province = 2081 data = GUA }
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The United Provinces have fallen"
+desc = "We have defeated the United Provinces. Now, nothing stands in our way!"
+
+action_a = {
+name = "It is only a matter of time until all of Central America is ours!"
+command = { type = dissent value = -5 }
+command = { type = addcore which = 2080 }
+command = { type = addcore which = 2081 }
+command = { type = addcore which = 2082 }
+command = { type = addcore which = 2083 }
+command = { type = waketeam which = 7906 }
+}
+}
+
+event = {
+id = 284027
+country = GUA
+picture = "street"
+style = 2
+
+trigger = {
+control = { province = 2078 data = GUA }
+NOT = {
+exists = PAN
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Panama has fallen to the Centroamerican Army"
+desc = "Panama has fallen to our army, the Centroamerican flag flies over Panama City!"
+
+action_a = {
+name = "The Centroamerican flag flies over Panama City!"
+command = { type = dissent value = -5 }
+command = { type = addcore which = 889 }
+command = { type = addcore which = 2077 }
+command = { type = addcore which = 2078 }
+}
+}
+
+event = {
+id = 284028
+country = HON
+style = 2
+picture = "Guerillas"
+
+trigger = {
+ai = no
+flag = GUA_REBELS
+government = { type = communist country = GUA }
+NOT = {
+government = communist
+}
+}
+
+date = { day = 19 month = january year = 1939 }
+
+name = "The Honduras Civil War"
+desc = "The syndicalists of Centroamerica have used our desperate measures following the Panama disease to gain followers among our peasantry. Now the country is in state of full rebellion and, unless we want to be thrown out of power, we must act eact quickly."
+
+action_a = {
+ai_chance = 90
+name = "This will not be the first Left-Wing uprising we have crushed!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = supplies value = -250 }
+command = { type = money value = -50 }
+command = { type = revolt which = 760 }
+command = { type = setflag which = HCW_Victory }
+command = { trigger = { exists = USA NOT = { exists = TEX exists = CSA ispuppet = USA lost_national = { country = USA value = 5 } government = { type = communist country = USA } } flag = END_ACW } type = trigger which = 3450052 } #US response to the Honduras Civil War in USA foreign policy.txt
+command = { trigger = { exists = CAN NOT = { ispuppet = CAN lost_national = { country = CAN value = 5 } government = { type = communist country = CAN } } } type = trigger which = 106020 } #Canada response to the Honduras Civil War in Canada Foreign Policy.txt
+}
+
+action_b = {
+ai_chance = 10
+name = "We're tired of the blood shed, its not worth it, we go without a fight"
+command = { type = relation which = ENG value = 50 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = FRA value = 50 }
+command = { type = relation which = RSI value = 50 }
+command = { type = relation which = GEO value = 50 }
+command = { type = relation which = CSA value = 50 }
+command = { type = relation which = ARG value = -100 }
+command = { type = relation which = COL value = -100 }
+command = { type = relation which = NIC value = -100 }
+command = { type = relation which = PAN value = -100 }
+command = { type = relation which = TEX value = -100 }
+command = { type = domestic which = free_market value = -9 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = setflag which = HCW_Defeat }
+}
+}
+
+

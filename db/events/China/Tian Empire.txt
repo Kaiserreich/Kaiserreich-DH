@@ -1,0 +1,3144 @@
+
+
+
+event = {
+id = 160000
+country = CHC
+style = 2
+picture = "Chinese Workforce"
+
+date = { day = 6 month = june year = 1936 }
+
+name = "Refugeese from AOG"
+desc = "EVT_9984_DESC"
+
+
+action_a = {
+ai_chance = 10
+name = "Place them and the boy under special care."
+command = { type = sleepevent which = 628018 }
+command = { type = dissent value = 4 }
+command = { type = industrial_modifier which = total value = 2 }
+command = { type = add_division which = "Changsha Militia" value = militia when = 4 }
+}
+
+action_b = {
+ai_chance = 90
+name = "Conscript them, all Chinese are equal."
+command = { type = sleepevent which = 160001 }
+command = { type = dissent value = -2 }
+command = { type = add_division which = "Changsha Militia" value = militia when = 4 }
+command = { type = add_division which = "Changsha Militia" value = militia when = 4 }
+}
+}
+
+
+event = {
+id = 160001
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+event = 160000
+control = { province = 1247 data = CHC }
+not = {
+exists = CSX
+ispuppet = CHC
+}
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  14
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Founding of an new Empire"
+desc = "Our final victory over the pathetic Manchurian Qing dynasty has brought hope and inspiration to the desperate Chinese people in all of the Central Plains, most of them recognize our Mandate of Heaven and are willing to follow our lead. Some of our brothers argue that in order to avoid the same fate of the shaky Republican movement or the corrupted Taiping Tianguo we need to reestablish the imperial system according to the Han tradition with balance between politics and religion."
+
+action_a = {
+ai_chance = 50
+name = "Proclaim the Tian dynasty!"
+command = { type = name where = CHC which = CHC_EMP_NAME}
+command = { type = domestic which = interventionism value = 2 }
+command = { type = flag_ext where = CHC which = "_TAN" }
+command = { type = setflag which = CHC_AUT }
+command = { type = sleepevent which = 628016 }
+command = { type = sleepevent which = 628019 }
+command = { type = sleepevent which = 628042 }
+command = { type = sleepevent which = 628043 }
+command = { type = sleepevent which = 630099 }
+command = { type = sleepevent which = 630100 }
+command = { type = sleepevent which = 630101 }
+command = { type = sleepevent which = 925042 }
+command = { type = sleepevent which = 925043 }
+}
+
+action_b = {
+ai_chance = 50
+name = "No need, the I-Kuan Tao will show us the path to enlightment."
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = -3 }
+command = { type = sleepevent which = 160002 }
+command = { type = sleepevent which = 160004 }
+}
+}
+
+
+event = {
+id = 160002
+country = CHC
+style = 2
+save_date = yes
+picture = "TheBrotherhood"
+
+trigger = {
+event = 160001
+}
+
+date = { day = 1 month = January year = 1936 }
+offset =  12
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "The new imperial court established!"
+desc = "Our great teacher Zhang Tianran insisted the young boy Zhu Rongji from the noble lineage of Ming dynasty become the new emperor. Referring to the corruption of Hong Xiuquan after becoming the King of Heaven, Zhang will instead become the Grand Chaplain and look after the spiritual wellbeing of our people, however until the young emperor is ready Zhang will also stay as the Regent of the Empire, Sun Suzhen will become the Holy Mother of Zhonghua and establish the official state church."
+
+action_a = {
+name = "Hail to the wisdom of the Grand Chaplain!"
+command = { type = dissent value = -10 }
+command = { type = sleepminister which = 51006 }
+command = { type = sleepminister which = 51007 }
+command = { type = sleepminister which = 51053 }
+command = { type = sleepminister which = 51057 }
+command = { type = headofgovernment which = 51003 }
+}
+}
+
+
+event = {
+id = 160003
+country = CHC
+style = 2
+picture = "China_rally"
+
+trigger = {
+event = 160002
+NOT = {
+ispuppet = CHC
+exists = CSX
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Airforce and Navy!"
+desc = "War with the major powers has shown us the importance of a proper Airforce and Navy, we can make use of the resources and plans from the former Qing to improve our own armed forces !"
+
+action_a = {
+name = "Reorganize!"
+command = { type = sleepteam which = 8307 }
+command = { type = waketeam which = 8326 }
+command = { type = waketeam which = 8310 }
+command = { type = add_division which = "Tian Long" value = interceptor when = 8 }
+command = { type = add_division which = "Tian Long" value = interceptor when = 8 }
+command = { type = add_division which = "Tian Long" value = interceptor when = 8 }
+command = { type = add_division which = "Hai Long" value = destroyer when = 3 }
+command = { type = add_division which = "Hai Long" value = destroyer when = 3 }
+command = { type = add_division which = "Hai Long" value = destroyer when = 3 }
+command = { type = supplies value = -200 }
+}
+}
+
+
+event = {
+id = 160004
+random = no
+country = CHC
+style = 2
+
+trigger = {
+event = 160002
+owned = { province = 1247 data = CHC }
+control = { province = 1247 data = CHC }
+owned = { province = 1337 data = CHC }
+control = { province = 1337 data = CHC }
+owned = { province = 1258 data = CHC }
+control = { province = 1258 data = CHC }
+NOT = { 
+exists = CSX 
+}
+}
+
+name = "New imperial Capital"
+desc = "With the ousting of the Manchurian Qing dynasty from Beiing and the founding of the Tian dynasty, enforcing the Mandate from Yan'an has become somewhat cumbersome. It is time to choose a proper capital for the new empire!"
+picture = "shangqingone"
+
+date = { day = 0 month = february year = 1936 }
+offset = 20
+deathdate = { day = 16 month = november year = 1963 }
+
+action_a = {
+ai_chance = 33
+name = "Nanjing, the Southern capital!"
+command = { type = capital which =  1337 }
+command = { type = province_keypoints which = 1337 value = 5 }
+command = { type = construct which = ic where = 1337 value = 4 }
+command = { type = add_prov_resource which = 1337 value = 15 where = energy }
+}
+
+action_b = {
+ai_chance = 34
+name = "The Northern capital and the Forbidden City!"
+command = { type = capital which =  1247 }
+command = { type = province_keypoints which = 1247 value = 10 }
+command = { type = construct which = ic where = 1247 value = 4 }
+command = { type = add_prov_resource which = 1247 value = 20 where = energy }
+}
+
+action_c = {
+ai_chance = 33
+name = "Changan is Eternal..."
+command = { type = capital which =  1258 }
+command = { type = province_keypoints which = 1258 value = 10 }
+command = { type = construct which = ic where = 1258 value = 4 }
+command = { type = add_prov_resource which = 1258 value = 10 where = energy }
+command = { type = add_prov_resource which = 1258 value = 5 where = rare_materials }
+}
+}
+
+
+event = {
+id = 160005
+random = no
+country = CHC
+style = 2
+save_date = yes
+
+trigger = {
+event = 160002
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "New imperial Army"
+desc = "Today Fang Zhimin, the first prime minister of the new empire, held a massive celebration for the founding of the new Imperial Guard of the Heavenly Dynasty. Only the the most expierienced veteran fighters from the Anti-Qing Liberation War received the honour of being a part of this spearhead of the new Empire."
+picture = "shangqingone"
+
+action_a = {
+name = "Di Guo Wan Sui!"
+command = { type = sleepteam which = 8301 }
+command = { type = sleepteam which = 8311 }
+command = { type = sleepteam which = 8310 }
+command = { type = waketeam which = 8316 }
+command = { type = waketeam which = 8317 }
+command = { type = waketeam which = 8318 }
+command = { type = add_division which = "Tian Long Wei" value = infantry when = 9 }
+command = { type = add_division which = "Tian Long Wei" value = infantry when = 9 }
+command = { type = add_division which = "Tian Long Wei" value = infantry when = 9 }
+command = { type = add_division which = "Tian Long Wei" value = infantry when = 9 }
+command = { type = add_division which = "Tian Long Wei" value = infantry when = 9 }
+command = { type = add_division which = "Tian Long Wei" value = infantry when = 9 }
+}
+}
+
+
+event = {
+id = 160006
+random = no
+country = CHC
+style = 2
+
+trigger = {
+event = 160002
+headofstate = 51002
+} #Zhang Tianran
+
+name = "The grand Chaplain has died!"
+desc = "Zhang Tianran, the Grand Chaplain and Regent of the empire who has led us for so long, has returned to heaven. Emperor Zhu Rongji is now almost 19 years old, is he ready to take over the leadership?"
+picture = "minister_died"
+
+date = { day = 29 month = september year = 1947 }
+
+action_a = {
+ai_chance = 90
+name = "Our Emperor is ready!"
+command = { type = sleepminister which = 51001 } #Zhang Tianran
+command = { type = sleepminister which = 51002 } #Zhang Tianran
+command = { type = sleepminister which = 51052 } #Zhang Tianran
+command = { type = headofstate which = 51063 } #zhu Rongji
+command = { type = headofgovernment which = 51064 } #zhou Enlai
+command = { type = sleepteam which = 8302 }
+command = { type = sleepevent which = 160007 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Zhang Guotao will become the new regent!"
+command = { type = sleepminister which = 51001 } #Zhang Tianran
+command = { type = sleepminister which = 51002 } #Zhang Tianran
+command = { type = sleepminister which = 51052 } #Zhang Tianran
+command = { type = headofstate which = 51008 } #Zhang Guotao
+command = { type = headofgovernment which = 51023 } #Zhang Guotao
+command = { type = dissent value = 5 }
+command = { type = sleepteam which = 8302 }
+command = { type = sleepevent which = 160007 }
+}
+}
+
+
+event = {
+id = 160007
+random = no
+country = CHC
+style = 2
+
+trigger = {
+event = 160002
+NOT = { headofstate = 51002 }
+} #Zhang Tianran
+
+name = "Zhang Tianran has died!"
+desc = "Zhang Tianran, our former teacher that had lead us for so long, has died! A week of mourning has been declared."
+picture = "minister_died"
+
+date = { day = 29 month = september year = 1947 }
+
+action_a = {
+name = "We will never forget him!"
+command = { type = sleepminister which = 51001 } #Zhang Tianran
+command = { type = sleepminister which = 51002 } #Zhang Tianran
+command = { type = sleepminister which = 51052 } #Zhang Tianran
+command = { type = sleepteam which = 8302 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 160008
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+event = { id = 160005 days = 250 } #Forming the imperial army event as a precondition
+NOT = {
+ispuppet = CHC
+atwar = CHC
+}
+OR = {
+NOT = { control = { province = 1338 data = -3 } } #Shanghai
+NOT = { control = { province = 1369 data = -3 } } #Guangzhou
+NOT = { control = { province = 1390 data = -3 } } #Kunming
+NOT = { control = { province = 1281 data = -3 } } #Urumuqi
+NOT = { control = { province = 1208 data = -3 } } #Changchun
+NOT = { control = { province = 1289 data = -3 } } #Lhasa
+NOT = { control = { province = 1219 data = -3 } } #Port Arthur
+}
+control = { province = 1247 data = CHC }
+control = { province = 1259 data = CHC }
+}
+
+date = { day = 0 month = january year = 1938 }
+offset = 90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Path to Reunification"
+desc = "According to the reports from the Ministries of Millitary Affairs and Internal Affairs our control over the central regions is sufficiently consolidated, however the reunification of our nation has just begun. Now that our army is ready for battle the Imperial Court should decide the direction of our next step."
+
+action_a = {
+name = "Go South!"
+ai_chance = 100
+trigger = {
+OR = {
+NOT = { control = { province = 1338 data = -3 } } #Shanghai
+NOT = { control = { province = 1369 data = -3 } } #Guangzhou
+NOT = { control = { province = 1390 data = -3 } } #Kunming
+}
+}
+command = { type = relation which = CGX value = -20 }
+command = { type = relation which = CHI value = -10 }
+command = { type = ai_prepare_war which = CGX }
+command = { type = ai_prepare_war which = CHI }
+command = { type = setflag which = TN_South }
+}
+
+action_b = {
+name = "Go West!"
+ai_chance = 0
+trigger = {
+OR = {
+NOT = { control = { province = 1281 data = -3 } } #Urumuqi
+NOT = { control = { province = 1289 data = -3 } } #Lhasa
+}
+}
+command = { type = relation which = MON value = -20 }
+command = { type = relation which = CXB value = -10 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = CXB }
+command = { type = ai_prepare_war which = MON }
+command = { type = setflag which = TN_West }
+}
+
+action_c = {
+name = "Go North!"
+ai_chance = 0
+trigger = {
+OR = {
+NOT = { control = { province = 1208 data = -3 } } #Changchun
+NOT = { control = { province = 1219 data = -3 } } #Port Arthur
+}
+}
+command = { type = relation which = MAN value = -20 }
+command = { type = relation which = JAP value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = MAN }
+command = { type = setflag which = TN_North }
+}
+
+action_d = {
+name = "What we achieved is enough"
+ai_chance = 1
+command = { type = relation which = MAN value = 10 }
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = relation which = CGX value = 10 }
+command = { type = domestic which = interventionism value = -10 }
+command = { type = dissent value = 10 }
+}
+}
+
+
+####################
+### "Tian dynasty Southern campaign"
+### IDs 160009-
+####################
+
+event = {
+id = 160009
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+flag = TN_South
+not = {
+exists = CSX
+exists = CHI
+atwar = CHC
+ispuppet = CHC
+alliance = { country = CHC country = CGX }
+}
+exists = CGX
+}
+
+date = { day = 0 month = January year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Move into Southern regions against the AOG"
+desc = "With our recent victory over the pathetic Qing Empire, we now must find ways to continue driving the foreigners out of China! Word has reached us that the German-backed AOG in Southern China is currently facing an internal crisis, maybe the time is the right for us to strike them down?"
+
+action_a = {
+ai_chance = 90
+name = "Time to push all foreigners out of China!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = CGX }
+}
+
+action_b = {
+ai_chance = 10
+name = "We are in no shape for a reunification war yet."
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+
+event = {
+id = 160010
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+flag = TN_South
+not = {
+exists = CSX
+exists = CGX
+atwar = CHC
+ispuppet = CHC
+}
+exists = CHI
+}
+
+date = { day = 0 month = January year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Move into Southern regions against the Republicans"
+desc = "With our recent victory over the pathetic Qing Empire, we now must find ways to continue reuniting the rest of China! The once-failed Republican movement has risen up again and they have managed to establish their rule over the former AOG territories in the south, maybe the time is the right for us to deal with them?"
+
+action_a = {
+ai_chance = 35
+name = "Their way is incompatible with the natural order in China!"
+command = { type = leave_alliance }
+command = { type = war which = CHI }
+}
+
+action_a = {
+ai_chance = 60
+name = "They are fellow Chinese same as us, there must be a way for peace!"
+command = { type = setflag which = TN_ChiNego }
+}
+
+action_c = {
+ai_chance = 5
+name = "We are in no shape for a reunification war yet."
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+
+event = {
+id = 160011
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+flag = TN_South
+not = {
+exists = CSX
+atwar = CHC
+ispuppet = CHC
+}
+exists = CGX
+exists = CHI
+}
+
+date = { day = 0 month = January year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Move into Southern regions"
+desc = "With our recent victory over the pathetic Qing Empire, we now must find ways to continue driving the foreigners out of China! Word has reached us that the German-backed AOG in Southern China is currently facing a new Republican movement, maybe the time is the right for us to deal with the situation and reunify the southern territories?"
+
+action_a = {
+ai_chance = 30
+name = "Now is the Time to deal with them both while they are weakened!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = CGX }
+command = { type = war which = CHI }
+command = { type = sleepevent which = 160009 }
+command = { type = sleepevent which = 160010 }
+}
+
+action_a = {
+ai_chance = 65
+name = "First push the foreigners out of China and then we can work out a deal with the Republicans!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = CGX }
+command = { type = setflag which = TN_ChiNego }
+command = { type = sleepevent which = 160009 }
+command = { type = sleepevent which = 160010 }
+}
+
+action_c = {
+ai_chance = 5
+name = "We are in no shape for a reunification war yet."
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = sleepevent which = 160009 }
+command = { type = sleepevent which = 160010 }
+}
+}
+
+
+event = {
+id = 160012
+country = CHI
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+flag = TN_ChiNego
+}
+
+date = { day = 0 month = January year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "New Imperial Dynasty from the north are pressing for a united China"
+desc = "The Tian Dynasty have decided that they alone should rule China, but our differences are great, namely in the areas of government and views on people's liberties and many of our people do not wish to join them."
+
+action_a = {
+ai_chance = 30
+name = "We refuse - push for twin governments"
+command = { type = dissent value = -1 }
+command = { type = trigger which = 160013 }
+command = { type = clrflag which = TN_ChiNego }
+}
+
+action_b = {
+ai_chance = 10
+name = "Agree to exist under their rule"
+command = { type = trigger which = 160014 }
+command = { type = clrflag which = TN_ChiNego }
+}
+
+action_c = {
+ai_chance = 20
+name = "Agree, but demand introduction of civil liberties"
+command = { type = trigger which = 160015 }
+command = { type = clrflag which = TN_ChiNego }
+}
+
+action_d = {
+ai_chance = 10
+name = "Down with Imperialism!"
+command = { type = war which = CHC }
+command = { type = clrflag which = TN_ChiNego }
+}
+}
+
+
+event = {
+id = 160013
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+name = "The Republicans have refused to accept the Mandate of Heaven!"
+desc = "The Republicans have obviously been too influenced by the foreign powers, we must remove their stain and reunify all of China!"
+
+action_a = {
+ai_chance = 90
+name = "Enfore the Mandate!"
+command = { trigger = { alliance = { country = CHC country = CHI } } type = leave_alliance }
+command = { type = war which = CHI }
+}
+
+action_b = {
+ai_chance = 10
+name = "Leave them be, we are not ready yet."
+command = { type = dissent value = 10 }
+}
+}
+
+
+event = {
+id = 160014
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+name = "Unity for China!"
+desc = "The Republican government has accepted our push for the total unification of our countries. This is a great day for all of China!"
+
+action_a = {
+name = "Bring them into the fold!"
+command = { type = addcore which = 1378 }
+command = { type = addcore which = 1360 }
+command = { type = addcore which = 1301 }
+command = { type = addcore which = 1304 }
+command = { type = addcore which = 1305 }
+command = { type = addcore which = 1306 }
+command = { type = addcore which = 1307 }
+command = { type = addcore which = 1308 }
+command = { type = addcore which = 1309 }
+command = { type = addcore which = 1310 }
+command = { type = addcore which = 1311 }
+command = { type = addcore which = 1312 }
+command = { type = addcore which = 1313 }
+command = { type = addcore which = 1314 }
+command = { type = addcore which = 1315 }
+command = { type = addcore which = 1318 }
+command = { type = addcore which = 1347 }
+command = { type = addcore which = 1348 }
+command = { type = addcore which = 1349 }
+command = { type = addcore which = 1350 }
+command = { type = addcore which = 1351 }
+command = { type = addcore which = 1352 }
+command = { type = addcore which = 1353 }
+command = { type = addcore which = 1354 }
+command = { type = addcore which = 1355 }
+command = { type = addcore which = 1356 }
+command = { type = addcore which = 1357 }
+command = { type = addcore which = 1359 }
+command = { type = addcore which = 1368 }
+command = { type = addcore which = 1369 }
+command = { type = addcore which = 1370 }
+command = { type = addcore which = 1373 }
+command = { type = addcore which = 1374 }
+command = { type = addcore which = 1375 }
+command = { type = addcore which = 1376 }
+command = { type = addcore which = 1377 }
+command = { type = addcore which = 1379 }
+command = { type = addcore which = 1380 }
+command = { type = addcore which = 1381 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1383 }
+command = { type = addcore which = 1338 }
+command = { type = addcore which = 1358 }
+command = { type = addcore which = 1371 }
+command = { type = addcore which = 1346 }
+command = { type = addcore which = 1365 }
+command = { type = addcore which = 1367 }
+command = { type = addcore which = 1328 }
+command = { type = addcore which = 1331 }
+command = { type = addcore which = 1241 }
+command = { type = addcore which = 1245 }
+command = { type = inherit which = CHI }
+}
+}
+
+
+event = {
+id = 160015
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+name = "Republican conditions"
+desc = "The Republicans have accepted to follow us if we promise to introduce and maintain modern civil liberties into our Empire."
+
+action_a = {
+ai_chance = 5
+name = "Accept"
+command = { trigger = { alliance = { country = CHC country = CHI } } type = leave_alliance }
+command = { type = addcore which = 1378 }
+command = { type = addcore which = 1360 }
+command = { type = addcore which = 1301 }
+command = { type = addcore which = 1304 }
+command = { type = addcore which = 1305 }
+command = { type = addcore which = 1306 }
+command = { type = addcore which = 1307 }
+command = { type = addcore which = 1308 }
+command = { type = addcore which = 1309 }
+command = { type = addcore which = 1310 }
+command = { type = addcore which = 1311 }
+command = { type = addcore which = 1312 }
+command = { type = addcore which = 1313 }
+command = { type = addcore which = 1314 }
+command = { type = addcore which = 1315 }
+command = { type = addcore which = 1318 }
+command = { type = addcore which = 1347 }
+command = { type = addcore which = 1348 }
+command = { type = addcore which = 1349 }
+command = { type = addcore which = 1350 }
+command = { type = addcore which = 1351 }
+command = { type = addcore which = 1352 }
+command = { type = addcore which = 1353 }
+command = { type = addcore which = 1354 }
+command = { type = addcore which = 1355 }
+command = { type = addcore which = 1356 }
+command = { type = addcore which = 1357 }
+command = { type = addcore which = 1359 }
+command = { type = addcore which = 1368 }
+command = { type = addcore which = 1369 }
+command = { type = addcore which = 1370 }
+command = { type = addcore which = 1373 }
+command = { type = addcore which = 1374 }
+command = { type = addcore which = 1375 }
+command = { type = addcore which = 1376 }
+command = { type = addcore which = 1377 }
+command = { type = addcore which = 1379 }
+command = { type = addcore which = 1380 }
+command = { type = addcore which = 1381 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1383 }
+command = { type = addcore which = 1338 }
+command = { type = addcore which = 1358 }
+command = { type = addcore which = 1371 }
+command = { type = addcore which = 1346 }
+command = { type = addcore which = 1365 }
+command = { type = addcore which = 1367 }
+command = { type = addcore which = 1328 }
+command = { type = addcore which = 1331 }
+command = { type = addcore which = 1241 }
+command = { type = addcore which = 1245 }
+command = { type = domestic which = freedom value = 4 }
+command = { type = inherit which = CHI }
+command = { type = dissent value = 3 }
+}
+
+action_b = {
+ai_chance = 95
+name = "Fools, We have the Mandate!"
+command = { type = leave_alliance }
+command = { type = war which = CHI }
+}
+}
+
+
+event = {
+id = 160016
+country = CHC
+style = 2
+picture = "China_Rally"
+
+trigger = {
+flag = TN_South
+exists = EAF
+NOT = {
+atwar = CHC
+ispuppet = CHC
+exists = CHI
+exists = CGX
+exists = CSX
+}
+}
+
+name = "The Legation Cities"
+desc = "The Legation Cities were the richest coastal cities of China and now they are under foreign control. With the southern provinces in our hand we should try to regain those lose territories as well. There is, however, a problem since the Treaty ports, as they're called, contain significant foreign investments and capital, and it may be unwise to antagonize all the major world powers...."
+
+date = { day = 0 month = May year = 1938 }
+offset = 7
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 90
+name = "Demand a full unification"
+command = { type = addcore which = 1338 }
+command = { type = addcore which = 1358 }
+command = { type = addcore which = 1371 }
+command = { type = addcore which = 1346 }
+command = { type = addcore which = 1372 }
+command = { type = dissent value = -10 }
+command = { type = belligerence which = CHC value = 10  }
+command = { type = relation which = GER value = -70 }
+command = { type = relation which = USA value = -70 }
+command = { type = relation which = CAN value = -70 }
+command = { type = relation which = RUS value = -30 }
+command = { type = relation which = SOV value = -30 }
+command = { type = relation which = JAP value = -70 }
+command = { type = trigger which = 160017 }
+}
+
+action_b = {
+ai_chance = 9
+name = "Try to establish control over their government"
+command = { type = trigger which = 160018 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = USA value = -10 }
+command = { type = relation which = CAN value = -10 }
+command = { type = relation which = RUS value = -10 }
+command = { type = relation which = SOV value = -10 }
+command = { type = relation which = JAP value = -20 }
+command = { type = belligerence which = CHC value = 2  }
+command = { type = dissent value = 2 } #dissent for not fully rebuilding the empire
+}
+
+action_b = {
+ai_chance = 1
+name = "Just let them be"
+command = { type = dissent value = 5 } #dissent for not rebuilding empire when having the chance
+command = { type = relation which = GER value = 20 }
+command = { type = relation which = USA value = 10 }
+command = { type = relation which = CAN value = 10 }
+command = { type = relation which = RUS value = 10 }
+command = { type = relation which = SOV value = 10 }
+command = { type = relation which = JAP value = 20 }
+}
+}
+
+
+event = {
+id = 160017
+country = EAF
+style = 2
+picture = "Chinese Big Swords"
+
+name = "Demands of the new Empire"
+desc = "An envoy of the Tian Dynasty approched us in Shanghai. They demanded full unification with the new Empire."
+
+action_a = {
+ai_chance = 5
+name = "We can't resist..."
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = trigger which = 160024 }
+}
+
+action_b = {
+ai_chance = 95
+name = "We must resist those fanatics!"
+command = { type = trigger which = 160019 }
+command = { type = dissent value = 10 } #chinese who want to join the Empire
+}
+}
+
+
+event = {
+id = 160018
+country = EAF
+style = 2
+picture = "Chinese Big Swords"
+
+name = "Demands of the new Empire"
+desc = "An envoy of the Tian Dynasty approched us in Shanghai. They demanded that we should accept supervision of our government by a representative of the Emperor and show some loyalty towards the new Empire in the future."
+
+action_a = {
+ai_chance = 10
+name = "It's the best we can get"
+command = { type = trigger which = 160023 }
+command = { type = secedeprovince which = CHC value = 1338 }
+}
+
+action_b = {
+ai_chance = 90
+name = "Those fanatics can't be trusted!"
+command = { type = trigger which = 160019 }
+command = { type = dissent value = 10 } #chinese who want to join the Empire
+}
+}
+
+
+event = {
+id = 160019
+country = CHC
+style = 2
+picture = "Chinese Benz2"
+
+name = "Legation Cities refuse!"
+desc = "The leaders of the Legation Cities refused our rightful claims, however, because of their status as internationally-recognized Free Cities, direct millitary confrontation might bring us unwanted attentions. According to our spies there are reports that the local triad families were originally remnants of the Ming-loyalist and anti-Manchu movements, maybe we could convince them to join us."
+
+action_a = {
+ai_chance = 90
+name = "Approach the Triad gangs!"
+command = { type = setflag which = TN_TriadA }
+command = { type = money value = -300 } #Money to bribe the criminal lords and aid those who join the cause
+command = { type = supplies value = -100 }
+}
+
+action_b = {
+ai_chance = 10
+name = "To hell with the foreign devils, attack!"
+command = { type = war which = EAF }
+command = { type = relation which = JAP value = -30 }
+command = { type = relation which = GER value = -30 }
+}
+}
+
+event = {
+id = 160020
+country = EAF
+style = 2
+picture = "red"
+
+trigger = {
+flag = TN_TriadA
+}
+
+date = { day = 0 month = January year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Criminal Activities!"
+desc = "In Recent weeks there has been increasing street violence and gang fights, it looks like that the Triad bosses are in some kind of power struggle among themselves."
+
+action_a = {
+name = "Guess it's buisness as usual....."
+command = { type = setflag which = TN_TriadB }
+command = { type = dissent value = 5 }
+command = { type = clrflag which = TN_TriadA }
+}
+}
+
+
+event = {
+id = 160021
+country = CHC
+picture = "Chinese Big Swords"
+
+trigger = {
+flag = TN_TriadB
+}
+
+date = { day = 0 month = January year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Gangs in Legation Cities"
+desc = "The Triad faction which remained true to their roots as a Han nationalist movement was able to unify the criminal underworld of the Legation Cities, their representatives arrived in the imperial capital to swear fealty to our young emperor. They are ready to start the revolt and join the Heavenly Empire!"
+style = 2
+
+action_a = {
+name = "Excellent, send our support!"
+command = { type = trigger which = 160022 }
+command = { type = clrflag which = TN_TriadB }
+}
+}
+
+
+event = {
+id = 160022
+country = EAF
+style = 2
+picture = "red"
+
+name = "Revolt!"
+desc = "A sudden revolt broke out in our main cities, criminal gangs and protesters sweeped the street demanding that the ruling authorities step down in favour of popular, local Chinese figureheads. It looks like the underworld Triad families are behind the revolt with the backing of the Tian empire, as Chinese Imperial forces are building up at our borders demanding us to accept their offer to restore order. It looks like submission is the only option..."
+
+action_a = {
+name = "How could this happen..."
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = switch_allegiance which = -1 where = CHC }
+command = { type = trigger which = 160024 }
+}
+}
+
+
+event = {
+id = 160023
+country = CHC
+picture = "Chinese Big Swords"
+
+name = "Legation Cities accept"
+desc = "The leaders of the Legation Cities have accepted our demands and promised to be more loyal to the Empire in the future."
+style = 2
+
+action_a = {
+name = "Good"
+command = { type = removecore which = 1338 }
+command = { type = removecore which = 1358 }
+command = { type = removecore which = 1371 }
+command = { type = removecore which = 1346 }
+command = { type = removecore which = 1372 }
+command = { type = removeclaim which = 1338 }
+command = { type = removeclaim which = 1358 }
+command = { type = removeclaim which = 1371 }
+command = { type = removeclaim which = 1346 }
+command = { type = removeclaim which = 1372 }
+command = { type = make_puppet which = EAF }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 160024
+country = CHC
+picture = "Chinese Big Swords"
+
+name = "Legation Cities accept"
+desc = "The leaders of the Legation Cities accepted our demand and joined the Empire."
+style = 2
+
+action_a = {
+name = "Perfect"
+command = { type = inherit which = EAF value = 1 }
+command = { type = dissent value = -3 }
+}
+}
+
+
+event = {
+id = 160025
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+flag = TN_South
+exists = CYN
+control = { province = 1369 data = -3 } #Guangzhou
+NOT = {
+atwar = CHC
+ispuppet = CHC
+exists = CHI
+exists = CGX
+exists = CSX
+}
+}
+
+date = { day = 0 month = July year = 1938 }
+offset =  90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Dealing with Yunnan"
+desc = "Now that most of the easten part of southern China has been reunified it is time to figure out what to do with the Yunnan Warlord."
+
+action_a = {
+ai_chance = 40
+name = "Warlords respond to threats"
+command = { type = trigger which = 160026 }
+}
+
+action_b = {
+ai_chance = 60
+name = "Bring him to the table"
+command = { type = trigger which = 160027 }
+}
+
+action_c = {
+ai_chance = 0
+name = "This is too dangerous"
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 160026
+country = CYN
+style = 2
+picture = "China_Army"
+
+name = "Tian Empire have Threatened Us!"
+desc = "With the reclaiming of the AOG lands the new Empire from the north has delusions of fully rebuilding Imperial China - and we are next!"
+
+action_a = {
+ai_chance = 40
+name = "We must give in"
+command = { type = trigger which = 160028 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Ignore them"
+command = { type = event which = 160029 where = CHC when = 2  }
+}
+
+action_c = {
+ai_chance = 20
+name = "They want war! War it is!"
+command = { type = war which = CHC }
+command = { type = dissent value = 15 }         #combination of citizens not wanting to fight
+}
+}
+
+
+event = {
+id = 160027
+country = CYN
+style = 2
+picture = "Board Meeting"
+
+name = "Tian Empire want to talk"
+desc = "With the reclaiming of the AOG lands the new Empire from the north has delusions of fully rebuilding Imperial China - and they want to talk...!"
+
+action_a = {
+ai_chance = 30
+name = "Just give in"
+command = { type = trigger which = 160028 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Ignore the offer"
+command = { type = event which = 160029 where = CHC when = 2  }
+}
+
+action_c = {
+ai_chance = 30
+name = "Make an offer"
+command = { type = trigger which = 160030 }
+}
+}
+
+
+event = {
+id = 160028
+country = CHC
+style = 2
+picture = "China_Rally"
+
+name = "The Warlord has given in"
+desc = "The Warlord of Yunnan has given in to our claims and the Empire is another step closer to being complete."
+
+action_a = {
+name = "Reunification of China can't be stopped!"
+command = { type = inherit which = CYN }
+command = { type = dissent value = -10 }
+command = { type = addcore which = 1389 }
+command = { type = addcore which = 1390 }
+command = { type = addcore which = 1384 }
+command = { type = addcore which = 1385 }
+command = { type = addcore which = 1387 }
+command = { type = addcore which = 1386 }
+command = { type = addcore which = 1388 }
+command = { type = addcore which = 1292 }
+command = { type = addcore which = 1293 }
+command = { type = addcore which = 1291 }
+command = { type = addcore which = 1300 }
+command = { type = addcore which = 1303 }
+command = { type = addcore which = 1261 }
+command = { type = addcore which = 1262 }
+command = { type = addcore which = 1296 }
+command = { type = addcore which = 1297 }
+command = { type = addcore which = 1298 }
+command = { type = addcore which = 1299 }
+command = { type = addcore which = 1302 }
+command = { type = addcore which = 1267 }
+command = { type = sleepevent which = 63058 }
+}
+}
+
+
+event = {
+id = 160029
+country = CHC
+style = 2
+
+name = "We still haven't heard anything from Yunnan..."
+desc = "Our messangers reached Yunnan days ago and we still have not heard anything back... how should we proceed?"
+picture = "Chinese Officers"
+
+action_a = {
+ai_chance = 55
+name = "One last chance - mobilize"
+command = { type = event which = 160031 where = CYN when = 2  }
+command = { type = belligerence which = CHC value = 2 }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action_b = {
+ai_chance = 40
+name = "Attack them now!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = war which = CYN }
+}
+
+action_c = {
+ai_chance = 5
+name = "Forget it"
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 160030
+country = CHC
+style = 2
+picture = "Chinese Big Swords"
+
+name = "The Yunnan Offer"
+desc = "The Yunnan have offered to pay homage to the Imperial Court and give us access and control over some parts of their government"
+
+action_a = {
+name = "Accept the offer"
+ai_chance = 10
+command = { type = make_puppet which = CYN }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+ai_chance = 70
+name = "Full annexation or else"
+command = { type = setflag which = CYN_mobilizeTN }
+command = { type = belligerence which = CHC value = 3 }
+}
+
+action_c = {
+ai_chance = 20
+name = "Let's stop wasting time - invade"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = war which = CYN }
+}
+}
+
+
+event = {
+id = 160031
+country = CYN
+style = 2
+picture = "Chinese Calvary2"
+
+name = "Tian Empire have mobilized troops"
+desc = "All along the border, the Tian Empire is readying troops and has repeated its demands - what should we do?"
+
+action_a = {
+ai_chance = 80
+name = "We cannot win this war"
+command = { type = trigger which = 160028 }
+}
+
+action_b = {
+ai_chance = 20
+name = "We must attack while we still can!"
+command = { type = war which = CHC }
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 160032
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+flag = TN_South #after successful southern campaign
+NOT = {
+ispuppet = CHC
+atwar = CHC
+OR = {
+NOT = { control = { province = 1281 data = -3 } } #Urumuqi
+NOT = { control = { province = 1208 data = -3 } } #Changchun
+NOT = { control = { province = 1289 data = -3 } } #Lhasa
+NOT = { control = { province = 1219 data = -3 } } #Port Arthur
+}
+}
+control = { province = 1247 data = CHC }
+control = { province = 1337 data = CHC }
+control = { province = 1258 data = CHC }
+control = { province = 1338 data = -3 } #Shanghai
+control = { province = 1369 data = -3 } #Guangzhou
+control = { province = 1390 data = -3 } #Kunming
+}
+
+date = { day = 0 month = january year = 1938 }
+offset = 90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Focus in international policy"
+desc = "The southern territories were brought under our control after much effort, however there is no time to rest as the path to the reunification of China is still long, once again the Imperial Court should make the decision about the direction of our next step."
+
+action_a = {
+name = "Go West!"
+ai_chance = 80
+trigger = {
+OR = {
+NOT = { control = { province = 1281 data = -3 } } #Urumuqi
+NOT = { control = { province = 1289 data = -3 } } #Lhasa
+}
+}
+command = { type = relation which = MON value = -20 }
+command = { type = relation which = CXB value = -10 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = CXB }
+command = { type = ai_prepare_war which = TIB }
+command = { type = setflag which = TN_West }
+}
+
+action_b = {
+name = "Go North!"
+ai_chance = 19
+trigger = {
+OR = {
+NOT = { control = { province = 1208 data = -3 } } #Changchun
+NOT = { control = { province = 1219 data = -3 } } #Port Arthur
+}
+}
+command = { type = relation which = MAN value = -20 }
+command = { type = relation which = JAP value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = MAN }
+command = { type = setflag which = TN_North }
+}
+
+action_c = {
+name = "What we achieved is enough"
+ai_chance = 1
+command = { type = relation which = MAN value = 10 }
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = clrflag  which = TN_South }
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 160033
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+flag = TN_West        #after successful western campaign
+NOT = {
+ispuppet = CHC
+atwar = CHC
+}
+OR = {
+NOT = { control = { province = 1208 data = -3 } }    #Changchun
+NOT = { control = { province = 1219 data = -3 } }    #Port Arthur
+NOT = { control = { province = 1338 data = -3 } }    #Shanghai
+NOT = { control = { province = 1369 data = -3 } }    #Guangzhou
+NOT = { control = { province = 1390 data = -3 } }    #Kunming
+}
+control = { province = 1281 data = -3 }    #Urumuqi
+control = { province = 1289 data = -3 }    #Lhasa
+}
+
+date = { day = 0 month = january year = 1938 }
+offset =  90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Focus in international policy"
+desc = "The western territories were brought under our control after much effort, however there is no time to rest as the path to the reunification of China is still long, once again the Imperial Court should make the decision about the direction of our next step."
+
+action_a = {
+name = "Go South!"
+ai_chance = 80
+trigger = {
+OR = {
+NOT = { control = { province = 1338 data = -3 } } #Shanghai
+NOT = { control = { province = 1369 data = -3 } } #Guangzhou
+NOT = { control = { province = 1390 data = -3 } } #Kunming
+}
+}
+command = { type = relation which = CGX value = -20 }
+command = { type = relation which = CHI value = -10 }
+command = { type = ai_prepare_war which = CGX }
+command = { type = ai_prepare_war which = CHI }
+command = { type = setflag which = TN_South }
+}
+
+action_b = {
+name = "Go North!"
+ai_chance = 19
+trigger = {
+OR = {
+NOT = { control = { province = 1208 data = -3 } } #Changchun
+NOT = { control = { province = 1219 data = -3 } } #Port Arthur
+}
+}
+command = { type = relation which = MAN value = -20 }
+command = { type = relation which = JAP value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = MAN }
+command = { type = setflag which = TN_North }
+}
+
+action_c = {
+name = "What we achieved is enough"
+ai_chance = 1
+command = { type = relation which = MAN value = 10 }
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = clrflag  which = TN_West }
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 160034
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+flag = TN_North        #after successful nothern campaign
+NOT = {
+ispuppet = CHC
+atwar = CHC
+}
+OR = {
+NOT = { control = { province = 1338 data = -3 } }    #Shanghai
+NOT = { control = { province = 1369 data = -3 } }    #Guangzhou
+NOT = { control = { province = 1390 data = -3 } }    #Kunming
+NOT = { control = { province = 1289 data = -3 } }    #Lhasa
+NOT = { control = { province = 1281 data = -3 } }    #Urumuqi
+}
+control = { province = 1208 data = -3 }    #Changchun
+control = { province = 1219 data = -3 }
+}
+
+date = { day = 0 month = january year = 1938 }
+offset =  90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Focus in international policy"
+desc = "The Northern territories were brought under our control after much effort, however there is no time to rest as the path to the reunification of China is still long, once again the Imperial Court should make the decision about the direction of our next step."
+
+action_a = {
+name = "Go South!"
+ai_chance = 50
+trigger = {
+OR = {
+NOT = { control = { province = 1338 data = -3 } } #Shanghai
+NOT = { control = { province = 1369 data = -3 } } #Guangzhou
+NOT = { control = { province = 1390 data = -3 } } #Kunming
+}
+}
+command = { type = relation which = CGX value = -20 }
+command = { type = relation which = CHI value = -10 }
+command = { type = ai_prepare_war which = CGX }
+command = { type = ai_prepare_war which = CHI }
+command = { type = setflag which = TN_South }
+}
+
+action_b = {
+name = "Go West!"
+ai_chance = 49
+trigger = {
+OR = {
+NOT = { control = { province = 1281 data = -3 } } #Urumuqi
+NOT = { control = { province = 1289 data = -3 } } #Lhasa
+}
+}
+command = { type = relation which = MON value = -20 }
+command = { type = relation which = CXB value = -10 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = CXB }
+command = { type = ai_prepare_war which = MON }
+command = { type = setflag which = TN_West }
+}
+
+action_c = {
+name = "What we achieved is enough"
+ai_chance = 1
+command = { type = relation which = MAN value = 10 }
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = dissent value = 15 }
+command = { type = clrflag  which = TN_North }
+}
+}
+
+
+event = {
+id = 160035
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+event = 160008
+OR = {
+event = 160034
+event = 160032
+}
+flag = TN_North
+flag = TN_South
+NOT = {
+ispuppet = CHC
+atwar = CHC
+}
+OR = {
+NOT = { control = { province = 1281 data = -3 } } #Urumuqi
+NOT = { control = { province = 1289 data = -3 } } #Lhasa
+}
+control = { province = 1247 data = CHC }
+control = { province = 1337 data = CHC }
+control = { province = 1258 data = CHC }
+control = { province = 1338 data = -3 } #Shanghai
+control = { province = 1369 data = -3 } #Guangzhou
+control = { province = 1390 data = -3 } #Kunming
+control = { province = 1208 data = -3 }    #Changchun
+control = { province = 1219 data = -3 }
+}
+
+date = { day = 1 month = january year = 1938 }
+offset =  90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Focus in international policy"
+desc = "The northern and southern territories were brought under our control after much effort, however there is no time to rest as the path to the reunification of China is still long, once again the Imperial Court should make the decision about the direction of our next step."
+
+action_a = {
+name = "Go West!"
+ai_chance = 99
+command = { type = relation which = MON value = -20 }
+command = { type = relation which = CXB value = -10 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = CXB }
+command = { type = ai_prepare_war which = MON }
+command = { type = setflag which = TN_West }
+command = { type = clrflag  which = TN_North }
+command = { type = clrflag  which = TN_South }
+}
+
+action_b = {
+name = "What we achieved is enough"
+ai_chance = 1
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = dissent value = 5 }
+command = { type = clrflag  which = TN_North }
+command = { type = clrflag  which = TN_South }
+}
+}
+
+event = {
+id = 160036
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+event = 160008
+OR = {
+event = 160032
+event = 160033
+}
+flag = TN_West
+flag = TN_South        #after successful western and southern campaign
+NOT = {
+ispuppet = CHC
+atwar = CHC
+}
+OR = {
+NOT = { control = { province = 1208 data = -3 } }    #Changchun
+NOT = { control = { province = 1219 data = -3 } }    #Port Arthur
+}
+control = { province = 1247 data = CHC }
+control = { province = 1337 data = CHC }
+control = { province = 1258 data = CHC }
+control = { province = 1281 data = -3 } #Urumuqi
+control = { province = 1289 data = -3 } #Lhasa
+control = { province = 1338 data = -3 } #Shanghai
+control = { province = 1369 data = -3 } #Guangzhou
+control = { province = 1390 data = -3 } #Kunming
+}
+
+date = { day = 0 month = january year = 1938 }
+offset =  90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Focus in international policy"
+desc = "The western and southern territories were brought under our control after much effort, however there is no time to rest as the path to the reunification of China is still long, once again the imperial court should make the decision about the direction of our next step."
+
+action_a = {
+name = "Go North!"
+ai_chance = 99
+command = { type = relation which = MAN value = -20 }
+command = { type = relation which = JAP value = -20 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = ai_prepare_war which = MAN }
+command = { type = setflag which = TN_North }
+command = { type = clrflag  which = TN_West }
+command = { type = clrflag  which = TN_South }
+}
+
+action_b = {
+name = "What we achieved is enough"
+ai_chance = 1
+command = { type = relation which = MAN value = 10 }
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = dissent value = 5 }
+command = { type = clrflag  which = TN_West }
+command = { type = clrflag  which = TN_South }
+}
+}
+
+
+event = {
+id = 160037
+country = CHC
+style = 2
+picture = "ccip_mob"
+
+trigger = {
+event = 160008
+OR = {
+event = 160033
+event = 160034
+}
+flag = TN_West
+flag = TN_North        #after successful western and northern campaigns
+NOT = {
+ispuppet = CHC
+atwar = CHC
+}
+OR = {
+NOT = { control = { province = 1338 data = -3 } } #Shanghai
+NOT = { control = { province = 1369 data = -3 } } #Guangzhou
+NOT = { control = { province = 1390 data = -3 } } #Kunming
+}
+control = { province = 1281 data = -3 } #Urumuqi
+control = { province = 1289 data = -3 } #Lhasa
+control = { province = 1208 data = -3 }    #Changchun
+control = { province = 1219 data = -3 }
+control = { province = 1247 data = CHC }
+control = { province = 1337 data = CHC }
+control = { province = 1258 data = CHC }
+}
+
+date = { day = 0 month = january year = 1938 }
+offset =  90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Focus in international policy"
+desc = "The western and northern territories were brought under our control after much effort, however there is no time to rest as the path to the reunification of China is still long, once again the Imperial Court should make the decision about the direction of our next step."
+
+action_a = {
+name = "Go South!"
+ai_chance = 99
+command = { type = relation which = CGX value = -20 }
+command = { type = relation which = CHI value = -10 }
+command = { type = ai_prepare_war which = CGX }
+command = { type = ai_prepare_war which = CHI }
+command = { type = setflag which = TN_South }
+command = { type = clrflag  which = TN_West }
+command = { type = clrflag  which = TN_North }
+}
+
+action_b = {
+name = "What we achieved is enough"
+ai_chance = 1
+command = { type = relation which = MAN value = 10 }
+command = { type = relation which = JAP value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = dissent value = 5 }
+command = { type = clrflag  which = TN_West }
+command = { type = clrflag  which = TN_North }
+}
+}
+
+
+####################
+### "Tian dynasty Western campaign"
+### IDs 160038-
+####################
+
+event = {
+id = 160038
+country = CHC
+picture = "TheBrotherhood"
+
+trigger = {
+flag = TN_West
+control = { province = 1247 data = CHC }
+control = { province = 1337 data = CHC }
+control = { province = 1258 data = CHC }
+NOT = {
+exists = CSX
+atwar = CHC
+atwar = CXB
+ispuppet = CHC
+ispuppet = CXB
+}
+exists = CXB
+control = { province = 1281 data = CXB }
+}
+
+name = "Move into Western regions against the Hui Warlords"
+desc = "Raiders and bandits have terrorized the western regions for decades now and the Hui warlords do not lift a finger against them. With central China under our control now it's the time to secure the western flank!"
+style = 2
+
+date = { day = 0 month = january year = 1938 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 60
+name = "The Northwestern warlords must submit, issue an ultimatum!"
+command = { type = trigger which = 160039 }
+}
+
+action_a = {
+ai_chance = 39
+name = "Heed the advice of the hawks, attack!"
+command = { type = war which = CXB }
+}
+
+action_b = {
+ai_chance = 1
+name = "We have more important things to do..."
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 160039
+country = CXB
+style = 2
+picture = "Chinese Infantry"
+
+name = "The Heavenly Dynasty claims the Northwest"
+desc = "With the new Tian Empire gaining most of the former imperial realms - they are asking for us to come to the table to discuss the terms of our surrender"
+
+action_a = {
+ai_chance = 10
+name = "We must submit before the Empire"
+command = { type = trigger which = 160040 }
+}
+
+action_b = {
+ai_chance = 35
+name = "We shall fight for our freedom!"
+command = { type = war which = CHC }
+}
+
+action_c = {
+ai_chance = 55
+name = "We shall rejoin the central Empire on our own terms..."
+command = { type = trigger which = 160041 }
+}
+}
+
+
+event = {
+id = 160040
+country = CHC
+style = 2
+picture = "China_Reunited"
+
+name = "The Hui Resolve"
+desc = "Our diplomatic pressure on the Ma clique of the Northwest has paid off. The Hui warlords have agreed to rejoin their domains with that of our new China. Long live the Heavenly Empire!"
+
+action_a = {
+name = "Western border finally secured!"
+command = { type = sleepevent which = 160042 }
+command = { type = dissent value = -5 }
+command = { type = inherit which = CXB }
+command = { type = addcore which = 1268 }
+command = { type = addcore which = 1270 }
+command = { type = addcore which = 1264 }
+command = { type = addcore which = 1272 }
+command = { type = addcore which = 1265 }
+command = { type = addcore which = 1266 }
+command = { type = addcore which = 1283 }
+command = { type = addcore which = 1284 }
+command = { type = addcore which = 1285 }
+command = { type = addcore which = 1273 }
+command = { type = addcore which = 1279 }
+command = { type = addcore which = 1280 }
+command = { type = addcore which = 1281 }
+command = { type = addcore which = 1277 }
+command = { type = addcore which = 1274 }
+command = { type = addcore which = 1275 }
+command = { type = addcore which = 1282 }
+command = { type = addcore which = 1276 }
+}
+}
+
+
+event = {
+id = 160041
+country = CHC
+style = 2
+picture = "China_Reunited"
+
+name = "The Ma Warlords Demand Autonomy"
+desc = "Our demands for the Northwest's submission have been all but rejected by Ma Fuxiang. However, the Hui despots in turn  offer us complete control over foreign relations whilst they maintain their iron grip over the western provinces."
+
+action_a = {
+ai_chance = 95
+name = "They dare to make claims - crush these petty warlords!"
+command = { type = war which = CXB }
+command = { type = dissent value = -5 }
+command = { type = setflag which = TN_CXBwar }
+}
+
+action_b = {
+ai_chance = 5
+name = "They will be our tributary state in the West!"
+command = { type = make_puppet which = CXB }
+command = { type = dissent value = 10 }               #high dissent and low chance since most of Xibei are still considered as china proper
+command = { type = removecore which = 1268 }
+command = { type = removecore which = 1270 }
+command = { type = removecore which = 1264 }
+command = { type = removecore which = 1272 }
+command = { type = removecore which = 1265 }
+command = { type = removecore which = 1266 }
+command = { type = removecore which = 1283 }
+command = { type = removecore which = 1284 }
+command = { type = removecore which = 1285 }
+command = { type = removecore which = 1273 }
+command = { type = removecore which = 1279 }
+command = { type = removecore which = 1280 }
+command = { type = removecore which = 1281 }
+command = { type = removecore which = 1277 }
+command = { type = removecore which = 1274 }
+command = { type = removecore which = 1275 }
+command = { type = removecore which = 1282 }
+command = { type = removecore which = 1276 }
+command = { type = removeclaim which = 1268 }
+command = { type = removeclaim which = 1270 }
+command = { type = removeclaim which = 1264 }
+command = { type = removeclaim which = 1272 }
+command = { type = removeclaim which = 1265 }
+command = { type = removeclaim which = 1266 }
+command = { type = removeclaim which = 1283 }
+command = { type = removeclaim which = 1284 }
+command = { type = removeclaim which = 1285 }
+command = { type = removeclaim which = 1273 }
+command = { type = removeclaim which = 1279 }
+command = { type = removeclaim which = 1280 }
+command = { type = removeclaim which = 1281 }
+command = { type = removeclaim which = 1277 }
+command = { type = removeclaim which = 1274 }
+command = { type = removeclaim which = 1275 }
+command = { type = removeclaim which = 1282 }
+command = { type = removeclaim which = 1276 }
+command = { type = sleepevent which = 160042 }
+}
+}
+
+
+event = {
+id = 160042
+random = no
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+NOT = {
+core = { province = 1281 data = CHC }
+}
+control = { province = 1281 data = CHC }
+NOT = {
+exists = CXB
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Xibei Lianbang has been defeated! "
+desc = "We have conquered the western regions and defeated the Hui warlords! Those heathens shall bow before the might of Heaven"
+
+action_a = {
+name = "Di Guo Wan Sui!"
+command = { type = addcore which = 1268 }
+command = { type = addcore which = 1270 }
+command = { type = addcore which = 1264 }
+command = { type = addcore which = 1272 }
+command = { type = addcore which = 1265 }
+command = { type = addcore which = 1266 }
+command = { type = addcore which = 1283 }
+command = { type = addcore which = 1284 }
+command = { type = addcore which = 1285 }
+command = { type = addcore which = 1273 }
+command = { type = addcore which = 1279 }
+command = { type = addcore which = 1280 }
+command = { type = addcore which = 1281 }
+command = { type = addcore which = 1277 }
+command = { type = addcore which = 1274 }
+command = { type = addcore which = 1275 }
+command = { type = addcore which = 1282 }
+command = { type = addcore which = 1276 }
+command = { type = dissent value = -3 }
+}
+}
+
+
+event = {
+id = 160043
+random = no
+country = CHC
+
+trigger = {
+flag = TN_West
+NOT = {
+atwar = CHC
+ispuppet = CHC
+ispuppet = MON
+}
+exists = MON
+OR = {
+AND = {
+control = { province = 1281 data = MON }
+NOT = { exists = CXB }
+}
+puppet = { country = CXB country = MON }
+}
+}
+
+name = "Move into Western regions against Mongols"
+desc = "The northwestern Hui warlords were defeated by the Mongols and now those lands are being controlled by those babarians, maybe now it's the time to convince them to return what is rightfully ours?"
+style = 2
+
+picture = "TheBrotherhood"
+
+date = { day = 0 month = january year = 1936 }
+offset = 7
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Send an envoy!"
+ai_chance = 65
+command = { type = trigger which = 160044 }
+}
+
+action_b = {
+name= "Crush the Babarians!"
+ai_chance = 30
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = MON }
+}
+
+action_c = {
+name= "Its too risky"
+ai_chance = 5
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 160044
+country = MON
+picture = "China_rally"
+
+name = "Dealing with the Tian Empire"
+desc = "With our destruction of the Xibei San Ma clique the Tian empire has decided to approach us with demands regarding the lands they claim. It would be wise to try to negotiate with them, since Mongolia is not strong enough to face the new rising power in China..."
+style = 2
+
+action_a = {
+name = "Agree to come to the table"
+ai_chance = 40
+command = { type = trigger which = 160045 }
+}
+
+action_b = {
+name = "Never!"
+ai_chance = 60
+command = { type = trigger which = 160046 }
+}
+}
+
+
+event = {
+id = 160045
+country = CHC
+picture = "diplomatic_campaign"
+
+name = "Negotiations with Mongolians"
+desc = "The government of Mongolia has agreed to meet with us to discuss the terms regrading the disputed territory of the former Hui warlords, currently occupied by Mongolia. What should we ask for?"
+style = 2
+
+action_a = {
+name = "We want all of our lands!"
+ai_chance = 50
+command = { type = trigger which = 160047 }
+}
+
+action_b = {
+name = "Split the country"
+ai_chance = 10
+command = { type = trigger which = 160051 }
+}
+}
+
+
+event = {
+id = 160046
+country = CHC
+picture = "Chinese Infantry"
+
+name = "Mongolia Refuses"
+desc = "Mongolia, through its representative, refused all our claims upon Chinese ancestral lands. What shall we do?"
+style = 2
+
+action_a = {
+name = "It's not worth the risk anyway"
+ai_chance = 5
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "They will regret this!"
+ai_chance = 95
+command = { type = war which = MON }
+}
+}
+
+
+event = {
+id = 160047
+country = MON
+picture = "Chinese Infantry"
+
+name = "Tian Empire are asking for everything"
+desc = "Tian Empire are asking our homeland to secede everything that is not Mongol land - evrything we fought so hard to gain. We should not give it up lightly!"
+style = 2
+
+action_a = {
+name = "They want it they will have to pay"
+ai_chance = 20
+trigger = {
+OR = {
+control = { province = 1238 data = CHC }
+control = { province = 1239 data = CHC }
+}
+}
+command = { type = trigger which = 160048 }
+}
+
+action_b = {
+name = "Outright refuse these absurd demands!"
+ai_chance = 85
+command = { type = trigger which = 160046 }
+}
+
+action_b = {
+name = "It nothing but a wasteland anyways"
+ai_chance = 5
+command = { type = trigger which = 160050 }
+command = { type = secedeprovince which = CHC value = 1268 }
+command = { type = secedeprovince which = CHC value = 1264 }
+command = { type = secedeprovince which = CHC value = 1265 }
+command = { type = secedeprovince which = CHC value = 1266 }
+command = { type = secedeprovince which = CHC value = 1283 }
+command = { type = secedeprovince which = CHC value = 1284 }
+command = { type = secedeprovince which = CHC value = 1285 }
+command = { type = secedeprovince which = CHC value = 1273 }
+command = { type = secedeprovince which = CHC value = 1279 }
+command = { type = secedeprovince which = CHC value = 1280 }
+command = { type = secedeprovince which = CHC value = 1281 }
+command = { type = secedeprovince which = CHC value = 1277 }
+command = { type = secedeprovince which = CHC value = 1274 }
+command = { type = secedeprovince which = CHC value = 1275 }
+command = { type = secedeprovince which = CHC value = 1282 }
+command = { type = secedeprovince which = CHC value = 1276 }
+}
+}
+
+
+event = {
+id = 160048
+country = CHC
+picture = "Chinese Officers"
+
+name = "We have recieved the Mongol offer"
+desc = "Sternberg has responded and his costs are very high. Mongolia demand monetary as well as territorial compensation for the territories of the former Hui warlords. How shall we respond?"
+style = 2
+
+action_a = {
+name = "Accept the deal"
+ai_chance = 40
+command = { type = dissent value = 3 }
+command = { type = supplies value = -2000 }
+command = { type = money value = -200 }
+command = { type = manpowerpool value = -50 }
+command = { trigger = { puppet = { country = CXB country = MON  } } type = inherit which = CXB }        #in case xibei is mongol puppet
+command = { type = secedeprovince which = MON value = 1238 }
+command = { type = secedeprovince which = MON value = 1239 }
+command = { type = addcore which = 1268 }
+command = { type = addcore which = 1264 }
+command = { type = addcore which = 1272 }
+command = { type = addcore which = 1265 }
+command = { type = addcore which = 1266 }
+command = { type = addcore which = 1270 }
+command = { type = addcore which = 1283 }
+command = { type = addcore which = 1284 }
+command = { type = addcore which = 1285 }
+command = { type = addcore which = 1273 }
+command = { type = addcore which = 1279 }
+command = { type = addcore which = 1280 }
+command = { type = addcore which = 1281 }
+command = { type = addcore which = 1277 }
+command = { type = addcore which = 1274 }
+command = { type = addcore which = 1275 }
+command = { type = addcore which = 1282 }
+command = { type = addcore which = 1276 }
+command = { type = trigger which = 160049 }
+}
+
+action_b = {
+name = "We will take our lands by force then"
+ai_chance = 60
+command = { type = war which = MON }
+}
+
+action_c = {
+name = "This was worthless"
+ai_chance = 5
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 160049
+country = MON
+
+name = "They Accepted"
+desc = "Tian empire have accepted our demands - we have gained control over ancestral Mongolian territory in return for the territories of the former Hui warlords!"
+style = 2
+
+action_a = {
+name = "Huzzah"
+command = { type = dissent value = -3 }
+command = { type = supplies value = 2000 }
+command = { type = money value = 200 }
+command = { type = manpowerpool value = 50 }
+}
+}
+
+
+event = {
+id = 160050
+country = CHC
+picture = "Chinese Officers"
+
+name = "Mongolia accepts our demands"
+desc = "Seeing no other choice, Mongols accepted our demands and decided to cede the whole area of the former Xibei San Ma to us."
+style = 2
+
+action_a = {
+name = "Di Guo Wan Sui!"
+command = { type = trigger which = 900063 }
+command = { trigger = { puppet = { country = CXB country = MON  } } type = inherit which = CXB }        #in case xibei is mongol puppet
+command = { type = addcore which = 1268 }
+command = { type = addcore which = 1264 }
+command = { type = addcore which = 1272 }
+command = { type = addcore which = 1265 }
+command = { type = addcore which = 1266 }
+command = { type = addcore which = 1270 }
+command = { type = addcore which = 1283 }
+command = { type = addcore which = 1284 }
+command = { type = addcore which = 1285 }
+command = { type = addcore which = 1273 }
+command = { type = addcore which = 1279 }
+command = { type = addcore which = 1280 }
+command = { type = addcore which = 1281 }
+command = { type = addcore which = 1277 }
+command = { type = addcore which = 1274 }
+command = { type = addcore which = 1275 }
+command = { type = addcore which = 1282 }
+command = { type = addcore which = 1276 }
+}
+}
+
+
+event = {
+id = 160051
+country = MON
+picture = "Chinese Infantry"
+
+name = "Tian empire are asking for a split"
+desc = "Tian empire are asking for a deal that would split the former Xibei lands. This would greatly increase our legitimacy over some of these lands."
+style = 2
+
+action_a = {
+name = "Accept the deal"
+ai_chance = 75
+command = { type = trigger which = 160052 }
+}
+
+action_b = {
+name = "They are all our lands"
+ai_chance = 25
+command = { type = dissent value = -1 }
+command = { type = trigger which = 160046 }
+}
+}
+
+
+event = {
+id = 160052
+country = CHC
+picture = "Chinese Officers"
+
+name = "Mongolians response"
+desc = "Mongolia accepted our offer to split the territories of the former Hui warlords in return for recognition of the new borders as well as monetary compensation."
+style = 2
+
+action_a = {
+name = "Another victory for the Tian Empire!"
+command = { type = supplies value = -200 }
+command = { type = money value = -10 }
+command = { type = manpowerpool value = -5 }
+command = { type = trigger which = 160053 }
+command = { type = addcore which = 1263 }
+command = { type = addcore which = 1264 }
+command = { type = addcore which = 1270 }
+command = { type = addcore which = 1272 }
+command = { type = addcore which = 1266 }
+command = { type = addcore which = 1283 }
+command = { type = addcore which = 1285 }
+command = { type = addcore which = 1284 }
+command = { type = addcore which = 1265 }
+command = { trigger = { puppet = { country = CXB country = MON  } } type = inherit which = CXB }    #in case xibei is mongol puppet
+command = { type = secedeprovince which = MON value = 1273 }
+command = { type = secedeprovince which = MON value = 1278 }
+command = { type = secedeprovince which = MON value = 1279 }
+command = { type = secedeprovince which = MON value = 1280 }
+command = { type = secedeprovince which = MON value = 1281 }
+command = { type = secedeprovince which = MON value = 1277 }
+command = { type = secedeprovince which = MON value = 1274 }
+command = { type = secedeprovince which = MON value = 1275 }
+command = { type = secedeprovince which = MON value = 1276 }
+}
+}
+
+
+event = {
+id = 160053
+country = MON
+
+name = "They Accepted"
+desc = "The Tian empire have accepted our offer to split the lands of the former Hui warlords - we now have a legitimate internationally-recognized claim to half of the Hui territories!"
+style = 2
+
+action_a = {
+name = "Huzzah"
+command = { type = dissent value = -3 }
+command = { type = supplies value = 200 }
+command = { type = money value = 10 }
+command = { type = manpowerpool value = 5 }
+command = { type = secedeprovince which = CHC value = 1263 }
+command = { type = secedeprovince which = CHC value = 1264 }
+command = { type = secedeprovince which = CHC value = 1270 }
+command = { type = secedeprovince which = CHC value = 1272 }
+command = { type = secedeprovince which = CHC value = 1266 }
+command = { type = secedeprovince which = CHC value = 1283 }
+command = { type = secedeprovince which = CHC value = 1285 }
+command = { type = secedeprovince which = CHC value = 1284 }
+command = { type = secedeprovince which = CHC value = 1265 }
+command = { type = addcore which = 1273 }
+command = { type = addcore which = 1278 }
+command = { type = addcore which = 1279 }
+command = { type = addcore which = 1280 }
+command = { type = addcore which = 1281 }
+command = { type = addcore which = 1277 }
+command = { type = addcore which = 1274 }
+command = { type = addcore which = 1275 }
+command = { type = addcore which = 1276 }
+}
+}
+
+
+
+event = {
+id = 160054
+country = MON
+
+trigger = {
+war = { country = CHC country = MON }
+NOT = {
+ispuppet = MON
+ispuppet = CHC
+}
+control = { province = 1281 data = CHC }
+control = { province = 1124 data = CHC }
+}
+
+name = "War with the Tian Empire "
+desc = "Terrible news, the armed forces of the Tian Empire have proved to be more powerful than we thought. Continuing the armed struggle against them will lead to the complete destruction of our state. We should offer them peace while we still exist!"
+style = 2
+picture = "TheBrotherhood"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = "Give them those wastland "
+command = { type = trigger which = 160055 }
+}
+
+action_b = {
+ai_chance = 1
+name = "We will never give up!"
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 160055
+country = CHC
+picture = "Chinese Officers"
+
+name = "We have recieved the Mongol offer"
+desc = "The Mongols has responded that he wants to cede the whole area of Former Xibei San Ma to us in return for a peace treaty. How shall we respond?"
+style = 2
+
+action_a = {
+name = "Accept the deal"
+ai_chance = 95
+command = { type = peace which = MON }
+command = { type = trigger which = 160056 }
+command = { trigger = { puppet = { country = CXB country = MON  } } type = inherit which = CXB }        #in case xibei is mongol puppet
+command = { type = addcore which = 1268 }
+command = { type = addcore which = 1264 }
+command = { type = addcore which = 1272 }
+command = { type = addcore which = 1265 }
+command = { type = addcore which = 1266 }
+command = { type = addcore which = 1270 }
+command = { type = addcore which = 1283 }
+command = { type = addcore which = 1284 }
+command = { type = addcore which = 1285 }
+command = { type = addcore which = 1273 }
+command = { type = addcore which = 1279 }
+command = { type = addcore which = 1280 }
+command = { type = addcore which = 1281 }
+command = { type = addcore which = 1277 }
+command = { type = addcore which = 1274 }
+command = { type = addcore which = 1275 }
+command = { type = addcore which = 1282 }
+command = { type = addcore which = 1276 }
+}
+
+action_b = {
+name = "This isnt over yet"
+ai_chance = 5
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 160056
+country = MON
+
+name = "They Accepted"
+desc = "The Tian empire have accepted our offer to get rid of these lands"
+style = 2
+
+action_a = {
+name = "Peace for now!"
+command = { type = secedeprovince which = CHC value = 1268 }
+command = { type = secedeprovince which = CHC value = 1264 }
+command = { type = secedeprovince which = CHC value = 1272 }
+command = { type = secedeprovince which = CHC value = 1265 }
+command = { type = secedeprovince which = CHC value = 1266 }
+command = { type = secedeprovince which = CHC value = 1283 }
+command = { type = secedeprovince which = CHC value = 1284 }
+command = { type = secedeprovince which = CHC value = 1285 }
+command = { type = secedeprovince which = CHC value = 1273 }
+command = { type = secedeprovince which = CHC value = 1279 }
+command = { type = secedeprovince which = CHC value = 1280 }
+command = { type = secedeprovince which = CHC value = 1281 }
+command = { type = secedeprovince which = CHC value = 1277 }
+command = { type = secedeprovince which = CHC value = 1274 }
+command = { type = secedeprovince which = CHC value = 1275 }
+command = { type = secedeprovince which = CHC value = 1282 }
+command = { type = secedeprovince which = CHC value = 1276 }
+command = { type = secedeprovince which = CHC value = 1270 }
+}
+}
+
+
+event = {
+id = 160057
+country = CHC
+style = 2
+picture = "Chinese Officers"
+
+trigger = {
+flag = TN_West
+NOT = {
+ispuppet = CHC
+atwar = CHC
+}
+exists = TIB
+control = { province = 1281 data = -3 }
+}
+
+date = { day = 0 month = january year = 1938 }
+offset =  7
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Fate of Tibet"
+desc = "With the northwestern Hui warlords no more the time has come to establish our dominance over Tibet. Tibet used chaos following disintegration of the Qing Empire to create semi-independent state based in Lhasa. If we are to be respected as true rulers of China, this rogue state must be brought under our control !"
+
+action_a = {
+name = "Try to negotiate with them"
+ai_chance = 50
+command = { type = relation which = TIB value = 10 }
+command = { type = event which = 160058 where = TIB when = 1  }
+}
+
+action_b = {
+name = "War will solve this !"
+ai_chance = 50
+command = { type = war which = TIB }
+command = { type = belligerence which = CHC value = 5 }
+}
+}
+
+
+event = {
+id = 160058
+country = TIB
+style = 2
+picture = "ccip_mob"
+
+name = "Tian Empire wishes to negotiate"
+desc = "The Tian ambassador approached us and gave us an ultimatium about joining the Qing Empire. We don't have much choice but maybe with diplomatic measures we can stay at least preserve partial autonomy within empire...."
+
+action_a = {
+name = "Just give in"
+ai_chance = 20
+command = { type = trigger which = 160059 }
+command = { type = relation which = CHC value = 50 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = "Try to remain semi-idependent"
+ai_chance = 50
+command = { type = trigger which = 160060 }
+}
+
+action_b = {
+name = "Send him away"
+ai_chance = 30
+command = { type = trigger which = 160061 }
+command = { type = relation which = CHC value = -50 }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 160059
+country = CHC
+style = 2
+picture = "Chinese Officers"
+
+name = "Tibet gives up"
+desc = "Tibet sent the anwser, they realized futileness of struggle against might of our empire, and decided to give up and join Empire."
+
+action_a = {
+name = "Perfect"
+command = { type = inherit which = TIB value = 1 }
+command = { type = addcore which = 1278 }
+command = { type = addcore which = 1286 }
+command = { type = addcore which = 1287 }
+command = { type = addcore which = 1288 }
+command = { type = addcore which = 1289 }
+command = { type = addcore which = 1290 }
+command = { type = addcore which = 1294 }
+command = { type = addcore which = 1295 }
+command = { type = dissent value = -3 }
+}
+}
+
+
+event = {
+id = 160060
+country = CHC
+style = 2
+picture = "Chinese Officers"
+
+name = "Tibet wants to be semi-idependent"
+desc = "Tibet sent the anwser, they realized futileness of struggle against might of our empire, but are still trying to preserve at least partial autonomy within our empire, how shall we react to this effort ?"
+
+action_a = {
+name = "That's good for us."
+ai_chance = 15
+command = { type = make_puppet which = TIB }
+command = { type = dissent value = 1 }
+command = { type = removeclaim which = 1278 }
+command = { type = removeclaim which = 1286 }
+command = { type = removeclaim which = 1287 }
+command = { type = removeclaim which = 1288 }
+command = { type = removeclaim which = 1289 }
+command = { type = removeclaim which = 1290 }
+command = { type = removeclaim which = 1294 }
+command = { type = removeclaim which = 1295 }
+}
+
+action_b = {
+name = "Tibet belongs to the Empire!"
+ai_chance = 85
+command = { type = war which = TIB }
+command = { type = dissent value = -1 }
+command = { type = belligerence which = CHC value = 1 }
+}
+}
+
+
+event = {
+id = 160061
+country = CHC
+style = 2
+picture = "Chinese Officers"
+
+name = "Tibetian ignorance"
+desc = "Tibet ignored our rightfully demands about reuniting our Empire. Our empire and its people shall not suffer insult like this !"
+
+action_a = {
+name = "Our empire won't stand this insult!"
+ai_chance = 85
+command = { type = war which = TIB }
+command = { type = dissent value = -3 }
+}
+
+action_b = {
+name = "Than just let them be and look for a new target"
+ai_chance = 15
+command = { type = dissent value = 3 }
+}
+}
+
+
+####################
+### "Tian dynasty Northern campaign"
+### IDs 160062-
+####################
+
+event = {
+id = 160062
+country = CHC
+style = 2
+picture = "ccip_fcseige"
+decision_picture = "decision_ccip_beiyangarmy"
+
+decision = {
+flag = TN_North
+NOT = {
+exists = CSX
+atwar = CHC
+ispuppet = CHC
+alliance = { country = CHC country = MAN }
+}
+exists = MAN
+}
+
+decision_trigger = {
+
+}
+
+trigger = {
+flag = TN_North
+NOT = {
+exists = CSX
+atwar = CHC
+ispuppet = CHC
+alliance = { country = CHC country = MAN }
+}
+exists = MAN
+}
+
+date = { day = 1 month = January year = 1936 }
+offset =  60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Move into Northeastern regions"
+desc = "With central provinces secured, we now have the opportunity to secure the Northern China! Northeastern provinces were tradionally territory of china, the foolish manchurian barbarians have weakened chinese influences for centuries before but still even today tens of millions of chinese citizens have made their home in their ancestors land, they are calling for protection against chaos and foreign devils, maybe we should answer their call?"
+
+action_a = {
+ai_chance = 90
+name = "Time to push all foreigners out of China!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = war which = MAN }
+}
+
+action_b = {
+ai_chance = 10
+name = "We are in no shape for reunification war yet."
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+
+event = {
+id = 160063
+random = no
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+control = { province = 1208 data = CHC }
+event = 154004 # in Shangqing.txt               
+NOT = {
+exists = MAN
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Puyi has been captured"
+desc = "The Northeast China has been taken by our heavenly host and the babarian king Puyi has been captured by our victorious soldiers ! This is truly a great day for China as lands of our ancestors are returned to us an barbaric Manchurian dynasty is no more !"
+
+action_a = {
+name = "Off with his head"
+command = { type = addcore which = 1202 }
+command = { type = addcore which = 1204 }
+command = { type = addcore which = 1212 }
+command = { type = addcore which = 1205 }
+command = { type = addcore which = 1199 }
+command = { type = addcore which = 1203 }
+command = { type = addcore which = 1200 }
+command = { type = addcore which = 1206 }
+command = { type = addcore which = 1213 }
+command = { type = addcore which = 1237 }
+command = { type = addcore which = 1207 }
+command = { type = addcore which = 1220 }
+command = { type = addcore which = 1218 }
+command = { type = addcore which = 1201 }
+command = { type = addcore which = 1208 }
+command = { type = addcore which = 1209 }
+command = { type = addcore which = 1210 }
+command = { type = addcore which = 1211 }
+command = { type = addcore which = 1214 }
+command = { type = addcore which = 1215 }
+command = { type = addcore which = 1217 }
+command = { type = addcore which = 1197 }
+command = { type = addcore which = 1198 }
+command = { type = addcore which = 1240 }
+command = { type = addcore which = 1236 }
+command = { type = addcore which = 1235 }
+command = { type = addcore which = 1216 }
+command = { type = addcore which = 1219 }
+command = { type = dissent value = -3 }
+command = { type = relation which = GER value = -10 }
+command = { type = relation which = JAP value = -10 }
+}
+}
+
+
+event = {
+id = 160064
+random = no
+country = CHC
+
+trigger = {
+lost_national = { country = JAP value = 10 }
+war = { country = CHC country = JAP }
+NOT = { exists = MAN }
+control = { province = 1208 data = CHC }
+
+OR = {
+AND = {
+control = { province = 1221 data = CHC } # Pyongyang
+control = { province = 1228 data = CHC } # Seoul
+control = { province = 1232 data = CHC } # Busan
+}
+AND = {
+exists = KOR
+NOT = { war = { country = CHC country = KOR } }
+control = { province = 1221 data = KOR } # Pyongyang
+control = { province = 1228 data = KOR } # Seoul
+control = { province = 1232 data = KOR } # Busan
+}
+}
+
+control = { province = 1219 data = CHC }
+}
+
+name = "The Port Arthur Declaration"
+desc = "After the utter defeat of the Imperial Japanese Army, our heavenly army controls huges swathes of land in Manchuria and Korea whilst the IJN are reduced to attempting mere blockades. Our spies in Tokyo reports severe dissent and war weariness amongst the populace. In light of this, the government has called a conference in occupied Port Arthur to determine our war aims."
+style = 2
+picture = "japsun"
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = june year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = "Manchuria and Taiwan to China and Korea shall be freed!"
+command = { type = trigger which = 160065 }
+command = { type = dissent value = -3 }
+}
+
+action_b = {
+ai_chance = 1
+name = "We will fight 'till our flag flies over Tokyo!"
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 160065
+country = JAP
+style = 2
+picture = "japsun"
+
+name = "The Fading Sun over Port Arthur"
+desc = "This is a dark day for the Empire of the Sun. Chinese forces have ousted our men from their vital bases in Manchuria and Korea. On top of this, a declaration has been sent out from Port Arthur by the chinese government offering terms that demand our surrender of all territories on the Chinese mainland as well as the return of Taiwan and independence of Korea."
+
+action_a = {
+ai_chance = 90
+name = "We yield because we have no other choice..."
+command = { type = dissent value = 6 }
+command = { type = peace which = CHC value = 0 }
+command = { type = secederegion which = CHC value = CHINA when = 1 }
+command = { type = secedeprovince which = CHC value = 1361 }
+command = { type = secedeprovince which = CHC value = 1362 }
+command = { type = secedeprovince which = CHC value = 1363 }
+command = { type = secedeprovince which = CHC value = 1364 } #Taiwan
+command = { type = secedeprovince which = CHC value = 1219 } #Port Arthur
+command = { type = secedeprovince which = CHC value = 1230 }
+command = { type = secedeprovince which = CHC value = 1231 }
+command = { type = secedeprovince which = CHC value = 1232 }
+command = { type = secedeprovince which = CHC value = 1233 }
+command = { type = secedeprovince which = CHC value = 1228 }
+command = { type = secedeprovince which = CHC value = 1229 }
+command = { type = secedeprovince which = CHC value = 1224 }
+command = { type = secedeprovince which = CHC value = 1226 }
+command = { type = secedeprovince which = CHC value = 1225 }
+command = { type = secedeprovince which = CHC value = 1227 }
+command = { type = secedeprovince which = CHC value = 1223 }
+command = { type = secedeprovince which = CHC value = 1221 }
+command = { type = secedeprovince which = CHC value = 1222 }
+command = { type = secedeprovince which = CHC value = 1321 }
+command = { type = secedeprovince which = CHC value = 1323 }
+command = { type = secedeprovince which = CHC value = 1338 }
+command = { type = secedeprovince which = CHC value = 1333 }
+command = { type = secedeprovince which = CHC value = 1342 }
+command = { type = secedeprovince which = CHC value = 1345 }
+command = { type = secedeprovince which = CHC value = 1339 }
+command = { type = secedeprovince which = CHC value = 1343 }
+command = { type = secedeprovince which = CHC value = 1337 }
+command = { type = secedeprovince which = CHC value = 1334 }
+command = { type = secedeprovince which = CHC value = 1336 }
+command = { type = secedeprovince which = CHC value = 1339 }
+command = { type = secedeprovince which = CHC value = 1335 }
+command = { type = secedeprovince which = CHC value = 1247 }
+command = { type = secedeprovince which = CHC value = 1246 }
+command = { type = secedeprovince which = CHC value = 1251 }
+command = { type = secedeprovince which = CHC value = 1242 }
+command = { type = secedeprovince which = CHC value = 1254 }
+command = { type = secedeprovince which = CHC value = 1332 }
+command = { type = secedeprovince which = CHC value = 1252 }
+command = { type = secedeprovince which = CHC value = 1253 }
+command = { type = secedeprovince which = CHC value = 1248 }
+command = { type = secedeprovince which = CHC value = 1249 }
+command = { type = secedeprovince which = CHC value = 1250 }
+command = { type = secedeprovince which = CHC value = 1327 }
+command = { type = secedeprovince which = CHC value = 1243 }
+command = { type = secedeprovince which = CHC value = 1244 }
+command = { type = secedeprovince which = CHC value = 1329 }
+command = { type = secedeprovince which = CHC value = 1330 }
+command = { type = secedeprovince which = CHC value = 1340 }
+command = { type = secedeprovince which = CHC value = 1341 }
+command = { type = secedeprovince which = CHC value = 1319 }
+command = { type = secedeprovince which = CHC value = 1324 }
+command = { type = secedeprovince which = CHC value = 1322 }
+command = { type = secedeprovince which = CHC value = 1320 }
+command = { type = secedeprovince which = CHC value = 1325 }
+command = { type = secedeprovince which = CHC value = 1316 }
+command = { type = secedeprovince which = CHC value = 1326 }
+command = { type = secedeprovince which = CHC value = 1317 }
+command = { type = secedeprovince which = CHC value = 1344 }
+#AOG
+command = { type = secedeprovince which = CHC value = 1378 }
+command = { type = secedeprovince which = CHC value = 1360 }
+command = { type = secedeprovince which = CHC value = 1301 }
+command = { type = secedeprovince which = CHC value = 1304 }
+command = { type = secedeprovince which = CHC value = 1305 }
+command = { type = secedeprovince which = CHC value = 1306 }
+command = { type = secedeprovince which = CHC value = 1307 }
+command = { type = secedeprovince which = CHC value = 1308 }
+command = { type = secedeprovince which = CHC value = 1309 }
+command = { type = secedeprovince which = CHC value = 1310 }
+command = { type = secedeprovince which = CHC value = 1311 }
+command = { type = secedeprovince which = CHC value = 1312 }
+command = { type = secedeprovince which = CHC value = 1313 }
+command = { type = secedeprovince which = CHC value = 1314 }
+command = { type = secedeprovince which = CHC value = 1315 }
+command = { type = secedeprovince which = CHC value = 1318 }
+command = { type = secedeprovince which = CHC value = 1347 }
+command = { type = secedeprovince which = CHC value = 1348 }
+command = { type = secedeprovince which = CHC value = 1349 }
+command = { type = secedeprovince which = CHC value = 1350 }
+command = { type = secedeprovince which = CHC value = 1351 }
+command = { type = secedeprovince which = CHC value = 1352 }
+command = { type = secedeprovince which = CHC value = 1353 }
+command = { type = secedeprovince which = CHC value = 1354 }
+command = { type = secedeprovince which = CHC value = 1355 }
+command = { type = secedeprovince which = CHC value = 1356 }
+command = { type = secedeprovince which = CHC value = 1357 }
+command = { type = secedeprovince which = CHC value = 1359 }
+command = { type = secedeprovince which = CHC value = 1368 }
+command = { type = secedeprovince which = CHC value = 1369 }
+command = { type = secedeprovince which = CHC value = 1370 }
+command = { type = secedeprovince which = CHC value = 1373 }
+command = { type = secedeprovince which = CHC value = 1374 }
+command = { type = secedeprovince which = CHC value = 1375 }
+command = { type = secedeprovince which = CHC value = 1376 }
+command = { type = secedeprovince which = CHC value = 1377 }
+command = { type = secedeprovince which = CHC value = 1379 }
+command = { type = secedeprovince which = CHC value = 1380 }
+command = { type = secedeprovince which = CHC value = 1381 }
+command = { type = secedeprovince which = CHC value = 1382 }
+command = { type = secedeprovince which = CHC value = 1383 }
+command = { type = secedeprovince which = CHC value = 1219 }
+#Taiwan
+command = { type = secedeprovince which = CHC value = 1361 }
+command = { type = secedeprovince which = CHC value = 1362 }
+command = { type = secedeprovince which = CHC value = 1363 }
+command = { type = secedeprovince which = CHC value = 1364 }
+command = { type = end_mastery which = U30 }
+command = { type = end_mastery which = KOR }
+command = { type = end_mastery which = MAN }
+command = { type = end_mastery which = U15 }
+command = { type = end_mastery which = AST }
+command = { type = end_mastery which = PRI }
+command = { type = end_mastery which = PHI }
+command = { type = removeclaim which = 1328 } #China
+command = { type = removeclaim which = 1331 }
+command = { type = removeclaim which = 1241 }
+command = { type = removeclaim which = 1245 }
+command = { type = removeclaim which = 1365 }
+command = { type = removeclaim which = 1367 }
+command = { type = removeclaim which = 1670 } #Papua New Guiana
+command = { type = removeclaim which = 1671 }
+command = { type = removeclaim which = 1748 }
+command = { type = removeclaim which = 1668 }
+command = { type = removeclaim which = 1669 }
+command = { type = removeclaim which = 1234 }
+command = { type = removeclaim which = 1684 }
+command = { type = removeclaim which = 1685 }
+command = { type = removeclaim which = 1686 }
+command = { type = removeclaim which = 1667 }
+command = { type = removeclaim which = 1665 }
+command = { type = removeclaim which = 1666 }
+command = { type = removeclaim which = 1674 }
+command = { type = removeclaim which = 1675 }
+command = { type = removeclaim which = 1681 }
+command = { type = removeclaim which = 1677 }
+command = { type = removeclaim which = 1678 }
+command = { type = removeclaim which = 1679 }
+command = { type = removeclaim which = 1680 }
+command = { type = removeclaim which = 1682 }
+command = { type = removeclaim which = 1687 }
+command = { type = removeclaim which = 1602 }
+command = { type = removeclaim which = 1605 }
+command = { type = removeclaim which = 1610 }
+command = { type = removeclaim which = 1724 }
+command = { type = removeclaim which = 1725 }
+command = { type = removeclaim which = 1726 }
+command = { type = removeclaim which = 1727 }
+command = { type = removeclaim which = 1587 }
+command = { type = removeclaim which = 1589 }
+command = { type = removeclaim which = 1588 }
+command = { type = removeclaim which = 1591 }
+command = { type = removeclaim which = 1590 }
+command = { type = removeclaim which = 1593 }
+command = { type = removeclaim which = 1582 }
+command = { type = removeclaim which = 1592 }
+command = { type = removeclaim which = 1581 }
+command = { type = removeclaim which = 1583 }
+command = { type = removeclaim which = 1584 }
+command = { type = removeclaim which = 1585 }
+command = { type = removeclaim which = 1586 }
+command = { type = removeclaim which = 1730 }
+command = { type = removeclaim which = 1749 }
+command = { type = removeclaim which = 1731 }
+command = { type = removeclaim which = 1750 }
+command = { type = removeclaim which = 1744 }
+command = { type = removeclaim which = 1743 }
+command = { type = removeclaim which = 1740 }
+command = { type = removeclaim which = 1603 }
+command = { type = removeclaim which = 1676 }
+command = { type = removeclaim which = 1732 }
+command = { type = removeclaim which = 1741 }
+command = { type = removeclaim which = 1742 }
+command = { type = removeclaim which = 1626 }
+command = { type = removeclaim which = 1625 }
+command = { type = removeclaim which = 1624 }
+command = { type = removeclaim which = 1437 } #Singapore
+command = { type = removeclaim which = 1438 }
+command = { type = removeclaim which = 1432 }
+command = { type = removecore which = 1361 }
+command = { type = removecore which = 1362 }
+command = { type = removecore which = 1363 }
+command = { type = removecore which = 1364 }
+command = { type = setflag which = JAP_ISO }
+command = { type = clrflag which = JAP_EXP }
+command = { type = clrflag which = JAP_GER1 }
+command = { type = clrflag which = JAP_GER2 }
+command = { type = clrflag which = JAP_GER }
+command = { type = clrflag which = JAP_RUS_CAMP }
+command = { type = clrflag which = JAP_SIB_CAMP }
+command = { type = clrflag which = JAP_MON_CAMP }
+command = { type = clrflag which = JAP_RUS }
+command = { type = clrflag which = JAP_MONRUS_CAMP }
+command = { type = clrflag which = JAP_WEAK }
+command = { type = clrflag which = JAP_COLONY }
+command = { type = clrflag which = JAP_ANZAC }
+command = { type = clrflag which = JAP_NUTS }
+command = { trigger = { war = { country = GER country = JAP } } type = setflag which = JAP_Defeated_CSX }
+command = { type = trigger which = 160066 }
+}
+
+action_b = {
+ai_chance = 0
+name = "They must be joking, banzai!"
+command = { type = dissent value = 20 }
+}
+}
+
+
+event = {
+id = 160066
+country = CHC
+style = 2
+picture = "japsun"
+
+name = "Japan Surrenders"
+desc = "The Japanese government in Tokyo has bowed to our demands of the Port Arthur delcaration. The IJN has already begun evacuating the remnants of the Imperial army to the home isles, whilst wild celebration meets our troops from Seoul to Taipei. This treaty makes China one of the great powers and will forever wash away the shame of the cursed 19th century!"
+
+action_a = {
+name = "Finally!"
+command = { type = dissent value = -3 }
+command = { type = inherit which = U30 value = 1 }
+command = { type = independence which = KOR value = 1 when = 1 }
+command = { type = make_puppet which = KOR }
+}
+}
+
+
+event = {
+id = 160067
+random = no
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+event = 160005              #imperial army path
+control = { province = 1208 data = CHC }    #Changchun
+NOT = {
+event = 154004 # in Shangqing.txt 
+exists = MAN
+exists = CSX
+ispuppet = CHC
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Northern China reunited!"
+desc = "The heavenly dynasty has proven to be the true saviour of china, After the submission of local forces the Fengtian region and Dong Bei provinces were finally reintegrated into united China!"
+
+action_a = {
+name = "Di Guo Wan Sui!"
+command = { type = dissent value = -10 }
+command = { type = addcore which = 1202 }
+command = { type = addcore which = 1204 }
+command = { type = addcore which = 1212 }
+command = { type = addcore which = 1205 }
+command = { type = addcore which = 1199 }
+command = { type = addcore which = 1203 }
+command = { type = addcore which = 1200 }
+command = { type = addcore which = 1206 }
+command = { type = addcore which = 1213 }
+command = { type = addcore which = 1237 }
+command = { type = addcore which = 1207 }
+command = { type = addcore which = 1220 }
+command = { type = addcore which = 1218 }
+command = { type = addcore which = 1201 }
+command = { type = addcore which = 1208 }
+command = { type = addcore which = 1209 }
+command = { type = addcore which = 1210 }
+command = { type = addcore which = 1211 }
+command = { type = addcore which = 1214 }
+command = { type = addcore which = 1215 }
+command = { type = addcore which = 1217 }
+command = { type = addcore which = 1197 }
+command = { type = addcore which = 1198 }
+command = { type = addcore which = 1240 }
+command = { type = addcore which = 1236 }
+command = { type = addcore which = 1235 }
+command = { type = addcore which = 1216 }
+command = { type = addcore which = 1219 }
+}
+}
+
+
+
+
+
+####################
+### After reunification of inner China
+####################
+
+event = {
+id = 160068
+country = CHC
+style = 2
+picture = "China_Reunited"
+
+trigger = {
+event = 160002
+control = { province = 1247 data = CHC }
+control = { province = 1337 data = CHC }
+control = { province = 1338 data = CHC }
+control = { province = 1369 data = CHC }
+control = { province = 1390 data = CHC }
+control = { province = 1281 data = CHC }
+control = { province = 1208 data = CHC }
+control = { province = 1289 data = CHC }
+NOT = {
+exists = MAN
+exists = CYN
+exists = CSX
+exists = CGX
+exists = CHI
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "China reunited!"
+desc = "We had to fight fiercely on the battlefields and in the conference rooms but we have reached our goal. Most of Historical China is now reunited and stronger than ever! The last hundred years was just a nightmare! Time for a big festival to celebrate becoming a Great Power!"
+
+action_a = {
+name = "For the glory of the Chinese civilization!"
+command = { type = dissent value = -5 }
+command = { type = free_ic value = -7 }
+command = { type = waketeam which = 8312 }
+command = { type = waketeam which = 8313 }
+command = { type = waketeam which = 8314 }
+command = { type = waketeam which = 8315 }
+command = { type = waketeam which = 8319 }
+command = { type = industrial_modifier which = total value = -15 }
+}
+}
+
+
+event = {
+id = 160069
+random = no
+country = CHC
+style = 2
+
+trigger = {
+event= 160068
+}
+
+name = "Research Institutions"
+desc = "During the Time of Chaos most of the Institutions for higher education in China and research were closed or relocated, both the Qing and the short-lived Republic made heavy investments, with most of China reunited we have enough ressources to modernize our education system!"
+picture = "China_Reunited"
+
+date = { day = 0 month = february year = 1936 }
+offset = 60
+deathdate = { day = 16 month = november year = 1963 }
+
+
+action_a = {
+ai_chance = 60
+name = "Education is the key to the future!"
+command = { type = money value = -1000 }
+command = { type = waketeam which = 8320 }
+command = { type = waketeam which = 8321 }
+command = { type = waketeam which = 8322 }
+command = { type = waketeam which = 8323 }
+command = { type = waketeam which = 8324 }
+command = { type = waketeam which = 8325 }
+}
+
+action_b = {
+ai_chance = 40
+name = "We have more important matters to attend to."
+command = { type = dissent value = 5 }
+}
+}
+
