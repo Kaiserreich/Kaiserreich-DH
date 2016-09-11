@@ -187,15 +187,15 @@ dormant_teams = { 948 949 }
 deactivate = { 6010 6210 6570 6560 6390 }
 
 #########  OOB (...)
-
+# The British Army 
 	landunit = {
  	id = { type = 20000 id = 1 }
- 	name = "Ottawa Royal Canadian Army"
+ 	name = "British Royal Army"
  	location = 2108
 
   		division = {
    		id = { type = 20000 id = 2 }
-   		name = "Army HQ"
+   		name = "Imperial General Staff"
    		strength = 100
    		type = hq
    		model = 2
@@ -256,23 +256,6 @@ deactivate = { 6010 6210 6570 6560 6390 }
 		brigade_model = 6
              	}
           }
-	
-
-	landunit = {
- 	id = { type = 20000 id = 15 }
- 	name = "Montreal Royal Canadian Mounted Police"
- 	location = 2119
-
-  		division = {
-   		id = { type = 20000 id = 16 }
-   		name = "1st RCMP Division"
-   		strength = 50
-		type = cavalry
-		extra = police
-   		model = 9
-		brigade_model = 1
-             	}
-          }
 
 	landunit = {
  	id = { type = 20000 id = 17 }
@@ -281,7 +264,7 @@ deactivate = { 6010 6210 6570 6560 6390 }
 
   		division = {
    		id = { type = 20000 id = 18 }
-   		name = "1st RM Division"
+   		name = "1st Royal Marines Division"
    		strength = 50
    		type = marine
    		model = 0
@@ -290,6 +273,31 @@ deactivate = { 6010 6210 6570 6560 6390 }
              	}
           }
 
+# The Canadian Active Service Force 
+	landunit = {
+ 	id = { type = 20000 id = 90 }
+ 	name = "Canadian Active Service Force"
+ 	location = 2111
+
+  		division = {
+   		id = { type = 20000 id = 91 }
+   		name = "1st Canadian Infantry Div."
+   		strength = 40
+		type = infantry
+		extra = artillery
+   		model = 7
+		brigade_model = 6
+             	}
+  		division = {
+   		id = { type = 20000 id = 92 }
+   		name = "2nd Canadian Infantry Div."
+   		strength = 30
+		type = infantry
+   		model = 7
+             	}
+          }
+
+# The Militia
 	landunit = {
  	id = { type = 20000 id = 21 }
  	name = "Newfoundland Garrison"
@@ -345,31 +353,48 @@ deactivate = { 6010 6210 6570 6560 6390 }
    		model = 4
              	}
           }
+# The Mounties :)
+
+	landunit = {
+ 	id = { type = 20000 id = 15 }
+ 	name = "Montreal Royal Canadian Mounted Police"
+ 	location = 2119
+
+  		division = {
+   		id = { type = 20000 id = 16 }
+   		name = "1st RCMP Division"
+   		strength = 50
+		type = cavalry
+		extra = police
+   		model = 9
+		brigade_model = 1
+             	}
+          }
 
 navalunit = {
  name = "Atlantic Fleet"
  id = { type = 20001 id = 1 }
  location = 2132 #Halifax
  base = 2132 #Halifax
- division = { id = { type = 20001 id = 2 } name = "HMS Queen Elizabeth" type = battleship model = 4 }
- division = { id = { type = 20001 id = 3 } name = "HMS Warspite" type = battleship model = 4 }
- division = { id = { type = 20001 id = 1003 } name = "HMS Barham" type = battleship model = 4 }
- division = { id = { type = 20001 id = 1004 } name = "HMS Valiant" type = battleship model = 4 }
- division = { id = { type = 20001 id = 4 } name = "HMS Howe" type = battlecruiser model = 2 }
- division = { id = { type = 20001 id = 5 } name = "HMS Tiger" type = battlecruiser model = 1 }
- division = { id = { type = 20001 id = 105 } name = "HMS Ramillies" type = battlecruiser model = 1 }
- division = { id = { type = 20001 id = 106 } name = "HMS Princess Royal" type = battlecruiser model = 1 }
- division = { id = { type = 20001 id = 107 } name = "HMS Resolution" type = battlecruiser model = 1 }
- division = { id = { type = 20001 id = 108 } name = "HMS Revenge" type = battlecruiser model = 1 }
- division = { id = { type = 20001 id = 109 } name = "HMS Royal Oak" type = battlecruiser model = 1 }
- division = { id = { type = 20001 id = 110 } name = "HMS Lion" type = battlecruiser model = 0 }
- division = { id = { type = 20001 id = 111 } name = "HMS Empress" type = escort_carrier model = 0 }
- division = { id = { type = 20001 id = 112 } name = "HMS Manxman" type = escort_carrier model = 0 }
- division = { id = { type = 20001 id = 113 } name = "HMS Riviera" type = escort_carrier model = 0 }
- division = { id = { type = 20001 id = 6 } name = "HMS Frobisher" type = heavy_cruiser model = 2 }
- division = { id = { type = 20001 id = 7 } name = "HMS Hawkins" type = heavy_cruiser model = 2 }
- division = { id = { type = 20001 id = 8 } name = "HMS Agincourt" type = light_cruiser model = 4 }
- division = { id = { type = 20001 id = 9 } name = "HMS Blenheim" type = light_cruiser model = 4 }
+ division = { id = { type = 20001 id = 2 } name = "HMCS Queen Elizabeth" type = battleship model = 4 }
+ division = { id = { type = 20001 id = 3 } name = "HMCS Warspite" type = battleship model = 4 }
+ division = { id = { type = 20001 id = 1003 } name = "HMCS Barham" type = battleship model = 4 }
+ division = { id = { type = 20001 id = 1004 } name = "HMCS Valiant" type = battleship model = 4 }
+ division = { id = { type = 20001 id = 4 } name = "HMCS Howe" type = battlecruiser model = 2 }
+ division = { id = { type = 20001 id = 5 } name = "HMCS Tiger" type = battlecruiser model = 1 }
+ division = { id = { type = 20001 id = 105 } name = "HMCS Ramillies" type = battlecruiser model = 1 }
+ division = { id = { type = 20001 id = 106 } name = "HMCS Princess Royal" type = battlecruiser model = 1 }
+ division = { id = { type = 20001 id = 107 } name = "HMCS Resolution" type = battlecruiser model = 1 }
+ division = { id = { type = 20001 id = 108 } name = "HMCS Revenge" type = battlecruiser model = 1 }
+ division = { id = { type = 20001 id = 109 } name = "HMCS Royal Oak" type = battlecruiser model = 1 }
+ division = { id = { type = 20001 id = 110 } name = "HMCS Lion" type = battlecruiser model = 0 }
+ division = { id = { type = 20001 id = 111 } name = "HMCS Empress" type = escort_carrier model = 0 }
+ division = { id = { type = 20001 id = 112 } name = "HMCS Manxman" type = escort_carrier model = 0 }
+ division = { id = { type = 20001 id = 113 } name = "HMCS Riviera" type = escort_carrier model = 0 }
+ division = { id = { type = 20001 id = 6 } name = "HMCS Frobisher" type = heavy_cruiser model = 2 }
+ division = { id = { type = 20001 id = 7 } name = "HMCS Hawkins" type = heavy_cruiser model = 2 }
+ division = { id = { type = 20001 id = 8 } name = "HMCS Agincourt" type = light_cruiser model = 4 }
+ division = { id = { type = 20001 id = 9 } name = "HMCS Blenheim" type = light_cruiser model = 4 }
  division = { id = { type = 20001 id = 10 } name = "1st Destroyer Flotilla" type = destroyer model = 5 }
  division = { id = { type = 20001 id = 11 } name = "2nd Destroyer Flotilla" type = destroyer model = 4 }
  division = { id = { type = 20001 id = 12 } name = "3rd Destroyer Flotilla" type = destroyer model = 4 }
@@ -381,15 +406,15 @@ navalunit = {
  id = { type = 20001 id = 14 }
  location = 2132 #Halifax
  base = 2132 #Halifax
- division = { id = { type = 20001 id = 15 } name = "HMS Majestic" type = carrier model = 1 extra = cag brigade_model = 2 }
- division = { id = { type = 20001 id = 16 } name = "HMS Leviathan" type = carrier model = 0 extra = cag brigade_model = 2 }
- division = { id = { type = 20001 id = 1005 } name = "HMS Vindictive" type = carrier model = 0 extra = cag brigade_model = 2 }
- division = { id = { type = 20001 id = 1001 } name = "HMS Berwick" type = heavy_cruiser model = 3 } # new ship
- division = { id = { type = 20001 id = 1002 } name = "HMS Cornwall" type = heavy_cruiser model = 2 } # new ship
- division = { id = { type = 20001 id = 17 } name = "HMS Cressy" type = light_cruiser model = 4 }
- division = { id = { type = 20001 id = 18 } name = "HMS Plassey" type = light_cruiser model = 4 }
- division = { id = { type = 20001 id = 19 } name = "HMS Macdonald" type = light_cruiser model = 3 }
- division = { id = { type = 20001 id = 20 } name = "HMS Laurier" type = light_cruiser model = 3 }
+ division = { id = { type = 20001 id = 15 } name = "HMCS Majestic" type = carrier model = 1 extra = cag brigade_model = 2 }
+ division = { id = { type = 20001 id = 16 } name = "HMCS Leviathan" type = carrier model = 0 extra = cag brigade_model = 2 }
+ division = { id = { type = 20001 id = 1005 } name = "HMCS Vindictive" type = carrier model = 0 extra = cag brigade_model = 2 }
+ division = { id = { type = 20001 id = 1001 } name = "HMCS Berwick" type = heavy_cruiser model = 3 } # new ship
+ division = { id = { type = 20001 id = 1002 } name = "HMCS Cornwall" type = heavy_cruiser model = 2 } # new ship
+ division = { id = { type = 20001 id = 17 } name = "HMCS Cressy" type = light_cruiser model = 4 }
+ division = { id = { type = 20001 id = 18 } name = "HMCS Plassey" type = light_cruiser model = 4 }
+ division = { id = { type = 20001 id = 19 } name = "HMCS Macdonald" type = light_cruiser model = 3 }
+ division = { id = { type = 20001 id = 20 } name = "HMCS Laurier" type = light_cruiser model = 3 }
  division = { id = { type = 20001 id = 21 } name = "5th Destroyer Flotilla" type = destroyer model = 4 }
  }
 
@@ -398,34 +423,34 @@ navalunit = {
  id = { type = 20001 id = 22 }
  location = 2132 #Halifax
  base = 2132 #Halifax
- division = { id = { type = 20001 id = 23 } name = "HMS Argus" type = escort_carrier model = 1 }
- division = { id = { type = 20001 id = 24 } name = "HMS Hermes" type = escort_carrier model = 1 }
- division = { id = { type = 20001 id = 25 } name = "HMS Revenge" type = battleship model = 4 }
- division = { id = { type = 20001 id = 26 } name = "HMS Resolution" type = battleship model = 4 }
- division = { id = { type = 20001 id = 27 } name = "HMS Iron Duke" type = battleship model = 3 }
- division = { id = { type = 20001 id = 101 } name = "HMS Bellerophon" type = battleship model = 2 }
- division = { id = { type = 20001 id = 102 } name = "HMS Colossus" type = battleship model = 2 }
- division = { id = { type = 20001 id = 103 } name = "HMS Erin" type = battleship model = 2 }
- division = { id = { type = 20001 id = 104 } name = "HMS Malborough" type = battleship model = 2 }
- division = { id = { type = 20001 id = 28 } name = "HMS Caledon" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 29 } name = "HMS Caradoc" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 30 } name = "HMS Ceres" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 31 } name = "HMS Curlew" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 32 } name = "HMS Danae" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 33 } name = "HMS Dauntless" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 114 } name = "HMS Inconstant" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 115 } name = "HMS Aurora" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 116 } name = "HMS Calliope" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 117 } name = "HMS Calypso" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 118 } name = "HMS Cambrian" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 119 } name = "HMS Cantenbury" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 120 } name = "HMS Capetown" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 121 } name = "HMS Carlisle" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 122 } name = "HMS Caroline" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 132 } name = "HMS Carysfort" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 133 } name = "HMS Castor" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 134 } name = "HMS Centaur" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 34 } name = "HMS Diomede" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 23 } name = "HMCS Argus" type = escort_carrier model = 1 }
+ division = { id = { type = 20001 id = 24 } name = "HMCS Hermes" type = escort_carrier model = 1 }
+ division = { id = { type = 20001 id = 25 } name = "HMCS Revenge" type = battleship model = 4 }
+ division = { id = { type = 20001 id = 26 } name = "HMCS Resolution" type = battleship model = 4 }
+ division = { id = { type = 20001 id = 27 } name = "HMCS Iron Duke" type = battleship model = 3 }
+ division = { id = { type = 20001 id = 101 } name = "HMCS Bellerophon" type = battleship model = 2 }
+ division = { id = { type = 20001 id = 102 } name = "HMCS Colossus" type = battleship model = 2 }
+ division = { id = { type = 20001 id = 103 } name = "HMCS Erin" type = battleship model = 2 }
+ division = { id = { type = 20001 id = 104 } name = "HMCS Malborough" type = battleship model = 2 }
+ division = { id = { type = 20001 id = 28 } name = "HMCS Caledon" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 29 } name = "HMCS Caradoc" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 30 } name = "HMCS Ceres" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 31 } name = "HMCS Curlew" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 32 } name = "HMCS Danae" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 33 } name = "HMCS Dauntless" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 114 } name = "HMCS Inconstant" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 115 } name = "HMCS Aurora" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 116 } name = "HMCS Calliope" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 117 } name = "HMCS Calypso" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 118 } name = "HMCS Cambrian" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 119 } name = "HMCS Cantenbury" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 120 } name = "HMCS Capetown" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 121 } name = "HMCS Carlisle" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 122 } name = "HMCS Caroline" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 132 } name = "HMCS Carysfort" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 133 } name = "HMCS Castor" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 134 } name = "HMCS Centaur" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 34 } name = "HMCS Diomede" type = light_cruiser model = 2 }
  }
 
  navalunit = {
@@ -443,11 +468,11 @@ navalunit = {
  id = { type = 20001 id = 39 }
  location = 2089 #Vancouver
  base = 2089 #Vancouver
- division = { id = { type = 20001 id = 40 } name = "HMS Despatch" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 41 } name = "HMS Dragon" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 123 } name = "HMS Champion" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 124 } name = "HMS Chester" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 125 } name = "HMS Cleopatra" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 40 } name = "HMCS Despatch" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 41 } name = "HMCS Dragon" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 123 } name = "HMCS Champion" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 124 } name = "HMCS Chester" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 125 } name = "HMCS Cleopatra" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 42 } name = "6th Destroyer Flotilla" type = destroyer model = 3 }
  division = { id = { type = 20001 id = 43 } name = "7th Destroyer Flotilla" type = destroyer model = 3 }
  }
@@ -466,11 +491,11 @@ navalunit = {
  id = { type = 20001 id = 47 }
  location = 2132 #Bermuda
  base = 2132 #Bermuda
- division = { id = { type = 20001 id = 48 } name = "HMS Emerald" type = light_cruiser model = 3 }
- division = { id = { type = 20001 id = 49 } name = "HMS Capetown" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 126 } name = "HMS Constance" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 127 } name = "HMS Cordelia" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 128 } name = "HMS Curacoa" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 48 } name = "HMCS Emerald" type = light_cruiser model = 3 }
+ division = { id = { type = 20001 id = 49 } name = "HMCS Capetown" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 126 } name = "HMCS Constance" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 127 } name = "HMCS Cordelia" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 128 } name = "HMCS Curacoa" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 50 } name = "8th Destroyer Flotilla" type = destroyer model = 3 }
  division = { id = { type = 20001 id = 51 } name = "9th Destroyer Flotilla" type = destroyer model = 3 }
  }
@@ -480,11 +505,11 @@ navalunit = {
  id = { type = 20001 id = 52 }
  location = 1533 #Karachi
  base = 1533 #Karachi
- division = { id = { type = 20001 id = 53 } name = "HMS Euphrates" type = light_cruiser model = 3 }
- division = { id = { type = 20001 id = 54 } name = "HMS Colombo" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 129 } name = "HMS Curlew" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 130 } name = "HMS Danae" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 131 } name = "HMS Darthmouth" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 53 } name = "HMCS Euphrates" type = light_cruiser model = 3 }
+ division = { id = { type = 20001 id = 54 } name = "HMCS Colombo" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 129 } name = "HMCS Curlew" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 130 } name = "HMCS Danae" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 131 } name = "HMCS Darthmouth" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 55 } name = "10th Destroyer Flotilla" type = destroyer model = 3 }
  division = { id = { type = 20001 id = 56 } name = "11th Destroyer Flotilla" type = destroyer model = 3 }
  }
@@ -518,7 +543,7 @@ navalunit = {
 
 		division = {
 	        id = { type = 12700 id = 91 }
-		name = "No.1 RAF Tactical Group"
+		name = "No.1 RCAF Tactical Group"
 		type = tactical_bomber
 		model = 4
 		strength = 100
@@ -533,7 +558,7 @@ navalunit = {
 
 		division = {
 	        id = { type = 12700 id = 93 }
-		name = "No.1 Strategic Group"
+		name = "No.1 RCAF Strategic Group"
 		type = strategic_bomber
 		model = 2
 		strength = 100
@@ -548,7 +573,7 @@ navalunit = {
 
 		division = {
 	        id = { type = 12700 id = 95 }
-		name = "No.1 Tactical Group"
+		name = "No.2 RCAF Tactical Group"
 		type = tactical_bomber
 		model = 4
 		strength = 100
@@ -563,14 +588,14 @@ navalunit = {
 
 		division = {
 	        id = { type = 12700 id = 97 }
-		name = "No.1 RAF Fighter Group"
+		name = "No.1 RCAF Fighter Group"
 		type = interceptor
 		model = 6
 		strength = 100
 		}
 		division = {
 	        id = { type = 12700 id = 98 }
-		name = "No.2 RAF Fighter Group"
+		name = "No.2 RCAF Fighter Group"
 		type = interceptor
 		model = 6
 		strength = 100
@@ -585,7 +610,7 @@ navalunit = {
 
 		division = 	{
 	        id = { type = 12700 id = 100 }
-		name = "No.3 Fighter Group"
+		name = "No.3 RCAF Fighter Group"
 		type = interceptor
 		model = 6
 		strength = 100
@@ -593,7 +618,7 @@ navalunit = {
 
 		division = {
 	        id = { type = 12700 id = 101 }
-		name = "No.4 Fighter Group"
+		name = "No.4 RCAF Fighter Group"
 		type = interceptor
 		model = 6
 		strength = 100
@@ -601,7 +626,7 @@ navalunit = {
 		}
 
 division_development = {
-	name = "HMS Triumph"
+	name = "HMCS Triumph"
 	type = carrier
 	model = 2
 	cost = 4.8
@@ -612,7 +637,7 @@ division_development = {
 	}
 
 division_development = {
-	name = "HMS Vengeance"
+	name = "HMCS Vengeance"
 	type = carrier
 	model = 2
 	cost = 4.8
@@ -623,7 +648,7 @@ division_development = {
 	}
 	
 division_development = {
-	name = "8. Submarine Flotilla"
+	name = "6th Submarine Flotilla"
 	type = submarine
 	model = 3
 	cost = 1.6
@@ -633,7 +658,7 @@ division_development = {
 
 
 division_development = {
-	name = "9. Submarine Flotilla"
+	name = "7th Submarine Flotilla"
 	type = submarine
 	model = 3
 	cost = 1.6
@@ -644,4 +669,4 @@ division_development = {
 
 
 
-}  
+}   
