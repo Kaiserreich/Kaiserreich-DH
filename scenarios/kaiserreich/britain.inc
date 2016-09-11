@@ -18,22 +18,20 @@ ai = "kaiserreich\England.ai"
 
 
 
-headofstate = { type = 9 id = 1193  } 
-	headofgovernment = { type = 9 id = 1188 }
-
- 	foreignminister = { type = 9 id = 1184 }  
-
- 	armamentminister = { type = 9 id = 1004 }
- 	ministerofsecurity = { type = 9 id = 1199  }  
- 	ministerofintelligence = { type = 9 id = 1112 }
- 	chiefofstaff = { type = 9 id = 1126 }
- 	chiefofarmy = { type = 9 id = 1135 }
- 	chiefofnavy = { type = 9 id = 1144 }        
- 	chiefofair = { type = 9 id = 1183 }
+headofstate = { type = 9 id = 1193 } 
+headofgovernment = { type = 9 id = 1188 }
+foreignminister = { type = 9 id = 1299 }  
+armamentminister = { type = 9 id = 1004 }
+ministerofsecurity = { type = 9 id = 1088  }  
+ministerofintelligence = { type = 9 id = 1300 }
+chiefofstaff = { type = 9 id = 1126 }
+chiefofarmy = { type = 9 id = 1130 }
+chiefofnavy = { type = 9 id = 1267 }        
+chiefofair = { type = 9 id = 1183 }
 
 #### Resource Reserves
 	capital = 29
-	manpower = 210
+	manpower = 200
 
         SpyInfo  = {  country = "ENG" NumberOfSpies = 5  } 
 
@@ -186,7 +184,7 @@ landunit = {
 
   division = {
   id = { type = 12700 id = 1706 }
-  name = "British Army HQ"
+  name = "British Army General Staff"
   type = hq
   model = 2
   strength = 100
@@ -350,7 +348,7 @@ landunit = {
 
   division = {
   id = { type = 12700 id = 313 }
-  name = "Norfolk Territorial"
+  name = "East Anglia Territorial"
   type = garrison
   model = 4
   strength = 100 
@@ -428,11 +426,25 @@ landunit = {
   max_strength = 100
   }
 
+ landunit = {
+ name = "Glamorgan Popular Militia"
+ location = 22
+ id = { type = 12700 id = 326 }
+
+  division = {
+  id = { type = 12700 id = 327 }
+  name = "Glamorgan Territorial"
+  type = garrison
+  model = 4
+  strength = 100 
+  max_strength = 100
+  }
+
 }
 
-##################
-# Royal Airforce #
-##################
+#######################
+# Republican Airforce #
+#######################
 
 	airunit = {
 	location = 17
@@ -443,7 +455,7 @@ landunit = {
 
 		division = {
 	        id = { type = 12700 id = 64 }
-		name = "No.1 RAF Tactical Group"
+		name = "No.1 Tactical Group"
 		type = tactical_bomber
 		model = 4
 		strength = 100
@@ -458,7 +470,7 @@ landunit = {
 
 		division = {
 	        id = { type = 12700 id = 66 }
-		name = "No.2 RAF Strategic Group"
+		name = "No.1 Strategic Group"
 		type = strategic_bomber
 		model = 3
 		strength = 100
@@ -466,7 +478,7 @@ landunit = {
 
 		division = {
 	        id = { type = 12700 id = 68 }
-		name = "no.3 RAF Strategic Group"
+		name = "No.2 Strategic Group"
 		type = strategic_bomber
 		model = 3
 		strength = 100
@@ -474,7 +486,7 @@ landunit = {
 
 		division = {
 	        id = { type = 12700 id = 70 }
-		name = "no.4 RAF Strategic Group"
+		name = "No.3 Strategic Group"
 		type = strategic_bomber
 		model = 3
 		strength = 100
@@ -489,7 +501,7 @@ landunit = {
 
 		division = {
 	        id = { type = 12700 id = 71 }
-		name = "No.5 RAF Tactical Group"
+		name = "No.2 Tactical Group"
 		type = tactical_bomber
 		model = 4
 		strength = 100
@@ -504,7 +516,7 @@ landunit = {
 
 		division = {
 	        id = { type = 12700 id = 73 }
-		name = "No.11 RAF Fighter Group"
+		name = "No.1 Fighter Group"
 		type = interceptor
 		model = 6
 		strength = 100
@@ -519,7 +531,7 @@ landunit = {
 
 		division = 	{
 	        id = { type = 12700 id = 75 }
-		name = "No.12 RAF Fighter Group"
+		name = "No.2 Fighter Group"
 		type = interceptor
 		model = 6
 		strength = 100
@@ -534,7 +546,7 @@ landunit = {
 
 		division = {
 	        id = { type = 12700 id = 77 }
-		name = "No.13 RAF Fighter Group"
+		name = "No.3 Fighter Group"
 		type = interceptor
 		model = 6
 		strength = 100
@@ -564,11 +576,11 @@ division = { id = { type = 12701 id = 12 } name = "RNS Measureless" type = light
 division = { id = { type = 12701 id = 13 } name = "RNS Regardless" type = light_cruiser model = 3 }
 division = { id = { type = 12701 id = 14 } name = "RNS Endurance " type = light_cruiser model = 3 }
 division = { id = { type = 12701 id = 15 } name = "RNS Resurgance" type = light_cruiser model = 3 }
-division = { id = { type = 12701 id = 16 } name = "1. Destroyer Flotilla" type = destroyer model = 4 } 
-division = { id = { type = 12701 id = 17 } name = "2. Destroyer Flotilla" type = destroyer model = 4 } 
-division = { id = { type = 12701 id = 18 } name = "3. Destroyer Flotilla" type = destroyer model = 4 } 
-division = { id = { type = 12701 id = 19 } name = "4. Destroyer Flotilla" type = destroyer model = 4 } 
-division = { id = { type = 12701 id = 20 } name = "5. Destroyer Flotilla" type = destroyer model = 4 } 
+division = { id = { type = 12701 id = 16 } name = "1st Destroyer Flotilla" type = destroyer model = 4 } 
+division = { id = { type = 12701 id = 17 } name = "2nd Destroyer Flotilla" type = destroyer model = 4 } 
+division = { id = { type = 12701 id = 18 } name = "3rd Destroyer Flotilla" type = destroyer model = 4 } 
+division = { id = { type = 12701 id = 19 } name = "4th Destroyer Flotilla" type = destroyer model = 4 } 
+division = { id = { type = 12701 id = 20 } name = "5th Destroyer Flotilla" type = destroyer model = 4 } 
 }
 
 navalunit = {
@@ -597,12 +609,12 @@ division = { id = { type = 12701 id = 32 } name = "RNS Castor" type = light_crui
 division = { id = { type = 12701 id = 33 } name = "RNS Colliery" type = light_cruiser model = 2 }
 division = { id = { type = 12701 id = 86 } name = "RNS Birkenhead" type = light_cruiser model = 2 }
 division = { id = { type = 12701 id = 87 } name = "RNS Calledon" type = light_cruiser model = 2 }
-division = { id = { type = 12701 id = 34 } name = "6. Destroyer Flotilla" type = destroyer model = 3 } 
-division = { id = { type = 12701 id = 35 } name = "7. Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 34 } name = "6th Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 35 } name = "7th Destroyer Flotilla" type = destroyer model = 3 } 
 }
 
 navalunit = {
-name = "Welsh Fleet"
+name = "Atlantic Fleet"
 id = { type = 12701  id = 36  }
 location = 17
 base = 17 
@@ -625,7 +637,7 @@ division = { id = { type = 12701 id = 88 } name = "RNS Caradoc" type = light_cru
 division = { id = { type = 12701 id = 89 } name = "RNS Cardiff" type = light_cruiser model = 2 }
 division = { id = { type = 12701 id = 90 } name = "RNS Concord" type = light_cruiser model = 2 }
 division = { id = { type = 12701 id = 91 } name = "RNS Conquest" type = light_cruiser model = 2 }
-division = { id = { type = 12701 id = 49 } name = "8. Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 49 } name = "8th Destroyer Flotilla" type = destroyer model = 3 } 
 }
 
 navalunit = {
@@ -633,15 +645,15 @@ name = "Martime Transport Fleet"
 id = { type = 12701  id = 50 }
 location = 13
 base = 13
-division = { id = { type = 12701 id = 51 } name = "Transport Force A" type = transport model = 1 }
-division = { id = { type = 12701 id = 52 } name = "Transport Force B" type = transport model = 1 }
-division = { id = { type = 12701 id = 53 } name = "Transport Force C" type = transport model = 1 }
-division = { id = { type = 12701 id = 54 } name = "Transport Force D" type = transport model = 1 }
-division = { id = { type = 12701 id = 55 } name = "Transport Force E" type = transport model = 1 }
-division = { id = { type = 12701 id = 56 } name = "9. Destroyer Flotilla" type = destroyer model = 2 } 
-division = { id = { type = 12701 id = 57 } name = "10. Destroyer Flotilla" type = destroyer model = 2 } 
-division = { id = { type = 12701 id = 58 } name = "11. Destroyer Flotilla" type = destroyer model = 2 } 
-division = { id = { type = 12701 id = 59 } name = "12. Destroyer Flotilla" type = destroyer model = 2 } 
+division = { id = { type = 12701 id = 51 } name = "1st Transport Flotilla" type = transport model = 1 }
+division = { id = { type = 12701 id = 52 } name = "2nd Transport Flotilla" type = transport model = 1 }
+division = { id = { type = 12701 id = 53 } name = "3rd Transport Flotilla" type = transport model = 1 }
+division = { id = { type = 12701 id = 54 } name = "4th Transport Flotilla" type = transport model = 1 }
+division = { id = { type = 12701 id = 55 } name = "5th Transport Flotilla" type = transport model = 1 }
+division = { id = { type = 12701 id = 56 } name = "9th Destroyer Flotilla" type = destroyer model = 2 } 
+division = { id = { type = 12701 id = 57 } name = "10th Destroyer Flotilla" type = destroyer model = 2 } 
+division = { id = { type = 12701 id = 58 } name = "11th Destroyer Flotilla" type = destroyer model = 2 } 
+division = { id = { type = 12701 id = 59 } name = "12th Destroyer Flotilla" type = destroyer model = 2 } 
 }
 
 navalunit = {
@@ -649,12 +661,12 @@ name = "Home Waters Defence Force"
 id = { type = 12701  id = 60 }
 location = 13
 base = 13
-division = { id = { type = 12701 id = 61 } name = "13. Destroyer Flotilla" type = destroyer model = 3 } 
-division = { id = { type = 12701 id = 62 } name = "14. Destroyer Flotilla" type = destroyer model = 3 } 
-division = { id = { type = 12701 id = 63 } name = "15. Destroyer Flotilla" type = destroyer model = 3 } 
-division = { id = { type = 12701 id = 64 } name = "16. Destroyer Flotilla" type = destroyer model = 3 } 
-division = { id = { type = 12701 id = 65 } name = "17. Destroyer Flotilla" type = destroyer model = 3 } 
-division = { id = { type = 12701 id = 66 } name = "18. Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 61 } name = "13th Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 62 } name = "14th Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 63 } name = "15th Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 64 } name = "16th Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 65 } name = "17th Destroyer Flotilla" type = destroyer model = 3 } 
+division = { id = { type = 12701 id = 66 } name = "18th Destroyer Flotilla" type = destroyer model = 3 } 
 }
 
 navalunit = {
@@ -662,15 +674,15 @@ name = "Submarine Fleet"
 id = { type = 12701  id = 68 }
 location = 23 
 base = 23  
-division = { id = { type = 12701 id = 69 } name = "1. Submarine Flotilla" type = submarine model = 3 }
-division = { id = { type = 12701 id = 70 } name = "2. Submarine Flotilla" type = submarine model = 2 }
-division = { id = { type = 12701 id = 71 } name = "3. Submarine Flotilla" type = submarine model = 2 }
-division = { id = { type = 12701 id = 72 } name = "4. Submarine Flotilla" type = submarine model = 2 }
-division = { id = { type = 12701 id = 73 } name = "5. Submarine Flotilla" type = submarine model = 2 }
-division = { id = { type = 12701 id = 74 } name = "6. Submarine Flotilla" type = submarine model = 2 }
-division = { id = { type = 12701 id = 75 } name = "7. Submarine Flotilla" type = submarine model = 1 }
-division = { id = { type = 12701 id = 76 } name = "8. Submarine Flotilla" type = submarine model = 1 }
-division = { id = { type = 12701 id = 77 } name = "9. Submarine Flotilla" type = submarine model = 1 }
+division = { id = { type = 12701 id = 69 } name = "1st Submarine Flotilla" type = submarine model = 3 }
+division = { id = { type = 12701 id = 70 } name = "2nd Submarine Flotilla" type = submarine model = 2 }
+division = { id = { type = 12701 id = 71 } name = "3rd Submarine Flotilla" type = submarine model = 2 }
+division = { id = { type = 12701 id = 72 } name = "4th Submarine Flotilla" type = submarine model = 2 }
+division = { id = { type = 12701 id = 73 } name = "5th Submarine Flotilla" type = submarine model = 2 }
+division = { id = { type = 12701 id = 74 } name = "6th Submarine Flotilla" type = submarine model = 2 }
+division = { id = { type = 12701 id = 75 } name = "7th Submarine Flotilla" type = submarine model = 1 }
+division = { id = { type = 12701 id = 76 } name = "8th Submarine Flotilla" type = submarine model = 1 }
+division = { id = { type = 12701 id = 77 } name = "9th Submarine Flotilla" type = submarine model = 1 }
 }
 
 }  

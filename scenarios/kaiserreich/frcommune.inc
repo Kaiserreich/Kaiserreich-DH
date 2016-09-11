@@ -24,7 +24,7 @@ ai = "kaiserreich\France.ai"
  	armamentminister = { type = 9 id = 2219 }
  	ministerofsecurity = { type = 9 id = 2220  }
  	ministerofintelligence = { type = 9 id = 2221  }
- 	chiefofstaff = { type = 9 id = 2222 }
+ 	chiefofstaff = { type = 9 id = 2007 }
  	chiefofarmy = { type = 9 id = 2223 }
  	chiefofnavy = { type = 9 id = 2224 }        
  	chiefofair = { type = 9 id = 2225 }
@@ -189,11 +189,11 @@ deactivate = { 6010 6210 6570 6560 6390 }
 
 landunit = {
 location =  55  #### Paris
-name = "Grand Quartier Général"
+name = "Grand Quartier Général de l'Armée Populaire"
         id = { type = 13507 id = 1 }
   division = {
   id = { type = 31871 id = 2 }
-  name = "Grand Quartier Général"
+  name = "Grand Quartier Général de l'Armée Populaire"
   type = hq
   model = 2
   strength = 100
@@ -207,7 +207,7 @@ name = "Réserve de GQG"
       id = { type = 31871 id = 3  }
   division = {
   id = { type = 31871 id = 4 }
-  name = "1ère Division motorisé de Réserve"
+  name = "1ère Division Motorisé de Réserve"
   type = motorized
   model = 0
   extra = light_armor_brigade
@@ -217,7 +217,7 @@ name = "Réserve de GQG"
 
   division = {
   id = { type = 31871 id = 5 }
-  name = "2ème Division motorisé de Réserve"
+  name = "2ème Division Motorisé de Réserve"
   type = motorized
   model = 0
   extra = light_armor_brigade
@@ -227,7 +227,7 @@ name = "Réserve de GQG"
 
   division = {
   id = { type = 31871 id = 7  }
-  name = "3ème Division motorisé de Réserve"
+  name = "3ème Division Motorisé de Réserve"
   type = motorized
   model = 0
   extra = light_armor_brigade
@@ -313,7 +313,7 @@ name = "IIe Corps d'Armée"
       id = { type = 31871 id = 10  }
 	division = {
   id = { type = 31871 id = 12 }
-  name = "3ème Division Légère Mécanisée"
+  name = "1ère Division Légère Mécanisée"
   type = cavalry
   model = 9
   strength = 100
@@ -323,7 +323,7 @@ name = "IIe Corps d'Armée"
 
   division = {
   id = { type = 31871 id = 13  }
-  name = "4ème Division Légère Mécanisée"
+  name = "2ème Division Légère Mécanisée"
   type = cavalry
   model = 9
   strength = 100
@@ -333,7 +333,7 @@ name = "IIe Corps d'Armée"
 
   division = {
   id = { type = 31871 id = 86  }
-  name = "5ème Division Légère Mécanisée"
+  name = "3ème Division Légère Mécanisée"
   type = cavalry
   model = 9
   strength = 100
@@ -343,7 +343,7 @@ name = "IIe Corps d'Armée"
 
   division = {
   id = { type = 31871 id = 90  }
-  name = "7ème Division Légère Mécanisée"
+  name = "4ème Division Légère Mécanisée"
   type = cavalry
   model = 9
   strength = 100
@@ -579,7 +579,7 @@ name = "VIIIe Corps d'Armée"
 
   division = {
   id = { type = 31871 id = 36  }
-  name = "1ème Division Légère de Chasseurs"
+  name = "1ère Division Légère de Chasseurs"
   type = bergsjaeger 
   model = 8
   strength = 100
@@ -923,7 +923,7 @@ name = "IXème Division de la Garde Nationale"
 
 airunit = {
 id = { type = 13500 id = 206 }
-name = "1er Groupe de Bombardement"
+name = "1ère Groupe de Bombardement"
 location = 55
 base = 55
 
@@ -937,17 +937,17 @@ airunit = {
 location = 89
 base = 89
 id = { type = 13500 id = 222 }
-name = "5ème Groupe de Bombardement"
-division = { id = { type = 13500 id = 280 } name = "Groupe de Bombardement Tactique 7" strength = 100 type = tactical_bomber model = 6 }
-division = { id = { type = 13500 id = 281 } name = "Groupe de Bombardement Tactique 7" strength = 100 type = tactical_bomber model = 6 }
-division = { id = { type = 13500 id = 223 } name = "Groupe de Bombardement Tactique 7" strength = 100 type = tactical_bomber model = 6 }
+name = "2ème Groupe de Bombardement"
+division = { id = { type = 13500 id = 280 } name = "Groupe de Bombardement Tactique 4" strength = 100 type = tactical_bomber model = 6 }
+division = { id = { type = 13500 id = 281 } name = "Groupe de Bombardement Tactique 5" strength = 100 type = tactical_bomber model = 6 }
+division = { id = { type = 13500 id = 223 } name = "Groupe de Bombardement Tactique 6" strength = 100 type = tactical_bomber model = 6 }
 }
 
 airunit = {
 location = 55
 base = 55
 id = { type = 13500 id = 226 }
-name = "1er Groupe de Chasse"
+name = "1ère Groupe de Chasse"
 
   division = {
   id = { type = 13500 id = 227 }
@@ -984,7 +984,7 @@ airunit = {
 location = 89
 base = 89
 id = { type = 13500 id = 234 }
-name = "3ème Groupe de Chasse"
+name = "2ème Groupe de Chasse"
 
 division = {
 id = { type = 13500 id = 235 }
@@ -1033,9 +1033,9 @@ navalunit = {
  division = { id = { type = 13862 id = 258 } name = "Lyon" type = light_cruiser model = 3 }
  division = { id = { type = 13862 id = 1000 } name = "Toulon" type = light_cruiser model = 3 }
  division = { id = { type = 13862 id = 1001 } name = "Toulouse" type = light_cruiser model = 3 }
- division = { id = { type = 13862 id = 260 } name = "2eme Flotille des Contre-Torpilleurs" type = destroyer model = 4 }
- division = { id = { type = 13862 id = 261 } name = "3eme Flotille des Contre-Torpilleurs" type = destroyer model = 4 }
- division = { id = { type = 13862 id = 262 } name = "4eme Flotille des Contre-Torpilleurs" type = destroyer model = 4 }
+ division = { id = { type = 13862 id = 260 } name = "2ème Flotille des Contre-Torpilleurs" type = destroyer model = 4 }
+ division = { id = { type = 13862 id = 261 } name = "3ème Flotille des Contre-Torpilleurs" type = destroyer model = 4 }
+ division = { id = { type = 13862 id = 262 } name = "4ème Flotille des Contre-Torpilleurs" type = destroyer model = 4 }
  }
 
  navalunit = {
@@ -1044,11 +1044,11 @@ navalunit = {
  location = 86 ####
  base = 86
 
- division = { id = { type = 13862 id = 264 } name = "1ere Flotille des Sous-Marins" type = submarine model = 3 }
- division = { id = { type = 13862 id = 265 } name = "2eme Flotille des Sous-Marins" type = submarine model = 3 }
- division = { id = { type = 13862 id = 272 } name = "3eme Flotille des Sous-Marins" type = submarine model = 3 }
- division = { id = { type = 13862 id = 1013 } name = "4eme Flotille des Sous-Marins" type = submarine model = 3 }
- division = { id = { type = 13862 id = 1014 } name = "5eme Flotille des Sous-Marins" type = submarine model = 3 }
+ division = { id = { type = 13862 id = 264 } name = "1ère Flotille des Sous-Marins" type = submarine model = 3 }
+ division = { id = { type = 13862 id = 265 } name = "2ème Flotille des Sous-Marins" type = submarine model = 3 }
+ division = { id = { type = 13862 id = 272 } name = "3ème Flotille des Sous-Marins" type = submarine model = 3 }
+ division = { id = { type = 13862 id = 1013 } name = "4ème Flotille des Sous-Marins" type = submarine model = 3 }
+ division = { id = { type = 13862 id = 1014 } name = "5ème Flotille des Sous-Marins" type = submarine model = 3 }
  }
 
  navalunit = {
@@ -1064,11 +1064,11 @@ navalunit = {
  division = { id = { type = 13862 id = 268 } name = "Saint-Etienne" type = light_cruiser model = 3 }
  division = { id = { type = 13862 id = 1004 } name = "Rennes" type = light_cruiser model = 3 }
  division = { id = { type = 13862 id = 1005 } name = "Saint-Nazaire" type = light_cruiser model = 4 }
- division = { id = { type = 13862 id = 269 } name = "1ere Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
- division = { id = { type = 13862 id = 270 } name = "5eme Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
- division = { id = { type = 13862 id = 1008 } name = "6eme Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
- division = { id = { type = 13862 id = 1009 } name = "7eme Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
- division = { id = { type = 13862 id = 1010 } name = "8eme Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
+ division = { id = { type = 13862 id = 269 } name = "1ère Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
+ division = { id = { type = 13862 id = 270 } name = "5ème Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
+ division = { id = { type = 13862 id = 1008 } name = "6ème Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
+ division = { id = { type = 13862 id = 1009 } name = "7ème Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
+ division = { id = { type = 13862 id = 1010 } name = "8ème Flotille des Contre-Torpilleurs" type = destroyer model = 3 }
 
 
  }
@@ -1078,11 +1078,11 @@ navalunit = {
  id = { type = 13862 id = 300 }
  location = 37
  base = 37
- division = { id = { type = 13862 id = 301 } name = "1ere Flotille de Convoi" type = transport model = 1 }
- division = { id = { type = 13862 id = 302 } name = "2eme Flotille de Convoi" type = transport model = 1 }
- division = { id = { type = 13862 id = 303 } name = "3eme Flotille de Convoi" type = transport model = 1 }
- division = { id = { type = 13862 id = 1011 } name = "4eme Flotille de Convoi" type = transport model = 1 }
- division = { id = { type = 13862 id = 1012 } name = "5eme Flotille de Convoi" type = transport model = 1 }
+ division = { id = { type = 13862 id = 301 } name = "1ère Flotille de Convoi" type = transport model = 1 }
+ division = { id = { type = 13862 id = 302 } name = "2ème Flotille de Convoi" type = transport model = 1 }
+ division = { id = { type = 13862 id = 303 } name = "3ème Flotille de Convoi" type = transport model = 1 }
+ division = { id = { type = 13862 id = 1011 } name = "4ème Flotille de Convoi" type = transport model = 1 }
+ division = { id = { type = 13862 id = 1012 } name = "5ème Flotille de Convoi" type = transport model = 1 }
 
 
 

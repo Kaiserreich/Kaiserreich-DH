@@ -435,4 +435,92 @@ navalunit = {
  division = { id = { type = 13501 id = 370 } name = "Jurien de la Graviere" type = light_cruiser model = 1 }
 
  } 
+
+# Gamelin's Armée de Libération
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 434  }
+  name = "10ème Division d'Infanterie"
+  type = infantry
+  model = 8
+  strength = 100
+  }
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 427  }
+  name = "11ème Division d'Infanterie"
+  type = infantry
+  model = 8
+  strength = 100
+  }
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 428  }
+  name = "12ème Division d'Infanterie"
+  type = infantry
+  model = 8
+  strength = 100
+  }
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 429  }
+  name = "13ème Division d'Infanterie"
+  type = infantry
+  model = 8
+  strength = 100
+  }
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 430 }
+  name = "1ère Division Légère Mécanisée"
+  type = cavalry
+  model = 9
+  strength = 100
+  extra = light_armor_brigade
+  brigade_model = 3
+  }
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 431  }
+  name = "2ème Division Légère Mécanisée"
+  type = cavalry
+  model = 9
+  strength = 100
+  extra = light_armor_brigade
+  brigade_model = 3
+  }
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 432  }
+  name = "3ème Division Légère Mécanisée"
+  type = cavalry
+  model = 9
+  strength = 100
+  extra = light_armor_brigade
+  brigade_model = 3
+  }
+
+  landdivision = {
+  dormant = yes
+  id = { type = 13501 id = 433  }
+  name = "4ème Division Légère Mécanisée"
+  type = cavalry
+  model = 9
+  strength = 100
+  extra = light_armor_brigade
+  brigade_model = 3
+  }
+
+
+
+
+
+
  }
