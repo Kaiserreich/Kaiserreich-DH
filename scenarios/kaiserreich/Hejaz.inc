@@ -1,6 +1,5 @@
 
 
-
 country = {
     tag = SAU 
     ai = "kaiserreich\Hatsemite Arabia.ai"
@@ -22,7 +21,7 @@ country = {
 
 	headofstate = { type = 9 id = 63001 }
 	headofgovernment = { type = 9 id = 63007 }
- 	foreignminister = { type = 9 id = 63015  }
+ 	foreignminister = { type = 9 id = 63078  }
  	armamentminister = { type = 9 id = 63025 }
  	ministerofsecurity = { type = 9 id = 63027 }
  	ministerofintelligence = { type = 9 id = 63033 }
@@ -79,6 +78,14 @@ relation = { tag = YEM value = 125 }
 1910 1920 1930 1940 1950 1960 #Interbellum 1930 Supply 
 13060 13070 13080 1310 1320 1330 1340 1350 #1918 Cavalry Division 
 
+#Industrial
+5810 5820 5050 # Production
+5700 5710 5010 #Modern Agriculture  
+5800 5080 #Improved Construction Engineering
+5600 #Medicine
+5190 # Basic oil conversion
+
+
 # Great War Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
 
@@ -86,6 +93,7 @@ relation = { tag = YEM value = 125 }
 
 dormant_ministers = { 63059 63060 63061 63062 63063 63064 63065 63066 63067 63068 }
 dormant_leaders = { 290044 }
+dormant_teams = {8608 8609 8610 8611 8612 8613 8614 8615 8616 8617 8618 8621 8622 8623 }
 
 #########  OOB (...)
 	landunit = {
@@ -109,7 +117,7 @@ dormant_leaders = { 290044 }
 
         	division = {
         	id = { type = 22600 id = 4 }
-                name = "Hashemite Cavalry Group'"
+                name = "Hashemite Cavalry Group"
                 type = cavalry
 		model = 7
 		}

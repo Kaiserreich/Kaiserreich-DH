@@ -412,6 +412,7 @@ landunit = {
   }
 
 }
+
  landunit = {
  name = "Greater London Popular Militia"
  location = 29
@@ -424,6 +425,7 @@ landunit = {
   model = 4
   strength = 100 
   max_strength = 100
+  }
   }
 
  landunit = {

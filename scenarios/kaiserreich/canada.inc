@@ -18,13 +18,14 @@ ai = "kaiserreich\Canada.ai"
 #### cabinet
 
 
+# Starting CAN cabinet
 headofstate = { type = 9 id = 45135  } 
 headofgovernment = { type = 9 id = 45002 }
 foreignminister = { type = 9 id = 45003 }
  	armamentminister = { type = 9 id = 45057 }
  	ministerofsecurity = { type = 9 id = 45005 }
  	ministerofintelligence = { type = 9 id = 45086 }
- 	chiefofstaff = { type = 9 id = 45197 }
+ 	chiefofstaff = { type = 9 id = 45197 } # Montgomery-Massingberd
  	chiefofarmy = { type = 9 id = 45133 }
 
 
@@ -86,6 +87,7 @@ relation = {   tag =  	FRA	value = 		-150	   }
 relation = {   tag =  	RSI	 value =		-100	   }  
 relation = {   tag =  	AST	value = 		150	access = yes   guaranteed = { day = 29 month = december year = 1934   }    }  
 relation = {   tag =  	GUY	value = 		160	access = yes   guaranteed = { day = 29 month = december year = 1934   }    }  
+relation = {   tag =  	NZL	 value =		150	access = yes   guaranteed = { day = 29 month = december year = 1934   }    }  
 relation = {   tag =  	VIC	value = 		150	   }  
 relation = {   tag =  	RUS	 value =		-30	   }  
 relation = {   tag =  	AFG	 value =		-100	   }  
@@ -94,7 +96,7 @@ relation = {   tag =  	OTT	 value =		-50	   }
 relation = {   tag =  	CON	value = 		-50	   }  
 relation = {   tag =  	ETH	value = 		20	   }  
 relation = {   tag =  	LIB	 value =		50	   }  
-relation = {   tag =  	SAF	value = 		80	   }  
+relation = {   tag =  	SAF	value = 		80	 access = yes  }  
 relation = {   tag =  	BHU	 value =		-75	   }  
 relation = {   tag =  	BUR	value = 		-50	   }  
 relation = {   tag =  	IND	value = 		-175	   } 
@@ -116,8 +118,6 @@ dormant_leaders = {
 52123 #Merritt C.
 52124 #Prince T.
 }
-
-dormant_teams = { 948 949 }
 	
 	techapps = {
 #Infantry
@@ -171,8 +171,8 @@ dormant_teams = { 948 949 }
 5560 #Exp. Rocket
 5190 #Basic Oil Refining 
  
-#Land Doctrines
-6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910 # Great War Land Doctrines (entente)
+#Great War Land Doctrines (entente)
+6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
 14000 14010 14020 #Great War Hospital System 
 
 #Naval Doctrines
@@ -669,4 +669,4 @@ division_development = {
 
 
 
-}   
+}  

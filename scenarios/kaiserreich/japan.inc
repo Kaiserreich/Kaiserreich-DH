@@ -1399,7 +1399,7 @@ landunit = {
         model = 5
         cost  = 0.1
         id    = { type = 13016 id = 1143 }
-        date  = { year = 1937 month = october day = 30 }
+        date  = { year = 1937 month = october day = 29 }
         new_model = no
     }
     division_development = {  

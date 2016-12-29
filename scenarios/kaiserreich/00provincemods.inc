@@ -1162,7 +1162,6 @@ province = { id = 2152 coastalfort = 3 #Malmo
 naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 province = { id = 2153 coastalfort = 1 anti_air = 2 #Gothenburg
 naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
-province = { id = 2155 coastalfort = 3 } #Kalmar
 province = { id = 2156 anti_air = 2 #Visby
 naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
 province = { id = 2158 landfort = 1 coastalfort = 1 } #Uppsala
@@ -1271,7 +1270,7 @@ air_base = { size = 4 current_size = 4 } }
 province = { id = 1832 ic = -5 anti_air = 3 #Chicago
 air_base = { size = 10 current_size = 10 } }
 province = { id = 1833 ic = -2 anti_air = 1 #Saint Louis
-naval_base = { size = 2 current_size = 2 }air_base = { size = 4 current_size = 4 } }
+air_base = { size = 4 current_size = 4 } }
 province = { id = 1838 ic = -2 anti_air = 1 #Des Moines
 air_base = { size = 4 current_size = 4 } }
 province = { id = 1839 ic = -7 anti_air = 1 #Milwaukee
@@ -1439,7 +1438,6 @@ province = { id =	1559	air_base = { size =	2	current_size = 	2	} }
 province = { id =	1560	naval_base = { size =	10	current_size = 	10	} } #Sasebo
 province = { id =	1560	air_base = { size =	4	current_size = 	4	} }
 
-province = { id =	1547	naval_base = { size =	4	current_size = 	4	} } #Ominato
 
 #More Supply Pools
  province = {  id = 371  oilpool = 100 supplypool = 500 }
