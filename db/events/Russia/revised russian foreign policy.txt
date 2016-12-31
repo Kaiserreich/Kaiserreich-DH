@@ -89,7 +89,7 @@ command = { type = domestic which = defense_lobby value = 1 }
 command = { type = relation which = GER value = -10 }
 command = { type = relation which = TRA value = -50 }
 command = { type = setflag which = RUS_DKU }
-command = { trigger = { NOT = { alliance = { country = RUS country = GER } war = { country = RUS country = GER } local_flag = GERRUS_conc } } type = event which = 901973 where = GER when = 2  }
+command = { trigger = { NOT = { ispuppet = GER alliance = { country = RUS country = GER } war = { country = RUS country = GER } local_flag = GERRUS_conc war = { country = GER country = JAP } } } type = trigger which = 901973 }
 command = { type = local_setflag which = RUSexp_cau }
 }
 
@@ -112,7 +112,7 @@ name = "We must bring Georgia and Azerbaijan into the fold as well!"
 command = { type = relation which = GEO value = -50 }
 command = { type = relation which = AZB value = -50 }
 command = { type = setflag which = RUS_DKC }
-command = { trigger = { NOT = { alliance = { country = RUS country = GER } war = { country = RUS country = GER } local_flag = GERRUS_conc } } type = event which = 901973 where = GER when = 2  }
+command = { trigger = { NOT = { ispuppet = GER alliance = { country = RUS country = GER } war = { country = RUS country = GER } local_flag = GERRUS_conc war = { country = GER country = JAP } } } type = trigger which = 901973 }
 command = { type = local_setflag which = RUSexp_cau }
 }
 
@@ -130,7 +130,7 @@ command = { type = relation which = AZB value = -50 }
 command = { type = relation which = OTT value = -50 }
 command = { type = relation which = TRA value = -50 }
 command = { type = setflag which = RUS_ETC }
-command = { trigger = { NOT = { alliance = { country = RUS country = GER } war = { country = RUS country = GER } local_flag = GERRUS_conc } } type = event which = 901973 where = GER when = 2  }
+command = { trigger = { NOT = { ispuppet = GER alliance = { country = RUS country = GER } war = { country = RUS country = GER } local_flag = GERRUS_conc war = { country = GER country = JAP } } } type = trigger which = 901973 }
 command = { type = local_setflag which = RUSexp_cau }
 }
 
@@ -146,15 +146,6 @@ country = GER
 style = 2
 picture = "RusEvent2"
 persistent = yes
-
-trigger = {
-control = { province = 163 data = GER }
-NOT = {
-ispuppet = GER
-war = { country = GER country = RUS }
-war = { country = GER country = JAP }
-}
-}
 
 name = "Report from Russia"
 desc = "Our secret service reports that Russia plans to once again secure the Caucasus region. Such a drastic step means a direct threat to the stability of Eastern Europe which was set by the Treaty of Brestl-Litovsk. What shall we do?"
@@ -447,8 +438,27 @@ command = { type = event which = 901975 where = GER when = 2  }
 }
 
 action_b = {
+ai_chance = 50
+name = "We must abandon this direction. For now.."
+command = { type = relation which = GER value = 10 }
+command = { type = event which = 903045 where = RUS when = 2  }
+}
+
+action_c = {
 ai_chance = 46
 name = "Let us focus on Central Asia!"
+trigger = {
+OR = {
+AND = {
+NOT = { owned = { province = 504 data = -3 } }
+NOT = { control = { province = 504 data = -3 } }
+}
+AND = {
+NOT = { owned = { province = 1105 data = -3 } }
+NOT = { control = { province = 1105 data = -3 } }
+}
+}
+}
 command = { type = relation which = GER value = 20 }
 command = { type = clrflag which = RUS_DKU }
 command = { type = clrflag which = RUS_DKC }
@@ -457,7 +467,7 @@ command = { type = setflag which = RUS_TMGC }
 command = { type = event which = 901978 where = RUS when = 4  }
 }
 
-action_c = {
+action_d = {
 ai_chance = 1
 name = "Give up our plans of expansion."
 command = { type = domestic which = interventionism value = -1 }
@@ -475,6 +485,85 @@ command = { type = clrflag which = RUS_DKC }
 command = { type = clrflag which = RUS_ETC }
 command = { type = setflag which = RUS_ISO }
 command = { type = belligerence value = -25 }
+}
+}
+
+
+
+event = {
+id = 903045
+country = RUS
+style = 2
+picture = "RusEvent1"
+
+name = "Focus in International Policy"
+desc = "We have successfully achieved all our goals in Central Asia. Unfortunately, expansion into the Caucasus is impossible thanks to German protection over the Don-Kuban union and Azerbaijan. We can either wait for a better opportunity to expand into the Caucasus, risk expansion into the Far East or give up expansionism altogether. What shall we do?"
+
+action_a = {
+trigger = {
+OR = {
+AND = {
+NOT = { owned = { province = 1124 data = -3 } }
+NOT = { control = { province = 1124 data = -3 } }
+}
+AND = {
+NOT = { owned = { province = 1191 data = -3 } }
+NOT = { control = { province = 1191 data = -3 } }
+}
+AND = {
+NOT = { owned = { province = 1281 data = -3 } }
+NOT = { control = { province = 1281 data = -3 } }
+}
+AND = {
+flag = RUS_EXP
+NOT = { owned = { province = 1208 data = -3 } }
+NOT = { control = { province = 1208 data = -3 } }
+}
+}
+}
+ai_chance = 25
+name = "We will focus on the Far East!"
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = dissent value = 6 }
+command = { type = relation which = JAP value = -10 }
+command = { type = relation which = MAN value = -10 }
+command = { type = relation which = PRI value = -10 }
+command = { type = relation which = CXB value = -10 }
+command = { type = relation which = SIK value = -10 }
+command = { type = relation which = MON value = -30 }
+command = { type = clrflag which = RUS_KGD }
+command = { type = clrflag which = RUS_AOD }
+command = { type = clrflag which = RUS_DKU }
+command = { type = clrflag which = RUS_DKC }
+command = { type = clrflag which = RUS_ETC }
+command = { type = event which = 901980 where = RUS when = 4  }
+}
+
+action_b = {
+ai_chance = 40
+name = "We will wait for a better opportunity to strike at the Caucasus!"
+command = { type = clrflag which = RUS_KGD }
+command = { type = clrflag which = RUS_AOD }
+command = { type = clrflag which = RUS_DKU }
+command = { type = clrflag which = RUS_DKC }
+command = { type = clrflag which = RUS_ETC }
+command = { type = clrflag which = RUS_TMGC }
+command = { type = setflag which = RUS_TMGCA }
+}
+
+
+action_b = {
+ai_chance = 10
+name = "We have expanded enough!"
+command = { type = relation which = GER value = 50 }
+command = { type = relation which = OTT value = 10 }
+command = { type = clrflag which = RUS_EXP }
+command = { type = clrflag which = RUS_REAL }
+command = { type = clrflag which = RUS_KGD }
+command = { type = clrflag which = RUS_AOD }
+command = { type = setflag which = RUS_ISO }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = -1 }
 }
 }
 
