@@ -5,10 +5,13 @@
 #############################
 
 event = {
-id = 1830100
+id = 232000
 country = U28
+style = 2
 
-trigger = { headofstate = 145000 } #J. S. Woodsworth
+trigger = { 
+headofstate = 145000 
+} #J. S. Woodsworth
 
 name = "The death of J. S. Woodsworth"
 desc = "James Shaver Woodsworth, a prominent figure in Canadian Syndicalism and the current President, suffered a stroke and died today. The country mourns the loss of a man who always fought for the great cause of Syndicalism. However, a new President must be chosen: will it be the faithful Stanley Knowles or the more radical Arthur Evans?"
@@ -21,21 +24,24 @@ ai_chance = 80
 name = "Stanley Knowles is the right man for the job."
 command = { type = sleepminister which = 145000 } #J. S. Woodsworth
 command = { type = headofstate which = 145002 } #Stanley Knowles
-command = { type = sleepevent which = 1830101 }
+command = { type = sleepevent which = 232001 }
 }
+
 action_b = {
 ai_chance = 20
 name = "Arthur 'Slim' Evans will lead the country!"
 command = { type = sleepminister which = 145000 } #J. S. Woodsworth
 command = { type = headofstate which = 145001 } #Arthur 'Slim' Evans
 command = { type = dissent value = 5 }
-command = { type = sleepevent which = 1830101 }
+command = { type = sleepevent which = 232001 }
 }
 }
 
+
 event = {
-id = 1830101
+id = 232001
 country = U28
+style = 2
 
 trigger = {
 NOT = {
@@ -53,13 +59,13 @@ date = { day = 20 month = march year = 1942 }
 action_a = {
 name = "He was a good man."
 command = { type = sleepminister which = 145000 } #J. S. Woodsworth
-command = { type = sleepevent which = 1830100 }
+command = { type = sleepevent which = 232000 }
 }
 }
 
 
 event = {
-id = 765000
+id = 232002
 random = no
 country = U28
 style = 2
@@ -68,9 +74,11 @@ name = "The first Congress of the Canadian Trade Unions"
 desc = "Today the first Congress of the Canadian Trade Unions begins. Although political parties are banned, there are informal groups gathering trade unionists with common ideologies: liberal Reformists, orthodox Labourists, and strict Totalists."
 picture = "tuc1"
 
-trigger = { government = communist }
+trigger = { 
+government = communist 
+}
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 10
 deathdate = { day = 29 month = December year = 1963 }
 
@@ -80,8 +88,9 @@ command = { type = setflag which = CTUC }
 }
 }
 
+
 event = {
-id = 765001
+id = 232003
 random = no
 country = U28
 style = 2
@@ -92,7 +101,7 @@ picture = "tuc2"
 
 trigger = { flag = CTUC }
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 5
 deathdate = { day = 29 month = December year = 1963 }
 
@@ -107,6 +116,7 @@ command = { type = construct which = ic where = -1 value = 1 }
 command = { type = domestic which = free_market value = 1 }
 command = { type = setflag which = ECO_CAN_REF }
 }
+
 action_b = {
 name = "Trade unions will control the economy (Lab)"
 ai_chance = 40
@@ -116,6 +126,7 @@ command = { type = construct which = ic where = -4 value = 1 }
 command = { type = construct which = ic where = -4 value = 1 }
 command = { type = setflag which = ECO_CAN_LAB }
 }
+
 action_c = {
 name = "Central planning is the key to success (Tot)"
 ai_chance = 30
@@ -130,8 +141,9 @@ command = { type = setflag which = ECO_CAN_TOT }
 }
 }
 
+
 event = {
-id = 765002
+id = 232004
 random = no
 country = U28
 style = 2
@@ -141,10 +153,12 @@ desc = "Today the Congress still debates over the economy. This time the main is
 
 picture = "politics4"
 
-trigger = { flag = CTUC
-event = 765001 }
+trigger = { 
+flag = CTUC
+event = 232003 
+}
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 5
 deathdate = { day = 29 month = December year = 1963 }
 
@@ -156,6 +170,7 @@ command = { type = relative_manpower value = 5 }
 command = { type = manpowerpool value = 45 }
 command = { type = setflag which = ECO2_CAN_REF }
 }
+
 action_b = {
 name = "Industry, for Canada and trade unions! (Lab)"
 ai_chance = 33
@@ -166,6 +181,7 @@ command = { type = construct which = ic where = -4 value = 1 }
 command = { type = construct which = ic where = -4 value = 1 }
 command = { type = setflag which = ECO2_CAN_LAB }
 }
+
 action_c = {
 name = "The northern parts of our country need development (Tot)"
 ai_chance = 33
@@ -185,8 +201,9 @@ command = { type = add_prov_resource which = 2123 value = 5 where = rare_materia
 }
 }
 
+
 event = {
-id = 765003
+id = 232005
 random = no
 country = U28
 style = 2
@@ -195,11 +212,12 @@ name = "CTUC Congress - Military Affairs"
 desc = "The debate has wandered into the area of military affairs. As has been predicted, every faction has put forward their own suggestions. The debate is heated, since the last few days have only too clearly shown the deep rift within the TUC."
 picture = "militaryparade1"
 
+trigger = { 
+flag = CTUC
+event = 232004 
+}
 
-trigger = { flag = CTUC
-event = 765002 }
-
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 5
 deathdate = { day = 29 month = December year = 1963 }
 
@@ -214,6 +232,7 @@ command = { type = domestic which = professional_army value = 1 }
 command = { type = domestic which = defense_lobby value = -1 }
 command = { type = setflag which = MIL_CAN_REF }
 }
+
 action_b = {
 name = "Workers' militia as an army of workers (Lab)"
 ai_chance = 30
@@ -226,6 +245,7 @@ command = { type = domestic which = defense_lobby value = 1 }
 command = { type = domestic which = professional_army value = -1 }
 command = { type = setflag which = MIL_CAN_LAB }
 }
+
 action_c = {
 name = "Expand the army of the proletariat! (Tot)"
 ai_chance = 30
@@ -241,6 +261,7 @@ command = { type = domestic which = defense_lobby value = 2 }
 command = { type = domestic which = professional_army value = -2 }
 command = { type = dissent value = 5 }
 }
+
 action_d = {
 name = "Tanks are the future! (All)"
 ai_chance = 10
@@ -254,8 +275,9 @@ command = { type = setflag which = MIL_CAN_REF }
 }
 }
 
+
 event = {
-id = 765004
+id = 232006
 random = no
 country = U28
 style = 2
@@ -265,10 +287,12 @@ desc = "On this day of the CTUC congress, the debate has wandered into the area 
 picture = "politics1"
 
 
-trigger = { flag = CTUC
-event = 765003 }
+trigger = { 
+flag = CTUC
+event = 232005 
+}
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 5
 deathdate = { day = 29 month = December year = 1963 }
 
@@ -284,6 +308,7 @@ command = { type = relation which = ENG value = -50 }
 command = { type = relation which = RSI value = -25 }
 command = { type = domestic which = interventionism value = -1 }
 }
+
 action_b = {
 name = "Build socialism with the Internationale (Lab)"
 ai_chance = 40
@@ -294,6 +319,7 @@ command = { type = relation which = RSI value = 50 }
 command = { type = relation which = CSA value = 50 }
 command = { type = relation which = USA value = -50 }
 }
+
 action_c = {
 name = "We must directly fight against the capitalists! (Tot)"
 ai_chance = 40
@@ -304,8 +330,9 @@ command = { type = domestic which = defense_lobby value = 2 }
 }
 }
 
+
 event = {
-id = 765005
+id = 232007
 random = no
 country = U28
 style = 2
@@ -314,11 +341,15 @@ name = "Quebec issue"
 desc = "Our country owns Quebec. The main problem is - which policy should be chosen? Both Reformists and Labourists suggest accepting the French culture, while Totalists want assimilation."
 picture = "Snowden"
 
-trigger = { flag = CTUC
+trigger = { 
+flag = CTUC
 control = { province = 2119 data = U28 }
-NOT = { exists = QUE } }
+NOT = { 
+exists = QUE 
+} 
+}
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 5
 deathdate = { day = 29 month = December year = 1963 }
 
@@ -328,12 +359,14 @@ ai_chance = 20
 command = { type = setflag which = QUE_CAN_REF }
 command = { type = domestic which = freedom value = 2 }
 }
+
 action_b = {
 name = "Promote Quebecois culture (Lab)"
 ai_chance = 40
 command = { type = setflag which = QUE_CAN_LAB }
 command = { type = domestic which = freedom value = 1 }
 }
+
 action_c = {
 name = "Begin to intergrate them (Tot)"
 ai_chance = 40
@@ -343,42 +376,51 @@ command = { type = domestic which = freedom value = -1 }
 }
 }
 
+
 event = {
-id = 765006
+id = 232008
 random = no
 country = U28
 
-trigger = { OR = {
+trigger = { 
+OR = {
 AND = {
 flag = ECO_CAN_TOT
 flag = ECO2_CAN_TOT
-flag = MIL_CAN_TOT }
+flag = MIL_CAN_TOT 
+}
 AND = {
 flag = ECO2_CAN_TOT
 flag = MIL_CAN_TOT
-flag = QUE_CAN_TOT }
+flag = QUE_CAN_TOT 
+}
 AND = {
 flag = ECO_CAN_TOT
 flag = ECO2_CAN_TOT
-flag = QUE_CAN_TOT }
+flag = QUE_CAN_TOT 
+}
 AND = {
 flag = ECO_CAN_TOT
 flag = ECO2_CAN_TOT
 flag = MIL_CAN_TOT
-flag = QUE_CAN_TOT } }
-event = 765003
-event = 765001
-event = 765002
-event = 765004
-flag = CTUC }
+flag = QUE_CAN_TOT 
+} 
+}
+event = 232005
+event = 232003
+event = 232004
+event = 232006
+flag = CTUC 
+}
 
 name = "Canadian Election - Totalists secure a majority"
 desc = "The CTUC has decided to vote for Tim Buck's Totalists with an overwhelming majority. Tim Buck will become the new Chairman of the CTUC."
 style = 2
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 30
 deathdate = { day = 29 month = December year = 1963 }
+
 action_a = {
 name = "Congratulations, Comrade Buck"
 command = { type = headofstate which = 145003 }
@@ -391,10 +433,10 @@ command = { type = chiefofstaff which = 145035 }
 command = { type = chiefofarmy which = 145039 }
 command = { type = chiefofnavy which = 145045 }
 command = { type = chiefofair which = 145046 }
-command = { type = sleepevent which = 765010 }
-command = { type = sleepevent which = 765009 }
-command = { type = sleepevent which = 765008 }
-command = { type = sleepevent which = 765007 }
+command = { type = sleepevent which = 232012 }
+command = { type = sleepevent which = 232011 }
+command = { type = sleepevent which = 232010 }
+command = { type = sleepevent which = 232009 }
 command = { type = set_domestic which = political_left value = 9 }
 command = { type = set_domestic which = democratic value = 1 }
 command = { type = set_domestic which = freedom value = 1 }
@@ -420,42 +462,51 @@ command = { type = clrflag which = QUE_CAN_REF }
 }
 }
 
+
 event = {
-id = 765007
+id = 232009
 random = no
 country = U28
 
-trigger = { OR = {
+trigger = { 
+OR = {
 AND = {
 flag = ECO_CAN_LAB
 flag = ECO2_CAN_LAB
-flag = MIL_CAN_LAB }
+flag = MIL_CAN_LAB 
+}
 AND = {
 flag = ECO2_CAN_LAB
 flag = MIL_CAN_LAB
-flag = QUE_CAN_LAB }
+flag = QUE_CAN_LAB 
+}
 AND = {
 flag = ECO_CAN_LAB
 flag = ECO2_CAN_LAB
-flag = QUE_CAN_LAB }
+flag = QUE_CAN_LAB 
+}
 AND = {
 flag = ECO_CAN_LAB
 flag = ECO2_CAN_LAB
 flag = MIL_CAN_LAB
-flag = QUE_CAN_LAB } }
-event = 765003
-event = 765001
-event = 765002
-event = 765004
-flag = CTUC }
+flag = QUE_CAN_LAB 
+} 
+}
+event = 232005
+event = 232003
+event = 232004
+event = 232006
+flag = CTUC 
+}
 
 name = "Canadian Election - Labourists secure a majority"
 desc = "The CTUC has decided to vote for Arthur Evans' Labourists with an overwhelming majority. Albert Goodwin will become the new Chairman of the CTUC."
 style = 2
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 30
 deathdate = { day = 29 month = December year = 1963 }
+
 action_a = {
 name = "Congratulations, Comrade Evans"
 command = { type = headofstate which = 145001 }
@@ -468,10 +519,10 @@ command = { type = chiefofstaff which = 145035 }
 command = { type = chiefofarmy which = 145039 }
 command = { type = chiefofnavy which = 145045 }
 command = { type = chiefofair which = 145046 }
-command = { type = sleepevent which = 765010 }
-command = { type = sleepevent which = 765009 }
-command = { type = sleepevent which = 765008 }
-command = { type = sleepevent which = 765006 }
+command = { type = sleepevent which = 232012 }
+command = { type = sleepevent which = 232011 }
+command = { type = sleepevent which = 232010 }
+command = { type = sleepevent which = 232008 }
 command = { type = set_domestic which = political_left value = 8 }
 command = { type = set_domestic which = democratic value = 3 }
 command = { type = set_domestic which = freedom value = 4 }
@@ -497,42 +548,51 @@ command = { type = clrflag which = QUE_CAN_REF }
 }
 }
 
+
 event = {
-id = 765008
+id = 232010
 random = no
 country = U28
 
-trigger = { OR = {
+trigger = { 
+OR = {
 AND = {
 flag = ECO_CAN_REF
 flag = ECO2_CAN_REF
-flag = MIL_CAN_REF }
+flag = MIL_CAN_REF 
+}
 AND = {
 flag = ECO2_CAN_REF
 flag = MIL_CAN_REF
-flag = QUE_CAN_REF }
+flag = QUE_CAN_REF 
+}
 AND = {
 flag = ECO_CAN_REF
 flag = ECO2_CAN_REF
-flag = QUE_CAN_REF }
+flag = QUE_CAN_REF 
+}
 AND = {
 flag = ECO_CAN_REF
 flag = ECO2_CAN_REF
 flag = MIL_CAN_REF
-flag = QUE_CAN_REF } }
-event = 765003
-event = 765001
-event = 765002
-event = 765004
-flag = CTUC }
+flag = QUE_CAN_REF 
+} 
+}
+event = 232005
+event = 232003
+event = 232004
+event = 232006
+flag = CTUC 
+}
 
 name = "Canadian Election - Reformists secure a majority"
 desc = "The CTUC has decided to vote for Woodsworth's Reformists with an overwhelming majority. Abraham Heaps will become the new Chairman of the CTUC."
 style = 2
 
-date = { day = 1 month = january year = 1936 }
+date = { day = 0 month = january year = 1936 }
 offset = 30
-deathdate = { day = 18 month = March year = 1942 }
+deathdate = { day = 29 month = December year = 1963 }
+
 action_a = {
 name = "Congratulations, Comrade Woodsworth"
 command = { type = headofstate which = 145000 }
@@ -545,11 +605,11 @@ command = { type = chiefofstaff which = 145035 }
 command = { type = chiefofarmy which = 145039 }
 command = { type = chiefofnavy which = 145045 }
 command = { type = chiefofair which = 145046 }
-command = { type = sleepevent which = 765009 }
-command = { type = sleepevent which = 765010 }
-command = { type = sleepevent which = 765006 }
-command = { type = sleepevent which = 765008 }
-command = { type = sleepevent which = 765007 }
+command = { type = sleepevent which = 232011 }
+command = { type = sleepevent which = 232012 }
+command = { type = sleepevent which = 232008 }
+command = { type = sleepevent which = 232010 }
+command = { type = sleepevent which = 232009 }
 command = { type = set_domestic which = political_left value = 8 }
 command = { type = set_domestic which = democratic value = 5 }
 command = { type = set_domestic which = freedom value = 5 }
@@ -575,42 +635,51 @@ command = { type = clrflag which = QUE_CAN_REF }
 }
 }
 
+
 event = {
-id = 765009
+id = 232011
 random = no
 country = U28
 
-trigger = { OR = {
+trigger = { 
+OR = {
 AND = {
 flag = ECO_CAN_REF
 flag = ECO2_CAN_REF
-flag = MIL_CAN_REF }
+flag = MIL_CAN_REF 
+}
 AND = {
 flag = ECO2_CAN_REF
 flag = MIL_CAN_REF
-flag = QUE_CAN_REF }
+flag = QUE_CAN_REF 
+}
 AND = {
 flag = ECO_CAN_REF
 flag = ECO2_CAN_REF
-flag = QUE_CAN_REF }
+flag = QUE_CAN_REF 
+}
 AND = {
 flag = ECO_CAN_REF
 flag = ECO2_CAN_REF
 flag = MIL_CAN_REF
-flag = QUE_CAN_REF } }
-event = 765003
-event = 765001
-event = 765002
-event = 765004
-flag = CTUC }
+flag = QUE_CAN_REF 
+} 
+}
+event = 232005
+event = 232003
+event = 232004
+event = 232006
+flag = CTUC 
+}
 
 name = "Canadian Election - Reformists secure a majority"
 desc = "The CTUC has decided to vote for Knowles' Reformists with an overwhelming majority. Abraham Heaps will become the new Chairman of the CTUC."
 style = 2
 
-date = { day = 1 month = April year = 1942 }
+date = { day = 0 month = january year = 1936 }
 offset = 30
 deathdate = { day = 29 month = December year = 1963 }
+
 action_a = {
 name = "Congratulations, Comrade Knowles"
 command = { type = headofstate which = 145002 }
@@ -623,10 +692,10 @@ command = { type = chiefofstaff which = 145035 }
 command = { type = chiefofarmy which = 145039 }
 command = { type = chiefofnavy which = 145045 }
 command = { type = chiefofair which = 145046 }
-command = { type = sleepevent which = 765008 }
-command = { type = sleepevent which = 765010 }
-command = { type = sleepevent which = 765006 }
-command = { type = sleepevent which = 765007 }
+command = { type = sleepevent which = 232010 }
+command = { type = sleepevent which = 232012 }
+command = { type = sleepevent which = 232008 }
+command = { type = sleepevent which = 232009 }
 command = { type = set_domestic which = political_left value = 8 }
 command = { type = set_domestic which = democratic value = 5 }
 command = { type = set_domestic which = freedom value = 5 }
@@ -652,15 +721,15 @@ command = { type = clrflag which = QUE_CAN_REF }
 }
 }
 
+
 event = {
-id = 765010
+id = 232012
 random = no
 country = U28
 style = 2
 
 name = "Canadian Election - Draw"
 desc = "The CTUC has voted repeatedly during the last few days, and the deadlock continues. What should be done?"
-
 picture = "politics3"
 
 trigger = {
@@ -669,64 +738,80 @@ OR = {
 AND = {
 flag = ECO_CAN_REF
 flag = ECO2_CAN_REF
-flag = MIL_CAN_REF }
-AND = {
-flag = ECO2_CAN_REF
-flag = MIL_CAN_REF
-flag = QUE_CAN_REF }
-AND = {
-flag = ECO_CAN_REF
-flag = ECO2_CAN_REF
-flag = QUE_CAN_REF }
-AND = {
-flag = ECO_CAN_REF
-flag = ECO2_CAN_REF
-flag = MIL_CAN_REF
-flag = QUE_CAN_REF } }
-OR = {
-AND = {
-flag = ECO_CAN_LAB
-flag = ECO2_CAN_LAB
-flag = MIL_CAN_LAB }
-AND = {
-flag = ECO2_CAN_LAB
-flag = MIL_CAN_LAB
-flag = QUE_CAN_LAB }
-AND = {
-flag = ECO_CAN_LAB
-flag = ECO2_CAN_LAB
-flag = QUE_CAN_LAB }
-AND = {
-flag = ECO_CAN_LAB
-flag = ECO2_CAN_LAB
-flag = MIL_CAN_LAB
-flag = QUE_CAN_LAB } }
-OR = {
-AND = {
-flag = ECO_CAN_TOT
-flag = ECO2_CAN_TOT
-flag = MIL_CAN_TOT }
-AND = {
-flag = ECO2_CAN_TOT
-flag = MIL_CAN_TOT
-flag = QUE_CAN_TOT }
-AND = {
-flag = ECO_CAN_TOT
-flag = ECO2_CAN_TOT
-flag = QUE_CAN_TOT }
-AND = {
-flag = ECO_CAN_TOT
-flag = ECO2_CAN_TOT
-flag = MIL_CAN_TOT
-flag = QUE_CAN_TOT } }
+flag = MIL_CAN_REF 
 }
-event = 765003
-event = 765001
-event = 765002
-event = 765004
-flag = CTUC }
+AND = {
+flag = ECO2_CAN_REF
+flag = MIL_CAN_REF
+flag = QUE_CAN_REF 
+}
+AND = {
+flag = ECO_CAN_REF
+flag = ECO2_CAN_REF
+flag = QUE_CAN_REF 
+}
+AND = {
+flag = ECO_CAN_REF
+flag = ECO2_CAN_REF
+flag = MIL_CAN_REF
+flag = QUE_CAN_REF 
+} 
+}
+OR = {
+AND = {
+flag = ECO_CAN_LAB
+flag = ECO2_CAN_LAB
+flag = MIL_CAN_LAB 
+}
+AND = {
+flag = ECO2_CAN_LAB
+flag = MIL_CAN_LAB
+flag = QUE_CAN_LAB 
+}
+AND = {
+flag = ECO_CAN_LAB
+flag = ECO2_CAN_LAB
+flag = QUE_CAN_LAB 
+}
+AND = {
+flag = ECO_CAN_LAB
+flag = ECO2_CAN_LAB
+flag = MIL_CAN_LAB
+flag = QUE_CAN_LAB 
+} 
+}
+OR = {
+AND = {
+flag = ECO_CAN_TOT
+flag = ECO2_CAN_TOT
+flag = MIL_CAN_TOT 
+}
+AND = {
+flag = ECO2_CAN_TOT
+flag = MIL_CAN_TOT
+flag = QUE_CAN_TOT 
+}
+AND = {
+flag = ECO_CAN_TOT
+flag = ECO2_CAN_TOT
+flag = QUE_CAN_TOT 
+}
+AND = {
+flag = ECO_CAN_TOT
+flag = ECO2_CAN_TOT
+flag = MIL_CAN_TOT
+flag = QUE_CAN_TOT 
+} 
+}
+}
+event = 232005
+event = 232003
+event = 232004
+event = 232006
+flag = CTUC 
+}
 
-date = { day = 1 month = January year = 1936 }
+date = { day = 0 month = January year = 1936 }
 offset = 90
 deathdate = { day = 29 month = December year = 1963 }
 
@@ -759,11 +844,10 @@ command = { type = clrflag which = ECO_CAN_REF }
 command = { type = clrflag which = ECO2_CAN_REF }
 command = { type = clrflag which = FOR_CAN_REF }
 command = { type = clrflag which = QUE_CAN_REF }
-command = { type = sleepevent which = 765008 }
-command = { type = sleepevent which = 765010 }
-command = { type = sleepevent which = 765006 }
-command = { type = sleepevent which = 765009 }
-command = { type = sleepevent which = 765007 }
+command = { type = sleepevent which = 232010 }
+command = { type = sleepevent which = 232012 }
+command = { type = sleepevent which = 232008 }
+command = { type = sleepevent which = 232011 }
+command = { type = sleepevent which = 232009 }
 }
-
 }
