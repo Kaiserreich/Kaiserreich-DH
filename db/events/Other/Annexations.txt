@@ -674,7 +674,7 @@ command = { type = supplies value = 1000 }
 
 action = {
 ai_chance = 95
-name = "Restore national Hunagrian state"
+name = "Restore national Hungarian state"
 command = { type = independence which = HUN value = 1 when = 0 }
 command = { trigger = { government = communist } type = flag_ext where = HUN which = "_nor" }
 command = { type = make_puppet which = HUN  }
@@ -9455,6 +9455,7 @@ decision = {
 control = { province = 1247 data = -1 }
 NOT = {
 local_flag = NOTHC_CONQ
+local_flag = JAPQING
 }
 }
 
@@ -9478,6 +9479,7 @@ control = { province = 1247 data = -1 }
 
 NOT = {
 local_flag = NOTHC_CONQ
+local_flag = JAPQING
 war = { country = -1 country = JAP }
 war = { country = -1 country = CHI }
 war = { country = -1 country = MON }
@@ -22255,6 +22257,7 @@ command = { type = supplies value = 1000 }
 action = {
 ai_chance = 20
 name = "Restore independent Tibet"
+command = { trigger = { OR = { country = PAK country = PRK country = IND } } type = addcore which = 1278 }
 command = { type = independence which = TIB value = 1 when = 0 }
 command = { type = make_puppet which = TIB }
 }
@@ -23142,5 +23145,93 @@ name = "Onwards, Canada!"
 command = { type = flag_ext where = CAN which = "_rep" }
 command = { type = headofstate which = 45150 } #Robert Brooke-Popham
 command = { type = headofgovernment which = 45039 } #Adrien Arcand
+}
+}
+
+
+
+#########
+#### Bhutan
+#########
+event = {
+id = 740008
+tag = { USA TEX CSA RUS SOV JAP CAN VIC U07 U08 FRA ENG U31 CGX SIA BRU VIE PRK PAK IND GER CHI CSX }
+persistent = yes
+
+decision = {
+control = { province = 1456 data = -1 }
+NOT = {
+local_flag = TIBC_CONQ
+core = { province = 1456 data = -1 }
+}
+}
+
+decision_trigger = {
+NOT = {
+exists = BHU
+war = { country = -1 country = BUR }
+war = { country = -1 country = CYN }
+war = { country = -1 country = CHI }
+war = { country = -1 country = CSX }
+war = { country = -1 country = CHC }
+war = { country = -1 country = CXB }
+war = { country = -1 country = SIA }
+war = { country = -1 country = PRK }
+war = { country = -1 country = PAK }
+war = { country = -1 country = IND }
+}
+}
+
+trigger = {
+control = { province = 1456 data = -1 }
+NOT = {
+core = { province = 1456 data = -1 }
+local_flag = Bhutan_CONQ
+exists = BHU
+war = { country = -1 country = BUR }
+war = { country = -1 country = CYN }
+war = { country = -1 country = CHI }
+war = { country = -1 country = CSX }
+war = { country = -1 country = CHC }
+war = { country = -1 country = CXB }
+war = { country = -1 country = SIA }
+war = { country = -1 country = PRK }
+war = { country = -1 country = PAK }
+war = { country = -1 country = IND }
+}
+}
+
+name = "Fate of Bhutan"
+desc = "After our successful campaign in the Himmalays we now have the task to establish new local administrative authority in order to restore peace, however there are several options for our choice...."
+picture = "POWs"
+decision_picture = "decision_diplomatic_campaign"
+style = 2
+
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 30 month = december year = 1963 }
+
+action = {
+name = "Continue the military occupation !"
+ai_chance = 0
+command = { type = local_setflag which = Bhutan_CONQ }
+command = { type = supplies value = 1000 }
+}
+
+action = {
+ai_chance = 80
+name = "Restore an independent Bhutan"
+command = { trigger = { or = { country = PAK country = PRK country = IND } } type = addcore which = 1455 }
+command = { type = independence which = BHU value = 1 when = 0 }
+command = { type = make_puppet which = BHU }
+}
+
+action = {
+ai_chance = 20
+trigger = { or = { country = PAK country = PRK country = IND } }
+name = "Integrate Bhutan"
+command = { type = addcore which = 1456 }
+command = { type = addcore which = 1455 }
 }
 }
