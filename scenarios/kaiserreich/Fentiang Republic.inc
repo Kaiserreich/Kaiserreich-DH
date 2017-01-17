@@ -297,6 +297,50 @@ location = 1209
 		division = { id = { type = 28500 id = 66 } name = "1 Man'chu Zhan'dou'ji" strength = 100 type = interceptor model = 6 }
 	}
 
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 67 }
+name = "3. Dúlì Hùnhé Lü"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 68 }
+name = "4. Dúlì Hùnhé Lü"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 69 }
+name = "5. Dúlì Hùnhé Lü"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 70 }
+name = "6. Dúlì Hùnhé Lü"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
 
 navalunit = {
 location = 1218 #Yingkou

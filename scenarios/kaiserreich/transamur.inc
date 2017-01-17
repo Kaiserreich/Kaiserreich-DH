@@ -235,7 +235,28 @@ landunit = {
              	}
         	}
 
-
+landdivision = {
+dormant = yes
+id = { type = 17343 id = 40 }
+name = "1. Otdelnaya Smeshannaya Brigada"
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
+landdivision = {
+dormant = yes
+id = { type = 17343 id = 41 }
+name = "2. Otdelnaya Smeshannaya Brigada"
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
 	
 
 airunit = {
