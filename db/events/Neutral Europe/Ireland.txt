@@ -7411,7 +7411,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-###################################################################################################################################################
+################################################################################?###################################################################
 # Ireland in the Empire #
 #########################
 
@@ -7421,35 +7421,69 @@ country = IRE
 picture = "EdwardVIII2"
 style = 2
 
-trigger = { 
-OR = { 
-event = 106055 # Irish Provisional Govt. joins the Empire (Canada Foreign Policy.txt)
-event = 106060 # Irish Provisional Govt. joins the Empire (Canada Foreign Policy.txt)
-event = 126016 # Irish Republic joins the Empire (Liberation of UK Events VII - The Irish Question.txt)
-event = 126021 # Irish Republic joins the Empire (Liberation of UK Events VII - The Irish Question.txt)
-puppet = { country = IRE country = U07 } 
-}
+     trigger = { OR = { event = 830120 # Irish Provisional Govt. joins the Empire (Canada Foreign Policy.txt)
+            event = 830125 # Irish Provisional Govt. joins the Empire (Canada Foreign Policy.txt)
+            event = 830397 # Irish Republic joins the Empire (Liberation of UK Events VII - The Irish Question.txt)
+            event = 830402 # Irish Republic joins the Empire (Liberation of UK Events VII - The Irish Question.txt)
+            puppet = { country = IRE country = U07 } }
 }
 
-date = { day = 0 month = january year = 1936 }
+date = { day = 10 month = january year = 1936 }
 offset = 5
 deathdate = { day = 29 month = december year = 1963 }
 
 name = EVT_382183_NAME # Edward Ascends The Throne of Ireland
 desc = EVT_382183_DESC # Ireland has re-joined the British Empire and Edward has been recognised by the Dail as King. However there is the matter of the monarchy's role in government. Conservatives and liberals are advocating legally establishing the monarch as a figurehead, while nationalists are demanding an Irishman excercise the King's powers as Governor General.
 
-action_a = {
-ai_chance = 50
+action = {
+ai_chance = 20
+trigger = {
+NOT = {
+puppet = { country = IRE country = U07 }
+}
+}
 name = ACTIONNAME_382183_A # Legally establish the King as a figurehead!
 command = { type = relation which = U07 value = 25 }
-command = { type = dissent value = 3 }
+command = { type = dissent value = 8 }
 command = { type = headofstate which = 25160 } # Edward VIII
 command = { type = trigger which = 382184 }
 command = { type = setflag which = IREDOMINION_ED }
 }
 
-action_b = {
-ai_chance = 50
+action = {
+ai_chance = 80
+trigger = {
+NOT = {
+puppet = { country = IRE country = U07 }
+}
+}
+name = ACTIONNAME_382183_B # Delegate the King's duties to an Irish Governor-General.
+command = { type = relation which = U07 value = -25 }
+command = { type = dissent value = -3 }
+command = { type = headofstate which = 25037 } # Frank McDermott
+command = { type = domestic which = democratic value = 1 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = setflag which = IREDOMINION_GG }
+}
+
+action = {
+ai_chance = 90
+trigger = {
+puppet = { country = IRE country = U07 }
+}
+name = ACTIONNAME_382183_A # Legally establish the King as a figurehead!
+command = { type = relation which = U07 value = 25 }
+command = { type = dissent value = 8 }
+command = { type = headofstate which = 25160 } # Edward VIII
+command = { type = trigger which = 382184 }
+command = { type = setflag which = IREDOMINION_ED }
+}
+
+action = {
+ai_chance = 10
+trigger = {
+puppet = { country = IRE country = U07 }
+}
 name = ACTIONNAME_382183_B # Delegate the King's duties to an Irish Governor-General.
 command = { type = relation which = U07 value = -25 }
 command = { type = dissent value = -3 }
@@ -7471,7 +7505,7 @@ desc = EVT_382184_DESC # The Irish nationalist party, Sinn Fein, has protested w
 
 action_a = {
 name = ACTIONNAME_382184_A # The old feud has been re-kindled!
-command = { type = dissent value = 5 }
+command = { type = dissent value = 10 }
 }
 }
 
@@ -7480,12 +7514,9 @@ id = 382185
 country = IRE
 picture = "Irish Flag"
 
-trigger = { 
-OR = { 
-event = 382183
-event = 830418 
-}
-}
+     trigger = { OR = { event = 382183
+            event = 830418 }
+     }
 
 name = EVT_382185_NAME # Ireland's National Flag
 desc = EVT_382185_DESC # Now that the Republic has come to an end, some are saying that we should adopt a new national flag to reflect our status as a Dominion in the British Empire. Although many would rather keep the Tricolour, which has been used since the Easter Rising.
@@ -7495,16 +7526,46 @@ date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
 
-action_a = {
-ai_chance = 80
+action = {
+ai_chance = 5
 name = ACTIONNAME_382185_A # A new flag for a new government
-command = { type = dissent value = 5 }
+trigger = {
+NOT = {
+puppet = { country = IRE country = U07 }
+}
+}
+command = { type = dissent value = 12 }
 command = { type = trigger which = 382186 }
-command = { type = flag_ext where = IRE which = "_eng" }
+command = { type = flag_ext where = IRE which = _eng }  
 }
 
-action_b = {
-ai_chance = 20
+action = {
+ai_chance = 95
+trigger = {
+NOT = {
+puppet = { country = IRE country = U07 }
+}
+}
+name = ACTIONNAME_382185_B # Keep the Tricolour
+command = { type = dissent value = -2 }
+command = { type = flag_ext where = IRE } #reset flag
+}
+
+action = {
+ai_chance = 90
+trigger = {
+puppet = { country = IRE country = U07 }
+}
+name = ACTIONNAME_382185_A # A new flag for a new government
+command = { type = dissent value = 12 }
+command = { type = flag_ext where = IRE which = _eng }  
+}
+
+action = {
+ai_chance = 10
+trigger = {
+puppet = { country = IRE country = U07 }
+}
 name = ACTIONNAME_382185_B # Keep the Tricolour
 command = { type = dissent value = -2 }
 command = { type = flag_ext where = IRE } #reset flag
@@ -7522,7 +7583,7 @@ desc = EVT_382186_DESC # The Irish nationalist party, Sinn Fein, has protested a
 
 action_a = {
 name = ACTIONNAME_382186_A # Damn!
-command = { type = dissent value = 3 }
+command = { type = dissent value = 8 }
 }
 }
 
@@ -7532,11 +7593,8 @@ country = U07
 picture = "Board Meeting"
 style = 2
 
-trigger = { 
-OR = { 
-event = 382186
-event = 382184 
-}
+     trigger = { OR = { event = 382186
+            event = 382184 }
 }
 
 date = { day = 10 month = january year = 1936 }
@@ -7583,16 +7641,47 @@ date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
 
-action_a = {
-ai_chance = 80
+action = {
+ai_chance = 40
+trigger = {
+NOT = {
+puppet = { country = IRE country = U07 }
+}
+}
 name = ACTIONNAME_382188_A # Ban them!
 command = { type = setflag which = IRE_SF_BAN }
-command = { type = dissent value = 5 }
+command = { type = dissent value = 7 }  
 command = { type = relation which = U07 value = 25 }
 }
 
-action_b = {
+action = {
+ai_chance = 60
+trigger = {
+NOT = {
+puppet = { country = IRE country = U07 }
+}
+}
+ai_chance = 60
+name = ACTIONNAME_382188_B # We are a democratic nation
+command = { type = dissent value = -2 }
+command = { type = relation which = U07 value = -25 }
+}
+action = {
+ai_chance = 80
+trigger = {
+puppet = { country = IRE country = U07 }
+}
+name = ACTIONNAME_382188_A # Ban them!
+command = { type = setflag which = IRE_SF_BAN }
+command = { type = dissent value = 7 }  
+command = { type = relation which = U07 value = 25 }
+}
+
+action = {
 ai_chance = 20
+trigger = {
+puppet = { country = IRE country = U07 }
+}
 name = ACTIONNAME_382188_B # We are a democratic nation
 command = { type = dissent value = -2 }
 command = { type = relation which = U07 value = -25 }
@@ -7787,6 +7876,12 @@ trigger = {
 event = 382193
 flag = UOBNBI
 war = { country = ENG country = IRE }
+NOT = {
+alliance = { country = IRE country = CAN }
+puppet = { country = IRE country = CAN }
+alliance = { country = IRE country = GER }
+puppet = { country = IRE country = GER }
+}
 }
 
 name = EVT_382194_NAME # Naval blockade of Ireland continues...
@@ -7817,6 +7912,12 @@ trigger = {
 event = 382194
 flag = UOBNBI
 war = { country = ENG country = IRE }
+NOT = {
+alliance = { country = IRE country = CAN }
+puppet = { country = IRE country = CAN }
+alliance = { country = IRE country = GER }
+puppet = { country = IRE country = GER }
+}
 }
 
 name = EVT_382195_NAME # Naval blockade of Ireland continues...
@@ -7848,6 +7949,12 @@ trigger = {
 event = 382195
 flag = UOBNBI
 war = { country = ENG country = IRE }
+NOT = {
+alliance = { country = IRE country = CAN }
+puppet = { country = IRE country = CAN }
+alliance = { country = IRE country = GER }
+puppet = { country = IRE country = GER }
+}
 }
 
 name = EVT_382196_NAME # Naval blockade of Ireland continues...
@@ -8140,6 +8247,37 @@ action_b = {
 name = ACTIONNAME_382205_B # Who needs you?
 ai_chance = 20
 command = { type = relation which = IRE value = -50 }
+}
+}
+
+event = {
+id = 382206
+country = IRE
+picture = "navalblockade"
+
+trigger = {
+flag = UOBNBI
+war = { country = ENG country = IRE }
+OR = {
+alliance = { country = IRE country = CAN }
+alliance = { country = IRE country = GER }
+}
+}
+
+name = EVT_382206_NAME # The Blockade is broken!
+desc = EVT_382206_DESC # Now that we are at last no longer fighting alone in our struggle against the Union of Britain, the British blockade enveloping Ireland has finally been broken by the naval forces of our newfound allies! Although the war continues and the nation will have to recover, the public morale has been boosted by this new development knowing that their resolute courage and determination in the face of overwhelming odds has been worth it.
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 100
+name = ACTIONNAME_382197_A # At last!
+command = { type = industrial_modifier which = total value = 10 }
+command = { type = dissent value = -10 }
+command = { type = clrflag which = UOBNBI }
 }
 }
 
