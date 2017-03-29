@@ -20,11 +20,11 @@ interventionism = 2
 headofstate = { type = 9 id = 25001 }
 headofgovernment = { type = 9 id = 25002 }
 foreignminister = { type = 9 id = 25058 }
-armamentminister = { type = 9 id = 25083 }
+armamentminister = { type = 9 id = 25069 }
 ministerofsecurity = { type = 9 id = 25102 }
 ministerofintelligence = { type = 9 id = 25116 }
 chiefofstaff = { type = 9 id = 25126 }
-chiefofarmy = { type = 9 id = 25138 }
+chiefofarmy = { type = 9 id = 25139 }
 chiefofnavy = { type = 9 id = 25148 }
 chiefofair = { type = 9 id = 25158 }
 
