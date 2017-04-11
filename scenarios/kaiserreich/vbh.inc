@@ -38,13 +38,13 @@ SpyInfo  = {  country = "LAT" NumberOfSpies = 3  }
 
 
     ownedprovinces =      {
-268 269 264 267 266 265 273 272 271 270 274 275
+268 269 264 267 265 273 272 271 270 274 275
 	 }
     controlledprovinces = {
-268 269 264 267 266 265 273 272 271 270 274 275
+268 269 264 267 265 273 272 271 270 274 275
 	  }
     nationalprovinces =   {
-268 269 264 267 266 265 273 272 271 270 274 275
+268 269 264 267 265 273 272 271 270 274 275
 	}
 
 diplomacy = {
@@ -216,8 +216,8 @@ navalunit = {
 	location = 264 
 	base = 264
 division = { id = { type = 24500 id = 11 } name =  "VBHS Feuchtwangen" type = heavy_cruiser  model = 2 }
-division = { id = { type = 24500 id = 12 } name =  "Hermann von Salza Zerstörerflotte" type = destroyer   model = 3   } 
-division = { id = { type = 24500 id = 13 } name =  "Küstenschwadron" type = destroyer   model = 3   } 
+division = { id = { type = 24500 id = 12 } name =  "Hermann von Salza ZerstÃ¶rerflotte" type = destroyer   model = 3   } 
+division = { id = { type = 24500 id = 13 } name =  "KÃ¼stenschwadron" type = destroyer   model = 3   } 
 division = { id = { type = 24500 id = 14 } name =  "Unterseebootsschwadron" type = submarine  model = 1 }
 division = { id = { type = 24500 id = 15 } name =  "Transportflotte" type = transport model = 1 }
 
