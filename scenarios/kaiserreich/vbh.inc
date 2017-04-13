@@ -186,7 +186,7 @@ name = "Nordkorps der Balt. Landeswehr"
 
 landunit = {
 id = { type = 24500 id = 7}
-location = 266 # Dagaupulis
+location = 273 # Voru
 name = "Ostkorps der Balt. Landeswehr"
 
  Division = {
