@@ -46,14 +46,14 @@ capital =			1997 # Georgetown
 # Owned Provinces
 ownedprovinces = {
 
- 1782 1774 1772 1771 1773 1757 1766 1997 1998 2000 1758 1769 1764 1763 1770 1755 1760 1753 1754 1768 1767 1759 1752
+ 1782 1774 1772 1771 1773 1757 1766 1997 2000 1758 1769 1764 1763 1770 1755 1760 1753 1754 1768 1767 1759 1752
 
 }
 
 # Controlled Provinces
 controlledprovinces = {
 
- 1782 1774 1772 1771 1773 1757 1766 1997 1998 2000 1758 1769 1764 1763 1770 1755 1760 1753 1754 1768 1767 1759 1752
+ 1782 1774 1772 1771 1773 1757 1766 1997 2000 1758 1769 1764 1763 1770 1755 1760 1753 1754 1768 1767 1759 1752
 
 
 }
@@ -79,7 +79,7 @@ relation = { tag = COL value = 25	} # Colombia
 relation = { tag = ECU value = 25	} # Ecuador
 relation = { tag = PRU value = 25	} # Peru
 relation = { tag = ARG value = 25	} # Union of La Plata
-relation = { tag = VEN value = 25	} # Venezuela
+relation = { tag = VEN value = -100	} # Venezuela, thief of Esequibo
 
 # Global
 relation = { tag = CAN value = 200	} # Canada
