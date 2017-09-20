@@ -55,7 +55,6 @@ ownedprovinces =      {
 
 429 #Malta
 833 #Djibouti
-832 #Br.Somaliland
 900 1007 # Suez
 964 #Sierra Leone
 1421 1746 1732 1741 1742
@@ -94,7 +93,6 @@ controlledprovinces = {
 
 429 #Malta
 833 #Djibouti
-832 #Br.Somaliland
 900 1007 # Suez
 964 #Sierra Leone
 1421 1746 1732 1741 1742
