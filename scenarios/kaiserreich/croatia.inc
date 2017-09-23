@@ -6,7 +6,7 @@ country = {
 ai = "kaiserreich\Croatia.ai"
     flag_ext = _hun
 
-	puppet = HUN
+	puppet = AUS
 	
 
 	policy = {
@@ -49,17 +49,17 @@ SpyInfo  = {  country = "CRO" NumberOfSpies = 2  }
 
 
     ownedprovinces =      {
-337 344 345 352 347 350 351 343 
+337 344 345 352 347 350 351 343 357 353 358 355 354 356 335 332
 	 }
     controlledprovinces = {
- 337 344 345 352 347 350 351 343
+ 337 344 345 352 347 350 351 343 357 353 358 355 354 356 335 332
 	  }
     nationalprovinces =   {
-337 344 345 352 347 350 351 343 406
+337 344 345 352 347 350 351 343 357 353 358 355 354 356 335 332
 	}
 
 diplomacy = {
-relation = {   tag =    	BEL	value = 		30	   }  
+relation = {   tag =    BEL	value = 		30	   }  
 relation = {   tag =  	BLR	 value =		60	   }  
 relation = {   tag =  	BUL	value = 		40	   }  
 relation = {   tag =  	GER	 value =		120	   }  
@@ -135,7 +135,7 @@ name = "Landwehr"
 
  division = {
   id = { type = 25000 id = 7 }
-  name = "1/6 Kroatische Landwehrbrigade"
+  name = "1/6 Illyrien Landwehrbrigade"
   strength = 50
   max_strength = 50
   type = militia
@@ -144,7 +144,7 @@ name = "Landwehr"
 
  division = {
   id = { type = 25000 id = 3 }
-  name = "2/5 Kroatische Landwehrbrigade"
+  name = "2/5 Illyrien Landwehrbrigade"
   strength = 50
   max_strength = 50
   type = militia
@@ -153,7 +153,7 @@ name = "Landwehr"
 
  division = {
   id = { type = 25000 id = 4 }
-  name = "3/4 Kroatische Landwehrbrigade"
+  name = "3/4 Illyirien Landwehrbrigade"
   strength = 50
   max_strength = 50
   type = militia
