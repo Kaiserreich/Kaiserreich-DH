@@ -45,14 +45,14 @@ capital			=	1993 # Caracas
 # Owned Provinces
 ownedprovinces = {
 
-1988 1989 1995 1996 1992 1993
+1988 1989 1995 1996 1992 1993 1998
 
 }
 
 # Controlled Provinces
 controlledprovinces = {
 
-1988 1989 1995 1996 1992 1993
+1988 1989 1995 1996 1992 1993 1998
 
 }
 
@@ -158,12 +158,12 @@ model = 4
 # Army at Caracas
 landunit = {
 id = { type = 15800 id = 3 }
-name = "Divisi髇 de Infanter韆"
+name = "Divisi贸n de Infanter铆a"
 location = 1993 # Caracas
 
 division = {
 id = { type = 15800 id = 4 }
-name = "Divisi髇 de Infanter韆"
+name = "Divisi贸n de Infanter铆a"
 strength = 100
 type = infantry
 model = 7
@@ -174,12 +174,12 @@ model = 7
 # Cavalry at Maracaibo
 landunit = {
 id = { type = 15800 id = 5 }
-name = "Divisi髇 de Caballer韆"
+name = "Divisi贸n de Caballer铆a"
 location = 1988 # Maracaibo
 
 division = {
 id = { type = 15800 id = 6 }
-name = "Divisi髇 de Caballer韆"
+name = "Divisi贸n de Caballer铆a"
 strength = 100
 type = cavalry
 model = 8
@@ -190,12 +190,12 @@ model = 8
 # Army at Ciudad Bolivar
 landunit = {
 id = { type = 15800 id = 7 }
-name = "Divisi髇 de Infanter韆"
+name = "Divisi贸n de Infanter铆a"
 location = 1992 # Ciudad Bolivar
 
 division = {
 id = { type = 15800 id = 8 }
-name = "Divisi髇 de Infanter韆"
+name = "Divisi贸n de Infanter铆a"
 strength = 100
 type = infantry
 model = 7
