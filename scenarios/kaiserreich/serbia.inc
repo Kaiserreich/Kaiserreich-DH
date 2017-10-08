@@ -94,7 +94,6 @@ dormant_leaders        = {  547047 547048 547049 547050 547051
 #Land Doctrines
 14000 14010 #Improved Great War Hospital System
 6500 6510 6530 6550 6590 6600 6610 6620 6650 6670 6680 6690 6700 6710 6910 # Great War Land Doctrines 
-6010
 
 #Naval
 3810 #Troopships 
@@ -104,6 +103,9 @@ dormant_leaders        = {  547047 547048 547049 547050 547051
 
 
 	}
+	
+	
+deactivate = { 6010 6210 6570 6560 6390 }
 
 #########  OOB (...)
 
