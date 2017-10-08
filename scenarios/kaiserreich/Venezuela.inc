@@ -45,14 +45,14 @@ capital			=	1993 # Caracas
 # Owned Provinces
 ownedprovinces = {
 
-1988 1989 1995 1996 1992 1993 1998
+1988 1989 1995 1996 1992 1993
 
 }
 
 # Controlled Provinces
 controlledprovinces = {
 
-1988 1989 1995 1996 1992 1993 1998
+1988 1989 1995 1996 1992 1993
 
 }
 
