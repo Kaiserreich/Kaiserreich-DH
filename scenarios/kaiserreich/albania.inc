@@ -36,13 +36,13 @@ manpower = -20
 
 
     ownedprovinces =      {
-	329 361 359 362 360
+	361 359 362 360
 	 }
     controlledprovinces = {
-	329 361 359 362 360
+	361 359 362 360
 	  }
     nationalprovinces =   {
-	329 361 359 362 360
+	361 359 362 360
         334 # claim on Tetovo
 	}
 
@@ -99,12 +99,12 @@ relation = { tag =	USA	value = 		10	 }
 ### Army
 landunit = {
  	id = { type = 17656    id = 1 }
- 	name = "Shqiperia Armé"
+ 	name = "Shqiperia ArmÃ©"
  	location = 359
 
   			division = {
    		id = { type = 17656    id = 2 }
-   		name = "I Këmbësori Pjesëtim"
+   		name = "I KÃ«mbÃ«sori PjesÃ«tim"
    		strength = 60
 		model = 5
    		type = infantry
