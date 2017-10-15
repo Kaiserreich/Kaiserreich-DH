@@ -30,13 +30,13 @@ SpyInfo  = {  country = "SER" NumberOfSpies = 2  }
 
 	capital = 338
 
-	  manpower = 155
+	  manpower = 90
 
     ownedprovinces =      {
-	338 339 340 342 327 330 
+	338 339 340 342 327 330 329
 	 }
     controlledprovinces = {
-	338 339 340 342 327 330
+	338 339 340 342 327 330 329
 	  }
     nationalprovinces =   {
 	338 339 340 342 327 330 329
