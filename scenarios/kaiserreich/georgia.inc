@@ -16,16 +16,16 @@ ai = "kaiserreich\Georgia.ai"
     }
 
 #### cabinet
-    headofstate = { type = 9 id = 519001 }
-    headofgovernment = { type = 9 id = 519002 }
- 	foreignminister = { type = 9 id = 519003 }
- 	armamentminister = { type = 9 id = 519004 }
- 	ministerofsecurity = { type = 9 id = 519005 }
- 	ministerofintelligence = { type = 9 id = 519006 }
- 	chiefofstaff = { type = 9 id = 519007 }
+    headofstate = { type = 9 id = 519001 } #Grigol Ordzhonikidze
+    headofgovernment = { type = 9 id = 519002 } #Filipp Makharadze
+ 	foreignminister = { type = 9 id = 519003 } #Vissarion Lominadze
+ 	armamentminister = { type = 9 id = 519004 } #Isidore Ramishvili
+ 	ministerofsecurity = { type = 9 id = 519005 } #Ioseb B. Dzughashvili
+ 	ministerofintelligence = { type = 9 id = 519006 } #Mamia Orakhelashvili
+ 	chiefofstaff = { type = 9 id = 519007 } #Vladimir Dekanozov
  	chiefofarmy = { type = 9 id = 519009 }
- 	chiefofnavy = { type = 9 id = 519010 }        
- 	chiefofair = { type = 9 id = 519106 }
+ 	chiefofair = { type = 9 id = 519010 } #Sergo Goglidze    
+ 	chiefofnavy = { type = 9 id = 519106 } #Polikarp Mdivani
 #### Resource Reserves
 	capital = 709
 	manpower = 28
