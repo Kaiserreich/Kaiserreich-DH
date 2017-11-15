@@ -23,7 +23,7 @@ ai = "kaiserreich\Georgia.ai"
  	ministerofsecurity = { type = 9 id = 519005 } #Ioseb B. Dzughashvili
  	ministerofintelligence = { type = 9 id = 519006 } #Mamia Orakhelashvili
  	chiefofstaff = { type = 9 id = 519007 } #Vladimir Dekanozov
- 	chiefofarmy = { type = 9 id = 519009 }
+ 	chiefofarmy = { type = 9 id = 519008 } #Alexi Sasha Gegechkori
  	chiefofair = { type = 9 id = 519010 } #Sergo Goglidze    
  	chiefofnavy = { type = 9 id = 519106 } #Polikarp Mdivani
 #### Resource Reserves
