@@ -49,13 +49,13 @@ capital = 195
 
 
     ownedprovinces =      {
-401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371
+401 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371
 	 }
     controlledprovinces = {
-401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371
+401 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371
 	  }
     nationalprovinces =   {
-401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194
+401 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194
 	}
 claimedprovinces = {
 #commented claims as they are causing problems with the Ausgleich chain.
@@ -83,7 +83,7 @@ relation = {   tag =  	FIN	value = 		40	   }
 relation = {   tag =  	GRE	value = 		-60	   }  
 relation = {   tag =  	HOL	 value =		50	   }  
 relation = {   tag =  	IRE	value = 		20	   }  
-relation = {   tag =  	ITA	value = 		120	   }  
+relation = {   tag =  	ITA	value = 		100	guaranteed = { day = 30 month = december year = 1935 } }  
 relation = {   tag =  	NOR	 value =		40	   }  
 relation = {   tag =  	POR	value = 		80	   }  
 relation = {   tag =  	ROM	value = 		-70	   }  
@@ -245,7 +245,7 @@ name = "Armeekreis Tirol"
 
 landunit = {
 id = { type = 17352       id = 7 }
-location = 400
+location = 404
 name = "Armeekreis Italien"
 
 
@@ -595,10 +595,10 @@ airunit = {
 airunit = {
        id = { type = 17352       id = 48 }
        name = "Gottfried Küstengruppen"
-       location = 400
-       prevprov = 400
-       home = 400
-       base = 400
+       location = 404
+       prevprov = 404
+       home = 404
+       base = 404
 
        division = {
            id = { type = 17352       id = 49 }

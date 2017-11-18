@@ -32,26 +32,26 @@ ai = "kaiserreich\Italy.ai"
 
         SpyInfo  = {  country = "ITA" NumberOfSpies = 3  }
 
-    capital = 419
-manpower = 460
+    capital = 407 #Naples
+	manpower = 460
     # Resource Reserves
     energy    =    1000   metal    = 1000        rare_materials =    500    oil =    500    supplies =    500
     money = 50       transports = 50
 
 
-
     ownedprovinces =      {
-        87 91 94 435 434 396 399 398 407 395 393 408 410 411 413 419 414 412  416
-     }
+		393 394 395 400 405 407
+	}
     controlledprovinces = {
-        87 91 94 435 434 396 399 398 407 395 393 408 410 411 413 419 414 412  416
-      }
+		393 394 395 400 405 407
+	}
     nationalprovinces =   {
-        87 91 94 435 434 396 399 398 407 395 393 408 410 411 413 419 414 412  416
-    }
+		393 394 395 400 405 407
+	}
     claimedprovinces = {
-                418 415 420 423 421 427 424 426 422 428 425 431 432 433 430 417
-        }
+		415 416 417 418 419 420 421 422 423 424 425 426 427 428 430 431 432 433
+        435 434 396 399 398 408 410 411 413 419 414 412 416
+    }
 
 diplomacy = {
 relation = {   tag =        BEL    value =         20       }
@@ -92,9 +92,9 @@ relation = {   tag =      JAP    value =         -20       }
 
 }
 
-dormant_ministers = { 3013 3014 }
+
  
-    techapps = {
+techapps = {
 
 #######################
 #Aircrafts
@@ -169,11 +169,9 @@ dormant_ministers = { 3013 3014 }
 #########  OOB (...)
 
   landunit = {
-        id = { type = 17353   id = 10727 }
+        id = { type = 23500   id = 2 }
         name = "2a Armata"
-        location = 419
-        prevprov = 419
-        home = 419
+        location = 407
         division = {
             id = { type = 23500 id = 66 }
             name = "1o Gruppo Guardie Svizzere"
@@ -198,41 +196,9 @@ dormant_ministers = { 3013 3014 }
 }
 
 landunit = {
-        id = { type = 17353   id = 114 }
-        name = "3a Armata"
-        location = 414
-
-        division = {
-            id = { type = 23500 id = 21 }
-            name = "3a Divisione 'San Martino'"
-            model = 7
-            brigade_model = 5
-            type = infantry
-            extra = artillery
-
-            }
-        division = {
-            id = { type = 23500 id = 37 }
-            name = "11a Divisione 'Livorno'"
-            model = 7
-            type = infantry
-
-            }
-        division = {
-            id = { type = 23500 id = 62 }
-            name = "28a Divisione 'Carabinieri di Piemonte'"
-            model = 7
-            type = infantry
-
-        }
-}
-
-landunit = {
         id = { type = 23500 id = 1 }
         name = "1a Armata"
-        location = 416
-        prevprov = 416
-        home = 527
+        location = 400
 
         division = {
             id = { type = 23500 id = 3 }
@@ -257,93 +223,17 @@ landunit = {
             type = infantry
 
             }
-           }
+    }
 
-    landunit = {
-        id = { type = 17353   id = 115 }
-        name = "5a Armata"
-        location = 412
+ 
 
-        division = {
-            id = { type = 23500 id = 7 }
-            name = "1a Divisione Alpina 'Taurinense'"
-            model = 7
-            type = bergsjaeger
-
-            }
-        division = {
-            id = { type = 23500 id = 9 }
-            name = "7a Divisione 'Perugia'"
-            model = 7
-            type = infantry
-
-            }
-        division = {
-            id = { type = 23500 id = 10 }
-            name = "12a Divisione 'Brescia'"
-            model = 7
-            type = infantry
-
-            }
-        }
-
-
-    landunit = {
-        id = { type = 23500 id = 40 }
-        name = "4a Armata"
-        location = 399
-        prevprov = 396
-        home = 399
-
-        division = {
-            id = { type = 23500 id = 42 }
-            name = "17a Divisione 'Pavia'"
-            model = 7
-            brigade_model = 5
-            type = infantry
-            extra = artillery
-
-            }
-        division = {
-            id = { type = 23500 id = 44 }
-            name = "20a Divisione 'Roma'"
-            model = 7
-            brigade_model = 3
-            type = infantry
-            extra = armored_car
-
-            }
-        division = {
-            id = { type = 23500 id = 46 }
-            name = "23a Divisione 'Bologna'"
-            model = 7
-            brigade_model = 3
-            type = infantry
-            extra = armored_car
-
-            }
-        division = {
-            id = { type = 23500 id = 48 }
-            name = "2a Divisione Alpina 'San Maurizio'"
-            model = 7
-            type = bergsjaeger
-
-            }
-        division = {
-            id = { type = 23500 id = 49 }
-            name = "3a Divisione Alpina 'Savoia'"
-            model = 7
-            type = bergsjaeger
-
-            }
-        }
+ 
  
     airunit = {
         id = { type = 23500 id = 104 }
         name = "1a Squadra Aerea"
-        location = 419
-        home = 419
-        base = 419
+        location = 407
+        base = 407
 
         division = {
             id = { type = 23500 id = 105 }
@@ -359,9 +249,8 @@ landunit = {
     airunit = {
         id = { type = 23500 id = 100 }
         name = "2a Squadra Aerea"
-        location = 407
-        home = 407
-        base = 407
+        location = 400
+        base = 400
 
         division = {
             id = { type = 23500 id = 113 }
@@ -380,8 +269,8 @@ landunit = {
 navalunit = {
     name = "Marina Federale Italiana"
     id = { type = 23500  id = 93  }
-    location = 396
-    base = 396
+    location = 400
+    base = 400
 
 division = { id = { type = 23500   id = 79 } name =  "Roma" type = battleship  model = 5   }
 division = { id = { type = 23500   id = 80 } name =  "Immacolata Concezione" type = battleship  model = 5   }
@@ -402,8 +291,8 @@ division = { id = { type = 23500   id = 92 } name =  "3a Squadriglia Cacciatorpe
 navalunit = {
     name = "Comando Navale 'Alto Tirreno'"
     id = { type = 23500  id = 94 }
-    location = 396
-    base = 396
+    location = 400
+    base = 400
 
 division = { id = { type = 23500   id = 95 } name =  "Amerigo Vespucci" type = heavy_cruiser  model = 2   }
 division = { id = { type = 23500   id = 96 } name =  "4a Squadriglia Cacciatorpediere" type = destroyer    model = 3  }
@@ -442,8 +331,8 @@ division = {
 navalunit = {
     name = "Comando Flotta Sommergibili"
     id = { type = 23500  id = 130 }
-    location = 396
-    base = 396
+    location = 400
+    base = 400
 division = { id = { type = 23500   id = 101 } name =  "1a Squadriglia Sommergibili" type = submarine model = 1  }
 division = { id = { type = 23500   id = 102 } name =  "2a Squadriglia Sommergibili" type = submarine model = 1  }
 division = { id = { type = 23500   id = 103 } name =  "3a Squadriglia Sommergibili" type = submarine model = 2  }

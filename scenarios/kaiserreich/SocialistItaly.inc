@@ -29,23 +29,24 @@ ai = "kaiserreich\Sicilies.ai"
 
         SpyInfo  = {  country = "RSI" NumberOfSpies = 3  } 
  
-	capital = 421
+	capital = 398 #Turin
 	manpower = 150
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 50      transports = 50
 
-    ownedprovinces =      {
-	418 415 420 423 421 427 424 426 422 428 425 431 432 433 430 417
-	 }
-    controlledprovinces = {
-	418 415 420 423 421 427 424 426 422 428 425 431 432 433 430 417
-	  }
-    nationalprovinces =   {
-	418 415 420 423 421 427 424 426 422 428 425 431 432 433 430 417
-	}
+
+    ownedprovinces = {
+        396 398 399 408 410 411 412 413 414
+     }                                      
+    controlledprovinces = {                 
+        396 398 399 408 410 411 412 413 414
+      }                                     
+    nationalprovinces = {                   
+        396 398 399 408 410 411 412 413 414
+    }
     claimedprovinces = {
-        87 91 94 435 434 396 399 398 407 395 393 408 410 411 413 419 414 412 416
-        }
+        393 394 395 400 405 407 415 416 417 418 419 420 421 422 423 424 425 426 427 428 430 431 432 433 434 435
+	}
 
 diplomacy = {
 relation = {   tag =    	BEL	value = 		-50	   }  
@@ -153,9 +154,7 @@ relation = {   tag =  	JAP	value = 		-20	   }
 landunit = { 
         id = { type = 17360  id = 1 } 
         name = "1.Armata Popolare Italiana" 
-        location = 418 
-        prevprov = 418 
-        home = 418 
+        location = 398 
 
         division = { 
             id = { type = 17360  id = 2 } 
@@ -179,7 +178,7 @@ landunit = {
 landunit = { 
         id = { type = 17360  id = 4 } 
         name = "2.Armata Popolare Italiana" 
-        location = 417 
+        location = 396 
         
         
         division = { 
@@ -204,7 +203,7 @@ landunit = {
 landunit = { 
         id = { type = 17360  id = 7 } 
         name = "3.Armata Popolare Italiana" 
-        location = 415 
+        location = 410 
         division = { 
             id = { type = 17360  id = 8 } 
             name = "1a Milizia Volontaria 'Internazionale'" 
@@ -225,8 +224,8 @@ landunit = {
 navalunit = {
 	name = "Flotta Napoletana"
 	id = { type = 17360  id = 10 }
-	location = 421
-	base = 421
+	location = 396
+	base = 396
 
 	division = { id = { type = 17360 id = 23 } name =  "Risorgimento" type = battleship  model = 4   }
 	division = { id = { type = 17360 id = 24 } name =  "Resistenza" type = battleship  model = 4   }
