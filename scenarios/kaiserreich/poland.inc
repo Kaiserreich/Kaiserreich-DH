@@ -18,14 +18,14 @@ ai = "kaiserreich\Poland.ai"
 
 #### cabinet
 
-	headofstate = { type = 9 id = 13179  }
-	headofgovernment = { type = 9 id = 13002 }
- 	foreignminister = { type = 9 id =  13003  }
- 	armamentminister = { type = 9 id = 13004    }
- 	ministerofsecurity = { type = 9 id = 13005   }
- 	ministerofintelligence = { type = 9 id =   13006  }
- 	chiefofstaff = { type = 9 id = 13116 }
- 	chiefofarmy = { type = 9 id =  13124  }
+	headofstate 			= { type = 9 id = 13179 }
+	headofgovernment		= { type = 9 id = 13002 }
+ 	foreignminister			= { type = 9 id = 13003 }
+ 	armamentminister		= { type = 9 id = 13004 }
+ 	ministerofsecurity		= { type = 9 id = 13005 }
+ 	ministerofintelligence	= { type = 9 id = 13006 }
+ 	chiefofstaff			= { type = 9 id = 13171 } #Zygmunt Berling
+ 	chiefofarmy				= { type = 9 id = 13116 } #Zygmunt Berling
 
 
 
