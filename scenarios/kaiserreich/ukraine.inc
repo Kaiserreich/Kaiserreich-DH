@@ -24,8 +24,7 @@ ai = "kaiserreich\Ukraine.ai"
  	ministerofintelligence = { type = 9 id = 518048 }
  	chiefofstaff = { type = 9 id =  518007 }
  	chiefofarmy = { type = 9 id = 518067 }
- 	chiefofnavy = { type = 9 id = 518072 }        
- 	chiefofair = { type = 9 id = 518077 }
+ 	chiefofnavy = { type = 9 id = 518072 }
 
 
 #### Resource Reserves
