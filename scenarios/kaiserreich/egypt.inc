@@ -19,7 +19,7 @@ country = {
 #### cabinet
 
 	headofstate = { type = 9 id = 512119 }
-	headofgovernment = { type = 9 id = 512041 }
+	headofgovernment = { type = 9 id = 512025 } #Ali Mahir Pasha
  	foreignminister = { type = 9 id = 512028 }
  	armamentminister = { type = 9 id = 512047 }
  	ministerofsecurity = { type = 9 id = 512005  }
