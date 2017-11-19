@@ -19,11 +19,9 @@ ai = "kaiserreich\Armenia.ai"
     }
 
 #### cabinet
-        headofstate = { type = 9 id =     515030  }
-        headofgovernment = { type = 9 id =  515031  }
-	chiefofstaff = { type = 9 id = 515029 }
-	chiefofnavy = { type = 9 id = 515026 }  
- 	chiefofair = { type = 9 id = 515028 }
+	headofstate 		= { type = 9 id = 515031 } #Semeno Ter-Petrossian
+	headofgovernment	= { type = 9 id = 515030 } #Mehmed Esad Pasha
+	chiefofstaff		= { type = 9 id = 515026 } #Misak Babajanian
 
 #### Resource Reserves
 

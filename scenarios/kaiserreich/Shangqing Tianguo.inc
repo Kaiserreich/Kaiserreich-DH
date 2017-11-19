@@ -16,7 +16,7 @@ ai = "kaiserreich\Shangqing Tianguo.ai"
 		interventionism = 5
 	}
 #### cabinet
-	headofstate = { type = 9 id = 51001 }
+	headofstate = { type = 9 id = 51002 }
 	headofgovernment = { type = 9 id = 51006 }
  	chiefofarmy = { type = 9 id = 51005  }
 

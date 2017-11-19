@@ -1390,7 +1390,6 @@ navalunit =
 name     = "Severniy Flot"
 location = 535 # Murmansk
 base     = 535
-leader   = 599722
 
 division =
 { id    = { type = 17351 id = 1200 }
@@ -1446,7 +1445,6 @@ navalunit =
 name     = "Baltijskij Flot"
 location = 553 # Leningrad
 base     = 553
-leader   = 500725
 division =
 { id    = { type = 17351 id = 1204 }
 name  = "Gangut"
@@ -1549,7 +1547,6 @@ navalunit =
 name     = "Sibirskoy Flot"
 location = 1186 # Okhotsk
 base     = 1186
-leader   = 500713
 division =
 { id    = { type = 17351 id = 1264 }
 name  = "Rossiya"

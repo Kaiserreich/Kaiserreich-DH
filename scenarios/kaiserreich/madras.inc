@@ -21,16 +21,16 @@ ai = "kaiserreich\Princely Federation.ai"
 
 
      
-	headofstate = { type = 9 id = 75911200 }
-	headofgovernment = { type = 9 id = 75911201 }
- 	foreignminister = { type = 9 id = 75911202 }
- 	armamentminister = { type = 9 id = 75911203 }
- 	ministerofsecurity = { type = 9 id = 75911204 }
- 	ministerofintelligence = { type = 9 id = 75911226 }
- 	chiefofstaff = { type = 9 id = 75911206 }
- 	chiefofarmy = { type = 9 id = 75911207 }
- 	chiefofnavy = { type = 9 id = 75911208 }        
- 	chiefofair = { type = 9 id = 75911209 }
+	headofstate 			= { type = 9 id = 75911200 } #Paramasiva Subbarayan
+	headofgovernment 		= { type = 9 id = 75911201 } #Srinivasa Iyengar
+ 	foreignminister 		= { type = 9 id = 75911202 } #Paramasiva Subbarayan
+ 	armamentminister 		= { type = 9 id = 75911203 } #R. N. Arogyasamy Mudaliar
+ 	ministerofsecurity 		= { type = 9 id = 75911204 } #Muthiah Mudaliar
+ 	ministerofintelligence	= { type = 9 id = 75911226 } #Annepu Parasuramdas Patro
+ 	chiefofstaff			= { type = 9 id = 75911205 } #Kodandera Thimayya
+ 	chiefofarmy				= { type = 9 id = 75911206 } #Kodandera Thimayya
+ 	chiefofnavy				= { type = 9 id = 75911207 } #Ram Dass Katari
+ 	chiefofair				= { type = 9 id = 75911208 } #Ravindra Darshan Singh
 
 
 

@@ -27,9 +27,8 @@ headofstate			= { type = 9 id = 34399 }
 headofgovernment		= { type = 9 id = 39999 }
 foreignminister			= { type = 9 id = 34081 }
 armamentminister		= { type = 9 id = 34107 }
-ministerofsecurity		= { type = 9 id = 34131 }
-ministerofintelligence	        = { type = 9 id = 34140 }
-chiefofstaff			= { type = 9 id = 34153 }
+ministerofsecurity		= { type = 9 id = 34116 }
+chiefofstaff			= { type = 9 id = 34143 }
 chiefofarmy			= { type = 9 id = 34172 }
 chiefofnavy			= { type = 9 id = 34180 }
 chiefofair			= { type = 9 id = 34193 }

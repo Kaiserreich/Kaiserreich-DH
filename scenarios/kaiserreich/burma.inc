@@ -22,7 +22,7 @@ ai = "kaiserreich\Burma.ai"
 	headofstate = { type = 9 id = 563001 }
 	headofgovernment = { type = 9 id = 563002 }
  	foreignminister = { type = 9 id = 563003 }
- 	armamentminister = { type = 9 id = 579004 }
+ 	#armamentminister = { type = 9 id = 579004 }
  	ministerofsecurity = { type = 9 id = 563005 }
  	ministerofintelligence = { type = 9 id = 563006 }
  	chiefofstaff = { type = 9 id = 563007 }
