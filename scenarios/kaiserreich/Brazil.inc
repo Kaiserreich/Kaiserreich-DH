@@ -22,7 +22,7 @@ interventionism		=	3
 
 #### Cabinet ####
 
-
+headofstate				= { type = 9 id = 34399 }
 headofgovernment		= { type = 9 id = 39999 }
 foreignminister			= { type = 9 id = 34081 }
 armamentminister		= { type = 9 id = 34107 }
