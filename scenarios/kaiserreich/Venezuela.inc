@@ -24,8 +24,8 @@ SpyInfo  = {  country = "VEN" NumberOfSpies = 2  }
 
 #### Cabinet ####
 
-headofstate			= { type = 9 id = 38096 }
-headofgovernment	= { type = 9 id = 38095 }
+#headofstate			= { type = 9 id =  }
+#headofgovernment	= { type = 9 id =  }
 
 #### Resource Reserves ####
 
