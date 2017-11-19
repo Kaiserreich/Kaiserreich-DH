@@ -20,16 +20,16 @@ interventionism		=	6
 
 #### Cabinet ####
 
-headofstate				= { type = 9 id = 44164 }
-headofgovernment		= { type = 9 id = 44165 }
+#headofstate				= { type = 9 id =  }
+#headofgovernment		= { type = 9 id =  }
 foreignminister			= { type = 9 id = 44059 }
 armamentminister		= { type = 9 id = 44076 }
 ministerofsecurity		= { type = 9 id = 44097 }
-ministerofintelligence	= { type = 9 id = 44112 }
-chiefofstaff			= { type = 9 id = 44123 }
-chiefofarmy				= { type = 9 id = 44132 }
-chiefofnavy				= { type = 9 id = 44140 }
-chiefofair				= { type = 9 id = 44148 }
+ministerofintelligence	= { type = 9 id = 44103 }
+chiefofstaff			= { type = 9 id = 44112 }
+chiefofarmy				= { type = 9 id = 44123 }
+chiefofnavy				= { type = 9 id = 44132 }
+chiefofair				= { type = 9 id = 44140 }
 
 
 #### Resource Reserves ####
