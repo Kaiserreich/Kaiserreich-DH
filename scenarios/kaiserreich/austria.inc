@@ -83,7 +83,7 @@ relation = {   tag =  	FIN	value = 		40	   }
 relation = {   tag =  	GRE	value = 		-60	   }  
 relation = {   tag =  	HOL	 value =		50	   }  
 relation = {   tag =  	IRE	value = 		20	   }  
-relation = {   tag =  	ITA	value = 		100	guaranteed = { day = 30 month = december year = 1935 } }  
+relation = {   tag =  	ITA	value = 		100	guaranteed = { day = 29 month = december year = 1935 } }  
 relation = {   tag =  	NOR	 value =		40	   }  
 relation = {   tag =  	POR	value = 		80	   }  
 relation = {   tag =  	ROM	value = 		-70	   }  
