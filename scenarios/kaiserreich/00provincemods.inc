@@ -1135,7 +1135,7 @@ province = { id = 991 anti_air = 2 #Santa Cruz de Tenerife
 naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
 
 #Spain
-province = { id = 348 anti_air = 4 coastalfort = 3 oilpool = 200 supplypool = 500 #Gibraltar
+province = { id = 348 anti_air = 4 oilpool = 200 supplypool = 500 #Gibraltar
 naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
 province = { id = 436 anti_air = 2 #Tarragona
 naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
