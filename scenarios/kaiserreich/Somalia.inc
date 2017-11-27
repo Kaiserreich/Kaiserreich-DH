@@ -17,16 +17,16 @@ tag = SOM
 
 #### cabinet
 
-headofstate				= { type = 9 id = 770001 } #Sultan Mohamoud Ali Shire
-headofgovernment		= { type = 9 id = 770002 } #Abdallah al-Qutbi
-foreignminister			= { type = 9 id = 770003 } #Ali Yusuf Kenadid
-armamentminister		= { type = 9 id = 770004 } #Osman Yusuf Kenadid
-ministerofsecurity		= { type = 9 id = 770005 } #Abdurahman Sheikh Nuur
+headofstate		= { type = 9 id = 770001 } #Sultan Mohamoud Ali Shire
+headofgovernment	= { type = 9 id = 770047 } #Cismaan III Maxamuud
+foreignminister		= { type = 9 id = 770062 } #Abdullah Mohamed Fadil
+armamentminister	= { type = 9 id = 770021 } #Mohamoud Ghelle Yusuf
+ministerofsecurity	= { type = 9 id = 770009 } #Ismail Ali Abukar
 ministerofintelligence	= { type = 9 id = 770006 } #Hasna Doreh
-chiefofstaff			= { type = 9 id = 770007 } #Osman Mahamuud
-chiefofarmy				= { type = 9 id = 770008 } #Osman Mahamuud
-chiefofnavy				= { type = 9 id = 770009 } #Sultan Olol Dinle   
-chiefofair				= { type = 9 id = 770010 } #Sultan Olol Dinle
+chiefofstaff		= { type = 9 id = 770069 } #Mohamed Abshir Muse
+chiefofarmy		= { type = 9 id = 770074 } #Unatù Endisciau
+chiefofnavy		= { type = 9 id = 770071 } #Cismaan III Maxamuud   
+#chiefofair		= { type = 9 id = 770077 } #Abdulkadir Dheel
 
 #### Resource Reserves
 
