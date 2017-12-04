@@ -20,9 +20,9 @@ country = {
 
 headofstate			= { type = 9 id = 65001 }
 headofgovernment		= { type = 9 id = 65002 }
-foreignminister			= { type = 9 id = 65003 }
-armamentminister		= { type = 9 id = 65004 }
-ministerofsecurity		= { type = 9 id = 65005 }
+foreignminister			= { type = 9 id = 65094 }
+armamentminister		= { type = 9 id = 65149 }
+ministerofsecurity		= { type = 9 id = 65186 }
 ministerofintelligence	        = { type = 9 id = 65006 }
 chiefofstaff			= { type = 9 id = 65007 }
 chiefofarmy			= { type = 9 id = 65008 }
