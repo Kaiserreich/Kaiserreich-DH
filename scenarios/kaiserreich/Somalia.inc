@@ -36,13 +36,13 @@ chiefofair = { type = 9 id = 770077 } #Abdulkadir Dheel
 
 
     ownedprovinces =      {
-		818 832 834 828 827 826 835 836 837 838  
+		832 834 827 835 836 837 838  
 	 }
     controlledprovinces = {
-		818 832 834 828 827 826 835 836 837 838 
+		832 834 827 835 836 837 838 
 	  }
     nationalprovinces =   {
-		818 832 834 828 827 826 835 836 837 838 
+		832 834 827 835 836 837 838 
 	}
 
 diplomacy = {
