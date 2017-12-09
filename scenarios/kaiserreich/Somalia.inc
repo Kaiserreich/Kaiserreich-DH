@@ -1,6 +1,3 @@
-
-
-
 country = {
 tag = SOM  
 
@@ -17,16 +14,16 @@ tag = SOM
 
 #### cabinet
 
-headofstate				= { type = 9 id = 770001 } #Sultan Mohamoud Ali Shire
-headofgovernment		= { type = 9 id = 770002 } #Abdallah al-Qutbi
-foreignminister			= { type = 9 id = 770003 } #Ali Yusuf Kenadid
-armamentminister		= { type = 9 id = 770004 } #Osman Yusuf Kenadid
-ministerofsecurity		= { type = 9 id = 770005 } #Abdurahman Sheikh Nuur
-ministerofintelligence	= { type = 9 id = 770006 } #Hasna Doreh
-chiefofstaff			= { type = 9 id = 770007 } #Osman Mahamuud
-chiefofarmy				= { type = 9 id = 770008 } #Osman Mahamuud
-chiefofnavy				= { type = 9 id = 770009 } #Sultan Olol Dinle   
-chiefofair				= { type = 9 id = 770010 } #Sultan Olol Dinle
+headofstate = { type = 9 id = 770001 } #Boqor Mohamoud Ali Shire
+headofgovernment = { type = 9 id = 770047 } #Cismaan III Maxamuud
+foreignminister = { type = 9 id = 770062 } #Abdullah Mohamed Fadil
+armamentminister = { type = 9 id = 770021 } #Mohamoud Ghelle Yusuf
+ministerofsecurity = { type = 9 id = 770058  } #Abdirizak Mahamud Abubakar
+ministerofintelligence = { type = 9 id = 770032 } #Muhammad Ali Shirreh
+chiefofstaff = { type = 9 id = 770068 } #Yasin Haji Osman Sharmarke
+chiefofarmy = { type = 9 id = 770075 } #Muhammad Omer Ges
+chiefofnavy = { type = 9 id = 770071 } #Cismaan III
+chiefofair = { type = 9 id = 770077 } #Abdulkadir Dheel
 
 #### Resource Reserves
 
@@ -39,13 +36,13 @@ chiefofair				= { type = 9 id = 770010 } #Sultan Olol Dinle
 
 
     ownedprovinces =      {
-		818 832 834 828 827 826 835 836 837 838  
+		832 834 827 835 836 837 838  
 	 }
     controlledprovinces = {
-		818 832 834 828 827 826 835 836 837 838 
+		832 834 827 835 836 837 838 
 	  }
     nationalprovinces =   {
-		818 832 834 828 827 826 835 836 837 838 
+		832 834 827 835 836 837 838 
 	}
 
 diplomacy = {

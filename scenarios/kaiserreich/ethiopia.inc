@@ -20,9 +20,9 @@ country = {
 
 headofstate			= { type = 9 id = 65001 }
 headofgovernment		= { type = 9 id = 65002 }
-foreignminister			= { type = 9 id = 65003 }
-armamentminister		= { type = 9 id = 65004 }
-ministerofsecurity		= { type = 9 id = 65005 }
+foreignminister			= { type = 9 id = 65094 }
+armamentminister		= { type = 9 id = 65149 }
+ministerofsecurity		= { type = 9 id = 65186 }
 ministerofintelligence	        = { type = 9 id = 65006 }
 chiefofstaff			= { type = 9 id = 65007 }
 chiefofarmy			= { type = 9 id = 65008 }
@@ -39,10 +39,10 @@ chiefofair			= { type = 9 id = 65010 }
 
 
     ownedprovinces =      {
-		820 819 821 822 823 829 825 830 831 815 816 817 824
+		820 819 821 822 823 818 829 825 830 826 831 828 815 816 817 824
 	 }
     controlledprovinces = {
-		820 819 821 822 823 829 825 830 831 815 816 817 824
+		820 819 821 822 823 818 829 825 830 826 831 828 815 816 817 824
 	  }
     nationalprovinces =   {
 		820 819 821 822 823 818 829 825 830 826 831 828 827 815 816 817 824
