@@ -14,16 +14,16 @@ country = {
 
 #### cabinet
 
-    headofstate = { type = 9 id = 3219 } #Pius XI
-    headofgovernment = { type = 9 id = 3046 } #Conte Stefano Jacini
-     foreignminister = { type = 9 id = 3222  } #Alfredo Cardinal Ottaviani
-     armamentminister = { type = 9 id = 3227 } #Eugenio Cardinal Pacelli
-     ministerofsecurity = { type = 9 id = 3255 } #Theodor Cardinal Innitzer
-     ministerofintelligence = { type = 9 id = 3232 } #Domenico Tardini
-     chiefofstaff = { type = 9 id = 3224 } #Josef von Österreich-Toskana
-     chiefofarmy = { type = 9 id = 3143 } #Vittorio Ambrosio
-     chiefofnavy = { type = 9 id = 3508 } #Arturo Riccardi
-     chiefofair = { type = 9 id = 3161  } #Rino Corso Fougier
+#   headofstate = { type = 9 id = 3219 } #Pius XI
+#   headofgovernment = { type = 9 id = 3046 } #Conte Stefano Jacini
+#    foreignminister = { type = 9 id = 3222  } #Alfredo Cardinal Ottaviani
+#    armamentminister = { type = 9 id = 3227 } #Eugenio Cardinal Pacelli
+#    ministerofsecurity = { type = 9 id = 3255 } #Theodor Cardinal Innitzer
+#    ministerofintelligence = { type = 9 id = 3232 } #Domenico Tardini
+#    chiefofstaff = { type = 9 id = 3224 } #Josef von Österreich-Toskana
+#    chiefofarmy = { type = 9 id = 3143 } #Vittorio Ambrosio
+#    chiefofnavy = { type = 9 id = 3508 } #Arturo Riccardi
+#    chiefofair = { type = 9 id = 3161  } #Rino Corso Fougier
 
 
 #### Resource Reserves
