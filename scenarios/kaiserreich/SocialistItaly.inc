@@ -1,7 +1,8 @@
 country = {
     tag = RSI  
+	capital = 398 #Turin
 
-ai = "kaiserreich\Sicilies.ai"
+	ai = "kaiserreich\Sicilies.ai"
 	policy = {
         date = { year = 0 month = january day = 0 }
         democratic = 3
@@ -13,7 +14,7 @@ ai = "kaiserreich\Sicilies.ai"
         interventionism = 5
     }
 
-#### cabinet    
+	#### cabinet    
 	headofstate = { type = 9 id = 508001 } #Palmiro Togliatti
 	headofgovernment = { type = 9 id = 508002 } #Antonio Gramsci
  	foreignminister = { type = 9 id = 508003  } #Pietro Nenni
@@ -25,15 +26,17 @@ ai = "kaiserreich\Sicilies.ai"
  	chiefofnavy = { type = 9 id = 508009 } #Francesco Maugeri
  	chiefofair = { type = 9 id = 508010 } #Mario Ajmone Cat
 
-#### Resource Reserves
-
-        SpyInfo  = {  country = "RSI" NumberOfSpies = 3  } 
- 
-	capital = 398 #Turin
-	manpower = 150
-	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
-	money = 50      transports = 50
-
+	#### Resource Reserves
+	manpower		= 150
+	energy			= 1000
+	metal			= 1000
+	rare_materials	= 500
+	oil				= 500
+	supplies		= 500
+	money			= 50
+	transports		= 50
+	peacetime_ic_mod	= 0.8 #removed by decision "Revitalize the economy"
+	wartime_ic_mod		= 0.8 #removed by decision "Revitalize the economy"
 
     ownedprovinces = {
         396 398 399 408 410 411 412 413 414
@@ -48,52 +51,51 @@ ai = "kaiserreich\Sicilies.ai"
         393 394 395 400 405 407 415 416 417 418 419 420 421 422 423 424 425 426 427 428 430 431 432 433 434 435
 	}
 
-diplomacy = {
-relation = {   tag =    	BEL	value = 		-50	   }  
-relation = {   tag =  	BLR	 value =		-50	   }  
-relation = {   tag =  	BUL	value = 		-40	   }  
-relation = {   tag =  	GER	 value =		-80	   }  
-relation = {   tag =  	LAT	value = 		-40	   }  
-relation = {   tag =  	AUS	value = 		-150   }  
-relation = {   tag =  	BOS	value = 		-60	   }  
-relation = {   tag =  	CRO	 value =		-70	   }  
-relation = {   tag =  	CZE	value = 		-20	   }  
-relation = {   tag =  	HUN	 value =		-100   }  
-relation = {   tag =  	ALB	value = 		50	   }  
-relation = {   tag =  	ITA	value = 		-150   }  
-relation = {   tag =  	POR	value = 		-40	   }  
-relation = {   tag =  	ROM	value = 		-30	   }  
-relation = {   tag =  	SER	value = 		40	   }  
-relation = {   tag =  	SPA	value = 		-60	   }  
-relation = {   tag =  	ENG	value = 		90	   }  
-relation = {   tag =  	FRA	value = 		150	   }  
-relation = {   tag =  	PRK	value = 		60	   }  
-relation = {   tag =  	MEX	value = 		60	   }  
-relation = {   tag =  	GEO	value = 		50	   }  
-relation = {   tag =  	GUA	value = 		50	   }  
-relation = {   tag =  	BRA	value = 		20	   }  
-relation = {   tag =  	COL	value = 		10	   }  
-relation = {   tag =  	BOL	value = 		10	   }  
-relation = {   tag =  	VEN	value = 		10	   }  
-relation = {   tag =  	ECU	value = 		10	   }  
-relation = {   tag =  	AST	value = 		-40	   }  
-relation = {   tag =  	CAN	value = 		-70	   }  
-relation = {   tag =  	GUY	value = 		-50	   }  
-relation = {   tag =  	NZL	 value =		-20	   }  
-relation = {   tag =  	VIC	value = 		-120   }  
-relation = {   tag =  	RUS	 value =		50	   }  
-relation = {   tag =  	LBY	value = 		-50	   }  
-relation = {   tag =  	OTT	 value =		-60	   }  
-relation = {   tag =  	CON	value = 		-50	   }  
-relation = {   tag =  	ETH	value = 		30	   }  
-relation = {   tag =  	SAF	value = 		-40	   }  
-relation = {   tag =   	USA	value = 		-30	   }
-relation = {   tag =  	JAP	value = 		-20	   }  
+SpyInfo		= {  country = "RSI" NumberOfSpies = 3  } 
+diplomacy	= {
+	relation = {	tag = BEL		value = -50	   }  
+	relation = {	tag = BLR		value =	-50	   }  
+	relation = {	tag = BUL		value = -40	   }  
+	relation = {	tag = GER		value =	-80	   }  
+	relation = {	tag = LAT		value = -40	   }  
+	relation = {	tag = AUS		value = -150   }  
+	relation = {	tag = BOS		value = -60	   }  
+	relation = {	tag = CRO		value =	-70	   }  
+	relation = {	tag = CZE		value = -20	   }  
+	relation = {	tag = HUN		value =	-100   }  
+	relation = {	tag = ALB		value = 50	   }  
+	relation = {	tag = ITA		value = -150   }  
+	relation = {	tag = POR		value = -40	   }  
+	relation = {	tag = ROM		value = -30	   }  
+	relation = {	tag = SER		value = 40	   }  
+	relation = {	tag = SPA		value = -60	   }  
+	relation = {	tag = ENG		value = 90	   }  
+	relation = {	tag = FRA		value = 150	   }  
+	relation = {	tag = PRK		value = 60	   }  
+	relation = {	tag = MEX		value = 60	   }  
+	relation = {	tag = GEO		value = 50	   }  
+	relation = {	tag = GUA		value = 50	   }  
+	relation = {	tag = BRA		value = 20	   }  
+	relation = {	tag = COL		value = 10	   }  
+	relation = {	tag = BOL		value = 10	   }  
+	relation = {	tag = VEN		value = 10	   }  
+	relation = {	tag = ECU		value = 10	   }  
+	relation = {	tag = AST		value = -40	   }  
+	relation = {	tag = CAN		value = -70	   }  
+	relation = {	tag = GUY		value = -50	   }  
+	relation = {	tag = NZL		value =	-20	   }  
+	relation = {	tag = VIC		value = -120   }  
+	relation = {	tag = RUS		value =	50	   }  
+	relation = {	tag = LBY		value = -50	   }  
+	relation = {	tag = OTT		value =	-60	   }  
+	relation = {	tag = CON		value = -50	   }  
+	relation = {	tag = ETH		value = 30	   }  
+	relation = {	tag = SAF		value = -40	   }  
+	relation = {	tag = USA		value = -30	   }
+	relation = {	tag = JAP		value = -20	   }  
 }
-
-
 	
-	techapps = {
+techapps = {
 #Infantry
 1010  1020 1030 1040 1050 1060 1070 #Great War Infantry Division
 1160  1170 1180 1190 1200 1210 1220 1230 1240 #Early Mountain Division
@@ -103,13 +105,13 @@ relation = {   tag =  	JAP	value = 		-20	   }
 
 #Armour & Artillery
 2860 2870 2880 2020 #Basic Armoured Car 
-2290 2300 2310 #Great War Heavy Field Artillery 
+2290 2300 2310 2900 #Improved Weltkrieg Heavy Field Artillery
 7600 7610 2620 2010 #SW Tank
 2800 2450 #Early Static Anti-Air Artillery 
 2810 #1918 AA Bde
 
 #Industrial
-5700 5710 5010 5020 #Mechanized Agriculture 
+5700 5710 5010 #Modern Agriculture
 5810 5820 5050 5830 5060 #Manufactoring
 5800 5080 5090 #Improved Construction Engineering
 5310 54010 54020 54030 5316 5326 #Computers & cryptografi
@@ -128,6 +130,9 @@ relation = {   tag =  	JAP	value = 		-20	   }
 #Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910 # Great War Land Doctrines (entente)
 6010 6020 # Superior Firepower
+
+#Improved Weltkrieg Hospital System
+14000 14010
 
 #Air Doctrines 
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
