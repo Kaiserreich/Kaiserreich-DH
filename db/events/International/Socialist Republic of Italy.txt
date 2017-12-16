@@ -1,0 +1,1042 @@
+# 231000 RSI Assessing the Economy
+# 231001 RSI Communal Syndicalism
+# 231002 RSI The creation of the IRI
+# 231003 RSI Revolutionary Education
+# 231004 RSI Expand the Universities
+# 231005 RSI Collective Farming
+# 231006 RSI Ruralism
+# 231007 RSI Decentralized Economy 
+# 231008 RSI Encourage Workers' Cooperatives
+# 231009 RSI Nationalization of Industry
+# 231010 RSI Expand Italian Railway
+# 231011 RSI Modernized Farming
+# 231012 RSI Militarized Economy
+# 231013 RSI Sense of Dedication
+# 231014 RSI Mass Production
+# 231015 RSI Support the URI
+# 231016 RSI Synthetic Research
+# 231017 RSI Revitalized Economy
+# 231018 RSI Assessing the Army
+# 231019 RSI The Guardie Rosse
+# 231020 RSI The Reformation of the Guardie Rosse
+# 231021 RSI The Creation of the Armata Rossa
+# 231022 RSI Formazioni di Difesa Proletaria
+# 231023 RSI Gruppi di Difesa della Donna
+# 231024 RSI Mass Fire Support
+# 231025 RSI Support Artillery
+# 231026 RSI Centralized Command
+# 231027 RSI Support Motorized and Mechanized units
+
+event = {
+	id = 231000
+	random = no
+	country = RSI
+
+	trigger = {
+		government = communist
+	}
+
+	name = EVENT_231000_NAME #"Assessing the economy"
+	desc = EVENT_231000_DESC #"The economy of the country has been suffering in recent years. While great progress has been made since the civil war that tore Italy apart, we must look at how to improve the economy. Two main proposals have been put forth to the Congress. The first favoured by the Unione Socialista Cristiana would focus on the various communes throughout the country and focus on decentralizing the industry. The second plan put forth by the Unione Nazionalista is nearly the exact opposite. It instead would favor creating an organization called the Istituto per la Ricostruzione Industriale(Institute for Industrial Reconstruction) that will organize guide the syndicates and unions to bring prosparity for the people."
+	style = 2
+	picture = "industry2"
+
+	date = { day = 9 month = january year = 1936 }
+	offset = 31
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = EVENT_231000_ACTIONA #"Support the Communal Syndicalism plan"
+		command = { type = event which = 231001 where = -1 when = 60 } #Communal Syndicalism
+		command = { trigger = { technology = 5060 NOT = { technology = 5070 } } type = gain_tech which = 5070 } #1935 Product standardization
+		command = { trigger = { technology = 5070 NOT = { technology = 5130 } } type = gain_tech which = 5130 } #1940 Assembly Line Experimentation
+		command = { trigger = { technology = 5130 NOT = { technology = 5110 } } type = gain_tech which = 5110 } #1945 Production scheduling
+		command = { trigger = { technology = 5110 NOT = { technology = 5120 } } type = gain_tech which = 5120 } #1950 Distributed control system
+		command = { type = local_setflag which = SRI_communal_syndicalism }
+		command = { type = sleepevent which = 231009 } #Nationalization of Industry
+		command = { type = sleepevent which = 231011 } #Modernized Farming
+		command = { type = sleepevent which = 231014 } #Mass Production
+	}
+	action = {
+		name = EVENT_231000_ACTIONB #"Support the Istituto per la Ricostruzione Industriale"
+		command = { type = event which = 231002 where = -1 when = 60 } #The creation of the IRI
+		command = { trigger = { technology = 5060 NOT = { technology = 5070 } } type = gain_tech which = 5070 } #1935 Product standardization
+		command = { trigger = { technology = 5070 NOT = { technology = 5130 } } type = gain_tech which = 5130 } #1940 Assembly Line Experimentation
+		command = { trigger = { technology = 5130 NOT = { technology = 5110 } } type = gain_tech which = 5110 } #1945 Production scheduling
+		command = { trigger = { technology = 5110 NOT = { technology = 5120 } } type = gain_tech which = 5120 } #1950 Distributed control system
+		command = { type = local_setflag which = SRI_industrial_institute_created }
+		command = { type = sleepevent which = 231005 } #Collective Farming
+		command = { type = sleepevent which = 231007 } #Decentralized Economy
+		command = { type = sleepevent which = 231013 } #Sense of Dedication
+	}
+}
+
+event = {
+	id = 231001
+	random = no
+	country = RSI
+
+	trigger = {
+		event = 231000 #Assessing the Economy
+		government = communist
+		local_flag = SRI_communal_syndicalism
+	}
+
+	name = EVENT_231001_NAME #"Communal Syndicalism"
+	desc = EVENT_231001_DESC #"The strength of the economy lies within the rural communes and the local syndicates. We must help them industrialize themselves."
+	style = 2
+	picture = "peasants"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { type = industrial_modifier which = supplies value = 5 }
+		command = { type = industrial_modifier which = energy value = 10 }
+		command = { type = industrial_modifier which = metal value = 10 }
+		command = { type = industrial_modifier which = rare_materials value = 10 }
+		command = { type = industrial_modifier which = oil value = 10 }
+		command = { type = local_clrflag which = SRI_communal_syndicalism }
+	}
+}
+
+event = {
+	id = 231002
+	random = no
+	country = RSI
+
+	trigger = { 
+		event = 231000 #Assessing the Economy
+		government = communist
+		local_flag = SRI_industrial_institute_created
+	}
+
+	name = EVENT_231002_NAME #"The creation of the IRI"
+	desc = EVENT_231002_DESC #"The Istituto per la Ricostruzione Industriale or the Institute for Industrial Reconstruction will be an organization that will direct and manage the economy, reconstructing it for the modern age."
+	style = 2
+	picture = "industry3"
+
+	action = {
+		name = "ACTION_NAME_GOOD"
+		command = { type = industrial_modifier which = supplies value = 5 }
+		command = { type = industrial_modifier which = ic value = 10 }
+		command = { type = local_clrflag which = SRI_industrial_institute_created }
+	}
+}
+
+event = {
+	id = 231003
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		OR = {
+			event = 231001 #Communal Syndicalism
+			event = 231002 #The creation of the IRI
+		}
+	}
+	
+	decision_trigger = { 
+		money = 100
+	}
+	
+	trigger = { 
+		government = communist
+		OR = {
+			event = 231001 #Communal Syndicalism
+			event = 231002 #The creation of the IRI
+		}
+	}
+
+	name = EVENT_231003_NAME #"Revolutionary Education"
+	desc = EVENT_231003_DESC #"The revolution must be implemented within the education and schools. The future of the republic lay within our children and as such education should be given high priority by the government in order to ensure that we are giving them the best education available."
+	picture = "Mobilization_young_soldiers"
+	style = 2
+	decision_picture = "decision_spread_revolution"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 121
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { type = research_mod value = 3 }
+		command = { type = event which = 231004 where = -1 when = 90 } #Expand the Universities
+	}
+}
+
+event = {
+	id = 231004
+	random = no
+	country = RSI
+
+	trigger = { 
+		event = 231003 #Revolutionary Education
+		government = communist
+	}
+
+	name = EVENT_231004_NAME #"Expand the Universities"
+	desc = EVENT_231004_DESC #"Italian universities are among the oldest universities in the world. They should be given more support and be allowed to expand and grow. By doing this, the education system within our republic can continue to be the shining star, envy to the rest of the international and the world."
+	style = 2
+	picture = "breaktroug_in_research"
+
+	action = {
+		name = ACTION_NAME_EXCELLENT
+		command = { type = dissent value = -0.5 }
+		command = { type = research_mod value = 3 }
+		#TO-DO set dormant in scenario and woken here 1801;Normale di Pisa;ITA_Normale;3;1930;1970;nuclear_physics;nuclear_engineering;mathematics;
+		#TO-DO create TT Politecnico di Torino, set dormant in scenario and woken here
+		#TO-DO create TT University of Bologna, set dormant in scenario and woken here
+	}
+}
+
+event = {
+	id = 231005
+	random = no
+	country = RSI
+
+	decision = {
+		government = communist
+		event = 231001 #Communal Syndicalism
+	}
+	
+	decision_trigger = {
+		supplies = 100
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231001 #Communal Syndicalism
+	}
+
+	name = EVENT_231005_NAME #"Collective Farming"
+	desc = EVENT_231005_DESC #"Many Italians still live within rural communes. Since the end of the civil war many of the rural communes have embraced collective farming to support themselves. We should give them more support and empower the local rural communes and their collective farming."
+	style = 2
+	picture = "peasants"
+	decision_picture = "decision_peasants"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = supplies value = -100 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = event which = 231006 where = -1 when = 90 } #Ruralism
+	}
+}
+
+event = {
+	id = 231006
+	random = no
+	country = RSI
+
+	trigger = { 
+		event = 231005 #Collective Farming
+		government = communist
+	}
+
+	name = EVENT_231006_NAME #"Ruralism"
+	desc = EVENT_231006_DESC #"In our country there are many rural farms and communes. In order to help their improvement, we should focus on modernizing our agriculture and bringing the benefits of the revolution to our rural communes and collective farms."
+	style = 2
+	picture = "agriculture2"
+
+	action = {
+		name = ACTION_NAME_EXCELLENT
+		#if RSI doesn't have tech 5020 and 5030 it gets both (5020 is an old tech so it would be researched fast anyway)
+		command = { trigger = { technology = 5010 NOT = { technology = 5020 } } type = gain_tech which = 5020 } #1928 Mechanized Agriculture
+		command = { trigger = { technology = 5010 NOT = { technology = 5020 } NOT = { technology = 5030 } } type = gain_tech which = 5030 } #1937 Agrichemistry
+		#if RSI has tech 5020 but not tech 5030 it gets tech 5030
+		command = { trigger = { technology = 5020 NOT = { technology = 5030 } } type = gain_tech which = 5030 } #1937 Agrichemistry
+		#if RSI has tech 5030 but not tech 5040 it gets tech 5040
+		command = { trigger = { technology = 5030 NOT = { technology = 5040 } } type = gain_tech which = 5040 } #1945 Agricultural Production
+		#if RSI has tech 5040 but not tech 5720 it gets tech 5720
+		command = { trigger = { technology = 5040 NOT = { technology = 5720 } } type = gain_tech which = 5040 } #1950 Semi-modern mechanization
+	}
+}
+
+event = {
+	id = 231007
+	random = no
+	country = RSI
+
+	decision = {
+		government = communist
+		event = 231001 #Communal Syndicalism
+	}
+	
+	decision_trigger = {
+		supplies = 500
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231001 #Communal Syndicalism
+	}
+
+	name = EVENT_231007_NAME #"Decentralized Economy"
+	desc = EVENT_231007_DESC #"While we focus on rural communes, we must also  make sure that they have the industry needed to support the coming reunification campaign and to improve their own lives."
+	style = 2
+	picture = "industry3"
+	decision_picture = "decision_industry"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = event which = 231008 where = -1 when = 90 } #Encourage Workers' Cooperatives
+	}
+}
+
+event = {
+	id = 231008
+	random = no
+	country = RSI
+
+	trigger = { 
+		event = 231007 #Decentralized Economy
+		government = communist
+	}
+
+	name = EVENT_231008_NAME #"Encourage Workers' Cooperatives"
+	desc = EVENT_231008_DESC #"Workers' cooperatives should be the basis of our economy. Together the cooperatives can improve and expand the civilian industry that will be needed to modernize the country."
+	picture = "industry"
+	style = 2
+
+	action = {
+		name = ACTION_NAME_EXCELLENT
+		command = { type = dissent value = -0.5 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+	}
+}
+
+event = {
+	id = 231009
+	random = no
+	country = RSI
+
+	decision = {
+		government = communist
+		event = 231002 #The creation of the IRI
+	}
+	
+	decision_trigger = {
+		supplies = 450
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231002 #The creation of the IRI
+	}
+
+	name = EVENT_231009_NAME #"Nationalization of industry"
+	desc = EVENT_231009_DESC #"In order to control, oversee and improve the industrial sector, we should nationalize all industrial companies. By placing them in the hands of the government, we can better control and direct the industrial sector with the objective of modernizing our country."
+	style = 2
+	picture = "industry2"
+	decision_picture = "decision_industry"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = supplies value = -450 }
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = event which = 231010 where = -1 when = 90 } #Encourage Workers' Cooperatives
+	}
+}
+
+event = {
+	id = 231010
+	random = no
+	country = RSI
+
+	trigger = { 
+		event = 231009 #Nationalization of Industry
+		government = communist
+	}
+
+	name = EVENT_231010_NAME #"Expand the Italian RailwayS"
+	desc = EVENT_231010_DESC #"The railway is the lifeblood linking cities to one another as well as local communes. We should expand the railway further throughout our country so that more people have access to the rail. An adequate railway infrastructure is the marking of a modern country."
+	picture = "railway"
+	style = 2
+
+	action = {
+		name = ACTION_NAME_EXCELLENT
+		command = { type = dissent value = -0.5 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+		command = { type = construct which = infrastructure where = -1 value = 10 }
+	}
+}
+
+event = {
+	id = 231011
+	random = no
+	country = RSI
+
+	decision = {
+		government = communist
+		event = 231002 #The creation of the IRI
+	}
+	
+	decision_trigger = {
+		supplies = 500
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231002 #The creation of the IRI
+	}
+
+	name = EVENT_231011_NAME #"Modernized Farming"
+	desc = EVENT_231011_DESC #"The people need access to modern farming tools and equipment, we should direct the IRI to focus on researching the needs of the farmers and make sure that they have what they need. A modernize agriculture will grant benefit not only to the rural communes, but the whole country."
+	style = 2
+	picture = "agriculture2"
+	decision_picture = "decision_industry"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		#if RSI doesn't have tech 5020 and 5030 it gets both (5020 is an old tech so it would be researched fast anyway)
+		command = { trigger = { technology = 5010 NOT = { technology = 5020 } } type = gain_tech which = 5020 } #1928 Mechanized Agriculture
+		command = { trigger = { technology = 5010 NOT = { technology = 5020 } NOT = { technology = 5030 } } type = gain_tech which = 5030 } #1937 Agrichemistry
+		#if RSI has tech 5020 but not tech 5030 it gets tech 5030
+		command = { trigger = { technology = 5020 NOT = { technology = 5030 } } type = gain_tech which = 5030 } #1937 Agrichemistry
+		#if RSI has tech 5030 but not tech 5040 it gets tech 5040
+		command = { trigger = { technology = 5030 NOT = { technology = 5040 } } type = gain_tech which = 5040 } #1945 Agricultural Production
+		#if RSI has tech 5040 but not tech 5720 it gets tech 5720
+		command = { trigger = { technology = 5040 NOT = { technology = 5720 } } type = gain_tech which = 5040 } #1950 Semi-modern mechanization
+		command = { type = event which = 231012 where = -1 when = 90 } #Militarized Economy
+	}
+}
+
+event = {
+	id = 231012
+	random = no
+	country = RSI
+
+	trigger = { 
+		event = 231011 #Modernized Farming
+		government = communist
+	}
+
+	name = EVENT_231012_NAME #"Militarized Economy"
+	desc = EVENT_231012_DESC #"The economy must be geared towards war since without a doubt the country will be forced to deal with wars. Let us make sure that the economy shall not falter when the war for re-unification or the war to spread socialism begins. We must be ready."
+	picture = "americansupplies1"
+	style = 2
+
+	action = {
+		name = ACTION_NAME_EXCELLENT
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = construct which = ic where = -4 value = 1 }
+		command = { type = construct which = ic where = -4 value = 1 }
+	}
+}
+
+event = {
+	id = 231013
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+		event = 231006 #Ruralism
+		event = 231008 #Encourage Workers' Cooperatives
+	}
+
+	name = EVENT_231013_NAME #"Sense of Dedication"
+	desc = EVENT_231013_DESC #"Everyone shall be dedicated to the republic. All the communes will do their part. The republic does not direct them but every commune both urban and rural make up the greater whole of the commune, and together we can bring greatness to our country."
+	style = 2
+	picture = "Bolshevik Parade"
+
+	date = { day = 0 month = september year = 1936 }
+	offset = 61
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { type = industrial_modifier which = supplies value = 5 }
+		command = { type = industrial_modifier which = ic value = 5 }
+	}
+}
+
+event = {
+	id = 231014
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+		event = 231010 #Expand Italian Railway
+		event = 231012 #Militarized Economy
+	}
+
+	name = EVENT_231014_NAME #"Mass Production"
+	desc = EVENT_231014_DESC #"With the upcoming war against all reactionaries and imperialists, we must mass produce weapons, ammunitions and supplies for the army. We shall be victorious and the revolution shall move forward."
+	style = 2
+	picture = "Factory"
+
+	date = { day = 0 month = september year = 1936 }
+	offset = 61
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = -1 }
+		command = { type = build_cost which = land value = -5 where = relative when = on_upgrade }
+	}
+}
+
+event = {
+	id = 231015
+	random = no
+	country = RSI
+
+	decision = {
+		government = communist
+		event = 231004 #Expand the Universities
+	}
+	
+	decision_trigger = {
+		money = 100
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231004 #Expand the Universities
+	}
+
+	name = EVENT_231015_NAME #"Support the URI (Unione Radiofonica Italiana)"
+	desc = EVENT_231015_DESC #"The URI, Unione radiofonica italiana or Italian Radio Union, is one of the newer unions to come into existence. The union obviously supports the radio as well as other similar electronic workers. By supporting them, we can help improve our radio and electronics technology."
+	style = 2
+	picture = "bra_radio"
+	decision_picture = "decision_industry"
+
+	date = { day = 0 month = july year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { technology = 54030 NOT = { technology = 5320 } } type = gain_tech which = 5320 } #1937 Basic Computing Machine
+		command = { trigger = { technology = 5320 NOT = { technology = 5330 } } type = gain_tech which = 5330 } #1940 Improved Computing Machine
+		command = { trigger = { technology = 5330 NOT = { technology = 5340 } } type = gain_tech which = 5340 } #1942 Advanced Computing Machine
+		
+		command = { trigger = { technology = 5326 NOT = { technology = 5350 } } type = gain_tech which = 5350 } #1937 Basic Encryption Devices
+		command = { trigger = { technology = 5350 NOT = { technology = 5370 } } type = gain_tech which = 5370 } #1940 Improved Encryption Devices
+		command = { trigger = { technology = 5370 NOT = { technology = 5390 } } type = gain_tech which = 5390 } #1943 Advanced Encryption Devices
+		
+		command = { trigger = { technology = 5327 NOT = { technology = 5360 } } type = gain_tech which = 5360 } #1938 Basic Decryption Devices
+		command = { trigger = { technology = 5360 NOT = { technology = 5380 } } type = gain_tech which = 5380 } #1941 Improved Decryption Devices
+		command = { trigger = { technology = 5380 NOT = { technology = 5400 } } type = gain_tech which = 5400 } #1943 Advanced Decryption Devices
+	}
+}
+
+event = {
+	id = 231016
+	random = no
+	country = RSI
+
+	decision = {
+		government = communist
+		event = 231004 #Expand the Universities
+	}
+	
+	decision_trigger = {
+		money = 100
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231004 #Expand the Universities
+	}
+
+	name = EVENT_231016_NAME #"Synthetic Research"
+	desc = EVENT_231016_DESC #"In order for the navy to be strong we need to make sure that we do not have any issues with oil shortages. If we invest into dedicated research for synthetic oil, we will be sure that we won't have shortages of oil for our military forces."
+	style = 2
+	picture = "ersatz_conversion"
+	decision_picture = "decision_ersatz_conversion"
+
+	date = { day = 0 month = july year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { trigger = { ai = no } type = money value = -100 }
+		#if RSI doesn't have tech 5190 and 5200 it gets both (5190 is an old tech so it would be researched fast anyway)
+		command = { trigger = { NOT = { technology = 5190 } } type = gain_tech which = 5190 } #1914 Basic Oil Refining
+		command = { trigger = { NOT = { technology = 5190 technology = 5020 } } type = gain_tech which = 5200 } #1938 Improved Oil Refining
+		#if RSI has tech 5190 but not tech 5200 it gets tech 5200 (and so on for more advanced techs)
+		command = { trigger = { technology = 5190 NOT = { technology = 5200 } } type = gain_tech which = 5200 } #1938 Improved Oil Refining
+		command = { trigger = { technology = 5200 NOT = { technology = 5200 } } type = gain_tech which = 5210 } #1940 Advanced Oil Refining
+		command = { trigger = { technology = 5210 NOT = { technology = 5220 } } type = gain_tech which = 5220 } #1941 Basic Synthetic Oil Plant
+		command = { trigger = { technology = 5220 NOT = { technology = 5230 } } type = gain_tech which = 5230 } #1942 Improved Synthetic Oil Plant
+		command = { trigger = { technology = 5230 NOT = { technology = 5240 } } type = gain_tech which = 5240 } #1943 Advanced Synthetic Oil Plant
+		command = { trigger = { technology = 5240 NOT = { technology = 53020 } } type = gain_tech which = 53020 } #1945 Modern Synthetic Oil Plant
+	}
+}
+
+event = {
+	id = 231017
+	random = no
+	country = RSI
+
+	decision = {
+		government = communist
+		OR = {
+			event = 231013 #Sense of Dedication
+			event = 231014 #Mass Production
+			event = 231015 #Support the URI
+			event = 231016 #Synthetic Research
+		}
+	}
+	
+	decision_trigger = {
+		money = 200
+		supplies = 500
+		event = 231015 #Support the URI
+		event = 231016 #Synthetic Research
+		OR = {
+			event = 231013 #Sense of Dedication
+			event = 231014 #Mass Production
+		}
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231015 #Support the URI
+		event = 231016 #Synthetic Research
+		OR = {
+			event = 231013 #Sense of Dedication
+			event = 231014 #Mass Production
+		}
+	}
+
+	name = EVENT_231017_NAME #"Revitalize the economy"
+	desc = EVENT_231017_DESC #"We have rebuilt our economy and created a strong base upon which we can improve even further. No more shackled by the destruction that engulfed our country during the civil war, now we witness a period of unprecedented growth. We are witnessing an economic miracle that will shine down upon our glorious Republic!"
+	style = 2
+	picture = "industry3"
+	decision_picture = "decision_industry"
+
+	date = { day = 0 month = july year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { trigger = { ai = no } type = money value = -200 }
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { type = peacetime_ic_mod when = 2 }
+		command = { type = wartime_ic_mod when = 2 }
+	}
+}
+
+event = {
+	id = 231018
+	random = no
+	country = RSI
+
+	trigger = {
+		government = communist
+	}
+
+	name = EVENT_231018_NAME #"Assessing the Army"
+	desc = EVENT_231018_DESC #"In order to prepare for the re-unification, we should assess the army and see about solving the issues relating to our military matters so that our victory shall be ensured. The current system has both bonuses and penalties compared to more traditional armies."
+	style = 2
+	picture = "military_parade"
+
+	date = { day = 8 month = january year = 1936 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = relative_manpower value = 10 }
+		command = { type = max_organization which = land value = -50 where = relative }
+		command = { type = morale which = land value = -50 where = relative }
+		command = { type = build_cost which = land value = -10 where = relative when = on_upgrade }
+	}
+}
+
+event = {
+	id = 231019
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231018 #Assessing the Army
+	}
+	
+	decision_trigger = { 
+		supplies = 1000
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231018 #Assessing the Army
+	}
+
+	name = EVENT_231019_NAME #"The Guardie Rosse"
+	desc = EVENT_231019_DESC #"Since the civil war in 1919, the Italian military is still based on worker's militias known as the Guardie Rosse or Red Guards. While these local militias are popular and able to recruit many volunteers, they seem disregardful for some of the finer concepts for warfare, such as the need for centralized command. Perhaps a less popular but more professional army will be the key to win the next wars.\n \n \n§006Note that keeping but reforming the Red Guards will partially reduce §006the bonuses while greatly reducing the penalties. Creating the Red §006Army on the other hand will completely remove both the bonuses and §006the penalties."
+	style = 2
+	picture = "militia"
+	decision_picture = "decision_italian_mobilization"
+
+	date = { day = 8 month = january year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = EVENT_231019_ACTIONA #Support the Guardie Rosse
+		command = { type = dissent value = 1 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { technology = 1980 NOT = { technology = 1990 } } type = gain_tech which = 1990 } #1936 Rear Area Supply Dumps
+		command = { trigger = { technology = 1990 NOT = { technology = 199100 } } type = gain_tech which = 199100 } #1940 Deep Logistics Organization
+		command = { trigger = { technology = 199100 NOT = { technology = 199110 } } type = gain_tech which = 199110 } #1944 Circular Front-line Supply System
+		command = { trigger = { technology = 199110 NOT = { technology = 199120 } } type = gain_tech which = 199120 } #1948 Advanced Logistics
+		command = { type = event which = 231020 where = -1 when = 60 } #The Reformation of the Guardie Rosse
+		command = { type = sleepevent which = 231021 } #The Creation of the Armata Rossa
+		command = { type = sleepevent which = 231026 } #Centralized Command
+		command = { type = sleepevent which = 231027 } #Support Motorized and Mechanized units
+	}
+	action = {
+		name = EVENT_231019_ACTIONB #Create the Red Army
+		command = { type = dissent value = 2 }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { technology = 1980 NOT = { technology = 1990 } } type = gain_tech which = 1990 } #1936 Rear Area Supply Dumps
+		command = { trigger = { technology = 1990 NOT = { technology = 199100 } } type = gain_tech which = 199100 } #1940 Deep Logistics Organization
+		command = { trigger = { technology = 199100 NOT = { technology = 199110 } } type = gain_tech which = 199110 } #1944 Circular Front-line Supply System
+		command = { trigger = { technology = 199110 NOT = { technology = 199120 } } type = gain_tech which = 199120 } #1948 Advanced Logistics
+		command = { type = event which = 231021 where = -1 when = 60 } #The Creation of the Armata Rossa
+		command = { type = sleepevent which = 231020 } #The Reformation of the Guardie Rosse
+		command = { type = sleepevent which = 231024 } #Mass Fire Support
+		command = { type = sleepevent which = 231025 } #Support Artillery
+	}
+}
+
+event = {
+	id = 231020
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231020_NAME #"The Reformation of the Guardie Rosse"
+	desc = EVENT_231020_DESC #"We have decided to support the Guardia Rosse, they will remain the principal unit of our army. However, some reforms are needed. It will take some time but we shall transform the Red Guards into a force that will be able to defend the Republic from all enemies."
+	style = 2
+	picture = "military_parade"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { type = dissent value = 1 }
+		command = { type = relative_manpower value = -5 }
+		command = { type = max_organization which = land value = 30 where = relative }
+		command = { type = morale which = land value = 40 where = relative }
+		command = { type = build_cost which = land value = 10 where = relative when = on_upgrade }
+	}
+}
+
+event = {
+	id = 231021
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231021_NAME #"The Creation of the Armata Rossa"
+	desc = EVENT_231021_DESC #"he Red Guards are a relic of the Civil War and are no longer needed. In their place, we need to train a true professional Armata Rossa, or Red Army, that will be able to defend the Republic from all enemies. With this process, all units of the Red Guards will be turned into units of the new Red Army. Doing so however will require planning and will be unpopular."
+	style = 2
+	picture = "military_parade"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { type = dissent value = 3 }
+		command = { type = relative_manpower value = -10 }
+		command = { type = max_organization which = land value = 50 where = relative }
+		command = { type = morale which = land value = 50 where = relative }
+		command = { type = build_cost which = land value = 10 where = relative when = on_upgrade }
+	}
+}
+
+event = {
+	id = 231022
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		OR = {
+			event = 231020 #The Reformation of the Guardie Rosse
+			event = 231021 #The Creation of the Armata Rossa
+		}
+	}
+	
+	decision_trigger = { 
+		money = 100
+	}
+	
+	trigger = { 
+		government = communist
+		OR = {
+			event = 231020 #The Reformation of the Guardie Rosse
+			event = 231021 #The Creation of the Armata Rossa
+		}
+	}
+
+	name = EVENT_231022_NAME #"Formazioni di Difesa Proletaria"
+	desc = EVENT_231022_DESC #"The Formazioni di Difesa Proletaria or Proletarian Defense Formations are men and women that are dedicated to defending the republic and the revolution but whom seek to do it in more support roles. From Radio operators to nurses. Everyone can do their role to defend the Italian Revolution."
+	style = 2
+	picture = "Captured_Supplies3"
+	decision_picture = "decision_english_recruitment_office"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { technology = 14010 NOT = { technology = 14020 } } type = gain_tech which = 14020 } #1924 Early Hospital System
+		command = { trigger = { technology = 14020 NOT = { technology = 14030 } } type = gain_tech which = 14030 } #1936 Basic Hospital System
+		command = { trigger = { technology = 14030 NOT = { technology = 14040 } } type = gain_tech which = 14040 } #1944 Improved Hospital System
+		command = { trigger = { technology = 14040 NOT = { technology = 14110 } } type = gain_tech which = 14110 } #1951 Semi-modern Hospital System
+	}
+	action = {
+		name = ACTION_NAME_NO_NEED
+		command = { type = sleepevent which = 231023 } #Gruppi di Difesa della Donna
+	}
+}
+
+event = {
+	id = 231023
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231022 #Formazioni di Difesa Proletaria
+	}
+	
+	decision_trigger = { 
+		supplies = 300
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231022 #Formazioni di Difesa Proletaria
+	}
+
+	name = EVENT_231023_NAME #"Gruppi di Difesa della Donna"
+	desc = EVENT_231023_DESC #"The young minister Ada Gobetti has put forward a motion to create the Gruppi di Difesa della Donna or Women’s Defense Groups. These shall be an organization to train female soldier that will serve in all-female units. Moreover, by giving support to the group, it will encorge more women to enlist in the army to defend the revolutionary ideals we are fighting for."
+	style = 2
+	picture = "womeninarmedforces"
+	decision_picture = "decision_womenarmedforces"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -300 }
+		command = { type = relative_manpower value = 15 }
+		command = { type = manpowerpool value = 2 when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_NO_NEED
+		command = {  }
+	}
+}
+
+event = {
+	id = 231024
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231020 #The Reformation of the Guardie Rosse
+	}
+	
+	decision_trigger = { 
+		supplies = 500
+		money = 100
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231020 #The Reformation of the Guardie Rosse
+	}
+
+	name = EVENT_231024_NAME #"Mass Fire Support"
+	desc = EVENT_231024_DESC #"We shall use the industrial heart of Italy to defend the country and the revolution by focusing on superior firepower. By building just more ammunition then the enemy we shall destroy him with far more shells and bullets and save the lives of our men."
+	style = 2
+	picture = "wargames"
+	decision_picture = "decision_grand_offensive3"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { type = event which = 231025 where = -1 when = 90 } #Support Artillery
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { technology = 6020 NOT = { technology = 6040 } } type = gain_tech which = 6040 } #1937 Delay Doctrine
+		command = { trigger = { technology = 6040 NOT = { technology = 6050 } } type = gain_tech which = 6050 } #1938 Mobile Defense Doctrine
+		command = { trigger = { technology = 6020 NOT = { technology = 6060 } } type = gain_tech which = 6060 } #1939 Stand Off Doctrine
+		command = { trigger = { technology = 6060 NOT = { technology = 6070 } } type = gain_tech which = 6070 } #1940 Integrated Support Doctrine
+		command = { trigger = { technology = 6070 NOT = { technology = 6080 } } type = gain_tech which = 6080 } #1942 Regimental Combat Teams
+		command = { trigger = { technology = 6080 NOT = { technology = 6090 } } type = gain_tech which = 6090 } #1943 Combined Arms Defense
+		command = { trigger = { technology = 6080 NOT = { technology = 6100 } } type = gain_tech which = 6100 } #1943 Mechanized Offensive
+		command = { trigger = { technology = 6090 technology = 6100 NOT = { technology = 14050 } } type = gain_tech which = 14050 } #1946 Air-Land Battle
+		command = { trigger = { technology = 14050 NOT = { technology = 6790 } } type = gain_tech which = 6790 } #1949 Modern Branch Interoperability
+	}
+}
+
+event = {
+	id = 231025
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231025_NAME #"Support Artillery"
+	desc = EVENT_231025_DESC #"The strength of the Italian Military lies in our artillery. We should focus more on advancing the might of our cannons and other pieces of Artillery."
+	style = 2
+	picture = "artillery4"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { technology = 2900 NOT = { technology = 2910 } } type = gain_tech which = 2910 } #1921 Post WK Field Artillery
+		command = { trigger = { technology = 2910 NOT = { technology = 2920 } } type = gain_tech which = 2920 } #1924 Interwar Field Artillery
+		command = { trigger = { technology = 2920 NOT = { technology = 2930 } } type = gain_tech which = 2930 } #1930 Basic Interwar Field Artillery
+		command = { trigger = { technology = 2930 NOT = { technology = 2940 } } type = gain_tech which = 2940 } #1936 Improved Interwar Field Artillery
+		command = { trigger = { technology = 2940 NOT = { technology = 2950 } } type = gain_tech which = 2950 } #1939 Early Field Artillery
+		command = { trigger = { technology = 2940 NOT = { technology = 2320 } } type = gain_tech which = 2320 } #1939 Early Field Artillery
+		command = { trigger = { technology = 2320 NOT = { technology = 2330 } } type = gain_tech which = 2330 } #1940 Basic Field Artillery
+		command = { trigger = { technology = 2330 NOT = { technology = 2340 } } type = gain_tech which = 2340 } #1942 Improved Field Artillery
+		command = { trigger = { technology = 2340 NOT = { technology = 2360 } } type = gain_tech which = 2360 } #1945 Semi-Modern Field Artillery
+		command = { trigger = { technology = 2360 NOT = { technology = 2950 } } type = gain_tech which = 2950 } #1950 Modern Field Artillery
+		
+		command = { trigger = { NOT = { technology = 2400 } } type = gain_tech which = 2400 } #1935 Early Anti-Tank Artillery
+		command = { trigger = { technology = 2400 NOT = { technology = 2410 } } type = gain_tech which = 2410 } #1938 Basic Anti-Tank Artillery
+		command = { trigger = { technology = 2410 NOT = { technology = 2420 } } type = gain_tech which = 2420 } #1940 Improved Anti-Tank Artillery
+		command = { trigger = { technology = 2420 NOT = { technology = 2430 } } type = gain_tech which = 2430 } #1943 Advanced Anti-Tank Artillery
+		
+		command = { trigger = { NOT = { technology = 2970 } } type = gain_tech which = 2970 } #1940 Early Rocket Artillery
+		command = { trigger = { technology = 2970 NOT = { technology = 2370 } } type = gain_tech which = 2370 } #1942 Basic Rocket Artillery
+		command = { trigger = { technology = 2370 NOT = { technology = 2380 } } type = gain_tech which = 2380 } #1945 Improved Rocket Artillery
+		command = { trigger = { technology = 2380 NOT = { technology = 2390 } } type = gain_tech which = 2390 } #1948 Advanced Rocket Artillery
+	}
+}
+
+event = {
+	id = 231026
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231021 #The Creation of the Armata Rossa
+	}
+	
+	decision_trigger = { 
+		supplies = 500
+		money = 100
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231021 #The Creation of the Armata Rossa
+	}
+
+	name = EVENT_231026_NAME #"Centralized Command"
+	desc = EVENT_231026_DESC #"In order to better organize the new Red Army, we need a centralized command structure. While we should still be focusing on superior firepower, we should also rely on the power of our motorized and mechanized division."
+	style = 2
+	picture = "wargames"
+	decision_picture = "decision_grand_offensive3"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { type = event which = 231027 where = -1 when = 90 } #Centralized Command
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { trigger = { ai = no } type = money value = -100 }
+		command = { trigger = { technology = 6020 NOT = { technology = 6040 } } type = gain_tech which = 6040 } #1937 Delay Doctrine
+		command = { trigger = { technology = 6040 NOT = { technology = 6050 } } type = gain_tech which = 6050 } #1938 Mobile Defense Doctrine
+		command = { trigger = { technology = 6020 NOT = { technology = 6060 } } type = gain_tech which = 6060 } #1939 Stand Off Doctrine
+		command = { trigger = { technology = 6060 NOT = { technology = 6070 } } type = gain_tech which = 6070 } #1940 Integrated Support Doctrine
+		command = { trigger = { technology = 6070 NOT = { technology = 6080 } } type = gain_tech which = 6080 } #1942 Regimental Combat Teams
+		command = { trigger = { technology = 6080 NOT = { technology = 6090 } } type = gain_tech which = 6090 } #1943 Combined Arms Defense
+		command = { trigger = { technology = 6080 NOT = { technology = 6100 } } type = gain_tech which = 6100 } #1943 Mechanized Offensive
+		command = { trigger = { technology = 6090 technology = 6100 NOT = { technology = 14050 } } type = gain_tech which = 14050 } #1946 Air-Land Battle
+		command = { trigger = { technology = 14050 NOT = { technology = 6790 } } type = gain_tech which = 6790 } #1949 Modern Branch Interoperability
+	}
+}
+
+event = {
+	id = 231027
+	random = no
+	country = RSI
+
+	trigger = {
+		government = communist
+	}
+
+	name = EVENT_231027_NAME #"Support Motorized and Mechanized units"
+	desc = EVENT_231027_DESC #"We should favor our automotive industry and support Motorized and Mechanized divisions. Speed will be the key to the future of warfare and we should capitalize upon it."
+	style = 2
+	picture = "Chinese Mechanized"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { NOT = { technology = 6900 } } type = gain_tech which = 6900 } #1934 Armor Division Formation
+		
+		command = { trigger = { NOT = { technology = 1396 } } type = gain_tech which = 1396 } #1935 Motorized Infantry Division
+		command = { trigger = { technology = 1396 NOT = { technology = 1400 } } type = gain_tech which = 1400 } #1939 Motorized Infantry Division
+		command = { trigger = { technology = 1400 NOT = { technology = 1410 } } type = gain_tech which = 1410 } #1942 Motorized Infantry Division
+		command = { trigger = { technology = 1410 NOT = { technology = 1420 } } type = gain_tech which = 1420 } #1945 Motorized Infantry Division
+		command = { trigger = { technology = 1420 NOT = { technology = 1430 } } type = gain_tech which = 1430 } #1948 Motorized Infantry Division
+		command = { trigger = { technology = 1430 NOT = { technology = 1440 } } type = gain_tech which = 1440 } #1952 Motorized Infantry 
+		
+		command = { trigger = { NOT = { technology = 1470 } } type = gain_tech which = 1470 } #1942 Mechanized Infantry Division
+		command = { trigger = { technology = 1470 NOT = { technology = 1480 } } type = gain_tech which = 1480 } #1945 Mechanized Infantry Division
+		command = { trigger = { technology = 1480 NOT = { technology = 1490 } } type = gain_tech which = 1490 } #1948 Mechanized Infantry Division
+		command = { trigger = { technology = 1490 NOT = { technology = 1500 } } type = gain_tech which = 1500 } #1952 Mechanized Infantry Division
+	}
+}
