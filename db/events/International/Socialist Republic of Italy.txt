@@ -23,9 +23,19 @@
 # 231022 RSI Formazioni di Difesa Proletaria
 # 231023 RSI Gruppi di Difesa della Donna
 # 231024 RSI Mass Fire Support
-# 231025 RSI Support Artillery
+# 231025 RSI Focus on Artillery
 # 231026 RSI Centralized Command
-# 231027 RSI Support Motorized and Mechanized units
+# 231027 RSI Focus on Motorized and Mechanized units
+# 231028 RSI Assessing the Air Force
+# 231029 RSI Aeronautica Rossa
+# 231030 RSI Focus on Bombers
+# 231031 RSI Focus on Interceptors
+# 231032 RSI Female Pilots
+# 231033 RSI Red Paratroopers
+# 231034 RSI Maintenance Schools
+# 231035 RSI Support Radars
+# 231036 RSI Red Jets
+
 
 event = {
 	id = 231000
@@ -42,8 +52,6 @@ event = {
 	picture = "industry2"
 
 	date = { day = 9 month = january year = 1936 }
-	offset = 31
-	deathdate = { day = 29 month = december year = 1963 }
 
 	action = {
 		name = EVENT_231000_ACTIONA #"Support the Communal Syndicalism plan"
@@ -52,7 +60,6 @@ event = {
 		command = { trigger = { technology = 5070 NOT = { technology = 5130 } } type = gain_tech which = 5130 } #1940 Assembly Line Experimentation
 		command = { trigger = { technology = 5130 NOT = { technology = 5110 } } type = gain_tech which = 5110 } #1945 Production scheduling
 		command = { trigger = { technology = 5110 NOT = { technology = 5120 } } type = gain_tech which = 5120 } #1950 Distributed control system
-		command = { type = local_setflag which = SRI_communal_syndicalism }
 		command = { type = sleepevent which = 231009 } #Nationalization of Industry
 		command = { type = sleepevent which = 231011 } #Modernized Farming
 		command = { type = sleepevent which = 231014 } #Mass Production
@@ -64,7 +71,6 @@ event = {
 		command = { trigger = { technology = 5070 NOT = { technology = 5130 } } type = gain_tech which = 5130 } #1940 Assembly Line Experimentation
 		command = { trigger = { technology = 5130 NOT = { technology = 5110 } } type = gain_tech which = 5110 } #1945 Production scheduling
 		command = { trigger = { technology = 5110 NOT = { technology = 5120 } } type = gain_tech which = 5120 } #1950 Distributed control system
-		command = { type = local_setflag which = SRI_industrial_institute_created }
 		command = { type = sleepevent which = 231005 } #Collective Farming
 		command = { type = sleepevent which = 231007 } #Decentralized Economy
 		command = { type = sleepevent which = 231013 } #Sense of Dedication
@@ -79,7 +85,6 @@ event = {
 	trigger = {
 		event = 231000 #Assessing the Economy
 		government = communist
-		local_flag = SRI_communal_syndicalism
 	}
 
 	name = EVENT_231001_NAME #"Communal Syndicalism"
@@ -94,7 +99,6 @@ event = {
 		command = { type = industrial_modifier which = metal value = 10 }
 		command = { type = industrial_modifier which = rare_materials value = 10 }
 		command = { type = industrial_modifier which = oil value = 10 }
-		command = { type = local_clrflag which = SRI_communal_syndicalism }
 	}
 }
 
@@ -106,7 +110,6 @@ event = {
 	trigger = { 
 		event = 231000 #Assessing the Economy
 		government = communist
-		local_flag = SRI_industrial_institute_created
 	}
 
 	name = EVENT_231002_NAME #"The creation of the IRI"
@@ -118,7 +121,6 @@ event = {
 		name = "ACTION_NAME_GOOD"
 		command = { type = industrial_modifier which = supplies value = 5 }
 		command = { type = industrial_modifier which = ic value = 10 }
-		command = { type = local_clrflag which = SRI_industrial_institute_created }
 	}
 }
 
@@ -245,6 +247,7 @@ event = {
 
 	action = {
 		name = ACTION_NAME_EXCELLENT
+		command = { }
 		#if RSI doesn't have tech 5020 and 5030 it gets both (5020 is an old tech so it would be researched fast anyway)
 		command = { trigger = { technology = 5010 NOT = { technology = 5020 } } type = gain_tech which = 5020 } #1928 Mechanized Agriculture
 		command = { trigger = { technology = 5010 NOT = { technology = 5020 } NOT = { technology = 5030 } } type = gain_tech which = 5030 } #1937 Agrichemistry
@@ -414,6 +417,7 @@ event = {
 
 	action = {
 		name = ACTION_NAME_OK
+		command = { }
 		command = { trigger = { ai = no } type = supplies value = -500 }
 		#if RSI doesn't have tech 5020 and 5030 it gets both (5020 is an old tech so it would be researched fast anyway)
 		command = { trigger = { technology = 5010 NOT = { technology = 5020 } } type = gain_tech which = 5020 } #1928 Mechanized Agriculture
@@ -537,6 +541,7 @@ event = {
 
 	action = {
 		name = ACTION_NAME_OK
+		command = { }
 		command = { trigger = { ai = no } type = money value = -100 }
 		command = { trigger = { technology = 54030 NOT = { technology = 5320 } } type = gain_tech which = 5320 } #1937 Basic Computing Machine
 		command = { trigger = { technology = 5320 NOT = { technology = 5330 } } type = gain_tech which = 5330 } #1940 Improved Computing Machine
@@ -583,6 +588,7 @@ event = {
 
 	action = {
 		name = ACTION_NAME_OK
+		command = { }
 		command = { trigger = { ai = no } type = money value = -100 }
 		#if RSI doesn't have tech 5190 and 5200 it gets both (5190 is an old tech so it would be researched fast anyway)
 		command = { trigger = { NOT = { technology = 5190 } } type = gain_tech which = 5190 } #1914 Basic Oil Refining
@@ -667,7 +673,7 @@ event = {
 	style = 2
 	picture = "military_parade"
 
-	date = { day = 8 month = january year = 1936 }
+	date = { day = 14 month = january year = 1936 }
 
 	action = {
 		name = ACTION_NAME_OK
@@ -698,7 +704,7 @@ event = {
 	}
 
 	name = EVENT_231019_NAME #"The Guardie Rosse"
-	desc = EVENT_231019_DESC #"Since the civil war in 1919, the Italian military is still based on worker's militias known as the Guardie Rosse or Red Guards. While these local militias are popular and able to recruit many volunteers, they seem disregardful for some of the finer concepts for warfare, such as the need for centralized command. Perhaps a less popular but more professional army will be the key to win the next wars.\n \n \n§006Note that keeping but reforming the Red Guards will partially reduce §006the bonuses while greatly reducing the penalties. Creating the Red §006Army on the other hand will completely remove both the bonuses and §006the penalties."
+	desc = EVENT_231019_DESC #"Since the civil war in 1919, the Italian military is still based on worker's militias known as the Guardie Rosse or Red Guards. While these local militias are popular and able to recruit many volunteers, they seem disregardful for some of the finer concepts for warfare, such as the need for centralized command. Perhaps a less popular but more professional army will be the key to win the next wars.\n \n \nยง006Note that keeping but reforming the Red Guards will partially reduce ยง006the bonuses while greatly reducing the penalties. Creating the Red ยง006Army on the other hand will completely remove both the bonuses and ยง006the penalties."
 	style = 2
 	picture = "militia"
 	decision_picture = "decision_italian_mobilization"
@@ -718,7 +724,7 @@ event = {
 		command = { type = event which = 231020 where = -1 when = 60 } #The Reformation of the Guardie Rosse
 		command = { type = sleepevent which = 231021 } #The Creation of the Armata Rossa
 		command = { type = sleepevent which = 231026 } #Centralized Command
-		command = { type = sleepevent which = 231027 } #Support Motorized and Mechanized units
+		command = { type = sleepevent which = 231027 } #Focus on Motorized and Mechanized units
 	}
 	action = {
 		name = EVENT_231019_ACTIONB #Create the Red Army
@@ -731,7 +737,7 @@ event = {
 		command = { type = event which = 231021 where = -1 when = 60 } #The Creation of the Armata Rossa
 		command = { type = sleepevent which = 231020 } #The Reformation of the Guardie Rosse
 		command = { type = sleepevent which = 231024 } #Mass Fire Support
-		command = { type = sleepevent which = 231025 } #Support Artillery
+		command = { type = sleepevent which = 231025 } #Focus on Artillery
 	}
 }
 
@@ -769,7 +775,7 @@ event = {
 	}
 
 	name = EVENT_231021_NAME #"The Creation of the Armata Rossa"
-	desc = EVENT_231021_DESC #"he Red Guards are a relic of the Civil War and are no longer needed. In their place, we need to train a true professional Armata Rossa, or Red Army, that will be able to defend the Republic from all enemies. With this process, all units of the Red Guards will be turned into units of the new Red Army. Doing so however will require planning and will be unpopular."
+	desc = EVENT_231021_DESC #"The Red Guards are a relic of the Civil War and are no longer needed. In their place, we need to train a true professional Armata Rossa, or Red Army, that will be able to defend the Republic from all enemies. With this process, all units of the Red Guards will be turned into units of the new Red Army. Doing so however will require planning and will be unpopular."
 	style = 2
 	picture = "military_parade"
 
@@ -820,6 +826,7 @@ event = {
 
 	action = {
 		name = ACTION_NAME_GREAT
+		command = { }
 		command = { trigger = { ai = no } type = money value = -100 }
 		command = { trigger = { technology = 14010 NOT = { technology = 14020 } } type = gain_tech which = 14020 } #1924 Early Hospital System
 		command = { trigger = { technology = 14020 NOT = { technology = 14030 } } type = gain_tech which = 14030 } #1936 Basic Hospital System
@@ -852,7 +859,7 @@ event = {
 	}
 
 	name = EVENT_231023_NAME #"Gruppi di Difesa della Donna"
-	desc = EVENT_231023_DESC #"The young minister Ada Gobetti has put forward a motion to create the Gruppi di Difesa della Donna or Women’s Defense Groups. These shall be an organization to train female soldier that will serve in all-female units. Moreover, by giving support to the group, it will encorge more women to enlist in the army to defend the revolutionary ideals we are fighting for."
+	desc = EVENT_231023_DESC #"The young minister Ada Gobetti has put forward a motion to create the Gruppi di Difesa della Donna or Women's Defense Groups. These shall be an organization to train female soldier that will serve in all-female units. Moreover, by giving support to the group, it will encorge more women to enlist in the army to defend the revolutionary ideals we are fighting for."
 	style = 2
 	picture = "womeninarmedforces"
 	decision_picture = "decision_womenarmedforces"
@@ -906,7 +913,7 @@ event = {
 
 	action = {
 		name = ACTION_NAME_GOOD
-		command = { type = event which = 231025 where = -1 when = 90 } #Support Artillery
+		command = { type = event which = 231025 where = -1 when = 90 } #Focus on Artillery
 		command = { trigger = { ai = no } type = supplies value = -500 }
 		command = { trigger = { ai = no } type = money value = -100 }
 		command = { trigger = { technology = 6020 NOT = { technology = 6040 } } type = gain_tech which = 6040 } #1937 Delay Doctrine
@@ -930,7 +937,7 @@ event = {
 		government = communist
 	}
 
-	name = EVENT_231025_NAME #"Support Artillery"
+	name = EVENT_231025_NAME #"Focus on Artillery"
 	desc = EVENT_231025_DESC #"The strength of the Italian Military lies in our artillery. We should focus more on advancing the might of our cannons and other pieces of Artillery."
 	style = 2
 	picture = "artillery4"
@@ -957,7 +964,7 @@ event = {
 		command = { trigger = { NOT = { technology = 2970 } } type = gain_tech which = 2970 } #1940 Early Rocket Artillery
 		command = { trigger = { technology = 2970 NOT = { technology = 2370 } } type = gain_tech which = 2370 } #1942 Basic Rocket Artillery
 		command = { trigger = { technology = 2370 NOT = { technology = 2380 } } type = gain_tech which = 2380 } #1945 Improved Rocket Artillery
-		command = { trigger = { technology = 2380 NOT = { technology = 2390 } } type = gain_tech which = 2390 } #1948 Advanced Rocket Artillery
+		command = { trigger = { technology = 2380 NOT = { technology = 2390 } } type = gain_tech which = 2390 } #1948 Advanced Rocket 
 	}
 }
 
@@ -993,7 +1000,7 @@ event = {
 
 	action = {
 		name = ACTION_NAME_GOOD
-		command = { type = event which = 231027 where = -1 when = 90 } #Centralized Command
+		command = { type = event which = 231027 where = -1 when = 90 } #Focus on Motorized and Mechanized units
 		command = { trigger = { ai = no } type = supplies value = -500 }
 		command = { trigger = { ai = no } type = money value = -100 }
 		command = { trigger = { technology = 6020 NOT = { technology = 6040 } } type = gain_tech which = 6040 } #1937 Delay Doctrine
@@ -1017,7 +1024,7 @@ event = {
 		government = communist
 	}
 
-	name = EVENT_231027_NAME #"Support Motorized and Mechanized units"
+	name = EVENT_231027_NAME #"Focus on Motorized and Mechanized units"
 	desc = EVENT_231027_DESC #"We should favor our automotive industry and support Motorized and Mechanized divisions. Speed will be the key to the future of warfare and we should capitalize upon it."
 	style = 2
 	picture = "Chinese Mechanized"
@@ -1040,3 +1047,393 @@ event = {
 		command = { trigger = { technology = 1490 NOT = { technology = 1500 } } type = gain_tech which = 1500 } #1952 Mechanized Infantry Division
 	}
 }
+
+
+event = {
+	id = 231028
+	random = no
+	country = RSI
+
+	trigger = {
+		government = communist
+	}
+
+	name = EVENT_231028_NAME #"Assessing the Air Force"
+	desc = EVENT_231028_DESC #"After reviewing the state of our army, now it's the time to assess the state of our Air Force."
+	style = 2
+	picture = "swedish_planes"
+
+	date = { day = 19 month = january year = 1936 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+event = {
+	id = 231029
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231028 #Assessing the Air Force
+	}
+	
+	decision_trigger = { 
+		supplies = 1000
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231028 #Assessing the Air Force
+	}
+
+	name = EVENT_231029_NAME #"Aeronautica Rossa"
+	desc = EVENT_231029_DESC #"The Aeronautica Rossa, or Red Air Force, is the aerial defence force of the Socialist Republic of Italy. In the past this branch of our military forces suffered from very limited investements, but now it's the time to change the situation. However, we should first decide our priorities. Should our air force focus on supporting the army or dominating the skies?"
+	style = 2
+	picture = "sovietairforce"
+	decision_picture = "decision_planes"
+
+	date = { day = 19 month = january year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = EVENT_231029_ACTIONA #The Air Force will support our Army
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { type = task_efficiency which = ground_attack value = 0.1 }
+		command = { type = task_efficiency which = interdiction value = 0.1 }
+		command = { trigger = { NOT = { technology = 9090 } } type = gain_tech which = 9090 } #1936 Operational Destruction Doctrine
+		command = { trigger = { technology = 9090 NOT = { technology = 9100 } } type = gain_tech which = 9100 } #1938 Battlefield Interdiction Doctrine
+		command = { trigger = { technology = 9090 NOT = { technology = 9110 } } type = gain_tech which = 9110 } #1938 Strafing Doctrine
+		command = { trigger = { technology = 9090 NOT = { technology = 9120 } } type = gain_tech which = 9120 } #1938 Logistical Strike Doctrine
+		command = { trigger = { technology = 9100 technology = 9110 technology = 9120 NOT = { technology = 9130 } } type = gain_tech which = 9130 } #1939 Night Strafing Doctrine
+		command = { trigger = { technology = 9130 NOT = { technology = 9360 } } type = gain_tech which = 9360 } #1942 Infiltration Bombardment Doctrine
+		command = { trigger = { technology = 9130 NOT = { technology = 9370 } } type = gain_tech which = 9370 } #1942 Carousel Bombardment Doctrine
+		command = { trigger = { technology = 9130 NOT = { technology = 9380 } } type = gain_tech which = 9380 } #1943 Key point Bombardment Doctrine
+		command = { type = event which = 231030 where = -1 when = 60 } #Focus on Bombers
+		command = { type = sleepevent which = 231031 } #Focus on Interceptors
+		command = { type = sleepevent which = 231034 } #Maintenance Schools
+	}
+	action = {
+		name = EVENT_231029_ACTIONB #The Air Force will achieve Air Supremacy
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { type = task_efficiency which = air_superiority value = 0.1 }
+		command = { trigger = { technology = 9010 NOT = { technology = 9190 } } type = gain_tech which = 9190 } #1939 First Strike
+		command = { trigger = { technology = 9190 NOT = { technology = 9200 } } type = gain_tech which = 9200 } #1939 Dispersed Fighting Doctrine
+		command = { trigger = { technology = 9190 NOT = { technology = 9210 } } type = gain_tech which = 9210 } #1939 Frontal Missions Doctrine
+		command = { trigger = { technology = 9190 NOT = { technology = 9220 } } type = gain_tech which = 9220 } #1939 Frontal Missions Doctrine
+		command = { trigger = { technology = 9200 technology = 9210 technology = 9220 NOT = { technology = 9310 } } type = gain_tech which = 9310 } #1942 Offensive Fighter Box doctrine
+		command = { trigger = { technology = 9310 NOT = { technology = 9320 } } type = gain_tech which = 9320 } #1943 Fighter Baiting Doctrine
+		command = { trigger = { technology = 9310 NOT = { technology = 9330 } } type = gain_tech which = 9330 } #1943 Dogfight Experiment Doctrine
+		command = { trigger = { technology = 9310 NOT = { technology = 9340 } } type = gain_tech which = 9340 } #1943 Fighter Ace Initiative
+		command = { type = event which = 231031 where = -1 when = 60 } #Focus on Interceptors
+		command = { type = sleepevent which = 231030 } #Focus on Bombers
+		command = { type = sleepevent which = 231033 } #Red Paratroopers
+	}
+}
+
+event = {
+	id = 231030
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231030_NAME #"Focus on Bombers"
+	desc = EVENT_231030_DESC #"As part of our campaign to support the army from the air, we should invest resources in our bombers."
+	style = 2
+	picture = "RusAirAssault"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { technology = 4130 NOT = { technology = 4140 } } type = gain_tech which = 4140 } #1938 Tactical Bomber
+		command = { trigger = { technology = 4140 NOT = { technology = 4150 } } type = gain_tech which = 4150 } #1940 Tactical Bomber
+		command = { trigger = { technology = 4150 NOT = { technology = 4160 } } type = gain_tech which = 4160 } #1943 Tactical Bomber
+		command = { trigger = { technology = 4160 NOT = { technology = 15100 } } type = gain_tech which = 15100 } #1945 Turbojet Tactical Bomber
+		command = { trigger = { technology = 15100 NOT = { technology = 15110 } } type = gain_tech which = 15110 } #1949 Turbojet Tactical Bomber
+		command = { trigger = { technology = 15110 NOT = { technology = 4640 } } type = gain_tech which = 4640 } #1954 Turbojet Tactical Bomber
+	}
+}
+
+event = {
+	id = 231031
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231031_NAME #"Focus on Interceptors"
+	desc = EVENT_231031_DESC #"As part of our campaign to rule the skies, we should invest resources in our interceptors."
+	style = 2
+	picture = "bra_wreckairforce"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { technology = 4020 NOT = { technology = 4030 } } type = gain_tech which = 4030 } #1937 Interceptor
+		command = { trigger = { technology = 4030 NOT = { technology = 4060 } } type = gain_tech which = 4060 } #1940 Interceptor
+		command = { trigger = { technology = 4060 NOT = { technology = 4090 } } type = gain_tech which = 4090 } #1942 Interceptor
+		command = { trigger = { technology = 4090 NOT = { technology = 15000 } } type = gain_tech which = 15000 } #1944 Turbojet Interceptor
+		command = { trigger = { technology = 15000 NOT = { technology = 15010 } } type = gain_tech which = 15010 } #1947 Turbojet Interceptor
+		command = { trigger = { technology = 15010 NOT = { technology = 15020 } } type = gain_tech which = 15020 } #1950 Supersonic Interceptor
+	}
+}
+
+event = {
+	id = 231032
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		OR = {
+			event = 231030 #Focus on Bombers
+			event = 231031 #Focus on Interceptors
+		}
+	}
+	
+	decision_trigger = { 
+		supplies = 200
+	}
+	
+	trigger = { 
+		government = communist
+		OR = {
+			event = 231030 #Focus on Bombers
+			event = 231031 #Focus on Interceptors
+		}
+	}
+
+	name = EVENT_231032_NAME #"Women Pilots"
+	desc = EVENT_231032_DESC #"We should support our female aviators who wish to join the air force and let them be combat pilots like the men."
+	style = 2
+	picture = "womeninarmedforces"
+	decision_picture = "decision_womenarmedforces"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GREAT
+		command = { type = dissent value = 1 }
+		command = { trigger = { ai = no } type = supplies value = -200 }
+		command = { type = relative_manpower value = 1 }
+		command = { type = manpowerpool value = 0.5 when = 1 }
+	}
+	action = {
+		name = ACTION_NAME_NO_NEED
+		command = { } #
+	}
+}
+
+event = {
+	id = 231033
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231030 #Focus on Bombers
+	}
+	
+	decision_trigger = { 
+		supplies = 300
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231030 #Focus on Bombers
+	}
+
+	name = EVENT_231033_NAME #"Red Paratroopers"
+	desc = EVENT_231033_DESC #"As part of our campaign to support the army from the air, we should invest resources in training paratroopers as a culmination of our combined forces doctrine."
+	style = 2
+	picture = "training1"
+	decision_picture = "decision_foreign_volunteers"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -300 }
+		command = { trigger = { NOT = { technology = 4290 } } type = gain_tech which = 4290 } #1926 Transport Plane
+		command = { trigger = { technology = 4290 NOT = { technology = 4250 } } type = gain_tech which = 4250 } #1934 Transport Plane
+		command = { trigger = { technology = 4250 NOT = { technology = 4260 } } type = gain_tech which = 4260 } #1938 Transport Plane
+		command = { trigger = { technology = 4260 NOT = { technology = 4270 } } type = gain_tech which = 4270 } #1941 Transport Plane
+		command = { trigger = { technology = 4270 NOT = { technology = 15180 } } type = gain_tech which = 15180 } #1944 Transport Plane
+		command = { trigger = { technology = 15180 NOT = { technology = 15190 } } type = gain_tech which = 15190 } #1950 Transport Plane
+		command = { trigger = { NOT = { technology = 1670 } } type = gain_tech which = 1670 } #1938 Airborne Infantry
+		command = { trigger = { technology = 1670 NOT = { technology = 1680 } } type = gain_tech which = 1680 } #1941 Airborne Infantry
+		command = { trigger = { technology = 1680 NOT = { technology = 1690 } } type = gain_tech which = 1690 } #1944 Airborne Infantry
+		command = { trigger = { technology = 1690 NOT = { technology = 1700 } } type = gain_tech which = 1700 } #1947 Airborne Infantry
+		command = { trigger = { technology = 1700 NOT = { technology = 1710 } } type = gain_tech which = 1710 } #1950 Airborne Infantry
+	}
+}
+
+event = {
+	id = 231034
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231031 #Focus on Interceptors
+	}
+	
+	decision_trigger = { 
+		supplies = 300
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231031 #Focus on Interceptors
+	}
+
+	name = EVENT_231034_NAME #"Maintenance Schools"
+	desc = EVENT_231034_DESC #"We should focus on maintenance schools to keep our planes up in the air longer."
+	style = 2
+	picture = "Captured_Supplies3"
+	decision_picture = "decision_planes"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -300 }
+		command = { type = task_efficiency which = interdiction value = 0.05 }
+		command = { type = air_defense where = interceptor value = -1 }
+	}
+}
+
+event = {
+	id = 231035
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		OR = {
+			event = 231033 #Red Paratroopers
+			event = 231034 #Maintenance Schools
+		}
+	}
+	
+	decision_trigger = { 
+		supplies = 300
+	}
+	
+	trigger = { 
+		government = communist
+		OR = {
+			event = 231033 #Red Paratroopers
+			event = 231034 #Maintenance Schools
+		}
+	}
+
+	name = EVENT_231035_NAME #"Support Radars"
+	desc = EVENT_231035_DESC #"We should support radar technology so that we can make sure that we can spot the enemy before they ever come within the Republic's air space."
+	style = 2
+	picture = "invest_research"
+	decision_picture = "decision_industry"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -300 }
+		command = { trigger = { NOT = { technology = 5410 } } type = gain_tech which = 5410 } #1936 Basic Decimetric Radar Warning Sites
+		command = { trigger = { technology = 5410 NOT = { technology = 5416 } } type = gain_tech which = 5416 } #1937 Early Surface Radar Application
+		command = { trigger = { technology = 5416 NOT = { technology = 5417 } } type = gain_tech which = 5417 } #1939 Early Search Radar Application
+		command = { trigger = { technology = 5417 NOT = { technology = 5420 } } type = gain_tech which = 5420 } #1940 Improved Decimetric Radar Warning Sites
+		command = { trigger = { technology = 5420 NOT = { technology = 5426 } } type = gain_tech which = 5426 } #1941 First Air Radar Application
+		command = { trigger = { technology = 5420 NOT = { technology = 5430 } } type = gain_tech which = 5430 } #1942 Advanced Decimetric Radar Warning Sites
+		command = { trigger = { technology = 5430 NOT = { technology = 5440 } } type = gain_tech which = 5440 } #1944 Basic Centimetric Radar Warning Sites
+		command = { trigger = { technology = 5440 NOT = { technology = 5446 } } type = gain_tech which = 5446 } #1945 Improved On Board Application
+		command = { trigger = { technology = 5440 NOT = { technology = 5450 } } type = gain_tech which = 5450 } #1946 Improved Centimetric Radar Warning Sites
+		command = { trigger = { technology = 5450 NOT = { technology = 5460 } } type = gain_tech which = 5460 } #1949 Advanced Centimetric Radar Warning Sites
+		command = { trigger = { technology = 5460 NOT = { technology = 53030 } } type = gain_tech which = 53030 } #1952 Modern Centimetric Radar Warning Sites
+	}
+}
+
+event = {
+	id = 231036
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		OR = {
+			event = 231033 #Red Paratroopers
+			event = 231034 #Maintenance Schools
+		}
+	}
+	
+	decision_trigger = { 
+		event = 231035 #Support Radars
+		supplies = 300
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231035 #Support Radars
+		OR = {
+			event = 231033 #Red Paratroopers
+			event = 231034 #Maintenance Schools
+		}
+	}
+
+	name = EVENT_231036_NAME #"Red Jets"
+	desc = EVENT_231036_DESC #"We should focus on jet technology to make our air-force the most modern airforce in the world."
+	style = 2
+	picture = "swedish_planes"
+	decision_picture = "decision_planes"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -300 }
+		command = { trigger = { NOT = { technology = 5560 } } type = gain_tech which = 5560 } #1928 Experimental Rocket Engine
+		command = { trigger = { NOT = { technology = 7550 } } type = gain_tech which = 7550 } #1931 Rocket Test and Research Facility
+		command = { trigger = { technology = 7550 NOT = { technology = 7560 } } type = gain_tech which = 7560 } #1939 Rocket Engine
+		command = { trigger = { technology = 7560 NOT = { technology = 7570 } } type = gain_tech which = 7570 } #1939 Turbojet Engine
+		command = { trigger = { technology = 7570 NOT = { technology = 15500 } } type = gain_tech which = 15500 } #1943 Practical Turbojet Engine
+	}
+}
+
+# 231037 RSI Assessing the Navy
+# 231038 RSI Modernization of the Navy -> decisione che in cambio di supplies ha due scelte A Grand Navy che ha effetti e chiama 231036 Destroy Capitalism dopo 90 giorni o Defend the Coasts che ha effetti e chiama 231037 Cuf Off Capitalism dopo 90 giorni
+# 231039 RSI Destroy Capitalism
+# 231040 RSI Cuf Off Capitalism
+# 231041 RSI Red Marines -> decisione
+# 231042 RSI Favor Battleships -> decisione che in cambio di supplies ha effetti e chiama 231043 Favor Battlecruisers dopo 90 giorni
+# 231043 RSI Favor Carriers -> decisione che in cambio di supplies ha effetti e chiama 231044 Naval Aircrafts dopo 90 giorni
+# 231044 RSI Favor Destroyers -> decisione che in cambio di supplies ha effetti e chiama 231045 Favor Heavy Cruisers dopo 90 giorni
+# 231045 RSI Favor Submarines -> decisione che in cambio di supplies ha effetti e chiama 231046 Favor Light Cruisers dopo 90 giorni
+# 231046 RSI Favor Battlecruisers
+# 231047 RSI Naval Aircrafts
+# 231048 RSI Favor Heavy Cruisers
+# 231049 RSI Favor Light Cruisers
