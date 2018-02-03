@@ -54,7 +54,7 @@ diplomacy = {
 	relation = { tag = ITA		value = -50		}
 	relation = { tag = RSI		value = -120	}
 	relation = { tag = UA0		value = -50		}
-	relation = { tag = UA2		value = 180		}
+	relation = { tag = UA2		value = 180	 guaranteed = { day = 16 month = may year = 1935 } }
 }
 
 techapps = {
