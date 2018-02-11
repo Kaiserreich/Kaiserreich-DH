@@ -35,6 +35,19 @@
 # 231034 RSI Maintenance Schools
 # 231035 RSI Support Radars
 # 231036 RSI Red Jets
+# 231037 RSI Assessing the Navy
+# 231038 RSI Modernization of the Navy
+# 231039 RSI Destroy Capitalism
+# 231040 RSI Cut Off Capitalism
+# 231041 RSI Red Marines
+# 231042 RSI Focus on Battleships
+# 231043 RSI Focus on Battlecruisers
+# 231044 RSI Focus on Carriers
+# 231045 RSI Naval Aircrafts
+# 231046 RSI Focus on Destroyers
+# 231047 RSI Focus on Heavy Cruisers
+# 231048 RSI Focus on Submarines
+# 231049 RSI Focus on Light Cruisers
 
 
 event = {
@@ -704,7 +717,7 @@ event = {
 	}
 
 	name = EVENT_231019_NAME #"The Guardie Rosse"
-	desc = EVENT_231019_DESC #"Since the civil war in 1919, the Italian military is still based on worker's militias known as the Guardie Rosse or Red Guards. While these local militias are popular and able to recruit many volunteers, they seem disregardful for some of the finer concepts for warfare, such as the need for centralized command. Perhaps a less popular but more professional army will be the key to win the next wars.\n \n \nยง006Note that keeping but reforming the Red Guards will partially reduce ยง006the bonuses while greatly reducing the penalties. Creating the Red ยง006Army on the other hand will completely remove both the bonuses and ยง006the penalties."
+	desc = EVENT_231019_DESC #"Since the civil war in 1919, the Italian military is still based on worker's militias known as the Guardie Rosse or Red Guards. While these local militias are popular and able to recruit many volunteers, they seem disregardful for some of the finer concepts for warfare, such as the need for centralized command. Perhaps a less popular but more professional army will be the key to win the next wars. Note that keeping but reforming the Red Guards will partially reduce the bonuses while greatly reducing the penalties. Creating the Red Army on the other hand will completely remove both the bonuses and the penalties."
 	style = 2
 	picture = "militia"
 	decision_picture = "decision_italian_mobilization"
@@ -1047,7 +1060,6 @@ event = {
 		command = { trigger = { technology = 1490 NOT = { technology = 1500 } } type = gain_tech which = 1500 } #1952 Mechanized Infantry Division
 	}
 }
-
 
 event = {
 	id = 231028
@@ -1424,16 +1436,477 @@ event = {
 	}
 }
 
-# 231037 RSI Assessing the Navy
-# 231038 RSI Modernization of the Navy -> decisione che in cambio di supplies ha due scelte A Grand Navy che ha effetti e chiama 231036 Destroy Capitalism dopo 90 giorni o Defend the Coasts che ha effetti e chiama 231037 Cuf Off Capitalism dopo 90 giorni
-# 231039 RSI Destroy Capitalism
-# 231040 RSI Cuf Off Capitalism
-# 231041 RSI Red Marines -> decisione
-# 231042 RSI Favor Battleships -> decisione che in cambio di supplies ha effetti e chiama 231043 Favor Battlecruisers dopo 90 giorni
-# 231043 RSI Favor Carriers -> decisione che in cambio di supplies ha effetti e chiama 231044 Naval Aircrafts dopo 90 giorni
-# 231044 RSI Favor Destroyers -> decisione che in cambio di supplies ha effetti e chiama 231045 Favor Heavy Cruisers dopo 90 giorni
-# 231045 RSI Favor Submarines -> decisione che in cambio di supplies ha effetti e chiama 231046 Favor Light Cruisers dopo 90 giorni
-# 231046 RSI Favor Battlecruisers
-# 231047 RSI Naval Aircrafts
-# 231048 RSI Favor Heavy Cruisers
-# 231049 RSI Favor Light Cruisers
+event = {
+	id = 231037
+	random = no
+	country = RSI
+
+	trigger = {
+		government = communist
+	}
+
+	name = EVENT_231037_NAME #"Assessing the Navy"
+	desc = EVENT_231037_DESC #"After reviewing the state of our army and our air force, now it's the time to assess the state of our Navy."
+	style = 2
+	picture = "britishfleet"
+
+	date = { day = 24 month = january year = 1936 }
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { }
+	}
+}
+
+event = {
+	id = 231038
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231037 #Assessing the Navy
+	}
+	
+	decision_trigger = { 
+		supplies = 1000
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231037 #Assessing the Navy
+	}
+
+	name = EVENT_231038_NAME #"Modernization of the Navy"
+	desc = EVENT_231038_DESC #"Our navy needs to be modernized to properly defend our country. We have at our disposal the vast shipyards of the industrial heart of Italy and it is time to take advantage of them. A collaboration between our various industrial unions and the military unions will be necessary in order to achieve this objective."
+	style = 2
+	picture = "britishfleet"
+	decision_picture = "decision_mornarica"
+
+	date = { day = 24 month = january year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = EVENT_231038_ACTIONA #A Grand Navy
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { type = task_efficiency which = naval_combat_patrol value = 0.1 }
+		command = { type = task_efficiency which = naval_interdiction value = 0.1 }
+ 		command = { type = construct which = ic where = 396 value = 1 } #Genoa
+		command = { type = event which = 231039 where = -1 when = 60 } #Destroy Capitalism
+		command = { type = sleepevent which = 231040 } #Cut Off Capitalism
+		command = { type = sleepevent which = 231046 } #Focus on Destroyers
+		command = { type = sleepevent which = 231047 } #Focus on Heavy Cruisers
+		command = { type = sleepevent which = 231048 } #Focus on Submarines
+		command = { type = sleepevent which = 231049 } #Focus on Light Cruisers
+	}
+	action = {
+		name = EVENT_231038_ACTIONB #Destroy international trade
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { type = task_efficiency which = convoy_raiding value = 0.1 }
+ 		command = { type = construct which = ic where = 396 value = 1 } #Genoa
+		command = { type = event which = 231040 where = -1 when = 60 } #Cut Off Capitalism
+		command = { type = sleepevent which = 231039 } #Destroy Capitalism
+		command = { type = sleepevent which = 231042 } #Focus on Battleships
+		command = { type = sleepevent which = 231043 } #Focus on Battlecruisers
+		command = { type = sleepevent which = 231044 } #Focus on Carriers
+		command = { type = sleepevent which = 231045 } #Naval Aircrafts
+	}
+}
+
+event = {
+	id = 231039
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231039_NAME #"Destroy Capitalism"
+	desc = EVENT_231039_DESC #"We should focus on a grand navy, a navy to rival all others and be the envy of the International. Our Navy shall be able to go throughout the world to help spread the revolution."
+	style = 2
+	picture = "ahfleet"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { NOT = { technology = 8900 } } type = gain_tech which = 8900 } #1910 Fleet-in-Being
+		command = { trigger = { NOT = { technology = 8910 } } type = gain_tech which = 8910 } #1910 Battle Fleet Concentration
+		command = { trigger = { NOT = { technology = 8920 } } type = gain_tech which = 8920 } #1914 Concentrated Firepower
+		command = { trigger = { NOT = { technology = 8930 } } type = gain_tech which = 8930 } #1918 Focused Fire
+		command = { trigger = { NOT = { technology = 8940 } } type = gain_tech which = 8940 } #1925 Escort Submarine
+		command = { trigger = { NOT = { technology = 8950 } } type = gain_tech which = 8950 } #1930 Floating Fortress
+		command = { trigger = { technology = 8950 NOT = { technology = 8960 } } type = gain_tech which = 8960 } #1936 Modern Port Blockades
+		command = { trigger = { technology = 8960 NOT = { technology = 8970 } } type = gain_tech which = 8970 } #1938 Decisives Battles
+		command = { trigger = { technology = 8970 NOT = { technology = 8980 } } type = gain_tech which = 8980 } #1940 Massive Strike
+		command = { trigger = { technology = 8980 NOT = { technology = 81050 } } type = gain_tech which = 81050 } #1946 Modern Firepower
+		command = { trigger = { technology = 81050 NOT = { technology = 81060 } } type = gain_tech which = 81060 } #1948 Modern Cruisers Role
+		command = { trigger = { technology = 81060 NOT = { technology = 81070 } } type = gain_tech which = 81070 } #1950 Escort / Support
+	}
+}
+
+event = {
+	id = 231040
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231040_NAME #"Cut Off Capitalism"
+	desc = EVENT_231040_DESC #"Our navy should be used to destroy the fleets of the capitalist and reactionary forces in the world, cutting off the international trade that capitalism relies on."
+	style = 2
+	picture = "germancruisers1"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { NOT = { technology = 81300 } } type = gain_tech which = 81300 } #1910 Indirect Approach
+		command = { trigger = { NOT = { technology = 81310 } } type = gain_tech which = 81310 } #1910 Fleet Interdiction
+		command = { trigger = { NOT = { technology = 81320 } } type = gain_tech which = 81320 } #1914 Distraction Manoeuvres
+		command = { trigger = { NOT = { technology = 81330 } } type = gain_tech which = 81330 } #1918 Fleet Interdiction
+		command = { trigger = { NOT = { technology = 81340 } } type = gain_tech which = 81340 } #1925 Hunter-Seekers Submarine
+		command = { trigger = { NOT = { technology = 81350 } } type = gain_tech which = 81350 } #1930 Encounter Groups
+		command = { trigger = { technology = 81350 NOT = { technology = 81360 } } type = gain_tech which = 81360 } #1936 Task Forces
+		command = { trigger = { technology = 81360 NOT = { technology = 81370 } } type = gain_tech which = 81370 } #1938 Decisive Interdiction
+		command = { trigger = { technology = 81370 NOT = { technology = 81380 } } type = gain_tech which = 81380 } #1940 Naval Attrition
+		command = { trigger = { technology = 8980 NOT = { technology = 81050 } } type = gain_tech which = 81050 } #1946 Modern Firepower
+		command = { trigger = { technology = 81050 NOT = { technology = 81060 } } type = gain_tech which = 81060 } #1948 Modern Cruisers Role
+		command = { trigger = { technology = 81060 NOT = { technology = 81070 } } type = gain_tech which = 81070 } #1950 Escort / Support
+	}
+}
+
+
+event = {
+	id = 231041
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		OR = {
+			event = 231039 #Destroy Capitalism
+			event = 231040 #Cut Off Capitalism
+		}
+	}
+	
+	decision_trigger = { 
+		supplies = 300
+	}
+	
+	trigger = { 
+		government = communist
+		OR = {
+			event = 231039 #Destroy Capitalism
+			event = 231040 #Cut Off Capitalism
+		}
+	}
+
+	name = EVENT_231041_NAME #"Red Marines"
+	desc = EVENT_231041_DESC #"Regardless of our policy in the nature and focus of the Navy, we should support the Marines and make sure that they are given all the support that they need."
+	style = 2
+	picture = "training1"
+	decision_picture = "decision_foreign_volunteers"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -300 }
+		command = { trigger = { NOT = { technology = 1560 } } type = gain_tech which = 1560 } #1922 Marine Division
+		command = { trigger = { NOT = { technology = 1570 } } type = gain_tech which = 1570 } #1925 Marine Division
+		command = { trigger = { NOT = { technology = 1580 } } type = gain_tech which = 1580 } #1931 Marine Division
+		command = { trigger = { technology = 1580 NOT = { technology = 1590 } } type = gain_tech which = 1590 } #1937 Marine Division
+		command = { trigger = { technology = 1590 NOT = { technology = 1600 } } type = gain_tech which = 1600 } #1940 Marine Division
+		command = { trigger = { technology = 1600 NOT = { technology = 1610 } } type = gain_tech which = 1610 } #1943 Marine Division
+		command = { trigger = { technology = 1610 NOT = { technology = 1620 } } type = gain_tech which = 1620 } #1946 Marine Division
+		command = { trigger = { technology = 1620 NOT = { technology = 1630 } } type = gain_tech which = 1630 } #1949 Marine Division
+		command = { trigger = { technology = 1630 NOT = { technology = 1640 } } type = gain_tech which = 1640 } #1953 Marine Division
+	}
+}
+
+event = {
+	id = 231042
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231039 #Destroy Capitalism
+	}
+	
+	decision_trigger = { 
+		supplies = 1000
+		NOT = { event = 231044 } #Focus on Carriers
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231039 #Destroy Capitalism
+		NOT = { event = 231044 } #Focus on Carriers
+	}
+
+	name = EVENT_231042_NAME #"Focus on Battleships"
+	desc = EVENT_231042_DESC #"We should focus on battleships as the key center piece of the Navy."
+	style = 2
+	picture = "italiannavy"
+	decision_picture = "decision_mornarica"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { technology = 3460 NOT = { technology = 3470 } } type = gain_tech which = 3470 } #1934 Battleship
+		command = { trigger = { technology = 3470 NOT = { technology = 3480 } } type = gain_tech which = 3480 } #1939 Battleship
+		command = { trigger = { technology = 3480 NOT = { technology = 12040 } } type = gain_tech which = 12040 } #1947 Battleship
+		command = { type = event which = 231043 where = -1 when = 90 } #Focus on Battlecruisers
+ 		command = { type = sleepevent which = 231044 } #Focus on Carriers
+ 		command = { type = sleepevent which = 231045 } #Naval Aircrafts
+	}
+}
+
+event = {
+	id = 231043
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231043_NAME #"Focus on Battlecruisers"
+	desc = EVENT_231043_DESC #"As part of our plan to focus on battleships, we should also favor the development of battlecruisers."
+	style = 2
+	picture = "royalnavy"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { technology = 3340 NOT = { technology = 3350 } } type = gain_tech which = 3350 } #1941 Battlecruiser
+		command = { trigger = { technology = 3350 NOT = { technology = 12030 } } type = gain_tech which = 12030 } #1951 Battlecruiser
+	}
+}
+
+event = {
+	id = 231044
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231039 #Destroy Capitalism
+	}
+	
+	decision_trigger = { 
+		supplies = 1000
+		NOT = { event = 231042 } #Focus on Battleships
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231039 #Destroy Capitalism
+		NOT = { event = 231042 } #Focus on Battleships
+	}
+
+	name = EVENT_231044_NAME #"Focus on Carriers"
+	desc = EVENT_231044_DESC #"We should focus on carriers as the key center piece of the Navy."
+	style = 2
+	picture = "rebeccaUoB"
+	decision_picture = "decision_navalUoB"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -1000 }
+		command = { trigger = { NOT = { technology = 3510 } } type = gain_tech which = 3510 } #1922 Carrier
+		command = { trigger = { NOT = { technology = 3520 } } type = gain_tech which = 3520 } #1930 Carrier
+		command = { trigger = { NOT = { technology = 3530 } } type = gain_tech which = 3530 } #1934 Carrier
+		command = { trigger = { technology = 3530 NOT = { technology = 3540 } } type = gain_tech which = 3540 } #1937 Carrier
+		command = { trigger = { technology = 3540 NOT = { technology = 3550 } } type = gain_tech which = 3550 } #1940 Carrier
+		command = { trigger = { technology = 3550 NOT = { technology = 12060 } } type = gain_tech which = 12060 } #1943 Carrier
+		command = { trigger = { technology = 12060 NOT = { technology = 3560 } } type = gain_tech which = 3560 } #1947 Carrier
+		command = { trigger = { technology = 3560 NOT = { technology = 3570 } } type = gain_tech which = 3570 } #1951 Carrier
+		command = { type = event which = 231045 where = -1 when = 90 } #Naval Aircrafts
+ 		command = { type = sleepevent which = 231042 } #Focus on Battleships
+ 		command = { type = sleepevent which = 231043 } #Focus on Battlecruisers
+	}
+}
+
+event = {
+	id = 231045
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231045_NAME #"Naval Aircrafts"
+	desc = EVENT_231045_DESC #"As part of our plan to focus on aircraft carriers, we should also favor the development of naval aircrafts."
+	style = 2
+	picture = "bra_wreckairforce"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { NOT = { technology = 4900 } } type = gain_tech which = 4900 } #1922 CAG
+		command = { trigger = { NOT = { technology = 4910 } } type = gain_tech which = 4910 } #1930 CAG
+		command = { trigger = { NOT = { technology = 4920 } } type = gain_tech which = 4920 } #1934 CAG
+		command = { trigger = { NOT = { technology = 4930 } } type = gain_tech which = 4930 } #1937 CAG
+		command = { trigger = { technology = 4930 NOT = { technology = 4940 } } type = gain_tech which = 4940 } #1940 CAG
+		command = { trigger = { technology = 4940 NOT = { technology = 4950 } } type = gain_tech which = 4950 } #1943 CAG
+		command = { trigger = { technology = 4950 NOT = { technology = 4960 } } type = gain_tech which = 4960 } #1947 CAG
+		command = { trigger = { technology = 4960 NOT = { technology = 7050 } } type = gain_tech which = 7050 } #1951 CAG
+	}
+}
+
+event = {
+	id = 231046
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231040 #Cut Off Capitalism
+	}
+	
+	decision_trigger = { 
+		supplies = 500
+		NOT = { event = 231048 } #Focus on Submarines
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231040 #Cut Off Capitalism
+		NOT = { event = 231048 } #Focus on Submarines
+	}
+
+	name = EVENT_231046_NAME #"Focus on Destroyers"
+	desc = EVENT_231046_DESC #"We should focus on destroyers as the key center piece of the Navy."
+	style = 2
+	picture = "germancruisers1"
+	decision_picture = "decision_convoys"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { trigger = { technology = 3060 NOT = { technology = 3070 } } type = gain_tech which = 3070 } #1937 Destroyer
+		command = { trigger = { technology = 3070 NOT = { technology = 12000 } } type = gain_tech which = 12000 } #1941 Destroyer
+		command = { trigger = { technology = 12000 NOT = { technology = 3080 } } type = gain_tech which = 3080 } #1945 Destroyer
+		command = { trigger = { technology = 3080 NOT = { technology = 3090 } } type = gain_tech which = 3090 } #1955 Destroyer
+		command = { type = event which = 231047 where = -1 when = 90 } #Focus on Heavy Cruisers
+ 		command = { type = sleepevent which = 231048 } #Focus on Submarines
+ 		command = { type = sleepevent which = 231049 } #Focus on Light Cruisers
+	}
+}
+
+event = {
+	id = 231047
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231047_NAME #"Focus on Heavy Cruisers"
+	desc = EVENT_231047_DESC #"As part of our plan to focus on destroyers, we should also favor the development of heavy cruisers."
+	style = 2
+	picture = "germancruisers1"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { technology = 3260 NOT = { technology = 12020 } } type = gain_tech which = 12020 } #1941 Heavy Cruiser
+		command = { trigger = { technology = 12020 NOT = { technology = 3270 } } type = gain_tech which = 3270 } #1946 Heavy Cruiser
+		command = { trigger = { technology = 3270 NOT = { technology = 3280 } } type = gain_tech which = 3280 } #1952 Heavy Cruiser
+	}
+}
+
+event = {
+	id = 231048
+	random = no
+	country = RSI
+
+	decision = { 
+		government = communist
+		event = 231040 #Cut Off Capitalism
+	}
+	
+	decision_trigger = { 
+		supplies = 500
+		NOT = { event = 231046 } #Focus on Destroyers
+	}
+	
+	trigger = { 
+		government = communist
+		event = 231040 #Cut Off Capitalism
+		NOT = { event = 231046 } #Focus on Destroyers
+	}
+
+	name = EVENT_231048_NAME #"Focus on Submarines"
+	desc = EVENT_231048_DESC #"We should focus on submarines as the key center piece of the Navy."
+	style = 2
+	picture = "britishfleet"
+	decision_picture = "decision_convoys"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 91
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { ai = no } type = supplies value = -500 }
+		command = { trigger = { technology = 3650 NOT = { technology = 3660 } } type = gain_tech which = 3660 } #1937 Submarine
+		command = { trigger = { technology = 3660 NOT = { technology = 3670 } } type = gain_tech which = 3670 } #1940 Submarine
+		command = { trigger = { technology = 3670 NOT = { technology = 3680 } } type = gain_tech which = 3680 } #1943 Submarine
+		command = { trigger = { technology = 3680 NOT = { technology = 3690 } } type = gain_tech which = 3690 } #1950 Submarine
+		command = { type = event which = 231049 where = -1 when = 90 } #Focus on Light Cruisers
+ 		command = { type = sleepevent which = 231046 } #Focus on Destroyers
+ 		command = { type = sleepevent which = 231047 } #Focus on Heavy Cruisers
+	}
+}
+
+event = {
+	id = 231049
+	random = no
+	country = RSI
+
+	trigger = { 
+		government = communist
+	}
+
+	name = EVENT_231049_NAME #"Focus on Light Cruisers"
+	desc = EVENT_231049_DESC #"As part of our plan to focus on submarines, we should also favor the development of light cruisers."
+	style = 2
+	picture = "germancruisers1"
+
+	action = {
+		name = ACTION_NAME_GOOD
+		command = { }
+		command = { trigger = { technology = 3160 NOT = { technology = 12010 } } type = gain_tech which = 12010 } #1940 Light Cruiser
+		command = { trigger = { technology = 12010 NOT = { technology = 3170 } } type = gain_tech which = 3170 } #1945 Light Cruiser
+		command = { trigger = { technology = 3170 NOT = { technology = 3180 } } type = gain_tech which = 3180 } #1953 Light Cruiser
+	}
+}
