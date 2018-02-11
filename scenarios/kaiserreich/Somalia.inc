@@ -18,7 +18,7 @@ headofstate = { type = 9 id = 770001 } #Boqor Mohamoud Ali Shire
 headofgovernment = { type = 9 id = 770047 } #Cismaan III Maxamuud
 foreignminister = { type = 9 id = 770062 } #Abdullah Mohamed Fadil
 armamentminister = { type = 9 id = 770021 } #Mohamoud Ghelle Yusuf
-ministerofsecurity = { type = 9 id = 770058  } #Abdirizak Mahamud Abubakar
+ministerofsecurity = { type = 9 id = 770086  } #Abdirizak Mahamud Abubakar
 ministerofintelligence = { type = 9 id = 770032 } #Muhammad Ali Shirreh
 chiefofstaff = { type = 9 id = 770068 } #Yasin Haji Osman Sharmarke
 chiefofarmy = { type = 9 id = 770075 } #Muhammad Omer Ges
