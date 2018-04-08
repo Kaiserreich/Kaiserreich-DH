@@ -15,16 +15,16 @@ country = {
     }
 
 	#### cabinet    
-	headofstate = { type = 9 id = 508001 } #Palmiro Togliatti
-	headofgovernment = { type = 9 id = 508002 } #Antonio Gramsci
- 	foreignminister = { type = 9 id = 508003  } #Pietro Nenni
- 	armamentminister = { type = 9 id = 508004 }#Vittorio Vidali
- 	ministerofsecurity = { type = 9 id = 508005 } #Ruggiero Greco
- 	ministerofintelligence = { type = 9 id = 508006 } #Giuseppe di Vittorio
- 	chiefofstaff = { type = 9 id = 508007 } #Camillo Berneri;
- 	chiefofarmy = { type = 9 id = 508008 } #Umberto Marzocchi
- 	chiefofnavy = { type = 9 id = 508009 } #Francesco Maugeri
- 	chiefofair = { type = 9 id = 508010 } #Mario Ajmone Cat
+	headofstate				= { type = 9 id = 508004 } #Palmiro Togliatti
+	headofgovernment		= { type = 9 id = 508025 } #Antonio Gramsci
+ 	foreignminister			= { type = 9 id = 508045 } #Pietro Nenni
+ 	armamentminister		= { type = 9 id = 508068 } #Alceste de Ambris
+ 	ministerofsecurity		= { type = 9 id = 508086 } #Ruggiero Greco
+ 	ministerofintelligence	= { type = 9 id = 508105 } #Palmiro Togliatti
+ 	chiefofstaff			= { type = 9 id = 508121 } #Alfredo Pizzoni
+ 	chiefofarmy				= { type = 9 id = 508142 } #Ilio Barontini
+ 	chiefofnavy				= { type = 9 id = 508161 } #Riccardo Paladini
+ 	chiefofair				= { type = 9 id = 508181 } #Umberto Nobile
 
 	#### Resource Reserves
 	manpower		= 150
