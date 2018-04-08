@@ -48,6 +48,20 @@
 # 231047 RSI Focus on Heavy Cruisers
 # 231048 RSI Focus on Submarines
 # 231049 RSI Focus on Light Cruisers
+#
+# 231100 RSI Fourth Congress of the Socialist Republic of Italy
+# 231101 RSI Fourth Congress - Economic Policy
+# 231102 RSI Fourth Congress - Internal Policy
+# 231103 RSI Fourth Congress - Religious Policy
+# 231104 RSI The Unione Socialista Cristiana achieve a majority!
+# 231105 RSI The Unione Sindacalista achieve a majority!
+# 231106 RSI The Unione Nazionalista achieve a majority!
+# 231107 RSI No majority achieved
+# 231108 FRA Stalemate in the Socialist Republic of Italy
+# 231109 RSI French support for the Unione Socialista Cristiana
+# 231110 RSI French support for the Unione Sindacalista
+# 231111 RSI French support for the Unione Nazionalista
+# 231112 RSI Unione Sindacalista and Unione Socialista Cristiana reach a compromise
 
 
 event = {
@@ -1876,5 +1890,571 @@ event = {
 		command = { trigger = { technology = 3160 NOT = { technology = 12010 } } type = gain_tech which = 12010 } #1940 Light Cruiser
 		command = { trigger = { technology = 12010 NOT = { technology = 3170 } } type = gain_tech which = 3170 } #1945 Light Cruiser
 		command = { trigger = { technology = 3170 NOT = { technology = 3180 } } type = gain_tech which = 3180 } #1953 Light Cruiser
+	}
+}
+
+event = {
+	id = 231100
+	random = no
+	country = RSI
+	style = 2
+	
+	trigger = { government = communist }
+
+	name = EVENT_231100_NAME #"Fourth Congress of the Socialist Republic of Italy"
+	desc = EVENT_231100_DESC #"Today, the Fourth Congress of the Socialist Republic of Italy begins. The various factions of the Congress will debate economic, internal, and military policies. The Unione Sindacalista seek to push Orthodox Syndicalism, advancing the current policies of the congress, while the Unione Socialista Cristiana desire a government that helps the people, and supports Christian socialism. Meanwhile, Benito Mussolini's new faction, the Unione Nazionalista, advocates for absolute state power and aggressive military expansion. The very future of the Republic hangs in the balance."
+	picture = "Kaiserreich_RSI_Torino_Royal_Palace"
+
+	date = { day = 0 month = april year = 1936 }
+
+	action = {
+		name = EVENT_231100_ACTIONA #"Let's get to work!"
+		command = { type = dissent value = -0.5 }
+		command = { type = clrflag which = RSI_election_SOC }
+		command = { type = clrflag which = RSI_election_SYN }
+		command = { type = clrflag which = RSI_election_TOT }
+	}
+}
+
+event = {
+	id = 231101
+	random = no
+	country = RSI
+	style = 2
+	
+	trigger = { government = communist }
+
+	name = EVENT_231101_NAME #"Fourth Congress - Economic Policy"
+	desc = EVENT_231101_DESC #"The first order of business is the economic policy of the Republic. The Unione Socialista Cristiana advocates a focus on agrarianism and support for the rural communes. The Unione Sindacalista argues for furthering syndicalism by becoming a proper industrial democratic republic. Finally, Mussolini's Unione Nazionalista demands nothing short of total and immediate industrialisation."
+	picture = "politics1"
+
+	date = { day = 3 month = april year = 1936 }
+
+	action = {
+		name = EVENT_231101_ACTIONA #"Unione Socialista Cristiana: we must expand our agriculture"
+		ai_chance = 35
+		command = { type = gain_tech which = 5020 } #Mechanized Agriculture
+		command = { type = gain_tech which = 5030 } #Agrichemistry
+		command = { type = domestic which = free_market value = 2 }
+		command = { type = setflag which = RSI_election_SOC when = 1 value = 1 }
+	}
+
+	action = {
+		name = EVENT_231101_ACTIONB #"Unione Sindacalista: we should focus on industrialisation"
+		ai_chance = 45
+		command = { trigger = { ai = no } type = supplies value = -300 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = gain_tech which = 5050 } #Basic Machine Tools
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = RSI_election_SYN when = 1 value = 1 }
+	}
+
+	action = {
+		name = EVENT_231101_ACTIONC #"Unione Nazionalista: a heavy industrialization is required!"
+		ai_chance = 20
+		command = { type = dissent value = 10 }
+		command = { trigger = { ai = no } type = supplies value = -600 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = construct which = ic where = -1 value = 1 }
+		command = { type = gain_tech which = 5050 } #Basic Machine Tools
+		command = { type = gain_tech which = 5060 } #Improved Machine Tools
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = RSI_election_TOT when = 1 value = 1 }
+	}
+}
+
+event = {
+	id = 231102
+	random = no
+	country = RSI
+	style = 2
+	
+	trigger = { government = communist }
+	
+	name = EVENT_231102_NAME #"Fourth Congress - Internal Policy"
+	desc = EVENT_231102_DESC #"The discussion on the second day of the Congress focused on more internal matters. The Unione Sindacalista's representative came forward and pushed for further empowerment of the unions while the Unione Socialista Cristiana's representative came forward and pushed for empowering the rural communes instead. Unione Nazionalista's representative argued that it is the chairman that should be empowered."
+	picture = "politics3"
+
+	date = { day = 7 month = april year = 1936 }
+
+	action = {
+		name = EVENT_231102_ACTIONA #"Unione Socialista Cristiana: focus on empowering the Communes"
+		ai_chance = 50
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = setflag which = RSI_election_SOC when = 1 value = 1 }
+	}
+
+	action = {
+		name = EVENT_231102_ACTIONB #"Unione Sindacalista: focus on empowering the Unions"
+		ai_chance = 40
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = RSI_election_SYN when = 1 value = 1 }
+	}
+
+	action = {
+		name = EVENT_231102_ACTIONC #"Unione Nazionalista: focus on empowering the Chairman"
+		ai_chance = 10
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = freedom value = -2 }
+		command = { type = setflag which = RSI_election_TOT when = 1 value = 1 }
+	}
+}
+
+event = {
+	id = 231103
+	random = no
+	country = RSI
+	style = 2
+	
+	trigger = { government = communist }
+	
+	name = EVENT_231103_NAME #"Fourth Congress - Religious Policy"
+	desc = EVENT_231103_DESC #"The final order of business is the matter of the Christianity within the republic. The Unione Socialista Cristiana has come out strong in supporting Christian Socialism. Their representative claims that even priests can serve socialism as Jesus wanted. The Unione Nazionalista on the other hand roared back that Christianity is archaic and anachronistic for the modern age and that State Atheism will help break the chains of ignorance. The Unione Sindacalista however supports a middle ground status quo of secularism."
+	picture = "politics3"
+
+	date = { day = 11 month = april year = 1936 }
+
+	action = {
+		name = EVENT_231103_ACTIONA #"Unione Socialista Cristiana: support Christian Socialism"
+		ai_chance = 30
+		command = { type = dissent value = -5 }
+		command = { type = setflag which = RSI_election_SOC when = 1 value = 1 }
+	}
+
+	action = {
+		name = EVENT_231103_ACTIONB #"Unione Sindacalista: support Secularism"
+		ai_chance = 40
+		command = { type = dissent value = -5 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = setflag which = RSI_election_SYN when = 1 value = 1 }
+	}
+
+	action = {
+		name = EVENT_231103_ACTIONC #"Unione Nazionalista: support State Atheism"
+		ai_chance = 30
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = RSI_election_TOT when = 1 value = 1 }
+	}
+}
+
+event = {
+	id = 231104
+	random = no
+	country = RSI
+	style = 2
+
+	trigger = { 
+		flag = { which = RSI_election_SOC when = 1 value = 2 } # RSI_election_SOC >= 2
+	}
+
+	name = EVENT_231104_NAME #"The Unione Socialista Cristiana achieve a majority!"
+	desc = EVENT_231104_DESC #"The Unione Socialista Cristiana has achieved a majority and are now in charge of the government. Now two leading members of the faction can assume the role of Chairman, Giacomo Matteotti or Giuseppe Romita. Whom shall be elected the new Chairman?"
+	picture = "Strike1"
+
+	date = { day = 14 month = april year = 1936 }
+
+	action = {
+		name = EVENT_231104_ACTIONA #"Congratulations, Comrade Matteotti!"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 508008 } #Giacomo Matteotti
+		command = { type = headofgovernment which = 508031 } #Gaetano Salvemini
+		command = { type = foreignminister which = 508051 } #Guido Mazzali
+		command = { type = armamentminister which = 508072 } #Alberto Beneduce
+		command = { type = ministerofsecurity which = 508090 } #Olindo Vernocchi
+		command = { type = clrflag which = RSI_election_SOC }
+		command = { type = clrflag which = RSI_election_SYN }
+		command = { type = clrflag which = RSI_election_TOT }
+	}
+	action = {
+		name = EVENT_231104_ACTIONB #"Congratulations, Comrade Romita!"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 508010 } #Giuseppe Romita
+		command = { type = headofgovernment which = 508030 } #Giacomo Matteotti
+		command = { type = foreignminister which = 508049 } #Giuseppe Saragat
+		command = { type = armamentminister which = 508071 } #Olindo Vernocchi
+		command = { type = ministerofsecurity which = 508091 } #Francesco Fausto Nitti
+		command = { type = clrflag which = RSI_election_SOC }
+		command = { type = clrflag which = RSI_election_SYN }
+		command = { type = clrflag which = RSI_election_TOT }
+	}
+}
+
+event = {
+	id = 231105
+	random = no
+	country = RSI
+	style = 2
+
+	trigger = { 
+		flag = { which = RSI_election_SYN when = 1 value = 2 } # RSI_election_SYN >= 2
+	}
+	
+	name = EVENT_231105_NAME #"The Unione Sindacalista achieve a majority!"
+	desc = EVENT_231105_DESC #"The Unione Sindacalista has achieved a majority and are now in charge of the government. Now two leading members of the faction can assume the role of Chairman, Palmiro Togliatti or Alceste De Ambris. Whom shall be elected the new Chairman?"
+	picture = "Strike1"
+
+	date = { day = 14 month = april year = 1936 }
+
+	action = {
+		name = EVENT_231105_ACTIONA #"Congratulations, Comrade Togliatti!"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 508004 } #Palmiro Togliatti
+		command = { type = headofgovernment which = 508025 } #Antonio Gramsci
+		command = { type = foreignminister which = 508045 } #Pietro Nenni
+		command = { type = armamentminister which = 508068 } #Alceste De Ambris
+		command = { type = ministerofsecurity which = 508088 } #Ilio Barontini
+		command = { type = clrflag which = RSI_election_SOC }
+		command = { type = clrflag which = RSI_election_SYN }
+		command = { type = clrflag which = RSI_election_TOT }
+	}
+	action = {
+		name = EVENT_231105_ACTIONB #"Congratulations, Comrade De Ambris!"
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 508005 } #Alceste De Ambris
+		command = { type = headofgovernment which = 508025 } #Antonio Gramsci
+		command = { type = foreignminister which = 508046 } #Luigi Longo
+		command = { type = armamentminister which = 508066 } #Bruno Buozzi
+		command = { type = ministerofsecurity which = 508085 } #Maria Rygier
+		command = { type = clrflag which = RSI_election_SOC }
+		command = { type = clrflag which = RSI_election_SYN }
+		command = { type = clrflag which = RSI_election_TOT }
+	}
+}
+
+event = {
+	id = 231106
+	random = no
+	country = RSI
+	style = 2
+
+	trigger = { 
+		flag = { which = RSI_election_TOT when = 1 value = 2 } # RSI_election_TOT >= 2
+	}
+
+	name = EVENT_231106_NAME #"The Unione Nazionalista achieve a majority!"
+	desc = EVENT_231106_DESC #"The Unione Nazionalista has achieved a majority and are now in charge of the government. With this victory Benito Mussolini is now the new chairman."
+	picture = "Strike1"
+
+	date = { day = 14 month = april year = 1936 }
+
+	action = {
+		name = EVENT_231106_ACTIONA #"Congratulations, Comrade Mussolini!"
+		command = { type = dissent value = -2 }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 508001 } #Benito Mussolini
+		command = { type = headofgovernment which = 508022 } #Michele Bianchi
+		command = { type = foreignminister which = 508041 } #Dino Grandi
+		command = { type = armamentminister which = 508063 } #Nicola Bombacci
+		command = { type = ministerofsecurity which = 508082 } #Vittorio Vidali
+		command = { type = clrflag which = RSI_election_SOC }
+		command = { type = clrflag which = RSI_election_SYN }
+		command = { type = clrflag which = RSI_election_TOT }
+	}
+}
+
+event = {
+	id = 231107
+	random = no
+	country = RSI
+	style = 2
+
+	trigger = {
+		NOT = {
+		event = 231104 #The Unione Socialista Cristiana achieve a majority!
+		event = 231105 #The Unione Sindacalista achieve a majority!
+		event = 231106 #The Unione Nazionalista achieve a majority!
+		}
+		flag = { which = RSI_election_SOC when = -2 value = 2 } # RSI_election_SOC < 2
+		flag = { which = RSI_election_SYN when = -2 value = 2 } # RSI_election_SYN < 2
+		flag = { which = RSI_election_TOT when = -2 value = 2 } # RSI_election_TOT < 2
+	}
+
+	name = EVENT_231107_NAME #"No Majority Achieved"
+	desc = EVENT_231107_DESC #"No faction of the Congress came out on top. The government is deadlocked, and for now the country is once again thrown into chaos while the leaders attempt to negotiate some kind of compromise."
+	picture = "politics5"
+
+	date = { day = 15 month = april year = 1936 }
+
+	action = {
+		name = ACTION_NAME_DAMN
+		command = { type = dissent value = 10 }
+		command = { trigger = { alliance = { country = RSI country = FRA } } type = event which = 231108 where = FRA when = 2 } #Stalemate in the Socialist Republic of Italy
+		command = { trigger = { NOT = { alliance = { country = RSI country = FRA } } } type = event which = 231112 where = -1 when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+		command = { type = clrflag which = RSI_election_SOC }
+		command = { type = clrflag which = RSI_election_SYN }
+		command = { type = clrflag which = RSI_election_TOT }
+	}
+}
+
+event = {
+	id = 231108
+	random = no
+	country = FRA
+	style = 2
+
+	trigger = {
+		event = 231107 #No Majority Achieved
+		alliance = { country = RSI country = FRA }
+	}
+
+	name = EVENT_231108_NAME #"Stalemate in the Socialist Republic of Italy"
+	desc = EVENT_231108_DESC #"During the recent Congress of the Socialist Republic of Italy, none of the three factions achieved a clear majority. This would normally not be our concern, but the lack of compromise is further destabilizing an ally which is already unsteady on its feet. Perhaps we can help them choose their new government?"
+	picture = "Congress"
+
+	date = { day = 17 month = april year = 1936 }
+
+	action = {
+		trigger = { event = 220006 } # The results-Travailleur majority in France Domestic Policy.txt 
+		name = EVENT_231108_ACTIONA #"Support the Unione Socialista Cristiana!"
+		ai_chance = 15
+		command = { type = trigger which = 231109 } #French support for the Unione Socialista Cristiana
+	}
+
+	action = {
+		trigger = { event = 220006 } # The results-Travailleur majority in France Domestic Policy.txt 
+		name = EVENT_231108_ACTIONB #"Support the Unione Sindacalista!"
+		ai_chance = 40
+		command = { type = trigger which = 231110 } #French support for the Unione Sindacalista
+	}
+
+	action = {
+		trigger = { event = 220006 } # The results-Travailleur majority in France Domestic Policy.txt 
+		name = EVENT_231108_ACTIONC #"Support the Unione Nazionalista!"
+		ai_chance = 25
+		command = { type = trigger which = 231111 } #French support for the Unione Nazionalista
+	}
+
+	action = {
+		trigger = { event = 220006 } # The results-Travailleur majority in France Domestic Policy.txt 
+		name = EVENT_231108_ACTIOND #"It's not our problem"
+		ai_chance = 20
+		command = { type = event which = 231112 where = -1 when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+	action = {
+		trigger = { event = 220012 } # The results-Anarchist majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONA #"Support the Social-Reformists!"
+		ai_chance = 25
+		command = { type = trigger which = 231109 } #French support for the Unione Socialista Cristiana
+	}
+
+	action = {
+		trigger = { event = 220012 } # The results-Anarchist majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONB #"Support the Anarco-Syndicalists!"
+		ai_chance = 40
+		command = { type = trigger which = 231110 } #French support for the Unione Sindacalista
+	}
+
+	action = {
+		trigger = { event = 220012 } # The results-Anarchist majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONC #"Support the National-Syndicalists!"
+		ai_chance = 5
+		command = { type = trigger which = 231111 } #French support for the Unione Nazionalista
+	}
+
+	action = {
+		trigger = { event = 220012 } # The results-Anarchist majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIOND #"It's not our problem"
+		ai_chance = 30
+		command = { type = event which = 231112 where = -1 when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+	action = {
+		trigger = { event = 220008 } # The results-Jacobin majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONA #"Support the Social-Reformists!"
+		ai_chance = 15
+		command = { type = trigger which = 231109 } #French support for the Unione Socialista Cristiana
+	}
+
+	action = {
+		trigger = { event = 220008 } # The results-Jacobin majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONB #"Support the Anarco-Syndicalists!"
+		ai_chance = 60
+		command = { type = trigger which = 231110 } #French support for the Unione Sindacalista
+	}
+
+	action = {
+		trigger = { event = 220008 } # The results-Jacobin majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONC #"Support the National-Syndicalists!"
+		ai_chance = 5
+		command = { type = trigger which = 231111 } #French support for the Unione Nazionalista
+	}
+
+	action = {
+		trigger = { event = 220008 } # The results-Jacobin majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIOND #"It's not our problem"
+		ai_chance = 20
+		command = { type = event which = 231112 where = -1 when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+	action = {
+		trigger = { event = 220010 } # The results-Sorelian majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONA #"Support the Social-Reformists!"
+		ai_chance = 5
+		command = { type = trigger which = 231109 } #French support for the Unione Socialista Cristiana
+	}
+
+	action = {
+		trigger = { event = 220010 } # The results-Sorelian majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONB #"Support the Anarco-Syndicalists!"
+		ai_chance = 15
+		command = { type = trigger which = 231110 } #French support for the Unione Sindacalista
+	}
+
+	action = {
+		trigger = { event = 220010 } # The results-Sorelian majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIONC #"Support the National-Syndicalists!"
+		ai_chance = 60
+		command = { type = trigger which = 231111 } #French support for the Unione Nazionalista
+	}
+
+	action = {
+		trigger = { event = 220010 } # The results-Sorelian majority in France Domestic Policy.txt
+		name = EVENT_231108_ACTIOND #"It's not our problem"
+		ai_chance = 20
+		command = { type = event which = 231112 where = RSI when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+}
+
+event = {
+	id = 231109
+	random = no
+	country = RSI
+	style = 2
+
+	name = EVENT_231109_NAME #"French support for the Unione Socialista Cristiana"
+	desc = EVENT_231109_DESC #"The French government has declared its support for the Unione Socialista Cristiana. Should we listen to their advice or should we try to find a solution on our own?"
+	picture = "failed_objective"
+
+	action = {
+		name = EVENT_231109_ACTIONA #"The Unione Socialista Cristiana will form the new government!"
+		ai_chance = 70
+		command = { type = dissent value = 1 }
+		command = { type = set_domestic which = democratic value = 3 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 508011 } #Olindo Vernocchi
+		command = { type = headofgovernment which = 508029 } #Giuseppe Romita
+		command = { type = foreignminister which = 508049 } #Giuseppe Saragat
+		command = { type = armamentminister which = 508070 } #Achille Grandi
+		command = { type = ministerofsecurity which = 508092 } #Francesco Fausto Nitti
+		command = { type = sleepevent which = 231112 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+	action = {
+		name = EVENT_231109_ACTIONB #"Lets try and find a compromise ourselves."
+		ai_chance = 30
+		command = { type = dissent value = 2 }
+		command = { type = relation which = FRA value = -30 }
+		command = { type = event which = 231112 where = -1 when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+}
+
+event = {
+	id = 231110
+	random = no
+	country = RSI
+	style = 2
+
+	name = EVENT_231110_NAME #"French support for the Unione Sindacalista"
+	desc = EVENT_231110_DESC #"The French government has declared its support for the Unione Sindacalista. Should we listen to their advice or should we try to find a solution on our own?"
+	picture = "failed_objective"
+
+	action = {
+		name = EVENT_231110_ACTIONA #"The Unione Sindacalista will form the new government!"
+		ai_chance = 70
+		command = { type = dissent value = 1 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 8 }
+		command = { type = headofstate which = 508005 } #Alceste De Ambris
+		command = { type = headofgovernment which = 508025 } #Antonio Gramsci
+		command = { type = foreignminister which = 508045 } #Pietro Nenni
+		command = { type = armamentminister which = 508066 } #Bruno Buozzi
+		command = { type = ministerofsecurity which = 508088 } #Ilio Barontini
+		command = { type = sleepevent which = 231112 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+	action = {
+		name = EVENT_231109_ACTIONB #"Lets try and find a compromise ourselves."
+		ai_chance = 30
+		command = { type = dissent value = 2 }
+		command = { type = relation which = FRA value = -30 }
+		command = { type = event which = 231112 where = -1 when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+}
+
+event = {
+	id = 231111
+	random = no
+	country = RSI
+	style = 2
+
+	name = EVENT_231111_NAME #"French support for the Unione Nazionalista"
+	desc = EVENT_231111_DESC #"The French government has declared its support for the Unione Nazionalista. Should we listen to their advice or should we try to find a solution on our own?"
+	picture = "failed_objective"
+
+	action = {
+		name = EVENT_231111_ACTIONA #"The Unione Nazionalista will form the new government!"
+		ai_chance = 70
+		command = { type = dissent value = 3 }
+		command = { type = set_domestic which = democratic value = 1 }
+		command = { type = set_domestic which = political_left value = 9 }
+		command = { type = headofstate which = 508001 } #Benito Mussolini
+		command = { type = headofgovernment which = 508022 } #Michele Bianchi
+		command = { type = foreignminister which = 508041 } #Dino Grandi
+		command = { type = armamentminister which = 508063 } #Nicola Bombacci
+		command = { type = ministerofsecurity which = 508082 } #Vittorio Vidali
+		command = { type = sleepevent which = 231112 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+	action = {
+		name = EVENT_231109_ACTIONB #"Lets try and find a compromise ourselves."
+		ai_chance = 30
+		command = { type = dissent value = 2 }
+		command = { type = relation which = FRA value = -30 }
+		command = { type = event which = 231112 where = -1 when = 2 } #Unione Sindacalista and Unione Socialista Cristiana reach a compromise
+	}
+}
+
+event = {
+	id = 231112
+	random = no
+	country = RSI
+	style = 2
+
+	trigger = {
+		OR = {
+			flag = RSI_COMPROMISE
+			AND = {
+				event = 230007 #Congress - Draw
+				NOT = { #No clear majority in French Congress
+					event = 230008
+					event = 230009
+					event = 230010
+					event = 230011
+				}
+			}
+		}
+	}
+
+	name = EVENT_231112_NAME #"Unione Sindacalista and Unione Socialista Cristiana reach a compromise"
+	desc = EVENT_231112_DESC #"In an effort to block the dangerous Unione Nazionalista from achieving any kind of power, the Unione Sindacalista and the Unione Socialista Cristiana have agreed to form a coalition government. Palmiro Togliatti maintains his role as president, while Giacomo Matteotti becomes the new Chairman of the Congress of People's Unions."
+	picture = "Congress"
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = dissent value = -3 }
+		command = { type = set_domestic which = democratic value = 2 }
+		command = { type = set_domestic which = political_left value = 7 }
+		command = { type = headofstate which = 508004 } #Palmiro Togliatti (LE - Unione Sindacalista)
+		command = { type = headofgovernment which = 508030 } #Giacomo Matteotti (LWR - Unione Socialista Cristiana)
+		command = { type = foreignminister which = 508049 } #Giuseppe Saragat (LWR - Unione Socialista Cristiana)
+		command = { type = armamentminister which = 508068 } #Alceste De Ambris (LE - Unione Sindacalista)
+		command = { type = ministerofsecurity which = 508086 } #Ruggiero Grieco (LE - Unione Sindacalista)
 	}
 }
