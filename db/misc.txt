@@ -81,13 +81,15 @@ economy = {
 	0.6
 # Reinforce to upgrade modifier. Values from 0.0 (divisions do not get extra upgrade progress on reinforcement) to 1.0 (1:1 ratio, 1% reinforce adds 1% to upgrade progress)
 	0.3 # 0.5 # 0.0
+# Added extra upgrade progress to units in supply. Added daily progress to all units in supply that can upgrade is equal to Cur_STR/(Max_STR * THIS). Added value is not affected by any other upgrade modifiers. Set to 0 to disable this functionality.
+	720 #0
 # Nationalism starting value
 	5 #15
 # Nationalism per MP (added to stating value)
 	1.0 # 0.0
-# Max unmodified nationalism = starting + MP*mod + added by events or prtissan funds
+# Max unmodified nationalism = starting + MP*mod + added by events or partisan funds
 	20 # 30
-# Max final province revolt risk = THIS + current country dissent
+# Max base province revolt risk (before applying suppression bonus)
 	35 # 100
 # Monthly Nationalism reduction
 	0.1250
@@ -179,6 +181,9 @@ economy = {
 #	>= 0.0 - Percentage of the current needs that should be left in the province. 
 #	Examples: 0.0 - take all exceeding supplies and oil, 0.5 - leave currently needed + 50% buffer, 1.0 - leave currently needed + 100% buffer etc.
 	0.2 # -1.0
+# Modifier on distance between current and closest friendly province which is used for supply distance mod calculation (modifier on ORG regain, reinforce and upgrade speed of units). 
+#	Higher this is, higher the distance penalty would be. 0.0 - ignore distance (effectively disables supply distance mod), 1.0 - no modification on distance between provinces
+	1.0 # 1.0
 }
 
 intelligence = {
@@ -282,19 +287,19 @@ combat = {
 	-0.1
 # Combat Modifier: Multiple Combat Mod
 	-0.37
-# Combat Modifier: Offensive Combined Arms Bonus   db
+# Combat Modifier: Offensive Combined Arms Bonus
 	0.10
-# Combat Modifier: Defensive Combined Arms Bonus    db
+# Combat Modifier: Defensive Combined Arms Bonus
 	0.05
 # Combat Modifier: Surprise Mod
 	-0.4
 # Combat Modifier: Land Exceeding Max Command Limit Mod
 	-0.75
-# Combat Modifier: Air Exceeding Max Command Limit Mod   db
+# Combat Modifier: Air Exceeding Max Command Limit Mod
 	-0.5
-# Combat Modifier: Naval Exceeding Max Command Limit Mod  db
+# Combat Modifier: Naval Exceeding Max Command Limit Mod
 	-0.5
-# Combat Modifier: Envelopment Mod (for each attack direction above one)  db
+# Combat Modifier: Envelopment Mod (for each attack direction above one)
 	-0.10
 # Combat Modifier: Encircled Mod (for completely surrounded units)
 	0.25 # Based on Liddle Hart theories, surrounded units fight even harder for their life
@@ -326,6 +331,10 @@ combat = {
 	-0.02
 # Combat Modifier: Total Naval Overstacking Mod for each non-transport division above two.
 	-0.01
+# Combat Modifier: Penalty for air units bombing entrenched armies (entrenchment level * THIS, final value is limited to -0.99)
+	-0.03
+# Combat Modifier: Bonus for defending entrenched armies in land combat (entrenchment level * THIS)
+	0.01
 # Land Leader Command Limit (nr of divisions), Rank 0 (highest)
 	15
 # Land Leader Command Limit (nr of divisions), Rank 1
@@ -492,9 +501,9 @@ combat = {
 	0.15 #0.18 #2
 # Land vs. Land - Org dmg - Increasing this will increase ORG damage land unit takes in battle with other land units [multiplier]
 	0.039 #0.6
-# Land vs. Land - Org dmg in Urban provinces [(0.0 = no Org dmg) to (1.0 = no effect)] - Increasing this will increase ORG damage land unit takes in battle with other land units in Urban provinces. Applied as to both sides [multiplier]
+# Land vs. Land - Org dmg in Urban provinces [(0.0 = no Org dmg) to (1.0 = no effect)] - Increasing this will increase ORG damage land unit takes in battle with other land units in Urban provinces. Applied to both sides [multiplier]
 	0.6 #1.0
-# Land vs. Land - Org dmg if Land Fort [(0.0 = no Org dmg) to (1.0 = no effect)] - Increasing this will increase ORG damage land unit takes in battle with other land units if there's Land Fort in the province. Applied as to both sides [multiplier]
+# Land vs. Land - Org dmg if Land Fort [(0.0 = no Org dmg) to (1.0 = no effect)] - Increasing this will increase ORG damage land unit takes in battle with other land units if there's Land Fort in the province. Applied to both sides [multiplier]
 	0.5 #1.0
 # Land vs. Land - Org dmg if Land Fort - Required Land Fort current size for the above ORG multiplier to trigger [absolute value from 0.01 to 10.0; 10.0+ effectively disables the modifier]
 	1.0 #100.0
@@ -543,9 +552,9 @@ combat = {
 	3 #3
 # AA to Naval - Org dmg - Increasing this will increase ORG damage a fleet takes from province AA [multiplier]
 	0.15 #0.15
-# AA to Air - Org dmg - Increasing this will increase ORG damage an air unit takes from province AA
+# AA to Air - Org dmg - Increasing this will increase ORG damage an air unit takes from province AA [multiplier]
 	3.0 #2.0 #0.0
-# AA to Air - Str dmg - Increasing this will increase STR damage an air unit takes from province AA
+# AA to Air - Str dmg - Increasing this will increase STR damage an air unit takes from province AA [multiplier]
 	1.0 #1.0
 # AA to Air firing rules: 0 - fire only at passing enemy units on bombing missions, 1 - fire at all passing enemy units
 	1 #0
@@ -573,6 +582,8 @@ combat = {
 	0.025 #0.0
 # Logistics Wizard ESE bonus - Add this bonus if current ESE is below 100% (1.0)
  	0.1 #0.0
+# ESE bonus from offensive supply
+	0.25 #0.25
 # Days in offensive supply
 	30 #30
 # Minister bonuses (att, def, mor, org) from brigades and divisions. 1 = use division bonus if any, else brigade (max if more then 1); 2 = Use average of all; 3 = use Sum of all; 4 = Use min; 5 = use Max
@@ -679,7 +690,7 @@ combat = {
 	0.15 #0.5 #1.0
 # Apply air and naval unit's range limits on missions to Areas and Regions. 0 = Disabled, 1 = Enabled, 2 = Enabled for AI countries too (Not recommended!!!)
 	1 #0
-# Radar bonus on detection - used to guide friendly air units on Air Superiority and Scramble missions (This * Radar level * Radar efficiency). Added to misison and friendly province bonuses (see below). Higher the better
+# Radar bonus on detection - used to guide friendly air units on Air Superiority and Scramble missions (This * Radar level * Radar efficiency). Added to mission and friendly province bonuses (see below). Higher the better
 	5.0 #0.0
 # Bonus on detection of enemy air units when they are over a friendly province (added to radar and mission bonuses). Used to guide friendly air units on Air Superiority and Scramble missions. Higher the better
 	10 #0.0
@@ -707,10 +718,6 @@ combat = {
 	5.0 #5.0
 # ORG modifier for land units after naval transportation. [ORG = ORG * THIS]
 	0.2 #0.5
-# Max Land units dig in level.
-	25.0 # KR 30.0 #15.0
-# Dig in level increase per day.
-	1.5 #1.0
 # Breakthrough and Encirclement combat events chance modifiers by average unit speed (sum of the speed of all attacking divisions / attacking divisions count). 
 	# Min. average unit speed for chance bonus to be applied (Avrg. Unit Speed - THIS > 0.0):
 	7.0 #3.0
@@ -729,7 +736,7 @@ combat = {
 		1.0 #1.0
 	#Defender STR damage
 		1.25 #1.25
-# Assualt combat event modifiers
+# Assault combat event modifiers
 	#Attacker ORG damage
 		1.0 #1.0
 	#Attacker STR damage
@@ -787,7 +794,7 @@ combat = {
 	0 #1
 # Combat mode. Note: This setting controls only full names, short names and descriptions of some unit stats.
 # 0 - Use old (DH 1.02 and older) mode: Defensiveness, Toughness, Air Defence, Surface Defence, Sea Defence
-# 1 - Use new (DH 1.03) mode: Defensive Vulnerability, Offensive Vulnerability, Air Vulnerabilty, Ground Vulnerabilty, Naval Vulnerabilty
+# 1 - Use new (DH 1.03) mode: Defensive Vulnerability, Offensive Vulnerability, Air Vulnerability, Ground Vulnerability, Naval Vulnerability
 	1 #0
 }
 
@@ -821,7 +828,7 @@ mission = {
 # _MISSION_ANTI_PARTISAN_DUTY_
 	1 	# 0 = disabled by default, 1 = enabled by default
 	1.0	# Starting missions efficiency. Valid values: 0.05 to 10.0
-	2.0	# Multiplier on suppresion (This * mission_efficiency)
+	2.0	# Multiplier on suppression (This * mission_efficiency)
 # _MISSION_PLANNED_DEFENSE_
 	1 	# 0 = disabled by default, 1 = enabled by default
 	1.0	# Starting missions efficiency. Valid values: 0.05 to 10.0
@@ -944,7 +951,7 @@ country = {
 	1.0 #1.0
 # Repair modifier   
 	 1.0 #1.0
-# Research modifier db
+# Research modifier
 	0.66   #1.0 #1.0
 # Radar efficiency
 	1.0 #1.0
@@ -966,10 +973,20 @@ country = {
 	3 #3
 # Energy to Oil
 	0.0 #0.0
-# Total production efficiency
+# Industrial production efficiency
+	1.0 #1.0
+# Oil production efficiency
+	1.0 #1.0
+# Metal production efficiency
+	1.0 #1.0
+# Energy production efficiency
+	1.0 #1.0
+# Rare Materials production efficiency
+	1.0 #1.0
+# Money from CG production efficiency
 	1.0 #1.0
 # Supply production efficiency
-	0.0 #0.0
+	1.0 #1.0
 # AA power
 	0.1 #0.1
 # Air surprise chance
@@ -984,7 +1001,7 @@ country = {
 	1.0 #1.0
 # Buildings production mod (applied to all buildings!)
 	1.0 #1.0
-# Convoys production mod
+# Convoys production mod (applied to both convoy transports and escorts)
 	1.0 #1.0
 # Min ships positioning in battle (applied to all naval units!)
 	0.1 #0.1
@@ -998,6 +1015,10 @@ country = {
 	1.0 #1.0
 # Wartime modifier on stockpiles for oil and supplies
 	1.0 #1.0
+# Max Land units dig in level.
+	25.0 # KR 30.0 #15.0
+# Dig in level increase per day.
+	1.5 #1.0
 }
 
 research = {
@@ -1009,7 +1030,7 @@ research = {
 	0.000925 #0.0 #full bonus after 3 years post historical
 # Money cost for each skill-level
 	0.1
-# Mean number of "invention" events occuring per year
+# Mean number of "invention" events occurring per year
 	5
 # Use new Technology page layout - allow for more techs and better view. 0 - use vanilla; 1 - use new
 	1 #0
@@ -1017,7 +1038,7 @@ research = {
 	1 #0
 # Max active tech teams at a time (cannot be more then 50). Note: New Technology page layout will be auto-set for values above 5!
 	7 #7
-# Min active tech teams at a time (available teams regardles of current IC)
+# Min active tech teams at a time (available teams regardless of current IC)
 	2 #2
 # Required IC for each tech team above the min
 	20 #20
@@ -1129,8 +1150,10 @@ ai = {
 # New DoW rules - disallow DoW between alliance members if alliance leaders have NAP. Disallow DoW to or by puppets (except when already at war with Master).
 # 2 - Enabled for all, 1 - Enabled for AI only, 0 - Disabled.
 	2 #0
-# Puppets should join Master's war if AI Neutrality is equal or greater then THIS. Note: this works only if puppet is not part of Master's alliance! 0 = always join Master's wars
-	150 #0
+# Force puppets to join their master's alliance when master is at war and AI Neutrality is lesser then THIS. Checked daily.
+	150 #200
+# Allow AI countries to leave alliance because of bad relations or too different government type compared to alliance leader (on top of all other leave alliance rules). 1 - Allowed, 0 - Disabled
+	0 #1
 # Use new AI release rules – all countries can release puppets even when at war. 1 – Yes, 0 – No
 	1 #0
 # AI events action selection rules:
@@ -1186,11 +1209,11 @@ mod = {
 	4 #0
 # Allow brigade attaching as long as the unit is in supply no matter on whom territory it is. 1 - Enabled, 0 - Disabled (default)
 	1 #0
-# Multiple deployment - prefered unit size for armies. This could be overridden in-game by holding SHIFT (deploy all in a single group) or CONTROL (deploy each in own group) keys.
+# Multiple deployment - preferred unit size for armies. This could be overridden in-game by holding SHIFT (deploy all in a single group) or CONTROL (deploy each in own group) keys.
 	3
-# Multiple deployment - prefered unit size for fleets. This could be overridden in-game by holding SHIFT (deploy all in a single group) or CONTROL (deploy each in own group) keys.
+# Multiple deployment - preferred unit size for fleets. This could be overridden in-game by holding SHIFT (deploy all in a single group) or CONTROL (deploy each in own group) keys.
 	6
-# Multiple deployment - prefered unit size for air. This could be overridden in-game by holding SHIFT (try to deploy all in a single group) or CONTROL (deploy each in own group) keys. 
+# Multiple deployment - preferred unit size for air. This could be overridden in-game by holding SHIFT (try to deploy all in a single group) or CONTROL (deploy each in own group) keys. 
 	2
 # Allow unique pictures to all land provinces. 1 - Enabled, 0 - Disabled (only urban provinces may have unique pictures)
 	1 #0
@@ -1208,9 +1231,9 @@ mod = {
 	60 #100
 # Rebels army max. STR on creation: 1-100
 	95 #100
-# Rebels ORG reagin (including when in combat)
+# Rebels ORG regain (including when in combat)
 	0.1 #0.2
-# Extra bonus for rebelling for every rebel controlled neighboring province
+# Extra bonus for rebelling for every rebel controlled neighbouring province
 	3 #0
 # Extra bonus for rebelling for occupied enemy provinces
 	7 #0
@@ -1232,7 +1255,7 @@ mod = {
 	2 #0
 # Extra rebel bonus for provinces with Air or Naval bases
 	0 #0
-# Return rebellious province to the original owner after X months if there are no rebel armies into the province anymore.
+# Return rebellious province to the original owner after X months if there are no rebel armies into the province any more.
 	30 #1000000 (never)
 # Use new minister files format and End years for ministers; All minister files should have End Year column (after "Pool"); Pool should use absolute year (1936 instead of 36): 0 - Disabled, 1 - Enabled
 	1 #0
@@ -1247,7 +1270,7 @@ mod = {
 # Load unit pictures from Moddir only. Setting this to 1 prevents reading of unit picture files from the main game folder (except for the generic ones - ill_YYY_XX_0.bmp). 
 	1 #0
 # Load AI files from Moddir only. Setting this to 1 prevents reading of AI files from the main game folder. 
-	1 #0	
+	1 #0
 # Use speed to set garrison status (no move allowed) to land units. 0 - Use old rules (only garrison divisions cannot move), 1 - use unit model speed to determine if it can move (speed > 0) or not (speed = 0)
 	0 #0
 # Use old (pre DH 1.02) save-game format for divisions. NOT RECOMMENDED as newly introduced parameters won't be saved!!! 1 – Use old format, 0 – Use DH new format (less used space, higher precision of saved values)
