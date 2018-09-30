@@ -166,6 +166,7 @@ relation = {   tag =  	JAP	value = 		-30	   }
 
 #Naval Doctrines
 8010 8020 8040 8050
+8070
 
 
 	}
