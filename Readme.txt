@@ -10,7 +10,7 @@ Manual Installation Instructions
 3) Extract to '\Darkest Hour A HOI Game\Mods'
 4) Enable the mod in the launcher and enjoy!
 
-The changelog can be foudn here: http://kaiserreich.wikia.com/wiki/KRDH_Changelog
+The changelog can be found here: http://kaiserreich.wikia.com/wiki/KRDH_Changelog
 
 As of DATE, this project is now open source! You can see the initial announcement here: LINK
 
