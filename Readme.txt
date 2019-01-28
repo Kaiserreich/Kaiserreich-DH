@@ -1,4 +1,8 @@
-Thank you for downloading Kaiserreich for Darkest hour!
+#  The Kaiserreich for Darkest Hour
+
+Welcome to the home of the Kaiserreich mod for Darkest Hour!
+
+If you are just looking to download the latest version, head to the forum post here: https://forum.paradoxplaza.com/forum/index.php?threads/kaiserreich.529944/
 
 Manual Installation Instructions
 1) Download the mod
@@ -6,10 +10,14 @@ Manual Installation Instructions
 3) Extract to '\Darkest Hour A HOI Game\Mods'
 4) Enable the mod in the launcher and enjoy!
 
-New versions can be found at:
-https://forum.paradoxplaza.com/forum/index.php?threads/kaiserreich.529944/
+The changelog can be foudn here: http://kaiserreich.wikia.com/wiki/KRDH_Changelog
 
-Changelog:
-http://kaiserreich.wikia.com/wiki/KRDH_Changelog
+As of DATE, this project is now open source! You can see the initial announcement here: LINK
 
-- The Kaiserreich Team
+What does this mean for you? This means if you want to help, all you need to do is make a pull request with your changes and we'll take a look at your suggestions. Bug fixes, new content and optimisations are all welcome.
+
+If you want to get more involved them come join the Darkest Hour team properly by heading to our discord (https://discord.gg/013cqzfpWMRLqnvHr) and messaging Zankoas#3442.
+
+Thank you for your help and we hope you enjoy our work!
+
+- The Kaiserreich team
