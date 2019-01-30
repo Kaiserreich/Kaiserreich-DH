@@ -1,4 +1,4 @@
-#  The Kaiserreich for Darkest Hour
+#  Kaiserreich for Darkest Hour
 
 Welcome to the home of the Kaiserreich mod for Darkest Hour!
 
@@ -12,7 +12,7 @@ Manual Installation Instructions
 
 The changelog can be found here: http://kaiserreich.wikia.com/wiki/KRDH_Changelog
 
-As of DATE, this project is now open source! You can see the initial announcement here: LINK
+As of the 30th of January 2019, this project is now open source! You can see the announcement here: https://www.reddit.com/r/Kaiserreich/comments/alc31p/darkest_hour_has_gone_open_source/
 
 What does this mean for you? This means if you want to help, all you need to do is make a pull request with your changes and we'll take a look at your suggestions. Bug fixes, new content and optimisations are all welcome.
 
