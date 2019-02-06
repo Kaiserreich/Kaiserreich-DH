@@ -8,10 +8,10 @@ tag = CHL
 policy = {
 date = { year = 0 month = january day = 0 }
 
-democratic			=	6
-political_left		=	5
-free_market			=	9
-freedom				=	7
+democratic			=	4
+political_left		=	9
+free_market			=	4
+freedom				=	3
 professional_army	=	9
 defense_lobby		=	6
 interventionism		=	6
@@ -20,18 +20,18 @@ interventionism		=	6
 
 #### Cabinet ####
 
-#headofstate				= { type = 9 id =  }
-#headofgovernment		= { type = 9 id =  }
-foreignminister			= { type = 9 id = 44059 }
+headofstate				= { type = 9 id = 44015 }
+headofgovernment		= { type = 9 id = 44033 }
+foreignminister			= { type = 9 id = 44047 }
 armamentminister		= { type = 9 id = 44076 }
-ministerofsecurity		= { type = 9 id = 44097 }
-ministerofintelligence	= { type = 9 id = 44103 }
-chiefofstaff			= { type = 9 id = 44112 }
+ministerofsecurity		= { type = 9 id = 44088 } #HOI4 starting minister Carlos Gregorio Davilla Espinoza isn't a minister in DH yet.
+ministerofintelligence	= { type = 9 id = 44101 }
+chiefofstaff			= { type = 9 id = 44115 }
 chiefofarmy				= { type = 9 id = 44123 }
-chiefofnavy				= { type = 9 id = 44132 }
-chiefofair				= { type = 9 id = 44140 }
+chiefofnavy				= { type = 9 id = 44131 }
+chiefofair				= { type = 9 id = 44138 }
 
-
+# Sweet Jebeezus we have a lot of ministers to add. 
 #### Resource Reserves ####
 
 energy			=	2000
