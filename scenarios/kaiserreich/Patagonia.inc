@@ -35,15 +35,22 @@ chiefofnavy				= { type = 9 id = 35289 } #Domingo Mercante
 chiefofair				= { type = 9 id = 35290 } #Eduardo Avalos
 dissent = 3
 
-#Quick list of Leaders from HOI4, all need Pictures
-#Alfredo Fonte
-#Fanny Jabcovsky
-#Paulina Mansurova
-#Miguel Arcangel Roscinga
-#Michaela Feldman
-#Marc Augler
-#Kurt Gustav Wilckins
-#Esteban Luchich
+#Minister portait IDs
+#Antonio Soto - Antonio_Soto
+#Rodolfo Ghiodi - Rodolfo_Ghiodi
+#Jose Descoubiere - no portrait (didn't find any)
+#Fanny Jabcovsky - Fanny_Jabcovsky
+#Elvira Rawson - Elvira_Rawson
+
+#Leader portrait IDs
+#Alfredo Fonte - Alfredo_Fonte
+#Fanny Jabcovsky - Fanny_Jabcovsky
+#Paulina Mansurova - Paulina_Mansurova
+#Miguel Arcangel Roscigna - Miguel_Roscigna
+#Michaela Feldman - Mika_Feldman
+#Marc Augler - no portrait (didn't find any)
+#Kurt Gustav Wilckins - Kurt_Gustav_Wilckens
+#Esteban Lucich - Esteban_Lucich
 #### Resource Reserves ####
 
 energy			=	1000
