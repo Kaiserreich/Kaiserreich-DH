@@ -110,6 +110,7 @@ relation = { tag = MEN value = -75 }
 5190 #Basic Oil refining
 5810 5820 5050 5830 5060 5070 #Manufacturing up to impr Mac tools
 5600 5610 5620 #Medicine
+55000 #Mining 1935
 
 #Land Doctrines
 6500 6510 6530 6590 #Up to pre ww1 tech

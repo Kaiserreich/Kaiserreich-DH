@@ -156,6 +156,7 @@ relation = {   tag =  	JAP	value = 		-50	   }
 5600 5610 5620 5630 #Medicines
 5470 #Atomic Research
 5316 5326 5327 #Cryptography
+55000 #Mining 1935
 
 #Land Doctrines
 6500 6510 6530 6590 #Up to pre ww1 tech

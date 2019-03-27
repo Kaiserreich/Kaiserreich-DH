@@ -145,6 +145,7 @@ dormant_ministers = { 557558 557559 }
 5470 #Faculty of Atomic Research 
 5560 #Exp. Rocket
 5600 5610 5620 5630 #Exp. Rocket
+55000 #Mining 1935
 
 #Secret Weapons
 7600 7610 #Experimental ww1 Tanks
