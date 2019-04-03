@@ -56,6 +56,8 @@ SpyInfo  = {  country = "HOL" NumberOfSpies = 4  }
     nationalprovinces =   {
 		125 122 123 118 119 124 120 121
 	}
+	
+	dormant_leaders = { 7878 7879 7880 7881 7882 7883 7884 7885 7886 7887 7888 7889 7890 7891 7892 7893  }
 
 diplomacy = {
 relation = {   tag =    	BEL	value = 		24	   }  

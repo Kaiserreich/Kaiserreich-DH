@@ -189,7 +189,8 @@ dormant_leaders        = {  500814 500815 500816 500817 500818 500819 500820 500
 }
 
 deactivate = { 6010 6210 6570 6560 6390 }
-dormant_ministers = { 4141 4199 4198 4148 }
+dormant_ministers = { 4141 4199 4198 } #removed 4148
+dormant_teams = { 7202 7203 7252 7253 }
 
 
 #########  RUSSIAN ARMED FORCES

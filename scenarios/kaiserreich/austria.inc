@@ -26,7 +26,7 @@ headofstate = { type = 9 id = 23041 }
  	ministerofintelligence = { type = 9 id = 23145 }
  	chiefofstaff = { type = 9 id = 23146 }
  	chiefofarmy = { type = 9 id = 23150  }
- 	chiefofnavy = { type = 9 id = 23124  }        
+ 	chiefofnavy = { type = 9 id = 23123  }        
  	chiefofair = { type = 9 id = 23149 }
 
 #### Resource Reserves
