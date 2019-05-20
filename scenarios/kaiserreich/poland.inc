@@ -122,6 +122,10 @@ relation = {   tag =  	JAP	value = 		-10	   }
 
 dormant_ministers = { 13168 13185 13186 13187 }
 
+dormant_teams = { 2709 2710 2732 }
+
+dormant_leaders = { 8012 8013 8043 8044 8045 8113 8128 8182 8197 8198 8200 }
+
 #########  OOB (...)
 
 

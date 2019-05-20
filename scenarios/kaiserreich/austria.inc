@@ -26,7 +26,7 @@ headofstate = { type = 9 id = 23041 }
  	ministerofintelligence = { type = 9 id = 23145 }
  	chiefofstaff = { type = 9 id = 23146 }
  	chiefofarmy = { type = 9 id = 23150  }
- 	chiefofnavy = { type = 9 id = 23124  }        
+ 	chiefofnavy = { type = 9 id = 23123  }        
  	chiefofair = { type = 9 id = 23149 }
 
 #### Resource Reserves
@@ -156,6 +156,7 @@ relation = {   tag =  	JAP	value = 		-50	   }
 5600 5610 5620 5630 #Medicines
 5470 #Atomic Research
 5316 5326 5327 #Cryptography
+55000 #Mining 1935
 
 #Land Doctrines
 6500 6510 6530 6590 #Up to pre ww1 tech

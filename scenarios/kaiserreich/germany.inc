@@ -304,6 +304,8 @@ deactivate = { 6010 6210 6570 6560 6390 }
 
 dormant_ministers = { 385 }
 
+dormant_leaders = { 36 44 122 227 420 1037 1497 1498 1499 }
+
 ##########
 
 transports = 700

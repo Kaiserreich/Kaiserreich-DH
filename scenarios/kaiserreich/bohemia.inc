@@ -115,6 +115,7 @@ relation = {   tag =  	JAP	value = 		-10	   }
 5800 5080 5090 #Construction engineerings
 5190 #Basic Oil refining
 5810 5820 5050 5830 5060 5070 #Manufacturing up to impr Mac tools
+55000 #Mining 1935
 
 #Land Doctrines
 6500 6510 6530 6590 #Up to pre ww1 tech
