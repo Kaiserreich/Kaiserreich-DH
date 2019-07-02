@@ -1,0 +1,4490 @@
+##################
+### resource events
+##################
+
+#108000	GUY	The Trinidad oil fields
+#108001	GUY	The black gold of Trinidad
+#108002	GUY	Jamaica's resources
+#108003	CAN	The Federation asks for our assistance
+#108004	GUY	The Commonwealth Bank granted a credit!
+#108005	GUY	The Commonwealth Bank refused a credit!
+#108006	GUY	Jamaica's Bauxite mines.
+#108007	GUY	Repay our credit!
+#108008	GUY	Repay our credit!
+#108009	GUY	Repay our credit!
+#108010	GUY	Repay our credit!
+#108011	GUY	Repay our credit!
+#108012	GUY	Repay our credit!
+#108013	GUY	The Carribbean Commonwealth Bank
+
+event = {
+id = 108000
+random = no
+country = GUY
+
+name = "The Trinidad oil fields"
+desc = "Our geologists found out that the oil fields of Trinidad are larger than previously expected. The Trinidad Oil Company has now asked us for additional funds to exploit the new fields."
+style = 2
+picture = "economic"
+
+date = { day = 20 month = march year = 1936 }
+
+action_a = {
+name = "Grant the funds, it will strengthen our economy."
+ai_chance = 70
+command = { type = supplies value = -500 }
+command = { type = metalpool value = -500 }
+command = { type = money value = -50 }
+}
+
+action_b = {
+name = "We cannot afford it right now..."
+ai_chance = 30
+command = { type = dissent value = 2 }
+command = { type = sleepevent which = 108001 }
+}
+}
+
+
+event = {
+id = 108001
+random = no
+country = GUY
+picture = "EdwardVIII1"
+
+name = "The black gold of Trinidad"
+desc = "Today is a great day for the entire Federation! Officials from all over the Carribean have come to Trinidad to witness His Majesty inaugurating the new oilfields and harbour facilities! The new oilfields will almost double our oil production."
+style = 2
+
+date = { day = 12 month = january year = 1937 }
+
+action_a = {
+name = "A glorious day!"
+command = { type = add_prov_resource which = 1758 value = 8 where = oil  }
+command = { type = construct which = infrastructure where = 1758 value = 10 }
+}
+}
+
+
+event = {
+id = 108002
+random = no
+country = GUY
+picture = "mining"
+
+name = "Jamaica's resources"
+desc = "The lack of rare metals has been our economy's weakness for quite some time. But luckily geologists from the University of Jamestown now discovered large deposits of Bauxite on Jamaica. Unfortunately, developing these new resources will take more funding than we can afford."
+style = 2
+
+date = { day = 23 month = June year = 1936 }
+
+action_a = {
+name = "Ask Canada for funding."
+ai_chance = 50
+command = { type = trigger which = 108003 }
+}
+
+action_b = {
+name = "We'll provide the necessary funding, no matter the cost."
+ai_chance = 15
+command = { type = supplies value = -800 }
+command = { type = metalpool value = -700 }
+command = { type = money value = -70 }
+}
+
+action_c = {
+name = "Ask the Commonwealth Bank for a credit."
+ai_chance = 30
+command = { type = setflag which = Carribb_Bank  }
+}
+
+action_d = {
+name = "We currently can not afford it..."
+ai_chance = 5
+command = { type = dissent value = 2 }
+command = { type = sleepevent which = 108006 }
+}
+}
+
+
+event = {
+id = 108003
+random = no
+country = CAN
+picture = "Gold"
+
+name = "The Federation asks for our assistance"
+desc = " The Carribean Federation has asked for our assistance. Great deposits of rare materials have been discovered on Jamaica, but the Federation will need additional funding to exploit these."
+style = 2
+
+action_a = {
+name = "Provide the funding, we will benefit from this as well."
+ai_chance = 80
+command = { type = relation which = GUY value = 30 }
+command = { type = supplies value = -800 }
+command = { type = metalpool value = -700 }
+command = { type = money value = -70 }
+}
+
+action_b = {
+name = "Heck no, we have nothing to give away for free!"
+ai_chance = 20
+command = { type = relation which = GUY value = -20 }
+command = { type = sleepevent which = 108006  }
+}
+}
+
+
+event = {
+id = 108004
+random = no
+country = GUY
+picture = "Bank"
+
+trigger = {
+random = 70
+flag = Carribb_Bank
+}
+
+name = "The Commonwealth Bank granted a credit!"
+desc = "We have now the necessary money to pay for the Jamaica mining operations, and will need to use far less of our own resources! The credit will be paid back over the next few years"
+style = 2
+
+date = { day = 23 month = June year = 1936 }
+offset = 4
+deathdate = { day = 23 month = July year = 1936 }
+
+action_a = {
+name = "Excellent! Begin construction on Jamaica at once!"
+command = { type = supplies value = -600 }
+command = { type = metalpool value = -500 }
+command = { type = sleepevent which = 108005 }
+}
+}
+
+
+event = {
+id = 108005
+random = no
+country = GUY
+picture = "Bank"
+
+trigger = {
+random = 70
+flag = Carribb_Bank
+}
+
+name = "The Commonwealth Bank refused a credit!"
+desc = "The Commonwealth Bank refused to give us a credit.. Financing the Jamaica project will be difficult now..."
+style = 2
+
+date = { day = 23 month = June year = 1936 }
+offset = 4
+deathdate = { day = 23 month = July year = 1936 }
+
+action_a = {
+name = "We must proceed anyway, start the construction!"
+ai_chance = 40
+command = { type = clrflag which = Carribb_Bank }
+command = { type = dissent value = 2 }
+command = { type = supplies value = -800 }
+command = { type = metalpool value = -700 }
+command = { type = money value = -70 }
+}
+
+action_b = {
+name = "Damnation, cancel the project..."
+ai_chance = 60
+command = { type = clrflag which = Carribb_Bank }
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 108006  }
+}
+}
+
+
+event = {
+id = 108006
+random = no
+country = GUY
+picture = "mining"
+
+name = "Jamaica's Bauxite mines."
+desc = "The officials in Kingston report that the needed infrastructure on Jamaica is finally completed! Bauxite mining will beginn immediately!"
+style = 2
+
+date = { day = 15 month = march year = 1937 }
+
+action_a = {
+name = "We will enter a new age of prosperity!"
+command = { type = waketeam which = 15213 } #ALCAN Limited
+command = { type = add_prov_resource which = 1782 value = 25 where = rare_materials }
+command = { type = construct which = infrastructure where = 1782 value = 10 }
+}
+}
+
+
+
+event = {
+id = 108007
+random = no
+country = GUY
+picture = "Gold"
+
+trigger = { 
+flag = Carribb_Bank
+}
+
+name = "Repay our credit!"
+desc = "We have to repay part of our credit to the Commonwealth Bank."
+style = 2
+
+date = { day = 23 month = June year = 1937 }
+
+action_a = {
+name = "Ok."
+command = { type = money value = -100 }
+}
+}
+
+
+event = {
+id = 108008
+random = no
+country = GUY
+picture = "Gold"
+
+trigger = { 
+flag = Carribb_Bank
+}
+
+name = "Repay our credit!"
+desc = "We have to repay part of our credit to the Commonwealth Bank."
+style = 2
+
+date = { day = 23 month = June year = 1938 }
+
+action_a = {
+name = "Ok."
+command = { type = money value = -100 }
+}
+}
+
+event = {
+id = 108009
+random = no
+country = GUY
+picture = "Gold"
+
+trigger = { 
+flag = Carribb_Bank
+}
+
+name = "Repay our credit!"
+desc = "We have to repay part of our credit to the Commonwealth Bank."
+style = 2
+
+date = { day = 23 month = June year = 1939 }
+
+action_a = {
+name = "Ok."
+command = { type = money value = -100 }
+}
+}
+
+event = {
+id = 108010
+random = no
+country = GUY
+picture = "Gold"
+
+trigger = {
+flag = Carribb_Bank
+}
+
+name = "Repay our credit!"
+desc = "We have to repay part of our credit to the Commonwealth Bank."
+style = 2
+
+date = { day = 23 month = June year = 1940 }
+
+action_a = {
+name = "Ok."
+command = { type = money value = -100 }
+}
+}
+
+event = {
+id = 108011
+random = no
+country = GUY
+picture = "Gold"
+
+trigger = {
+flag = Carribb_Bank
+}
+
+name = "Repay our credit!"
+desc = "We have to repay part of our credit to the Commonwealth Bank."
+style = 2
+
+date = { day = 23 month = June year = 1941 }
+
+action_a = {
+name = "Ok."
+command = { type = money value = -200 }
+}
+}
+
+event = {
+id = 108012
+random = no
+country = GUY
+picture = "Gold"
+
+trigger = {
+flag = Carribb_Bank
+}
+
+name = "Repay our credit!"
+desc = "We have to repay part of our credit to the Commonwealth Bank. This is the final payment"
+style = 2
+
+date = { day = 23 month = June year = 1942 }
+
+action_a = {
+name = "Finally, the last payment."
+command = { type = money value = -200 }
+command = { type = clrflag which = Carribb_Bank }
+}
+}
+
+event = {
+id = 108013
+random = no
+country = GUY
+picture = "Gold"
+
+name = "The Carribbean Commonwealth Bank"
+desc = "Ever since our Federation was born, the Cayman Islands take a special place in our economy due to their lax tax and banking laws. The guranteed banking secret has attracted a lot of customers for the Commonwealth Bank and other banks."
+style = 2
+
+date = { day = 10 month = january year = 1936 }
+
+action_a = {
+name = "Money laundering? Let's just look the other way."
+command = { type = free_money value = 1 }
+}
+}
+
+
+##########
+#Elections
+##########
+event = {
+id = 108014
+random =  no
+country = GUY
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 15 month = april year = 1936 }
+offset = 2
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Beginning of the elections"
+desc = "Today the great elections of the Caribbean Federation begin."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Let the elections begin"
+command = { type = dissent value = -3 }
+command = { type = money value = -50 }
+}
+}
+
+event = {
+id = 108015
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+control = { province = 1997 data = GUY } # Capital
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 17 month = april year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Voting results in Guyana"
+desc = "The people in Guyana have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 40
+command = { type = setflag which = GUY_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 20
+command = { type = setflag which = GUY_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 40
+command = { type = setflag which = GUY_SC }
+}
+}
+
+event = {
+id = 108016
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+control = { province = 1757 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 20 month = april year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Voting results in the Leeward Islands"
+desc = "The people in the Leeward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 40
+command = { type = setflag which = LI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 50
+command = { type = setflag which = LI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = LI_SC }
+}
+}
+
+event = {
+id = 108017
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+control = { province = 1770 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 23 month = april year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Voting results in the Windward Islands!"
+desc = "The people in the Windward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 40
+command = { type = setflag which = WI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the Area"
+ai_chance = 10
+command = { type = setflag which = WI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 50
+command = { type = setflag which = WI_SC }
+}
+}
+
+event = {
+id = 108018
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+control = { province = 1771 data = GUY }
+control = { province = 1773 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 25 month = april year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Voting results in the Bahamas and Bermuda"
+desc = "The people in the Bahamas and Bermuda have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 20
+command = { type = setflag which = BB_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 60
+command = { type = setflag which = BB_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 20
+command = { type = setflag which = BB_SC }
+}
+}
+
+event = {
+id = 108019
+random =  no
+country = GUY
+
+
+trigger = {
+event = 108014
+control = { province = 1782 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 27 month = april year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Voting results in the Greater Antilles"
+desc = "The people in the Greater Antilles have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 10
+command = { type = setflag which = GA_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 20
+command = { type = setflag which = GA_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 70
+command = { type = setflag which = GA_SC }
+}
+}
+
+event = {
+id = 108020
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+NOT = { 
+ispuppet = GUY 
+}
+OR = {
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = LI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Liberal Party wins"
+desc = "The Liberal Party wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562048 } #Sir Francis Stanley Jackson
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562005 } #Gladdys Maud Longbridge
+command = { type = ministerofintelligence which = 562006 } #Edward F. Collingwood
+command = { type = chiefofstaff which = 562007 } #Sir George Wiliam Cogan
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562010 } #Bily Strachan
+command = { type = sleepevent which = 108023 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+event = {
+id = 108021
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = LI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Social Democratic Party wins"
+desc = "The SDP wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562046 } #K.E.Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Letham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = sleepevent which = 108023 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108022
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = LI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+name = "Patriotic Union Party wins"
+desc = "The PU wins the elections! However, this party has 2 factions - liberal,  Stubbs' faction, and reactionist, quasi-autocrat Derecourt's one."
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations, Mr. Stubbs!"
+ai_chance = 55
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = set_domestic which = free_market value = 8 }
+command = { type = headofstate which = 562011 }#Severo Mallet-Prevost
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108023 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562034 } #Sir George Wiliam Grogan
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "Congratulations, Mr. Derecourt!"
+ai_chance = 45
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 4 }
+command = { type = headofstate which = 562011 } #Severo Mallet-Prevost
+command = { type = headofgovernment which = 562013 } #Frederick Derecourt
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108023 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562032 } #H. F. L. Hilton-Green
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108023
+random =  no
+country = GUY
+
+trigger = {
+event = 108014
+NOT = { 
+ispuppet = GUY 
+}
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+}
+
+name = "No majority found after the election"
+desc = "We must create a minority government then."
+style = 2
+picture = "politics2"
+
+date = { day = 9 month = may year = 1936 }
+offset = 4
+deathdate = { day = 29 month = may year = 1936 }
+
+action_a = {
+name = "A Liberal-Democrat coalition is formed"
+ai_chance = 44
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "A Conservative-Democrat coalition is formed"
+ai_chance = 55
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562046 } #K. E. Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_c = {
+name = "Keep the current government"
+ai_chance = 1
+command = { type = dissent value = 10 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+# 1941
+
+event = {
+id = 108024
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 15 month = april year = 1941 }
+offset = 15
+deathdate = { day = 29 month = may year = 1941 }
+
+
+name = "Beginning of the elections"
+desc = "Today the great elections of the Caribbean Federation begin."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Let the elections begin"
+command = { type = dissent value = -5 }
+command = { type = money value = -50 }
+}
+}
+
+event = {
+id = 108025
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+control = { province = 1997 data = GUY } # Capital
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 17 month = april year = 1941 }
+offset = 15
+deathdate = { day = 29 month = may year = 1941 }
+
+name = "Voting results in Guyana"
+desc = "The people in Guyana have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 30
+command = { type = setflag which = GUY_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 10
+command = { type = setflag which = GUY_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 60
+command = { type = setflag which = GUY_SC }
+}
+}
+
+
+event = {
+id = 108026
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+control = { province = 1757 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 20 month = april year = 1941 }
+offset = 15
+deathdate = { day = 29 month = may year = 1941 }
+
+name = "Voting results in the Leeward Islands"
+desc = "The people in the Leeward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 10
+command = { type = setflag which = LI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 30
+command = { type = setflag which = LI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 60
+command = { type = setflag which = LI_SC }
+}
+}
+
+event = {
+id = 108027
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+control = { province = 1770 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 23 month = april year = 1941 }
+offset = 10
+deathdate = { day = 29 month = may year = 1941 }
+
+name = "Voting results in the Windward Islands"
+desc = "The people in the Windward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 10
+command = { type = setflag which = WI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the Area"
+ai_chance = 10
+command = { type = setflag which = WI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 80
+command = { type = setflag which = WI_SC }
+}
+}
+
+event = {
+id = 108028
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+control = { province = 1771 data = GUY }
+control = { province = 1773 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 25 month = april year = 1941 }
+offset = 10
+deathdate = { day = 29 month = may year = 1941 }
+
+name = "Voting results in the Bahamas and Bermuda"
+desc = "The people in the Bahamas and Bermuda have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 20
+command = { type = setflag which = BB_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 60
+command = { type = setflag which = BB_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 20
+command = { type = setflag which = BB_SC }
+}
+}
+
+event = {
+id = 108029
+random =  no
+country = GUY
+
+
+trigger = {
+event = 108024
+control = { province = 1782 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 27 month = april year = 1941 }
+offset = 10
+deathdate = { day = 29 month = may year = 1941 }
+
+
+name = "Greater Antilles' vote results!"
+desc = "And the winner is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 10
+command = { type = setflag which = GA_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 20
+command = { type = setflag which = GA_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 70
+command = { type = setflag which = GA_SC }
+}
+}
+
+event = {
+id = 108030
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = LI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1941 }
+offset = 10
+deathdate = { day = 29 month = may year = 1941 }
+
+name = "Liberal Party wins"
+desc = "The Liberal Party wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562048 } #Sir Francis Stanley Jackson
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562005 } #Gladdys Maud Longbridge
+command = { type = ministerofintelligence which = 562006 } #Edward F. Collingwood
+command = { type = chiefofstaff which = 562007 } #Sir George Wiliam Cogan
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562010 } #Bily Strachan
+command = { type = sleepevent which = 108033 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+event = {
+id = 108031
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = LI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1941 }
+offset = 10
+deathdate = { day = 29 month = may year = 1941 }
+
+name = "Social Democratic Party wins"
+desc = "The SDP wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562046 } #K.E.Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Letham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = sleepevent which = 108033 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108032
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = LI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1941 }
+offset = 10
+deathdate = { day = 29 month = may year = 1941 }
+
+name = "Patriotic Union Party wins"
+desc = "The PU wins the elections! However, this patry has 2 factions - liberal,  Stubbs' faction, and reactionist, quasi-autocrat Derecourt's one."
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations, Mr. Stubbs!"
+ai_chance = 25
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = set_domestic which = free_market value = 8 }
+command = { type = headofstate which = 562011 }#Severo Mallet-Prevost
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108033 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562034 } #Sir George Wiliam Grogan
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "Congratulations, Mr. Derecourt!"
+ai_chance = 75
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 4 }
+command = { type = headofstate which = 562011 } #Severo Mallet-Prevost
+command = { type = headofgovernment which = 562013 } #Frederick Derecourt
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108033 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562032 } #H. F. L. Hilton-Green
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108033
+random =  no
+country = GUY
+
+trigger = {
+event = 108024
+NOT = { 
+ispuppet = GUY 
+}
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+}
+
+name = "No majority found after the election"
+desc = "We must create a minority government then."
+style = 2
+picture = "politics2"
+
+date = { day = 9 month = may year = 1941 }
+offset = 10
+deathdate = { day = 29 month = may year = 1941 }
+
+action_a = {
+name = "A Liberal-Democrat coalition is formed"
+ai_chance = 15
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "A Conservative-Democrat coalition is formed"
+ai_chance = 70
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562046 } #K. E. Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_c = {
+name = "Keep the current government"
+ai_chance = 15
+command = { type = dissent value = 10 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+# 1946
+
+event = {
+id = 108034
+random =  no
+country = GUY
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 15 month = april year = 1946 }
+offset = 15
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Beginning of the elections"
+desc = "Today the great elections of the Caribbean Federation begin."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Let the elections begin"
+command = { type = dissent value = -5 }
+command = { type = money value = -50 }
+}
+}
+
+event = {
+id = 108035
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+control = { province = 1997 data = GUY } # Capital
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 17 month = april year = 1946 }
+offset = 15
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Voting results in Guyana"
+desc = "The people in Guyana have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 60
+command = { type = setflag which = GUY_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 10
+command = { type = setflag which = GUY_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 30
+command = { type = setflag which = GUY_SC }
+}
+}
+
+
+event = {
+id = 108036
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+control = { province = 1757 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 20 month = april year = 1946 }
+offset = 15
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Voting results in the Leeward Islands"
+desc = "The people in the Leeward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 80
+command = { type = setflag which = LI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 15
+command = { type = setflag which = LI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 5
+command = { type = setflag which = LI_SC }
+}
+}
+
+
+event = {
+id = 108037
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+control = { province = 1770 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 23 month = april year = 1946 }
+offset = 10
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Voting results in the Windward Islands"
+desc = "The people in the Windward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 20
+command = { type = setflag which = WI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the Area"
+ai_chance = 75
+command = { type = setflag which = WI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 5
+command = { type = setflag which = WI_SC }
+}
+}
+
+event = {
+id = 108038
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+control = { province = 1771 data = GUY }
+control = { province = 1773 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 25 month = april year = 1946 }
+offset = 10
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Voting results in the Bahamas and Bermuda"
+desc = "The people in the Bahamas and Bermuda have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 40
+command = { type = setflag which = BB_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 50
+command = { type = setflag which = BB_SD }
+}
+
+action_d = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = BB_SC }
+}
+}
+
+event = {
+id = 108039
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+control = { province = 1782 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 27 month = april year = 1946 }
+offset = 10
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Voting results in the Greater Antilles"
+desc = "The people in the Greater Antilles have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 90
+command = { type = setflag which = GA_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 5
+command = { type = setflag which = GA_SD }
+}
+
+action_d = {
+name = "Nationalists win the area"
+ai_chance = 5
+command = { type = setflag which = GA_SC }
+}
+}
+
+event = {
+id = 108040
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = LI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1946 }
+offset = 10
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Liberal Party wins"
+desc = "The Liberal Party wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562048 } #Sir Francis Stanley Jackson
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562005 } #Gladdys Maud Longbridge
+command = { type = ministerofintelligence which = 562006 } #Edward F. Collingwood
+command = { type = chiefofstaff which = 562007 } #Sir George Wiliam Cogan
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562010 } #Bily Strachan
+command = { type = sleepevent which = 108043 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+event = {
+id = 108041
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = LI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1946 }
+offset = 10
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Social Democratic Party wins"
+desc = "The SDP wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562046 } #K.E.Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Letham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = sleepevent which = 108043 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108042
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = LI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1946 }
+offset = 10
+deathdate = { day = 29 month = may year = 1946 }
+
+name = "Patriotic Union Party wins"
+desc = "The PU wins the elections! However, this patry has 2 factions - liberal,  Stubbs' faction, and reactionist, quasi-autocrat Derecourt's one."
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations, Mr. Stubbs!"
+ai_chance = 85
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = set_domestic which = free_market value = 8 }
+command = { type = headofstate which = 562011 }#Severo Mallet-Prevost
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108043 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562034 } #Sir George Wiliam Grogan
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "Congratulations, Mr. Derecourt!"
+ai_chance = 15
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 4 }
+command = { type = headofstate which = 562011 } #Severo Mallet-Prevost
+command = { type = headofgovernment which = 562013 } #Frederick Derecourt
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108043 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562032 } #H. F. L. Hilton-Green
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108043
+random =  no
+country = GUY
+
+trigger = {
+event = 108034
+NOT = { 
+ispuppet = GUY 
+}
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+}
+
+name = "No majority found after the election"
+desc = "We must create a minority government then."
+style = 2
+picture = "politics2"
+
+date = { day = 9 month = may year = 1946 }
+offset = 10
+deathdate = { day = 29 month = may year = 1946 }
+
+action_a = {
+name = "A Liberal-Democrat coalition is formed"
+ai_chance = 75
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "A Conservative-Democrat coalition is formed"
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562046 } #K. E. Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_c = {
+name = "Keep the current government"
+ai_chance = 15
+command = { type = dissent value = 10 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+#1951, standard
+
+event = {
+id = 108044
+random =  no
+country = GUY
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 15 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Beginning of the elections"
+desc = "Today the great elections of the Caribbean Federation begin."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Let the elections begin"
+command = { type = dissent value = -5 }
+command = { type = money value = -50 }
+}
+}
+
+event = {
+id = 108045
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+control = { province = 1997 data = GUY } # Capital
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY
+flag = GUY_1951_PROGR 
+}
+}
+
+date = { day = 17 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in Guyana"
+desc = "The people in Guyana have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 60
+command = { type = setflag which = GUY_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 30
+command = { type = setflag which = GUY_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = GUY_SC }
+}
+}
+
+event = {
+id = 108046
+random =  no
+country = GUY
+
+
+trigger = {
+event = 108044
+control = { province = 1757 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY
+flag = GUY_1951_PROGR 
+}
+}
+
+date = { day = 20 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in the Leeward Islands"
+desc = "The people in the Leeward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 20
+command = { type = setflag which = LI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 70
+command = { type = setflag which = LI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = LI_SC }
+}
+}
+
+event = {
+id = 108047
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+control = { province = 1770 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY
+flag = GUY_1951_PROGR 
+}
+}
+
+date = { day = 23 month = april year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in the Windward Islands"
+desc = "The people in the Windward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 20
+command = { type = setflag which = WI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 75
+command = { type = setflag which = WI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 5
+command = { type = setflag which = WI_SC }
+}
+}
+
+event = {
+id = 108048
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+control = { province = 1771 data = GUY }
+control = { province = 1773 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY
+flag = GUY_1951_PROGR 
+}
+}
+
+date = { day = 25 month = april year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in the Bahamas and Bermuda"
+desc = "The people in the Bahamas and Bermuda have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 40
+command = { type = setflag which = BB_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 50
+command = { type = setflag which = BB_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = BB_SC }
+}
+}
+
+event = {
+id = 108049
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+control = { province = 1782 data = GUY }
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+NOT = { 
+ispuppet = GUY
+flag = GUY_1951_PROGR 
+}
+}
+
+date = { day = 27 month = april year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in the Greater Antilles"
+desc = "The people in the Greater Antilles have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 50
+command = { type = setflag which = GA_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 25
+command = { type = setflag which = GA_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 75
+command = { type = setflag which = GA_SC }
+}
+}
+
+event = {
+id = 108050
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = BB_ML 
+}
+AND = {
+flag = LI_ML
+flag = WI_ML
+flag = GA_ML 
+}
+AND = {
+flag = LI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = WI_ML
+flag = BB_ML
+flag = GA_ML 
+}
+AND = {
+flag = GUY_ML
+flag = LI_ML
+flag = WI_ML 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Liberal Party wins"
+desc = "The Liberal Party wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = freedom value = 9 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562048 } #Sir Francis Stanley Jackson
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562049 } #Carlos Prio
+command = { type = ministerofsecurity which = 562050 } #Sergio Carbo
+command = { type = ministerofintelligence which = 562051 } #Manuel Ferrara
+command = { type = chiefofstaff which = 562007 } #Sir George Wiliam Cogan
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562010 } #Bily Strachan
+command = { type = sleepevent which = 108054 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+event = {
+id = 108051
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = BB_SD 
+}
+AND = {
+flag = LI_SD
+flag = WI_SD
+flag = GA_SD 
+}
+AND = {
+flag = LI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = WI_SD
+flag = BB_SD
+flag = GA_SD 
+}
+AND = {
+flag = GUY_SD
+flag = LI_SD
+flag = WI_SD 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Social Democratic Party wins"
+desc = "The SDP wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562046 } #K.E.Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Letham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = sleepevent which = 108054 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108052
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+NOT = { 
+ispuppet = GUY 
+} 
+OR = {
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = LI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC 
+} 
+}
+}
+
+date = { day = 2 month = may year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Patriotic Union Party wins"
+desc = "The PU wins the elections! However, this patry has 2 factions - liberal,  Stubbs' faction, and reactionist, quasi-autocrat Derecourt's one."
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations, Mr. Stubbs!"
+ai_chance = 90
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = set_domestic which = free_market value = 8 }
+command = { type = headofstate which = 562011 }#Severo Mallet-Prevost
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108054 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562034 } #Sir George Wiliam Grogan
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "Congratulations, Mr. Derecourt!"
+ai_chance = 10
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 6 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = set_domestic which = freedom value = 3 }
+command = { type = set_domestic which = free_market value = 4 }
+command = { type = headofstate which = 562011 } #Severo Mallet-Prevost
+command = { type = headofgovernment which = 562013 } #Frederick Derecourt
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 108054 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562032 } #H. F. L. Hilton-Green
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+event = {
+id = 108053
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+OR = {
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = BB_SC 
+}
+AND = {
+flag = LI_SC
+flag = WI_SC
+flag = GA_SC 
+}
+AND = {
+flag = LI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = WI_SC
+flag = BB_SC
+flag = GA_SC 
+}
+AND = {
+flag = GUY_SC
+flag = LI_SC
+flag = WI_SC 
+} 
+}
+}
+
+
+date = { day = 2 month = may year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Patriotic Union Party wins"
+desc = "The PU wins the elections!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Congratulations!"
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = set_domestic which = free_market value = 8 }
+command = { type = headofstate which = 562011 }#Severo Mallet-Prevost
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = sleepevent which = 7654024 }
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562034 } #Sir George Wiliam Grogan
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+
+event = {
+id = 108054
+random =  no
+country = GUY
+
+trigger = {
+event = 108044
+NOT = { 
+ispuppet = GUY 
+}
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+}
+
+name = "No majority found after the election"
+desc = "We must create a minority government then."
+style = 2
+picture = "politics2"
+
+date = { day = 9 month = may year = 1951 }
+offset = 10
+deathdate = { day = 29 month = may year = 1951 }
+
+action_a = {
+name = "A Liberal-Democrat coalition is formed"
+ai_chance = 80
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 6 }
+command = { type = set_domestic which = free_market value = 5 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562043 } #Amy Bailey
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_b = {
+name = "A Conservative-Democrat coalition is formed"
+ai_chance = 20
+command = { type = dissent value = 5 }
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562015 } #Reginald Stubbs
+command = { type = foreignminister which = 562046 } #K. E. Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Frederic Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Leatham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+
+action_c = {
+name = "Keep the current government"
+ai_chance = 0
+command = { type = dissent value = 10 }
+command = { type = clrflag which = GUY_ML }
+command = { type = clrflag which = LI_ML }
+command = { type = clrflag which = WI_ML }
+command = { type = clrflag which = BB_ML }
+command = { type = clrflag which = GA_ML }
+command = { type = clrflag which = GUY_SD }
+command = { type = clrflag which = LI_SD }
+command = { type = clrflag which = WI_SD }
+command = { type = clrflag which = BB_SD }
+command = { type = clrflag which = GA_SD }
+command = { type = clrflag which = GUY_SC }
+command = { type = clrflag which = LI_SC }
+command = { type = clrflag which = WI_SC }
+command = { type = clrflag which = BB_SC }
+command = { type = clrflag which = GA_SC }
+}
+}
+
+# 1951 with progressivists
+
+event = {
+id = 108055
+random =  no
+country = GUY
+
+trigger = {
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+flag = GUY_1951_PROGR
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 17 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in Guyana"
+desc = "The people in Guyana have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 60
+command = { type = setflag which = GUY_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 10
+command = { type = setflag which = GUY_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = GUY_SC }
+}
+
+action_d = {
+name = "Progressivists win the area"
+ai_chance = 20
+command = { type = setflag which = GUY_LWR }
+}
+}
+
+event = {
+id = 108056
+random =  no
+country = GUY
+
+trigger = {
+event = 108055
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+flag = GUY_1951_PROGR
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 20 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in the Leeward Islands"
+desc = "The people in the Leeward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 20
+command = { type = setflag which = LI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 50
+command = { type = setflag which = LI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = LI_SC }
+}
+
+action_d = {
+name = "Progressivists win the area"
+ai_chance = 20
+command = { type = setflag which = LI_LWR }
+}
+}
+
+event = {
+id = 108057
+random =  no
+country = GUY
+
+trigger = {
+event = 108055
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+flag = GUY_1951_PROGR
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 23 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+
+name = "Voting results in the Windward Islands"
+desc = "The people in the Windward Islands have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 20
+command = { type = setflag which = WI_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 40
+command = { type = setflag which = WI_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 50
+command = { type = setflag which = WI_SC }
+}
+
+action_d = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = WI_LWR }
+}
+}
+
+
+event = {
+id = 108058
+random =  no
+country = GUY
+
+trigger = {
+event = 108055
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+flag = GUY_1951_PROGR
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 25 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in the Bahamas and Bermuda"
+desc = "The people in the Bahamas and Bermuda have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 40
+command = { type = setflag which = BB_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 40
+command = { type = setflag which = BB_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 10
+command = { type = setflag which = BB_SC }
+}
+
+action_d = {
+name = "Progressivists win the area"
+ai_chance = 10
+command = { type = setflag which = BB_LWR }
+}
+}
+
+event = {
+id = 108059
+random =  no
+country = GUY
+
+trigger = {
+event = 108055
+OR = {
+government = democratic
+ideology = paternal_autocrat 
+}
+flag = GUY_1951_PROGR
+NOT = { 
+ispuppet = GUY 
+}
+}
+
+date = { day = 27 month = april year = 1951 }
+offset = 15
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Voting results in the Greater Antilles"
+desc = "The people in the Greater Antilles have finished voting and the result is..."
+style = 2
+picture = "bra_vote"
+
+action_a = {
+name = "Liberals win the area"
+ai_chance = 25
+command = { type = setflag which = GA_ML }
+}
+
+action_b = {
+name = "Social Democrats win the area"
+ai_chance = 25
+command = { type = setflag which = GA_SD }
+}
+
+action_c = {
+name = "Nationalists win the area"
+ai_chance = 25
+command = { type = setflag which = GA_SC }
+}
+
+action_d = {
+name = "Progressivists win the area"
+ai_chance = 25
+command = { type = setflag which = GA_LWR }
+}
+}
+
+# Bills made by SD Party if it rules #
+
+event = {
+id = 108060
+random =  no
+country = GUY
+
+trigger = {
+ideology = social_democrat
+headofgovernment = 562002 #Arthur Andrew Cipriani
+atwar = no
+NOT = { 
+ispuppet = GUY
+exists = CSA 
+}
+exists = CAN
+}
+
+name = "Legalisation of syndicalist parties"
+desc = "We are a full democracy and we don't have to fear the Syndicalists. Shall we pass the bill that allows them to create legal parties in our country?"
+picture = "Congress"
+style = 2
+
+date = { day = 0 month = june year = 1946 }
+offset = 150
+deathdate = { day = 29 month = december year = 1948 }
+
+action_a = {
+ai_chance = 45
+name = "Pass the bill"
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = political_left value = 1 }
+command = { type = dissent value = 4 }
+}
+
+action_b = {
+ai_chance = 55
+name = "Veto the bill"
+command = { type = domestic which = freedom value = -1 }
+command = { type = sleepevent which = 108061 }
+}
+}
+
+event = {
+id = 108061
+random =  no
+country = GUY
+
+trigger = {
+ideology = social_democrat
+headofgovernment = 562002 #Arthur Andrew Cipriani
+NOT = { 
+ispuppet = GUY 
+exists = CSA
+}
+atwar = no
+exists = CAN
+}
+
+name = "1st Syndicalist Congress of Caribbean Commonwealth"
+desc = "Finally, we are free and we can create a legal party! In our Congress we invited some members of the Social-Democratic Party. Now, we must decide: should we create our own Progressive party or join the SDP?"
+picture = "Congress"
+style = 2
+
+date = { day = 0 month = june year = 1946 }
+offset = 150
+deathdate = { day = 29 month = december year = 1948 }
+
+action_a = {
+ai_chance = 45
+name = "Join the SDP"
+command = { type = setflag which = GUY_1951_COOP } # If SD wins next elections, progressivists will be invited into government
+}
+
+action_b = {
+ai_chance = 55
+name = "We must create our own Progressive Party!"
+command = { type = setflag which = GUY_1951_PROGR } # Another version of 1951 elections
+}
+}
+
+event = {
+id = 108062
+random =  no
+country = GUY
+
+trigger = {
+ideology = social_democrat
+headofgovernment = 562002
+atwar = no
+exists = CAN
+NOT = { 
+exists = CSA 
+} 
+}
+
+name = "Delegalisation of autocrat groups in policy"
+desc = "We are a full democracy and we don't have a place for autocrats. Shall we pass the bill that bans them?"
+picture = "Congress"
+style = 2
+
+date = { day = 0 month = january year = 1947 }
+offset = 150
+deathdate = { day = 29 month = december year = 1948 }
+
+action_a = {
+ai_chance = 85
+name = "Pass the bill"
+command = { type = domestic which = freedom value = -1 }
+command = { type = sleepevent which = 108052 } # Player will have only moderate SC government (sleeps double SC-PA victory)
+}
+
+action_b = {
+ai_chance = 15
+name = "Veto the bill"
+command = { type = domestic which = freedom value = 1 }
+command = { type = sleepevent which = 108053 } # Player still can choose between SC and PA (sleeps single SC victory)
+}
+}
+
+event = {
+id = 108063
+country = GUY
+style = 2
+picture = "immigrates"
+
+trigger = { 
+OR = {
+war = { country = USA country = TEX }
+war = { country = USA country = CSA }
+war = { country = TEX country = CSA } 
+} 
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "American Immigrants arrive on Caribbean"
+desc = "To escape the civil war ravaging the United States, immigrants have fled to Canada and Latin America. Thousands have recently arrived on the Bahamas by boat and are looking for work, food, and a place to live. We can either block their entrance, or allow them a place in our country."
+
+action_a = {
+ai_chance = 99
+name = "Welcome them with open arms!"
+command = { type = dissent value = 5 }
+command = { type = construct which = IC where = 1997 value = 1 }
+command = { type = manpowerpool value = 25 }
+command = { type = relation which = USA value = 10 }
+command = { type = relation which = CSA value = -10 }
+command = { type = relation which = TEX value = -10 }
+}
+
+action_b = {
+ai_chance = 1
+name = "Send them back to the continent!"
+command = { type = relation which = USA value = -25 }
+command = { type = relation which = TEX value = 25 }
+command = { type = relation which = CSA value = 25 }
+}
+}
+
+event = {
+id = 108064
+country = GUY
+style = 2
+persistent = yes
+picture = "ENG_rally"
+
+trigger = {
+day = 10
+month = 2
+NOT = { 
+day = 11
+month = 3
+government = communist
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Independence day!"
+desc = "Independence Day, also known as the Day of the Federation, celebrations took place today all across the country. Most everyone has set aside their political differences to celebrate the traditions of the Caribbean Comonwealth with fireworks and parades."
+
+action_a = {
+name = "Let's celebrate!"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 108065
+random = no
+country = GUY
+style = 2
+
+trigger = { 
+ai = no 
+}
+
+name = "Internal political situation in the Caribbean Commonwealth"
+desc = "EVT_667064_DESC"
+picture = "Caribbean"
+
+date = { day = 0 month = january year = 1936 }
+offset = 3
+deathdate = { day = 3 month = january year = 1936 }
+
+action_a = {
+name = "Long live the Caribbean Commonwealth!"
+command = { }
+}
+}
+
+event = {
+id = 108066
+random =  no
+country = GUY
+
+trigger = {
+flag = GUY_1951_COOP
+event = 108051
+government = democratic
+}
+
+
+date = { day = 7 month = may year = 1951 }
+offset = 5 # Check for trigger conditions day
+deathdate = { day = 29 month = may year = 1951 }
+
+name = "Cooperation between socialists and social-democrats"
+desc = "The SDP has won the elections. Now, it is time to fulfill the deal between them and the Radical Socialists. Should we invite the Pregressive Movement to join us?"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Welcome!"
+ai_chance = 60
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 10 }
+command = { type = set_domestic which = freedom value = 5 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562012 } #Dr Cheddi Jagan
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562017 } #Rasleigh Jackson
+command = { type = armamentminister which = 562019 } #Dr Gobinda Ganga
+command = { type = ministerofsecurity which = 562026 } #Cuthbert Brook-Smith
+command = { type = ministerofintelligence which = 562027 } #J.A.M Rice-Evans
+command = { type = chiefofstaff which = 562031 } #AA Cipriani
+command = { type = chiefofarmy which = 562033 } #Christopher Lobban
+command = { type = chiefofnavy which = 562036 } #Thomas Mcgarrity
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = dissent value = 10 } #People are not happy with Syndies in govt
+command = { type = clrflag which = GUY_1951_COOP }
+command = { type = setflag which = GUY_1951_NAT_COUPABLE }
+}
+
+action_b = {
+name = "We musn't trust them!"
+ai_chance = 40
+command = { type = domestic which = freedom value = -1 }
+command = { type = dissent value = 10 } #You are liar
+command = { type = clrflag which = GUY_1951_COOP }
+command = { type = setflag which = GUY_1951_SYN_COUPABLE }
+}
+}
+
+# Syndies in government
+
+event = {
+id = 108067
+random =  no
+country = GUY
+
+trigger = {
+flag = GUY_1951_NAT_COUPABLE
+}
+
+date = { day = 1 month = september year = 1951 }
+offset = 5 # Check for trigger conditions day
+deathdate = { day = 29 month = september year = 1951 }
+
+name = "A coup is near?"
+desc = "Treacherous leftists are ruling our beautiful country! Shall we bring the right people to power?"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Yes, of course"
+ai_chance = 60
+command = { }
+}
+
+action_b = {
+name = "No, we are Democrats"
+ai_chance = 40
+command = { type = clrflag which = GUY_1951_NAT_COUPABLE }
+}
+}
+
+event = {
+id = 108068
+random =  no
+country = GUY
+
+trigger = {
+flag = GUY_1951_NAT_COUPABLE
+event = 108067
+}
+
+date = { day = 20 month = september year = 1951 }
+offset = 5 # Check for trigger conditions day
+deathdate = { day = 29 month = september year = 1951 }
+
+name = "A coup is near?"
+desc = "Treacherous leftists are ruling our beautiful country! Now, we are ready. We can coup them alone or ask Canada for help."
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Coup them alone"
+ai_chance = 60
+command = { type = clrflag which = GUY_1951_NAT_COUPABLE }
+command = { type = trigger which = 108069 }
+}
+
+action_b = {
+name = "Ask Canada for help"
+trigger = {
+exists = CAN
+}
+ai_chance = 30
+command = { type = clrflag which = GUY_1951_NAT_COUPABLE }
+command = { type = trigger which = 108070 }
+}
+
+action_c = {
+name = "No, we are Democrats, abort it"
+ai_chance = 10
+command = { type = clrflag which = GUY_1951_NAT_COUPABLE }
+}
+}
+
+
+event = {
+id = 108069
+random =  no
+country = GUY
+
+name = "Nationalist coup!"
+desc = "Treacherous reactionists with army support are trying to coup us!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Coup succeeds"
+ai_chance = 20
+command = { type = sleepminister which = 562012 } #Syndicalists
+command = { type = sleepminister which = 562014 }
+command = { type = sleepminister which = 562017 }
+command = { type = sleepminister which = 562019 }
+command = { type = sleepminister which = 562022 }
+command = { type = sleepminister which = 562025 }
+command = { type = sleepminister which = 562029 }
+command = { type = sleepminister which = 562033 }
+command = { type = sleepminister which = 562036 }
+command = { type = sleepminister which = 562039 }
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = headofstate which = 562011 } # Severo Mallet-Prevost
+command = { type = headofgovernment which = 562013 } #Frederick Derecourt
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562032 } #H. F. L. Hilton-Green
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+}
+
+action_b = {
+name = "Coup fails and democracy survives"
+ai_chance = 40
+command = { type = dissent value = 10 }
+command = { type = revolt which = 1997 }
+}
+
+action_c = {
+name = "Coup fails and Syndicalists seize power in the state!"
+ai_chance = 40
+command = { type = setflag which = GUY_1951_SYNDIE } #For Canada, if exists
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 10 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562012 } #Dr Cheddi Jagan
+command = { type = headofgovernment which = 562014 } #Fornes Burnham
+command = { type = foreignminister which = 562017 } #Rasleigh Jackson
+command = { type = armamentminister which = 562019 } #Dr Gobinda Ganga
+command = { type = ministerofsecurity which = 562022 } #Vibert Parvathan
+command = { type = ministerofintelligence which = 562025 } #C.L.R. James
+command = { type = chiefofstaff which = 562029 } #Kingsley Forrester
+command = { type = chiefofarmy which = 562033 } #Christopher Lobban
+command = { type = chiefofnavy which = 562036 } #Thomas Mcgarrity
+command = { type = chiefofair which = 562039 } #Kyle Lightfoot
+command = { type = set_relation which = FRA value = 200 }
+command = { type = set_relation which = ENG value = 200 }
+command = { type = set_relation which = RSI value = 200 }
+command = { type = set_relation which = U28 value = 200 }
+command = { type = end_access which = GUY where = CAN }
+command = { type = end_access which = CAN where = GUY }
+command = { type = leave_alliance when = 1 }
+}
+}
+
+event = {
+id = 108070
+random =  no
+country = CAN
+
+name = "A coup is near?"
+desc = "Treacherous leftists are ruling in the Caribbean Federation and some right-wing dissidents ask us to help them prepare a coup!! Shall we bring the right people to power?"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Yes, of course"
+ai_chance = 60
+command = { type = trigger which = 108071 }
+}
+
+action_b = {
+name = "No, we are democrats"
+ai_chance = 40
+command = { type = trigger which = 108072 }
+}
+}
+
+event = {
+id = 108071
+random =  no
+country = GUY
+
+name = "Nationalist coup!"
+desc = "Treacherous reactionists with army and foreign support are trying to coup us!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Coup succeeds"
+ai_chance = 60 #Canadian help
+command = { type = sleepminister which = 562012 } #Syndicalists
+command = { type = sleepminister which = 562014 }
+command = { type = sleepminister which = 562017 }
+command = { type = sleepminister which = 562019 }
+command = { type = sleepminister which = 562022 }
+command = { type = sleepminister which = 562025 }
+command = { type = sleepminister which = 562029 }
+command = { type = sleepminister which = 562033 }
+command = { type = sleepminister which = 562036 }
+command = { type = sleepminister which = 562039 }
+command = { type = dissent value = 10 }
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 1 }
+command = { type = set_domestic which = freedom value = 1 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = headofstate which = 562011 } # Severo Mallet-Prevost
+command = { type = headofgovernment which = 562013 } #Frederick Derecourt
+command = { type = foreignminister which = 562016 } #Charles Joseph Loghie
+command = { type = armamentminister which = 562018 } #Maurice Gordon
+command = { type = ministerofsecurity which = 562020 } #James Christkirk
+command = { type = ministerofintelligence which = 562047 } #Marcus Garvey
+command = { type = chiefofstaff which = 562028 } #C. F. Drew
+command = { type = chiefofarmy which = 562032 } #H. F. L. Hilton-Green
+command = { type = chiefofnavy which = 562035 } #Henry Winslow
+command = { type = chiefofair which = 562038 } #Mortimer Chesswood
+}
+
+action_b = {
+name = "Coup fails, but Cipriani removes the syndicalists from government"
+ai_chance = 20
+command = { type = set_domestic which = democratic value = 9 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = set_domestic which = free_market value = 3 }
+command = { type = headofstate which = 562001 } #Sir Gordon J. Lethem
+command = { type = headofgovernment which = 562002 } #Arthur Andrew Cipriani
+command = { type = foreignminister which = 562046 } #K.E.Ingram
+command = { type = armamentminister which = 562004 } #Abraham Issa
+command = { type = ministerofsecurity which = 562023 } #Arthur Andrew Cipriani
+command = { type = ministerofintelligence which = 562027 } #J. A. M. Rice-Evans
+command = { type = chiefofstaff which = 562031 } #Arthur Andrew Cipriani
+command = { type = chiefofarmy which = 562008 } #Fredric Augustis
+command = { type = chiefofnavy which = 562009 } #Sir Ralph Letham
+command = { type = chiefofair which = 562041 } #Lawerence E. Brooks
+command = { type = dissent value = 10 }
+command = { type = revolt which = 873 }
+}
+
+action_c = {
+name = "Coup fails and democracy survives"
+ai_chance = 15
+command = { type = leave_alliance when = 1 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = dissent value = 10 }
+command = { type = revolt which = 1997 }
+command = { type = end_access which = GUY where = CAN }
+command = { type = end_access which = CAN where = GUY }
+}
+
+action_d = {
+name = "Coup fails and Syndicalists seize power in the state!"
+ai_chance = 5
+command = { type = setflag which = GUY_1951_SYNDIE } #For Canada, if exists
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 10 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562012 } #Dr Cheddi Jagan
+command = { type = headofgovernment which = 562014 } #Fornes Burnham
+command = { type = foreignminister which = 562017 } #Rasleigh Jackson
+command = { type = armamentminister which = 562019 } #Dr Gobinda Ganga
+command = { type = ministerofsecurity which = 562022 } #Vibert Parvathan
+command = { type = ministerofintelligence which = 562025 } #C.L.R. James
+command = { type = chiefofstaff which = 562029 } #Kingsley Forrester
+command = { type = chiefofarmy which = 562033 } #Christopher Lobban
+command = { type = chiefofnavy which = 562036 } #Thomas Mcgarrity
+command = { type = chiefofair which = 562039 } #Kyle Lightfoot
+command = { type = set_relation which = FRA value = 200 }
+command = { type = set_relation which = ENG value = 200 }
+command = { type = set_relation which = RSI value = 200 }
+command = { type = set_relation which = U28 value = 200 }
+command = { type = leave_alliance when = 1 }
+command = { type = end_access which = GUY where = CAN }
+command = { type = end_access which = CAN where = GUY }
+}
+}
+
+event = {
+id = 108072
+random =  no
+country = GUY
+
+name = "A coup is near?"
+desc = "Treacherous leftists are ruling our beautiful country! Canada refused to help. Should we make a coup?"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Coup them alone"
+ai_chance = 60
+command = { type = trigger which = 108069 }
+}
+
+action_b = {
+name = "No, we are Democrats, abort it"
+ai_chance = 40
+command = {  }
+}
+}
+
+# Syndies are not invited to govt
+
+event = {
+id = 108073
+random =  no
+country = GUY
+
+trigger = {
+flag = GUY_1951_SYN_COUPABLE
+}
+
+date = { day = 1 month = june year = 1951 }
+offset = 5 # Check for trigger conditions day
+deathdate = { day = 29 month = july year = 1951 }
+
+name = "A coup is near?"
+desc = "The SDP betrayed us! Shall we avenge that humiliation?"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Yes, of course"
+ai_chance = 60
+command = { type = trigger which = 108074 }
+}
+
+action_b = {
+name = "No, we are Democrats"
+ai_chance = 40
+command = { type = clrflag which = GUY_1951_SYN_COUPABLE }
+}
+}
+
+event = {
+id = 108074
+random =  no
+country = GUY
+
+name = "Syndicalist coup!"
+desc = "Treacherous Syndicalists with army support are trying to coup us!"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Coup fails"
+ai_chance = 45
+command = { type = sleepminister which = 562012 } #Syndicalists
+command = { type = sleepminister which = 562014 }
+command = { type = sleepminister which = 562017 }
+command = { type = sleepminister which = 562019 }
+command = { type = sleepminister which = 562022 }
+command = { type = sleepminister which = 562025 }
+command = { type = sleepminister which = 562029 }
+command = { type = sleepminister which = 562033 }
+command = { type = sleepminister which = 562036 }
+command = { type = sleepminister which = 562039 }
+command = { type = dissent value = 10 }
+command = { type = revolt which = 1997 }
+}
+
+action_b = {
+name = "Coup succeeds and Syndicalists seize power in the state!"
+ai_chance = 55
+command = { type = setflag which = GUY_1951_SYNDIE } #For Canada, if exists
+command = { type = set_domestic which = democratic value = 7 }
+command = { type = set_domestic which = political_left value = 10 }
+command = { type = set_domestic which = freedom value = 6 }
+command = { type = set_domestic which = free_market value = 6 }
+command = { type = headofstate which = 562012 } #Dr Cheddi Jagan
+command = { type = headofgovernment which = 562014 } #Fornes Burnham
+command = { type = foreignminister which = 562017 } #Rasleigh Jackson
+command = { type = armamentminister which = 562019 } #Dr Gobinda Ganga
+command = { type = ministerofsecurity which = 562022 } #Vibert Parvathan
+command = { type = ministerofintelligence which = 562025 } #C.L.R. James
+command = { type = chiefofstaff which = 562029 } #Kingsley Forrester
+command = { type = chiefofarmy which = 562033 } #Christopher Lobban
+command = { type = chiefofnavy which = 562036 } #Thomas Mcgarrity
+command = { type = chiefofair which = 562039 } #Kyle Lightfoot
+command = { type = set_relation which = FRA value = 200 }
+command = { type = set_relation which = ENG value = 200 }
+command = { type = set_relation which = RSI value = 200 }
+command = { type = set_relation which = U28 value = 200 }
+command = { type = leave_alliance when = 1 }
+command = { type = end_access which = GUY where = CAN }
+command = { type = end_access which = CAN where = GUY }
+}
+}
+
+#Canadian reaction
+
+event = {
+id = 108075
+random =  no
+country = CAN
+
+trigger = {
+flag = GUY_1951_SYNDIE
+government = { type = communist country = GUY }
+NOT = {
+ispuppet = CAN
+government = communist
+}
+}
+
+date = { day = 1 month = june year = 1951 }
+offset = 30 # Check for trigger conditions day
+deathdate = { day = 29 month = december year = 1951 }
+
+name = "Syndicalist coup"
+desc = "Horrible news. The attempt of the right-wing forces in the Carribean Federation to coup the exisitng government resulted in a complete Syndicalist take-over! What shall we do?"
+style = 2
+picture = "politics1"
+
+action_a = {
+name = "Crush them!"
+ai_chance = 60
+command = { type = clrflag which = GUY_1951_SYNDIE }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = war which = GUY }
+}
+
+action_b = {
+name = "Leave them alone"
+ai_chance = 40
+command = { type = clrflag which = GUY_1951_SYNDIE }
+command = { type = domestic which = interventionism value = -1 }
+}
+}

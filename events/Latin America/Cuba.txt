@@ -1,0 +1,1465 @@
+#####################################
+### Syndicalism Spreading in America
+#####################################
+
+#657000	CUB	Syndicalism spreading in America
+#657001	CAN		Cuba asks for protection
+#657002	CSA		Cuba is left alone
+#657003	CUB	Join the Carribean Federation?
+#657004	GUY	Cuban Ministers in our Government?
+#657005	CUB	The Carribbean Federation Denied our Request
+#657006	CUB	The syndicalist want to coup us!
+#657007	CSA		The coup failed!
+#657008	CSA		The annexation of Cuba
+#657009	GUY	Cuba joins the Carribbean Federation
+#657010	CUB	For the Revolution!
+#657011	GUY	The Spanish Language
+#657012	CSA	A free Cuba?
+#657015	GUY	Growing unrest
+
+event = {
+id = 657000
+country = CUB
+style = 2
+picture = "CSA"
+
+trigger = {
+control = { province = 1944 data = CSA }
+control = { province = 1953 data = CSA }
+control = { province = 1809 data = CSA }
+exists = CAN
+NOT = {
+ispuppet = CUB
+ispuppet = CAN
+alliance = { country = CUB country = CAN }
+alliance = { country = CUB country = CSA }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = December year = 1960 }
+
+name = "Syndicalism spreading in America!"
+desc = "The increasing power of the Combined Syndicates of America has been of great concern to the Cuban government. President Vinageras fears now that the CSA controls large parts of the former USA's south and east, Cuba will soon be threatened by the godless Syndicalists. With the USA shattered, our nation needs to look for new allies."
+
+action_a = {
+ai_chance = 80
+name = "Only Canada can protect us from the Syndicalists!"
+command = { type = domestic which = interventionism value = 2 }
+command = { type = trigger which = 657001 }
+}
+action_b = {
+ai_chance = 20
+name = "Cuba can protect itself!"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = trigger which = 657002 }
+}
+}
+
+### Cuba asks for protection
+event = {
+id = 657001
+country = CAN
+style = 2
+picture = "Guerillas"
+
+name = "Cuba asks for protection"
+desc = "The increasing power of the Combined Syndicates of America has been of great concern to the Cuban government. President Vinageras fears that, now that the CSA control large parts of the former USA's south and east, Cuba will soon be threated by the godless Syndicalists. With the USA shattered, Cuba pleads for our protection."
+
+action_a = {
+ai_chance = 65
+name = "We can always use a new ally"
+command = { type = relation which = CUB value = 100 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = alliance which = CUB }
+}
+action_b = {
+ai_chance = 30
+name = "Alright, but Cuba must join the Carribbean Federation"
+command = { type = trigger which = 657003 }
+}
+action_c = {
+ai_chance = 5
+name = "We can't protect Cuba..."
+command = { type = relation which = CUB value = -100 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 657002 }
+}
+}
+
+### Cuba is left alone
+event = {
+id = 657002
+country = CSA
+style = 2
+picture = "Guerillas"
+
+# triggered by 657000, 657001 or 657005
+
+name = "Cuba is left alone"
+desc = "We have been informed that Cuba asked the Entente for protection against us, but the talks led to nothing and Cuba is now standing alone. Should we sponsor a syndicalist coup and install a friendly government?"
+
+action_a = {
+ai_chance = 60
+name = "Yes, sponsor a coup!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 657006 }
+}
+action_b = {
+ai_chance = 40
+name = "No, we don't care about Cuba"
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+### Cuba is asked to join the Carribean Federation
+event = {
+id = 657003
+country = CUB
+style = 2
+#picture = "Carribbean"
+
+# triggered by 657001
+
+name = "Join the Carribean Federation?"
+desc = "The Canadian government has offered us to join the Entente, but we are required to become part of the Carribbean Federation. Cuba would retain its internal sovreignty, but matters concerning the military, economy, and foreign policy would be decided by the federal government in Georgetown."
+
+action_a = {
+ai_chance = 30
+name = "Never! We are a free and independent nation"
+command = { type = relation which = CAN value = -100 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+action_b = {
+ai_chance = 10
+name = "We have no choice, we can't fight the Reds on our own..."
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 657009 }
+}
+action_c = {
+ai_chance = 60
+name = "Alright, we'll join the Federation, but we want fair representation..."
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 657004 }
+}
+}
+
+### Cuban ministers in the Federation government, changed the ID of this event to make it more ordered
+event = {
+id = 657004
+country = GUY
+style = 2
+picture = "Caribbean"
+
+# triggered by 657003
+
+name = "Cuban Ministers in our Government?"
+desc = "Cuba has petitioned to join our Federation, but demands fair political representation in our government. Considering that Cuba's population is as large as the entire Federation's, the request seems resonable. But some of our ministers fear that that Cubans will dominate our government and the Federation."
+
+action_a = {
+ai_chance = 70
+name = "The request is reasonable. Invite Cuban officials into our government"
+command = { type = relation which = CUB value = 100 }
+command = { type = armamentminister which = 564049 } #Carlos Prio
+command = { type = ministerofsecurity which = 564050 } #Sergio Carbo
+command = { type = ministerofintelligence which = 564051 } #Manuel Ferrara
+command = { type = trigger which = 657009 }
+}
+action_b = {
+ai_chance = 30
+name = "No, they will wait for an election"
+command = { type = domestic which = democratic value = 1 }
+command = { type = relation which = CUB value = -50 }
+command = { type = relation which = CAN value = -50 }
+command = { type = dissent value = 5 }
+command = { type = trigger which = 657005 }
+}
+}
+
+### The Federation denies the request, changed the number on this event because of order conflict
+event = {
+id = 657005
+country = CUB
+style = 2
+picture = "Caribbean"
+
+# triggered by 657004
+
+name = "The Carribbean Federation Denied our Request"
+desc = " The bastards in Georgetown rejected our reasonable request. They have left us in the open, as a sacrificial lamb to be slaughtered by the godless Syndicalists"
+
+action_a = {
+ai_chance = 90
+name = "Damn them!"
+command = { type = dissent value = 5 }
+command = { type = trigger which = 657002 }
+}
+action_b = {
+ai_chance = 10
+name = "We have no choice, we can't fight the Reds on our own..."
+command = { type = domestic which = interventionism value = 1 }
+command = { type = trigger which = 657009 }
+}
+}
+
+### The syndicalist want to coup us!
+event = {
+id = 657006
+country = CUB
+style = 2
+picture = "Guerillas"
+
+# triggered by 657002
+
+name = "The syndicalist want to coup us!"
+desc = "The CSA sponsored a coup, the syndicalist opposition is trying to gain control of the government!"
+
+action_a = {
+ai_chance = 80
+name = "The coup is a success!"
+command = { type = set_domestic which = democratic value = 1 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofstate which = 33201 } #Julio Antonio Mella
+command = { type = headofgovernment which = 33202 } #Fabio Grobart
+command = { type = foreignminister which = 33203 } #Luis Amado-Blanco
+command = { type = armamentminister which = 33204 } #Carlos Rafael Rodríguez
+command = { type = ministerofsecurity which = 33205 } #Roberto Agramonte
+command = { type = ministerofintelligence which = 33206 } #Luis Amado-Blanco
+command = { type = chiefofstaff which = 33207 } #Alberto Bayo
+command = { type = chiefofarmy which = 33208 } #Alberto Bayo
+command = { type = chiefofnavy which = 33112 } # Sandalio Junco
+command = { type = chiefofair which = 33210 } #Mario Torres Menier
+command = { type = alliance which = CSA }
+command = { type = trigger which = 657012 }
+}
+action_b = {
+ai_chance = 20
+name = "The coup failed!"
+command = { type = set_domestic which = democratic value = -1 }
+command = { type = set_domestic which = freedom value = -1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = trigger which = 657007 }
+}
+}
+
+### The coup failed!
+event = {
+id = 657007
+country = CSA
+style = 2
+picture = "Guerillas"
+
+# triggered by 657006
+
+name = "The coup failed!"
+desc = "The coup we sponsored is being crushed and the syndicalist dissenters are being imprisoned!"
+
+action_a = {
+ai_chance = 40
+name = "There's nothing else we can do!"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 2 }
+}
+action_b = {
+ai_chance = 60
+name = "Then it is war!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = war which = CUB }
+}
+}
+
+### The annexation of Cuba
+event = {
+id = 657008
+country = CSA
+style = 2
+picture = "Guerillas"
+
+trigger = {
+NOT = {
+exists = CUB
+}
+owned = { province = 1776 data = CSA }
+owned = { province = 1779 data = CSA }
+owned = { province = 1775 data = CSA }
+owned = { province = 1777 data = CSA }
+owned = { province = 1778 data = CSA }
+}
+
+name = "The annexation of Cuba!"
+desc = "After a brief war we finally annexed Cuba. We can now release them as a free state with a syndicalist government or we can keep the military occupation."
+
+action_a = {
+ai_chance = 80
+name = "An independent Cuba"
+command = { type = independence which = CUB value = 1 when = 0 }
+command = { type = trigger which = 657010 }
+}
+action_b = {
+ai_chance = 20
+name = "Military occupation is better!"
+command = { type = dissent value = 1 }
+}
+}
+
+
+### Cuba is inherited by the Federation.
+event = {
+id = 657009
+country = GUY
+style = 2
+picture = "Caribbean"
+
+# triggered by 657003,  657004 or 657005
+
+name = "Cuba joins the Carribbean Federation"
+desc = "The island of Cuba has joined our Federation. It will take some time until Cuba is completely integrated into our political system, and the leftist dissenters on Cuba are dealt with. But our influence and power is certainly growing. "
+
+action_a = {
+name = "Freedom and prosperity for the entire Carribbean!"
+command = { type = inherit which = CUB }
+command = { type = dissent value = 3 }
+command = { type = addcore which = 1776 }
+command = { type = addcore which = 1779 }
+command = { type = addcore which = 1775 }
+command = { type = addcore which = 1777 }
+command = { type = addcore which = 1778 }
+command = { type = manpowerpool value = 30 }
+command = { type = waketeam which = 15202 } #Astillero La Habana
+command = { type = waketeam which = 15211 } #Hershey Chocolate Corp
+command = { type = waketeam which = 15214 } #Arechalaba Industries
+command = { type = waketeam which = 15217 } #Universidad de La Habana
+command = { type = waketeam which = 15219 } #La Academia Naval del Mariel
+#command = { type = waketeam which = 15222 }
+command = { type = trigger which = 657011 }
+}
+}
+
+
+### For the revolution!
+event = {
+id = 657010
+country = CUB
+style = 2
+picture = "Guerillas"
+
+# triggered by 657002
+
+name = "For the revolution!"
+desc = "... nobody can see this..."
+
+action_a = {
+name = "A free syndicalist country!"
+command = { type = set_domestic which = democratic value = 1 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofstate which = 33201 } #Julio Antonio Mella
+command = { type = headofgovernment which = 33202 } #Fabio Grobart
+command = { type = foreignminister which = 33203 } #Luis Amado-Blanco
+command = { type = armamentminister which = 33204 } #Carlos Rafael Rodríguez
+command = { type = ministerofsecurity which = 33205 } #Roberto Agramonte
+command = { type = ministerofintelligence which = 33206 } #Luis Amado-Blanco
+command = { type = chiefofstaff which = 33207 } #Alberto Bayo
+command = { type = chiefofarmy which = 33208 } #Alberto Bayo
+command = { type = chiefofnavy which = 33112 } # Sandalio Junco
+command = { type = chiefofair which = 33210 } #Mario Torres Menier
+command = { type = alliance which = CSA }
+command = { type = trigger which = 657012 }
+}
+}
+
+### The Official Language
+event = {
+id = 657011
+country = GUY
+style = 2
+picture = "Caribbean"
+
+name = "The Spanish Language"
+desc = "With Cuba as a member of our federation, almost half of our citizens now speak spanish as their native language. Currently, our official language is English, but those of our citizens that speak spanish or french increasingly fear that their culture and heritage is being subdued and ignored. "
+
+action_a = {
+ai_chance = 50
+name = "English will stay the official Language of the Federation"
+command = { type = dissent value = 10 }
+}
+action_b = {
+ai_chance = 50
+name = "The federal government will be multilingual!"
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 657012
+country = CSA
+style = 2
+
+name = "A free Cuba?"
+desc = "Should we let Cuba completely free or should we keep their government under our control?"
+
+action_a = {
+ai_chance = 50
+name = "Cuba will be a completely free nation!"
+command = { type = domestic which = democratic value = 1 }
+}
+action_b = {
+ai_chance = 50
+name = "We better keep them under control!"
+command = { type = make_puppet which = CUB }
+command = { type = domestic which = democratic value = -1 }
+}
+}
+
+### Growing unrest
+event = {
+id = 657015
+country = GUY
+style = 2
+picture = "Caribbean"
+
+trigger = {
+control = { province = 1777 data = GUY }
+control = { province = 1776 data = GUY }
+owned = { province = 1777 data = GUY }
+owned = { province = 1776 data = GUY }
+dissent = 10
+NOT = {
+government = communist
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = December year = 1960 }
+
+name = "Growing unrest"
+desc = "Large parts of the Cuban population have become disatisfied with the Federation's policies. Radical elements have spread vile propaganda that Cuba has become nothing but a Canadian colony. Syndicalists groups have staged demonstrations in Havana, and even acts of sabotage against federal facilites! "
+
+
+action_a = {
+ai_chance = 50
+name = "Break up the demonstrations! Not a single inch for the godless Socialists!"
+command = { type = dissent value = 7 }
+}
+action_b = {
+ai_chance = 50
+name = "Don't escalate the situation. As long as the majority stays peaceful..."
+command = { type = dissent value = 5 }
+command = { type = supplies value = -100 }
+}
+}
+
+
+event = {
+id = 1657050
+random = no
+country = CUB
+
+trigger = {
+headofstate = 33032 #Gerardo Machado
+NOT = { headofgovernment = 33038 } } #Gerardo Machado
+
+name = "Gerardo Machado is dead!"
+desc = "Today the President and general of the Cuba Gerardo Machado died. He served in the Liberal Party Administration of José Miguel Gómez. A day of mourning has been declared and Fulgencio Batista has become the new President of Cuba."
+style = 2
+picture = "minister_died"
+
+date = { day = 29 month = march year = 1939 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33032 }
+command = { type = sleepminister which = 33038 }
+command = { type = sleepminister which = 33075 }
+command = { type = headofstate which = 33034 } #Fulgencio Batista
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657051
+random = no
+country = CUB
+
+trigger = {
+headofgovernment = 33038 #Gerardo Machado
+NOT = { headofstate = 33038 } } #Gerardo Machado
+
+name = "Gerardo Machado is dead!"
+desc = "Today the head of government died. He served in the Liberal Party Administration of José Miguel Gómez. A day of mourning has been declared and Eduardo Chibas has become the new head of government."
+style = 2
+picture = "minister_died"
+
+date = { day = 29 month = march year = 1939 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33032 }
+command = { type = sleepminister which = 33038 }
+command = { type = sleepminister which = 33075 }
+command = { type = headofstate which = 33034 } #Fulgencio Batista
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657052
+random = no
+country = CUB
+
+trigger = {
+headofgovernment = 33038 #Gerardo Machado
+headofstate = 33038 } #Gerardo Machado
+
+name = "Gerardo Machado is dead!"
+desc = "Today the head of government died. He served in the Liberal Party Administration of José Miguel Gómez. A week of mourning has been declared. Fulgencio Batista and Eduardo Chibas have become the new President and the new head of government respectively."
+style = 2
+picture = "minister_died"
+
+date = { day = 29 month = march year = 1939 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33032 }
+command = { type = sleepminister which = 33038 }
+command = { type = sleepminister which = 33075 }
+command = { type = headofstate which = 33034 } #Fulgencio Batista
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657053
+random = no
+country = CUB
+
+trigger = {
+OR = { NOT = {
+event = 1657050
+event = 1657051
+event = 1657052 } }
+OR = { NOT = {
+headofstate = 33032 #Gerardo Machado
+headofgovernment = 33038 } } } #Gerardo Machado
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+style = 2
+
+date = { day = 29 month = march year = 1939 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33032 }
+command = { type = sleepminister which = 33038 }
+command = { type = sleepminister which = 33075 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657054
+random = no
+country = CUB
+
+trigger = { headofgovernment = 33002 } #Miguel Mariano Gómez
+
+name = "Miguel Mariano Gómez is dead!"
+desc = "Today our head of government Miguel Mariano Gómez died, he had been running Cuba for over 20 years. A day of mourning has been declared and Eduardo Chibas has assumed the office in the meantime."
+style = 2
+picture = "minister_died"
+
+date = { day = 26 month = october year = 1950 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33002 }
+command = { type = sleepminister which = 33031 }
+command = { type = sleepminister which = 33062 }
+command = { type = headofgovernment which = 33039 } #Eduardo Chibas
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657055
+random = no
+country = CUB
+style = 2
+
+trigger = { NOT = {
+event = 1657055
+headofgovernment = 33002 } } #Miguel Mariano Gómez
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+
+date = { day = 26 month = october year = 1950 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33002 }
+command = { type = sleepminister which = 33031 }
+command = { type = sleepminister which = 33062 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657056
+random = no
+country = CUB
+
+trigger = { headofgovernment = 33039 } #Eduardo Chibas
+
+name = "Eduardo Chibas is dead!"
+desc = "Today our head of goverment passed away and a day of mourning has been declared. Eugenio Molinet Castro has assumed his former position."
+style = 2
+picture = "minister_died"
+
+date = { day = 16 month = august year = 1951 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33039 }
+command = { type = sleepminister which = 33047 }
+command = { type = sleepminister which = 33063 }
+command = { type = headofgovernment which = 33040 } #Eugenio Molinet Castro
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657057
+random = no
+country = CUB
+
+trigger = { NOT = {
+event = 1657056
+headofgovernment = 33039 } } #Eduardo Chibas
+
+name = "EVT_103_NAME"
+desc = "EVT_103_DESC"
+picture = "minister_died"
+style = 2
+
+date = { day = 16 month = august year = 1951 }
+
+action_a = {
+name = "May him rest in peace!"
+command = { type = sleepminister which = 33039 }
+command = { type = sleepminister which = 33047 }
+command = { type = sleepminister which = 33063 }
+command = { type = dissent value = 1 }
+}
+}
+
+### Cuban Revolution!
+
+event = {
+id = 1657015
+country = CSA
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+NOT = { OR = {
+alliance = { country = CUB country = CSA }
+ispuppet = CUB
+ispuppet = CSA } }
+NOT = { event = 675010 } } #Syndicalist Cuba event
+
+date = { day = 1 month = january year = 1953 }
+offset = 300
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Syndicalism in Cuba"
+desc = "Despite Cuba being under reactionary dictatorships for several decades, a latent syndicalist movement exists there, centered around young figures such as Fidel Castro and Camilo Cienfuegos. They have asked for our support on training a revoluctionary cell which, they dream, will one day be able to bring their island towards the family of socialist nations."
+
+action_a = {
+ai_chance = 90
+name = "Full aid shall be given"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = GUY value = -20 }
+command = { type = relation which = CUB value = -40 }
+command = { type = money value = -100 }
+command = { type = supplies value = -200 }
+command = { type = sleepevent which = 1657016 }
+command = { type = sleepevent which = 1657017 }
+command = { type = sleepevent which = 1657018 }
+}
+action_b = {
+ai_chance = 10
+name = "This is not our problem"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657016
+country = GUA
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+NOT = { OR = {
+alliance = { country = CUB country = GUA }
+ispuppet = CUB
+ispuppet = GUA } }
+NOT = { event = 675012 } } #Syndicalist Cuba event
+
+date = { day = 1 month = january year = 1953 }
+offset = 300
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Syndicalism in Cuba"
+desc = "Despite Cuba being under reactionary dictatorships for several decades, a latent syndicalist movement exists there, centered around young figures such as Fidel Castro and Camilo Cienfuegos. They have asked for our support on training a revoluctionary cell which, they dream, will one day be able to bring their island towards the family of socialist nations."
+
+action_a = {
+ai_chance = 90
+name = "Full aid shall be given"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = GUY value = -20 }
+command = { type = relation which = CUB value = -40 }
+command = { type = money value = -100 }
+command = { type = supplies value = -200 }
+command = { type = sleepevent which = 1657015 }
+command = { type = sleepevent which = 1657017 }
+command = { type = sleepevent which = 1657018 }
+}
+action_b = {
+ai_chance = 10
+name = "Cuba is not of our concern"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657017
+country = MEX
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+NOT = { OR = {
+alliance = { country = CUB country = MEX }
+ispuppet = CUB
+ispuppet = MEX } }
+NOT = { event = 675012 } } #Syndicalist Cuba event
+
+date = { day = 1 month = january year = 1953 }
+offset = 300
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Syndicalism in Cuba"
+desc = "Despite Cuba being under reactionary dictatorships for several decades, a latent syndicalist movement exists there, centered around young figures such as Fidel Castro and Camilo Cienfuegos. They have asked for our support on training a revoluctionary cell which, they dream, will one day be able to bring their island towards the family of socialist nations."
+
+action_a = {
+ai_chance = 90
+name = "Full aid shall be given"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = GUY value = -20 }
+command = { type = relation which = CUB value = -40 }
+command = { type = money value = -100 }
+command = { type = supplies value = -200 }
+command = { type = sleepevent which = 1657015 }
+command = { type = sleepevent which = 1657016 }
+command = { type = sleepevent which = 1657018 }
+}
+action_b = {
+ai_chance = 10
+name = "We have no interest in Cuba"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657018
+country = CUB
+style = 2
+
+trigger = { OR = {
+event = 5059
+event = 505901
+event = 505902 }
+NOt = { government = communist } }
+
+date = { day = 1 month = january year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Protests in Havana"
+desc = "Trade unions have announced a general strike today, as the workers of Cuba demand democratic reforms in our country."
+
+action_a = {
+name = "This is weird..."
+command = { type = dissent value = 1 }
+command = { type = industrial_modifier which = total value = -5 }
+}
+}
+
+event = {
+id = 1657019
+country = CUB
+style = 2
+
+trigger = { event = 1657018 }
+
+date = { day = 1 month = january year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Protests are growing"
+desc = "Pro-democracy protests in Cuba are getting more dangerous, as their numbers increase. The masses are gathering nearer and nearer our presidential palace in Havana."
+
+action_a = {
+ai_chance = 50
+name = "Let's see what happens then"
+command = { type = dissent value = 1 }
+}
+action_b = {
+ai_chance = 50
+name = "Send the army to disperse the crowd"
+command = { type = trigger which = 1657021 }
+}
+}
+
+event = {
+id = 1657020
+country = CUB
+style = 2
+
+trigger = { event = 1657019 }
+
+date = { day = 1 month = january year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "The people surround El Capitolio"
+desc = "El Capitolio, our presidential palace in Havana, has been surrounded by the masses! They demand democratic reforms in Cuba!"
+
+action_a = {
+ai_chance = 20
+name = "Listen to their demands - Democracy for Cuba!"
+command = { type = dissent value = -5 }
+command = { type = set_domestic which = democratic value = 8 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = industrial_modifier which = total value = 5 }
+}
+action_b = {
+ai_chance = 80
+name = "The Army takes control of the streets in Havana!"
+command = { type = trigger which = 1657021 }
+}
+}
+
+event = {
+id = 1657021
+country = CUB
+style = 2
+
+name = "Massacre in Havana!"
+desc = "A presidential order has sent the Cuban Army towards the protesters who were gathering in downtown Havana. A predictable massacre ensued, leaving fifty men and women dead. Our people are outraged! And this will only serve to fuel dissent against our government even more..."
+
+action_a = {
+name = "This action was needed to ensure our safety"
+command = { type = dissent value = 10 }
+command = { type = domestic which = political_left value = -1 }
+command = { type = domestic which = democratic value = -1 }
+command = { type = setflag which = CUB_REV_1 }
+}
+}
+
+event = {
+id = 1657022
+country = CUB
+style = 2
+
+trigger = { flag = CUB_REV_1 }
+
+date = { day = 1 month = january year = 1953 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Attack on Fort Moncada"
+desc = "The Army attack on unarmed protesters in Havana only served to fuel dissent against the State and give more sympatizers to the syndicalist cause. This morning, a foreign-sponsored band of socialist bandits has begun an attack on the Moncada Barracks, in Santiago de Cuba! This large fort houses a large number of small arms, which would surelly be put into good use by their cause..."
+
+action_a = {
+name = "No pasarán! They shall not pass!"
+command = { }
+}
+}
+
+event = {
+id = 1657023
+country = CUB
+style = 2
+
+trigger = {
+flag = CUB_REV_1
+event = 1657022
+random = 50
+NOT = { event = 1657024 } }
+
+date = { day = 1 month = january year = 1953 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Battle of Moncada - Government victory!"
+desc = "The rebel group under the command of brothers Fidel and Raúl Castro has been defeated as they attempted to break through the arsenal at Fort Moncada. Of the two-hundred men involved on the attack, 61 were killed in the fighting, with circa fifty being captured. One hundred more managed to flee across the countryside, however. Amongst the detainees is the young lawyer Fidel Castro, one of the masterminds of this insurgency."
+
+action_a = {
+name = "Told you they wouldn't pass!"
+command = { type = setflag which = MONCADA_GOV }
+command = { type = clrflag which = CUB_REV_1 }
+command = { type = sleepevent which = 1657024 }
+}
+}
+
+event = {
+id = 1657024
+country = CUB
+style = 2
+
+trigger = {
+flag = CUB_REV_1
+event = 505907
+random = 50
+NOT = { event = 1657023 } }
+
+date = { day = 1 month = january year = 1953 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Battle of Moncada - Rebel victory!"
+desc = "The rebel group under the command of brothers Fidel and Raúl Castro has succeded in their attack against Fort Moncada. They managed to break through the base's arsenal and stole a huge cache of arms and ammunition, which they will use against us!"
+
+action_a = {
+name = "This is not good..."
+command = { type = setflag which = MONCADA_REB }
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 1657023 }
+}
+}
+
+event = {
+id = 1657025
+country = CUB
+style = 2
+
+trigger = { flag = MONCADA_GOV }
+
+date = { day = 1 month = january year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Show trials"
+desc = "The government of Cuba is setting up 'special tribunals' to deal with the captured rebels of the failed attack at Fort Moncada. As socialist leaders Camilo Cienfuegos and Raúl Castro are hiding in the mountains, the star of these show trials will be the third in command, Fidel Castro."
+
+action_a = {
+name = "Proceed"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 1657026
+country = CUB
+style = 2
+
+trigger = {
+flag = MONCADA_GOV
+event = 1657025 }
+
+date = { day = 1 month = march year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "The judgment of Fidel Castro"
+desc = "The show trials of the captured syndicalist rebels is coming to an end. With many low-level operatives being condemned to long terms in prison or exile abroad, the jury is expected to deliver today the sentence to Fidel Castro."
+
+action_a = {
+name = "Al paredón! Execute him by firing squad!"
+ai_chance = 85
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = political_left value = -1 }
+command = { type = trigger which = 1657027 }
+}
+action_b = {
+name = "Exile this bastard"
+ai_chance = 15
+command = { type = dissent value = 1 }
+command = { type = domestic which = freedom value = 1 }
+}
+}
+
+event = {
+id = 1657027
+country = CUB
+style = 2
+
+name = "'History will absolve me'"
+desc = "'I do not fear death, as I do not fear the fury of the miserable tyrant who took the lives of my comrades. Condemn me. It doesn't matter. History will absolve me.' - Excerpt from Fidel Castro's final defense before his execution"
+
+action_a = {
+name = "Just shoot him already!"
+command = { type = sleepminister which = 33101 } #Fidel
+command = { type = sleepminister which = 33095 } #Fidel
+}
+}
+
+event = {
+id = 1657028
+country = CSA
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+event = 1657026 }
+
+date = { day = 1 month = march year = 1953 }
+offset = 60
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Cuban exiles"
+desc = "Socialist leaders Camilo Cienfuegos and Raúl Castro, together with a party of fifty other revolutionaries, have arrived today in Miami, Florida, having spent several months hiding in the Cuban mountains after their failed attack at Fort Moncada. They have oficially asked for political asylum, and plan on maintaining contact with the remaining syndicalist cells in their home country from here."
+
+action_a = {
+ai_chance = 90
+name = "Grant them asylum, of course"
+command = { type = relation which = CUB value = -20 }
+command = { type = sleepevent which = 1657029 }
+command = { type = sleepevent which = 1657030 }
+command = { type = setflag which = CUB_CSA }
+}
+action_b = {
+ai_chance = 10
+name = "Send them somewhere else"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 1 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657029
+country = GUA
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+event = 1657026 }
+
+date = { day = 1 month = march year = 1953 }
+offset = 80
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Cuban exiles"
+desc = "Socialist leaders Camilo Cienfuegos and Raúl Castro, together with a party of fifty other revolutionaries, have arrived today in Belize City, having spent several months hiding in the Cuban mountains after their failed attack at Fort Moncada. They have oficially asked for political asylum, and plan on maintaining contact with the remaining syndicalist cells in their home country from here."
+
+action_a = {
+ai_chance = 90
+name = "Grant them asylum, of course"
+command = { type = relation which = CUB value = -20 }
+command = { type = sleepevent which = 1657028 }
+command = { type = sleepevent which = 1657030 }
+command = { type = setflag which = CUB_GUA }
+}
+action_b = {
+ai_chance = 10
+name = "Send them somewhere else"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 1 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657030
+country = MEX
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+event = 1657026 }
+
+date = { day = 1 month = march year = 1953 }
+offset = 80
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Cuban exiles"
+desc = "Socialist leaders Camilo Cienfuegos and Raúl Castro, together with a party of fifty other revolutionaries, have arrived today in Cancún, having spent several months hiding in the Cuban mountains after their failed attack at Fort Moncada. They have oficially asked for political asylum, and plan on maintaining contact with the remaining syndicalist cells in their home country from here."
+
+action_a = {
+ai_chance = 90
+name = "Grant them asylum, of course"
+command = { type = relation which = CUB value = -20 }
+command = { type = sleepevent which = 1657028 }
+command = { type = sleepevent which = 1657029 }
+command = { type = setflag which = CUB_MEX }
+}
+action_b = {
+ai_chance = 10
+name = "Send them somewhere else"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 1 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657031
+country = CSA
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+flag = CUB_CSA }
+
+date = { day = 1 month = march year = 1956 }
+offset = 500
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Conference with Cuban socialists"
+desc = "After some years operating in our country, Cuban socialist leaders Camilo Cienfuegos and Raúl Castro have approached us. According to them, the Cuban exilee community in the CSA, together with the remaining socialist cells in the island, are ready to launch another atempt at an uprising!"
+
+action_a = {
+ai_chance = 99
+name = "Give them whatever they need!"
+command = { type = relation which = CUB value = -20 }
+command = { type = sleepevent which = 1657032 }
+command = { type = sleepevent which = 1657033 }
+command = { type = money value = -100 }
+command = { type = supplies value = -200 }
+command = { type = setflag which = CUB_REV_2 }
+}
+action_b = {
+ai_chance = 1
+name = "Not of our concern, sorry"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657032
+country = MEX
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+flag = CUB_MEX }
+
+date = { day = 1 month = march year = 1956 }
+offset = 500
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Conference with Cuban socialists"
+desc = "After some years operating in our country, Cuban socialist leaders Camilo Cienfuegos and Raúl Castro have approached us. According to them, the Cuban exilee community in Mexico, together with the remaining socialist cells in the island, are ready to launch another atempt at an uprising!"
+
+action_a = {
+ai_chance = 99
+name = "Give them whatever they need!"
+command = { type = relation which = CUB value = -20 }
+command = { type = sleepevent which = 1657031 }
+command = { type = sleepevent which = 1657033 }
+command = { type = money value = -100 }
+command = { type = supplies value = -200 }
+command = { type = setflag which = CUB_REV_2 }
+}
+action_b = {
+ai_chance = 1
+name = "Not of our concern, sorry"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657033
+country = GUA
+style = 2
+
+trigger = {
+government = communist
+exists = CUB
+flag = CUB_GUA }
+
+date = { day = 1 month = march year = 1956 }
+offset = 500
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Conference with Cuban socialists"
+desc = "After some years operating in our country, Cuban socialist leaders Camilo Cienfuegos and Raúl Castro have approached us. According to them, the Cuban exilee community in Centroamerica, together with the remaining socialist cells in the island, are ready to launch another atempt at an uprising!"
+
+action_a = {
+ai_chance = 99
+name = "Give them whatever they need!"
+command = { type = relation which = CUB value = -20 }
+command = { type = sleepevent which = 1657031 }
+command = { type = sleepevent which = 1657032 }
+command = { type = money value = -100 }
+command = { type = supplies value = -200 }
+command = { type = setflag which = CUB_REV_2 }
+}
+action_b = {
+ai_chance = 1
+name = "Not of our concern, sorry"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = dissent value = 5 }
+command = { type = relation which = CUB value = 10 }
+}
+}
+
+event = {
+id = 1657034
+country = CUB
+style = 2
+
+trigger = { flag = CUB_REV_2 }
+
+date = { day = 1 month = march year = 1956 }
+offset = 50
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Incident at the Baía de los Cocinos"
+desc = "This morning, a yatch sailing under a neutral flag docked in the Baía de los Cocinos (Bay of Pigs) without authorization from our customs or naval authorities. A Navy patrol boat sent to the scene was greeted with shots, leaving two seaman dead. According to later intelligence reports, the yatch was carrying exiled syndicalist leaders Camilo Cienfuegos and Raúl Castro, plus some fifty other rebels. The group is now gone..."
+
+action_a = {
+name = "What the hell is this?"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 1657035
+country = CUB
+style = 2
+
+trigger = { OR = {
+event = 1657034
+flag = MONCADA_REB } }
+
+date = { day = 1 month = january year = 1953 }
+offset = 50
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Revolution!"
+desc = "Castro and Cienfuegos have contacted other socialist groups in the major cities of Cuba. Together, they have began to launch a left-wing Revolution in Cuba! They demand the resignation of our government, or we will face the wrath of the people!"
+
+action_a = {
+ai_chance = 80
+name = "Let them come if they dare"
+command = { type = dissent value = 5 }
+command = { type = setflag which = CUB_REV_START }
+}
+action_b = {
+ai_chance = 20
+name = "We can't afford a civil war, resign now"
+command = { type = trigger which = 1657043 }
+}
+}
+
+event = {
+id = 1657036
+country = CUB
+style = 2
+
+trigger = { flag = CUB_REV_START }
+
+date = { day = 1 month = january year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "The Battle of Santiago de Cuba"
+desc = "One of our army divisions has encountered a major rebel unit in the outskirts of Santiago de Cuba!"
+
+action_a = {
+name = "We are ready for war!"
+command = { }
+}
+}
+
+event = {
+id = 1657037
+country = CUB
+style = 2
+
+trigger = {
+event = 505921
+random = 20 }
+
+name = "Battle of Santiago - Government Victory!"
+desc = "We have managed to defeat the rebel army in this battle, thus aborting the socialist revolt before it reached most of our territory. We will surelly spend the next months wipping some minor guerillas in the countryside, but any major uprising against our rule is now out of question!"
+
+date = { day = 1 month = january year = 1953 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "We prevail!"
+command = { type = dissent value = -5 }
+command = { type = clrflag which = CUB_REV_START }
+command = { type = sleepevent which = 1657038 }
+}
+}
+
+event = {
+id = 1657038
+country = CUB
+style = 2
+
+trigger = {
+event = 505921
+random = 80 }
+
+name = "Battle of Santiago - Rebel Victory!"
+desc = "The rebel guerillas have defeated us! Our army must now retreat west and regroup for a new offensive."
+
+date = { day = 1 month = january year = 1953 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "So embarassing!"
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 1657037 }
+}
+}
+
+event = {
+id = 1657039
+country = CUB
+style = 2
+
+trigger = {
+flag = CUB_REV_START
+event = 1657038 }
+
+name = "The Battle of Santa Clara"
+desc = "After regrouping, our army is ready for a new offensive against the socialist guerillas in the Sierra Maestra region. If we fail, the road to Havana will be open!"
+
+date = { day = 1 month = january year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Attack!"
+command = { }
+}
+}
+
+event = {
+id = 1657040
+country = CUB
+style = 2
+
+trigger = {
+event = 1657039
+random = 20 }
+
+name = "Battle of Santa Clara - Government Victory!"
+desc = "We have managed to defeat the rebel army in this battle, thus aborting the socialist revolt before it reached the rest of our territory. We will surelly spend the next months wipping some minor guerillas in the countryside, but any continuing uprising against our rule is now out of question!"
+
+date = { day = 1 month = january year = 1953 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "We prevail!"
+command = { type = dissent value = -5 }
+command = { type = clrflag which = CUB_REV_START }
+command = { type = sleepevent which = 1657041 }
+}
+}
+
+event = {
+id = 1657041
+country = CUB
+style = 2
+
+trigger = {
+event = 1657039
+random = 80 }
+
+name = "Battle of Santa Clara - Rebel Victory!"
+desc = "The rebel bands have managed to defeat us! Despite our fierce fighting, our ranks were weakened by deserting soldiers, many who proceeded to join the enemy. Now the path is clear for the rebel's final run towards our capital..."
+
+date = { day = 1 month = january year = 1953 }
+offset = 5
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Now pray to heavens..."
+command = { type = dissent value = 5 }
+command = { type = sleepevent which = 1657040 }
+}
+}
+
+event = {
+id = 1657042
+country = CUB
+style = 2
+
+trigger = { event = 1657041 }
+
+name = "Socialist units enter Havana!"
+desc = "After a short civil war, the rebel units under Raúl Castro and Camilo Cienfuegos have entered La Habana! Under greetings from the people, they have assumed power!"
+
+date = { day = 1 month = january year = 1953 }
+offset = 30
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+name = "Run! Run to the hills!"
+command = { type = trigger which = 1657043 }
+}
+}
+
+event = {
+id = 1657043
+country = CUB
+style = 2
+
+name = "Castro and Cienfuegos form a new cabinet"
+desc = "With approval of the people, the rebel leaders have setup a new syndicalist government for Cuba!"
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -50 }
+command = { type = trigger which = 505928 }
+command = { type = set_domestic which = democratic value = 5 }
+command = { type = set_domestic which = political_left value = 9 }
+command = { type = headofstate which = 33216 } #Raúl Castro
+command = { type = headofgovernment which = 33218 } #Camilo Cienfuegos
+command = { type = armamentminister which = 33204 } #Carlos Rafael Rodríguez
+command = { type = foreignminister which = 33217 } #Raúl Castro
+command = { type = ministerofsecurity which = 33101 } #Fidel Castro (if he wasn't shot previously)
+command = { type = ministerofintelligence which = 33095 } #Fidel Castro (if he wasn't shot previously)
+command = { type = chiefofnavy which = 33112 } #Sandalio Junco
+command = { type = chiefofair which = 33210 } #Mario Torres Menier
+command = { type = chiefofstaff which = 33219 } #Camilo Cienfuegos
+}
+}
