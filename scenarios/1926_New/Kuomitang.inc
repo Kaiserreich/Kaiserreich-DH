@@ -14,7 +14,7 @@ country = {
 
         ai = "KAISERREICH\1926_CHI.ai"
         flag_ext = _26
-	name = CHI26
+	name = CHI26_new
 	
 	policy = {
         date = { year = 0 month = january day = 0 }
@@ -29,8 +29,8 @@ country = {
         free = { ic = 50 supplies = 20 }
 #### cabinet
 
-headofstate = { type = 9 id = 183580 }
-headofgovernment = { type = 9 id = 183581 }
+headofstate = { type = 9 id = 183582 } # Wang Jingwei
+headofgovernment = { type = 9 id = 183612 } # Liao Zhongkai
 
 #### Resource Reserves
 	energy	= 200  metal = 200 rare_materials = 200 oil = 200 supplies = 5000

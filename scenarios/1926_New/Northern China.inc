@@ -11,8 +11,8 @@ province = { id = 1334 naval_base = 4 air_base = 4 anti_air = 1 }
 country = {
     tag = CSX # Nanjing Clique
     ai = "KAISERREICH\1926_CSX.ai"
-        flag_ext = _26
-	name = CSX26
+        flag_ext = _26new
+	name = CSX26_new
 		
 	policy = {
         date = { year = 0 month = january day = 0 }
@@ -26,8 +26,8 @@ country = {
     }
 #### cabinet
 
-headofstate = { type = 9 id = 978214 }
-headofgovernment = { type = 9 id = 978215 }
+headofstate = { type = 9 id = 978294 } # Sun Chuanfang
+headofgovernment = { type = 9 id = 978295 } # Sun Chuanfang
 
 #### Resource Reserves
 	energy	= 200  metal = 200	rare_materials = 200	oil = 200 supplies = 5000

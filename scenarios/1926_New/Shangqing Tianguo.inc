@@ -12,7 +12,8 @@ province = { id = 1255 landfort = 2 }
 country = {
     tag = CHC # Shanxi Clique
     ai = "KAISERREICH\1926_CHC.ai"
-	name = CHC26
+	flag_ext = _26
+	name = CHC26_new
 	policy = {
 		date = { year = 0 month = january day = 0 }
 		democratic = 3
@@ -24,8 +25,8 @@ country = {
 		interventionism = 3
 	}
 #### cabinet
-	headofstate = { type = 9 id = 51001 }
-	headofgovernment = { type = 9 id = 51006 }
+	headofstate = { type = 9 id = 51073 } # Yan Xishan
+	headofgovernment = { type = 9 id = 51072 } # Yan Xishan
  	chiefofarmy = { type = 9 id = 51005  }
 
 #### Resource Reserves

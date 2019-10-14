@@ -12,7 +12,7 @@ province = { id = 1208 air_base = 4 anti_air = 1 }
 country = {
     tag = MAN  
 
-	name = MAN26
+	name = MAN26_new
         ai = "KAISERREICH\Fengtian.ai"
 	
 	policy = {
@@ -27,8 +27,8 @@ country = {
     }
 #### cabinet
 
-	headofstate = { type = 9 id = 58001 }
-	headofgovernment = { type = 9 id = 58002 }
+	headofstate = { type = 9 id = 58001 } # Zhang Zuolin
+	headofgovernment = { type = 9 id = 58015 } # Zhang Zongchang
 
 #### Resource Reserves
 	energy	=	200  metal	=	200	rare_materials =	200	oil =	500	supplies = 8000

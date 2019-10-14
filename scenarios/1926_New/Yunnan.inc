@@ -2,7 +2,8 @@
 country = {
     tag = CYN  # Zhili Clique
     ai = "KAISERREICH\1926_CYN.ai"
-	name = CYN26
+	flag_ext = _26
+	name = CYN26_new
 
 	policy = {
 		date = { year = 0 month = january day = 0 }
@@ -17,8 +18,8 @@ country = {
 
 #### cabinet
 
-headofstate = { type = 9 id = 501011  }
-headofgovernment = { type = 9 id = 501012 }
+headofstate = { type = 9 id = 501021  } # Wu Peifu
+headofgovernment = { type = 9 id = 501022 } # Wu Peifu
 
 #### Resource Reserves
 
