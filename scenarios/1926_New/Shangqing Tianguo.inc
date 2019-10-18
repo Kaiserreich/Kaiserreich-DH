@@ -11,7 +11,7 @@ province = { id = 1255 landfort = 2 }
 
 country = {
     tag = CHC # Shanxi Clique
-    ai = "KAISERREICH\1926_CHC.ai"
+    ai = "KAISERREICH\1926_CHCnew.ai"
 	flag_ext = _26
 	name = CHC26_new
 	policy = {

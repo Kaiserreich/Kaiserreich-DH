@@ -10,7 +10,7 @@ province = { id = 1334 naval_base = 4 air_base = 4 anti_air = 1 }
 
 country = {
     tag = CSX # Nanjing Clique
-    ai = "KAISERREICH\1926_CSX.ai"
+    ai = "KAISERREICH\1926_CSXnew.ai"
         flag_ext = _26new
 	name = CSX26_new
 		

@@ -12,7 +12,7 @@ province = { id = 1369 naval_base = 4 air_base = 4 anti_air = 1 }
 country = {
     tag = CHI  
 
-        ai = "KAISERREICH\1926_CHI.ai"
+        ai = "KAISERREICH\1926_CHInew.ai"
         flag_ext = _26
 	name = CHI26_new
 	
@@ -30,7 +30,7 @@ country = {
 #### cabinet
 
 headofstate = { type = 9 id = 183582 } # Wang Jingwei
-headofgovernment = { type = 9 id = 183612 } # Liao Zhongkai
+headofgovernment = { type = 9 id = 183690 } # Chiang Kai-shek
 
 #### Resource Reserves
 	energy	= 200  metal = 200 rare_materials = 200 oil = 200 supplies = 5000

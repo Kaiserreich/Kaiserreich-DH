@@ -1,7 +1,7 @@
 
 country = {
     tag = CYN  # Zhili Clique
-    ai = "KAISERREICH\1926_CYN.ai"
+    ai = "KAISERREICH\1926_CYNnew.ai"
 	flag_ext = _26
 	name = CYN26_new
 

@@ -10,7 +10,7 @@ province = { id = 1371 naval_base = 5 air_base = 4 anti_air = 1 }
 country = {
     tag = GER
 
-ai = "KAISERREICH\1926_GER.ai"
+ai = "KAISERREICH\1926_GERnew.ai"
     policy = {
         date = { year = 0 month = january day = 0 }
         democratic = 4
