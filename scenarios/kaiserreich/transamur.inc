@@ -34,12 +34,12 @@ headofgovernment = { type = 9 id = 527002 }
  	foreignminister = { type = 9 id = 527003 }
  	armamentminister = { type = 9 id =  527004  }
  	ministerofsecurity = { type = 9 id =   527005  }
- 	ministerofintelligence = { type = 9 id =  527006  }
+ 	ministerofintelligence = { type = 9 id =  527090  }
 
-chiefofstaff = { type = 9 id = 527007 }
-chiefofair = { type = 9 id = 527010 }
-	chiefofarmy = { type = 9 id = 527040 }
-chiefofnavy = { type = 9 id = 527047 }       
+	chiefofstaff = { type = 9 id = 527007 }
+	chiefofair = { type = 9 id = 527067 }
+	chiefofarmy = { type = 9 id = 527092 }
+	chiefofnavy = { type = 9 id = 527047 }       
 #### Resource Reserves
 
 	capital = 1191
@@ -137,6 +137,8 @@ relation = { tag = MON value = 30 }
 82300 82310 # Amphibious Warfare
 82500 # Logistic Support
 	}
+	
+	dormant_teams = { 12725 }
 
 #########  OOB (...)
 
