@@ -10,7 +10,7 @@ policy = {
 
 date = { year = 0 month = january day = 0 }
 
-democratic			=	7
+democratic			=	8
 political_left		=	2
 free_market			=	7
 freedom				=	5
@@ -24,8 +24,16 @@ SpyInfo  = {  country = "VEN" NumberOfSpies = 2  }
 
 #### Cabinet ####
 
-#headofstate			= { type = 9 id =  }
-#headofgovernment	= { type = 9 id =  }
+headofstate				= { type = 9 id = 38017 } #Romulo Betancourt
+headofgovernment		= { type = 9 id = 38097 } #Lisandro Alvarado 
+foreignminister			= { type = 9 id = 38104 } #Jose Antonio Ramos Sucre 
+armamentminister		= { type = 9 id = 38131 } #Maria Cruz Salmeron Costa 
+ministerofsecurity		= { type = 9 id = 38123 } #Issac Jose Pardo Soublette
+ministerofintelligence	= { type = 9 id = 38116 } #Fernando Paz Castillo 
+chiefofstaff			= { type = 9 id = 38007 } #Isaías Medina Angarita
+chiefofarmy				= { type = 9 id = 38008 } #Isaías Medina Angarita
+chiefofnavy				= { type = 9 id = 38086 } #Pedro Beauperthuy Urich
+chiefofair				= { type = 9 id = 38091 } #Tomas Contreras Villalobos
 
 #### Resource Reserves ####
 
@@ -71,21 +79,15 @@ diplomacy = {
 # Neighborhood
 relation = { tag = BOL value = 25	} # Bolivia
 relation = { tag = BRA value = 25	} # Brazil
-relation = { tag = GUY value = 25	} # Caribbean Federation
 relation = { tag = CHL value = 25	} # Chile
 relation = { tag = ECU value = 25	} # Ecuador
 relation = { tag = PRU value = 25	} # Peru
 relation = { tag = ARG value = 25	} # Union of La Plata
 
 # Global
-relation = { tag = CAN value = 25	} # Canada
-relation = { tag = FRA value = 25	} # Commune of France
-relation = { tag = GER value = 25	} # Germany
 relation = { tag = JAP value = 25	} # Japan
 relation = { tag = SPA value = 50	} # Kingdom of Spain
-relation = { tag = RSI value = 25	} # Socialist Republic of Italy
-relation = { tag = ENG value = 25	} # Union of Britain
-relation = { tag = USA value = 25	} # United States
+relation = { tag = USA value = 50	} # United States
 
 ## Negative Relations
 
@@ -93,7 +95,13 @@ relation = { tag = USA value = 25	} # United States
 relation = { tag = COL value = -50	} # Colombia
 
 # Global
-
+relation = { tag = CAN value = -25	} # Canada
+relation = { tag = HOL value = -50	} # Holland
+relation = { tag = FRA value = -25	} # Commune of France
+relation = { tag = GER value = -25	} # Germany
+relation = { tag = GUY value = -75	} # Caribbean Federation
+relation = { tag = RSI value = -25	} # Socialist Republic of Italy
+relation = { tag = ENG value = -25	} # Union of Britain
 }
 
 #### Technology ####
@@ -134,98 +142,151 @@ techapps = {
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010 
 
 }
+deactivate = { 6010 6210 6570 6560 6390 } 
 
 #### Order of Battle ####
 
 ## Army
 
-# Garrison at Caracas
-landunit = {
-id = { type = 15800 id = 1 }
-name = "Guardia Presidencial"
-location = 1993 # Caracas
+  landunit = {
+    id       = { type = 15800 id = 1 }
+    name     = "Guardia Presidencial"
+    location = 1993
+    division = {
+      id             = { type = 15800 id = 2 }
+      name           = "Guardia Presidencial"
+      type           = garrison
+      model          = 4
+      strength       = 100
+    }
+  }
+  landunit = {
+    id       = { type = 15800 id = 3 }
+    name     = "Divisi贸n de Infanter铆a"
+    location = 1993
+    division = {
+      id             = { type = 15800 id = 4 }
+      name           = "Divisi贸n de Infanter铆a"
+      type           = infantry
+      model          = 8
+      strength       = 100
+    }
+    division = {
+      id             = { type = 15800 id = 15 }
+      name           = "Divisi贸n de Infanter铆a"
+      type           = infantry
+      model          = 8
+      strength       = 100
+    }
+  }
+  landunit = {
+    id       = { type = 15800 id = 5 }
+    name     = "Divisi贸n de Caballer铆a"
+    location = 1988
+    division = {
+      id             = { type = 15800 id = 6 }
+      name           = "Divisi贸n de Caballer铆a"
+      type           = cavalry
+      model          = 8
+      strength       = 100
+    }
+  }
+  landunit = {
+    id       = { type = 15800 id = 7 }
+    name     = "Divisi贸n de Infanter铆a"
+    location = 1988
+    division = {
+      id             = { type = 15800 id = 8 }
+      name           = "Divisi贸n de Infanter铆a"
+      type           = infantry
+      model          = 8
+      strength       = 100
+    }
+    division = {
+      id             = { type = 15800 id = 14 }
+      name           = "Divisi贸n de Infanter铆a"
+      type           = infantry
+      model          = 8
+      strength       = 100
+    }
+  }
 
-division = {
-id = { type = 15800 id = 2 }
-name = "Guardia Presidencial"
-strength = 100
-type = garrison
-model = 4
-}
-
-}
-
-# Army at Caracas
-landunit = {
-id = { type = 15800 id = 3 }
-name = "División de Infantería"
-location = 1993 # Caracas
-
-division = {
-id = { type = 15800 id = 4 }
-name = "División de Infantería"
-strength = 100
-type = infantry
-model = 7
-}
-
-}
-
-# Cavalry at Maracaibo
-landunit = {
-id = { type = 15800 id = 5 }
-name = "División de Caballería"
-location = 1988 # Maracaibo
-
-division = {
-id = { type = 15800 id = 6 }
-name = "División de Caballería"
-strength = 100
-type = cavalry
-model = 8
-}
-
-}
-
-# Army at Ciudad Bolivar
-landunit = {
-id = { type = 15800 id = 7 }
-name = "División de Infantería"
-location = 1992 # Ciudad Bolivar
-
-division = {
-id = { type = 15800 id = 8 }
-name = "División de Infantería"
-strength = 100
-type = infantry
-model = 7
-}
-
-}
-
-## Navy
-
-# Battle Fleet at Maracaibo
-navalunit = {
-name = "Armada Bolivariana de Venezuela"
-id = { type = 15800 id = 9 }
-location = 1988 # Maracaibo
-base = 1988
-
-division = { id = { type = 15800 id = 10 } name = "ARBV Flotilla 'Caribe'"	type = destroyer model = 3 }
-division = { id = { type = 15800 id = 11 } name = "ARBV Flotilla 'Warao'"	type = destroyer model = 3 }
-}
-
-# Transport Fleet at Maracaibo
-navalunit = {
-id = { type = 15800 id = 12 }
-name = "Flota de Transporte"
-location = 1988 # Maracaibo
-base = 1988
-
-division = { id = { type = 15800 id = 13 } name = "ARBV Flotilla 'Gabriela'" type = transport model = 1 }
-}
-
-## Air Force
-
+  navalunit = {
+    id       = { type = 15800 id = 9 }
+    name     = "Armada Nacional Colombiana"
+    location = 1988
+    base     = 1988
+    division = {
+      id             = { type = 15800 id = 10 }
+      name           = "ARBV Flotilla 'Caribe'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 12 }
+      name           = "ARBV Flotilla 'Joaqin Crespo'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 11 }
+      name           = "ARBV Flotilla 'America'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 17 }
+      name           = "ARBV Flotilla 'Defenser'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 18 }
+      name           = "ARBV Flotilla 'Ezequiel Zamora'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 19 }
+      name           = "ARBV Flotilla 'General Ribas'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 20 }
+      name           = "ARBV Flotilla 'Tamanaco'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 21 }
+      name           = "ARBV Flotilla 'Guaicapuro'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 22 }
+      name           = "ARBV Flotilla 'Andres Bello'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 23 }
+      name           = "ARBV Flotilla 'Jose Angel Lamas'"
+      type           = destroyer
+      model          = 5
+    }
+    division = {
+      id             = { type = 15800 id = 13 }
+      name           = "AEBV Simon Bolivar"
+      type           = heavy_cruiser
+      model          = 4
+    }
+    division = {
+      id             = { type = 15800 id = 16 }
+      name           = "AEBV Essequibo"
+      type           = heavy_cruiser
+      model          = 4
+    }
+  }
 }

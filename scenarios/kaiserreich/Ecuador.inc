@@ -21,6 +21,12 @@ interventionism		=	1
 
 #### Cabinet ####
 
+headofstate				= { type = 9 id = 40033 } #José María Velasco Ibarra
+headofgovernment		= { type = 9 id = 40056 } #Carlos Arosemena Tola
+foreignminister			= { type = 9 id = 40068 }  #José María Velasco Ibarra
+armamentminister		= { type = 9 id = 40099 } #Carlos M. Larrea
+ministerofsecurity		= { type = 9 id =  } #Rafael Valdez Murillo (Not yet in DH)
+
 #### Resource Reserves ####
 
 energy			=	1000
@@ -207,6 +213,12 @@ base = 2040
 
 division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Guayas'"	type = destroyer model = 3 }
 division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'El Oro'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Agata'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'Puyo'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Santiago'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'Guyanqil'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Marques'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'Steffanell'"	type = destroyer model = 3 }
 }
 
 # Transport Fleet at Quito - CAPITAL

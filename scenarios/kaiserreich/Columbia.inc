@@ -9,7 +9,7 @@ policy = {
 
 date = { year = 0 month = january day = 0 }
 
-democratic			=	7
+democratic			=	8
 political_left		=	7
 free_market			=	8
 freedom				=	7
@@ -20,6 +20,12 @@ interventionism		=	2
 }
 
 #### Cabinet ####
+
+headofstate				= { type = 9 id = 37001 } #Alfonso López Pumarejo
+headofgovernment		= { type = 9 id = 37046 } #Eduardo Santos Montejo
+#foreignminister			= { type = 9 id =  }  #Alfonso López Michelsen (Not yet in DH)
+armamentminister		= { type = 9 id = 37076 } #Francisco Barberi Zamorano
+#ministerofsecurity		= { type = 9 id =  } #Felix Restrepo mejia S J (Not yet in DH)
 
 #### Resource Reserves
 
@@ -148,10 +154,10 @@ location = 1991 # Bogotá
 
 division = {
 id = { type = 23000 id = 2 }
-name = "Guardia Presidencial"
+name = "1a División de Guardia"
 strength = 100
-type = garrison
-model = 3
+type = infantry
+model = 6
 }
 
 }
@@ -164,7 +170,7 @@ location = 1986 # Barranquilla
 
 division = {
 id = { type = 23000 id = 4 }
-name = "División de Caballería"
+name = "1a División de Caballería"
 strength = 100
 type = cavalry
 model = 5
@@ -180,7 +186,7 @@ location = 1990 # Cúcuta
 
 division = {
 id = { type = 23000 id = 6 }
-name = "División de Infantería"
+name = "2a División de Ejercito"
 strength = 100
 type = infantry
 model = 5
@@ -196,13 +202,14 @@ location = 1994 # Angostura Falls
 
 division = {
 id = { type = 23000 id = 8 }
-name = "División de Infantería"
+name = "1a División de Ejercito"
 strength = 100
 type = infantry
 model = 5
 }
 
 }
+
 
 ## Navy
 
@@ -213,19 +220,13 @@ id = { type = 23000 id = 9 }
 location = 1986 # Barranquilla
 base = 1986
 
-division = { id = { type = 23000 id = 10 } name = "ARC Flotilla 'Caldas'"		type = destroyer model = 3 }
-division = { id = { type = 23000 id = 11 } name = "ARC Flotilla 'Antioquia'"	type = destroyer model = 3 }
+division = { id = { type = 23000 id = 10 } name = "ARC Flotilla 'Bolivar'"		type = destroyer model = 4 }
+division = { id = { type = 23000 id = 11 } name = "ARC Flotilla 'Antioquia'"	type = destroyer model = 4 }
+division = { id = { type = 23000 id = 12 } name = "ARC Flotilla 'Caldas'"	type = destroyer model = 4 }
+}
 }
 
-# Transport Fleet at Barranquilla
-navalunit = {
-id = { type = 23000 id = 12 }
-name = "Flota de Transporte"
-location = 1986 # Barranquilla
-base = 1986
 
-division = { id = { type = 23000 id = 13 } name = "ARC Flotilla 'Sofia'" type = transport }
-}
 
 ## Air Force
 
