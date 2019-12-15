@@ -25,7 +25,7 @@ headofstate				= { type = 9 id = 40033 } #José María Velasco Ibarra
 headofgovernment		= { type = 9 id = 40056 } #Carlos Arosemena Tola
 foreignminister			= { type = 9 id = 40068 }  #José María Velasco Ibarra
 armamentminister		= { type = 9 id = 40099 } #Carlos M. Larrea
-ministerofsecurity		= { type = 9 id =  } #Rafael Valdez Murillo (Not yet in DH)
+#ministerofsecurity		= { type = 9 id =  } #Rafael Valdez Murillo (Not yet in DH)
 
 #### Resource Reserves ####
 
@@ -213,22 +213,22 @@ base = 2040
 
 division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Guayas'"	type = destroyer model = 3 }
 division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'El Oro'"	type = destroyer model = 3 }
-division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Agata'"	type = destroyer model = 3 }
-division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'Puyo'"	type = destroyer model = 3 }
-division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Santiago'"	type = destroyer model = 3 }
-division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'Guyanqil'"	type = destroyer model = 3 }
-division = { id = { type = 29000 id = 10 } name = "BAE Flotilla 'Marques'"	type = destroyer model = 3 }
-division = { id = { type = 29000 id = 11 } name = "BAE Flotilla 'Steffanell'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 12 } name = "BAE Flotilla 'Agata'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 13 } name = "BAE Flotilla 'Puyo'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 14 } name = "BAE Flotilla 'Santiago'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 15 } name = "BAE Flotilla 'Guyanqil'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 16 } name = "BAE Flotilla 'Marques'"	type = destroyer model = 3 }
+division = { id = { type = 29000 id = 17 } name = "BAE Flotilla 'Steffanell'"	type = destroyer model = 3 }
 }
 
 # Transport Fleet at Quito - CAPITAL
 navalunit = {
-id = { type = 29000 id = 12 }
+id = { type = 29000 id = 18 }
 name = "Flota de Transporte"
 location = 2040 # Quito - CAPITAL
 base = 2040
 
-division = { id = { type = 29000 id = 13 } name = "BAE Flotilla 'Agata'" type = transport model = 1 }
+division = { id = { type = 29000 id = 19 } name = "BAE Flotilla 'Agata'" type = transport model = 1 }
 }
 
 ## Air Force
