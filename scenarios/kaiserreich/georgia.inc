@@ -62,7 +62,7 @@ dormant_ministers	   = { #Armenia
 						#Mountainous Republic
 						519157 519158 519159 519160 519161 519162 519163 519164 519165 519166 519167 519168
 						#Don-Kuban
-						519169 519170
+						519169
 						}
 
 dormant_leaders        = { #Armenia

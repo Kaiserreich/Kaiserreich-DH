@@ -79,6 +79,10 @@ relation = {   tag =  	TRA	value = 		-80	   }
 }
 
 dormant_ministers = { 518083 518084 518085 518086 518087 518088 518089 }
+
+dormant_teams = { 
+				#Syndicalist teams
+				14027 14029 14045 14046 14048 14049 14054 14055 }
 	
 	techapps = {
 #Aircrafts
