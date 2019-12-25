@@ -1,23 +1,7 @@
 # NOTE: This file is better visualized in Notepad++ with language 'Shell' selected
 
 #### Colombia ####
-country = {
-tag = COL
 
-#### Domestic Policy ####
-policy = {
-
-date = { year = 0 month = january day = 0 }
-
-democratic			=	8
-political_left		=	7
-free_market			=	8
-freedom				=	7
-professional_army	=	3
-defense_lobby		=	5
-interventionism		=	2
-
-}
 province = { id = 1990 anti_air = 1 } # Cucuta
 province = { id = 1991 anti_air = 2 } # Santa Fe de Bogota
 
@@ -150,4 +134,4 @@ country = {
       model          = 4
     }
   }
-#}
+}
