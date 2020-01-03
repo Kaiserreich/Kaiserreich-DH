@@ -6,6 +6,8 @@ max_garrison_prop = 0.30
 min_garrison_prop = 0.20
 neutrality = 60.000 
 war = 0
+upgrading = 0.25
+reinforcement = 0.2
 strat_redeploy_threshold = 25
 exp_force_ratio = 0.50
 exp_force_ratios = { } 
@@ -221,18 +223,23 @@ spyprefs =
 ###################################
 #Default values
 construction = { 
-	max_factor = 0.050 
+	max_factor = 0.150 
 
 	AA_batteries = atwar
 	max_AA_level = 4
 	AA_provs = { 
-		52  # Lille
-		57  # Nantes
-		55  # Paris
+		52 # Lille
+		57 # Nantes
+		55 # Paris
 		68 # Bordeaux
 		77 # Toulouse
 		89 # Marseille
-		43  # Rouen
+		43 # Rouen
+		39 # Lorient
+		37 # Brest
+		45 # Le Havre
+		49 # Calais
+		80 # Perpignan
 	} 
 	coastal_fort = no
 	max_coastal_level = 3
@@ -243,15 +250,21 @@ construction = {
 	radar_provs = { } 
 
 	air_base = yes
-	max_air_base = 4
+	max_air_base = 8
 	air_base_provs = {
-		101  # Chaumont 
-		64 # Damascus
+		68 # Bordeaux 
+		37 # Brest
+		45 # Le Havre
+		99 # Reims
+		49 # Calais
 	} 
 
-	naval_base = no 
-	max_naval_base = 5 
-	naval_base_provs = { } 
+	naval_base = yes 
+	max_naval_base = 8 
+	naval_base_provs = { 
+		45 # Le Havre
+		49 # Calais
+	} 
 
 	land_fort = no
 	max_land_level = 10
@@ -272,80 +285,80 @@ construction = {
 }
 
 military = { 
-	relative_build_scheme 	= no
+	relative_build_scheme 	= yes #previously no - Maxian 2020
 	max_batch_peace 	= 960
 	max_batch_war 		= 970
 	max_batch_home_front 	= 570
 
 #### Divisions etc...
-	infantry 	= 31
-	cavalry 	= 0
-	motorized 	= 10
-	mechanized 	= 0
+	infantry 		= 26
+	cavalry 		= 0
+	motorized 		= 10
+	mechanized 		= 0
 	light_armor 	= 0
-	armor 		= 5
+	armor 			= 6
 	paratrooper 	= 0
-	marine 		= 2
-	bergsjaeger 	= 2
-	garrison	= 0
-      	hq 		= 2
-	militia 	= 0
+	marine 			= 2
+	bergsjaeger 	= 4
+	garrison		= 0
+    hq 				= 4
+	militia 		= 0
+	d_01			= 0        #  Light Infantry
 #				52  %
-	interceptor 	= 14
-	multi_role 	= 0
-
-	cas 		= 4
+	interceptor 	= 10
+	multi_role 		= 4
+	cas 			= 0
 	strategic_bomber = 0
-	tactical_bomber = 4
+	tactical_bomber = 8
 	naval_bomber 	= 0
 	transport_plane = 0
 	flying_bomb 	= 0
 	flying_rocket 	= 0
 #				22  %
-	battleship 	= 1
-	carrier 	= 2
-	destroyer 	= 10
+	battleship 		= 1
+	carrier 		= 0
+	light_carrier	= 2
+	escort_carrier	= 0
+	destroyer 		= 8
 	light_cruiser 	= 6
-	heavy_cruiser 	= 4
+	heavy_cruiser 	= 3
 	battlecruiser 	= 0
-	submarine 	= 1
-	transports 	= 2
+	submarine 		= 4
+	nuclear_submarine = 0
+	transports 		= 2
 #				26  %
-#       new units DH and KR
-		escort_carrier	= 0
-		nuclear_submarine = 0
-		d_01		= 0        #  Light Infantry
-
 
 	#### Brigades
-	artillery 		= 75
+	artillery 			= 35
 	sp_artillery 		= 0
 	rocket_artillery	= 0
 	sp_rct_artillery 	= 0
-	anti_tank 		= 0
+	anti_tank 			= 8
 	tank_destroyer 		= 0
-	light_armor_brigade 	= 0
+	light_armor_brigade = 0
 	heavy_armor 		= 0
 	super_heavy_armor 	= 0
-	armored_car 		= 0
-	anti_air 		= 0
-	police 			= 0
-	engineer 		= 0
+	armored_car 		= 5
+	anti_air 			= 7
+	police 				= 0
+	engineer 			= 8
+	b_01				= 10
 
+	light_cag = 100.000
 	cag = 100.000 
 	    escort = 100.0000
 
             naval_asw = 10.0000 
-            naval_anti_air_s = 20.0000 
+            naval_anti_air_s = 10.0000 
             naval_radar_s = 10.0000 
-            naval_fire_controll_s = 20.0000 
+            naval_fire_controll_s = 10.0000 
             naval_improved_hull_s = 10.0000 
             naval_torpedoes_s = 10.0000 
             naval_anti_air_l = 10.0000 
-            naval_radar_l = 0.0000 
+            naval_radar_l = 10.0000 
             naval_fire_controll_l = 10.0000 
-            naval_improved_hull_l = 0.0000 
-            naval_torpedoes_l = 0.0000
+            naval_improved_hull_l = 10.0000 
+            naval_torpedoes_l = 10.0000
 
 }
 
@@ -431,6 +444,9 @@ technology = {
 		
 		# Logistic Support
 		82500 82510 82520 82530
+		
+		# Mining
+		55000 55020
 
 	} 
 	ignore 		= {
@@ -438,10 +454,10 @@ technology = {
 		5920 5930 
 		
 		# Mountain Unit techs
-		1240 1250 1260 1270
+		#1240 1250 1260 1270
 		
 		# Armoured Cars
-		2150 2160 2890 11110
+		#2150 2160 2890 11110
 		
 		#Tank Destroyer
 		2190 2200 2210 11020
@@ -456,13 +472,11 @@ technology = {
 		3350 12030
 
 		# Modern BB/ SH-Battleship
-		3440 3450 3490
+		#3440 3450 3490
 		
 		# CAS
 		4400 4170
 
-		
-		
 		# Rocket Assembly, Rocketry
 		5170 7580 7590
 		
@@ -473,27 +487,27 @@ technology = {
 		5490 5500
 
 		# Raider Patrols 
-		8550 8560 8570
+		#8550 8560 8570
 
 		# Trade Interdiction Submarine
-		8610 8620 8630 8640 8650 8660 8700 8710 8720 8730 8740 8750
-		
-		
-		
+		#8610 8620 8630 8640 8650 8660 8700 8710 8720 8730 8740 8750
 		
 		# CAS Air Doctrines
 		9050 9060 9070
+		
+		# Oil Refining
+		55010 55030
 	}
 
-	armor 		= 4
+	armor 		= 3
 	infantry 	= 4
 	industry 	= 4
-	aircraft 	= 4
-	naval 		= 0
+	aircraft 	= 3
+	naval 		= 1
 	land_doctrines 	= 3
 	secret_weapons 	= 1
-	air_doctrines 	= 1
-	naval_doctrines = 0
+	air_doctrines 	= 2
+	naval_doctrines = 1
 }
 
 
