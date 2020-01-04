@@ -398,7 +398,7 @@ position	= ArmamentMinister
 value		= 0
 command		= { type = research which = infantry value = -0.1000 }
 command		= { type = unit which = infantry value = -0.0300 }
-command         = { type = unit which = d_01 value = -0.0300 }
+command     = { type = unit which = d_01 value = -0.0300 }
 command		= { type = unit which = cavalry value = -0.0200 }
 command		= { type = extra which = rocket_artillery value = -0.0200 }
 command		= { type = unit which = bergsjaeger value = -0.0200 }
@@ -426,6 +426,7 @@ value		= 0
 command		= { type = research which = aircraft value = -0.1000 }
 command		= { type = unit which = naval_bomber value = -0.0500 }
 command		= { type = extra which = cag value = -0.0500 }
+command		= { type = extra which = light_cag value = -0.0500 } #added - Maxian
 command		= { type = extra which = naval_torpedoes_l value = -0.0500 }
 command		= { type = intelligence_report which = navy value = 1 }
 }
@@ -623,7 +624,7 @@ value		= 0
 command		= { type = detection which = navy value = 0.2000 }
 command		= { type = detection which = convoy value = 2 }
 command 	= { type = intelligence_cost which = steal_blueprint value = -0.1000 }
-command		= { type = intelligence_chances which = steal_blueprint value = 5 }
+command		= { type = intelligence_chances which = steal_blueprint value = 3 } #reduced from 5% - Maxian
 command 	= { type = intelligence_cost which = sabotage_industry value = -0.1000 }
 command		= { type = intelligence_chances which = sabotage_industry value = 5 }
 command		= { type = intelligence_chances which = disrupt_techteam value = 3 }
@@ -639,8 +640,8 @@ desc		= DPERSONALITY_SCHOOL_OF_MANOEUVRE
 position	= ChiefOfStaff
 value		= 0
 command		= { type = unit when = speed value = 0.1000 }
-command         = { type = unit which = d_01 when = organisation value = 0.0500 }
-command         = { type = unit which = d_01 value = -0.0300 }
+command     = { type = unit which = d_01 when = organisation value = 0.0500 }
+command     = { type = unit which = d_01 value = -0.0300 }
 command		= { type = unit which = cavalry when = organisation value = 0.0500 }
 command		= { type = unit which = cavalry value = -0.0300 }
 command		= { type = unit which = motorized when = organisation value = 0.0500 }
@@ -665,10 +666,11 @@ desc		= DPERSONALITY_SCHOOL_OF_FIRE_SUPPORT
 position	= ChiefOfStaff
 value		= 0
 command		= { type = research which = armor value = -0.0500 }
-command		= { type = extra which = artillery value = -0.0500 }
-command         = { type = extra which = b_01 value = -0.0500 }
-command		= { type = extra which = tank_destroyer value = -0.0500 }
-command		= { type = extra which = sp_artillery value = -0.0500 }
+command		= { type = extra which = artillery value = -0.0600 } #increased from 5% - Maxian
+command     = { type = extra which = b_01 value = -0.0600 }
+command		= { type = extra which = tank_destroyer value = -0.0600 }
+command		= { type = extra which = sp_artillery value = -0.0600 }
+command		= { type = extra which = super_heavy_artillery value = -0.0600 } #added - Maxian
 command		= { type = extra which = heavy_armor value = -0.0300 }
 command		= { type = extra which = super_heavy_armor value = -0.0300 }
 }
@@ -698,21 +700,21 @@ desc		= DPERSONALITY_SCHOOL_OF_PSYCHOLOGY
 position	= ChiefOfStaff
 value		= 0
 command		= { type = unit when = morale value = 0.2000 }
-command		= { type = leader_skill value = 0.0500 }
+command		= { type = leader_skill value = 0.1500 } #5% too insignificant - Maxian
 }
 
 minister =  {
-trait		= "school of defence"
+trait		= "school of defence" 
 id		= 37
 name		= NPERSONALITY_SCHOOL_OF_DEFENCE
 desc		= DPERSONALITY_SCHOOL_OF_DEFENCE
 position	= ChiefOfStaff
 value		= 0
-command		= { type = unit which = garrison value = -0.0500 }
-command		= { type = extra which = engineer value = -0.0500 }
+command		= { type = unit which = garrison value = -0.0800 } #increased from 5% - Maxian
+command		= { type = extra which = engineer value = -0.0800 }
 command		= { type = province which = flak value = -0.0500 }
-command		= { type = province which = landfort value = -0.1000 }
-command		= { type = province which = coastalfort value = -0.1000 }
+command		= { type = province which = landfort value = -0.1200 }
+#command		= { type = province which = coastalfort value = -0.1000 } #coastal defence minister does this - Maxian
 command		= { type = unit which = land when = defence value = 0.1000 }
 }
 
@@ -734,8 +736,9 @@ command		= { type = extra which = tank_destroyer when = defence value = 0.0500 }
 command		= { type = extra which = sp_artillery when = defence value = 0.0500 }
 command		= { type = extra which = light_armor_brigade when = defence value = 0.0500 }
 command		= { type = extra which = anti_tank when = defence value = 0.0500 }
-command		= { type = extra which = heavy_armor when = defence value = 0.0500 }
-command		= { type = extra which = super_heavy_armor when = defence value = 0.0500 }
+command		= { type = extra which = rocket_artillery when = defence value = 0.0500 } #added cav brigade - Maxian
+#command		= { type = extra which = heavy_armor when = defence value = 0.0500 } #heavy armor slow - Maxian
+#command		= { type = extra which = super_heavy_armor when = defence value = 0.0500 }
 command		= { type = extra which = sp_rct_artillery when = defence value = 0.0500 }
 }
 
@@ -762,7 +765,11 @@ name 		= NPERSONALITY_DECISIVE_BATTLE_DOCTRINE
 desc 		= DPERSONALITY_DECISIVE_BATTLE_DOCTRINE
 position	= ChiefOfArmy
 value		= 0
-command		= { type = unit which = land when = attack value = 0.0500 }
+command		= { type = unit which = land when = attack value = 0.0500 } #applies only once to units, never brigades
+command		= { type = extra which = artillery when = attack value = 0.0300 } #added - Maxian
+command		= { type = extra which = super_heavy_artillery when = attack value = 0.0500 } #added - Maxian
+command		= { type = extra which = heavy_armor when = attack value = 0.0500 } #added - Maxian
+command		= { type = extra which = super_heavy_armor when = attack value = 0.0500 } #added - Maxian
 }
 
 minister =  {
@@ -775,12 +782,13 @@ value		= 0
 command		= { type = unit which = light_armor when = attack value = 0.0800 }
 command		= { type = unit which = armor when = attack value = 0.0800 }
 command		= { type = unit which = mechanized when = attack value = 0.0800 }
-command		= { type = extra which = light_armor_brigade when = attack value = 0.0800 }
-command		= { type = extra which = anti_tank when = attack value = 0.0800 }
-command		= { type = extra which = heavy_armor when = attack value = 0.0800 }
-command		= { type = extra which = tank_destroyer when = attack value = 0.0800 }
-command		= { type = extra which = sp_artillery when = attack value = 0.0800 }
-command		= { type = extra which = sp_rct_artillery when = attack value = 0.0800 }
+command		= { type = extra which = light_armor_brigade when = attack value = 0.0600 } #brigades reduced from 8% - Maxian
+command		= { type = extra which = anti_tank when = attack value = 0.0600 }
+command		= { type = extra which = heavy_armor when = attack value = 0.0600 }
+command		= { type = extra which = tank_destroyer when = attack value = 0.0600 }
+command		= { type = extra which = sp_artillery when = attack value = 0.0600 }
+command		= { type = extra which = sp_rct_artillery when = attack value = 0.0600 }
+command		= { type = extra which = rocket_artillery when = attack value = 0.0600 } #added cav brigade - Maxian
 }
 
 minister =  {
@@ -840,6 +848,8 @@ position	= chiefofnavy
 value		= 0
 command		= { type = unit which = carrier when = organisation value = 0.0500 }
 command		= { type = unit which = carrier when = attack value = 0.0500 }
+command		= { type = unit which = light_carrier when = organisation value = 0.0500 } #added - Maxian
+command		= { type = unit which = light_carrier when = attack value = 0.0500 }
 command		= { type = unit which = battleship when = organisation value = 0.0300 }
 command		= { type = unit which = heavy_cruiser when = organisation value = 0.0300 }
 command		= { type = unit which = navy when = attack value = 0.0300 }
@@ -871,9 +881,10 @@ desc		= DPERSONALITY_BASE_CONTROL_DOCTRINE
 position	= chiefofnavy
 value		= 0
 command		= { type = unit which = marine when = organisation value = 0.0500 }
-command		= { type = unit which = marine when = attack value = 0.0500 }
+command		= { type = unit which = marine when = attack value = 0.0800 } #increased from 5% - Maxian
 command		= { type = unit which = marine when = defence value = 0.0500 }
-command		= { type = province which = coastalfort value = -0.1000 }
+command		= { type = extra which = amph_armor when = attack value = 0.0300 } #added - Maxian
+#command		= { type = province which = coastalfort value = -0.1000 } #coastal defence minister does this - Maxian
 }
 
 ### Chief of air Section ###
@@ -890,10 +901,13 @@ command		= { type = unit which = multi_role when = defence value = 0.0500 }
 command		= { type = unit which = interceptor when = organisation value = 0.0500 }
 command		= { type = unit which = interceptor when = attack value = 0.0500 }
 command		= { type = unit which = interceptor when = defence value = 0.0500 }
-command		= { type = extra which = anti_air when = defence value = 0.0300 }
-command		= { type = extra which = sp_rct_artillery when = defence value = 0.0300 }
-command 	= { type = province which = flak value = -0.0500 }
-command		= { type = province which = radar_station value = -0.0500 }
+command		= { type = unit which = rocket_interceptor when = organisation value = 0.1000 } #added - Maxian
+command		= { type = unit which = rocket_interceptor when = attack value = 0.1000 }
+command		= { type = unit which = rocket_interceptor when = defence value = 0.1000 }
+#command	= { type = extra which = anti_air when = defence value = 0.0300 } #air defence minister does this - Maxian
+#command	= { type = extra which = sp_rct_artillery when = defence value = 0.0300 }
+#command 	= { type = province which = flak value = -0.0500 }
+#command	= { type = province which = radar_station value = -0.0500 }
 }
 
 minister =  {
@@ -908,6 +922,8 @@ command		= { type = unit which = naval_bomber when = attack value = 0.0500 }
 command		= { type = unit which = naval_bomber when = defence value = 0.0500 }
 command		= { type = extra which = cag when = attack value = 0.0500 }
 command		= { type = extra which = cag when = defence value = 0.0500 }
+command		= { type = extra which = light_cag when = attack value = 0.0500 } #added - Maxian
+command		= { type = extra which = light_cag when = defence value = 0.0500 }
 command		= { type = extra which = naval_torpedoes_l value = -0.0500 }
 command		= { type = intelligence_report which = navy value = 1 }
 }
@@ -950,9 +966,13 @@ desc		= DPERSONALITY_VERTICAL_ENVELOPMENT_DOCTRINE
 position	= chiefofair
 value		= 0
 command		= { type = unit which = paratrooper when = organisation value = 0.0500 }
-command		= { type = unit which = paratrooper when = attack value = 0.0500 }
+command		= { type = unit which = paratrooper when = attack value = 0.0750 } #increased from 5% - Maxian
 command		= { type = unit which = paratrooper when = defence value = 0.0500 }
-command		= { type = unit which = transport_plane when = morale value = 0.1000 }
+command		= { type = extra which = glider_armor when = attack value = 0.0300 } #added - Maxian
+command		= { type = extra which = glider_armor when = defence value = 0.0300 }
+command		= { type = extra which = glider_artillery when = attack value = 0.0300 } #added - Maxian
+command		= { type = extra which = glider_artillery when = defence value = 0.0300 }
+command		= { type = unit which = transport_plane when = morale value = 0.1500 } #increased from 10% - Maxian
 }
 
 ### undistinguished suit ###
@@ -975,6 +995,7 @@ value		= 0
 command		= { type = research which = aircraft value = -0.1000 }
 command		= { type = unit which = interceptor value = -0.0500 }
 command		= { type = unit which = multi_role value = -0.0500 }
+command		= { type = unit which = rocket_interceptor value = -0.0500 } #added - Maxian
 }
 
 minister =  {
@@ -1627,26 +1648,27 @@ position	= ArmamentMinister
 value		= 0
 command		= { type = research which = naval value = -0.1000 }
 command		= { type = unit which = carrier value = -0.0300 }
+command		= { type = unit which = light_carrier value = -0.0300 } #added - Maxian
 command		= { type = unit which = escort_carrier value = -0.0300 }
 }
 
 minister =  {
-trait		= "industrialiser"
+trait		= "industrialiser" 
 id		= 99
 name		= NPERSONALITY_INDUSTRIALISER
 desc		= DPERSONALITY_INDUSTRIALISER
 position	= ArmamentMinister
 value		= 0
-command		= { type = province which = ic value = -0.0500 }
-command		= { type = province which = infra value = -0.1000 }
+command		= { type = province which = ic value = -0.0750 } #increased from 5% - Maxian
+command		= { type = province which = infra value = -0.1200 } #increased from 10% - Maxian
 command		= { type = resource which = energy value = 0.0200 }
 command		= { type = resource which = metal value = 0.0200 }
 command		= { type = resource which = rare_materials value = 0.0200 }
 command		= { type = resource which = oil value = 0.0200 }
 command		= { type = extra which = engineer value = -0.0200 }
-command		= { type = dissent value = 0.1500 }
-command		= { type = populationgrowth when = national value = -0.1500 }
-command		= { type = production which = consumer value = 0.2000 }
+command		= { type = dissent value = 0.1200 } #reduced from 15% - Maxian
+command		= { type = populationgrowth when = national value = -0.1200 } #reduced from 15% - Maxian
+command		= { type = production which = consumer value = 0.1500 }
 command		= { type = tc_mod value = -0.1000 }
 }
 
@@ -2424,7 +2446,7 @@ minister =  {
 	command        = { type = resource which = money value = -0.1000 }
 	command     = { type = production which = supplies value = 0.0800 }
 	command     = { type = production which = upgrading value = -0.1200 }
-	command        = { type = research which = land_doctrines value = 0.0500 }
+	command        = { type = research which = land_doctrines value = -0.0500 }
 }
 
 
@@ -2592,6 +2614,7 @@ value		= 0
 command		= { type = resource which = oil value = 0.1000 }
 command		= { type = stockpile which = supplies value = 0.1000 }
 }
+
 minister =  {
 trait		= "Steel magnate"
 id			= 154
@@ -2602,6 +2625,7 @@ value		= 0
 command		= { type = resource which = metal value = 0.1000 }
 command		= { type = stockpile which = industry value = 0.1000 }
 }
+
 minister =  {
 trait		= "Industrial chemist"
 id			= 155
@@ -2638,6 +2662,7 @@ command		= { type = resource which = energy value = 0.0500 }
 command		= { type = resource which = metal value = 0.0500 }
 command		= { type = resource which = rare_materials value = 0.0500 }
 }
+
 minister =  {
 trait		= "Keynesian economy"
 id			= 158
@@ -2653,6 +2678,7 @@ command		= { type = resource which = energy value = -0.0300 }
 command		= { type = resource which = metal value = -0.0300 }
 command		= { type = resource which = rare_materials value = -0.0300 }
 }
+
 minister =  {
 trait		= "Reformer"
 id			= 159
@@ -2660,12 +2686,13 @@ name		= NPERSONALITY_REFORMER
 desc		= DPERSONALITY_REFORMER
 position	= ArmamentMinister
 value		= 0
-command		= { type = production which = upgrading value = -0.0700 }
+command		= { type = production which = upgrading value = -0.1200 } #increased from 7% - Maxian
 command		= { type = production which = production value = -0.0100 }
 command		= { type = resource which = energy value = -0.0100 }
 command		= { type = resource which = metal value = -0.0100 }
 command		= { type = resource which = rare_materials value = -0.0100 }
 }
+
 minister =  {
 trait		= "Construction magnate"
 id			= 160
@@ -2678,6 +2705,7 @@ command		= { type = province which = air_base value = -0.1500 }
 command		= { type = province which = naval_base value = -0.1500 }
 command		= { type = province which = radar_station value = -0.1500 }
 }
+
 minister =  {
 trait		= "Balanced budget economy"
 id			= 161
@@ -2692,6 +2720,7 @@ command		= { type = resource which = energy value = -0.0500 }
 command		= { type = resource which = metal value = -0.0500 }
 command		= { type = resource which = rare_materials value = -0.0500 }
 }
+
 minister =  {
 trait		= "Mixed economy"
 id			= 162
@@ -2718,11 +2747,12 @@ command		= { type = unit when = organisation which = d_01 value = 0.0500 }
 command		= { type = unit when = organisation which = bergsjaeger value = 0.0500 }
 command		= { type = unit when = organisation which = paratrooper value = 0.0500 }
 command		= { type = unit when = organisation which = marine value = 0.0500 }
-command		= { type = unit when = morale which = d_01 value = 0.0300 }
-command		= { type = unit when = morale which = bergsjaeger value = 0.0300 }
-command		= { type = unit when = morale which = paratrooper value = 0.0300 }
-command		= { type = unit when = morale which = marine value = 0.0300 }
+command		= { type = unit when = morale which = d_01 value = 0.0900 } #increased from 3% on all units - Maxian
+command		= { type = unit when = morale which = bergsjaeger value = 0.1500 }
+command		= { type = unit when = morale which = paratrooper value = 0.1500 }
+command		= { type = unit when = morale which = marine value = 0.1500 }
 }
+
 minister =  {
 trait		= "commando doctrine army"
 id			= 164
@@ -2747,6 +2777,7 @@ command		= { type = extra which = amph_armor when = attack value = 0.0300 }
 command		= { type = extra which = glider_armor when = attack value = 0.0300 }
 command		= { type = extra which = glider_artillery when = attack value = 0.0300 }
 }
+
 minister =  {
 trait		= "Doctrine of autonomy"
 id			= 165
@@ -2754,9 +2785,8 @@ name		= NPERSONALITY_AUTONOMY_DOCTRINE
 desc		= DPERSONALITY_AUTONOMY_DOCTRINE
 position	= ChiefOfArmy
 value		= 0
-command 	= { type = leader_skill value = 0.2000 }
+command 	= { type = leader_skill value = 0.3000 } #increased from 20% - Maxian
 command		= { type = unit when = morale value = 0.0700 }
-
 }
 
 minister =  {
@@ -2773,4 +2803,202 @@ command		= { type = resource which = energy value = -0.0200 }
 command		= { type = resource which = metal value = -0.0200 }
 command		= { type = resource which = rare_materials value = -0.0200 }
 command		= { type = populationgrowth value = 0.0200 }
+}
+
+# New traits with KRDH1.92 - Maxian
+
+minister =  { 
+	trait		= "Counterintelligence Specialist"
+	id			= 172
+	name		= NPERSONALITY_COUNTERINTELLIGENCE_SPECIALIST
+	desc		= DPERSONALITY_COUNTERINTELLIGENCE_SPECIALIST
+	position	= MinisterOfIntelligence
+	value		= 0
+	command		= { type = intelligence_network when = national value = 3 }
+	command		= { type = intelligence_chances which = all when = national value = -4 }
+}
+
+minister =  { 				
+	trait		= "Strategic Missile Focus"
+	id			= 173
+	name		= NPERSONALITY_STRATEGIC_MISSILE_FOCUS
+	desc		= DPERSONALITY_STRATEGIC_MISSILE_FOCUS
+	position	= ChiefOfStaff
+	value		= 0
+	command		= { type = research which = secret_weapons value = -0.0750 }
+	command		= { type = unit which = flying_bomb value = -0.0750 }
+	command		= { type = unit which = flying_bomb when = morale value = 0.1500 }
+	command		= { type = unit which = flying_rocket value = -0.0750 }
+	command		= { type = unit which = flying_rocket when = morale value = 0.1500 }
+	command		= { type = unit which = submarine value = -0.1000 } #nuclear subs are last 3 models of submarine line
+	command		= { type = unit which = submarine when = morale value = 0.1000 }
+}
+
+minister =  { 				#Isserson, Triandafillov, Zhukov (Tukhachevsky is overrated) - modified from DHFull
+	trait		= "Deep Battle Proponent"
+	id			= 174
+	name		= NPERSONALITY_DEEPBATTLEDOCTRINE
+	desc		= DPERSONALITY_DEEPBATTLEDOCTRINE
+	position	= ChiefOfStaff
+	value		= 0
+	command		= { type = unit which = armor when = attack value = 0.0500 }
+	command		= { type = unit which = mechanized when = attack value = 0.0500 }
+	command		= { type = unit which = motorized when = attack value = 0.0500 }
+	command		= { type = unit which = infantry when = attack value = 0.0250 }
+	command		= { type = unit which = tactical_bomber value = -0.0500 }
+	command		= { type = unit which = cas value = -0.0500 }
+}
+	
+minister =  {
+	trait		= "Counter-insurgency Doctrine" 
+	id			= 175
+	name		= NPERSONALITY_ANTIPARTISAN_DOCTRINE
+	desc		= DPERSONALITY_ANTIPARTISAN_DOCTRINE
+	position	= ChiefOfArmy
+	value		= 0
+	command		= { type = dissent value = 0.1500 }
+	command		= { type = unit when = morale value = -0.0200 }
+	command		= { type = unit which = militia when = organisation value = 0.1000 }
+	command		= { type = unit which = militia when = morale value = 0.1500 }
+	command		= { type = unit which = militia when = attack value = 0.0800 }
+	command		= { type = extra which = police when = attack value = 0.0600 }
+	command		= { type = intelligence_chances which = found_partisans when = national value = -6 }
+}
+	
+minister =  { 
+	trait		= "Old Cavalry General"
+	id			= 176
+	name		= NPERSONALITY_CAVALRY_DOCTRINE
+	desc		= DPERSONALITY_CAVALRY_DOCTRINE
+	position	= ChiefOfArmy 
+	value		= 0
+	command		= { type = unit which = cavalry when = attack value = 0.0500 }
+	command		= { type = unit which = cavalry when = defence value = 0.0500 }
+	command		= { type = unit when = speed value = 0.0500 }
+	command		= { type = unit when = organisation which = cavalry value = 0.0800 }
+	command		= { type = unit when = organisation which = infantry value = 0.0500 }
+	command		= { type = extra which = rocket_artillery when = attack value = 0.0300 }
+	command		= { type = extra which = rocket_artillery when = defence value = 0.0300 }
+	command		= { type = unit which = light_armor value = 0.1000 } #armor in secondary role
+	command		= { type = unit which = armor value = 0.1000 }
+}
+	
+minister =  { 
+	trait		= "Combat Engineering Doctrine"
+	id			= 177
+	name		= NPERSONALITY_COMBAT_ENGINEER_DOCTRINE
+	desc		= DPERSONALITY_COMBAT_ENGINEER_DOCTRINE
+	position	= ChiefOfArmy 
+	value		= 0
+	command		= { type = unit when = speed value = 0.0500 }
+	command		= { type = extra which = engineer when = attack value = 0.1000 }
+	command		= { type = extra which = engineer when = defence value = 0.0500 }
+	command		= { type = extra which = engineer when = organisation value = 0.0500 }
+	command		= { type = extra which = engineer when = morale value = 0.0500 }
+	command		= { type = tc_mod value = 0.0500 }
+}
+	
+minister =  {
+	trait		= "Guerilla Warfare Doctrine" #modified from DHFull
+	id			= 178
+	name		= NPERSONALITY_GUERILLA_WARFARE_DOCTRINE
+	desc		= DPERSONALITY_GUERILLA_WARFARE_DOCTRINE
+	position	= ChiefOfArmy
+	value		= 0
+	command		= { type = unit which = d_01 value = -0.0500 }
+	command		= { type = unit which = militia value = -0.1000 }
+	command		= { type = unit which = d_01 when = defence value = 0.0500 }
+	command		= { type = unit which = militia when = defence value = 0.0500 }
+	command		= { type = unit which = cavalry when = defence value = 0.0500 }
+	command		= { type = unit when = morale value = 0.0500 }
+	command		= { type = unit when = speed value = 0.1000 }
+	command		= { type = supply_consumption value = -0.1000 }
+	command		= { type = stockpile value = -0.100 }
+	command		= { type = intelligence_report which = land value = 1 }
+}
+
+minister =  { 
+	trait		= "Aviation Organizer"
+	id			= 179
+	name		= NPERSONALITY_AVIATION_ORGANIZER
+	desc		= DPERSONALITY_AVIATION_ORGANIZER
+	position	= chiefofair
+	value		= 0
+	command		= { type = research which = aircraft value = -0.1000 }
+	command		= { type = unit which = air value = -0.0750 }
+}
+
+minister =  { 
+	trait		= "Air Defence Doctrine"
+	id			= 180
+	name		= NPERSONALITY_AIR_DEFENCE_DOCTRINE
+	desc		= DPERSONALITY_AIR_DEFENCE_DOCTRINE
+	position	= chiefofair
+	value		= 0
+	command		= { type = province which = flak value = -0.1500 }
+	command		= { type = province which = radar_station value = -0.1000 }
+	command		= { type = extra which = anti_air value = -0.1500 }
+	command		= { type = extra which = sp_rct_artillery value = -0.1000 }
+	command		= { type = extra which = anti_air when = defence value = 0.0500 }
+	command		= { type = extra which = sp_rct_artillery when = defence value = 0.0500 }
+}
+	
+minister =  {
+	trait		= "Riverine Warfare Doctrine"
+	id			= 181
+	name		= NPERSONALITY_RIVERINE_WARFARE_DOCTRINE
+	desc		= DPERSONALITY_RIVERINE_WARFARE_DOCTRINE
+	position	= ChiefOfNavy
+	value		= 0
+	command		= { type = unit which = d_01 when = attack value = 0.0200 } #pseudo-marine infantry
+	command		= { type = unit which = d_01 when = defence value = 0.0300 }
+	command		= { type = unit which = d_01 when = organisation value = 0.0500 }
+	command		= { type = extra which = engineer when = attack value = 0.0400 }
+	command		= { type = extra which = engineer when = defence value = 0.0600 }
+	command		= { type = extra which = engineer when = organisation value = 0.0500 }
+	command		= { type = unit which = navy value = 0.0500 }
+	command		= { type = unit which = navy when = organisation value = -0.0500 }
+}
+	
+minister =  { 
+	trait		= "Merchant Navy Focus"
+	id		    = 182
+	name		= NPERSONALITY_MERCHANT_NAVY_FOCUS
+	desc		= DPERSONALITY_MERCHANT_NAVY_FOCUS
+	position	= chiefofnavy
+	value		= 0
+	command		= { type = diplomacy_cost which = trade when = all value = -0.2500 }
+	command     = { type = tc_mod value = 0.0500 }
+	command     = { type = stockpile which = all when = all value = 0.1500 }
+	command		= { type = intelligence_report which = navy value = 1 }
+}
+	
+minister =  { 
+	trait		= "Coastal Defence Doctrine"
+	id			= 183
+	name		= NPERSONALITY_COASTAL_DEFENCE_DOCTRINE
+	desc		= DPERSONALITY_COASTAL_DEFENCE_DOCTRINE
+	position	= chiefofnavy
+	value		= 0
+	command		= { type = unit which = garrison when = defence value = 0.0300 }
+	command		= { type = extra which = artillery when = defence value = 0.0300 }
+	command		= { type = province which = coastalfort value = -0.1200 }
+	command		= { type = unit which = light_cruiser when = defence value = 0.0500 } #alas gunboats and coastal battleships don't exist in KR
+	command		= { type = unit which = destroyer when = defence value = 0.0500 }
+}
+	
+minister =  { 
+	trait		= "Hydrographic Service Proponent"
+	id			= 184
+	name		= NPERSONALITY_HYDROGRAPHIC_SERVICE
+	desc		= DPERSONALITY_HYDROGRAPHIC_SERVICE
+	position	= chiefofnavy
+	value		= 0
+	command		= { type = extra which = naval_asw when = attack value = 0.0300 }
+	command		= { type = extra which = naval_asw when = defence value = 0.0300 }
+	command		= { type = extra which = naval_radar_s when = attack value = 0.0300 }
+	command		= { type = extra which = naval_radar_s when = defence value = 0.0300 }
+	command		= { type = extra which = naval_torpedoes_l when = attack value = 0.0300 } #aircraft/heli deployed hydrophones
+	command		= { type = extra which = naval_torpedoes_l when = defence value = 0.0300 }
+	command 	= { type = detection which = navy value = 0.1200 }
 }
