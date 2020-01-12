@@ -10683,9 +10683,6 @@ command = { type = sleepminister which = 4165 } # Minister of Armament
 }
 
 
-
-
-
 event = {
 id = 758185
 picture = "Marshalldead"
@@ -10693,12 +10690,10 @@ country = RUS
 style = 2
 
 trigger = {
-
-NOT = {
-incabinet = 4143
+	NOT = {
+	incabinet = 4143
+	}
 }
-}
-
 
 name = "Admiral Kedrov dies "
 desc = "One of the most promonent military figures of the Russian navy has passed away."
@@ -10707,16 +10702,13 @@ date = { day = 2 month = september year = 1945 }
 offset = 5
 deathdate = { day = 29 month = october year = 1945 }
 
-
 action_a = {
 name = "Memento mori!"
 command = { type = sleepleader which = 500012 }
 command = { type = sleepminister which = 4179 }
 command = { type = sleepevent which = 758187 }
 command = { type = sleepteam which = 7253 }
-}
-
-
+	}
 }
 
 
@@ -10728,11 +10720,8 @@ country = RUS
 style = 2
 
 trigger = {
-
-
-incabinet = 4143
+	incabinet = 4143
 }
-
 
 name = "Admiral Kedrov dies "
 desc = "Our chief of the navy has died today in his manor near Petrograd. Admiral Razvozov will replace him as the next chief of the navy."
@@ -10741,7 +10730,6 @@ date = { day = 2 month = september year = 1945 }
 offset = 5
 deathdate = { day = 29 month = october year = 1945 }
 
-
 action_a = {
 name = "Memento mori!"
 command = { type = sleepleader which = 500012 }
@@ -10749,8 +10737,7 @@ command = { type = sleepminister which = 4179 }
 command = { type = chiefofnavy which = 4290 }
 command = { type = sleepevent which = 758185 }
 command = { type = sleepteam which = 7253 }
-}
-
+	}
 }
 
 
@@ -10949,24 +10936,26 @@ command = { type = sleepleader which = 500209 }
 }
 }
 
-#event = {
-#id = 758183
-#country = RUS
-#style = 2
-#
-#name = "General Manshikov dies"
-#desc = "One of the most promonent military figures in the Army has passed away today."
-#picture = "Marshalldead"
-#
-#date = { day = 2 month = july year = 1940 }
-#offset = 5
-#deathdate = { day = 29 month = august year = 1940 }
-#
-#action_a = {
-#name = "Memento mori"
-#command = { type = sleepleader which = 500042 }
-#}
-#}
+event = {
+id = 758183
+country = RUS
+style = 2
+
+name = "Admiral Berens dies"
+desc = "One of the most promonent military figures of the Russian navy has passed away."
+picture = "Marshalldead"
+
+date = { day = 2 month = january year = 1944 }
+offset = 5
+deathdate = { day = 29 month = february year = 1944 }
+
+action_a = {
+	name = "Memento mori"
+	command = { type = sleepleader which = 500001 }
+	command = { type = sleepminister which = 4144 }
+	command = { type = sleepteam which = 7255 }
+	}
+}
 
 ################################
 # Black Monday & recovery
@@ -15835,124 +15824,190 @@ command = { type = gain_tech which = -1 }
 }
 
 ############################
-# Upgrading the tech teams (Temporarily turned off, to rewrite in future - Maxian)
+# Science Funding & Upgrading Nuclear Team
 ############################
-#event = {
-#id = 758106
-#random = no
-#country = RUS
-#
-#trigger = {
-#random = 10
-#OR = {
-##incabinet = 4107
-#incabinet = 4362 #Boris Stechkin
-#incabinet = 4231 #Andrei D. Sakharov
-#}
-#NOT = {
-#event = 758107
-#}
-#}
-#
-#name = "Additional science funding"
-#desc = "Our minister of armament has proposed to organise a national support programme for our scientists. Even though many mundane people consider this a waste of funds, it is believed that further empirical research may lead to interesting results."
-#style = 2
-#picture = "invest_research"
-#
-#date = { day = 1 month = january year = 1936 }
-#offset = 30
-#deathdate = { day = 29 month = december year = 1970 }
-#
-#action_a = {
-#ai_chance = 40
-#name = "Invest into physics and mathematics"
-#command = { type = money value = -175 }
-#command = { type = sleepteam which = 7258  } #Igor V. Kurchatov
-#command = { type = waketeam which = 7259  } #Igor V. Kurchatov
-#}
-#action_b = {
-#ai_chance = 40
-#name = "Invest into chemistry and rocketry"
-#command = { type = money value = -160 }
-#command = { type = sleepteam which = 7214  } #Sergei P. Korolev
-#command = { type = waketeam which = 7216  } #Sergei P. Korolev
-#}
-#action_c = {
-#ai_chance = 15
-#name = "Invest into both fields of research"
-#command = { type = dissent value = 5 }
-#command = { type = money value = -450 }
-#command = { type = sleepteam which = 7258  } #Igor V. Kurchatov
-#command = { type = waketeam which = 7259  } #Igor V. Kurchatov
-#command = { type = sleepteam which = 7214  } #Sergei P. Korolev
-#command = { type = waketeam which = 7216  } #Sergei P. Korolev
-#}
+event = {
+id = 758106
+random = no
+country = RUS
+
+trigger = {
+	random = 10
+		OR = {
+		incabinet = 4416 #Vladimir Ipatiev
+		incabinet = 4362 #Boris Stechkin
+		incabinet = 4231 #Andrei D. Sakharov
+		incabinet = 4422 #Yakov Kolotyrkin
+		incabinet = 4478 #Vladimir Kotelnikov
+		}
+	NOT = {
+	event = 758107
+	}
+}
+
+name = "Additional science funding"
+desc = "Our minister of armament has proposed to organise a national support programme for our scientists. Even though many mundane people consider this a waste of funds, it is believed that further empirical research may lead to interesting results."
+style = 2
+picture = "invest_research"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1970 }
+
+action_a = {
+	ai_chance = 40
+	name = "Invest into physics and mathematics."
+	command = { type = money value = -250 }
+	command = { type = free_money value = -0.2 }
+	command = { type = building_prod_mod which = nuclear_reactor value = 10 }
+	command = { type = research_mod value = 2 }
+	command = { type = intelligence which = us value = 10 } #improved cryptography
+	command = { type = intelligence which = them value = -10 }
+	command = { type = sce_frequency value = 0.2 } #improved military radios
+	}
+action_b = {
+	ai_chance = 40
+	name = "Invest into chemistry and rocketry."
+	command = { type = money value = -250 }
+	command = { type = free_money value = -0.2 }
+	command = { type = building_prod_mod which = rocket_test value = 10 }
+	command = { type = research_mod value = 2 }
+	command = { type = industrial_modifier which = total value = 2 } #industrial chemistry
+	command = { type = radar_eff value = 10 } #improved air-radar direction
+	}
+action_c = {
+	ai_chance = 20
+	name = "A balanced approach will do."
+	command = { type = money value = -250 }
+	command = { type = free_money value = -0.2 }
+	command = { type = building_prod_mod which = rocket_test value = 5 }
+	command = { type = building_prod_mod which = nuclear_reactor value = 5 }
+	command = { type = research_mod value = 2 }
+	command = { type = industrial_modifier which = total value = 1 } #industrial chemistry
+	command = { type = radar_eff value = 5 } #improved air-radar direction
+	command = { type = intelligence which = us value = 5 } #improved cryptography
+	command = { type = intelligence which = them value = -5 }
+	command = { type = sce_frequency value = 0.1 } #improved military radios
+	}
 #action_d = {
 #ai_chance = 5
 #name = "It's nonsense!"
 #command = { type = dissent value = -2 }
 #}
-#}
+}
 
-#event = {
-#id = 758107
-#random = no
-#country = RUS
-#
-#trigger = {
-#random = 5
-#NOT = {
-#OR = {
-##incabinet = 4107
-#incabinet = 4362 #Boris Stechkin
-#incabinet = 4231 #Andrei D. Sakharov
-#}
-#}
-#NOT = {
-#event = 758106
-#}
-#}
-#
-#name = "Additional science funding"
-#desc = "A group of scholars has proposed to organise a national support programme for our scientists. Even though many mundane people consider this a waste of funds, it is believed that further empirical research may lead to interesting results."
-#style = 2
-#picture = "invest_research"
-#
-#date = { day = 1 month = january year = 1936 }
-#offset = 60
-#deathdate = { day = 29 month = december year = 1970 }
-#
-#action_a = {
-#ai_chance = 25
-#name = "Invest into physics and mathematics"
-#command = { type = money value = -75 }
-#command = { type = sleepteam which = 7258  } #Igor V. Kurchatov
-#command = { type = waketeam which = 7259  } #Igor V. Kurchatov
-#}
-#action_b = {
-#ai_chance = 25
-#name = "Invest into chemistry and rocketry"
-#command = { type = money value = -60 }
-#command = { type = sleepteam which = 7214  } #Sergei P. Korolev
-#command = { type = waketeam which = 7216  } #Sergei P. Korolev
-#}
-#action_c = {
-#ai_chance = 5
-#name = "Invest into both fields of research"
-#command = { type = dissent value = 5 }
-#command = { type = money value = -135 }
-#command = { type = sleepteam which = 7258  } #Igor V. Kurchatov
-#command = { type = waketeam which = 7259  } #Igor V. Kurchatov
-#command = { type = sleepteam which = 7214  } #Sergei P. Korolev
-#command = { type = waketeam which = 7216  } #Sergei P. Korolev
-#}
+event = {
+id = 758107
+random = no
+country = RUS
+
+trigger = {
+	random = 5
+	NOT = {
+	OR = {
+		incabinet = 4416 #Vladimir Ipatiev
+		incabinet = 4362 #Boris Stechkin
+		incabinet = 4231 #Andrei D. Sakharov
+		incabinet = 4422 #Yakov Kolotyrkin
+		incabinet = 4478 #Vladimir Kotelnikov
+		}
+	}
+	NOT = {
+	event = 758106
+	}
+}
+
+name = "Additional science funding"
+desc = "A group of scholars has proposed to organise a national support programme for our scientists. Even though many mundane people consider this a waste of funds, it is believed that further empirical research may lead to interesting results."
+style = 2
+picture = "invest_research"
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1970 }
+
+action_a = {
+	ai_chance = 40
+	name = "Invest into physics and mathematics."
+	command = { type = money value = -250 }
+	command = { type = free_money value = -0.2 }
+	command = { type = building_prod_mod which = nuclear_reactor value = 10 }
+	#command = { type = research_mod value = 2 } #need appropriate minister to get research bonus
+	command = { type = intelligence which = us value = 10 } #improved cryptography
+	command = { type = intelligence which = them value = -10 }
+	command = { type = sce_frequency value = 0.2 } #improved military radios
+	}
+action_b = {
+	ai_chance = 40
+	name = "Invest into chemistry and rocketry."
+	command = { type = money value = -250 }
+	command = { type = free_money value = -0.2 }
+	command = { type = building_prod_mod which = rocket_test value = 10 }
+	#command = { type = research_mod value = 2 } #need appropriate minister to get research bonus
+	command = { type = industrial_modifier which = total value = 2 } #industrial chemistry
+	command = { type = radar_eff value = 10 } #improved air-radar direction
+	}
+action_c = {
+	ai_chance = 20
+	name = "A balanced approach will do."
+	command = { type = money value = -250 }
+	command = { type = free_money value = -0.2 }
+	command = { type = building_prod_mod which = rocket_test value = 5 }
+	command = { type = building_prod_mod which = nuclear_reactor value = 5 }
+	#command = { type = research_mod value = 2 } #need appropriate minister to get research bonus
+	command = { type = industrial_modifier which = total value = 1 } #industrial chemistry
+	command = { type = radar_eff value = 5 } #improved air-radar direction
+	command = { type = intelligence which = us value = 5 } #improved cryptography
+	command = { type = intelligence which = them value = -5 }
+	command = { type = sce_frequency value = 0.1 } #improved military radios
+	}
 #action_d = {
 #ai_chance = 45
 #name = "It's nonsense!"
 #command = { type = dissent value = -2 }
 #command = { type = money value = 100 }
 #}
-#}
+}
+
+event = {
+id = 758151
+country = RUS
+random = no
+
+decision = {
+	technology = 5500 #Isotope Separation
+	}
+
+decision_trigger = {
+	year = 1942
+	nuclear_reactor = 1
+}
+
+trigger = {
+	supplies = 1000
+	money = 400
+	}
+
+date = { day = 20 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Institute of Atomic Energy"
+desc = "Yuliy Khariton's research at the Moscow University has lead to the first experimental reactor in Russia! The time has come to create a state nuclear institute, with Yuliy Khariton as its head."
+style = 2
+picture = "invest_research"
+decision_picture = "invest_research"
+
+action_a = {
+	name = "Establish the Institute of Atomic Energy!"
+	ai_chance = 100
+	command = { type = supplies value = -600 }
+	command = { type = money value = -200 }
+	command = { trigger = { ai = no } type = industrial_modifier which = total value = -1 }
+	command = { type = sleepteam which = 7250 when = 1 }
+	command = { type = waketeam which = 7251 }
+	}
+}
 
 event = {
 id = 758150
