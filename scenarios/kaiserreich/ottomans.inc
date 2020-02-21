@@ -20,9 +20,16 @@ peacetime_ic_mod = 0.85
 
 #### cabinet
 
-headofstate = { type = 9 id = 549001 }
-
-headofgovernment = { type = 9 id = 549082  }
+headofstate = { type = 9 id = 549001  }
+headofgovernment = { type = 9 id = 549002 }
+foreignminister = { type = 9 id =  549003  }
+armamentminister = { type = 9 id = 549023  }
+ministerofsecurity = { type = 9 id = 549005  }
+ministerofintelligence = { type = 9 id = 549006  }
+chiefofstaff = { type = 9 id = 549007  }
+chiefofarmy = { type = 9 id = 549008   }
+chiefofnavy = { type = 9 id = 549009 }
+chiefofair = { type = 9 id = 549010 }
 
 #### Resource Reserves
 
@@ -33,12 +40,12 @@ headofgovernment = { type = 9 id = 549082  }
 
 	manpower = 165
 	capital = 409
-        dissent = 23
+        dissent = 15
 
     ownedprovinces =      {
 	409 384 385 1076 1077 1078 1071 383 381 378 379 1057 1079 1068 1075 1074 1058 387 388 1065 1072 1073 1055 1056 1061
         1059  1066 1067 386 1063 1064 1062 1060 1015 1004 1005 1006 1008 1009 1010 1011 1172 1013 1014 1016 1017 1018 1019 1020
-        1021 1022 1023 1024 1025 1026 1027 1028 1029 1030 1031 1032 1033 1034 1035 1036 1037 1041 1046 1048 1044 1054
+        1021 1022 1023 1024 1025 1026 1027 1028 1029 1030 1031 1032 1033 1034 1035 1036 1037 1041 1046 1044 1054
         
 	 }
 
@@ -46,7 +53,7 @@ headofgovernment = { type = 9 id = 549082  }
     controlledprovinces = {
 	409 384 385 1076 1077 1078 1071 383 381 378 379 1057 1079 1068 1075 1074 1058 387 388 1065 1072 1073 1055 1056 1061
         1059 1066 1067 386 1063 1064 1062 1060 1015 1004 1005 1006 1008 1009 1010 1011 1172 1013 1014 1016 1017 1018 1019 1020
-          1021 1022  1023 1024 1025 1026 1027 1028 1029 1030 1031 1032 1033 1034 1035 1036 1037 1041 1046 1048 1044 1054
+          1021 1022  1023 1024 1025 1026 1027 1028 1029 1030 1031 1032 1033 1034 1035 1036 1037 1041 1046 1044 1054
 	  }
 
 
@@ -162,14 +169,14 @@ relation = {   tag =  	JAP	value = 		-30	   }
 #Land Doctrines
 14000 14010 #Improved Great War Hospital System
 6500 6510 6530 6550 6590 6600 6610 6620 6650 6670 6680 6690 6700 6710 6910 # Great War Land Doctrines (central powers)
-6570 6300 # Human Wave, mobility
 
 #Naval Doctrines
 8010 8020 8040 8050
-8070
 
 
 	}
+	
+	deactivate = { 6010 6210 6570 6560 6390 }
 
 #########  OOB (...)
 
@@ -348,293 +355,279 @@ relation = {   tag =  	JAP	value = 		-30	   }
 
 ###### Ottoman Army `36 ######
 
-        landunit = {
-  location = 409
-  name = "Istanbul Ordusu"
-              id = { type = 11700 id = 24 }
 
-  division = {
-  id = { type = 11700 id = 25 }
-  type = infantry
-  model = 6
-  strength  = 100
-  organisation = 30
-  name = "1. Piyade Firkasi"
-  }
+#1st Army
+landunit = {										
+	id 	= { type = 11700 id = 24 }
+		name = "I. Ordu" 
+		location = 409 	#Istanbul 
+		leader = 549035 #Kemal Pasha
+	division = {
+		id 	= { type = 11700 id = 25 }
+		name 	= "Ordu Genel Merkez"
+		type 	= hq
+		model 	= 2
+		strength = 75
+		organisation = 30
+		experience = 0
+		}		
+	division = {  
+		id = {  type = 11700 id = 26  } 
+		name = "1. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 100
+		organisation = 30
+		} 
 
-  division = {
-  id = { type = 11700 id = 26 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "2. Piyade Firkasi"
-  }
+	division = {
+		id = {  type = 11700 id = 27  } 
+		name = "2. Piyade Tümeni" 
+		type = infantry 
+        model = 6
+		strength = 100
+		organisation = 30
+		} 
 
-  division = {
-  id = { type = 11700 id = 27 }
-  type = cavalry
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "1. Sipahi Tümeni"
-  }
-}
+	division = {
+		id = {  type = 11700 id = 28  } 
+		name = "3. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 100
+		organisation = 30
+		} 
+	}
+	
 
-        landunit = {
-  location = 385
-  name = "Edirne Ordusu"
-              id = { type = 11700 id = 28 }
+#2nd Army
+landunit = {										
+	id 	= { type = 11700 id = 29 }
+		name = "II. Ordu" 
+		location = 1067 	#Trabzon 
+		leader = 549111 #Berkok
 
-                              division = {
-                              id = { type = 11700 id = 29 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "3. Piyade Firkasi"
+	division = {
+		id = { type = 11700 id = 30 }
+        type = bergsjaeger
+        strength  = 50
+        model = 6
+        organisation = 30
+        name = "1. Dagci Firkasi"
   }
-                              division = {
-                              id = { type = 11700 id = 30 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "7. Piyade Firkasi"
+    division = {
+    id = { type = 11700 id = 31 }
+		type = bergsjaeger
+		strength  = 50
+		model = 6
+		organisation = 30
+		name = "2. Dagci Firkasi"
   }
+  
+	division = {
+		id = {  type = 11700 id = 32  } 
+		name = "23. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 40
+		organisation = 30
+		} 
 
-                              division = {
-                              id = { type = 11700 id = 31 }
-  type = cavalry
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "3. Sipahi Tümeni"
-  }
-}
-
-        landunit = {
-  location = 1077
-  name = "Izmir Ordusu"
-              id = { type = 11700 id = 32 }
-
-                              division = {
-                              id = { type = 11700 id = 33 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "12. Piyade Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 34 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "13. Piyade Firkasi"
-  }
-			         division = {
-                              id = { type = 11700 id = 35 }
-  type = cavalry
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "5. Sipahi Tümeni"
-  }
-}
-
-        landunit = {
-  location = 1063
-  name = "Erzurum Ordusu"
-              id = { type = 11700 id = 36 }
-
-                              division = {
-                              id = { type = 11700 id = 37 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "4. Piyade Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 38 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "5. Piyade Firkasi"
-  }
-
-                              division = {
-                              id = { type = 11700 id = 39 }
-  type = cavalry
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "6. Sipahi Tümeni"
-  }
-}
-
-        landunit = {
-  location = 1004
-  name = "El-Arish Ordusu"
-              id = { type = 11700 id = 40 }
-
-                              division = {
-                              id = { type = 11700 id = 41 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "8. Piyade Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 42 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "10. Piyade Firkasi"
-  }
+	division = {
+		id = {  type = 11700 id = 33  } 
+		name = "41. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 40
+		organisation = 30
+		} 		
  
-                              division = {
-                              id = { type = 11700 id = 43 }
-  type = cavalry
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "2. Sipahi Tümeni"
-  }
+	division = {
+		id = {  type = 11700 id = 34  } 
+		name = "44. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 40
+		organisation = 30
+		}  
+}		
+		
+#4th Army
+landunit = {										
+	id 	= { type = 11700 id = 35 }
+		name = "IV. Ordu" 
+		location = 1016 	#Damascus
+        leader = 549086 #Karabikir		
+
+	division = {
+		id = {  type = 11700 id = 36  } 
+		name = "3. Suvari Tümeni" 
+		type = cavalry
+		model = 6
+		strength = 100
+		experience = 0
+		} 	
+ 
+	division = {
+		id = {  type = 11700 id = 37  } 
+		name = "62. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 40
+		organisation = 30
+		}
+
+	division = {
+		id = {  type = 11700 id = 38  } 
+		name = "24. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 40
+		organisation = 30
+		}		
+
+	division = {
+		id = {  type = 11700 id = 39  } 
+		name = "48. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		strength = 40
+		organisation = 30
+		}		
+}		
+
+#7th Army
+landunit = {										
+	id 	= { type = 11700 id = 40 }
+		name = "VII. Ordu" 
+		location = 1004 	#El Arish 
+		leader = 549149 #Fevzi Pasha	
+
+	division = {
+		id = {  type = 11700 id = 41  } 
+		name = "11. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		extra = cavalry_brigade
+	    brigade_model = 8		
+		strength = 100
+		organisation = 30
+		}		
+	division = {
+		id = {  type = 11700 id = 42  } 
+		name = "43. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		extra = cavalry_brigade
+	    brigade_model = 8			
+		strength = 100
+		organisation = 30
+		}	
+	division = {
+		id = {  type = 11700 id = 43  } 
+		name = "16. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		extra = cavalry_brigade
+	    brigade_model = 8			
+		strength = 100
+		organisation = 30
+		}			
+} 
+
+#6th Army
+landunit = {										
+	id 	= { type = 11700 id = 44 }
+		name = "VI. Ordu" 
+		location = 1034 	#Baghdad 
+		leader = 549095 #Esad	
+
+	division = {
+		id = {  type = 11700 id = 45  } 
+		name = "2. Suvari Tümeni" 
+		type = cavalry
+		model = 6
+		strength = 100
+		experience = 0
+		} 
+		
+	division = {
+		id = {  type = 11700 id = 46  } 
+		name = "6. Piyade Tümeni" 
+		type = infantry
+        model = 6			
+		strength = 100
+		organisation = 30
+		}	
+	division = {
+		id = {  type = 11700 id = 47  } 
+		name = "14. Piyade Tümeni" 
+		type = infantry
+        model = 6		
+		strength = 100
+		organisation = 30
+		}
+	division = {
+		id = {  type = 11700 id = 48  } 
+		name = "46. Piyade Tümeni" 
+		type = infantry
+        model = 6		
+		strength = 100
+		organisation = 30
+		}		
 }
 
-        landunit = {
-  location = 1034
-  name = "Baghdad Ordusu"
-              id = { type = 11700 id = 44 }
 
-                              division = {
-                              id = { type = 11700 id = 45 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "6. Piyade Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 46 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "9. Piyade Firkasi"
-  }
+#3rd Army
+landunit = {										
+	id 	= { type = 11700 id = 49 }
+		name = "III. Ordu" 
+		location = 1021 	#Aleppo 
+		leader = 549146 #Osman Fuat Efendi	
 
-                              division = {
-                              id = { type = 11700 id = 47 }
-  type = cavalry
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "4. Sipahi Tümeni"
-  }
-}
-
-             landunit = {
-  location = 1032
-  name = "Basra Ordusu"
-              id = { type = 11700 id = 48 }
-
-                              division = {
-                              id = { type = 11700 id = 49 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "11. Piyade Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 50 }
-  type = militia
-  strength  = 50
-  model = 3
-  organisation = 30
-  name = "1. Redif Piyade Firkasi"
-  }
-}
-
-        landunit = {
-  location = 1044
-  name = "Hedjaz Ordusu"
-              id = { type = 11700 id = 51 }
-
-                              division = {
-                              id = { type = 11700 id = 52 }
-  type = infantry
-  strength  = 100
-  model = 6
-  organisation = 30
-  name = "14. Piyade Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 53 }
-  type = militia
-  model = 3
-  strength  = 50
-  organisation = 30
-  name = "2. Redif Piyade Firkasi"
-  }
-}
-
-
-        landunit = {
-  location = 1067
-  name = "Kafkasya Ordusu"
-              id = { type = 11700 id = 54 }
-
-                              division = {
-                              id = { type = 11700 id = 55 }
-  type = bergsjaeger
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "1. Dagci Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 56 }
-  type = bergsjaeger
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "2. Dagci Firkasi"
-  }
-}
-
-        landunit = {
-  location = 386
-  name = "Kars Ordusu"
-              id = { type = 11700 id = 57 }
-
-                              division = {
-                              id = { type = 11700 id = 58 }
-  type = bergsjaeger
-  strength  = 50
-  model = 6
-  organisation = 30
-  name = "3. Dagci Firkasi"
-  }
+	division = {
+		id = {  type = 11700 id = 50  } 
+		name = "1. Suvari Tümeni" 
+		type = cavalry
+		model = 6
+        extra  = artillery 
+	    brigade_model = 3		
+		strength = 50
+		experience = 0
+		} 
+	division = {
+		id = {  type = 11700 id = 51  } 
+		name = "46. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		extra = cavalry_brigade
+	    brigade_model = 8			
+		strength = 50
+		organisation = 30
+		}
+	division = {
+		id = {  type = 11700 id = 52  } 
+		name = "46. Piyade Tümeni" 
+		type = infantry
+        model = 6		
+		extra = cavalry_brigade
+	    brigade_model = 8			
+		strength = 50
+		organisation = 30
+		}		
 }
 
 landunit = {
 location = 388
 name = "Cyprusian Garrison"
-id = { type = 11700 id = 63 }
+id = { type = 11700 id = 53 }
 
 division = {
-id = { type = 11700 id = 64 }
+id = { type = 11700 id = 54 }
 type = garrison
 model = 3
-strength  = 100
+strength  = 50
+max_strength = 50
 extra = artillery
 organisation = 30
 name = "10. Mustahfiz Piyade Firkasi"
@@ -644,13 +637,14 @@ name = "10. Mustahfiz Piyade Firkasi"
 landunit = {
 location = 379
 name = "Rhodesian Garrison"
-id = { type = 11700 id = 65 }
+id = { type = 11700 id = 55 }
 
 division = {
-id = { type = 11700 id = 66 }
+id = { type = 11700 id = 56 }
 type = garrison
 model = 3
-strength  = 100
+strength  = 50
+max_strength = 50
 extra = artillery
 organisation = 30
 name = "11. Mustahfiz Piyade Firkasi"
@@ -660,85 +654,60 @@ name = "11. Mustahfiz Piyade Firkasi"
 landunit = {
 location = 383
 name = "Dodecanesian Garrison"
-id = { type = 11700 id = 67 }
+id = { type = 11700 id = 57 }
 
 division = {
-id = { type = 11700 id = 68 }
+id = { type = 11700 id = 58 }
 type = garrison
 model = 3
-strength  = 100
+strength  = 50
+max_strength = 50
 extra = artillery
 organisation = 30
 name = "12. Mustahfiz Piyade Firkasi"
 }
 }
 
-landunit = {
-location = 381
-name = "Cycladesian Garrison"
-id = { type = 11700 id = 69 }
+#5th Army
+landunit = {										
+	id 	= { type = 11700 id = 59 }
+		name = "V. Ordu" 
+		location = 1077 	#Izmir 
+		leader = 549094 #Fahrettin Türkkan	
 
-division = {
-name = "13. Mustahfiz Piyade Firkasi"
-id = { type = 11700 id = 70 }
-type = garrison
-model = 3
-strength  = 100
-extra = artillery
-brigade_model = 5
-organisation = 30
+	division = {
+		id = {  type = 11700 id = 60  } 
+		name = "4. Suvari Tümeni" 
+		type = cavalry
+		model = 6
+        extra  = artillery 
+	    brigade_model = 3		
+		strength = 50
+		experience = 0
+		} 
+	division = {
+		id = {  type = 11700 id = 61  } 
+		name = "55. Piyade Tümeni" 
+		type = infantry
+        model = 6
+		extra = cavalry_brigade
+	    brigade_model = 8			
+		strength = 50
+		organisation = 30
+		}
+	division = {
+		id = {  type = 11700 id = 62  } 
+		name = "49. Piyade Tümeni" 
+		type = infantry
+        model = 6		
+		extra = cavalry_brigade
+	    brigade_model = 8			
+		strength = 50
+		organisation = 30
+		}		
 }
-}
-
-landunit = {
-location = 362
-name = "Albanian Garrison"
-id = { type = 11700 id = 71 }
-
-division = {
-name = "14. Mustahfiz Piyade Firkasi"
-id = { type = 11700 id = 72 }
-type = garrison
-model = 3
-strength  = 100
-extra = artillery
-brigade_model = 5
-organisation = 30
-locked = yes
-}
-}
-
-        landunit = {
-  location = 1048
-  name = "Trablusgarb Ordusu"
-              id = { type = 11700 id = 59 }
 
 
-                              division = {
-                              id = { type = 11700 id = 60 }
-  type = cavalry
-  model = 6
-  strength  = 100
-  organisation = 30
-  name = "7. Sipahi Tümeni"
-  }
-                              division = {
-                              id = { type = 11700 id = 61 }
-  type = militia
-  model = 4
-  strength  = 50
-  organisation = 30
-  name = "3. Redif Piyade Firkasi"
-  }
-                              division = {
-                              id = { type = 11700 id = 62 }
-  type = militia
-  model = 4
-  strength  = 50
-  organisation = 30
-  name = "4. Redif Piyade Firkasi"
-  }
-}
 #Air Force
 airunit = {
 	location = 409
@@ -756,10 +725,10 @@ airunit = {
 airunit = {
 	location = 1075
 	base = 1075
-	id = { type = 11700 id = 75 }
+	id = { type = 11700 id = 200 }
 	name = "1 taktik bombardiman uçagi kanat"
 	division = {
-		id = { type = 11700 id = 76 }
+		id = { type = 11700 id = 201 }
 		name = "1 taktik bombardiman filosu"
 		strength = 100
 		type = tactical_bomber
@@ -769,10 +738,10 @@ airunit = {
 airunit = {
 	location = 388
 	base = 388
-	id = { type = 11700 id = 77 }
+	id = { type = 11700 id = 203 }
 	name = "1 deniz uçagi kanat"
 	division = {
-		id = { type = 11700 id = 78 }
+		id = { type = 11700 id = 204 }
 		name = "1 deniz bombardiman filosu"
 		strength = 100
 		type = naval_bomber
