@@ -23,10 +23,10 @@ ai = "kaiserreich\Persia.ai"
  	armamentminister = { type = 9 id = 53167 }
  	ministerofsecurity = { type = 9 id = 53168 }
  	ministerofintelligence = { type = 9 id = 53169 }
- 	chiefofstaff = { type = 9 id = 53170 }
+ 	chiefofstaff = { type = 9 id = 53188 } #Muhammad-Husayn Ayrom
  	chiefofarmy = { type = 9 id = 53186 }
- 	chiefofnavy = { type = 9 id = 53171 }        
- 	chiefofair = { type = 9 id = 53172 }
+ 	chiefofnavy = { type = 9 id = 53103 } #Gholam Ali Bayandor
+ 	chiefofair = { type = 9 id = 53010 } #Ahmad Khan Nakhjavan
 
 #### Resource Reserves
 
@@ -104,7 +104,18 @@ relation = { tag = IND value = 24 }
 	}
 
 	deactivate = { 6010 6210 6570 6560 6390 } 
-	
+
+	dormant_ministers = { 53221 }
+
+	dormant_leaders = { #AZB 440080-440088
+						440080 440081 440082 440083 440084 440085 440086 440087 440088
+						#ARM 440090-440100
+						440090 440091 440092 440093 440094 440095 440096 440097 440098 440099 4400100 }
+
+	dormant_teams = { 6103 6123 6126 #AZB
+					  6130 #ARM
+					  6119 6136 6137 6138 }
+
 #########  OOB (...)
 
 
