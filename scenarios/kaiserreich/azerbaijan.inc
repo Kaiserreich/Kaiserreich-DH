@@ -34,7 +34,7 @@ ai = "kaiserreich\Azerbaijan.ai"
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10
 
-
+	free = { ic = 2 oil = 0 energy = 4 metal = 2 rare_materials = 1 money = 0 manpower = 0 } #new Mar2020
 
     ownedprovinces =      {
 		712 713 

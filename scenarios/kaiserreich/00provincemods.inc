@@ -31,7 +31,8 @@ province = { id = 2052 anti_air = 1 #Montevideo
 naval_base = { size = 6 current_size = 6 } air_base = { size = 2 current_size = 2 } }
 
 ### ARM
-province = { id = 711 ic = 5 landfort = 3 anti_air = 1 } #Yerevan
+province = { id = 711 ic = 1 landfort = 3 anti_air = 1 #Yerevan (Mar2020 - previously ic = 5, increased infra)
+	infra = { size = 0.30 current_size = 0.30 } }
 
 ### AST
 
@@ -87,7 +88,7 @@ province = { id = 406 anti_air = 1 #Pola
 naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
 
 ### AZB
-province = { id = 713 ic = 7 landfort = 3 anti_air = 1 #Baku
+province = { id = 713 ic = 3 landfort = 3 anti_air = 1 #Baku (previously ic = 7)
 	air_base = { size = 4 current_size = 4 } }
 
 ### BEL
@@ -137,12 +138,13 @@ province = { id = 2075 anti_air = 1 #Rio de Janeiro
 
 ### BUL
 province = { id = 307 naval_base = { size = 2 current_size = 2 } } #Dobrich
-province = { id = 321 anti_air = 2 #Sofia
-	air_base = { size = 2 current_size = 2 } }
+province = { id = 321 infra = { size = 0.40 current_size = 0.40 } #Sofia
+	anti_air = 2 air_base = { size = 2 current_size = 2 } }
 province = { id = 323 ic = 1 } #Pleven
+province = { id = 324 infra = { size = 0.30 current_size = 0.30 } } #Plovdiv
 province = { id = 326 ic = 2 anti_air = 1 #Varna
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 3 current_size = 3 } }
-province = { id = 331 ic = 2 } #Pirot
+province = { id = 331 ic = 2 infra = { size = 0.30 current_size = 0.30 } } #Pirot
 province = { id = 363 ic = 1 anti_air = 1 #Xanthi
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 3 current_size = 3 } }
 province = { id = 364 ic = 1 } #Kavala
@@ -315,18 +317,18 @@ province = { id = 2042 anti_air = 2 #San Francisco de Quito
 ### EGY
 
 #Egypt
-province = { id = 787 ic = 8 anti_air = 2 #Cario
-	air_base = { size = 3 current_size = 3 } }
-province = { id = 789 ic = 6 anti_air = 3 #Alexandria
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 7 current_size = 7 } }
-province = { id = 790 air_base = { size = 4 current_size = 4 } } #Tanta
-province = { id = 1007 anti_air = 2 #Suez
-	naval_base = { size = 4 current_size = 4 } }
+province = { id = 787 ic = 7 anti_air = 2 #Cario (Mar2020 - previously ic = 8, increased airbase)
+	air_base = { size = 7 current_size = 7 } }
+province = { id = 789 ic = 5 anti_air = 3 #Alexandria (previously ic = 6)
+	naval_base = { size = 8 current_size = 8 } air_base = { size = 7 current_size = 7 } }
+#province = { id = 790 air_base = { size = 4 current_size = 4 } } #Tanta
+#province = { id = 1007 anti_air = 2 #Suez
+#	naval_base = { size = 4 current_size = 4 } }
 
 #Sudan
 province = { id = 810 ic = 1 anti_air = 1 #Khartoum
 	air_base = { size = 4 current_size = 4 } }
-province = { id = 813 ic = 4 #Port Sudan
+province = { id = 813 ic = 1 #Port Sudan (previously ic = 4)
 	naval_base = { size = 3 current_size = 3 } }
 
 ### ENG
@@ -382,7 +384,7 @@ province = { id = 525 coastalfort = 1 anti_air = 3 #Helsinki
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 province = { id = 527 anti_air = 2 #Tampere
 	air_base = { size = 10 current_size = 10 } }
-province = { id = 530 landfort = 2 anti_air = 3 } #Viipuri
+province = { id = 531 landfort = 2 anti_air = 3 manpower = 1 } #Viipuri
 province = { id = 532 landfort = 2 } #Sortavala
 
 ### FRA
@@ -437,10 +439,9 @@ province = { id = 104 ic = 3 anti_air = 3 #Metz
 province = { id = 2086 naval_base = { size = 2 current_size = 2 } } #Belize City
 
 ### GEO
-province = { id = 708 anti_air = 2 #Kutaisi
-naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
+province = { id = 708 ic = 2 anti_air = 2 #Kutaisi
+	naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
 province = { id = 709 ic = 4 landfort = 3 anti_air = 1 } #Tbilisi
-province = { id = 708 ic = 2 } #Kutaisi
 province = { id = 710 ic = 1 } #Sukhumi
 
 ### GER
@@ -448,7 +449,8 @@ province = { id = 710 ic = 1 } #Sukhumi
 #African colonies
 province = { id = 718 anti_air = 3 #Casablanca
 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
-province = { id = 900 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Suez
+province = { id = 900 anti_air = 2 naval_base = { size = 7 current_size = 7 } #Suez (Mar2020 - increased navalbase, added anti_air)
+	air_base = { size = 3 current_size = 3 } }
 province = { id = 964 anti_air = 2 #Freetown
 naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
 province = { id = 833 anti_air = 2 #Djibouti
@@ -696,8 +698,8 @@ province = { id = 34 anti_air = 2 #Dublin
 ### JAP
 
 #Korea/Port Arthur/Sakhalin
-province = { id = 1219 ic = 2 anti_air = 2 #Port Arthur
-naval_base = { size = 5 current_size = 5 } air_base = { size = 7 current_size = 7 } }
+province = { id = 1219 ic = 2 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Port Arthur
+naval_base = { size = 8 current_size = 8 } air_base = { size = 7 current_size = 7 } }
 province = { id = 1221 anti_air = 2 #Pyongyang
 air_base = { size = 4 current_size = 4 } }
 province = { id = 1228 naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } } #Seoul
@@ -820,22 +822,32 @@ province = { id = 262 anti_air = 1 #Kaunas
 	air_base = { size = 1 current_size = 1 } }
 
 ### MAN
-province = { id = 1199 anti_air = 2 #Harbin
-	air_base = { size = 2 current_size = 2 } }
-province = { id = 1201 anti_air = 3 #Heihe
+province = { id = 1198 infra = { size = 0.30 current_size = 0.30 } } #Butehaqi
+province = { id = 1199 infra = { size = 0.50 current_size = 0.50 } #Harbin
+	air_base = { size = 2 current_size = 2 } anti_air = 2 ic = 3 }
+province = { id = 1203 ic = 1 anti_air = 2 #Qiqihaer
 	air_base = { size = 4 current_size = 4 } }
 province = { id = 1202 anti_air = 2 #Jiamisu
-	air_base = { size = 1 current_size = 1 } }		
-province = { id = 1205 ic = 1 } #Mudanjiang
+	air_base = { size = 2 current_size = 2 } }		
+province = { id = 1205 infra = { size = 0.40 current_size = 0.40 } #Mudanjiang
+	air_base = { size = 3 current_size = 3 } }
+province = { id = 1206 air_base = { size = 4 current_size = 4 } } #Haila'er
 province = { id = 1207 ic = -4 } #Jilin
-province = { id = 1208 ic = 4 anti_air = 3 #Changchun
+province = { id = 1208 ic = 2 anti_air = 3 #Changchun
 	air_base = { size = 6 current_size = 6 } }
-province = { id = 1216 anti_air = 2 #Jinzhou
-	air_base = { size = 5 current_size = 5 } }
-province = { id = 1218 ic = -2 anti_air = 2 #Panjin
+province = { id = 1210 infra = { size = 0.20 current_size = 0.20 } } #Tongliyao Hot
+province = { id = 1212 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Yanji
+province = { id = 1214 anti_air = 3 ic = 5 } #Shenyang
+province = { id = 1215 ic = -2 } #Fushun
+province = { id = 1216 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Jinzhou
+province = { id = 1217 ic = 2 #Anshan
+	infra = { size = 0.40 current_size = 0.40 } }
+province = { id = 1218 ic = -3 anti_air = 2 #Panjin
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
-province = { id = 1236 ic = 2 anti_air = 2 #Chengde
-	air_base = { size = 6 current_size = 6 } }
+province = { id = 1220 ic = -2 infra = { size = 0.30 current_size = 0.30 } } #Dandong
+province = { id = 1235 infra = { size = 0.20 current_size = 0.20 } } #Fuxin
+province = { id = 1236 infra = { size = 0.30 current_size = 0.30 } #Chengde
+	anti_air = 2 air_base = { size = 6 current_size = 6 } }
 
 ### MEX
 province = { id = 1967 ic = 3 } #La Paz
@@ -851,8 +863,9 @@ province = { id = 1977 anti_air = 2 } #Ciudad de México
 ### MON
 
 #Outer Mongolia
+province = { id = 1120 infra = { size = 0.30 current_size = 0.30 } } #Bayan Tumen
 province = { id = 1124 ic = 2 #Ulaanbaatar
-	air_base = { size = 1 current_size = 1 } }
+	infra = { size = 0.40 current_size = 0.40 } air_base = { size = 1 current_size = 1 } }
 
 #Trans-Siberian Railway
 province = { id = 1146 ic = 2 } #Oyrot-Tura
@@ -882,43 +895,53 @@ province = { id = 493 coastalfort = 2 #Trondheim
 province = { id = 495 anti_air = 1 #Narvik
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
+### YEM
+province = { id = 1050 ic = -2 infra = { size = 0.20 current_size = 0.20 } } #Sanaa (Mar2020 - increased infra, reduced IC)
+
 ### OMN
 province = { id = 1051 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #El Mukalla
-province = { id = 1052 anti_air = 2 #Masqat
+province = { id = 1052 anti_air = 2 ic = -2 infra = { size = 0.20 current_size = 0.20 } #Masqat (Mar2020 - increased infra, reduced IC)
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
 
 ### OTT
 
 #Arabian territories
-province = { id = 1008 anti_air = 1 #Tel Aviv
-	naval_base = { size = 2 current_size = 2 } air_base = { size = 4 current_size = 4 } }
-province = { id = 1010 air_base = { size = 2 current_size = 2 } } #Eilat
-province = { id = 1011 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Haifa
+#province = { id = 1008 anti_air = 1 #Tel Aviv
+#	naval_base = { size = 2 current_size = 2 } air_base = { size = 4 current_size = 4 } }
+#province = { id = 1010 air_base = { size = 2 current_size = 2 } } #Eilat
+province = { id = 1011 naval_base = { size = 3 current_size = 3 } } #Haifa (Mar2020 - removed airbase)
+province = { id = 1172 air_base = { size = 3 current_size = 3 } } #Jerusalem
 province = { id = 1016 ic = 1 } #Damascus
 province = { id = 1019 ic = 2 anti_air = 2 #Beirut
 	naval_base = { size = 5 current_size = 5 } air_base = { size = 4 current_size = 4 } }
-province = { id = 1021 ic = 2 #Aleppo
-	air_base = { size = 1 current_size = 1 } }
+province = { id = 1021 ic = 2 #Aleppo (Mar2020 - added navalbase, increased airbase)
+	air_base = { size = 3 current_size = 3 } naval_base = { size = 2 current_size = 2 } }
 province = { id = 1032 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Basrah
-province = { id = 1041 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Kuwait
+province = { id = 1034 air_base = { size = 4 current_size = 4 } } #Baghdad
+#province = { id = 1041 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Kuwait
 province = { id = 1048 anti_air = 2 #Medina
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
 
 #Turkey
-province = { id = 385 naval_base = { size = 2 current_size = 2 } } #Adrianople
+province = { id = 385 infra = { size = 0.30 current_size = 0.30 } } #Adrianople
 province = { id = 387 ic = 1 } #Famagusta
 province = { id = 409 ic = 6 #Istanbul
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 1056 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } } #Gaziantep
-province = { id = 1057 ic = 3 #Antalya
-	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
-province = { id = 1065 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } } #Karabuk
-province = { id = 1067 ic = 2 } #Trazbon
+province = { id = 1056 naval_base = { size = 2 current_size = 2 } #Gaziantep (Mar202 - increased infra, removed airbase)
+	infra = { size = 0.20 current_size = 0.20 } }
+province = { id = 1057 ic = 3 } #Antalya (Mar2020 - removed airbase and navalbase)
+province = { id = 1058 ic = 3 infra = { size = 0.20 current_size = 0.20 } #Tarsus
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
+province = { id = 1065 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } #Karabuk (Mar2020 - increased infra)
+	infra = { size = 0.30 current_size = 0.30 } }
+province = { id = 1067 ic = 2 infra = { size = 0.30 current_size = 0.30 } #Trazbon (Mar2020 - added navalbase and airbase, increased infra)
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
 province = { id = 1075 anti_air = 4 #Ankara
 	air_base = { size = 6 current_size = 6 } }
-province = { id = 1076 anti_air = 4 #Izmit
+province = { id = 1076 anti_air = 4 infra = { size = 0.30 current_size = 0.30 } #Izmit (Mar202 - increased infra)
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
-province = { id = 1077 ic = 3 } #Smyrna
+province = { id = 1077 ic = 3 #Smyrna (Mar2020 - added airbase and navalbase)
+	naval_base = { size = 5 current_size = 5 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1078 ic = 4 } #Bursa
 
 ### PAK
@@ -1099,7 +1122,9 @@ province = { id = 964 oilpool = 1000 supplypool = 2000 } #Freetown
 
 ### SAU
 province = { id = 1038 naval_base = { size = 2 current_size = 2 } } #Doha
-province = { id = 1040 naval_base = { size = 1 current_size = 1 } } #Dammam
+province = { id = 1040 } #Dammam (Mar2020 - removed navalbase)
+province = { id = 1045 infra = { size = 0.30 current_size = 0.30 } } #Riyadh (Mar2020 - increased infra)
+province = { id = 1049 air_base = { size = 2 current_size = 2 } infra = { size = 0.20 current_size = 0.20 } } #Mecca (Mar2020 - increased infra, added airbase)
 
 ### SCH
 province = { id = 389 landfort = 5 anti_air = 3 } #Zurich
