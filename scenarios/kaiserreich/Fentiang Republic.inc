@@ -30,7 +30,7 @@ headofgovernment = { type = 9 id = 58002 }
 
 	capital = 	1208
 
-        free = { ic = 10 }
+        free = { ic = 8 }
 
     ownedprovinces =      {
 		1202 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218 

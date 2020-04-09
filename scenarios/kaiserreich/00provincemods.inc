@@ -271,7 +271,12 @@ province = { id = 1776 anti_air = 1 #Havana
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } }
 
 ### CXB
+province = { id = 1265 infra = { size = 0.20 current_size = 0.20 } } #Zhangye
+province = { id = 1266 infra = { size = 0.20 current_size = 0.20 } } #Yumen
 province = { id = 1272 ic = -1 } #Bayan Hot
+province = { id = 1277 infra = { size = 0.20 current_size = 0.20 } } #Qumul
+province = { id = 1281 ic = -3 infra = { size = 0.20 current_size = 0.20 } } #Urumqi
+province = { id = 1283 ic = -4 } #Ge'ermu
 province = { id = 1284 air_base = { size = 6 current_size = 6 } } #Xining
 
 ### CZE
@@ -373,9 +378,9 @@ province = { id = 836 ic = 3 #Mogadishu
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
 ### FIN
-province = { id = 517 metal = 4 #Petsamo
+province = { id = 517 #Petsamo
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
-province = { id = 523 energy = 2 } #Kajaani
+#province = { id = 523 energy = 2 } #Kajaani
 province = { id = 520 #Oulu
 	air_base = { size = 10 current_size = 10 } }
 province = { id = 524 coastalfort = 1 anti_air = 2 #Kola
@@ -863,16 +868,17 @@ province = { id = 1977 anti_air = 2 } #Ciudad de México
 ### MON
 
 #Outer Mongolia
+province = { id = 1119 ic = -2 } #Kyzyl
 province = { id = 1120 infra = { size = 0.30 current_size = 0.30 } } #Bayan Tumen
 province = { id = 1124 ic = 2 #Ulaanbaatar
 	infra = { size = 0.40 current_size = 0.40 } air_base = { size = 1 current_size = 1 } }
 
 #Trans-Siberian Railway
 province = { id = 1146 ic = 2 } #Oyrot-Tura
-province = { id = 1147 ic = 3 } #Abakan
-province = { id = 1158 ic = 2 } #Minusinsk
+province = { id = 1147 ic = 1 } #Abakan (was 3)
+province = { id = 1158 ic = 1 } #Minusinsk (was 2)
 province = { id = 1167 ic = 2 } #Ulan Ude
-province = { id = 1168 ic = 2 } #Borzya
+province = { id = 1168 ic = 1 } #Borzya (was 2)
 province = { id = 1169 ic = 1 } #Chita
 
 ### NEP
@@ -909,7 +915,7 @@ province = { id = 1052 anti_air = 2 ic = -2 infra = { size = 0.20 current_size =
 #province = { id = 1008 anti_air = 1 #Tel Aviv
 #	naval_base = { size = 2 current_size = 2 } air_base = { size = 4 current_size = 4 } }
 #province = { id = 1010 air_base = { size = 2 current_size = 2 } } #Eilat
-province = { id = 1011 naval_base = { size = 3 current_size = 3 } } #Haifa (Mar2020 - removed airbase)
+province = { id = 1011 naval_base = { size = 3 current_size = 3 } } #Haifa
 province = { id = 1172 air_base = { size = 3 current_size = 3 } } #Jerusalem
 province = { id = 1016 ic = 1 } #Damascus
 province = { id = 1019 ic = 2 anti_air = 2 #Beirut
@@ -922,23 +928,28 @@ province = { id = 1034 air_base = { size = 4 current_size = 4 } } #Baghdad
 province = { id = 1048 anti_air = 2 #Medina
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
 
+#Tibet
+province = { id = 1289 ic = -4 } #Lhasa
+
 #Turkey
 province = { id = 385 infra = { size = 0.30 current_size = 0.30 } } #Adrianople
 province = { id = 387 ic = 1 } #Famagusta
 province = { id = 409 ic = 6 #Istanbul
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 1056 naval_base = { size = 2 current_size = 2 } #Gaziantep (Mar202 - increased infra, removed airbase)
+province = { id = 1056 naval_base = { size = 2 current_size = 2 } #Gaziantep
 	infra = { size = 0.20 current_size = 0.20 } }
-province = { id = 1057 ic = 3 } #Antalya (Mar2020 - removed airbase and navalbase)
-province = { id = 1058 ic = 3 infra = { size = 0.20 current_size = 0.20 } #Tarsus
+province = { id = 1057 ic = -2 } #Antalya
+province = { id = 1058 ic = 2 infra = { size = 0.20 current_size = 0.20 } #Tarsus
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
-province = { id = 1065 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } #Karabuk (Mar2020 - increased infra)
-	infra = { size = 0.30 current_size = 0.30 } }
-province = { id = 1067 ic = 2 infra = { size = 0.30 current_size = 0.30 } #Trazbon (Mar2020 - added navalbase and airbase, increased infra)
+province = { id = 1065  air_base = { size = 4 current_size = 4 } #Karabuk
+	naval_base = { size = 4 current_size = 4 } infra = { size = 0.30 current_size = 0.30 } ic = 2 }
+province = { id = 1067 ic = 2 infra = { size = 0.30 current_size = 0.30 } #Trazbon
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
+province = { id = 1072 ic = 1 } #Kirikkale
+province = { id = 1074 ic = 1 } #Konya
 province = { id = 1075 anti_air = 4 #Ankara
 	air_base = { size = 6 current_size = 6 } }
-province = { id = 1076 anti_air = 4 infra = { size = 0.30 current_size = 0.30 } #Izmit (Mar202 - increased infra)
+province = { id = 1076 anti_air = 4 infra = { size = 0.30 current_size = 0.30 } #Izmit
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1077 ic = 3 #Smyrna (Mar2020 - added airbase and navalbase)
 	naval_base = { size = 5 current_size = 5 } air_base = { size = 4 current_size = 4 } }
@@ -1138,7 +1149,7 @@ province = { id = 327 landfort = 2 } #Krusevac
 province = { id = 330 ic = 1 landfort = 1 } #
 province = { id = 338 landfort = 2 anti_air = 2 #Beograd
 air_base = { size = 6 current_size = 6 } }
-province = { id = 339 ic = 1 landfort = 2 energy = 4 } #Bor
+province = { id = 339 ic = 1 landfort = 2 } #Bor
 province = { id = 340 landfort = 2 } #Sabac
 province = { id = 342 landfort = 2 } #Uzice
 
