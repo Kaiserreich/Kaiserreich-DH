@@ -15,7 +15,9 @@ rare_materials         = 60
    money                  = 10 
    manpower               = 1 
    capital                = 1050 
-      
+
+   free = { ic = 1 oil = 0 energy = 2 metal = 1 rare_materials = 1 money = 0 manpower = 0 } #new Mar2020
+
    policy = 
    {  date              = {  year = 0 month = january day = 0  } 
      democratic        = 3 

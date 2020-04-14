@@ -23,8 +23,6 @@ country = {
 
 SpyInfo  = {  country = "CXB" NumberOfSpies = 2  } 
 
-        free = { ic = 1 }
-
 	# Resource Reserves
 	energy		= 200
 	metal		= 200
@@ -32,6 +30,8 @@ SpyInfo  = {  country = "CXB" NumberOfSpies = 2  }
 	oil 		= 100
 	supplies 	= 100
 	money		= 50
+
+	free = { ic = 8 oil = 0 energy = 0 metal = 0 rare_materials = 0 money = 0 manpower = 0 } #new Mar2020
 
 	capital = 1281 # Golmud
 	manpower = 200
