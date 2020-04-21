@@ -16,7 +16,7 @@ As of the 30th of January 2019, this project is now open source! You can see the
 
 What does this mean for you? This means if you want to help, all you need to do is make a pull request with your changes and we'll take a look at your suggestions. Bug fixes, new content and optimisations are all welcome.
 
-If you want to get more involved them come join the Darkest Hour team properly by heading to our discord (https://discord.gg/013cqzfpWMRLqnvHr) and checking out the #rules_and_recruits channel.
+If you want to get more involved them come join the Darkest Hour team properly by heading to our discord (https://discord.gg/kaiserreich) and heading to the #recruiting channel.
 
 Thank you for your help and we hope you enjoy our work!
 
