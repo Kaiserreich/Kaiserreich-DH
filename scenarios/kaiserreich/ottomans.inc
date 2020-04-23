@@ -20,16 +20,16 @@ peacetime_ic_mod = 0.85
 
 #### cabinet
 
-headofstate = { type = 9 id = 549001  }
+headofstate = { type = 9 id = 549001 }
 headofgovernment = { type = 9 id = 549002 }
-foreignminister = { type = 9 id =  549003  }
-armamentminister = { type = 9 id = 549023  }
-ministerofsecurity = { type = 9 id = 549005  }
-ministerofintelligence = { type = 9 id = 549006  }
-chiefofstaff = { type = 9 id = 549007  }
-chiefofarmy = { type = 9 id = 549008   }
+foreignminister = { type = 9 id =  549003 }
+armamentminister = { type = 9 id = 549023 }
+ministerofsecurity = { type = 9 id = 549005 }
+ministerofintelligence = { type = 9 id = 549006 }
+chiefofstaff = { type = 9 id = 549159 } #Asim Gündüz Pasha
+chiefofarmy = { type = 9 id = 549088 } #Fahrettin Altay
 chiefofnavy = { type = 9 id = 549009 }
-chiefofair = { type = 9 id = 549010 }
+chiefofair = { type = 9 id = 549103 } #Mehmet Fazil Bey
 
 #### Resource Reserves
 
@@ -131,6 +131,7 @@ relation = {   tag =  	JAP	value = 		-30	   }
 4800 4810 4820 #ww1 strategic bomber
 4700 4710 #ww1 navalbomber
 7290 7300 7310 #CAS
+4740 #Early Seaplane
 
 #Armour & Artillery
 2860 2870 2880 2020 #Basic Armoured Car  
@@ -171,12 +172,25 @@ relation = {   tag =  	JAP	value = 		-30	   }
 6500 6510 6530 6550 6590 6600 6610 6620 6650 6670 6680 6690 6700 6710 6910 # Great War Land Doctrines (central powers)
 
 #Naval Doctrines
-8010 8020 8040 8050
-
-
+8010 8020 8040 8050 8060 8070 8080
+8100
+8500
 	}
-	
-	deactivate = { 6010 6210 6570 6560 6390 }
+
+dormant_ministers = { 549008 #Tahsin Yazici
+					}
+
+dormant_teams = { 15736 15737 15738 15739 15742 15743 }
+
+dormant_leaders = { #LEB
+					549180 549181 549182 549183 549184 549185 549186
+					#SYR
+					549187 549188 549189 549190 549191 549192 549193 549194 549195
+					#IRQ
+					549196 549197 549198 549199 549200 549201 549202 549203 549204 549205 549206 549207
+					}
+
+deactivate = { 6010 6210 6570 6560 6390 }
 
 #########  OOB (...)
 
@@ -361,7 +375,7 @@ landunit = {
 	id 	= { type = 11700 id = 24 }
 		name = "I. Ordu" 
 		location = 409 	#Istanbul 
-		leader = 549035 #Kemal Pasha
+		leader = 549124 #Kemal Pasha
 	division = {
 		id 	= { type = 11700 id = 25 }
 		name 	= "Ordu Genel Merkez"
@@ -405,8 +419,7 @@ landunit = {
 	id 	= { type = 11700 id = 29 }
 		name = "II. Ordu" 
 		location = 1067 	#Trabzon 
-		leader = 549111 #Berkok
-
+		leader = 549083 #Berkok
 	division = {
 		id = { type = 11700 id = 30 }
         type = bergsjaeger
@@ -457,8 +470,7 @@ landunit = {
 	id 	= { type = 11700 id = 35 }
 		name = "IV. Ordu" 
 		location = 1016 	#Damascus
-        leader = 549086 #Karabikir		
-
+        leader = 549117 #Karabikir
 	division = {
 		id = {  type = 11700 id = 36  } 
 		name = "3. Suvari Tümeni" 
@@ -501,8 +513,7 @@ landunit = {
 	id 	= { type = 11700 id = 40 }
 		name = "VII. Ordu" 
 		location = 1004 	#El Arish 
-		leader = 549149 #Fevzi Pasha	
-
+		leader = 549103 #Fevzi Pasha
 	division = {
 		id = {  type = 11700 id = 41  } 
 		name = "11. Piyade Tümeni" 
@@ -540,8 +551,7 @@ landunit = {
 	id 	= { type = 11700 id = 44 }
 		name = "VI. Ordu" 
 		location = 1034 	#Baghdad 
-		leader = 549095 #Esad	
-
+		leader = 549101 #Fahrettin Altay
 	division = {
 		id = {  type = 11700 id = 45  } 
 		name = "2. Suvari Tümeni" 
@@ -583,8 +593,7 @@ landunit = {
 	id 	= { type = 11700 id = 49 }
 		name = "III. Ordu" 
 		location = 1021 	#Aleppo 
-		leader = 549146 #Osman Fuat Efendi	
-
+		leader = 549143 #Osman Fuat Efendi
 	division = {
 		id = {  type = 11700 id = 50  } 
 		name = "1. Suvari Tümeni" 
@@ -673,8 +682,7 @@ landunit = {
 	id 	= { type = 11700 id = 59 }
 		name = "V. Ordu" 
 		location = 1077 	#Izmir 
-		leader = 549094 #Fahrettin Türkkan	
-
+		leader = 549102 #Fahrettin Türkkan
 	division = {
 		id = {  type = 11700 id = 60  } 
 		name = "4. Suvari Tümeni" 
