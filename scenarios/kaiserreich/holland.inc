@@ -85,13 +85,14 @@ relation = {   tag =  	JAP	value = 		40	   }
 #Infantry
 1830 1840 1850 1860 #Engineers
 1010  1020 1030 1040 1050 1060 1070 1080 #1926 Infantry Division
-1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply 
+1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply
 13060 13070 13080 1310 1320 1330 1340 #Great War Cavalry Division
-1160  1170 1180 1190 1200 1210 1220 1230 1240 #Early Mountain Division 
+1160  1170 1180 1190 1200 1210 1220 1230 1240 #Early Mountain Division
+1560 #1922 Naval Infantry
 
 #Armour & Artillery
 2860 2870 2880 2020 #Basic Armoured Car
-2290 2300 2310 #Great War Heavy Field Artillery 
+2290 2300 2310 2900 2910 2920 #Great War Heavy Field Artillery
 2800 2450 21180 21190 #Early Static Anti-Air Artillery
 2810 2820 2510 #Basic Anti-Air Artillery Brigade
 7600 7610 2620 2010 2630 2640 #Light armor brigades only techs / advanced Light armor
@@ -100,31 +101,37 @@ relation = {   tag =  	JAP	value = 		40	   }
 3010 3020 3030 3040 3050 3060 #Improved Destroyer 
 3110 3120 3130 3140 3150 3160 #De ruyter Light Cruiser
 3210 3220 3230 #Improved Heavy Cruiser 
-3310 3320 3330 #Interwar Battlecruiser (just to let player build project 1047 if they want it, they have to research it)
+3310 3320 3330 #Heavy Battlecruiser (just to let player build project 1047 if they want it, they have to research it)
+3410 3420 3430 3440 3450 #Early Battleship
 3610 3620 3630 3640 3650 #KXVI class
+12100 12110 #Converted Light Carrier
 3720 3730 3736 3740 3900 #Torpedo & ASW 18
 3810 3820 #1925 transport
 
 #Aircrafts
-4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter 
-4600 4610 4620 4630 4120 #Interwar Bomber 
+4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter
+4600 4610 4620 4630 4120 #Interwar Bomber
 4300 4310 4320 4330 #Multirole fighter
 4800 4810 #ww1 strategic bomber
 4700 4710 #ww1 navalbomber
+4900 4910 4920 #CAG 34
+4740 4750 4760 4770 4780 #Seaplanes 1928
 
 #Industrial
-5700 5710 5010 #Modern Agriculture 
-5310 54010 54020 54030 5316 5326 #Computers & cryptografi
+5700 5710 5010 5020 #Modern Agriculture
+5310 54010 54020 54030 5316 5326 #Computers & cryptography
 5810 5820 5050 5830 5060 #Manufactoring
-5800 5080 5090 #Improved Construction Engineering 
-5470 #Faculty of Atomic Research 
+5800 5080 5090 #Improved Construction Engineering
+5470 #Faculty of Atomic Research
 5600 5610 5620 5630 #Medicine
+5190 #Basic Oil Refining
+5410 #Basic Decimetric Radar Warning Sites
 
 # Great War Land Doctrines (entente)
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
 # Defensive Focus Grand Battleplan Path
 6560 6030
-14000 14010 14020 #Great War Hospital System 
+14000 14010 14020 #Great War Hospital System
 
 
 #Air Doctrines - ww2 techs
@@ -133,6 +140,11 @@ relation = {   tag =  	JAP	value = 		40	   }
 #Naval Doctrines
 8050  8070 8010 8020 8030 8040 8060 8080
 81300 81310 81320 81330 81340
+8500 8510 8520 # Naval Interdiction
+8100 8110 8120 # Naval Supremacy
+82300 # Amphib
+82500 # Logistic Support
+81650 # Carrier Doctrine
 
 	}
 

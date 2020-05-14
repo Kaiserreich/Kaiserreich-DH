@@ -53,10 +53,12 @@ province = { id = 1712 ic = 2 anti_air = 2 } #Adelaide
 province = { id = 1715 anti_air = 1 } #Port Augusta
 
 #New Zealand
-province = { id = 1721 anti_air = 2 #Wellington
-naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
-province = { id = 1722 anti_air = 3 #Christchurch
-naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+province = { id = 1719 infra = { size = 0.30 current_size = 0.30 } } #Hamilton
+province = { id = 1720 infra = { size = 0.40 current_size = 0.40 } } #Auckland
+province = { id = 1721 infra = { size = 0.40 current_size = 0.40 } anti_air = 2 #Wellington
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
+province = { id = 1722 infra = { size = 0.30 current_size = 0.30 } anti_air = 3 #Christchurch
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 
 #Papua New Guinea
 province = { id = 1602 anti_air = 1 oilpool = 100 supplypool = 500 #Lae
@@ -137,19 +139,26 @@ province = { id = 2075 anti_air = 1 #Rio de Janeiro
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
 
 ### BUL
-province = { id = 307 naval_base = { size = 2 current_size = 2 } } #Dobrich
-province = { id = 321 infra = { size = 0.40 current_size = 0.40 } #Sofia
-	anti_air = 2 air_base = { size = 2 current_size = 2 } }
-province = { id = 323 ic = 1 } #Pleven
+province = { id = 307 infra = { size = 0.20 current_size = 0.20 } } #Dobrich
+province = { id = 317 infra = { size = 0.30 current_size = 0.30 } } #Vidin
+province = { id = 318 infra = { size = 0.30 current_size = 0.30 } } #Ruse
+province = { id = 319 infra = { size = 0.20 current_size = 0.20 } } #Haskovo
+province = { id = 321 ic = 3 infra = { size = 0.40 current_size = 0.40 } #Sofia
+	anti_air = 2 air_base = { size = 6 current_size = 6 } }
+province = { id = 322 ic = -3 infra = { size = 0.20 current_size = 0.20 } } #Gabrovo
+province = { id = 323 ic = 1 infra = { size = 0.30 current_size = 0.30 } } #Pleven
 province = { id = 324 infra = { size = 0.30 current_size = 0.30 } } #Plovdiv
-province = { id = 326 ic = 2 anti_air = 1 #Varna
-	naval_base = { size = 2 current_size = 2 } air_base = { size = 3 current_size = 3 } }
+province = { id = 325 infra = { size = 0.30 current_size = 0.30 } } #Burgas
+province = { id = 326 ic = 2 infra = { size = 0.30 current_size = 0.30 } anti_air = 1 #Varna
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 3 current_size = 3 } }
+province = { id = 328 infra = { size = 0.30 current_size = 0.30 } } #Kumanovo
 province = { id = 331 ic = 2 infra = { size = 0.30 current_size = 0.30 } } #Pirot
-province = { id = 363 ic = 1 anti_air = 1 #Xanthi
+province = { id = 363 ic = 1 anti_air = 1 infra = { size = 0.20 current_size = 0.20 } #Xanthi
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 3 current_size = 3 } }
-province = { id = 364 ic = 1 } #Kavala
+province = { id = 364 ic = 1 infra = { size = 0.20 current_size = 0.20 } } #Kavala
 province = { id = 365 ic = 3 #Thessaloniki
 	naval_base = { size = 6 current_size = 6 } }
+province = { id = 370 infra = { size = 0.20 current_size = 0.20 } } #Alexandroupoli
 
 ### BUR
 province = { id = 1410 ic = 3 anti_air = 1 #Mandalay
@@ -201,17 +210,19 @@ province = { id = 1351 ic = 2 anti_air = 1 #Shangrao
 	air_base = { size = 2 current_size = 2 } }
 province = { id = 1368 ic = 3 } #Shaoguan
 province = { id = 1369 naval_base = { size = 4 current_size = 4 } air_base = { size = 5 current_size = 5 } } #Guangzhou
+province = { id = 1376 infra = { size = 0.20 current_size = 0.20 } } #Debao
 province = { id = 1378 ic = 5 anti_air = 2 #Guilin
 	air_base = { size = 4 current_size = 4 } }
 province = { id = 1379 ic = -1 } #Nanning
 province = { id = 1380 ic = 2 } #Liuzhou
 
 ### CHC
+province = { id = 1253 infra = { size = 0.40 current_size = 0.40 } } #Linfen
 province = { id = 1255 landfort = 3 } #Pingliang
 province = { id = 1256 landfort = 1 } #Baoji
 province = { id = 1257 landfort = 1 } #Tongguan
 province = { id = 1258 landfort = 1 } #Xi'an
-province = { id = 1259 landfort = 4 } #Yan'an
+province = { id = 1259 landfort = 4 infra = { size = 0.20 current_size = 0.20 } } #Yan'an
 province = { id = 1260 ic = -4 landfort = 1 } #Yulin
 province = { id = 1263 landfort = 1 } #Tianshoui
 province = { id = 1269 landfort = 2 } #Uqai
@@ -260,8 +271,12 @@ province = { id = 352 ic = 1 anti_air = 2 } #Zagreb
 province = { id = 1247 anti_air = 4 #Beijing
 	air_base = { size = 6 current_size = 6 } }
 province = { id = 1250 ic = 2 } #Lingqiu
+province = { id = 1321 infra = { size = 0.40 current_size = 0.40 } } #Xinxiang
+province = { id = 1327 infra = { size = 0.30 current_size = 0.30 } } #Heze
 province = { id = 1330 ic = 2 anti_air = 2 #Qing Jinan
 	air_base = { size = 4 current_size = 4 } }
+province = { id = 1331 infra = { size = 0.20 current_size = 0.20 } } #Yantai
+province = { id = 1332 infra = { size = 0.20 current_size = 0.20 } } #Zaozhuang
 province = { id = 1334 ic = 2 anti_air = 2 #Nantong
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1343 ic = 2 } #Huainan
@@ -366,8 +381,9 @@ province = { id = 29 anti_air = 3 #London
 	air_base = { size = 10 current_size = 10 } }
 
 ### ETH
-province = { id = 815 ic = 1 anti_air = 1 #Massawa
+province = { id = 815 ic = 1 anti_air = 1 infra = { size = 0.20 current_size = 0.20 } #Massawa
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+province = { id = 817 infra = { size = 0.20 current_size = 0.20 } } #Asmara
 province = { id = 818 ic = 1 } #Dire Dawa
 province = { id = 820 ic = 1 } #Dessie
 province = { id = 825 ic = 2 anti_air = 2 #Addis Abeba
@@ -479,8 +495,8 @@ province = { id = 1328 landfort = 1 coastalfort = 1 anti_air = 2 #Qindao
 naval_base = { size = 8 current_size = 8 } air_base = { size = 7 current_size = 7 } }
 province = { id = 1365 anti_air = 2 #Haikou
 naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
-province = { id = 1395 anti_air = 4 oilpool = 100 supplypool = 500 #Hanoi
-naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1395 anti_air = 4 infra = { size = 0.40 current_size = 0.40 } oilpool = 100 supplypool = 500 #Hanoi
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1399 anti_air = 3 oilpool = 100 supplypool = 500 #Saigon
 naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1432 landfort = 3 coastalfort = 4 anti_air = 4 oilpool = 2000 supplypool = 10000 #Singapore
@@ -624,14 +640,28 @@ province = { id = 1781 anti_air = 1 #Port-au-Prince
 
 #Indonesia
 province = { id = 1615 air_base = { size = 4 current_size = 4 } } #Flores
-province = { id = 1636 anti_air = 2 #Palembang
+province = { id = 1632 ic = 1 infra = { size = 0.20 current_size = 0.20 } #Balikpapan
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 3 current_size = 3 } }
+province = { id = 1636 anti_air = 2 infra = { size = 0.30 current_size = 0.30 } #Palembang
 	naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1637 ic = 1 } #Padang
+province = { id = 1640 infra = { size = 0.20 current_size = 0.20 } } #Koeta-Radja
+province = { id = 1641 infra = { size = 0.30 current_size = 0.30 } } #Oosthaven
 province = { id = 1642 anti_air = 2 #Medan
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 2 current_size = 2 } }
-province = { id = 1647 anti_air = 2 oilpool = 100 supplypool = 500 #Batavia
-  naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
-province = { id = 1653 anti_air = 2 #Soerabaja
-	naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1646 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Tjilatjap
+province = { id = 1647 ic = 2 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Batavia
+  naval_base = { size = 6 current_size = 6 } oilpool = 100 supplypool = 500 air_base = { size = 6 current_size = 6 } }
+province = { id = 1648 infra = { size = 0.40 current_size = 0.40 } } #Tjilegon
+province = { id = 1649 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Tjirebon
+province = { id = 1650 ic = -1 infra = { size = 0.40 current_size = 0.40 } } #Semarang
+province = { id = 1651 infra = { size = 0.40 current_size = 0.40 } } #Bandoeng
+province = { id = 1652 infra = { size = 0.40 current_size = 0.40 } } #Rembang
+province = { id = 1653 infra = { size = 0.50 current_size = 0.50 } anti_air = 2 #Soerabaja
+	ic = 2 naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1654 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Jogjakarta
+province = { id = 1655 infra = { size = 0.40 current_size = 0.40 } } #Malang
+province = { id = 1656 infra = { size = 0.30 current_size = 0.30 } } #Madura
 province = { id = 1658 naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } } #Kendari
 province = { id = 1698 naval_base = { size = 8 current_size = 8 } } #Broome
 province = { id = 1699 naval_base = { size = 5 current_size = 5 } air_base = { size = 5 current_size = 5 } } #Townsville
@@ -656,15 +686,19 @@ province = { id = 278 ic = -7 } #Szekesfehervar
 province = { id = 281 ic = 2 } #Debrecen
 province = { id = 284 ic = 2 anti_air = 2 #Budapest
 	air_base = { size = 8 current_size = 8 } }
-province = { id = 288 anti_air = 2 #Cluj
-	air_base = { size = 5 current_size = 5 } }
+province = { id = 286 infra = { size = 0.50 current_size = 0.50 } } #Arad
+province = { id = 287 infra = { size = 0.40 current_size = 0.40 } } #Turda
+province = { id = 288 infra = { size = 0.50 current_size = 0.50 } #Cluj
+	anti_air = 2 air_base = { size = 5 current_size = 5 } }
+province = { id = 291 infra = { size = 0.50 current_size = 0.50 } } #Sibiu
+province = { id = 295 ic = 2 infra = { size = 0.40 current_size = 0.40 } } #Resita
 
 #Slovakia
 province = { id = 208 ic = -4 anti_air = 2 #Bratislava
 	air_base = { size = 3 current_size = 3 } }
 province = { id = 209 ic = -1 } #Kosice
 province = { id = 211 ic = -1 } #Banska Bystrica
-province = { id = 212 ic = 5 } #Zilina
+province = { id = 212 ic = 3 } #Zilina
 province = { id = 214 ic = -4 } #Presov
 
 ### IND
@@ -681,7 +715,8 @@ province = { id = 1517 ic = -2 anti_air = 3 #Bombay
 
 ### ITA
 province = { id = 94 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } } #Corsica
-province = { id = 379 naval_base = { size = 2 current_size = 2 } air_base = { size = 4 current_size = 4 } } #Rodos
+province = { id = 379 naval_base = { size = 2 current_size = 2 } #Rodos
+	air_base = { size = 4 current_size = 4 } infra = { size = 0.30 current_size = 0.30 } }
 province = { id = 396 landfort = 2 anti_air = 2 #Genoa
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 398 landfort = 2 anti_air = 3 } #Turin
@@ -795,6 +830,7 @@ province = { id = 1363 oilpool = 100 supplypool = 500 } #Taizhong
 province = { id = 272 ic = 1 } #Tartu
 province = { id = 273 landfort = 1 } #Voru
 province = { id = 274 ic = 1 landfort = 1 } #Narva
+province = { id = 275 infra = { size = 0.20 current_size = 0.20 } } #Kuressaare
 province = { id = 270 landfort = 1 #Tallinn
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 
@@ -806,13 +842,19 @@ province = { id = 268 ic = 2 landfort = 2 #Liepaja
 	naval_base = { size = 7 current_size = 7 } }
 
 ### LBY
-province = { id = 750 ic = 4 anti_air = 1 #Tripoli
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 761 ic = 2 anti_air = 1 #Benghazi
-	naval_base = { size = 5 current_size = 5 } air_base = { size = 4 current_size = 4 } }
-province = { id = 765 ic = 1 landfort = 3 anti_air = 2 #Tobruk
+province = { id = 750 ic = 4 anti_air = 1 manpower = 2 #Tripoli
+	naval_base = { size = 8 current_size = 8 } air_base = { size = 6 current_size = 6 } }
+province = { id = 756 infra = { size = 0.20 current_size = 0.20 } } #Sirt
+province = { id = 757 infra = { size = 0.20 current_size = 0.20 } } #Misratah
+province = { id = 759 infra = { size = 0.20 current_size = 0.20 } } #El Agheila
+province = { id = 761 ic = 2 anti_air = 1 infra = { size = 0.30 current_size = 0.30 } #Benghazi
+	manpower = 1 naval_base = { size = 5 current_size = 5 } air_base = { size = 6 current_size = 6 } }
+province = { id = 762 infra = { size = 0.20 current_size = 0.20 } } #Agedabia
+province = { id = 765 ic = 1 landfort = 3 infra = { size = 0.20 current_size = 0.20 } anti_air = 2 #Tobruk
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
-province = { id = 768 air_base = { size = 5 current_size = 5 } } #Darnah
+province = { id = 767 infra = { size = 0.20 current_size = 0.20 } } #Gazala
+province = { id = 768 infra = { size = 0.20 current_size = 0.20 } } #Darnah
+province = { id = 771 infra = { size = 0.20 current_size = 0.20 } } #Bardia
 
 ### LIB
 province = { id = 969 anti_air = 1 #Monrovia
@@ -916,6 +958,7 @@ province = { id = 1052 anti_air = 2 ic = -2 infra = { size = 0.20 current_size =
 #	naval_base = { size = 2 current_size = 2 } air_base = { size = 4 current_size = 4 } }
 #province = { id = 1010 air_base = { size = 2 current_size = 2 } } #Eilat
 province = { id = 1011 naval_base = { size = 3 current_size = 3 } } #Haifa
+province = { id = 1015 infra = { size = 0.20 current_size = 0.20 } } #El Qamisli
 province = { id = 1172 air_base = { size = 3 current_size = 3 } } #Jerusalem
 province = { id = 1016 ic = 1 } #Damascus
 province = { id = 1019 ic = 2 anti_air = 2 #Beirut
@@ -923,6 +966,7 @@ province = { id = 1019 ic = 2 anti_air = 2 #Beirut
 province = { id = 1021 ic = 2 #Aleppo (Mar2020 - added navalbase, increased airbase)
 	air_base = { size = 3 current_size = 3 } naval_base = { size = 2 current_size = 2 } }
 province = { id = 1032 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Basrah
+province = { id = 1033 infra = { size = 0.20 current_size = 0.20 } } #El Hillah
 province = { id = 1034 air_base = { size = 4 current_size = 4 } } #Baghdad
 #province = { id = 1041 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Kuwait
 province = { id = 1048 anti_air = 2 #Medina
@@ -941,6 +985,7 @@ province = { id = 1056 naval_base = { size = 2 current_size = 2 } #Gaziantep
 province = { id = 1057 ic = -2 } #Antalya
 province = { id = 1058 ic = 2 infra = { size = 0.20 current_size = 0.20 } #Tarsus
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
+province = { id = 1060 infra = { size = 0.20 current_size = 0.20 } } #Diyarbakir
 province = { id = 1065  air_base = { size = 4 current_size = 4 } #Karabuk
 	naval_base = { size = 4 current_size = 4 } infra = { size = 0.30 current_size = 0.30 } ic = 2 }
 province = { id = 1067 ic = 2 infra = { size = 0.30 current_size = 0.30 } #Trazbon
@@ -1037,10 +1082,11 @@ province = { id = 1192 ic = 4 } #Semyonovka
 province = { id = 1194 ic = 1 } #Lesozavodsk
 
 ### PRK
+province = { id = 1445 infra = { size = 0.30 current_size = 0.30 } } #Dhaka
 province = { id = 1446 ic = -1 } #Siliguri
 province = { id = 1447 ic = 4 anti_air = 2 #Calcutta -5
 	naval_base = { size = 8 current_size = 8 } air_base = { size = 8 current_size = 8 } }
-province = { id = 1449 ic = -1 } #Rajshahi
+province = { id = 1449 ic = -1 infra = { size = 0.40 current_size = 0.40 } } #Rajshahi
 province = { id = 1450 ic = -1 } #Cattagram
 province = { id = 1470 ic = -1 } #Balangir
 province = { id = 1471 ic = -3 } #Bhubanesbar
@@ -1052,12 +1098,15 @@ province = { id = 2016 naval_base = { size = 3 current_size = 3 } } #Lima
 ### ROM
 province = { id = 297 anti_air = 1 #Iasi
 	air_base = { size = 3 current_size = 3 } }
-province = { id = 303 ic = -2 } #Balti
-province = { id = 304 anti_air = 1 } #Chisinau
+province = { id = 302 infra = { size = 0.30 current_size = 0.30 } } #Hotin
+province = { id = 303 ic = -2 infra = { size = 0.30 current_size = 0.30 } } #Balti
+province = { id = 304 anti_air = 1 infra = { size = 0.40 current_size = 0.40 } } #Chisinau
+province = { id = 305 infra = { size = 0.30 current_size = 0.30 } } #Cahul
 province = { id = 306 ic = -2 } #Ismail
 province = { id = 310 ic = 2 anti_air = 2 #Constantza
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
 province = { id = 311 ic = 1 anti_air = 3 } #Ploiesti
+province = { id = 315 infra = { size = 0.40 current_size = 0.40 } } #Craiova
 province = { id = 316 anti_air = 2 #Bucharest
 	air_base = { size = 5 current_size = 5 } }
 	
@@ -1085,14 +1134,15 @@ province = { id = 542 anti_air = 2 #Archangelsk
 province = { id = 548 ic = -1 } #Volodga
 province = { id = 553 landfort = 2 coastalfort = 5 anti_air = 3 #Leningrad
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 560 anti_air = 1 } #Novgorod
+province = { id = 558 ic = 1 } #Rzhev
+province = { id = 560 anti_air = 1 ic = 1 } #Novgorod
 province = { id = 566 air_base = { size = 6 current_size = 6 } } #Pskov
-province = { id = 569 ic = -9 } #Tver
+province = { id = 569 ic = -8 } #Tver
 province = { id = 572 landfort = 1 anti_air = 2 #Moscow
 	air_base = { size = 10 current_size = 10 } }
 province = { id = 576 anti_air = 1 } #Kaluga
 province = { id = 581 air_base = { size = 5 current_size = 5 } } #Oryol
-province = { id = 588 anti_air = 2 } #Bryansk
+province = { id = 588 anti_air = 2 ic = 2 } #Bryansk
 province = { id = 589 anti_air = 3 } #Smolensk
 province = { id = 590 anti_air = 2 } #Vitebsk
 province = { id = 600 anti_air = 1 #Mogilev
@@ -1100,25 +1150,26 @@ province = { id = 600 anti_air = 1 #Mogilev
 province = { id = 663 air_base = { size = 2 current_size = 2 } } #Tsaritsyn
 province = { id = 664 air_base = { size = 2 current_size = 2 } } #Naberezhnye Chelny
 province = { id = 667 air_base = { size = 2 current_size = 2 } } #Tolyatti
+province = { id = 671 ic = 2 } #Izhevsk
 province = { id = 681 ic = -1 } #Kostrama
 
 #Siberia
 province = { id = 1138 air_base = { size = 1 current_size = 1 } } #Omsk
 province = { id = 1140 air_base = { size = 5 current_size = 5 } } #Barnaul
-province = { id = 1142 ic = 6 } #Novosibirsk
+province = { id = 1142 ic = 1 } #Novosibirsk
 province = { id = 1144 ic = -1 } #Kemerovo
 province = { id = 1145 ic = -1 } #Kusnezk
 province = { id = 1148 air_base = { size = 2 current_size = 2 } } #Tomsk
-province = { id = 1151 ic = 1 } #Sverdlovsk
+province = { id = 1151 ic = -1 } #Sverdlovsk
 province = { id = 1152 ic = -1 } #Salekhard
 province = { id = 1154 ic = -1 } #Surgut
 province = { id = 1162 ic = 2 } #Irkutsk
 province = { id = 1165 air_base = { size = 1 current_size = 1 } } #Bratsk
+province = { id = 1171 infra = { size = 0.20 current_size = 0.20 } } #Ekimchan
 province = { id = 1179 ic = 2 #Yakutsk
 air_base = { size = 1 current_size = 1 } }
-province = { id = 1186 anti_air = 2 #Okhotsk
-naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } }
-province = { id = 1189 air_base = { size = 1 current_size = 1 } } #Nikolayevsk-on-Amur
+province = { id = 1189 anti_air = 2 air_base = { size = 4 current_size = 4 } #Nikolayevsk-on-Amur
+	naval_base = { size = 2 current_size = 2 } }
 
 ### SAF
 province = { id = 872 naval_base = { size = 3 current_size = 3 } } #Duban
@@ -1154,8 +1205,10 @@ province = { id = 340 landfort = 2 } #Sabac
 province = { id = 342 landfort = 2 } #Uzice
 
 ### SIA
+province = { id = 1422 air_base = { size = 4 current_size = 4 } } #Chon Buri
 province = { id = 1423 anti_air = 2 #Bangkok
-naval_base = { size = 10 current_size = 10 } air_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1426 air_base = { size = 4 current_size = 4 } } #Phitsanulok
 
 ### SPA
 
@@ -1204,7 +1257,8 @@ province = { id = 2158 landfort = 1 coastalfort = 1 } #Uppsala
 province = { id = 2159 coastalfort = 3 anti_air = 2 #Stockholm
 naval_base = { size = 8 current_size = 8 } air_base = { size = 8 current_size = 8 } }
 province = { id = 2162 landfort = 1 coastalfort = 1 } #Gaevla
-province = { id = 2166 landfort = 3 anti_air = 2 #Lulea
+province = { id = 2163 ic = -1 } #Vilhelmina
+province = { id = 2166 ic = 1 landfort = 3 anti_air = 2 #Lulea
 naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
 
 ### TRA
@@ -1224,21 +1278,27 @@ province = { id = 1500 ic = 2 } #Madras
 
 ### UKR
 province = { id = 245 landfort = 2 } #Lutsk
-province = { id = 606 landfort = 1 } #Sumy
+province = { id = 606 landfort = 1 infra = { size = 0.30 current_size = 0.30 } } #Sumy
 province = { id = 605 landfort = 1 } #Konotop
-province = { id = 607 landfort = 1  #Chernigov
-air_base = { size = 2 current_size = 2 } }
+province = { id = 607 landfort = 1 air_base = { size = 2 current_size = 2 } #Chernigov
+	infra = { size = 0.40 current_size = 0.40 } }
+province = { id = 612 ic = -1 } #Vinnitsa
+province = { id = 618 ic = -2 infra = { size = 0.30 current_size = 0.30 } } #Kamenets-Podolsky
+province = { id = 619 infra = { size = 0.20 current_size = 0.20 } } #Mogilev-Podolsky
 province = { id = 617 anti_air = 3 #Kiev
 air_base = { size = 8 current_size = 8 } }
-province = { id = 622 naval_base = { size = 5 current_size = 5 } } #Nikolayev
+province = { id = 622 ic = 2 naval_base = { size = 5 current_size = 5 } } #Nikolayev
+province = { id = 625 infra = { size = 0.30 current_size = 0.30 } } #Ochakov
 province = { id = 626 anti_air = 3 #Odessa
 naval_base = { size = 3 current_size = 3 } }
+province = { id = 627 infra = { size = 0.40 current_size = 0.40 } } #Krivoy Rog
+province = { id = 628 infra = { size = 0.40 current_size = 0.40 } } #Yelisavetgrad
 province = { id = 632 anti_air = 2 #Dnepropetrovsk
 air_base = { size = 2 current_size = 2 } }
 province = { id = 634 landfort = 1 } #Voroshilovgrad
 province = { id = 635 landfort = 1 anti_air = 2 } #Stalino
 province = { id = 636 ic = 2 landfort = 2 anti_air = 5 } #Kharkov
-province = { id = 641 landfort = 3 coastalfort = 5 anti_air = 5 #Sevastopol
+province = { id = 641 ic = 1 landfort = 3 coastalfort = 5 anti_air = 5 #Sevastopol
 naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
 province = { id = 644 anti_air = 2 #Rostov
 naval_base = { size = 4 current_size = 4 } }

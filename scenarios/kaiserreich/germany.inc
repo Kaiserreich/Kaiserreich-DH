@@ -19,15 +19,15 @@ interventionism = 6
 peacetime_ic_mod = 0.75
 
 headofstate = { type = 9 id = 36 }
-headofgovernment = { type = 9 id = 386  }
+headofgovernment = { type = 9 id = 386 }
 foreignminister = { type = 9 id = 68 }
-armamentminister = { type = 9 id = 77  }
-ministerofsecurity = { type = 9 id = 121  }
-ministerofintelligence = { type = 9 id = 12  }
-chiefofstaff = { type = 9 id = 257  }
+armamentminister = { type = 9 id = 77 }
+ministerofsecurity = { type = 9 id = 121 }
+ministerofintelligence = { type = 9 id = 12 }
+chiefofstaff = { type = 9 id = 257 }
 chiefofarmy = { type = 9 id = 255 }
-chiefofnavy = { type = 9 id =  253 }
-chiefofair = { type = 9 id = 273  }
+chiefofnavy = { type = 9 id = 9 }
+chiefofair = { type = 9 id = 273 }
 
 
 
@@ -302,9 +302,20 @@ techapps = {
 
 deactivate = { 6010 6210 6570 6560 6390 }
 
-dormant_ministers = { 385 }
+dormant_teams = { 38 39 44
+				19 28 #Steyr-Puch, Skoda
+				68 72 73 74 75 76 #Land doctrine teams
+				56 57 58 59 } #Bomber doctrine teams
 
-dormant_leaders = { 36 44 122 227 420 1037 1497 1498 1499 }
+dormant_ministers = { 385 214 219 }
+
+dormant_leaders = { #AUS
+				  1200 1201 1202 1203 1204 1205 1206 1207 1208 1209 1210 1211 1212 1213 1214 1215 1216 1217 1218 1219
+				  1220 1221 1222 1223 1224 1225 1226 1227 1228 1229
+				  #LAT - United Baltic Duchy
+				  1240 1241 1242 1243 1244 1245
+				  1239 #CZE
+				  }
 
 ##########
 

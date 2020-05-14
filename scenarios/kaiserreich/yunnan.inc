@@ -62,16 +62,24 @@ relation = { tag = TIB value = 24 }
 
 #Armour & Artillery
 2860 #AC
-2290 #Light Field Artillery 
+2290 #Light Field Artillery
+7600 7610 #SW Tank
 
 #Infantry
-1010  1020 1030 1040 1050 1060 #1918 lgt. Infantry Division 
-1910 1920 1930 1940 1950 1960 #Interbellum 1930 Supply 
-13060 13070 13080 1310 1320 1330 1340 #1916 Cavalry Division  
+1010 1020 1030 1040 1050 1060 #1918 lgt. Infantry Division
+1160 1170 1180 #1907 Mountain Division
+1910 1920 1930 1940 1950 1960 #Interbellum 1930 Supply
+13060 13070 13080 1310 1320 1330 1340 #1916 Cavalry Division
 
 #Industrial
+5800 5080 #Improved Construction Engineering
+5810 #Scientific Management
 5700 #Early Agriculture
 5600 #Medicine
+
+#Aircrafts
+4500 4510 4520 4530 4540 #Interceptor 1917
+4600 4610 4620 4630 #Tactical Bomber 1918
 
 # Land Doctrines WWI - Entente line
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
