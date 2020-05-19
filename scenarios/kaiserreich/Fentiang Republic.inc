@@ -73,6 +73,7 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 4600 4610 4620 4630 4120 #Interwar Bomber
 4300 4310 4320 4330 #Multirole fighter
 7290 7300 7310 7320 #1922 CAS
+4740 #Early Seaplane
 
 #Armour & Artillery
 2860 #Interwar Armoured Car  
@@ -95,7 +96,15 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 5800 5080 # Basic Construction Engineering
 
 #Naval
+3110 3120 3130 #Light Cruiser
+3610 3620 3630 #Sub 1915
+3010 3020 3030 #Chang Feng Class DD
+12100 #Seaplane Carrier
 3810 #Troopships
+3720 #Torpedoes
+
+#Naval Doctrines
+8010 8020 8050 8070
 
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
