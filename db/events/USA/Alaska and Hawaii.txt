@@ -1,38 +1,111 @@
-########################################
-#### Alaska (9000081)
-########################################
+###############################################
+#### Alaska (9000081) and 9000082-4 if possible
+###############################################
 
 event = {
 id = 9000081
 random = no
 country = CAN
+#save_date = yes
 
-name = "We have found oil in Alaska"
+name = "Oil in Alaska"
 desc = "After our occupation of Alaska several of our industries moved in to exploit the area. One of these has, after an intensive survey, managed to discover a large oil field at Prudhoe Bay on the northern coastline. Unfortunately, the tundra climate of the region means extensive pipelaying and other work is needed to exploit this find. However an oilfield like this, if successfully exploited, could really boost our economy and military."
 style = 2
+picture = "alaskan_oil"
+decision_picture = "decision_azerbaijanpetroleum"
 
 trigger = {
-owned = { province = 2147 data = CAN }
-owned = { province = 2141 data = CAN }
-owned = { province = 2142 data = CAN }
-owned = { province = 2143 data = CAN }
-owned = { province = 2139 data = CAN }
+owned = { province = 2147 data = -1 } #valdez
+owned = { province = 2141 data = -1 } #juneau
+owned = { province = 2140 data = -1 } #fairbanks
+random = 50
+}
+
+decision_trigger = {
+money = 150 #100
+supplies = 2000
+}
+
+decision = {
+owned = { province = 2147 data = -1 } #valdez
+owned = { province = 2141 data = -1 } #juneau
+owned = { province = 2140 data = -1 } #fairbanks
 }
 
 date = { day = 1 month = may year = 1939 }
-offset = 10
+offset = 91
 deathdate = { day = 29 month = december year = 1945 }
 
 action_a = {
 name = "Fund the exploitation of the oilfield"
+ai_chance = 75
 command = { type = supplies value = -2000 }
-command = { type = money value = -100 }
-command = { type = add_prov_resource which = 550 value = 12 where = oil }
+command = { type = money value = -150 } #-100
+command = { type = add_prov_resource which = 2140 value = 12 where = oil }
+command = { type = sleepevent which = 9000082 }
 }
 
 action_b = {
 name = "We cannot afford all the necessary work"
-command = { type = add_prov_resource which = 550 value = 1 where = oil }
+ai_chance = 25
+command = { type = add_prov_resource which = 2140 value = 1 where = oil }
+}
+}
+
+# American version
+event = {
+id = 9000082
+random = no
+tag = { USA CAL CSA TEX }
+#save_date = yes
+
+name = "Oil in Alaska"
+desc = "A team of military and industrial surveyors have managed to discover a large oil field at Prudhoe Bay on the northern coastline of Alaska. Unfortunately, the tundra climate of the region means extensive pipelaying and other work is needed to exploit this find. However an oilfield like this, if successfully exploited, could really boost our economy and military."
+style = 2
+picture = "alaskan_oil" 
+decision_picture = "decision_azerbaijanpetroleum"
+
+trigger = {
+atwar = no
+ic = 250
+owned = { province = 2147 data = -1 } #valdez
+owned = { province = 2141 data = -1 } #juneau
+owned = { province = 2140 data = -1 } #fairbanks
+OR = {
+event = 9000081
+random = 10
+year = 1967
+}
+}
+
+decision_trigger = {
+money = 150
+supplies = 2000
+}
+
+decision = {
+owned = { province = 2147 data = -1 } #valdez
+owned = { province = 2141 data = -1 } #juneau
+owned = { province = 2140 data = -1 } #fairbanks
+}
+
+date = { day = 1 month = june year = 1943 }
+offset = 191
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = "Fund the exploitation of the oilfield"
+ai_chance = 80
+command = { type = supplies value = -2000 }
+command = { type = money value = -150 }
+command = { type = add_prov_resource which = 2140 value = 12 where = oil }
+command = { type = sleepevent which = 9000081 }
+}
+
+action_b = {
+name = "We cannot afford all the necessary work"
+ai_chance = 20
+command = { type = add_prov_resource which = 2140 value = 1 where = oil }
 }
 }
 
@@ -99,14 +172,14 @@ command = { type = chiefofarmy which = 83062 } #Delos Carleton Emmons
 command = { type = chiefofnavy which = 83069 } #Samuel W. King
 command = { type = chiefofair which = 83075 } #Samuel W. King
 command = { type = add_corps which = "The Molokai Militia" value = land where = 1734 }
-command = { type = add_division which = "First Militia of Molokai" value = militia when = 5 }
+command = { type = add_division which = "First Militia of Molokai" value = militia when = 4 }
 command = { type = add_corps which = "The Molokai Militia" value = land where = 1736 }
-command = { type = add_division which = "Militia of O'ahu" value = militia when = 5 }
+command = { type = add_division which = "Militia of O'ahu" value = militia when = 4 }
 command = { type = add_corps which = "The Molokai Militia" value = land where = 1737 }
-command = { type = add_division which = "Militia of Nifhau" value = militia when = 5 }
-command = { type = manpowerpool value = 25 }
-command = { type = rarematerialspool value = 1250 }
-command = { type = energypool value = 1250 }
+command = { type = add_division which = "Militia of Nifhau" value = militia when = 4 }
+command = { type = manpowerpool value = -35 }
+command = { type = rarematerialspool value = 550 }
+command = { type = energypool value = 1000 }
 command = { type = metalpool value = 500 }
 command = { type = supplies value = 500 }
 command = { type = oilpool value = 100 }
@@ -281,7 +354,6 @@ style = 2
 action_a = {
 name = "Welcome to the PSA"
 command = { type = inherit which = U15 value = 1 }
-command = { type = waketeam which = 10330 when = 1 } #David Shoup
 command = { type = addcore which = 1736 }
 command = { type = addcore which = 1734 }
 command = { type = addcore which = 1737 }
@@ -364,17 +436,18 @@ style = 2
 
 action_a = {
 name = "A welcome addition"
-ai_chance = 85
+ai_chance = 75
 command = { type = trigger which = 9000827 }
 command = { type = alliance which = U15 }
 command = { type = relation which = JAP value = -25 }
 command = { type = relation which = CSA value = -50 }
 command = { type = relation which = TEX value = -50 }
+command = { type = relation which = USA value = -50 }
 command = { type = dissent value = -1 }
 }
 action_b = {
 name = "We should avoid a provocative move"
-ai_chance = 15
+ai_chance = 25
 command = { type = trigger which = 9000828 }
 command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = 1 }
@@ -445,6 +518,7 @@ command = { type = construct which = IC value = 1 where = 1734 }
 command = { type = construct which = IC value = 1 where = 1736 }
 command = { type = industrial_modifier which = total value = 1 }
 command = { type = industrial_modifier which = supplies value = 5 }
+command = { type = manpowerpool value = -2 }
 }
 }
 
@@ -469,9 +543,10 @@ deathdate = { day = 29 month = december year = 1954 }
 action_a = {
 name = "More fuel for the pineapple factories!"
 command = { type = add_prov_resource which = 1734 value = 5 where = energy }
-command = { type = add_prov_resource which = 1736 value = 3 where = metal }
-command = { type = add_prov_resource which = 1737 value = 3 where = rare_materials }
+command = { type = add_prov_resource which = 1736 value = 2 where = metal }
+command = { type = add_prov_resource which = 1737 value = 1 where = rare_materials }
 command = { type = supplies value = 1000 }
+command = { type = manpowerpool value = -3 }
 }
 }
 
@@ -521,6 +596,7 @@ action_a = {
 name = "Send in some men to support the workers."
 ai_chance = 75
 command = { type = trigger which = 9000833 }
+command = { type = manpowerpool value = -1 }
 }
 action_b = {
 name = "Forget Hawaii. We need to finish America."
@@ -706,6 +782,7 @@ command = { type = chiefofair which = 83074 } #William A Patterson
 command = { type = set_domestic which = democratic value = 6 }
 command = { type = set_domestic which = political_left value = 4 }
 command = { type = dissent value = -3 }
+command = { type = manpowerpool value = 3 }
 }
 action_b = {
 name = "Who's in control here?"
@@ -757,6 +834,10 @@ name = "We must resist, reinforce our positions near Pearl Harbor"
 command = { type = dissent value = 10 }
 command = { type = add_corps which = "Hawaiian Territorial Guard" value = land where = 1734 }
 command = { type = add_division which = "Hawaiian Territorial Guard" value = militia }
-command = { type = province_revoltrisk which = 1734 value = 10 }
+command = { type = manpowerpool value = -5 }
+command = { type = province_revoltrisk which = 1734 value = 30 }
+command = { type = province_revoltrisk which = 1735 value = 25 }
+command = { type = province_revoltrisk which = 1736 value = 25 }
+command = { type = province_revoltrisk which = 1737 value = 25 }
 }
 }
