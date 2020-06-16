@@ -895,3 +895,708 @@ command = { type = war which = CUB }
 command = { type = addcore which = 1778 }
 }
 }
+
+
+#######################################
+### Long Doctrine and American Empire
+### 91736, 91737, 91748 -
+#######################################
+
+### The PSA and the AUS
+event = {
+id = 91736
+country = TEX
+random = no
+
+decision = {
+flag = END_ACW
+exists = CAL
+NOT = {
+dissent = 10
+alliance = { country = CAL country = TEX }
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = JAP }
+ispuppet = TEX
+ispuppet = CAL
+exists = USA
+exists = CSA
+}
+}
+
+decision_trigger = {
+exists = CAL
+NOT = {
+dissent = 10
+alliance = { country = CAL country = TEX }
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = JAP }
+}
+}
+
+trigger = {
+flag = END_ACW
+exists = CAL
+NOT = {
+dissent = 10
+alliance = { country = CAL country = TEX }
+alliance = { country = CAL country = CAN }
+alliance = { country = CAL country = JAP }
+ispuppet = TEX
+ispuppet = CAL
+atwar = TEX
+exists = USA
+exists = CSA
+}
+}
+
+name = "The Pacific Question"
+desc = "The American Union state had been victorious in the war and now was forced to deal with the PSA. The Pacific states were rich in resources and the government was unfriendly to the AUS so removing that threat was an option but some less radical elements believed that the AUS had been at war enough and that a further war would put unnecessary strain on the delicate hold the government had."
+style = 2
+picture = "California"
+decision_picture = "decision_grand_offensive2"
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "War will end this!"
+ai_chance = 90
+command = { type = dissent value = 3 }
+command = { type = war which = CAL }
+}
+action_b = {
+name = "We should try and coexist with our neighbours."
+ai_chance = 10
+command = { type = relation which = CAL value = 100 }
+command = { type = dissent value = 1 }
+}
+}
+
+### Mexico and the AUS
+event = {
+id = 91737
+country = TEX
+random = no
+
+decision = {
+flag = AUS_LONG_DOCTRINE
+exists = MEX
+government = { type = communist country = MEX }
+OR = {
+army = 35
+garrison = { country = TEX province = 1922 type = land size = 3 area = yes } #Corpus Christi
+garrison = { country = TEX province = 1901 type = land size = 3 area = yes } #Tuscon
+}
+OR = {
+army = 40
+garrison = { country = TEX province = 1926 type = land size = 2 area = no } #San Antonio
+garrison = { country = TEX province = 1923 type = land size = 2 area = no } #El Paso
+garrison = { country = TEX province = 1886 type = land size = 2 area = no } #San Diego
+}
+	NOT = {
+	dissent = 10
+	alliance = { country = MEX country = TEX }
+	alliance = { country = MEX country = CAN }
+	alliance = { country = MEX country = GER }
+	ispuppet = TEX
+	ispuppet = MEX
+	atwar = TEX
+	exists = USA
+	exists = CSA
+	}
+}
+
+decision_trigger = {
+atwar = no
+}
+
+trigger = {
+flag = AUS_LONG_DOCTRINE
+exists = MEX
+event = 91732
+OR = {
+army = 35
+garrison = { country = TEX province = 1922 type = land size = 3 area = yes } #Corpus Christi
+garrison = { country = TEX province = 1901 type = land size = 3 area = yes } #Tuscon
+}
+OR = {
+army = 40
+garrison = { country = TEX province = 1926 type = land size = 2 area = no } #San Antonio
+garrison = { country = TEX province = 1923 type = land size = 2 area = no } #El Paso
+garrison = { country = TEX province = 1886 type = land size = 2 area = no } #San Diego
+}
+	NOT = {
+	dissent = 10
+	alliance = { country = MEX country = TEX }
+	alliance = { country = MEX country = CAN }
+	alliance = { country = MEX country = GER }
+	ispuppet = TEX
+	ispuppet = MEX
+	atwar = TEX
+	exists = USA
+	exists = CSA
+	}
+}
+
+name = "The Mexican Question"
+desc = "With territory of the former USA under our firm control, time has come to directly implement the Long doctrine and eradicate syndicalism from America. We should start with our southern neighbour - Mexico. The incompetence of the previous governments allowed Syndicalism to root deeply within Mexican society. The only way how to solve this matter is direct military confrontation..."
+style = 2
+picture = "American_Infantry_SoCal"
+decision_picture = "decision_grand_offensive2"
+
+date = { day = 1 month = january year = 1938 }
+offset = 63
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Death to Syndicalism!"
+ai_chance = 90
+trigger = { OR = { ai = no NOT = { relation = { which = MEX value = 60 } } owned = { province = 1926 data = MEX } } }
+command = { type = dissent value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = war which = MEX }
+}
+action_b = {
+name = "Mexico is our friend"
+ai_chance = 12
+trigger = { OR = { ai = no relation = { which = MEX value = 50 } } NOT = { owned = { province = 1926 data = MEX } } }
+command = { type = relation which = MEX value = 25 }
+command = { type = dissent value = 3 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = belligerence which = TEX value = -1 }
+}
+action_c = {
+name = "Maybe we should reconsider the Long Doctrine"
+ai_chance = 3
+command = { type = relation which = MEX value = 50 }
+command = { type = dissent value = 4 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = TEX value = -2 }
+command = { type = clrflag which = AUS_LONG_DOCTRINE }
+}
+}
+
+### TEX losing New England War
+event = {
+id = 91748
+country = TEX
+random = no
+
+trigger = {
+flag = AUS_NE_DENY
+war = { country = TEX country = U10 }
+OR = {
+lost_national = { country = TEX value = 30 } #28
+lost_IC = { country = TEX value = 25 }
+lost_vp = { country = TEX value = 20 }
+}
+NOT = {
+alliance = { country = GER country = TEX }
+alliance = { country = CAN country = TEX }
+ispuppet = TEX
+}
+}
+
+name = "Losing the New England War"
+desc = "Our war against New England has been a total disaster, with vast swathes of the country now under enemy occupation. The time has now come for us to attempt to negotiate a peace settlement before all our gains in the civil war are lost forever."
+style = 2
+picture = "Desert_Fighting"
+
+date = { day = 1 month = june year = 1940 }
+offset = 7
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We can still win this!"
+ai_chance = 20
+command = { type = dissent value = 5 }
+command = { type = domestic which = defense_lobby value = 1 }
+}
+action_b = {
+name = "Sue for peace"
+ai_chance = 80
+command = { type = dissent value = 5 }
+command = { trigger = { alliance = { country = CAN country = U10 } } type = trigger which = 91749 where = CAN when = 3 }
+command = { trigger = { NOT = { alliance = { country = CAN country = U10 } } } type = trigger which = 91749 where = U10 when = 3 }
+}
+}
+
+### AUS surrenders
+event = {
+id = 91749
+random = no
+country = U10
+## triggered by 91748
+
+name = "The AUS Sues for Peace"
+desc = "The American Union State has been thoroughly beaten back in it's attempt to take New England. Now their government comes to us asking for peace. What is our response?"
+style = 2
+picture = "negotiaton"
+
+action_a = {
+name = "We will accept their surrender."
+ai_chance = 95
+command = { type = peace which = TEX value = 0 }
+command = { type = dissent value = -3 } 
+command = { type = sleepevent which = 91752 }
+command = { type = clrflag which = AUS_NE_DEM }
+command = { type = clrflag which = AUS_NE_DENY }
+}
+action_b = {
+name = "No deal!"
+ai_chance = 5
+command = { type = relation which = TEX value = -200 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = belligerence value = 5 }
+command = { type = dissent value = 2 }
+}
+}
+
+### CAN losing/lost New England War
+event = {
+id = 91752
+country = CAN
+random = no
+
+trigger = {
+flag = AUS_NE_DENY
+war = { country = TEX country = CAN }
+control = { province = 1789 data = TEX } #Boston
+control = { province = 1793 data = TEX } #Albany
+control = { province = 1792 data = TEX } #Syracuse
+control = { province = 1795 data = TEX } #New York (no encirlement)
+control = { province = 1809 data = TEX } #DC (that would be embarrasing)
+control = { province = 1955 data = TEX } #Atlanta (that would be embarrasing)
+NOT = {
+lost_vp = { country = TEX value = 17 }
+lost_IC = { country = TEX value = 22 }
+#alliance = { country = GER country = TEX }
+#alliance = { country = RUS country = TEX }
+#alliance = { country = JAP country = TEX }
+ispuppet = CAN
+exists = U10
+exists = USA
+}
+}
+
+name = "Losing the New England War"
+desc = "We have failed to defend New England, with most of that territory now under enemy occupation. The time has now come for us to attempt to negotiate a peace settlement before the war gets too out of hand."
+style = 2
+picture = "Desert_Fighting"
+
+date = { day = 1 month = june year = 1940 }
+offset = 7
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "We can still win this!"
+ai_chance = 5
+command = { type = dissent value = 5 }
+command = { type = domestic which = defense_lobby value = 1 }
+}
+action_b = {
+name = "Sue for peace"
+ai_chance = 95
+command = { type = dissent value = 3 }
+command = { type = trigger which = 91753 where = TEX when = 2 }
+}
+}
+
+### CAN surrenders
+event = {
+id = 91753
+random = no
+country = TEX
+## triggered by 91752
+
+name = "The Canadians sue for Peace"
+desc = "We've succeeded in driving the Etente out of New England. Now the Canadian government comes to us asking for peace. What is our response?"
+style = 2
+picture = "negotiaton"
+
+action = {
+name = "We will accept their surrender."
+ai_chance = 89
+command = { type = peace which = CAN value = 0 }
+command = { type = trigger which = 91754 where = CAN }
+command = { type = dissent value = -5 } 
+command = { type = sleepevent which = 91748 }
+command = { type = clrflag which = AUS_NE_DEM }
+command = { type = clrflag which = AUS_NE_DENY }
+}
+action = {
+name = "We want Alaska back too!"
+ai_chance = 99
+trigger = { owned = { province = 2147 data = CAN } }
+command = { type = relation which = CAN value = -25 }
+command = { type = trigger which = 91755 where = CAN when = 1 }
+command = { type = sleepevent which = 91748 }
+command = { type = addcore which = 2141 }
+command = { type = addcore which = 2147 }
+command = { type = addcore which = 2140 }
+command = { type = addcore which = 2142 }
+command = { type = addcore which = 2139 }
+command = { type = addcore which = 2143 }
+command = { type = addcore which = 2144 }
+command = { type = addcore which = 2145 }
+command = { type = addcore which = 2146 }
+command = { type = addcore which = 2150 }
+command = { type = addcore which = 2151 }
+command = { type = addcore which = 2174 }
+command = { type = clrflag which = AUS_NE_DEM }
+command = { type = clrflag which = AUS_NE_DENY }
+}
+action = {
+name = "No deal!"
+ai_chance = 11
+command = { type = relation which = CAN value = -200 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = belligerence value = 5 }
+command = { type = dissent value = 5 }
+}
+
+}
+
+event = {
+id = 91754
+random = no
+country = CAN
+## triggered by 91753
+
+name = "The Etente leaves New England"
+desc = "Peace has been secured, though at the cost of the entirety of New England."
+style = 2
+picture = "boarding"
+
+action_a = {
+name = "Until we meet again"
+command = { type = peace which = TEX value = 0 }
+command = { type = dissent value = 2 } 
+command = { type = secedeprovince which = TEX value = 1784 }
+command = { type = secedeprovince which = TEX value = 1786 }
+command = { type = secedeprovince which = TEX value = 1785 }
+command = { type = secedeprovince which = TEX value = 1787 }
+command = { type = secedeprovince which = TEX value = 1790 }
+command = { type = secedeprovince which = TEX value = 1794 }
+command = { type = secedeprovince which = TEX value = 1788 }
+command = { type = secedeprovince which = TEX value = 1789 }
+command = { type = secedeprovince which = TEX value = 1796 }
+command = { type = secedeprovince which = TEX value = 1793 }
+command = { type = secedeprovince which = TEX value = 1799 }
+command = { type = secedeprovince which = TEX value = 1791 }
+command = { type = secedeprovince which = TEX value = 1792 }
+command = { type = secedeprovince which = TEX value = 1800 }
+command = { type = removeclaim which = 1784 }
+command = { type = removeclaim which = 1786 }
+command = { type = removeclaim which = 1785 }
+command = { type = removeclaim which = 1787 }
+command = { type = removeclaim which = 1790 }
+command = { type = removeclaim which = 1794 }
+command = { type = removeclaim which = 1788 }
+command = { type = removeclaim which = 1789 }
+command = { type = removeclaim which = 1796 }
+command = { type = removeclaim which = 1793 }
+command = { type = removeclaim which = 1799 }
+command = { type = removeclaim which = 1791 }
+command = { type = removeclaim which = 1792 }
+command = { type = removeclaim which = 1800 }
+command = { type = sleepevent which = 91726 }
+command = { type = sleepevent which = 91730 }
+command = { type = sleepevent which = 91731 }
+command = { type = sleepevent which = 91748 }
+command = { type = sleepevent which = 91752 }
+command = { type = clrflag which = AUS_NE_DEM }
+command = { type = clrflag which = AUS_NE_DENY }
+}
+}
+
+event = {
+id = 91755
+random = no
+country = CAN
+## triggered by 91753
+
+name = "The American Union State demands Alaska"
+desc = "The AUS has returned our request for peace, demanding that we also cede Alaska to them before they are willing to end the conflict."
+style = 2
+picture = "negotiaton"
+
+action_a = {
+name = "Give it to them"
+ai_chance = 97
+command = { type = trigger which = 91756 where = TEX }
+command = { type = dissent value = 1 } 
+command = { type = secedeprovince which = TEX value = 2141 }
+command = { type = secedeprovince which = TEX value = 2147 }
+command = { type = secedeprovince which = TEX value = 2140 }
+command = { type = secedeprovince which = TEX value = 2142 }
+command = { type = secedeprovince which = TEX value = 2139 }
+command = { type = secedeprovince which = TEX value = 2143 }
+command = { type = secedeprovince which = TEX value = 2144 }
+command = { type = secedeprovince which = TEX value = 2145 }
+command = { type = secedeprovince which = TEX value = 2146 }
+command = { type = secedeprovince which = TEX value = 2150 }
+command = { type = secedeprovince which = TEX value = 2151 }
+command = { type = secedeprovince which = TEX value = 2174 }
+command = { type = removeclaim which = 2141 }
+command = { type = removeclaim which = 2147 }
+command = { type = removeclaim which = 2140 }
+command = { type = removeclaim which = 2142 }
+command = { type = removeclaim which = 2139 }
+command = { type = removeclaim which = 2143 }
+command = { type = removeclaim which = 2144 }
+command = { type = removeclaim which = 2145 }
+command = { type = removeclaim which = 2146 }
+command = { type = removeclaim which = 2150 }
+command = { type = removeclaim which = 2151 }
+command = { type = removeclaim which = 2174 }
+command = { type = sleepevent which = 91726 }
+command = { type = sleepevent which = 91730 }
+command = { type = sleepevent which = 91731 }
+command = { type = sleepevent which = 91748 }
+command = { type = sleepevent which = 91752 }
+command = { type = clrflag which = AUS_NE_DEM }
+command = { type = clrflag which = AUS_NE_DENY }
+}
+action_b = {
+name = "This is too much!"
+ai_chance = 3
+command = { type = dissent value = 2 }
+command = { type = domestic which = defense_lobby value = 1 }
+}
+}
+
+### CAN surrenders 2
+event = {
+id = 91756
+random = no
+country = TEX
+## triggered by 91752
+
+name = "The Canadians accept our terms"
+desc = "Canada has accepted our terms and surrendered Alaska to us, agreeing to withdraw permanently from New England as well. The war is over, and we have won."
+style = 2
+picture = "negotiaton"
+
+action_a = {
+name = "Great!"
+command = { type = peace which = CAN value = 0 }
+command = { type = trigger which = 91754 where = CAN }
+command = { type = dissent value = -5 } 
+}
+}
+
+### Centroamerica and the AUS
+event = {
+id = 91757
+country = TEX
+random = no
+
+decision = {
+flag = AUS_LONG_DOCTRINE
+exists = GUA
+government = { type = communist country = GUA }
+#event = 91737
+	NOT = {
+	dissent = 10
+	alliance = { country = GUA country = TEX }
+	alliance = { country = GUA country = ARG }
+	alliance = { country = GUA country = BRA }
+	alliance = { country = TEX country = GER }
+	alliance = { country = TEX country = CAN }
+	ispuppet = TEX
+	ispuppet = GUA
+	atwar = TEX
+	exists = USA
+	exists = CAL
+	exists = CSA
+	}
+}
+
+decision_trigger = {
+atwar = no
+supplies = 1500
+}
+
+trigger = {
+flag = AUS_LONG_DOCTRINE
+exists = GUA
+government = { type = communist country = GUA }
+#event = 91737
+	NOT = {
+	dissent = 10
+	alliance = { country = GUA country = TEX }
+	alliance = { country = GUA country = MEX }
+	alliance = { country = GUA country = CAL }
+	alliance = { country = TEX country = GER }
+	alliance = { country = TEX country = CAN }
+	ispuppet = TEX
+	ispuppet = GUA
+	atwar = TEX
+	exists = USA
+	exists = CAL
+	exists = CSA
+	}
+}
+
+name = "War with Centroamerica"
+desc = "Our next step in implementing the Long Doctrine should be the destruction of the syndicalist experiment in Central America, the Centroamerican state. Besides invading the country directly and conquering it in that manner, we could also use this opportunity to make favors with friendly governments in the region. This could mean promising them all of Centroamerica, however."
+style = 2
+picture = "American_Infantry_SoCal"
+decision_picture = "decision_grand_offensive2"
+
+#date = { day = 7 month = september year = 1939 }
+date = { day = 1 month = april year = 1940 }
+offset = 63
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Declare War. We can do this alone."
+ai_chance = 50
+command = { type = dissent value = 1 }
+command = { type = war which = GUA }
+}
+action = {
+name = "Work with Honduras to invade Centroamerica"
+ai_chance = 28
+trigger = { exists = HON NOT = { government = { type = communist country = HON } ispuppet = HON atwar = HON } }
+command = { type = trigger which = 91758 where = HON when = 4 }
+command = { type = relation which = HON value = 100 }
+command = { type = relation which = GUA value = -25 }
+command = { type = supplies value = -1000 }
+}
+action = {
+name = "Work with the United Provinces to invade Centroamerica"
+ai_chance = 48
+trigger = { exists = NIC NOT = { government = { type = communist country = NIC } control = { province = 1789 data = HON } ispuppet = NIC atwar = NIC } }
+command = { type = trigger which = 91758 where = NIC when = 4 }
+command = { type = relation which = NIC value = 100 }
+command = { type = relation which = GUA value = -25 }
+command = { type = supplies value = -1000 }
+}
+action = {
+name = "Work with Mexico to invade Centroamerica"
+ai_chance = 58
+trigger = { exists = MEX NOT = { government = { type = communist country = MEX } ispuppet = MEX atwar = MEX } }
+command = { type = trigger which = 91758 where = MEX when = 4 }
+command = { type = relation which = MEX value = 100 }
+command = { type = relation which = GUA value = -25 }
+command = { type = relation which = NIC value = 5 }
+command = { type = relation which = HON value = 5 }
+command = { type = supplies value = -1000 }
+}
+action = {
+name = "Not this time."
+ai_chance = 1
+command = { type = relation which = GUA value = 20 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = belligerence which = TEX value = -1 }
+command = { type = relation which = NIC value = -5 }
+command = { type = relation which = HON value = -5 }
+}
+action = {
+name = "Maybe we should reconsider the Long Doctrine"
+ai_chance = 1
+command = { type = relation which = GUA value = 25 }
+command = { type = dissent value = 4 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = TEX value = -2 }
+command = { type = clrflag which = AUS_LONG_DOCTRINE }
+}
+}
+
+event = {
+id = 91758
+random = no
+country = NIC
+## triggered by 91757
+
+name = "The Americans offer an alliance"
+desc = "The American Union State has offered us an alliance to destroy Centroamerica. This is an exciting offer that we might want to consider, and could yield us territory in Central America."
+style = 2
+picture = "negotiaton"
+
+action_a = {
+name = "Accept!"
+ai_chance = 80
+command = { type = supplies value = 1000 }
+command = { type = alliance which = TEX }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = TEX value = 200 }
+command = { type = relation which = GUA value = -25 }
+command = { type = trigger which = 91760 where = TEX when = 3 }
+command = { type = local_setflag which = TEX_alliance_CA }
+command = { trigger = { country = NIC owned = { province = 2086 data = GUA } } type = addclaim which = 2086 } #belize
+command = { trigger = { country = NIC owned = { province = 2087 data = GUA } } type = addclaim which = 2087 } #guatemala
+command = { trigger = { country = NIC owned = { province = 2088 data = GUA } } type = addclaim which = 2088 } #guatemala
+command = { trigger = { country = NIC owned = { province = 2079 data = GUA } } type = addclaim which = 2079 } #san salvador
+command = { trigger = { country = NIC owned = { province = 2085 data = GUA } } type = addclaim which = 2085 } #honduras
+command = { trigger = { country = NIC owned = { province = 2084 data = GUA } } type = addclaim which = 2084 } #honduras
+#command = { trigger = { country = NIC owned = { province = 2080 data = GUA } } type = addclaim which = 2080 } #united provinces (nic)
+#command = { trigger = { country = NIC owned = { province = 2082 data = GUA } } type = addclaim which = 2082 } #united provinces (nic)
+#command = { trigger = { country = NIC owned = { province = 2081 data = GUA } } type = addclaim which = 2081 } #united provinces (cos)
+#command = { trigger = { country = NIC owned = { province = 2083 data = GUA } } type = addclaim which = 2083 } #united provinces (cos)
+command = { trigger = { country = NIC owned = { province = 2077 data = GUA } } type = addclaim which = 2077 } #panama
+#command = { trigger = { owned = { province = 2078 data = GUA } } type = addclaim which = 2078 } #panama (lower part)
+}
+action_b = {
+name = "We're better off not doing this"
+ai_chance = 20
+command = { type = trigger which = 91759 where = TEX when = 3 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = TEX value = -75 }
+command = { type = relation which = GUA value = 25 }
+}
+}
+
+event = {
+id = 91759
+random = no
+country = TEX
+## triggered by 91758
+
+name = "The alliance is turned down"
+desc = "Our offer of an alliance with a local power against Centroamerica has been turned down. It seems like we will have to invade Centroamerica ourselves."
+style = 2
+picture = "negotiaton"
+
+action_a = {
+ai_chance = 80
+name = "Invade Centroamerica anyway"
+command = { type = war which = GUA }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = 1 }
+}
+action_b = {
+ai_chance = 20
+name = "Perhaps we should reconsider the operation"
+command = { type = relation which = GUA value = 15 }
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = NIC value = -5 }
+command = { type = relation which = HON value = -5 }
+command = { type = relation which = MEX value = -5 }
+}
+}
+
+event = {
+id = 91760
+random = no
+country = TEX
+## triggered by 91758
+
+name = "Alliance against Centroamerica"
+desc = "Our offer of an alliance with a local power against Centroamerica has been accepted. We are now ready to begin our assault."
+style = 2
+picture = "negotiaton"
+
+action_a = {
+name = "Let the attack begin!"
+command = { type = war which = GUA }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = -1 }
+command = { type = local_setflag which = CENTROA_CONQ }
+}
+}

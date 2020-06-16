@@ -56,6 +56,7 @@ government = { type = communist country = CAN }
 }
 command = { type = dissent value = 3 }
 command = { type = secedeprovince which = CAN value = 1765 }
+command = { type = relation which = CAN value = 25 }													
 command = { type = trigger which = 9000876 }
 }
 action_b = {
@@ -113,6 +114,9 @@ action_a = {
 name = "Time to celebrate!"
 command = { type = dissent value = -2 }
 command = { type = addcore which = 1765 }
+command = { type = waketeam which = 15215 }
+command = { type = relation which = CAN value = 15 }
+command = { type = relation which = USA value = 15 }										
 command = { type = waketeam which = 15221 } #José M. Cabanillas
 command = { type = waketeam which = 15232 } #Pedro Augusto del Valle
 command = { type = wakeminister which = 562149 } #José M. Cabanillas
@@ -152,7 +156,6 @@ command = { type = wakeleader which = 562059 } #Muñiz
 command = { type = wakeleader which = 562060 } #Carrera
 command = { type = wakeleader which = 562061 } #Miller
 command = { type = wakeleader which = 562062 } #Marxuach
-command = { type = relation which = CAN value = 15 }
 }
 }
 
@@ -188,7 +191,7 @@ action_b = {
 name = "Do not push the issue"
 ai_chance = 40
 command = { type = dissent value = 5 }
-command = { type = removecore which = 895 }
+command = { type = removecore which = 1765 }
 command = { type = relation which = CAN value = 5 }
 }
 }
@@ -249,7 +252,7 @@ action_a = {
 name = "We'll retake it one way or another!"
 ai_chance = 40
 command = { type = relation which = CAN value = -50 }
-command = { type = dissent value = -1 } # Jingo!
+command = { type = dissent value = 1 } # Jingo!
 command = { type = domestic which = defense_lobby value = 2 }
 command = { type = domestic which = interventionism value = 1 }
 }
@@ -293,7 +296,7 @@ action_b = {
 name = "Do not push the issue"
 ai_chance = 20
 command = { type = dissent value = 5 }
-command = { type = removecore which = 895 }
+command = { type = removecore which = 1765 }
 command = { type = relation which = GUY value = 5 }
 }
 }
@@ -356,7 +359,7 @@ name = "We'll retake it one way or another!"
 ai_chance = 60
 command = { type = relation which = GUY value = -50 }
 command = { type = relation which = CAN value = -25 }
-command = { type = dissent value = -1 } # Jingo!
+command = { type = dissent value = 1 } # Jingo!
 command = { type = domestic which = defense_lobby value = 2 }
 command = { type = domestic which = interventionism value = 1 }
 }
@@ -463,8 +466,8 @@ action_a = {
 name = "We'll retake it one way or another!"
 ai_chance = 80
 command = { type = relation which = CAN value = -50 }
-command = { type = dissent value = -1 } # Jingo!
-command = { type = domestic which = defense_lobby value = 2 }
+command = { type = dissent value = 1 } # Jingo!
+command = { type = domestic which = defense_lobby value = 1 }
 command = { type = domestic which = interventionism value = 1 }
 }
 action_b = {
@@ -569,7 +572,7 @@ name = "We'll retake it one way or another!"
 ai_chance = 90
 command = { type = relation which = GUY value = -50 }
 command = { type = relation which = CAN value = -25 }
-command = { type = dissent value = -1 } # Jingo!
+command = { type = dissent value = 1 } # Jingo!
 command = { type = domestic which = defense_lobby value = 2 }
 command = { type = domestic which = interventionism value = 1 }
 }
@@ -624,7 +627,7 @@ control = { province = 1820 data = USA }
 }
 }
 
-name = "Unability to hold Puerto Rico"
+name = "Inability to hold Puerto Rico"
 desc = "With the Civil War being lost by the US, we are no longer capable of holding the island of Puerto Rico"
 style = 2
 picture = "caribbean"
@@ -634,9 +637,18 @@ offset = 10
 deathdate = { day = 1 month = january year = 1960 }
 
 action_a = {
-name = "Give it up"
+name = "Surrender it to the Entente"
+ai_chance = 67			  
 command = { type = dissent value = 2 }
 command = { type = secedeprovince which = CAN value = 1765 }
+command = { type = relation which = CAN value = 25 }
+command = { type = trigger which = 9000895 }
+}
+action_b = {
+name = "Pro-independence forces sieze power" #new
+ai_chance = 33
+command = { type = dissent value = 1 }
+command = { type = independence which = U09 value = 0 when = 0 }														
 command = { type = trigger which = 9000895 }
 }
 }
@@ -661,7 +673,6 @@ command = { type = trigger which = 9000896 }
 action_b = {
 name = "Prepare to turn the island into a naval base"
 ai_chance = 40
-command = { type = province_keypoints which = 1765 value = 1 }
 command = { type = construct which = naval_base where = 1765 value = 4 }
 command = { type = construct which = IC where = 1765 value = -1 }
 }
@@ -720,6 +731,219 @@ command = { type = wakeleader which = 562059 } #Muñiz
 command = { type = wakeleader which = 562060 } #Carrera
 command = { type = wakeleader which = 562061 } #Miller
 command = { type = wakeleader which = 562062 } #Marxuach
-command = { type = relation which = CAN value = 15 }
 }
 }
+
+### USA Wants PR back, U09 variant
+
+event = {
+id = 9000897
+random = no
+country = USA
+trigger = {
+flag = END_ACW
+exists = U09
+event = 9000894 # Inability to hold Puerto Rico
+owned = { province = 1765 data = U09 } # Puerto Rico
+NOT = { puppet = { country = USA country = CAN  } }
+NOT = { ispuppet = U09 }
+}
+
+name = "The Issue of Puerto Rico"
+desc = "During the civil war, pro-independence forces were able to take control of Puerto Rico. With the war now over, it is unclear just what to do about the former territory."
+style = 2
+picture = "Puerto Rico"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = january year = 1946 }
+
+action_a = {
+name = "Demand the island submit back under our authority"
+ai_chance = 75
+command = { type = relation which = U09 value = -15 }
+command = { type = trigger which = 9000883 }
+}
+action_b = {
+name = "Do not push the issue"
+ai_chance = 25
+command = { type = dissent value = 5 }
+command = { type = removecore which = 1765 }
+command = { type = relation which = U09 value = 5 }
+}
+}
+
+event = {
+id = 9000898
+random = no
+country = U09
+
+name = "United States want Puerto Rico back"
+desc = "The Americans have asked us to submit back under their authority."
+style = 2
+picture = "AmericanEmpire"
+
+action_a = {
+name = "We will submit. (Game Over)"
+ai_chance = 25
+command = { type = trigger which = 9000884 }
+}
+action_b = {
+name = "We are an independent nation and so we shall remain!"
+ai_chance = 75
+command = { type = relation which = USA value = -75 }
+command = { type = trigger which = 9000885 }
+}
+}
+
+event = {
+id = 9000899
+random = no
+country = USA
+
+name = "Puerto Rico is ours again!"
+desc = "The rebels in Puerto Rico have given in to our authority"
+style = 2
+picture = "Puerto Rico"
+
+action_a = {
+name = "We shall restore the US piece by piece!"
+command = { type = dissent value = -5 }
+command = { type = inherit which = U09 }
+}
+}
+
+event = {
+id = 9000900
+random = no
+country = USA
+
+name = "Puerto Rico defies us!"
+desc = "The rebel government in Puerto Rico has refused to return the island to us."
+style = 2
+picture = "Puerto Rico"
+
+action_a = {
+name = "We'll retake it one way or another!"
+ai_chance = 80 #67
+command = { type = relation which = U09 value = -65 }
+command = { type = dissent value = 1 } # Jingo!
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+}
+action_b = {
+name = "Back off..."
+ai_chance = 20 #33
+command = { type = relation which = U09 value = -15 }
+command = { type = removecore which = 1765 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}
+
+### TEX Wants PR back, U09 variant
+
+event = {
+id = 9000901
+random = no
+country = TEX
+trigger = {
+flag = END_ACW
+exists = U09
+event = 9000894 # Inability to hold Puerto Rico
+owned = { province = 1765 data = U09 } # Puerto Rico
+NOT = { ispuppet = TEX }
+NOT = { ispuppet = U09 }
+}
+
+name = "The Issue of Puerto Rico"
+desc = "During the civil war, pro-independence forces were able to take control of Puerto Rico. With the war now over, it is unclear just what to do about the former territory."
+style = 2
+picture = "Puerto Rico"
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 1 month = january year = 1946 }
+
+action_a = {
+name = "Demand the island submit back under our authority"
+ai_chance = 70
+command = { type = relation which = U09 value = -15 }
+command = { type = trigger which = 9000883 }
+}
+action_b = {
+name = "Do not push the issue"
+ai_chance = 30
+command = { type = dissent value = 5 }
+command = { type = removecore which = 1765 }
+command = { type = relation which = U09 value = 5 }
+}
+}
+
+event = {
+id = 9000902
+random = no
+country = U09
+
+name = "American Union State want Puerto Rico back"
+desc = "The Americans have asked us to submit back under their authority."
+style = 2
+picture = "AmericanEmpire"
+
+action_a = {
+name = "We will submit. (Game Over)"
+ai_chance = 25
+command = { type = trigger which = 9000884 }
+}
+action_b = {
+name = "We are an independent nation and so we shall remain!"
+ai_chance = 75
+command = { type = relation which = TEX value = -75 }
+command = { type = trigger which = 9000885 }
+}
+}
+
+event = {
+id = 9000903
+random = no
+country = TEX
+
+name = "Puerto Rico is ours again!"
+desc = "The rebels in Puerto Rico have given in to our authority"
+style = 2
+picture = "Puerto Rico"
+
+action_a = {
+name = "We shall restore the States piece by piece!"
+command = { type = dissent value = -5 }
+command = { type = inherit which = U09 }
+}
+}
+
+event = {
+id = 9000904
+random = no
+country = TEX
+
+name = "Puerto Rico defies us!"
+desc = "The rebel government in Puerto Rico has refused to return the island to us."
+style = 2
+picture = "Puerto Rico"
+
+action_a = {
+name = "We'll retake it one way or another!"
+ai_chance = 80 #60
+command = { type = relation which = U09 value = -65 }
+command = { type = dissent value = 1 } # Jingo!
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = interventionism value = 1 }
+}
+action_b = {
+name = "Back off..."
+ai_chance = 20 #40
+command = { type = relation which = U09 value = -15 }
+command = { type = removecore which = 1765 }
+command = { type = dissent value = 5 }
+command = { type = domestic which = interventionism value = -1 }
+}
+}								  
