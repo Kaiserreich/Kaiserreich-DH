@@ -16,13 +16,21 @@ country = USA
 picture = "whitehouse"
 
 trigger = {
-control = { province = 1908 data = USA }
-NOT = { control = { province = 1809 data = USA } }
 atwar = yes
+control = { province = 1908 data = USA } #Denver
+control = { province = 1910 data = USA } #Wichita
+control = { province = 1860 data = USA } #Omaha
+OR = {
+NOT = { control = { province = 1809 data = USA } } #DC
+AND = {
+NOT = { control = { province = 1808 data = USA } } #Baltimore
+NOT = { control = { province = 1814 data = USA } } #Arlington
+	}
+}
 }
 
-name = "Washington has been Captured. The Capital is in Denver Now"
-desc = "Washington has fallen to our enemies. We have moved the capital to Denver."
+name = "The Evacuation of Washington D.C." #"Washington has been Captured. The Capital is in Denver Now"
+desc = "With enemy forces encroaching upon Washington, we have been forced to relocate the seat of government. The new capital will be in Denver, Colorado." #"Washington has fallen to our enemies. We have moved the capital to Denver."
 style = 2
 
 date = { day = 1 month = january year = 1936 }
@@ -32,7 +40,14 @@ deathdate = { day = 29 month = december year= 1947 }
 action_a = {
 name = "Mountain retreat"
 command = { type = capital which = 1908 }
+command = { type = construct which = IC where = 1809 value = -2 } # Damage +
+command = { type = construct which = IC where = 1908 value = 1 } # Movement of government
 command = { type = dissent value = 1 }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
 }
 }
 
@@ -71,6 +86,7 @@ command = { type = setflag which = END_ACW }
 command = { type = dissent value = -50 }
 command = { trigger = { control = { province = 1809 data = USA } } type = capital which = 1809 }
 command = { trigger = { not = { exists = CAL atwar = USA } } type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { trigger = { or = { exists = CAL atwar = USA } } type = local_setflag which = ACW_MILITIAS } #remove all militias later
 command = { type = sleepevent which = 90800 }
 command = { type = sleepevent which = 90801 }
 command = { type = sleepevent which = 90802 }
@@ -215,6 +231,20 @@ command = { type = sleepevent which = 800308 }
 command = { type = sleepevent which = 800309 }
 command = { type = sleepevent which = 800310 }
 command = { type = sleepevent which = 800311 }
+command = { type = sleepevent which = 966631 }
+command = { type = sleepevent which = 966632 }
+command = { type = sleepevent which = 966633 }
+command = { type = sleepevent which = 966634 }
+command = { type = sleepevent which = 908737 }
+command = { type = sleepevent which = 908740 }
+command = { type = sleepevent which = 908741 }
+command = { type = sleepevent which = 908742 }
+command = { trigger = { control = { province = 1778 data = USA } } type = addcore which = 1778 } #Guantanamo Bay
+command = { trigger = { control = { province = 889 data = USA } } type = addcore which = 889 } #Balboa 
+command = { type = waketeam which = 103 }
+command = { type = ai which = "kaiserreich/switch/USA_Post_ACW.ai" }
+		#command = { type = remove_division which = "VMI Corps of Cadets" value = USA }
+command = { type = peacetime_ic_mod value = 50 when = 1 }
 }
 }
 
@@ -254,6 +284,7 @@ command = { type = setflag which = END_ACW }
 command = { trigger = { control = { province = 1809 data = USA } } type = capital which = 1809 }
 command = { type = dissent value = -50 }
 command = { trigger = { not = { atwar = USA exists = CAL } } type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { trigger = { or = { exists = CAL atwar = USA } } type = local_setflag which = ACW_MILITIAS } #remove all militias later
 command = { type = sleepevent which = 90800 }
 command = { type = sleepevent which = 90801 }
 command = { type = sleepevent which = 90802 }
@@ -432,6 +463,7 @@ name = "Victory is ours."
 command = { type = setflag which = END_ACW }
 command = { type = dissent value = -50 }
 command = { trigger = { not = { atwar = TEX exists = CAL } } type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { trigger = { or = { exists = CAL atwar = TEX }  } type = local_setflag which = ACW_MILITIAS } #remove all militias later
 command = { type = sleepevent which = 90800 }
 command = { type = sleepevent which = 90801 }
 command = { type = sleepevent which = 90802 }
@@ -576,6 +608,17 @@ command = { type = sleepevent which = 800308 }
 command = { type = sleepevent which = 800309 }
 command = { type = sleepevent which = 800310 }
 command = { type = sleepevent which = 800311 }
+command = { type = sleepevent which = 908737 }
+command = { type = sleepevent which = 908740 }
+command = { type = sleepevent which = 908741 }
+command = { type = sleepevent which = 908742 }
+command = { type = sleepevent which = 966631 }
+command = { type = sleepevent which = 966632 }
+command = { type = sleepevent which = 966633 }
+command = { type = sleepevent which = 966634 }
+command = { type = ai which = "kaiserreich/switch/TEX_Post_ACW.ai" }
+		#command = { type = remove_division which = "VMI Corps of Cadets" value = TEX }
+command = { type = peacetime_ic_mod value = 65 when = 1 } #set to 65
 }
 }
 
@@ -610,6 +653,7 @@ name = "Victory is ours."
 command = { type = setflag which = END_ACW }
 command = { type = dissent value = -50 }
 command = { trigger = { not = { atwar = CSA exists = CAL } } type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { trigger = { or = { exists = CAL atwar = CSA }  } type = local_setflag which = ACW_MILITIAS } #remove all militias later
 command = { type = sleepevent which = 90800 }
 command = { type = sleepevent which = 90801 }
 command = { type = sleepevent which = 90802 }
@@ -754,6 +798,17 @@ command = { type = sleepevent which = 800308 }
 command = { type = sleepevent which = 800309 }
 command = { type = sleepevent which = 800310 }
 command = { type = sleepevent which = 800311 }
+command = { type = sleepevent which = 908737 }
+command = { type = sleepevent which = 908740 }
+command = { type = sleepevent which = 908741 }
+command = { type = sleepevent which = 908742 }
+command = { type = sleepevent which = 966631 }
+command = { type = sleepevent which = 966632 }
+command = { type = sleepevent which = 966633 }
+command = { type = sleepevent which = 966634 }
+command = { type = ai which = "kaiserreich/switch/CSA_Post_ACW.ai" }
+		#command = { type = remove_division which = "VMI Corps of Cadets" value = CSA }
+command = { type = peacetime_ic_mod value = 75 when = 1 } #set to 75
 }
 }
 
@@ -787,6 +842,7 @@ name = "Victory is ours."
 command = { type = setflag which = END_ACW }
 command = { type = dissent value = -50 }
 command = { trigger = { not = { atwar = CAL } } type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { trigger = { atwar = CAL } type = local_setflag which = ACW_MILITIAS } #remove all militias later
 command = { type = sleepevent which = 90800 }
 command = { type = sleepevent which = 90801 }
 command = { type = sleepevent which = 90802 }
@@ -931,6 +987,16 @@ command = { type = sleepevent which = 800308 }
 command = { type = sleepevent which = 800309 }
 command = { type = sleepevent which = 800310 }
 command = { type = sleepevent which = 800311 }
+command = { type = sleepevent which = 908737 }
+command = { type = sleepevent which = 908740 }
+command = { type = sleepevent which = 908741 }
+command = { type = sleepevent which = 908742 }
+command = { type = sleepevent which = 966631 }
+command = { type = sleepevent which = 966632 }
+command = { type = sleepevent which = 966633 }
+command = { type = sleepevent which = 966634 }
+command = { type = ai which = "kaiserreich/switch/CAL_Post_ACW.ai" }
+		#command = { type = remove_division which = "VMI Corps of Cadets" value = CAL }
 }
 }
 
@@ -963,6 +1029,7 @@ name = "Victory is ours."
 command = { type = setflag which = END_ACW }
 command = { type = dissent value = -50 }
 command = { trigger = { not = { atwar = CAL } } type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { trigger = { atwar = CAL } type = local_setflag which = ACW_MILITIAS } #remove all militias later
 command = { type = sleepevent which = 90800 }
 command = { type = sleepevent which = 90801 }
 command = { type = sleepevent which = 90802 }
@@ -1107,6 +1174,16 @@ command = { type = sleepevent which = 800308 }
 command = { type = sleepevent which = 800309 }
 command = { type = sleepevent which = 800310 }
 command = { type = sleepevent which = 800311 }
+command = { type = sleepevent which = 908737 }
+command = { type = sleepevent which = 908740 }
+command = { type = sleepevent which = 908741 }
+command = { type = sleepevent which = 908742 }
+command = { type = sleepevent which = 966631 }
+command = { type = sleepevent which = 966632 }
+command = { type = sleepevent which = 966633 }
+command = { type = sleepevent which = 966634 }
+command = { type = ai which = "kaiserreich/switch/CAL_Post_ACW.ai" }
+		#command = { type = remove_division which = "VMI Corps of Cadets" value = CAL }																				 
 }
 }
 
@@ -1140,6 +1217,7 @@ name = "Victory is ours."
 command = { type = setflag which = END_ACW }
 command = { type = dissent value = -50 }
 command = { trigger = { not = { atwar = U10 } } type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { trigger = { atwar = U10 } type = local_setflag which = ACW_MILITIAS } #remove all militias later										
 command = { type = sleepevent which = 90800 }
 command = { type = sleepevent which = 90801 }
 command = { type = sleepevent which = 90802 }
@@ -1284,6 +1362,15 @@ command = { type = sleepevent which = 800308 }
 command = { type = sleepevent which = 800309 }
 command = { type = sleepevent which = 800310 }
 command = { type = sleepevent which = 800311 }
+command = { type = sleepevent which = 908737 }
+command = { type = sleepevent which = 908740 }
+command = { type = sleepevent which = 908741 }
+command = { type = sleepevent which = 908742 }
+command = { type = sleepevent which = 966631 }
+command = { type = sleepevent which = 966632 }
+command = { type = sleepevent which = 966633 }
+command = { type = sleepevent which = 966634 }
+		#command = { type = remove_division which = "VMI Corps of Cadets" value = U10 }
 }
 }
 
@@ -1620,13 +1707,15 @@ command = { type = addcore which = 1898 }
 command = { type = addcore which = 1897 }
 command = { type = addcore which = 1899 }
 command = { type = addcore which = 1909 }
+command = { trigger = { control = { province = 1778 data = TEX } } type = addcore which = 1778 } #Guantanamo Bay
+command = { trigger = { control = { province = 889 data = TEX } } type = addcore which = 889 } #Balboa 
 command = { type = dissent value = 5 }
 command = { type = trigger which = 908930 }
-command = { type = trigger which = 908931 }
-command = { type = trigger which = 908932 }
-command = { type = trigger which = 908933 }
-command = { type = trigger which = 908934 }
-command = { type = trigger which = 908935 }
+command = { type = event which = 908931 where = TEX when = 2  }
+command = { type = event which = 908932 where = TEX when = 5  }
+command = { type = event which = 908933 where = TEX when = 6  }
+command = { type = event which = 908934 where = TEX when = 7  }
+command = { type = event which = 908935 where = TEX when = 8  }
 }
 }
 
@@ -1708,7 +1797,7 @@ style = 2
 picture = "militaryparade1"
 
 date = { day = 1 month = january year = 1936 }
-offset = 100
+offset = 200
 deathdate = { day = 29 month = december year= 1960 }
 
 action_a = {
@@ -1766,7 +1855,7 @@ style = 2
 picture = "militaryparade1"
 
 date = { day = 1 month = january year = 1936 }
-offset = 10
+offset = 100
 deathdate = { day = 29 month = december year= 1960 }
 
 action_a = {
@@ -1862,13 +1951,15 @@ command = { type = addcore which = 1898 }
 command = { type = addcore which = 1897 }
 command = { type = addcore which = 1899 }
 command = { type = addcore which = 1909 }
+command = { trigger = { control = { province = 1778 data = CSA } } type = addcore which = 1778 } #Guantanamo Bay
+command = { trigger = { control = { province = 889 data = CSA } } type = addcore which = 889 } #Balboa 								 
 command = { type = dissent value = 5 }
 command = { type = trigger which = 908936 }
-command = { type = trigger which = 908937 }
-command = { type = trigger which = 908938 }
-command = { type = trigger which = 908939 }
-command = { type = trigger which = 908940 }
-command = { type = trigger which = 908941 }
+command = { type = event which = 908937 where = CSA when = 2  }
+command = { type = event which = 908938 where = CSA when = 5  }
+command = { type = event which = 908939 where = CSA when = 6  }
+command = { type = event which = 908940 where = CSA when = 7  }
+command = { type = event which = 908941 where = CSA when = 8  }
 }
 }
 
@@ -1891,7 +1982,7 @@ style = 2
 picture = "militaryparade1"
 
 date = { day = 1 month = january year = 1936 }
-offset = 100
+offset = 200
 deathdate = { day = 29 month = december year= 1960 }
 
 action_a = {
@@ -1971,7 +2062,7 @@ style = 2
 picture = "militaryparade1"
 
 date = { day = 1 month = january year = 1936 }
-offset = 10
+offset = 100
 deathdate = { day = 29 month = december year= 1947 }
 
 action_a = {
@@ -2622,7 +2713,7 @@ command = { type = dissent value = 5 }
 
 event = {
 id = 908983
-random = no
+random = 2
 country = CAL
 
 name = "A good ally"
@@ -2962,6 +3053,7 @@ ispuppet = TEX
 atwar = TEX
 exists = USA
 exists = CSA
+AND = { ai = yes dissent = 8 }			
 }
 }
 command = { type = war which = CAN }
@@ -3093,8 +3185,9 @@ command = { type = money value = 200 }
 command = { type = manpowerpool value = 200 }
 command = { type = add_division which = "True American Division" value = infantry when = 9 }
 command = { type = add_division which = "USS Liberty" value = battleship when = 5 }
-command = { type = add_division which = "1st US Destroyer" value = destroyer when = 4 }
-command = { type = add_division which = "2nd US Destroyer" value = destroyer when = 4 }
+command = { type = add_division which = "1st US Destroyer Division" value = destroyer when = 5 }
+command = { type = add_division which = "2nd US Destroyer Division" value = destroyer when = 5 }
+command = { type = waketeam which = 16409 } #Alfred Price team woken for U10																								
 }
 }
 
@@ -3746,5 +3839,223 @@ command = { type = addcore which = 1870 }
 command = { type = addcore which = 1871 }
 command = { type = addcore which = 1869 }
 command = { type = addcore which = 1881 }
+}
+}
+
+### DEMOBILIZE MILITIAS
+event = {
+id = 551998 #1337900
+random = no
+tag = { USA CSA TEX CAL U10 }
+persistent = yes
+
+trigger = {
+atwar = no
+local_flag = ACW_MILITIAS
+}
+
+name = "Demobilizing the Civil War Militias"
+desc = "Now that the period of national emergency has ended, it is time for our brave militamen to return back to their homes and families."
+style = 2
+picture = "militaryparade1"
+
+date = { day = 1 month = january year = 1938 }
+offset = 91
+deathdate = { day = 29 month = december year = 1943 }
+
+action_a = {
+name = "Thank you for your service!"
+command = { type = strength which = militia when = 0 where = 0 org = 0 value = 0 } #remove all militias
+command = { type = local_clrflag which = ACW_MILITIAS }
+}
+}
+
+### RECONSTRUCTION / The Aftermath (sleeps ACW events, nerfs economy a bit)
+event = {
+id = 551999 #1337901
+random = no
+tag = { USA CSA TEX CAL }
+
+trigger = {
+atwar = no
+local_flag = END_ACW
+control = { province = 1809 data = -1 }
+}
+
+name = "The Aftermath"
+desc = "Even with the war finally over, much of the country's urban areas remain in ruins, with vast swathes of the population displaced or homeless. It will take much time and effort to rebuild and truly heal this broken nation."
+style = 2
+
+date = { day = 14 month = june year = 1937 }
+offset = 14
+deathdate = { day = 29 month = december year = 1945 }
+
+action_a = {
+name = "Lets get to work"
+command = { type = dissent value = 5 }
+command = { type = manpowerpool value = 100 }
+command = { type = supplies which = -5000 }
+command = { type = metalpool value = -5000 }
+command = { type = rarematerialspool value = -3500 }
+command = { type = energypool value = -7500 }
+command = { type = oilpool value = -7500 }
+command = { type = money value = -500 }
+command = { type = belligerence value = -10 }
+command = { type = sleepevent which = 909100 }
+command = { type = sleepevent which = 909101 }
+command = { type = sleepevent which = 909102 }
+command = { type = sleepevent which = 909103 }
+command = { type = sleepevent which = 909104 }
+command = { type = sleepevent which = 909105 }
+command = { type = sleepevent which = 909106 }
+command = { type = sleepevent which = 909107 }
+command = { type = sleepevent which = 909108 }
+command = { type = sleepevent which = 909109 }
+command = { type = sleepevent which = 909110 }
+command = { type = sleepevent which = 909111 }
+command = { type = sleepevent which = 909112 }
+command = { type = sleepevent which = 909113 }
+command = { type = sleepevent which = 909114 }
+command = { type = sleepevent which = 909115 }
+command = { type = sleepevent which = 909116 }
+command = { type = sleepevent which = 909117 }
+command = { type = sleepevent which = 909118 }
+command = { type = sleepevent which = 909119 }
+command = { type = sleepevent which = 909120 }
+command = { type = sleepevent which = 909121 }
+command = { type = sleepevent which = 909122 }
+command = { type = sleepevent which = 909123 }
+command = { type = sleepevent which = 909124 }
+command = { type = sleepevent which = 909125 }
+command = { type = sleepevent which = 909126 }
+command = { type = sleepevent which = 909127 }
+command = { type = sleepevent which = 909128 }
+command = { type = sleepevent which = 909129 }
+command = { type = sleepevent which = 909130 }
+command = { type = sleepevent which = 909131 }
+command = { type = sleepevent which = 909132 }
+command = { type = sleepevent which = 909133 }
+command = { type = sleepevent which = 909134 }
+command = { type = sleepevent which = 909135 }
+command = { type = sleepevent which = 909136 }
+command = { type = sleepevent which = 909137 }
+command = { type = sleepevent which = 909138 }
+command = { type = sleepevent which = 909139 }
+command = { type = sleepevent which = 909140 }
+command = { type = sleepevent which = 909141 }
+command = { type = sleepevent which = 909142 }
+command = { type = sleepevent which = 909143 }
+command = { type = sleepevent which = 909144 }
+command = { type = sleepevent which = 909145 }
+command = { type = sleepevent which = 909146 }
+command = { type = sleepevent which = 909147 }
+command = { type = sleepevent which = 909148 }
+command = { type = sleepevent which = 909149 }
+command = { type = sleepevent which = 909150 }
+command = { type = sleepevent which = 909151 }
+command = { type = sleepevent which = 909152 }
+command = { type = sleepevent which = 909153 }
+command = { type = sleepevent which = 909154 }
+command = { type = sleepevent which = 909155 }
+command = { type = sleepevent which = 909156 }
+command = { type = sleepevent which = 909157 }
+command = { type = sleepevent which = 909158 }
+command = { type = sleepevent which = 909159 }
+command = { type = sleepevent which = 909160 }
+command = { type = sleepevent which = 909161 }
+command = { type = sleepevent which = 909162 }
+command = { type = sleepevent which = 909163 }
+command = { type = sleepevent which = 909164 }
+command = { type = sleepevent which = 909165 }
+command = { type = sleepevent which = 909166 }
+command = { type = sleepevent which = 909167 }
+command = { type = sleepevent which = 909168 }
+command = { type = sleepevent which = 909169 }
+command = { type = sleepevent which = 909170 }
+command = { type = sleepevent which = 909171 }
+command = { type = sleepevent which = 909172 }
+command = { type = sleepevent which = 909173 }
+command = { type = sleepevent which = 909174 }
+command = { type = sleepevent which = 909175 }
+command = { type = sleepevent which = 909176 }
+command = { type = sleepevent which = 909177 }
+command = { type = sleepevent which = 909178 }
+command = { type = sleepevent which = 909179 }
+command = { type = sleepevent which = 909180 }
+command = { type = sleepevent which = 909181 }
+command = { type = sleepevent which = 909182 }
+command = { type = sleepevent which = 909183 }
+command = { type = sleepevent which = 909184 }
+command = { type = sleepevent which = 909185 }
+command = { type = sleepevent which = 909186 }
+command = { type = sleepevent which = 909187 }
+command = { type = sleepevent which = 909188 }
+command = { type = sleepevent which = 909189 }
+command = { type = sleepevent which = 909190 }
+command = { type = sleepevent which = 909191 }
+command = { type = sleepevent which = 909192 }
+command = { type = sleepevent which = 909193 }
+command = { type = sleepevent which = 909194 }
+command = { type = sleepevent which = 909195 }
+command = { type = sleepevent which = 909196 }
+command = { type = sleepevent which = 909197 }
+command = { type = sleepevent which = 909198 }
+command = { type = sleepevent which = 909199 }
+command = { type = sleepevent which = 909200 }
+command = { type = sleepevent which = 909201 }
+command = { type = sleepevent which = 909202 }
+command = { type = sleepevent which = 909203 }
+command = { type = sleepevent which = 909204 }
+command = { type = sleepevent which = 909205 }
+command = { type = sleepevent which = 909206 }
+command = { type = sleepevent which = 909207 }
+command = { type = sleepevent which = 909208 }
+command = { type = sleepevent which = 909209 }
+command = { type = sleepevent which = 909210 }
+command = { type = sleepevent which = 909211 }
+command = { type = sleepevent which = 909212 }
+command = { type = sleepevent which = 909213 }
+command = { type = sleepevent which = 909214 }
+command = { type = sleepevent which = 909215 }
+command = { type = sleepevent which = 909216 }
+command = { type = sleepevent which = 909217 }
+command = { type = sleepevent which = 909218 }
+command = { type = sleepevent which = 909219 }
+command = { type = sleepevent which = 909220 }
+command = { type = sleepevent which = 909221 }
+command = { type = sleepevent which = 909222 }
+command = { type = sleepevent which = 909223 }
+command = { type = sleepevent which = 909224 }
+command = { type = sleepevent which = 909225 }
+command = { type = sleepevent which = 909226 }
+command = { type = sleepevent which = 909227 }
+command = { type = sleepevent which = 909228 }
+command = { type = sleepevent which = 909229 }
+command = { type = sleepevent which = 909230 }
+command = { type = sleepevent which = 909231 }
+command = { type = sleepevent which = 909232 }
+command = { type = sleepevent which = 909233 }
+command = { type = sleepevent which = 909234 }
+command = { type = sleepevent which = 909235 }
+command = { type = sleepevent which = 909236 }
+command = { type = sleepevent which = 909237 }
+command = { type = sleepevent which = 909238 }
+command = { type = sleepevent which = 909239 }
+command = { type = sleepevent which = 909240 }
+command = { type = sleepevent which = 909241 }
+command = { type = sleepevent which = 909242 }
+command = { type = sleepevent which = 909243 }
+command = { type = sleepevent which = 909244 }
+command = { type = sleepevent which = 909245 }
+command = { type = sleepevent which = 909246 }
+command = { type = sleepevent which = 909247 }
+command = { type = sleepevent which = 966631 }
+command = { type = sleepevent which = 966632 }
+command = { type = sleepevent which = 966633 }
+command = { type = sleepevent which = 966634 }
+command = { trigger = { not = { flag = AUS_BLACK_UNITS } } type = sleepevent which = 81174 }
+command = { type = sleepevent which = 908740 }
+command = { type = sleepevent which = 908741 }
+command = { type = sleepevent which = 908742 }
 }
 }
