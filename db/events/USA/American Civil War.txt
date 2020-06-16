@@ -531,15 +531,15 @@ event = {
 id = 966637
 country = TEX
 
-name = "Rise of the AUS Military"
-desc = "The AUS quickly found enough troops eager enough to beat up the Syndicalist menace concentrated in the CSA and protect their rightfully elected president."
+name = "Defending the President"
+desc = "The AUS quickly found enough troops eager to protect their rightfully elected president."
 style = 2
 picture = "Milice"
 
 action = {
 name = "Rise my minions!"
-command = { type = add_corps which = "6th American Union Army" value = land where = 1809 }
-command = { type = add_division which = "12th Defender of Washington" value = militia when = 4 }
+command = { type = add_corps which = "Washington Garrison" value = land where = 1809 }
+command = { type = add_division which = "12th Defenders of Washington" value = militia when = 4 }
 }
 }
 
@@ -663,15 +663,16 @@ event = {
 id = 966638
 country = CSA
 
-name = "Rise of the CSA Militias"
+name = "Defending the President"
+
 desc = "Workers of the capital city have arisen to defend their freedom and rights from capitalist oppression."
 style = 2
 picture = "Milice"
 
 action = {
 name = "Rise my minions!"
-command = { type = add_corps which = "7th Syndicate Army" value = land where = 1809 }
-command = { type = add_division which = "Washington union" value = militia when = 4 }
+command = { type = add_corps which = "Washington Garrison" value = land where = 1809 }
+command = { type = add_division which = "Washington Union" value = militia when = 4 }
 }
 }
 
@@ -687,7 +688,7 @@ picture = "Strike1"
 trigger = {
 or = {
 domestic = { type = political_left value = 8 }
-not = { domestic = { type = political_left value = 3 }}
+not = { domestic = { type = political_left value = 3 } }
 }
 exists = CAL
 }
@@ -726,7 +727,7 @@ picture = "Strike1"
 trigger = {
 OR = {
 domestic = { type = political_left value = 7 }
-not = { domestic = { type = political_left value = 4 }}
+not = { domestic = { type = political_left value = 4 } }
 }
 exists = CAL
 }
@@ -831,6 +832,9 @@ ai_chance = 1
 command = { type = end_non_aggression which = USA where = CAN }
 command = { type = end_non_aggression which = CAN where = USA }
 command = { type = war which = CAN }
+command = { type = add_corps which = "New England US Army Reserve" value = land where = 1789 }
+command = { type = add_division value = infantry when = 8 }
+command = { type = dissent value = -1 }
 }
 
 action_b = {
@@ -867,13 +871,18 @@ style = 2
 
 action_a = {
 name = "War with the imperial oppressors"
-ai_chance = 1
+ai_chance = 25 #1
+trigger = { #new
+OR = {
+ai = no
+war = { country = USA country = CAN }
+} }								
 command = { type = war which = CAN }
 }
 
 action_b = {
 name = "Deal with them later"
-ai_chance = 99
+ai_chance = 75
 command = { type = dissent value = 1 }
 }
 }
@@ -892,12 +901,17 @@ style = 2
 action_a = {
 name = "The AUS will not stand for that"
 ai_chance = 1
+trigger = { #new
+OR = {
+ai = no
+war = { country = USA country = CAN }
+} }								
 command = { type = war which = CAN }
 }
 
 action_b = {
 name = "Deal with them later"
-ai_chance = 99
+ai_chance = 75
 command = { type = dissent value = 1 }
 }
 }
@@ -931,7 +945,7 @@ deathdate = { day = 29 month = december year = 1940 }
 
 action_a = {
 name = "Seize Alaska !"
-ai_chance = 75
+ai_chance = 80
 command = { type = setflag which = ACW_CAN_SEIZE_ALASKA }
 command = { type = relation which = USA value = -50 }
 command = { type = belligerence which = CAN value = 2  }
@@ -956,7 +970,7 @@ command = { type = addclaim which = 2174 }
 
 action_b = {
 name = "We should not risk it"
-ai_chance = 15
+ai_chance = 20
 command = { type = dissent value = 1 }
 command = { trigger = { NOT = { atwar = CAL } } type = event which = 908610 where = CAL when = 1  }
 }
@@ -1156,7 +1170,7 @@ offset = 10
 deathdate = { day = 29 month = january year = 1940 }
 
 action_a = {
-ai_chance = 100
+ai_chance = 90
 name = "Seize Guam!"
 command = { type = addcore which = 1683 }
 command = { type = relation which = USA value = -50 }
@@ -1164,10 +1178,10 @@ command = { type = trigger which = 908612 }
 
 }
 action_b = {
-ai_chance = 0
+ai_chance = 10
 name = "Rather not"
 command = { type = relation which = USA value = 100 }
-command = { type = dissent value = 2 }
+command = { type = dissent value = 1 }
 
 }
 }
@@ -1214,16 +1228,19 @@ offset = 10
 deathdate = { day = 29 month = january year = 1940 }
 
 action_a = {
-ai_chance = 100
+ai_chance = 90
 name = "Seize the naval base!"
 command = { type = addcore which = 1778 }
 command = { type = trigger which = 908806 }
+command = { type = supplies value = 100 }
+command = { type = domestic which = interventionism value = 1 } 
 }
 action_b = {
-ai_chance = 0
+ai_chance = 10
 name = "Rather not"
 command = { type = relation which = USA value = 100 }
 command = { type = dissent value = 2 }
+command = { type = domestic which = interventionism value = -1 }
 
 }
 }
@@ -2010,7 +2027,7 @@ action_a = {
 name = "The war has begun"
 command = { type = setflag which = AMERICAN_CIVIL_WAR }
 command = { type = supplies value = 3500 where = 1908 }
-
+command = { type = oilpool value = 500 where = 1908 }
 }
 }
 
@@ -3571,7 +3588,11 @@ command = { type = dissent value = 2 }
 action_b = {
 name = "This is not the time for this."
 ai_chance = 35
+trigger = { 
+NOT = { AND = { ai = yes lost_national = { country = TEX value = 15 } 
+} } }												 
 command = { type = dissent value = -1 }
+command = { type = relative_manpower value = -4 } 
 }
 }
 
@@ -3729,6 +3750,7 @@ command = { type = add_division which = "3rd Submarine Division" value = submari
 command = { type = add_division which = "4th Submarine Division" value = submarine when = 2 }
 command = { type = add_division which = "5th Submarine Division" value = submarine when = 2 }
 command = { type = add_division which = "6th Submarine Division" value = submarine when = 2 }
+command = { type = add_corps which = "1st PSA Transport Fleet" value = naval where = 1889 }
 command = { type = add_division which = "Charles Goodyear Flotilla" value = transport when = 1 }
 command = { type = add_division which = "Anthony Wayne Flotilla" value = transport when = 1 }
 command = { type = add_division which = "John Hancock Flotilla" value = transport when = 1 }
