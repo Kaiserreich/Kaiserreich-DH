@@ -31,14 +31,19 @@ resistance = {
 USA = 4
 CSA = 6
 TEX = 5
-CAL = 4
 U28 = 3
+U51 = 3
+U06 = 3
+U32 = 3
 }
 befriend = {
 CAN = 30
 GUY = 20
 PAK = 20
 AST = 20
+VIC = 10
+U07 = 20
+CAL = 5
 }
 protect = { }
 target = { } 
@@ -63,6 +68,7 @@ CAN = 50
 VIC = 40
 AST = 40
 GUY = 40
+PAK = 20
 	}
 	embargo = { CSA TEX U28 }
 		not = { }
@@ -158,9 +164,12 @@ spyprefs =
 construction = { 
 	max_factor = 0.250 
 
-	AA_batteries = no
-	max_AA_level = 3
-	AA_provs = { }
+	AA_batteries = yes
+	max_AA_level = 5
+	AA_provs = { 
+		1785 #Manchester
+		1795 #Boston
+	}
 
 	coastal_fort = no
 	max_coastal_level = 3
@@ -184,7 +193,7 @@ construction = {
 
 	ic_at_war = no 
 	force_ic_until = 1935
-	ic_end_year = 1938
+	ic_end_year = 1948
 	IC_provs = {
 		1785 #Manchester
 		1795 #Boston
@@ -197,25 +206,25 @@ military = {
 	max_batch_home_front 	= 680
 
 	#### Divisions etc...
-	infantry 		= 40
+	infantry 		= 20
 	cavalry 		= 0
 	motorized 		= 12
 	mechanized 		= 0
-	light_armor 	= 0
+	light_armor 	= 5
 	armor 			= 10
 	paratrooper 	= 0
-	marine 			= 0
-	bergsjaeger 	= 0
+	marine 			= 2
+	bergsjaeger 	= 5
 	garrison		= 0
     hq 				= 6
 	militia 		= 0
-	d_01			= 0        #  Light Infantry
+	d_01			= 20        #  Light Infantry
 #				68 %
-	interceptor 	= 10
-	multi_role 		= 0
-	cas 			= 0
+	interceptor 	= 5
+	multi_role 		= 5
+	cas 			= 5
 	strategic_bomber = 0
-	tactical_bomber = 8
+	tactical_bomber = 5
 	naval_bomber 	= 0
 	transport_plane = 0
 	flying_bomb 	= 0
@@ -226,7 +235,7 @@ military = {
 	escort_carrier	= 0
 	destroyer 		= 5
 	light_cruiser 	= 3
-	heavy_cruiser 	= 0
+	heavy_cruiser 	= 2
 	battlecruiser 	= 0
 	submarine 		= 3
 	nuclear_submarine = 0
@@ -270,7 +279,7 @@ technology = {
 	endgoal 	= {  } # Nuclear 
 		preference 	= {
 		# Landdoctrines
-		6010 6040 6050 6060 6070 6080 6090 6100 6900
+		6010 6040 6050 6060 6070 6080 6090 6100 6900 6790 14050 6800 6880 6890 6850
 		
 		# MEDICINE
 		5600 5610 5620 5630 5640 5650 5660 5670
@@ -304,10 +313,16 @@ technology = {
 
 		# Motorized
 		1396 1400 1410 1420 1430 1440 1450 1460 
+		
+		# engineer tech
+		1830 1840 1850 1860 1870 1880 1890 1900
 
 		# Mechanized
 		1470 1480 1490 1510 1520
 
+		# Mountain Unit techs
+		1160 1170 1180 1190 1200 1210 1220 1230 1240 1250 1260 1270 1280 1290 1300 13030 13040 13050
+		
 	# Armored Cars
 	2860 2870 2880 2020 2150 2160 2890 11110
 
@@ -337,7 +352,13 @@ technology = {
 
 		# Tactical Bomber
 		4140 4150 4160
+		
+		# CAS
+		4400 4170 4280 4450 4180 15120 15130 
 
+		# Escort/Multirole Fighters
+		4040 4050 4070 4080 4100 4110
+		
 		# Carrier
 		#3510 3520 3530 3540 3550 12060 3560 3570
 
@@ -352,6 +373,9 @@ technology = {
 		
 		# Mining
 		55000 55020
+		
+		# CAS Air Doctrines 9040
+		9050 9060 9070 9080 9270 9280 9290 9300
 
 
 	} 
@@ -359,17 +383,10 @@ technology = {
 		# Battle Cruiser
 		3310 3320 3330 3340 3350 12030
 
-		# Mountain Unit techs
-		1160 1170 1180 1190 1200 1210 1220 1230 1240 1250 1260 1270 1280 1290 1300 13030 13040 13050
-
-		# CAS
-		4400 4170 4280 4450 4180 15120 15130 
-
 		# Strategic bombers
 		4220 4230 4240
 
-		# Escort/Multirole Fighters
-		4040 4050 4070 4080 4100 4110
+
 
 # Radar Warning
 #5410 5416 5417 5420 5426 5430 5440 5466 5450 5460 53030 5476 53070
@@ -380,8 +397,7 @@ technology = {
 		# Rocket
 		5560 7550 7560 7570 7010 7020 15500
 		
-		# CAS Air Doctrines 9040
-		9050 9060 9070 9080 9270 9280 9290 9300
+
 
 # Rocket Test & Research Facility
 7580 7590
@@ -436,8 +452,8 @@ garrison = {
 	war_target		= 50	# The next country targeted for attack by this AI
 	
 	opposing_alliance	= 50	# For neutrals, all alliances are "opposing"
-	claim_threat		= 0	# If we are neutral, countries with claims on us get this
-	unstable_border		= 0	# Bordering countries at war with someone else get this
+	claim_threat		= 30	# If we are neutral, countries with claims on us get this
+	unstable_border		= 30	# Bordering countries at war with someone else get this
 
 	# Borders with specific countries
 	country_priorities = {
@@ -446,6 +462,8 @@ garrison = {
 		CSA = 50
 		TEX = 50
 		CAL = 20
+		U32 = 10
+		U28 = 50
 	}
 	province_priorities = {	}
 	area_multiplier = { }
