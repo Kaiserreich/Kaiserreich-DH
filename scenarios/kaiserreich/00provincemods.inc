@@ -172,36 +172,45 @@ province = { id = 1415 ic = 1 anti_air = 2 #Rangoon
 ### CAN
 province = { id = 2089 ic = 1 manpower = 1 anti_air = 1 #Vancouver
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+province = { id = 2090 ic = 1 infra = { size = 0.50 current_size = 0.50 } #Victoria
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
 province = { id = 2092 ic = -2 } #Jasper
 province = { id = 2101 ic = 1 manpower = 1 } #Regina
-province = { id = 2102 ic = -1 } #Prince Albert
-province = { id = 2103 ic = 1 manpower = 1 } #Edmonton
-province = { id = 2105 ic = -1 } #Grande Prairie
+province = { id = 2102 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Prince Albert
+province = { id = 2103 manpower = 1 air_base = { size = 4 current_size = 4 } } #Edmonton
+province = { id = 2105 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Grande Prairie
 province = { id = 2106 ic = 1 manpower = 1 anti_air = 1 #Winnipeg
 	air_base = { size = 4 current_size = 4 } }
 province = { id = 2108 manpower = 1 anti_air = 3 #Ottawa
 	air_base = { size = 4 current_size = 4 } }
-province = { id = 2109 ic = 1 manpower = 1 } #Kingston
+province = { id = 2109 ic = 1 manpower = 1 infra = { size = 0.70 current_size = 0.70 } } #Kingston
 province = { id = 2110 ic = -2 } #Fort William
-province = { id = 2111 ic = 4 manpower = 3 anti_air = 1 } #Toronto
-province = { id = 2112 ic = -1 } #Thunder Bay
-province = { id = 2113 ic = 3 manpower = 1 } #Windsor
+province = { id = 2111 ic = 4 manpower = 3 anti_air = 3 #Toronto
+	air_base = { size = 10 current_size = 10 } infra = { size = 0.80 current_size = 0.80 } }
+province = { id = 2112 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Thunder Bay
+province = { id = 2113 ic = 3 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Windsor
 province = { id = 2117 manpower = 1 anti_air = 4 #Québec
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
-province = { id = 2118 ic = -1 manpower = 1 } #Sherbrooke
+province = { id = 2118 ic = 2 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Sherbrooke
 province = { id = 2119 ic = 4 manpower = 3 anti_air = 2 #Montreal
 	air_base = { size = 4 current_size = 4 } }
-province = { id = 2124 ic = 1 } #Gatineau
-province = { id = 2126 ic = 1 } #Riviere-du-Loup
+province = { id = 2120 infra = { size = 0.20 current_size = 0.20 } } #Sept-Iles
+province = { id = 2121 infra = { size = 0.30 current_size = 0.30 } } #Chicoutimi
+province = { id = 2124 ic = -1 } #Gatineau
+province = { id = 2126 ic = 1 infra = { size = 0.50 current_size = 0.50 } } #Riviere-du-Loup
+province = { id = 2128 infra = { size = 0.50 current_size = 0.50 } } #Fredericton
 province = { id = 2129 ic = 1 } #Sault Ste Marie
-province = { id = 2130 ic = 2 manpower = 1 } #Saint John
-province = { id = 2131 ic = 1 } #Moncton
+province = { id = 2130 ic = 2 manpower = 1 #Saint John
+	infra = { size = 0.50 current_size = 0.50 } }
+province = { id = 2131 ic = 1 infra = { size = 0.50 current_size = 0.50 } } #Moncton
 province = { id = 2132 ic = 2 manpower = 1 coastalfort = 2 anti_air = 3 #Halifax
-	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
-province = { id = 2134 ic = -4 anti_air = 2 #Glace Bay
-	naval_base = { size = 4 current_size = 4 } air_base = { size = 6 current_size = 6 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
+province = { id = 2134 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Glace Bay
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 6 current_size = 6 } ic = -4 }
+province = { id = 2136 infra = { size = 0.20 current_size = 0.20 } } #Goose Bay
 province = { id = 2137 ic = 1 anti_air = 2 #St. Johns
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
+province = { id = 2138 infra = { size = 0.10 current_size = 0.10 } } #Nain
 
 ### CGX
 province = { id = 1252 ic = -4 } #Taiyuan
