@@ -98,11 +98,11 @@ province = { id = 713 ic = 3 landfort = 3 anti_air = 1 #Baku (previously ic = 7)
 province = { id = 112 landfort = 2 anti_air = 1 } #Mons
 province = { id = 114 landfort = 2 anti_air = 1 #Burges
 	air_base = { size = 5 current_size = 5 } }
- province = { id = 114 #Bruges
+ province = { id = 114 manpower = 2 #Bruges
 	air_base = { size = 6 current_size = 6 } naval_base = { size = 3 current_size = 3 } }
 province = { id = 115 #Antwerpen
 	naval_base = { size = 5 current_size = 5 } }
-province = { id = 116 landfort = 2 anti_air = 1 #Brussels
+province = { id = 116 landfort = 2 anti_air = 1 manpower = 3 #Brussels
 	air_base = { size = 6 current_size = 6 } }
 
 ### BLR
@@ -320,6 +320,7 @@ province = { id = 207 ic = 5 anti_air = 3 #Prague
 	air_base = { size = 6 current_size = 6 } manpower = 2 }
 
 ### DEN
+province = { id = 219 manpower = 1 } #Odense
 
 #Iceland
 province = { id = 1 ic = 4 anti_air = 1 #Reykjavik
@@ -685,9 +686,10 @@ province = { id = 1710 naval_base = { size = 2 current_size = 2 } air_base = { s
 
 #Netherlands
 province = { id = 118 anti_air = 2 } #Eindhoven
-province = { id = 122 anti_air = 2 #Amsterdam
+province = { id = 122 anti_air = 2 manpower = 2 #Amsterdam
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 125 naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } } #Rotterdam
+province = { id = 125 manpower = 3 #Rotterdam
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 
 ### HON
 province = { id = 2085 anti_air = 1 #Tegucigalpa
@@ -953,7 +955,7 @@ province = { id = 483 coastalfort = 3 anti_air = 2 #Oslo
 province = { id = 485 coastalfort = 3 } #Kristinsand
 province = { id = 488 anti_air = 2 #Bergen
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 5 current_size = 5 } }
-province = { id = 493 coastalfort = 2 #Trondheim
+province = { id = 493 coastalfort = 2 manpower = 1 #Trondheim
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
 province = { id = 495 anti_air = 1 #Narvik
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
