@@ -216,7 +216,7 @@ province = { id = 2138 infra = { size = 0.10 current_size = 0.10 } } #Nain
 province = { id = 1307 ic = 2 } #Huaihua
 province = { id = 1308 ic = 2 } #Changsha
 province = { id = 1351 ic = 2 anti_air = 1 #Shangrao
-	air_base = { size = 2 current_size = 2 } }
+ 	air_base = { size = 2 current_size = 2 } }
 province = { id = 1368 ic = 3 } #Shaoguan
 province = { id = 1369 naval_base = { size = 4 current_size = 4 } air_base = { size = 5 current_size = 5 } } #Guangzhou
 province = { id = 1376 infra = { size = 0.20 current_size = 0.20 } } #Debao
@@ -516,7 +516,7 @@ province = { id = 1367 coastalfort = 1 anti_air = 2 #Zhanjiang
 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1395 anti_air = 2 infra = { size = 0.40 current_size = 0.40 } oilpool = 100 supplypool = 500 #Hanoi
 naval_base = { size = 1 current_size = 1 } air_base = { size = 4 current_size = 4 } }
-province = { id = 1395 anti_air = 2  } #Haiphong
+province = { id = 1392 anti_air = 2  } #Haiphong
 naval_base = { size = 4 current_size = 4 } }
 province = { id = 1397 naval_base = { size = 2 current_size = 2 } } #Da Nang
 province = { id = 1399 anti_air = 3 oilpool = 100 supplypool = 500 #Saigon
@@ -1236,7 +1236,7 @@ province = { id = 1423 anti_air = 2 #Bangkok
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1426 air_base = { size = 4 current_size = 4 } } #Phitsanulok
 province = { id = 1431 naval_base = { size = 2 current_size = 2 } air_base = { size = 1 current_size = 1 } } #Songkhla
-province = { id = 1435 naval_base = { size = 2 current_size = 2 } } #Penang
+province = { id = 1435 naval_base = { size = 2 current_size = 2 } } #Kuala Lumpur
 
 ### SPA
 
