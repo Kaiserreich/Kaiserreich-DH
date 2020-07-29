@@ -5641,7 +5641,8 @@ war = { country = HOL country = GER }
 NOT = {
 exists = INO
 alliance = { country = HOL country = AST }
-control = { province = 1647 data = AST } #Batavia
+war = { country = HOL country = AST }
+control = { province = 1647 data = -3 } #Batavia not in allied hands
 }
 }
 
@@ -5871,8 +5872,22 @@ style = 2
 picture = "Australian_troops3"
 
 trigger = {
-control = { province = 1647 data = -2 } # Batavia is controlled by an enemy
 flag = AST_HOL_WAR
+exists = AST
+OR = {
+AND = { control = { province = 1647 data = AST } participant = { country = AST value = 1 } } #Batavia in Entente hands
+AND = { control = { province = 1647 data = CAN } participant = { country = CAN value = 1 } }
+AND = { control = { province = 1647 data = PAK } participant = { country = PAK value = 1 } }
+AND = { control = { province = 1647 data = SAF } participant = { country = SAF value = 1 } }
+AND = { control = { province = 1647 data = AST } participant = { country = TEX value = 1 } }
+AND = { control = { province = 1647 data = USA } participant = { country = USA value = 1 } }
+AND = { control = { province = 1647 data = CAL } participant = { country = CAL value = 1 } }
+AND = { control = { province = 1647 data = TEX } participant = { country = CAL value = 1 } }
+AND = { control = { province = 1647 data = JAP } participant = { country = JAP value = 1 } }
+AND = { control = { province = 1647 data = VIC } participant = { country = VIC value = 1 } }
+AND = { control = { province = 1647 data = NZL } participant = { country = NZL value = 1 } }
+AND = { control = { province = 1647 data = SAF } participant = { country = U07 value = 1 } } #restored Britain
+}
 }
 
 
@@ -5997,6 +6012,16 @@ command = { type = addcore which = 1616 } # West and East Timor
 command = { type = addcore which = 1617 }
 command = { type = addcore which = 1618 } # Tanimbar and Aru Islands east of Timor
 command = { type = addcore which = 1619 }
+command = { type = addclaim which = 1624 } #Claims on Malaya and North Borneo
+command = { type = addclaim which = 1625 }
+command = { type = addclaim which = 1626 }
+command = { type = addclaim which = 1432 }
+command = { type = addclaim which = 1433 }
+command = { type = addclaim which = 1434 }
+command = { type = addclaim which = 1435 }
+command = { type = addclaim which = 1436 }
+command = { type = addclaim which = 1437 }
+command = { type = addclaim which = 1438 }
 command = { type = relation which = HOL value = -100 }
 command = { type = trigger which = 100148 }
 }
@@ -6138,7 +6163,7 @@ name = EVT_100150_NAME # The Creation of Indonesia
 desc = EVT_100150_DESC # . . . noone will see this . . .
 
 action_a = {
-name = ACTIONNAME_100150_A # Ok
+name = ACTION_NAME_GREAT
 command = { type = supplies value = 10 }
 command = { type = oilpool value = 50 }
 command = { type = metalpool value = 50 }
@@ -6172,10 +6197,8 @@ country = AST
 picture = "Sarawak"
 
 trigger = {
+NOT = { exists = SAR }
 control = { province = 1624 data = AST } #Kuching
-NOT = {
-exists = SAR
-}
 }
 
 name = EVT_100151_NAME # Restore the Kingdom of Sarawak?
@@ -6220,7 +6243,7 @@ name = EVT_100152_NAME # The Creation of Sarawak
 desc = EVT_100152_DESC # . . . noone will see this . . .
 
 action_a = {
-name = ACTIONNAME_100152_A # Ok
+name = ACTION_NAME_GREAT
 command = { type = supplies value = 10 }
 command = { type = oilpool value = 50 }
 command = { type = metalpool value = 50 }
@@ -6507,7 +6530,7 @@ country = SAR
 trigger = { flag = AST_SARAWAK }
 
 name = EVT_100164_NAME # Dominion of the White Rajahs
-desc = EVT_100164_DESC # H.R.H. Charles Vyner Brooke has been restored to his throne in the island territory of Sarawak. The Brooke family, with the support of the Australasian government have set about a program of establishing British rule in the region again. In addition to Sarawak, Brooke has established a protectorate over Sabah and accepted the submission of the Sultan of Brunei. The areas bountiful natural resources have seen large investments both by the Brooke family themselves and Australasian corporations. This has seen an economic boom in Kuching and Brunei, where infrastructure has been expanded. In the face of all this rapid change, Charles Brookes popularity with his erstwhile subjects remains good, largely due to his hands-off approach which fosters native traditions.
+desc = EVT_100164_DESC # H.R.H. Charles Vyner Brooke has been restored to his throne in the island territory of Sarawak. The Brooke family, with the support of the Australasian government have set about a program of establishing British rule in the region again. In addition to Sarawak, Brooke has established a protectorate over Sabah and accepted the submission of the Sultan of Brunei. The area's bountiful natural resources have seen large investments both by the Brooke family themselves and Australasian corporations. This has seen an economic boom in Kuching and Brunei, where infrastructure has been expanded. In the face of all this rapid change, Charles Brooke's popularity with his erstwhile subjects remains good, largely due to his hands-off approach which fosters native traditions.
 style = 2
 picture = "princelyindustry"
 
@@ -6516,7 +6539,7 @@ offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
 action = {
-name = ACTIONNAME_100164_A # Excellent
+name = ACTIONNAME_100164_A # Excellent!
 command = { type = dissent value = -1 }
 command = { type = construct which = ic where = 1624 value = 2 } # Kuching
 command = { type = construct which = ic where = 1625 value = 1 } # Brunei
@@ -6534,7 +6557,7 @@ country = SAR
 trigger = { flag = AST_SARAWAK }
 
 name = EVT_100165_NAME # The Oil Wells of Brunei
-desc = EVT_100165_DESC # Continued economic investment in Brunei has seen its oil output steadily rise. Now though, a new well has been discovered that will surely bring even greater welath to the Sultanate!
+desc = EVT_100165_DESC # Continued economic investment in Brunei has seen its oil output steadily rise. Today a new well has been discovered that will surely bring even greater wealth to the Sultanate!
 style = 2
 picture = "Aramco"
 
@@ -6559,7 +6582,7 @@ country = INO
 trigger = { flag = AST_INDONESIA_RAJ }
 
 name = EVT_100166_NAME # The United Indonesian Principalities
-desc = EVT_100166_DESC # The British have given power over to local hereditary rulers in Indonesia, so as to better control the territory. While ostensibly, each individual monarch is independent in his own right, Indonesia now functions as a loose confedarecy ruled by the Dewan Kerajaan (the Council of Princes) based in Jakarta. Hamengkubowono IX has been named the acting Prime Minister, a role seen as a 'first amongst equals' although many non-Javanese are unhappy with his appointment, not wishing to see Dutch domination replaced with Javan control.
+desc = EVT_100166_DESC # The British have given power over to local hereditary rulers in Indonesia, so as to better control the territory. While ostensibly, each individual monarch is independent in his own right, Indonesia now functions as a loose confedarecy ruled by the Dewan Kerajaan (the Council of Princes) based in Jakarta. Sultan of Yogyakarta Hamengkubowono IX has been named the acting Prime Minister, a role seen as a 'first amongst equals', although many non-Javanese are unhappy with his appointment, not wishing to see Dutch domination replaced with Javan control.
 style = 2
 picture = "princelydominance"
 
@@ -6568,7 +6591,7 @@ offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
 action = {
-name = ACTIONNAME_100166_A # OK
+name = ACTIONNAME_100166_A # Sekali Merdeka tetap Merdeka! (Freedom once and for all!)
 command = { type = dissent value = 10 }
 command = { type = construct which = ic where = 1647 value = 1 } # Batavia
 command = { type = construct which = infrastructure where = 1647 value = 20 }
@@ -6590,7 +6613,7 @@ flag = AST_SARAWAK
 }
 
 name = EVT_100167_NAME # The Kalimantan Crisis
-desc = EVT_100167_DESC # With the establishment of the British Kerajaan in the former Dutch East Indies, many of the non-Javan rulers have become dissatisfied with the focus on Java, Australasian aid and business often gets diverted to the states there, the outlying princes being overlooked. This is particularly keenly felt in Southern Borneo, Kalimantan as it is know to the Indonesians. Perhaps we should use this opportunity to extend the hand of friendship, as we did in Sabah and Brunei?
+desc = EVT_100167_DESC # With the establishment of the British Kerajaan in the former Dutch East Indies, many of the non-Javan rulers have become dissatisfied with the focus on Java, Australasian aid and business often gets diverted to the states there, the outlying princes being overlooked. This is particularly keenly felt in Southern Borneo, Kalimantan as it is known to the Indonesians. Perhaps we should use this opportunity to extend the hand of friendship, as we did in Sabah and Brunei?
 style = 2
 picture = "princelydominance"
 
@@ -6785,7 +6808,7 @@ name = EVT_100171_NAME # The Creation of the Malayan Union
 desc = EVT_100171_DESC # . . . noone will see this . . .
 
 action_a = {
-name = ACTIONNAME_100171_A # Ok
+name = ACTION_NAME_GREAT
 command = { type = supplies value = 10 }
 command = { type = oilpool value = 50 }
 command = { type = metalpool value = 50 }
@@ -6825,7 +6848,7 @@ offset = 300
 deathdate = { day = 29 month = december year = 1963 }
 
 action = {
-name = ACTIONNAME_100172_A # Great
+name = ACTION_NAME_GREAT
 command = { type = dissent value = -2 }
 command = { type = construct which = ic where = 1438 value = 1 } # Kuala Lumpur
 command = { type = construct which = infrastructure where = 1438 value = 20 }
@@ -6844,7 +6867,7 @@ participant = { country = AST value = 1 }
 }
 
 name = EVT_100173_NAME # The Lion City
-desc = EVT_100173_DESC # The city of Singapore since the departure of the German colonial authorities witnessed an economic boom brought about by increased local autonomy and an influx of British capital investment.
+desc = EVT_100173_DESC # The city of Singapore has witnessed an economic boom since the departure of the German colonial authorities, brought about by increased local autonomy and an influx of British capital investment.
 style = 2
 picture = "Singapore"
 
@@ -6853,7 +6876,7 @@ offset = 300
 deathdate = { day = 29 month = december year = 1963 }
 
 action = {
-name = ACTIONNAME_100173_A # Excellent
+name = ACTION_NAME_EXCELLENT
 command = { type = dissent value = -2 }
 command = { type = construct which = ic where = 1432 value = 2 } # Kuala Lumpur
 command = { type = construct which = infrastructure where = 1432 value = 20 }
@@ -6943,10 +6966,11 @@ event = {
 id = 100175
 random = no
 country = MLY
-style = 2
 
-name = EVT_100175_NAME # North Malaya joins the Union
-desc = EVT_100175_DESC # The Siamese have relented and reinstated the deposed Sultans, who have promptly sworn fealty to the Union. This is a great day for our people!
+name = EVT_100175_NAME # North Malaya rejoins the Union
+desc = EVT_100175_DESC # The Siamese have relented and reinstated the deposed Sultans of North Malaya, who have promptly sworn fealty to the Union. This is a great day for our people!
+style = 2
+picture = "Malaya1"
 
 action_a = {
 name = ACTIONNAME_100175_A # Hurrah!
@@ -7040,7 +7064,7 @@ name = EVT_100178_NAME # Hawaii Accepts!
 desc = EVT_100178_DESC # The government of Hawaii has agreed to lease us the American bases.
 
 action_a = {
-name = ACTIONNAME_100178_A # Great!
+name = ACTION_NAME_GREAT
 command = { type = dissent value = -2 }
 command = { type = free_money value = -1 }
 command = { type = money value = -150 }
@@ -7056,16 +7080,16 @@ picture = "Hawaii"
 
 trigger = { event = 100178 }
 
-name = EVT_100179_NAME # Australasian Corporations Invest In Hawaii
-desc = EVT_100179_DESC # As the ANAZACs took up possesion of their newly leased bases, many Australasian firms began to take an interest in Hawaii.
+name = EVT_100179_NAME # Australasian corporations invest in Hawaii
+desc = EVT_100179_DESC # As the ANZACs take up possesion of their newly leased bases, many Australasian firms began to take an interest in Hawaii, to the dismay of the nationalists.
 
 date = { day = 1 month = january year = 1936 }
-offset = 40
+offset = 90
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
-name = ACTIONNAME_100179_A # Thats nice...
-command = { type = dissent value = 4 } # Hawaiian nationalists
+name = ACTIONNAME_100179_A # Think of the economy!
+command = { type = dissent value = 2 } # Hawaiian nationalists
 command = { type = free_ic value = 2 }
 }
 }
@@ -7219,7 +7243,7 @@ name = EVT_100184_NAME # The Kingdom of Hawaii
 desc = EVT_100184_DESC # ...
 
 action_a = {
-name = ACTIONNAME_100184_A # oh well...
+name = ACTIONNAME_100184_A # ...
 command = { type = headofstate which = 83001 } #Edward D. Kawananakoa
 command = { type = headofgovernment which = 83017 } #James Dole
 command = { type = foreignminister which = 83020 } #Hiram Fong

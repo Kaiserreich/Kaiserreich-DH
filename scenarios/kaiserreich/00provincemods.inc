@@ -167,7 +167,7 @@ province = { id = 1410 ic = 3 anti_air = 1 #Mandalay
 	air_base = { size = 4 current_size = 4 } }
 province = { id = 1411 ic = 1 } #Pakokdu
 province = { id = 1415 ic = 1 anti_air = 2 #Rangoon
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
 
 ### CAN
 province = { id = 2089 ic = 1 manpower = 1 anti_air = 1 #Vancouver
@@ -213,10 +213,8 @@ province = { id = 2137 ic = 1 anti_air = 2 #St. Johns
 province = { id = 2138 infra = { size = 0.10 current_size = 0.10 } } #Nain
 
 ### CGX
-province = { id = 1252 ic = -4 } #Taiyuan
 province = { id = 1307 ic = 2 } #Huaihua
 province = { id = 1308 ic = 2 } #Changsha
-province = { id = 1324 ic = -3 } #Zhengzhou
 province = { id = 1351 ic = 2 anti_air = 1 #Shangrao
 	air_base = { size = 2 current_size = 2 } }
 province = { id = 1368 ic = 3 } #Shaoguan
@@ -282,7 +280,10 @@ province = { id = 352 ic = 1 anti_air = 2 } #Zagreb
 province = { id = 1247 anti_air = 4 #Beijing
 	air_base = { size = 6 current_size = 6 } }
 province = { id = 1250 ic = 2 } #Lingqiu
+province = { id = 1252 ic = -4 } #Taiyuan
 province = { id = 1321 infra = { size = 0.40 current_size = 0.40 } } #Xinxiang
+
+province = { id = 1324 ic = -3 } #Zhengzhou
 province = { id = 1327 infra = { size = 0.30 current_size = 0.30 } } #Heze
 province = { id = 1330 ic = 2 anti_air = 2 #Qing Jinan
 	air_base = { size = 4 current_size = 4 } }
@@ -341,8 +342,8 @@ province = { id = 1338 ic = 2 naval_base = { size = 5 current_size = 5 } air_bas
 province = { id = 1346 ic = 1 #Ningbo
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1358 ic = 1 } #Fuzhou
-province = { id = 1371 ic = 3 landfort = 3 anti_air = 4 oilpool = 100 supplypool = 500 #Hong Kong
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1371 ic = 3 landfort = 1 coastalfort = 1 anti_air = 4 oilpool = 100 supplypool = 500 #Hong Kong
+	naval_base = { size = 8 current_size = 8 } air_base = { size = 4 current_size = 4 } }
  
 ### ECU
 province = { id = 2040 naval_base = { size = 3 current_size = 3 } } #Santiago de Guayaquil
@@ -410,17 +411,18 @@ province = { id = 836 ic = 3 #Mogadishu
 
 ### FIN
 province = { id = 517 #Petsamo
-	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 3 current_size = 3 } }
 #province = { id = 523 energy = 2 } #Kajaani
 province = { id = 520 #Oulu
-	air_base = { size = 10 current_size = 10 } }
-province = { id = 524 coastalfort = 1 anti_air = 2 #Kola
-	naval_base = { size = 5 current_size = 5 } air_base = { size = 10 current_size = 10 } }
+	air_base = { size = 4 current_size = 4 } }
+province = { id = 524 coastalfort = 1 anti_air = 2 #Turku
+	naval_base = { size = 5 current_size = 5 } air_base = { size = 2 current_size = 2 } }
 province = { id = 525 coastalfort = 1 anti_air = 3 #Helsinki
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 province = { id = 527 anti_air = 2 #Tampere
-	air_base = { size = 10 current_size = 10 } }
-province = { id = 531 landfort = 2 anti_air = 3 manpower = 1 } #Viipuri
+	air_base = { size = 2 current_size = 2 } }
+province = { id = 531 landfort = 2 anti_air = 3 manpower = 1 #Viipuri
+	naval_base = { size = 1 current_size = 1 } air_base = { size = 4 current_size = 4 } }
 province = { id = 532 landfort = 2 } #Sortavala
 
 ### FRA
@@ -496,28 +498,34 @@ naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 
 #Arabia/Indian Ocean colonies
 province = { id = 996 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Saint Denis de la Reunion
 province = { id = 1001 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Tananarive
-province = { id = 1053 anti_air = 1 #Aden
-naval_base = { size = 2 current_size = 2 } }
-province = { id = 1509 anti_air = 1 #Jaffna
-air_base = { size = 2 current_size = 2 } }
-province = { id = 1511 coastalfort = 3 anti_air = 2 oilpool = 1000 supplypool = 2000 #Colombo
-naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 1611 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Male
-province = { id = 1612 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Port Karavatti
+province = { id = 1053 coastalfort = 1 anti_air = 4 #Aden
+naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1509 anti_air = 4 #Jaffna
+naval_base = { size = 8 current_size = 8 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1511 coastalfort = 1 anti_air = 2 oilpool = 1000 supplypool = 2000 #Colombo
+naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1611 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } } #Male
 
 #Asian colonies
 province = { id = 1241 naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } } #Tianjin
-province = { id = 1328 landfort = 1 coastalfort = 1 anti_air = 2 #Qindao
-naval_base = { size = 8 current_size = 8 } air_base = { size = 7 current_size = 7 } }
-province = { id = 1365 anti_air = 2 #Haikou
-naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
-province = { id = 1395 anti_air = 4 infra = { size = 0.40 current_size = 0.40 } oilpool = 100 supplypool = 500 #Hanoi
-	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1328 landfort = 1 coastalfort = 1 anti_air = 2 #Qingdao
+naval_base = { size = 10 current_size = 10 } air_base = { size = 7 current_size = 7 } }
+province = { id = 1365 #Haikou
+naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } }
+province = { id = 1367 coastalfort = 1 anti_air = 2 #Zhanjiang
+naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1395 anti_air = 2 infra = { size = 0.40 current_size = 0.40 } oilpool = 100 supplypool = 500 #Hanoi
+naval_base = { size = 1 current_size = 1 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1395 anti_air = 2  } #Haiphong
+naval_base = { size = 4 current_size = 4 } }
+province = { id = 1397 naval_base = { size = 2 current_size = 2 } } #Da Nang
 province = { id = 1399 anti_air = 3 oilpool = 100 supplypool = 500 #Saigon
-naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+naval_base = { size = 6 current_size = 6 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1432 landfort = 3 coastalfort = 4 anti_air = 4 oilpool = 2000 supplypool = 10000 #Singapore
-naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
-province = { id = 1624 naval_base = { size = 4 current_size = 4 } air_base = { size = 10 current_size = 10 } } #Kuching
+naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+province = { id = 1438 anti_air = 1 #Kuala Lumpur
+naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
+province = { id = 1624 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } } #Kuching
 
 #Kaiserreich
 province = { id = 126 ic = -2 } #Aachen
@@ -1054,10 +1062,10 @@ province = { id = 1091 anti_air = 2 #Gameroon
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
 
 ### PHI
-province = { id = 1565 landfort = 1 anti_air = 2 #Manila
-	naval_base = { size = 8 current_size = 8 } air_base = { size = 1 current_size = 1 } }
+province = { id = 1565 coastalfort = 3 anti_air = 2 #Manila
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1567 anti_air = 4 #Baguio
-	naval_base = { size = 2 current_size = 2 } air_base = { size = 5 current_size = 5 } }
+	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
 
 ### POL
 province = { id = 223 anti_air = 4 #Lodz
@@ -1080,7 +1088,7 @@ province = { id = 992 naval_base = { size = 3 current_size = 3  } air_base = { s
 #Asian/Oceanic colonies
 province = { id = 1372 #Macao
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
-province = { id = 1617 naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } } #Dili
+province = { id = 1617 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Dili
 
 #Portugal
 province = { id = 476 anti_air = 4 #Lisbon
@@ -1222,10 +1230,13 @@ province = { id = 340 landfort = 2 } #Sabac
 province = { id = 342 landfort = 2 } #Uzice
 
 ### SIA
-province = { id = 1422 air_base = { size = 4 current_size = 4 } } #Chon Buri
+province = { id = 1422 anti_air = 2 #Chon Buri
+	naval_base = { size = 8 current_size = 8 } air_base = { size = 2 current_size = 2 } }
 province = { id = 1423 anti_air = 2 #Bangkok
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1426 air_base = { size = 4 current_size = 4 } } #Phitsanulok
+province = { id = 1431 naval_base = { size = 2 current_size = 2 } air_base = { size = 1 current_size = 1 } } #Songkhla
+province = { id = 1435 naval_base = { size = 2 current_size = 2 } } #Penang
 
 ### SPA
 
