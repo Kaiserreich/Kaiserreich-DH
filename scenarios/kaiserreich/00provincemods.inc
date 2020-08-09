@@ -509,22 +509,22 @@ province = { id = 1611 naval_base = { size = 2 current_size = 2 } air_base = { s
 #Asian colonies
 province = { id = 1241 naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } } #Tianjin
 province = { id = 1328 landfort = 1 coastalfort = 1 anti_air = 2 #Qingdao
-naval_base = { size = 10 current_size = 10 } air_base = { size = 7 current_size = 7 } }
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 7 current_size = 7 } }
 province = { id = 1365 #Haikou
-naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } }
+	naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } }
 province = { id = 1367 coastalfort = 1 anti_air = 2 #Zhanjiang
-naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1395 anti_air = 2 infra = { size = 0.40 current_size = 0.40 } oilpool = 100 supplypool = 500 #Hanoi
-naval_base = { size = 1 current_size = 1 } air_base = { size = 4 current_size = 4 } }
-province = { id = 1392 anti_air = 2  } #Haiphong
-naval_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 1 current_size = 1 } air_base = { size = 4 current_size = 4 } }
+province = { id = 1392 anti_air = 2 #Haiphong
+	naval_base = { size = 4 current_size = 4 } }
 province = { id = 1397 naval_base = { size = 2 current_size = 2 } } #Da Nang
 province = { id = 1399 anti_air = 3 oilpool = 100 supplypool = 500 #Saigon
-naval_base = { size = 6 current_size = 6 } air_base = { size = 10 current_size = 10 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1432 landfort = 3 coastalfort = 4 anti_air = 4 oilpool = 2000 supplypool = 10000 #Singapore
-naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1438 anti_air = 1 #Kuala Lumpur
-naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
+	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
 province = { id = 1624 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } } #Kuching
 
 #Kaiserreich
