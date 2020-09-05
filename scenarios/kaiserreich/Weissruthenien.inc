@@ -21,9 +21,15 @@ ai = "kaiserreich\Weissruthenien.ai"
 
 
 #### cabinet
-headofstate = { type = 9 id = 517001 }
-headofgovernment = { type = 9 id = 517002 }
-ministerofsecurity = { type = 9 id = 517005 }
+	headofstate = { type = 9 id = 517001 }
+	headofgovernment = { type = 9 id = 517002 }
+	foreignminister = { type = 9 id = 971294 } #Pyotr Makhrov
+	armamentminister = { type = 9 id = 517025 } #Arkady Smolich
+	ministerofsecurity = { type = 9 id = 517005 }
+	ministerofintelligence = { type = 9 id = 971295 } #Pyotr Makhrov
+	chiefofstaff = { type = 9 id =  517095 } #Pyotr Sharangovich
+	chiefofarmy = { type = 9 id = 971267 } #Stanislav Bulak-Balakhovich
+
 #### Resource Reserves
 capital = 599 
 

@@ -1230,10 +1230,9 @@ province = { id = 340 landfort = 2 } #Sabac
 province = { id = 342 landfort = 2 } #Uzice
 
 ### SIA
-province = { id = 1422 anti_air = 2 #Chon Buri
-	naval_base = { size = 8 current_size = 8 } air_base = { size = 2 current_size = 2 } }
+province = { id = 1422 anti_air = 2 air_base = { size = 2 current_size = 2 } } #Chon Buri
 province = { id = 1423 anti_air = 2 #Bangkok
-	naval_base = { size = 4 current_size = 4 } air_base = { size = 6 current_size = 6 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1426 air_base = { size = 4 current_size = 4 } } #Phitsanulok
 province = { id = 1431 naval_base = { size = 2 current_size = 2 } air_base = { size = 1 current_size = 1 } } #Songkhla
 province = { id = 1435 naval_base = { size = 2 current_size = 2 } } #Kuala Lumpur

@@ -183,7 +183,7 @@ relation = {   tag =  	MEX	value = 		100	   }
 
 deactivate = { 6010 6210 6570 6560 6390 } 
 
-dormant_teams = { 1451 1453 1457 }
+dormant_teams = { 1451 1453 1457 1465 }
 
 dormant_ministers = { 2010 }
 
