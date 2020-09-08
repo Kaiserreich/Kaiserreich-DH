@@ -22,10 +22,10 @@ ai = "kaiserreich\Ukraine.ai"
  	armamentminister = { type = 9 id = 518035 }
  	ministerofsecurity = { type = 9 id = 518045 }
  	ministerofintelligence = { type = 9 id = 518048 }
- 	chiefofstaff = { type = 9 id =  518007 }
- 	chiefofarmy = { type = 9 id = 518067 }
- 	chiefofnavy = { type = 9 id = 518072 }
-
+	chiefofstaff = { type = 9 id =  518007 }
+	chiefofarmy = { type = 9 id = 518213 }
+	chiefofnavy = { type = 9 id = 518072 }
+	chiefofair = { type = 9 id = 518077 } #Viktor Pavlenko
 
 #### Resource Reserves
 capital = 617 

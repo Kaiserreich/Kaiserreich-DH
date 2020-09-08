@@ -315,6 +315,7 @@ dormant_leaders = { #AUS
 				  #LAT - United Baltic Duchy
 				  1240 1241 1242 1243 1244 1245
 				  1239 #CZE
+				  285 #CON - Mittelafrika
 				  }
 
 ##########
