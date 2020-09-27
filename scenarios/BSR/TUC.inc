@@ -164,4 +164,84 @@ landunit = {
   }
   }		
 
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 6 }
+   name = "Birmingham Militia"
+   strength = 25
+   max_strength = 35
+   model = 4
+   type = militia
+ }  
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 7 }
+   name = "Lancaster Militia"
+   strength = 25
+   max_strength = 35
+   model = 4
+   type = militia
+ }
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 8 }
+   name = "Newcastle Militia"
+   strength = 25
+   max_strength = 35
+   model = 4
+   type = militia
+ } 
+ 
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 9 }
+   name = "Lancaster Infantry"
+   strength = 30
+   max_strength = 30
+   model = 6
+   type = infantry
+ } 
+ 
+   landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 10 }
+   name = "Plymouth Infantry"
+   strength = 30
+   max_strength = 30
+   model = 6
+   type = infantry
+ } 
+
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 11 }
+   name = "Portsmouth Infantry"
+   strength = 30
+   max_strength = 30
+   model = 6
+   type = infantry
+ } 
+
+   landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 12 }
+   name = "Strathclyde Militia"
+   strength = 25
+   max_strength = 25
+   model = 4
+   type = militia
+ } 
+
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 13 }
+   name = "Lothian Militia"
+   strength = 25
+   max_strength = 25
+   model = 4
+   type = militia
+ } 
+
  }

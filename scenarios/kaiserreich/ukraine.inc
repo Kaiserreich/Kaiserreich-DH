@@ -153,11 +153,11 @@ dormant_teams = {
 
 landunit =
   { id       = { type = 17344 id = 1 }
-    name     = "1yi Ukrayinskyi Korpus"
+    name     = "1yy Ukrayins'kyy Korpus"
     location = 617
     division =
     { id       = { type = 17344 id = 2 }
-      name     = "1. Strelkovaya Diviziya"
+      name     = "1. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 8
@@ -165,7 +165,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 3 }
-      name     = "5. 'Dnepropetrov.' Strelk. Div."
+      name     = "5. 'Katerynoslav.' Strilk. Dyv."
       strength = 100
       type     = infantry
 	  model = 8
@@ -173,7 +173,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 4 }
-      name     = "2. Strelkovaya Diviziya"
+      name     = "2. Strilkova Dyviziya"
       strength = 100
       type     = infantry
       model = 8
@@ -183,7 +183,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 47 }
-      name     = "28. Strelkovaya Diviziya"
+      name     = "28. Strilkova Dyviziya"
       strength = 100
       type     = infantry
       model = 8
@@ -193,7 +193,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 48 }
-      name     = "29. Strelkovaya Diviziya"
+      name     = "29. Strilkova Dyviziya"
       strength = 100
       type     = infantry
       model = 8
@@ -203,7 +203,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 50 }
-      name     = "30. Strelkovaya Diviziya"
+      name     = "30. Strilkova Dyviziya"
       strength = 100
       type     = infantry
       model = 8
@@ -213,7 +213,7 @@ landunit =
     
     division =
     { id       = { type = 17344 id = 51 }
-      name     = "31. Strelkovaya Diviziya"
+      name     = "31. Strilkova Dyviziya"
       strength = 100
       type     = infantry
       model = 8
@@ -223,7 +223,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 52 }
-      name     = "32. Strelkovaya Diviziya"
+      name     = "32. Strilkova Dyviziya"
       strength = 100
       type     = infantry
       model = 8
@@ -233,7 +233,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 53 }
-      name     = "2. Kavaleriyskaya Diviziya"
+      name     = "2. Kavaleriys'ka Dyviziya"
       strength = 90
       type     = cavalry
 	  model = 8
@@ -241,7 +241,7 @@ landunit =
 
     division =
     { id       = { type = 17344 id = 54 }
-      name     = "3. Kavaleriyskaya Diviziya"
+      name     = "3. Kavaleriys'ka Dyviziya"
       strength = 90
       type     = cavalry
 	  model = 8
@@ -250,32 +250,32 @@ landunit =
 
   landunit =
   { id       = { type = 17344 id = 5 }
-    name     = "2yi Ukrayinskyi Korpus"
+    name     = "2yy Ukrayins'kyy Korpus"
     location = 635
     division =
     { id       = { type = 17344 id = 6 }
-      name     = "3. Strelkovaya Diviziya"
+      name     = "3. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 8
     }
     division =
     { id       = { type = 17344 id = 7 }
-      name     = "6. Strelkovaya Diviziya"
+      name     = "6. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 8
     }
     division =
     { id       = { type = 17344 id = 8 }
-      name     = "7. Strelkovaya Diviziya"
+      name     = "7. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 8
     }
     division =
     { id       = { type = 17344 id = 9 }
-      name     = "1. Kavaleriyskaya Diviziya"
+      name     = "1. Kavaleriys'ka Dyviziya"
       strength = 30
       type     = cavalry
 	  model = 8
@@ -283,11 +283,11 @@ landunit =
   }
   landunit =
   { id       = { type = 17344 id = 10 }
-    name     = "3yi Ukrayinskyi Korpus"
+    name     = "3iy Ukrayins'kyy Korpus"
     location = 636
     division =
     { id       = { type = 17344 id = 11 }
-      name     = "4. Strelkovaya Diviziya"
+      name     = "4. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
@@ -297,21 +297,21 @@ landunit =
     }
     division =
     { id       = { type = 17344 id = 12 }
-      name     = "8. Strelkovaya Diviziya"
+      name     = "8. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 13 }
-      name     = "9. Strelkovaya Diviziya"
+      name     = "9. Strilkova Dyviziya"
       strength = 100
 	  model = 7
       type     = infantry
     }
     division =
     { id       = { type = 17344 id = 14 }
-      name     = "1. Motorizovannaya Diviziya"
+      name     = "1. Motoryzovana Dyviziya"
       strength = 80
       type     = motorized
 	  model = 0
@@ -321,11 +321,11 @@ landunit =
   }
   landunit =
   { id       = { type = 17344 id = 15 }
-    name     = "4yi Ukrayinskyi Korpus"
+    name     = "4yy Ukrayins'kyy Korpus"
     location = 612
     division =
     { id       = { type = 17344 id = 16 }
-      name     = "10. Strelkovaya Diviziya"
+      name     = "10. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
@@ -334,21 +334,21 @@ landunit =
     }
     division =
     { id       = { type = 17344 id = 17 }
-      name     = "13. Strelkovaya Diviziya"
+      name     = "13. Strilkova Dyviziya"
       strength = 80
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 18 }
-      name     = "11. Strelkovaya Diviziya"
+      name     = "11. Strilkova Dyviziya"
       strength = 80
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 46 }
-      name     = "27. Strelkovaya Diviziya"
+      name     = "27. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
@@ -359,25 +359,25 @@ landunit =
   }
   landunit =
   { id       = { type = 17344 id = 19 }
-    name     = "5yi Ukrayinskyi Korpus"
+    name     = "5yy Ukrayins'kyy Korpus"
     location = 641
     division =
     { id       = { type = 17344 id = 20 }
-      name     = "12. Strelkovaya Diviziya"
+      name     = "12. Strilkova Dyviziya"
       strength = 80
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 21 }
-      name     = "14. Strelkovaya Diviziya"
+      name     = "14. Strilkova Dyviziya"
       strength = 80
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 42 }
-      name     = "23. Strelkovaya Diviziya"
+      name     = "23. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
@@ -387,7 +387,7 @@ landunit =
     }
     division =
     { id       = { type = 17344 id = 45 }
-      name     = "26. Strelkovaya Diviziya"
+      name     = "26. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
@@ -398,32 +398,32 @@ landunit =
   }
   landunit =
   { id       = { type = 17344 id = 22 }
-    name     = "6yi Ukrayinskyi Korpus"
+    name     = "6yy Ukrayins'kyy Korpus"
     location = 633
     division =
     { id       = { type = 17344 id = 23 }
-      name     = "15. Strelkovaya Diviziya"
+      name     = "15. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 24 }
-      name     = "20. Strelkovaya Diviziya"
+      name     = "20. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 25 }
-      name     = "16. Strelkovaya Diviziya"
+      name     = "16. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
     }
     division =
     { id       = { type = 17344 id = 44 }
-      name     = "25. Strelkovaya Diviziya"
+      name     = "25. Strilkova Dyviziya"
       strength = 100
       type     = infantry
 	  model = 7
@@ -434,32 +434,32 @@ landunit =
   }
   landunit =
   { location = 626
-    name     = "7yi Ukrayinskyi Korpus"
+    name     = "7yy Ukrayins'kyy Korpus"
     id       = { type = 20600 id = 25 }
     division =
     { id       = { type = 20600 id = 26 }
-      name     = "17. Strelkovaya Diviziya"
+      name     = "17. Strilkova Dyviziya"
       type     = infantry
 	  model = 7
       strength = 70
     }
     division =
     { id       = { type = 20600 id = 27 }
-      name     = "18. Strelkovaya Diviziya"
+      name     = "18. Strilkova Dyviziya"
       type     = infantry
 	  model = 7
       strength = 70
     }
     division =
     { id       = { type = 20600 id = 28 }
-      name     = "19. Strelkovaya Diviziya"
+      name     = "19. Strilkova Dyviziya"
       type     = infantry
 	  model = 7
       strength = 70
     }
     division =
     { id       = { type = 17344 id = 43 }
-      name     = "24. Strelkovaya Diviziya"
+      name     = "24. Strilkova Dyviziya"
       strength = 100
       type     = infantry
       model = 7
@@ -470,7 +470,7 @@ landunit =
   }
   navalunit =
   { id       = { type = 17344 id = 28 }
-    name     = "Cernoje Flote"
+    name     = "Ukrayins'kyy Derzhavnyy Flot"
     location = 641 # Sevastopol
     base     = 641
     division =
@@ -481,13 +481,13 @@ landunit =
     }
     division =
     { id    = { type = 17344 id = 40 }
-      name  = "UNRS Soborna Ukraina"
+      name  = "UNRS Soborna Ukrayina"
       type  = battleship
       model = 3
     }
     division =
     { id    = { type = 17344 id = 30 }
-      name  = "UNRS Hetman Sahaidachnyi"
+      name  = "UNRS Het'man Sahaydachnyy"
       type  = heavy_cruiser
       model = 2
     }
@@ -499,44 +499,44 @@ landunit =
     }
     division =
     { id    = { type = 17344 id = 32 }
-      name  = "UNRS Kutuzov"
+      name  = "UNRS Rozumovsky"
       type  = light_cruiser
       model = 2
     }
     division =
     { id    = { type = 17344 id = 33 }
-      name  = "UNRS Ivano-Frankivs'k"
+      name  = "UNRS Stanislaviv"
       type  = light_cruiser
       model = 2
     }
     division =
     { id    = { type = 17344 id = 34 }
-      name  = "5. Flotiliya Esmintsev"
+      name  = "5. Flotyliya Esmintsiv"
       type  = destroyer
       model = 3
     }
     division =
     { id    = { type = 17344 id = 35 }
-      name  = "11. Flotiliya Podlodok"
+      name  = "11. Flotyliya Pidvodnykh Chovniv"
       type  = submarine
       model = 1
     }
     division =
     { id    = { type = 17344 id = 36 }
-      name  = "24. Flotiliya Podlodok"
+      name  = "24. Flotyliya Pidvodnykh Chovniv"
       type  = submarine
       model = 1
     }
     division =
     { id    = { type = 17344 id = 37 }
-      name  = "25. Flotiliya Podlodok"
+      name  = "25. Flotyliya Pidvodnykh Chovniv"
       type  = submarine
       model = 1
     }
   }
   airunit =
   { id       = { type = 17344 id = 26 }
-    name     = "Ukrainski Povitryani viiska"
+    name     = "Ukrayins'ki povitryani viys'ka"
     location = 617
     base     = 617
     division =
