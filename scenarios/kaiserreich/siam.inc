@@ -19,7 +19,16 @@ ai = "kaiserreich\Siam.ai"
 
 #### cabinet
 
-headofstate = { type = 9 id = 62115  }
+headofstate = { type = 9 id = 62115 }
+headofgovernment = { type = 9 id = 62151 }
+foreignminister = { type = 9 id = 62125 } #Prince Wan Waithayakorn
+armamentminister = { type = 9 id = 62127 } #Manopakorn Nititada
+ministerofsecurity = { type = 9 id = 62122  } #Prince Rangsit Prayurasakdi
+ministerofintelligence = { type = 9 id = 62134 } #Phraya Songsuradet
+chiefofstaff = { type = 9 id = 62138 } #Sri Sitthisongkhram
+chiefofarmy = { type = 9 id = 62143 } #Prince Boworadet Kritsadakorn
+chiefofnavy = { type = 9 id = 62148 } #Prince Abhakara Kiartivongse
+chiefofair = { type = 9 id = 62108 } #Phraya Chalerm Akat
 
 #### Resource Reserves
 
@@ -59,43 +68,47 @@ relation = { tag = MEN value = 75 }
 # Group D 1936 techs
 #######################
 
-#Interwar Fighter  
-4500 4510 4520 4530 4540 4550 4010   
-#Interwar Bomber 
-4600 4610 4620 4630 4120   
-#Basic Armoured Car  
-2860 2870 2880 2020   
-#Great War Heavy Field Artillery 
-2290 2300 2310  
-#SW Tank 
-7600 7610 
-#Great War Infantry Division  
+#Interwar Fighter
+4500 4510 4520 4530 4540 4550 4010
+#Interwar Bomber
+4600 4610 4620 4630 4120
+#Basic Armoured Car
+2860 2870 2880 2020
+#Great War Heavy Field Artillery
+2290 2300 2310
+#SW Tank
+7600 7610
+#Great War Infantry Division
 1010  1020 1030 1040 1050 1060 1070
-#Great War Cavalry Division  
+#Great War Cavalry Division
 13060 13070 13080 1310 1320 1330 1340 1350
-#Early Mountain Division 
-1160  1170 1180 1190 1200 1210 1220 1230 1240
-#Interbellum Supply 
+#Early Mountain Division
+1160  1170 1180
+#1922 Naval Infantry Division
+1560
+#Interbellum Supply
 1910 1920 1930 1940 1950 1960
-#Early Static Anti-Air Artillery 
+#Early Static Anti-Air Artillery
 2800 2450 21180 21190
-#Basic Anti-Air Artillery Brigade 
-2810 2820 2510  
+#Basic Anti-Air Artillery Brigade
+2810 2820 2510
 #Manufactoring
-5810 5820 
-#Improved Construction Engineering 
-5800 5080 
+5810 5820
+#Improved Construction Engineering
+5800 5080
 
-#Great War Destroyer 
-3010 3020 3030 3040 
-#Early Light Cruiser 
+#Great War Destroyer
+3010 3020 3030 3040
+#Early Light Cruiser
 3110 3120 3130
-#Short Range Submarine 
-3610 3620 
+#Short Range Submarine
+3610 3620
 #Naval Doctrines
-8010 8050  
+8010 8050 8070 8080
+#Basic Amphibious Warfare
+82300
 #Engineers
-1830 1840 
+1830 1840
 #Torpedo & ASW 18
 3720 3730 3736 3740 3750 3900
 #Troopships
@@ -109,8 +122,9 @@ relation = { tag = MEN value = 75 }
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
-
 	}
+
+dormant_teams = { 9121 } #Yatsushiro Sukeyoshi
 
 #########  OOB (...)
 

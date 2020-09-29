@@ -23,7 +23,9 @@ ai = "kaiserreich\United Provinces.ai"
 	money = 10
 
 	capital = 	2080
-	 manpower = 8
+	manpower = 8
+
+	free = { ic = 2 }
 
 SpyInfo  = {  country = "NIC" NumberOfSpies = 2  } 
 

@@ -17,17 +17,17 @@ ai = "kaiserreich\Holland.ai"
     }
 
 #### cabinet
-headofstate = { type = 9 id =     8001  }
-headofgovernment = { type = 9 id =  8002  }
-    foreignminister = { type = 9 id = 8066   }
-    armamentminister = { type = 9 id =  8004 }
-    ministerofsecurity = { type = 9 id =   8005  }
-    ministerofintelligence = { type = 9 id =  8006  }
-    chiefofstaff = { type = 9 id =    8007 }
-    chiefofarmy = { type = 9 id = 8008    }
-    chiefofnavy = { type = 9 id =   8009 }        
-    chiefofair = { type = 9 id =   8010   }
-    
+	headofstate = { type = 9 id = 8001 }
+	headofgovernment = { type = 9 id = 8002 }
+	foreignminister = { type = 9 id = 8066 }
+	armamentminister = { type = 9 id = 8004 }
+	ministerofsecurity = { type = 9 id = 8005 }
+	ministerofintelligence = { type = 9 id = 8006 }
+	chiefofstaff = { type = 9 id = 8157 } #Izaak Reynders
+	chiefofarmy = { type = 9 id = 8154 } #Godfried van Voorst tot Voorst
+	chiefofnavy = { type = 9 id = 8028 } #Hendrikus Ferwerda
+	chiefofair = { type = 9 id = 8236 } #Johan G.W. Zegers
+
 #### Resource Reserves
 
 SpyInfo  = {  country = "HOL" NumberOfSpies = 4  } 
@@ -56,8 +56,10 @@ SpyInfo  = {  country = "HOL" NumberOfSpies = 4  }
     nationalprovinces =   {
 		125 122 123 118 119 124 120 121
 	}
-	
-	dormant_leaders = { 7878 7879 7880 7881 7882 7883 7884 7885 7886 7887 7888 7889 7890 7891 7892 7893  }
+
+dormant_teams = { 2301 2314 2315 2324 } #BEL teams
+
+dormant_leaders = { }
 
 diplomacy = {
 relation = {   tag =    	BEL	value = 		24	   }  

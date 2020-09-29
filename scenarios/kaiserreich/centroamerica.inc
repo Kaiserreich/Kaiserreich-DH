@@ -27,6 +27,8 @@ ai = "kaiserreich\Centroamerica.ai"
 
 	capital = 2088
 
+	free = { ic = 2 }
+
 SpyInfo  = {  country = "GUA" NumberOfSpies = 2  } 
 
     ownedprovinces =      {

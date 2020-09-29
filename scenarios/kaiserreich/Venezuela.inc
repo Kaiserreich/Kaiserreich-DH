@@ -1,13 +1,6 @@
 ##############################
 # Country definition for VEN #
 ##############################
-province = {
-  id = 1988 # Maracaibo
-  anti_air = 2
-  air_base = { size = 1 current_size = 1 }
-  naval_base = { size = 6 current_size = 6 }
-}
-province = { id = 1993 anti_air = 2 } # Caracas
 
 #####################
 # Country main data #
