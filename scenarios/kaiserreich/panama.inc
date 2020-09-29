@@ -24,6 +24,8 @@ country = {
   supplies       = 500
   money          = 10
 
+  free = { ic = 2 }
+
   diplomacy = {
     relation = { tag = USA value = 175 }
   }

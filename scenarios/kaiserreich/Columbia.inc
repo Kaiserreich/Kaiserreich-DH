@@ -2,9 +2,6 @@
 
 #### Colombia ####
 
-province = { id = 1990 anti_air = 1 } # Cucuta
-province = { id = 1991 anti_air = 2 } # Santa Fe de Bogota
-
 #####################
 # Country main data #
 #####################

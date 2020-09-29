@@ -641,8 +641,10 @@ province = { id = 377 anti_air = 1 #Athens
 province = { id = 388 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } } #Nicosia
 
 ### GUA
-province = { id = 2079 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #San Salvador
-province = { id = 2088 anti_air = 1 #Cuidad de Guatemala
+province = { id = 2079 ic = -2 #San Salvador
+	naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } }
+province = { id = 2087 ic = -4 manpower = 1 } #Puerto Barrios
+province = { id = 2088 anti_air = 1 ic = -2 manpower = 3 #Cuidad de Guatemala
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
 ### GUY
@@ -700,7 +702,7 @@ province = { id = 125 manpower = 3 #Rotterdam
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 
 ### HON
-province = { id = 2085 anti_air = 1 #Tegucigalpa
+province = { id = 2085 anti_air = 1 ic = -2 manpower = 2 #Tegucigalpa
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
 ### HUN
@@ -757,8 +759,12 @@ province = { id = 434 anti_air = 1 #Cagliari
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
 
 ### IRE
+province = { id = 31 anti_air = 1 #Cork
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
 province = { id = 34 anti_air = 2 #Dublin
-	naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }	
+	naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
+province = { id = 36 anti_air = 2 coastalfort = 1 #Belfast
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
 
 ### JAP
 
@@ -952,9 +958,9 @@ province = { id = 1169 ic = 1 } #Chita
 province = { id = 1467 ic = 4 } #Gorakhpur
 
 ### NIC
-province = { id = 2080 #Managua
+province = { id = 2080 infra = { size = 0.40 current_size = 0.40 } ic = -2 #Managua
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 1 current_size = 1 } }
-province = { id = 2081 anti_air = 1 #San Jose
+province = { id = 2081 anti_air = 1 ic = -2 #San Jose
 	air_base = { size = 4 current_size = 4 } }
 
 ### NOR
@@ -1047,7 +1053,7 @@ province = { id = 1518 ic = -1 } #Ahmedabad
 
 ### PAN
 province = { id = 2078 anti_air = 2 infra = { size = 0.40 current_size = 0.40 } #Cuidad de Panama
-	naval_base = { size = 5 current_size = 5 } air_base = { size = 1 current_size = 1 } }
+	naval_base = { size = 5 current_size = 5 } air_base = { size = 1 current_size = 1 } ic = -2 }
 
 ### PER
 province = { id = 1081 anti_air = 1 #Rast
@@ -1497,8 +1503,11 @@ naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 
 
 ### VEN
 province = { id = 1988 anti_air = 2 #Maracaibo
-naval_base = { size = 6 current_size = 6 } air_base = { size = 1 current_size = 1 } }
-province = { id = 1993 anti_air = 2 } #Caracas
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 1 current_size = 1 } }
+province = { id = 1989 ic = 1 } #Barquisimeto
+province = { id = 1993 anti_air = 2 ic = 4 #Caracas
+	naval_base = { size = 4 current_size = 4 } }
+province = { id = 1996 ic = -5 } #Barinas
 
 ### VIC
 province = { id = 728 ic = 3 anti_air = 2 #Oran
