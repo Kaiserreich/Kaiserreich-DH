@@ -1,5 +1,6 @@
-# USA 1936 AI File by Lothos
-# Edited for Kaiserreich by Andromedos and others    edit Dr Bob
+# Pacific States of America (CAL) 1936 AI File by Lothos
+# Edited for Kaiserreich by Andromedos and others edited by Dr Bob
+# Updated for 1.9.3 by Maxian and Eberronguy
 
 switch = no # [yes/no]
 max_front_ratio = 1.2 
@@ -24,16 +25,18 @@ combat = { }
 
 # Special resistance against "influence" by the listed nations. Value range = [0 - 10]  
 resistance = {  
-CSA = 4
-FRA = 4
+CSA = 6
+FRA = 6
+TEX = 4
+USA = 4
+U28 = 6
 }
 
 claim_acceptance = -150
 protect = {
-	
+	U15 # Hawaii
 }
 target = {
-
 
 } 
 trade = {
@@ -48,25 +51,31 @@ trade = {
 
 	favored = {
 	JAP = 150
+	U15 = 100
 	CAN = 100
-	VIC = 100
+	VIC = 30
 	SPA = 50
 	AST = 50
+	NZL = 50
 	BRA = 50
 	HOL = 50
+	PHI = 25
 	POR = 25
 	GUY = 25
+	CHI = 25
 	PAK = 25
 	BOL = 10
 	ECU = 10
+	U27 = 10
+	MAN = 10
 	}
-	embargo = { CSA TEX }
+	embargo = { CSA TEX U28 }
 }
 tech_sharing = {
 	favored = {
 
 	}
-	embargo = { CSA TEX }
+	embargo = { CSA TEX U28 }
 	not = { }
 	prioritized = {
 		# Arcriculture
@@ -196,6 +205,40 @@ spyprefs =
 		disrupt_techteam	= 5
 		country 			= CSA
 	}
+
+        spyprefsdata = {
+		country_priorities	= 3
+		NumberOfSpies		= 3
+		min_number_of_spies = 1
+		steal_blueprint 	= 10
+		minister_assassination = 1
+		smear_campaign 		= 3
+		coup 				= 0
+		sabotage_industry 	= 5
+		nuclear_sabotage 	= 0
+		found_partisans 	= 0
+		massmedia 			= 3
+		counter_espionage 	= 5
+		disrupt_techteam	= 5
+		country 			= U28
+	}
+
+        spyprefsdata = {
+		country_priorities	= 5
+		NumberOfSpies		= 3
+		min_number_of_spies = 1
+		steal_blueprint 	= 10
+		minister_assassination = 1
+		smear_campaign 		= 3
+		coup 				= 0
+		sabotage_industry 	= 5
+		nuclear_sabotage 	= 0
+		found_partisans 	= 0
+		massmedia 			= 6
+		counter_espionage 	= 5
+		disrupt_techteam	= 5
+		country 			= JAP
+	}
 }
 
 
@@ -214,11 +257,15 @@ construction = {
 		1900 # Phoenix
 		1874 # Seattle
 		1878 # Portland
+		1734 # Pearl Harbor
 	} 
 
-	coastal_fort = no
-	max_coastal_level = 3
-	coastal_fort_provs = { } 
+	coastal_fort = yes
+	max_coastal_level = 4
+	coastal_fort_provs = { 
+		1734 # Pearl Harbor
+		2631 # Midway Island
+} 
 
 	radar_station = atwar
 	max_radar = 4
@@ -228,6 +275,7 @@ construction = {
 		1900 # Phoenix
 		1874 # Seattle
 		1878 # Portland
+		1734 # Pearl Harbor
 	}
 
 	air_base = yes
@@ -238,17 +286,21 @@ construction = {
 		1900 # Phoenix
 		1874 # Seattle
 		1878 # Portland
+		1734 # Pearl Harbor
+		2631 # Midway Island
 	}
 
 	naval_base = yes
 	max_naval_base = 10
 	naval_base_provs = {
 		1878 # Portland
+		1734 # Pearl Harbor
+		2631 # Midway Island
 	}
 
-	land_fort = no
-	max_land_level = 10
-	fort_borders = { }
+	land_fort = yes
+	max_land_level = 4
+	fort_borders = { TEX CSA }
 
 	ic_at_war = no
 	force_ic_until = 1930
@@ -268,61 +320,61 @@ military = {
 	max_batch_home_front 	= 380
 
 	#### Divisions etc...
-	infantry 		= 26
+	infantry 		= 16
 	cavalry 		= 4
 	motorized 		= 8
 	mechanized 		= 0
-	light_armor 	= 6
+	light_armor 		= 6
 	armor 			= 0
-	paratrooper 	= 0
+	paratrooper 		= 0
 	marine 			= 3
-	bergsjaeger 	= 6
+	bergsjaeger 		= 6
 	garrison		= 0
-	hq 				= 7
+	hq 			= 4
 	militia 		= 0
-	d_01			= 26        #  Light Infantry
-#					86 %
+	d_01			= 20        #  Light Infantry
+#					67 %
 	interceptor 		= 6
-	multi_role 			= 2
-	cas 				= 0
-	strategic_bomber 	= 1
-	tactical_bomber 	= 5
+	multi_role 		= 0
+	cas 			= 0
+	strategic_bomber 	= 5
+	tactical_bomber 	= 3
 	naval_bomber 		= 0
 	transport_plane 	= 0
 	flying_bomb 		= 0
 	flying_rocket 		= 0
 #					14 %
-	battleship 			= 0
-	carrier 			= 0
-	light_carrier		= 0
+	battleship 		= 0
+	carrier 		= 2
+	light_carrier		= 4
 	escort_carrier		= 0
-	destroyer 			= 0
-	light_cruiser 		= 0
+	destroyer 		= 4
+	light_cruiser 		= 3
 	heavy_cruiser 		= 0
 	battlecruiser 		= 0
-	submarine 			= 0
+	submarine 		= 2
 	nuclear_submarine 	= 0
-	transports 			= 0
-#					0 %
+	transports 		= 4
+#					19 %
 
-	artillery 			= 25
+	artillery 		= 25
 	sp_artillery 		= 0
 	rocket_artillery	= 5
 	sp_rct_artillery 	= 0
-	anti_tank 			= 0
+	anti_tank 		= 0
 	tank_destroyer 		= 0
-	light_armor_brigade = 5
+	light_armor_brigade 	= 5
 	heavy_armor 		= 0
 	super_heavy_armor 	= 0
 	armored_car 		= 10
-	anti_air 			= 4
-	police 				= 0
-	engineer 			= 6
-	b_01				= 5
-	amph_armor 			= 3
+	anti_air 		= 4
+	police 			= 0
+	engineer 		= 6
+	b_01			= 5
+	amph_armor 		= 3
 	glider_armor		= 0
 	glider_artillery	= 0
-	super_heavy_artillery = 0
+	super_heavy_artillery 	= 0
 
 	light_cag = 100.000
 	cag = 100.000
@@ -357,6 +409,9 @@ technology = {
 		# Mechanized
 		1470 1480 1490 1510 1520
 
+		# Mountain Unit techs
+		#1160 1170 1180 1190 1200 1210 1220 1230 1240 1250 1260 1270 1280 1290 1300 13030 13040 13050
+
 	# Armored Cars
 	2860 2870 2880 2020 2150 2160 2890 11110
 
@@ -387,11 +442,29 @@ technology = {
 		# Tactical Bomber
 		4140 4150 4160
 
+		# Strategic bombers
+		4220 4230 4240 4246 15160 15170 16030 
+
+		# Escort Fighters
+		4050 4080 4110 4116 15060 15070 15080
+
 		# Carrier
 		3510 3520 3530 3540 3550 12060 3560 3570
 
 		# Light Carrier
 		12100 12110 12120 12130 12140 12150
+
+		# Light Cruiser
+		3110 3120 3130 3140 3150 3160 12010 3170 3180 
+	
+		# Submarines
+		3420 3430 3670 3440 3690 3700 
+
+		# Destroyers
+		3010 3020 3030 3040 3050 3060 3070 12000 3080 3090		
+
+		# Troopships 
+		3810 3820 3830 3840 3850 3860 
 
 		# MEDICINE
 		5600 5610 5620 5630 5640 5650 5660 5670
@@ -402,8 +475,8 @@ technology = {
 		# Engineering
 		5800 5080 5090 5100 5900 5910
 
-		#assembly lines 5160
-		5140 5150 5180
+		#assembly lines 
+		5160 5140 5150 5180
 		
 		# Computers
 		5310 54010 54020 54030 5320 5330 5340
@@ -429,19 +502,13 @@ technology = {
 		# Mining/Refining
 		55000 55010 55020 55030
 
+		# Rocket
+		#5560 7550 7560 7570 7010 7020 15500
+
 	} 
 	ignore = {
 		# Battle Cruiser
 		3310 3320 3330 3340 3350 12030
-
-		# Mountain Unit techs
-		#1160 1170 1180 1190 1200 1210 1220 1230 1240 1250 1260 1270 1280 1290 1300 13030 13040 13050
-
-		# Strategic bombers
-		4220 4230 4240
-
-		# Escort/Multirole Fighters
-		#4040 4050 4070 4080 4100 4110
 
 		# CAS
 		4400 4170 4280 4450 4180 15120 15130 
@@ -449,8 +516,6 @@ technology = {
 		# Nuclear
 		5470 5480 5490 5500 5510 5520 5530 5540 7170 7180 7190 16010 16020
 
-		# Rocket
-		#5560 7550 7560 7570 7010 7020 15500
 
 		# CAS Air Doctrines 9040
 		9050 9060 9070 9080 9270 9280 9290 9300
@@ -467,7 +532,7 @@ technology = {
 	land_doctrines 	= 2
 	secret_weapons 	= 2
 	air_doctrines 	= 2
-	naval_doctrines 	= 1
+	naval_doctrines = 1
 }  
 ###################################
 # Ground Combat, Leaders and Garrisons
@@ -511,6 +576,7 @@ garrison = {
 		TEX = 200
 		USA = 200
 		CSA = 200
+		U28 = 100 #Socialist Canada
 	}
 	ignore = {
 	}
@@ -623,7 +689,7 @@ invasion = {
 	distance		= 0.1	#higher = avoid long distance.
 	pocket			= 20.0	#prioritise pockets, ie provinces with no adjacent controlled by same.
 	island			= 0.1	#prioritise taking pure islands.
-	enemy			= 2.0	#higher = much more vary of troops in province.
+	enemy			= 1.5	#higher = much more vary of troops in province.
 	adjacentenemy 	= 2.0	#higher = much more vary of troops nearby
 	air_base	 	= 1.5 
 	naval_base 		= 0.1 
@@ -641,12 +707,10 @@ admiral = {
 
 	#Which provinces to use as bases..
 	base = {
-		1734	# Hawaii
+		1734	# Pearl Harbor
+		1874	# Seattle
 		1738	# Samoa
 		1887	# San Francisco
-		1812	# Norfolk
-		1953	# Miami
-		1789	# Boston
 		2142	# Truk
 		1726	# Rabaul
 		1399	# Saigon
@@ -654,7 +718,7 @@ admiral = {
 		1647	# Batavia
 		1565	# Manila
 		1683	# Guam
-        995		# The Azores
+		2631	# Midway Island
 	}
 
 }
