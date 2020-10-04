@@ -76,7 +76,7 @@ rare_materials         = 60
     } 
    SpyInfo                = {  country = "YEM" NumberOfSpies = 1  } 
    headofstate            = {  type = 9 id = 93001  } 
-   headofgovernment       = {  type = 9 id = 93004  } 
+   headofgovernment       = {  type = 9 id = 93118  } 
    foreignminister        = {  type = 9 id = 93007  } 
    armamentminister       = {  type = 9 id = 93013  } 
    ministerofsecurity     = {  type = 9 id = 93024  } 

@@ -498,10 +498,8 @@ naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 
 #Arabia/Indian Ocean colonies
 province = { id = 996 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Saint Denis de la Reunion
 province = { id = 1001 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Tananarive
-province = { id = 1053 coastalfort = 1 anti_air = 4 #Aden
+province = { id = 1053 coastalfort = { size = 1 current_size = 1 } anti_air = { size = 4 current_size = 1 } #Aden
 naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
-province = { id = 1509 anti_air = 4 #Jaffna
-naval_base = { size = 8 current_size = 8 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1511 coastalfort = 1 anti_air = 2 oilpool = 1000 supplypool = 2000 #Colombo
 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1611 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } } #Male
