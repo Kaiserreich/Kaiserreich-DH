@@ -25,10 +25,10 @@ ai = "kaiserreich\South Africa.ai"
      armamentminister = { type = 9 id = 70048 } # Charles T. te Water
      ministerofsecurity = { type = 9 id = 70056 } # N. J. van der Merwe
      ministerofintelligence = { type = 9 id = 70065 } # B.J. Schoeman
-     chiefofstaff = { type = 9 id = 70072 } # Leonard Beyers
-     chiefofarmy = { type = 9 id = 70080 } # Pierre van Ryneveld
-     chiefofnavy = { type = 9 id = 70082 } # Jeannot de la Tourier    
-     chiefofair = { type = 9 id = 70085 } # Adolph Malan
+     chiefofstaff = { type = 9 id = 70007 } # Pierre van Ryneveld
+     chiefofarmy = { type = 9 id = 70163 } # Andries Jacob Brink
+     chiefofnavy = { type = 9 id = 70009 } # Guy Waterhouse Hallifax
+     chiefofair = { type = 9 id = 70010 } # Pierre van Ryneveld
 
 #### Resource Reserves
 	capital = 	876

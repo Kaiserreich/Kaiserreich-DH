@@ -450,7 +450,7 @@ navalunit = {
  division = { id = { type = 20001 id = 132 } name = "HMCS Carysfort" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 133 } name = "HMCS Castor" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 134 } name = "HMCS Centaur" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 34 } name = "HMCS Diomede" type = light_cruiser model = 2 }
+ #division = { id = { type = 20001 id = 34 } name = "HMCS Diomede" type = light_cruiser model = 2 }
  }
 
  navalunit = {
@@ -468,7 +468,7 @@ navalunit = {
  id = { type = 20001 id = 39 }
  location = 2089 #Vancouver
  base = 2089 #Vancouver
- division = { id = { type = 20001 id = 40 } name = "HMCS Despatch" type = light_cruiser model = 2 }
+ #division = { id = { type = 20001 id = 40 } name = "HMCS Despatch" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 41 } name = "HMCS Dragon" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 123 } name = "HMCS Champion" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 124 } name = "HMCS Chester" type = light_cruiser model = 2 }
