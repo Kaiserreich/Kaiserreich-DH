@@ -71,7 +71,7 @@ diplomacy = {
 relation = {   tag =    	BEL	value = 		40	   }  
 relation = {   tag =  	BLR	 value =		20	   }  
 relation = {   tag =  	BUL	value = 		40	   }  
-relation = {   tag =  	GER	 value =		120	   }  
+relation = {   tag =  	GER	 value =		-50	   }  
 relation = {   tag =  	LAT	value = 		20	   }  
 relation = {   tag =  	LIT	 value =		20	   }  
 relation = {   tag =  	POL	value = 		10	   }  
