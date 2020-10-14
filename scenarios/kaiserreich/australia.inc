@@ -24,10 +24,10 @@ foreignminister = { type = 9 id = 56502 }
 armamentminister = { type = 9 id = 56503 }
 ministerofsecurity = { type = 9 id = 56404  }
 ministerofintelligence = { type = 9 id = 56505 }
-chiefofstaff = { type = 9 id = 56506 }
-chiefofarmy = { type = 9 id = 56507 }
-chiefofnavy = { type = 9 id = 56508 }
-chiefofair = { type = 9 id = 56509 }
+chiefofstaff = { type = 9 id = 56835 } #Julius Bruche
+chiefofarmy = { type = 9 id = 56831 } #Herbert Lloyd
+chiefofnavy = { type = 9 id = 56822 } #Guy Gaunt
+chiefofair = { type = 9 id = 56509 } #Philip Game
 
 #### Resource Reserves
 manpower = 45
@@ -146,7 +146,9 @@ techapps = {
 
 deactivate = { 6010 6210 6570 6560 6390 }
 
-dormant_leaders        = { 54095 54096 }
+dormant_leaders = { 54126 54127 }
+
+dormant_teams = { 543 544 545 546 } #doctrine teams
 
 ############################################################################################
 #########  OOB (...)

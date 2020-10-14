@@ -45,7 +45,7 @@ naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size
 province = { id = 1696 air_base = { size = 8 current_size = 8 } } #Katherine
 province = { id = 1704 ic = 3 coastalfort = 1 anti_air = 1 #Brisbane
 naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 1705 ic = 2 anti_air = 7 #Sydney
+province = { id = 1705 ic = 2 manpower = 2 anti_air = 7 #Sydney
 naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1707 anti_air = 2 #Canberra
 naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
@@ -338,11 +338,13 @@ province = { id = 294 anti_air = 2 #Copenhagen
 province = { id = 1780 naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } } #Ciudad Trujillo
 
 ### EAF
-province = { id = 1338 ic = 2 naval_base = { size = 5 current_size = 5 } air_base = { size = 6 current_size = 6 } } #Shanghai
+province = { id = 1338 ic = 5 anti_air = 2 #Shanghai
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1346 ic = 1 #Ningbo
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 1358 ic = 1 } #Fuzhou
-province = { id = 1371 ic = 3 landfort = 1 coastalfort = 1 anti_air = 4 oilpool = 100 supplypool = 500 #Hong Kong
+	naval_base = { size = 8 current_size = 8 } }
+province = { id = 1358 ic = 1 #Fuzhou
+	naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } }
+province = { id = 1371 ic = 2 landfort = 1 coastalfort = 1 anti_air = 4 oilpool = 100 supplypool = 500 #Hong Kong
 	naval_base = { size = 8 current_size = 8 } air_base = { size = 4 current_size = 4 } }
  
 ### ECU
@@ -498,7 +500,7 @@ naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 
 #Arabia/Indian Ocean colonies
 province = { id = 996 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Saint Denis de la Reunion
 province = { id = 1001 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Tananarive
-province = { id = 1053 coastalfort = { size = 1 current_size = 1 } anti_air = { size = 4 current_size = 1 } #Aden
+province = { id = 1053 anti_air = 4 #Aden
 naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1511 coastalfort = 1 anti_air = 2 oilpool = 1000 supplypool = 2000 #Colombo
 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
@@ -864,7 +866,7 @@ province = { id = 270 landfort = 1 #Tallinn
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 
 #Latvia
-province = { id = 264 landfort = 1 anti_air = 1 #Riga
+province = { id = 264 manpower = 2 landfort = 1 anti_air = 1 #Riga
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 province = { id = 266 ic = 1 landfort = 2 } #Daugavpils
 province = { id = 268 ic = 2 landfort = 2 #Liepaja
@@ -1305,7 +1307,8 @@ province = { id = 382 anti_air = 1 #Irakleio
 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
 ### U35
-province = { id = 1500 ic = 2 } #Madras
+province = { id = 1500 ic = 2 #Madras
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
 
 ### UKR
 province = { id = 245 landfort = 2 } #Lutsk
