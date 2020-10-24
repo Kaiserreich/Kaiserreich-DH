@@ -93,6 +93,7 @@ extra_tc = 90
 # Great War Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680
 14000 14010 #Improved Great War Hospital System
+6540 6910 # Interwar
 
 #Naval Doctrines
 8010 8020 8040 8050 8030 8060 8070 8080 #Basic Theories
@@ -532,30 +533,29 @@ landunit = {
     } 
 	}
 	
-  landunit = 
-  {  id    = {  type = 10000 id = 50  } 
-   name   = "Xème Corps d'Armée" 
-   location = 72
-   Division = 
-   {  id  = {  type = 10000 id = 51  } 
-    name = "88e Division d'Infanterie de territoriale" 
-    type = infantry 
-	model = 5
-    strength = 35
-	max_strength = 35
-	experience = 0
-    } 
-   Division = 
-   {  id  = {  type = 10000 id = 52  } 
-    name = "95e Division d'Infanterie territoriale" 
-    type = infantry 
-	model = 5
-    strength = 35
-	max_strength = 35
-	experience = 0
-    } 
-   } 	
- 
+#  landunit = 
+#  {  id    = {  type = 10000 id = 50  } 
+#   name   = "Xème Corps d'Armée" 
+#   location = 72
+#   Division = 
+#   {  id  = {  type = 10000 id = 51  } 
+#    name = "88e Division d'Infanterie de territoriale" 
+#    type = infantry 
+#	model = 5
+#    strength = 35
+#	max_strength = 35
+#	experience = 0
+#    } 
+#   Division = 
+#   {  id  = {  type = 10000 id = 52  } 
+#    name = "95e Division d'Infanterie territoriale" 
+#    type = infantry 
+#	model = 5
+#    strength = 35
+#	max_strength = 35
+#	experience = 0
+#    } 
+#   } 	
  
  ### French fleet, 2752 
  navalunit = {   

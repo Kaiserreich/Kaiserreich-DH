@@ -48,4 +48,34 @@ country = {
 	inventions = { 3000016 } 
 	blueprints = { 3650 8520 8560 8610 2160 5490 8170 4920 3830 } 
 	deactivate = { 6590 6690 6700 6710 6600 6550 81300 6010 6210 6560 6390 7010 7020 15500 7100 7110 7120 7130 7140 7150 7160 16050 16000 16040 7170 7180 7190 16010 16020 7200 7210 7220 7230 7400 7410 7240 7640 7650 7260 7270 7620 7630 } 
+	
+landunit = {
+location = 68  #### Bordeaux
+name = "VIIиme Corps d'Armйe"
+      id = { type = 31871 id = 31  }
+
+  division = {
+  id = { type = 31871 id = 32  }
+  name = "1иre Div. d'Infanterie de Marine"
+  type = marine
+  model = 1
+  strength = 70
+  }
+
+  division = {
+  id = { type = 31871 id = 33 }
+  name = "2иme Div. d'Infanterie de Marine"
+  type = marine
+  model = 1
+  strength = 70
+  }
+
+  division = {
+  id = { type = 31871 id = 34  }
+  name = "3иme Div. d'Infanterie de Marine"
+  type = marine
+  model = 1
+  strength = 70
+  }
+}	
 }

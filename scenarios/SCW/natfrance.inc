@@ -48,4 +48,118 @@ country = {
 	inventions = { } 
 	blueprints = { 4700 4900 4290 3060 3140 3240 3460 12100 3640 9140 8950 8500 82300 5560 81650 4750 2030 6040 } 
 	deactivate = { 6590 6690 6700 6710 6600 6550 6210 6390 6560 6570 6030 81300 7010 7020 15500 7550 7560 7570 7580 7590 7100 7110 7120 7130 7140 7150 7160 16050 16000 16040 7170 7180 7190 16010 16020 7200 7210 7220 7230 7400 7410 7240 7640 7650 7260 7270 7620 7630 } 
+	
+landunit = {
+		id = { type = 13500 id = 8 }
+		name = "1иre Armйe"
+		location = 727
+
+			division = {
+			id = { type = 13500 id = 9 }
+			name = "1иre Div. Lйgиre Motorisйe"
+			type = infantry
+			model = 8
+			extra = armored_car
+			brigade_model = 2
+			}
+
+			division = {
+			id = { type = 13500 id = 10 }
+			name = "1иre Division d'Infanterie"
+			type = infantry
+			model = 7
+			extra = anti_tank
+			brigade_model = 2
+			}
+
+			division = {
+			id = { type = 13500 id = 11 }
+			name = "2иme Division motorizee de Rйserve"
+			type = motorized
+			model = 0
+			extra = anti_tank
+			brigade_model = 2
+			}
+
+			division = {
+			id = { type = 13500 id = 15 }
+			name = "12иme Div. d'Infanterie Motorisйe"
+			type = infantry
+			model = 7
+			extra = armored_car
+			brigade_model = 2
+			}
+
+			division = {
+			id = { type = 13500 id = 17 }
+			name = "2иme Div. d'Infanterie Nord-Africaine"
+			type = infantry
+			model = 7
+			extra = anti_tank
+			brigade_model = 2
+			}
+			}	
+			
+landunit = {
+		id = { type = 13500 id = 22 }
+		name = "Garnison d'Algiers"
+		location = 727
+			division = {
+			id = { type = 13500 id = 23 }
+			name = "Garnison d'Algiers"
+			type = garrison
+			model = 3
+			strength = 30
+			max_strength = 30
+			locked = yes
+			}
+	}	
+
+navalunit = {
+ name = "1ere Flotte, Capital"
+ id = { type = 13501 id = 300 }
+ location = 727 #### [Algerie]
+ base = 727
+
+ division = { id = { type = 13501 id = 301 } name = "Bretagne" type = battleship model = 3 }
+ division = { id = { type = 13501 id = 302 } name = "Provence" type = battleship model = 3 }
+ division = { id = { type = 13501 id = 303 } name = "Lorraine" type = battleship model = 3 }
+ division = { id = { type = 13501 id = 304 } name = "Foudre" type = escort_carrier model = 0 }
+ division = { id = { type = 13501 id = 305 } name = "Courbet" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 306 } name = "Jean Bart" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 307 } name = "Paris" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 308 } name = "Condorcet" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 309 } name = "Diderot" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 310 } name = "Mirabeau" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 311 } name = "Vergniaud" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 312 } name = "Voltaire" type = battleship model = 2 }
+ division = { id = { type = 13501 id = 313 } name = "France" type = battleship model = 2 }
+ division = { id = { type = 13862 id = 427 } name = "Diderot" type = heavy_cruiser model = 2 }
+ division = { id = { type = 13501 id = 316 } name = "DD. 1" type = destroyer model = 3 }
+ division = { id = { type = 13501 id = 321 } name = "DD. 2" type = destroyer model = 3 }
+ division = { id = { type = 13501 id = 326 } name = "DD. 3" type = destroyer model = 3 }
+ division = { id = { type = 13501 id = 347 } name = "DD. 4" type = destroyer model = 3 }
+ division = { id = { type = 13501 id = 352 } name = "DD. 5" type = destroyer model = 2 }
+ division = { id = { type = 13501 id = 357 } name = "DD. 6" type = destroyer model = 2 }
+ division = { id = { type = 13501 id = 368 } name = "DD. 7" type = destroyer model = 2 }
+ division = { id = { type = 13501 id = 375 } name = "DD. 8" type = destroyer model = 2 }
+ division = { id = { type = 13501 id = 381 } name = "DD. 9" type = destroyer model = 2 }
+ division = { id = { type = 13501 id = 387 } name = "DD. 10" type = destroyer model = 2 }
+ division = { id = { type = 13501 id = 393 } name = "DD. 11" type = destroyer model = 2 }
+ division = { id = { type = 13501 id = 399 } name = "DD. 12" type = destroyer model = 2 }
+ }
+
+ navalunit = {
+ name = "10eme Flotte, Transport du Rйserve"
+ id = { type = 13501 id = 405 }
+ location = 728 #### [Oran]
+ base = 728
+ division = { id = { type = 13501 id = 406 } name = "TP. 1" type = transport model = 1 }
+ division = { id = { type = 13501 id = 407 } name = "TP. 2" type = transport model = 1 }
+ division = { id = { type = 13501 id = 408 } name = "TP. 3" type = transport model = 1 }
+ division = { id = { type = 13501 id = 409 } name = "TP. 4" type = transport model = 1 }
+ division = { id = { type = 13501 id = 410 } name = "TP. 5" type = transport model = 1 }
+ division = { id = { type = 13501 id = 411 } name = "TP. 6" type = transport model = 1 }
+ division = { id = { type = 13501 id = 412 } name = "TP. 7" type = transport model = 1 }
+ }	
 }

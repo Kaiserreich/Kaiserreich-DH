@@ -97,6 +97,7 @@ country = {
 # Great War Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680
 14000 14010 #Improved Great War Hospital System
+6540 6910 # Interwar
 
 #Naval Doctrines
 8010 8020 8040 8050 8030 8060 8070 8080 #Basic Theories
@@ -131,8 +132,8 @@ landunit = {
 	   name = "Grand Quartier Général"
        type = hq 
 	   model = 1
-	   strength = 40
-	   max_strength = 40
+	   strength = 35
+	   max_strength = 35
       } 
  }
  
@@ -144,16 +145,16 @@ landunit = {
   division = {  
 	   id = { type = 10527 id = 4 }
 	   name = "22ème Division d'Infanterie"
-	   strength = 40 
-	   max_strength = 40
+	   strength = 35 
+	   max_strength = 35
 	   experience = 5
 	   type = infantry model = 5
       }   
 	  division = {
 	  id = { type = 10527 id = 5 }
 	   name = "25ème Division d'Infanterie"
-	   strength = 40 
-	   max_strength = 40
+	   strength = 35 
+	   max_strength = 35
 	   experience = 5
 	   type = infantry model = 5
       }
@@ -167,8 +168,8 @@ landunit = {
 	 division = {	  
 	  id = { type = 10527 id = 7 }
 	   name = "56ème Division d'Infanterie"
-	   strength = 40
-	   max_strength = 40
+	   strength = 35
+	   max_strength = 35
 	   experience = 5
 	   type = infantry model = 5
       }
@@ -177,8 +178,8 @@ landunit = {
 	  name = "8ère Div. Légère de Cavalerie"
 	  type = cavalry
 	  model = 5
-	  strength = 40
-	  max_strength = 40
+	  strength = 35
+	  max_strength = 35
 	}  
  }
 
@@ -190,8 +191,8 @@ landunit = {
   division = {
    id = { type = 10527 id = 10 }
 	   name = "13ème Division d'Infanterie"
-	   strength = 40
-	   max_strength = 40
+	   strength = 35
+	   max_strength = 35
 	   type = infantry 
 	   model = 5
       }
@@ -200,8 +201,8 @@ landunit = {
 	  name = "15ère Div. Légère de Cavalerie"
 	  type = cavalry
 	  model = 5
-	  strength = 40
-	  max_strength = 40
+	  strength = 35
+	  max_strength = 35
 	}  
  }
  
@@ -238,16 +239,16 @@ landunit = {
 	  name = "15ème Division d'Infanterie"
 	  type = infantry
 	  model = 5
-	  strength = 40
-	  max_strength = 40
+	  strength = 35
+	  max_strength = 35
 	}  	
 	division = {
   id = { type = 10527 id = 17  }
 	  name = "18ème Division d'Infanterie"
 	  type = infantry
 	  model = 5
-	  strength = 40
-	  max_strength = 40
+	  strength = 35
+	  max_strength = 35
 	}   
  }
  
@@ -259,8 +260,8 @@ landunit = {
   division = {
    id = { type = 10527 id = 19 }
 	   name = "40ème Division d'Infanterie"
-	   strength = 40
-	   max_strength = 40
+	   strength = 35
+	   max_strength = 35
 	   type = infantry 
 	   model = 5
       }
@@ -269,8 +270,8 @@ landunit = {
 	  name = "20ère Div. Légère de Cavalerie"
 	  type = cavalry
 	  model = 5
-	  strength = 40
-	  max_strength = 40
+	  strength = 35
+	  max_strength = 35
 	}   
  }
  
@@ -343,20 +344,20 @@ landunit = {
   division = {
    id = { type = 10527 id = 30 }
 	   name = "5ème Division de Defense Syndicaliste"
-	   strength = 25
+	   strength = 20
 	   type = militia
 	   model = 3
 	   locked = yes
-	   max_strength = 25
+	   max_strength = 20
       }
 	division = {
    id = { type = 10527 id = 31 }
 	  name = "6ème Division de Defense Syndicaliste"
 	   type = militia
 	   model = 3
-	  strength = 25
+	  strength = 20
 	  locked = yes
-	  max_strength = 25
+	  max_strength = 20
 	}   
  }
  
@@ -394,7 +395,7 @@ landunit = {
 		type = garrison
 		model = 2
 		strength = 15
-		max_strength = 25
+		max_strength = 20
 		locked = yes
 		experience = 0
       } 
@@ -411,7 +412,7 @@ landunit = {
 		type = garrison
 		model = 2
 		strength = 15
-		max_strength = 25
+		max_strength = 20
 		locked = yes
 		experience = 0
       } 
@@ -421,8 +422,8 @@ landunit = {
   dormant = yes
    id = { type = 10527 id = 39 }
    name = "Division de Defense d'Orleans"
-   strength = 25
-   max_strength = 25
+   strength = 30
+   max_strength = 30
    model = 2
    type = militia
  } 
@@ -431,8 +432,8 @@ landunit = {
   dormant = yes
    id = { type = 10527 id = 40 }
    name = "Division de Defense de Bordeaux"
-   strength = 25
-   max_strength = 25
+   strength = 30
+   max_strength = 30
    model = 2
    type = militia
  }     
@@ -441,8 +442,8 @@ landunit = {
   dormant = yes
    id = { type = 10527 id = 41 }
    name = "Division de Defense de Marseille"
-   strength = 25
-   max_strength = 25
+   strength = 30
+   max_strength = 30
    model = 2
    type = militia
  } 
@@ -472,7 +473,7 @@ airunit = {
 			name = "Groupe de Chasse 21"
 			type = multi_role
 			model = 1
-			strength = 25
+			strength = 20
 			max_strength = 35
 				}
 	}

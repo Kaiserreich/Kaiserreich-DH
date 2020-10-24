@@ -80,6 +80,7 @@ transports = 25
 # Great War Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680
 14000 14010 #Improved Great War Hospital System
+6540 6910 # Interwar
 
 #Naval Doctrines
 8010 8020 8040 8050 8030 8060 8070 8080 #Basic Theories
@@ -115,7 +116,7 @@ landunit = {
 			id = {  type = 15500 id = 2  } 
 			name  = "3rd Infantry Division" 
 			type  = infantry 
-			model = 4
+			model = 5
 			strength = 75
 			} 			
 
@@ -130,7 +131,7 @@ landunit = {
 		name = "42nd (East Lancashire) Division" 
 		strength = 50
 		type = infantry 
-		model = 2
+		model = 5
 		experience = 0
 		} 
 	division = { 
@@ -138,7 +139,7 @@ landunit = {
 		name = "53rd (Welsh) Division" 
 		strength = 50
 		type = infantry 
-		model = 2
+		model = 5
 		experience = 0
 		} 
 	division = { 
@@ -146,7 +147,7 @@ landunit = {
 		name = "55th (West Lancashire) Division" 
 		strength = 50
 		type = infantry 
-		model = 2
+		model = 5
 		experience = 0
 		} 
 	division = { 
@@ -154,15 +155,15 @@ landunit = {
 		name = "1st Mounted Division" 
 		strength = 50
 		type = cavalry
-		model = 2
+		model = 5
 		experience = 0
 		} 
 	division = { 
 		id = { type = 27111 id = 35 } 
 		name = "Tanks Coprs" 
 		strength = 50
-		type = armor
-		model = 1
+		type = light_armor
+		model = 0
 		experience = 0
 		} 	
  } 		
@@ -178,28 +179,28 @@ landunit = {
 		name = "46th (North Midland) Division" 
 		strength = 50
 		type = infantry 
-		model = 2
+		model = 5
 		} 
 	division = { 
 		id = { type = 27111 id = 21 } 
 		name = "49th (West Riding) Division" 
 		strength = 50
 		type = infantry 
-		model = 2
+		model = 5
 		} 
 	division = { 
 		id = { type = 27111 id = 22 } 
 		name = "50th (Northumbrian) Division" 
 		strength = 50
 		type = infantry 
-		model = 2
+		model = 5
 		} 
 	division = { 
 		id = { type = 27111 id = 23 } 
 		name = "2nd Mounted Division" 
 		strength = 50
 		type = cavalry
-		model = 2
+		model = 5
 		} 
 } 
 
@@ -231,16 +232,16 @@ navalunit = {
         division = { id = { type = 15500 id = 120 } name = "Channel Flotilla" type = destroyer model = 1 } 
     	}
 
-navalunit = { 
-        id = { type = 15500 id = 121 } 
-        name = "1nd Transport Squadron" 
-        location = 27 # Southampton 
-        base = 27 # Southampton 
-
+#navalunit = { 
+#        id = { type = 15500 id = 121 } 
+#        name = "1nd Transport Squadron" 
+#        location = 27 # Southampton 
+#        base = 27 # Southampton 
+#
 #division = { id = { type = 15500 id = 122 } name = "3rd Transport Flotilla (A)" type = transport model = 0 } 
 #division = { id = { type = 15500 id = 123 } name = "3rd Transport Flotilla (B)" type = transport model = 0 } 
 #division = { id = { type = 15500 id = 124 } name = "4th Transport Flotilla (A)" type = transport model = 0 } 
 #division = { id = { type = 15500 id = 125 } name = "4th Transport Flotilla (B)" type = transport model = 0 } 
-    	}
+#    	}
 		
 }

@@ -91,6 +91,7 @@ claimedprovinces = {
 # Great War Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680
 14000 14010 #Improved Great War Hospital System
+6540 6910 # Interwar
 
 #Naval Doctrines
 8010 8020 8040 8050 8030 8060 8070 8080 #Basic Theories
@@ -171,7 +172,7 @@ landunit = {
 		id 	= { type = 10100 id = 3 }
 		name 	= "3. Infanterie-Division"
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -182,7 +183,7 @@ landunit = {
 		id 	= { type = 10100 id = 4 }
 		name 	= "4. Infanterie-Division"
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -195,7 +196,7 @@ landunit = {
 		id 	= { type = 10100 id = 5 }
 		name 	= "5. Infanterie-Division"
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= engineer
@@ -206,7 +207,7 @@ landunit = {
 		id 	= { type = 10100 id = 6 }
 		name 	= "6. Infanterie-Division"
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}
@@ -217,7 +218,7 @@ landunit = {
 		id 	= { type = 10100 id = 7 }
 		name 	= "7. Infanterie-Division"
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -228,7 +229,7 @@ landunit = {
 		id 	= { type = 10100 id = 8 }
 		name 	= "8. Infanterie-Division"
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -241,7 +242,7 @@ landunit = {
 		id 	= { type = 10100 id = 11 }
 		name 	= "5. Reserve-Division"
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -254,7 +255,7 @@ landunit = {
 		id 	= { type = 10100 id = 13 }
 		name 	= "7. Reserve-Division"
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -287,7 +288,7 @@ landunit = {
 		id 	= { type = 10100 id = 17 }
 		name 	= "1. Garde-Infanterie-Division"
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		extra 	= artillery
 		brigade_model = 1
@@ -298,7 +299,7 @@ landunit = {
 		id 	= { type = 10100 id = 18 }
 		name 	= "2. Garde-Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		extra 	= artillery
 		brigade_model = 1
@@ -311,7 +312,7 @@ landunit = {
 		id 	= { type = 10100 id = 19 }
 		name 	= "13. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= super_heavy_artillery
@@ -322,7 +323,7 @@ landunit = {
 		id 	= { type = 10100 id = 20 }
 		name 	= "14. Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}		
@@ -333,7 +334,7 @@ landunit = {
 		id 	= { type = 10100 id = 21 }
 		name 	= "19. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}	
@@ -342,7 +343,7 @@ landunit = {
 		id 	= { type = 10100 id = 22 }
 		name 	= "20. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}				
@@ -353,7 +354,7 @@ landunit = {
 		id 	= { type = 10100 id = 23 }
 		name 	= "3. Garde-Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}	
@@ -362,7 +363,7 @@ landunit = {
 		id 	= { type = 10100 id = 24 }
 		name 	= "1. Garde-Reserve-Division"  
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -374,7 +375,7 @@ landunit = {
 		id 	= { type = 10100 id = 25 }
 		name 	= "13. Reserve-Division"
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -386,7 +387,7 @@ landunit = {
 		id 	= { type = 10100 id = 27 }
 		name 	= "19. Reserve-Division"
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -396,7 +397,7 @@ landunit = {
 		id 	= { type = 10100 id = 28 }
 		name 	= "2. Reserve-Garde-Division" 
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -429,7 +430,7 @@ landunit = {
 		id 	= { type = 10100 id = 31 }
 		name 	= "22. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -440,7 +441,7 @@ landunit = {
 		id 	= { type = 10100 id = 32 }
 		name 	= "38. Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= engineer
@@ -453,7 +454,7 @@ landunit = {
 		id 	= { type = 10100 id = 33 }
 		name 	= "23. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -464,7 +465,7 @@ landunit = {
 		id 	= { type = 10100 id = 34 }
 		name 	= "32. Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}	
@@ -475,7 +476,7 @@ landunit = {
 		id 	= { type = 10100 id = 35 }
 		name 	= "24. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -486,7 +487,7 @@ landunit = {
 		id 	= { type = 10100 id = 36 }
 		name 	= "40. Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}	
@@ -497,7 +498,7 @@ landunit = {
 		id 	= { type = 10100 id = 37 }
 		name 	= "23. Reserve-Division" 
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -528,7 +529,7 @@ landunit = {
 		id 	= { type = 10100 id = 41 }
 		name 	= "11. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -539,7 +540,7 @@ landunit = {
 		id 	= { type = 10100 id = 42 }
 		name 	= "12. Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= engineer
@@ -552,7 +553,7 @@ landunit = {
 		id 	= { type = 10100 id = 43 }
 		name 	= "15. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -563,7 +564,7 @@ landunit = {
 		id 	= { type = 10100 id = 44 }
 		name 	= "16. Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}				
@@ -574,7 +575,7 @@ landunit = {
 		id 	= { type = 10100 id = 45 }
 		name 	= "21. Infanterie-Division"  
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		extra 	= artillery
@@ -585,7 +586,7 @@ landunit = {
 		id 	= { type = 10100 id = 46 }
 		name 	= "25. Infanterie-Division" 
 		type 	= infantry
-		model 	= 3
+		model 	= 5
 		strength = 90
 		experience = 0
 		}				
@@ -596,7 +597,7 @@ landunit = {
 		id 	= { type = 10100 id = 47 }
 		name 	= "15. Reserve-Division" 
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -608,7 +609,7 @@ landunit = {
 		id 	= { type = 10100 id = 49 }
 		name 	= "21. Reserve-Division" 
 		type 	= infantry
-		model 	= 2
+		model 	= 5
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -620,7 +621,7 @@ landunit = {
 		id 	= { type = 10100 id = 51 }
 		name 	= "4. Ersatz-Division" 
 		type 	= infantry
-		model 	= 0
+		model 	= 2
 		strength = 40
 		max_strength = 90
 		experience = 0
@@ -632,7 +633,7 @@ landunit = {
 		id 	= { type = 10100 id = 52 }
 		name 	= "8. Ersatz-Division" 
 		type 	= infantry
-		model 	= 0
+		model 	= 2
 		strength = 40
 		max_strength = 90
 		experience = 0

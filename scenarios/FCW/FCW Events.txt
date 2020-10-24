@@ -104,7 +104,7 @@ event = {
 	action_a = {
 		name = "Insanity!"
 		command = { type = dissent value = 10 }
-		command = { type = max_organization which = land value = -15 }
+		command = { type = max_organization which = land value = -5 }
 		command = { type = relation which = GER value = -50 }
 		command = { type = morale which = land value = -5 }
 	}
@@ -661,6 +661,7 @@ event = {
 		command = { type = headofgovernment which = 8558 } #Kamil Ar Merser 'Erm
 		command = { type = add_division which = "Rann-arme Breizh" value = militia when = 3 where = -65 }
 		command = { type = add_division which = "Gward Breizh" value = garrison when = 2 where = -75 }		
+		command = { type = strength_cap which = militia value = 25 }
 		command = { type = alliance which = VIC }	
 		command = { type = trigger which = 24 }
 	}
@@ -772,7 +773,7 @@ event = {
 	name = "Mom, where is he from?"
 	command = { type = wakeleader which = 24167 }
 	command = { type = dissent value = 1 }
-	command = { type = unlock_division which = 10527 value = 42 }	
+	command = { type = activate_division which = 10527 value = 42 when = 0 }	
 	}
 }
 
@@ -868,7 +869,7 @@ command = { type = dissent value = -3 }
 
  date = { hour = 0 day = 1 month = january year = 1920 }
  offset = 1
- deathdate = { hour = 23 day = 30 month = may year = 1920 }
+ deathdate = { hour = 23 day = 29 month = may year = 1920 }
 
  action_a = {
  name = "La Revolution est terminee!"
@@ -893,10 +894,102 @@ command = { type = dissent value = -3 }
 
  date = { hour = 0 day = 1 month = january year = 1920 }
  offset = 1
- deathdate = { hour = 23 day = 30 month = may year = 1920 }
+ deathdate = { hour = 23 day = 29 month = may year = 1920 }
  
  action_a = {
  name = "Longue vie a la France!"
  command = { type = endgame value = 6 }
  }
  }
+ 
+ event = {
+ id = 34
+ random = no
+ tag = { VIC FRA }
+ 
+ decision = { ai = no }
+ decision_trigger = { ai = no }
+ trigger = { ai = no }
+ 
+ name = "Prehistory of the Weltkrieg and the Beginning of the Revolution"
+ desc = "Want to know more about the events that preceded this day?"
+ style = 2
+ 
+	date = { hour = 0 day = 1 month = november year = 1919 }	
+	offset = 5
+	deathdate = { hour = 0 day = 1 month = november year = 1920 }
+	
+ action = {
+ name = "Let's do it!"
+ command = { type = trigger which = 35 }
+ }
+ }
+ 
+ event = {
+ id = 35
+ random = no
+ tag = { VIC FRA }
+ 
+ name = "France in the Weltkrieg"
+ desc = "79034desc"
+ style = 2
+ picture = "war1"
+ 
+ action = {
+ name = "What's next?"
+ command = { trigger = { country = VIC } type = trigger which = 36 }
+ } 
+ 
+ action = {
+ name = "What's next?"
+ command = { trigger = { country = FRA } type = trigger which = 37 }
+ }
+ }
+ 
+ event = {
+ id = 36
+ random = no
+ tag = { VIC FRA }
+ 
+ name = "Beginning of the Revolution"
+ desc = "79035desc"
+ style = 2
+ picture = "strike1"
+ 
+ action = {
+ name = "Perfectly! Rifle in hand!"
+ command = {}
+ } 
+ } 
+ 
+ event = {
+ id = 37
+ random = no
+ tag = { VIC FRA }
+ 
+ name = "History of CGT"
+ desc = "79036desc"
+ style = 2
+ picture = "Commune"
+ 
+ action = {
+ name = "What about strikes?"
+ command = { trigger = { country = FRA } type = trigger which = 38 }
+ } 
+ } 
+ 
+    event = {
+ id = 38
+ random = no
+ tag = { VIC FRA }
+ 
+ name = "1919 General Strike"
+ desc = "79037desc"
+ style = 2
+ picture = "strike1"
+ 
+ action = {
+ name = "Perfectly! Rifle in hand!"
+ command = {}
+ } 
+ } 
