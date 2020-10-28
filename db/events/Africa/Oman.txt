@@ -1,65 +1,41 @@
+#Oman Events By Eberronguy (Last Updated 1.9.3 "1001 Arabian Fights")
+#In memory of Tiny, the best cat I ever had. (2005 - 4/21/2020)
+
 event = {
 id = 13000
-random = no
 country = OMN
-
-trigger = {
-puppet = { country = OMN country = OTT }
-atwar = OTT
-}
-
-
-name = EVT_13000_NAME # Status of Oman
-desc = EVT_13000_DESC # For many years, the Ottomans have been free to impose their will on us. Today, problems have arisen for the Ottomans, and Said ibn Timur wishes to claim the throne once and for all and establish a free Oman.
+random = no
 style = 2
 
-date = { day = 0 month = january year = 1936 }
-offset = 4
-deathdate = { day = 29 month = december year = 1963 }
+name = "EVT_13000_NAME" #intro
+desc = "EVT_13000_DESC" 
+picture = "ottomanemp"
 
-action_a = {
-name = ACTIONNAME_13000_A # Declare complete independence from Ottomans!
-ai_chance = 95
-command = { type = add_division value = militia when = 4 }
-command = { type = add_division value = militia when = 4 }
-command = { type = leave_alliance when = 1 }
-command = { type = peace which = EGY value = 1 }
-command = { type = peace which = SAU value = 1 }
-command = { type = peace which = PER value = 1 }
-command = { type = peace which = KUR value = 1 }
-command = { type = peace which = RUS value = 1 }
-command = { type = peace which = FRA value = 1 }
-command = { type = end_puppet }
-command = { type = trigger which = 13001 }
-}
+date = { day = 12 month = january year = 1936 }
 
-action_b = {
-name = ACTIONNAME_13000_B # Time is not right!
-ai_chance = 5
-command = { type = dissent value = 1 }
+action = {
+name = "EVT_13000_ACTIONA"
+command = { }
 }
 }
 
 event = {
 id = 13001
 random = no
-country = OTT
-
-name = EVT_13001_NAME # Oman declares independence !
-desc = EVT_13001_DESC # For many years, we have ruled over Oman. But today, with our country engaged in a lenghty conflict, Oman decided to use this opportunity to break from our dominance. How should we react to this mess ?
+country = OMN
 style = 2
 
-action_a = {
-name = ACTIONNAME_13001_A # Let them go
-ai_chance = 95
-command = { type = end_mastery which = OMN }
-}
+name = "EVT_13001_NAME" #Black Monday
+desc = "EVT_13001_DESC" 
+picture = "venezuelan_oil"
 
-action_b = {
-name = ACTIONNAME_13001_B # Blasphemy! Crush this upstart!
-ai_chance = 5
-command = { type = end_mastery which = OMN }
-command = { type = war which = OMN }
+date = { day = 12 month = march year = 1936 }
+
+action_a = {
+name = "EVT_13001_ACTIONA"
+command = { type = dissent value = 5 } #Oman is less impacted because there is little economy left to collapse thanks to Glorious Leader
+command = { type = peacetime_ic_mod value = -2 }
+command = { type = building_prod_mod which = ic value = -5 }
 }
 }
 
@@ -67,158 +43,124 @@ event = {
 id = 13002
 random = no
 country = OMN
-
-trigger = {
-atwar = no
-NOT = { 
-ispuppet = OMN 
-}
-control = { province = 1051 data = OMN }
-}
-
-name = EVT_13002_NAME # Hadhramaut in conflict!
-desc = EVT_13002_DESC # The Sultanates of Qu'aiti and Kathiri have begun a power struggle over Hadhramaut. This is not the first time they have fought, as shortly after the British Revolution they jointly destroyed the Mahra Sultanate. With Hadhramaut once more in flames, we must end this bloodshed!
 style = 2
-picture = "desertcalvarly"
 
-date = { day = 0 month = april year = 1938 }
-offset = 10
-deathdate = { day = 29 month = december year = 1963 }
+name = "EVT_13002_NAME" #Budget Concerns
+desc = "EVT_13002_DESC" 
+picture = "Unemployment_rate"
+
+date = { day = 15 month = may year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1936 }
 
 action_a = {
-ai_chance = 50
-name = ACTIONNAME_13002_A # Send out our diplomats
-command = { type = dissent value = 3 }
-command = { type = event which = 13003 where = OMN when = 1 }
-command = { type = sleepevent which = 13004 }
-command = { type = sleepevent which = 13009 }
+ai_chance = 30
+name = "EVT_13002_ACTIONA"
+command = { type = dissent value = -2 } #This trades off a few of the interesting events in exchange for not having to deal with some really negative consequences.
+command = { type = event which = 13003 when = 9 }
 }
 
 action_b = {
-ai_chance = 50
-name = ACTIONNAME_13002_B # Send out the troops!
-command = { type = dissent value = 4 }
+ai_chance = 70
+name = "EVT_13002_ACTIONB" #Tax em all
+command = { type = dissent value = 10 } #Really gonna piss people off
+command = { type = peacetime_ic_mod value = 1 }
+command = { type = building_prod_mod which = ic value = 1 }
+command = { type = event which = 13007 when = 21 }
 }
 }
+
 
 event = {
 id = 13003
 random = no
 country = OMN
-
-name = EVT_13003_NAME # Negotiations with the Hadhramaut Sultans
-desc = EVT_13003_DESC # After the Sultans of Qu'aiti and Kathiri arrived in Muscat, an agreement has been worked out. The Sultan of Muscat and Oman and his son, will remain in control of governance and military affiars. The Sultan of Qu'aiti will take care of military intellgence and state security. Finally, the Sultan of Kathiri will handle all foreign and economic matters.
 style = 2
-picture = "Diet"
+
+name = "EVT_13003_NAME" #Focus with reduced budget
+desc = "EVT_13003_DESC" 
+picture = "money_devaluation"
+
 
 action_a = {
-name = ACTIONNAME_13003_A # Hurrah for diplomacy!
-command = { type = dissent value = -1 }
-command = { type = foreignminister which = 92065 } #Djaffar ibn al-Mansur
-command = { type = armamentminister which = 92067 } #Djaffar ibn al-Mansur
-command = { type = ministerofsecurity which = 92069 } #Saleh al Qu'aiti
-command = { type = ministerofintelligence which = 92070 } #Saleh al Qu'aiti
+ai_chance = 80
+name = "EVT_13003_ACTIONA" #military
+command = { type = dissent value = 7 } 
+command = { type = money value = -200 }
+command = { type = event which = 13004 when = 720 }
+}
+
+action_b = {
+ai_chance = 10
+name = "EVT_13003_ACTIONB" #hospitals and infrastructure
+command = { type = dissent value = -5 } 
+command = { type = money value = -400 }
+command = { type = event which = 13005 when = 720 }
+}
+
+action_c = {
+ai_chance = 10
+name = "EVT_13003_ACTIONC" #airport
+command = { type = dissent value = 4 } 
+command = { type = money value = -400 }
+command = { type = event which = 13006 when = 720 }
 }
 }
 
 event = {
 id = 13004
+country = OMN
 random = no
-country = SAU
-
-trigger = {
-event = 13002
-exists = OMN
-control = { province = 1051 data = OMN }
-NOT = {
-alliance = { country = SAU country = OMN }
-ispuppet = SAU
-ispuppet = OMN
-atwar = SAU
-}
-}
-
-name = EVT_13004_NAME # Rising conflict in Hadhramaut
-desc = EVT_13004_DESC # Our neighbor to the south, the Sultanate of Muscat and Oman, has been in conflict with the two Sultanates of Hadhramaut. As the two Sultans are also feuding over dominance in the region, we have a chance to expand our influence. Several of our ministers are calling for us to make the Sultans stop fighting in the name of Arab unity, and a few are calling for us to annex the Hadhramaut area. What shall we do ?
 style = 2
-picture = "war_refugees"
 
-date = { day = 0 month = april year = 1938 }
-offset = 10
-deathdate = { day = 29 month = december year = 1963 }
+name = "EVT_13004_NAME" #Mil Investments
+desc = "EVT_13004_DESC" 
+picture = "OTT_Bedouins"
 
-action_a = {
-ai_chance = 60
-name = ACTIONNAME_13004_A # Demand the Sultans stop this conflict!
-command = { type = dissent value = -1 }
-command = { type = event which = 13005 where = OMN when = 1 }
-}
 
-action_b = {
-ai_chance = 30
-name = ACTIONNAME_13004_B # Demand Hadhramaut becomes ours!
-command = { type = dissent value = -2 }
-command = { type = event which = 13007 where = OMN when = 1 }
-}
-
-action_c = {
-ai_chance = 10
-name = ACTIONNAME_13004_C # We have other things to do 
-command = { type = dissent value = 2 }
+action = {
+name = "EVT_13004_ACTIONA"
+command = { type = morale which = land value = 1 }
+command = { type = max_organization which = land value = 3 }
+command = { type = gain_tech which = 1070 }
+command = { type = gain_tech which = 1080 }
 }
 }
 
 event = {
 id = 13005
-random = no
 country = OMN
-
-name = EVT_13005_NAME # The Hashemite ultimatium
-desc = EVT_13005_DESC # The Hashmites have sent us an ultimatim in which they demand that in the name of Arab unity we cease all conflict with the Sultans of Hadhramaut, and also end the conflict between the two Sultans. Bowing down to them would ruin our already weak standing in the world... What shall we do ?
+random = no
 style = 2
-picture = "tuaregs"
 
-action_a = {
-ai_chance = 50
-name = ACTIONNAME_13005_A # Begin negotiations with the Sultans
-command = { type = dissent value = 3 }
-command = { type = relation which = SAU value = 10 }
-command = { type = relation which = GER value = -20 }
-command = { type = relation which = OTT value = -20 }
-command = { type = event which = 13003 where = OMN when = 1 }
-}
+name = "EVT_13005_NAME" #Infra Investments
+desc = "EVT_13005_DESC" 
+picture = "OTT_Railway2"
 
-action_b = {
-ai_chance = 50
-name = ACTIONNAME_13005_B # No, we refuse this threat!
-command = { type = dissent value = 3 }
-command = { type = relation which = SAU value = -20 }
-command = { type = relation which = GER value = 10 }
-command = { type = relation which = OTT value = 10 }
-command = { type = trigger which = 13006 }
+
+action = {
+name = "EVT_13005_ACTIONA"
+command = { type = province_manpower which = 1052 value = 3 }
+command = { type = construct which = infrastructure value = 1 where = -1 }
+command = { type = construct which = infrastructure value = 1 where = -1 }
 }
 }
 
 event = {
 id = 13006
+country = OMN
 random = no
-country = SAU
-
-name = EVT_13006_NAME # Oman has rejected our ultimatium
-desc = EVT_13006_DESC # The Sultan of Oman and Muscat has sent us a curt reply telling us not to interfere with Omani bussiness. What shall we do now ?
 style = 2
-picture = "india"
 
-action_a = {
-ai_chance = 60
-name = ACTIONNAME_13006_A # Then it is war!
-command = { type = war which = OMN }
-}
+name = "EVT_13006_NAME" #Air Investments
+desc = "EVT_13006_DESC" 
+picture = "RusAirAssault"
 
-action_b = {
-ai_chance = 40
-name = ACTIONNAME_13006_B # There's nothing we can do
-command = { type = dissent value = 3 }
+
+action = {
+name = "EVT_13006_ACTIONA"
+command = { type = construct which = air_base value = 2 where = 1052 }
+command = { type = waketeam which = 700004 }
 }
 }
 
@@ -226,41 +168,62 @@ event = {
 id = 13007
 random = no
 country = OMN
-
-name = EVT_13007_NAME # The Hashemites have demanded Hadhramaut!
-desc = EVT_13007_DESC # The Hashemites have sent an ultimatium to us, demanding that we cede the suzerainty rights over Hadhramaut to them!
 style = 2
-picture = "tuaregs"
+
+name = "EVT_13007_NAME" #Focus with reduced budget
+desc = "EVT_13007_DESC" 
+picture = "money_devaluation"
+
 
 action_a = {
-ai_chance = 70
-name = ACTIONNAME_13007_A # This means war!
-command = { type = war which = SAU }
+ai_chance = 60
+name = "EVT_13007_ACTIONA" #go through with the taxes
+command = { type = dissent value = 5 } 
+command = { type = money value = 1000 }
+command = { type = event which = 13008 when = 10 }
 }
 
 action_b = {
-ai_chance = 30
-name = ACTIONNAME_13007_B # There's nothing we can do
-command = { type = dissent value = 5 }
-command = { type = trigger which = 13008 }
-command = { type = secedeprovince which = SAU value = 1051 }
+ai_chance = 20
+name = "EVT_13007_ACTIONB" #Lets be sane for once
+command = { type = dissent value = -5 } 
+command = { type = event which = 13004 when = 720 }
+command = { type = event which = 13005 when = 1000 }
+command = { type = event which = 13006 when = 1400 }
+}
+
+action_c = {
+ai_chance = 20
+name = "EVT_13003_ACTIONC" #back to pick one
+command = { type = dissent value = -9 } 
+command = { type = event which = 13003 when = 3 }
 }
 }
+
 
 event = {
 id = 13008
 random = no
-country = SAU
-
-name = EVT_13008_NAME # Hadhramaut is ours!
-desc = EVT_13008_DESC # The Omanis have folded to our righteous demand and ceded control of Hadhramaut to us. With the arrival of our troops in the area the two fueding Sultans have promised to end their feud, at least for the time being.
+country = OMN
 style = 2
-picture = "Desert_Fighting"
+
+name = "EVT_13008_NAME" #Tax Riots
+desc = "EVT_13008_DESC" 
+picture = "resistance"
+
 
 action_a = {
-name = ACTIONNAME_13008_A # Party at Al Mukalla anyone ?
-command = { type = dissent value = -1 }
-command = { type = addcore   which = 1051   }
+ai_chance = 60
+name = "EVT_13008_ACTIONA" #send in troops
+command = { type = dissent value = 15 } #people not happy
+command = { type = event which = 13009 when = 10 }
+}
+
+action_b = {
+ai_chance = 40
+name = "EVT_13008_ACTIONB" #Let's take a loan
+command = { type = dissent value = -3 } 
+command = { type = event which = 13011 when = 6 }
 }
 }
 
@@ -268,80 +231,416 @@ event = {
 id = 13009
 random = no
 country = OMN
-
-trigger = {
-event = 13002
-atwar = no
-control = { province = 1051 data = OMN }
-}
-
-name = EVT_13009_NAME # Peace in Hadhramaut
-desc = EVT_13009_DESC # Our troops have finally managed to end the fighting in Hadhramaut and once more ensured peace in the area.
 style = 2
-picture = "POWs6"
 
-date = { day = 1 month = january year = 1939 }
-offset = 100
-deathdate = { day = 1 month = january year = 1966 }
+name = "EVT_13009_NAME" #Revolt over Taxes
+desc = "EVT_13009_DESC" 
+picture = "resistance"
+
 
 action_a = {
-name = ACTIONNAME_13009_A # Finally!
-command = { type = dissent value = -1 }
+name = "EVT_13009_ACTIONA" #CRUSH THEM ALL
+command = { type = event which = 13010 when = 4 where = SAU }
+command = { type = revolt which = 1051 }
 }
 }
 
 event = {
 id = 13010
 random = no
-country = OMN
-
-trigger = { 
-event = 13003 
-}
-
-name = EVT_13010_NAME # Djaffar ibn al-Mansur has died!
-desc = EVT_13010_DESC #The Sultan of Kathiri, Djaffar ibn al-Mansur, has died! His son, al-Husayn ibn Ali has become the new Sultan of Kathiri, and assumed the positions his father held in the central government.
+country = SAU
 style = 2
-picture = "minister_died"
 
-date = { day = 0 month = january year = 1939 }
-offset = 100
-deathdate = { day = 29 month = december year = 1963 }
+name = "EVT_13010_NAME" #Arabian Response
+desc = "EVT_13010_DESC" 
+picture = "Arab_infantry"
+
 
 action_a = {
-name = ACTIONNAME_13010_A # Memento mori
-command = { type = sleepminister which = 92065 } #Djaffar ibn al-Mansur
-command = { type = sleepminister which = 92067 } #Djaffar ibn al-Mansur
-command = { type = foreignminister which = 92066 } #al-Husayn ibn Ali
-command = { type = armamentminister which = 92068 } #al-Husayn ibn Ali
-command = { type = dissent value = 1 }
+ai_chance = 70
+name = "EVT_13010_ACTIONA" #Not War
+command = { type = dissent value = -2 }
+}
+
+action_b = {
+ai_chance = 30
+name = "EVT_13010_ACTIONB" #War
+command = { type = dissent value = 5 } #people not happy about war against fellow Arabs
+command = { type = war which = OMN  }
 }
 }
+
 
 event = {
 id = 13011
 random = no
 country = OMN
-
-trigger = { 
-NOT = { 
-event = 13003 
-} 
-}
-
-name = EVT_13011_NAME # Djaffar ibn al-Mansur has died!
-desc = EVT_13011_DESC #The Sultan of Kathiri, Djaffar ibn al-Mansur, has died! His son, al-Husayn ibn Ali has become the new Sultan of Kathiri.
 style = 2
-picture = "minister_died"
 
-date = { day = 0 month = january year = 1939 }
-offset = 100
-deathdate = { day = 29 month = december year = 1963 }
+name = "EVT_13011_NAME" #Pick a loan
+desc = "EVT_13011_DESC" 
+picture = "Unemployment_rate"
+
 
 action_a = {
-name = ACTIONNAME_13011_A # Memento mori
-command = { type = sleepminister which = 92065 } #Djaffar ibn al-Mansur
-command = { type = sleepminister which = 92067 } #Djaffar ibn al-Mansur
-command = { type = dissent value = 1 }
+ai_chance = 90
+name = "EVT_13011_ACTIONA" # Ottoman Loan
+trigger = { exists = OTT }
+command = { type = dissent value = -1 } 
+command = { type = event which = 13012 when = 20 }
+}
+
+action_b = {
+ai_chance = 10
+name = "EVT_13011_ACTIONB" # British Loan
+trigger = { exists = PAK }
+command = { type = dissent value = 1 } 
+command = { type = event which = 13013 when = 20 }
+}
+}
+
+event = {
+id = 13012
+random = no
+country = OTT
+style = 2
+
+name = "EVT_13012_NAME" #Ottoman Loan Application
+desc = "EVT_13012_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+ai_chance = 30
+name = "EVT_13012_ACTIONA" # Yes
+command = { type = dissent value = 2 } 
+command = { type = event which = 13014 when = 7 }
+command = { type = setflag which = OTT_LOAN }
+}
+
+action_b = {
+ai_chance = 70
+name = "EVT_13012_ACTIONB" # No
+command = { type = dissent value = -1 } 
+command = { type = event which = 13015 when = 7 }
+}
+}
+
+event = {
+id = 13013
+random = no
+country = PAK
+style = 2
+
+name = "EVT_13013_NAME" #Delhi Loan Application
+desc = "EVT_13013_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+ai_chance = 60
+name = "EVT_13013_ACTIONA" # Yes
+command = { type = dissent value = 2 } 
+command = { type = event which = 13014 when = 7 }
+command = { type = setflag which = PAK_LOAN }
+}
+
+action_b = {
+ai_chance = 40
+name = "EVT_13013_ACTIONB" # No
+command = { type = dissent value = -1 } 
+command = { type = event which = 13015 when = 7 }
+}
+}
+
+event = {
+id = 13014
+random = no
+country = YEM
+style = 2
+
+name = "EVT_13014_NAME" #loan accepted
+desc = "EVT_13014_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+name = "EVT_13014_ACTIONA" 
+command = { type = dissent value = -4 } 
+command = { type = money value = 1000 }
+command = { type = event which = 13016 when = 1110 }
+command = { type = event which = 13004 when = 720 }
+command = { type = money value = -200 }
+command = { type = event which = 13005 when = 1000 }
+command = { type = money value = -400 }
+command = { type = event which = 13006 when = 1400 }
+command = { type = money value = -400 }
+}
+}
+
+event = {
+id = 13015
+random = no
+country = OMN
+style = 2
+
+name = "EVT_13015_NAME" #loan rejected
+desc = "EVT_13015_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+name = "EVT_13015_ACTIONA" 
+command = { type = dissent value = 1 } 
+command = { type = event which = 1303 when = 7 }
+}
+}
+
+event = {
+id = 13016
+random = no
+country = OMN
+style = 2
+
+name = "EVT_13013_NAME" #Loan is due
+desc = "EVT_13013_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_13016_ACTIONA" # Has 4k
+trigger = { money = 4000 }
+command = { type = dissent value = -2 } 
+command = { trigger = { flag = OTT_LOAN } type = event which = 13017 when = 7 where = OTT }
+command = { trigger = { flag = PAK_LOAN } type = event which = 13017 when = 7 where = PAK }
+}
+
+action_b = {
+ai_chance = 0
+name = "EVT_13016_ACTIONB" # Not enough
+command = { type = dissent value = 5 } 
+command = { trigger = { flag = OTT_LOAN } type = event which = 13018 when = 7 where = OTT }
+command = { trigger = { flag = PAK_LOAN } type = event which = 13018 when = 7 where = PAK }
+}
+}
+
+event = {
+id = 13017
+random = no
+country = { OTT PAK }
+style = 2
+
+name = "EVT_13017_NAME" #loan paid back
+desc = "EVT_13017_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+name = "EVT_13017_ACTIONA" 
+command = { type = dissent value = -1 } 
+command = { type = money value = 4000 }
+}
+}
+
+event = {
+id = 13018
+random = no
+country = { OTT PAK }
+style = 2
+
+name = "EVT_13018_NAME" #Loan is not paid back!
+desc = "EVT_13018_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_13018_ACTIONA" # Make them pay
+command = { type = dissent value = -2 } 
+command = { trigger = { flag = OTT_LOAN } type = event which = 13019 when = 7 where = OTT }
+command = { trigger = { flag = PAK_LOAN } type = event which = 13019 when = 7 where = PAK }
+command = { type = make_puppet which = OMN }
+command = { type = event which = 13019 when = 1 }
+}
+
+action_b = {
+ai_chance = 20
+name = "EVT_13018_ACTIONB" # Forgivesness
+command = { type = dissent value = 5 } 
+}
+}
+
+
+event = {
+id = 13019
+random = no
+country = OMN
+style = 2
+
+name = "EVT_13019_NAME" #Loan is not paid back!
+desc = "EVT_13019_DESC" 
+picture = "Unemployment_rate"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_13019_ACTIONA" # no choice
+command = { type = dissent value = 5 } 
+}
+
+action_b = {
+ai_chance = 0
+name = "EVT_13019_ACTIONB" # Defiance
+command = { type = dissent value = -5 } 
+command = { type = end_puppet }
+command = { trigger = { flag = OTT_LOAN } type = war which = OTT }
+command = { trigger = { flag = PAK_LOAN } type = war which = PAK }
+}
+}
+
+event = {
+id = 13020
+random = no
+country = OMN
+style = 2
+
+trigger = {
+war = { country = EGY country = OTT }
+}
+
+name = "EVT_13003_NAME" #Picking a side in Cairo Pact - Otto War
+desc = "EVT_13003_DESC" 
+picture = "Afghanistan"
+
+date = { day = 1 month = january year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1936 }
+
+action_a = {
+ai_chance = 30
+name = "EVT_13020_ACTIONA" # Ottomans
+command = { type = dissent value = 6 }
+command = { type = domestic which = interventionism value = 2 } 
+command = { type = alliance which = OTT }
+command = { type = relation which = OTT value = 100 }
+command = { type = relation which = EGY value = -100 }
+command = { type = relation which = SAU value = -100 }
+command = { type = addclaim which = 1039 }
+command = { type = addclaim which = 1047 }
+}
+
+action_b = {
+ai_chance = 50
+name = "EVT_13020_ACTIONB" # Neutrality
+command = { type = dissent value = -1 } 
+command = { type = domestic which = interventionism value = -4 }
+
+}
+
+action_c = {
+ai_chance = 20
+name = "EVT_13020_ACTIONC" # Cairo Pact
+command = { type = dissent value = -4 } 
+command = { type = domestic which = interventionism value = 2 }
+command = { type = alliance which = EGY }
+command = { type = relation which = OTT value = -100 }
+command = { type = relation which = EGY value = 100 }
+command = { type = relation which = SAU value = 100 }
+
+}
+}
+
+
+event = {
+id = 13021
+country = OMN
+random = no
+style = 2
+
+trigger = {
+owned = { province = 1039 data = -1 }
+owned = { province = 1047 data = -1 }
+}
+
+
+name = "EVT_13021_NAME" #Cores
+desc = "EVT_13021_DESC" 
+picture = "Arab_infantry"
+
+date = { day = 1 month = january year = 1936 }
+offset = 75
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+name = "EVT_13021_ACTIONA"
+command = { type = dissent value = 4 }
+command = { type = addcore which = 1039 }
+command = { type = addcore which = 1047 }
+}
+}
+
+
+event = {
+id = 13022
+country = OMN
+random = no
+style = 2
+
+name = "EVT_13022_NAME" #sunglasses ban
+desc = "EVT_13022_DESC" 
+picture = "sillyshammar"
+
+date = { day = 25 month = january year = 1937 }
+offset = 75
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+name = "EVT_13022_ACTIONA"
+command = { type = dissent value = 2 }
+}
+}
+
+event = {
+id = 13023
+random = no
+country = OMN
+style = 2
+
+name = "EVT_13023_NAME" #Arab Congress Invite
+desc = "EVT_13023_DESC" 
+picture = "foreign_policy"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_13023_ACTIONA"
+command = { type = dissent value = -1 } 
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = LBY value = 10 }
+command = { type = relation which = EGY value = 10 }
+command = { type = relation which = OMN value = 10 }
+command = { type = relation which = SAU value = 10 }
+command = { type = relation which = YEM value = 10 }
+command = { type = relation which = OTT value = -10 }
+command = { type = relation which = VIC value = -10 }
+command = { type = relation which = GER value = -25 }
+command = { type = relation which = SPA value = -10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "EVT_13023_ACTIONB" 
+command = { type = dissent value = 10 } #Really gonna piss people off
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = EGY value = -10 }
+command = { type = relation which = SAU value = -10 }
+command = { type = relation which = OMN value = -10 }
+command = { type = relation which = LBY value = -10 }
+command = { type = relation which = YEM value = -10 }
+command = { type = relation which = OTT value = 50 }
+command = { type = relation which = VIC value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = relation which = SPA value = 10 }
 }
 }
