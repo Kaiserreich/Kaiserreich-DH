@@ -18,51 +18,46 @@ ai = "kaiserreich\austria.ai"
 
 headofstate = { type = 9 id = 23041 }
 
-	
 	headofgovernment = { type = 9 id = 23049 }
- 	foreignminister = { type = 9 id = 23143  }
- 	armamentminister = { type = 9 id = 23068 }
- 	ministerofsecurity = { type = 9 id = 23082 }
- 	ministerofintelligence = { type = 9 id = 23145 }
- 	chiefofstaff = { type = 9 id = 23146 }
- 	chiefofarmy = { type = 9 id = 23150  }
- 	chiefofnavy = { type = 9 id = 23123  }        
- 	chiefofair = { type = 9 id = 23149 }
+	foreignminister = { type = 9 id = 23143 }
+	armamentminister = { type = 9 id = 23068 }
+	ministerofsecurity = { type = 9 id = 23082 }
+	ministerofintelligence = { type = 9 id = 23145 }
+	chiefofstaff = { type = 9 id = 23146 }
+	chiefofarmy = { type = 9 id = 23150 }
+	chiefofnavy = { type = 9 id = 23123 }
+	chiefofair = { type = 9 id = 23149 }
 
 #### Resource Reserves
 
 capital = 195
- 
-        SpyInfo  = {  country = "AUS" NumberOfSpies = 4  } 
+
+	SpyInfo  = {  country = "AUS" NumberOfSpies = 4  }
 
 	# Resource Reserves
-	energy	=	1000   
-        metal	= 1000		
-        rare_materials =	500	
-        oil =	500	
-        supplies =	500
-	money = 20      
-        transports = 50
-	manpower = 100
+	energy		= 1000
+	metal		= 1000
+	rare_materials = 500
+	oil			= 500
+	supplies 	= 500
+	money		= 20
+	transports 	= 50
+	manpower 	= 100
 
 
-
-
-    ownedprovinces =      {
-401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371
-	 }
-    controlledprovinces = {
-401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371
-	  }
-    nationalprovinces =   {
-401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194
-	}
+ownedprovinces = {
+				401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371 332 335 }
+controlledprovinces = {
+				401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371 332 335 }
+nationalprovinces = {
+				401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 }
 claimedprovinces = {
 #commented claims as they are causing problems with the Ausgleich chain.
-#208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288 
-#287 291 292 293 205 199 204 200 207 198 197 196 201 206 203 202 235 237 236 239 242 241 238 300 240  
+#208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288
+#287 291 292 293 205 199 204 200 207 198 197 196 201 206 203 202 235 237 236 239 242 241 238 300 240
 #301 337 344 345 352 347 350 351 343 332 357 353 358 355 354 356 335
-        }
+		}
+
 diplomacy = {
 relation = {   tag =    	BEL	value = 		80	   }  
 relation = {   tag =  	BLR	 value =		120	   }  
