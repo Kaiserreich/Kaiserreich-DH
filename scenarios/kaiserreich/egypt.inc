@@ -18,13 +18,13 @@ country = {
 
 #### cabinet
 
-	headofstate = { type = 9 id = 512119 }
-	headofgovernment = { type = 9 id = 512025 } #Ali Mahir Pasha
- 	foreignminister = { type = 9 id = 512028 }
- 	armamentminister = { type = 9 id = 512047 }
- 	ministerofsecurity = { type = 9 id = 512005  }
- 	ministerofintelligence = { type = 9 id = 512072  }
-	chiefofstaff = { type = 9 id = 512083 } #Mohamed Saleh Harb
+	headofstate = { type = 9 id = 512208 } #Aziz Ali al-Misri
+	headofgovernment = { type = 9 id = 512211 } #Aziz Ali al-Misri
+ 	foreignminister = { type = 9 id = 512139 } #Abdul Rahman Hassan Azzam
+ 	armamentminister = { type = 9 id = 512047 } #Mohamed Mahmoud Pasha
+ 	ministerofsecurity = { type = 9 id = 512069  } #Makaram Ebeid
+ 	ministerofintelligence = { type = 9 id = 512071  } #Mohammed al Fransawi
+	chiefofstaff = { type = 9 id = 512083 } #Aziz Ali al-Misri
 	chiefofarmy = { type = 9 id = 512092 } #Mohamed Saleh Harb
 	chiefofnavy = { type = 9 id = 512143 } #Ahmed Hassanein
 	chiefofair = { type = 9 id = 512103 } #Victor Hubert Tait
