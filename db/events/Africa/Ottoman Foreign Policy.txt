@@ -1,18 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
 ###
 # Ottoman Foreign Policy
 ###
-
 
 #Dealing with the Hashemites
 
@@ -184,33 +172,6 @@ command = { type = removecore which = 1037 }
 command = { type = removecore which = 1041 } #Mesopotamia
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #########################################################################
 #Treaty of Jerusalem
@@ -1002,7 +963,7 @@ id = 115060
 country = OTT
 style = 2
 
-name = "The Treaty of Beyrut"
+name = "The Treaty of Beirut"
 desc = "We've succesfully beaten the armed forces of the Arabian bloc and captured large parts of their countries. Now the humiliated Egyptian leadership offers us peace in which they promise to recognize our territorial integrity and withdraw from the disputed territory. How shall we react?"
 picture = "Peace_conference"
 
@@ -1016,6 +977,7 @@ command = { type = non_aggression which = EGY where = OTT }
 command = { type = trade which = EGY where = OTT money = -1 when = 1800 value = 1 }	#forced trade for 5 years!
 command = { type = trade which = EGY where = OTT supplies = -4 when = 1800 value = 1 }	#forced trade for 5 years!
 command = { type = trigger which = 115061 }
+command = { type = setflag which = OTT_WIN }
 }
 
 action_b = {
@@ -1057,6 +1019,336 @@ picture = "Peace_conference"
 
 action_a = {
 name =  "They will pay for this..."
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 115063
+country = OTT
+style = 2
+
+decision = {
+AND = {
+exists = SER
+exists = BUL
+flag = OTT_WIN
+event = 82083
+}
+NOT = {
+ispuppet = OTT
+atwar = OTT
+}
+}
+
+trigger = {
+AND = {
+exists = SER
+exists = BUL
+flag = OTT_WIN
+event = 82083
+}
+NOT = {
+ispuppet = OTT
+atwar = OTT
+}
+}
+
+
+name = "EVT_115063_NAME"
+desc = "EVT_115063_DESC"
+picture = "politics3"
+decision_picture = "decision_diplomatic_campaign"
+
+
+action_a = {
+ai_chance = 60
+name =  "EVT_115063_ACTIONA"
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = 1 } 
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = event which = 115064 when = 3 }
+command = { type = setflag which = OTT_BALKDIPLO }
+}
+
+action_b = {
+ai_chance = 0
+name =  "EVT_115063_ACTIONB"
+command = { type = dissent value = 6 }
+command = { type = domestic which = interventionism value = 2 } 
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = relation which = ROM value = -100 }
+command = { type = relation which = SER value = -100 }
+command = { type = relation which = OTT value = -100 }
+command = { type = relation which = GRE value = -100 }
+command = { type = relation which = AUS value = -100 }
+command = { type = relation which = HUN value = -100 }
+command = { type = relation which = RUS value = -100 }
+command = { type = relation which = U01 value = -100 }
+command = { type = setflag which = OTT_BALKAGGRO }
+}
+
+action_c = {
+ai_chance = 40
+name =  "EVT_115063_ACTIONC"
+command = { type = dissent value = -7 }
+command = { type = domestic which = interventionism value = -3 } 
+command = { type = relation which = ROM value = 50 }
+command = { type = relation which = SER value = 50 }
+command = { type = relation which = BUL value = -50 }
+command = { type = relation which = GRE value = 50 }
+command = { type = setflag which = OTT_BALKISO }
+}
+}
+
+event = {
+id = 115064
+country = OTT
+style = 2
+
+name = "EVT_115064_NAME"
+desc = "EVT_115064_DESC"
+picture = "politics2"
+
+action_a = {
+ai_chance = 40
+name =  "EVT_115064_ACTIONA"
+command = { type = event which = 115065 when = 7 }
+command = { type = relation which = ROM value = -50 }
+command = { type = relation which = SER value = -50 }
+command = { type = relation which = GRE value = -50 }
+}
+
+action_b = {
+ai_chance = 40
+name =  "EVT_115064_ACTIONB"
+command = { type = dissent value = -2 }
+command = { type = event which = 115068 when = 10 }
+}
+
+action_c = {
+ai_chance = 20
+name =  "EVT_115064_ACTIONC"
+command = { type = dissent value = 4 }
+command = { type = domestic which = interventionism value = -3 } 
+command = { type = relation which = ROM value = -50 }
+command = { type = relation which = SER value = -50 }
+command = { type = event which = 115071 when = 10 }
+}
+}
+
+event = {
+id = 115065
+country = BUL
+style = 2
+
+name = "EVT_115065_NAME"
+desc = "EVT_115065_DESC"
+picture = "ottomanemp"
+
+action_a = {
+ai_chance = 90
+name =  "EVT_115065_ACTIONA"
+command = { type = dissent value = -1 }
+command = { type = leave_alliance }
+command = { type = end_puppet }
+command = { type = supplies value = 400 }
+command = { type = metalpool value = 200 }
+command = { type = money value = 100 }
+command = { type = energypool value = 300 }
+command = { type = relation which = ROM value = -50 }
+command = { type = relation which = SER value = -50 }
+command = { type = relation which = OTT value = 100 }
+command = { type = relation which = GRE value = -50 }
+command = { type = trigger which = 115066 }
+}
+
+action_b = {
+ai_chance = 10
+name =  "EVT_115065_ACTIONB"
+command = { type = dissent value = 2 }
+command = { type = relation which = ROM value = 50 }
+command = { type = relation which = SER value = 50 }
+command = { type = relation which = OTT value = -50 }
+command = { type = relation which = GRE value = 50 }
+command = { type = trigger which = 115067 }
+}
+}
+
+event = {
+id = 115066
+country = OTT
+style = 2
+
+name = "EVT_115066_NAME"
+desc = "EVT_115066_DESC"
+picture = "Peace_conference"
+
+action_a = {
+name =  "EVT_115066_ACTIONA"
+command = { type = alliance which = BUL }
+command = { type = dissent value = 1 }
+command = { type = supplies value = -400 }
+command = { type = metalpool value = -200 }
+command = { type = money value = -100 }
+command = { type = energypool value = -300 }
+}
+}
+
+event = {
+id = 115067
+country = OTT
+style = 2
+
+name = "EVT_115067_NAME"
+desc = "EVT_115067_DESC"
+picture = "Peace_conference"
+
+action_a = {
+name =  "EVT_115067_ACTIONA"
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 115068
+country = GRE
+style = 2
+
+name = "EVT_115068_NAME"
+desc = "EVT_115068_DESC"
+picture = "ottomanemp"
+
+action_a = {
+ai_chance = 70
+name =  "EVT_115068_ACTIONA"
+command = { type = dissent value = -2 }
+command = { type = relation which = ROM value = 50 }
+command = { type = relation which = SER value = 50 }
+command = { type = relation which = OTT value = 50 }
+command = { type = relation which = BUL value = 50 }
+command = { type = trigger which = 115069 }
+}
+
+action_b = {
+ai_chance = 30
+name =  "EVT_115068_ACTIONB"
+command = { type = dissent value = 2 }
+command = { type = relation which = ROM value = -50 }
+command = { type = relation which = SER value = -50 }
+command = { type = relation which = OTT value = -50 }
+command = { type = relation which = BUL value = -50 }
+command = { type = trigger which = 115070 }
+}
+}
+
+event = {
+id = 115069
+country = OTT
+style = 2
+
+name = "EVT_115069_NAME"
+desc = "EVT_115069_DESC"
+picture = "Peace_conference"
+
+action_a = {
+name =  "EVT_115069_ACTIONA"
+command = { type = dissent value = -1 }
+command = { type = non_aggression which = OTT where = GRE  when = 1000 }
+command = { type = non_aggression which = OTT where = ROM when = 1000 }
+command = { type = non_aggression which = OTT where = SER  when = 1000 }
+command = { type = non_aggression which = OTT where = BUL  when = 1000 }
+command = { type = relation which = ROM value = 50 }
+command = { type = relation which = BUL value = 50 }
+command = { type = relation which = GRE value = 50 }
+}
+}
+
+event = {
+id = 115070
+country = OTT
+style = 2
+
+name = "EVT_115070_NAME"
+desc = "EVT_115070_DESC"
+picture = "Peace_conference"
+
+action_a = {
+name =  "EVT_115070_ACTIONA"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 115071
+country = GRE
+style = 2
+
+name = "EVT_115071_NAME"
+desc = "EVT_115071_DESC"
+picture = "ottomanemp"
+
+action_a = {
+ai_chance = 25
+name =  "EVT_115071_ACTIONA"
+command = { type = dissent value = 6 }
+command = { type = leave_alliance }
+command = { type = addcore which = 383 }
+command = { type = addcore which = 381 }
+command = { type = addcore which = 379 }
+command = { type = relation which = ROM value = -100 }
+command = { type = relation which = SER value = -200 }
+command = { type = relation which = OTT value = 50 }
+command = { type = trigger which = 115072 }
+}
+
+action_b = {
+ai_chance = 75
+name =  "EVT_115071_ACTIONB"
+command = { type = dissent value = 1 }
+command = { type = relation which = ROM value = 50 }
+command = { type = relation which = SER value = 50 }
+command = { type = relation which = OTT value = -50 }
+command = { type = trigger which = 115073 }
+}
+}
+
+
+event = {
+id = 115072
+country = OTT
+style = 2
+
+name = "EVT_115072_NAME"
+desc = "EVT_115072_DESC"
+picture = "Peace_conference"
+
+action_a = {
+name =  "EVT_115072_ACTIONA"
+command = { type = dissent value = -1 }
+command = { type = alliance which = GRE }
+command = { type = removecore which = 383 }
+command = { type = removecore which = 381 }
+command = { type = removecore which = 379 }
+command = { type = secedeprovince which = GRE value = 383 }
+command = { type = secedeprovince which = GRE value = 381 }
+command = { type = secedeprovince which = GRE value = 379 }
+}
+}
+
+event = {
+id = 115073
+country = OTT
+style = 2
+
+name = "EVT_115073_NAME"
+desc = "EVT_115073_DESC"
+picture = "Peace_conference"
+
+action_a = {
+name =  "EVT_115073_ACTIONA"
 command = { type = dissent value = 1 }
 }
 }
