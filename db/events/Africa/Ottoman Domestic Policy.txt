@@ -808,8 +808,8 @@ command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #
 
 action = {
 ai_chance = 25
-name = "Fevzi Cakmak Pasha - copy the Germans!"
-command = { type = dissent value = -1 }
+name = "Fevzi Cakmak Pasha - reluctantly copy the Germans."
+command = { type = dissent value = 1 }
 command = { type = chiefofstaff which = 549118 }
 command = { type = waketeam which = 15736 when = 1 }
 command = { type = waketeam which = 15737 when = 1 } #Kazim Orbay when Cakmak retires
@@ -818,13 +818,13 @@ command = { type = gain_tech which = 6010 }# Firepower Focus
 command = { type = gain_tech which = 6020 } # Superior Firepower
 command = { type = gain_tech which = 6040 }# Delay
 command = { type = gain_tech which = 6050 }# Mobile Defense
-command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 } #allies is the next best thing, right?
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 } 
 }
 
 action = {
 ai_chance = 20
 name = "Ismaeil Berkok Pasha - we need light and mobile troops!"
-command = { type = dissent value = 2 }
+command = { type = dissent value = 1 }
 command = { type = chiefofstaff which = 549086 }
 command = { type = waketeam which = 15739 when = 1 }
 command = { type = activate which = 6390 }# Light Infantry Focus
@@ -995,6 +995,36 @@ control = { province = 1172 data = OTT } #Jerusalem
 }
 NOT = {
 local_flag = OTT_MARTIAL_LAW 
+}
+}
+
+event = {
+id = 15019
+country = OTT
+style = 2
+picture = "Unconventional_Monetary_Policy"
+
+date = { day = 1 month = april year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "EVT_15019_NAME" # Raising Tariffs
+desc = "EVT_15019_DESC" #With the chaos of Black Monday wreaking havoc on our economy, many are calling for the government to take action! One of the greatest demands is to raise tariff barriers in order to keep local industries afloat. This proposal has caused some outcry however, the various trade ports of the empire state that it will be more difficult for them to compete if there are trade barriers in place.
+
+action = {
+ai_chance = 70
+name = "EVT_15019_ACTIONA" #Raise the tariffs, we must protect our own
+command = { type = dissent value = 1.5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+command = { type = domestic which = free_market value = -1 }
+}
+
+action = {
+ai_chance = 30
+name = "EVT_15019_ACTIONB" # Keep the markets open, we can only injure our trade power by raising tariffs.
+command = { type = dissent value = .5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -1 }
+command = { type = domestic which = free_market value = 2 }
 }
 }
 
@@ -1564,6 +1594,7 @@ command = { type = foreignminister which =  549017 } #Boris Johnson's granddad!
 command = { type = ministerofsecurity which = 549046 } #Necmettin Sadik Sadak
 command = { type = armamentminister which = 549124 } #Hüseyin Avni Pasha
 command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = SERENITY_WIN }
 }
 }
 
@@ -1585,6 +1616,7 @@ command = { type = foreignminister which =  549114 } #Lütfi Fikri Bey
 command = { type = armamentminister which = 549115 } #Refi' Cevad Ulunay
 command = { type = ministerofsecurity which = 549116 } #Feridun Fikri Düsünsel
 command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = LIBERAL_WIN }
 }
 }
 
@@ -1598,7 +1630,7 @@ name = "The Turanist Party Controls the Government"
 desc = "The Turanist Party has managed to gather enough influence in the Chamber of Deputies to recieve the sultan's support in forming a new government. Liberals and minorities alike quiver at the prospect of the Empire's new pan-Turkist government. However, whether or not the new government is acclaimed or opposed depends on its authority as reformers..."
 
 action = {
-name = "Oh, Turan - a new dawmn approaches!"
+name = "Oh, Turan - a new dawn approaches!"
 command = { type = dissent value = -1 }
 command = { type = headofstate which = 549001 } #Abdulmejid II
 command = { type = headofgovernment which = 549111 } #Nihal Atsiz
@@ -1606,6 +1638,7 @@ command = { type = foreignminister which =  549125 } #Mehmet Emin Yurdakul
 command = { type = armamentminister which = 549022 } #Sadri Maksudi Arsal
 command = { type = ministerofsecurity which = 549054 } #Mustafa Abdülhalik Renda
 command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = TURANIST_WIN }
 }
 }
 
@@ -1620,7 +1653,7 @@ desc = "Over the course of the last two years no party has managed to secure a m
 
 
 action = {
-ai_chance = 60
+ai_chance = 50
 name = "The Sultan appoints Selahattin Pasha of the SOP!"
 command = { type = dissent value = 2.5 }
 command = { type = headofstate which = 549001 } #Abdulmejid II
@@ -1630,6 +1663,7 @@ command = { type = ministerofsecurity which = 549046 } #Necmettin Sadik Sadak
 command = { type = armamentminister which = 549124 } #Hüseyin Avni Pasha
 command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 } #Political bickering
 command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = SERENITY_WIN }
 }
 
 action = {
@@ -1643,10 +1677,11 @@ command = { type = armamentminister which = 549115 } #Refi' Cevad Ulunay
 command = { type = ministerofsecurity which = 549116 } #Feridun Fikri Düsünsel
 command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 } #Political bickering
 command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = LIBERAL_WIN }
 }
 
 action = {
-ai_chance = 10
+ai_chance = 20
 name = "The Sultan asks the Turanists to form a government!"
 command = { type = dissent value = 10 }
 command = { type = headofstate which = 549001 } #Abdulmejid II
@@ -1656,6 +1691,7 @@ command = { type = armamentminister which = 549022 } #Sadri Maksudi Arsal
 command = { type = ministerofsecurity which = 549054 } #Mustafa Abdülhalik Renda
 command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -10 } #Political bickering AND Turanists!
 command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = TURANIST_WIN }
 }
 }
 
@@ -1701,8 +1737,11 @@ action = {
 name = "Peace and harmony shall soon return!"
 command = { type = dissent value = -1 }
 command = { type = local_clrflag which = SUPPORT_LIBERALS }
+command = { trigger = { headofgovernment = 549113 } type = setflag which = LIBERAL_WIN }
 command = { type = local_clrflag which = SUPPORT_SERENITY }
+command = { trigger = { headofgovernment = 549122 } type = setflag which = SERENITY_WIN }
 command = { type = local_clrflag which = SUPPORT_TURANIST }
+command = { trigger = { headofgovernment = 549111 } type = setflag which = TURANIST_WIN }
 }
 }
 
@@ -1713,10 +1752,10 @@ style = 2
 picture = "OTT_Constitution"
 
 name = "The Reform Movement Fails"
-desc = "Dang!"
+desc = "It is clear that we are not going to have the power needed to force through all the reforms that we had hoped. We will have to compromise with the other parties to keep them from calling new elections and ousting us. We can only pray for Allah to bring us some success..."
 
 action = {
-name = "Peace and harmony shall never return!"
+name = "Wiil peace and harmony ever return?"
 command = { type = dissent value = 15 }
 command = { type = setflag which = OTTOMAN_FAILURE }
 
@@ -2119,131 +2158,205 @@ command = { type = dissent value = -2 }
 ###
 
 ###
-#FAILURE OF REFORMS IN 1938
+#FAILURE OF REFORMS IN 1938, Ottoman Coup (Currently dummied out)
 ###
+#
+#event = {
+#id = 15043
+#country = OTT
+#picture = "OTT_Coup"
+#style = 2
+#
+#trigger = { 
+#event = 15028 #Combatting the State Within the State
+#event = 15037 #The Reform Movement Fails
+#NOT = {
+#ispuppet = OTT
+#}
+#}
+#
+#date = { day = 0 month = april year = 1938 }
+#offset = 60
+#deathdate = { day = 29 month = december year = 1963 }
+#
+#name = "The Second Raid on the Sublime Porte"
+#desc = "EVT_15043_DESC" #Feeling the heat of the Ottoman government’s ban on its paramilitary forces and the dismissal of civil servants loyal to the movement, the Committee of Union and Progress remnant in the Progress and Renewal Party utilized the quietness of the small hours to launch a coup to dislodge the staggering and weakening reform movement. Aided by its militia and army units loyal to their cause, CUP dignitaries has seized control over the war ministry, downtown Istanbul and is currently storming the Topkapi palace where the Sultan remains unaware of the coup d’etat... 
+#
+#action = {
+#name = "Traitors, traitors everywhere!"
+#command = { type = dissent value = 10 }
+#command = { type = event which = 15044 where = OTT when = 0 } #OTT The Battle of the Dolmabahce Palace
+#command = { type = sleepevent which = 15030 } #OTT The CUP coup
+#}
+#}
+#
+#The Battle of the Dolmabahce Palace, triggered by either 15029 or 15030 
+#event = {
+#id = 15044
+#country = OTT
+#style = 2
+#picture = "OTT_Abdulmejid"
+#
+#name = "The Battle of the Dolmabahce Palace"
+#desc = "EVT_15044_DESC" #As the rebel troops made their way to the Sultan’s quarters at the Topkapi palace, a gun fight broke out between the CUP-putchists and Abdülmecid’s life-guards. Desperately trying to force the Sultan to surrender and accept the demands of the coup-leaders, the rebels became restless and resumed firing at the entrenched and outnumbered loyalists. In the ensuing fire-fight the Sultan-Caliph was mortally wounded and only lived for a very short amount of time. As the rebel troops searched the royal quarters they came upon crown prince Ahmed Nihad whom they at gun-point declared to be Sultan Ahmed IV. However, the grand vizier has not been caught and there’s rumours of unrest at the Ertugrul Cavalry barracks… 
+#
+        #If the State hasn't succeeded at reform chances are for the coup to succeed
+#		action = {
+#		name = "The Putsch succeeds and the CUP installs Ahmed IV on the throne!"
+#		ai_chance = 75
+#      command = { type = dissent value = 5 }
+#      command = { type = headofstate which = 549107 } #Ahmed IV FA
+#      command = { type = headofgovernment which = 549120 } #Mehmet Cavit Bey
+#      command = { type = foreignminister which =  549127 } #Filibeli Hilmi Bey
+#      command = { type = armamentminister which = 549128 } #Kara Kemal Bey
+#      command = { type = ministerofsecurity which = 549129 } #Abdulkadir Pasa
+#        command = { type = ministerofintelligence which = 549130 } #Yenibahceli Nail Bey		
+#		command = { type = chiefofstaff which = 549072 } #Kaci Vehip Pasha
+#       command = { type = sleepminister which = 549001 } #Abdülmecid II   
+#        command = { type = sleepminister which = 549002 } #Mustafa Kemal HoG  		
+#        command = { type = sleepminister which = 549007 } #Mustafa Kemal CoS  	
+#        command = { type = sleepminister which = 549030 } #Mustafa Kemal MoA  
+#        command = { type = sleepevent which = 15045 } #OTT The Charge of the Ertugrul Cavalry Regiment		
+#		}
+#
+#		action = {
+#		name = "Prince Osman Fuad rushes to the Ertugrul Cavalry barracks!"
+#		ai_chance = 25
+#        command = { type = dissent value = -5 }
+#        command = { type = headofstate which = 549107 } #Ahmed IV FA
+#       command = { type = headofgovernment which = 549120 } #Mehmet Cavit Bey
+#		command = { trigger = { incabinet = 549007 } type = chiefofstaff which = 549072 } #If Kemal is chief of staff he's replaced by Kaci Vehip Pasha
+#		command = { trigger = { incabinet = 549030 } type = armamentminister which = 549004 } #If Kemal is minister of armament he's replaced by Mehmet Cavit Bey		
+#        command = { type = sleepminister which = 549001 } #Abdülmecid II
+#        command = { type = event which = 15045 where = OTT when = 1 } #The Charge of the Ertugrul Cavalry Regiment
+#       }		
+#		
+#}
+#
+#event = {
+#id = 15045
+#country = OTT
+#style = 2
+#picture = "OTT_Cavalry"
+#
+#name = "The Charge of the Ertugrul Cavalry Regiment"
+#desc = "EVT_15045_DESC" #As smoke bellowed from the burning Topkapi palace and news spread around Istanbul of the attempted coup, prince Osman Fuad decided to act. \n \n Making his way to  the Ertugrul Cavalry barracks, the prince quickly won the unit for the loyalists and led them on a charge against the putchist pickets at the war ministry. The trained royal guards made short work of the paramilitary forces of the Committee of Union and Progress and his further loyalists troops continued to arrive under the command of the grand vizier order was soon restored to the Ottoman capital. However, swift decisions are needed, if the state is too survive this criminal act and the vile murder of the Sultan-Caliph.
+#
+#action = {
+#name = "The cavalry's here! Osman Fuad restores order to the capital!"
+#command = { type = dissent value = -5 }
+#command = { type = headofstate which = 549109 } #Osman IV FA
+#command = { type = headofgovernment which = 549002 } #Mustafa Kemal Pasha
+#command = { type = chiefofstaff which = 549078 } #Ömer Fahreddin Pasha
+#command = { type = armamentminister which = 549124 } #Hüseyin Avni Pasha
+#command = { type = sleepminister which = 549107 } #Ahmed IV FA
+#command = { type = sleepminister which = 549108 } #Ahmed IV ML
+#command = { type = sleepminister which = 549004 } #Mehmet Cavit Bey MoA
+#command = { type = sleepminister which = 549120 } #Mehmet Cavit Bey HoG
+#}
+#}
+#
+#15046 taken
 
 event = {
-id = 15043
+id = 15047
 country = OTT
-picture = "OTT_Coup"
+picture = "OTT_Army"
 style = 2
 
-trigger = { 
-event = 15028 #Combatting the State Within the State
-event = 15037 #The Reform Movement Fails
-NOT = {
-ispuppet = OTT
-}
-}
 
-date = { day = 0 month = april year = 1938 }
+name = "EVT_15047_NAME" #Retooling the militray factories
+desc = "EVT_15047_DESC" #With the Cairo Pact seemingly prepared to destroy all we hold dear, we must make some effort to prepare for war. One way we can prepare is to direct the factories that produce our weapons and other equipment for us to build our stuff differently. The factory owners won't like it, but the fate of the Empire as a whole may be at stake...
+
+date = { day = 1 month = january year = 1938 }
 offset = 60
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "The Second Raid on the Sublime Porte"
-desc = "EVT_15043_DESC" #Feeling the heat of the Ottoman government’s ban on its paramilitary forces and the dismissal of civil servants loyal to the movement, the Committee of Union and Progress remnant in the Progress and Renewal Party utilized the quietness of the small hours to launch a coup to dislodge the staggering and weakening reform movement. Aided by its militia and army units loyal to their cause, CUP dignitaries has seized control over the war ministry, downtown Istanbul and is currently storming the Topkapi palace where the Sultan remains unaware of the coup d’etat... 
 
 action = {
-name = "Traitors, traitors everywhere!"
-command = { type = dissent value = 10 }
-command = { type = event which = 15044 where = OTT when = 0 } #OTT The Battle of the Dolmabahce Palace
-#command = { type = sleepevent which = 15030 } #OTT The CUP coup
+ai_chance = 40
+name = "EVT_15047_ACTIONA" #Focus on reducing how long it takes to produce equipment
+command = { type = dissent value = 3 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = build_time which = land value = -10 }  
+command = { type = build_cost which = land value = -5 }  
 }
+
+action = {
+ai_chance = 20
+name = "EVT_15047_ACTIONB" #Direct them to improve the quality of equipment!
+command = { type = dissent value = 3 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = toughness which = land value = 2 }  
+command = { type = max_organization which = land value = 3 }  
 }
 
-#The Battle of the Dolmabahce Palace, triggered by either 15029 or 15030 
-event = {
-id = 15044
-country = OTT
-style = 2
-picture = "OTT_Abdulmejid"
-
-name = "The Battle of the Dolmabahce Palace"
-desc = "EVT_15044_DESC" #As the rebel troops made their way to the Sultan’s quarters at the Topkapi palace, a gun fight broke out between the CUP-putchists and Abdülmecid’s life-guards. Desperately trying to force the Sultan to surrender and accept the demands of the coup-leaders, the rebels became restless and resumed firing at the entrenched and outnumbered loyalists. In the ensuing fire-fight the Sultan-Caliph was mortally wounded and only lived for a very short amount of time. As the rebel troops searched the royal quarters they came upon crown prince Ahmed Nihad whom they at gun-point declared to be Sultan Ahmed IV. However, the grand vizier has not been caught and there’s rumours of unrest at the Ertugrul Cavalry barracks… 
-
-        #If the State hasn't succeeded at reform chances are for the coup to succeed
-		action = {
-		name = "The Putsch succeeds and the CUP installs Ahmed IV on the throne!"
-		ai_chance = 75
-        command = { type = dissent value = 5 }
-        command = { type = headofstate which = 549107 } #Ahmed IV FA
-        command = { type = headofgovernment which = 549120 } #Mehmet Cavit Bey
-        command = { type = foreignminister which =  549127 } #Filibeli Hilmi Bey
-        command = { type = armamentminister which = 549128 } #Kara Kemal Bey
-        command = { type = ministerofsecurity which = 549129 } #Abdulkadir Pasa
-        command = { type = ministerofintelligence which = 549130 } #Yenibahceli Nail Bey		
-		command = { type = chiefofstaff which = 549072 } #Kaci Vehip Pasha
-        command = { type = sleepminister which = 549001 } #Abdülmecid II   
-        command = { type = sleepminister which = 549002 } #Mustafa Kemal HoG  		
-        command = { type = sleepminister which = 549007 } #Mustafa Kemal CoS  	
-        command = { type = sleepminister which = 549030 } #Mustafa Kemal MoA  
-        command = { type = sleepevent which = 15045 } #OTT The Charge of the Ertugrul Cavalry Regiment		
-		}
-
-		action = {
-		name = "Prince Osman Fuad rushes to  the Ertugrul Cavalry barracks!"
-		ai_chance = 25
-        command = { type = dissent value = -5 }
-        command = { type = headofstate which = 549107 } #Ahmed IV FA
-        command = { type = headofgovernment which = 549120 } #Mehmet Cavit Bey
-		command = { trigger = { incabinet = 549007 } type = chiefofstaff which = 549072 } #If Kemal is chief of staff he's replaced by Kaci Vehip Pasha
-		command = { trigger = { incabinet = 549030 } type = armamentminister which = 549004 } #If Kemal is minister of armament he's replaced by Mehmet Cavit Bey		
-        command = { type = sleepminister which = 549001 } #Abdülmecid II
-        command = { type = event which = 15045 where = OTT when = 1 } #The Charge of the Ertugrul Cavalry Regiment
-        }		
-		
+action = {
+ai_chance = 40
+name = "EVT_15047_ACTIONC" #Controlling the factories will not be a popular move at all
+command = { type = dissent value = -2 }
+command = { type = peacetime_ic_mod value = 3 }
+command = { type = domestic which = free_market value = 1 }
+}
 }
 
 event = {
-id = 15045
+id = 15048
 country = OTT
+picture = "OTT_Army"
 style = 2
-picture = "OTT_Cavalry"
 
-name = "The Charge of the Ertugrul Cavalry Regiment"
-desc = "EVT_15045_DESC" #As smoke bellowed from the burning Topkapi palace and news spread around Istanbul of the attempted coup, prince Osman Fuad decided to act. \n \n Making his way to  the Ertugrul Cavalry barracks, the prince quickly won the unit for the loyalists and led them on a charge against the putchist pickets at the war ministry. The trained royal guards made short work of the paramilitary forces of the Committee of Union and Progress and his further loyalists troops continued to arrive under the command of the grand vizier order was soon restored to the Ottoman capital. However, swift decisions are needed, if the state is too survive this criminal act and the vile murder of the Sultan-Caliph.
+
+name = "EVT_15048_NAME" #New Desert Warfare Training
+desc = "EVT_15048_DESC" #As a further preparation for the coming war we are reviewing our training methods for fighting in the desert. There are many lessons that we learned from The Weltkrieg, and much we could teach our soldiers, but time is short. Where should we focus their training?
+
+date = { day = 1 month = june year = 1938 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
 
 action = {
-name = "The cavalry's here! Osman Fuad restores order to the capital!"
-command = { type = dissent value = -5 }
-command = { type = headofstate which = 549109 } #Osman IV FA
-command = { type = headofgovernment which = 549002 } #Mustafa Kemal Pasha
-command = { type = chiefofstaff which = 549078 } #Ömer Fahreddin Pasha
-command = { type = armamentminister which = 549124 } #Hüseyin Avni Pasha
-command = { type = sleepminister which = 549107 } #Ahmed IV FA
-command = { type = sleepminister which = 549108 } #Ahmed IV ML
-command = { type = sleepminister which = 549004 } #Mehmet Cavit Bey MoA
-command = { type = sleepminister which = 549120 } #Mehmet Cavit Bey HoG
+ai_chance = 50
+name = "EVT_15048_ACTIONA" #Focus on desert manouvere
+command = { type = desert_move which = land value = 4 }  
+command = { type = morale which = land value = 2 }  
+}
+
+action = {
+ai_chance = 50
+name = "EVT_15048_ACTIONB" #Focus on desert combat
+command = { type = desert_attack which = land value = 2 }  
+command = { type = desert_defense which = land value = 2 }  
+command = { type = morale which = land value = 2 }  
 }
 }
 
-#15046 taken
+event = {
+id = 15049
+country = OTT
+picture = "OTT_Army"
+style = 2
 
 
+name = "EVT_15049_NAME" #The War Finally Breaks Out
+desc = "EVT_15049_DESC" #The Cairo Pact has chosen now to strike us! We are mustering every last reserve we can and quickly preparing as many resources as we can! To Arms!
+
+trigger = {
+AND = {
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+action = {
+name = "EVT_15049_ACTIONA" #We must hold the line, no matter the cost!
+command = { type = morale which = land value = 1 }
+command = { type = manpowerpool value = 40 }  
+command = { type = supplies value = 600 }  
+}
+}
