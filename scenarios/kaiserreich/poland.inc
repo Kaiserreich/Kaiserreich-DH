@@ -18,17 +18,16 @@ ai = "kaiserreich\Poland.ai"
 
 #### cabinet
 
-	headofstate 			= { type = 9 id = 13179 }
+	headofstate				= { type = 9 id = 13179 }
 	headofgovernment		= { type = 9 id = 13002 }
- 	foreignminister			= { type = 9 id = 13003 }
- 	armamentminister		= { type = 9 id = 13004 }
- 	ministerofsecurity		= { type = 9 id = 13005 }
- 	ministerofintelligence	= { type = 9 id = 13006 }
- 	chiefofstaff			= { type = 9 id = 13171 } #Zygmunt Berling
- 	chiefofarmy				= { type = 9 id = 13116 } #Zygmunt Berling
-
-
-
+	foreignminister			= { type = 9 id = 13003 }
+	armamentminister		= { type = 9 id = 13004 }
+	ministerofsecurity		= { type = 9 id = 13005 }
+	ministerofintelligence	= { type = 9 id = 13211 } #Tadeusz Pelczynski
+	chiefofstaff			= { type = 9 id = 13105 } #Waclaw Stachiewicz
+	chiefofarmy				= { type = 9 id = 13116 } #Kazimierz Sosnkowski
+	chiefofnavy				= { type = 9 id = 13210 } #Witold Zajaczkowski
+	chiefofair				= { type = 9 id = 13010 } #Stanislaw Ujejski
 
 #### Resource Reserves
 capital = 232
@@ -48,38 +47,38 @@ manpower = 275
 231 227 223 233 234 243 246 228 232 229 250 254 230
 	  }
     nationalprovinces =   {
-230 231 227 223 233 234 243 246 228 232 229 250 254 
+230 231 227 223 233 234 243 246 228 232 229 250 254
 	}
 
 diplomacy = {
-relation = {   tag =    	BEL	value = 		60	   }  
-relation = {   tag =  	BLR	 value =		70	   }  
-relation = {   tag =  	BUL	value = 		40	   }  
-relation = {   tag =  	GER	 value =		120	   }  
-relation = {   tag =  	LAT	value = 		80	   }  
-relation = {   tag =  	LIT	 value =		80	   }  
-relation = {   tag =  	UKR	 value =		40	   }  
-relation = {   tag =  	AUS	value = 		60	   }  
-relation = {   tag =  	BOS	value = 		20	   }  
-relation = {   tag =  	CRO	 value =		20	   }  
-relation = {   tag =  	CZE	value = 		50	   }  
-relation = {   tag =  	GLD	value = 		80	   }  
-relation = {   tag =  	HUN	 value =		100	   }  
-relation = {   tag =  	ROM	value = 		-40	   }  
-relation = {   tag =  	SPA	value = 		20	   }  
-relation = {   tag =  	ENG	value = 		-30	   }  
-relation = {   tag =  	FRA	value = 		-20	   }  
-relation = {   tag =  	CAN	value = 		-40	   }  
-relation = {   tag =  	VIC	value = 		30	   }  
-relation = {   tag =  	RUS	 value =		-40	   }  
-relation = {   tag =  	OTT	 value =		10	   }  
-relation = {   tag =  	CON	value = 		40	   }  
-relation = {   tag =	USA	value = 		20	 }
-relation = {   tag =  	JAP	value = 		-10	   }  
+relation = {   tag =	BEL value = 60 }
+relation = {   tag =	BLR value = 70 }
+relation = {   tag =	BUL value = 40 }
+relation = {   tag =	GER value = 120 }
+relation = {   tag =	LAT value = 80 }
+relation = {   tag =	LIT value = 80 }
+relation = {   tag =	UKR value = 40 }
+relation = {   tag =	AUS value = 60 }
+relation = {   tag =	BOS value = 20 }
+relation = {   tag =	CRO value = 20 }
+relation = {   tag =	CZE value = 50 }
+relation = {   tag =	GLD value = 80 }
+relation = {   tag =	HUN value = 100 }
+relation = {   tag =	ROM value = -40 }
+relation = {   tag =	SPA value = 20 }
+relation = {   tag =	ENG value = -30 }
+relation = {   tag =	FRA value = -20 }
+relation = {   tag =	CAN value = -40 }
+relation = {   tag =	VIC value = 30 }
+relation = {   tag =	RUS value = -40 }
+relation = {   tag =	OTT value = 10 }
+relation = {   tag =	CON value = 40 }
+relation = {   tag =	USA value = 20 }
+relation = {   tag =	JAP value = -10 }
 }
 
 
-	
+
 	techapps = {
 #Infantry
 1010  1020 1030 1040 1050 1060 1070 1080 #Infantry Division 
@@ -120,11 +119,26 @@ relation = {   tag =  	JAP	value = 		-10	   }
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010 
 }
 
-dormant_ministers = { 13168 13185 13186 13187 }
+dormant_ministers = { 13168 13185 13186 13187
+					#GLD
+					13500 13501 13502 13503 13504 13505 13506 13507 13508 13509 13510 13511 13512 13513 13514 13515 13516 13517
+					13518 13519 13520 13521 13522 13523 13524 13525 13526 13527 13528 13529 13530 13531 13532 13533 13534 13535
+					13536 13537 13538 13539 13540 13541 13542 13543 13544 13545 13546 13547 13548 13549 13550 13551 13552 13553
+					13554
+					}
 
-dormant_teams = { 2709 2710 2732 }
+dormant_teams = {
+				#GER-Silesia-Gdansk
+				2708 2709 2717 2728 2737 2738 2740 2741 2742
+				#GLD
+				2716 2718 2724 2729 2730 2734 2739 2746
+				}
 
-dormant_leaders = { 8012 8013 8043 8044 8045 8113 8128 8182 8197 8198 8200 }
+dormant_leaders = {
+				#GLD
+				8400 8401 8402 8403 8404 8405 8406 8407 8408 8409 8410 8411 8412 8413 8414 8415 8416 8417 8418 8419 8420 8421
+				8422 8423 8424 8425 8426 8427 8428 8429 8430 8431 8432 8433 8434 8435
+				}
 
 #########  OOB (...)
 
