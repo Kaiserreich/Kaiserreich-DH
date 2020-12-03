@@ -443,7 +443,7 @@ navalunit = {
  division = { id = { type = 20001 id = 116 } name = "HMCS Calliope" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 117 } name = "HMCS Calypso" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 118 } name = "HMCS Cambrian" type = light_cruiser model = 2 }
- division = { id = { type = 20001 id = 119 } name = "HMCS Cantenbury" type = light_cruiser model = 2 }
+ division = { id = { type = 20001 id = 119 } name = "HMCS Canterbury" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 120 } name = "HMCS Capetown" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 121 } name = "HMCS Carlisle" type = light_cruiser model = 2 }
  division = { id = { type = 20001 id = 122 } name = "HMCS Caroline" type = light_cruiser model = 2 }
