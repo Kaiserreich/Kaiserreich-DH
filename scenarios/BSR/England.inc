@@ -175,6 +175,7 @@ landunit = {
 			strength = 32
 			max_strength = 50
 			} 		
+}
 
 landunit = {
 		id = { type = 15500 id = 8 }

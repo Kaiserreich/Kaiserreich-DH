@@ -34,7 +34,6 @@ chiefofair = { type = 9 id = 25158 }
 capital = 34
 manpower = 30
 
-manpower = 28
 energy	=	1000  
 metal	= 450		
 rare_materials = 800		
