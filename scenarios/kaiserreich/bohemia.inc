@@ -19,16 +19,16 @@ country = {
     	}
 
 
-	headofstate = { type = 9 id = 24154		}
+	headofstate = { type = 9 id = 24154 }
 	headofgovernment = { type = 9 id = 24175 }
- 	foreignminister = { type = 9 id = 24060 }
- 	armamentminister = { type = 9 id = 24071 }
- 	ministerofsecurity = { type = 9 id = 24085  }
- 	ministerofintelligence = { type = 9 id = 24104 }
- 	chiefofstaff = { type = 9 id = 24183 }
- 	chiefofarmy = { type = 9 id = 24182 }
- 	chiefofnavy = { type = 9 id = 24009 }        
- 	chiefofair = { type = 9 id = 24142  }
+	foreignminister = { type = 9 id = 24060 }
+	armamentminister = { type = 9 id = 24067 } #Karl von Skoda
+	ministerofsecurity = { type = 9 id = 24085 }
+	ministerofintelligence = { type = 9 id = 24104 }
+	chiefofstaff = { type = 9 id = 24183 }
+	chiefofarmy = { type = 9 id = 24182 }
+	chiefofnavy = { type = 9 id = 24138 }
+	chiefofair = { type = 9 id = 24143 } #Rudolf Holeka
 
 SpyInfo  = {  country = "CZE" NumberOfSpies = 3  } 
 
@@ -43,40 +43,36 @@ SpyInfo  = {  country = "CZE" NumberOfSpies = 3  }
 	capital = 207
 
 
-    ownedprovinces =      {
-205 199 204 200 207 198 197 196 201 206 203 202
-	 }
-    controlledprovinces = {
-205 199 204 200 207 198 197 196 201 206 203 202
-	  }
-    nationalprovinces =   {
-205 199 204 200 207 198 197 196 201 206 203 202
-	}
+    ownedprovinces = { 205 199 204 200 207 198 197 196 201 206 203 202 }
 
-dormant_leaders        = {  18038 }
+    controlledprovinces = { 205 199 204 200 207 198 197 196 201 206 203 202 }
+
+    nationalprovinces = { 205 199 204 200 207 198 197 196 201 206 203 202 }
+
+dormant_leaders = { 18038 }
 
 dormant_ministers = { 24184 24185 24186 24187 }
 
 diplomacy = {
-relation = {   tag =    	BEL	value = 		40	   }  
-relation = {   tag =  	BLR	 value =		70	   }  
-relation = {   tag =  	BUL	value = 		30	   }  
-relation = {   tag =  	GER	 value =		100	   }  
-relation = {   tag =  	LAT	value = 		60	   }  
-relation = {   tag =  	LIT	 value =		40	   }  
-relation = {   tag =  	POL	value = 		50	   }  
-relation = {   tag =  	AUS	value = 		150	   }  
-relation = {   tag =  	HUN	 value =		80	   }  
-relation = {   tag =  	ITA	value = 		40	   }  
-relation = {   tag =  	SPA	value = 		40	   }  
-relation = {   tag =  	ENG	value = 		-50	   }  
-relation = {   tag =  	FRA	value = 		-70	   }  
-relation = {   tag =  	RSI	 value =		-20	   }  
-relation = {   tag =  	VIC	value = 		30	   }  
-relation = {   tag =  	RUS	 value =		80	   }  
-relation = {   tag =  	OTT	 value =		30	   }  
-relation = { tag =	USA	value = 		40	 }
-relation = {   tag =  	JAP	value = 		-10	   }  
+relation = { tag = BEL value = 40 }
+relation = { tag = BLR value = 70 }
+relation = { tag = BUL value = 30 }
+relation = { tag = GER value = 100 }
+relation = { tag = LAT value = 60 }
+relation = { tag = LIT value = 40 }
+relation = { tag = POL value = 50 }
+relation = { tag = AUS value = 150 }
+relation = { tag = HUN value = 80 }
+relation = { tag = ITA value = 40 }
+relation = { tag = SPA value = 40 }
+relation = { tag = ENG value = -50 }
+relation = { tag = FRA value = -70 }
+relation = { tag = RSI value = -20 }
+relation = { tag = VIC value = 30 }
+relation = { tag = RUS value = 80 }
+relation = { tag = OTT value = 30 }
+relation = { tag = USA value = 40 }
+relation = { tag = JAP value = -10 }
 }
 
 

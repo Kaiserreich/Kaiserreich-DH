@@ -95,8 +95,9 @@ relation = { tag = ENG value = -200  }
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470
 
 # Great War Land Doctrines
-6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540
+6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680
 14000 14010 #Improved Great War Hospital System
+6540 6910 # Interwar
 
 #Naval Doctrines
 8010 8020 8040 8050 8030 8060 8070 8080 #Basic Theories
@@ -313,6 +314,78 @@ landunit = {
   locked = yes
   }
   }	  
+  
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 27 }
+   name = "3rd Infantry Division"
+   strength = 40
+   max_strength = 50
+   model = 6
+   type = infantry
+ }     
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 28 }
+   name = "5th Infantry Division"
+   strength = 40
+   max_strength = 50
+   model = 6
+   type = infantry
+ }    
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 29 }
+   name = "3rd Cavalry Division"
+   strength = 40
+   max_strength = 50
+   model = 6
+   type = infantry
+ }   
+ 
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 30 }
+   name = "1st Canadian Infantry Div."
+   strength = 40
+   max_strength = 50
+   model = 6
+   type = infantry
+   extra = artillery
+   brigade_model = 1
+ }    
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 31 }
+   name = "2nd Canadian Infantry Div."
+   strength = 40
+   max_strength = 50
+   model = 6
+   type = infantry  
+ }
+ 
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 32 }
+   name = "Expeditionary 'Maritimes' Div."
+   strength = 40
+   max_strength = 50
+   model = 6
+   type = infantry  
+ }  
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 33 }
+   name = "Expeditionary 'Prince of Wales' Div."
+   strength = 40
+   max_strength = 50
+   model = 6
+   type = infantry  
+ }
 
 navalunit = { 
         id = { type = 15500 id = 100 } 

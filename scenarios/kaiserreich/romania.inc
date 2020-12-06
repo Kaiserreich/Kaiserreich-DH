@@ -118,8 +118,9 @@ relation = { tag = SER value = 100 guaranteed = { day = 29 month = december year
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
-
 	}
+
+dormant_teams = { 2905 2919 2920 }
 
 #########  OOB (...)
 

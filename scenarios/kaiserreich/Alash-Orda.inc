@@ -18,16 +18,16 @@ ai = "kaiserreich\Kazakh.ai"
     }
 
 #### cabinet
-headofstate = { type = 9 id =     520012  }
-headofgovernment = { type = 9 id =  520013  }
- 	foreignminister = { type = 9 id = 520017   }
- 	armamentminister = { type = 9 id =  520042 }
- 	ministerofsecurity = { type = 9 id =   520023  }
- 	ministerofintelligence = { type = 9 id =  520025  }
- 	chiefofstaff = { type = 9 id =    520030 }
- 	chiefofarmy = { type = 9 id = 520033    }
- 	chiefofnavy = { type = 9 id =   520036  }        
- 	chiefofair = { type = 9 id =   520039   }
+	headofstate = { type = 9 id = 520012 }
+	headofgovernment = { type = 9 id = 520013 }
+	foreignminister = { type = 9 id = 520017 }
+	armamentminister = { type = 9 id = 520042 }
+	ministerofsecurity = { type = 9 id = 520023 }
+	ministerofintelligence = { type = 9 id = 520025 }
+	chiefofstaff = { type = 9 id = 520030 }
+	chiefofarmy = { type = 9 id = 520054 }
+	chiefofnavy = { type = 9 id = 520052 }
+	chiefofair = { type = 9 id = 520039 }
 #### Resource Reserves
 
        SpyInfo  = {  country = "KAZ" NumberOfSpies = 2  } 

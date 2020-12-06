@@ -63,9 +63,9 @@ event = {
 		name = "More is better"
 		command = { type = morale which = land value = 5 }	
 		command = { type = add_corps which = "Southern Command" value = land where = 29 }
-		command = { type = add_division which = "3rd Infantry Division" value = infantry when = 6 where = -30 }
-		command = { type = add_division which = "5th Infantry Division" value = infantry when = 6 where = -30 }
-		command = { type = add_division which = "3rd Cavalry Division" value = cavalry when = 6 where = -30 }
+		command = { type = activate_division which = 16500 value = 27 when = 1 where = 29 }
+		command = { type = activate_division which = 16500 value = 28 when = 1 where = 29 }
+		command = { type = activate_division which = 16500 value = 29 when = 1 where = 29 }
 	}
 }
 
@@ -75,7 +75,7 @@ event = {
 	country = U07
 	
 		trigger = {
-		NOT = { event = 10 }
+		NOT = { event = 12 }
 		NOT = { control = { province = 29 data = U07 } }
 		}
 
@@ -91,6 +91,7 @@ event = {
 	action_a = {
 		name = "FOR WHAT!?"
 		command = { type = sleepminister which = 557558 }
+		command = { type = sleepevent which = 12 }
 		command = { type = dissent value = 25 }
 	}
 
@@ -146,9 +147,6 @@ event = {
 		command = { type = secedeprovince which = ENG value = 20 }
 		command = { type = secedeprovince which = ENG value = 27 }	
 		command = { type = trigger which = 6 }
-		command = { type = damage_division which = "3rd Infantry Division" value = U07 when = 6 where = 45 }
-		command = { type = damage_division which = "5th Infantry Division" value = U07 when = 6 where = 45 }
-		command = { type = damage_division which = "3rd Cavalry Division" value = U07 when = 6 where = 45 }
 	}
 }
 
@@ -164,13 +162,13 @@ event = {
 
 	action_a = {
 		name = "Forward, Workers!"
-		command = { type = strength which = land when = 1 where = 0 value = -0.15 }
-		command = { type = max_organization which = land value = -30 }
+		command = { type = strength which = land when = 1 where = 0 value = -0.05 }
+		command = { type = max_organization which = land value = -1 }
 		command = { type = war which = U07 }
 		command = { type = add_corps which = "Second Volunteer Force" value = land where = 15 }
-		command = { type = add_division which = "Lancaster Infantry" value = infantry when = 6 where = -50 }
-		#command = { type = add_division which = "Plymouth Infantry" value = infantry when = 6 where = -50 }
-		command = { type = add_division which = "Portsmouth Infantry" value = infantry when = 6 where = -50 }
+		command = { type = activate_division which = 16500 value = 9 when = 1 where = 15 }
+		command = { type = activate_division which = 16500 value = 10 when = 1 where = 15 }
+		command = { type = activate_division which = 16500 value = 11 when = 1 where = 15 }
 	}
 }
 
@@ -180,12 +178,12 @@ event = {
 	country = U07
 
 	trigger = {
-		random = 50
+		random = 35
 		flag = maclean_speech
 		vp = { country = ENG value = 10 }
 	}
 
-	name = "Territorial Army Transfer I"
+	name = "Scottish Territorial Army Transfer"
 	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
 	picture = "britishinfantry_CW1" 
 	style = 2
@@ -197,8 +195,7 @@ event = {
 	action_a = {
 		name = "Unpleasant"
 		command = { type = switch_allegiance which = 15500 value = 17 where = ENG }
-		command = { type = switch_allegiance which = 15500 value = 19 where = ENG }	
-		command = { type = dissent value = 2 }
+		command = { type = dissent value = 1 }
 	}
 }
 
@@ -208,12 +205,39 @@ event = {
 	country = U07
 
 	trigger = {
-		random = 50
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 10 }
+	}
+
+	name = "Welsh Territorial Army Transfer"
+	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
+	picture = "britishinfantry_CW1" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 30 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = switch_allegiance which = 15500 value = 19 where = ENG }	
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 9
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
 		flag = maclean_speech
 		vp = { country = ENG value = 20 }
 	}
 
-	name = "Territorial Army Transfer II"
+	name = "Cornish Territorial Army Transfer"
 	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
 	picture = "britishinfantry_CW1" 
 	style = 2
@@ -224,14 +248,40 @@ event = {
 
 	action_a = {
 		name = "Unpleasant"
-		command = { type = switch_allegiance which = 15500 value = 21 where = ENG }
-		command = { type = switch_allegiance which = 15500 value = 23 where = ENG }		
-		command = { type = dissent value = 2 }
+		command = { type = switch_allegiance which = 15500 value = 21 where = ENG }	
+		command = { type = dissent value = 1 }
 	}
 }
 
 event = {
-	id = 9
+	id = 10
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 20 }
+	}
+
+	name = "East Anglia Territorial Army Transfer"
+	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
+	picture = "britishinfantry_CW1" 
+	style = 2
+
+	date = { hour = 0 day = 30 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 30 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = switch_allegiance which = 15500 value = 23 where = ENG }		
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 11
 	random = no
 	country = ENG
 	
@@ -259,7 +309,7 @@ event = {
 }
 
 event = {
-	id = 10
+	id = 12
 	random = no
 	country = U07
 	
@@ -285,7 +335,7 @@ event = {
 }
 
 event = {
-	id = 11
+	id = 13
 	random = no
 	country = U07
 
@@ -306,12 +356,12 @@ event = {
 	action_a = {
 		name = "The unwritten laws are inviolable!"
 		command = { type = dissent value = 2 }
-		command = { type = trigger which = 12 }
+		command = { type = trigger which = 14 }
 	}
 }
 
 event = {
-	id = 12
+	id = 14
 	random = no
 	country = ENG
 
@@ -327,7 +377,7 @@ event = {
 }
 
 event = {
-	id = 13
+	id = 15
 	random = no
 	country = ENG
 
@@ -349,16 +399,16 @@ event = {
 		command = { type = dissent value = -3 }		
 		command = { type = morale which = land value = 5 }	
 		command = { type = add_corps which = "Midlands Volunteer Force" value = land when = -1 where = 24 }
-		command = { type = add_division which = "Birmingham Militia" when = 3 value = 11 }		
+		command = { type = activate_division which = 16500 value = 6 when = 1 where = 24 }
 	}
 }
 
 event = {
-	id = 14
+	id = 16
 	random = no
 	country = U07
 
-	name = "The Death of Curzon"
+	name = "Death of Curzon"
 	desc = "George Curzon, the Prime Minister of United Kingdom, suffered a haemorrhage of the bladder and died in office. The nation is shocked by the death that has come at the most difficult period for the Great Britain. Stanley Baldwin, former Chancellor of the Exchequer, undertook a temporary head of government."
 	picture = "minister_died2" 
 	style = 2
@@ -374,7 +424,7 @@ event = {
 }
 
 event = {
-	id = 15
+	id = 17
 	random = no
 	country = ENG
 	persistent = yes
@@ -401,7 +451,7 @@ event = {
 }
 
 event = {
-	id = 16
+	id = 18
 	random = no
 	country = ENG
 	persistent = yes
@@ -429,13 +479,65 @@ event = {
 			command = { type = supplies value = 200 }
 			command = { trigger = { control = { province = 11 data = -1 } } type = province_revoltrisk which = 11 value = -5 }
 			command = { trigger = { control = { province = 12 data = -1 } } type = province_revoltrisk which = 12 value = -5 }			
-#			command = { trigger = { control = { province = 11 data = -1 } } type = add_division which = "Scottish Volunteer Force" value = militia when = 6 where = 11 }
-#			command = { trigger = { control = { province = 12 data = -1 } } type = add_division which = "Scottish Militia East" value = 11 when = 6 where = 12 }
 	}
 }
 
 event = {
-	id = 17
+	id = 19
+	random = no
+	country = ENG
+	
+      trigger = {
+		random = 50
+        flag = maclean_speech
+		control = { province = 11 data = -1 }
+	  }	
+
+	name = "Strathclyde Volunteers Arrived!"
+	desc = "The Scottish Socialists, inspired by Maclean's speech, actively enlisted in the militia to fight for the Revolution."
+	picture = "militia" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 15
+	deathdate = { hour = 0 day = 30 month = july year = 1926 }
+
+	action_a = {
+		name = "Welcome brothers!"	
+			command = { type = add_corps which = "Scottish Volunteer Force" where = 11 }
+			command = { type = activate_division which = 16500 value = 12 when = 0 where = 11 }
+	}
+}
+
+event = {
+	id = 20
+	random = no
+	country = ENG
+	
+      trigger = {
+		random = 50
+        flag = maclean_speech
+		control = { province = 12 data = -1 }
+	  }	
+
+	name = "Lothian Volunteers Arrived!"
+	desc = "The Scottish Socialists, inspired by Maclean's speech, actively enlisted in the militia to fight for the Revolution."
+	picture = "militia" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 15
+	deathdate = { hour = 0 day = 30 month = july year = 1926 }
+
+	action_a = {
+		name = "Welcome brothers!"	
+			command = { type = add_corps which = "Scottish Militia East" where = 12 }
+			command = { type = activate_division which = 16500 value = 13 when = 0 where = 12 }
+	}
+}
+
+event = {
+	id = 21
 	random = no
 	country = U07
 	
@@ -464,7 +566,7 @@ event = {
 }
 
 event = {
-	id = 18
+	id = 22
 	random = no
 	country = ENG
 	
@@ -493,7 +595,7 @@ event = {
 }
 
 event = {
-	id = 19
+	id = 23
 	random = no
 	country = U07
 	
@@ -523,7 +625,7 @@ event = {
 }
 
 event = {
-	id = 20
+	id = 24
 	random = no
 	country = ENG
 	
@@ -547,13 +649,13 @@ event = {
 		command = { type = supplies value = 200 }
 		command = { type = morale which = land value = 3 }		
 		command = { type = dissent value = -3 }		
-		command = { type = add_corps which = "Lancaster Volunteer Force" value = land when = -1 where = 17 }
-		command = { type = add_division which = "Lancaster Militia" when = 3 value = 11 }		
+		command = { type = add_corps which = "Lancashire Volunteer Force" value = land when = -1 where = 17 }
+		command = { type = activate_division which = 16500 value = 7 when = 1 where = 17 }
 	}
 }
 
 event = {
-	id = 21
+	id = 25
 	random = no
 	country = U07
 	
@@ -583,7 +685,7 @@ event = {
 }
 
 event = {
-	id = 22
+	id = 26
 	random = no
 	country = ENG
 	
@@ -607,13 +709,13 @@ event = {
 		command = { type = supplies value = 200 }
 		command = { type = morale which = land value = 2 }			
 		command = { type = dissent value = -3 }	
-		command = { type = add_corps which = "Newcastle Volunteer Force" value = land when = -1 where = 13 }
-		command = { type = add_division which = "Newcastle Militia" when = 3 value = 11 }			
+		command = { type = add_corps which = "Northumberland Volunteer Force" value = land when = -1 where = 13 }
+		command = { type = activate_division which = 16500 value = 8 when = 1 where = 13 }	
 	}
 }
 
 event = {
-	id = 23
+	id = 27
 	country = ENG
 	style = 2
 	picture = "ENG_rally"
@@ -630,7 +732,7 @@ event = {
 }
 
 event = {
-	id = 24
+	id = 28
 	random = no
 	country = U07
 	save_date = yes
@@ -638,7 +740,7 @@ event = {
 	trigger = {
 		flag = maclean_speech
 		not = {
-			event = 27
+			event = 31
 		}
 		control = { province = 29 data = -1 }		
 	}
@@ -677,20 +779,20 @@ event = {
 }
 
 event = {
-	id = 25
+	id = 29
 	random = no
 	country = U07
 
 	trigger = {
 		flag = expeditionsmall
 		not = {
-			event = 27
-			event = 26
+			event = 31
+			event = 30
 		}	
-		event = { id = 24 days = 7 }
+		event = { id = 28 days = 7 }
 	}
 
-	name = "The arrival of the Canadian divisions"
+	name = "Arrival of the Canadian divisions"
 	desc = "The Canadian divisions arrived at their destination."
 	picture = "britishinfantry_CW3" 
 	style = 2
@@ -702,26 +804,26 @@ event = {
 	action_a = {
 		name = "OK"
 		command = { type = morale which = land value = 3 }	
-		command = { type = add_division which = "1st Canadian Infantry Div." value = infantry when = 6 where = artillery }
-		command = { type = add_division which = "Expeditionary 'Maritimes' Div." value = infantry when = 6 where = -60 }
+		command = { type = activate_division which = 16500 value = 30 when = 0 }
+		command = { type = activate_division which = 16500 value = 31 when = 0 }
 	}	
 }
 
 event = {
-	id = 26
+	id = 30
 	random = no
 	country = U07
 
 	trigger = {
 		flag = expeditionlarge
 		not = {
-			event = 27
-			event = 25
+			event = 31
+			event = 29
 		}
-		event = { id = 24 days = 7 }
+		event = { id = 28 days = 7 }
 	}
 
-	name = "The arrival of the Canadian divisions"
+	name = "Arrival of the Canadian divisions"
 	desc = "The Canadian divisions arrived at their destination."
 	picture = "britishinfantry_CW3" 
 	style = 2
@@ -732,16 +834,15 @@ event = {
 
 	action_a = {
 		name = "OK"
-		command = { type = morale which = land value = 5 }	
-		command = { type = add_division which = "1st Canadian Infantry Div." value = infantry when = 6 where = artillery }
-		command = { type = add_division which = "2nd Canadian Infantry Div." value = infantry when = 6 where = -60 }
-		command = { type = add_division which = "Expeditionary 'Maritimes' Div." value = infantry when = 6 where = -60 }
-		command = { type = add_division which = "Expeditionary 'Prince of Wales' Div." value = infantry when = 6 where = -60 }
+		command = { type = activate_division which = 16500 value = 30 when = 0 }
+		command = { type = activate_division which = 16500 value = 31 when = 0 }
+		command = { type = activate_division which = 16500 value = 32 when = 0 }
+		command = { type = activate_division which = 16500 value = 33 when = 0 }
 	}	
 }
 
 event = {
-	id = 27
+	id = 31
 	random = no
 	country = U07
 
@@ -769,7 +870,7 @@ event = {
 }
 
 event = {
-	id = 28
+	id = 32
 	random = no
 	country = ENG
 
@@ -797,13 +898,11 @@ event = {
 }
 
 event = {
-	id = 29
+	id = 33
 	random = no
 	country = U07
 
-        trigger = {
-        ai = no
-        }
+    trigger = { ai = no }
 
 	name = "Wretched spring"
 	desc = "78029desc"
@@ -821,13 +920,11 @@ event = {
 }
 
 event = {
-	id = 30
+	id = 34
 	random = no
 	country = ENG
 
-        trigger = {
-        ai = no
-        }
+    trigger = { ai = no }
 
 	name = "Wretched spring"
 	desc = "78030desc"
@@ -848,7 +945,7 @@ event = {
  #TUC Total Victory
  ######################################
  event = {
- id = 31
+ id = 35
  random = no
  country = ENG
 
@@ -876,33 +973,33 @@ event = {
  ######################################
  #TUC Partial Victory
  ######################################
- #event = {
- #id = 32
- #random = no
- #country = ENG
- #
- #trigger = {
- #	comintern = 45	
- #}
- #
- #name = "TUC Partial Victory"
- #desc = "78032desc"
- #picture = "British CW Victory"
- #style = 1
- #
- #date = { day = 30 month = july year = 1925 }
- #
- #action_a = {
- #name = "It is still a victory" #End Game
- #command = { type = endgame value = 7 }
- #}
- #} 
+ event = {
+ id = 36
+ random = no
+ country = ENG
+ 
+ trigger = {
+ 	comintern = 40	
+ }
+ 
+ name = "TUC Partial Victory"
+ desc = "78032desc"
+ picture = "British CW Victory"
+ style = 1
+ 
+ date = { day = 30 month = july year = 1925 }
+ 
+ action_a = {
+ name = "It is still a victory" #End Game
+ command = { type = endgame value = 7 }
+ }
+ } 
  
  ######################################
  #British Total Victory
  ######################################
  event = {
- id = 33
+ id = 37
  random = no
  country = U07
 
@@ -929,24 +1026,52 @@ event = {
  ######################################
  #British Partial Victory
  ######################################
- #event = {
- #id = 34
- #random = no
- #country = U07
- #
- #trigger = {
- #allies = 45
- #}
- #
- #name = "British Partial Victory"
- #desc = "78034desc"
- #picture = "British CW Victory"
- #style = 1
- #
- #date = { day = 30 month = july year = 1925 }
- #
- #action_a = {
- #name = "It is still a victory" #End Game
- #command = { type = endgame value = 5 }
- #}
- #}
+ event = {
+ id = 38
+ random = no
+ country = U07
+ 
+ trigger = {
+ allies = 40
+ }
+ 
+ name = "British Partial Victory"
+ desc = "78034desc"
+ picture = "British CW Victory"
+ style = 1
+ 
+ date = { day = 30 month = july year = 1925 }
+ 
+ action_a = {
+ name = "It is still a victory" #End Game
+ command = { type = endgame value = 5 }
+ }
+ }
+ 
+ event = {
+	id = 39
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 15 }
+	}
+
+	name = "Naval Mutiny"
+	desc = "The part of the personnel of the ships of the Royal Navy do not obey our orders, and declare support for the rebels! What a pity that a large number of sailors listened to them."
+	picture = "navaldefeat" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 30 month = july year = 1926 }
+
+	action_a = {
+		name = "Unworthy"
+		command = { type = strength which = naval when = 1 where = 0 value = -0.25 }
+		command = { type = demobilize which = naval when = 0 where = 0 value = 18 }
+		command = { type = dissent value = 2.5 }
+	}
+}

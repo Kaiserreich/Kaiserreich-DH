@@ -3,7 +3,7 @@
 #### Peru ####
 country = {
 tag = PRU
-
+ai = "kaiserreich\Peru.ai"
 #### Domestic Policy ####
 policy = {
 

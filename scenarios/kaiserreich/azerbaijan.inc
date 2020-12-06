@@ -37,13 +37,13 @@ ai = "kaiserreich\Azerbaijan.ai"
 	free = { ic = 2 oil = 0 energy = 4 metal = 2 rare_materials = 1 money = 0 manpower = 0 } #new Mar2020
 
     ownedprovinces =      {
-		712 713 
+		712 713
 	 }
     controlledprovinces = {
-		712 713 
+		712 713
 	  }
     nationalprovinces =   {
-		714 713 712
+		714 713 712 1082 1083
 	}
 
 diplomacy = {

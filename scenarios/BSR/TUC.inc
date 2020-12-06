@@ -95,8 +95,9 @@ relation = { tag = U07 value = -200  }
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470
 
 # Great War Land Doctrines
-6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540
+6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680
 14000 14010 #Improved Great War Hospital System
+6910 # Interwar
 
 #Naval Doctrines
 8010 8020 8040 8050 8030 8060 8070 8080 #Basic Theories
@@ -163,5 +164,85 @@ landunit = {
   locked = yes
   }
   }		
+
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 6 }
+   name = "Birmingham Militia"
+   strength = 25
+   max_strength = 35
+   model = 4
+   type = militia
+ }  
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 7 }
+   name = "Lancaster Militia"
+   strength = 25
+   max_strength = 35
+   model = 4
+   type = militia
+ }
+ 
+ landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 8 }
+   name = "Newcastle Militia"
+   strength = 25
+   max_strength = 35
+   model = 4
+   type = militia
+ } 
+ 
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 9 }
+   name = "Lancaster Infantry"
+   strength = 30
+   max_strength = 30
+   model = 6
+   type = infantry
+ } 
+ 
+   landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 10 }
+   name = "Plymouth Infantry"
+   strength = 30
+   max_strength = 30
+   model = 6
+   type = infantry
+ } 
+
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 11 }
+   name = "Portsmouth Infantry"
+   strength = 30
+   max_strength = 30
+   model = 6
+   type = infantry
+ } 
+
+   landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 12 }
+   name = "Strathclyde Militia"
+   strength = 25
+   max_strength = 25
+   model = 4
+   type = militia
+ } 
+
+  landdivision = {
+  dormant = yes
+   id = { type = 16500 id = 13 }
+   name = "Lothian Militia"
+   strength = 25
+   max_strength = 25
+   model = 4
+   type = militia
+ } 
 
  }

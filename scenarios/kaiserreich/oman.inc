@@ -4,7 +4,6 @@
 country = {
     tag = OMN  
 
-    puppet = OTT
 
 	policy = {
         date = { year = 0 month = january day = 0 }

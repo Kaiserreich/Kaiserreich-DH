@@ -16,16 +16,17 @@ ai = "kaiserreich\Turkestan.ai"
     }
 
 #### cabinet
-headofstate = { type = 9 id =     521071 }
-headofgovernment = { type = 9 id =  521072 }
- 	foreignminister = { type = 9 id = 521022  }
- 	armamentminister = { type = 9 id =  521030 }
- 	ministerofsecurity = { type = 9 id =    521084    }
- 	ministerofintelligence = { type = 9 id =  521043   }
- 	chiefofstaff = { type = 9 id =   521073 }
- 	chiefofarmy = { type = 9 id =  521051  }
- 	chiefofnavy = { type = 9 id =   521055   }        
- 	chiefofair = { type = 9 id =    521070  }
+	headofstate = { type = 9 id = 521071 }
+	headofgovernment = { type = 9 id = 521072 }
+	foreignminister = { type = 9 id = 521022 }
+	armamentminister = { type = 9 id = 521095 }
+	ministerofsecurity = { type = 9 id = 521084 }
+	ministerofintelligence = { type = 9 id = 521043 }
+	chiefofstaff = { type = 9 id = 521091 }
+	chiefofarmy = { type = 9 id = 521094 }
+	chiefofnavy = { type = 9 id = 521055 }
+	chiefofair = { type = 9 id = 521090 }
+
 #### Resource Reserves
 	capital = 1100
 	manpower = 28
@@ -34,15 +35,11 @@ headofgovernment = { type = 9 id =  521072 }
 
 SpyInfo  = {  country = "KYG" NumberOfSpies = 2  } 
 
-    ownedprovinces =      {
-1103 1105 1104 1106 1099 1100 1102 1097 1098 1112
-	 }
-    controlledprovinces = {
-1103 1105 1104 1106 1099 1100 1102 1097 1098 1112
-	  }
-    nationalprovinces =   {
-1103 1105 1104 1106 1099 1100 1102 1097 1098 1112
-	}
+    ownedprovinces = { 1103 1105 1104 1106 1099 1100 1102 1097 1098 1112 }
+
+    controlledprovinces = { 1103 1105 1104 1106 1099 1100 1102 1097 1098 1112 }
+
+    nationalprovinces = { 1103 1105 1104 1106 1099 1100 1102 1097 1098 1112 }
 
 diplomacy = {
 
@@ -91,6 +88,15 @@ relation = { tag = CXB value = -40 }
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
 	}
+
+dormant_leaders = { 521065 521066 521067 521068 } #KAZ
+
+dormant_ministers = { #KAZ
+					  521150 521151 521152 521153 521154 521155 521156 521157 521158 521159 521160
+					  521161 521162 521163 521164 521165 }
+
+dormant_teams = { 11704
+				  11705 11709 11710 11713 11714 11718 } #KAZ teams
 
 #########  OOB (...)
 landunit = {
