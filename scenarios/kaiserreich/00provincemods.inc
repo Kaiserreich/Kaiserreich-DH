@@ -697,9 +697,9 @@ province = { id = 1710 naval_base = { size = 2 current_size = 2 } air_base = { s
 
 #Netherlands
 province = { id = 118 anti_air = 2 air_base = { size = 4 current_size = 4 } } #Eindhoven
-province = { id = 122 anti_air = 2 manpower = 2 #Amsterdam
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 125 manpower = 3 #Rotterdam
+province = { id = 119 anti_air = 1 landfort = 2 #Arnhem
+	air_base = { size = 4 current_size = 4 } }
+province = { id = 120 landfort = 1 } #Nijmegen
 province = { id = 121 ic = 1 } #Maastricht
 province = { id = 122 anti_air = 3 manpower = 2 coastalfort = 3 #Amsterdam
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
