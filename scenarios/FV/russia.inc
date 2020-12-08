@@ -1326,6 +1326,109 @@ country = {
     }
   }
 
+navalunit =
+{ id       = { type = 17351 id = 5114 }
+name     = "Baltijskij Flot"
+location = 553 # Leningrad
+base     = 553
+division =
+{ id    = { type = 17351 id = 1204 }
+name  = "Gangut"
+type  = battleship
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1205 }
+name  = "Poltava"
+type  = battleship
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1270 }
+name  = "Petropavlovsk"
+type  = battleship
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1271 }
+name  = "Sevastopol"
+type  = battleship
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1272 }
+name  = "Izmail"
+type  = battlecruiser
+model = 1
+}
+division =
+{ id    = { type = 17351 id = 1207 }
+name  = "1. Flotiliya Esmintsev"
+type  = destroyer
+model = 4
+}
+division =
+{ id    = { type = 17351 id = 1262 }
+name  = "6. Flotiliya Esmintsev"
+type  = destroyer
+model = 4
+}
+division =
+{ id    = { type = 17351 id = 1208 }
+name  = "3. Flotiliya Podlodok"
+type  = submarine
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1209 }
+name  = "4. Flotiliya Podlodok"
+type  = submarine
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1210 }
+name  = "5. Flotiliya Podlodok"
+type  = submarine
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1211 }
+name  = "6. Flotiliya Podlodok"
+type  = submarine
+model = 1
+}
+division =
+{ id    = { type = 17351 id = 1212 }
+name  = "7. Flotiliya Podlodok"
+type  = submarine
+model = 1
+}
+division =
+{ id    = { type = 17351 id = 1213 }
+name  = "8. Flotiliya Podlodok"
+type  = submarine
+model = 1
+}
+division =
+{ id    = { type = 17351 id = 1214 }
+name  = "Svoboda"
+type  = heavy_cruiser
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1215 }
+name  = "Rurik"
+type  = light_cruiser
+model = 2
+}
+division =
+{ id    = { type = 17351 id = 1216 }
+name  = "Admiral Nahimov"
+type  = light_cruiser
+model = 2
+}
+}
+
   airunit = { 
     id       = { type = 13000 id = 700 }
     name     = "Stolycnyy PVO"

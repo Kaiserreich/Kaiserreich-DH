@@ -335,7 +335,7 @@ country = {
       strength       = 65
     }
     division = {
-      id             = { type = 17344 id = 43 }
+      id             = { type = 20600 id = 43 }
       name           = "24. Strilkova Dyviziya"
       type           = infantry
       model          = 10
@@ -370,7 +370,7 @@ country = {
       strength       = 65
     }
     division = {
-      id             = { type = 17344 id = 33 }
+      id             = { type = 20600 id = 80 }
       name           = "27. Strilkova Dyviziya"
       type           = infantry
       model          = 10
@@ -443,7 +443,7 @@ country = {
       strength       = 50
     }
     division = {
-      id             = { type = 20600 id = 43 }
+      id             = { type = 20600 id = 81 }
       name           = "2. Garnizonna Dyviziya"
       type           = garrison
       model          = 5
@@ -539,4 +539,32 @@ country = {
   landdivision = { dormant = yes id = { type = 17344 id = 37 } name = "44. Strilkova Dyviziya"  type = infantry model = 9 strength = 65 } 
   landdivision = { dormant = yes id = { type = 17344 id = 39 } name = "45. Strilkova Dyviziya"  type = infantry model = 9 strength = 65 } 
   landdivision = { dormant = yes id = { type = 17344 id = 40 } name = "4. Kavaleriys'ka Dyviziya"  type = infantry model = 9 strength = 65 } 
+  
+  airunit =
+  { id       = { type = 17344 id = 60 }
+    name     = "Ukrayins'ki povitryani viys'ka"
+    location = 617
+    base     = 617
+    division =
+    { id       = { type = 17344 id = 61 }
+      name     = "1. IAD"
+      strength = 100
+      type     = interceptor
+      model    = 7
+    }
+    division =
+    { id       = { type = 17344 id = 62 }
+      name     = "2. IAD"
+      strength = 100
+      type     = multi_role
+      model    = 4
+    }
+    division =
+    { id       = { type = 17344 id = 63 }
+      name     = "3. IAD"
+      strength = 100
+      type     = multi_role
+      model    = 4
+    }
+  }  
 }

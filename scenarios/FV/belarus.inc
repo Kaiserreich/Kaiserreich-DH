@@ -175,4 +175,26 @@ country = {
   landdivision = { dormant = yes id = { type = 10848 id = 6 } name = "1. Kavalieryjskaja Dyvizija"  type = cavalry model = 10 strength = 70 } 
   landdivision = { dormant = yes id = { type = 10848 id = 4 } name = "14. Piachotnaja dyvizija"  type = infantry model = 9 strength = 70 } 
   landdivision = { dormant = yes id = { type = 10848 id = 5 } name = "2. Kavalieryjskaja Dyvizija"  type = cavalry model = 10 strength = 70 } 
+  
+   airunit =
+  { id       = { type = 10848 id = 252 }
+    name     = "Belarus aviakorpusa"
+    location = 599
+    base     = 599
+    division =
+    { id       = { type = 10848 id = 253 }
+      name     = "1. IAD"
+      strength = 80
+      type     = interceptor
+      model    = 7
+    }
+    division =
+    { id       = { type = 10848 id = 255 }
+      name     = "2. IAD"
+      strength = 40
+      type     = multi_role
+      model    = 4
+    }
+    
+  } 
 }

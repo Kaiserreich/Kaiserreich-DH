@@ -130,4 +130,29 @@ country = {
       strength       = 70
       dormant        = yes
     }
+	
+navalunit = {
+	name = "Die herzogliche Marine von Ostland"
+	id = { type = 24500 id = 10 }
+	location = 264 
+	base = 264
+division = { id = { type = 24500 id = 11 } name =  "VBHS Feuchtwangen" type = heavy_cruiser  model = 2 }
+division = { id = { type = 24500 id = 12 } name =  "Hermann von Salza Zerstцrerflotte" type = destroyer   model = 3   } 
+division = { id = { type = 24500 id = 13 } name =  "Kьstenschwadron" type = destroyer   model = 3   } 
+division = { id = { type = 24500 id = 14 } name =  "Unterseebootsschwadron" type = submarine  model = 1 }
+division = { id = { type = 24500 id = 15 } name =  "Transportflotte" type = transport model = 1 }
+
+}
+
+
+
+##### Luftwaffle der Pancakes #####
+
+airunit = {
+name = "Die Herzogliche Luftwaffe"
+id = { type = 24500 id = 16 }
+base = 270  # Tallin
+location = 270
+division = { id = { type = 24500 id = 17 } name = "Jagdgeschwader 1" strength = 100 type = multi_role model = 3 }
+}	
 }

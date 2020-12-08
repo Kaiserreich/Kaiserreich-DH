@@ -585,4 +585,83 @@ country = {
       experience     = 10
       dormant        = yes
     }
+	
+navalunit = {
+name = "Kьstenschutzverband Ostsee"
+id = { type = 14500 id = 219 }
+location = 162 #### [Rostock]
+base = 162
+division = { id = { type = 14500 id = 220 } name =  "SMS Oldenburg" type = battleship  model = 2 }
+division = { id = { type = 14500 id = 221 } name =  "SMS Thьringen" type = battleship   model = 2  }
+division = { id = { type = 14500 id = 229 } name =  "SMS Regensburg" type = light_cruiser model = 2  }
+division = { id = { type = 14500 id = 230 } name =  "SMS Frankfurt" type = light_cruiser model = 2  }
+division = { id = { type = 14500 id = 231 } name =  "1. Zerstцrergeschwader" type = destroyer  model = 3    }
+division = { id = { type = 14500 id = 232 } name =  "2. Zerstцrergeschwader" type = destroyer  model = 3    }
+
+}
+	
+	
+########## Luftwaffe ##############
+
+airunit = { location = 163 id = { type = 14500 id = 151 } name = "Luftflotte II"
+base = 163
+division = { id = { type = 14500 id = 152 } name = "KG 2 'Holzhammer'" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 14500 id = 154 } name = "KG 3 'Blitz'" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 14500 id = 153 } name = "Sturzkampfgeschwader 51" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 14500 id = 155 } name = "JG 2 'Richthofen'" strength = 100 type = interceptor model = 7 }
+division = { id = { type = 14500 id = 156 } name = "JG 26 'Schlageter'" strength = 100 type = interceptor model = 7 }
+}
+
+
+airunit = { location = 163 id = { type = 14500 id = 157 } name = "Luftflotte III"
+base = 163
+division = { id = { type = 14500 id = 158 } name = "KG 53 'Ludendorff'" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 14500 id = 159 } name = "Kampfgeschwader 25" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 14500 id = 160 } name = "KG 30 'Adler'" strength = 100 type = tactical_bomber model = 5 }
+}
+
+airunit = { location = 163 id = { type = 14500 id = 161 } name = "Luftflotte IV"
+base = 163
+division = { id = { type = 14500 id = 162 } name = "KG 1 'Hindenburg'" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 14500 id = 163 } name = "JG 3 'Udet'" strength = 100 type = interceptor model = 7 }
+}
+
+airunit = { location = 163 id = { type = 14500 id = 164 } name = "Luftflotte V"
+base = 163
+division = { id = { type = 14500 id = 165 } name = "KG 4 'General Wever'" strength = 100 type = tactical_bomber model = 5 }
+}
+
+
+airunit = {
+id = { type = 14500 id = 320 }
+name = "Luftflotte VI"
+location = 163
+home = 163
+base = 163
+
+division = {
+id = { type = 14500 id = 321 }
+name = "Kampfgeschwader 26"
+model = 4
+brigade_model = 0
+type = tactical_bomber
+
+}
+division = {
+id = { type = 14500 id = 322  }
+name = "Seeaufklдrungsgruppe 125"
+model = 1
+brigade_model = 0
+type = naval_bomber
+
+}
+division = {
+id = { type = 14500 id = 323  }
+name = "Jagdgeschwader 7"
+model = 6
+brigade_model = 0
+type = interceptor
+
+}
+}	
 }

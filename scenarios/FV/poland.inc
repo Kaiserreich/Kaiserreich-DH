@@ -272,4 +272,47 @@ country = {
       strength       = 50
       dormant        = yes
     }
+	
+	airunit = {
+ 	id = { type = 18600 id = 59 }
+ 	name = "III/1 Dyon Brygady Poscigowej"
+ 	location = 232
+	base = 232
+
+		division = {
+		id = { type = 18600 id = 60 }
+		name = "III/1 Dyon Brygady Poscigowej"
+		type = interceptor
+		model = 6
+		}
+
+		division = {
+		id = { type = 18600 id = 61 }
+		name = "IV/1 Dyon Brygady Poscigowej"
+		type = interceptor
+		model = 6
+		}
+
+		division = {
+		id = { type = 18600 id = 62 }
+		name = "1 Dywizjon Bombowcуw Ciezkich"
+		type = tactical_bomber
+		model = 6
+		}
+		}
+
+	airunit = {
+        id = { type = 26500 id = 25 }
+	location = 258
+	base = 258
+	name = "Lietuvos Karines Oro Pajegos"
+
+		Division = {
+	        id = { type = 26500 id = 26 }
+		name = "I Naikintuvu Aviacijos Grupe"
+		type = multi_role
+		model = 3
+		strength  = 45
+		}
+	}		
 }
