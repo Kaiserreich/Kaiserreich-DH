@@ -4,7 +4,7 @@
 country = {
     tag = U53
 	
-ai = "kaiserreich\Persia Socialist.ai"
+ai = "kaiserreich\minor_default.ai"
 	policy = {
         date = { year = 0 month = january day = 0 }
         democratic = 3

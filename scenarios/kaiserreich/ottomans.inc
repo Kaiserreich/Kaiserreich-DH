@@ -40,7 +40,7 @@ chiefofair = { type = 9 id = 549103 } #Mehmet Fazil Bey
 
 	manpower = 165
 	capital = 409
-        dissent = 5
+        dissent = 15
 
     ownedprovinces =      {
 	409 384 385 1076 1077 1078 1071 383 381 378 379 1057 1079 1068 1075 1074 1058 387 388 1065 1072 1073 1055 1056 1061
