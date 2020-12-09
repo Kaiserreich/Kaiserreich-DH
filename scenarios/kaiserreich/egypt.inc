@@ -20,7 +20,7 @@ country = {
 
 	headofstate = { type = 9 id = 512208 } #Aziz Ali al-Misri
 	headofgovernment = { type = 9 id = 512211 } #Aziz Ali al-Misri
- 	foreignminister = { type = 9 id = 512266 } #Sherif Sabri
+ 	foreignminister = { type = 9 id = 512252 } #Mahmoud Fawzi
  	armamentminister = { type = 9 id = 512047 } #Mohamed Mahmoud Pasha
  	ministerofsecurity = { type = 9 id = 512069  } #Makaram Ebeid
  	ministerofintelligence = { type = 9 id = 512071  } #Mohammed al Fransawi
