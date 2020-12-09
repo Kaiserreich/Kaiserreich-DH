@@ -47,7 +47,7 @@ ai = "kaiserreich\minor_default.ai"
 		1085 1080 1081 1082 1084 1083
 	  }
     nationalprovinces =   {
-		1085 1080 1081 1082 1084 1083
+		1085 1080 1081 1082 1084 1083 1095 1087 1089 1091 1090 1088 1086 1092 1094 1093
 	}
 
 diplomacy = {
@@ -113,14 +113,14 @@ relation = { tag = PER value = -100 }
 		name = "2. Tabrizi Militia Division"
 		strength = 33
 		type = militia
-		model = 6
+		model = 4
 		}
 			division = {
         	id = { type = 17700 id = 3 }
 		name = "3. Urmi Militia Division"
 		type = militia
 		strength = 25
-		model = 6 }	
+		model = 4 }	
 		}		
 
 	    landunit = {
