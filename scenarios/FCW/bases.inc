@@ -1,15 +1,9 @@
   #.#.#   United Kingdom 
 
- province = { id = 22   #  Cardiff - West England - England
-   ic = 4 } 
- 
  province = { id = 23   #  Plymouth - West England - England
    naval_base = { size = 10 current_size = 10 } 
  } 
  
- province = { id = 25   #  Norwich - East England - England
-   naval_base = { size = 10 current_size = 10 } 
- } 
  
  province = { id = 26   #  Dover - East England - England
    air_base = { size = 1 current_size = 1 } 
@@ -93,7 +87,6 @@
  }  
  
  province = { id = 77   #  Toulouse - Pyreenes - France
-   naval_base = { size = 6 current_size = 6 } 
    ic = -5
  }  
  
@@ -109,7 +102,6 @@
 
  province = { id = 86   #  Toulon - Alpes_Provence - France
    naval_base = { size = 10 current_size = 10 }
-   coastalfort = 2
  } 
  
  province = { id = 87   #  Nice - Alpes_Provence - France
@@ -181,24 +173,4 @@
  province = { id = 131   #  Cologne - Etappen-Flugzeug-Park 4
    air_base = { size = 1 current_size = 1 } 
    landfort = 6
- } 
-
- province = { id = 132   #  Freiburg - Etappen-Flugzeug-Park 7
-   air_base = { size = 1 current_size = 1 } 
- } 
- 
- province = { id = 139   #  Darmstadt - Etappen-Flugzeug-Park 5
-   air_base = { size = 1 current_size = 1 } 
- } 
- 
- province = { id = 141   #  Munster - Flugplatz Wanne-Herten
-   air_base = { size = 1 current_size = 1 } 
- } 
- 
- province = { id = 142   #  Duesseldorf - Flugplatz Holten, Flugplatz Duisburg-Neuenkamp, Flugplatz Fredenbaum
-   air_base = { size = 3 current_size = 3 } 
- }
-
- province = { id = 145   #  Essen - Flugplatz Essen-Gelsenkirchen-Rotthausen
-   air_base = { size = 1 current_size = 1 } 
  } 

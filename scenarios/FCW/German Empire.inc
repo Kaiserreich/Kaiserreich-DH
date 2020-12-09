@@ -135,7 +135,6 @@ landunit = {
 	location = 131
 	name   = "Oberste Heeresleitung" 
 	id = {  type = 10100 id = 195  }
-	leader = 855020 #Helmuth von Moltke 'the Young'
 
 	Division = 
 	{   
@@ -154,7 +153,6 @@ landunit = {
 	id 	= { type = 10100 id = 1 }
 	name 	= "1. Armee"
 	location = 49   #Grevenbroich [Aachen]
-	leader 	= 855008 #Generaloberst Alexander von Kluck
 		
 	division = {
 		id 	= { type = 10100 id = 2 }
@@ -270,7 +268,6 @@ landunit = {
 	id 	= { type = 10100 id = 15 }
 	name 	= "2. Armee"
 	location = 55   #Monschau [Eupen]
-	leader 	= 855311 #Generaloberst Karl von Bülow
 		
 	division = {
 		id 	= { type = 10100 id = 16 }
@@ -412,7 +409,6 @@ landunit = {
 	id 	= { type = 10100 id = 29 }
 	name 	= "3. Armee"
 	location = 99   #Prüm 
-	leader 	= 855009 #Generaloberst Max Klemens Frh von Hausen
 		
 	division = {
 		id 	= { type = 10100 id = 30 }
@@ -502,7 +498,8 @@ landunit = {
 		strength = 40
 		max_strength = 90
 		experience = 0
-		}	
+		}
+}		
 			
 
 ##4. AOK
@@ -511,7 +508,6 @@ landunit = {
 	id 	= { type = 10100 id = 39 }
 	name 	= "4. Armee"
 	location = 106   #Lille
-	leader 	= 855010 #Generaloberst Albrecht Herzog von Württemberg
 		
 	division = {
 		id 	= { type = 10100 id = 40 }

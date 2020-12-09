@@ -15,8 +15,6 @@ country = {
 		 interventionism = 8 
     }
 
-
-#### cabinet
 	headofstate = { type = 9 id = 551794 }
 	headofgovernment = { type = 9 id = 551797 }
 
@@ -149,7 +147,6 @@ landunit = {
   {  id    = {  type = 10000 id = 4  } 
    name   = "GQG d'Orlèans" 
    location = 66
-   leader = 5235 #Joseph Joffre (for the GHQ)
    Division = 
    {  id  = {  type = 10000 id = 5  } 
     name = "Grand Quartier Général" 
@@ -241,7 +238,6 @@ landunit = {
   {  id    = {  type = 10000 id = 15  } 
    name   = "Ier Corps d'Armée (1)" 
    location = 54
-   leader = 5254 #Charles Lanrezac (for the 5th Army)
    Division = 
    {  id  = {  type = 10000 id = 16  } 
     name = "Vème Armée" 
@@ -292,7 +288,6 @@ landunit = {
   landunit = 
   {  id    = {  type = 10000 id = 21  } 
    name   = "IIème Corps d'Armée" 
-   leader = 5248 #Gen. Gérard 
    location = 57
    Division = 
    {  id  = {  type = 10000 id = 22  } 
@@ -317,7 +312,6 @@ landunit = {
   landunit = 
   {  id    = {  type = 10000 id = 24  } 
    name   = "IIIème Corps d'Armée" 
-   leader = 5360 #Gen. Sauret
    location = 97 
    Division = 
    {  id  = {  type = 10000 id = 25  } 
@@ -343,7 +337,6 @@ landunit = {
   landunit = 
   {  id    = {  type = 10000 id = 27  } 
    name   = "IVème Corps d'Armée" 
-   leader = 5274 #Gen. Boëlle
    location = 83
    Division = 
    {  id  = {  type = 10000 id = 28  } 
@@ -370,7 +363,6 @@ landunit = {
   landunit = 
   {  id    = {  type = 10000 id = 30  } 
    name   = "IVème Corps d'Armée (2)" 
-   leader = 5274 #Gen. Boëlle
    location = 89
    Division = 
    {  id  = {  type = 10000 id = 31  } 
@@ -395,7 +387,6 @@ landunit = {
   landunit = 
   {  id    = {  type = 10000 id = 33  } 
    name   = "Vème Corps d'Armée" 
-   leader = 5277 #Gen. Brochin
    location = 90 
    Division = 
    {  id  = {  type = 10000 id = 34  } 
@@ -422,7 +413,6 @@ landunit = {
   landunit = 
   {  id    = {  type = 10000 id = 36  } 
    name   = "IXème Corps d'Armée" 
-   leader = 5245 #Gen. Dubois
    location = 60
    Division = 
    {  id  = {  type = 10000 id = 37  } 
@@ -561,7 +551,6 @@ landunit = {
  navalunit = {   
      id = {  type = 10000 id = 500  }  
  name = "1ère Flotte"  
-     leader = 5530 # Boué de Lapeyrère
      base = 86 # Toulon
      location = 86 # Toulon  
   
