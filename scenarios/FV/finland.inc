@@ -8,7 +8,7 @@
 
 country = {
   tag                = FIN
-  capital            = 0 # (Embarked)
+  capital            = 525
   extra_tc           = 50
   manpower           = 100
   # Resource Reserves

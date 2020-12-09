@@ -9,7 +9,7 @@
 country = {
   tag                = RUS
   flag_ext           = _nats
-  capital            = 0 # (Embarked)
+  capital            = 553
   extra_tc           = 50
   manpower           = 1800
   # Resource Reserves

@@ -9,7 +9,7 @@
 country = {
   tag                = UKR
   control            = GER
-  capital            = 0 # (Embarked)
+  capital            = 617
   extra_tc           = 50
   manpower           = 500
   # Resource Reserves
