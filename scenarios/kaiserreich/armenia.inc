@@ -99,14 +99,6 @@ relation = { tag = TRA value = 20 }
  	name = "I. Hayastani Korpus"
  	location = 711
 
-  			division = {
-   		id = { type = 17348    id = 2 }
-   		name = "1. Strelkovaya Diviziya"
-   		strength = 80
-   		type = infantry
-		model = 5
-             	}
-
   		division = {
    		id = { type = 17348    id = 3 }
    		name = "Narodnaya Gvardiya"
