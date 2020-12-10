@@ -16,97 +16,98 @@ ai = "kaiserreich\austria.ai"
     }
 
 
-headofstate = { type = 9 id = 23041 }
-
-	headofgovernment = { type = 9 id = 23049 }
-	foreignminister = { type = 9 id = 23143 }
-	armamentminister = { type = 9 id = 23068 }
-	ministerofsecurity = { type = 9 id = 23082 }
-	ministerofintelligence = { type = 9 id = 23145 }
-	chiefofstaff = { type = 9 id = 23146 }
-	chiefofarmy = { type = 9 id = 23150 }
-	chiefofnavy = { type = 9 id = 23123 }
-	chiefofair = { type = 9 id = 23149 }
+	headofstate = { type = 9 id = 23028 } #Otto I von Habsburg AD
+	headofgovernment = { type = 9 id = 23061 } #Albert von Mensdorff-Pouilly
+	foreignminister = { type = 9 id = 23084 } #Alfred von Arbengau
+	armamentminister = { type = 9 id = 23107 } #Viktor Kienböck
+	ministerofsecurity = { type = 9 id = 23141 } #Lorenz Böhler
+	ministerofintelligence = { type = 9 id = 23148 } #Alfred von Schenk
+	chiefofstaff = { type = 9 id = 23179 } #Alfred von Waldstätten
+	chiefofarmy = { type = 9 id = 23203 } #Sigismund Schilhawsky von Bahnbrück
+	chiefofnavy = { type = 9 id = 23249 } #Janko Vukovic de Podkapelski
+	chiefofair = { type = 9 id = 23260 } #Karl Nikitsch
 
 #### Resource Reserves
 
 capital = 195
 
-	SpyInfo  = {  country = "AUS" NumberOfSpies = 4  }
+	SpyInfo = { country = "AUS" NumberOfSpies = 4 }
 
 	# Resource Reserves
-	energy		= 1000
-	metal		= 1000
+	energy = 1000
+	metal = 1000
 	rare_materials = 500
-	oil			= 500
-	supplies 	= 500
-	money		= 20
-	transports 	= 50
-	manpower 	= 100
+	oil = 500
+	supplies = 500
+	money = 20
+	transports = 50
+	manpower = 100
 
 
-ownedprovinces = {
-				401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371 332 335 }
-controlledprovinces = {
-				401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371 332 335 }
-nationalprovinces = {
-				401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 }
-claimedprovinces = {
-#commented claims as they are causing problems with the Ausgleich chain.
-#208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288
-#287 291 292 293 205 199 204 200 207 198 197 196 201 206 203 202 235 237 236 239 242 241 238 300 240
-#301 337 344 345 352 347 350 351 343 332 357 353 358 355 354 356 335
-		}
+    ownedprovinces =      {
+401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371 332 335
+	 }
+    controlledprovinces = {
+401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194 371 332 335
+	  }
+    nationalprovinces =   {
+401 400 394 405 403 404 406 349 346 402 189 192 191 190 187 195 193 186 194
+	}
+	claimedprovinces = {
+	#commented claims as they are causing problems with the Ausgleich chain.
+	#208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288
+	#287 291 292 293 205 199 204 200 207 198 197 196 201 206 203 202 235 237 236 239 242 241 238 300 240
+	#301 337 344 345 352 347 350 351 343 332 357 353 358 355 354 356 335
+	}
 
 diplomacy = {
-relation = {   tag =    	BEL	value = 		80	   }  
-relation = {   tag =  	BLR	 value =		120	   }  
-relation = {   tag =  	BUL	value = 		100	   }  
-relation = {   tag =  	GER	 value =		160	   }  
-relation = {   tag =  	LAT	value = 		120	   }  
-relation = {   tag =  	LIT	 value =		120	   }  
-relation = {   tag =  	POL	value = 		60	   }  
-relation = {   tag =  	UKR	 value =		70	   }  
-relation = {   tag =  	BOS	value = 		180	   }  
-relation = {   tag =  	CRO	 value =		120	access = yes    }  
-relation = {   tag =  	CZE	value = 		150	   }  
-relation = {   tag =  	GLD	value = 		170	   }  
-relation = {   tag =  	HUN	 value =		120	   }  
-relation = {   tag =  	ALB	value = 		40	   }  
-relation = {   tag =  	DEN	 value =		50	   }  
-relation = {   tag =  	FIN	value = 		40	   }  
-relation = {   tag =  	GRE	value = 		-60	   }  
-relation = {   tag =  	HOL	 value =		50	   }  
-relation = {   tag =  	IRE	value = 		20	   }  
-relation = {   tag =  	ITA	value = 		120	   }  
-relation = {   tag =  	NOR	 value =		40	   }  
-relation = {   tag =  	POR	value = 		80	   }  
-relation = {   tag =  	ROM	value = 		-70	   }  
-relation = {   tag =  	SCH	 value =		20 	guaranteed = { day = 16 month = may year = 1935 } }  
-relation = {   tag =  	SER	value = 		-120	   }  
-relation = {   tag =  	SPA	value = 		120	   }  
-relation = {   tag =  	SWE	 value =		30	   }  
-relation = {   tag =  	ENG	value = 		-100	   }  
-relation = {   tag =  	FRA	value = 		-120	   }  
-relation = {   tag =  	RSI	 value =		-150	   }  
-relation = {   tag =  	AST	value = 		-40	   }  
-relation = {   tag =  	CAN	value = 		-10	   }  
-relation = {   tag =  	VIC	value = 		-90	   }  
-relation = {   tag =  	ARM	 value =		-40	   }  
-relation = {   tag =  	AZB	value = 		20	   }  
-relation = {   tag =  	GEO	value = 		-50	   }  
-relation = {   tag =  	RUS	 value =		20	   }  
-relation = {   tag =  	TRA	value = 		20	   }  
-relation = {   tag =  	OMN	value = 		60	   }  
-relation = {   tag =  	OTT	 value =		40	   }  
-relation = {   tag =  	CON	value = 		120	   }  
-relation = { tag =	USA	value = 		-50	 }
-relation = {   tag =  	CHI	value = 		50	   }  
-relation = {   tag =  	JAP	value = 		-50	   }  
+relation = {   tag = BEL value = 80 }
+relation = {   tag = BLR value = 120 }
+relation = {   tag = BUL value = 100 }
+relation = {   tag = GER value = 160 }
+relation = {   tag = LAT value = 120 }
+relation = {   tag = LIT value = 120 }
+relation = {   tag = POL value = 60 }
+relation = {   tag = UKR value = 70 }
+relation = {   tag = BOS value = 180 }
+relation = {   tag = CRO value = 120 access = yes }
+relation = {   tag = CZE value = 150 }
+relation = {   tag = GLD value = 170 }
+relation = {   tag = HUN value = 120 }
+relation = {   tag = ALB value = 40 }
+relation = {   tag = DEN value = 50 }
+relation = {   tag = FIN value = 40 }
+relation = {   tag = GRE value = -60 }
+relation = {   tag = HOL value = 50 }
+relation = {   tag = IRE value = 20 }
+relation = {   tag = ITA value = 120 }
+relation = {   tag = NOR value = 40 }
+relation = {   tag = POR value = 80 }
+relation = {   tag = ROM value = -70 }
+relation = {   tag = SCH value = 20 guaranteed = { day = 16 month = may year = 1935 } }
+relation = {   tag = SER value = -120 }
+relation = {   tag = SPA value = 120 }
+relation = {   tag = SWE value = 30 }
+relation = {   tag = ENG value = -100 }
+relation = {   tag = FRA value = -120 }
+relation = {   tag = RSI value = -150 }
+relation = {   tag = AST value = -40 }
+relation = {   tag = CAN value = -10 }
+relation = {   tag = VIC value = -90 }
+relation = {   tag = ARM value = -40 }
+relation = {   tag = AZB value = 20 }
+relation = {   tag = GEO value = -50 }
+relation = {   tag = RUS value = 20 }
+relation = {   tag = TRA value = 20 }
+relation = {   tag = OMN value = 60 }
+relation = {   tag = OTT value = 40 }
+relation = {   tag = CON value = 120 }
+relation = {   tag = USA value = -50 }
+relation = {   tag = CHI value = 50 }
+relation = {   tag = JAP value = -50 }
 }
 
 
-	
 	techapps = {
 # Austria Kaiserreich 1936 Techs
 #######################
@@ -160,7 +161,6 @@ relation = {   tag =  	JAP	value = 		-50	   }
 6010 6020 #Into superior firepower
 14000 14010 14020 #Great War Hospital System 
 
-
 #Naval
 3010 3020 3030 3040 3050 #DD
 3110 3120 3130 3140 3150 #CL
@@ -182,9 +182,28 @@ relation = {   tag =  	JAP	value = 		-50	   }
 81300 81310 81320 81330 81340 #Indirect Approach
 82300 #Basic Amph warfare
 82500 #Fuel Oil Logistics
-
-
 	}
+
+dormant_leaders = { #GLD
+					2350 2351 2352 2353 2354 2355 2356 2357 2358 2359 2360 2361 2362 2363 2364 2365 2366
+					2367 2368 2369 2370 2371 2372
+					#CZE
+					2400 2401 2402 2403 2404 2405 2406 2407 2408 2409 2410 2411 2412 2413 2414 2415 2416
+					2417 2418 2419 2420 2421 2422 2423 2424 2425
+					}
+
+dormant_ministers = { 23500 23501 23502 23503 23504 23505 23506 23507 #GLD
+					  #CZE
+					  23525 23526 23527 23528 23529 23530 23531 23532 23533 23534 23535 23536 23537 23538
+					  23539 23540 23541
+					}
+
+dormant_teams = { 604 620 630 644 646 #HUN
+				  605 606 622 627 #CZE
+				  609 611 618 619 624 628 629 637 639 #GER
+				  616 #CRO
+				  635 #GLD
+				}
 
 #########  OOB (...)
 
