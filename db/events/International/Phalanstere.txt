@@ -4495,7 +4495,7 @@ war = { country = ENG country = IRE }
 }
 }
 
-name = "Ireland participation in the Phalanstere Internationale"
+name = "Irish participation in the Phalanstere Internationale"
 desc = "As time passed it soon became apparent that the global revolution required far more than just devotion to the cause. With France and Britain being the only highly-developed socialist countries in the world, it became widely accepted that they should launch a long-run help programme for other countries. Thus began the so-called 'Phalanstere Internationale', aimed at providing industrial support for socialist countries all over the world."
 style = 2
 picture = "industry2"
@@ -4904,5 +4904,424 @@ command = { type = clrflag which = PI_construction_IRE_FRA }
 }
 }
 
+# Socialist Republic of Persia (U53)
+event = {
+id = 226112
+random = no
+country = U53
 
-# from 226112 free
+trigger = {
+government = { type = communist country = FRA }
+government = { type = communist country = ENG }
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+flag = PI_established
+NOT = {
+war = { country = FRA country = U53 }
+war = { country = ENG country = U53 }
+exists = PER
+event = 59020
+}
+}
+
+name = "Persian participation in the Phalanstere Internationale"
+desc = "As time passed it soon became apparent that the global revolution required far more than just devotion to the cause. With France and Britain being the only highly-developed socialist countries in the world, it became widely accepted that they should launch a long-run help programme for other countries. Thus began the so-called 'Phalanstere Internationale', aimed at providing industrial support for socialist countries all over the world."
+style = 2
+picture = "industry2"
+
+date = { day = 0 month = july year = 1937 }
+offset = 210
+deathdate = { day = 29 month = december year = 1938 }
+
+action_a = {
+name = "We shall apply"
+ai_chance = 95
+command = { type = setflag which = PI_application_PER }
+command = { type = domestic which = interventionism value = 1 }
+}
+
+action_b = {
+name = "It is not neccessary"
+ai_chance = 5
+command = { type = dissent value = 2 }
+command = { type = relation which = FRA value = -5 }
+command = { type = relation which = ENG value = -5 }
+}
+}
+
+event = {
+id = 226113
+random = no
+country = FRA
+
+trigger = {
+government = { type = communist country = U53 }
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+flag = PI_established
+flag = PI_application_PER
+NOT = {
+war = { country = FRA country = U53 }
+war = { country = ENG country = U53 }
+}
+}
+
+name = "Persian participation in the Phalanstere Internationale"
+desc = "Our Persian comrades have applied to join the Phalanstere Internationale. With their recent rise to socialism from years long dictature, it is only proper to help our comrades in their struggle. However, we will have to sacrifice a part of our overall industrial power in order to satisfy their needs."
+style = 2
+picture = "Kaiserreich_RSI_Italy"
+
+date = { day = 0 month = july year = 1937 }
+offset = 21
+deathdate = { day = 29 month = december year = 1938 }
+
+action_a = {
+name = "Fine then, begin fulfilling their request"
+ai_chance = 80
+command = { type = setflag which = PI_construction_PER_FRA }
+command = { type = industrial_modifier which = total value = -1 }
+command = { type = supplies value = -200 }
+command = { type = money value = -40  }
+}
+
+action_b = {
+name = "Our industry's already overloaded"
+ai_chance = 20
+command = { type = dissent value = 1 } # Breaking the promise, huh?
+command = { type = relation which = U53 value = -50 }
+}
+}
+
+event = {
+id = 226114
+random = no
+country = ENG
+
+trigger = {
+government = { type = communist country = U53 }
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+flag = PI_participation_ENG
+flag = PI_application_PER
+NOT = {
+war = { country = FRA country = U53 }
+war = { country = ENG country = U53 }
+}
+}
+
+name = "Persian participation in the Phalanstere Internationale"
+desc = "Our Persian comrades have applied to join the Phalanstere Internationale. With their recent rise to socialism from years long dictature, it is only proper to help our comrades in their struggle. However, we will have to sacrifice a part of our overall industrial power in order to satisfy their needs."
+style = 2
+picture = "Kaiserreich_RSI_Italy"
+
+date = { day = 0 month = july year = 1937 }
+offset = 21
+deathdate = { day = 29 month = december year = 1938 }
+
+action_a = {
+name = "Fine then, begin fulfilling their request"
+ai_chance = 80
+command = { type = setflag which = PI_construction_PER_ENG }
+command = { type = industrial_modifier which = total value = -1 }
+}
+
+action_b = {
+name = "Our industry's already overloaded"
+ai_chance = 20
+command = { type = dissent value = 1 } # Breaking the promise, huh?
+command = { type = relation which = U53 value = -50 }
+}
+}
+
+event = {
+id = 226115
+random = no
+country = U53
+
+trigger = {
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+NOT = {
+flag = PI_construction_PER_FRA
+flag = PI_construction_PER_ENG
+}
+event = 226113
+event = 226114
+}
+
+name = "The Phalanstere has refused to help"
+desc = "Both countries of the Phalanstere have refused to help us in our struggle against the ferocious imperialists. Although this borders on treason, there is nothing we can do......"
+style = 2
+picture = "persianconstitutuin"
+
+date = { day = 0 month = july year = 1937 }
+offset = 7
+deathdate = { day = 29 month = december year = 1938 }
+
+action_a = {
+name = "We shall remember this"
+command = { type = clrflag which = PI_application_PER }
+command = { type = relation which = FRA value = -50 }
+command = { type = relation which = ENG value = -50 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 226116
+random = no
+country = FRA
+
+trigger = {
+control = { province = 55 data = FRA }
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+flag = PI_construction_PER_FRA
+NOT = {
+war = { country = FRA country = U53 }
+war = { country = ENG country = U53 }
+}
+}
+
+name = "Delivery to Socialist Persia is ready"
+desc = "We have just finished preparing goods and supplies for our Persian comrades. Let us hope it will greatly boost their strength in the upcoming struggle against the reactionaries."
+style = 2
+picture = "lacommune"
+
+date = { day = 0 month = december year = 1938 }
+offset = 300
+deathdate = { day = 29 month = january year = 1940 }
+
+action_a = {
+name = "Tres bien!"
+command = { type = clrflag which = PI_construction_PER_FRA }
+command = { type = industrial_modifier which = total value = 1 }
+command = { type = supplies value = -750 }
+command = { type = trigger which = 226118 }
+}
+}
+
+event = {
+id = 226117
+random = no
+country = ENG
+
+trigger = {
+control = { province = 29 data = ENG }
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+flag = PI_construction_PER_ENG
+NOT = {
+war = { country = FRA country = U53 }
+war = { country = ENG country = U53 }
+}
+}
+
+name = "Delivery to Socialist Persia is ready"
+desc = "We have just finished preparing goods and supplies for our Persian comrades. Let us hope it will greatly boost their strength in the upcoming struggle against the reactionaries."
+style = 2
+picture = "lacommune"
+
+date = { day = 0 month = december year = 1938 }
+offset = 300
+deathdate = { day = 29 month = january year = 1940 }
+
+action_a = {
+name = "Very well!"
+command = { type = clrflag which = PI_construction_PER_ENG }
+command = { type = industrial_modifier which = total value = 1 }
+command = { type = supplies value = -750 }
+command = { type = trigger which = 226119 }
+}
+}
+
+event = {
+id = 226118
+random = no
+country = U53
+
+name = "The Phalanstere's help arrives"
+desc = "Our comrades have just delivered us the much needed help. Industrial machines, mining equipment, weapons, ammunition and more - all of this is being unloaded in our ports, ready to be implemented across the country."
+style = 2
+picture = "schwabenland"
+
+action_a = {
+name = "Excellent!"
+command = { type = relation which = FRA value = 50 }
+command = { type = dissent value = -2 }
+command = { type = supplies value = 500 }
+command = { type = construct which = ic where = -2 value = 1 } #was 2
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = FRA }
+command = { type = steal_tech which = FRA }
+command = { type = add_prov_resource which = -1 value = 2 where = metal }
+command = { type = add_prov_resource which = -1 value = 3 where = metal }
+#command = { type = add_prov_resource which = -1 value = 4 where = metal }
+command = { type = add_prov_resource which = -1 value = 2 where = energy }
+command = { type = add_prov_resource which = -1 value = 3 where = energy }
+command = { type = add_prov_resource which = -1 value = 4 where = energy }
+command = { type = add_prov_resource which = -1 value = 2 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 3 where = rare_materials }
+#command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 1 where = oil }
+command = { type = add_prov_resource which = -1 value = 2 where = oil }
+#command = { type = add_prov_resource which = -1 value = 1 where = oil }
+#command = { type = add_prov_resource which = -1 value = 2 where = oil }
+command = { type = sleepevent which = 226115 }
+}
+}
+
+event = {
+id = 226119
+random = no
+country = U53
+
+name = "The Phalanstere's help arrives"
+desc = "Our comrades have just delivered us the much needed help. Industrial machines, mining equipment, weapons, ammunition and more - all of this is being unloaded in our ports, ready to be implemented across the country."
+style = 2
+picture = "schwabenland"
+
+action_a = {
+name = "Excellent!"
+command = { type = relation which = ENG value = 50 }
+command = { type = dissent value = -2 }
+command = { type = supplies value = 500 }
+command = { type = construct which = ic where = -2 value = 1 } #was 2
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = steal_tech which = ENG }
+command = { type = steal_tech which = ENG }
+command = { type = add_prov_resource which = -1 value = 2 where = metal }
+command = { type = add_prov_resource which = -1 value = 3 where = metal }
+#command = { type = add_prov_resource which = -1 value = 4 where = metal }
+command = { type = add_prov_resource which = -1 value = 2 where = energy }
+command = { type = add_prov_resource which = -1 value = 3 where = energy }
+command = { type = add_prov_resource which = -1 value = 4 where = energy }
+command = { type = add_prov_resource which = -1 value = 2 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 3 where = rare_materials }
+#command = { type = add_prov_resource which = -1 value = 4 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 1 where = oil }
+command = { type = add_prov_resource which = -1 value = 2 where = oil }
+#command = { type = add_prov_resource which = -1 value = 1 where = oil }
+#command = { type = add_prov_resource which = -1 value = 2 where = oil }
+command = { type = sleepevent which = 226115 }
+}
+}
+
+event = {
+id = 226120
+random = no
+country = FRA
+
+trigger = {
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+flag = PI_construction_PER_FRA
+OR = {
+NOT = {
+exists = U53
+war = { country = FRA country = U53 }
+war = { country = ENG country = U53 }
+government = { type = communist country = U53 }
+}
+}
+}
+
+name = "Delivery to Socialist Persia is impossible"
+desc = "With Socialist Persia no longer considered a friend to the Internationale, we must abort all the construction planned. Luckily, we are still able to salvage what has already been made and use it to our needs."
+style = 2
+picture = "Kaiserreich_RSI_Italy"
+
+date = { day = 0 month = december year = 1938 }
+offset = 300
+deathdate = { day = 29 month = january year = 1940 }
+
+action_a = {
+name = "Better than nothing"
+command = { type = industrial_modifier which = total value = 1 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 2 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 2 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 2 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 1 where = oil }
+command = { type = add_prov_resource which = -1 value = 1 where = oil }
+command = { type = clrflag which = PI_construction_PER_FRA }
+}
+}
+
+
+event = {
+id = 226121
+random = no
+country = ENG
+
+trigger = {
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+flag = PI_construction_PER_ENG
+OR = {
+NOT = {
+exists = U53
+war = { country = FRA country = U53 }
+war = { country = ENG country = U53 }
+government = { type = communist country = U53 }
+}
+}
+}
+
+name = "Delivery to Socialist Persia is impossible"
+desc = "With Socialist Persia no longer considered a friend to the Internationale, we must abort all the construction planned. Luckily, we are still able to salvage what has already been made and use it to our needs."
+style = 2
+picture = "Kaiserreich_RSI_Italy"
+
+date = { day = 0 month = december year = 1938 }
+offset = 300
+deathdate = { day = 29 month = january year = 1940 }
+
+action_a = {
+name = "Better than nothing"
+command = { type = industrial_modifier which = total value = 1 }
+command = { type = construct which = ic where = -2 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = add_prov_resource which = -1 value = 1 where = metal }
+command = { type = add_prov_resource which = -1 value = 2 where = metal }
+command = { type = add_prov_resource which = -1 value = 1 where = energy }
+command = { type = add_prov_resource which = -1 value = 2 where = energy }
+command = { type = add_prov_resource which = -1 value = 1 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 2 where = rare_materials }
+command = { type = add_prov_resource which = -1 value = 1 where = oil }
+command = { type = add_prov_resource which = -1 value = 1 where = oil }
+command = { type = clrflag which = PI_construction_PER_ENG }
+}
+}
+
+
+
+# from 226121 free
