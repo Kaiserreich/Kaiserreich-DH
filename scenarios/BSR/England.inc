@@ -6,7 +6,7 @@ country = {
 	policy = {
         date = { year = 0 month = january day = 0 }
         democratic = 9
-        political_left = 3
+        political_left = 1
         freedom = 7
          free_market = 2
         professional_army = 2

@@ -19,7 +19,10 @@ country = {
   rare_materials = 1250
   oil            = 1500
   supplies       = 20000
-  money          = 0
+  money          = 50
+  free = {
+	oil 		   = 5
+  }   
 
   nationalprovinces      = { 223 227 228 229 230 231 232 233 234 243 246 250 252 254 255 258 259 260 262 263 }
   ownedprovinces         = { 223 227 228 229 230 231 232 233 234 243 246 250 252 254 255 258 259 260 262 263 }

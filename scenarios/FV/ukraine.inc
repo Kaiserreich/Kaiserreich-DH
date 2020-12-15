@@ -21,6 +21,9 @@ country = {
   money          = 0
   transports     = 50
   escorts        = 10
+  free = {
+	oil 		   = 5
+  } 
 
   nationalprovinces      = { 244 245 249 587 601 605 606 607 608 609 610 611 612 613 614 615 616 617 618 619 620 622 623 624 625 626 627 628 629 630 631 632 633 634 635 636 637 638 639 640 641 }
   ownedprovinces         = { 244 245 249 587 601 605 606 607 608 609 610 611 612 613 614 615 616 617 618 619 620 622 623 624 625 626 627 628 629 630 631 632 633 634 635 636 637 638 639 640 641 }
@@ -485,21 +488,21 @@ country = {
       name           = "60. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      strength       = 32
     }
     division = {
       id             = { type = 20600 id = 50 }
       name           = "61. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      strength       = 32
     }
     division = {
       id             = { type = 20600 id = 51 }
       name           = "4. Garnizonna Dyviziya"
       type           = garrison
       model          = 5
-      strength       = 50
+      strength       = 32
     }
   }
   landunit = {

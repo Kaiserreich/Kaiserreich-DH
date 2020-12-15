@@ -20,6 +20,9 @@ country = {
   oil            = 750
   supplies       = 12000
   money          = 0
+  free = {
+	oil 		   = 5
+  }   
 
   nationalprovinces      = { 247 248 251 253 256 257 591 592 594 595 596 597 598 599 601 600 590 593 255 }
   ownedprovinces         = { 247 248 251 253 256 257 591 592 594 595 596 597 598 599 }
