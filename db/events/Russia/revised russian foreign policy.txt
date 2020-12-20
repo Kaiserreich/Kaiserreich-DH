@@ -5,7 +5,6 @@ style = 2
 picture = "RusEvent1"
 persistent = yes
 
-
 name = "Focus in International Policy"
 desc = "Russia should start being more active on the world stage but we are too weak to interfere in the German or Japanese spheres of influence. The Caucasus, bordering the dying Ottoman Empire, is an easy region to subjugate and has large oil deposits for us to exploit. Central Asia, with its unstable situation between Alash Orda and Turkestan, is an even more easier region to subjugate. We should choose between these areas as we don't have the resources for simultanious actions in both regions."
 action_a = {
@@ -62,8 +61,6 @@ command = { type = relation which = KAZ value = -10 }
 command = { type = relation which = KYG value = -10 }
 command = { type = event which = 901978 where = RUS when = 4  }
 }
-
-
 }
 
 
@@ -73,7 +70,6 @@ country = RUS
 style = 2
 picture = "RusEvent2"
 persistent = yes
-
 
 name = "Caucasus direction"
 desc = "We have chosen to expand in the Caucasus. We must decide whether we want to conquer the entire Caucasus or limit our operations to Georgia, Azerbaijan or Don-Kuban. If we bite off more than we can chew we can have problems, both internal and international."
@@ -133,8 +129,6 @@ command = { type = setflag which = RUS_ETC }
 command = { trigger = { NOT = { ispuppet = GER alliance = { country = RUS country = GER } war = { country = RUS country = GER } local_flag = GERRUS_conc war = { country = GER country = JAP } } } type = trigger which = 901973 }
 command = { type = local_setflag which = RUSexp_cau }
 }
-
-
 }
 
 
@@ -228,13 +222,13 @@ command = { type = end_guarantee which = GER where = OTT  }
 }
 }
 
+
 event = {
 id = 901997
 random = no
 country = TRA
 style = 2
 picture = "diplomatic_campaign"
-
 
 name = "German offer"
 desc = "Russian attempts to reassert its sphere of influence on the Caucasus has not gone unnoticed by the German Empire. Diplomatic representatives of German Empire have approached us, seeking to include us into Mitteleuropa as a means of protection from Russia. How should we react?"
@@ -267,7 +261,6 @@ command = { trigger = { exists = U43 NOT = { ispuppet = U43 atwar = U43 alliance
 command = { type = domestic which = interventionism value = 1 }
 }
 
-
 action_b = {
 ai_chance = 5
 name = "Refuse."
@@ -294,13 +287,13 @@ command = { type = relation which = TRA value = 100 }
 }
 }
 
+
 event = {
 id = 901999
 random = no
 country = AZB
 style = 2
 picture = "diplomatic_campaign"
-
 
 name = "German offer"
 desc = "Russian attempts to reaasert its sphere of influence on the Caucasus has not gone unnoticed by the German Empire. Diplomatic representatives of German Empire have approached us, seeking to include us into Mitteleuropa as a means of protection from Russia. How should we react?"
@@ -328,13 +321,13 @@ command = { type = trigger which = 903000 }
 command = { type = domestic which = interventionism value = 1 }
 }
 
-
 action_b = {
 ai_chance = 5
 name = "Refuse."
 command = { type = relation which = GER value = -40 }
 }
 }
+
 
 event = {
 id = 903000
@@ -354,13 +347,13 @@ command = { type = relation which = AZB value = 100 }
 }
 }
 
+
 event = {
 id = 903040
 random = no
 country = U43
 style = 2
 picture = "diplomatic_campaign"
-
 
 name = "German offer"
 desc = "Russian attempts to reaasert its sphere of influence on the Caucasus has not gone unnoticed by the German Empire. Diplomatic representatives of German Empire have approached us, seeking to include us into Mitteleuropa as a means of protection from Russia. How should we react?"
@@ -388,13 +381,13 @@ command = { type = trigger which = 903041 }
 command = { type = domestic which = interventionism value = 1 }
 }
 
-
 action_b = {
 ai_chance = 5
 name = "Refuse."
 command = { type = relation which = GER value = -40 }
 }
 }
+
 
 event = {
 id = 903041
@@ -489,7 +482,6 @@ command = { type = belligerence value = -25 }
 }
 
 
-
 event = {
 id = 903045
 country = RUS
@@ -521,7 +513,7 @@ NOT = { control = { province = 1208 data = -3 } }
 }
 }
 }
-ai_chance = 25
+ai_chance = 65
 name = "We will focus on the Far East!"
 command = { type = domestic which = defense_lobby value = 1 }
 command = { type = dissent value = 6 }
@@ -540,7 +532,7 @@ command = { type = event which = 901980 where = RUS when = 4  }
 }
 
 action_b = {
-ai_chance = 40
+ai_chance = 25
 name = "We will wait for a better opportunity to strike at the Caucasus!"
 command = { type = clrflag which = RUS_KGD }
 command = { type = clrflag which = RUS_AOD }
@@ -550,7 +542,6 @@ command = { type = clrflag which = RUS_ETC }
 command = { type = clrflag which = RUS_TMGC }
 command = { type = setflag which = RUS_TMGCA }
 }
-
 
 action_b = {
 ai_chance = 10
@@ -633,7 +624,6 @@ command = { type = relation which = AZB value = -10 }
 command = { type = relation which = ARM value = -10 }
 command = { type = relation which = RUS value = 20 }
 }
-
 }
 
 
@@ -658,9 +648,7 @@ command = { trigger = { alliance = { country = RUS country = GER } } type = leav
 command = { type = industrial_modifier which = total value = -4 }
 command = { type = dissent value = 5 }
 }
-
 }
-
 
 
 event = {
@@ -711,6 +699,21 @@ control = { province = 711 data = -3 }
 owned = { province = 702 data = -3 }
 control = { province = 702 data = -3 }
 }
+AND = { #fallback if Caucasus chain breaks but is still conquered
+flag = RUS_EXP
+owned = { province = 709 data = -3 } #Tbilisi
+control = { province = 709 data = -3 }
+owned = { province = 713 data = -3 } #Baku
+control = { province = 713 data = -3 }
+owned = { province = 694 data = -3 } #Novorossiysk
+control = { province = 694 data = -3 }
+owned = { province = 702 data = -3 } #Grozny
+control = { province = 702 data = -3 }
+NOT = { owned = { province = 504 data = -3 } } #Alma-Ata
+NOT = { control = { province = 504 data = -3 } }
+NOT = { owned = { province = 1105 data = -3 } } #Dushanbe
+NOT = { control = { province = 1105 data = -3 } }
+}
 }
 }
 
@@ -755,49 +758,6 @@ command = { type = clrflag which = RUS_ETC }
 command = { type = setflag which = RUS_ISO }
 command = { type = domestic which = interventionism value = -1 }
 }
-
-	action_c = {
-		trigger = {
-			NOT = {
-			local_flag = RUSexp_fae
-			}
-		OR = {
-			AND = {
-				NOT = { owned = { province = 1124 data = -3 } }
-				NOT = { control = { province = 1124 data = -3 } }
-				}
-			AND = {
-				NOT = { owned = { province = 1191 data = -3 } }
-				NOT = { control = { province = 1191 data = -3 } }
-				}
-			AND = {
-				NOT = { owned = { province = 1281 data = -3 } }
-				NOT = { control = { province = 1281 data = -3 } }
-				}
-			AND = {
-				flag = RUS_EXP
-				NOT = { owned = { province = 1208 data = -3 } }
-				NOT = { control = { province = 1208 data = -3 } }
-				}
-			}
-		}
-	ai_chance = 95
-	name = "We will focus on the Far East!"
-	command = { type = domestic which = defense_lobby value = 1 }
-	command = { type = relation which = JAP value = -10 }
-	command = { type = relation which = MAN value = -10 }
-	command = { type = relation which = PRI value = -10 }
-	command = { type = relation which = CXB value = -10 }
-	command = { type = relation which = SIK value = -10 }
-	command = { type = relation which = MON value = -30 }
-	command = { type = clrflag which = RUS_KGD }
-	command = { type = clrflag which = RUS_AOD }
-	command = { type = clrflag which = RUS_DKU }
-	command = { type = clrflag which = RUS_DKC }
-	command = { type = clrflag which = RUS_ETC }
-	command = { type = clrflag which = RUS_TMGCA }
-	command = { type = event which = 901980 where = RUS when = 4  }
-	}
 }
 
 
@@ -806,7 +766,6 @@ id = 901978
 country = RUS
 style = 2
 picture = "RusEventCA"
-
 
 name = "Central Asia Direction"
 desc = "We have chosen to expand in Central Asia. We must decide whetever we want to conquer Central Asia as a whole or limit our plans to Alash-Orda. This region is forgotten and we don't expect international problems, although the Central Asian tribes might prove to be a nuisance."
@@ -837,8 +796,6 @@ command = { type = relation which = KYG value = -50 }
 command = { type = setflag which = RUS_KGD }
 command = { type = local_setflag which = RUSexp_cea }
 }
-
-
 }
 
 
@@ -872,6 +829,19 @@ owned = { province = 504 data = -3 }
 control = { province = 504 data = -3 }
 owned = { province = 1105 data = -3 }
 control = { province = 1105 data = -3 }
+}
+AND = { #fallback if Central Asia chain breaks but is still conquered
+flag = RUS_EXP
+owned = { province = 504 data = -3 } #Alma-Ata
+control = { province = 504 data = -3 }
+owned = { province = 1105 data = -3 } #Dushanbe
+control = { province = 1105 data = -3 }
+NOT = { owned = { province = 694 data = -3 } } #Novorossiysk
+NOT = { control = { province = 694 data = -3 } }
+NOT = { owned = { province = 702 data = -3 } } #Grozny
+NOT = { control = { province = 702 data = -3 } }
+NOT = { owned = { province = 709 data = -3 } } #Tbilisi
+NOT = { control = { province = 709 data = -3 } }
 }
 }
 }
@@ -929,49 +899,6 @@ command = { type = clrflag which = RUS_AOD }
 command = { type = setflag which = RUS_ISO }
 command = { type = domestic which = interventionism value = -1 }
 }
-
-	action_c = {
-		trigger = {
-			NOT = {
-			local_flag = RUSexp_fae
-			}
-		OR = {
-			AND = {
-				NOT = { owned = { province = 1124 data = -3 } }
-				NOT = { control = { province = 1124 data = -3 } }
-				}
-			AND = {
-				NOT = { owned = { province = 1191 data = -3 } }
-				NOT = { control = { province = 1191 data = -3 } }
-				}
-			AND = {
-				NOT = { owned = { province = 1281 data = -3 } }
-				NOT = { control = { province = 1281 data = -3 } }
-				}
-			AND = {
-				flag = RUS_EXP
-				NOT = { owned = { province = 1208 data = -3 } }
-				NOT = { control = { province = 1208 data = -3 } }
-				}
-			}
-		}
-	ai_chance = 90
-	name = "We will focus on the Far East!"
-	command = { type = domestic which = defense_lobby value = 1 }
-	command = { type = relation which = JAP value = -10 }
-	command = { type = relation which = MAN value = -10 }
-	command = { type = relation which = PRI value = -10 }
-	command = { type = relation which = CXB value = -10 }
-	command = { type = relation which = SIK value = -10 }
-	command = { type = relation which = MON value = -30 }
-	command = { type = clrflag which = RUS_KGD }
-	command = { type = clrflag which = RUS_AOD }
-	command = { type = clrflag which = RUS_DKU }
-	command = { type = clrflag which = RUS_DKC }
-	command = { type = clrflag which = RUS_ETC }
-	command = { type = clrflag which = RUS_TMGCA }
-	command = { type = event which = 901980 where = RUS when = 4  }
-	}
 }
 
 
@@ -1009,16 +936,12 @@ control = { province = 1105 data = -3 }
 }
 }
 
-
-
-
 name = "Focus in International Policy"
 desc = "We have successfully achieved all our goals in Central Asia. Unfortunately, expansion into the Caucasus is impossible thanks to German protection over the Don-Kuban union and Azerbaijan. We can either wait for a better opportunity to expand into the Caucasus, risk expansion into the Far East or give up expansionism altogether. What shall we do?"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 trigger = {
@@ -1072,7 +995,6 @@ command = { type = clrflag which = RUS_TMGC }
 command = { type = setflag which = RUS_TMGCA }
 }
 
-
 action_b = {
 ai_chance = 10
 name = "We have expanded enough!"
@@ -1086,8 +1008,6 @@ command = { type = setflag which = RUS_ISO }
 command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = -1 }
 }
-
-
 }
 
 
@@ -1124,7 +1044,6 @@ owned = { province = 1105 data = -3 }
 control = { province = 1105 data = -3 }
 }
 }
-
 OR = {
 AND = {
 flag = RUS_TSR
@@ -1156,18 +1075,12 @@ control = { province = 1208 data = -3 }
 }
 }
 
-
-
-
 name = "Focus in International Policy"
 desc = "We have successfully achieved all our goals in Central Asia and in the Far East. We are finally strong enough to directly interfere in the German sphere of influence in the Caucasus. Shall we focus our power there ?"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
-
-
 
 action_a = {
 ai_chance = 99
@@ -1211,7 +1124,6 @@ command = { trigger = { NOT = { atwar = POL ispuppet = POL alliance = { country 
 command = { trigger = { NOT = { atwar = U00 ispuppet = U00 alliance = { country = U00 country = CAN } alliance = { country = U00 country = RUS } alliance = { country = U00 country = GER } alliance = { country = U00 country = FRA } } exists = U00 control = { province = 232 data = U00 } control = { province = 163 data = GER } control = { province = 145 data = GER } } type = event which = 903029 where = U00 when = 4  }
 }
 
-
 action_b = {
 ai_chance = 1
 name = "We have expanded enough!"
@@ -1227,8 +1139,6 @@ command = { type = setflag which = RUS_ISO }
 command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = -1 }
 }
-
-
 }
 
 
@@ -1335,8 +1245,6 @@ date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
 
-
-
 action_a = {
 ai_chance = 40
 name = "Demand concessions in the Caucasus."
@@ -1374,7 +1282,6 @@ command = { type = clrflag which = RUS_TMGCA }
 command = { type = trigger which = 903009 }
 }
 
-
 action_b = {
 ai_chance = 10
 name = "We have expanded enough."
@@ -1391,8 +1298,6 @@ command = { type = clrflag which = RUS_TMGCA }
 command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = -1 }
 }
-
-
 }
 
 
@@ -1506,7 +1411,6 @@ command = { type = setflag which = RUS_CAUCCONQ }
 command = { type = sleepevent which = 901973 }
 }
 
-
 action_b = {
 ai_chance = 10
 name = "Abandon all expansionist plans."
@@ -1532,7 +1436,6 @@ id = 903007
 random = no
 country = TRA
 
-
 name = "Betrayal of the German Empire!"
 desc = "The German Empire has betrayed us by accepting all Russian demands regarding the Caucasus, leaving us alone to face the might of the Russian state."
 style = 2
@@ -1546,14 +1449,13 @@ command = { type = end_non_aggression which = TRA where = GER }
 command = { type = end_guarantee which = TRA where = GER }
 command = { type = end_trades which = GER where = TRA }
 }
-
 }
+
 
 event = {
 id = 903008
 random = no
 country = AZB
-
 
 name = "Betrayal of the German Empire!"
 desc = "The German Empire has betrayed us by accepting all Russian demands regarding the Caucasus, leaving us alone to face the might of the Russian state."
@@ -1568,7 +1470,6 @@ command = { type = end_non_aggression which = AZB where = GER }
 command = { type = end_guarantee which = AZB where = GER }
 command = { type = end_trades which = GER where = AZB }
 }
-
 }
 
 
@@ -1576,7 +1477,6 @@ event = {
 id = 903033
 random = no
 country = U43
-
 
 name = "Betrayal of the German Empire!"
 desc = "The German Empire has betrayed us by accepting all Russian demands regarding the Caucasus, leaving us alone to face the might of the Russian state."
@@ -1591,9 +1491,7 @@ command = { type = end_non_aggression which = U43 where = GER }
 command = { type = end_guarantee which = U43 where = GER }
 command = { type = end_trades which = U43 where = AZB }
 }
-
 }
-
 
 
 event = {
@@ -1634,7 +1532,6 @@ command = { type = setflag which = RUS_CAUCCONQ }
 command = { type = sleepevent which = 901973 }
 }
 
-
 action_b = {
 ai_chance = 25
 name = "Never!"
@@ -1645,6 +1542,7 @@ command = { type = relation which = TRA value = 100 }
 command = { type = trigger which = 903006 }
 }
 }
+
 
 event = {
 id = 903010
@@ -1662,7 +1560,6 @@ name = "Demand the full integration of the Don-Kuban Union!"
 command = { type = dissent value = -3 }
 command = { type = trigger which = 903022 }
 }
-
 
 action_b = {
 ai_chance = 40
@@ -1693,7 +1590,6 @@ command = { type = dissent value = -3 }
 command = { type = trigger which = 903013 }
 }
 
-
 action_b = {
 ai_chance = 40
 name = "Demand reformation of their government!"
@@ -1719,7 +1615,6 @@ name = "Demand the full integration of Mountain Republic!"
 command = { type = dissent value = -3 }
 command = { type = trigger which = 903035 }
 }
-
 
 action_b = {
 ai_chance = 40
@@ -1803,6 +1698,7 @@ command = { type = leave_alliance when = 1 }
 command = { type = event which = 903019 where = RUS when = 2  }
 }
 }
+
 
 event = {
 id = 903014
@@ -2175,7 +2071,6 @@ command = { type = make_puppet which = U43 }
 }
 
 
-
 event = {
 id = 903021
 country = RUS
@@ -2229,15 +2124,12 @@ control = { province = 711 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "Russia is now stronger than before after conquering both the Caucasus and Central Asia. Now we can start actions in the Far East, in Eastern Europe or in the Middle East. We can't engage in more than one area as we are still not powerful enough to fight the Germans and the Japanese simultaneously. We must choose our directions carefully as the international situation is becoming more and more unstable."
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 trigger = {
@@ -2492,15 +2384,12 @@ control = { province = 711 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "Russia is now stronger than before after conquering both the Caucasus and Central Asia. Now we can start actions in the Far East, in Eastern Europe or in the Middle East. We can't engage in more than one area as we are still not powerful enough to fight the Germans and the Japanese simultaneously. We must choose our directions carefully as the international situation is becoming more and more unstable."
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 trigger = {
@@ -2776,14 +2665,12 @@ command = { type = local_setflag which = RUSexp_fae }
 }
 
 
-
 event = {
 id = 901981
 country = RUS
 style = 2
 picture = "RusEventEU"
 persistent = yes
-
 
 name = "European direction"
 desc = "We have decided to start actions in Eastern Europe. The stakes are high and we must be extremely careful as we don't want to start the a war with Germany over our former lands. We must decide what our goals will be. One mistake and Europe will be plunged into chaos."
@@ -2899,9 +2786,8 @@ command = { trigger = { NOT = { atwar = U00 ispuppet = U00 alliance = { country 
 command = { type = setflag which = RUS_FRB }
 command = { type = local_setflag which = RUSexp_eas }
 }
-
-
 }
+
 
 event = {
 id = 903032
@@ -2933,7 +2819,6 @@ command = { type = domestic which = interventionism value = 1 }
 command = { type = relation which = RUS value = -40 }
 command = { type = dissent value = 1 }
 }
-
 
 action = {
 ai_chance = 20
@@ -2982,6 +2867,7 @@ command = { type = relation which = RUS value = 40 }
 command = { type = relation which = FIN value = -80 }
 }
 }
+
 
 event = {
 id = 903024
@@ -3054,7 +2940,6 @@ command = { type = relation which = RUS value = -40 }
 command = { type = dissent value = 1 }
 }
 
-
 action = {
 ai_chance = 20
 name = "We don't need any allies"
@@ -3103,6 +2988,7 @@ command = { type = relation which = POL value = -80 }
 }
 }
 
+
 event = {
 id = 903027
 random = no
@@ -3142,6 +3028,7 @@ command = { type = end_trades which = FRA where = POL }
 }
 }
 
+
 event = {
 id = 903029
 random = no
@@ -3172,7 +3059,6 @@ command = { type = domestic which = interventionism value = 1 }
 command = { type = relation which = RUS value = -40 }
 command = { type = dissent value = 1 }
 }
-
 
 action = {
 ai_chance = 20
@@ -3222,6 +3108,7 @@ command = { type = relation which = U00 value = -80 }
 }
 }
 
+
 event = {
 id = 903031
 random = no
@@ -3261,13 +3148,13 @@ command = { type = end_trades which = FRA where = U00 }
 }
 }
 
+
 event = {
 id = 901982
 country = RUS
 style = 2
 picture = "RusEventME"
 persistent = yes
-
 
 name = "Middle-East Direction"
 desc = "We have decided to take care of the Middle Eastern nations. Turkey is weak so we don't need to fear them. However, we must assign priorities in our Middle Eastern policy, do we want to take over Turkey or maybe even Persia?"
@@ -3378,10 +3265,7 @@ command = { type = setflag which = RUS_GGF }
 command = { type = local_setflag which = RUSexp_mie }
 command = { type = local_setflag which = RUSexp_Persia }
 }
-
-
 }
-
 
 
 event = {
@@ -3481,16 +3365,12 @@ control = { province = 1208 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "The vast territories of the Far East, the snowy mountains of the Caucasus and the sandy steppes of Central Asia are now under the control of Russia, our former lands returned to us. Our justice is nearly finished but we still have some unresolved issues in Eastern Europe and the Middle East. Russia has to choose where to concentrate their attention next, maybe it's time to stop expanding?"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
-
 
 action_a = {
 trigger = {
@@ -3760,15 +3640,12 @@ control = { province = 304 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91807_DESC"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 ai_chance = 40
@@ -4032,8 +3909,6 @@ control = { province = 1034 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91808_DESC"
 
@@ -4243,8 +4118,6 @@ control = { province = 1034 data = -3 }
 }
 }
 }
-
-
 
 name = "Focus in International Policy"
 desc = "EVT_91808_DESC"
@@ -4459,8 +4332,6 @@ control = { province = 1034 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91808_DESC"
 
@@ -4494,9 +4365,6 @@ command = { type = setflag which = RUS_ISO }
 command = { type = set_domestic which = interventionism value = 1 }
 }
 }
-
-
-
 
 
 event = {
@@ -4608,16 +4476,12 @@ control = { province = 1034 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "The vast deserts of the Middle East, the snowy mountains of the Caucasus and the sandy steppes of Central Asia are now under the control of Russia, our former lands returned to us. Our justice is nearly finished but we still have unresolved issues in Eastern Europe and the Far East. The Russian government has to choose where to concentrate their attention next, maybe it's time to stop expanding?"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
-
 
 action_a = {
 trigger = {
@@ -4834,16 +4698,12 @@ control = { province = 304 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "The vast territories of Eastern Europe, the snowy mountains of the Caucasus and the sandy steppes of Central Asia are now under the control of Russia, our former lands returned to us. Our justice is nearly finished but we still have unresolved issues in the Middle East and the Far East. The Russian government has to choose where to concentrate their attention next, maybe it's time to stop expanding?"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
-
 
 action_a = {
 ai_chance = 40
@@ -5098,15 +4958,12 @@ control = { province = 1208 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91809_DESC"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 ai_chance = 40
@@ -5333,15 +5190,12 @@ control = { province = 1034 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91810_DESC"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 trigger = {
@@ -5559,15 +5413,12 @@ control = { province = 1034 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91811_DESC"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 trigger = {
@@ -5645,7 +5496,6 @@ command = { type = sleepevent which = 901984 }
 command = { type = domestic which = interventionism value = -1 }
 }
 }
-
 
 
 event = {
@@ -5794,15 +5644,12 @@ control = { province = 1034 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91812_DESC"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 trigger = {
@@ -6015,15 +5862,12 @@ control = { province = 1034 data = -3 }
 }
 }
 
-
-
 name = "Focus in International Policy"
 desc = "EVT_91813_DESC"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action_a = {
 trigger = {
@@ -6090,14 +5934,11 @@ command = { type = domestic which = interventionism value = -1 }
 }
 
 
-
 event = {
 id = 901996
 country = RUS
 style = 2
 picture = "RusEvent1"
-
-
 
 name = "Focus in International Policy"
 desc = "Russia is now stronger than before after conquering the Caucasus and Central Asia. Now we can start actions in theFar East, in Eastern Europe or in the Middle East. We can't engage in more than one area as we are not powerful enough to fight the Germans and the Japanese simultaneously. We must choose our directions carefully as the international situation is becoming more and more unstable."
@@ -6277,7 +6118,6 @@ command = { type = dissent value = -1 }
 }
 
 
-
 event = {
 id = 903002
 country = RUS
@@ -6368,16 +6208,12 @@ control = { province = 711 data = -3 }
 }
 }
 
-
-
-
 name = "Focus in International Policy"
 desc = "The vast territories of the Far East, the snowy mountains of the Caucasus and the sandy steppes of Central Asia are now under the control of Russia, our former lands returned to us. Our justice is nearly finished but we still have some unresolved issues in Eastern Europe and the Middle East. Russia has to choose where to concentrate their attention next, maybe it's time to stop expanding?"
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
-
 
 action = {
 trigger = {
@@ -6432,7 +6268,7 @@ command = { type = clrflag which = RUS_ETC }
 command = { type = event which = 901981 where = RUS when = 4  }
 }
 
-action_c = {
+action = {
 ai_chance = 40
 trigger = {
 flag = RUS_EXP
@@ -6499,8 +6335,6 @@ command = { type = clrflag which = RUS_TMGCA }
 command = { type = event which = 901982 where = RUS when = 4  }
 }
 
-
-
 action = {
 ai_chance = 15
 name = "We have expanded enough!"
@@ -6517,6 +6351,4 @@ command = { type = clrflag which = RUS_CAUCCONQ }
 command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = -1 }
 }
-
-
 }

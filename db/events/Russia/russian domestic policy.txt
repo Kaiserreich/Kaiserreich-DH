@@ -4776,6 +4776,7 @@ random = 95
 NOT = {
 headofstate = 4080 # Autocrat Tsar
 headofstate = 4152 # Consititution Tsar
+headofstate = 4155 # Wrangel - check later events
 headofstate = 4156 # Denikin - check later events
 ideology = social_conservative
 }
@@ -4808,8 +4809,8 @@ style = 2
 
 trigger = {
 OR = {
-headofstate = 4155
-headofstate = 4156
+headofstate = 4155 #Pyotr Wrangel
+headofstate = 4156 #Anton Denikin
 }
 random = 95
 NOT = {
@@ -4826,13 +4827,14 @@ desc = "The Romanov pretender, Kyril Romanov, has died. His son Vladimir is in h
 picture = "minister_died"
 
 action_a = {
+trigger = { headofstate = 4156 } #Anton Denikin
 name = "Yes, a new Tsar shall promote order and stability!"
 ai_chance = 60
 command = { type = sleepminister which = 4080 }
 command = { type = sleepminister which = 4152 }
 command = { type = sleepleader which = 500195 }
-command = { type = headofstate which = 4091 }
-command = { type = headofgovernment which = 4159 }
+command = { type = headofstate which = 4091 } #Vladimir III Romanov
+command = { type = headofgovernment which = 4159 } #Anton Denikin
 command = { type = setflag which = RUS_TSAR }
 command = { type = dissent value = -10 }
 command = { type = name where = RUS which = RUS_EMP_NAME }
@@ -4842,12 +4844,44 @@ command = { type = sleepevent which = 750026 }
 command = { type = sleepevent which = 750028 }
 command = { type = sleepevent which = 758432 }
 }
-
 action_b = {
+trigger = { headofstate = 4156 } #Anton Denikin
 name = "No. The Tsarist system shall never rise again."
 ai_chance = 40
 command = { type = dissent value = 5 }
-command = { type = headofstate which = 4156 }
+command = { type = headofstate which = 4156 } #Anton Denikin
+command = { type = sleepminister which = 4080 }
+command = { type = sleepminister which = 4152 }
+command = { type = sleepleader which = 500195 }
+command = { type = sleepevent which = 750025 }
+command = { type = sleepevent which = 750026 }
+command = { type = sleepevent which = 750028 }
+command = { type = sleepevent which = 758432 }
+}
+action_c = {
+trigger = { headofstate = 4155 } #Pyotr Wrangel
+name = "Yes, a new Tsar shall promote order and stability!"
+ai_chance = 90
+command = { type = sleepminister which = 4080 }
+command = { type = sleepminister which = 4152 }
+command = { type = sleepleader which = 500195 }
+command = { type = headofstate which = 4091 } #Vladimir III Romanov
+command = { type = headofgovernment which = 4158 } #Pyotr Wrangel
+command = { type = setflag which = RUS_TSAR }
+command = { type = dissent value = -10 }
+command = { type = name where = RUS which = RUS_EMP_NAME }
+command = { type = flag_ext where = RUS which = "_emp" }
+command = { type = sleepevent which = 750025 }
+command = { type = sleepevent which = 750026 }
+command = { type = sleepevent which = 750028 }
+command = { type = sleepevent which = 758432 }
+}
+action_d = {
+trigger = { headofstate = 4155 } #Pyotr Wrangel
+name = "No. The Tsarist system shall never rise again."
+ai_chance = 10
+command = { type = dissent value = 5 }
+command = { type = headofstate which = 4155 } #Pyotr Wrangel
 command = { type = sleepminister which = 4080 }
 command = { type = sleepminister which = 4152 }
 command = { type = sleepleader which = 500195 }
