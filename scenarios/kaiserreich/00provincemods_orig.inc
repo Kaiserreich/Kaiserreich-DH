@@ -204,7 +204,7 @@ province = { id = 2111 ic = 4 manpower = 3 anti_air = 3 #Toronto
 	air_base = { size = 10 current_size = 10 } infra = { size = 0.80 current_size = 0.80 } }
 province = { id = 2112 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Thunder Bay
 province = { id = 2113 ic = 3 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Windsor
-province = { id = 2117 manpower = 1 anti_air = 4 #Québec
+province = { id = 2117 manpower = 1 anti_air = 4 #QuÃ©bec
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
 province = { id = 2118 ic = 2 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Sherbrooke
 province = { id = 2119 ic = 4 manpower = 3 anti_air = 2 #Montreal
@@ -555,9 +555,9 @@ province = { id = 1624 naval_base = { size = 4 current_size = 4 } air_base = { s
 
 #Kaiserreich
 province = { id = 126 ic = -2 } #Aachen
-province = { id = 127 anti_air = 2 } #Saarbrücken
+province = { id = 127 anti_air = 2 } #SaarbrÃ¼cken
 province = { id = 128 ic = 1 } #Trier
-province = { id = 129 ic = 2 anti_air = 2 } #Köln
+province = { id = 129 ic = 2 anti_air = 2 } #KÃ¶ln
 province = { id = 130 ic = 1 anti_air = 2 } #Mannheim
 province = { id = 134 anti_air = 2 #Stuttgart
 	air_base = { size = 4 current_size = 4 } }
@@ -963,7 +963,7 @@ province = { id = 1972 ic = 3 anti_air = 2 #Acapulco
 province = { id = 1974 anti_air = 4 #Mexico City
 	air_base = { size = 2 current_size = 2 } }
 province = { id = 1975 anti_air = 1 } #Monterey
-province = { id = 1977 anti_air = 2 } #Ciudad de México
+province = { id = 1977 anti_air = 2 } #Ciudad de MÃ©xico
 
 ### MON
 
