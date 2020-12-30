@@ -18,16 +18,16 @@ country = {
 
 #### cabinet
 
-	headofstate = { type = 9 id = 512119 }
-	headofgovernment = { type = 9 id = 512025 } #Ali Mahir Pasha
- 	foreignminister = { type = 9 id = 512028 }
- 	armamentminister = { type = 9 id = 512047 }
- 	ministerofsecurity = { type = 9 id = 512005  }
- 	ministerofintelligence = { type = 9 id = 512072  }
- 	chiefofstaff = { type = 9 id = 512007 }
- 	chiefofarmy = { type = 9 id = 512089 }
- 	chiefofnavy = { type = 9 id = 512009 }        
- 	chiefofair = { type = 9 id = 512103 }
+	headofstate = { type = 9 id = 512208 } #Aziz Ali al-Misri
+	headofgovernment = { type = 9 id = 512211 } #Aziz Ali al-Misri
+ 	foreignminister = { type = 9 id = 512252 } #Mahmoud Fawzi
+ 	armamentminister = { type = 9 id = 512047 } #Mohamed Mahmoud Pasha
+ 	ministerofsecurity = { type = 9 id = 512069  } #Makaram Ebeid
+ 	ministerofintelligence = { type = 9 id = 512071  } #Mohammed al Fransawi
+	chiefofstaff = { type = 9 id = 512083 } #Aziz Ali al-Misri
+	chiefofarmy = { type = 9 id = 512092 } #Mohamed Saleh Harb
+	chiefofnavy = { type = 9 id = 512143 } #Ahmed Hassanein
+	chiefofair = { type = 9 id = 512103 } #Victor Hubert Tait
 
 #### Resource Reserves
 	manpower = 100
@@ -39,21 +39,24 @@ country = {
 
     ownedprovinces =      {
 			#EGYPT
-		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 803 804 813 805 814 811 810 807 812 808 809 806
+		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 
+		 #SUDAN
+		 804 803 813 805 814 811 810 807 812 808 809 806
 	 }
     controlledprovinces = {
 			#EGYPT
-		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 803 804 813 805 814 811 810 807 812 808 809 806
+		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 
+		    #SUDAN
+			803 804 813 805 814 811 810 807 812 808 809 806
 
 	  }
     nationalprovinces =   {
 			#EGYPT
-		781 782 780 778 785 784 783 787 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 803 804 813 805 814 811 810 807 812 808 809 806
-                900 1007 1006 1004 1005
+		781 782 780 778 785 784 783 787 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 
+          #Sinai and The Canal Zone     
+			   900 1007 1006 1004 1005
                  
 	}
-
-
 
 
 diplomacy = {
@@ -96,7 +99,6 @@ diplomacy = {
 
 # Great War Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
-6010 6020 # Superior Firepower
 14000 14010
 
 #Naval
@@ -111,6 +113,22 @@ diplomacy = {
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
 	}
+deactivate = { 6010 6210 6570 6560 6390 } 
+
+dormant_ministers = { #German Advisors
+					  512176 512177 512178 512179 512180
+					  #LEB & SYR
+					  512181 512182 512183 512184 512185 512186 512187 512188 512189 512190 512191 512192 512193 512194 512195
+					  #IRQ
+					  512196 512197 512198 512199 512200 512201 512202 512203 512204 512205 512206 512207 }
+dormant_leaders = { #German Advisors
+					512060 512061 512062 512063 512064
+					#LEB & SYR
+					512065 512066 512067 512068 512069 512070 512071 512075 512076 512077 512078 512079 512080 512081 512082 512083
+					#IRQ
+					512085 512086 512087 512088 512089 512090 512091 512092 512093 512094 512095 512096 }
+dormant_teams = {  #German Assistance
+				   10807 10830 }
 
 #########  OOB (...)
 

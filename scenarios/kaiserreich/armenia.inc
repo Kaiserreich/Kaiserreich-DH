@@ -21,7 +21,7 @@ ai = "kaiserreich\Armenia.ai"
 #### cabinet
 	headofstate 		= { type = 9 id = 515031 } #Semeno Ter-Petrossian
 	headofgovernment	= { type = 9 id = 515030 } #Mehmed Esad Pasha
-	chiefofstaff		= { type = 9 id = 515026 } #Misak Babajanian
+	chiefofstaff		= { type = 9 id = 515041 } #Movses Silikyan
 
 #### Resource Reserves
 
@@ -33,6 +33,7 @@ capital = 711
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10
 
+	free = { ic = 2 oil = 0 energy = 4 metal = 2 rare_materials = 1 money = 0 manpower = 0 } #new Mar2020
 
     ownedprovinces =      {
 		711 714 
@@ -97,14 +98,6 @@ relation = { tag = TRA value = 20 }
  	id = { type = 17348    id = 1 }
  	name = "I. Hayastani Korpus"
  	location = 711
-
-  			division = {
-   		id = { type = 17348    id = 2 }
-   		name = "1. Strelkovaya Diviziya"
-   		strength = 80
-   		type = infantry
-		model = 5
-             	}
 
   		division = {
    		id = { type = 17348    id = 3 }

@@ -24,6 +24,8 @@ country = {
 
 	capital = 	2085
 
+	free = { ic = 2 }
+
 SpyInfo  = {  country = "HON" NumberOfSpies = 2  } 
 
     ownedprovinces =      {

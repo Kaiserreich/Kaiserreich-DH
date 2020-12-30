@@ -22,15 +22,22 @@ ai = "kaiserreich\Galicia.ai"
     }
 #### cabinet
 
-headofstate = { type = 9 id = 551001 }
-headofgovernment = { type = 9 id = 551002  }
+	headofstate = { type = 9 id = 551001 } #Karol Olbracht Habsburg
+	headofgovernment = { type = 9 id = 551016 } #Alfred Antoni Potocki
+	foreignminister = { type = 9 id = 551040 } #Jerzy Potocki
+	armamentminister = { type = 9 id = 551085 } #Aleksander Litwinowicz
+	ministerofsecurity = { type = 9 id = 551059 } #Marian Dabrowski
+	ministerofintelligence = { type = 9 id = 551032 } #Kazimierz Switalski
+	chiefofstaff = { type = 9 id = 551073 } #Wlodzimierz Zagórski
+	chiefofarmy = { type = 9 id = 551088 } #Józef Haller von Hallenburg
+	chiefofnavy = { type = 9 id = 551090 } #Bogumil Nowotny
+	chiefofair = { type = 9 id = 551098 } #Wladyslaw Kalkus
 
 #### Resource Reserves
 
 capital = 242
 	manpower = 28
-        free = { ic = 3 }
-
+	free = { ic = 3 }
 
 
 	# Resource Reserves
@@ -50,27 +57,27 @@ SpyInfo  = {  country = "GLD" NumberOfSpies = 2  }
 	}
 
 diplomacy = {
-relation = {   tag =    	BEL	value = 		40	   }  
-relation = {   tag =  	BLR	 value =		60	   }  
-relation = {   tag =  	BUL	value = 		30	   }  
-relation = {   tag =  	GER	 value =		80	   }  
-relation = {   tag =  	LAT	value = 		50	   }  
-relation = {   tag =  	LIT	 value =		60	   }  
-relation = {   tag =  	POL	value = 		80	   }  
-relation = {   tag =  	UKR	 value =		50	   }  
-relation = {   tag =  	AUS	value = 		170	   }  
-relation = {   tag =  	HUN	 value =		100	   }  
-relation = {   tag =  	ITA	value = 		20	   }  
-relation = {   tag =  	SPA	value = 		20	   }  
-relation = {   tag =  	ENG	value = 		-20	   }  
-relation = {   tag =  	FRA	value = 		-40	   }  
-relation = {   tag =  	RUS	 value =		10	   }  
-relation = {   tag =  	OTT	 value =		40	   }  
-relation = {   tag =  	JAP	value = 		-10	   }  
+relation = {   tag =	BEL value = 40 }
+relation = {   tag =	BLR value = 60 }
+relation = {   tag =	BUL value = 30 }
+relation = {   tag =	GER value = 80 }
+relation = {   tag =	LAT value = 50 }
+relation = {   tag =	LIT value = 60 }
+relation = {   tag =	POL value = 80 }
+relation = {   tag =	UKR value = 50 }
+relation = {   tag =	AUS value = 170 }
+relation = {   tag =	HUN value = 100 }
+relation = {   tag =	ITA value = 20 }
+relation = {   tag =	SPA value = 20 }
+relation = {   tag =	ENG value = -20 }
+relation = {   tag =	FRA value = -40 }
+relation = {   tag =	RUS value = 10 }
+relation = {   tag =	OTT value = 40 }
+relation = {   tag =	JAP value = -10 }
 }
 
 
-	
+
 	techapps = {
 
 #Aircrafts

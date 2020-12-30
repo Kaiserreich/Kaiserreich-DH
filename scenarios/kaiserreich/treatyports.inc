@@ -6,7 +6,7 @@ country = {
 
 	policy = {
         date = { year = 0 month = january day = 0 }
-        democratic = 3
+        democratic = 5
         political_left = 4
         freedom = 8
         free_market = 9
@@ -18,15 +18,16 @@ country = {
 
 #### cabinet
 
-
-	headofstate = { type = 9 id = 550064   }
-	headofgovernment = { type = 9 id = 550060  }
- 	foreignminister = { type = 9 id = 550066  }
- 	armamentminister = { type = 9 id = 550058  }
- 	ministerofsecurity = { type = 9 id = 550055 }
- 	ministerofintelligence = { type = 9 id = 550056  }
- 	chiefofstaff = { type = 9 id = 550063 }
-	chiefofarmy = { type = 9 id = 550067 }
+	headofstate = { type = 9 id = 550003 } #Nelson T. Johnson
+	headofgovernment = { type = 9 id = 550030 } #Cecil Clementi
+	foreignminister = { type = 9 id = 550040 } #John Van Antwerp MacMurray
+	armamentminister = { type = 9 id = 550002 } #Chen Guangfu
+	ministerofsecurity = { type = 9 id = 550090 } #William E. Fairbairn
+	ministerofintelligence = { type = 9 id = 550082 } #Georg Wetzell
+	chiefofstaff = { type = 9 id = 550067 } #James Marshall-Cornwall
+	chiefofarmy = { type = 9 id = 550076 } #Oswald Cuthbert Borrett
+	chiefofnavy = { type = 9 id = 550105 } #Francis George Gillilan Chilton
+	chiefofair = { type = 9 id = 550110 } #John Babington
 
 #### Resource Reserves
 
@@ -119,17 +120,16 @@ relation = { tag = USA value = 60 }
 landunit = {
 		name = "Hong Kong Constabulary"
 		location = 1371
-		id = { type = 12700 id = 8 }
+		id = { type = 12700 id = 9 }
 		division = {
-			id = { type = 12700 id = 9 }
+			id = { type = 12700 id = 10 }
 			name = "Hong Kong Defence Force"
 			type = garrison 
 			model = 4
-			strength = 100  }
+			strength = 100 }
 	}
 
-
-		airunit = {
+airunit = {
 	location = 1338
 	base = 1338
         id = { type = 12700 id = 82 }
@@ -140,67 +140,74 @@ landunit = {
 		name = "Far East Group"
 		type = tactical_bomber
 		model = 5
-		strength = 100
-		}
-		}
-
+		strength = 100 }
+	}
 
 landunit = {
 		name = "Boa'an Constabulary"
 		location = 1338
-		id = { type = 12699 id =    1   }
+		id = { type = 12699 id = 1 }
 		division = {
-			id = { type = 12699 id =  2  }
+			id = { type = 12699 id = 2 }
 			name = "Boa'an Police District"
 			type = militia 
 			model = 4
-			strength = 50   }
+			strength = 50 }
 	}
 
 landunit = {
 		name = "Fuzhou Constabulary"
 		location = 1358
-		id = { type = 12699 id =   3    }
+		id = { type = 12699 id = 3 }
 		division = {
-			id = { type = 12699 id =  4  }
+			id = { type = 12699 id = 4 }
 			name = "Fuzhou Police District"
 			type = militia 
 			model = 4
-			strength = 50   }
+			strength = 50 }
 	}
 
 landunit = {
 		name = "Ningbo Constabulary"
 		location = 1346
-		id = { type = 12699 id =    5   }
+		id = { type = 12699 id = 5 }
 		division = {
-			id = { type = 12699 id =   6 }
+			id = { type = 12699 id = 6 }
 			name = "Ningbo Police District"
 			type = militia 
 			model = 4
-			strength = 50   }
+			strength = 50 }
 	}
 
 landunit = {
 		name = "Shanghai Police Force"
 		location = 1338
-		id = { type = 12699 id =    7   }
+		id = { type = 12699 id = 7 }
 		division = {
-			id = { type = 12699 id =   8 }
+			id = { type = 12699 id = 8 }
 			name = "Ningbo Police District"
-			type = infantry 
+			type = d_01 
 			model = 6
-			strength = 100   }
+			strength = 100 }
 	}
 
-	navalunit = {
+navalunit = {
 	location = 1338
 	base = 1338
-	name = "Legation Transport Squadron"
-	id = { type = 12699 id = 9 }
-
-		division = { id = { type = 12699 id = 10 } name = "Legation Transport Squadron" type = transport model = 1 }
+	name = "China Station Squadron"
+	id = { type = 12699 id = 11 }
+		division = { id = { type = 12699 id = 12 } name = "HMS Diomede" type = light_cruiser model = 2 }
+		division = { id = { type = 12699 id = 13 } name = "HMS Despatch" type = light_cruiser model = 2 }
+		division = { id = { type = 12699 id = 14 } name = "Legation Transport Squadron" type = transport model = 1 }
 		}
 
+navalunit = {
+	location = 1371
+	base = 1371
+	name = "China Station Submarine Squadron"
+	id = { type = 12699 id = 15 }
+		division = { id = { type = 12699 id = 16 } name = "1st Submarine Flotilla" type = submarine model = 2 }
+		division = { id = { type = 12699 id = 17 } name = "2nd Submarine Flotilla" type = submarine model = 2 }
+		}
 
 }  

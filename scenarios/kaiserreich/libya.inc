@@ -7,6 +7,7 @@ country = {
 	flag_ext = _TRIPO
         name = LBY_TRI_NAME
 
+
 	policy = {
         date = { year = 0 month = january day = 0 }
         democratic = 4
@@ -21,22 +22,22 @@ country = {
 
 #### cabinet
 
-	headofstate = { type = 9 id = 576001  }
-	headofgovernment = { type = 9 id = 576005 }
- 	foreignminister = { type = 9 id = 576008 }
- 	armamentminister = { type = 9 id = 576012 }
- 	ministerofsecurity = { type = 9 id = 576019  }
- 	ministerofintelligence = { type = 9 id = 576024  }
- 	chiefofstaff = { type = 9 id = 576028 }
- 	chiefofarmy = { type = 9 id = 576032  }
- 	chiefofnavy = { type = 9 id = 576037 }        
- 	chiefofair = { type = 9 id = 576039 }
+  headofstate            = { type = 9 id = 576001 } # az-Zubayer bin Ahmad as-Sharif
+  headofgovernment       = { type = 9 id = 576006 } # Sharif El Gariani
+  foreignminister        = { type = 9 id = 576140 } # Mahmud al-Muntasir
+  armamentminister       = { type = 9 id = 576017 } # Sharif El Gariani
+  ministerofsecurity     = { type = 9 id = 576022 } # Ramadan Al-Swehli
+  ministerofintelligence = { type = 9 id = 576024 } # Ramadan Al-Swehli
+  chiefofstaff           = { type = 9 id = 576145 } # az-Zubayer bin Ahmad as-Sharif
+  chiefofarmy            = { type = 9 id = 576146 } # az-Zubayer bin Ahmad as-Sharif
+  chiefofnavy            = { type = 9 id = 576037 } # H.R.H. Taher Khimlani
+  chiefofair             = { type = 9 id = 576039 } # Ali al-Umlan
 
 #### Resource Reserves
 
 
 	manpower = 28
-     	capital = 750
+	capital    = 761 # Benghazi
 
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10

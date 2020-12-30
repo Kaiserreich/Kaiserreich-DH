@@ -1,0 +1,514 @@
+########################
+#### Saadabad Members
+########################
+event = {
+id = 62000
+country = PER
+picture = "shah1"
+style = 2
+
+trigger = {
+exists = AFG
+exists = AZB
+exists = PER
+NOT = {
+war = { country = AFG country = PER }
+war = { country = AFG country = AZB }
+war = { country = AZB country = PER }
+war = { country = AFG country = PAK }
+war = { country = AFG country = IND }
+war = { country = AFG country = PRK }
+war = { country = PER country = OTT }
+ispuppet = AFG
+ispuppet = AZB
+ispuppet = PER
+}
+}
+
+name = "The Treaty of Saadabad"
+desc = "EVT_700600_DESC"
+
+date = { day = 4 month = april year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1941 }
+
+action_a = {
+ai_chance = 70
+name = "Propose the Saadabad treaty to Azerbaijan and Afghanistan"
+command = { type = trigger which = 62001 } #AZB
+command = { type = trigger which = 62002 } #AFG
+}
+
+action_b = {
+ai_chance = 5
+name = "Propose the Saadabad treaty to Azerbaijan"
+command = { type = trigger which = 62003 } #AZB
+}
+
+action_c = {
+ai_chance = 5
+name = "Propose the Saadabad treaty to Afghanistan"
+command = { type = trigger which = 62004 } #AFG
+}
+
+action_d = {
+ai_chance = 20
+name = "With this treaty comes too much responsibility"
+command = { }
+}
+}
+
+event = {
+id = 62001
+country = AZB
+picture = "shah1"
+style = 2
+
+name = "The Treaty of Saadabad"
+desc = "EVT_700601_DESC"
+
+action_a = {
+ai_chance = 80
+name = "Yes"
+command = { type = non_aggression which = PER where = AZB }
+command = { type = guarantee which = PER where = AZB }
+command = { type = guarantee which = AZB where = PER }
+command = { type = relation which = PER value = 100 }
+command = { type = setflag which = ToS_AZB_Yes }
+}
+
+action_b = {
+ai_chance = 20
+name = "No"
+command = { type = end_non_aggression which = PER where = AZB }
+command = { type = end_guarantee which = PER where = AZB }
+command = { type = relation which = PER value = -25 }
+command = { type = setflag which = ToS_AZB_No }
+}
+}
+
+event = {
+id = 62002
+country = AFG
+picture = "shah1"
+style = 2
+
+name = "The Treaty of Saadabad"
+desc = "EVT_700602_DESC"
+
+action_a = {
+ai_chance = 80
+name = "Yes"
+command = { type = non_aggression which = PER where = AFG }
+command = { type = guarantee which = PER where = AFG }
+command = { type = guarantee which = AFG where = PER }
+command = { type = relation which = PER value = 100 }
+command = { type = setflag which = ToS_AFG_Yes }
+}
+
+action_b = {
+ai_chance = 20
+name = "No"
+command = { type = end_non_aggression which = PER where = AFG }
+command = { type = end_guarantee which = PER where = AFG }
+command = { type = relation which = PER value = -25 }
+}
+}
+
+event = {
+id = 62003
+country = AZB
+picture = "shah1"
+style = 2
+
+name = "The Treaty of Saadabad"
+desc = "EVT_700603_DESC"
+
+
+action_a = {
+ai_chance = 80
+name = "Yes"
+command = { type = ai which = "kaiserreich/switch/Saadabad_B.ai" }
+command = { type = non_aggression which = PER where = AZB }
+command = { type = guarantee which = PER where = AZB }
+command = { type = guarantee which = AZB where = PER }
+command = { type = relation which = PER value = 100 }
+command = { type = trigger which = 62009 }
+}
+
+action_b = {
+ai_chance = 20
+name = "No"
+command = { type = end_non_aggression which = PER where = AZB }
+command = { type = end_guarantee which = PER where = AZB }
+command = { type = relation which = PER value = -25 }
+}
+}
+
+event = {
+id = 62004
+country = AFG
+picture = "shah1"
+style = 2
+
+name = "The Treaty of Saadabad"
+desc = "EVT_700604_DESC"
+
+action_a = {
+ai_chance = 80
+name = "Yes"
+command = { type = ai which = "kaiserreich/switch/Saadabad_C.ai" }
+command = { type = non_aggression which = PER where = AFG }
+command = { type = guarantee which = PER where = AFG }
+command = { type = guarantee which = AFG where = PER }
+command = { type = relation which = PER value = 100 }
+command = { type = trigger which = 62008 }
+}
+
+action_b = {
+ai_chance = 20
+name = "No"
+command = { type = end_non_aggression which = PER where = AFG }
+command = { type = end_guarantee which = PER where = AFG }
+command = { type = relation which = PER value = -25 }
+}
+}
+
+event = {
+id = 62005
+country = PER
+picture = "news_paper"
+style = 2
+
+trigger = {
+flag = ToS_AFG_Yes
+flag = ToS_AZB_Yes
+}
+
+name = "The Treaty of Saadabad"
+desc = "Azerbaijan and Afghanistan have both ratified the Treaty of Saadabad."
+
+date = { day = 0 month = february year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1941 }
+
+action_a = {
+name = "Great!"
+command = { type = ai which = "kaiserreich/switch/Saadabad_A.ai" }
+command = { type = non_aggression which = AZB where = AFG }
+command = { type = guarantee which = AZB where = AFG }
+command = { type = guarantee which = AFG where = AZB }
+command = { type = trigger which = 62006 }
+command = { type = trigger which = 62007 }
+}
+}
+
+event = {
+id = 62006
+country = AFG
+picture = "news_paper"
+style = 2
+
+name = "Azerbaijan Accepts"
+desc = "Azerbaijan has ratified the Treaty of Saadabad."
+
+action_a = {
+name = "Let the Turks, Indians and Russians come now!"
+command = { type = ai which = "kaiserreich/switch/Saadabad_A.ai" }
+command = { type = relation which = AFG value = 100 }
+}
+}
+
+event = {
+id = 62007
+country = AZB
+picture = "news_paper"
+style = 2
+
+name = "Afghanistan Accepts"
+desc = "Afghanistan has ratified the Treaty of Saadabad."
+
+action_a = {
+name = "Huzzah for our new Afghan brothers!"
+command = { type = ai which = "kaiserreich/switch/Saadabad_A.ai" }
+command = { type = relation which = AFG value = 100 }
+}
+}
+
+event = {
+id = 62008
+country = PER
+picture = "news_paper"
+style = 2
+
+name = "Afghanistan Accepts"
+desc = "Afghanistan has ratified the Treaty of Saadabad."
+
+action_a = {
+name = "Great!"
+command = { type = ai which = "kaiserreich/switch/Saadabad_A.ai" }
+command = { type = relation which = AFG value = 100 }
+}
+}
+
+event = {
+id = 62009
+country = PER
+picture = "news_paper"
+style = 2
+
+name = "Azerbaijan Accepts"
+desc = "Azerbaijan has ratified the Treaty of Saadabad."
+
+action_a = {
+name = "Great!"
+command = { type = ai which = "kaiserreich/switch/Saadabad_C.ai" }
+command = { type = relation which = AZB value = 100 }
+}
+}
+
+event = {
+id = 62010
+random = no
+country = AFG
+picture = "shah"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 54001 #Mohammed Zahir Shah
+headofstate = 54021 #Mohammed Zahir Shah
+headofstate = 54022 #Mohammed Zahir Shah
+}
+}
+
+date = { day = 1 month = november year = 1936 }
+name = "A Princess is born!"
+desc = "Today a princess was born and all of Afghanistan is celebrating! She will be named Maryam Begum."
+
+action_a = {
+name = "Hurrah for the royal child!"
+command = { type = dissent value = -1  }
+command = { type = money value = -3  }
+}
+}
+
+event = {
+id = 62011
+random = no
+country = AFG
+picture = "shah"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 54001 #Mohammed Zahir Shah
+headofstate = 54021 #Mohammed Zahir Shah
+headofstate = 54022 #Mohammed Zahir Shah
+}
+}
+
+date = { day = 20 month = may year = 1941 }
+name = "A Prince is born!"
+desc = "Today a prince was born and all of Afghanistan is once again celebrating! He will be named Muhamme Nadir Khan."
+
+
+action_a = {
+name = "Hurrah for the royal child!"
+command = { type = dissent value = -1  }
+command = { type = money value = -5  }
+}
+}
+
+event = {
+id = 62012
+random = no
+country = AFG
+picture = "shah"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 54001 #Mohammed Zahir Shah
+headofstate = 54021 #Mohammed Zahir Shah
+headofstate = 54022 #Mohammed Zahir Shah
+}
+}
+
+date = { day = 14 month = november year = 1946 }
+name = "A Prince is born!"
+desc = "Today a prince was born and all of Afghanistan is once again celebrating! He will be named Shah Mahmoud Khan."
+
+action_a = {
+name = "Hurrah for the royal child!"
+command = { type = dissent value = -1  }
+command = { type = money value = -5  }
+}
+}
+
+event = {
+id = 62013
+random = no
+country = AFG
+picture = "shah"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 54001 #Mohammed Zahir Shah
+headofstate = 54021 #Mohammed Zahir Shah
+headofstate = 54022 #Mohammed Zahir Shah
+}
+}
+
+date = { day = 13 month = april year = 1949 }
+name = "A Prince is born!"
+desc = "Today a prince was born and all of Afghanistan is once again celebrating! He will be named Muhammed Daoud Pashtunyar Khan."
+
+action_a = {
+name = "Hurrah for the royal child!"
+command = { type = dissent value = -1  }
+command = { type = money value = -5  }
+}
+}
+
+event = {
+id = 62014
+random = no
+country = AFG
+picture = "shah"
+style = 2
+
+trigger = {
+OR = {
+headofstate = 54001 #Mohammed Zahir Shah
+headofstate = 54021 #Mohammed Zahir Shah
+headofstate = 54022 #Mohammed Zahir Shah
+}
+}
+
+date = { day = 25 month = november year = 1942 }
+name = "Crownprince Muhammed Akbar Khan is dead!"
+desc = "A sad day has struck Afghanistan. Our beloved crown prince is dead. The nation is in sorrow. The new crown prince is his younger brother Ahmad Shah"
+
+action_a = {
+name = "Oh Allah why!"
+command = { type = dissent value = 1  }
+}
+}
+
+
+##############################
+#Cores on former Afghan lands
+##############################
+event = {
+id = 62015
+country = AFG
+style = 2
+
+trigger = {
+event = { id = 077277 days = 1780 } # Independent Persia in Annexations.txt
+owned = { province = 1092 data = -1 } #Mashad
+control = { province = 1092 data = -1 }
+}
+
+name = "Integration of the Mashad Region"
+desc = "The civilian population of the Mashad Region finally accepted the new reality established via military occupation and the Mashad Region is finally under our firm and complete control."
+picture = "soldiers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+name = "Very good!"
+command = { type = addcore which = 1092 }
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 62016
+country = AFG
+save_date = yes
+style = 2
+
+trigger = {
+owned = { province = 1533 data = -1 } #Karachi
+control = { province = 1533 data = -1 }
+}
+
+name = "Pakistan is ours"
+desc = "We have regained the Pakistan Region that was lost to the Marathis in 1758. The territory is under our control but the people are still resistant."
+picture = "soldiers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Soon they will submit!"
+command = { type = dissent value = 3 }
+}
+}
+
+event = {
+id = 62017
+country = AFG
+save_date = yes
+style = 2
+
+trigger = {
+event = { id = 62016 days = 1780 }
+owned = { province = 1533 data = -1 } #Karachi
+control = { province = 1533 data = -1 }
+}
+
+name = "Integration of the Karachi Region"
+desc = "The civilian population of the Karachi Region finally accepted the new reality established via military occupation and the Karachi Region is finally under our firm and complete control."
+picture = "soldiers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+name = "Very good!"
+command = { type = addcore which = 1533 }
+command = { type = addcore which = 1538 }
+}
+}
+
+event = {
+id = 62018
+country = AFG
+style = 2
+
+trigger = {
+event = { id = 62017 days = 365 }
+event = { id = 62016 days = 1780 }
+owned = { province = 1533 data = -1 } #Karachi
+control = { province = 1533 data = -1 }
+}
+
+name = "Integration of the Punjab"
+desc = "The civilian population of the Punjab finally accepted the new reality established via military occupation and the area is finally under our firm and complete control."
+picture = "soldiers"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+name = "Very good!"
+command = {  type = addcore which = 1530 }
+command = {  type = addcore which = 1532 }
+command = {  type = addcore which = 1534 }
+command = {  type = addcore which = 1536 }
+command = {  type = addcore which = 1539 }
+command = {  type = addcore which = 1540 }
+}
+}

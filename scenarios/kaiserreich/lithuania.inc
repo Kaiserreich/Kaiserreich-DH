@@ -25,6 +25,10 @@ ai = "kaiserreich\Lithuania.ai"
 	headofstate = { type = 9 id = 28001  }
 	headofgovernment = { type = 9 id = 28050 }
  	foreignminister = { type = 9 id = 28148 }
+	chiefofstaff = { type = 9 id = 28114 } #Jonas Cernius
+	chiefofarmy = { type = 9 id = 28008 } #Stasys Rastikis
+	chiefofnavy = { type = 9 id = 28009 } #Antanas Kaskelis
+	chiefofair = { type = 9 id = 28010 } #Antanas Gustaitis
 
 
 

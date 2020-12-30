@@ -1,0 +1,880 @@
+event = {
+id = 9000
+random = no
+country = LBY
+persistent = yes
+
+trigger = {
+puppet = { country = LBY country = OTT  }
+atwar = OTT
+control = { province = 750 data = LBY }
+control = { province = 761 data = LBY }
+control = { province = 765 data = LBY }
+NOT = {
+local_flag = LBY_TRUEPUPPET # set by event Independent Libya in Annexations.txt
+}
+}
+
+
+name = EVT_9000_NAME # A Coup in Tripolitania
+desc = EVT_9000_DESC # Since the WeltKrieg the Porte has dominated us as they did before 1911. But now they have been thrown into chaos and Zubayr, the imposed governor of Tripolitania, is attempting to rally the tribesmen to go fight Egypt. But in the shadows the enemies of the Porte have waited, and now Idris al-Sennusi has come back from Egypt in order to seize control from the Ottomans!
+style = 2
+
+date = { day = 0 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_9000_A # Idris is victorious and declares the independent Kingdom of Libya!
+ai_chance = 70
+command = { type = name where = LBY }
+command = { type = flag_ext where = LBY }
+command = { type = add_division value = militia when = 4 }
+command = { type = add_division value = militia when = 4 }
+command = { type = leave_alliance when = 1 }
+command = { type = peace which = EGY value = 1 }
+command = { type = peace which = SAU value = 1 }
+command = { type = peace which = PER value = 1 }
+command = { type = peace which = KUR value = 1 }
+command = { type = peace which = RUS value = 1 }
+command = { type = peace which = FRA value = 1 }
+command = { type = peace which = ARM value = 1 }
+command = { type = peace which = ALB value = 1 }
+command = { type = peace which = CYP value = 1 }
+command = { type = peace which = GRE value = 1 }
+command = { type = peace which = SER value = 1 }
+command = { type = peace which = URU value = 1 }
+command = { type = peace which = ROM value = 1 }
+command = { type = peace which = MTN value = 1 }
+command = { type = peace which = BUL value = 1 }
+command = { type = sleepminister which = 576001 } #az-Zubayer bin Ahmad as-Sharir
+command = { type = sleepminister which = 576145 } #az-Zubayer bin Ahmad as-Sharir
+command = { type = sleepminister which = 576146 } #az-Zubayer bin Ahmad as-Sharir
+command = { type = headofstate which = 576002 } #H.R.M. Idris I al-Sanussi
+command = { type = wakeleader which = 576000 } #Idris I al-Sanussi
+command = { type = trigger which = 9001 }
+}
+
+action_b = {
+name = ACTIONNAME_9000_B # The coup is put down by Zubayer and Idris is imprisoned
+ai_chance = 30
+command = { type = dissent value = 5 }
+command = { type = sleepminister which = 576002 } #H.R.M. Idris I al-Sanussi
+command = { type = sleepminister which = 576012 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576008 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576027 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576031 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576019 } #Idris I al-Sanussi
+command = { type = sleepleader which = 576025 } #az-Zubayer bin Ahmad as-Sharir
+}
+}
+
+event = {
+id = 9001
+random = no
+country = OTT
+save_date = yes
+
+name = EVT_9001_NAME # Tripolitania declares independence!
+desc = EVT_9001_DESC # Our distraction has proven costly. Our loyal servants in Tripolitania have been overthrown and this upstart Idris al-Senussi has declared an independent Kingdom of Libya. It was a great blow when we first lost the region in 1911, and it would be another humiliation to lose it again. How shall we respond?
+style = 2
+
+action_a = {
+name = ACTIONNAME_9001_A # Let them go
+ai_chance = 40
+command = { type = end_mastery which = LBY }
+}
+
+action_b = {
+name = ACTIONNAME_9001_B # Blasphemy! Crush this upstart!
+ai_chance = 60
+command = { type = end_mastery which = LBY }
+command = { type = war which = LBY }
+}
+}
+
+event = {
+id = 9002
+country = OTT
+style = 2
+trigger = {
+NOT = {
+ispuppet = OTT
+ispuppet = LBY
+alliance = { country = LBY country = RUS }
+alliance = { country = LBY country = EGY }
+alliance = { country = LBY country = ITA }
+alliance = { country = LBY country = VIC }
+alliance = { country = LBY country = FRA }
+}
+event = { id = 9001 days = 100 } #Libyan Uprising 100 days ago
+control = { province = 750 data = LBY }
+control = { province = 761 data = LBY }
+control = { province = 765 data = LBY }
+war = { country = OTT country = LBY }
+}
+picture = "riot1"
+
+date = { day = 1 month = January year = 1936 }
+offset =  80
+deathdate = { day = 29 month = december year = 1960 }
+
+name = EVT_9002_NAME # Libya still exists!
+desc = EVT_9002_DESC # Even the concentration of our elite armed forces could not break apart the rebellious state of Libya. Some members of the general staff suggest that continuing with this fruitless effort greatly weakens our forces facing the hostile Arabian states of Hashemite Arabia and Egypt. Shall we recognize the independence of Libya ?
+
+action_a = {
+name = ACTIONNAME_9002_A # Accept their independence....
+ai_chance = 90
+command = { type = dissent value = 2 }
+command = { type = peace which = LBY value = 1 }
+}
+
+action_b = {
+name = ACTIONNAME_9002_B # Never!
+ai_chance = 10
+command = { type = dissent value = 7 }
+}
+}
+
+
+################################################################
+#Alliance with Egypt (or France)
+################################################################
+event = {
+id = 9003
+random = no
+country = LBY
+style = 2
+picture = "diplomatic_campaign"
+
+trigger = {
+exists = SAU
+exists = OTT
+exists = EGY
+NOT = {
+ispuppet = EGY
+ispuppet = SAU
+ispuppet = LBY
+government = communist
+atwar = LBY
+atwar = EGY
+}
+alliance = { country = EGY country = SAU }
+NOT = {
+alliance = { country = LBY country = OTT }
+alliance = { country = LBY country = EGY }
+alliance = { country = EGY country = OTT }
+alliance = { country = EGY country = FRA }
+alliance = { country = EGY country = SOV }
+alliance = { country = EGY country = RUS }
+alliance = { country = EGY country = USA }
+alliance = { country = EGY country = TEX }
+alliance = { country = EGY country = CSA }
+alliance = { country = EGY country = CAN }
+}
+}
+
+date = { day = 1 month = february year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = EVT_9003_NAME # Foreign policy
+desc = EVT_9003_DESC # In order to secure our independence from foreign threats we should join the already existing Arabian alliance between Egypt and Hashemite Arabia, which wants to see the Ottoman Empire crumble and disintegrate just as much as we do.
+
+action_a = {
+ai_chance = 60
+name = ACTIONNAME_9003_A # Send proposition
+command = { type = dissent value = -3 }
+command = { type = trigger which = 9004 } # Egyptian response
+command = { type = sleepevent which = 9027 }
+}
+
+action_b = {
+ai_chance = 30
+name = ACTIONNAME_9003_B # They have nothing of value for us. We shall survive on our own.
+command = { type = dissent value = 3 }
+}
+
+action_c = {
+ai_chance = 10
+name = EVT_9003_ACTIONC # Look West to the French. They are much stronger than the Egyptians
+command = { type = dissent value = 3 }
+command = { type = event which = 9006 when = 4 where = VIC }
+}
+}
+
+event = {
+id = 9004
+random = no
+country = EGY
+style = 2
+picture = "diplomatic_campaign"
+
+name = EVT_9004_NAME # Libya wants to join our alliance
+desc = EVT_9004_DESC
+
+action_a  = {
+ai_chance = 95
+name = ACTIONNAME_9004_A # Yes, Arabian countries should keep together
+command = { type = alliance which = LBY }
+command = { type = relation which = LBY value = 200 }
+command = { type = relation which = OTT value = -20 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = trigger which = 9005 }
+}
+
+action_b  = {
+ai_chance = 5
+name =  ACTIONNAME_9004_B # Refuse them!
+command = { type = dissent value = 3 } #Hi dumbass
+command = { type = domestic which = interventionism value = -1 }
+command = { type = domestic which = defense_lobby value = 1 }
+}
+}
+
+event = {
+id = 9005
+country = LBY
+style = 2
+picture = "diplomatic_campaign"
+
+name = EVT_9005_NAME # Libya joins the Arabian block
+desc = EVT_9005_DESC # Egypt accepted our request and admitted us to their alliance. With our presence in this alliance our independence should be secured !
+
+action_a = {
+name = ACTIONNAME_9005_A # Welcome!!
+command = { type = set_relation which = EGY value = 175 }
+command = { type = set_relation which = SAU value = 175 }
+command = { type = relation which = OTT value = -20 }
+command = { type = dissent value = -3 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}
+
+event = {
+id = 9006
+random = no
+country = VIC
+style = 2
+picture = "diplomatic_campaign"
+
+name = EVT_9006_NAME # Libya asks for our protection.
+desc = EVT_9006_DESC #The Ottomans have been thrown into chaos and as a result their far flung dependency of Tripolitania has become and independent state. The Libyans know their position is vulnerable and as a result have approached us. They hope that we can provide succor and protection. In return they would aid us with resources and extra men in our efforts to retake the Metropole.
+
+action_a  = {
+ai_chance = 20
+name = EVT_9006_ACTIONA # A baffling proposal. But we shall accept their offer. 
+command = { type = alliance which = LBY }
+command = { type = relation which = LBY value = 200 }
+command = { type = relation which = OTT value = -20 }
+command = { type = trigger which = 9007 }
+}
+
+action_b  = {
+ai_chance = 40
+name =  EVT_9006_ACTIONB # They are more useful to us as a buffer state. Decline the offer.
+command = { type = relation which = LBY value = -50 }
+}
+
+action_c  = {
+ai_chance = 40
+name =  EVT_9006_ACTIONC # A simple guarantee of independence will do.
+command = { type = relation which = LBY value = -20 }
+command = { type = guarantee which = VIC where = LBY }
+}
+}
+
+event = {
+id = 9007
+country = LBY
+style = 2
+picture = "diplomatic_campaign"
+
+name = EVT_9007_NAME # The French welcome us!
+desc = EVT_9007_DESC # The French will protect us! This has calmed our leaders quite a bit, and our freedom is secure for now!
+
+action_a = {
+name = EVT_9007_ACTIONA # Does anyone want a baguette?
+command = { type = set_relation which = FRA value = -175 }
+command = { type = set_relation which = VIC value = 175 }
+command = { type = relation which = CAN value = 20 }
+command = { type = domestic which = interventionism value = 1 }
+}
+}
+
+event = {
+id = 9008
+random = no
+country = LBY
+style = 2
+picture = "daszynski funeral"
+
+trigger = {
+headofstate = 576002 #H.R.M. Idris I al-Sanussi
+}
+
+
+name = EVT_9008_NAME # The Death of Idris al-Sanussi
+desc = EVT_9008_DESC # Idris I, the founder of our Kingdom and the man who overthrew the Ottomans passed away peacefully in his sleep. May he rest in Heavan now...
+
+date = { day = 1 month = october year = 1956 }
+
+action_a = {
+name = EVT_9008_ACTIONA # His son assumes the throne...
+command = { type = headofstate which = 576144 } #Hasan as-Senussi
+command = { type = sleepminister which = 576002 } #H.R.M. Idris I al-Sanussi
+command = { type = sleepminister which = 576012 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576008 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576027 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576031 } #Idris I al-Sanussi
+command = { type = sleepminister which = 576019 } #Idris I al-Sanussi
+}
+}
+
+event = {
+id = 9009
+random = no
+country = LBY
+style = 2
+picture = "ottomanemp"
+
+name = EVT_9009_NAME # Tripolitania's History
+desc = EVT_9009_DESC # Libya’s position in the world has always been that of a servant. Long servants of the Porte, this changed in 1911 when Italy defeated the Ottomans and took control of what was the province of Tripolitania. During the Weltkrieg, The Sennusi revolted, but were defeated. During this time Idris I would rise to prominence in keeping The Sennusi order alive and fighting, hoping to win independence. When Italy later surrendered to the Central Powers in 1919, the Ottomans regained Libya as part of their Empire. Idris was exiled into Egypt, and a more loyal Ottoman administration was installed. However, despite their victory in the Weltkrieg, The Sublime Porte proved weak. Through the 1920’s, Tripolitania remained loyal and mostly stable. But events elsewhere in the Islamic world might change that. In 1925 Egypt became independent from the British, and now are itching to rally the Arabs to the cause of throwing off Turkish hegemony in the region. The Ottomans may well struggle to retain control of the region, and Idris is still very much at large…
+
+date = { day = 4 month = january year = 1936 }
+
+action_a = {
+name = EVT_9009_ACTIONA # Interesting times indeed
+command = { }
+
+}
+}
+
+event = {
+id = 9010
+random = no
+country = LBY
+style = 2
+picture = "OTT_Railway2"
+
+
+date = { day = 1 month = april year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+name = EVT_9010_NAME # The need for infrastructure.
+desc = EVT_9010_DESC # Tripolitania has not been directly affected by the recent crisis in Germany the way the Porte was. Indeed we have no proper manufactring industry of our own, and we have relied on trade with neighbors and farming to form our economy. However we should look to expand what infrastructure we have in the region in order to increase the revenue that we can contribute to the Empire.
+
+action_a = {
+ai_chance = 60
+name = EVT_9010_ACTIONA # Surely Konstantiniyye can afford this project!
+command = { type = dissent value = 1 }
+command = { type = event which = 9011 when = 10 where = OTT }
+}
+
+action_b = {
+ai_chance = 30
+name = EVT_9010_ACTIONB #Invite Investors from Egypt and Arabia!
+command = { type = event which = 9012 when = 10 where = OTT }
+command = { type = dissent value = -1 }
+}
+
+action_c = {
+ai_chance = 10
+name = EVT_9010_ACTIONC #This project is not needed.
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 9011
+random = no
+country = OTT
+style = 2
+picture = "OTT_Railway2"
+
+
+name = EVT_9011_NAME # Tripolitania asks for Investment
+desc = EVT_9011_DESC # Our local government in Tripolitania have approached us about investment in various infrastructure projects: mainly better roads and irrigation. They need the money to finance the project and will expect us to provide. Black Monday has left us very cash strapped though, and we may need the funds to keep things stable in provinces that we directly control. On the other hand this show of goodwill may provide strength to the reform movement that we so desperately need right now.
+
+action_a = {
+ai_chance = 20
+name = EVT_9011_ACTIONA # Let us invest in this project
+command = { type = dissent value = 2 } 
+command = { type = money value = -100 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+command = { type = event which = 9013 when = 10 where = LBY }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action_b = {
+ai_chance = 80
+name = EVT_9011_ACTIONB #The funds are needed much closer to home
+command = { type = event which = 9014 when = 10 where = LBY }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -2 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = -1 } #Reduces strength of the Serenity Party by 1
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 9012
+random = no
+country = OTT
+style = 2
+picture = "ottoman8"
+
+
+name = EVT_9012_NAME # Tripolitania is asking the Arabs for investment
+desc = EVT_9012_DESC # Our local government in Tripolitania has been looking into developing the infrastructure of the region. However, instead of coming to us they have turned to foreign creditors and worse! The Bank of Egypt is offering them the money they need for the project, and it will surely makes us look bad! Should we stop them?
+
+action_a = {
+ai_chance = 20
+name = EVT_9012_ACTIONA #Allow them to go ahead
+command = { type = dissent value = 4 } 
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 1 }
+command = { type = event which = 9013 when = 3 where = LBY }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = -1 } #Remove strength of the Turanist Party by 1
+}
+
+action_b = {
+ai_chance = 80
+name = EVT_9012_ACTIONB #Forbid them from investing!
+command = { type = event which = 9014 when = 3 where = LBY }
+command = { type = relation which = EGY value = -20 }
+command = { type = relation which = SAU value = -20 }
+command = { type = relation which = LBY value = -50 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+command = { type = dissent value = 4 }
+}
+}
+
+event = {
+id = 9013
+random = no
+country = LBY
+style = 2
+picture = "princelyindustry"
+
+name = EVT_9013_NAME # The choice of infrastructure.
+desc = EVT_9013_DESC #We have the money we need and now we have two choices before us. On the one hand we could use better roads to improve trade both internally and with the Porte. On the other hand our foodstuffs are dependent on the weather. Improved irrigation will make sure that we always have a good surplus of food.
+
+action_a = {
+ai_chance = 40
+name = EVT_9013_ACTIONA # Invest in roads to connect our major cities and Cairo.
+command = { type = dissent value = 1 }
+command = { type = event which = 9015 when = 400 where = LBY }
+}
+
+action_b = {
+ai_chance = 40
+name = EVT_9013_ACTIONB #Focus on irrigation to ensure better harvests
+command = { type = event which = 9016 when = 400 where = LBY }
+command = { type = dissent value = -1 }
+}
+
+action_c = {
+ai_chance = 20
+name = EVT_9010_ACTIONC #Go for a mix of both!
+command = { type = event which = 9017 when = 400 where = LBY }
+}
+}
+
+event = {
+id = 9014
+random = no
+country = LBY
+style = 2
+picture = "mines"
+
+name = EVT_9013_NAME #The Porte bars us from foreign investment!
+desc = EVT_9013_DESC #Our attempts to seek investment outside the empire has angered Konstantinyye greatly! We know that relations are bad with Egypt but they promised a good deal! Now that we are barred, and certainly cannot get the government to invest in directly, what shall we do?
+
+action_a = {
+ai_chance = 30
+name = EVT_9014_ACTIONA # Invest with our own funds. This is going to hurt...
+command = { type = dissent value = -1 }
+command = { type = event which = 9013 when = 400 where = LBY }
+command = { type = money value = -200 }
+}
+
+action_b = {
+ai_chance = 70
+name = EVT_9014_ACTIONB #We should stop trying...
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 9015
+random = no
+country = LBY
+style = 2
+picture = "industry2"
+
+name = EVT_9015_NAME # The roads are built!
+desc = EVT_9015_DESC # Our efforts have finally borne fruit, and our investments have finally paid off!
+
+action_a = {
+name = EVT_9015_ACTIONA # It is finished!
+command = { type = construct which = infrastructure where = 761 value = 10 }
+command = { type = construct which = infrastructure where = 764 value = 10 }
+command = { type = construct which = infrastructure where = 768 value = 10 }
+command = { type = construct which = infrastructure where = 767 value = 10 }
+command = { type = construct which = infrastructure where = 765 value = 10 }
+command = { type = construct which = infrastructure where = 771 value = 10 }
+}
+}
+
+event = {
+id = 9016
+random = no
+country = LBY
+style = 2
+picture = "industry2"
+
+name = EVT_9016_NAME # The roads are built!
+desc = EVT_9016_DESC # Our efforts have finally borne fruit, and our investments have finally paid off!
+
+date = { day = 4 month = january year = 1936 }
+
+action_a = {
+name = EVT_9016_ACTIONA # It is finished!
+command = { type = construct which = infrastructure where = 761 value = 10 }
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = province_manpower which = -1 value = 1 }
+}
+}
+
+event = {
+id = 9017
+random = no
+country = LBY
+style = 2
+picture = "industry2"
+
+name = EVT_9017_NAME # The roads are built!
+desc = EVT_9017_DESC # Our efforts have finally borne fruit, and our investments have finally paid off!
+
+action_a = {
+name = EVT_9017_ACTIONA # It is finished!
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = province_manpower which = -1 value = 1 }
+command = { type = construct which = infrastructure where = 767 value = 10 }
+command = { type = construct which = infrastructure where = 765 value = 10 }
+command = { type = construct which = infrastructure where = 771 value = 10 }
+}
+}
+
+event = {
+id = 9018
+random = no
+country = LBY
+style = 2
+picture = "OTT_Senussi"
+
+name = EVT_9018_NAME # Masters of the Desert
+desc = EVT_9018_DESC # Idris I is well remembered by the veterans of the Weltkrieg. He lead a rebel force that fought Italy up and to their surrender in 1919. It was hoped that his leadership and ferocity would gain him respect and greater freedom for the region when it was returned to Ottoman rule. But he was let go and replaced by those The Porte deemed more loyal. But now that Idris is on the throne, some of the men who followed him are returning to pass their expertise onto the younger soldiers.
+
+trigger = {
+headofstate = 576002 #H.R.M. Idris I al-Sanussi
+}
+
+date = { day = 1 month = april year = 1937 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = EVT_9018_ACTIONA # We will benefit greatly from their might.
+command = { type = manpowerpool value = 2 }
+command = { type = morale which = land value = 1 }
+command = { type = desert_move which = land value = 4 }
+command = { type = desert_attack which = land value = 2 }
+command = { type = desert_defense which = land value = 2 }
+}
+}
+
+event = {
+id = 9019
+random = no
+country = LBY
+style = 2
+picture = "swedish_planes"
+
+trigger = {
+NOT = {
+puppet = { country = LBY }
+}
+}
+
+name = EVT_9019_NAME # Founding Libyan Airlines
+desc = EVT_9019_DESC # Libya has been free for some years now, and with our future (mostly) secure it is time to consider larger investments. The government wants to establish a national airline in order to begin connecting Benghazi and our other major cities to the outside world via air power. We will never compete with the greatest airlines of the world, but we shall give it our best!
+
+
+date = { day = 1 month = april year = 1942 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = EVT_9019_ACTIONA # We take to the skies and look back from high above
+command = { type = waketeam which = 15506 }
+}
+}
+
+event = {
+id = 9020
+random = no
+country = OTT
+style = 2
+picture = "OTT_Senussi"
+
+name = EVT_9020_NAME # Ottoman Military Training
+desc = EVT_9020_DESC #A number of Ottoman military trainers have been sent from the Porte to better prepare our men for future wars. Our men sorely need the training, and we are grateful for what our suzerain has offered for us. Now our troops will be better organized and more decisive on the attack!
+
+date = { day = 1 month = december year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = EVT_9020_ACTIONA # Loyalty is its own reward
+command = { type = max_organization which = land value = 1 }
+}
+}
+
+event = {
+id = 9021
+random = no
+country = OTT
+style = 2
+picture = "OTT_Senussi"
+
+trigger = {
+NOT = {
+puppet = { country = LBY }
+}
+}
+
+name = EVT_9021_NAME # Futher military training
+desc = EVT_9021_DESC #As a result of our loyalty to the empire in our recent conflict with Egypt, we are seeing even more investment in the training of our men. Many lessons were learned about warfare that are now going to be passed to our men, in the hopes that Tripolitania will continue to fight alongside the Porte for generations to come.
+
+date = { day = 1 month = january year = 1940 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = EVT_9021_ACTIONA # Loyalty is an even greater reward
+command = { type = max_organization which = land value = 5 }
+}
+}
+
+event = {
+id = 9022
+random = no
+country = LBY
+style = 2
+picture = "Eidulfitr"
+
+name = EVT_9022_NAME #The Arab Congress of 1936
+desc = EVT_9022_DESC #The Third Arab Congress has been called by the Egyptian government to foster cultural understanding and strengthen ties to other Arab nations. Of course, some also see this as a way for Egypt to gain allies for a future conflict against The Ottoman Empire. We have been invited, though I doubt our Turkish masters would like us to go...
+
+action_a = {
+ai_chance = 60
+name = EVT_9022_ACTIONA # Send a formal cultural delegation and observe the proceedings
+command = { type = dissent value = -1 }
+command = { type = relation which = EGY value = 20 }
+command = { type = relation which = OTT value = -20 }
+command = { type = sleepevent which = 9024 }
+}
+
+action_b = {
+ai_chance = 40
+name = EVT_9022_ACTIONB #We do not need to be there. The Porte has given us work to do.
+command = { type = dissent value = 1 }
+command = { type = relation which = EGY value = -20 }
+command = { type = relation which = OTT value = 20 }
+command = { type = sleepevent which = 9023 }
+}
+}
+
+event = {
+id = 9023
+random = no
+country = LBY
+style = 2
+picture = "politics1"
+
+
+name = EVT_9023_NAME #Idris al-Senussi appears at the Arab Congress!
+desc = EVT_9023_DESC #To our eternal frustration, the rebel scum Idris has appeared at the Arab Congress. Attended by a few loyal followers, he claims to be the true delegation from Tripolitania and took the floor, decrying our cultural delegation as Turkish spies in front of the whole Congress! We formally issued a protest but we were told that he was there as a private Egyptian citizen, and nothing could be done.
+
+date = { day = 19 month = june year = 1936 }
+
+action_a = {
+name = EVT_9023_ACTIONA#How rude of him!
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 9024
+random = no
+country = LBY
+style = 2
+picture = "politics1"
+
+
+name = EVT_9024_NAME #The Libyan 'Delegation' at the Arab Congress.
+desc = EVT_9024_DESC #The rumors were true. The Third Arab Congress is not about food or culture or delicious food. It is a plot against our masters, proven by the appearance of the rebel scum Idris! He and a few loyal followers have taken on the role of a 'Libyan Delegation', condemning the government of Tripolitania as Turkish lapdogs. We have sent a strongly worded letter to Cairo but it appears that they did not punish him in any way!
+
+date = { day = 19 month = june year = 1936 }
+
+action_a = {
+name = EVT_9024_ACTIONA #I wonder if we could have prevented this had we sent a delegation...
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 9025
+random = no
+country = LBY
+style = 2
+picture = "economic"
+
+
+name = EVT_9025_NAME #Founding the University of Tripolitania
+desc = EVT_9025_DESC #With Ottoman funding, The University of Tripolitania has opened in Benghazi! A number of distinguished faculty from universities throughout the Empire have come to teach at our brand new facility. We shall be a great center of learning for the whole Arab World!
+
+date = { day = 20 month = may year = 1951 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = EVT_9025_ACTIONA #What a fantastic day!
+command = { type = waketeam which = 15509 }
+}
+}
+
+event = {
+id = 9026
+random = no
+country = LBY
+style = 2
+picture = "economic"
+
+
+name = EVT_9026_NAME #Founding the University of Libya
+desc = EVT_9026_DESC #Through great effort and work, we have finally founded a proper university for our great nation! The University of Libya at Tripoli shall serve as a cernter of learning for future leaders and experts, and we shall become a beacon of knowledge for the whole Arab World!
+
+date = { day = 20 month = may year = 1955 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = EVT_9026_ACTIONA #What a fantastic day!
+command = { type = waketeam which = 15508 }
+}
+}
+
+event = {
+id = 9027
+random = no
+country = LBY
+style = 2
+picture = "foreign_volunteers"
+
+trigger = {
+exists = OTT
+exists = EGY
+war = { country = EGY country = OTT }
+NOT = {
+ispuppet = LBY
+atwar = LBY
+alliance = { country = LBY country = OTT }
+alliance = { country = LBY country = EGY }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = EVT_9027_NAME #Volunteers leave for Egypt
+desc = EVT_9027_DESC # Despite our refusal to align with Egypt and its Cairo Pact against the Ottoman Empire there is still substantial sympathy for their cause in Libyan society. It has gone far enough for some that a few veterans of the Weltkrieg have rallied some young men into a volunteer brigade that seeks to go fight for Egypt. Should we allow them to leave?
+
+action_a = {
+ai_chance = 70
+name = EVT_9027_ACTIONA # Allow them to leave
+command = { type = dissent value = -1 }
+command = { type = event which = 9028 when = 7 } # Egyptian response
+command = { type = manpowerpool value = -2 }
+command = { type = relation which = EGY value = 20 }
+}
+
+action_b = {
+ai_chance = 30
+name = EVT_9027_ACTIONB # We need these men to protect ourselves, keep them here
+command = { type = dissent value = 1 }
+command = { type = relation which = EGY value = -20 }
+command = { type = sleepevent which = 9029 }
+}
+}
+
+event = {
+id = 9028
+random = no
+country = EGY
+style = 2
+picture = "foreign_volunteers"
+
+
+name = EVT_9028_NAME #Volunteers from Libya
+desc = EVT_9028_DESC #We were disappointed by Libya's refusal to join the Cairo Pact. We had hoped their government would help us overthrow their old masters. But it appears not all Libyans are as timid as their government. A volunteer brigade has been allowed to pass the border into Egypt and have joined us in the fight! Together we shall destroy the Turks and bring their decrepit empire crashing down in fire and death.
+
+action_a = {
+name = EVT_9028_ACTIONA #United we will win!
+command = { type = add_division value = militia when = 4 }
+}
+}
+
+event = {
+id = 9029
+random = no
+country = LBY
+style = 2
+picture = "foreign_volunteers"
+
+
+trigger = {
+flag = OTT_EGY_WAR_OVER
+NOT = {
+atwar = LBY
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+
+name = EVT_9028_NAME #Lessons of the Arab War
+desc = EVT_9028_DESC #The war between the Cairo Pact and The Ottoman Empire has ended, and our volunteer brigade has returned to us. There have been deaths, but enough came back with stories to tell and lessons to teach our soldiers. We shall do well with their experience.
+
+action_a = {
+name = EVT_9028_ACTIONA #We have learned some lessons...
+command = { type = relation which = EGY value = 10 }	#
+command = { type = manpowerpool value = 1 }		# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}

@@ -24,7 +24,7 @@ ai = "kaiserreich\Georgia.ai"
  	ministerofintelligence = { type = 9 id = 519006 } #Mamia Orakhelashvili
  	chiefofstaff = { type = 9 id = 519007 } #Vladimir Dekanozov
  	chiefofarmy = { type = 9 id = 519008 } #Alexi Sasha Gegechkori
- 	chiefofair = { type = 9 id = 519010 } #Sergo Goglidze    
+ 	chiefofair = { type = 9 id = 519122 } #Aleksandre Sagharadze    
  	chiefofnavy = { type = 9 id = 519106 } #Polikarp Mdivani
 #### Resource Reserves
 	capital = 709
@@ -53,7 +53,29 @@ relation = { tag = OTT value = -40 }
 relation = { tag = TRA value = -50 }
 }
 
-dormant_leaders        = { 519035 519036 519037 }
+dormant_teams		   = { 21002 21026 21030 21031 }
+
+dormant_ministers	   = { #Armenia
+						519142 519143 519144 519145 519146 519147 519148 519149
+						#Azerbaijan
+						519150 519151 519152 519153 519154 519155 519156
+						#Mountainous Republic
+						519157 519158 519159 519160 519161 519162 519163 519164 519165 519166 519167 519168
+						#Don-Kuban
+						519169
+						}
+
+dormant_leaders        = { #Armenia
+						519058 519059 519060 519061 519062 519063 519064 519065 519066
+						#Azerbaijan
+						519067 519068 519069 519070 519071 519072 519073 519074 519075 519076 519077 519078 519079 
+						519080 519081 519082 519083
+						#Mountainous Republic
+						519084 519085 519086 519087 519088 519089 519090 519091 519092 519093 519094 519095 519096
+						519097 519098 519099 519100 519101 519102 519103
+						#Don-Kuban
+						519104 519105
+						}
 	
 	techapps = {
 

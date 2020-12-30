@@ -2603,10 +2603,12 @@ desc = EVT_382043_DESC # Our failure to negotiate with the Unionists of Ulster, 
 
 action_a = {
 name = ACTIONNAME_382043_A # Damn.
-command = { type = revolt which = 35 } #Derry
-command = { type = revolt which = 36 } #Belfast
+command = { type = independence which = U52 value = 1 when = 0 }
+command = { type = secedeprovince which = U52 value = 35 }
+command = { type = secedeprovince which = U52 value = 36 }
 command = { type = dissent value = 2 }
 command = { type = clrflag which = IRE_UVF2 }
+command = { type = trigger which = 382219 } # Ulster event
 }
 }
 
@@ -7179,7 +7181,7 @@ action_b = {
 name = ACTIONNAME_382177_B # Modern industry is the way of the future
 ai_chance = 40
 command = { type = setflag which = IRE_industry }
-command = { type = gain_tech which = 5050 }
+command = { type = gain_tech which = 5830 }
 command = { type = gain_tech which = 5060 }
 command = { type = metalpool value = -800 }
 command = { type = energypool value = -500 }
@@ -9009,8 +9011,71 @@ command = { type = dissent value = -5 }
 }
 }
 
+## Ulster Rising ##
 
+event = {
+id = 382219
+random = no
+country = U52
 
+name = EVT_2016_NAME # To Arms!
+desc = EVT_2016_DESC # No one should see this....
+style = 2
+
+action_a = {
+name = ACTIONNAME_2016_A # Forward to glory!
+command = { type = capital which = 36 }
+command = { type = add_division which = "1st 'Ulster' Division" value = infantry when = 6 }
+command = { type = add_division which = "2nd 'Belfast' Division" value = infantry when = 6 }
+command = { type = war which = IRE }
+}
+}
+
+event = {
+id = 382220
+country = IRE
+
+trigger = {
+war = { country = U52 country = IRE }
+control = { province = 34 data = U52 }
+}
+
+name = "The Unionists hold Berlin"
+desc = "The Unionist holdout in Ulster has managed to take Dublin, the capital of our country, and it has become clear that they will not be crushed as easily as we thought. Perhaps we should cut our losses and offer a white peace, granting the Northern Irish the independence they desire?"
+picture = "Irish Civil War 2"
+style = 2
+
+date = { day = 1 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1966 }
+
+action_a = {
+ai_chance = 70
+name = "We must swallow our pride and end this war"
+command = { type = peace which = U52 value = 0 }
+command = { type = trigger which = 382221 }
+}
+action_b = {
+ai_chance = 30
+name = "There's still a chance to win"
+command = { }
+}
+}
+
+event = {
+id = 382221
+country = U52
+
+name = "We are victorious!"
+desc = "The government in Dublin has announced their capitulation and agreed to enter peace talks, recognizing the independence of Ulster for the indeterminate future. Our boys can return to Belfast with pride and knowledge that they fought for the right cause."
+picture = "Irish Civil War 2"
+style = 2
+
+action_a = {
+name = "Long live Ulster!"
+command = { type = dissent value = -5 }
+}
+}
 
 
 

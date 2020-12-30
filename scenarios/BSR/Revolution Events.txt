@@ -1,0 +1,1077 @@
+#+ 1 U07 The General Strike 6.03
+#+ 2 U07 Partially Mobilization 7.03
+#+ 3 U07 Murder of the Royal Family
+#+ 4 U07 Loss of Colonies
+#+ 5=6 U07/ENG First Shot 11.03
+#+ 7=8 U07/ENG Territorial Army Transfer 11-29.03
+#+ 9 ENG Maclean's Speech 15.03
+#+ 10 U07 Evacution of the Royal Family 12-20.03
+#+ 11=12 U07/ENG Debates in the House of Commons 18.03
+#+ 13 ENG Mosley's Speech 19.03
+#+ 14 U07 Death of Curzon 20.03
+#+ 15 ENG Feminists supported the Revolution! 15-29.03
+#+ 16 ENG Nationalists supported the Revolution! 15-29.03
+#+ 17=18 U07/ENG Fall of London 1-29.03
+#+ 19=20 U07/ENG Fall of Manchester 1-29.03
+#+ 21=22 U07/ENG Fall of Newcastle 1-29.03
+#+ 27 U07 Evacution of Parliament and Royal Army vp = <40
+#+ 28 ENG Strikers are desperate for Revolution 15.04
+
+#+ 29=29 U07/ENG Wretched spring 1.03
+#+ 31=32 U07 Total/partial victory 29.03
+#+ 33=34 ENG Total/partial victory 29.03 (or if London was captured)
+
+event = {
+	id = 1
+	random = no
+	country = U07
+
+	name = "The General Strike"
+	desc = "78001desc"
+	picture = "strike1925"
+	style = 2
+
+	date = { hour = 0 day = 5 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 5 month = march year = 1926 }
+
+	action_a = {
+		name = "Disperse them!"
+		command = { type = dissent value = 5 }
+		command = { type = peacetime_ic_mod value = -20 }
+		command = { type = province_revoltrisk which = 22 value = 10 }
+		command = { type = setflag which = british_strike }
+		command = { type = event which = 2 where = U07 when = 2 }
+	}
+}
+
+event = {
+	id = 2
+	random = no
+	country = U07
+
+        trigger = {
+		flag = british_strike
+        }
+
+	name = "Partially Mobilization"
+	desc = "78002desc"
+	picture = "britishinfantry_CW3"
+	style = 2
+
+	action_a = {
+		name = "More is better"
+		command = { type = morale which = land value = 5 }	
+		command = { type = add_corps which = "Southern Command" value = land where = 29 }
+		command = { type = activate_division which = 16500 value = 27 when = 1 where = 29 }
+		command = { type = activate_division which = 16500 value = 28 when = 1 where = 29 }
+		command = { type = activate_division which = 16500 value = 29 when = 1 where = 29 }
+	}
+}
+
+event = {
+	id = 3
+	random = no
+	country = U07
+	
+		trigger = {
+		NOT = { event = 12 }
+		NOT = { control = { province = 29 data = U07 } }
+		}
+
+	name = "Murder of the Royal Family"
+	desc = "78003desc"
+	picture = "buckingham"
+	style = 2
+	
+	date = { hour = 0 day = 0 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 5 month = march year = 1926 }
+
+	action_a = {
+		name = "FOR WHAT!?"
+		command = { type = sleepminister which = 557558 }
+		command = { type = sleepevent which = 12 }
+		command = { type = dissent value = 25 }
+	}
+
+}	
+
+ event = {
+	 id = 4
+	 random = no
+	 country = U07
+	 
+	 name = "The Fall of the Empire"
+	 desc = "...and left the rest of the Empire for the worse. The vast expanses of Africa were occupied by Germany to protect them, including the Suez Canal, and the French took over the bites. A colony federation was established in the Caribbean and Guyana. India is plunged into anarchy, the way out of which is not expected. United Australasia, Canada and South Africa were left alone. Many wanted to benefit from our helplessness. Unfortunately, the wrecks of Pax Britannica are scattered by the wind."
+	 picture = "Collapse of the Empire"
+	 style = 1
+	 
+	action_a = {
+		name = "I'm afraid, sir, the sun's already gone."
+		command = { type = dissent value = 20 }
+		command = { type = end_mastery which = IRE }
+	}
+}	
+
+event = {
+	id = 5
+	random = no
+	country = U07
+
+        trigger = {
+        flag = british_strike
+		control = { province = 22 data = U07 }
+        }
+
+	name = "The First Shot"
+	desc = "There was a shot at coal mines in South Wales. Enemy settlers threw themselves at the police, and they were forced to defend themselves. Subsequently, a fight broke out that would grow on a larger scale. It seems we can not avoid violence and unrest."
+	
+	picture = "ENG_rally"
+	style = 2
+
+	date = { hour = 12 day = 11 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 12 day = 11 month = march year = 1926 }
+
+	action_a = {
+		name = "Insanity!"
+		command = { type = civil_war which = ENG }
+		command = { type = dissent value = 10 }
+		command = { type = damage_division which = "Glamorgan Garrison" value = U07 where = 30 }
+		command = { type = switch_allegiance which = -1 where = ENG }
+		command = { type = switch_allegiance which = -1 where = ENG }
+		command = { type = switch_allegiance which = -1 where = ENG }
+		command = { type = secedeprovince which = ENG value = 10 }
+		command = { type = secedeprovince which = ENG value = 11 }
+		command = { type = secedeprovince which = ENG value = 20 }
+		command = { type = secedeprovince which = ENG value = 27 }	
+		command = { type = trigger which = 6 }
+	}
+}
+
+event = {
+	id = 6
+	random = no
+	country = ENG
+
+	name = "The First Shot"
+	desc = "There was a shot at coal mines in South Wales. The bastard police, without apparent reason, attacked the protesters. We suspect that everything was happening on behalf of the local authorities. Now the power of the people must be converted into fear of our enemies!"
+	picture = "ENG_rally" 
+	style = 2
+
+	action_a = {
+		name = "Forward, Workers!"
+		command = { type = strength which = land when = 1 where = 0 value = -0.05 }
+		command = { type = max_organization which = land value = -1 }
+		command = { type = war which = U07 }
+		command = { type = add_corps which = "Second Volunteer Force" value = land where = 15 }
+		command = { type = activate_division which = 16500 value = 9 when = 1 where = 15 }
+		command = { type = activate_division which = 16500 value = 10 when = 1 where = 15 }
+		command = { type = activate_division which = 16500 value = 11 when = 1 where = 15 }
+	}
+}
+
+event = {
+	id = 7
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 10 }
+	}
+
+	name = "Scottish Territorial Army Transfer"
+	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
+	picture = "britishinfantry_CW1" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = switch_allegiance which = 15500 value = 17 where = ENG }
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 8
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 10 }
+	}
+
+	name = "Welsh Territorial Army Transfer"
+	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
+	picture = "britishinfantry_CW1" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = switch_allegiance which = 15500 value = 19 where = ENG }	
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 9
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 20 }
+	}
+
+	name = "Cornish Territorial Army Transfer"
+	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
+	picture = "britishinfantry_CW1" 
+	style = 2
+
+	date = { hour = 0 day = 29 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = switch_allegiance which = 15500 value = 21 where = ENG }	
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 10
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 20 }
+	}
+
+	name = "East Anglia Territorial Army Transfer"
+	desc = "The units of the Territorial Army, inspired by Maclean’s speech, boldly move to the strikers and revolutionaries, seizing key industries and local authorities."
+	picture = "britishinfantry_CW1" 
+	style = 2
+
+	date = { hour = 0 day = 29 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = switch_allegiance which = 15500 value = 23 where = ENG }		
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 11
+	random = no
+	country = ENG
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+	  }	
+
+	name = "Maclean's Speech"
+	desc = "A loud standing ovation was heard from George Square in Glasgow to John Maclean. The speech that began with the denouncement of the Tarenni massacre, gradually grew into a tirade against the crimes of the British government against the working class, and climaxing in a call for outright revolution. TUC members have found the words to ignite the glow of the fight."
+	picture = "Maclean" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 15 month = march year = 1926 }
+
+	action_a = {
+		name = "Rise against tyranny, Worker!"
+		command = { type = setflag which = maclean_speech }	
+		command = { type = max_organization which = land value = 3 }		
+		command = { type = morale which = land value = 3 }
+		command = { type = dissent value = -5 }
+	}
+}
+
+event = {
+	id = 12
+	random = no
+	country = U07
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+		dissent = 40
+	  }	
+
+	name = "Evacution of the Royal Family"
+	desc = "Concerned for their own security in gaining instability, the Royal Family were evacuated under the guise of a visit to Canada. Citizens hope that the Windsor will return home as soon as possible."
+	picture = "british_naval_reinforcements" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 1 month = april year = 1926 }
+
+	action_a = {
+		name = "They are safe... what about us?"
+		command = { type = dissent value = 5 }
+	}
+}
+
+event = {
+	id = 13
+	random = no
+	country = U07
+
+      trigger = {
+        flag = maclean_speech
+		control = { province = 29 data = -1 }
+	  }	
+
+	name = "Debates in the House of Commons"
+	desc = "MPs, who were able to reach Westminster, fervently discussed the aggravation of the situation in Britain. Leftist TUC-backed labourers have openly declared support for the revolution and threatened to oust Curzon's cabinet. The speaker, shocked by the action of the ILP members, adjourned the meeting for 30 minutes and then suspended the violators from work for a month."
+	picture = "British Parliament" 
+	style = 2
+
+	date = { hour = 0 day = 18 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 21 month = march year = 1926 }
+	
+	action_a = {
+		name = "The unwritten laws are inviolable!"
+		command = { type = dissent value = 2 }
+		command = { type = trigger which = 14 }
+	}
+}
+
+event = {
+	id = 14
+	random = no
+	country = ENG
+
+	name = "Debates in the House of Commons"
+	desc = "MPs, who were able to reach Westminster, fervently discussed the aggravation of the situation in Britain. Our labourers have openly declared support for the revolution and threatened to oust Curzon's cabinet. We are not pleased that the ILP members were first suspended from the House, and subsequently imprisoned when they said the right thing."
+	picture = "British Parliament" 
+	style = 2
+	
+	action_a = {
+		name = "We are hearts with ours MPs"
+		command = { type = dissent value = 3 }
+	}
+}
+
+event = {
+	id = 15
+	random = no
+	country = ENG
+
+      trigger = {
+		control = { province = 24 data = -1 }
+	  }	
+
+	name = "Mosley's Speech"
+	desc = "Oswald Mosley, an incumbent MP, conquered the people of Birmingham with a charismatic performance. The crowd was fascinated by the story of going from Tories to Labour and converting to the cause and religion of socialism. Persuasive people weakened loyalists, giving Mosley the glory of 'people's speaker'."
+	picture = "Mosley1" 
+	style = 2
+
+	date = { hour = 12 day = 17 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 1 month = april year = 1926 }
+	
+	action_a = {
+		name = "Invaluable talent!"
+		command = { type = dissent value = -3 }		
+		command = { type = morale which = land value = 5 }	
+		command = { type = add_corps which = "Midlands Volunteer Force" value = land when = -1 where = 24 }
+		command = { type = activate_division which = 16500 value = 6 when = 1 where = 24 }
+	}
+}
+
+event = {
+	id = 16
+	random = no
+	country = U07
+
+	name = "Death of Curzon"
+	desc = "George Curzon, the Prime Minister of United Kingdom, suffered a haemorrhage of the bladder and died in office. The nation is shocked by the death that has come at the most difficult period for the Great Britain. Stanley Baldwin, former Chancellor of the Exchequer, undertook a temporary head of government."
+	picture = "minister_died2" 
+	style = 2
+
+	date = { hour = 10 day = 19 month = march year = 1925 }
+	
+	action_a = {
+		name = "The Most Hon Will Be Missed"
+		command = { type = sleepminister which = 557567 }
+		command = { type = headofgovernment which = 557419 }
+		command = { type = dissent value = 3 }
+	}
+}
+
+event = {
+	id = 17
+	random = no
+	country = ENG
+	persistent = yes
+	
+      trigger = {
+		random = 50
+        flag = maclean_speech
+	  }	
+
+	name = "Feminists supported the Revolution!"
+	desc = "Feminists and suffragettes joined the ranks of the Revolution to fight for pacifism and social justice."
+	picture = "womensuffrage" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 20
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Thanks women!"
+			command = { type = supplies value = 100 }
+			command = { type = manpowerpool value = 5 }
+	}
+}
+
+event = {
+	id = 18
+	random = no
+	country = ENG
+	persistent = yes
+	
+      trigger = {
+		random = 50
+        flag = maclean_speech
+		or = {
+			control = { province = 11 data = -1 }
+			control = { province = 12 data = -1 }
+		}
+	  }	
+
+	name = "Nationalists supported the Revolution!"
+	desc = "The Scottish nationalists, seeing on what side the advantage, supported us with arms and firm words."
+	picture = "militia" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 35
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Welcome brothers!"
+			command = { type = supplies value = 200 }
+			command = { trigger = { control = { province = 11 data = -1 } } type = province_revoltrisk which = 11 value = -5 }
+			command = { trigger = { control = { province = 12 data = -1 } } type = province_revoltrisk which = 12 value = -5 }			
+	}
+}
+
+event = {
+	id = 19
+	random = no
+	country = ENG
+	
+      trigger = {
+		random = 50
+        flag = maclean_speech
+		control = { province = 11 data = -1 }
+	  }	
+
+	name = "Strathclyde Volunteers Arrived!"
+	desc = "The Scottish Socialists, inspired by Maclean's speech, actively enlisted in the militia to fight for the Revolution."
+	picture = "militia" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 15
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Welcome brothers!"	
+			command = { type = add_corps which = "Scottish Volunteer Force" where = 11 }
+			command = { type = activate_division which = 16500 value = 12 when = 0 where = 11 }
+	}
+}
+
+event = {
+	id = 20
+	random = no
+	country = ENG
+	
+      trigger = {
+		random = 50
+        flag = maclean_speech
+		control = { province = 12 data = -1 }
+	  }	
+
+	name = "Lothian Volunteers Arrived!"
+	desc = "The Scottish Socialists, inspired by Maclean's speech, actively enlisted in the militia to fight for the Revolution."
+	picture = "militia" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 15
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Welcome brothers!"	
+			command = { type = add_corps which = "Scottish Militia East" where = 12 }
+			command = { type = activate_division which = 16500 value = 13 when = 0 where = 12 }
+	}
+}
+
+event = {
+	id = 21
+	random = no
+	country = U07
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+		control = { province = 29 data = ENG }
+	  }	
+
+	name = "Fall of London"
+	desc = "Revolutionary forces occupied London, long since rioting, devoid of the support of the Royal Family. Tanks marched through the streets, depriving them of any hope. A Red Flag is hung over Big Ben. For thousands of Londoners, this gong was the beginning of a new reality. The end of the United Kingdom."
+	picture = "London" 
+	style = 2
+
+	date = { hour = 0 day = 10 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Sunset is approaching..."
+		command = { type = max_organization which = land value = -15 }		
+		command = { type = strength which = land when = 1 where = 0 value = -0.25 }		
+		command = { type = morale which = land value = -15 }		
+		command = { type = dissent value = 20 }		
+	}
+}
+
+event = {
+	id = 22
+	random = no
+	country = ENG
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+		control = { province = 29 data = ENG }
+	  }	
+
+	name = "Fall of London"
+	desc = "London, long overcrowded, deprived of the support of the Royal Family, has taken over our revolutions. Tanks marched through the streets, despite the crying of loyalists. A Red Flag is hung over Big Ben. This is the triumph of the Revolution, which managed to banish the old order and establish a new one. With gong, it became a reality."
+	picture = "London" 
+	style = 2
+
+	date = { hour = 0 day = 10 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "A Red Flag rose over London!"
+		command = { type = max_organization which = land value = 20 }		
+		command = { type = strength which = land when = 1 where = 0 value = 0.20 }		
+		command = { type = morale which = land value = 20 }		
+		command = { type = dissent value = -25 }		
+	}
+}
+
+event = {
+	id = 23
+	random = no
+	country = U07
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+		control = { province = 17 data = -2 }
+	  }	
+
+	name = "Fall of Manchester"
+	desc = "Manchester, the great industrial center of north-western England, was taken over by the revolutionaries. The Socialists gained a significant advantage."
+	picture = "britishinfantry_CW3" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = secedeprovince which = ENG value = 17 }	
+		command = { type = secedeprovince which = ENG value = 18 }		
+		command = { type = morale which = land value = -2 }	
+		command = { type = supplies value = -200 }
+		command = { type = dissent value = 3 }		
+	}
+}
+
+event = {
+	id = 24
+	random = no
+	country = ENG
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+		control = { province = 17 data = ENG }
+	  }	
+
+	name = "Fall of Manchester"
+	desc = "Manchester, the great industrial center of north-western England, was taken over by the revolutionaries. Labor uprising is spreading across the country."
+	picture = "britishinfantry_CW3" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "It won't be long now!"
+		command = { type = supplies value = 200 }
+		command = { type = morale which = land value = 3 }		
+		command = { type = dissent value = -3 }		
+		command = { type = add_corps which = "Lancashire Volunteer Force" value = land when = -1 where = 17 }
+		command = { type = activate_division which = 16500 value = 7 when = 1 where = 17 }
+	}
+}
+
+event = {
+	id = 25
+	random = no
+	country = U07
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+		control = { province = 13 data = ENG }
+	  }	
+
+	name = "Fall of Newcastle"
+	desc = "Newcastle, the great industrial center of north-eastern England, was taken over by the revolutionaries. The Socialists gained a significant advantage."
+	picture = "britishinfantry_CW3" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Unpleasant"
+		command = { type = supplies value = -200 }	
+		command = { type = strength which = land when = 1 where = 0 value = -0.04 }
+		command = { type = max_organization which = land value = -3 }		
+		command = { type = morale which = land value = -2 }		
+		command = { type = dissent value = 3 }		
+	}
+}
+
+event = {
+	id = 26
+	random = no
+	country = ENG
+	
+      trigger = {
+        atwar = yes	
+		war = { country = ENG country = U07 }
+		control = { province = 13 data = ENG }
+	  }	
+
+	name = "Fall of Newcastle"
+	desc = "Newcastle, the great industrial center of north-eastern England, was taken over by the revolutionaries. Labor uprising is spreading across the country."
+	picture = "britishinfantry_CW3" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "It won't be long now!"	
+		command = { type = supplies value = 200 }
+		command = { type = morale which = land value = 2 }			
+		command = { type = dissent value = -3 }	
+		command = { type = add_corps which = "Northumberland Volunteer Force" value = land when = -1 where = 13 }
+		command = { type = activate_division which = 16500 value = 8 when = 1 where = 13 }	
+	}
+}
+
+event = {
+	id = 27
+	country = ENG
+	style = 2
+	picture = "ENG_rally"
+
+	date = { day = 0 month = may year = 1925 }
+
+	name = "May Day"
+	desc = "Workers today celebrate May Day in an atmosphere of struggle for their rights. Trade unionists receive telegrams of thanks from syndicalist powers expressing their admiration for the revolutionary movement and their wish for an early end."
+
+	action_a = {
+	name = "Celebrate!"
+	command = { type = dissent value = -2 }
+	}
+}
+
+event = {
+	id = 28
+	random = no
+	country = U07
+	save_date = yes
+
+	trigger = {
+		flag = maclean_speech
+		not = {
+			event = 31
+		}
+		control = { province = 29 data = -1 }		
+	}
+
+	name = "Involvement of Canadian Divisions"
+	desc = "The Royal Army did not surrender as quickly as the enemy wanted, but it needed help. The possibility of redeploying divisions from Canada to the UK is now being considered, with a view to the situation."
+	picture = "britishinfantry_CW3" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = april year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = may year = 1926 }
+
+	action_a = {
+		name = "Attach a large group"
+		ai_chance = 35
+		command = { type = vp value = -5 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = expeditionlarge }
+	}	
+	
+	action_b = {
+		name = "Attach a small group"
+		ai_chance = 55
+		command = { type = vp value = -3 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = expeditionsmall }
+	}	
+	
+	action_c = {
+		name = "We can handle it ourselves!"
+		ai_chance = 10
+		command = { type = vp value = 1 }
+		command = { type = dissent value = 2 }
+	}
+}
+
+event = {
+	id = 29
+	random = no
+	country = U07
+
+	trigger = {
+		flag = expeditionsmall
+		not = {
+			event = 31
+			event = 29
+		}	
+		event = { id = 28 days = 7 }
+	}
+
+	name = "Arrival of the Canadian divisions"
+	desc = "The Canadian divisions arrived at their destination."
+	picture = "britishinfantry_CW3" 
+	style = 2
+	
+	date = { hour = 0 day = 15 month = april year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = may year = 1926 }	
+
+	action_a = {
+		name = "OK"
+		command = { type = morale which = land value = 3 }	
+		command = { type = activate_division which = 16500 value = 30 when = 0 }
+		command = { type = activate_division which = 16500 value = 31 when = 0 }
+	}	
+}
+
+event = {
+	id = 30
+	random = no
+	country = U07
+
+	trigger = {
+		flag = expeditionlarge
+		not = {
+			event = 31
+			event = 29
+		}
+		event = { id = 28 days = 7 }
+	}
+
+	name = "Arrival of the Canadian divisions"
+	desc = "The Canadian divisions arrived at their destination."
+	picture = "britishinfantry_CW3" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = april year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = may year = 1926 }	
+
+	action_a = {
+		name = "OK"
+		command = { type = activate_division which = 16500 value = 30 when = 0 }
+		command = { type = activate_division which = 16500 value = 31 when = 0 }
+		command = { type = activate_division which = 16500 value = 32 when = 0 }
+		command = { type = activate_division which = 16500 value = 33 when = 0 }
+	}	
+}
+
+event = {
+	id = 31
+	random = no
+	country = U07
+
+	trigger = {
+		flag = maclean_speech
+		vp = { country = ENG value = 55 }
+	}
+
+	name = "Evacution of Parliament and Royal Army"
+	desc = "Aware of the inability of loyalty to restore order, Stanley Baldwin orders the government and as many military as possible to evacuate Canada..."
+	picture = "britishfleet1" 
+	style = 1
+
+	date = { hour = 0 day = 21 month = march year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "AHHHH!"
+		command = { type = demobilize which = land when = 0 where = 0 value = 3 }
+		command = { type = demobilize which = naval when = 0 where = 0 value = 1 }
+		command = { type = dissent value = 10 }
+		command = { type = trigger which = 4 where = U07 }
+	}
+}
+
+event = {
+	id = 32
+	random = no
+	country = ENG
+
+	trigger = {
+		flag = maclean_speech
+		not = {
+		vp = { country = ENG value = 15 }
+		}
+	}
+
+	name = "Strikers are desperate for Revolution"
+	desc = "At the beginning of the strike, the workers were convinced that the Revolution and the overthrow of the Crown had spread. But over time, the fervor that held the protesters faded away. Desperate workers lay down their arms, resigned to the failure of the strike."
+	picture = "britishfleet" 
+	style = 1
+
+	date = { hour = 0 day = 15 month = april year = 1925 }
+	offset = 5
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Call off!"
+		command = { type = demobilize which = land when = 0 where = 0 value = 0 }
+		command = { type = dissent value = 50 }
+	}
+}
+
+event = {
+	id = 33
+	random = no
+	country = U07
+
+    trigger = { ai = no }
+
+	name = "Wretched spring"
+	desc = "78029desc"
+	picture = "british_protesting" 
+	style = 2
+
+	date = { hour = 0 day = 0 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 0 month = march year = 1926 }
+
+	action_a = {
+		name = "Let God help you to endure!"
+		command = {}
+	}
+}
+
+event = {
+	id = 34
+	random = no
+	country = ENG
+
+    trigger = { ai = no }
+
+	name = "Wretched spring"
+	desc = "78030desc"
+	picture = "british_protesting"
+	style = 2
+
+	date = { hour = 0 day = 0 month = march year = 1925 }
+	offset = 1
+	deathdate = { hour = 0 day = 0 month = march year = 1926 }
+
+	action_a = {
+		name = "The people will show what they are capable of!"
+		command = {}
+	}
+}
+
+ ######################################
+ #TUC Total Victory
+ ######################################
+ event = {
+ id = 35
+ random = no
+ country = ENG
+
+ trigger = {
+ comintern = 70
+ control = { province = 29 data = -1 }
+ }
+
+ name = "TUC Total Victory"
+ desc = "78031desc"
+ picture = "british_celebrating2"
+ style = 2
+
+ date = { hour = 0 day = 15 month = april year = 1925 }
+ offset = 1
+ deathdate = { hour = 23 day = 29 month = july year = 1925 }
+
+ action_a = {
+ name = "The Revolution is over!" #End Game
+ command = { type = flag_ext where = ENG which = "" }
+ command = { type = endgame value = 8 }
+ }
+ }  
+ 
+ ######################################
+ #TUC Partial Victory
+ ######################################
+ event = {
+ id = 36
+ random = no
+ country = ENG
+ 
+ trigger = {
+ 	comintern = 40	
+ }
+ 
+ name = "TUC Partial Victory"
+ desc = "78032desc"
+ picture = "British CW Victory"
+ style = 1
+ 
+ date = { day = 29 month = july year = 1925 }
+ 
+ action_a = {
+ name = "It is still a victory" #End Game
+ command = { type = endgame value = 7 }
+ }
+ } 
+ 
+ ######################################
+ #British Total Victory
+ ######################################
+ event = {
+ id = 37
+ random = no
+ country = U07
+
+ trigger = {
+ allies = 70
+ control = { province = 29 data = -1 }
+ }
+
+ name = "British Total Victory"
+ desc = "78033desc"
+ picture = "british_celebrating"
+ style = 2
+
+ date = { hour = 0 day = 15 month = april year = 1925 }
+ offset = 1
+ deathdate = { hour = 23 day = 29 month = july year = 1925 }
+ 
+ action_a = {
+ name = "The Great Britain Stands United" #End Game
+ command = { type = endgame value = 6 }
+ }
+ }
+ 
+ ######################################
+ #British Partial Victory
+ ######################################
+ event = {
+ id = 38
+ random = no
+ country = U07
+ 
+ trigger = {
+ allies = 40
+ }
+ 
+ name = "British Partial Victory"
+ desc = "78034desc"
+ picture = "British CW Victory"
+ style = 1
+ 
+ date = { day = 29 month = july year = 1925 }
+ 
+ action_a = {
+ name = "It is still a victory" #End Game
+ command = { type = endgame value = 5 }
+ }
+ }
+ 
+ event = {
+	id = 39
+	random = no
+	country = U07
+
+	trigger = {
+		random = 35
+		flag = maclean_speech
+		vp = { country = ENG value = 15 }
+	}
+
+	name = "Naval Mutiny"
+	desc = "The part of the personnel of the ships of the Royal Navy do not obey our orders, and declare support for the rebels! What a pity that a large number of sailors listened to them."
+	picture = "navaldefeat" 
+	style = 2
+
+	date = { hour = 0 day = 15 month = march year = 1925 }
+	offset = 3
+	deathdate = { hour = 0 day = 29 month = july year = 1926 }
+
+	action_a = {
+		name = "Unworthy"
+		command = { type = strength which = naval when = 1 where = 0 value = -0.25 }
+		command = { type = demobilize which = naval when = 0 where = 0 value = 18 }
+		command = { type = dissent value = 2.5 }
+	}
+}

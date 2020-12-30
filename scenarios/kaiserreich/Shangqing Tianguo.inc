@@ -21,7 +21,7 @@ ai = "kaiserreich\Shangqing Tianguo.ai"
  	chiefofarmy = { type = 9 id = 51005  }
 
 #### Resource Reserves
-	capital = 1259 # Yan'an
+	capital = 1330 # Jinan
 
         SpyInfo  = {  country = "CHC" NumberOfSpies = 3  } 
 
@@ -39,13 +39,13 @@ money		= 50
         free = { ic = 9 }
 
     ownedprovinces =      {
-	1259 1255 1260 1269 1271 1256 1263 1257 1258
+	1329 1330 1332
 	 }
     controlledprovinces = {
-	1259 1255 1260 1269 1271 1256 1263 1257 1258
+	1329 1330 1332
 	  }
     nationalprovinces =   {
-	1259 1255 1260 1269 1271 1256 1263 1257 1258
+	1328 1329 1330 1331 1332
 	}
     claimedprovinces = {
 		1378 1360 1301 1304 1305 1306 1307 1308 1309 1310 1311 1312 1313 1314 1315 1318 1347 
@@ -116,7 +116,7 @@ diplomacy = {
 
 #########  OOB (...)
 landunit = {
-		location = 1259 # Yan'an
+		location = 1330 # Jinan
 		name = "1. Fangmianjun"
 		id = { type = 24000 id = 1 }
 		division = {
@@ -157,7 +157,7 @@ landunit = {
                 dig_in = 20.000 
 	}
 	landunit = {
-		location = 1260
+		location = 1330 # Jinan
 		name = "2. Fangmianjun"
 		id = { type = 24000 id = 7 }
 		division = {
@@ -177,7 +177,7 @@ landunit = {
                 dig_in = 20.000 
 	}
 	landunit = {
-		location = 1257 # Xianyang
+		location = 1330 # Jinan
 		name = "4. Fangmianjun"
 		id = { type = 24000 id = 10 }
 		division = {
@@ -207,7 +207,7 @@ landunit = {
                 dig_in = 20.000 
 	}
 	landunit = {
-		location = 1255 # Yan'an
+		location = 1330 # Jinan
 		name = "15. Juntuan"
 		id = { type = 24000 id = 15 }
 		division = {

@@ -686,6 +686,7 @@ ai_chance = 95
 name = "The US Government shall have its host of spies!"
 command = { type = dissent value = 3 }
 command = { type = domestic which = freedom value = -1 }
+command = { type = money value = -100 }									   
 command = { type = setflag which = USA_OSS }
 }
 
@@ -1118,6 +1119,8 @@ desc = "Seeing no other options, the PSA leadership was forced to accept our dem
 action_a = {
 name = "Annex it!"
 command = { type = inherit which = CAL }
+command = { type = waketeam which = 101 when = 1 } #Boeing Airplane Company
+command = { type = waketeam which = 105 when = 1 } #Boeing Airplane Company
 command = { type = addcore which = 1890 }
 command = { type = addcore which = 1884 }
 command = { type = addcore which = 1885 }
@@ -1502,7 +1505,7 @@ offset = 5
 deathdate = { day = 29 month = december year = 1960 }
 
 action_a = {
-ai_chance = 40
+ai_chance = 30
 name = "PSA is a rebel state like the CSA or the AUS"
 command = { type = dissent value = 2 }
 command = { type = end_non_aggression which = USA where = CAL }
@@ -1563,7 +1566,7 @@ command = { type = sleepevent which = 906520 }
 }
 
 action_b = {
-ai_chance = 35
+ai_chance = 55
 name = "We won't attack them but we won't recognize them"
 command = { type = dissent value = 4 }
 command = { type = addclaim which = 1890 }
@@ -1764,6 +1767,7 @@ command = { type = sleepevent which = 3450006 }
 command = { type = sleepevent which = 3450011 }
 command = { type = set_relation which = CAN value = 200 }
 command = { type = trigger which = 3450001 }
+command = { type = domestic which = defense_lobby value = 2 }															 
 command = { type = domestic which = interventionism value = 4 }
 }
 
@@ -1782,6 +1786,7 @@ command = { type = sleepevent which = 3450006 }
 command = { type = sleepevent which = 3450011 }
 command = { type = set_relation which = GER value = 200 }
 command = { type = trigger which = 3450012 }
+command = { type = domestic which = defense_lobby value = 2 }															 
 command = { type = domestic which = interventionism value = 4 }
 }
 
@@ -1794,6 +1799,7 @@ command = { type = peacetime_ic_mod value = 5 }
 command = { type = relation which = CAN value = 50 }
 command = { type = industrial_modifier which = supplies value = -2 }
 command = { type = dissent value = 1 }
+command = { type = domestic which = defense_lobby value = 2 }															 
 command = { type = domestic which = interventionism value = 2 }
 }
 
@@ -1813,6 +1819,7 @@ command = { type = industrial_modifier which = supplies value = -10 }
 command = { type = relation which = GER value = 50 }
 command = { type = sleepevent which = 3450006 }
 command = { type = dissent value = 2 }
+command = { type = domestic which = defense_lobby value = 2 }															 
 command = { type = domestic which = interventionism value = 2 }
 }
 
@@ -2533,17 +2540,37 @@ desc = "We have received reports that Syndicalist forces have just landed on Can
 action_a = {
 ai_chance = 100
 name = "Send an ultimatum"
+command = { type = peacetime_ic_mod value = 100 when = 1 } #sets to 100
+command = { type = domestic which = defense_lobby value = 1 }
 command = { trigger = { war = { country = CAN country = SOV }  OR = { control = { province = 2132 data = SOV } control = { province = 2134 data = SOV } control = { province = 2117 data = SOV } } } type = trigger which = 3450010 }
 command = { trigger = { war = { country = CAN country = FRA }  OR = { control = { province = 2132 data = FRA } control = { province = 2134 data = FRA } control = { province = 2117 data = FRA } } } type = trigger which = 3450015 }
 command = { trigger = { war = { country = CAN country = RSI }  OR = { control = { province = 2132 data = RSI } control = { province = 2134 data = RSI } control = { province = 2117 data = RSI } } } type = trigger which = 3450016 }
 command = { trigger = { war = { country = CAN country = ENG }  OR = { control = { province = 2132 data = ENG } control = { province = 2134 data = ENG } control = { province = 2117 data = ENG } } } type = trigger which = 3450017 }
 command = { trigger = { war = { country = CAN country = GEO }  OR = { control = { province = 2132 data = GEO } control = { province = 2134 data = GEO } control = { province = 2117 data = GEO } } } type = trigger which = 3450018 }
+#command = { trigger = { NOT = { local_flag = PTIME_IC_PLUS20 } } type = peacetime_ic_mod value = 20 }
+#command = { trigger = { NOT = { local_flag = PTIME_IC_PLUS20 } } type = local_setflag which = PTIME_IC_PLUS20 }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }															   
 }
 
 action_b = {
 ai_chance = 0
 name = "Do nothing"
 command = { type = dissent value = 20 }
+command = { type = dissent value = 10 }
+command = { type = peacetime_ic_mod value = 100 when = 1 } #sets to 100
+#command = { trigger = { NOT = { local_flag = PTIME_IC_PLUS20 } } type = peacetime_ic_mod value = 20 }
+#command = { trigger = { NOT = { local_flag = PTIME_IC_PLUS20 } } type = local_setflag which = PTIME_IC_PLUS20 }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }
+command = { trigger = { ai = yes } type = build_division which = infantry }																		   
 }
 }
 
@@ -2661,14 +2688,14 @@ name = "Americans send us the ultimatum"
 desc = "We have received an ultimatum from diplomatic representative of the United States. They demand withdrawal of our forces from Canada and immediate ceasefire between us and Canadians unless we want to face full might of the United states against us. What should we do ?"
 
 action_a = {
-ai_chance = 99
+ai_chance = 95
 name = "Ignore ultimatum, continue with advance !"
 command = { type = war which = USA }
 command = { type = dissent value = 1 }
 }
 
 action_b = {
-ai_chance = 1
+ai_chance = 5
 name = "OK, we sign a ceasefire."
 command = { type = peace which = CAN value = 0 }
 command = { type = relation which = USA value = 50 }

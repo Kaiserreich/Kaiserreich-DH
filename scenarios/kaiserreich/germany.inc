@@ -19,15 +19,15 @@ interventionism = 6
 peacetime_ic_mod = 0.75
 
 headofstate = { type = 9 id = 36 }
-headofgovernment = { type = 9 id = 386  }
+headofgovernment = { type = 9 id = 386 }
 foreignminister = { type = 9 id = 68 }
-armamentminister = { type = 9 id = 77  }
-ministerofsecurity = { type = 9 id = 121  }
-ministerofintelligence = { type = 9 id = 12  }
-chiefofstaff = { type = 9 id = 257  }
+armamentminister = { type = 9 id = 77 }
+ministerofsecurity = { type = 9 id = 121 }
+ministerofintelligence = { type = 9 id = 12 }
+chiefofstaff = { type = 9 id = 257 }
 chiefofarmy = { type = 9 id = 255 }
-chiefofnavy = { type = 9 id =  253 }
-chiefofair = { type = 9 id = 273  }
+chiefofnavy = { type = 9 id = 9 }
+chiefofair = { type = 9 id = 273 }
 
 
 
@@ -49,7 +49,7 @@ free = { ic = 5 }
 ownedprovinces =      {
 96 106 105 107 111 108 104 109 110 132 133 135 178 179 176 175 177 134 136 130 127 174 180 139 138 140
 143 128 129 126 131 142 145 141 144 147 148 149 146 137 171 170 173 172 157 169 156 153 162 151 154 152
-150 216 160 163 158 159 165 164 166 167 168 221 224 225 161 155 226 181 183 222 185 182 184 261 230
+150 216 160 163 158 159 165 164 166 167 168 221 224 225 161 155 226 181 183 222 185 182 184 261
 
 719 720 722 718 717 721 723 725 726 724  #Morocco
 
@@ -87,7 +87,7 @@ ownedprovinces =      {
 controlledprovinces = {
 96 106 105 107 111 108 104 109 110 132 133 135 178 179 176 175 177 134 136 130 127 174 180 139 138 140
 143 128 129 126 131 142 145 141 144 147 148 149 146 137 171 170 173 172 157 169 156 153 162 151 154 152
-150 216 160 163 158 159 165 164 166 167 168 221 224 225 161 155 226 181 183 222 185 182 184 261 230
+150 216 160 163 158 159 165 164 166 167 168 221 224 225 161 155 226 181 183 222 185 182 184 261
 
 719 720 722 718 717 721 723 725 726 724  #Morocco
 
@@ -128,7 +128,7 @@ nationalprovinces =   {
 96 106 105 107 104 109 110 132 133 135 178 179 176 175 177 134 136 130 127 174 180
 139 138 140 143 128 129 126 131 142 145 141 147 148 149 146 144 137 171 170 173 172
 157 169 156 153 162 151 154 152 150 216 160 163 158 159 165 164 166 167 168 222 224
-225 161 155 226 181 183 185 182 184 261 221 230
+225 161 155 226 181 183 185 182 184 261 221
 
 }
 claimedprovinces = {
@@ -302,9 +302,21 @@ techapps = {
 
 deactivate = { 6010 6210 6570 6560 6390 }
 
-dormant_ministers = { 385 }
+dormant_teams = { 38 39 44
+				19 28 #Steyr-Puch, Skoda
+				68 72 73 74 75 76 #Land doctrine teams
+				56 57 58 59 } #Bomber doctrine teams
 
-dormant_leaders = { 36 44 122 227 420 1037 1497 1498 1499 }
+dormant_ministers = { 385 214 219 }
+
+dormant_leaders = { #AUS
+				  1200 1201 1202 1203 1204 1205 1206 1207 1208 1209 1210 1211 1212 1213 1214 1215 1216 1217 1218 1219
+				  1220 1221 1222 1223 1224 1225 1226 1227 1228 1229
+				  #LAT - United Baltic Duchy
+				  1240 1241 1242 1243 1244 1245
+				  1239 #CZE
+				  285 #CON - Mittelafrika
+				  }
 
 ##########
 

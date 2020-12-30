@@ -286,7 +286,7 @@ command = { type = setflag which = CAP_PIT }
 }
 }
 
-### Detroit AUS
+### Pittsburgh AUS
 event = {
 id = 909108
 country = TEX
@@ -328,7 +328,7 @@ command = { type = setflag which = CAP_PIT }
 }
 }
 
-### Detroit PSA
+### Pittsburgh PSA
 event = {
 id = 909109
 country = CAL
@@ -370,8 +370,8 @@ command = { type = setflag which = CAP_PIT }
 }
 }
 
-############# DETROIT CAPTURED BY SOMEONE ELSE
-### Detroit Recaptured
+############# PITTSBURGH CAPTURED BY SOMEONE ELSE
+### Pittsburgh Recaptured
 event = {
 id = 909110
 country = CSA
@@ -400,7 +400,7 @@ command = { type = setflag which = CAP_PIT2 }
 }
 }
 
-### Detroit Captured
+### Pittsburgh Captured
 event = {
 id = 909111
 country = USA
@@ -427,7 +427,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Pittsburgh Captured
 event = {
 id = 909112
 country = TEX
@@ -454,7 +454,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Pittsburgh Captured
 event = {
 id = 909113
 country = CAL
@@ -669,7 +669,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### New York Captured
 event = {
 id = 909119
 country = TEX
@@ -697,7 +697,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### New York Captured
 event = {
 id = 909120
 country = CAL
@@ -725,24 +725,26 @@ command = { type = dissent value = -1 }
 }
 }
 
-######################### St. Louis
+### St. Louis First Capture event
 event = {
 id = 909121
-country = USA
+tag = { USA CSA TEX CAL U10 }
 random = no
 
 trigger = {
-event = 7040459
-control = { province = 1833 data = USA }
-war = { country = CSA country = USA }
-not = { flag = CAP_STL }
+control = { province = 1833 data = -1 } 
+atwar = yes
+not = { 
+owned = { province = 1833 data = -1 } 
+flag = CAP_STL
+flag = END_ACW
+ }
 }
 
 name = "St. Louis Captured"
-desc = "We have captured the city of St. Louis from the CSA. There is an opportunity to recover some of the lost resources in the city. We can strip some of the factories and take some of the resources."
+desc = "We have captured the city of St. Louis from our enemies. There is an opportunity to recover some of the lost resources in the city. We can strip some of the factories and take some of the resources."
 style = 2
-picture = "urbanwarfare1"
-
+picture = "urbanwarfare"
 
 date = { day = 1 month = january year = 1936 }
 offset = 1
@@ -750,7 +752,7 @@ deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 name = "Grab what we can."
-ai_chance = 65
+ai_chance = 50
 command = { type = construct which = IC where = 1833 value = -1 }
 command = { type = supplies which = 1500 }
 command = { type = rarematerialspool value = 500 }
@@ -759,116 +761,36 @@ command = { type = metalpool value = 500 }
 command = { type = oilpool value = 100 }
 command = { type = money value = 50 }
 command = { type = setflag which = CAP_STL }
-command = { type = dissent value = 1 }
+command = { trigger = { ai = no } type = dissent value = 1 }
 }
 action_b = {
 name = "We don't steal from other Americans."
-ai_chance = 35
+ai_chance = 50
 command = { type = dissent value = -1 }
 command = { type = setflag which = CAP_STL }
 }
 }
 
-### STL AUS
+
+### St. Louis Recaptured
 event = {
 id = 909122
-country = TEX
+tag = { USA CSA TEX CAL U10 }
 random = no
 
 trigger = {
-control = { province = 1833 data = TEX }
-war = { country = TEX country = CSA }
-not = { flag = CAP_STL }
-}
-
-name = "St. Louis Captured"
-desc = "We have captured the city of St. Louis from the CSA. There is an opportunity to recover some of the lost resources in the city. We can strip some of the factories and take some of the resources."
-style = 2
-picture = "urbanwarfare1"
-
-date = { day = 1 month = january year = 1936 }
-offset = 1
-deathdate = { day = 29 month = december year = 1963 }
-
-action_a = {
-name = "Grab what we can."
-ai_chance = 65
-command = { type = construct which = IC where = 1833 value = -1 }
-command = { type = supplies which = 1500 }
-command = { type = rarematerialspool value = 500 }
-command = { type = energypool value = 750 }
-command = { type = metalpool value = 500 }
-command = { type = oilpool value = 100 }
-command = { type = money value = 50 }
-command = { type = setflag which = CAP_STL }
-command = { type = dissent value = 1 }
-}
-action_b = {
-name = "We don't steal from other Americans."
-ai_chance = 35
-command = { type = dissent value = -1 }
-command = { type = setflag which = CAP_STL }
-}
-}
-
-### STL PSA
-event = {
-id = 909123
-country = CAL
-random = no
-
-trigger = {
-control = { province = 1833 data = TEX }
-war = { country = CAL country = CSA }
-not = { flag = CAP_STL }
-}
-
-name = "St. Louis Captured"
-desc = "We have captured the city of St. Louis from the CSA. There is an opportunity to recover some of the lost resources in the city. We can strip some of the factories and take some of the resources."
-style = 2
-picture = "urbanwarfare1"
-
-date = { day = 1 month = january year = 1936 }
-offset = 1
-deathdate = { day = 29 month = december year = 1963 }
-
-action_a = {
-name = "Grab what we can."
-ai_chance = 65
-command = { type = construct which = IC where = 1833 value = -1 }
-command = { type = supplies which = 1500 }
-command = { type = rarematerialspool value = 500 }
-command = { type = energypool value = 750 }
-command = { type = metalpool value = 500 }
-command = { type = oilpool value = 100 }
-command = { type = money value = 50 }
-command = { type = setflag which = CAP_STL }
-command = { type = dissent value = 1 }
-}
-action_b = {
-name = "We don't steal from other Americans."
-ai_chance = 35
-command = { type = dissent value = -1 }
-command = { type = setflag which = CAP_STL }
-}
-}
-
-### STL Recaptured
-event = {
-id = 909124
-country = CSA
-random = no
-
-trigger = {
-control = { province = 1833 data = CSA }
+owned = { province = 1833 data = -1 } 
+control = { province = 1833 data = -1 } 
 flag = CAP_STL
-not = { flag = CAP_STL2 }
+atwar = yes
+not = { flag = CAP_STL2
+flag = END_ACW }
 }
 
 name = "St. Louis Recaptured"
 desc = "We have recaptured St. Louis from our enemies. The battle has damaged some of the industry in the city."
 style = 2
-picture = "urbanwarfare1"
+picture = "urbanwarfare5"
 
 date = { day = 1 month = january year = 1936 }
 offset = 1
@@ -882,73 +804,173 @@ command = { type = setflag which = CAP_STL2 }
 }
 }
 
-### STL Captured Again
+### St. Louis Captured Again
+event = {
+id = 909123
+tag = { USA CSA TEX CAL U10 }
+random = no
+
+trigger = {
+control = { province = 1833 data = -1 }
+flag = CAP_STL2 
+NOT = { owned = { province = 1833 data = -1 } }
+}
+
+name = "Heavy Fighting in St. Louis"
+desc = "The city of St. Louis has experienced heavy fighting but we have taken it from the enemy. We will fortify our position in the city and hopefully we can hold it."
+style = 2
+picture = "urbanwarfare3"
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The city is in ruins."
+command = { type = construct which = IC where = 1833 value = -1 }
+command = { type = dissent value = -1 }
+}
+}
+
+### Denver First Capture event
+event = {
+id = 909124
+tag = { USA CSA TEX CAL U10 }
+random = no
+
+trigger = {
+control = { province = 1908 data = -1 } 
+atwar = yes
+not = { 
+owned = { province = 1908 data = -1 } 
+flag = CAP_DENV
+flag = END_ACW
+ }
+}
+
+name = "Denver Captured"
+desc = "We have captured the city of Denver from our enemies. There is an opportunity to recover some of the lost resources in the city. We can strip some of the factories and take some of the resources."
+style = 2
+picture = "urbanwarfare"
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Grab what we can."
+ai_chance = 40
+command = { type = construct which = IC where = 1908 value = -1 }
+command = { type = supplies which = 1500 }
+command = { type = rarematerialspool value = 500 }
+command = { type = energypool value = 750 }
+command = { type = metalpool value = 500 }
+command = { type = oilpool value = 100 }
+command = { type = money value = 50 }
+command = { type = setflag which = CAP_DENV }
+command = { trigger = { ai = no } type = dissent value = 1 }
+}
+action_b = {
+name = "We don't steal from other Americans."
+ai_chance = 60
+command = { type = dissent value = -1 }
+command = { type = setflag which = CAP_DENV }
+}
+}
+
+### Minneapolis First Capture event
 event = {
 id = 909125
-country = USA
+tag = { USA CSA TEX CAL U10 }
 random = no
 
 trigger = {
-control = { province = 1833 data = USA }
-flag = CAP_STL2
+control = { province = 1847 data = -1 } 
+atwar = yes
+not = { 
+owned = { province = 1847 data = -1 } 
+flag = CAP_MINN
+flag = END_ACW
+ }
 }
 
-name = "Heavy Fighting in St. Louis"
-desc = "The city of St. Louis has experienced heavy fighting but we have taken it again. We will fortify our position in the city and hopefully we can hold it."
+name = "Minneapolis Captured"
+desc = "We have captured the city of Minneapolis from our enemies. There is an opportunity to recover some of the lost resources in the city. We can strip some of the factories and take some of the resources."
 style = 2
-picture = "urbanwarfare3"
+picture = "urbanwarfare"
 
 date = { day = 1 month = january year = 1936 }
 offset = 1
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
-name = "The city is in ruins."
-command = { type = construct which = IC where = 1833 value = -1 }
+name = "Grab what we can."
+ai_chance = 50
+command = { type = construct which = IC where = 1847 value = -1 }
+command = { type = supplies which = 1500 }
+command = { type = rarematerialspool value = 500 }
+command = { type = energypool value = 750 }
+command = { type = metalpool value = 500 }
+command = { type = oilpool value = 100 }
+command = { type = money value = 50 }
+command = { type = setflag which = CAP_MINN }
+command = { trigger = { ai = no } type = dissent value = 1 }
+}
+action_b = {
+name = "We don't steal from other Americans."
+ai_chance = 50
 command = { type = dissent value = -1 }
+command = { type = setflag which = CAP_MINN }
 }
 }
 
-### Detroit Captured
+### Minneapolis Recaptured
 event = {
 id = 909126
-country = TEX
+tag = { USA CSA }
 random = no
 
 trigger = {
-control = { province = 1833 data = TEX }
-flag = CAP_STL2
+owned = { province = 1847 data = -1 } 
+control = { province = 1847 data = -1 } 
+flag = CAP_MINN
+not = { 
+flag = CAP_MINN2 
+flag = END_ACW 
+ }
 }
 
-name = "Heavy Fighting in St. Louis"
-desc = "The city of St. Louis has experienced heavy fighting but we have taken it again. We will fortify our position in the city and hopefully we can hold it."
+name = "Minneapolis Recaptured"
+desc = "We have recaptured Minneapolis from our enemies. The battle has damaged some of the industry in the city."
 style = 2
-picture = "urbanwarfare3"
+picture = "urbanwarfare5"
 
 date = { day = 1 month = january year = 1936 }
 offset = 1
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
-name = "The city is in ruins."
-command = { type = construct which = IC where = 1833 value = -1 }
+name = "The city is ours again."
+command = { type = construct which = IC where = 1847 value = -1 }
 command = { type = dissent value = -1 }
+command = { type = setflag which = CAP_MINN2 }
 }
 }
 
-### Detroit Captured
+### Minneapolis Captured Again
 event = {
 id = 909127
-country = CAL
+tag = { USA CSA TEX CAL U10 }
 random = no
 
 trigger = {
-control = { province = 1833 data = CAL }
-flag = CAP_STL2
+control = { province = 1847 data = -1 }
+flag = CAP_MINN2 
+NOT = { owned = { province = 1847 data = -1 } }
 }
 
-name = "Heavy Fighting in St. Louis"
-desc = "The city of St. Louis has experienced heavy fighting but we have taken it again. We will fortify our position in the city and hopefully we can hold it."
+name = "Heavy Fighting in Minneapolis"
+desc = "The city of Minneapolis has experienced heavy fighting but we have taken it from the enemy. We will fortify our position in the city and hopefully we can hold it."
 style = 2
 picture = "urbanwarfare3"
 
@@ -958,12 +980,12 @@ deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 name = "The city is in ruins."
-command = { type = construct which = IC where = 1833 value = -1 }
+command = { type = construct which = IC where = 1847 value = -1 }
 command = { type = dissent value = -1 }
 }
 }
 
-######################### Cleveland
+######################### Cleveland 
 event = {
 id = 909128
 country = USA
@@ -1089,7 +1111,7 @@ command = { type = setflag which = CAP_CLE }
 }
 }
 
-### New York Recaptured
+### Cleveland Recaptured
 event = {
 id = 909131
 country = CSA
@@ -1118,7 +1140,7 @@ command = { type = setflag which = CAP_CLE2 }
 }
 }
 
-### New York Captured Again
+### Cleveland Captured Again
 event = {
 id = 909132
 country = USA
@@ -1145,7 +1167,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Cleveland Captured
 event = {
 id = 909133
 country = TEX
@@ -1172,7 +1194,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Cleveland Captured
 event = {
 id = 909134
 country = CAL
@@ -1200,7 +1222,7 @@ command = { type = dissent value = -1 }
 }
 
 ############ Chicago the Capital is captured
-### Detroit USA
+### Chicago USA
 event = {
 id = 909135
 country = USA
@@ -1358,7 +1380,7 @@ command = { type = setflag which = CAP_CHI }
 }
 
 ############# CHICAGO CAPTURED BY SOMEONE ELSE
-### Detroit Recaptured
+### Chicago Recaptured
 event = {
 id = 909138
 country = CSA
@@ -1750,8 +1772,8 @@ command = { type = setflag which = CAP_AUG }
 }
 }
 
-############# DETROIT CAPTURED BY SOMEONE ELSE
-### Detroit Recaptured
+############# AUGUSTA CAPTURED BY SOMEONE ELSE
+### "Augusta Recaptured
 event = {
 id = 909149
 country = TEX
@@ -1780,7 +1802,7 @@ command = { type = setflag which = CAP_AUG2 }
 }
 }
 
-### Detroit Captured
+### "Augusta Captured
 event = {
 id = 909150
 country = USA
@@ -1807,7 +1829,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### "Augusta Captured
 event = {
 id = 909151
 country = CSA
@@ -2044,7 +2066,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Mobile Captured
 event = {
 id = 909158
 country = CSA
@@ -2071,7 +2093,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Mobile Captured
 event = {
 id = 909159
 country = CAL
@@ -2098,7 +2120,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-######################### Memphis
+######################### Memphis 
 event = {
 id = 909160
 country = USA
@@ -2141,7 +2163,7 @@ command = { type = setflag which = CAP_MEM }
 }
 }
 
-### STL AUS
+### Memphis AUS
 event = {
 id = 909161
 country = CSA
@@ -2183,7 +2205,7 @@ command = { type = setflag which = CAP_MEM }
 }
 }
 
-### MEM PSA
+### Memphis PSA
 event = {
 id = 909162
 country = CAL
@@ -2225,7 +2247,7 @@ command = { type = setflag which = CAP_MEM }
 }
 }
 
-### MEM Recaptured
+### Memphis Recaptured
 event = {
 id = 909163
 country = TEX
@@ -2254,7 +2276,7 @@ command = { type = setflag which = CAP_MEM2 }
 }
 }
 
-### STL Captured Again
+### Memphis Captured Again
 event = {
 id = 909164
 country = USA
@@ -2281,7 +2303,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Memphis Captured
 event = {
 id = 909165
 country = CSA
@@ -2308,7 +2330,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Memphis Captured
 event = {
 id = 909166
 country = CAL
@@ -2491,7 +2513,7 @@ command = { type = setflag which = CAP_NEW2 }
 }
 }
 
-### New York Captured Again
+### New Orleans Captured Again
 event = {
 id = 909171
 country = USA
@@ -2518,7 +2540,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### New Orleans Captured
 event = {
 id = 909172
 country = CSA
@@ -2545,7 +2567,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### New Orleans Captured
 event = {
 id = 909173
 country = CAL
@@ -2573,7 +2595,7 @@ command = { type = dissent value = -1 }
 }
 
 ############ Atlanta the Capital is captured
-### Detroit USA
+### Atlanta USA
 event = {
 id = 909174
 country = USA
@@ -2730,8 +2752,8 @@ command = { type = setflag which = CAP_ATL }
 }
 }
 
-############# CHICAGO CAPTURED BY SOMEONE ELSE
-### Detroit Recaptured
+############# ATLANTA CAPTURED BY SOMEONE ELSE
+### Atlanta Recaptured
 event = {
 id = 909177
 country = TEX
@@ -2915,7 +2937,7 @@ command = { type = setflag which = CAP_COL2 }
 }
 }
 
-### Col Captured Again
+### Columbus Captured Again
 event = {
 id = 909182
 country = USA
@@ -2942,7 +2964,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### col Captured
+### Columbus Captured
 event = {
 id = 909183
 country = TEX
@@ -2969,7 +2991,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Col Captured
+### Columbus Captured
 event = {
 id = 909184
 country = CAL
@@ -3038,7 +3060,7 @@ command = { type = setflag which = CAP_BAL }
 }
 }
 
-### AUS
+### Baltimore AUS
 event = {
 id = 909186
 country = CSA
@@ -3080,7 +3102,7 @@ command = { type = setflag which = CAP_BAL }
 }
 }
 
-### PSA
+### Baltimore PSA
 event = {
 id = 909187
 country = CAL
@@ -3122,7 +3144,7 @@ command = { type = setflag which = CAP_BAL }
 }
 }
 
-############# DETROIT CAPTURED BY SOMEONE ELSE
+############# BALTIMORE CAPTURED BY SOMEONE ELSE
 ### Baltimore Recaptured
 event = {
 id = 909188
@@ -3152,7 +3174,7 @@ command = { type = setflag which = CAP_BAL2 }
 }
 }
 
-### Detroit Captured
+### Baltimore Captured
 event = {
 id = 909189
 country = TEX
@@ -3179,7 +3201,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Baltimore Captured
 event = {
 id = 909190
 country = CSA
@@ -3206,7 +3228,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Augusta Captured
+### Baltimore Captured
 event = {
 id = 909191
 country = CAL
@@ -3275,7 +3297,7 @@ command = { type = setflag which = CAP_Lou }
 }
 }
 
-### MOB CSA
+### Louisville CSA
 event = {
 id = 909193
 country = CSA
@@ -3317,7 +3339,7 @@ command = { type = setflag which = CAP_LOU }
 }
 }
 
-### MOB PSA
+### Louisville PSA
 event = {
 id = 909194
 country = CAL
@@ -3442,7 +3464,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Louisville Captured
 event = {
 id = 909198
 country = CAL
@@ -3511,7 +3533,7 @@ command = { type = setflag which = CAP_DAL }
 }
 }
 
-### STL AUS
+### Dallas AUS
 event = {
 id = 909200
 country = CSA
@@ -3553,7 +3575,7 @@ command = { type = setflag which = CAP_DAL }
 }
 }
 
-### DAL PSA
+### Dallas PSA
 event = {
 id = 909201
 country = CAL
@@ -3595,7 +3617,7 @@ command = { type = setflag which = CAP_DAL }
 }
 }
 
-### MEM Recaptured
+### Dallas Recaptured
 event = {
 id = 909202
 country = USA
@@ -3624,7 +3646,7 @@ command = { type = setflag which = CAP_DAL2 }
 }
 }
 
-### DAL Captured Again
+### Dallas Captured Again
 event = {
 id = 909203
 country = TEX
@@ -3651,7 +3673,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### Dallas Captured
 event = {
 id = 909204
 country = CSA
@@ -4782,7 +4804,7 @@ command = { type = setflag which = CAP_FRA }
 }
 }
 
-### San Fran Recaptured
+### San Francisco Recaptured
 event = {
 id = 909237
 country = CAL
@@ -4811,7 +4833,7 @@ command = { type = setflag which = CAP_FRA2 }
 }
 }
 
-### San Fran Captured Again
+### San Francisco Captured Again
 event = {
 id = 909238
 country = USA
@@ -4838,7 +4860,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### SF Captured Again
+### San Francisco Captured Again
 event = {
 id = 909239
 country = CSA
@@ -4865,7 +4887,7 @@ command = { type = dissent value = -1 }
 }
 }
 
-### Detroit Captured
+### San Francisco Captured
 event = {
 id = 909240
 country = TEX
@@ -5074,5 +5096,116 @@ deathdate = { day = 29 month = december year = 1963 }
 action_a = {
 name = "The city is ours again."
 command = { type = dissent value = -2 }
+}
+}
+
+### Washington DC First Capture event
+event = {
+id = 909245
+tag = { USA CSA TEX CAL U10 }
+random = no
+
+trigger = {
+control = { province = 1809 data = -1 } 
+atwar = yes
+not = { 
+owned = { province = 1809 data = -1 } 
+flag = CAP_WDC
+flag = END_ACW
+ }
+}
+
+name = "Washington DC Captured"
+desc = "We have captured the city of Washington DC from our enemies. There is an opportunity to recover some of the lost resources in the city. We can strip some of the factories and take some of the resources."
+style = 2
+picture = "urbanwarfare"
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "Grab what we can."
+ai_chance = 65
+command = { type = construct which = IC where = 1809 value = -2 }
+command = { type = supplies which = 1500 }
+command = { type = rarematerialspool value = 500 }
+command = { type = energypool value = 750 }
+command = { type = metalpool value = 500 }
+command = { type = oilpool value = 100 }
+command = { type = money value = 50 }
+command = { type = setflag which = CAP_WDC }
+command = { type = dissent value = 1 }
+}
+action_b = {
+name = "We don't steal from other Americans."
+ai_chance = 35
+command = { type = construct which = IC where = 1809 value = -1 }
+command = { type = dissent value = -1 }
+command = { type = setflag which = CAP_WDC }
+}
+}
+
+
+### Washington DC Recaptured
+event = {
+id = 909246
+tag = { USA CSA TEX }
+random = no
+
+trigger = {
+owned = { province = 1809 data = -1 } 
+control = { province = 1809 data = -1 } 
+flag = CAP_WDC
+atwar = yes
+not = { 
+flag = CAP_WDC2 
+flag = END_ACW 
+}
+}
+
+name = "Washington DC Recaptured"
+desc = "We have recaptured Washington DC from our enemies. The battle has damaged some of the industry in the city."
+style = 2
+picture = "urbanwarfare5"
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The city is ours again."
+command = { type = construct which = IC where = 1809 value = -1 }
+command = { type = dissent value = -1 }
+command = { type = setflag which = CAP_WDC2 }
+}
+}
+
+### Washington DC Captured Again
+event = {
+id = 909247
+tag = { USA CSA TEX CAL U10 }
+random = no
+
+trigger = {
+control = { province = 1809 data = -1 }
+atwar = yes
+flag = CAP_WDC2 
+NOT = { owned = { province = 1809 data = -1 } }
+}
+
+name = "Heavy Fighting in Washington DC"
+desc = "The city of Washington DC has experienced heavy fighting but we have taken it from the enemy. We will fortify our position in the city and hopefully we can hold it."
+style = 2
+picture = "urbanwarfare3"
+
+date = { day = 1 month = january year = 1936 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = "The city is in ruins."
+command = { type = construct which = IC where = 1809 value = -1 }
+command = { type = dissent value = -1 }
 }
 }

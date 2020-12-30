@@ -174,7 +174,7 @@ relation = {   tag =  	JAP	value = 		50	   }
 
 	}
 
-dormant_teams = { 6646 }
+dormant_teams = { 6659 6662 }
 
 #########  OOB (...)
 

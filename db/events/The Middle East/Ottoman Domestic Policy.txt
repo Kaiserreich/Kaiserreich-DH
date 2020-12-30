@@ -1,0 +1,2462 @@
+####
+#Opening events
+####
+
+
+# Player info
+event = {
+id = 15000
+random = no
+country = OTT
+style = 2
+picture = "OTT_Golden Horn"
+
+date = { day = 0 month = january year = 1914 }
+offset = 3
+deathdate = { day = 29 month = december year = 1999 }
+
+name = "The Terminally Sick Man of Europe"
+desc = "EVT_15000_DESC" #Welcome to Kaiserreich’s Ottoman Empire! A country racked by domestic turbulence the Ottoman Empire is currently in a very difficult position. However, fear not for reform is possible! The nature of reform is, however, a divided issue and three political groupings vie for mastery of the beleaguered Empire; The Committee of Union and Progress (authoritarian democrats under Mustafa Kemal) The Freedom and Accord Party (Liberals and pro-minority politicians under Prince Mehmed Sabâhaddin) and The Rumeli Party (Pan-Turkists and all-round reactionaries under Yusuf Akçura and Nihal Atsiz). Between 1936 and 1938 (Mustafa Kemal’s passing) you’ll face several different political issues such as the Arab problem, minority rights, army reform and the quest for economic recovery. Each of these events will have choices favoured by either of the three factions that influence the strength of the growing reform movement within the Ottoman parliament. There are 270 seats in the Ottoman chamber of deputies and if the country is to survive you need the backing of at least 150 members. The reform movement is currently supported by 90 members. It is suggested that you stay clear of the most extreme options if you fancy keeping the empire from imploding. The choice is, of course, all yours. Good luck!
+
+action = {
+name = "Bring it on!"
+command = { type = dissent value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 90 } #set initial strenght of reform movement to 90 deputies
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 2 } #Set initial strength of the Serenity of the Ottomans Party to 2 as they control the government
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Set initial strength of the Liberal Entente to 1
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Set initial strength of the Turanist Party to 1
+}
+}
+
+#20th Anniversary of the Gallipoli Campaign
+event = {
+id = 15001
+random = no
+country = OTT
+style = 2
+picture = "OTT_Gallipoli"
+
+date = { day = 8 month = january year = 1936 }
+
+name = "20 Years Anniversary of the Gallipoli Triumph"
+desc = "EVT_15001_DESC" #Today marks the 20th anniversary of the great Ottoman victory at Gallipoli. Effectively repulsing the Entente attempt at forcing the Dardanelles and seizing Constantinople, the victory at Gallipoli remained the only major military success of the Porte during the Weltkrieg and paved the way for the commanding officer, Mustafa Kemal Pasha’s career as Grand Vizier. Parades, celebratory manifestations and speeches are held throughout the empire, fostering a rare example of state-patriotism shared by our subjects - be they Turk, Kurd or Arab.
+
+action = {
+name = "The Porte honours its heroes!"
+command = { type = dissent value = -1.5 }
+command = { type = relation which = AST value = 10 }
+}
+}
+
+#Passing of Yusuf Akcura
+event = {
+id = 15002
+random = no
+country = OTT
+style = 2
+picture = "OTT_Akcura"
+
+date = { day = 10 month = march year = 1936 }
+
+name = "Passing of Yusuf Akcura"
+desc = "EVT_15002_DESC" #A Tartar immigrant from the Russian Empire and a leading figure within the Ottoman intelligentsia, Yusuf Akçura passed away today at his palatine mansion in Istanbul. Besides his work as a journalist and academic, Akçura was highly influential within the Pan-Turkist (also known as Turanist) Movement - being regarded by some as the unofficial leader of the grouping. His place in the Ottoman parliament has been filled by the young Nihal Atsiz who alongside Sadri Maksudi Arsal, Ethem Nejat and the disgraced field marshal Enver Pasha are expected to assume leadership over the Pan-Turkists.
+
+action = {
+name = "A terrible shame!"
+command = { type = dissent value = 0.5 }
+}
+}
+
+###
+#BLACK MONDAY AND THE OTTOMAN EMPIRE
+###
+
+# Black Monday Hits the Ottoman Empire
+event = {
+id = 15003
+random = no
+country = OTT
+style = 2
+
+name = "Black Monday Hits the Ottoman Empire!"
+desc = "Almost month ago, the Berlin Stock Exchange plunged into bottomless depths, throwing the economy of the German empire into an unprecedented crisis. Now the crash's shockwaves have reached the Ottoman Empire. German and Austrian-owned companies have closed down or laid-off their workers, the Ottoman lira is losing it´s already-low value, and resource exports are shrinking. Our unstable economy is on the verge of collapse....."
+picture = "Berlin stock exchange"
+
+date = { day = 4 month = march year = 1936 }
+
+action = {
+ai_chance = 50
+name = "The government must intervene to save the economy!"
+command = { trigger = { ai = no } type = dissent value = 7 }
+command = { trigger = { ai = yes } type = dissent value = 2 }
+command = { type = peacetime_ic_mod value = -8 }
+command = { type = money value = -30 }
+command = { type = domestic which = free_market value = -2 }
+command = { type = local_setflag which = OTT_ECO_PLANNED_ECONOMY }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+}
+
+action = {
+ai_chance = 50
+name = "Place our trust in God and the free market!"
+command = { trigger = { ai = no } type = dissent value = 9 }
+command = { trigger = { ai = yes } type = dissent value = 4 }
+command = { type = peacetime_ic_mod value = -8 }
+command = { type = money value = -30 }
+command = { type = domestic which = free_market value = 2 }
+command = { type = local_setflag which = OTT_ECO_FREE_ECONOMY }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Entente by 1, as they support free market policies
+}
+}
+
+# Six months after BM
+event = {
+id = 15004
+random = no
+country = OTT
+style = 2
+one_action = yes
+
+trigger = {
+event = 15003 #OTT Black Monday hits!
+}
+
+name = "Six Months After Black Monday"
+desc = "Half a year has passed since the Black Monday and the subsequent Black Week. The state of our eceonomy is still recovering from the blow."
+picture = "public_jobs"
+
+date = { day = 12 month = september year = 1936 }
+
+#Laissez-faire chances are 60/30/10, good chances of not recovering
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 60
+name = "The economy has not recovered yet"
+command = { type = dissent value = 5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 30
+name = "The economy recovered a little"
+command = { type = dissent value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 10
+name = "The economy is even worse now!"
+command = { type = dissent value = 10 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+}
+#Balanced approached chances are 40/40/20, good chances of recovering
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 40
+name = "The economy has not recovered yet"
+command = { type = dissent value = 5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 40
+name = "The economy recovered a little"
+command = { type = dissent value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 20
+name = "The economy is even worse now!"
+command = { type = dissent value = 10 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+}
+}
+
+# One year after BM
+event = {
+id = 15005
+random = no
+country = OTT
+style = 2
+one_action = yes
+
+trigger = {
+event = 15004 #OTT Six month after Black Monday
+}
+
+name = "One Year After Black Monday"
+desc = "One year has passed since the Black Monday and the subsequent Black Week. The state of our economy is still recovering from the blow."
+picture = "public_jobs"
+
+date = { day = 12 month = march year = 1937 }
+
+#Laissez-faire chances are 50/40/10, good chances of not recovering
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 50
+name = "The economy has not recovered yet"
+command = { type = dissent value = 5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 40
+name = "The economy recovered a little"
+command = { type = dissent value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 10
+name = "The economy is even worse now!"
+command = { type = dissent value = 10 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+}
+#Balanced approached chances are 40/50/10, good chances of recovering
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 40
+name = "The economy has not recovered yet"
+command = { type = dissent value = 5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 50
+name = "The economy recovered a little"
+command = { type = dissent value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 10
+name = "The economy is even worse now!"
+command = { type = dissent value = 10 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+}
+}
+
+# One year after BM
+event = {
+id = 15006
+random = no
+country = OTT
+style = 2
+one_action = yes
+
+trigger = {
+event = 15005 #OTT One Year After Black Monday
+}
+
+name = "Two Years After Black Monday"
+desc = "One year has passed since Black Monday and the subsequent Black Week. The state of our economy is still recovering from the blow."
+picture = "public_jobs"
+
+date = { day = 12 month = march year = 1938 }
+
+#Laissez-faire chances are 20/60/20, low chance of recovery
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 20
+name = "The economy finally recovered!"
+command = { type = dissent value = -5 }
+command = { type = industrial_modifier which = total value = 8 }
+command = { type = local_clrflag which = OTT_ECO_FREE_ECONOMY }
+command = { type = local_clrflag which = OTT_ECO_PLANNED_ECONOMY }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 10 }
+command = { type = sleepevent which = 15006 } #OTT Three years after Black Monday
+}
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 60
+name = "The economy is only slightly better now"
+command = { type = dissent value = 2 }
+command = { type = industrial_modifier which = total value = 4 }
+command = { type = local_setflag which = OTT_PARTIAL_RECOVERY }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 3 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 20
+name = "The economy is still in a bad shape!"
+command = { type = dissent value = 10 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+}
+
+#Balanced approached chances are 50/35/15, good chances of recovery
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 50
+name = "The economy finally recovered!"
+command = { type = dissent value = -5 }
+command = { type = industrial_modifier which = total value = 8 }
+command = { type = sleepevent which = 15006 } #OTT Three years after Black Monday
+command = { type = local_clrflag which = OTT_ECO_FREE_ECONOMY }
+command = { type = local_clrflag which = OTT_ECO_PLANNED_ECONOMY }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 10 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 35
+name = "The economy is only slightly better now"
+command = { type = dissent value = 2 }
+command = { type = industrial_modifier which = total value = 4 }
+command = { type = local_setflag which = GER_PARTIAL_RECOVERY }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 3 }
+}
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 15
+name = "The economy is still in a bad shape!"
+command = { type = dissent value = 10 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+}
+}
+
+event = {
+id = 15007
+random = no
+country = OTT
+style = 2
+
+trigger = {
+event = 15006 #OTT Two years after Black Monday
+local_flag = OTT_PARTIAL_RECOVERY
+}
+
+name = "Three Years After Black Monday"
+desc = "Three years have passed since Black Monday and the subsequent Black Week. The unemployment rate has finally reached normal levels, new industries are opening every day and we can look at the future with hope. The economy finally recovered!"
+picture = "Unconventional_Monetary_Policy"
+
+date = { day = 12 month = march year = 1939 }
+
+action = {
+
+name = "Excellent!"
+command = { type = dissent value = -5 }
+command = { type = industrial_modifier which = total value = 4 }
+command = { type = local_clrflag which = OTT_PARTIAL_RECOVERY }
+command = { type = local_clrflag which = OTT_ECO_FREE_ECONOMY }
+command = { type = local_clrflag which = OTT_ECO_PLANNED_ECONOMY }
+}
+}
+
+###
+#ARAB CONGRESS AND RESPONSE
+###
+
+#Response to Arab Congress
+event = {
+id = 15008
+random = no
+country = OTT
+style = 2
+
+trigger = {
+event = 7 #OTT The Arab Congress
+}
+
+name = "The Threat of the Arab Congress"
+desc = "EVT_15008_DESC" #Although the Arab Revolt led by Sharif Hussein and his many sons ultimately failed to realize the dream of single greater Arabia under Hashemite rulership, the very fact that the Ottoman government was forced to acknowledge the Shariffian state’s independence meant that the flame of Arab nationalism, although dimmed, was allowed to flicker on. At a recent congress in Cairo, the independent Arab states led by Egypt and the Hashemite kingdom have concluded a pact to actively work for the separation of our Arab vilayets and their ascension to either of the irredentist Arab states. Although some level of rapprochement between the Turkish and Arab parts of our empire has happened since 1921, the aggressive rhetoric of the nationalists threatens to destroy this hard-won amiability. The government must address the issue of Arab separatism, lest the vilayets of Syria and Iraq degenerate into sedition and civil war.
+picture = "OTT_Levant"
+
+date = { day = 0 month = july year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 45
+name = "Declare martial law in the Arab vilayets!"
+command = { type = dissent value = 2.5 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = freedom value = -2 }
+command = { type = local_setflag which = OTT_MARTIAL_LAW }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+command = { type = setflag which = OTTOMAN_PARTICULARISM }
+command = { type = removecore which = 1008 }
+command = { type = removecore which = 1009 }
+command = { type = removecore which = 1010 }
+command = { type = removecore which = 1011 }
+command = { type = removecore which = 1013 }
+command = { type = removecore which = 1014 }
+command = { type = removecore which = 1015 }
+command = { type = removecore which = 1016 }
+command = { type = removecore which = 1017 }
+command = { type = removecore which = 1018 }
+command = { type = removecore which = 1019 }
+command = { type = removecore which = 1020 }
+command = { type = removecore which = 1021 }
+command = { type = removecore which = 1022 }
+command = { type = removecore which = 1023 }
+command = { type = removecore which = 1024 }
+command = { type = removecore which = 1025 }
+command = { type = removecore which = 1026 }
+command = { type = removecore which = 1172 }  #Greater Syria
+command = { type = removecore which = 1027 }
+command = { type = removecore which = 1028 }
+command = { type = removecore which = 1029 }
+command = { type = removecore which = 1030 }
+command = { type = removecore which = 1031 }
+command = { type = removecore which = 1032 }
+command = { type = removecore which = 1033 }
+command = { type = removecore which = 1034 }
+command = { type = removecore which = 1035 }
+command = { type = removecore which = 1036 }
+command = { type = removecore which = 1037 }
+command = { type = removecore which = 1041 } #Mesopotamia
+command = { type = addclaim which = 1008 }
+command = { type = addclaim which = 1009 }
+command = { type = addclaim which = 1010 }
+command = { type = addclaim which = 1011 }
+command = { type = addclaim which = 1013 }
+command = { type = addclaim which = 1014 }
+command = { type = addclaim which = 1015 }
+command = { type = addclaim which = 1016 }
+command = { type = addclaim which = 1017 }
+command = { type = addclaim which = 1018 }
+command = { type = addclaim which = 1019 }
+command = { type = addclaim which = 1020 }
+command = { type = addclaim which = 1021 }
+command = { type = addclaim which = 1022 }
+command = { type = addclaim which = 1023 }
+command = { type = addclaim which = 1024 }
+command = { type = addclaim which = 1025 }
+command = { type = addclaim which = 1026 }
+command = { type = addclaim which = 1172 }  #Greater Syria
+command = { type = addclaim which = 1027 }
+command = { type = addclaim which = 1028 }
+command = { type = addclaim which = 1029 }
+command = { type = addclaim which = 1030 }
+command = { type = addclaim which = 1031 }
+command = { type = addclaim which = 1032 }
+command = { type = addclaim which = 1033 }
+command = { type = addclaim which = 1034 }
+command = { type = addclaim which = 1035 }
+command = { type = addclaim which = 1036 }
+command = { type = addclaim which = 1037 }
+command = { type = addclaim which = 1041 } #Mesopotamia
+}
+
+action = {
+ai_chance = 35
+name = "Enhance civil rights, but cede no ground of central authority!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+ai_chance = 20
+name = "Promise egalitarian reform throughout the empire!"
+command = { type = dissent value = 7.5 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 10 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Entente by 1
+}
+}
+
+#Handling minorities
+event = {
+id = 15009
+random = no
+country = OTT
+style = 2
+
+trigger = {
+event = 15008 #OTT Response to the Arab Congress
+}
+
+name = "Minorities, Millets and the Multiethnicity of the Empire"
+desc = "EVT_15009_DESC" #A dominating issue of Ottoman politics since the First Balkan War, the status of the many minorities (Armenians, Greeks, Assyrians, Kurds and Arabs, to name the major ethnicities) has steered the empire into many tragic events through the last twenty years. Consequently, the various political groupings at court have very varied attitudes towards addressing the problem. Kemal Pasha’s CUP maintain that a vague definition of Ottomanism of equal rights for all the Sultan’s subjects (though under Turkish leadership) as the way to go, whilst the Liberals advance the claim that the running of the empire must become completely egalitarian for all ethnicities and religious groupings. The Rumeli Party vehemently argue that only the Turkish race is suited for controlling the future of the Ottoman state and that all minorities become completely subservient to its Pan-Turanist ideals.
+picture = "OTT_Constitution"
+
+date = { day = 0 month = september year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 30
+name = "The Ottoman state depends on the primogeniture of the Turks!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+}
+
+action = {
+ai_chance = 50
+name = "Promomte Ottomanism under Turkish hegemony!"
+command = { type = dissent value = 2.5 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 8 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+trigger = { NOT = { local_flag = OTT_MARTIAL_LAW } }
+ai_chance = 20
+name = "It's time for universal Ottomanism!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = freedom value = 2 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 10 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+}
+
+#Beginning Kurdish Unrest
+event = {
+id = 15010
+random = no
+country = OTT
+style = 2
+
+trigger = {
+event = 15009 #OTT Response to the Arab Congress
+local_flag = OTT_MARTIAL_LAW 
+}
+
+name = "Unrest in the Kurdish Vilayets"
+desc = "EVT_15010_DESC" #The recent enforcement of martial law in the Arab provinces and the Ottoman government’s anti-minority policies have caused great unrest in the Kurdish-majority vilayets in eastern Anatolia. Although loyal to the Caliph, the Kurdish magnates have been greatly angered by the lack of toleration shown by Constantinople and are demanding greater local autonomy. This is of course seen as completely impossible by both the CUP and the Rumeli Party.
+picture = "OTT_Kurdishmagnate"
+
+date = { day = 0 month = july year = 1936 }
+offset = 45
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 80
+name = "The strenght of the state shan't be compromised!"
+command = { type = dissent value = 2 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = local_setflag which = OTT_KURDISH_UNREST }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+}
+
+action = {
+ai_chance = 20
+name = "Easen the strain of centralism in eastern Anatolia!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 7 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+}
+
+#Unrest in Syria
+event = {
+id = 15011
+random = no
+country = OTT
+persistent = yes
+style = 2
+one_action = yes
+picture = "Arabrevolt"
+
+trigger = {
+local_flag = OTT_MARTIAL_LAW 
+NOT ={
+war = { country = SAU country = OTT }
+war = { country = EGY country = OTT }
+war = { country = KUR country = OTT }
+}
+OR = {
+control = { province = 1016 data = OTT } #Damascus
+control = { province = 1172 data = OTT } #Jerusalem
+}
+}
+
+date = { day = 2 month = august year = 1936 }
+offset = 250
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Arab Nationalist Unrest in the Levant"
+desc = "The centralizing efforts of the Ottoman government has provoked the populace of the Levantine vilayets into open oposition and revolt."
+
+action = {
+name = "Demonstrations in the urban centres!"
+ai_chance = 33
+command = { type = dissent value = 2 }
+}
+action = {
+name = "Unrest in the rural districts!"
+ai_chance = 33
+command = { type = dissent value = 1 }
+}
+action = {
+name = "Unrest among the bedouin!"
+ai_chance = 22
+command = { type = dissent value = 1 }
+}
+
+action = {
+trigger = {
+control = { province = 1016 data = OTT } 
+}
+name = "Armed uprisings in Damascus!"
+ai_chance = 6
+command = { type = dissent value = 3 }
+command = { type = revolt which = 1016 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -1 }
+}
+
+action = {
+trigger = {
+control = { province = 1172 data = OTT } 
+}
+name = "Armed uprisings in Jerusalem!"
+ai_chance = 6
+command = { type = dissent value = 3 }
+command = { type = revolt which = 1172 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -1 }
+
+}
+}
+
+#Unrest in Mesopotamia
+event = {
+id = 15012
+random = no
+country = OTT
+persistent = yes
+style = 2
+one_action = yes
+picture = "Arabrevolt"
+
+trigger = {
+local_flag = OTT_MARTIAL_LAW 
+NOT ={
+war = { country = SAU country = OTT }
+war = { country = EGY country = OTT }
+war = { country = PER country = OTT }
+war = { country = KUR country = OTT }
+}
+OR = {
+control = { province = 1034 data = OTT } #Bahgdad
+control = { province = 1032 data = OTT } #Basrah
+}
+}
+
+date = { day = 2 month = august year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Arab Nationalist Unrest in Mesopotamia"
+desc = "The centralizing efforts of the Ottoman government has provoked the populace of the Mesopotamian vilayets into open oposition and revolt."
+
+action = {
+name = "Demonstrations in the urban centres!"
+ai_chance = 33
+command = { type = dissent value = 2 }
+}
+action = {
+name = "Unrest in the rural districts!"
+ai_chance = 33
+command = { type = dissent value = 1 }
+}
+action = {
+name = "Unrest among the bedouin!"
+ai_chance = 22
+command = { type = dissent value = 1 }
+}
+
+action = {
+trigger = {
+control = { province = 1034 data = OTT } 
+}
+name = "Armed uprisings in Baghdad!"
+ai_chance = 6
+command = { type = dissent value = 3 }
+command = { type = revolt which = 1034 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -1 }
+}
+
+action = {
+trigger = {
+control = { province = 1032 data = OTT } 
+}
+name = "Armed uprisings in Basrah!"
+ai_chance = 6
+command = { type = dissent value = 3 }
+command = { type = revolt which = 1032 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -1 }
+}
+}
+
+#Unrest in Kurdistan
+event = {
+id = 15013
+random = no
+country = OTT
+persistent = yes
+style = 2
+one_action = yes
+picture = "OTT_Kurdishprotest"
+
+trigger = {
+local_flag = OTT_KURDISH_UNREST 
+NOT ={
+exists = KUR
+war = { country = SAU country = OTT }
+war = { country = EGY country = OTT }
+war = { country = PER country = OTT }
+war = { country = KUR country = OTT }
+}
+OR = {
+control = { province = 1062 data = OTT } 
+control = { province = 1063 data = OTT }
+control = { province = 1064 data = OTT }
+}
+}
+
+date = { day = 2 month = august year = 1936 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Kurdish Unrest"
+desc = "The centralizing efforts of the Ottoman government has provoked the populace of the Kurdish-populated vilayets of eastern Anatolia to rise against the state in open revolt!"
+
+action = {
+name = "Demonstrations in the urban centres!"
+ai_chance = 33
+command = { type = dissent value = 2 }
+}
+action = {
+name = "Unrest in the rural districts!"
+ai_chance = 34
+command = { type = dissent value = 1 }
+}
+
+action = {
+trigger = {
+control = { province = 1062 data = OTT } 
+}
+name = "Armed uprisings in Hakkari!"
+ai_chance = 11
+command = { type = dissent value = 3 }
+command = { type = revolt which = 1062 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -1 }
+}
+
+action = {
+trigger = {
+control = { province = 1063 data = OTT } 
+}
+name = "Armed uprisings in Erzurum!"
+ai_chance = 11
+command = { type = dissent value = 3 }
+command = { type = revolt which = 1063 }
+}
+
+action = {
+trigger = {
+control = { province = 1064 data = OTT } 
+}
+name = "Armed uprisings in Elazig!"
+ai_chance = 11
+command = { type = dissent value = 3 }
+command = { type = revolt which = 1064 }
+}
+}
+
+
+#The Question of Doctrines
+event = {
+id = 15014
+random = no
+country = OTT
+style = 2
+
+trigger = {
+event = 15009 #OTT Response to the Arab Congress
+}
+
+name = "Divisions Within the Karargah"
+desc = "EVT_15014_DESC" #At the onset of the Weltkrieg, the Ottoman Army quickly adapted the doctrines and tactical modus operandi of its German allies. However, Mustafa Kemal Pasha orchestrated the defense of Anatolia and eventual Ottoman counter offensive according to the tenets of the Grand Battle Plan doctrine. As a result of the conflicting theories, the Ottoman high command (the Karargâh) hasn’t been able to properly reform the structures of the army. The government must make a decision, but there are other doctrines at play and Kazim Karabekir Pasha is actively lobbying for complete motorization and investments into armour formations. However, such a bold move would certainly not benefit the stability of the empire’s reforms...
+picture = "OTT_KemalPasha"
+
+date = { day = 0 month = october year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 40
+name = "Mustafa Kemal Pasha - Grand Battle Plan!"
+command = { type = dissent value = -2 }
+command = { type = chiefofstaff which = 549007 }
+command = { type = waketeam which = 15742 when = 1 } #Selahattin Adil when Kemal dies or retires
+command = { type = activate which = 6560 } # Defensive Focus
+command = { type = gain_tech which = 6560  } # Defensive Focus
+command = { type = gain_tech which = 6030  } # General Battle Plan
+command = { type = gain_tech which = 6120 } #Trench Warfare
+command = { type = gain_tech which = 6110 } #Mass Assault
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 7 } #the army rallies behind the Government
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+ai_chance = 25
+name = "Fevzi Cakmak Pasha - reluctantly copy the Germans."
+command = { type = dissent value = 1 }
+command = { type = chiefofstaff which = 549118 }
+command = { type = waketeam which = 15736 when = 1 }
+command = { type = waketeam which = 15737 when = 1 } #Kazim Orbay when Cakmak retires
+command = { type = activate which = 6010 }# Firepower Focus
+command = { type = gain_tech which = 6010 }# Firepower Focus
+command = { type = gain_tech which = 6020 } # Superior Firepower
+command = { type = gain_tech which = 6040 }# Delay
+command = { type = gain_tech which = 6050 }# Mobile Defense
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 } 
+}
+
+action = {
+ai_chance = 20
+name = "Ismaeil Berkok Pasha - we need light and mobile troops!"
+command = { type = dissent value = 1 }
+command = { type = chiefofstaff which = 549086 }
+command = { type = waketeam which = 15739 when = 1 }
+command = { type = activate which = 6390 }# Light Infantry Focus
+command = { type = gain_tech which = 6390 } # Light Infantry Focus
+command = { type = gain_tech which = 6400 } # General Battle Plan
+command = { type = gain_tech which = 6420 } # Trench Warefare
+command = { type = gain_tech which = 6410 } # Mass Assault
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+}
+
+action = {
+ai_chance = 10
+name = "Mustafa Ismet Pasha - enforce massive conscription!"
+command = { type = dissent value = 3 } #Not popular when the state hasn't recovered completely
+command = { type = chiefofstaff which = 549073 }
+command = { type = waketeam which = 15743 when = 1 }
+command = { type = activate which = 6570 }# Manpower Focus Focus
+command = { type = gain_tech which = 6570 } # Manpower Focus Focus
+command = { type = gain_tech which = 6300 } # People's Army
+command = { type = gain_tech which = 6310 } # Large Front Doctrine
+command = { type = gain_tech which = 6320 } # Pocket Defense Doctrine
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -2 }
+}
+
+action = {
+name = "Kazim Karabekir Pasha - complete mechanization!"
+ai_chance = 5
+command = { type = dissent value = 4.5 }
+command = { type = chiefofstaff which = 549119 }
+command = { type = waketeam which = 15738 when = 1 }
+command = { type = wakeminister which = 549008 } #Tahsin Yazici
+command = { type = activate which = 6210 } # Mobility Focus Doctrine
+command = { type = gain_tech which = 6210 } # Mobility Focus Doctrine
+command = { type = gain_tech which = 6220 } # Spearhead Doctrine
+command = { type = gain_tech which = 6250 } # Schwerpunkt Doctrine
+command = { type = gain_tech which = 6260 } # Combined Arms Offensive
+command = { type = gain_tech which = 6900 } # Armor Division Formation
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 } #Radical change upsets the military leadership
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1, modernization is their thing, right?
+}
+}
+
+
+#The Officer Corps
+event = {
+id = 15015
+random = no
+country = OTT
+style = 2
+
+trigger = {
+NOT = { 
+atwar = OTT  
+}
+}
+
+name = "Reforming the Ottoman Officer Corps"
+desc = "EVT_15015_DESC" #The Ottoman Army had entered the Weltkrieg with many shortcomings and left it completely broken. Thanks to a massive national effort the armed forces of the House of Osman arose from their traumatic experiences in the Levant under the watchful eye of Kemal Pasha and a somewhat robust army was consequently established. However, deep mistrust had permeated the Empire’s Turkish and Arab citizens as a great amount of Arab officers and enlisted-men defected to the British and Sharifian forces. Subsequently, a tight quota on Arab cadets in the Empire’s military schools was enforced, but many believe that this policy has become detrimental to the unity of the empire. Should we rescind the restrictions on minorities in the officer corps?
+picture = "OTT_Officers"
+
+date = { day = 0 month = january year = 1937 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 20
+name = "No change is necessary!"
+command = { type = dissent value = 3 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+}
+
+action = {
+ai_chance = 60
+name = "Remove all restrictions on Arab cadets!"
+command = { type = dissent value = -1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 4 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+ai_chance = 20
+name = "Promote increased integration of minority officers!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 } #upsets military elite
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+}
+
+event = {
+id = 15016
+country = OTT
+style = 2
+picture = "OTT_Izzet"
+
+date = { day = 29 month = march year = 1937 }
+
+name = "Passing of Ahmed Izzet Pasha"
+desc = "Today general and diplomat Ahmed Izzet Pasha passed away at his mansion in Istanbul. A portly man of considerable intellectual capacity, Izzet had been known as a supporter of moderate reform and rapprochement between the empire's various ethnic groups."
+
+action = {
+name = "A tragic event."
+command = { type = dissent value = 0.5 }
+command = { trigger = { incabinet = 549003 } type = foreignminister which = 549012 } #If Izzet is foreign minister he's replaced by Süleyman Nazif
+command = { type = sleepminister which = 549003 }
+}
+}
+
+event = {
+id = 15017
+country = OTT
+style = 2
+picture = "OTT_Fuad"
+
+date = { day = 7 month = april year = 1937 }
+
+name = "Prince Osman Fuad and the Reform Movement"
+desc = "EVT_15017_DESC" #Hailed as a patriot and a war hero famous for his exploits on the Libyan front as a cavalry officer, prince Osman Fuad utilized a recent memorial event held for the late general Izzet Pasha to declare his full support for the revitalization of the ideals of Ottomanism. Being a close friend of the current grand vizier Kemal Pasha, the Prince’s speech has been perceived by many as clear show of support for the reformist ideals brought forward by his friend Kemal Pasha. 
+
+action = {
+ai_chance = 80
+name = "The Prince supports his friend Kemal Pasha!"
+command = { type = dissent value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+ai_chance = 20
+name = "The Prince endorses the Liberal Entente!"
+command = { type = dissent value = -0.5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+
+action = {
+ai_chance = 0
+name = "The Prince endorses the Turanist Party!"
+command = { type = dissent value = 2 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+}
+}
+
+#Further Arab unrest if more tolerant options were pursued
+event = {
+id = 15018
+random = no
+country = OTT
+
+trigger = {
+random = 12
+atwar = no
+event = 15009 #OTT Response to the Arab Congress
+OR = {
+control = { province = 1016 data = OTT } #Damascus
+control = { province = 1172 data = OTT } #Jerusalem
+}
+NOT = {
+local_flag = OTT_MARTIAL_LAW 
+}
+}
+
+name = "Unrest in the Arab Vilayets"
+desc = "Despite the attempt at rapprochement perpetuated by the government secret Arab societies continue to utilize the weakness of the state to organize protests movements in the Levant and in Mesapotamia. Hopefully, the process of integration will soon be over.."
+style = 2
+picture = "arabrevolt"
+
+persistent = yes
+date = { day = 0 month = january year = 1936 }
+offset = 23
+deathdate = { day = 29 month = december year = 1970 }
+
+action = {
+name = "Damn those curs!"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 15019
+country = OTT
+style = 2
+picture = "Unconventional_Monetary_Policy"
+
+date = { day = 1 month = april year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1970 }
+
+name = "EVT_15019_NAME" # Raising Tariffs
+desc = "EVT_15019_DESC" #With the chaos of Black Monday wreaking havoc on our economy, many are calling for the government to take action! One of the greatest demands is to raise tariff barriers in order to keep local industries afloat. This proposal has caused some outcry however, the various trade ports of the empire state that it will be more difficult for them to compete if there are trade barriers in place.
+
+action = {
+ai_chance = 70
+name = "EVT_15019_ACTIONA" #Raise the tariffs, we must protect our own
+command = { type = dissent value = 1.5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 4 }
+command = { type = domestic which = free_market value = -1 }
+}
+
+action = {
+ai_chance = 30
+name = "EVT_15019_ACTIONB" # Keep the markets open, we can only injure our trade power by raising tariffs.
+command = { type = dissent value = .5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -1 }
+command = { type = domestic which = free_market value = 2 }
+}
+}
+
+#Expanding the Baghdad-railway
+event = {
+id = 15020
+random = no
+country = OTT
+style = 2
+picture = "OTT_Railway"
+decision_picture = "decision_baghdad_railway"
+
+decision = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+control = { province = 1075 data = OTT } #Ankara
+control = { province = 1060 data = OTT } #Diyarbakir
+control = { province = 1029 data = OTT } #Mosul
+control = { province = 1034 data = OTT } #Baghdad
+}
+
+decision_trigger = {
+supplies = 3000
+oil = 1500
+money = 300
+control = { province = 409 data = OTT } #Istanbul
+control = { province = 1075 data = OTT } #Ankara
+control = { province = 1060 data = OTT } #Diyarbakir
+control = { province = 1029 data = OTT } #Mosul
+control = { province = 1034 data = OTT } #Baghdad
+
+}
+
+trigger = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+control = { province = 1075 data = OTT } #Ankara
+control = { province = 1060 data = OTT } #Diyarbakir
+control = { province = 1029 data = OTT } #Mosul
+control = { province = 1034 data = OTT } #Baghdad
+}
+
+name = "Completing the Baghdad-Railway"
+desc = "EVT_15020_DESC" #It is said that Napoleon once remarked that the port of Antwerp in the hands of a great continental power could constitute a loaded gun leveled at the English coast. In the time immediately preceding the Weltkrieg it was thought in England that a strong German or Ottoman presence in Baghdad would amount to a 42-centimeter cannon aimed at the British Raj. Thus the completion of the Baghdad railway served as a major point of contention between the British and the Central Powers and ultimately helped pave the road for war between the great powers. After years of negotiations and the bankrolling of investments from Mitteleuropa and America, the railroad is finally ready for completion and only the very last amount of cash is needed from the Ottoman government. However, some within the government believe that the funds should be spent on alleviating the citizens of the Empire suffering from the ongoing economic crisis. This would certainly improve the empire’s current stability, but weaken the unity of the state in the long run.
+
+date = { day = 0 month = june year = 1936 }
+offset = 120
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+ai_chance = 75
+name = "This will further the integration of the empire!"
+command = { type = dissent value = 2 }
+command = { type = supplies value = -3000 }
+command = { type = oilpool value = -1500 }
+command = { type = money value = -300 }
+command = { type = construct which = infrastructure where = 1015 value = 10 }
+command = { type = construct which = infrastructure where = 1029 value = 10 }
+command = { type = construct which = infrastructure where = 1033 value = 10 }
+command = { type = construct which = infrastructure where = 1056 value = 10 }
+command = { type = construct which = infrastructure where = 1060 value = 10 }
+command = { type = waketeam which = 15719 } #Berlin-Baghdad-Railway
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+ai_chance = 25
+name = "We must focus on alleviating our citizens deprived by the crisis!"
+command = { type = dissent value = -2.5 }
+command = { type = money value = -250 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+}
+
+# Ottoman Response to the Arab Axis
+event = {
+id = 15021
+country = OTT
+picture = "OTT_Bedouins"
+style = 2
+
+trigger = { 
+event = 18 # Axis Cairo-Mecca is formed in Egypt.txt
+NOT = {
+alliance = { country = OTT country = SAU }
+war = { country = OTT country = SAU }
+war = { country = OTT country = EGY }
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Formation of the Arab Axis"
+desc = "EVT_15021_DESC" #Grave news. A few days ago, delegates from Egypt and the rogue Shariffian state signed a military pact in Cairo aimed at constituting... ‘an axis on which the issue of Arab liberation and emancipation shall rotate’. The irredentist goals of these two powers have long been known to the Ottoman government, but the signing of an official military alliance directly dedicated to the mutilation of our Empire is a truly worrisome development. Something will have to be done...
+
+action = {
+name = "A grave threat to the unity of the Porte."
+command = { type = dissent value = 2 }
+command = { type = relation which = EGY value = -100 }
+command = { type = relation which = SAU value = -100 }
+}
+}
+
+#Benefit of low unrest
+event = {
+id = 15022
+random = no
+country = OTT
+persistent = yes
+
+
+trigger = {
+random = 25
+atwar = no
+NOT = {
+dissent = 6
+event = 15036
+event = 15037
+}
+}
+
+name = "Increasing Stability"
+desc = "The relative lack of dissent amongst the state's populace has had a beneficial effect on the strenght of the reform movement as the people remain relatively content with the government's course."
+style = 2
+picture = "arabrevolt"
+
+date = { day = 0 month = january year = 1936 }
+offset = 23
+deathdate = { day = 29 month = december year = 1970 }
+
+action = {
+name = "We shall survive!"
+command = { type = dissent value = -0.25 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 2 }
+}
+}
+
+
+event = {
+id = 15023
+country = OTT
+picture = "OTT_Mayday"
+style = 2
+
+trigger = { 
+event = 15015 #The Officer Corps
+NOT = {
+war = { country = OTT country = FRA }
+}
+}
+
+date = { day = 0 month = may year = 1937 }
+offset = 3
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Second Ottoman Labour Code"
+desc = "EVT_15023_DESC" #The first Ottoman labour code was instituted by the decree of grand vizier Kemal Pasha in order to counter the threat of Syndicalist influence in the nascent workers’ movement. Although the empire is still far from a completely modern industrialized society, certain parts of the industry, such as the tobacco sector, had seen a steady increase in production and income in the years prior to the Weltkrieg. With our economy still feeling the effects of Black Monday some business owners are starting to lay off workers and disregard what few rights the weak trade unions have managed to scrape together. It is suggested that the government force through a new labour code to secure the support of the industrial workers. This could help the reform movement thoroughly.
+
+action = {
+ai_chance = 65
+name = "Sign the code, we must mollify the workers movement!"
+command = { type = dissent value = -4 }
+command = { type = money value = -20 }
+command = { type = peacetime_ic_mod value = 2 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 9 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+}
+
+action = {
+ai_chance = 35
+name = "We mustn't interfere with the business magnates!"
+command = { type = dissent value = 2 }
+command = { type = money value = 30 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -3 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+}
+
+
+#
+event = {
+id = 15024
+country = OTT
+style = 2
+picture = "OTT_Railway2"
+decision_picture = "decision_baghdad_railway"
+
+decision = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+event = 15020 # Expanding the Baghdad-Railway 
+}
+
+decision_trigger = {
+supplies = 3000
+money = 300
+control = { province = 409 data = OTT } #Istanbul
+event = 15020 # Expanding the Baghdad-Railway 
+}
+
+trigger = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+event = 15015 # The Officer Corps
+event = 15014 # Divisions Within the Karargah 
+}
+
+date = { day = 0 month = june year = 1937 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Strengthening the Rail-Net in Anatolia"
+desc = "EVT_15024_DESC" #The Ottoman state was never particularly modernized when it came to the construction of railroad networks. Camel caravans are frequently seen ferrying goods across the Anatolian highlands in lieu of weak infrastructure. With the Mesopotamian vilayets now strengthened by the final completion of the Baghdad Railway, it is now suggested by the reformist movement that we finance the enlargement of the railnet in Anatolia - the heartland of the Ottoman Empire.
+
+
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 35
+name = "Scrape together the funds and spend our way out of this crisis!"
+command = { type = dissent value = 1 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = supplies value = -3000 }
+command = { type = money value = -300 }
+command = { type = construct which = infrastructure where = 1075 value = 10 } #Ankara
+command = { type = construct which = infrastructure where = 1072 value = 5 } #Kirikkale
+command = { type = construct which = infrastructure where = 1059 value = 5 } #Sivas
+command = { type = construct which = infrastructure where = 1064 value = 5 } #Elazig
+command = { type = construct which = infrastructure where = 1063 value = 5 } #Erzurum
+command = { type = construct which = infrastructure where = 1055 value = 5 } #Adana
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+trigger = { local_flag = OTT_ECO_FREE_ECONOMY }
+ai_chance = 65
+name = "Save these funds for other projects."
+command = { type = dissent value = -2 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 65
+name = "Scrape together the funds and spend our way out of this crisis!"
+command = { type = dissent value = 1 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = supplies value = -3000 }
+command = { type = money value = -300 }
+command = { type = construct which = infrastructure where = 1075 value = 10 } #Ankara
+command = { type = construct which = infrastructure where = 1072 value = 5 } #Kirikkale
+command = { type = construct which = infrastructure where = 1059 value = 5 } #Sivas
+command = { type = construct which = infrastructure where = 1064 value = 5 } #Elazig
+command = { type = construct which = infrastructure where = 1063 value = 5 } #Erzurum
+command = { type = construct which = infrastructure where = 1055 value = 5 } #Adana
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+}
+
+action = {
+trigger = { local_flag = OTT_ECO_PLANNED_ECONOMY }
+ai_chance = 35
+name = "Save these funds for other projects."
+command = { type = dissent value = -2 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+}
+
+#The Ottoman Public Debt Administration
+event = {
+id = 15025
+country = OTT
+style = 2
+picture = "OTT_Lira"
+
+name = "The Ottoman Public Debt Administration"
+desc = "EVT_15025_DESC" #Founded in 1881 the Ottoman Public Debt Administration (OPDA) was an European-controlled organization that monitored and collected debt owed by the Ottoman State to European creditors in the private and public sectors. Most of the debt had been owed to French and British government as well as private institutions and had as a consequence been unilaterally been defaulted by the Ottoman government when revolution swept away the regimes in London and Paris. However, the OPDA is still in existence and is now controlled by German and Austrian administrators, mainly concerned with regaining the capital loaned to Istanbul during the Weltkrieg. 
+
+date = { day = 10 month = january year = 1936 }
+
+action = {
+name = "With friends such as these..."
+command = { type = dissent value = 1 }
+command = { type = trade which = OTT where = GER money = -1 when = 7200 value = 1 }	#Paying off the debt to the Germans
+}
+}
+
+event = {
+id = 15026
+country = OTT
+style = 2
+picture = "OTT_Gendarmerie"
+
+trigger = {
+event = 15023 #The Second Ottoman Labour Code
+NOT = {
+ispuppet = OTT
+}
+}
+
+name = "Reforming the Gendarmerie"
+desc = "EVT_15026_DESC" #The eastern reaches Anatolia have since the beginning of time been considered an unruly country where the grasp of the state is difficult to feel. To combat this the Sublime Porte has hitherto been forced to resort to arming various Kurdish tribal groupings in the eastern mountains to keep the peace. However, these tribes only maintain some small degree of order and the expenditures towards bribes and arms combined with the lax taxation of the region have proven a considerable constraint on our state finances. It has been suggested that we reform the rural gendarmerie and increase its funding and amount of officer cadets, in order for the state to obtain firmer control with the troublesome region.
+
+date = { day = 0 month = july year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 70
+name = "We shall have order in the countryside!"
+command = { type = dissent value = 1.5 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = steal_tech which = GER }
+command = { type = manpowerpool value = -20 }
+command = { type = resource which = supplies value = -1000 }
+command = { trigger = { NOT = { local_flag = OTT_KURDISH_UNREST } } type = local_setflag which = OTT_KURDISH_UNREST }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+}
+
+action = {
+ai_chance = 30
+name = "Continue to rely on the Kurdish warlords."
+command = { type = dissent value = -1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+}
+
+#Forming the Imperial Camel Corps
+event = {
+id = 15027
+random = no
+country = OTT
+style = 2
+picture = "OTT_Bedouins"
+decision_picture = "decision_hatsemitewar"
+
+decision = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 1016 data = OTT } #Damascus
+control = { province = 1022 data = OTT } #Amman
+control = { province = 1034 data = OTT } #Baghdad
+}
+
+decision_trigger = {
+event = 15026 #Reforming the Gendarmerie
+control = { province = 1016 data = OTT } #Damascus
+control = { province = 1022 data = OTT } #Amman
+control = { province = 1034 data = OTT } #Baghdad
+supplies = 2000
+money = 50
+manpower = 20
+}
+
+trigger = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 1016 data = OTT } #Damascus
+control = { province = 1022 data = OTT } #Amman
+control = { province = 1034 data = OTT } #Baghdad
+}
+
+name = "Forming the Royal Camel Corps"
+desc = "EVT_15027_DESC" #
+
+date = { day = 0 month = september year = 1937 }
+offset = 120
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+ai_chance = 65
+name = "A great way to enforce our rule over the Arabs!"
+command = { type = dissent value = 3 } #Arab tribes are pissed
+command = { type = manpowerpool value = -20 }
+command = { type = supplies value = -2000 }
+command = { type = money value = -50 }
+command = { type = add_corps which = "I. Hecinsuvar Kolordusu" value = land when = -1 where = 1022 } #at Amman
+command = { type = add_division which = "I. Hecinsuvar Firkasi" value = cavalry when = 6 }
+command = { type = add_division which = "II. Hecinsuvar Firkasi" value = cavalry when = 6 }
+command = { type = relation which = SAU value = -50 }
+command = { type = relation which = EGY value = -50 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 5 }
+}
+
+action = {
+ai_chance = 35
+name = "Continue to rely on bedouin tribes for local security!"
+command = { type = money value = -10 }
+command = { type = dissent value = -2.5 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+}
+}
+
+#Fighting Corruption
+event = {
+id = 15028
+country = OTT
+picture = "OTT_Constitution"
+style = 2
+
+trigger = { 
+event = 15026 #Reforming the Gendarmerie
+NOT = {
+ispuppet = OTT
+}
+}
+
+date = { day = 15 month = october year = 1937 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Combatting the State Within the State"
+desc = "EVT_15028_DESC" #The Committee of Union of Progress was dissolved with force shortly after the Weltkrieg and its members scattered into exile and political disgrace. However, the remnant members of the CUP eventually formed into the Progress and Renewal Party wherefrom they continued to exert some influence over the state thanks to the party’s powerful paramilitary forces and moderate support in the civil service. As the reform movement attempts to galvanize the Ottoman Empire, the grand vizier now hopes to finally rid himself of the threat posed by the Unionist remnant. However, this could prove exceptionally dangerous - since the CUP has shown time and time again that they covet the leadership of the state beyond everything and will go to any length to take it back. 
+
+action = {
+ai_chance = 65
+name = "Proscribe the Progress and Renewal Party and its supporters!"
+command = { type = dissent value = 4 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = local_setflag which = CUP_TERROR }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 3 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = 1 } #Add strength of the Serenity Party by 1
+command = { type = local_setflag which = SUPPORT_TURANIST when = 1 value = 1 } #Add strength of the Turanist Party by 1
+}
+
+action = {
+ai_chance = 35
+name = "This is far too dangerous a step!"
+command = { type = dissent value = 2 }
+command = { type = money value = -30 }
+command = { type = peacetime_ic_mod value = -5 } #Rampant corruption
+command = { type = local_setflag which = CUP_ALLOWED }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -3 }
+command = { type = local_setflag which = SUPPORT_LIBERALS when = 1 value = 1 } #Add strength of the Liberal Party by 1
+}
+}
+
+#The Oath Against Corruption
+event = {
+id = 15029
+country = OTT
+picture = "OTT_Parliament2"
+style = 2
+
+trigger = { 
+event = 15028 #Combatting the State Within the State
+NOT = {
+ispuppet = OTT
+}
+}
+
+date = { day = 0 month = december year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Reinstating the Oath Against Bribery"
+desc = "EVT_15029_DESC" #Originally instigated by sultan Abdulmejid I in 1849 during the first Tanzimat reforms, the Oath Against Bribery was solemn a vow taken by all officers at state to refuse and combat all attempts at bribing them. Abandoned after the failure of the Tanzimat experiment corruption has since become intolerable and outright rampant, especially in the most distant parts of the Empire. The government is now contemplating having another Abdulmejid institute the oath and thus link incorruptibility with loyalty towards the Sublime Porte. Paradoxically enough, such a move could very well weaken the position of the ruling Serenity of the Ottomans Party since its members in all levels of governance are most likely to benefit from the steady income provided by such underhand dealings. However, the oath will surely benefit the reformation of the Ottoman Empire...
+
+action = {
+ai_chance = 75
+name = "Incorruptibility equals loyalty to the state!"
+command = { type = dissent value = -2 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = 0 }
+command = { type = local_setflag which = SUPPORT_SERENITY when = 1 value = -1 } #Reduce strength of the Serenity Party by 1
+}
+
+action = {
+ai_chance = 25
+name = "What a downright silly idea."
+command = { type = dissent value = 1 }
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 }
+}
+}
+
+
+event = {
+id = 15030
+country = OTT
+picture = "OTT_KemalPashaFuneral"
+style = 2
+
+trigger = { 
+
+headofgovernment = 549002 #Mustafa Kemal HoG
+
+}
+
+date = { day = 15 month = march year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Passing of Mustafa Kemal Pasha"
+desc = "EVT_15030_DESC" #Undoubtedly the greatest Ottoman to have lived in the modern era, Mustafa Kemal Pasha paid dearly for his untiring work in restoring the splendour of the Sublime Porte. Having been ill for a prolonged time, the grand vizier finally succumbed to the strain of governance and passed away last night at his official residence in Istanbul. With the nation in mourning, the Sultan has convened the Chamber of Deputies to assert what political party carries the most influence and will appoint a new grand vizier from that faction. However, a successful transfer of power solely depends on the strength of the reform movement...
+
+action = {
+name = "Will the state have the strength to soldier on?"
+command = { type = dissent value = 2 }
+command = { type = headofgovernment which = 549122 } #Interrim HoG is Hüseyin Selâhattin Pasha from the Serenity of the Ottomans Party
+#command = { trigger = { incabinet = 549007 } type = chiefofstaff which = 549078 } #If Kemal is chief of staff he's replaced by Ömer Fahreddin Pasha
+command = { trigger = { incabinet = 549007 } type = chiefofstaff which = 549076 } #If Kemal is chief of staff he's replaced by Selahattin Adil Pasha
+command = { trigger = { incabinet = 549030 } type = armamentminister which = 549124 } #If Kemal is minister of armament he's replaced by Hüseyin Avni Pasha
+command = { type = sleepminister which = 549002 } #Mustafa Kemal HoG
+command = { type = sleepminister which = 549007 } #Mustafa Kemal CoS
+command = { type = sleepminister which = 549030 } #Mustafa Kemal MoA
+command = { type = sleepteam which = 15741 }
+command = { type = sleepleader which = 549124 }
+command = { type = event which = 15400 where = OTT when = 2 } #The Chamber of Deputies Convenes in Ottoman Political Parties.txt
+}
+}
+
+#Different Cabinets, triggered by event 15400
+
+event = {
+id = 15031
+country = OTT
+style = 2
+picture = "OTT_Constitution"
+
+name = "The Serenity of the Ottomans Controls the Government"
+desc = "The incumbent governing party has maintained its power in the Chamber of Deputies and as such the sultan has appointed Kemal Pasha's successor, Hüseyin Selâhattin Pasha the new grand vizier of the Ottoman Empirhe. However, whether or not the new government is acclaimed or opposed depends on its authority as reformers..."
+
+action = {
+name = "We shall guard the legacy of Kemal Pasha!"
+command = { type = dissent value = -1 }
+command = { type = headofstate which = 549001 } #Abdulmejid II
+command = { type = headofgovernment which = 549122 } #Hüseyin Selâhattin Pasha
+command = { type = foreignminister which =  549017 } #Boris Johnson's granddad!
+command = { type = ministerofsecurity which = 549046 } #Necmettin Sadik Sadak
+command = { type = armamentminister which = 549124 } #Hüseyin Avni Pasha
+command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = SERENITY_WIN }
+}
+}
+
+event = {
+id = 15032
+country = OTT
+style = 2
+picture = "OTT_Constitution"
+
+name = "The Liberal Entente Controls the Government"
+desc = "The Freedom and Accord Party (Liberal Entente) has managed to gather enough influence in the Chamber of Deputies to recieve the sultan's support in forming a new government. Under the leadership of Prince Mehmed Sabâhaddin the liberals hope to continue the reformation of the Empire. However, whether or not the new government is acclaimed or opposed depends on its authority as reformers..."
+
+action = {
+name = "Onwards to Ottoman accord and freedom!"
+command = { type = dissent value = -1 }
+command = { type = headofstate which = 549001 } #Abdulmejid II
+command = { type = headofgovernment which = 549113 } #Sultanzade Mehmed Sabâhaddin
+command = { type = foreignminister which =  549114 } #Lütfi Fikri Bey
+command = { type = armamentminister which = 549115 } #Refi' Cevad Ulunay
+command = { type = ministerofsecurity which = 549116 } #Feridun Fikri Düsünsel
+command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = LIBERAL_WIN }
+}
+}
+
+event = {
+id = 15033
+country = OTT
+style = 2
+picture = "OTT_Constitution"
+
+name = "The Turanist Party Controls the Government"
+desc = "The Turanist Party has managed to gather enough influence in the Chamber of Deputies to recieve the sultan's support in forming a new government. Liberals and minorities alike quiver at the prospect of the Empire's new pan-Turkist government. However, whether or not the new government is acclaimed or opposed depends on its authority as reformers..."
+
+action = {
+name = "Oh, Turan - a new dawn approaches!"
+command = { type = dissent value = -1 }
+command = { type = headofstate which = 549001 } #Abdulmejid II
+command = { type = headofgovernment which = 549111 } #Nihal Atsiz
+command = { type = foreignminister which =  549125 } #Mehmet Emin Yurdakul
+command = { type = armamentminister which = 549022 } #Sadri Maksudi Arsal
+command = { type = ministerofsecurity which = 549054 } #Mustafa Abdülhalik Renda
+command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = TURANIST_WIN }
+}
+}
+
+event = {
+id = 15034
+country = OTT
+style = 2
+picture = "OTT_Constitution"
+
+name = "No Majority is Found"
+desc = "Over the course of the last two years no party has managed to secure a majority in the Empire's parliament. The Sultan will have to step in and appoint whatever party he prefers."
+
+
+action = {
+ai_chance = 50
+name = "The Sultan appoints Selahattin Pasha of the SOP!"
+command = { type = dissent value = 2.5 }
+command = { type = headofstate which = 549001 } #Abdulmejid II
+command = { type = headofgovernment which = 549122 } #Hüseyin Selâhattin Pasha
+command = { type = foreignminister which =  549017 } #Boris Johnson's granddad!
+command = { type = ministerofsecurity which = 549046 } #Necmettin Sadik Sadak
+command = { type = armamentminister which = 549124 } #Hüseyin Avni Pasha
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 } #Political bickering
+command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = SERENITY_WIN }
+}
+
+action = {
+ai_chance = 30
+name = "The Sultan prefers Prince Sabahaddin's Liberal Entente!"
+command = { type = dissent value = 5 }
+command = { type = headofstate which = 549001 } #Abdulmejid II
+command = { type = headofgovernment which = 549113 } #Sultanzade Mehmed Sabâhaddin
+command = { type = foreignminister which =  549114 } #Lütfi Fikri Bey
+command = { type = armamentminister which = 549115 } #Refi' Cevad Ulunay
+command = { type = ministerofsecurity which = 549116 } #Feridun Fikri Düsünsel
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -5 } #Political bickering
+command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = LIBERAL_WIN }
+}
+
+action = {
+ai_chance = 20
+name = "The Sultan asks the Turanists to form a government!"
+command = { type = dissent value = 10 }
+command = { type = headofstate which = 549001 } #Abdulmejid II
+command = { type = headofgovernment which = 549111 } #Nihal Atsiz
+command = { type = foreignminister which =  549125 } #Mehmet Emin Yurdakul
+command = { type = armamentminister which = 549022 } #Sadri Maksudi Arsal
+command = { type = ministerofsecurity which = 549054 } #Mustafa Abdülhalik Renda
+command = { type = setflag which = OTTOMAN_REFORM_OTT when = 1 value = -10 } #Political bickering AND Turanists!
+command = { type = event which = 15035 where = OTT when = 2 } #The Transfer of Power
+command = { type = setflag which = TURANIST_WIN }
+}
+}
+
+event = {
+id = 15035
+country = OTT
+style = 2
+picture = "OTT_Parliament"
+
+name = "The Transfer of Power"
+desc = "As the new government began to assert itself it not only faced opposition from its political adversaries, but also in the provinces there are those who wish to see the government and the Empire at large - fail. "
+
+        action = {
+		trigger = {
+			flag = { which = OTTOMAN_REFORM_OTT when = 1 value = 150 }
+		}
+        name = "The new government is widely accepted!"
+        command = { type = dissent value = -5 }
+		command = { type = event which = 15036 where = OTT when = 2 } #The Reform Movement Triumphs
+        }
+
+        action = {
+		trigger = {
+			flag = { which = OTTOMAN_REFORM_OTT when = -2 value = 150 }
+		}
+        name = "The new government is widely denounced by the opposition!"
+        command = { type = dissent value = 20 }
+		command = { type = event which = 15037 where = OTT when = 2 } #The Reform Movement Fails		
+        }				
+}
+
+
+event = {
+id = 15036
+country = OTT
+style = 2
+picture = "OTT_Constitution"
+
+name = "The Reform Movement Triumphs"
+desc = "Thanks to the visionary political maneuvering of the reform movement, the Ottoman state has consolidated enough for the transfer of power in the wake of Kemal Pasha's death to succeed without interference. Consequently, the government is now firmly in control of the apparatus of state and is thus well poised for continuing the reformation of the Sublime Porte."
+
+action = {
+name = "Peace and harmony shall soon return!"
+command = { type = dissent value = -1 }
+command = { type = local_clrflag which = SUPPORT_LIBERALS }
+command = { trigger = { headofgovernment = 549113 } type = setflag which = LIBERAL_WIN }
+command = { type = local_clrflag which = SUPPORT_SERENITY }
+command = { trigger = { headofgovernment = 549122 } type = setflag which = SERENITY_WIN }
+command = { type = local_clrflag which = SUPPORT_TURANIST }
+command = { trigger = { headofgovernment = 549111 } type = setflag which = TURANIST_WIN }
+command = { type = sleepevent which = 15037 }
+}
+}
+
+event = {
+id = 15037
+country = OTT
+style = 2
+picture = "OTT_Constitution"
+
+name = "The Reform Movement Fails"
+desc = "It is clear that we are not going to have the power needed to force through all the reforms that we had hoped. We will have to compromise with the other parties to keep them from calling new elections and ousting us. We can only pray for Allah to bring us some success..."
+
+action = {
+name = "Wiil peace and harmony ever return?"
+command = { type = dissent value = 15 }
+command = { type = setflag which = OTTOMAN_FAILURE }
+command = { type = sleepevent which = 15036 }
+}
+}
+
+#The Second Tanzimat Reforms
+event = {
+id = 15038
+country = OTT
+picture = "OTT_Parliament2"
+style = 2
+
+trigger = { 
+event = 15036 #The Reform Movement Triumphs
+NOT = {
+ispuppet = OTT
+}
+}
+
+date = { day = 14 month = april year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Second Tanzimat Era"
+desc = "EVT_15038_DESC" #Originally instigated by sultan Abdulmejid I in 1849 during the first Tanzimat reforms, the Oath Against Bribery was solemn a vow taken by all officers at state to refuse and combat all attempts at bribing them. Abandoned after the failure of the Tanzimat experiment corruption has since become intolerable and outright rampant, especially in the most distant parts of the Empire. The government is now contemplating having another Abdulmejid institute the oath and thus link incorruptibility with loyalty towards the Sublime Porte. Paradoxically enough, such a move could very well weaken the position of the ruling Serenity of the Ottomans Party since its members in all levels of governance are most likely to benefit from the steady income provided by such underhand dealings. However, the oath will surely benefit the reformation of the Ottoman Empire...
+
+action = {
+name = "This time we shall succeed completely!"
+command = { type = dissent value = 2 }
+}
+}
+
+#Redrawing the Law of the Vilayets
+event = {
+id = 15039
+country = OTT
+picture = "OTT_Levant"
+style = 2
+
+trigger = { 
+event = 15038 #The Second Tanzimat Era
+NOT = {
+ispuppet = OTT
+local_flag = OTT_MARTIAL_LAW
+}
+}
+
+date = { day = 0 month = may year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Redrawing the Law of the Vilayets"
+desc = "EVT_15039_DESC" #Introduced in March 1913 under the auspices of the Young Turk government, the Law of the Vilayets had organized the Ottoman state into a Napoleonic administrative structure of centrally managed departments with very little room for provincial autonomy. The law had thus quashed Arab hopes for further decentralization and contributed significantly to the rising enmity between the empire’s Turkish and Arab subjects. Now, however, it has been proposed by the Freedom and Accord Party that a new provincial structure be created more accommodating to the diverse nature of the Ottoman state. The legislature would include making Arabic the official language of the Empire’s Arab provinces and secure different levels of autonomy for the various vilayets and sanjaqs. 
+
+action = {
+ai_chance = 100
+name = "We're all standing in the shade of the Sublime Porte!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = peacetime_ic_mod value = 2 } #Positive effects of further integration
+command = { type = sleepevent which = 15018 } #OTT Unrest in the Arab Vilayets
+command = { type = local_clrflag which = OTT_KURDISH_UNREST }
+command = { type = addcore which = 1044 }
+command = { type = addcore which = 1046 }
+command = { type = addcore which = 1048 } #Arabian Desert
+command = { type = addcore which = 1008 }
+command = { type = addcore which = 1009 }
+command = { type = addcore which = 1010 }
+command = { type = addcore which = 1011 }
+command = { type = addcore which = 1013 }
+command = { type = addcore which = 1014 }
+command = { type = addcore which = 1015 }
+command = { type = addcore which = 1016 }
+command = { type = addcore which = 1017 }
+command = { type = addcore which = 1018 }
+command = { type = addcore which = 1019 }
+command = { type = addcore which = 1020 }
+command = { type = addcore which = 1021 }
+command = { type = addcore which = 1022 }
+command = { type = addcore which = 1023 }
+command = { type = addcore which = 1024 }
+command = { type = addcore which = 1025 }
+command = { type = addcore which = 1026 }
+command = { type = addcore which = 1172 }  #Greater Syria
+command = { type = addcore which = 1027 }
+command = { type = addcore which = 1028 }
+command = { type = addcore which = 1029 }
+command = { type = addcore which = 1030 }
+command = { type = addcore which = 1031 }
+command = { type = addcore which = 1032 }
+command = { type = addcore which = 1033 }
+command = { type = addcore which = 1034 }
+command = { type = addcore which = 1035 }
+command = { type = addcore which = 1036 }
+command = { type = addcore which = 1037 }
+command = { type = addcore which = 1041 } #Mesopotamia
+command = { type = wakeleader which = 549180 } #LEB
+command = { type = wakeleader which = 549181 }
+command = { type = wakeleader which = 549182 }
+command = { type = wakeleader which = 549183 }
+command = { type = wakeleader which = 549184 }
+command = { type = wakeleader which = 549185 }
+command = { type = wakeleader which = 549186 }
+command = { type = wakeleader which = 549187 } #SYR
+command = { type = wakeleader which = 549188 }
+command = { type = wakeleader which = 549189 }
+command = { type = wakeleader which = 549190 }
+command = { type = wakeleader which = 549191 }
+command = { type = wakeleader which = 549192 }
+command = { type = wakeleader which = 549193 }
+command = { type = wakeleader which = 549194 }
+command = { type = wakeleader which = 549195 }
+command = { type = wakeleader which = 549196 } #IRQ
+command = { type = wakeleader which = 549197 }
+command = { type = wakeleader which = 549198 }
+command = { type = wakeleader which = 549199 }
+command = { type = wakeleader which = 549200 }
+command = { type = wakeleader which = 549201 }
+command = { type = wakeleader which = 549202 }
+command = { type = wakeleader which = 549203 }
+command = { type = wakeleader which = 549204 }
+command = { type = wakeleader which = 549205 }
+command = { type = wakeleader which = 549206 }
+command = { type = wakeleader which = 549207 }
+}
+
+action = {
+ai_chance = 0
+name = "We can't afford to make any more concessions to the Arabs..."
+command = { type = dissent value = 1 }
+}
+}
+
+#Ending Martial Law
+event = {
+id = 15040
+country = OTT
+picture = "OTT_Levant"
+style = 2
+
+trigger = { 
+event = 15038 #The Second Tanzimat Era
+local_flag = OTT_MARTIAL_LAW
+NOT = {
+ispuppet = OTT
+}
+}
+
+date = { day = 0 month = april year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Ending Martial Law in the Arab Vilayets"
+desc = "With the initial stabilization of the Empire, the Arab provinces of the Empire has settled down in acceptance of the incumbent Government. As a consequence, the enforcement of martial law is no longer needed." 
+
+action = {
+name = "The Empire shall soon strike back!"
+command = { type = dissent value = 5 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = addcore which = 1044 }
+command = { type = addcore which = 1046 }
+command = { type = addcore which = 1048 } #Arabian Desert
+command = { type = addcore which = 1008 }
+command = { type = addcore which = 1009 }
+command = { type = addcore which = 1010 }
+command = { type = addcore which = 1011 }
+command = { type = addcore which = 1013 }
+command = { type = addcore which = 1014 }
+command = { type = addcore which = 1015 }
+command = { type = addcore which = 1016 }
+command = { type = addcore which = 1017 }
+command = { type = addcore which = 1018 }
+command = { type = addcore which = 1019 }
+command = { type = addcore which = 1020 }
+command = { type = addcore which = 1021 }
+command = { type = addcore which = 1022 }
+command = { type = addcore which = 1023 }
+command = { type = addcore which = 1024 }
+command = { type = addcore which = 1025 }
+command = { type = addcore which = 1026 }
+command = { type = addcore which = 1172 }  #Greater Syria
+command = { type = addcore which = 1027 }
+command = { type = addcore which = 1028 }
+command = { type = addcore which = 1029 }
+command = { type = addcore which = 1030 }
+command = { type = addcore which = 1031 }
+command = { type = addcore which = 1032 }
+command = { type = addcore which = 1033 }
+command = { type = addcore which = 1034 }
+command = { type = addcore which = 1035 }
+command = { type = addcore which = 1036 }
+command = { type = addcore which = 1037 }
+command = { type = addcore which = 1041 } #Mesopotamia
+command = { type = local_clrflag which = OTT_MARTIAL_LAW }
+command = { type = wakeleader which = 549180 } #LEB
+command = { type = wakeleader which = 549181 }
+command = { type = wakeleader which = 549182 }
+command = { type = wakeleader which = 549183 }
+command = { type = wakeleader which = 549184 }
+command = { type = wakeleader which = 549185 }
+command = { type = wakeleader which = 549186 }
+command = { type = wakeleader which = 549187 } #SYR
+command = { type = wakeleader which = 549188 }
+command = { type = wakeleader which = 549189 }
+command = { type = wakeleader which = 549190 }
+command = { type = wakeleader which = 549191 }
+command = { type = wakeleader which = 549192 }
+command = { type = wakeleader which = 549193 }
+command = { type = wakeleader which = 549194 }
+command = { type = wakeleader which = 549195 }
+command = { type = wakeleader which = 549196 } #IRQ
+command = { type = wakeleader which = 549197 }
+command = { type = wakeleader which = 549198 }
+command = { type = wakeleader which = 549199 }
+command = { type = wakeleader which = 549200 }
+command = { type = wakeleader which = 549201 }
+command = { type = wakeleader which = 549202 }
+command = { type = wakeleader which = 549203 }
+command = { type = wakeleader which = 549204 }
+command = { type = wakeleader which = 549205 }
+command = { type = wakeleader which = 549206 }
+command = { type = wakeleader which = 549207 }
+}
+}
+
+event = {
+id = 15041
+country = OTT
+style = 2
+picture = "OTT_Mayday"
+decision_picture = "decisionagreforma"
+
+decision = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+event = 15038 #The Second Tanzimat Era
+}
+
+decision_trigger = {
+supplies = 2500
+money = 100
+}
+
+trigger = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+event = 15038 #The Second Tanzimat Era
+}
+
+date = { day = 10 month = june year = 1938 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Initializing Land Reform"
+desc = "EVT_15041_DESC" #The Ottoman Empire had always relied heavily on its agrarian economy, but its feudal nature became a point of contention as the Empire began to industrialize and the need for quality produce became urgent. Although certain government ordained decrees (regarding e.g. the tobacco industry) have reformed certain aspects of the agrarian industry, a lot of resentment still lingers in the peasant communities towards the autocratic nature of the so-called Agalik-system where farmers cultivate the soil on the behalf of the wealthy landed aristocrats knowns as Aghas. It has been suggested by the cabinet that the state initiate a series of reforms of the agrarian sector which would include land reform and investments in the new peasant small holders. This could solidify the Ottoman economy, but would also greatly upset the landed aristocracy. 
+
+action = {
+ai_chance = 70
+name = "The crops of the Sublime Porte shall amaze the globe!"
+command = { type = dissent value = 3.5 } #Upsetting the local elites
+command = { type = domestic which = free_market value = -1 }
+command = { type = supplies value = -2500 }
+command = { type = money value = -100 }
+command = { type = construct which = infrastructure where = -1 value = 10 } #Random province
+command = { type = construct which = infrastructure where = -1 value = 5 } #Random province
+command = { type = construct which = infrastructure where = -1 value = 5 } #Random province
+command = { type = construct which = infrastructure where = -1 value = 5 } #Random province
+command = { type = construct which = infrastructure where = -1 value = 5 } #Random province
+}
+
+action = {
+ai_chance = 30
+name = "We mustn't upset the Aghas!"
+command = { type = dissent value = 5 } #The status quo is not preferable
+command = { type = domestic which = free_market value = 1 }
+}
+}
+
+event = {
+id = 15042
+country = OTT
+style = 2
+picture = "OTT_Army"
+decision_picture = "decisionOttomanArmy"
+
+decision = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+event = 15038 #The Second Tanzimat Era
+}
+
+decision_trigger = {
+supplies = 3500
+money = 250
+event = 15014 # Divisions Within the Karargah 
+event = 15015 # The Officer Corps
+}
+
+trigger = {
+NOT = {
+ispuppet = OTT
+}
+control = { province = 409 data = OTT } #Istanbul
+event = 15038 #The Second Tanzimat Era
+}
+
+date = { day = 10 month = july year = 1938 }
+offset = 200
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Rearming the Ottoman Army"
+desc = "EVT_15042_DESC" #Although steps have been taken in recent years to rectify the glaring doctrinal discrepancies within the Ottoman army structure the equipment with which the Porte’s troops are supposed to fight with are sadly of a very archaic quality. Thus the high command has proposed that we invest considerable resources in rearming our troops with modern equipment and munitions. Such an investment would also prove beneficial to the wider economic reconstruction which makes the idea very popular throughout the apparatus of state. However, our immediate neighbours certainly won’t like the rearmament of the mighty Ottoman Army...
+
+action = {
+ai_chance = 80
+name = "Ey Gaziler! Onwards to victory!" #Let's go veterans!
+command = { type = dissent value = -3 } #Good for the economy, good for the army and good for the state!
+command = { type = domestic which = professional_army value = 2 }
+command = { type = domestic which = defense_lobby value = 1 }
+command = { type = money value = -250 }
+command = { type = supplies value = -3500 }
+command = { type = build_cost which = cavalry when = on_upgrade where = relative value = -20 }
+command = { type = build_cost which = infantry when = on_upgrade where = relative value = -20 }
+command = { type = build_cost which = artillery when = on_upgrade where = relative value = -20 }
+command = { type = relation which = SAU value = -50 }
+command = { type = relation which = EGY value = -50 }
+command = { type = relation which = PER value = -50 }
+command = { type = relation which = GEO value = -25 }
+command = { type = relation which = ARM value = -25 }
+command = { type = relation which = AZB value = -25 }
+command = { type = event which = 15046 where = OTT when = 7 } #Raising Arab Armies?
+}
+
+action = {
+ai_chance = 20
+name = "This would only bring us closer to the abyss of war!"
+command = { type = dissent value = 5 } #Nobody is happy about it!
+command = { type = domestic which = free_market value = 1 }
+command = { type = relation which = SAU value = 50 }
+command = { type = relation which = EGY value = 50 }
+command = { type = relation which = PER value = 50 }
+command = { type = relation which = GEO value = 25 }
+command = { type = relation which = ARM value = 25 }
+command = { type = relation which = AZB value = 25 }
+}
+}
+
+event = {
+id = 15046
+country = OTT
+picture = "OTT_Army"
+style = 2
+
+
+name = "Raising Arab Regiments"
+desc = "With the Imperial army being rearmed some of the more liberal members of the general staff are proposing that we raise separate army divisions of Arab and Druze citizens. This would serve to boost the Porte's military capacities, but could potentially lead to a resurgence of separatist tendencies within the Arab vilayets."
+
+action = {
+ai_chance = 90
+name = "Fall in line, habibi!"
+command = { type = dissent value = 3 }
+command = { type = add_corps which = "I. Suriye Kolordusu" value = land when = -1 where = 1016 } #at Damascus
+command = { type = add_division which = "I. Suriye Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_division which = "II. Suriye Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_division which = "III. Suriye Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_division which = "IV. Suriye Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_corps which = "I. Filistin Kolordusu" value = land when = -1 where = 1172 } #at Jerusalem
+command = { type = add_division which = "I. Filistin Suvari Tümeni" value = cavalry when = 6 }
+command = { type = add_division which = "I. Filistin Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_division which = "II. Filistin Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_corps which = "I. Mezopotamya Kolordusu" value = land when = -1 where = 1034 } #at Baghdad
+command = { type = add_division which = "I. Mezopotamya Suvari Tümeni" value = cavalry when = 6 }
+command = { type = add_division which = "I. Mezopotamya Suvari Tümeni" value = cavalry when = 6 }
+command = { type = add_corps which = "II. Mezopotamya Kolordusu" value = land when = -1 where = 1034 } #at Baghdad
+command = { type = add_division which = "I. Mezopotamya Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_division which = "II. Mezopotamya Piyade Tümeni" value = infantry when = 6 }
+command = { type = add_division which = "III. Mezopotamya Piyade Tümeni" value = infantry when = 6 }
+command = { type = manpowerpool value = -200 }
+command = { type = supplies value = -5000 }
+}
+
+action = {
+ai_chance = 10
+name = "Better stay home, habibi!"
+command = { type = dissent value = -2 }
+
+}
+}
+
+###
+#Succesful reform leads on to forcing a showdown with the Arab Axis in Ottoman Foreign Policy.txt
+###
+
+###
+#FAILURE OF REFORMS IN 1938, Ottoman Coup (Currently dummied out)
+###
+#
+#event = {
+#id = 15043
+#country = OTT
+#picture = "OTT_Coup"
+#style = 2
+#
+#trigger = { 
+#event = 15028 #Combatting the State Within the State
+#event = 15037 #The Reform Movement Fails
+#NOT = {
+#ispuppet = OTT
+#}
+#}
+#
+#date = { day = 0 month = april year = 1938 }
+#offset = 60
+#deathdate = { day = 29 month = december year = 1963 }
+#
+#name = "The Second Raid on the Sublime Porte"
+#desc = "EVT_15043_DESC" #Feeling the heat of the Ottoman government’s ban on its paramilitary forces and the dismissal of civil servants loyal to the movement, the Committee of Union and Progress remnant in the Progress and Renewal Party utilized the quietness of the small hours to launch a coup to dislodge the staggering and weakening reform movement. Aided by its militia and army units loyal to their cause, CUP dignitaries has seized control over the war ministry, downtown Istanbul and is currently storming the Topkapi palace where the Sultan remains unaware of the coup d’etat... 
+#
+#action = {
+#name = "Traitors, traitors everywhere!"
+#command = { type = dissent value = 10 }
+#command = { type = event which = 15044 where = OTT when = 0 } #OTT The Battle of the Dolmabahce Palace
+#command = { type = sleepevent which = 15030 } #OTT The CUP coup
+#}
+#}
+#
+#The Battle of the Dolmabahce Palace, triggered by either 15029 or 15030 
+#event = {
+#id = 15044
+#country = OTT
+#style = 2
+#picture = "OTT_Abdulmejid"
+#
+#name = "The Battle of the Dolmabahce Palace"
+#desc = "EVT_15044_DESC" #As the rebel troops made their way to the Sultan’s quarters at the Topkapi palace, a gun fight broke out between the CUP-putchists and Abdülmecid’s life-guards. Desperately trying to force the Sultan to surrender and accept the demands of the coup-leaders, the rebels became restless and resumed firing at the entrenched and outnumbered loyalists. In the ensuing fire-fight the Sultan-Caliph was mortally wounded and only lived for a very short amount of time. As the rebel troops searched the royal quarters they came upon crown prince Ahmed Nihad whom they at gun-point declared to be Sultan Ahmed IV. However, the grand vizier has not been caught and there’s rumours of unrest at the Ertugrul Cavalry barracks… 
+#
+        #If the State hasn't succeeded at reform chances are for the coup to succeed
+#		action = {
+#		name = "The Putsch succeeds and the CUP installs Ahmed IV on the throne!"
+#		ai_chance = 75
+#      command = { type = dissent value = 5 }
+#      command = { type = headofstate which = 549107 } #Ahmed IV FA
+#      command = { type = headofgovernment which = 549120 } #Mehmet Cavit Bey
+#      command = { type = foreignminister which =  549127 } #Filibeli Hilmi Bey
+#      command = { type = armamentminister which = 549128 } #Kara Kemal Bey
+#      command = { type = ministerofsecurity which = 549129 } #Abdulkadir Pasa
+#        command = { type = ministerofintelligence which = 549130 } #Yenibahceli Nail Bey		
+#		command = { type = chiefofstaff which = 549072 } #Kaci Vehip Pasha
+#       command = { type = sleepminister which = 549001 } #Abdülmecid II   
+#        command = { type = sleepminister which = 549002 } #Mustafa Kemal HoG  		
+#        command = { type = sleepminister which = 549007 } #Mustafa Kemal CoS  	
+#        command = { type = sleepminister which = 549030 } #Mustafa Kemal MoA  
+#        command = { type = sleepevent which = 15045 } #OTT The Charge of the Ertugrul Cavalry Regiment		
+#		}
+#
+#		action = {
+#		name = "Prince Osman Fuad rushes to the Ertugrul Cavalry barracks!"
+#		ai_chance = 25
+#        command = { type = dissent value = -5 }
+#        command = { type = headofstate which = 549107 } #Ahmed IV FA
+#       command = { type = headofgovernment which = 549120 } #Mehmet Cavit Bey
+#		command = { trigger = { incabinet = 549007 } type = chiefofstaff which = 549072 } #If Kemal is chief of staff he's replaced by Kaci Vehip Pasha
+#		command = { trigger = { incabinet = 549030 } type = armamentminister which = 549004 } #If Kemal is minister of armament he's replaced by Mehmet Cavit Bey		
+#        command = { type = sleepminister which = 549001 } #Abdülmecid II
+#        command = { type = event which = 15045 where = OTT when = 1 } #The Charge of the Ertugrul Cavalry Regiment
+#       }		
+#		
+#}
+#
+#event = {
+#id = 15045
+#country = OTT
+#style = 2
+#picture = "OTT_Cavalry"
+#
+#name = "The Charge of the Ertugrul Cavalry Regiment"
+#desc = "EVT_15045_DESC" #As smoke bellowed from the burning Topkapi palace and news spread around Istanbul of the attempted coup, prince Osman Fuad decided to act. \n \n Making his way to  the Ertugrul Cavalry barracks, the prince quickly won the unit for the loyalists and led them on a charge against the putchist pickets at the war ministry. The trained royal guards made short work of the paramilitary forces of the Committee of Union and Progress and his further loyalists troops continued to arrive under the command of the grand vizier order was soon restored to the Ottoman capital. However, swift decisions are needed, if the state is too survive this criminal act and the vile murder of the Sultan-Caliph.
+#
+#action = {
+#name = "The cavalry's here! Osman Fuad restores order to the capital!"
+#command = { type = dissent value = -5 }
+#command = { type = headofstate which = 549109 } #Osman IV FA
+#command = { type = headofgovernment which = 549002 } #Mustafa Kemal Pasha
+#command = { type = chiefofstaff which = 549078 } #Ömer Fahreddin Pasha
+#command = { type = armamentminister which = 549124 } #Hüseyin Avni Pasha
+#command = { type = sleepminister which = 549107 } #Ahmed IV FA
+#command = { type = sleepminister which = 549108 } #Ahmed IV ML
+#command = { type = sleepminister which = 549004 } #Mehmet Cavit Bey MoA
+#command = { type = sleepminister which = 549120 } #Mehmet Cavit Bey HoG
+#}
+#}
+#
+#15046 taken
+
+event = {
+id = 15047
+country = OTT
+picture = "OTT_Army"
+style = 2
+
+
+name = "EVT_15047_NAME" #Retooling the militray factories
+desc = "EVT_15047_DESC" #With the Cairo Pact seemingly prepared to destroy all we hold dear, we must make some effort to prepare for war. One way we can prepare is to direct the factories that produce our weapons and other equipment for us to build our stuff differently. The factory owners won't like it, but the fate of the Empire as a whole may be at stake...
+
+date = { day = 1 month = january year = 1938 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 40
+name = "EVT_15047_ACTIONA" #Focus on reducing how long it takes to produce equipment
+command = { type = dissent value = 3 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = build_time which = land when = on_upgrade where = relative value = -10 }
+command = { type = build_cost which = land when = on_upgrade where = relative value = -5 }
+}
+
+action = {
+ai_chance = 20
+name = "EVT_15047_ACTIONB" #Direct them to improve the quality of equipment!
+command = { type = dissent value = 3 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = toughness which = land value = -2 }
+command = { type = max_organization which = land value = 3 }
+}
+
+action = {
+ai_chance = 40
+name = "EVT_15047_ACTIONC" #Controlling the factories will not be a popular move at all
+command = { type = dissent value = -2 }
+command = { type = peacetime_ic_mod value = 3 }
+command = { type = domestic which = free_market value = 1 }
+}
+}
+
+event = {
+id = 15048
+country = OTT
+picture = "OTT_Army"
+style = 2
+
+
+name = "EVT_15048_NAME" #New Desert Warfare Training
+desc = "EVT_15048_DESC" #As a further preparation for the coming war we are reviewing our training methods for fighting in the desert. There are many lessons that we learned from The Weltkrieg, and much we could teach our soldiers, but time is short. Where should we focus their training?
+
+date = { day = 1 month = june year = 1938 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 50
+name = "EVT_15048_ACTIONA" #Focus on desert manouvere
+command = { type = desert_move which = land value = 4 }  
+command = { type = morale which = land value = 2 }  
+}
+
+action = {
+ai_chance = 50
+name = "EVT_15048_ACTIONB" #Focus on desert combat
+command = { type = desert_attack which = land value = 2 }  
+command = { type = desert_defense which = land value = 2 }  
+command = { type = morale which = land value = 2 }  
+}
+}
+
+event = {
+id = 15049
+country = OTT
+picture = "OTT_Army"
+style = 2
+
+
+name = "EVT_15049_NAME" #The War Finally Breaks Out
+desc = "EVT_15049_DESC" #The Cairo Pact has chosen now to strike us! We are mustering every last reserve we can and quickly preparing as many resources as we can! To Arms!
+
+trigger = {
+AND = {
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+name = "EVT_15049_ACTIONA" #We must hold the line, no matter the cost!
+command = { type = dissent value = -15 }
+command = { type = morale which = land value = 1 }
+command = { type = manpowerpool value = 40 }  
+command = { type = supplies value = 600 }  
+}
+}
+
+event = {
+id = 15050
+country = OTT
+picture = "OTT_Army"
+style = 2
+
+
+name = "EVT_15050_NAME" #Persia attacks us!
+desc = "EVT_15050_DESC" #Persia has chosen to strike for The Tigris and Euphrates rivers. We are calling upon the reserves that we can, but we will need to bring more men to hold the line!
+
+trigger = {
+OR = {
+event = 59070
+event = 31
+}
+AND = {
+OR = {
+war = { country = OTT country = PER }
+war = { country = OTT country = U53 }
+}
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+name = "EVT_15050_ACTIONA" #We must hold the line, no matter the cost!
+command = { type = dissent value = -3 }
+command = { type = manpowerpool value = 20 }  
+command = { type = supplies value = 300 }  
+command = { trigger = { control = { province = 1062 data = OTT } } type = add_corps value = land when = -1 where = 1062 }
+command = { trigger = { control = { province = 1062 data = OTT } } type = add_division value = d_01 when = 8 }
+command = { trigger = { control = { province = 1063 data = OTT } } type = add_corps when = -1 where = 1063 }
+command = { trigger = { control = { province = 1063 data = OTT } } type = add_division value = d_01 when = 8 }
+command = { trigger = { control = { province = 1027 data = OTT } } type = add_corps value = land when = -1 where = 1027 }
+command = { trigger = { control = { province = 1027 data = OTT } } type = add_division value = d_01 when = 8 }
+command = { trigger = { control = { province = 1036 data = OTT } } type = add_corps when = -1 where = 1036 }
+command = { trigger = { control = { province = 1036 data = OTT } } type = add_division value = d_01 when = 8 }
+command = { trigger = { control = { province = 1035 data = OTT } } type = add_corps value = land when = -1 where = 1035 }
+command = { trigger = { control = { province = 1035 data = OTT } } type = add_division value = d_01 when = 8 }
+command = { trigger = { control = { province = 1037 data = OTT } } type = add_corps value = land when = -1 where = 1037 }
+command = { trigger = { control = { province = 1037 data = OTT } } type = add_division value = d_01 when = 8 }
+command = { trigger = { control = { province = 1032 data = OTT } } type = add_corps value = land when = -1 where = 1032 }
+command = { trigger = { control = { province = 1032 data = OTT } } type = add_division value = d_01 when = 8 }
+}
+}
+
+event = {
+id = 15051
+country = OTT
+style = 2
+picture = "OTT_KemalPasha"
+
+trigger = {
+random = 5
+atwar = no
+}
+
+name = "EVT_15051_NAME"
+desc = "EVT_15051_DESC"
+
+date = { day = 0 month = september year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "EVT_15051_ACTIONA"
+command = { type = dissent value = -3 }
+}
+}
+
+event = {
+id = 15052
+country = OTT
+style = 2
+picture = "Peace_conference"
+
+trigger = {
+random = 5
+control = { province = 1172 data = OTT }
+atwar = no
+}
+
+name = "EVT_15052_NAME"
+desc = "EVT_15052_DESC"
+
+date = { day = 0 month = september year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "EVT_15052_ACTIONA"
+command = { type = dissent value = -2 }
+}
+}

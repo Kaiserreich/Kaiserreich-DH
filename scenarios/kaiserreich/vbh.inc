@@ -21,6 +21,13 @@ ai = "kaiserreich\VBH.ai"
 #### cabinet
 headofstate = { type = 9 id = 27001 }
 headofgovernment = { type = 9 id = 27002 }
+armamentminister = { type = 9 id = 27103 } #Edwin Magnus
+ministerofsecurity = { type = 9 id = 27098  } #Otto von Kursell
+ministerofintelligence = { type = 9 id = 27123 } #Alfred von Randow
+chiefofstaff = { type = 9 id = 27007 } #Rüdiger von der Goltz
+chiefofarmy = { type = 9 id = 27008 } #Johan Laidoner
+chiefofnavy = { type = 9 id = 27009 } #Alexander von Salza
+chiefofair = { type = 9 id = 27111 } #Bernhard J.F. Gebauer
 #### Resource Reserves
 
 SpyInfo  = {  country = "LAT" NumberOfSpies = 3  } 

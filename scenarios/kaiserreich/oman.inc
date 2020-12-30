@@ -4,7 +4,6 @@
 country = {
     tag = OMN  
 
-    puppet = OTT
 
 	policy = {
         date = { year = 0 month = january day = 0 }
@@ -35,6 +34,7 @@ country = {
 	capital = 	1052
 	manpower = 5
 
+	free = { ic = 1 oil = 0 energy = 2 metal = 1 rare_materials = 1 money = 0 manpower = 0 } #new Mar2020
 
     ownedprovinces =      {
 

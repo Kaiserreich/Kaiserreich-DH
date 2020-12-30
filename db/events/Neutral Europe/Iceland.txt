@@ -1385,6 +1385,7 @@ command = { type = embargo which = BRA where = ICL value = 0 }
 command = { type = embargo which = ARG where = ICL value = 0 }
 command = { type = embargo which = AST where = ICL value = 0 }
 command = { type = embargo which = RUS where = ICL value = 0 }
+command = { trigger = { government = communist } type = flag_ext where = ICL which = "_syn" }
 }
 }
 
@@ -1668,7 +1669,7 @@ picture = "Iceland"
 action_a = {
 name = "Great"
 command = { type = access which = FRA }
-command = { type = relation which = ICL value = 100 }
+command = { type = relation which = FRA value = 100 }
 }
 }
 
@@ -1686,6 +1687,68 @@ picture = "Iceland"
 action_a = {
 name = "Great"
 command = { type = access which = ENG }
-command = { type = relation which = ICL value = 100 }
+command = { type = relation which = ENG value = 100 }
+}
+}
+
+event = {
+id = 380054
+country = ICL
+random = no
+
+date = { day = 5 month = january year = 1945 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Repealing the Anti-Basque Law"
+desc = "A law from 1615 has recently come up in a scholarly debate, and it is causing some concern. The law was created in October by Ari Magnússon of Ögur, the then commissioner of the West Fjords district to justify the killing of 32 shipwrecked Basque whalers after a conflict with the locals. Some have called for this law to be repealed in order to improve relations with Madrid, and to remove a law that has no place in the modern age."
+style = 2
+picture = "Iceland"
+
+action_a = {
+ai_chance = 90
+name = "Repeal the law, it is a silly thing."
+command = { type = relation which = SPA value = 30 } #Kingdom of Spain
+command = { type = relation which = SPR value = 30 } #CNT-FAI
+command = { type = relation which = EUS value = 30 } #Carlist Spain
+command = { type = relation which = U37 value = 30 } #Euskadi
+}
+
+action_b = {
+ai_chance = 10
+name = "The Basques are still a threat to Iceland. Keep the law intact."
+command = { type = relation which = SPA value = -100 } #Kingdom of Spain
+command = { type = relation which = SPR value = -100 } #CNT-FAI
+command = { type = relation which = EUS value = -100 } #Carlist Spain
+command = { type = relation which = U37 value = -100 } #Euskadi
+}
+}
+
+event = {
+id = 380055
+random = no
+country = ICL
+style = 2
+
+trigger = {
+OR = {
+ideology = left_wing_radical
+ideology = leninist
+ideology = stalinist
+}
+}
+
+name = "Adopting a new flag" 
+desc = "With a new people's government in place,we should change our national banner to better reflect our alignment" 
+picture = "reichstag"
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Sounds like a good idea"
+command = { type = flag_ext where = ICL which = "_syn" }
+command = { type = dissent value = -1 }
 }
 }

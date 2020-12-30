@@ -17,16 +17,16 @@ ai = "kaiserreich\Persia.ai"
     }
 #### cabinet
 
-    headofstate = { type = 9 id = 53161  }
-    headofgovernment = { type = 9 id = 53165 }
- 	foreignminister = { type = 9 id = 53166 }
- 	armamentminister = { type = 9 id = 53167 }
+    headofstate = { type = 9 id = 53238  }
+    headofgovernment = { type = 9 id = 53038 }
+ 	foreignminister = { type = 9 id = 53057 }
+ 	armamentminister = { type = 9 id = 53207 }
  	ministerofsecurity = { type = 9 id = 53168 }
  	ministerofintelligence = { type = 9 id = 53169 }
- 	chiefofstaff = { type = 9 id = 53170 }
+ 	chiefofstaff = { type = 9 id = 53225 } 
  	chiefofarmy = { type = 9 id = 53186 }
- 	chiefofnavy = { type = 9 id = 53171 }        
- 	chiefofair = { type = 9 id = 53172 }
+ 	chiefofnavy = { type = 9 id = 53103 } 
+ 	chiefofair = { type = 9 id = 53010 } 
 
 #### Resource Reserves
 
@@ -35,19 +35,19 @@ ai = "kaiserreich\Persia.ai"
 
         SpyInfo  = {  country = "PER" NumberOfSpies = 3  } 
 
-	capital = 1085
+	capital = 1088
 
 	manpower = 96
 
 
     ownedprovinces =      {
-		 1095 1083 1084 1087 1081 1080 1085 1082 1089 1091 1090 1088 1086 1092 1094 1093
+		 1095 1087 1089 1091 1090 1088 1086 1092 1094 1093
 	 }
     controlledprovinces = {
-		 1095 1083 1084 1087 1081 1080 1085 1082 1089 1091 1090 1088 1086 1092 1094 1093
+		 1095 1087 1089 1091 1090 1088 1086 1092 1094 1093
 	  }
     nationalprovinces =   {
-		 1095 1083 1084 1087 1081 1080 1085 1082 1089 1091 1090 1088 1086 1092 1094 1093
+		 1095 1087 1089 1091 1090 1088 1086 1092 1094 1093 1085 1080 1081 1082 1084 1083
 	}
 
 diplomacy = {
@@ -104,12 +104,23 @@ relation = { tag = IND value = 24 }
 	}
 
 	deactivate = { 6010 6210 6570 6560 6390 } 
-	
+
+	dormant_ministers = { 53221 }
+
+	dormant_leaders = { #AZB 440080-440088
+						440080 440081 440082 440083 440084 440085 440086 440087 440088
+						#ARM 440090-440100
+						440090 440091 440092 440093 440094 440095 440096 440097 440098 440099 4400100 }
+
+	dormant_teams = { 6103 6123 6126 #AZB
+					  6130 #ARM
+					  6119 6136 6137 6138 }
+
 #########  OOB (...)
 
 
 	landunit = {
-	location = 1084
+	location = 1087
 	name = "Lasgar Parsi"
         id = { type = 16600 id = 1 }
 		division = {
@@ -130,7 +141,7 @@ relation = { tag = IND value = 24 }
 		}
 
 	landunit = {
-	location = 1091
+	location = 1088
 	name = "Lasgar Parsi"
         id = { type = 16600 id = 4 }
 		division = {
@@ -152,7 +163,7 @@ relation = { tag = IND value = 24 }
 		
 	    landunit = {
 		name = "Tehran Gendarmerie Corps"
-		location = 1085
+		location = 1086
 		id = { type = 16600 id = 7 }
 		division = {
 			id = { type = 16600 id = 8 }
@@ -165,7 +176,7 @@ relation = { tag = IND value = 24 }
 
         landunit = {
 		name = "Persian Cossack Brigade"
-		location = 1085
+		location = 1086
 		id = { type = 16600 id = 9 }
 		division = {
 			id = { type = 16600 id = 10 }
@@ -177,8 +188,8 @@ relation = { tag = IND value = 24 }
 	}
 
 	landunit = {
-	location = 1093
-	name = "Balochi Division"
+	location = 1086
+	name = "Shiraz Division"
         id = { type = 16600 id = 11 }
 		division = {
         	id = { type = 16600 id = 12 }
@@ -197,7 +208,7 @@ relation = { tag = IND value = 24 }
 		}
 		
 	landunit = {
-	location = 1083
+	location = 1092
 	name = "Azerbaijani Division"
         id = { type = 16600 id = 14 }
 		division = {

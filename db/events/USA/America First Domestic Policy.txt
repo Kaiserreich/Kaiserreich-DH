@@ -11,7 +11,7 @@
 #81143	TEX	The CSA Escapes to France
 #81144	TEX	Long and the PSA Leadership
 #81145	TEX	US Government in Exile
-#81146	TEX	The Beacon of the New America
+#81146	TEX	The Beacon of the New America  - Part 1
 #81147	TEX	Share Our Wealth
 #81148	TEX	The Poll Tax
 #81149	TEX	Long's Tariff
@@ -33,11 +33,67 @@
 #81165	TEX	Lindbergh's faction wins
 #81166	TEX	Long's and Smith's faction wins
 #81167	TEX	Father Coughlin's faction wins
-#81168	TEX	Kuhn's faction wins
+#81168	TEX	Pelley's faction wins
 #81169	TEX	No consensun reached
 #81170	TEX A New Flag?
 #81171  TEX Officer Integration 
+#81172	TEX	AUS Oil Company
+#81173	TEX	The Beacon of the New America - Part 2
+#81174	TEX	Black ACW Veterans Protest Poll Tax
+#81175	TEX	Ku Klux Klan March in Washington
+#81176	TEX	Fate of the AUS Youth Foundation
+#81177	TEX	Ingalls Shipbuilding - trigged by Foreign Policy event 91723
+#81178	TEX	Newport News Shipbuilding - trigged by Foreign Policy event 91723
 
+### IMPORTANT FLAGS
+#	END_ACW 	- THE ACW IS OVER
+#			Basic flag used to prevent some events from firing
+#			if ACW is still going on.
+#	AUS_YOUTH 	- Pelley'S YOUTH PROGRAM APPROVED (NEW FLAG)
+#			Put in vanilla KR event that fires usually during ACW.
+#			I intend for this to be used to increase Pelley's
+#			power base if he launches his coup or is elected
+#			just incase player wants to go dictatorship route
+#	AUS_WEALTH 	- SHARE THE WEALTH
+#			Signifies that Long has passed his Share The Wealth program.
+#			This is one of several issues extremists and business forces
+#			oppose vehemently.
+#	LONG_TARIFF 	- LONGS TARRIF
+#			Only currently used by one event, activated if tarrif
+#			is passed. Might be room for expansion later 
+#	NO_IND_SEC_ACT 	- INDUSTRIAL SECURITY ACT NOT PASSED
+#			This flag is from the vanilla KR, but never used.
+#			I intend to change that. Not passing the ISA should have
+#			long term consequences, generally negative but perhaps
+#			positive if Long can rally the unions to his cause somehow
+#	LONG_EXILE 	- AMERICAN LEFTISTS EXILED 
+#			Flag activated if player decides to exile instead of hang
+#			the CSA leadership that has not escaped the country. Unsure
+#			if the flag is currently used elsewhere. Not used here.
+#			Could possibly be useful later, however. Either for leftist
+#			insurrections or some sort of agreement between Long and left.
+#	AUS_DEC_IND 	- INDUSTRIAL DECENTRALIZATION ACT
+#			Flag from very interesting event. Not used at all in vanilla KR.
+#			The IDA dismantles a few factories in the rust belt if passed.
+#			Vanilla KR offered no motivation for the player to do this beyond
+#			flavor. I intend to use this flag to prevent trouble later on if
+#			the IDA is passed, particularly in a war versus syndies if the
+#			unions havent been defeated or reconciled with. Compare with ISA
+#	Election Flags	- VARIOUS ELECTION FLAGS
+#			Used to calculate winner of elections due to three tier system.
+#			Flags removed following end of election. I intend to re-use some
+#			of these same flags for future elections but generally they are
+#			not used outside of them.
+#	AUS_YOUTH 	- Pelley'S YOUTH PROGRAM APPROVED (NEW FLAG)
+#			Vanilla KR event that fires usually during ACW.
+#			I intend for this to be used to increase Pelley's
+#			power base if he launches his coup or is elected
+#			just incase player wants to go dictatorship route
+#	AUS_BLACK_UNITS - BLACK UNITS APPROVED (NEW FLAG)
+#			New flag activated by vanilla event in ACW event file
+#			If the player or AI chooses to allow blacks to fight for the AUS
+#			this flag is activated and may affect internal politics.
+#			Black veterans may push more strongly for civil rights reform.
 
 event = {
 id = 90824
@@ -65,6 +121,7 @@ ai_chance =  25
 name = "Charles Lindbergh - A popular man of the people"
 command = { type = set_domestic which = democratic value = 6 }
 command = { type = set_domestic which = political_left value = 3 }
+command = { type = set_domestic	which = freedom value = 7 } #new																
 command = { type = set_domestic which = defense_lobby value = 4 }
 command = { type = set_domestic which = interventionism value = 3 }
 command = { type = headofstate which = 571002 } #Huey Long
@@ -94,7 +151,7 @@ command = { type = headofstate which = 571002 } #Huey Long
 command = { type = headofgovernment which = 571009 } #Gerald K. Smith
 command = { type = foreignminister which = 571015 } #Father Charles Coughlin - Coughlin faction
 command = { type = armamentminister which = 571021 } #Henry Ford - Lindbergh faction
-command = { type = ministerofsecurity which = 571026 } #Prescott Sheldon Bush - Kuhn faction
+command = { type = ministerofsecurity which = 571026 } #Prescott Sheldon Bush - Pelley faction
 command = { type = ministerofintelligence which = 571039 } #Gerald K. Smith - Long/Smith faction
 command = { type = chiefofstaff which = 571048} #Larry K. Arnold
 command = { type = chiefofarmy which = 571050 } #George S. Patton
@@ -116,8 +173,8 @@ command = { type = headofstate which = 571001 } #Huey Long
 command = { type = headofgovernment which = 571010 } #Father Charles Coughlin
 command = { type = foreignminister which = 571015 } #Father Charles Coughlin -  Coughlin faction
 command = { type = armamentminister which = 571023 } #Lawrence Dennis - Long/Smith faction
-command = { type = ministerofsecurity which = 571028 } #Fritz Kuhn - Kuhn faction
-command = { type = ministerofintelligence which = 571043 } #George Sylvester Viereck - Kuhn faction
+command = { type = ministerofsecurity which = 571028 } #William Dudley Pelley - Pelley faction
+command = { type = ministerofintelligence which = 571043 } #George Sylvester Viereck - Pelley faction
 command = { type = chiefofstaff which = 571047}  #George S. Patton
 command = { type = chiefofarmy which = 571050 } #George S. Patton
 command = { type = chiefofnavy which = 571054 } #William Halsey
@@ -128,16 +185,17 @@ command = { type = ai which = "kaiserreich/TEX.ai" }
 }
 action_d = {
 ai_chance =  25
-name = "Fritz Kuhn will root out sedition and enemies of the Republic!"
+name = "William Dudley Pelley will root out sedition and enemies of the Republic!"
 command = { type = set_domestic which = democratic value = 2 }
 command = { type = set_domestic which = political_left value = 1 }
 command = { type = set_domestic	which = freedom value = 2 }
 command = { type = domestic	which = free_market value = -3 }
 command = { type = set_domestic which = defense_lobby value = 7 }
 command = { type = set_domestic which = interventionism value = 5 }
+command = { type = domestic which = professional_army value = 1 }																 
 command = { type = headofstate which = 571001 } #Huey Long
-command = { type = headofgovernment which = 571011  } #Fritz Kuhn
-command = { type = foreignminister which = 571019 } #H. L. Mencken - Kuhn facion
+command = { type = headofgovernment which = 571011  } #William Dudley Pelley
+command = { type = foreignminister which = 571019 } #H. L. Mencken - Pelley facion
 command = { type = armamentminister which = 571023 } #Lawrence Dennis - Long/Smith faction
 command = { type = ministerofsecurity which = 571035 }  #William Bell Riley - Coughlin faction
 command = { type = ministerofintelligence which = 571039 } #Gerald K. Smith - Long/Smith faction
@@ -162,6 +220,7 @@ control = { province = 1809 data = TEX }
 name = "Where Will We Govern From?"
 desc = "With the end of the Civil War, we should decide where our capital will be.  Will it be moved back to Washington?"
 style = 2
+picture = "us_election"					   
 date = { day = 1 month = january year = 1937 }
 offset = 55
 deathdate = { day = 29 month = december year = 1960 }
@@ -176,6 +235,7 @@ action_b = {
 name = "Washington has been cleansed of the Corruption."
 ai_chance = 50
 command = { type = capital which = 1809 }
+command = { type = addcore which = 1809 }										 
 command = { type = dissent value = -1 }
 }
 }
@@ -193,34 +253,52 @@ country = TEX
 trigger = {
 flag = END_ACW
 }
-name = "Rebirth of the Country"
+
+decision_trigger = {
+atwar = no
+}
+
+decision = {
+flag = END_ACW
+}
+
+name = "Rebuilding America"
 desc = "After the devestation of the American Civil War, Long and the America First Party were hoping to rebuild America stronger than before. The Syndicalist threat was still present around the world and a strong America was needed to meet that threat. Due to the war there was a significant labour shortage and tough decisions would be needed to get the country back on its feet."
 style = 2
-
+picture = "America First1"
+decision_picture = "decision_new_deal"
 date = { day = 1 month = january year = 1937 }
 offset = 55
 deathdate = { day = 29 month = december year = 1960 }
 
 action_a = {
 name = "Conscript the labour required"
-ai_chance = 75
-command = { type = dissent value = 10 }
-command = { type = manpowerpool value = -25 }
+ai_chance = 50
+command = { type = dissent value = 8 }
+command = { type = manpowerpool value = -125 }
 command = { type = domestic which = free_market value = -2 }
 command = { type = metalpool value  = -2000 }
 command = { type = energypool value = -6000 }
 command = { type = oilpool value = -1000 }
 command = { type = supplies value = -1500 }
-command = { type = building_prod_mod which = IC value = 10 }
+command = { type = building_prod_mod which = IC value = 5 }
 }
 action_b = {
 name = "The corporations can handle this"
-ai_chance = 25
+ai_chance = 50
+trigger = { OR = {
+ai = no
+headofgovernment = 571008 #Charles Lindbergh
+incabinet = 571021 #Henry Ford
+domestic = { type = free_market value = 7 }
+NOT = { domestic = { type = defense_lobby value = 7 } }
+} }												   
 command = { type = dissent value = 1 }
 command = { type = domestic which = free_market value = 2 }
-command = { type = money value = 150 }
-command = { type = research_mod value = 5 }
+command = { type = money value = -1000 }
+command = { type = research_mod value = 2 }
 command = { type = building_prod_mod which = IC value = 5 }
+command = { type = peacetime_ic_mod value = 5 } # 65 + 5 = 70																	 
 }
 }
 
@@ -233,7 +311,7 @@ country = TEX
 style = 2
 
 name = "The American Union State Youth"
-desc = "Fritz Kuhn has submitted a plan to start a Youth Foundation in the AUS and is looking for approval. The Foundation would show Adolescents the purpose of America First and to teach them discipline above all things and loyalty to the New State. We're in need of new recruits, and Fritz Kuhn's Youth Foundation may be part of the solution."
+desc = "William Dudley Pelley has submitted a plan to start a Youth Foundation in the AUS and is looking for approval. The Foundation would show Adolescents the purpose of America First and to teach them discipline above all things and loyalty to the New State. We're in need of new recruits, and Willam Dudley Pelley's Youth Foundation may be part of the solution."
 #picture = "TEX_Youth"
 
 date = { day = 1 month = january year = 1937 }
@@ -242,9 +320,10 @@ deathdate = { day = 29 month = december year = 1949 }
 
 action_a = {
 ai_chance =  75
-name = "Let Kuhn have his Daycare"
+name = "Let Pelley have his Daycare"
 command = { type = relative_manpower value = 5 }
 command = { type = manpowerpool value = 50 }
+command = { type = setflag which = AUS_YOUTH } #NEW FLAG											
 }
 action_b = {
 ai_chance =  25
@@ -277,7 +356,7 @@ deathdate = { day = 29 month = december year= 1963 }
 
 action_a = {
 name = "Sign the document."
-command = { type = dissent value = 1 }
+command = { type = dissent value = -1 }
 command = { type = trigger which = 81158 } #The Grand Council of the America First Union Party
 }
 }
@@ -301,20 +380,23 @@ deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 name = "Total war it is."
-ai_chance = 98
-command = { type = construct which = IC where = -4 value = 2 }
-command = { type = construct which = IC where = -4 value = 2 }
-command = { type = industrial_modifier which = total value = 10 }
-command = { type = domestic which = defense_lobby value = 1 }
+ai_chance = 90
+command = { type = construct which = IC where = 1946 value = 2 }
+command = { type = construct which = IC where = 1959 value = 1 } #was 2 for -4, changed 1 to Augusta
+command = { type = construct which = IC where = -4 value = 1 }
+command = { type = industrial_modifier which = total value = 4 }
+command = { type = domestic which = defense_lobby value = 2 }
 command = { type = domestic which = free_market value = -1 }
 command = { type = dissent value = 5 }
 }
 action_b = {
 name = "Butter before guns."
-ai_chance = 2
-command = { type = industrial_modifier which = supplies value = 10 }
+ai_chance = 10
+command = { type = industrial_modifier which = supplies value = 8 }
 command = { type = domestic which = free_market value = 1 }
 command = { type = domestic which = defense_lobby value = -1 }
+command = { type = manpowerpool value = 10 }
+command = { type = relative_manpower value = 1 } #new												 
 command = { type = dissent value = -1 }
 }
 }
@@ -373,6 +455,14 @@ deathdate = { day = 29 month = december year = 1954 }
 action_a = {
 name = "Hang them all"
 ai_chance = 55
+trigger = { OR = {
+ai = no
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571010 #Father Charles Coughlin
+NOT = { domestic = { type = freedom value = 5 } }
+year = 1941
+} }
+command = { type = domestic which = freedom value = -1 }													
 command = { type = dissent value = 10 }
 command = { type = industrial_modifier which = total value = 2 }
 command = { type = peacetime_ic_mod value = 10 }
@@ -381,8 +471,14 @@ command = { type = supplies which = 500 }
 action_b = {
 name = "Amnesty it is"
 ai_chance = 45
+ai_chance = 50 #45
+trigger = { OR = {
+ai = no
+headofgovernment = 571008 #Charles Lindbergh
+domestic = { type = freedom value = 5 }
+} }
+command = { type = domestic which = freedom value = 1 }											   
 command = { type = research_mod value = 2 }
-command = { type = industrial_modifier which = supplies value = 1 }
 command = { type = dissent value = 2 }
 }
 }
@@ -420,18 +516,37 @@ command = { type = trigger which = 909015 }
 }
 }
 
-### The Beacon of the New America
+### The Beacon of the New America (NOW PART 1 OF 2 with 81173)
 event = {
 id = 81146
 random = no
 country = TEX
 trigger = {
+atwar = no
 event = 81138
 control = { province = 1931 data = TEX } #New Orleans
 }
+
+decision_trigger = {
+money = 500
+supplies = 2500
+control = { province = 1931 data = TEX } #New Orleans
+}
+
+decision = {
+event = 81138
+control = { province = 1931 data = TEX } #New Orleans
+}
+
 name = "The Beacon of the New America"
-desc = "Long wanted to show the world that the old and corrupt America was gone. He chose to make his hometown, New Orleans, the beacon of the new America. The city would undergo a massive transformation, new streets and buildings would make it the most modern city in the Americas and a massive shipyard would make it the hub of trade in the south. The massive shipyard would also be the birthplace of the new US navy which would safeguard America's future. Critics however thought the plan would be too expensive."
+desc = "EVT_81146_TEXT"
+#Huey Long wanted to show the world that the old and corrupt America was gone. He chose to make his hometown, New Orleans, the beacon of the new America. 
+#The city would undergo a massive transformation, new streets, industry and buildings making it the most modern city in the Americas, with a massive shipyard and airport that would make it the hub of trade and commerce in the south. 
+#The new shipyards would also become the birthplace of the new US navy to safeguard America's future. 
+#But in a time of national recovery, it would also be very expensive, and some critics were wary of all the attention this one city would recieve after all the damage suffered nationwide.
 style = 2
+picture = "aus_new_orleans"
+decision_picture = "decision_new_orleans"						 
 
 date = { day = 1 month = january year = 1937 }
 offset = 20
@@ -440,19 +555,20 @@ deathdate = { day = 29 month = december year = 1954 }
 action_a = {
 name = "No expense will stop this"
 ai_chance = 99
-command = { type = dissent value = -5 }
-command = { type = construct which = IC where = 1931 value = 2 }
-command = { type = construct which = naval_base where = 1931 value = 5 }
-command = { type = construct which = air_base where = 1931 value = 5 }
-command = { type = money value = -250 }
-command = { type = supplies value = -1500 }
+command = { type = manpowerpool value = -5 }
+command = { type = free_money value = -5 }
+command = { type = free_supplies value = -10 }
+command = { type = money value = -500 }
+command = { type = supplies value = -2500 }
 command = { type = metalpool value = -2500 }
 command = { type = rarematerialspool value = -500 }
+command = { type = event which = 81173 where = TEX when = 1801 }
+command = { type = dissent value = 3 }								  
 }
 action_b = {
 name = "A pipe dream in the end"
-ai_chance = 1
-command = { type = dissent value = 1 }
+ai_chance = 5
+command = { }
 }
 }
 
@@ -461,13 +577,43 @@ event = {
 id = 81147
 random = no
 country = TEX
+
 trigger = {
-event = 81146
+atwar = no
+event = 81138
+OR = {
+headofstate = 571001
+headofstate = 571002
+}
+NOT = {
+dissent = 20
+}
+}
+
+decision_trigger = {
+atwar = no
+NOT = {
+dissent = 15
+}
+}
+
+decision = {
+atwar = no
+event = 81138
+OR = {
+headofstate = 571001
+headofstate = 571002
+}
+NOT = {
+dissent = 20
+}
 }
 
 name = "Share Our Wealth"
 desc = "Long's plan was to make every man a king. He would tax those who were holders of excessive wealth and use the money to provide public works projects and social services to all Americans. Extreme members of the party saw this as nothing more than a socialist betrayal and threatened trouble against Long if he proceeded."
 style = 2
+picture = "Huey"
+decision_picture = "decision_share_the_wealth"
 
 date = { day = 1 month = january year = 1937 }
 offset = 10
@@ -476,20 +622,37 @@ deathdate = { day = 29 month = december year = 1963 }
 action_a = {
 name = "Proceed with the plan."
 ai_chance = 75
-command = { type = domestic which = free_market value = -1 }
-command = { type = domestic which = freedom value = -1 }
-command = { type = domestic which = political_left value = -1 }
-command = { type = money value = 200 }
-command = { type = dissent value = 5 }
+trigger = { OR = {
+ai = no
+headofgovernment = 571009 #Gerald K. Smith
+incabinet = 571023 #Lawrence Dennis
+domestic = { type = political_left value = 3 } 
+domestic = { type = democratic value = 6 } 
+NOT = { domestic = { type = free_market value = 7 } }
+} }
+command = { type = domestic which = free_market value = -2 }
+command = { type = domestic which = political_left value = 1 }
+command = { type = peacetime_ic_mod value = -3 } #new
+command = { type = industrial_modifier which = total value = -3 } #new (economic disruption, taxes)
+command = { type = industrial_modifier which = money value = 6 } #new (use this instead of free_money?)
+command = { type = free_money value = 3 } #5, changed to 4 with ic_eff money command
+command = { type = money value = 1500 }
+command = { type = dissent value = 3 }
 command = { type = setflag which = AUS_WEALTH }
 }
 action_b = {
 name = "We need the extremists"
 ai_chance = 25
+trigger = { OR = {
+ai = no
+headofgovernment = 571011 #William Pelley
+NOT = { domestic = { type = democratic value = 3 } }
+NOT = { domestic = { type = free_market value = 7 } }
+} }
 command = { type = domestic which = free_market value = 1 }
-command = { type = domestic which = freedom value = 1 }
-command = { type = domestic which = political_left value = 1 }
-command = { type = dissent value = -1 }
+#command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = political_left value = -1 }
+command = { type = dissent value = 2 } #betrayal!
 }
 }
 
@@ -498,33 +661,54 @@ event = {
 id = 81148
 random = no
 country = TEX
+
 trigger = {
-flag = AUS_WEALTH
+event = 81140
+OR = {
+headofstate = 571001
+headofstate = 571002
+}
 }
 
 name = "The Poll Tax"
-desc = "Long wished to abolish the Poll Tax to reduce the racial tensions of the south. His proposal was met with immediate condemnation by the extremists within his party. Kuhn and others denounced Long as trying to destroy the sacred institutions of the South. Long retorted that racist and sacred were two different things and rallied the people against what he saw as an evil institution."
+desc = "Long wished to abolish the Poll Tax to reduce the racial tensions of the south. His proposal was met with immediate condemnation by the extremists within his party. Pelley and others denounced Long as trying to destroy the sacred institutions of the South. Long retorted that racist and sacred were two different things and rallied the people against what he saw as an evil institution."
 style = 2
+picture = "hueylong"
 
 date = { day = 21 month = january year = 1940 }
-offset = 21
+offset = 60
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 name = "Abolish the damn thing."
-ai_chance = 99
+ai_chance = 65
+trigger = { OR = {
+ai = no
+headofgovernment = 571004 #Charles Lindbergh
+headofgovernment = 571010 #Father Charles Coughlin
+domestic = { type = democratic value = 5 } 
+domestic = { type = freedom value = 7 } 
+} }
 command = { type = domestic which = democratic value = 1 }
 command = { type = domestic which = freedom value = 1 }
-command = { type = domestic which = political_left value = 1 }
+#command = { type = domestic which = political_left value = 1 } #be very wary about this since AUS straddles the center
 command = { type = money value = -50 }
-command = { type = dissent value = -5 }
+command = { type = dissent value = 3 } #extremists unhappy!
+command = { type = setflag which = AUS_NO_POLL_TAX }
 }
 action_b = {
 name = "No. We need to maintain the party."
-ai_chance = 1
+ai_chance = 35
+trigger = { OR = {
+ai = no
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571009 #Gerald K. Smith
+NOT = { domestic = { type = democratic value = 5 } }
+NOT = { domestic = { type = freedom value = 7 } }
+} }
 command = { type = domestic which = political_left value = -1 }
-command = { type = dissent value = 8 }
-command = { type = clrflag which = AUS_WEALTH }
+command = { type = money value = 15 }
+command = { type = dissent value = 1 } #betrayal!
 }
 }
 
@@ -533,13 +717,19 @@ event = {
 id = 81149
 random = no
 country = TEX
+
 trigger = {
-event = 81146
+event = 81138
+OR = {
+headofstate = 571001
+headofstate = 571002
+}
 }
 
 name = "Long's Tariff"
 desc = "To encourage the expansion of American industry, Long planned on implementing a hefty tariff on imported goods. He was warned that the tariff may be worse for the economy in the end."
 style = 2
+picture = "America First1"
 
 date = { day = 28 month = january year = 1939 }
 offset = 30
@@ -550,14 +740,17 @@ name = "Implement the tariff"
 ai_chance = 55
 command = { type = domestic which = free_market value = -1 }
 command = { type = building_prod_mod which = IC value = 5 }
-command = { type = dissent value = 5 }
+command = { type = peacetime_ic_mod value = 2 } #new
+command = { type = industrial_modifier which = supplies value = 2 } #new
+command = { type = dissent value = 2 } #5
+command = { type = money value = 100 }
 command = { type = setflag which = LONG_TARIFF }
 }
 action_b = {
 name = "We can do without this"
 ai_chance = 45
 command = { type = domestic which = free_market value = 1 }
-command = { type = dissent value = -1 }
+command = { type = dissent value = 3 } #-1 (betrayal!)
 }
 }
 
@@ -569,20 +762,25 @@ country = TEX
 trigger = {
 event = 81149
 flag = LONG_TARIFF
+random = 75
 }
 
 name = "American Union Recession"
 desc = "Long's tariff had initially helped build a greater reliance on American industry but it was unsustainable in the long run. The American Union State fell into recession and unemployment began to rise."
 style = 2
+picture = "Depression1"
 
 date = { day = 11 month = november year = 1939 }
-offset = 30
+offset = 51
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 name = "Damn."
-command = { type = industrial_modifier which = total value = -5 }
-command = { type = dissent value = 5 }
+#command = { type = industrial_modifier which = total value = -5 } #-5
+command = { type = peacetime_ic_mod value = -5 } #new
+#command = { type = industrial_modifier which = supplies value = -2 } #new
+command = { type = money value = -250 }
+command = { type = dissent value = 6 }
 }
 }
 
@@ -599,24 +797,37 @@ desc = "American socialism had been defeated and now Long was going to make them
 style = 2
 
 date = { day = 1 month = january year = 1937 }
-offset = 365
+offset = 113
 deathdate = { day = 29 month = december year = 1954 }
 
-action_a = {
+action = {
 name = "Hang them all!"
-ai_chance = 65
+ai_chance = 50
+trigger = { OR = {
+ai = no
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571010 #Father Charles Coughlin
+NOT = { domestic = { type = freedom value = 5 } }
+year = 1941
+} }
 command = { type = dissent value = 5 }
 command = { type = domestic which = freedom value = -1 }
 command = { type = domestic which = political_left value = -1 }
 command = { type = relation which = ENG value = -25 }
 command = { type = relation which = FRA value = -25 }
 }
-action_b = {
+action = {
 name = "Exile the bastards"
-ai_chance = 35
+ai_chance = 50
+trigger = { OR = {
+ai = no
+headofgovernment = 571008 #Charles Lindbergh
+domestic = { type = freedom value = 5 }
+NOT = { year = 1940 }
+} }
 command = { type = dissent value = 1 }
 command = { type = domestic which = freedom value = 1 }
-command = { type = domestic which = political_left value = 1 }
+#command = { type = domestic which = political_left value = 1 } #be very wary about this since AUS straddles the center
 command = { type = setflag which = LONG_EXILE }
 }
 }
@@ -635,25 +846,42 @@ domestic = { type = freedom value = 3 }
 name = "Political Opposition"
 desc = "Once the left wing enemies of the American Union State were purged many of the moderates came under suspicion. Many were unconcerned but some of the more extreme members of the government saw the moderates as being not loyal enough and a quiet opposition within the American Union State. The suggestion was made that anyone who had their loyalty in question should be arrested."
 style = 2
+picture = "America First2"
 
 date = { day = 1 month = january year = 1936 }
-offset = 55
+offset = 115
 deathdate = { day = 29 month = december year = 1954 }
 
 action_a = {
 name = "A harsh but necessary step"
-ai_chance = 45
+ai_chance = 50 #45
+trigger = { OR = {
+ai = no
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571010 #Father Charles Coughlin
+NOT = { domestic = { type = democratic value = 5 } }
+NOT = { domestic = { type = freedom value = 2 } }
+} }
 command = { type = dissent value = 2 }
 command = { type = money value = 250 }
+command = { type = domestic which = political_left value = -1 } #moved, was +1 in other choice
 command = { type = domestic which = freedom value = -2 }
+command = { type = setflag which = AUS_MODERATES_PURGED }
 }
 action_b = {
 name = "This is too extreme"
-ai_chance = 55
+ai_chance = 50 #55
+trigger = { OR = {
+ai = no
+headofgovernment = 571008 #Charles Lindbergh
+domestic = { type = freedom value = 2 }
+domestic = { type = democratic value = 5 }
+} }
 command = { type = dissent value = 5 }
-command = { type = domestic which = freedom value = 1 }
-command = { type = domestic which = political_left value = 1 }
+													   
+															  
 command = { type = domestic which = democratic value = 1 }
+command = { type = domestic which = freedom value = 1 }
 }
 }
 
@@ -664,48 +892,68 @@ random = no
 country = TEX
 trigger = {
 flag = AUS_WEALTH
-event = 81148
+flag = AUS_NO_POLL_TAX
+random = 50
 OR = {
 headofstate = 571001
 headofstate = 571002
 }
+OR = {
+flag = AUS_MODERATES_PURGED #NEW 
+flag = AUS_YOUTH #NEW 
+}
 }
 
 name = "Extremists Move to Depose Long"
-desc = "The rift between Long and Kuhn had been growing since before the Civil War and when Long abolished the Poll Tax, Kuhn moved against him. While in New Orleans, Long's compound was surrounded. He had few men but many of them were willing to die for Long and the American Union State."
+desc = "The rift between Long and Pelley had been growing since before the Civil War and when Long abolished the Poll Tax, Pelley moved against him. While in New Orleans, Long's compound was surrounded. He had few men but many of them were willing to die for Long and the American Union State."
 style = 2
 
-date = { day = 10 month = february year = 1940 }
-offset = 25
-deathdate = { day = 29 month = december year = 1963 }
+date = { day = 20 month = july year = 1940 }
+offset = 23
+deathdate = { day = 29 month = december year = 1950 }
 
 action_a = {
-name = "Kuhn fails and is arrested"
-ai_chance = 90
-command = { type = dissent value = -1 }
-command = { type = sleepminister which = 571005 } #Fritz Kuhn
-command = { type = sleepminister which = 571011 } #Fritz Kuhn
-command = { type = sleepminister which = 571028 } #Fritz Kuhn
-command = { type = sleepminister which = 571035 } #Fritz Kuhn
-command = { type = sleepminister which = 571042 } #Fritz Kuhn
-command = { type = sleepminister which = 571037 } #KKK da rimuvoere cmq
-command = { type = domestic which = political_left value = 1 }
-command = { type = clrflag which = AUS_WEALTH }
+name = "Pelley fails and is arrested"
+ai_chance = 70 #90
+command = { type = dissent value = 1 }
+command = { type = sleepminister which = 571005 } #William Pelley
+command = { type = sleepminister which = 571011 } #William Pelley
+command = { type = sleepminister which = 571028 } #William Pelley
+command = { type = sleepminister which = 571019 } #H.L. Mencken
+command = { type = sleepminister which = 571032 } #Gerald B. Winrod
+command = { type = sleepminister which = 571035 } #William Bell Riley
+command = { type = sleepminister which = 571040 } #Edwin Emerson
+command = { type = sleepminister which = 571043 } #George Sylvester Viereck
+command = { type = sleepminister which = 571046 } #Simon Emil Koedel
+command = { type = sleepminister which = 571095 } #Laura H. Ingalls
+command = { type = sleepleader which = 571059 } # Kunze
+command = { type = domestic which = political_left value = 1 } #be very wary about this since AUS straddles the center
 }
 
 action_b = {
-name = "Kuhn succeeds and Long is dead!"
-ai_chance = 10
-command = { type = dissent value = 10 }
+name = "Pelley succeeds and Long is dead!"
+ai_chance = 30 #10
+command = { type = dissent value = 15 }
 command = { type = sleepminister which = 571001 } #Huey Long
 command = { type = sleepminister which = 571002 } #Huey Long
-command = { type = headofstate which = 571005 } #Fritz Kuhn
-command = { type = headofgovernment which = 571011 } #Fritz Kuhn
-command = { type = foreignminister which = 571015 } #Charles Coughlin
-command = { type = ministerofsecurity which = 571031 } #Gerald K. Smith
+command = { type = headofstate which = 571005 } #William Pelley
+command = { type = headofgovernment which = 571011 } #William Pelley
+command = { type = foreignminister which = 571019 } #H.L. Mencken
+command = { type = ministerofsecurity which = 571032 } #Gerald B. Winrod
+command = { type = ministerofintelligence which = 571043 } #George Sylvester Viereck
 command = { type = set_domestic which = democratic value = 1 }
 command = { type = set_domestic which = political_left value = 1 }
+#Getting rid of share the wealth
+command = { type = peacetime_ic_mod value = 3 } #values match, undoes wealth event
+command = { type = industrial_modifier which = total value = 3 } #values match, undoes wealth event
+command = { type = industrial_modifier which = money value = -6 } #values match, undoes wealth event
+command = { type = free_money value = -3 } #values match, undoes wealth event
 command = { type = clrflag which = AUS_WEALTH }
+#other stuff
+command = { type = clrflag which = AUS_NO_POLL_TAX }
+command = { type = clrflag which = AUS_CIVIL_RIGHTS_1 }
+command = { type = flag_ext where = TEX which = "_pelley" }
+command = { type = name where = TEX which = "Commonwealth of America" }
 }
 }
 
@@ -721,6 +969,7 @@ event = 81138
 name = "The Industrial Security Act"
 desc = "The Industrial Security Act was Long's answer to the trade unions of the north. The act would make any disruption of essential industries by work stoppages a conspiracy to commit industrial sabotage and would be punishable by imprisonment. The wording on the act was intentionally vague to give the President a highly effective means with which to defeat the unions."
 style = 2
+picture = "Factory"
 
 date = { day = 4 month = march year = 1939 }
 offset = 120
@@ -728,16 +977,19 @@ deathdate = { day = 29 month = december year = 1954 }
 
 action_a = {
 name = "Pass the act"
-ai_chance = 99
+ai_chance = 75 #95
 command = { type = dissent value = 5 }
 command = { type = domestic which = political_left value = -1 }
+command = { type = industrial_modifier which = total value = 1 } #even newer
+command = { type = peacetime_ic_mod value = 2 } #new
 }
 action_b = {
 name = "This is too much"
-ai_chance = 1
+ai_chance = 25 #5
 command = { type = dissent value = -1 }
-command = { type = domestic which = political_left value = 1 }
-command = { type = setflag which = NO_IND_SEC_ACT }
+command = { type = domestic which = freedom value = 1 }
+#command = { type = domestic which = political_left value = 1 } #this was enough to cause a swing to socdem
+command = { type = setflag which = NO_IND_SEC_ACT } 
 }
 }
 
@@ -752,6 +1004,7 @@ event = 81154
 name = "Industrial Decentralization Act"
 desc = "Long had seen the rust belt as being corrupted by the trade unions and socialists. The amount of industry in the rust belt had given the syndicates a large advantage against the former US government and Long wanted to ensure that this did not happen again. A plan was put forward to move the industry from the rust belt into the mid-west and south to defeat the corruption of the Rust Belt and further castrate the trade unions."
 style = 2
+picture = "industry"
 
 date = { day = 10 month = september year = 1939 }
 offset = 90
@@ -759,7 +1012,7 @@ deathdate = { day = 29 month = december year = 1960 }
 
 action_a = {
 name = "Pass the act"
-ai_chance = 99
+ai_chance = 75 #90
 command = { type = domestic which = free_market value = -2 }
 command = { type = construct which = IC where = 1845 value = -2 }
 command = { type = construct which = IC where = 1832 value = -2 }
@@ -771,12 +1024,13 @@ command = { type = metalpool value = 750 }
 command = { type = oilpool value = 500 }
 command = { type = supplies value = 2000 }
 command = { type = rarematerialspool value = 500 }
-command = { type = setflag which = DEC_IND_AUS }
+												
 command = { type = dissent value = 5 }
+command = { type = setflag which = AUS_DEC_IND }
 }
 action_b = {
 name = "We should avoid this."
-ai_chance = 1
+ai_chance = 25 #10
 command = { type = dissent value = -1 }
 }
 }
@@ -793,6 +1047,7 @@ exists = TEX
 name = "Industrial Resources"
 desc = "The American Union State government has come into posession of resources that were left behind. They will help our government in the future."
 style = 2
+picture = "Captured_Supplies2"
 
 date = { day = 1 month = january year = 1936 }
 offset = 5
@@ -800,11 +1055,11 @@ deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 name = "Excellent"
-command = { type = supplies value = 5000 }
-command = { type = oilpool value = 4000 }
-command = { type = metalpool value = 2000 }
-command = { type = energypool value = 2300 }
-command = { type = rarematerialspool value = 1000 }
+command = { type = supplies value = 4000 } #4500 
+command = { type = oilpool value = 2800 } #3000
+command = { type = metalpool value = 1500 } #2000
+command = { type = energypool value = 1800 } #2300 
+command = { type = rarematerialspool value = 750 } #1000 
 }
 }
 
@@ -820,6 +1075,7 @@ event = 81156
 name = "Old Southern Money"
 desc = "The old gentlemen and corporate barons of the South have thrown their significant monetary resources behind the new state."
 style = 2
+picture = "money_devaluation"
 
 date = { day = 1 month = january year = 1936 }
 offset = 5
@@ -827,7 +1083,7 @@ deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 name = "Outstanding"
-command = { type = money value = 600 }
+command = { type = money value = 500 }
 }
 }
 
@@ -892,9 +1148,11 @@ style = 2
 
 trigger = {
 flag = END_ACW
+event = 81130 # Where Will We Govern From?
+event = 81160 # The Supreme Court
 NOT = {
 government = communist
-headofstate = 571005 #Kuhn is HOS (coup succeeded)
+headofstate = 571005 #Pelley is HOS (coup succeeded)
 }
 }
 
@@ -908,7 +1166,7 @@ picture = "America First1"
 
 action_a = {
 name = "We are a free country!"
-command = { type = dissent value = -2 }
+command = { type = dissent value = -1 }
 command = { type = trigger which = 81162 } #The Grand Council of the America First Union Party
 }
 }
@@ -921,7 +1179,7 @@ country = TEX
 style = 2
 
 name = "The Grand Council of the America First Union Party"
-desc = "The America First Union Party must choose its direction. Lindbergh wants a more open and democratic country, Long and Smith are concentrated on the economic development of the nation, Coughlin want to focus on the internal affairs of the country. Kuhn's militaristic rethoric is more interventionist."
+desc = "The America First Union Party must choose its direction. Lindbergh wants a more open and democratic country, Long and Smith are concentrated on the economic development of the nation, Coughlin want to focus on the internal affairs of the country. Pelley's militaristic rethoric is more interventionist."
 picture = "politics3"
 
 action_a = {
@@ -953,7 +1211,7 @@ command = { type = setflag which = AUS_COUGH_1 }
 
 action_d = {
 ai_chance = 10
-name = "Kuhn's faction will lead the party"
+name = "Pelley's faction will lead the party"
 trigger = {
 NOT= {
 event = 81153
@@ -973,7 +1231,7 @@ country = TEX
 style = 2
 
 name = "The New Congress - 1940 elections"
-desc = "The most important chamber of the new Congress is the House of Corporations. Which interest groups will gain the upper hand? Lindbergh wants to increase the infrastructure of the country, Long and Smith push for industrialization, Coughlin will let the country run itself while Kuhn wants support for his militaristic ambitions."
+desc = "The most important chamber of the new Congress is the House of Corporations. Which interest groups will gain the upper hand? Lindbergh wants to increase the infrastructure of the country, Long and Smith push for industrialization, Coughlin will let the country run itself while Pelley wants support for his militaristic ambitions."
 picture = "politics2"
 
 action_a = {
@@ -1012,7 +1270,7 @@ command = { type = setflag which = AUS_COUGH_2 }
 }
 action_d = {
 ai_chance = 20
-name = "Kuhn knows what's best for the country"
+name = "Pelley knows what's best for the country"
 trigger = {
 NOT= {
 event = 81153
@@ -1033,7 +1291,7 @@ country = TEX
 style = 2
 
 name = "The Supreme Court - 1940 elections"
-desc = "How will justice be administered? Kuhn wants to exterminate the traitors of the country, Coughlin wants to discriminate those who don't follow the true faith, Lindbergh wants a less oppressive system whereas Long and Smith are fine with the current one."
+desc = "How will justice be administered? Pelley wants to exterminate the traitors of the country, Coughlin wants to discriminate those who don't follow the true faith, Lindbergh wants a less oppressive system whereas Long and Smith are fine with the current one."
 picture = "politics1"
 
 action_a = {
@@ -1058,7 +1316,7 @@ command = { type = setflag which = AUS_COUGH_3 }
 }
 action_d = {
 ai_chance = 10
-name = "Kuhn's faction will bring justice!"
+name = "Pelley's faction will bring justice!"
 trigger = {
 NOT= {
 event = 81153
@@ -1082,7 +1340,7 @@ event = 81164 #The Supreme Court - 1940 elections
 NOT = {
 event = 81166	#Long's and Smith's faction wins
 event = 81167	#Father Coughlin's faction wins
-event = 81168	#Kuhn's faction wins
+event = 81168	#Pelley's faction wins
 event = 81169	#No consensus reached
 }
 OR = {
@@ -1154,7 +1412,7 @@ event = 81164 #The Supreme Court - 1940 elections
 NOT = {
 event = 81165	#Lindbergh's faction wins
 event = 81167	#Father Coughlin's faction wins
-event = 81168	#Kuhn's faction wins
+event = 81168	#Pelley's faction wins
 event = 81169	#No consensus reached
 }
 OR = {
@@ -1225,7 +1483,7 @@ event = 81164 #The Supreme Court - 1940 elections
 NOT = {
 event = 81165	#Lindbergh's faction wins
 event = 81166	#Long's and Smith's faction wins
-event = 81168	#Kuhn's faction wins
+event = 81168	#Pelley's faction wins
 event = 81169	#No consensus reached
 }
 OR = {
@@ -1284,7 +1542,7 @@ command = { type = clrflag which = AUS_KUHN_3 }
 
 }
 
-#Kuhn's faction wins
+#Pelley's faction wins
 event = {
 id = 81168
 random = no
@@ -1324,8 +1582,8 @@ date = { day = 0 month = march year = 1940 }
 offset = 10
 deathdate = { day = 29 month = december year = 1940 }
 
-name = "Kuhn's faction wins"
-desc = "The people expressed their support for Kuhn's faction, it is time for a new government of the American Union State. Fritz Kuhn will be Secretary of the Party and Chairman of the Supreme Court and Prescott Bush will be the Speaker of the House of Corporations."
+name = "Pelley's faction wins"
+desc = "The people expressed their support for Pelley's faction, it is time for a new government of the American Union State. William Pelley will be Secretary of the Party and Chairman of the Supreme Court and Prescott Bush will be the Speaker of the House of Corporations."
 picture = "Demonstrations"
 
 action_a = {
@@ -1334,13 +1592,14 @@ command = { type = dissent value = 3 }
 command = { type = set_domestic which = democratic value = 2 }
 command = { type = set_domestic which = political_left value = 1 }
 command = { type = headofstate which = 571002 } #Huey Long
-command = { type = headofgovernment which = 571011  } #Fritz Kuhn
+command = { type = headofgovernment which = 571011  } #William Pelley
 command = { type = foreignminister which = 571019 } #H. L. Mencken
 command = { type = armamentminister which = 571026 } #Prescott Sheldon Bush
-command = { type = ministerofsecurity which = 571028 }  #Fritz Kuhn
+command = { type = ministerofsecurity which = 571028 }  #William Pelley
 command = { type = ministerofintelligence which = 571043 } #George Sylvester Viereck
 command = { type = chiefofstaff which = 571047}  #George S. Patton
 command = { type = chiefofarmy which = 571050 } #George S. Patton
+command = { type = flag_ext where = TEX which = "_pelley" }
 command = { type = clrflag which = AUS_LIND_1 }
 command = { type = clrflag which = AUS_LIND_2 }
 command = { type = clrflag which = AUS_LIND_3 }
@@ -1370,7 +1629,7 @@ NOT = {
 event = 81165	#Lindbergh's faction wins
 event = 81166	#Long's and Smith's faction wins
 event = 81167	#Father Coughlin's faction wins
-event = 81168	#Kuhn's faction wins
+event = 81168	#Pelley's faction wins
 }
 OR = {
 AND = {
@@ -1530,7 +1789,7 @@ command = { type = clrflag which = AUS_KUHN_2 }
 command = { type = clrflag which = AUS_KUHN_3 }
 }
 action_b = {
-name = "Father Coughlin and Kuhn agree on a compromise"
+name = "Father Coughlin and Pelley agree on a compromise"
 ai_chance = 50
 trigger = {
 NOT= {
@@ -1540,10 +1799,10 @@ event = 81153
 command = { type = set_domestic which = democratic value = 3 }
 command = { type = set_domestic which = political_left value = 2 }
 command = { type = headofstate which = 571001 } #Huey Long
-command = { type = headofgovernment which = 571011  } #Fritz Kuhn
+command = { type = headofgovernment which = 571011  } #William Pelley
 command = { type = foreignminister which = 571015 } #Father Charles Coughlin
 command = { type = armamentminister which = 571026 } #Prescott Sheldon Bush
-command = { type = ministerofsecurity which = 571028 }  #Fritz Kuhn
+command = { type = ministerofsecurity which = 571028 }  #William Pelley
 command = { type = ministerofintelligence which = 571045 } #Francis Parker Yockey
 command = { type = chiefofstaff which = 571047}  #George S. Patton
 command = { type = chiefofarmy which = 571050 } #George S. Patton
@@ -1595,7 +1854,7 @@ command = { type = flag_ext where = TEX which = "_saltire" }
 }
 action = {
 ai_chance = 25
-name = "'The 'Sword-and-torch' flag"
+name = "The 'Sword-and-torch' flag"
 command = { type = dissent value = -1 }
 command = { type = flag_ext where = TEX which = "_sword" }
 }
@@ -1612,11 +1871,11 @@ id = 81171
 random = no
 country = TEX
 style = 2
-picture = "sovvictoryger"
+picture = "american_officers"
 
 decision = {
 flag = END_ACW
-atwar = no
+		  
 NOT = {
 ispuppet = TEX
 lost_national = { country = TEX value = 15 }
@@ -1626,11 +1885,11 @@ exists = CSA
 }
 
 decision_trigger = {
-flag = END_ACW
-atwar = no
+			  
+		  
 NOT = {
 ispuppet = TEX
-lost_national = { country = CSA value = 15 }
+lost_national = { country = TEX value = 15 }
 exists = USA
 exists = CSA
 }
@@ -1649,6 +1908,7 @@ exists = CSA
 
 name = "Integration of the Federal Officer Corps"
 desc = "The American Union State has finally established itself as the legitimate successor to the old and corrupt Federal Republic. However, even though America was only saved from Syndicalist tyranny thanks to the prowess of our military, there are some who suggest we need to incorporate those who served on the Federal side in the Civil War. The Kingfish and his party must decide."
+decision_picture = "decision_acw_integrate_officers"
 
 date = { day = 0 month = may year = 1936 }
 offset = 30
@@ -1930,7 +2190,7 @@ command = { type = wakeleader which = 571465 }
 command = { type = wakeleader which = 571466 }
 command = { type = wakeleader which = 571467 }
 command = { type = wakeleader which = 571468 }
-command = { type = wakeleader which = 571469 }
+command = { trigger = { NOT = { exists = CAL } } type = wakeleader which = 571469 } #Merrill
 command = { type = wakeleader which = 571470 }
 command = { type = wakeleader which = 571471 }
 command = { type = wakeleader which = 571472 }
@@ -1952,7 +2212,7 @@ command = { type = wakeleader which = 571487 }
 command = { type = wakeleader which = 571488 }
 command = { type = wakeleader which = 571489 }
 command = { type = wakeleader which = 571490 }
-command = { type = wakeleader which = 571491 }
+command = { trigger = { NOT = { exists = CAL } } type = wakeleader which = 571491 } # Patch
 command = { type = wakeleader which = 571492 }
 command = { type = wakeleader which = 571493 }
 command = { type = wakeleader which = 571494 }
@@ -1990,7 +2250,7 @@ command = { type = wakeleader which = 571525 }
 command = { type = wakeleader which = 571526 }
 command = { type = wakeleader which = 571527 }
 command = { type = wakeleader which = 571528 }
-command = { type = wakeleader which = 571529 }
+command = { trigger = { NOT = { exists = CAL } } type = wakeleader which = 571529 } #Short 
 command = { type = wakeleader which = 571530 }
 command = { type = wakeleader which = 571531 }
 command = { type = wakeleader which = 571532 }
@@ -2002,7 +2262,7 @@ command = { type = wakeleader which = 571537 }
 command = { type = wakeleader which = 571538 }
 command = { type = wakeleader which = 571539 }
 command = { type = wakeleader which = 571540 }
-command = { type = wakeleader which = 571541 }
+command = { trigger = { NOT = { exists = CAL } } type = wakeleader which = 571541 } #Stilwell
 command = { type = wakeleader which = 571542 }
 command = { type = wakeleader which = 571543 }
 command = { type = wakeleader which = 571544 }
@@ -2047,7 +2307,7 @@ command = { type = wakeleader which = 571582 }
 command = { type = wakeleader which = 571583 }
 command = { type = wakeleader which = 571584 }
 command = { type = wakeleader which = 571585 }
-command = { type = wakeleader which = 571586 }
+command = { trigger = { NOT = { exists = CAL } } type = wakeleader which = 571586 } #Burke
 command = { type = wakeleader which = 571587 }
 command = { type = wakeleader which = 571588 }
 command = { type = wakeleader which = 571589 }
@@ -2109,11 +2369,11 @@ command = { type = wakeleader which = 571644 }
 command = { type = wakeleader which = 571645 }
 command = { type = wakeleader which = 571646 }
 command = { type = wakeleader which = 571647 }
-command = { type = wakeleader which = 571648 }
+command = { trigger = { NOT = { exists = CAL } } type = wakeleader which = 571648 } #Nimitz
 command = { type = wakeleader which = 571649 }
 command = { type = wakeleader which = 571650 }
 command = { type = wakeleader which = 571651 }
-command = { type = wakeleader which = 571652 }
+command = { trigger = { NOT = { exists = CAL } } type = wakeleader which = 571652 } #Oldendorf
 command = { type = wakeleader which = 571653 }
 command = { type = wakeleader which = 571654 }
 command = { type = wakeleader which = 571655 }
@@ -2248,5 +2508,399 @@ action = {
 ai_chance = 0
 name = "We cannot risk them tainting the American new order!"
 command = { type = dissent value = -2.5 }
+}
+}
+
+### The American Union Oil Company
+event = {
+id = 81172
+random = no
+country = TEX
+
+trigger = {
+flag = END_ACW
+atwar = no
+NOT = {
+dissent = 15
+exists = CSA
+exists = USA
+exists = CAL
+}
+}
+
+decision_trigger = {
+money = 250
+NOT = {
+dissent = 10
+}
+}
+
+decision = {
+NOT = {
+exists = CAL
+exists = USA
+exists = CSA
+}
+}
+
+
+name = "The American Union Oil Company"
+desc = "In the wake of the civil war, the massive oil industry of the United States has been subject to various levels of military control, prompting the creation of a new company to hold and manage these assets, to provide and process oil for the American Union State."
+style = 2
+picture = "venezuelan_oil"
+decision_picture = "decision_ersatz_conversion"
+
+date = { day = 7 month = june year = 1940 }
+offset = 33
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Ensure that it is a state-run industry"
+ai_chance = 54 #60
+trigger = { OR = {
+ai = no
+headofgovernment = 571009 #Gerald K. Smith
+headofgovernment = 571011 #William Pelley
+NOT = { domestic = { type = free_market value = 6 } }
+} }
+command = { type = domestic which = free_market value = -1 }
+command = { type = waketeam which = 13827 when = 1 } #American Union Oil Company
+command = { type = money value = -500 }
+}
+action_b = {
+name = "Let it run as a private corporation"
+ai_chance = 44 #38
+trigger = { OR = {
+ai = no
+headofgovernment = 571004 #Charles Lindbergh
+headofgovernment = 571010 #Father Charles Coughlin
+domestic = { type = free_market value = 6 } 
+} }
+command = { type = domestic which = free_market value = 1 }
+command = { type = waketeam which = 13827 when = 1 } #American Union Oil Company
+command = { type = money value = -250 }
+command = { type = oilpool value = -1000 }
+}
+action_c = {
+name = "This was a bad idea"
+ai_chance = 2
+command = { type = money value = 100 }
+command = { type = oilpool value = 500 }
+command = { type = industrial_modifier which = oil value = 1 }
+}
+}
+
+### The Beacon of the New America
+event = {
+id = 81173
+random = no
+country = TEX
+#Triggered by 81146
+
+name = "New Orleans - Shining City of the AUS"
+desc = "It much took time and hard effort, but it has all paid off as New Orleans has been transformed into a shining symbol of the new prosperity of the American Union State."
+style = 2
+picture = "aus_new_orleans2"
+
+action_a = {
+name = "Amazing"
+command = { type = dissent value = -5 }
+command = { type = construct which = IC where = 1931 value = 6 }
+command = { type = construct which = naval_base where = 1931 value = 5 }
+command = { type = construct which = air_base where = 1931 value = 5 }
+command = { type = construct which = infrastructure where = 1931 value = 20 } 
+command = { type = construct which = flak where = 1931 value = 1 }
+command = { type = province_manpower which = 1931 value = 1 }
+command = { type = free_money value = 5 } #cancel penalty from event 81146
+command = { type = free_supplies value = 10 } #cancel penalty from event 81146
+}
+}
+
+### Black ACW Veterans Protest Lack of Reform
+event = {
+id = 81174
+random = no
+country = TEX
+
+trigger = {
+event = 81148
+flag = AUS_BLACK_UNITS
+NOT = {
+atwar = TEX
+flag = AUS_NO_POLL_TAX 
+government = communist
+}
+}
+
+name = "Black Veterans March Against the Poll Tax"
+desc = "Thousands of demonstrators today marched on the streets of the capital to protest the Poll Taxes Huey Long had earlier spoken out against. Most of the demonstrators were veterans of the civil war, most of them blacks especially affected by the institution."
+style = 2
+picture = "aus_black_soldiers"
+
+date = { day = 1 month = january year = 1940 }
+offset = 61
+deathdate = { day = 29 month = december year = 1955 }
+
+action = {
+name = "Get rid of the Poll Tax and examine further opportunities for reform"
+ai_chance = 5
+trigger = { 
+OR = {
+ai = no
+headofstate = 571001 #Long
+headofstate = 571002 #Long
+}
+}
+command = { type = domestic which = democratic value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = domestic which = political_left value = 1 }
+command = { type = money value = -55 }
+command = { type = dissent value = 6 } #extremists very unhappy!
+command = { type = setflag which = AUS_NO_POLL_TAX }
+command = { type = setflag which = AUS_CIVIL_RIGHTS_1 }
+}
+action = {
+name = "Abolish the damned thing"
+ai_chance = 45
+trigger = { 
+OR = {
+ai = no
+headofstate = 571001 #Long
+headofstate = 571002 #Long
+}
+}
+command = { type = domestic which = democratic value = 1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = money value = -50 }
+command = { type = dissent value = 4 } #extremists unhappy!
+command = { type = setflag which = AUS_NO_POLL_TAX }
+}
+action = {
+name = "Grant exemptions for all our veterans of the war"
+ai_chance = 25
+trigger = { 
+OR = { ai = no
+NOT = {
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571009 #Gerald K. Smith
+} }
+}
+command = { type = money value = -50 }
+command = { type = dissent value = 2 } #not enough for some, too much for others
+command = { type = manpowerpool value = -1 }
+command = { type = relative_manpower value = -2 }
+}
+action = {
+name = "Sorry, but we can't do anything"
+ai_chance = 25
+trigger = { 
+OR = {
+headofstate = 571001 #Long
+headofstate = 571002 #Long
+}
+}
+command = { type = dissent value = 1 } 
+command = { type = manpowerpool value = -4 }
+command = { type = relative_manpower value = -3 }
+}
+action = {
+name = "Send them away empty-handed"
+ai_chance = 75
+trigger = { 
+NOT = {
+headofstate = 571001 #Long
+headofstate = 571002 #Long
+}
+}
+command = { type = dissent value = 1 } 
+command = { type = manpowerpool value = -5 }
+command = { type = relative_manpower value = -4 }
+}
+}
+
+### KKK Protest Southern Reform
+event = {
+id = 81175
+random = no
+country = TEX
+
+trigger = {
+flag = AUS_CIVIL_RIGHTS_1 
+NOT = {
+atwar = TEX
+government = communist
+}
+}
+
+name = "Ku Klux Klan March in Washington"
+desc = "Thousands of robed klansmen and their supporters, some of them veterans of the White Wizards militia during the civil war, marched today in the streets of Washington DC, protesting efforts by the government to implement certain reforms in the South, claiming it would negatively disrupt the current social order and was an infringement on local government."
+style = 2
+picture = "KKK"
+
+date = { day = 29 month = january year = 1940 }
+offset = 87
+deathdate = { day = 29 month = december year = 1956 }
+
+action = {
+name = "Perhaps we have overstepped our bounds."
+ai_chance = 25
+trigger = { 
+NOT = {
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571009 #Gerald K. Smith
+}
+}
+command = { type = domestic which = democratic value = 1 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = political_left value = -1 }
+command = { type = money value = -15 }
+command = { type = dissent value = 1 } #reformers unhappy, extremists happy
+#command = { type = clrflag which = AUS_NO_POLL_TAX } #not yet
+command = { type = clrflag which = AUS_CIVIL_RIGHTS_1 }
+}
+action = {
+name = "Back down from reform efforts"
+ai_chance = 80
+trigger = { 
+OR = {
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571009 #Gerald K. Smith
+}
+}
+command = { type = domestic which = democratic value = 1 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = domestic which = political_left value = -1 }
+command = { type = money value = -15 }
+command = { type = dissent value = -1 } #reformers unhappy, extremists happy
+#command = { type = clrflag which = AUS_NO_POLL_TAX } #not yet
+command = { type = clrflag which = AUS_CIVIL_RIGHTS_1 }
+}
+action = {
+name = "Send them away empty-handed"
+ai_chance = 75
+trigger = { 
+NOT = {
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571009 #Gerald K. Smith
+}
+}
+command = { type = dissent value = 1 } #kkk unhappy
+command = { type = manpowerpool value = -5 }
+}
+action = {
+name = "Send them away empty-handed"
+ai_chance = 20
+trigger = { 
+OR = {
+headofgovernment = 571011 #William Pelley
+headofgovernment = 571009 #Gerald K. Smith
+}
+}
+command = { type = dissent value = 2 } #kkk unhappy
+command = { type = manpowerpool value = -5 }
+}
+}
+
+### Fate of the AUS Youth Foundation
+event = {
+id = 81176
+random = no
+country = TEX
+trigger = {
+event = 81153
+flag = AUS_YOUTH
+OR = {
+headofstate = 571001
+headofstate = 571002
+}
+}
+
+name = "Fate of the AUS Youth Foundation"
+desc = "With Pelley's failed attempt to kill Long and take over the American Union State, the Youth Foundation he helped form has come under close scrutiny, as it seems apparent now that this would have been the main base of his future support. Should we reorganize the program to be more loyal to the current leadership, or instead scale back or even completely dissolve the foundation as a state-run program?"
+style = 2
+picture = "TEX Youth"
+
+date = { day = 1 month = november year = 1940 }
+offset = 25
+deathdate = { day = 29 month = december year = 1942 }
+
+action_a = {
+name = "Reorganize and replace unthrustworthy leadership"
+ai_chance = 50
+command = { type = dissent value = 2 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = money value = -50 }
+command = { type = relative_manpower value = -1 }
+}
+
+action_a = {
+name = "Scale back the size and scope of the organization"
+ai_chance = 25
+command = { type = dissent value = 1 }
+command = { type = money value = -20 }
+command = { type = relative_manpower value = -3 }
+}
+
+action_c = {
+name = "The state needs no official youth program!"
+ai_chance = 25
+command = { type = dissent value = -1 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = relative_manpower value = -4 }
+command = { type = clrflag which = AUS_YOUTH }
+}
+}
+
+### Ingalls Shipbuilding
+event = {
+id = 81177
+random = no
+country = TEX
+#Triggered by 91723
+
+name = "Ingalls Shipbuilding"
+
+desc = "The primary submarine contractor of the old government, the Electric Boat Company, changed hands unexpectedly during the war, scattering important personel and putting their facilities out of use. Thus our new facilities for submarine design are situated closer to our base of support, boosting efficiency."
+style = 2
+picture = "usa_sub_launch"
+
+action = {
+name = "Excellent"
+command = { type = waketeam which = 13810 when = 1 } #Ingalls Shipbuilding
+#command = { type = free_money value = 5 } #way too much
+#command = { type = free_supplies value = 6 }
+command = { trigger = { control = { province = 1944 data = TEX } } type = construct which = naval_base where = 1944 value = 1 } #Pascagoula, MS
+command = { type = build_time which = battlecruiser when = on_upgrade value = -2 where = relative } 
+command = { type = build_time which = heavy_cruiser when = on_upgrade value = -2 where = relative } 
+command = { type = build_time which = submarine when = on_upgrade value = -2 where = relative }
+command = { trigger = { ai = yes } type = build_division which = heavy_cruiser when = -1 value = naval_torpedoes_l }
+command = { trigger = { ai = yes } type = build_division which = submarine when = -1 value = naval_torpedoes_s }
+}
+}
+
+### Newport News Shipbuilding
+event = {
+id = 81178
+random = no
+country = CSA
+#Triggered by 91723
+
+name = "Newport News Shipbuilding"
+desc = "The Newport News shipyards had been badly damaged in the fighting that took place across Virginia during the civil war, but our work in restoring the facilities there appears that it will even yield improvements in production efficiency when compared to pre-war figures."
+style = 2
+picture = "newport_news_uss_ranger"
+
+action = {
+name = "Excellent"
+command = { type = waketeam which = 13811 when = 1 } #Newport News Shipbuilding
+#command = { trigger = { not = { event = 81177 } } type = free_money value = 5 } #way too much
+#command = { trigger = { event = 81177 } type = free_money value = 7 }
+#command = { trigger = { not = { event = 81177 } } type = free_supplies value = 6 }
+#command = { trigger = { event = 81177 } type = free_supplies value = 9 }
+command = { trigger = { control = { province = 1812 data = TEX } } type = construct which = naval_base where = 1812 value = 1 } #Newport News, VA
+command = { type = build_time which = battleship when = on_upgrade value = -2 where = relative }
+command = { type = build_time which = carrier when = on_upgrade value = -2 where = relative }
+command = { type = build_time which = light_cruiser when = on_upgrade value = -2 where = relative } 
+command = { trigger = { ai = yes } type = build_division which = carrier when = -1 value = cag }
 }
 }

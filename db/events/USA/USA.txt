@@ -1,3 +1,4 @@
+##	NOTE: USA peacetime IC mod is 0.13									 
 ########################
 #####  1936 ELECTION EVENT SERIES
 ########################
@@ -330,6 +331,7 @@ command = { type = peacetime_ic_mod value = 5 }
 command = { type = dissent value = 1 }
 command = { type = money value = 150 }
 command = { type = setflag which = LONG_PRES }
+command = { type = relation which = PAR value = 50 }
 }
 action_d = {
 ai_chance = 15
@@ -675,7 +677,7 @@ command = { type = dissent value = 1 }
 command = { type = domestic which = free_market value = 1 }
 command = { type = domestic which = freedom value = 1 }
 command = { type = setflag which = LONG_LIM_REF }
-command = { type = peacetime_ic_mod value = -1 }
+command = { type = peacetime_ic_mod value = 1 }
 }
 }
 
@@ -814,6 +816,7 @@ action_a = {
 name = "The countries spiralling out of control"
 command = { type = dissent value = 1 }
 command = { type = supplies value = -500 }
+command = { type = peacetime_ic_mod value = -1 }												
 }
 }
 
@@ -1534,6 +1537,7 @@ deathdate = { day = 29 month = december year = 1947 }
 action_a = {
 name = "Nationalize the resource industry first"
 command = { type = dissent value = 2 }
+command = { type = peacetime_ic_mod value = -2 }												
 }
 }
 
@@ -1602,6 +1606,7 @@ action_a = {
 name = "Begin a blockade of California"
 ai_chance = 75
 command = { type = domestic which = democratic value = -1 }
+command = { type = peacetime_ic_mod value = -2 }												
 }
 
 action_b = {
@@ -1638,6 +1643,7 @@ name = "Send in the navy to blockade California."
 ai_chance = 88
 command = { type = dissent value = -1 }
 command = { type = domestic which = democratic value = -3 }
+command = { type = peacetime_ic_mod value = -1 }												
 command = { type = setflag which = REED_CAL_NAVY }
 }
 
@@ -1645,6 +1651,7 @@ action_b = {
 name = "End the blockade."
 ai_chance = 12
 command = { type = dissent value = 5 }
+command = { type = peacetime_ic_mod value = 1 }											   
 command = { type = clrflag which = REED_NAT_OIL }
 }
 }
@@ -1708,6 +1715,7 @@ deathdate = { day = 29 month = december year = 1947 }
 action_a = {
 name = "Send a militia unit to restore order"
 command = { type = dissent value = 5 }
+command = { type = peacetime_ic_mod value = -1 }												
 }
 }
 
@@ -1738,6 +1746,7 @@ ai_chance = 80
 command = { type = dissent value = 5 }
 command = { type = domestic which = democratic value = -2 }
 command = { type = setflag which = REED_MIL }
+command = { type = peacetime_ic_mod value = -2 }												
 }
 
 action_b = {
@@ -1745,6 +1754,7 @@ name = "Support the unions financially."
 ai_chance = 20
 command = { type = setflag which = REED_TU_FIN }
 command = { type = dissent value = 10 }
+command = { type = peacetime_ic_mod value = -2 }												
 }
 }
 
@@ -2374,6 +2384,7 @@ action_a = {
 name = "Damn them all"
 command = { type = setflag which = ACW_CSA }
 command = { type = setflag which = ACW_AUS }
+command = { trigger = { NOT = { flag = ACW_CSA } } type = peacetime_ic_mod value = -5 }																					   
 }
 }
 
@@ -2524,7 +2535,10 @@ country = USA
 picture = "urbanwarfare3"
 
 trigger = {
-not = { flag = GAR_MM_CHI }
+not = { 
+ flag = GAR_MM_CHI 
+ flag = ACW_CSA
+ }
 event = 800110
 }
 
@@ -2539,6 +2553,7 @@ deathdate = { day = 29 month = december year = 1947 }
 action_a = {
 name = "Goddamn Reed."
 command = { type = setflag which = ACW_CSA }
+command = { type = peacetime_ic_mod value = -5 }												
 }
 }
 
@@ -2994,6 +3009,7 @@ deathdate = { day = 29 month = december year = 1947 }
 
 action_a = {
 name = "Not the response we expected."
+command = { type = peacetime_ic_mod value = -4 }												
 command = { type = setflag which = ACW_AUS }
 command = { type = setflag which = ACW_CSA }
 command = { type = setflag which = ACW_CAL }
@@ -4607,6 +4623,15 @@ action_a = {
 name = "Bloody MacArthur"
 command = { type = setflag which = ACW_junta }
 command = { type = setflag which = ACW_CSA }
+command = { type = sleepevent which = 908762 }
+command = { type = capital which = 1908 }
+command = { type = construct which = IC where = 1809 value = -1 } # Damage +
+command = { type = construct which = IC where = 1908 value = 1 } # Movement of government
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }																		  
 }
 }
 
@@ -4627,7 +4652,7 @@ control = { province = 1809 data = USA } #Washington
 }
 
 name = "MacArthur Removes Long from Office and Moves the Capital to Denver"
-desc = "When Washington fell Reed's presidency had essentially come to an end. MacArthur seized the opportunity and took control of the government. Reed was forced to retreat north to his strongholds in the major industrial centers. He rallied his CSA forces and prepared to confront MacArthur."
+desc = "When Washington fell Long's presidency had essentially come to an end. MacArthur seized the opportunity and took control of the government. Long was forced to retreat south to his strongholds in the south. He rallied his AUS forces and prepared to confront MacArthur."
 style = 2
 
 date = { day = 1 month = january year = 1936 }
@@ -4638,6 +4663,15 @@ action_a = {
 name = "Bloody MacArthur"
 command = { type = setflag which = ACW_junta }
 command = { type = setflag which = ACW_AUS }
+command = { type = sleepevent which = 908762 }
+command = { type = capital which = 1908 }
+command = { type = construct which = IC where = 1809 value = -1 } # Damage +
+command = { type = construct which = IC where = 1908 value = 1 } # Movement of government
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }
+command = { trigger = { ai = yes } type = build_division which = militia }																		  
 }
 }
 
@@ -5068,6 +5102,7 @@ command = { type = revolt which = 1934 when = 0 } #Lafayette
 command = { type = revolt which = 1946 when = 0 } #Birmingham, Alabama
 command = { type = revolt which = 1955 when = 0 } #Atlanta
 command = { type = revolt which = 1955 when = 0 } #Atlanta
+command = { type = peacetime_ic_mod value = 25 when = 1 }														 
 command = { type = sleepevent which = 800159 }
 }
 }
@@ -5101,6 +5136,7 @@ style = 2
 action_a =  {
 name = "God bless the U.S.A.!"
 command = { type = dissent value = -30 }
+command = { type = peacetime_ic_mod value = 12 }												
 command = { type = setflag which = END_ACW }
 command = { type = sleepevent which = 61080 }
 command = { type = sleepevent which = 90800 }
@@ -5369,6 +5405,7 @@ country = USA
 picture = "unemployment_rate"
 trigger = {
 flag = END_ACW
+event = 800171
 }
 
 name = "Economic Recovery"

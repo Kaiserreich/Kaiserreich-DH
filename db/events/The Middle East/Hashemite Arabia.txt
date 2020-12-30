@@ -1,0 +1,2586 @@
+#Hashemite Arabia by Milites
+# Last updated for 1.9.3 by Eberronguy
+#
+# 5000 - Refugees from the Ottoman Empire
+# 5001 - More Refugees from the Ottoman Empire
+# 5002 - Negotiating with the Emir of Jebel Shammar
+# 5003 - The Response of the Emir #REB
+# 5004 - The Emir Accepts!
+# 5005 - Rashidi-Hashemite Conspiracies #OTT
+# 5007 - Choosing a new capital
+# 5008 - Showdown with Persia
+# 5009 - The Arabian Bloc Attacks Us! #PER
+# 5010 - The Government of the Hashemite State
+# 5011 - Ascension of the Syrian Vilayets
+# 5012 - Ascension of the Mesopotamian Vilayets
+# 5013 - Constitution of the Arab Kingdom
+# 5014 - Constitutionalism or Royal Autocracy
+# 5015 - Centralism or Autonomy
+# 5016 - The Future of the Bedouin
+# 5017 - The Grand Arab Army
+#
+# 5018 - Appointing a New Prime Minister
+#
+#
+# 5050 - Capital Attraction
+# 5051 - Forming the Levantine Legion
+#
+#########################################################################
+
+
+event = {
+id = 5000
+random = no
+country = SAU
+style = 2
+save_date = yes
+picture = "Arabrevolt"
+
+trigger = {
+event = 11 # The Result of the Arab Congress in Egypt.txt
+flag = ARA_CON2 # set by The Result of the Arab Congress in Egypt.txt
+NOT = {
+ispuppet = SAU
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+
+name = EVT_5000_NAME # Refugees From the Ottoman Empire
+desc = EVT_5000_DESC # Ever since the Arab Congress in Cairo fleshed out the ambitions of the Arab Bloc, the Arabian vilayets of the Ottoman Empire has been in turmoil. Now Bedus as well as Levantines cross the border to the Hedjaz, hoping to join the Shariffian forces in taking up arms against the Turkish menace.
+
+date = { day = 0 month = september year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_5000_A # With the help of God and Cairo, we shall prevail!
+command = { type = manpowerpool value = 30 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = infantry when = 4 }
+command = { type = supplies value = 2000 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 5001
+random = no
+country = SAU
+style = 2
+picture = "Arabrevolt"
+
+trigger = {
+event = { id = 5000 days = 180 }
+flag = ARA_CON2 # set by The Result of the Arab Congress in Egypt.txt
+NOT = {
+ispuppet = SAU
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+
+name = EVT_5000_NAME # Refugees From the Ottoman Empire
+desc = EVT_5000_DESC # Ever since the Arab Congress in Cairo fleshed out the ambitions of the Arab Bloc, the Arabian vilayets of the Ottoman Empire has been in turmoil. Now Bedus as well as Levantines cross the border to the Hedjaz, hoping to join the Shariffian forces in taking up arms against the Turkish menace.
+
+date = { day = 0 month = january year = 1937 }
+offset = 20
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+name = ACTIONNAME_5000_A # With the help of God and Cairo, we shall prevail!
+command = { type = manpowerpool value = 30 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = militia when = 4 }
+command = { type = supplies value = 2000 }
+command = { type = dissent value = -1 }
+}
+}
+#########################################################################
+#Negotiating with the Emir of Jebel Shamar
+#########################################################################
+event = {
+id = 5002
+random = no
+country = SAU
+style = 2
+picture = "JebelShamar"
+
+trigger = {
+flag = ARA_CON2
+NOT = {
+control = { province = 1044 data = SAU }
+ispuppet = SAU
+war = { country = OTT country = EGY }
+war = { country = OTT country = SAU }
+}
+}
+
+
+name = EVT_5002_NAME # Exchanging Letters With the Emir of Jebel Shammar
+desc = EVT_5002_DESC # The various clans and emirates of Arabia all took different sides during the Weltkrieg and one of the most hotly contended was the Emirate of Jebel Shammar. The Rashidi emir Saud bin Abdulaziz remained neutral during the Arab Campaign and maintained cordial relation with the Turks, which allowed him to maintain a certain amount of autonomy from Istanbul. However, the Ottoman administration and authority has suffered greatly since the Arab Congress and bin Abdulaziz, opportunist to the very core, is starting to get worried what his fate would be once a successful Arab uprising displaces his Turkish overlords. Now might be a good time to offer, discretely of course, the emir a way out.
+
+date = { day = 1 month = march year = 1937 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+ai_chance =  70
+name = ACTIONNAME_5002_A # Engage in clandestine contact with bin Abdulaziz!
+command = { type = relation which = OTT value = -20 }
+command = { type = event which = 5003 where = REB when = 7 } # Use REB tag for Jebel Shammar response
+command = { type = dissent value = -1 }
+}
+
+action_b = {
+ai_chance =  30
+name = ACTIONNAME_5002_B # We cannot trust that Turkish lapdog!
+command = { type = relation which = OTT value = 20 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 5003
+random = no
+country = REB
+style = 2
+save_date = yes
+picture = "Sillyshamar"
+
+name = EVT_5003_NAME # Hashemite Overtures to the Rashid Emirate
+desc = EVT_5003_DESC # Should we backstab the Ottomans ?
+
+
+action_a = {
+ai_chance =  70
+name = ACTIONNAME_5003_A # Respond positively.
+command = { type = event which = 5004 where = SAU when = 7 }
+command = { type = event which = 5005 where = OTT when = 10 }
+}
+
+action_b = {
+ai_chance =  30
+name = ACTIONNAME_5003_B # Reject these dustbeaten Hedjazi!
+command = { type = dissent value = 10 }
+}
+
+action_c = {
+ai_chance =  0
+name = ACTIONNAME_5003_C # I'm a beautiful penguin!
+command = { type = event which = 5004 where = SAU when = 7 }
+}
+}
+
+event = {
+id = 5004
+random = no
+country = SAU
+style = 2
+picture = "JebelShamar"
+
+name = EVT_5004_NAME # Rashidi Support
+desc = EVT_5004_DESC # The Rashidi Emirate has clandestinely let us know that they support our ambitions on the Ottoman Arab provinces, given that we grant them local autonomy and economic privileges.
+
+action_a = {
+name = ACTIONNAME_5004_A # God is truly great!
+command = { type = wakeleader which = 290015 when = 1 } #bin Abdulaziz
+command = { type = add_division value = cavalry when = 7 }
+command = { type = event which = 5005 where = OTT when = 10 }
+}
+}
+
+event = {
+id = 5005
+random = no
+country = OTT
+style = 2
+picture = "JebelShamar"
+
+name = EVT_5005_NAME # Rashidi Scheming With the Hashemite Shariff
+desc = EVT_5005_DESC # The Rashidi emir of Jebel Shamar is apparently conducting some kind of correspondence with the Arab traitor and so-called Shariff of Mecca, Feisal bin Hussein. This doesn't bode well for our hold on the region.
+
+action_a = {
+name = ACTIONNAME_5005_A # That's really not very good.
+command = { type = relation which = SAU value = -50 }
+command = { type = province_revoltrisk which = 1044 value = 5 }
+command = { type = province_revoltrisk which = 1046 value = 5 }
+}
+}
+#########################################################################
+#Choosing a new capital
+#########################################################################
+event = {
+id = 5006
+random = no
+country = SAU
+style = 2
+save_date = yes
+
+trigger = {
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+NOT = {
+war = { country = KUR country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+name = EVT_5006_NAME # A New Capital For Hashemite Arabia ?
+desc = EVT_5006_DESC # After our successful dislodgement of the Turkish oppressor, we now face the prospect of ruling a greater part of Arabia. In lieu of this change, it might be prudent to change our capital to a more centrally placed location.
+picture = "Damascus"
+
+date = { day = 0 month = january year = 1936 }
+offset = 4
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 60
+trigger = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+name = ACTIONNAME_5006_A # To Damascus! The dream of Lawrence and Faisal!
+command = { type = capital which = 1016 }
+}
+
+action = {
+ai_chance = 30
+trigger = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+name = ACTIONNAME_5006_B # Baghdad, the Jewel of Mesopotamia!
+command = { type = capital which = 1034 }
+}
+
+action = {
+ai_chance = 10
+trigger = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+name = ACTIONNAME_5006_C # Jerusalem, the sacred city of Palestine!
+command = { type = capital which = 1172 }
+}
+
+action = {
+ai_chance = 5
+name = ACTIONNAME_5006_D # To Mecca, the most holy of all cities!
+command = { type = capital which = 1049 }
+}
+}
+#########################################################################
+#Showdown with the Persians
+#########################################################################
+event = {
+id = 5007
+random = no
+country = SAU
+style = 2
+
+decision = {
+NOT = {
+ispuppet = SAU
+}
+OR = {
+AND = {
+core = { province = 1034 data = SAU }
+control = { province = 1034 data = PER } #Baghdad
+}
+AND = {
+core = { province = 1036 data = SAU }
+control = { province = 1036 data = PER } #Kirkuk
+}
+AND = {
+core = { province = 1028 data = SAU }
+control = { province = 1028 data = PER } #Al Amarah
+}
+AND = {
+core = { province = 1027 data = SAU }
+control = { province = 1027 data = PER } #Arbil
+}
+}
+}
+
+decision_trigger = {
+local_flag = Hashemite_state_consolidated
+NOT = {
+alliance = { country = PER country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+trigger = {
+OR = {
+AND = {
+core = { province = 1034 data = SAU }
+control = { province = 1034 data = PER } #Baghdad
+}
+AND = {
+core = { province = 1036 data = SAU }
+control = { province = 1036 data = PER } #Kirkuk
+}
+AND = {
+core = { province = 1028 data = SAU }
+control = { province = 1028 data = PER } #Al Amarah
+}
+AND = {
+core = { province = 1027 data = SAU }
+control = { province = 1027 data = PER } #Arbil
+}
+}
+NOT = {
+ispuppet = SAU
+alliance = { country = PER country = SAU  }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+name = EVT_5007_NAME # Persian Ambitions in Mesopotamia
+desc = EVT_5007_DESC # After our defeat of the Ottomans we're now faced with the prospect of Persian hegemony in Mesopotamia. We must do something about this outrageous attack on Arab sovereignty!
+picture = "Damascus"
+decision_picture = "decision_hatsemitewar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 4
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 95
+name = ACTIONNAME_5007_A # We shall drive these Persian heretics into the Caspian!
+command = { trigger = { guarantee = { country = -1 country = PER } } type =  end_guarantee which = SAU where = PER }
+command = { type = end_non_aggression which = SAU where = PER }
+command = { type = war which = PER }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = PER value = -200 }
+command = { type = dissent value = -5 }
+command = { type = event which = 5008 where = PER when = 1 }
+command = { type = add_division value = militia when = 4 }
+}
+
+action = {
+ai_chance = 5
+name = ACTIONNAME_5007_B # Let us rebuild peacefully.
+command = { type = domestic which = defense_lobby value = -2 }
+command = { type = relation which = PER value = 100 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 5008
+random = no
+country = PER
+style = 2
+picture = "JebelShamar"
+
+name = EVT_5008_NAME # The Arabian Block Declares War on Persia
+desc = EVT_5008_DESC # The traitorous Arabs have true to their base instincts back-stabbed us! We must defend ourselves by all means necessary!
+
+
+action_a = {
+name = ACTIONNAME_5008_A # This second Arab invasion shall be utterly crushed!
+command = { type = end_non_aggression which = PER where = SAU }
+command = { type = end_non_aggression which = PER where = EGY }
+command = { type = relation which = SAU value = -50 }
+command = { type = relation which = EGY value = -50 }
+command = { type = addcore which = 1035 }
+command = { type = addcore which = 1036 }
+command = { type = addcore which = 1028 }
+command = { type = addcore which = 1027 }
+command = { type = addcore which = 1034 }
+command = { type = addcore which = 1029 }
+command = { type = addcore which = 1033 }
+command = { type = addcore which = 1037 }
+command = { type = addcore which = 1032 }
+command = { type = addcore which = 1062 }
+command = { type = addclaim which = 1041 }
+command = { type = addclaim which = 1030 }
+command = { type = addclaim which = 1031 }
+}
+}
+
+#########################################################################
+#Government of the Hashemite State
+#########################################################################
+event = {
+id = 5010
+random = no
+country = SAU
+style = 2
+save_date = yes
+
+decision = {
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+NOT = {
+war = { country = KUR country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+decision_trigger = {
+NOT = {
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+trigger = {
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+NOT = {
+war = { country = KUR country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+name = "The Government of the Hashemite State"
+desc = "EVT_5010_DESC"
+picture = "Damascus"
+decision_picture = "decision_hatsemitewar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action = {
+ai_chance = 75
+trigger = {
+NOT = {
+event = 68019 #Turkestan/Hashimite Capliphate in turkestan.txt
+}
+}
+name = "Proclaim the Shariffian Caliphate!"
+command = { type = domestic which = freedom value = -1 }
+command = { type = relation which = TUR value = -50 }
+command = { type = relation which = OTT value = -50 }
+command = { type = relation which = PER value = -50 }
+command = { type = dissent value = 2 }
+command = { type = flag_ext where = SAU which = "_caliph" }
+command = { type = local_setflag which = Shariffian_Caliphate }
+}
+
+action = {
+ai_chance = 25
+name = "Establish an ecumenical Kingdom of Greater Arabia!"
+command = { type = domestic which = freedom value = 1 }
+command = { type = relation which = EGY value = 25 }
+command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 5011
+random = no
+country = SAU
+style = 2
+picture = "Arabrevolt"
+
+trigger = {
+	owned = { province = 1016 data = SAU }
+	control = { province = 1016 data = SAU } #Damascus
+
+NOT = {
+	ispuppet = SAU
+	war = { country = TUR country = SAU }
+	war = { country = KUR country = SAU }
+	war = { country = PER country = SAU }
+	war = { country = OTT country = SAU }
+	}
+}
+
+name = "Ascension of the Syrian Vilayets"
+desc = "The Syrian provinces have been conquered for the Great Arab cause! The populace is jubilant and the resources of the Levant are at the disposal of our state!"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "God is truly great!"
+command = { type = manpowerpool value = 10 }
+command = { type = add_division value = cavalry when = 7 }
+command = { type = supplies value = 500 }
+command = { type = dissent value = -1 }
+command = { type = waketeam which = 8616 } #Syrian University
+command = { type = waketeam which = 8623 } #Damascus Military Academy
+command = { type = wakeleader which = 290050 } #LEB
+command = { type = wakeleader which = 290051 }
+command = { type = wakeleader which = 290052 }
+command = { type = wakeleader which = 290053 }
+command = { type = wakeleader which = 290054 }
+command = { type = wakeleader which = 290055 }
+command = { type = wakeleader which = 290056 }
+command = { type = wakeleader which = 290060 } #SYR
+command = { type = wakeleader which = 290061 }
+command = { type = wakeleader which = 290062 }
+command = { type = wakeleader which = 290063 }
+command = { type = wakeleader which = 290064 }
+command = { type = wakeleader which = 290065 }
+command = { type = wakeleader which = 290066 }
+command = { type = wakeleader which = 290067 }
+command = { type = wakeleader which = 290068 }
+command = { type = wakeminister which = 63098 } #LEB
+command = { type = wakeminister which = 63099 }
+command = { type = wakeminister which = 63100 }
+command = { type = wakeminister which = 63101 }
+command = { type = wakeminister which = 63102 }
+command = { type = wakeminister which = 63103 }
+command = { type = wakeminister which = 63104 }
+command = { type = wakeminister which = 63105 }
+command = { type = wakeminister which = 63106 }
+command = { type = wakeminister which = 63107 }
+command = { type = wakeminister which = 63108 } #SYR
+command = { type = wakeminister which = 63109 }
+command = { type = wakeminister which = 63110 }
+command = { type = wakeminister which = 63111 }
+command = { type = wakeminister which = 63112 }
+command = { type = wakeminister which = 63113 }
+}
+}
+
+event = {
+id = 5012
+random = no
+country = SAU
+style = 2
+picture = "Arabrevolt"
+
+trigger = {
+	owned = { province = 1034 data = SAU }
+	control = { province = 1034 data = SAU } #Baghdad
+
+NOT = {
+	ispuppet = SAU
+	war = { country = TUR country = SAU }
+	war = { country = KUR country = SAU }
+	war = { country = PER country = SAU }
+	war = { country = OTT country = SAU }
+	}
+}
+
+name = "Ascension of the Mesopotamian Vilayets"
+desc = "The Mesopotamian provinces have been conquered for the Great Arab cause! The populace is jubilant and the resources of the fertile land between the Euphrates and the Tigris are at the disposal of our state!"
+
+date = { day = 0 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "God is truly great!"
+command = { type = manpowerpool value = 10 }
+command = { type = add_division value = infantry when = 4 }
+command = { type = supplies value = 500 }
+command = { type = dissent value = -1 }
+command = { type = waketeam which = 8606 when = 1 } #Baghdad Munitions Factory
+command = { type = waketeam which = 8612 } #Trans-Arabian Railways
+command = { type = sleepteam which = 8610 } #Hejaz Railway
+command = { type = waketeam which = 8614 } #Iraq Petroleum Company
+command = { type = waketeam which = 8621 when = 1 } #Sami Fattah
+command = { type = waketeam which = 8628 when = 1 } #Taher Abdul Ghafour al-Atraji
+command = { type = waketeam which = 8630 when = 1 } #Khalil Jassim al-Dabbagh
+command = { type = wakeleader which = 290070 } #IRQ
+command = { type = wakeleader which = 290071 }
+command = { type = wakeleader which = 290072 }
+command = { type = wakeleader which = 290073 }
+command = { type = wakeleader which = 290074 }
+command = { type = wakeleader which = 290075 }
+command = { type = wakeleader which = 290076 }
+command = { type = wakeleader which = 290077 }
+command = { type = wakeleader which = 290078 }
+command = { type = wakeleader which = 290079 }
+command = { type = wakeleader which = 290080 }
+command = { type = wakeleader which = 290081 }
+command = { type = wakeminister which = 63114 } #IRQ
+command = { type = wakeminister which = 63115 }
+command = { type = wakeminister which = 63116 }
+command = { type = wakeminister which = 63117 }
+command = { type = wakeminister which = 63118 }
+command = { type = wakeminister which = 63119 }
+command = { type = wakeminister which = 63120 }
+command = { type = wakeminister which = 63121 }
+command = { type = wakeminister which = 63122 }
+command = { type = wakeminister which = 63123 }
+command = { type = wakeminister which = 63124 }
+command = { type = wakeminister which = 63125 }
+}
+}
+
+#########################################################################
+#Constitution of the Arab Kingdom
+#########################################################################
+event = {
+id = 5013
+country = SAU
+style = 2
+picture = "arabian_conference"
+decision_picture = "decision_peace_conference"
+
+decision = {
+NOT = {
+local_flag = Shariffian_Caliphate
+ispuppet = SAU
+war = { country = SAU country = GER }
+war = { country = SAU country = RUS }
+war = { country = KUR country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+}
+
+decision_trigger = {
+event = { id = 5010 days = 60 } # Government of the Hashemite State
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+}
+
+trigger = {
+NOT = {
+local_flag = Shariffian_Caliphate
+ispuppet = SAU
+war = { country = SAU country = GER }
+war = { country = SAU country = RUS }
+war = { country = KUR country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+event = { id = 5010 days = 60 } # Government of the Hashemite State
+
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  90
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Arab Constitutional Assembly"
+desc = "EVT_5013_DESC"
+
+action = {
+ai_chance = 100
+name = "Yes, announce the formation of the Assembly!"
+command = { type = dissent value = -1 }
+command = { type = event which = 5018 where = SAU when = 3 } #Appointing a New Prime Minister
+command = { type = event which = 5014 where = SAU when = 30 } #Constitutionalism or Royal Autocracy
+
+}
+
+action = {
+ai_chance = 0
+name = "Why would we need an assembly, when we have the Shariff?"
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 5014
+country = SAU
+style = 2
+picture = "arabian_conference"
+
+name = "Constitutionalism or Royal Autocracy"
+desc = "The Hashemite unification of large parts of the Arab world was only possible thanks to a wide basis of support in the educated classes. However, the Constitutional Assembly's suggestion for some sort of plebian influence on government is starkly disliked by the more traditional bedu backers from the Hejaz."
+
+action = {
+ai_chance = 60
+name = "His majesty must retain a powerful role in government!"
+command = { type = dissent value = 3 }
+command = { type = domestic which = freedom value = -1 }
+command = { type = event which = 5015 where = SAU when = 2 }
+}
+
+action = {
+ai_chance = 30
+name = "Create a toothless parliament subservient to the executive!"
+command = { type = dissent value = 2 }
+command = { type = event which = 5015 where = SAU when = 2 }
+}
+
+action = {
+ai_chance = 10
+name = "Allow certain political freedoms for the lower classes."
+command = { type = dissent value = -2 }
+command = { type = domestic which = freedom value = 1 }
+command = { type = local_setflag which = Hashemite_Constitutionalism }
+command = { type = event which = 5015 where = SAU when = 2 }
+}
+}
+
+event = {
+id = 5015
+country = SAU
+style = 2
+picture = "arabian_conference"
+
+name = "Centralism or Autonomy"
+desc = "EVT_5015_DESC"
+
+action = {
+ai_chance = 65
+name = "Offer large degrees of local autonomy!"
+command = { type = dissent value = 4 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = industrial_modifier which = total value = 2.5 }
+command = { type = event which = 5016 where = SAU when = 2 }
+}
+
+action = {
+ai_chance = 35
+name = "Establish a tightly knit unitary state!"
+command = { type = dissent value = 7 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = industrial_modifier which = total value = 5 }
+command = { type = event which = 5016 where = SAU when = 2 }
+}
+}
+
+event = {
+id = 5016
+country = SAU
+style = 2
+picture = "Arab_infantry"
+
+name = "The Future of the Bedouin"
+desc = "EVT_5016_DESC"
+
+action = {
+ai_chance = 15
+name = "Retain the status quo."
+command = { type = dissent value = -0.5 }
+command = { type = event which = 5017 where = SAU when = 2 }
+}
+
+action = {
+ai_chance = 35
+name = "Enhance the rights of the Bedu and protect their way of life!"
+command = { type = dissent value = -3 }
+command = { type = manpowerpool value = 10 }
+command = { type = industrial_modifier which = total value = 1 }
+command = { type = add_division value = cavalry when = 8 }
+command = { type = event which = 5017 where = SAU when = 2 }
+}
+
+action = {
+ai_chance = 55
+name = "Encourage the nomads to settle and cultivate the land."
+command = { type = dissent value = 5 }
+command = { type = industrial_modifier which = total value = 3 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = construct which = infrastructure where = -1 value = 10 }
+command = { type = relative_manpower value = 25 }
+command = { type = event which = 5017 where = SAU when = 2 }
+}
+}
+
+
+event = {
+id = 5017
+country = SAU
+style = 2
+picture = "Arab_infantry"
+save_date = yes
+
+name = "The Grand Arab Army"
+desc = "EVT_5018_DESC"
+
+action = {
+ai_chance = 70
+name = "Establish a regular army of trained conscripts!"
+command = { type = dissent value = 5 }
+command = { type = manpowerpool value = 10 }
+command = { type = domestic which = professional_army value = -3 }
+command = { type = relative_manpower value = 30 }
+command = { type = supplies value = -1500 }
+command = { type = build_cost which = cavalry when = on_upgrade where = relative value = -20 }
+command = { type = build_cost which = infantry when = on_upgrade where = relative value = -20 }
+command = { type = build_cost which = artillery when = on_upgrade where = relative value = -20 }
+command = { type = local_setflag which = Hashemite_state_consolidated }
+
+}
+
+action = {
+ai_chance = 30
+name = "A small profesional force with tribal auxiliaries!"
+command = { type = dissent value = 2.5 }
+command = { type = manpowerpool value = 10 }
+command = { type = supplies value = 3000 }
+command = { type = domestic which = professional_army value = 3 }
+command = { type = build_cost which = cavalry when = on_upgrade where = relative value = -20 }
+command = { type = strength which = militia when = 0 where = 1 value = 0.0 }
+command = { type = local_setflag which = Hashemite_state_consolidated }
+}
+}
+
+#########################################################################
+#A New Prime Minister
+#########################################################################
+event = {
+id = 5018
+country = SAU
+style = 2
+picture = "OTT_Parliament"
+save_date = yes
+
+name = "Appointing a New Prime Minister"
+desc = "With the coming constitutional assembly, the Emir has decided that the current government should be strengthened in order to address the decisions of the convention as smartly as possible."
+
+action = {
+ai_chance = 50
+name = "Nasib al-Bakri the leader of the civilian al-Fatat!"
+command = { type = dissent value = 1.5 }
+command = { type = headofgovernment which = 63072 } #Nasib al-Bakri
+command = { type = event which = 5044 when = 2220 }
+}
+
+action = {
+ai_chance = 30
+name = "The war hero, general Jafar al-Askari!"
+command = { type = dissent value = 2 }
+command = { type = headofgovernment which = 63014 } #Jafar al-Askari
+command = { type = event which = 5044 when = 2220 }
+}
+
+action = {
+ai_chance = 15
+name = "The aristocratic Jamil Mardam Bey!"
+command = { type = dissent value = 2.5 }
+command = { type = headofgovernment which = 63012 } #Jamil Mardam Bey
+command = { type = event which = 5044 when = 2220 }
+}
+
+action = {
+ai_chance = 5
+name = "Keep the incumbent in office!"
+command = { type = dissent value = -0.5 }
+command = { type = event which = 5044 when = 2220 } #6 years
+}
+}
+
+event = {
+id = 5044
+country = SAU
+style = 2
+picture = "OTT_Parliament"
+save_date = yes
+
+name = "EVT_5044_NAME"
+desc = "EVT_5044_DESC"
+
+action = {
+ai_chance = 34
+name = "EVT_5044_ACTIONA"
+command = { type = dissent value = 1.5 }
+command = { type = headofgovernment which = 63072 } #Nasib al-Bakri
+command = { type = event which = 5045 when = 2220 }
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5044_ACTIONB"
+command = { type = dissent value = 2 }
+command = { type = headofgovernment which = 63014 } #Jafar al-Askari
+command = { type = event which = 5045 when = 2220 }
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5044_ACTIONC"
+command = { type = dissent value = 2.5 }
+command = { type = headofgovernment which = 63012 } #Jamil Mardam Bey
+command = { type = event which = 5045 when = 2220 }
+}
+}
+
+event = {
+id = 5045
+country = SAU
+style = 2
+picture = "OTT_Parliament"
+save_date = yes
+
+name = "EVT_5045_NAME"
+desc = "EVT_5045_DESC"
+
+action = {
+ai_chance = 34
+name = "EVT_5045_ACTIONA"
+command = { type = dissent value = 1.5 }
+command = { type = headofgovernment which = 63072 } #Nasib al-Bakri
+command = { type = event which = 5046 when = 2220 }
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5045_ACTIONB"
+command = { type = dissent value = 2 }
+command = { type = headofgovernment which = 63014 } #Jafar al-Askari
+command = { type = event which = 5046 when = 2220 }
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5045_ACTIONC"
+command = { type = dissent value = 2.5 }
+command = { type = headofgovernment which = 63012 } #Jamil Mardam Bey
+command = { type = event which = 5046 when = 2220 }
+}
+}
+
+event = {
+id = 5046
+country = SAU
+style = 2
+picture = "OTT_Parliament"
+save_date = yes
+
+name = "EVT_5046_NAME"
+desc = "EVT_5046_DESC"
+
+action = {
+ai_chance = 34
+name = "EVT_5046_ACTIONA"
+command = { type = dissent value = 1.5 }
+command = { type = headofgovernment which = 63072 } #Nasib al-Bakri
+command = { type = event which = 5047 when = 2220 }
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5046_ACTIONB"
+command = { type = dissent value = 2 }
+command = { type = headofgovernment which = 63014 } #Jafar al-Askari
+command = { type = event which = 5047 when = 2220 }
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5046_ACTIONC"
+command = { type = dissent value = 2.5 }
+command = { type = headofgovernment which = 63012 } #Jamil Mardam Bey
+command = { type = event which = 5047 when = 2220 }
+}
+}
+
+event = {
+id = 5047
+country = SAU
+style = 2
+picture = "OTT_Parliament"
+save_date = yes
+
+name = "EVT_5047_NAME"
+desc = "EVT_5047_DESC"
+
+action = {
+ai_chance = 34
+name = "EVT_5047_ACTIONA"
+command = { type = dissent value = 1.5 }
+command = { type = headofgovernment which = 63072 } #Nasib al-Bakri
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5047_ACTIONB"
+command = { type = dissent value = 2 }
+command = { type = headofgovernment which = 63014 } #Jafar al-Askari
+}
+
+action = {
+ai_chance = 33
+name = "EVT_5047_ACTIONC"
+command = { type = dissent value = 2.5 }
+command = { type = headofgovernment which = 63012 } #Jamil Mardam Bey
+}
+}
+###################################
+#Arab Congress Attendance Question#
+###################################
+event = {
+id = 5019
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5019_NAME" #Arab Congress Invite
+desc = "EVT_5019_DESC" 
+picture = "foreign_policy"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_5019_ACTIONA"
+command = { type = dissent value = -1 } 
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = LBY value = 10 }
+command = { type = relation which = EGY value = 10 }
+command = { type = relation which = OMN value = 10 }
+command = { type = relation which = YEM value = 10 }
+command = { type = relation which = OTT value = -10 }
+command = { type = relation which = VIC value = -10 }
+command = { type = relation which = GER value = -25 }
+command = { type = relation which = SPA value = -10 }
+}
+
+action_b = {
+ai_chance = 0
+name = "EVT_5019_ACTIONB" 
+command = { type = dissent value = 10 } #Really gonna piss people off
+command = { type = domestic which = interventionism value = -5 }
+command = { type = relation which = EGY value = -10 }
+command = { type = relation which = OMN value = -10 }
+command = { type = relation which = LBY value = -10 }
+command = { type = relation which = YEM value = -10 }
+command = { type = relation which = OTT value = 50 }
+command = { type = relation which = VIC value = 10 }
+command = { type = relation which = GER value = 10 }
+command = { type = relation which = SPA value = 10 }
+}
+}
+
+
+##################################
+# Army Development (5020 - 5026) #
+##################################
+
+event = {
+id = 5020
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5020_NAME" 
+desc = "EVT_5020_DESC" 
+picture = "OTT_Bedouins"
+
+date = { day = 0 month = june year = 1937 }
+offset = 50
+deathdate = { day = 29 month = december year = 1963 }
+
+
+action_a = {
+ai_chance = 60
+name = "EVT_5020_ACTIONA"
+command = { type = dissent value = -1 } 
+command = { type = event which = 5021 when = 150 }
+}
+
+action_b = {
+ai_chance = 20
+name = "EVT_5020_ACTIONB" 
+command = { type = event which = 5023 when = 150 }
+}
+
+action_c = {
+ai_chance = 20
+name = "EVT_5020_ACTIONC" 
+command = { type = event which = 5025 when = 150 }
+}
+}
+
+event = {
+id = 5021
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5021_NAME" 
+desc = "EVT_5021_DESC" 
+picture = "OTT_Bedouins"
+
+
+action_a = {
+ai_chance = 50
+name = "EVT_5021_ACTIONA"
+command = { type = morale which = land value = 7 } 
+command = { type = event which = 5022 when = 200 }
+}
+
+action_b = {
+ai_chance = 30
+name = "EVT_5021_ACTIONB" 
+command = { type = morale which = land value = 2 } 
+command = { type = defensiveness which = land value = 4 } 
+command = { type = no_supplies_combat_mod which = land value = 2 } 
+command = { type = event which = 5022 when = 200 }
+}
+
+action_c = {
+ai_chance = 20
+name = "EVT_5021_ACTIONC" 
+command = { type = morale which = land value = 2 } 
+command = { type = soft_attack which = land value = 3 } 
+command = { type = hard_attack which = land value = 2 }
+command = { type = event which = 5022 when = 200 } 
+}
+}
+
+event = {
+id = 5022
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5022_NAME" 
+desc = "EVT_5022_DESC" 
+picture = "Arab_infantry"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_5022_ACTIONA"
+command = { type = add_division which = "Hashīshiyya" value = infantry when = -1 } 
+command = { type = assault value = 2 } 
+}
+}
+
+event = {
+id = 5023
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5023_NAME" 
+desc = "EVT_5023_DESC" 
+picture = "Arab_infantry"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_5023_ACTIONA"
+command = { type = max_organization which = land value = 7 } 
+command = { type = event which = 5024 when = 200 } 
+}
+
+action_b = {
+ai_chance = 0
+name = "EVT_5023_ACTIONB" 
+command = { type = max_organization which = land value = 2 } 
+command = { type = soft_attack which = land value = 2 } 
+command = { type = breakthrough value = 2 } 
+command = { type = event which = 5024 when = 200 } 
+}
+
+action_c = {
+ai_chance = 0
+name = "EVT_5023_ACTIONC" 
+command = { type = max_organization which = land value = 2 } 
+command = { type = defensiveness which = land value = 4 } 
+command = { type = tactical_withdrawal value = 2 } 
+command = { type = event which = 5024 when = 200 } 
+}
+}
+
+event = {
+id = 5024
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5024_NAME" 
+desc = "EVT_5024_DESC" 
+picture = "Arab_infantry"
+
+
+action_a = {
+name = "EVT_5024_ACTIONA"
+command = { type = add_division which = "Libra" value = infantry when = -1 } 
+command = { type = delay value = 2 } 
+}
+}
+
+event = {
+id = 5025
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5025_NAME" #Desert Warfare
+desc = "EVT_5025_DESC" 
+picture = "Arab_infantry"
+
+
+action_a = {
+ai_chance = 40
+name = "EVT_5025_ACTIONA"
+command = { type = desert_move which = land value = 6 } 
+}
+
+action_b = {
+ai_chance = 50
+name = "EVT_5025_ACTIONB" 
+command = { type = desert_attack which = land value = 3 } 
+command = { type = desert_defense which = land value = 3 }
+}
+
+action_c = {
+ai_chance = 10
+name = "EVT_5025_ACTIONC" 
+command = { type = night_move which = land value = 3 } 
+command = { type = night_attack which = land value = 3 }
+}
+}
+
+event = {
+id = 5026
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5026_NAME" #Scorpion Cell
+desc = "EVT_5026_DESC" 
+picture = "Arab_infantry"
+
+
+action_a = {
+ai_chance = 100
+name = "EVT_5026_ACTIONA"
+command = { type = add_division which = "Scorpion Cell" value = infantry when = -1 }
+command = { type = ambush value = 2 }  
+}
+}
+
+#############################################
+# Railroad Contruction events and decisions #
+#          Events 5027 to 5035              #
+#############################################
+
+event = {
+id = 5027
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5027_NAME" #Mecca to Riyadh Rail: Take 1
+desc = "EVT_5027_DESC" 
+picture = "railway"
+
+
+date = { day = 0 month = september year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 60
+name = "EVT_5027_ACTIONA"
+command = { type = dissent value = -1 }  
+command = { type = money value = -50 }
+command = { type = supplies value = -100 }
+command = { type = event which = 5029 when = 200 }
+command = { type = sleepevent which = 5028  }
+}
+
+action_b = {
+ai_chance = 40
+name = "EVT_5027_ACTIONB"
+command = { type = dissent value = 1 } 
+}
+}
+
+event = {
+id = 5028
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5028_NAME" #Mecca to Riyadh Rail: Take 2
+desc = "EVT_5028_DESC" 
+picture = "railway1"
+
+trigger = {
+flag = OTT_DEFEAT
+NOT = {
+event = 5029
+}
+}
+date = { day = 0 month = september year = 1940 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 80
+name = "EVT_5028_ACTIONA"
+command = { type = dissent value = -1 }  
+command = { type = money value = -50 }
+command = { type = supplies value = -100 }
+command = { type = event which = 5029 when = 200 }
+}
+
+action_b = {
+ai_chance = 20
+name = "EVT_5028_ACTIONB"
+command = { type = dissent value = 3 } 
+command = { type = sleepevent which = 5029 }
+}
+}
+
+event = {
+id = 5029
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5029_NAME" #Mecca to Riyadh Rail: Finished
+desc = "EVT_5029_DESC" 
+picture = "railway"
+
+action_a = {
+name = "EVT_5029_ACTIONA"
+command = { type = construct which = infrastructure where = 1045 value = 20 }
+command = { type = construct which = infrastructure where = 1049 value = 20 }
+}
+}
+
+event = {
+id = 5030
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5030_NAME" #MOAR RAIL
+desc = "EVT_5030_DESC" 
+picture = "Railway3"
+
+trigger = {
+event = 5029
+}
+date = { day = 0 month = january year = 1941 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 80
+name = "EVT_5030_ACTIONA"
+command = { type = dissent value = -2 }  
+command = { type = local_setflag which = SAU_RAIL }
+}
+
+action_b = {
+ai_chance = 20
+name = "EVT_5030_ACTIONB"
+command = { type = dissent value = 3 } 
+command = { type = sleepevent which = 5031 }
+command = { type = sleepevent which = 5032 }
+command = { type = sleepevent which = 5033 }
+command = { type = sleepevent which = 5034 }
+command = { type = sleepevent which = 5035 }
+command = { type = sleepevent which = 5036 }
+}
+}
+
+event = {
+id = 5031
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5031_NAME"
+desc = "EVT_5031_DESC"
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+decision = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } 
+local_flag = SAU_RAIL
+NOT = {
+local_flag = SAU_Building
+}
+}
+
+trigger = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } 
+local_flag = SAU_RAIL
+NOT = {
+atwar = SAU
+ispuppet = SAU
+local_flag = SAU_Building
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 80
+name = "EVT_5031_ACTIONA"
+command = { type = local_setflag which = SAU_Building }
+command = { type = money value = -50 }
+command = { type = supplies value = -100 }
+command = { type = event which = 5032 when = 200 }
+}
+
+action_b = {
+ai_chance = 20
+name = "EVT_5031_ACTIONB"
+command = { type = money value = 100 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 5032
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5032_NAME"
+desc = "EVT_5032_DESC"
+picture = "Railway2"
+
+action_a = {
+name = "EVT_5032_ACTIONA"
+command = { type = local_clrflag which = SAU_Building }
+command = { type = construct which = infrastructure where = 1172 value = 20 }
+command = { type = construct which = infrastructure where = 1026 value = 20 }
+command = { type = construct which = infrastructure where = 1025 value = 20 }
+command = { type = construct which = infrastructure where = 1048 value = 10 }
+}
+}
+
+
+event = {
+id = 5033
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5033_NAME"
+desc = "EVT_5033_DESC"
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+decision = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } 
+local_flag = SAU_RAIL
+NOT = {
+local_flag = SAU_Building
+}
+}
+
+trigger = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } 
+local_flag = SAU_RAIL
+NOT = {
+atwar = SAU
+ispuppet = SAU
+local_flag = SAU_Building
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 80
+name = "EVT_5033_ACTIONA"
+command = { type = local_setflag which = SAU_Building }
+command = { type = money value = -50 }
+command = { type = supplies value = -100 }
+command = { type = event which = 5034 when = 200 }
+}
+
+action_b = {
+ai_chance = 20
+name = "EVT_5033_ACTIONB"
+command = { type = money value = 100 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 5034
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5034_NAME"
+desc = "EVT_5034_DESC"
+picture = "Railway2"
+
+action_a = {
+name = "EVT_5034_ACTIONA"
+command = { type = local_clrflag which = SAU_Building }
+command = { type = construct which = infrastructure where = 1016 value = 20 }
+command = { type = construct which = infrastructure where = 1024 value = 20 }
+command = { type = construct which = infrastructure where = 1046 value = 10 }
+command = { type = construct which = infrastructure where = 1048 value = 10 }
+}
+}
+
+event = {
+id = 5035
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5035_NAME"
+desc = "EVT_5035_DESC"
+picture = "public_jobs"
+decision_picture = "decision_public_jobs"
+
+decision = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } 
+local_flag = SAU_RAIL
+NOT = {
+local_flag = SAU_Building
+}
+}
+
+trigger = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } 
+local_flag = SAU_RAIL
+NOT = {
+atwar = SAU
+ispuppet = SAU
+local_flag = SAU_Building
+}
+}
+
+date = { day = 1 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 80
+name = "EVT_5035_ACTIONA"
+command = { type = local_setflag which = SAU_Building }
+command = { type = money value = -50 }
+command = { type = supplies value = -100 }
+command = { type = event which = 5036 when = 200 }
+}
+
+action_b = {
+ai_chance = 20
+name = "EVT_5035_ACTIONB"
+command = { type = money value = 100 }
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 5036
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5036_NAME"
+desc = "EVT_5036_DESC"
+picture = "Railway2"
+
+action_a = {
+name = "EVT_5036_ACTIONA"
+command = { type = local_clrflag which = SAU_Building }
+command = { type = construct which = infrastructure where = 1034 value = 20 }
+command = { type = construct which = infrastructure where = 1033 value = 20 }
+command = { type = construct which = infrastructure where = 1030 value = 20 }
+command = { type = construct which = infrastructure where = 1046 value = 10 }
+}
+}
+###########################
+# Manpower for SAU vs OTT #
+###########################
+
+
+event = {
+id = 5037
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5037_NAME" #The Call to Arms
+desc = "EVT_5037_DESC" 
+picture = "Arabrevolt"
+
+trigger = {
+war = { country = SAU country = OTT }
+}
+
+
+date = { day = 0 month = june year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 100
+name = "EVT_5037_ACTIONA"
+command = { type = manpowerpool value = 20 }  
+}
+}
+
+################################
+# SAU Leadership of Cairo Pact #
+#     Events 5038 to 5043      #
+################################
+
+event = {
+id = 5038
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5038_NAME" #Leadership over the Cairo Pact?
+desc = "EVT_5038_DESC" 
+picture = "foreign_policy"
+
+trigger = {
+AND = {
+flag = OTT_DEFEAT
+local_flag = Shariffian_Caliphate
+local_flag = Shariffian_Caliphate
+alliance = { country = SAU country = EGY }
+}
+}
+
+
+date = { day = 0 month = june year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 70
+name = "EVT_5038_ACTIONA"
+command = { type = dissent value = 2 }
+command = { trigger = { alliance = { country = SAU country = EGY } } type = event which = 5039 where = EGY when = 3 }
+command = { trigger = { alliance = { country = SAU country = PER } } type = event which = 5040 where = PER when = 3 }
+command = { trigger = { alliance = { country = SAU country = OMN } } type = event which = 5041 where = OMN when = 3 }
+command = { trigger = { alliance = { country = SAU country = YEM } } type = event which = 5042 where = YEM when = 3 }
+command = { trigger = { alliance = { country = SAU country = LBY } } type = event which = 5043 where = LBY when = 3 }
+}
+
+action_b = {
+ai_chance = 30
+name = "EVT_5038_ACTIONB"
+command = { type = dissent value = -1 } 
+}
+}
+
+event = {
+id = 5039
+random = no
+country = EGY
+style = 2
+
+name = "EVT_5039_NAME" #Leadership over the Cairo Pact response
+desc = "EVT_5039_DESC" 
+picture = "foreign_policy"
+
+action_a = {
+ai_chance = 20
+name = "EVT_5039_ACTIONA"
+command = { type = dissent value = -2 }
+command = { type = relation which = SAU value = 50 } 
+}
+
+action_b = {
+trigger = { NOT = { ispuppet = EGY } }
+ai_chance = 40
+name = "EVT_5039_ACTIONB"
+command = { type = dissent value = 1 } 
+command = { type = relation which = SAU value = -50 } 
+}
+
+action_c = {
+trigger = { NOT = { ispuppet = EGY } }
+ai_chance = 40
+name = "EVT_5039_ACTIONC"
+command = { type = dissent value = 3 } 
+command = { type = leave_alliance } 
+command = { type = relation which = SAU value = -200 } 
+}
+}
+
+event = {
+id = 5040
+random = no
+country = PER
+style = 2
+
+name = "EVT_5040_NAME" #Leadership over the Cairo Pact response
+desc = "EVT_5040_DESC" 
+picture = "foreign_policy"
+
+action_a = {
+ai_chance = 0
+name = "EVT_5040_ACTIONA"
+command = { type = dissent value = -2 }
+command = { type = relation which = SAU value = 50 } 
+}
+
+action_b = {
+trigger = { NOT = { ispuppet = PER } }
+ai_chance = 20
+name = "EVT_5040_ACTIONB"
+command = { type = dissent value = 1 } 
+command = { type = relation which = SAU value = -50 } 
+}
+
+action_c = {
+trigger = { NOT = { ispuppet = PER } }
+ai_chance = 80
+name = "EVT_5040_ACTIONC"
+command = { type = dissent value = 3 } 
+command = { type = leave_alliance } 
+command = { type = relation which = SAU value = -200 } 
+}
+}
+
+event = {
+id = 5041
+random = no
+country = OMN
+style = 2
+
+name = "EVT_5041_NAME" #Leadership over the Cairo Pact response
+desc = "EVT_5041_DESC" 
+picture = "foreign_policy"
+
+action_a = {
+ai_chance = 50
+name = "EVT_5041_ACTIONA"
+command = { type = dissent value = -2 }
+command = { type = relation which = SAU value = 50 } 
+}
+
+action_b = {
+trigger = { NOT = { ispuppet = OMN } }
+ai_chance = 30
+name = "EVT_5041_ACTIONB"
+command = { type = dissent value = 1 } 
+command = { type = relation which = SAU value = -50 } 
+}
+
+action_c = {
+trigger = { NOT = { ispuppet = OMN } }
+ai_chance = 20
+name = "EVT_5041_ACTIONC"
+command = { type = dissent value = 3 } 
+command = { type = leave_alliance } 
+command = { type = relation which = SAU value = -200 } 
+}
+}
+
+event = {
+id = 5042
+random = no
+country = YEM
+style = 2
+
+name = "EVT_5042_NAME" #Leadership over the Cairo Pact response
+desc = "EVT_5042_DESC" 
+picture = "foreign_policy"
+
+action_a = {
+ai_chance = 30
+name = "EVT_5042_ACTIONA"
+command = { type = dissent value = -2 }
+command = { type = relation which = SAU value = 50 } 
+}
+
+action_b = {
+trigger = { NOT = { ispuppet = YEM } }
+ai_chance = 40
+name = "EVT_5042_ACTIONB"
+command = { type = dissent value = 1 } 
+command = { type = relation which = SAU value = -50 } 
+}
+
+action_c = {
+trigger = { NOT = { ispuppet = YEM } }
+ai_chance = 30
+name = "EVT_5042_ACTIONC"
+command = { type = dissent value = 3 } 
+command = { type = leave_alliance } 
+command = { type = relation which = SAU value = -200 } 
+}
+}
+
+event = {
+id = 5043
+random = no
+country = LBY
+style = 2
+
+name = "EVT_5042_NAME" #Leadership over the Cairo Pact response
+desc = "EVT_5042_DESC" 
+picture = "foreign_policy"
+
+action_a = {
+ai_chance = 20
+name = "EVT_5043_ACTIONA"
+command = { type = dissent value = -2 }
+command = { type = relation which = SAU value = 50 } 
+}
+
+action_b = {
+trigger = { NOT = { ispuppet = LBY } }
+ai_chance = 30
+name = "EVT_5043_ACTIONB"
+command = { type = dissent value = 1 } 
+command = { type = relation which = SAU value = -50 } 
+}
+
+action_c = {
+trigger = { NOT = { ispuppet = LBY } }
+ai_chance = 50
+name = "EVT_5043_ACTIONC"
+command = { type = dissent value = 3 } 
+command = { type = leave_alliance } 
+command = { type = relation which = SAU value = -200 } 
+}
+}
+# Events 5044 - 5047 are more Prime Minister events posted above
+
+############################
+# OTT Puppets Arabia Event #
+############################
+event = {
+id = 5048
+random = no
+country = OTT
+style = 2
+
+trigger = {
+NOT = {
+exists = SAU
+}
+control = { province = 1045 data = OTT } 
+control = { province = 1049 data = OTT } 
+}
+
+name = "EVT_5048_NAME"
+desc = "EVT_5048_DESC" 
+picture = "OTT_Gendarmerie"
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 70
+name = "EVT_5048_ACTIONA"
+command = { type = dissent value = -1 } 
+command = { type = independence which = SAU }
+command = { type = make_puppet which = SAU }
+command = { type = trigger which = 5049 where = SAU }
+}
+
+action_b = {
+ai_chance = 30
+name = "EVT_5019_ACTIONB" 
+command = { type = dissent value = 5 }
+command = { type = supplies value = 1000 }
+}
+}
+
+event = {
+id = 5049
+random = no
+country = SAU
+style = 2
+
+name = "EVT_5049_NAME"
+desc = "EVT_5049_DESC" 
+picture = "foreign_policy"
+
+
+action_a = {
+name = "EVT_5048_ACTIONA"
+command = { type = flag_ext where = SAU which = "_sau" } 
+command = { type = name where = SAU which = "Emirate of Nejd" } 
+command = { type = headofstate which = 63059 }
+command = { type = headofgovernment which = 63060 }
+}
+}
+#####################
+# Capital attraction#
+#####################
+event = {
+id = 5050
+random = no
+country = SAU
+style = 2
+
+trigger = {
+event = { id = 5006 days = 60 }
+OR = {
+owned = { province = 1034 data = SAU }
+control = { province = 1034 data = SAU } #Baghdad
+}
+OR = {
+owned = { province = 1016 data = SAU }
+control = { province = 1016 data = SAU } #Damascus
+}
+OR = {
+owned = { province = 1172 data = SAU }
+control = { province = 1172 data = SAU } #Jerusalem
+}
+NOT = {
+war = { country = KUR country = SAU }
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+name = "Capital Attraction"
+desc = "As our capital now is the centre of an enlarged and more prosperous nation, a great deal of people and companies have moved there, bringing with them an influx of capital and further economic development."
+picture = "Damascus"
+
+date = { day = 0 month = january year = 1936 }
+offset = 100
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "What a capital development!" #hehehehe
+command = { type = money value = 250 }
+command = { trigger = { capital = { province = 1016 data = SAU } } type = construct which = ic where = 1016 value = 1 } #Damascus
+command = { trigger = { capital = { province = 1034 data = SAU } } type = construct which = ic where = 1034 value = 1 } #Baghdad
+command = { trigger = { capital = { province = 1049 data = SAU } } type = construct which = ic where = 1049 value = 1 } #Mecca
+command = { trigger = { capital = { province = 1172 data = SAU } } type = construct which = ic where = 1172 value = 1 } #Jerusalem
+}
+}
+
+#########################################################################
+#Forming the Levantine Legion
+#########################################################################
+event = {
+id = 5051
+country = SAU
+style = 2
+picture = "Arab_infantry"
+
+trigger = {
+core = { province = 1016 data = SAU } 
+NOT = {
+ispuppet = SAU
+}
+}
+
+name = "Establishing the Levantine Legion"
+desc = "As Ottoman persecution of Arab patriots continue to intensify, a large amount of refugees and exiles from the Levant have found their way to Mecca where they, by the meditation of the Al-Fatat organisation have proposed the formation of a so-called Levantine Legion."
+
+date = { day = 0 month = january year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 70
+name = "You're in the army now, habibi!"
+command = { type = dissent value = -1.5 }
+command = { type = steal_tech which = OTT }
+command = { type = add_corps which = "Arab Regular Army" value = land when = -1 where = 1049 }
+command = { type = add_division which = "Levantine Legion" value = infantry when = 8 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -500 }
+}
+
+action = {
+ai_chance = 30
+name = "This is not needed."
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 5052
+country = SAU
+style = 2
+picture = "arabian_conference"
+
+trigger = {
+random = 5
+}
+
+name = "Hashemite Red Crescent Association"
+desc = "A new humanitarian organization modelled after the Red Cross,formally named the Red Crescent Association of Hashemite Arabia has just petitioned the Shariffan government for funding ,partly to help support the pilgrimages to Mecca and partly to provide medical care for the remote regions in our territory. However,some ministers in our cabinet are suggesting that they also provide care for military personnel in the upcoming struggle against the Ottomans for even more resources coming their way"
+
+date = { day = 0 month = september year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Sounds like good investment!"
+command = { type = dissent value = -3 }
+}
+
+action = {
+name = "What's the bit about field medics?"
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 5053
+country = SAU
+style = 2
+picture = "Arabrevolt"
+
+trigger = {
+random = 5
+}
+
+name = "The Tomb of Eve"
+desc = "A grand ceremony was held today in Jeddah to celebrate the restoration of the Tomb of Eve,which was bombed as an act of spite against the Shariff by the Saudi Prince Faisal in 1928."
+
+date = { day = 0 month = september year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "They even dare to touch the mother of mankind..."
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 5054
+country = SAU
+style = 2
+picture = "thewageslaves"
+
+trigger = {
+random = 5
+}
+
+name = "Ending slavery in the Hejaz"
+desc = "While the Shariffan government, along with many other Arab states had signed the Anti-Slavery Protocols in 1925 in an attempt bring the peninsula out of the shadows of serfdom,the situation on the ground is much different. Slavery still runs rampant across the Hashemite Kingdom,and this has lead many nations to call on our govenrment to take definitive actions against slavery. While it would be the correct direction and help our international reputation,it would have some impact on our economy."
+
+date = { day = 0 month = september year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "At least we won't have to go through a civil war to abolish it?"
+command = { type = dissent value = -3 }
+command = { type = industrial_modifier which = total value = -1 }
+}
+
+action = {
+name = "We still need this system for economic survival.."
+command = { type = dissent value = 8 }
+command = { type = relation which = OTT value = -20 }
+command = { type = relation which = GER value = -20 }
+command = { type = relation which = CAN value = -20 }
+command = { type = relation which = EGY value = -20 }
+command = { type = relation which = PER value = -20 }
+command = { type = relation which = U53 value = -20 }
+}
+}
+#########################################################################
+#The Mosul Question
+#########################################################################
+event = {
+id = 5100
+random = no
+country = SAU
+style = 2
+
+decision = {
+NOT = {
+ispuppet = SAU
+alliance = { country = SAU country = KUR }
+war = { country = KUR country = SAU }
+}
+event = 5007
+core = { province = 1029 data = SAU }
+control = { province = 1029 data = KUR } #Mosul
+}
+
+decision_trigger = {
+event = 5007
+local_flag = Hashemite_state_consolidated
+core = { province = 1029 data = SAU }
+control = { province = 1029 data = KUR } #Mosul
+NOT = {
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+war = { country = KUR country = SAU }
+}
+}
+
+trigger = {
+event = 5007
+NOT = {
+alliance = { country = SAU country = KUR }
+ispuppet = SAU
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+}
+}
+
+name = "The Mosul Question"
+desc = "In the aftermath of the Ottoman collapse, the Kurdish tribes of Eastern Anatolia rose up in revolt against the Sublime Porte. However, the new Kurdish government unjustly occupies the Mosul vilayet - a rightfully Arab province. We must defend our opppressed brethren!"
+picture = "Damascus"
+decision_picture = "decision_hatsemitewar"
+
+date = { day = 0 month = january year = 1936 }
+offset = 4
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+ai_chance = 95
+name = "Onwards! We shall liberate the Mosul Vilayet!"
+command = { type = dissent value = -5 }
+command = { trigger = { guarantee = { country = -1 country = KUR } } type =  end_guarantee which = SAU where = KUR }
+command = { type = end_non_aggression which = SAU where = KUR }
+command = { type = war which = KUR }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = relation which = KUR value = -200 }
+}
+
+action = {
+ai_chance = 5
+name = "A rapprochement is needed to curb Turkish revanchism!"
+command = { type = domestic which = defense_lobby value = -2 }
+command = { type = relation which = KUR value = 100 }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 5101
+country = SAU
+picture = "Anatoliamap"
+style = 2
+
+trigger = {
+OR = {
+exists = OTT #Ottomans
+exists = TUR #Turkey
+}
+OR = {
+AND = {
+control = { province = 1060 data = SAU } # Diyarbakir
+owned = { province = 1060 data = SAU } # Diyarbakir
+}
+AND = {
+control = { province = 1062 data = SAU } # Hakkari
+owned = { province = 1062 data = SAU } # Hakkari
+}
+AND = {
+control = { province = 1063 data = SAU } # Erzurum
+owned = { province = 1063 data = SAU } # Erzurum
+}
+AND = {
+control = { province = 1064 data = SAU } # Elazig
+owned = { province = 1064 data = SAU } # Elazig
+}
+}
+NOT = {
+exists = KUR #Kurdistan
+war = { country = PER country = SAU }
+war = { country = OTT country = SAU }
+war = { country = TUR country = SAU }
+ispuppet = SAU
+}
+}
+
+name = "The Conquest of Eastern Anatolia"
+desc = "The Kurdish tribesmen have been subjucated by the victorious Arab armies and the contested Mosul vilayet liberated. Now we are faced with the problem of handling these new mountaineus provinces - we could either set up a loyal Kurdish puppet or seek detente with the Turk by returning the territories."
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Form a Kurdish puppet state to guard our border from Turkish revanchism!"
+ai_chance = 30
+command = { type = dissent value = -5 }
+command = { type = independence which = KUR value = 1 when = 0 }
+command = { type = make_puppet which = TUR }
+command = { type = event which = 5102 where = KUR when = 1 }
+}
+
+action = {
+name = "Seek detente with the Turks in exchange for territories!"
+trigger = {
+NOT = {
+ispuppet = TUR
+ispuppet = OTT
+}
+}
+ai_chance = 70
+command = { type = dissent value = 2 }
+command = { type = event which = 5103 where = TUR when = 2 }
+command = { type = event which = 5104 where = OTT when = 2 }
+}
+
+action = {
+name = "These lands shall be the border marches of Arabia!"
+ai_chance = 0
+command = { type = dissent value = 10 }
+}
+}
+
+
+event = {
+id = 5102
+country = KUR
+style = 2
+picture = "Arab_infantry"
+
+name = "The Kurdish Puppet State"
+desc = "The dastardly Arabs have allowed us some authority, although we've lost Mosul.."
+
+action = {
+name = "A small Kurdistan is still a Kurdistan...."
+command = { type = dissent value = 5 }
+command = { type = secedeprovince which = SAU value = 1029 when = 1 }
+command = { type = removecore which = 1014 } #Deir es Zor
+command = { type = removecore which = 1015 } #El Qashili
+command = { type = removecore which = 1027 } #Arbil
+command = { type = removecore which = 1029 } #Mosul 
+command = { type = removecore which = 1082 } #Rezaiye 
+command = { type = removecore which = 1084 } #Kermanshah 
+command = { type = add_division value = cavalry when = 7 }
+command = { type = add_division value = militia when = 4 }
+command = { type = supplies value = 2000 }
+}
+}
+
+
+event = {
+id = 5103
+country = TUR
+style = 2
+picture = "Anatoliamap"
+
+name = "The Arab Offer of Rapprochement"
+desc = "The Arab curs have managed to crush the Kurdish tribal state in Eastern Anatolia and have now proposed the reestablishment of cordial relation between our states by offering to hand over the captured Anatolian provinces. In exchange we would have to give up all claims to the former Ottoman territores."
+
+action = {
+ai_chance = 70
+name = "Accept and consolidate the Turkish state!"
+command = { type = dissent value = -1 }
+command = { type = add_division value = militia when = 4 }
+command = { type = removecore which = 1004 }
+command = { type = removecore which = 1005 }
+command = { type = removecore which = 1006 }
+command = { type = removecore which = 1007 } #The Sinai
+command = { type = removecore which = 1049 } #Mecca
+command = { type = removecore which = 1044 }
+command = { type = removecore which = 1046 }
+command = { type = removecore which = 1048 } #Arabian Desert
+command = { type = removecore which = 1008 }
+command = { type = removecore which = 1009 }
+command = { type = removecore which = 1010 }
+command = { type = removecore which = 1011 }
+command = { type = removecore which = 1013 }
+command = { type = removecore which = 1014 }
+command = { type = removecore which = 1015 }
+command = { type = removecore which = 1016 }
+command = { type = removecore which = 1017 }
+command = { type = removecore which = 1018 }
+command = { type = removecore which = 1019 }
+command = { type = removecore which = 1020 }
+command = { type = removecore which = 1021 }
+command = { type = removecore which = 1022 }
+command = { type = removecore which = 1023 }
+command = { type = removecore which = 1024 }
+command = { type = removecore which = 1025 }
+command = { type = removecore which = 1026 }
+command = { type = removecore which = 1172 }  #Greater Syria
+command = { type = removecore which = 1027 }
+command = { type = removecore which = 1028 }
+command = { type = removecore which = 1029 }
+command = { type = removecore which = 1030 }
+command = { type = removecore which = 1031 }
+command = { type = removecore which = 1032 }
+command = { type = removecore which = 1033 }
+command = { type = removecore which = 1034 }
+command = { type = removecore which = 1035 }
+command = { type = removecore which = 1036 }
+command = { type = removecore which = 1037 }
+command = { type = removecore which = 1041 } #Mesopotamia
+command = { type = removeclaim which = 1004 }
+command = { type = removeclaim which = 1005 }
+command = { type = removeclaim which = 1006 }
+command = { type = removeclaim which = 1007 } #The Sinai
+command = { type = removeclaim which = 1049 } #Mecca
+command = { type = removeclaim which = 1044 }
+command = { type = removeclaim which = 1046 }
+command = { type = removeclaim which = 1048 } #Arabian Desert
+command = { type = removeclaim which = 1008 }
+command = { type = removeclaim which = 1009 }
+command = { type = removeclaim which = 1010 }
+command = { type = removeclaim which = 1011 }
+command = { type = removeclaim which = 1013 }
+command = { type = removeclaim which = 1014 }
+command = { type = removeclaim which = 1015 }
+command = { type = removeclaim which = 1016 }
+command = { type = removeclaim which = 1017 }
+command = { type = removeclaim which = 1018 }
+command = { type = removeclaim which = 1019 }
+command = { type = removeclaim which = 1020 }
+command = { type = removeclaim which = 1021 }
+command = { type = removeclaim which = 1022 }
+command = { type = removeclaim which = 1023 }
+command = { type = removeclaim which = 1024 }
+command = { type = removeclaim which = 1025 }
+command = { type = removeclaim which = 1026 }
+command = { type = removeclaim which = 1172 }  #Greater Syria
+command = { type = removeclaim which = 1027 }
+command = { type = removeclaim which = 1028 }
+command = { type = removeclaim which = 1029 }
+command = { type = removeclaim which = 1030 }
+command = { type = removeclaim which = 1031 }
+command = { type = removeclaim which = 1032 }
+command = { type = removeclaim which = 1033 }
+command = { type = removeclaim which = 1034 }
+command = { type = removeclaim which = 1035 }
+command = { type = removeclaim which = 1036 }
+command = { type = removeclaim which = 1037 }
+command = { type = removeclaim which = 1041 } #Mesopotamia
+command = { type = relation which = SAU value = 100 }
+command = { type = event which = 5105 where = SAU when = 2 }
+}
+
+action = {
+name = "No deals with the treacherous Bedus!"
+ai_chance = 30
+command = { type = dissent value = 10 }
+}
+}
+
+
+event = {
+id = 5104
+country = OTT
+style = 2
+picture = "Anatoliamap"
+
+name = "The Arab Offer of Rapprochement"
+desc = "The Arab curs have managed to crush the Kurdish tribal state in Eastern Anatolia and have now proposed the reestablishment of cordial relation between our states by offering to hand over the captured Anatolian provinces. In exchange we would have to give up all claims to the former Ottoman territores."
+
+action = {
+ai_chance = 70
+name = "Accept and consolidate the Empire as an Anatolian state!"
+command = { type = dissent value = -1 }
+command = { type = add_division value = militia when = 4 }
+command = { type = removecore which = 1004 }
+command = { type = removecore which = 1005 }
+command = { type = removecore which = 1006 }
+command = { type = removecore which = 1007 } #The Sinai
+command = { type = removecore which = 1049 } #Mecca
+command = { type = removecore which = 1044 }
+command = { type = removecore which = 1046 }
+command = { type = removecore which = 1048 } #Arabian Desert
+command = { type = removecore which = 1008 }
+command = { type = removecore which = 1009 }
+command = { type = removecore which = 1010 }
+command = { type = removecore which = 1011 }
+command = { type = removecore which = 1013 }
+command = { type = removecore which = 1014 }
+command = { type = removecore which = 1015 }
+command = { type = removecore which = 1016 }
+command = { type = removecore which = 1017 }
+command = { type = removecore which = 1018 }
+command = { type = removecore which = 1019 }
+command = { type = removecore which = 1020 }
+command = { type = removecore which = 1021 }
+command = { type = removecore which = 1022 }
+command = { type = removecore which = 1023 }
+command = { type = removecore which = 1024 }
+command = { type = removecore which = 1025 }
+command = { type = removecore which = 1026 }
+command = { type = removecore which = 1172 }  #Greater Syria
+command = { type = removecore which = 1027 }
+command = { type = removecore which = 1028 }
+command = { type = removecore which = 1029 }
+command = { type = removecore which = 1030 }
+command = { type = removecore which = 1031 }
+command = { type = removecore which = 1032 }
+command = { type = removecore which = 1033 }
+command = { type = removecore which = 1034 }
+command = { type = removecore which = 1035 }
+command = { type = removecore which = 1036 }
+command = { type = removecore which = 1037 }
+command = { type = removecore which = 1041 } #Mesopotamia
+command = { type = removeclaim which = 1004 }
+command = { type = removeclaim which = 1005 }
+command = { type = removeclaim which = 1006 }
+command = { type = removeclaim which = 1007 } #The Sinai
+command = { type = removeclaim which = 1049 } #Mecca
+command = { type = removeclaim which = 1044 }
+command = { type = removeclaim which = 1046 }
+command = { type = removeclaim which = 1048 } #Arabian Desert
+command = { type = removeclaim which = 1008 }
+command = { type = removeclaim which = 1009 }
+command = { type = removeclaim which = 1010 }
+command = { type = removeclaim which = 1011 }
+command = { type = removeclaim which = 1013 }
+command = { type = removeclaim which = 1014 }
+command = { type = removeclaim which = 1015 }
+command = { type = removeclaim which = 1016 }
+command = { type = removeclaim which = 1017 }
+command = { type = removeclaim which = 1018 }
+command = { type = removeclaim which = 1019 }
+command = { type = removeclaim which = 1020 }
+command = { type = removeclaim which = 1021 }
+command = { type = removeclaim which = 1022 }
+command = { type = removeclaim which = 1023 }
+command = { type = removeclaim which = 1024 }
+command = { type = removeclaim which = 1025 }
+command = { type = removeclaim which = 1026 }
+command = { type = removeclaim which = 1172 }  #Greater Syria
+command = { type = removeclaim which = 1027 }
+command = { type = removeclaim which = 1028 }
+command = { type = removeclaim which = 1029 }
+command = { type = removeclaim which = 1030 }
+command = { type = removeclaim which = 1031 }
+command = { type = removeclaim which = 1032 }
+command = { type = removeclaim which = 1033 }
+command = { type = removeclaim which = 1034 }
+command = { type = removeclaim which = 1035 }
+command = { type = removeclaim which = 1036 }
+command = { type = removeclaim which = 1037 }
+command = { type = removeclaim which = 1041 } #Mesopotamia
+command = { type = relation which = SAU value = 100 }
+command = { type = event which = 5106 where = SAU when = 2 }
+}
+
+action = {
+name = "No deals with the treacherous Bedus!"
+ai_chance = 30
+command = { type = dissent value = 10 }
+}
+}
+
+
+event = {
+id = 5105
+country = SAU
+style = 2
+picture = "Anatoliamap"
+
+name = "The Turks Accept"
+desc = "The Turkish government has accepted our offer of rapprochement. This shall bring peace and stability to the Middle-world!"
+
+action = {
+name = "Peace and harmony shall soon return!"
+command = { type = dissent value = -1 }
+command = { type = secederegion which = TUR value = "Anatolia" when = 1 }
+command = { type = secedearea which = TUR value = "Anatolian North Coast" when = 1 }
+command = { type = secedearea which = TUR value = "Eastern Anatolia" when = 1 }
+command = { type = relation which = TUR value = 100 }
+command = { type = non_aggression which = TUR where = SAU }
+}
+}
+
+
+event = {
+id = 5106
+country = SAU
+style = 2
+picture = "Anatoliamap"
+
+name = "The Sublime Porte Accepts"
+desc = "The remnant Ottoman government has accepted our offer of rapprochement. This shall bring peace and stability to the Middle-world!"
+
+action = {
+name = "Peace and harmony shall soon return!"
+command = { type = dissent value = -1 }
+command = { type = secederegion which = OTT value = "Anatolia" when = 1 }
+command = { type = secedearea which = OTT value = "Anatolian North Coast" when = 1 }
+command = { type = secedearea which = OTT value = "Eastern Anatolia" when = 1 }
+command = { type = relation which = OTT value = 100 }
+command = { type = non_aggression which = OTT where = SAU }
+}
+}

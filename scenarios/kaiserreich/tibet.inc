@@ -34,6 +34,8 @@ country = {
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10
 
+	free = { ic = 3 oil = 0 energy = 0 metal = 0 rare_materials = 0 money = 0 manpower = 0 } #new Mar2020
+
 	capital = 	1289
 
 SpyInfo  = {  country = "TIB" NumberOfSpies = 2  } 
