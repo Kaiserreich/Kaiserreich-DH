@@ -41,15 +41,15 @@ ai = "kaiserreich\Qing.ai"
         free = { ic = 5 }
 
     ownedprovinces =      {
-		1321 1323 1238 1333 1342 1345 1239 1343 1337 1334 1336 1339 1335   1247 1246 1251  1242 1254  1252 1253 1248 1249 1250 1327  1243 1244
+		1321 1323 1238 1342 1345 1239 1343 1337 1336 1339   1247 1246 1251  1242 1254  1252 1253 1248 1249 1250 1327  1243 1244
                 1340 1341 1319 1324 1322 1320 1325 1316 1326 1317 1344 1259 1255 1260 1269 1271 1256 1263 1257 1258
 	 }
     controlledprovinces = {
-		1321 1323 1238 1239 1333 1342 1345 1343 1337  1334 1335 1336 1339 1247 1246 1251  1242 1254 1252 1253 1248 1249 1250 1327  1243 1244
+		1321 1323 1238 1239 1342 1345 1343 1337 1336 1339 1247 1246 1251  1242 1254 1252 1253 1248 1249 1250 1327  1243 1244
                 1340 1341 1319 1324 1322 1320 1325 1316 1326 1317 1344 1259 1255 1260 1269 1271 1256 1263 1257 1258
 	  }
     nationalprovinces =   {
-		1321 1323  1247 1238 1334 1342 1345 1343 1337 1333 1335 1336 1339 1239 1246 1251  1242 1254 1252 1253 1248 1249 1250 1327  1243 1244
+		1321 1323  1247 1238 1342 1345 1343 1337 1336 1339 1239 1246 1251  1242 1254 1252 1253 1248 1249 1250 1327  1243 1244
                 1340 1341 1319 1324 1322 1320 1325 1316 1326 1317 1344 1259 1255 1260 1269 1271 1256 1263 1257 1258
 	}
     claimedprovinces = {
@@ -57,13 +57,13 @@ ai = "kaiserreich\Qing.ai"
                 1348 1349 1350 1351 1352 1353 1354 1355 1356 1357 1359 1368 1369 1370 1373 1374 1375 
                 1376 1377 1379 1380 1381 1382 1383 1259 1255 1260 1269 1271 1256 1263 1257 1258
                 1202 1216 1235 1236 1240 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218 
-                1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1361 1362 1363 1364 1372 1329 1330 1332
+                1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1361 1362 1363 1364 1372 1329 1330 1332 1333 1334 1335
                 1268 1270 1264 1272 1265 1266 1283 1284 1285 1273 1279 1280 1281 1277 1274 1275 1282 1276
                 1389 1390 1384 1385 1387 1386 1388 1292 1293 1291 1300 1303 1261 1262 1296 1297 1298 1299 1219
                 1302 1267 1338 1358 1371 1346 1294 1286 1287 1288 1289 1278 1295 1290 1328 1331 1241 1245 1365 1367
              }
 diplomacy = {
-relation = { tag = EAF value = 60 guaranteed = { day = 29 month = december year = 1935   }  	   } 
+relation = { tag = EAF value = 60 access     = yes guaranteed = { day = 29 month = december year = 1935   }  	   } 
 relation = { tag = JAP value = -100   	   } 
 relation = { tag = MAN value = -20   	   } 
 relation = { tag = CHC value = -120   	   }
@@ -515,8 +515,8 @@ name = "Di'2 Kongjun"
 navalunit = {
 name = "Imperial Fleet of China"
 id = { type = 22000 id = 300 }
-location = 1334
-base = 1334
+location = 1241
+base = 1241
 division = { id = { type = 22000 id = 323 } name =  "Long Wei" type = battleship  model = 2  } # sold by German Empire formerly SMS Markgraf
 division = { id = { type = 22000 id = 324 } name =  "Wu Wei" type = battleship  model = 2  } # sold by German Empire formerly SMS Kronprinz
 division = { id = { type = 22000 id = 301 } name =  "Nan'Shin" type = battleship  model = 1  } #Pre Dreadnought bought from Germany
@@ -533,8 +533,8 @@ division = { id = { type = 22000 id = 309 } name =  "4. Quzujian Dadui" type = d
 navalunit = {
 name = "Imperial Submarine Fleet"
 id = { type = 22000  id = 320 }
-location = 1334 
-base = 1334 
+location = 1241 
+base = 1241
 
 division = { id = { type = 22000 id = 321 } name =  "1. Qianting Budui" type = submarine  model = 1 }
 division = { id = { type = 22000 id = 322 } name =  "2. Qianting Budui" type = submarine  model = 1 }
