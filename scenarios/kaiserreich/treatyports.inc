@@ -48,13 +48,13 @@ SpyInfo  = {  country = "EAF" NumberOfSpies = 2  }
 
 
     ownedprovinces =      {
-1338 1358 1371 1346
+1338 1358 1371 1346 1241
 	 }
     controlledprovinces = {
-1338 1358 1371 1346
+1338 1358 1371 1346 1241
 	  }
     nationalprovinces =   {
-1338 1358 1371 1346
+1338 1358 1371 1346 1241
 	}
 
 diplomacy = {
