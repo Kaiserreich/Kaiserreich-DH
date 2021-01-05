@@ -78,9 +78,7 @@ ownedprovinces =      {
 1001 1003 1002 # Madagascar
 996 #Reunion
 #ASIA
-1399 1403 1397 1398 1394 1396 1405 1395 1391 1404 1392 1393#Indochine
-
-1328 1331 1245 1365 1367 ## China
+1245 1365 1367 ## China
 1509 1510 1511 ## Sri Lanka
 
 }
@@ -118,9 +116,8 @@ controlledprovinces = {
 1001 1003 1002 # Madagascar
 996 #Reunion
 #ASIA
-1399 1403 1397 1398 1394 1396 1405 1395 1391 1404 1392 1393#Indochine
 
-1328 1331 1245 1365 1367 ## China
+1245 1365 1367 ## China
 1509 1510 1511 ## Sri Lanka
 
 }
@@ -137,7 +134,7 @@ claimedprovinces = {
 1432 #Singapore
 900 1007 #Suez
 1602 1605 1610 1603 1234 #Papua
-1328 1331  1245 1365 1367 ## China
+1245 1365 1367 ## China
 }
 
 diplomacy = {
