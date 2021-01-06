@@ -34,7 +34,7 @@ headofgovernment = { type = 9 id = 502002 }
 	capital = 1378 #Guilin
 	manpower = 200
 
-        free = { ic = 7 }
+        free = { ic = 10 }
 
 SpyInfo  = {  country = "CGX" NumberOfSpies = 3  } 
 
