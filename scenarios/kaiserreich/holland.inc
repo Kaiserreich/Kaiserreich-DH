@@ -152,7 +152,7 @@ relation = {   tag =  	JAP	value = 		40	   }
 
 #########  OOB (...)
 
-	transports = 150
+	transports = 250
 	escorts = 21
 
 	landunit = {

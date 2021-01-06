@@ -38,7 +38,7 @@ manpower = 460
     energy    =    1000   metal    = 1000        rare_materials =    500    oil =    500    supplies =    500
     money = 50       transports = 50
 
-
+	free = { ic = -5 } #temporary, remove with Italy rework
 
     ownedprovinces =      {
         87 91 94 435 434 396 399 398 407 395 393 408 410 411 413 419 414 412  416

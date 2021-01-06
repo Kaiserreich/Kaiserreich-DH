@@ -34,6 +34,8 @@ ai = "kaiserreich\Sicilies.ai"
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 50      transports = 50
 
+	free = { ic = 5 } #temporary, remove with Italy rework
+
     ownedprovinces =      {
 	418 415 420 423 421 427 424 426 422 428 425 431 432 433 430 417
 	 }
