@@ -56,8 +56,8 @@ province = { id = 406 ic = 2 } #Pola
 province = { id = 332 ic = 1 } #Cetinje
 
 province = { id = 404 ic = 3 } #Trieste
-province = { id = 405 ic = 3 } #Udine
-province = { id = 400 ic = 1 } #Venice
+province = { id = 405 ic = 2 } #Udine
+province = { id = 400 ic = 4 } #Venice
 province = { id = 401 ic = 2 } #Trento
 province = { id = 402 ic = 2 } #Bolzano
 province = { id = 394 ic = 1 } #Belluno
@@ -148,20 +148,23 @@ province = { id = 2118 ic = 2 } #Sherbrooke
 province = { id = 2130 ic = 2 } #Saint John
 province = { id = 2131 ic = 1 } #Moncton
 ### CGX (german protectorate)
-province = { id = 1373 ic = 5 } #Jiangmen
-province = { id = 1380 ic = 3 } #Liuzhou
-province = { id = 1369 ic = 3 } #Guangzhou
+province = { id = 1373 ic = 1 } #Jiangmen
+province = { id = 1369 ic = 4 } #Guangzhou
 province = { id = 1305 ic = 1 } #Guiyang
-province = { id = 1309 ic = 2 } #Xianghan
 province = { id = 1354 ic = 1 } #Ganghou
 province = { id = 1318 ic = 1 } #Huangshi
-province = { id = 1307 ic = 2 } #Huaihua
-province = { id = 1308 ic = 2 } #Changsha
+province = { id = 1308 ic = 1 } #Changsha
 province = { id = 1351 ic = 2 } #Shangrao
-province = { id = 1368 ic = 3 } #Shaoguan
-province = { id = 1378 ic = 5 } #Guilin
+province = { id = 1368 ic = 1 } #Shaoguan
+province = { id = 1378 ic = 1 } #Guilin
+province = { id = 1311 ic = 1 } #Chenzhou
+province = { id = 1313 ic = 1 } #Shashi
+province = { id = 1352 ic = 1 } #Nanchang
+province = { id = 1360 ic = 1 } #Xiamen
+province = { id = 1370 ic = 1 } #Lufeng
+province = { id = 1375 ic = 1 } #Shantou
 ### CHC (shanqging tianguo)
-province = { id = 1257 ic = 1 } #Tongguan
+province = { id = 1258 ic = 1 } #Xi'an
 ### CHL
 province = { id = 2024 ic = 1 } #Iquique
 province = { id = 2025 ic = 2 } #Antofogasta
@@ -196,16 +199,25 @@ province = { id = 343 ic = 1 } #Dubrovnik
 province = { id = 344 ic = 1 } #Osijek
 province = { id = 347 ic = 2 } #Karlovac
 ### CSX (qing)
-province = { id = 1345 ic = 5 } #Hangzhou
-province = { id = 1337 ic = 11 } #Nanjing
-province = { id = 1340 ic = 2 } #Hefei
-province = { id = 1317 ic = 1 } #Wuhan
-province = { id = 1252 ic = 1 } #Taiyuan
+province = { id = 1345 ic = 3 } #Hangzhou
+province = { id = 1337 ic = 4 } #Nanjing
+province = { id = 1340 ic = 1 } #Hefei
+province = { id = 1317 ic = 2 } #Wuhan
+province = { id = 1252 ic = 2 } #Taiyuan
 province = { id = 1247 ic = 3 } #Beijing
-province = { id = 1250 ic = 2 } #Lingqiu
 province = { id = 1330 ic = 2 } #Jinan
-province = { id = 1334 ic = 2 } #Nantong
-province = { id = 1343 ic = 2 } #Huainan
+province = { id = 1334 ic = 1 } #Nantong
+province = { id = 1242 ic = 1 } #Shijazhuang
+province = { id = 1243 ic = 1 } #Baoding
+province = { id = 1245 ic = 3 } #Tangshen
+province = { id = 1251 ic = 1 } #Datong
+province = { id = 1253 ic = 1 } #Linfen
+province = { id = 1319 ic = 1 } #Kaifeng
+province = { id = 1324 ic = 1 } #Zhengzhou
+province = { id = 1322 ic = 1 } #Luoyang
+province = { id = 1323 ic = 1 } #Anyang
+province = { id = 1333 ic = 1 } #Huaiyan
+province = { id = 1336 ic = 1 } #Xuzhou
 ### CUB
 province = { id = 1776 ic = 3 } #Havana
 province = { id = 1779 ic = 3 } #Santa Clara
@@ -387,6 +399,7 @@ province = { id = 1432 ic = 1 } #Singapore
 province = { id = 1399 ic = 1 } #Saigon
 province = { id = 1395 ic = 2 } #Hanoi
 province = { id = 1393 ic = 3 } #Hoa Binh
+province = { id = 1241 ic = 3 } #Tianjin
 ### GLD (galicia londomeria)
 province = { id = 235 ic = 2 } #Krakow
 province = { id = 242 ic = 2 } #Lwow
@@ -474,20 +487,21 @@ province = { id = 1497 ic = 2 } #Kochi
 province = { id = 1495 ic = 2 } #Thiravana-thapuran
 province = { id = 1516 ic = 2 } #Poona/Puna
 ### ITA
-province = { id = 87 ic = 3 } #Nice
+province = { id = 91 ic = 2 } #Chambery
 province = { id = 94 ic = 1 } #Corsica
 
-province = { id = 398 ic = 3 } #Turin
-province = { id = 396 ic = 3 } #Genoa
-province = { id = 407 ic = 8 } #Milan
-province = { id = 395 ic = 3 } #Bergamo
+province = { id = 398 ic = 5 } #Turin
+province = { id = 396 ic = 7 } #Genoa
+province = { id = 399 ic = 1 } #Alessandria
+province = { id = 407 ic = 9 } #Milan
+province = { id = 395 ic = 1 } #Bergamo
 province = { id = 393 ic = 4 } #Brescia
-province = { id = 408 ic = 1 } #Parma
-province = { id = 411 ic = 4 } #Bologna
-province = { id = 410 ic = 4 } #Florence
-province = { id = 414 ic = 2 } #Livorno
+province = { id = 408 ic = 2 } #Parma
+province = { id = 411 ic = 3 } #Bologna
+province = { id = 412 ic = 1 } #Ancona
+province = { id = 410 ic = 3 } #Florence
+province = { id = 414 ic = 4 } #Livorno
 province = { id = 419 ic = 4 } #Rome
-province = { id = 416 ic = 1 } #Anzio
 province = { id = 434 ic = 1 } #Cagliari
 ### IRE
 province = { id = 36 ic = 4 } #Belfast
@@ -712,15 +726,15 @@ province = { id = 306 ic = 1 } #Ismail
 province = { id = 304 ic = 2 } #Chisinau
 province = { id = 310 ic = 2 } #Constanta
 ### RSI (socialist italy)
-province = { id = 415 ic = 2 } #Pescara
-province = { id = 421 ic = 2 } #Naples
-province = { id = 420 ic = 1 } #Foggia
+province = { id = 415 ic = 1 } #Pescara
+province = { id = 421 ic = 7 } #Naples
 province = { id = 425 ic = 1 } #Reggio Calabria
 province = { id = 430 ic = 2 } #Palermo
-province = { id = 417 ic = 2 } #Cassino
 province = { id = 422 ic = 3 } #Taranto
-province = { id = 424 ic = 2 } #Potenza
-province = { id = 427 ic = 3 } #Salerno
+province = { id = 427 ic = 1 } #Salerno
+province = { id = 428 ic = 1 } #Cosenza
+province = { id = 426 ic = 1 } #Bari
+province = { id = 432 ic = 1 } #Catania
 ### RUS (SIB)
 province = { id = 1164 ic = 1 } #Ust-Kut
 province = { id = 1144 ic = 1 } #Kemerovo
@@ -1012,5 +1026,6 @@ province = { id = 736 ic = 3 } #Bougie
 province = { id = 749 ic = 2 } #Beja
 province = { id = 957 ic = 1 } #Ouagadougou
 ### YUN
-province = { id = 1390 ic = 5 } #Kunming
+province = { id = 1390 ic = 2 } #Kunming
+province = { id = 1297 ic = 2 } #Chengdu
 province = { id = 1299 ic = 1 } #Chongqing
