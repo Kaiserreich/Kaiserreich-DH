@@ -17,19 +17,17 @@ ai = "kaiserreich\Mongolia.ai"
     }
 
 
-headofstate = { type = 9 id = 94105 }
-headofgovernment = { type = 9 id = 94113 }
-foreignminister = { type = 9 id = 94106 }
-armamentminister = { type = 9 id = 94128 }
-ministerofsecurity = { type = 9 id = 94121 }
-ministerofintelligence = { type = 9 id = 94107 }
-chiefofstaff = { type = 9 id = 94111  }
-chiefofarmy = { type = 9 id = 94118 }
-chiefofair = { type = 9 id = 94130 }
-
-
-
 #### cabinet
+
+	headofstate = { type = 9 id = 94105 }
+	headofgovernment = { type = 9 id = 94113 }
+	foreignminister = { type = 9 id = 94106 }
+	armamentminister = { type = 9 id = 94128 }
+	ministerofsecurity = { type = 9 id = 94121 }
+	ministerofintelligence = { type = 9 id = 94107 }
+	chiefofstaff = { type = 9 id = 94011 } #Andrey S. Bakich
+	chiefofarmy = { type = 9 id = 94163 } #Mikhail Tornovsky
+	chiefofair = { type = 9 id = 94130 } #Valentin Veselovsky
 
 #### Resource Reserves
 
