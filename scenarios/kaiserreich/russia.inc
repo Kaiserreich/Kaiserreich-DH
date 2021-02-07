@@ -1,30 +1,27 @@
 country = {
-tag = RUS
+	tag = RUS
 
-ai = "kaiserreich\Russia.ai"
-policy = {
-date = { year = 0 month = january day = 0 }
-democratic = 7
-political_left = 6
-freedom = 6
-free_market = 5
-professional_army = 1
-defense_lobby = 3
-interventionism = 2
-}
+	ai = "kaiserreich\Russia.ai"
+	policy = {
+		date = { year = 0 month = january day = 0 }
+		democratic = 7
+		political_left = 6
+		freedom = 6
+		free_market = 5
+		professional_army = 1
+		defense_lobby = 3
+		interventionism = 2
+	}
 
-
-
-
-
-headofstate = { type = 9 id = 4092  }
-headofgovernment = { type = 9 id = 4160 }
-ministerofsecurity = { type = 9 id = 4242  }
-ministerofintelligence = { type = 9 id = 4251  }
-chiefofstaff = { type = 9 id = 4124  }
-chiefofarmy = { type = 9 id = 4266   }
-chiefofnavy = { type = 9 id = 4179 }
-chiefofair = { type = 9 id = 4148 }
+#### cabinet
+	headofstate = { type = 9 id = 4092 }
+	headofgovernment = { type = 9 id = 4160 }
+	ministerofsecurity = { type = 9 id = 4242 }
+	ministerofintelligence = { type = 9 id = 4251 }
+	chiefofstaff = { type = 9 id = 4124 }
+	chiefofarmy = { type = 9 id = 4266 }
+	chiefofnavy = { type = 9 id = 4179 }
+	chiefofair = { type = 9 id = 4148 }
 
 #### Resource Reserves
 
@@ -200,10 +197,11 @@ dormant_leaders = {
 				#PRI
 				500860 500861 500862 500863 500864 500865 500866 500867 500868 500869 500870 500871 500872
 				500873 500874 500875 500876 500877 500878 500879 500880 500881 500882 500883 500884 500885
+				500886 500887 500888
 				#TRA
 				500890 500891 500892 500893 500894 500895 500896 500897 500898 500899 500900 500901 500902
 				500903 500904 500905 500906 500907 500908 500909 509010 500911 500912
-				500179
+				500179 #Bochkareva
 				#UKR
 				500915 500916 500917 500918 500919 500920 500921 500922 500923 500924 500925 500926 500927
 				500928 500929 500930 500931 500932 500933 500934 500935 500936 500937 500938 500939 500940
@@ -213,9 +211,10 @@ dormant_leaders = {
 deactivate = { 6010 6210 6570 6560 6390 }
 dormant_ministers = { 4141 4199 4198 
 					#PRI
-					4440 4441 4442 4443 4444
+					4600 4601 4602 4603 4604 4605 4606 4607 4608 4609 4610 4611 4612 4613 4614 4615 4616
+					4617 4618 4619 4620
 					#UKR
-					4450 4451 4452 4453 4454 4455 4456 4457 4458
+					4650 4651 4652 4653 4654 4655 4656 4657 4658 4659 4660
 					}
 dormant_teams = { 
 				#MON
