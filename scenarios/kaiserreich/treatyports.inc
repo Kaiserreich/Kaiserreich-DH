@@ -62,8 +62,10 @@ relation = { tag = CGX value = 100 guaranteed = { day = 29 month = december year
 relation = { tag = GER value = 60 }
 relation = { tag = AST value = 60 }
 relation = { tag = CAN value = 60 }
-relation = { tag = CSX value = 60 }
+relation = { tag = CSX value = 60 access = yes }
 relation = { tag = USA value = 60 }
+relation = { tag = UCS value = -100  } 
+relation = { tag = UIF value = 50 access = yes  } 
 }
 
 
@@ -178,7 +180,18 @@ landunit = {
 			model = 4
 			strength = 50 }
 	}
-
+landunit = {
+		name = "Tianjin Constabulary"
+		location = 1241
+		id = { type = 12699 id = 5 }
+		division = {
+			id = { type = 12699 id = 6 }
+			name = "Tianjin Police District"
+			type = militia 
+			model = 4
+			strength = 50 }
+	}
+	
 landunit = {
 		name = "Shanghai Police Force"
 		location = 1338

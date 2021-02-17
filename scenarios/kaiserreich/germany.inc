@@ -57,7 +57,7 @@ ownedprovinces =      {
 833 #Djibouti
 900 1007 # Suez
 964 #Sierra Leone
-1421 1746 1732 1741 1742
+1421
 
 # MISC
 993 #Ascension island
@@ -66,19 +66,10 @@ ownedprovinces =      {
 998 999 1000 997 1613 1614
 1053
 
-# PACIFIC
-1670 1671 1668 1669 1234 1684 1685 1748 1686 1667 1676 1665 1666 1674 1675 1681 1677 1678 1679 1680 1682 1687 1602 1605 1610 1603 1724 1725 1726 1727 1587 1589 1588 1591 1590 1593 1582 1592 1581 1583 1584 1585 1586  1730 1749 1731 1750 1744 1743 1740
-
-
-#SOUTHEAST ASIA
-1432 1437 1438  #Malay States
-1624 1625 1626 #Sarawak-Borneo
-
 #INDIAN OCEAN AREA
 1001 1003 1002 # Madagascar
 996 #Reunion
 #ASIA
-1245 1365 1367 ## China
 1509 1510 1511 ## Sri Lanka
 
 }
@@ -93,7 +84,7 @@ controlledprovinces = {
 833 #Djibouti
 900 1007 # Suez
 964 #Sierra Leone
-1421 1746 1732 1741 1742
+1421
 
 # MISC
 993 #Ascension island
@@ -102,22 +93,10 @@ controlledprovinces = {
 998 999 1000 997 1613 1614
 1053
 
-# PACIFIC
-1670 1671 1748 1668 1669 1234 1684 1685 1686 1667 1676 1665 1666 1674 1675 1681 1677 1678 1679
-1680 1682 1687 1602 1605 1610 1603 1724 1725 1726 1727 1587 1589 1588 1591 1590 1593 1582 1592
-1581 1583 1584 1585 1586  1730 1749 1731 1750 1744 1743 1740
-
-
-#SOUTHEAST ASIA
-1432 1437 1438   #Malay States
-1624 1625 1626 #Sarawak-Borneo
-
 #INDIAN OCEAN AREA
 1001 1003 1002 # Madagascar
 996 #Reunion
 #ASIA
-
-1245 1365 1367 ## China
 1509 1510 1511 ## Sri Lanka
 
 }
@@ -131,10 +110,7 @@ nationalprovinces =   {
 claimedprovinces = {
 108 111 #Wallonia
 429 #Malta
-1432 #Singapore
 900 1007 #Suez
-1602 1605 1610 1603 1234 #Papua
-1245 1365 1367 ## China
 }
 
 diplomacy = {
@@ -215,6 +191,7 @@ relation = { tag = 	URU   value = 20		   }
 relation = { tag = 	VEN   value = 10		   }
 relation = { tag = 	USA   value = -40		 }
 relation = { tag = 	CGX   value = 150	access = yes   guaranteed = { day = 29 month = december year = 1933   } 	   }
+relation = { tag = 	UPE   value = 150	access = yes   guaranteed = { day = 29 month = december year = 1933   } 	   }
 relation = { tag = 	CHC   value = -90		   }
 relation = { tag = 	CSX   value = 120	access = yes   guaranteed = { day = 29 month = december year = 1933   } 	   }
 relation = { tag = 	CXB   value = 50		   }
@@ -369,19 +346,6 @@ model = 2
 strength = 100
 }
 
-}
-
-landunit = {
-location = 1432  ### (Singapore)
-name = "OHL Hauptquartier Asien"
-id = { type = 14502 id = 136 }
-division = {
-id = { type = 14502 id = 137 }
-name = "Hauptquartier Asien"
-type = hq
-model = 2
-strength = 100
-}
 }
 
 landunit = {
@@ -780,8 +744,6 @@ model = 8
 strength = 50
 }
 }
-
-
 
 
 landunit = {
@@ -1246,91 +1208,6 @@ strength = 100
 }
 }
 
-landunit = {
-location = 1432    ### [Indochina]
-name = "2. Schutztruppen Division"
-id = { type = 14502 id = 99 }
-division = {
-id = { type = 14502 id = 101 }
-name = "2. Schutztruppen Division"
-type = marine
-model = 2
-strength = 100
-}
-}
-
-
-landunit = {
-location = 1395   ### [Hanoi]
-name = "3. Schutztruppen Division"
-id = { type = 14502 id = 102  }
-division = {
-id = { type = 14502 id = 103  }
-name = "3. Schutztruppen Division"
-type = marine
-model = 2
-strength = 100
-}
-}
-
-
-
-landunit = {
-location = 1667  ### [Truk]
-name = "4. Schutztruppen Division"
-id = { type = 14502 id = 104 }
-division = {
-id = { type = 14502 id = 105 }
-name = "4. Schutztruppen Division"
-type = marine
-model = 2
-strength = 100
-}
-}
-
-
-landunit = {
-location = 1399  ### [Saigon]
-name = "Auslands Kommando Südostasien"
-id = { type = 14502 id = 107  }
-division = {
-id = { type = 14502 id = 106  }
-name = "Auslands Kommando Südostasien"
-type = d_01
-model = 7
-strength = 100
-}
-}
-
-landunit = {
-location = 1328 ###   [German Asian Puppet]
-
-name = "Auslands Kommando China"
-id = { type = 14502 id = 108  }
-division = {
-id = { type = 14502 id = 109 }
-name = "Auslands Kommando China"
-type = d_01
-model = 7
-strength = 100
-}
-}
-
-
-landunit = {
-location = 1365 ###    [Hainan]
-
-name = "Auslands Kommando Hainan"
-id = { type = 14502 id = 110 }
-division = {
-id = { type = 14502 id = 111 }
-name = "Auslands Festungs Kommando Hainan"
-type = d_01
-model = 7
-strength = 50
-}
-}
-
 
 landunit = {
 location = 964 ###    [Freetown]
@@ -1391,21 +1268,6 @@ strength = 100
 
 
 landunit = {
-location = 1602   ###    Neuguinea
-
-name = "Auslands Kommando Neuguinea"
-id = { type = 14502 id = 118 }
-division = {
-id = { type = 14502 id = 119 }
-name = "Auslands Kommando Neuguinea"
-type = d_01
-model = 7
-strength = 50
-}
-}
-
-
-landunit = {
 location =   833 ###    Somalia
 
 name = "Auslands Kommando Äthiopien"
@@ -1420,18 +1282,6 @@ strength = 100
 }
 
 
-
-landunit = {
-name = "Auslands Festungs Kommando Singapore"
-location = 1432
-id = { type = 14502 id = 122 }
-division = {
-id = { type = 14502 id = 123 }
-name = "Auslands Festungs Kommando Singapore"
-type = garrison
-model = 4
-strength = 50  }
-}
 landunit = {
 name = "Auslands Festungs Kommando Ceylon"
 location = 1511
@@ -1491,9 +1341,9 @@ division = { id = { type = 14500 id = 165 } name = "KG 4 'General Wever'" streng
 airunit = {
 id = { type = 14500 id = 320 }
 name = "Luftflotte VI"
-location = 1432
-home = 1432
-base = 1432
+location = 147
+home = 147
+base = 147
 
 division = {
 id = { type = 14500 id = 321 }
@@ -1814,60 +1664,6 @@ division = { id = { type = 14500 id = 351 } name =  "30. Zerstörergeschwader" ty
 
 }
 
-navalunit = {
-name = "Ostasienschwadron"
-id = { type = 14500 id = 264 }
-location = 1432
-base = 1432 ### Singapore
-division = { id = { type = 14500 id = 265 } name =  "SMS Blumenthal" type = carrier  model = 1  extra = cag brigade_model = 1  }
-division = { id = { type = 14500 id = 365 } name =  "SMS Roon" type = escort_carrier   model = 0  }
-division = { id = { type = 14500 id = 358 } name =  "SMS Helgoland" type = battleship  model = 2  }
-division = { id = { type = 14500 id = 359 } name =  "SMS Posen" type = battleship  model = 2  }
-division = { id = { type = 14500 id = 360 } name =  "SMS Nassau" type = battleship   model = 2 }
-division = { id = { type = 14500 id = 361 } name =  "SMS König Albert" type = battleship   model = 2 }
-division = { id = { type = 14500 id = 364 } name =  "SMS Rheinland" type = battleship   model = 2 }
-division = { id = { type = 14500 id = 266 } name =  "SMS Hindenburg" type = battlecruiser  model = 1 }
-division = { id = { type = 14500 id = 362 } name =  "SMS Von der Tann" type = battlecruiser  model = 1 }
-division = { id = { type = 14500 id = 267 } name =  "SMS Mackensen" type = battlecruiser  model = 2   }
-division = { id = { type = 14500 id = 268 } name =  "SMS Derfflinger" type = battlecruiser  model = 1   }
-division = { id = { type = 14500 id = 363 } name =  "SMS Fürst Bismarck" type = battlecruiser  model = 0 }
-division = { id = { type = 14500 id = 269 } name =  "SMS Admiral Pohl" type = heavy_cruiser model = 4 }
-division = { id = { type = 14500 id = 270 } name =  "SMS Bonn" type = light_cruiser  model = 4 }
-division = { id = { type = 14500 id = 271 } name =  "SMS Bamberg" type = light_cruiser  model = 4 }
-division = { id = { type = 14500 id = 272 } name =  "SMS Bayreuth" type = light_cruiser  model = 4 }
-division = { id = { type = 14500 id = 373 } name =  "SMS Bayreuth" type = light_cruiser  model = 2 }
-division = { id = { type = 14500 id = 371 } name =  "SMS Stuttgart"  type = light_cruiser model = 2 }
-division = { id = { type = 14500 id = 372 } name =  "SMS Niobe"  type = light_cruiser model = 2 }
-division = { id = { type = 14500 id = 273 } name =  "9. Zerstörergeschwader" type = destroyer   model = 5   }
-division = { id = { type = 14500 id = 274 } name =  "18. Zerstörergeschwader" type = destroyer    model = 4  }
-division = { id = { type = 14500 id = 275 } name =  "19. Zerstörergeschwader" type = destroyer    model = 4  }
-
-}
-
-navalunit = {
-name = "Unterseebootsflotte Asien "
-id = { type = 14500 id = 276 }
-location = 1432 #### Singapore
-base = 1432
-division = { id = { type = 14500 id = 277 } name =  "6. Unterseebootsflottille" type = submarine  model = 3 }
-division = { id = { type = 14500 id = 278 } name =  "7. Unterseebootsflottille" type = submarine model = 3  }
-division = { id = { type = 14500 id = 279 } name =  "8. Unterseebootsflottille" type = submarine model = 3  }
-
-}
-
-navalunit = {
-name = "Karolinenflotte "
-id = { type = 14500 id = 280 }
-location = 1667 #### Truk
-base = 1667
-division = { id = { type = 14500 id = 281 } name =  "SMS Freiherr von Sanders" type = battlecruiser  model = 2  }
-division = { id = { type = 14500 id = 366 } name =  "SMS Prinz Heinrich" type = battlecruiser  model = 0 }
-division = { id = { type = 14500 id = 282 } name =  "SMS Metz" type = light_cruiser  model = 3 }
-division = { id = { type = 14500 id = 368 } name =  "SMS Strassburg" type = light_cruiser  model = 2 }
-division = { id = { type = 14500 id = 369 } name =  "SMS Augsburg" type = light_cruiser  model = 2 }
-division = { id = { type = 14500 id = 283 } name =  "10. Zerstörergeschwader" type = destroyer   model = 3   }
-
-}
 
 navalunit = {
 name = "Sudseeflotte"
@@ -2010,7 +1806,7 @@ model = 4
 }
 
 #######################
-######  German Naval Strength, 1936:
+######  German Naval Strength, 1936: Note: this counts GEA troops now
 ######  30 Battleships
 ######  19 Battlecruisers
 ######  3 Carriers
@@ -2052,16 +1848,7 @@ division = { id = { type = 14500 id = 324 } name = "12. Truppentransporterflotti
 
 }
 
-navalunit = {
-name = "III. Truppentransporterflottille"
-id = { type = 14500 id = 313 }
-location = 1432
-base = 1432
-division = { id = { type = 14500 id = 352 } name = "13. Truppentransporterflottille" type = transport model = 1 }
-division = { id = { type = 14500 id = 353 } name = "14. Truppentransporterflottille" type = transport model = 1 }
-division = { id = { type = 14500 id = 354 } name = "15. Truppentransporterflottille" type = transport model = 1 }
 
-}
 
 navalunit = {
 name = "IV. Truppentransporterflottille"

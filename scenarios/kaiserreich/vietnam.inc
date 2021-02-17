@@ -1,6 +1,6 @@
 country = {
 tag = VIE
-
+puppet = UPE
 ai = "kaiserreich\minor_default.ai" #we need a dedicated AI file for them
 policy = {
 date = { year = 0 month = january day = 0 }
@@ -42,11 +42,11 @@ money	=	70
 free = { ic = 5 }
 
 ownedprovinces = {
-1399 1403 1397 1398 1394 1396 1400 1401 1402 1405 1395 1391 1404 1392 1393 #Indochine
+1397 1394 1396 1405 1395 1391 1404 1392 1393 #Indochine
 }
 
 controlledprovinces = {
-1399 1403 1397 1398 1394 1396 1400 1401 1402 1405 1395 1391 1404 1392 1393 #Indochine
+1397 1394 1396 1405 1395 1391 1404 1392 1393 #Indochine
 }
 
 nationalprovinces = {
@@ -57,9 +57,15 @@ claimedprovinces = {
 1400 1401 1402 1394 1391 1404 1405
 }
 
-#diplomacy = {
-#
-#}
+diplomacy = {
+relation = { tag = EAF value = 100 } 
+relation = { tag = GER value = 200 }
+relation = { tag = UPE value = -75 }
+relation = { tag = JAP value = -75 }
+relation = { tag = MAN value = -75 }
+relation = { tag = MEN value = -75 }
+}
+
 
 techapps = {
 #German Colony 20s techs
