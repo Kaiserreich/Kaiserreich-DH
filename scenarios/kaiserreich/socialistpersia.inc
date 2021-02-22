@@ -18,7 +18,7 @@ ai = "kaiserreich\Persia Socialist.ai"
 
 #### cabinet
     headofstate = { type = 9 id = 153124 }
-    headofgovernment = { type = 9 id = 153300 }
+    headofgovernment = { type = 9 id = 153100 }
  	foreignminister = { type = 9 id = 153131 }
  	armamentminister = { type = 9 id = 153135 }
  	ministerofsecurity = { type = 9 id = 153141 }
