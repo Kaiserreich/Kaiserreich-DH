@@ -260,9 +260,9 @@ airunit = {
 		location = 1432 # Singapore
 		name = "Luftflotte Asien"
 		base = 1432 # Singapore
-		id = { type = 22400 id = 38 }
+		id = { type = 14501 id = 2008 }
 		division = {
-			id = { type = 22400 id = 39 }
+			id = { type = 14501 id = 2009 }
 			name = "Luftflotte Asien"
               type = multi_role model = 3  
 			max_strength = 40

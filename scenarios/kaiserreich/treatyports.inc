@@ -122,9 +122,9 @@ relation = { tag = UIF value = 50 access = yes  }
 landunit = {
 		name = "Hong Kong Constabulary"
 		location = 1371
-		id = { type = 12700 id = 9 }
+		id = { type = 12699 id = 1 }
 		division = {
-			id = { type = 12700 id = 10 }
+			id = { type = 12699 id = 2 }
 			name = "Hong Kong Defence Force"
 			type = garrison 
 			model = 4
@@ -148,9 +148,9 @@ airunit = {
 landunit = {
 		name = "Boa'an Constabulary"
 		location = 1338
-		id = { type = 12699 id = 1 }
+		id = { type = 12699 id = 3 }
 		division = {
-			id = { type = 12699 id = 2 }
+			id = { type = 12699 id = 4 }
 			name = "Boa'an Police District"
 			type = militia 
 			model = 4
@@ -160,9 +160,9 @@ landunit = {
 landunit = {
 		name = "Fuzhou Constabulary"
 		location = 1358
-		id = { type = 12699 id = 3 }
+		id = { type = 12699 id = 5 }
 		division = {
-			id = { type = 12699 id = 4 }
+			id = { type = 12699 id = 6 }
 			name = "Fuzhou Police District"
 			type = militia 
 			model = 4
@@ -172,9 +172,9 @@ landunit = {
 landunit = {
 		name = "Ningbo Constabulary"
 		location = 1346
-		id = { type = 12699 id = 5 }
+		id = { type = 12699 id = 7 }
 		division = {
-			id = { type = 12699 id = 6 }
+			id = { type = 12699 id = 8 }
 			name = "Ningbo Police District"
 			type = militia 
 			model = 4
@@ -183,9 +183,9 @@ landunit = {
 landunit = {
 		name = "Tianjin Constabulary"
 		location = 1241
-		id = { type = 12699 id = 5 }
+		id = { type = 12699 id = 9 }
 		division = {
-			id = { type = 12699 id = 6 }
+			id = { type = 12699 id = 10 }
 			name = "Tianjin Police District"
 			type = militia 
 			model = 4
@@ -195,9 +195,9 @@ landunit = {
 landunit = {
 		name = "Shanghai Police Force"
 		location = 1338
-		id = { type = 12699 id = 7 }
+		id = { type = 12699 id = 11 }
 		division = {
-			id = { type = 12699 id = 8 }
+			id = { type = 12699 id = 12 }
 			name = "Ningbo Police District"
 			type = d_01 
 			model = 6
@@ -208,19 +208,19 @@ navalunit = {
 	location = 1338
 	base = 1338
 	name = "China Station Squadron"
-	id = { type = 12699 id = 11 }
-		division = { id = { type = 12699 id = 12 } name = "HMS Diomede" type = light_cruiser model = 2 }
-		division = { id = { type = 12699 id = 13 } name = "HMS Despatch" type = light_cruiser model = 2 }
-		division = { id = { type = 12699 id = 14 } name = "Legation Transport Squadron" type = transport model = 1 }
+	id = { type = 12699 id = 13 }
+		division = { id = { type = 12699 id = 14 } name = "HMS Diomede" type = light_cruiser model = 2 }
+		division = { id = { type = 12699 id = 15 } name = "HMS Despatch" type = light_cruiser model = 2 }
+		division = { id = { type = 12699 id = 16 } name = "Legation Transport Squadron" type = transport model = 1 }
 		}
 
 navalunit = {
 	location = 1371
 	base = 1371
 	name = "China Station Submarine Squadron"
-	id = { type = 12699 id = 15 }
-		division = { id = { type = 12699 id = 16 } name = "1st Submarine Flotilla" type = submarine model = 2 }
-		division = { id = { type = 12699 id = 17 } name = "2nd Submarine Flotilla" type = submarine model = 2 }
+	id = { type = 12699 id = 17 }
+		division = { id = { type = 12699 id = 18 } name = "1st Submarine Flotilla" type = submarine model = 2 }
+		division = { id = { type = 12699 id = 19 } name = "2nd Submarine Flotilla" type = submarine model = 2 }
 		}
 
 }  
