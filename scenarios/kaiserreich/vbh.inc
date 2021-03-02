@@ -90,6 +90,7 @@ relation = {   tag =  	JAP	value = 		-40	   }
 4300 4310 4320 4330 #Up to 1926 Multi Role Fighter
 4600 4610 4620 4630 4120 #Up to 1924 Tac Bomber
 4740 4750 4760 4770 #Seaplanes up to 1924
+7290 7300 7310 7320 #1922 CAS
 4700 #1918 Naval Bomber
 4290 #1926 Air Transport 
 
@@ -98,7 +99,7 @@ relation = {   tag =  	JAP	value = 		-40	   }
 2290 2300 2310 2900 2910 2920 #Artillery up to 1924
 2800 2450 21180 21190 #1930 static AA
 2810 2820 #1924 AA Bde
-2620 2010 2630 2640 #1924 tanks
+7600 7610 2620 2010 2630 2640 #1924 tanks
 
 #Infantry
 1010 1020 1030 1040 1050 1060 1070 1080 1090 #Infantry Up to 1931 Inf Division
@@ -118,7 +119,10 @@ relation = {   tag =  	JAP	value = 		-40	   }
 
 #Industrial
 5700 5710 5010 #Modern Agriculture
-5800 5080 #Improved Construction Engineering 
+5800 5080 #Improved Construction Engineering
+5810 5820 #Mass Production
+5310 #Census Tabulating
+5316 #Cipher Machine
 5600 5610 #Medicine
 5190 # Basic Oil Refining
 
@@ -126,14 +130,15 @@ relation = {   tag =  	JAP	value = 		-40	   }
 6500 6510 6530 6590 #Up to pre ww1 tech
 6600 6610 6620 6650 6670 6680 6690 6700 6710 #ww1 offensive doctrines
 6550 6910 #IW Doctrine
-6010 6020 # Superior Firepower
+6010 6020 #Superior Firepower
 
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
 #Naval Doctrines
-8010 8020 8040 8050
-
+8010 8020 8040 8050 8060 8070 8080
+8100 8110 #Coastal Defense
+8500 8510 #Commercial Interception
 	}
 
 dormant_ministers = { 27078 27079 27080 27081 27082 27083 27084 27085 }
