@@ -18,8 +18,16 @@ ai = "kaiserreich\Serbia.ai"
 
 #### cabinet
 headofstate = { type = 9 id = 547054 }
+headofgovernment = { type = 9 id = 547002 }
+foreignminister = { type = 9 id = 547003 } #Aleksandar Cincar-Markovic
+armamentminister = { type = 9 id = 547004 } #Milan Stojadinovic
+ministerofsecurity = { type = 9 id = 547005 } #Dragisa Cvetkovic
+ministerofintelligence = { type = 9 id = 547085 } #Petar Aracic
+chiefofstaff = { type = 9 id = 547169 } #Dusan Trifunovic
+chiefofarmy = { type = 9 id = 547086 } #Ljubomir Maric
+chiefofnavy = { type = 9 id = 547009 } #Under Army Command
+chiefofair = { type = 9 id = 547184 } #Jovan Jugovic
 
-headofgovernment = { type = 9 id = 547002  }
 #### Resource Reserves
 
 
@@ -60,7 +68,9 @@ relation = { tag = OTT value = 100 }
 
 dormant_leaders = {  547060 547061 547062 547063 547064 547065 547066 547067 547068 547069 547070 547071 547072 547073 547074 547075 547076 547077 547078 }
 							
-dormant_teams = { 15833 15834 15840 15841 15847 15848 }
+dormant_teams = { 15833 15834 15840 15847 15848
+				  15843 15851 15852 15853 #Land doctrine choices
+				}
 
 dormant_ministers = { 547123 547124 547125 547126 547127 547128 547129 547130 547131 547132 547133 547134 547135 547136 547137 547138 547139 547140 547141 547142 547143 547144 
 					  547145 547146 547147 547148 547149 547150 547151 547152 547153 547154 547155 547156 547157 547158 547159 
