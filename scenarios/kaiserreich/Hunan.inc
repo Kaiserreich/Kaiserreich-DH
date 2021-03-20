@@ -57,9 +57,7 @@ relation = { tag = UCS value = -50 }
 relation = { tag = UGS value = 50 }
 }
 
-	techapps = {
-
-	  techapps               = { #Warlord Technologies: Proudly serving warlord states since 2021
+	techapps               = { #Warlord Technologies: Proudly serving warlord states since 2021
   #Infantry Tech
   1010 1020 1030 1040 1050 1060 1070 1080 #1926 Infantry
   1160 1170 1180 1190 1200 1210 1220 1230 #1925 Mountain Infantry
@@ -97,3 +95,4 @@ relation = { tag = UGS value = 50 }
   # Air Doctrines
   27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 #Weltkrieg and Interwar Doctrines pre-1936
    }
+}

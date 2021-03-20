@@ -58,14 +58,14 @@ SpyInfo  = {  country = "EAF" NumberOfSpies = 2  }
 	}
 
 diplomacy = {
-relation = { tag = CGX value = 100 guaranteed = { day = 29 month = december year = 1935   }  access = yes	   } 
+relation = { tag = CGX value = 100 guaranteed = { day = 29 month = december year = 1935 } access = yes }
 relation = { tag = GER value = 60 }
 relation = { tag = AST value = 60 }
 relation = { tag = CAN value = 60 }
 relation = { tag = CSX value = 60 access = yes }
 relation = { tag = USA value = 60 }
-relation = { tag = UCS value = -100  } 
-relation = { tag = UIF value = 50 access = yes  } 
+relation = { tag = UCS value = -100 }
+relation = { tag = UIR value = 50 access = yes }
 }
 
 

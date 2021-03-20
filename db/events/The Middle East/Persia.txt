@@ -2953,7 +2953,7 @@ command = { type = research_mod value = 2 }
 # THE QAJAR EXILE AND RESTORATION CHAIN
 
 event = {
-id = 59102
+id = 58102
 random = no
 country = PER
 style = 2
@@ -2978,7 +2978,7 @@ command = { type = dissent value = -1 }
 }
 
 event = {
-id = 59120
+id = 58120
 random = no
 country = KYG
 style = 2
@@ -3003,18 +3003,20 @@ command = { type = dissent value = 10 }
 }
 
 event = {
-id = 59103
+id = 58103
 random = no
 country = REB
 picture = "qajar_army"
 style = 2
 
 trigger = {
-event = 59011
+NOT = {
+exists = PER
+}
 }
 
 date = { day = 2 month = january year = 1936 }
-offset = 1
+offset = 30
 deathdate = { day = 29 month = december year = 1960 }
 
 action_a = {
@@ -3086,7 +3088,7 @@ command = { type = setflag which = KYG_QAJ }
 }
 
 event = {
-id = 59104
+id = 58104
 random = no
 country = GER
 style = 2
@@ -3112,7 +3114,7 @@ command = { type = dissent value = -1 }
 }
 
 event = {
-id = 59105
+id = 58105
 random = no
 country = PAK
 style = 2
@@ -3138,7 +3140,7 @@ command = { type = dissent value = -1 }
 }
 
 event = {
-id = 59106
+id = 58106
 random = no
 country = KYG
 style = 2
@@ -3164,7 +3166,7 @@ command = { type = dissent value = -1 }
 }
 
 event = {
-id = 59107
+id = 58107
 random = no
 country = OTT
 style = 2
@@ -3190,7 +3192,7 @@ command = { type = dissent value = -1 }
 }
 
 event = {
-id = 59108
+id = 58108
 random = no
 country = RUS
 style = 2
@@ -3216,7 +3218,7 @@ command = { type = dissent value = -1 }
 }
 
 event = {
-id = 59109
+id = 58109
 random = no
 country = GER
 style = 2
@@ -3266,8 +3268,8 @@ decision_picture = "decision_PustPodoidut"
 action_a = {
 name = "Commence Fall Thermopylae"
 command = { type = war which = U53 }
-command = { type = trigger which = 59110 }
-command = { type = trigger which = 59111 }
+command = { type = trigger which = 58110 }
+command = { type = trigger which = 58111 }
 }
 
 action_b = {
@@ -3277,7 +3279,7 @@ command = { type = setflag which = QAJ_PLOT }
 }
 
 event = {
-id = 59110
+id = 58110
 random = no
 country = U53
 style = 2
@@ -3296,7 +3298,7 @@ command = { type = switch_allegiance which = -1 where = GER }
 }
 
 event = {
-id = 59111
+id = 58111
 random = no
 country = GER
 style = 2
@@ -3316,7 +3318,7 @@ command = { type = add_division which = "4. Spezielle Marineabteilung" when = -1
 }
 
 event = {
-id = 59112
+id = 58112
 random = no
 country = U53
 style = 2
@@ -3334,7 +3336,7 @@ offset = 35
 deathdate = { day = 29 month = december year = 1960 }
 
 action = {
-trigger = { event = 59109 }
+trigger = { event = 58109 }
 name = "Start a general investigation."
 command = { type = clrflag which = QAJ_PLOT }
 command = { type = dissent value = 12  }
@@ -3342,35 +3344,35 @@ command = { type = event which = 59113 where = GER when = 3 }
 }
 
 action = {
-trigger = { event = 59116 }
+trigger = { event = 58116 }
 name = "Start a general investigation."
 command = { type = clrflag which = QAJ_PLOT }
 command = { type = dissent value = 12  }
-command = { type = event which = 59113 where = PAK when = 3 }
+command = { type = event which = 58113 where = PAK when = 3 }
 }
 
 action = {
-trigger = { event = 59117 }
+trigger = { event = 58117 }
 name = "Start a general investigation."
 command = { type = clrflag which = QAJ_PLOT }
 command = { type = dissent value = 12  }
-command = { type = event which = 59113 where = KYG when = 3 }
+command = { type = event which = 58113 where = KYG when = 3 }
 }
 
 action = {
-trigger = { event = 59118 }
+trigger = { event = 58118 }
 name = "Start a general investigation."
 command = { type = clrflag which = QAJ_PLOT }
 command = { type = dissent value = 12  }
-command = { type = event which = 59113 where = RUS when = 3 }
+command = { type = event which = 58113 where = RUS when = 3 }
 }
 
 action = {
-trigger = { event = 59119 }
+trigger = { event = 58119 }
 name = "Start a general investigation."
 command = { type = clrflag which = QAJ_PLOT }
 command = { type = dissent value = 12  }
-command = { type = event which = 59113 where = OTT when = 3 }
+command = { type = event which = 58113 where = OTT when = 3 }
 }
 
 action = {
@@ -3380,8 +3382,9 @@ command = { type = dissent value = 3  }
 }
 
 event = {
-id = 59113
+id = 58113
 random = no
+tag = { GER PAK KYG RUS OTT }
 style = 2
 
 name = "The plot has been foiled."
@@ -3396,19 +3399,19 @@ command = { }
 action_b = {
 name = "Commence the invasion,you want something done you do it yourself."
 command = { type = war which = U53 }
-command = { trigger = { country = GER } type = trigger which = 59110 } 
-command = { trigger = { country = GER } type = trigger which = 59111 } 
+command = { trigger = { country = GER } type = trigger which = 58110 } 
+command = { trigger = { country = GER } type = trigger which = 58111 } 
 }
 }
 
 event = {
-id = 59114
+id = 58114
 random = no
 country = U53
 style = 2
 
 trigger = {
-event = 59112
+event = 58112
 flag = QAJ_PLOT
 }
 
@@ -3444,7 +3447,7 @@ command = { type = dissent value = 10 }
 }
 
 event = {
-id = 59115
+id = 58115
 random = no
 country = PER
 style = 2
@@ -3471,7 +3474,7 @@ command = { type = headofstate which = 53161 }
 }
 
 event = {
-id = 59116
+id = 58116
 random = no
 country = PAK
 style = 2
@@ -3483,7 +3486,6 @@ NOT = {
 exists = PRK
 exists = IND
 war = { country = U53 country = PAK }
-alliance = { country = U53 country = FRA }
 }
 }
 decision_trigger = {
@@ -3502,7 +3504,7 @@ alliance = { country = U53 country = FRA }
 }
 
 name = "The Persian Restoration"
-desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a naval assault where we can secure the oil wells or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
+desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a direct invasion through their Sistan  province or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
 picture = "majlis"
 decision_picture = "decision_PustPodoidut"
 
@@ -3522,7 +3524,7 @@ command = { type = setflag which = QAJ_PLOT }
 }
 
 event = {
-id = 59117
+id = 58117
 random = no
 country = KYG
 style = 2
@@ -3554,7 +3556,7 @@ war = { country = U53 country = KYG }
 }
 
 name = "The Persian Restoration"
-desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a naval assault where we can secure the oil wells or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
+desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a  or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
 picture = "majlis"
 decision_picture = "decision_PustPodoidut"
 
@@ -3574,7 +3576,7 @@ command = { type = setflag which = QAJ_PLOT }
 }
 
 event = {
-id = 59118
+id = 58118
 random = no
 country = RUS
 style = 2
@@ -3621,7 +3623,7 @@ government = communist
 }
 
 name = "The Persian Restoration"
-desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a naval assault where we can secure the oil wells or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
+desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a direct invasion through Bukhara and the Caucasus or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
 picture = "majlis"
 decision_picture = "decision_PustPodoidut"
 
@@ -3641,7 +3643,7 @@ command = { type = setflag which = QAJ_PLOT }
 }
 
 event = {
-id = 59119
+id = 58119
 random = no
 country = OTT
 style = 2
@@ -3688,7 +3690,7 @@ event = 115040
 }
 
 name = "The Persian Restoration"
-desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a naval assault where we can secure the oil wells or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
+desc = "The situation is now suitable for us to explore plans to restore the Qajar dynasty. We can attempt a direct invasion from Mesopotamia or contact reactionary elements in the Socialist Persian army and stage a coup against the syndicalist government."
 picture = "majlis"
 decision_picture = "decision_PustPodoidut"
 

@@ -60,9 +60,7 @@ relation = { tag = BUR value = 24 }
 relation = { tag = TIB value = 24 }
 }
 	
-	techapps = {
-
-	  techapps               = { #Warlord Technologies: Proudly serving warlord states since 2021
+		techapps               = { #Warlord Technologies: Proudly serving warlord states since 2021
   #Infantry Tech
   1010 1020 1030 1040 1050 1060 1070 1080 #1926 Infantry
   1160 1170 1180 1190 1200 1210 1220 1230 #1925 Mountain Infantry

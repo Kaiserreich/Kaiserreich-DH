@@ -72,11 +72,8 @@ relation = {   tag =  	RUS	 value =		20	   }
 relation = {   tag =  	CON	value = 		-20	   }
 relation = {  tag =   	USA	value = 		60	 }
 relation = {   tag =  	JAP	value = 		-50	   }
-
-
 relation = { tag = EAF value = 60 guaranteed = { day = 29 month = december year = 1935   } 	   }
 }
-
 
 
 techapps = {
@@ -90,9 +87,9 @@ techapps = {
 1910 1920 1930 1940 1950 1960 1970 # Rear Area Supply Dumps
 
 #Vehicles & Artillery
-2620 2010 2630 # Early Tank
-2860 2870 2880 2020 # Armoured Cars
-2290 2300 2310 #Field Artillery
+2620 2010 2630 2640 #Post-War Tank II
+2860 2870 2880 2020 #Armoured Cars
+2290 2300 2310 2900 2910 #Post WK Field Artillery
 2800 2450 21180 21190 #Interbellum III Static AA
 2810 2820 2510 #Improved AA Bde
 
@@ -105,18 +102,19 @@ techapps = {
 4700 4710 #Naval Bombers
 4290 #Air Transports
 4740 4750 4760 #Seaplanes
+4900 #CAG 1922
 
 #Naval
 3010 3020 3030 3040 3050 3060 #DDs
 3110 3120 3130 3140 3150 #Light Cruisers
 3210 3220 3230 3240 3250 #Heavy Cruisers
 3310 3320 3330 #BCs
-3410 3420 3430 3440 3450 3456 #BBs
+3410 3420 3430 3440 3450 3456 3460 #Interwar Battleship
 3810 3820 #Troopships
 3610 3620 3630 3640 #1924 submarine
 3900 #ASW Equipment
 3720 3730 3736 3740 #Torpedoes
-12100 12110 # LCV
+12100 12110 12120 #Early Light Carrier
 
 #Industrial
 5700 5710 5010 5020 #Agriculture
@@ -141,8 +139,9 @@ techapps = {
 14000 14010 14020 #Great War Hospital System
 
 #Naval Doctrines
-8010  8020  8030  8040  8050  8070  8100  8110  8120 8900 8910 8920 8930 8940 8950 8150 8160 8060 8080 82300 8500 8510 8520 8550
-81650 8200
+8010 8020 8030 8040 8050 8070 8100 8110 8120 8900 8910 8920 8930 8940 8950 8150 8160 8060 8080 82300 8500 8510 8520 8550
+81650 8200 8210 8170 8560
+82500 #Fuel Oil Logistics
 
 deactivate = { 6010 6210 6570 6560 6390 }
 
