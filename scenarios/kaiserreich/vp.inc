@@ -170,7 +170,10 @@ province = {	id = 1138	points = 1	}#Omsk
 province = {	id = 1142	points = 1	}#Novosibirsk
 province = {	id = 1186	points = 1	}#Okhotsk
 province = {	id = 1179	points = 1	}#Yakutsk
+province = {	id = 708	points = 1	}#Kutaisi
+province = {	id = 709	points = 2	}#Tbilisi
 province = {	id = 711	points = 2	}#Yerevan
+
 
 
 ###############################################
@@ -228,9 +231,6 @@ province = {	id = 1907	points = 1	}#Cheyenne
 
 
 
-
-
-
 ###############################################
 # Canada
 ###############################################
@@ -242,7 +242,6 @@ province = {	id = 2111	points = 10	}#Toronto
 province = {	id = 2089	points = 10	}#Vancouver
 province = {	id = 2117	points = 5	}#Quebec 
 province = {	id = 2132	points = 15	}#Halifax
-
 
 
 

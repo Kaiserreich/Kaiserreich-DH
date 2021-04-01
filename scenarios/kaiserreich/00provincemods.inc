@@ -85,8 +85,8 @@ province = { id = 189 anti_air = 2 #Innsbruck
 province = { id = 190 ic = 4 anti_air = 1 } #Graz
 province = { id = 191 ic = 1 air_base = { size = 6 current_size = 6 } } #Klagenfurt
 province = { id = 192 ic = 2 } #Salzburg
-province = { id = 194 ic = 2 } #Hollabrunn
-province = { id = 195 anti_air = 5 manpower = 3 #Vienna
+province = { id = 193 ic = 1 } #Sankt Poelten
+province = { id = 195 anti_air = 5 ic = 1 manpower = 3 #Vienna
 	air_base = { size = 10 current_size = 10 } }
 
 #Montenegro
