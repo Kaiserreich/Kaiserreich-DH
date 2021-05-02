@@ -1219,7 +1219,7 @@ trigger = {
 headofstate = 153124
 }
 
-date = { day = 2 month = january year = 1936 }
+date = { day = 2 month = january year = 1938 }
 
 name = "Alliance with Bharatiya Commune?"
 desc = "It's time to expand our horizons and meet new friends. The Indian civil war is bloody and our socialist friends need help! By allying them, we would not only help them with the civil war, but expand socialism to the rest of the world!"
@@ -1249,11 +1249,12 @@ desc = "Mirza Kuchik Khan wants an alliance to help out with the civil war and e
 action_a = {
 name = "Welcome aboard!"
 command = { type = alliance which = U53 }
+command = { type = relation which = U53 value = 25 }
 }
 
 action_b = {
 name = "The Internationale told me to stay away from you."
-command = {  }
+command = { type = relation which = U53 value = -50 }
 }
 }
 
@@ -4420,4 +4421,758 @@ command = { type = event which = 59165 where = U53 when = 5 }
 }
 }
 
+# FOREIGN INTERVENTION INTO THE PERSIAN CIVIL WAR
 
+event = {
+id = 59172
+random = no
+country = GEO
+style = 2
+save_date = yes
+
+trigger = {
+war = { country = U53 country = PER } 
+government = communist
+}
+
+name = "The Jangali Struggle"
+desc = "The short-lived Tehran Armistice has been broken, and civil war once again engulfs Persia. Although in the past the Jangalis had shown hostility towards western syndicalism in the past, we could perhaps sway the rank and file of their armies over with enough support"
+picture = "Persianarmy"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 26 month = june year = 1938 }
+
+action = {
+name = "They are socialist only in name, no support!"
+ai_chance = 20
+command = { type = dissent value = -2 }
+}
+
+action = {
+name = "They'll warm up to it over time, send our volunteers!"
+ai_chance = 80
+command = { type = dissent value = 5 }
+command = { type = event which = 59181 where = U53 when = 5 }
+command = { type = supplies value = -25 }
+command = { type = manpower value = -5 }
+}
+}
+
+event = {
+id = 59173
+random = no
+country = UKR
+style = 2
+save_date = yes
+
+trigger = {
+war = { country = U53 country = PER }
+government = communist 
+}
+
+name = "The Jangali Struggle"
+desc = "The short-lived Tehran Armistice has been broken, and civil war once again engulfs Persia. Although in the past the Jangalis had shown hostility towards western syndicalism in the past, we could perhaps sway the rank and file of their armies over with enough support"
+picture = "Persianarmy"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 26 month = june year = 1938 }
+
+action = {
+name = "They are socialist only in name, no support!"
+ai_chance = 25
+command = { type = dissent value = -2 }
+}
+
+action = {
+name = "They'll warm up to it over time, send our volunteers!"
+ai_chance = 75
+command = { type = dissent value = 5 }
+command = { type = event which = 59182 where = U53 when = 5 }
+command = { type = supplies value = -25 }
+command = { type = manpower value = -5 }
+}
+}
+
+# THE AZERBAIJAN CRISIS - PERSIA.
+
+event = {
+id = 59174
+random = no
+country = U53
+style = 2
+save_date = yes
+
+name = "The Question of Azerbaijan"
+desc = "One of the most contentious issues between us and Transcaucasia is Azerbaijan, particularly on whether it rightfully belongs to us or the Georgians. Though our historical claims has been backed by many socialist nations, Transcaucasia still insists on Azerbaijan becoming a member state of its regional federation and demands that a referendum be held on Azerbaijan's status"
+picture = "azarbaijan_petroleum"
+
+action = {
+name = "Hold a plebiscite to please the Georgians"
+command = { type = dissent value = 3 }
+command = { type = setflag which = AZB_REF }
+}
+
+action = {
+name = "It's our rightful land, for goodness sake!"
+command = { type = dissent value = -5 }
+command = { type = event which = 59187 where = GEO when = -5 }
+}
+}
+
+event = {
+id = 59175
+random = no
+country = U53
+style = 2
+save_date = yes
+
+trigger = {
+control = { province = 1036 data = GEO }
+control = { province = 1034 data = GEO }
+NOT = {
+exists = AZB 
+exists = PER
+}
+}
+
+name = "The Question of Azerbaijan"
+desc = "One of the most contentious issues between us and Transcaucasia is Azerbaijan, particularly on whether it rightfully belongs to us or the Georgians. Though our historical claims has been backed by many socialist nations, Transcaucasia still insists on maintaining Azerbaijan's status as an autonomous republic within its federation."
+picture = "azarbaijan_petroleum"
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Demand that they hold a plebiscite in Azerbaijan"
+command = { type = event which = 59183 where = GEO when = 5 }
+}
+
+action = {
+name = "Bah, as if they won't rig it. Send an ultimatum instead!"
+command = { type = dissent value = 5 }
+command = { type = event which = 59184 where = GEO when = 5 }
+}
+
+action = {
+name = "Azerbaijan shall remain theirs. For now..."
+command = { type = dissent value = 15 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+}
+}
+
+event = {
+id = 59176
+random = no
+country = U53
+style = 2
+save_date = yes
+
+name = "Referendum Results : Azeris chose Persia"
+desc = "Our loyal Iranian-Azeris comrades have chosen to be with Persia as expected. Georgia will surely accept Azerbaijan as an integral part of Persia now...?"
+picture = "election"
+
+date = { day = 0 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "Azerbaijan and Persia, together forever!"
+command = { type = event which = 59190 where = GEO when = 5 } 
+}
+}
+
+event = {
+id = 59177
+random = no
+country = U53
+style = 2
+
+trigger = {
+flag = AZB_RIGGED 
+}
+
+name = "Referendum Results : Azeris chose Transcaucasia?!"
+desc = "The majlis was thrown into chaos after the polling results were brought in. The citizens of Azerbaijan, contrary to expectations, had voted to be with Transcausian Socialist Federation as an autonomous republic instead of with Persia. There are cries of Georgian interference all over, though we can not verify these claims yet."
+picture = "election"
+
+date = { day = 0 month = january year = 1936 }
+offset = 25
+deathdate = { day = 29 month = december year = 1963 }
+
+action = {
+name = "We must concede Azerbaijan..."
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = secedeprovince which = GEO value = 713 }
+command = { type = secedeprovince which = GEO value = 712 }
+}
+
+action = {
+name = "This is impossible!, annouce a investigation into the results!"
+command = { type = event which = 59178 where = U53 when = 15 }
+command = { type = setflag which = AZB_VOTE_INVESTIGATION }
+}
+}
+
+event = {
+id = 59178
+random = no
+country = U53
+style = 2
+
+name = "Georgian interference discovered!"
+desc = "As expected, there was Georgian interference into the Azeri referendum polls. How shall we react to this treacherous deed of the Georgians?"
+picture = "Georgianrepublic"
+
+action = {
+name = "They will pay for this treachery!, send an ultimatum!"
+command = { type = event which = 59188 where = U53 when = 5 }
+}
+
+action = {
+name = "Tblisi will burn"
+command = { type = war which = U53 }
+}
+}
+
+event = {
+id = 59179
+random = no
+country = U53
+style = 2
+
+name = "Georgia threatens us!"
+desc = "Unable to fool us into ceding Azerbaijan, the Georgians have revealed their true face. Now they're threatening war if we do transfer Azerbaijan immediately to them, they will take it by force."
+picture = "great_war_manifestion"
+
+action = {
+name = "Who do they think they are, Azerbaijan shall remain Persian!"
+command = { type = war which = GEO }
+}
+
+action = {
+name = "We can't afford war right now, transfer it over to them"
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = secedeprovince which = GEO value = 713 }
+command = { type = secedeprovince which = GEO value = 712 }
+}
+}
+
+event = {
+id = 59180
+random = no
+country = U53
+style = 2
+
+name = "Georgia denies us a referendum"
+desc = "The Neo-bolsheviks of Georgia have denied the Azeri people's rights to a referendum!. How shall we react to their stubborness?"
+picture = "great_war_manifestion"
+
+action = {
+name = "Threaten them with war!"
+command = { type = event which = 59188 where = U53 when = 5 }
+}
+
+action = {
+name = "Fine. They can have it for now."
+command = { type = dissent value = 10 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+}
+}
+
+## VOLUNTEERS ARRIVING
+
+event = {
+id = 59181
+random = no
+country = U53
+style = 2
+
+name = "Georgian volunteers arrive"
+desc = "The Georgians, seeing wisdom in aiding our struggle against the Qajars, have sent over some volunteers. This will greatly aid our armies"
+picture = "foreign_volunteers"
+
+action = {
+name = "We appreciate their aid."
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 25 }
+command = { type = add_corps which = "Georgian Volunteers" value = land when = -1 where = 1082 }
+command = { type = add_division which = "1-li kartveli mokhaliseta ganq’opileba" value = infantry when = 8 }
+}
+}
+
+event = {
+id = 59182
+random = no
+country = U53
+style = 2
+
+name = "Ukrainian volunteers arrive"
+desc = "The Ukrainians, seeing wisdom in aiding our struggle against the Qajars have sent over some volunteers. This will greatly aid our armies"
+picture = "foreign_volunteers"
+
+action = {
+name = "We appreciate their aid."
+command = { type = manpowerpool value = 5 }
+command = { type = supplies value = 25 }
+command = { type = add_corps which = "Ukrainian Volunteers" value = land when = -1 where = 1082 }
+command = { type = add_division which = "10. Ukrayins'ka Strilkova Dyviziya" value = infantry when = 8 }
+}
+}
+
+# THE PERSIAN CRISIS - GEORGIA 
+
+event = {
+id = 59183
+random = no
+country = GEO
+style = 2
+
+trigger = {
+government = communist
+control = { province = 712 data = U53 }
+control = { province = 713 data = U53 } 
+NOT = {
+exists = AZB 
+}
+}
+
+name = "The Question of Azerbaijan"
+desc = "One of the most contentious issues between us and Persia is Azerbaijan, particularly on whether it rightfully belongs to us or the Persians. Baku possesses significant oil reserves, vital for the Internationale's struggle against imperialist forces, while also being a vital base to project the revolution to feudal Central Asia"
+picture = "azarbaijan_petroleum"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+trigger = {
+control = { province = 712 data = U53 }
+control = { province = 713 data = U53 } 
+}
+name = "Demand that the Persians hold a plebiscite"
+command = { type = event which = 59174 where = U53 when = 5 }
+}
+
+
+action = {
+trigger = {
+control = { province = 712 data = U53 }
+control = { province = 713 data = U53 } 
+}
+name = "They can have it for now..."
+command = { type = dissent value = 15 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+}
+
+action = {
+trigger = {
+control = { province = 712 data = GEO }
+control = { province = 713 data = GEO } 
+}
+name = "Azerbaijan is a rightful member of Transcaucasia!"
+command = { type = dissent value = -2 }
+command = { type = event which = 59180 where = U53 when = 5 }
+}
+
+action = {
+trigger = {
+control = { province = 712 data = GEO }
+control = { province = 713 data = GEO } 
+}
+name = "Appease them, with a rigged plebiscite"
+command = { type = setflag which = AZB_RIGGED }
+}
+
+action = {
+trigger = {
+control = { province = 712 data = GEO }
+control = { province = 713 data = GEO } 
+}
+name = "Hold a fair plebiscite."
+command = { type = dissent value = 10 }
+command = { type = setflag which = AZB_REF }
+}
+}
+
+event = {
+id = 59184
+random = no
+country = GEO
+style = 2
+
+name = "The Persian Ultimatum"
+desc = "The Persian ambassador delivered Tehran's ultimatum today, demanding that we hold a plebiscite in Azerbaijan within a month or else. This is very unexpected,as they had not even attempt to negotiate beforehand."
+picture = "Persianarmy"
+
+action = {
+name = "Fine. They can have Azerbaijan for now."
+command = { type = dissent value = 20 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = secedeprovince which = U53 value = 713 }
+command = { type = secedeprovince which = U53 value = 712 }
+}
+
+action = {
+name = "Alright, alright, you can have your stupid referendum"
+command = { type = setflag which = AZB_REF }
+}
+
+action = {
+name = "We do not fear these pitiful guerrilas"
+command = { type = dissent value = -3 }
+command = { type = war which = U53 }
+}
+}
+
+event = {
+id = 59185
+random = no
+country = GEO
+style = 2
+
+trigger = {
+flag = AZB_REF
+}
+
+name = "Nudging the results?"
+desc = "Polling results so far has been concerning. The majority of Azeris has chosen to remain with Persia, ignoring our efforts to promote Transcaucasian solidarity. Beria, along with a few other cabinet members have expressed their willingness to 'correct votes' through their networks in Baku, which would help to sway the Azeris away from Tehran to us."
+picture = "Beria"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+name = "No, it will be disastrous if the Persians finds us out."
+command = { trigger = { control = { province = 712 data = GEO } control = { province = 713 data = GEO } } type = event which = 59189 where = GEO when = 10 }
+command = { trigger = { control = { province = 712 data = U53 } control = { province = 713 data = U53 } } type = event which = 59190 where = GEO when = 10 }
+command = { type = dissent value = 4 }
+}
+
+action = {
+name = "A few extra votes wouldn't hurt..."
+command = { type = dissent value = -2 }
+command = { type = clrflag which = AZB_REF }
+command = { type = setflag which = AZB_RIGGED }
+}
+}
+
+event = {
+id = 59186
+random = no
+country = GEO
+style = 2
+
+trigger = {
+flag = AZB_VOTE_INVESTIGATION
+}
+
+name = "Persia stalls the results!"
+desc = "The Persians, desperate to hold on to Azerbaijan, has delayed the polling results for 'security checks'. Undoubtedly, they will discover our interference if their investigations are allowed to continue"
+picture = "persianconstitutuin"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+name = "Issue an ultimatum for an immediate transfer of Azerbaijan, we will not leave it to chance"
+command = { type = event which = 59179 where = U53 when = 1 }
+command = { type = sleepevent which = 59178 }
+}
+
+action = {
+name = "No need for impulsive actions"
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 59187
+random = no
+country = GEO
+style = 2
+
+name = "Persia denies us a referendum"
+desc = "The Persian social-feudalists have denied the Azeri people's rights for a referendum!. How shall we react to their stubborness?"
+picture = "british_protesting"
+
+action = {
+name = "Either they do it, or we will burn Persia to the ground."
+command = { type = event which = 59179 where = U53 when = 5 }
+}
+
+action = {
+name = "Fine, we would have lost it anyway."
+command = { type = dissent value = 15 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+}
+}
+
+event = {
+id = 59188
+random = no
+country = GEO
+style = 2
+
+name = "The Persian Ultimatum"
+desc = "The Persian ambassador delivered Tehran's ultimatum today, demanding that we hold immediately transfer the administration of Azerbaijan over to them. Panic has ensued across the country, with the armed forces unwilling to take on an enemy more than 10 times their size."
+picture = "Persianarmy"
+
+action = {
+name = "We must concede, for now..."
+command = { type = secedeprovince which = U53 value = 713 }
+command = { type = secedeprovince which = U53 value = 712 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = dissent value = -2 }
+}
+
+action = {
+name = "We do not fear these pitiful guerrilas"
+command = { type = dissent value = 15 }
+command = { type = war which = U53 }
+}
+}
+
+event = {
+id = 59189
+random = no
+country = GEO
+style = 2
+
+name = "Azerbaijan votes to rejoin Persia"
+desc = "An overwhelming majority of Azerbaijanis have voted to rejoin Persia. As the referendum was judged to be fair and clear by Internationale observers, we have no choice but to concede to Persia"
+picture = "SPR_Communist Coup"
+
+action = {
+name = "Should have listened to Beria..."
+command = { type = secedeprovince which = U53 value = 713 }
+command = { type = secedeprovince which = U53 value = 712 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 59190
+random = no
+country = GEO
+style = 2
+
+name = "Azerbaijan votes to remain in Persia"
+desc = "An overwhelming majority of Azerbaijanis have voted to remain in Persia. As the referendum was judged to be fair and clear by Internationale observers, we have no choice but to concede to Persia"
+picture = "SPR_Communist Coup"
+
+action = {
+name = "Should have listened to Beria..."
+command = { type = dissent value = 15 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+}
+}
+
+# PERSIA - GEORGIA PEACE DEALS
+
+event = {
+id = 59191
+random = no
+country = GEO
+style = 2
+
+trigger = {
+control = { province = 709 data = U53 }
+control = { province = 707 data = U53 } 
+war = { country = U53 country = PER }
+}
+
+name = "The Fall of Tblisi"
+desc = "Though our armed forces have fought valiantly, they have been unable to fend against the overwhelming odds of the Persian Army. The Central Committee sees no other option but to immediately sue for peace"
+picture = "SPR_Communist Coup"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+name = "We have no choice..."
+command = { type = dissent value = 8 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = secedeprovince which = U53 value = 713 }
+command = { type = secedeprovince which = U53 value = 712 }
+command = { type = 	peace which = U53 value = 1 }
+command = { type = event which = 59194 where = U53 when = 1 }
+}
+
+action = {
+name = "We will fight on till the end!"
+command = { type = dissent value = 15 }
+}
+}
+
+
+event = {
+id = 59192
+random = no
+country =  U53
+style = 2
+
+trigger = {
+control = { province = 1081 data = GEO }
+control = { province = 1083 data = GEO } 
+war = { country = U53 country = PER }
+}
+
+name = "The Fall of Gilan"
+desc = "Against all odds and to the dismay of the entire nation, the Georgians have beaten us back and occupied the entirety of Gilan. The populace,sick and tired of war are demonstrating en masse for peace with the Georgians."
+picture = "SPR_Communist Coup"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+ai_chance = 75
+name = "Concede Azerbaijan, the century of humiliation continues for Persia."
+command = { type = dissent value = 8 }
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = secedeprovince which = GEO value = 713 }
+command = { type = secedeprovince which = GEO value = 712 }
+command = { type = 	peace which = GEO value = 1 }
+command = { type = event which = 59195 where = GEO when = 1 }
+}
+
+action = {
+ai_chance = 25
+name = "We will triumph in the end!, we promise!"
+command = { type = dissent value = 15 }
+}
+}
+
+event = {
+id = 59193
+random = no
+country =  U53
+style = 2
+
+trigger = {
+control = { province = 1081 data = GEO }
+control = { province = 1083 data = GEO } 
+control = { province = 1085 data = GEO } 
+war = { country = U53 country = PER }
+}
+
+name = "The Fall of Tehran"
+desc = "With the Fall of Tehran to the Georgians, our government sees no other choice but to accept all Georgian demands. The terms were especially harsh, including huge amounts of reparations and the transfer of Iranian Azerbaijan and Gilan over to the new Greater Transcaucasian Socialist Federation."
+picture = "SPR_Communist Coup"
+
+date = { day = 2 month = january year = 1936 }
+offset = 2
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+name = "A day of disasters."
+command = { type = removeclaim which = 712 where = -1 }
+command = { type = removeclaim which = 713 where = -1 }
+command = { type = removecore which = 712 where = -1 }
+command = { type = removecore which = 713 where = -1 }
+command = { type = secedeprovince which = GEO value = 1081 }
+command = { type = secedeprovince which = GEO value = 1082 }
+command = { type = secedeprovince which = GEO value = 1083 }
+command = { type = secedeprovince which = GEO value = 713 }
+command = { type = secedeprovince which = GEO value = 712 }
+command = { type = 	peace which = U53 value = 1 }
+command = { type = event which = 59196 where = GEO when = 1 }
+}
+}
+
+event = {
+id = 59194
+random = no
+country = U53
+style = 2
+
+name = "The Treaty of Yerevan"
+desc = "Seeing no other way out, the Georgians have signed a peace treaty with us in Yerevan, conceding Azerbaijan and paying a moderate amount of reparations. Today is a great day for the people of Persia!"
+picture = "Persianarmy"
+
+action = {
+name = "The century of humiliation ends here!"
+command = { type = dissent value = -5 }
+command = { type = money value = 250 }
+command = { type = supplies value = 200 }
+}
+}
+
+event = {
+id = 59195
+random = no
+country = GEO
+style = 2
+
+name = "The Treaty of Rasht"
+desc = "Seeing no other way out, the Georgians have signed a peace treaty with us in Yerevan, conceding Azerbaijan and paying a moderate amount of reparations. Today is a great day for the peoples of Transcaucasia!"
+picture = "Beria"
+
+action = {
+name = "Georgia, the front-runner of the Eastern Vanguard!"
+command = { type = dissent value = -5 }
+command = { type = money value = 250 }
+command = { type = supplies value = 200 }
+}
+}
+
+event = {
+id = 59196
+random = no
+country = GEO
+style = 2
+
+name = "The Treaty of Tehran"
+desc = "We've defeated the Persians!,They've accepted all terms of surrender,including the transfer of Iranian Azerbaijan over to us!"
+picture = "Beria"
+
+action = {
+name = "This victory is almost impossible!"
+command = { type = dissent value = -5 }
+command = { type = money value = 500 }
+command = { type = supplies value = 1000 }
+}
+}
