@@ -26,7 +26,7 @@ ministerofsecurity = { type = 9 id = 56404  }
 ministerofintelligence = { type = 9 id = 56505 }
 chiefofstaff = { type = 9 id = 56835 } #Julius Bruche
 chiefofarmy = { type = 9 id = 56831 } #Herbert Lloyd
-chiefofnavy = { type = 9 id = 56822 } #Guy Gaunt
+chiefofnavy = { type = 9 id = 56877 } #George Hyde
 chiefofair = { type = 9 id = 56509 } #Philip Game
 
 #### Resource Reserves
@@ -58,20 +58,23 @@ nationalprovinces =   {
 }
 
 diplomacy = {
-relation = {   tag =  	GER	 value =		-80	   }
-relation = {   tag =  	AUS	value = 		-40	   }
-relation = {   tag =  	HUN	 value =		-40	   }
-relation = {   tag =  	ITA	value = 		30	   }
-relation = {   tag =  	SPA	value = 		20	   }
-relation = {   tag =  	ENG	value = 		-80	   }
-relation = {   tag =  	FRA	value = 		-40	   }
-relation = {   tag =  	RSI	 value =		-40	   }
-relation = {   tag =  	CAN	value = 		150	   }
-relation = {   tag =  	VIC	value = 		40	   }
-relation = {   tag =  	RUS	 value =		20	   }
-relation = {   tag =  	CON	value = 		-20	   }
-relation = {  tag =   	USA	value = 		60	 }
-relation = {   tag =  	JAP	value = 		-50	   }
+relation = { tag = GER value = -100    }
+relation = { tag = AUS value = 	-40    }
+relation = { tag = HUN value =	-40    }
+relation = { tag = ITA value = 	 30    }
+relation = { tag = SPA value = 	 20    }
+relation = { tag = ENG value = -175    }
+relation = { tag = FRA value = -150    }
+relation = { tag = RSI value = -150    }
+relation = { tag = CAN value = 	150    }
+relation = { tag = VIC value = 	 75	   }
+relation = { tag = RUS value =	 40	   }
+relation = { tag = CON value = 	-50    }
+relation = { tag = USA value = 	 90	   }
+relation = { tag = JAP value = 	 50	   } 
+relation = { tag = PAK value = 	125    }
+relation = { tag = SAF value = 	 25    }
+relation = { tag = CGX value = 	-60    }
 relation = { tag = EAF value = 60 guaranteed = { day = 29 month = december year = 1935   } 	   }
 }
 
