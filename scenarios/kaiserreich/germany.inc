@@ -302,7 +302,7 @@ techapps = {
 
 deactivate = { 6010 6210 6570 6560 6390 }
 
-dormant_teams = { 38 39 44
+dormant_teams = { 44
 				19 28 #Steyr-Puch, Skoda
 				68 72 73 74 75 76 #Land doctrine teams
 				56 57 58 59 } #Bomber doctrine teams
