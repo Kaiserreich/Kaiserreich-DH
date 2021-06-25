@@ -13,15 +13,23 @@ country = {
 		democratic = 2
 		political_left = 3
 		freedom = 3
-		free_market = 5
-		professional_army = 1
-		defense_lobby = 1
-		interventionism = 2
+		free_market = 4
+		professional_army = 7
+		defense_lobby = 7
+		interventionism = 5
 	}
 
 #### cabinet
-#headofstate = { type = 9 id = 502001 }
-#headofgovernment = { type = 9 id = 502002 }
+	headofstate = { type = 9 id = 97009 } #Wolfgang Wegener
+	headofgovernment = { type = 9 id = 97021 } #Albert Hahl
+	foreignminister = { type = 9 id = 97028 } #Felix von Luckner
+	armamentminister = { type = 9 id = 97026 } #Karl Helfferich
+	ministerofsecurity = { type = 9 id = 97029 } #Felix von Luckner
+	ministerofintelligence = { type = 9 id = 97074 } #Erich Hüttenhain
+	chiefofstaff = { type = 9 id = 97095 } #Josias zu Waldeck und Pyrmont
+	chiefofarmy = { type = 9 id = 97081 } #Kurt von Tippelskirch
+	chiefofnavy = { type = 9 id = 97010 } #Wolfgang Wegener
+	chiefofair = { type = 9 id = 97151 } #Gottlob Müller
 #### Resource Reserves
 		energy		= 200
 		metal		= 200
@@ -29,12 +37,12 @@ country = {
 		oil 		= 100
 		supplies 	= 100
 		money		= 50
-                transports      = 60
+		transports	= 150
   
 	capital = 1432 #Singapore
 	manpower = 200
 
-        free = { ic = 10 }
+        free = { ic = 10 energy = 20 }
 
 SpyInfo  = {  country = "UPE" NumberOfSpies = 5  } 
 
@@ -72,6 +80,7 @@ relation = { tag = VIE value = 125 access = yes }
 #Infantry
 1010 1020 1030 1040 1050 1060 1070 1080 #Infantry Up to 1926 Inf Division
 1160 1170 1180 1190 1200 1210 1220 1230 #Mountain Inf. up to 1925 Mountain Division
+1560 1570 #1925 Naval Infantry
 13060 13070 13080 1310 1320 1330 1340 1350 1360 #Cavalry up to 1928 cavalry
 1910 1920 1930 1940 1950 1960 1970 #Up to IW Supply 1924
 1830 1840 1850 #Engineers
@@ -81,11 +90,14 @@ relation = { tag = VIE value = 125 access = yes }
 2290 2300 2310 2900 2910 2920 #Artillery up to 1924
 2800 2450 21180 21190 #1930 static AA
 2810 2820 #1924 AA Bde
-2620 2010 #1918 tanks
+2620 2010 2630 #1919 Tanks
 
 #Naval
 3010 3020 3030 3040 3050 #Up to 1923 DD
 3110 3120 3130 3140 #Up to IW CL
+3610 3620 3630 3640 #1924 Submarine
+12100 12110 12120 #1920 Light Carrier
+3810 3820 #1925 Troopship
 3900 #ASW Equipment
 3720 3730 3736 3740 #Torpedoes
 
@@ -93,10 +105,11 @@ relation = { tag = VIE value = 125 access = yes }
 4500 4510 4520 4530 4540 4550 4010 #up to 1924 interceptor
 4300 4310 4320 4330 #Up to 1926 Multi Role Fighter
 4600 4610 4620 4630 4120 #Up to 1924 Tac Bomber
-4740 4750 4760 4770 #Seaplanes up to 1924
-4700 #1918 Naval Bomber
+4740 4750 4760 4770 4780 #1928 Seaplanes
+4700 4710 #1924 Naval Bomber
 4290 #1926 Air Transport
 7290 7300 7310 7320 #1922 CAS
+4900 #1922 CAG
 
 #Secret Weapons (for tanks only)
 7600 7610 #Tank experiments
@@ -104,6 +117,8 @@ relation = { tag = VIE value = 125 access = yes }
 #Industrial
 5700 5710 5010 5020 #Mechanized Agric
 5800 5080 5090 #Construction engineerings
+5310 54010 54020 #Analog Fire control
+5316 5326 5327 #Early Decryption
 5190 #Basic Oil refining
 5810 5820 5050 5830 5060 5070 #Manufacturing up to impr Mac tools
 5600 5610 5620 #Medicine

@@ -85,8 +85,8 @@ province = { id = 189 anti_air = 2 #Innsbruck
 province = { id = 190 ic = 4 anti_air = 1 } #Graz
 province = { id = 191 ic = 1 air_base = { size = 6 current_size = 6 } } #Klagenfurt
 province = { id = 192 ic = 2 } #Salzburg
-province = { id = 194 ic = 2 } #Hollabrunn
-province = { id = 195 anti_air = 5 manpower = 3 #Vienna
+province = { id = 193 ic = 1 } #Sankt Poelten
+province = { id = 195 anti_air = 5 ic = 1 manpower = 3 #Vienna
 	air_base = { size = 10 current_size = 10 } }
 
 #Montenegro
@@ -565,7 +565,7 @@ province = { id = 1392 anti_air = 2 #Haiphong
 province = { id = 1397 naval_base = { size = 2 current_size = 2 } } #Da Nang
 province = { id = 1399 anti_air = 3 oilpool = 100 supplypool = 500 #Saigon
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 10 current_size = 10 } }
-province = { id = 1432 landfort = 3 coastalfort = 4 anti_air = 4 oilpool = 2000 supplypool = 10000 #Singapore
+province = { id = 1432 landfort = 3 coastalfort = 4 anti_air = 4 ic = 2 oilpool = 500 supplypool = 5000 #Singapore
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1438 anti_air = 1 #Kuala Lumpur
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
@@ -1264,8 +1264,10 @@ province = { id = 664 air_base = { size = 2 current_size = 2 } } #Naberezhnye Ch
 province = { id = 667 air_base = { size = 2 current_size = 2 } } #Tolyatti
 province = { id = 671 ic = 2 } #Izhevsk
 province = { id = 681 ic = -1 } #Kostrama
+province = { id = 1126 ic = -1 } #Kungur
 
 #Siberia
+province = { id = 1135 ic = 1 infra = { size = 0.30 current_size = 0.30 } } #Tobolsk
 province = { id = 1138 air_base = { size = 1 current_size = 1 } } #Omsk
 province = { id = 1140 air_base = { size = 5 current_size = 5 } } #Barnaul
 province = { id = 1142 ic = 1 } #Novosibirsk
@@ -1275,10 +1277,13 @@ province = { id = 1148 air_base = { size = 2 current_size = 2 } } #Tomsk
 province = { id = 1151 ic = -1 } #Sverdlovsk
 province = { id = 1152 ic = -1 } #Salekhard
 province = { id = 1154 ic = -1 } #Surgut
+province = { id = 1156 ic = 1 } #Krasnoyarsk
 province = { id = 1162 ic = 2 } #Irkutsk
+province = { id = 1164 ic = -1 } #Ust-Kut
 province = { id = 1165 air_base = { size = 1 current_size = 1 } } #Bratsk
 province = { id = 1171 infra = { size = 0.20 current_size = 0.20 } } #Ekimchan
-province = { id = 1179 ic = 2 #Yakutsk
+province = { id = 1176 ic = 1 } #Blagoveshchensk
+province = { id = 1179 ic = 1 #Yakutsk
 air_base = { size = 1 current_size = 1 } }
 province = { id = 1189 anti_air = 2 air_base = { size = 4 current_size = 4 } #Nikolayevsk-on-Amur
 	naval_base = { size = 2 current_size = 2 } }
