@@ -111,6 +111,17 @@ relation = {   tag =  	JAP	value = 		-50	   }
 2800 2450 21180 21190 #Early Static Anti-Air Artillery
 2810 2820 2510 #Basic Anti-Air Artillery Brigade
 
+#Naval
+3010 3020 3030 3040 3050 #1923 Destroyer
+3110 3120 3130 3140 #1922 Light Cruiser
+3210 3220 3230 #1907 Heavy Cruiser
+3310 #1906 Heavy Battlecruiser
+3410 3420 3430 3440 #1909 Battleship
+3610 3620 3630 #1915 Submarine
+12100 12110 #Converted Light Carrier
+3720 3730 3740 3900 #Torpedo & ASW 18
+3810 3820 #1925 transport
+
 #Aircrafts
 4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter  
 4600 4610 4620 4630 4120 #Interwar Bomber 
@@ -131,7 +142,10 @@ relation = {   tag =  	JAP	value = 		-50	   }
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
-
+#Naval Doctrines
+8050 8070 8010 8020 8040 8060 8080
+8500 8510 8550 # Naval Interdiction
+8100 8110 # Naval Supremacy
 
 	}
 
