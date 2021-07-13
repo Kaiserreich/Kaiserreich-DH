@@ -165,6 +165,11 @@ techapps = {
 
 deactivate = { 6010 6210 6570 6560 6390 }
 
+dormant_teams = { 4423 #Petróleos do Brasil
+				  4441 #Luís Carlos Prestes
+				  4442 4443 4444 4445 4446 4447 4448 4449 #Integralist teams
+				}
+
 #### Order of Battle ####
 
  ## Army
