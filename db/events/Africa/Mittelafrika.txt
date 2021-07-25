@@ -325,35 +325,34 @@ command = { type = local_setflag which = CON_IS_BLACK }
 }
 
 ######################################################
-# Native unrest
+# Battle of Mahiwa
 ######################################################
+
 event = {
 id = 11009
 random = no
 country = CON
-persistent = yes
 style = 2
+persistent = yes
 
 trigger = {
-random = 5
-atwar = no
+day = 17
+month = october
 }
 
-name = EVT_11009_NAME # Native unrest
-desc = EVT_11009_DESC # The German policies in Mittelafrika were not only unpopular amongst natives, they also had serious effects on their lives. It is of no suprise that yet another rebellion has tried to challenge German supremacy in Mittelafrika.
-picture = "nativeunrests"
+name = EVT_11009_NAME # Anniversary of the Battle of Mahiwa
+desc = EVT_11009_DESC # The Battle of Mahiwa had been the decisive turning point in Germany's East African campaign. Though our Askaris were short on supplies and decisively outnumbered, under Paul von Lettow-Vorbeck 's command, they had still inflicted heavy casualties on the attacking British units. Then, through miraculous maneuvers and a decisive victory at Ngomano, Portuguese Mozambique fell into the control of our Askaris. This crushing defeat demoralized Entente forces in Africa and drew away much-needed resources from the European front.
+picture = "askaris3"
 
-date = { day = 0 month = january year = 1936 }
-offset = 23
-deathdate = { day = 29 month = december year = 1963 }
+date = { day = 0 month = october year = 1936 }
+offset = 1
+deathdate = { day = 29 month = november year = 1964 }
 
-action_a = {
-name = ACTIONNAME_11009_A # Oh well...
-command = { type = dissent value = 1 }
-command = { type = revolt which = -3 }
+action = {
+name =  ACTIONNAME_11009_A # Celebrate!
+command = { type = dissent value = -1 }
 }
 }
-
 
 ###########################################
 # Portuguese-Mittelafrikan relations
@@ -1711,6 +1710,7 @@ command = { type = local_clrflag which = CON_Dam_B }
 command = { type = local_clrflag which = CON_Dam_A }
 command = { type = event which = 11039 where = CON when = 5  }
 command = { type = local_setflag which = CON_IS_BLACK }
+command = { type = clrflag which = CON_AFKORPS }
 }
 
 action = {
@@ -1731,6 +1731,7 @@ command = { type = local_clrflag which = CON_Dam_B }
 command = { type = local_clrflag which = CON_Dam_A }
 command = { type = event which = 11039 where = CON when = 5  }
 command = { type = local_setflag which = CON_IS_BLACK }
+command = { type = clrflag which = CON_AFKORPS }
 }
 
 action = {
@@ -2525,3 +2526,260 @@ command = { type = domestic which = defense_lobby value = 2 }
 command = { type = dissent value = -1 }
 }
 }
+
+#################
+## AFRIKAKORPS ##
+#################
+
+event = {
+id = 11057
+random = no
+country = CON
+
+
+decision = {
+NOT = {
+government = communist
+}
+}
+
+decision_trigger = {
+money = 70
+manpower = 100
+supplies = 300
+}
+
+trigger = {
+money = 70
+manpower = 100
+supplies = 300
+NOT = {
+government = communist
+}
+}
+
+name = EVT_11057_NAME # Mittelafrika's role in the upcoming conflict.
+desc = EVT_11057_DESC # As the drums of war are being sounded across Europa once more, we must be ready to assist our Fatherland in their rightful struggle against the Syndicalist Internationale. Therefore, our high command has devised a plan to send elite Askaris to Europe, hoping to make up for Africa's lack of contributions to the war effort during the First Weltkrieg. These units will be called the Afrika Korps and will represent the best and brightest of the  Kaiser's African subjects. Doing this will not be cheap, however, as we will be forced to train, equip and ship these men all by ourselves.
+style = 2
+picture = "African_troops"
+decision_picture = "decision_german_mobilization"
+
+date = { day = 1 month = january year = 1938 }
+offset = 10
+deathdate = { day = 29 month = december year = 1964 }
+
+action = {
+name = ACTIONNAME_11057_A # Send the proposal to Berlin!
+ai_chance = 85
+command = { type = trigger which = 11058  } 
+command = { type = belligerence which = CON value = 5 }
+}
+
+action = {
+name = ACTIONNAME_11057_B # We can't afford such a scheme...
+ai_chance = 15
+command = { type = dissent value = -2 }
+command = { type = domestic which = interventionism value = -2 }
+command = { type = belligerence which = CON value = -1 }
+}
+}
+
+event = {
+id = 11058
+random = no
+country = GER
+style = 2
+
+name = EVT_11058_NAME # The Afrika-Korps Scheme.
+desc = EVT_11058_DESC # The Colonial Office received a proposal from the Statthalter of Mittelafrika for sending over elite Askari units to fight as frontline units in our upcoming war with France. Though the additional manpower will be more than welcomed, we still have to carefully consider whether or not to accept them. Public reaction will of course be hostile, as we had vigorously smeared the reputation of Afrikan units fighting for France. To be seen now using the same men would make us look like hypocrites. Yet, these Askaris units are still very formidable and capable, and it would be a shame to not have the chance to see them prove themselves as loyal subjects of the Kaiser.
+picture = "African_troops"
+
+action_a = {
+name = ACTIONNAME_11058_A # The Reich welcomes the glorious Askaris!
+ai_chance = 75
+command = { type = relation which = CON value = 20 }
+command = { type = trigger which = 11059  }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = ACTIONNAME_11058_B # Keep them in Africa, we don't need them.
+ai_chance = 25
+command = { type = dissent value = -1 }
+command = { type = trigger which = 11060  }
+command = { type = relation which = CON value = -10 }
+
+}
+}
+
+event = {
+id = 11059
+random = no
+country = CON
+style = 2
+save_date = yes
+
+name = EVT_11059_NAME # The Colonial Office accepts our proposal!
+desc = EVT_11059_DESC # The Colonial Office has graciously accepted our proposal!. Now, work must start soon so that these troops will arrive on time and be of the highest quality possible. The Askaris will prove Mittelafrika to be a jewel in the Kaiser's crown.
+picture = "German_mobilization2"
+
+action_a = {
+name = ACTIONNAME_11059_A # Heia! Heia Safari!
+command = { type = money value = -75 }
+command = { type = supplies value = -300 }
+command = { type = manpower value = -100 }
+command = { type = industrial_modifier which = total value = -10 }
+command = { type = dissent value = -1 }
+command = { type = setflag which = CON_AFKORPS }
+command = { type = relation which = GER value = 20 }
+}
+}
+
+event = {
+id = 11060
+random = no
+country = CON
+style = 2
+
+name = EVT_11060_NAME # The Colonial Office turns down our proposal.
+desc = EVT_11060_DESC # The Colonial Office has turned down our Afrika-Korps Proposal!. Evidently due to their own hubris and being scared of public reaction, the administrators in Berlin have decided to not give the brave Askaris a chance to prove themselves as loyal sons of the Kaiser
+picture = "German_mobilization2"
+
+action = {
+name = ACTIONNAME_11060_A # Snobs...
+command = { type = dissent value = 2 }
+command = { type = relation which = GER value = -20 }
+}
+}
+
+event = {
+id = 11061
+random = no
+country = GER
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 11059 days = 100 }
+flag = CON_AFKORPS
+}
+
+name = EVT_11061_NAME # First Askari divisions arrives
+desc = EVT_11061_DESC # The first shipment of Askari troops from Mittelafrika has arrived safe and sound. We will see what more can Mittelafrika offer us in the next shipments of troops
+picture = "African_troops"
+
+date = { day = 1 month = january year = 1938 }
+offset = 5
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_11061_A # Welcome!
+command = { type = add_division which = "1. Mittelafrikanische Division" value = d_01 when = 9 } 
+command = { type = add_division which = "2. Mittelafrikanische Division" value = d_01 when = 9 } 
+command = { type = add_division which = "3. Mittelafrikanische Division" value = d_01 when = 9 } 
+}
+}
+
+event = {
+id = 11062
+random = no
+country = GER
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 11061 days = 130 }
+flag = CON_AFKORPS
+}
+
+name = EVT_11062_NAME # More Askari units arrives
+desc = EVT_11062_DESC # The second batch of Askari troops from Mittelafrika has arrived safe and sound. This second group is made up of more specialist units than the ground soldiers of the first arrivals.  Among them are cavalrymen from Sudwestafrika and mountaineers from Ostafrika, both of whom have survived the most treacherous conditions in the Dark Continent. These resilient soldiers will be invaluable to our war effort.
+picture = "African_troops"
+
+date = { day = 1 month = january year = 1938 }
+offset = 5
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_11062_A # Welcome!
+command = { type = add_division which = "1. Afrikanischen Kavaliers" value = cavalry when = 10 } 
+command = { type = add_division which = "Afrikanischen Gebirgsjäger-Division" value = d_01 when = 9 } 
+}
+}
+
+event = {
+id = 11063
+random = no
+country = GER
+style = 2
+save_date = yes
+
+trigger = {
+event = { id = 11062 days = 160 }
+flag = CON_AFKORPS
+}
+
+name = EVT_11063_NAME # The Ostafrikaner Division
+desc = EVT_11063_DESC # Our newest Askari arrivals are part of the Ostafrikaner Division, the brainchild of Generalleutnant von Hippel. What sets them apart from the other Askari units is their training and doctrine. Instead of confrontation, these units are geared more towards airborne operations and sabotage, reminiscent of von Lettow-Vorbeck's tactics during the first Weltkrieg. Their performance against insurgents in Mittelafrika so far have been very promising, and we eagerly wait for their debut against the Communards
+picture = "African_troops"
+
+date = { day = 1 month = january year = 1938 }
+offset = 5
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_11063_A # Welcome!
+command = { type = add_division which = "Ostafrikan-Fallschirmjäger Division" value = paratrooper when = 0 } 
+}
+}
+
+event = {
+id = 11064
+random = no
+country = GER
+style = 2
+
+trigger = {
+event = { id = 11063 days = 90 }
+flag = CON_AFKORPS
+}
+
+name = EVT_11064_NAME # The Afrika-Korps Plan is finished.
+desc = EVT_11064_DESC # The last of the Afrika-Korps has arrived on our shores. We've received various support brigades and more volunteers from Mittelafrika, including two full tank brigade that they had locally produced. These Askaris will be put to good use, and the Mittelafrikans' contributions to protecting their Fatherland will be honored. For now, though, the Askaris march to war.
+picture = "askaris3"
+
+date = { day = 1 month = january year = 1938 }
+offset = 5
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_11064_A # Heia Safari!
+command = { type = add_brigade value = artillery when = 8 } 
+command = { type = add_brigade value = artillery when = 8 } 
+command = { type = add_brigade value = armored_car when = 4 } 
+command = { type = add_brigade value = light_armor_brigade when = 6 } 
+command = { type = trigger which = 11065 }
+command = { type = relation which = CON value = 50 }
+}
+}
+
+event = {
+id = 11065
+random = no
+country = CON
+style = 2
+
+name = EVT_11065_NAME # The Afrika-Korps Plan is finished.
+desc = EVT_11065_DESC # The last of the Afrika-Korps has arrived safely on to German shores. Though the quality of our equipment may be lesser than those produced in the mainland, no one can deny that the Askaris' spirits and their dedication to fighting for their Reich and their Kaiser are unparalleled. Soon, the Askaris will leave their mark on German history as valiant and loyal defenders of their Kaiser against the Syndicalist menace.
+picture = "askaris3"
+
+action_a = {
+name = ACTIONNAME_11065_A # Heia! Heia Safari!
+command = { type = dissent value = -5 }
+command = { type = industrial_modifier which = total value = 10 }
+command = { type = relation which = GER value = 30 }
+}
+}
+
+
+

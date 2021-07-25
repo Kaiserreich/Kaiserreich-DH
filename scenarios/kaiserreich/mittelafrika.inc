@@ -6,6 +6,7 @@ country = {
 ai = "kaiserreich\Mittelafrika.ai"
 
 	puppet = GER
+	flag_ext = _GER
 	
 
 	policy = {
