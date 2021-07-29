@@ -105,7 +105,7 @@ action_a = {
 ai_chance = 60
 name = "EVT_657002_ACTIONA"
 command = { type = domestic which = interventionism value = 1 }
-command = { type = trigger which = 657006 }
+command = { type = event which = 657006 where = CUB when = 60  }
 }
 action_b = {
 ai_chance = 40
@@ -347,7 +347,7 @@ country = CUB
 style = 2
 picture = "Guerillas"
 
-# triggered by 657002
+# triggered by 657008
 
 name = "EVT_657010_NAME"
 desc = "EVT_657010_DESC"
@@ -373,7 +373,7 @@ command = { type = trigger which = 657012 }
 
 ### The Official Language
 event = {
-id = 657011
+id = 657011 
 country = GUY
 style = 2
 picture = "Caribbean"
@@ -442,7 +442,7 @@ desc = "EVT_657013_DESC"
 
 action_a = {
 ai_chance = 50
-name = "EVT_657013_ACTIONA" #We need to expand on this, and also have more Cuban events in the cuba file itself
+name = "EVT_657013_ACTIONA" #We need to expand on this, and also have more Cuban events in the cuba file itself | Popper - can do! 
 command = { type = dissent value = 7 }
 }
 action_b = {
@@ -501,7 +501,7 @@ name = "EVT_657015_ACTIONA"
 command = { type = sleepminister which = 33032 }
 command = { type = sleepminister which = 33038 }
 command = { type = sleepminister which = 33075 }
-command = { type = headofstate which = 33034 } #Fulgencio Batista
+command = { type = headofgovernment which = 33039 } #Eduardo Chibas 
 command = { type = dissent value = 1 }
 }
 }
@@ -528,6 +528,7 @@ command = { type = sleepminister which = 33032 }
 command = { type = sleepminister which = 33038 }
 command = { type = sleepminister which = 33075 }
 command = { type = headofstate which = 33034 } #Fulgencio Batista
+command = { type = headofgovernment which = 33039 } #Eduardo Chibas 
 command = { type = dissent value = 1 }
 }
 }
@@ -632,7 +633,7 @@ name = "EVT_657020_ACTIONA"
 command = { type = sleepminister which = 33039 }
 command = { type = sleepminister which = 33047 }
 command = { type = sleepminister which = 33063 }
-command = { type = headofgovernment which = 33040 } #Eugenio Molinet Castro
+command = { type = headofgovernment which = 33040 } #Eugenio Molinet Amoros 
 command = { type = dissent value = 1 }
 }
 }
@@ -676,7 +677,12 @@ NOT = { OR = {
 alliance = { country = CUB country = CSA }
 ispuppet = CUB
 ispuppet = CSA } }
-NOT = { event = 675010 } } #Syndicalist Cuba event
+NOT = { 
+event = 657010 #Syndicalist Cuba event
+event = 657012 #or CSA 
+event = 610164 #Mexico took over Cuba 
+} 
+} 
 
 date = { day = 1 month = january year = 1953 }
 offset = 300
@@ -696,7 +702,7 @@ command = { type = money value = -100 }
 command = { type = supplies value = -200 }
 command = { type = sleepevent which = 657023 }
 command = { type = sleepevent which = 657024 }
-command = { type = sleepevent which = 657025 }
+command = { type = setflag which = CUB_REV_CSA } #these flags were necessary because it used to sleep 657025 by mistake - also lets the owner know which event to take to puppet Cuba 
 }
 action_b = {
 ai_chance = 10
@@ -718,8 +724,15 @@ NOT = { OR = {
 alliance = { country = CUB country = GUA }
 ispuppet = CUB
 ispuppet = GUA } }
-NOT = { event = 675012 } } #Syndicalist Cuba event
+NOT = { 
+event = 657010 #Syndicalist Cuba event
+flag = CUB_REV_CSA 
+flag = CUB_REV_MEX 
+event = 610164 #Mexico took over Cuba 
+event = 657012 #or CSA
+}  
 
+}
 date = { day = 1 month = january year = 1953 }
 offset = 300
 deathdate = { day = 29 month = december year = 1966 }
@@ -738,7 +751,7 @@ command = { type = money value = -100 }
 command = { type = supplies value = -200 }
 command = { type = sleepevent which = 657022 }
 command = { type = sleepevent which = 657024 }
-command = { type = sleepevent which = 657025 }
+command = { type = setflag which = CUB_REV_GUA } #these flags were necessary because it used to sleep 657025 by mistake - also lets the owner know which event to take to puppet Cuba 
 }
 action_b = {
 ai_chance = 10
@@ -760,7 +773,14 @@ NOT = { OR = {
 alliance = { country = CUB country = MEX }
 ispuppet = CUB
 ispuppet = MEX } }
-NOT = { event = 675012 } } #Syndicalist Cuba event
+NOT = { 
+event = 657010 #Syndicalist Cuba event
+flag = CUB_REV_CSA 
+flag = CUB_REV_GUA 
+event = 610164 #Mexico took over Cuba 
+event = 657012 #or CSA 
+}
+}
 
 date = { day = 1 month = january year = 1953 }
 offset = 300
@@ -780,7 +800,7 @@ command = { type = money value = -100 }
 command = { type = supplies value = -200 }
 command = { type = sleepevent which = 657022 }
 command = { type = sleepevent which = 657023 }
-command = { type = sleepevent which = 657025 }
+command = { type = setflag which = CUB_REV_MEX } #these flags were necessary because it used to sleep 657025 by mistake - also lets the owner know which event to take to puppet Cuba 
 }
 action_b = {
 ai_chance = 10
@@ -795,11 +815,14 @@ id = 657025
 country = CUB
 style = 2
 
-trigger = { OR = {
-event = 5059
-event = 505901
-event = 505902 }
-NOt = { government = communist } }
+trigger = { 
+OR = {
+flag = CUB_REV_CSA
+flag = CUB_REV_GUA
+flag = CUB_REV_MEX 
+}
+NOT = { government = communist } 
+}
 
 date = { day = 1 month = january year = 1953 }
 offset = 30
@@ -820,7 +843,7 @@ id = 657026
 country = CUB
 style = 2
 
-trigger = { event = 1657018 }
+trigger = { event = 657025 } #WTF this used to refer to an event that didn't exist 
 
 date = { day = 1 month = january year = 1953 }
 offset = 30
@@ -838,6 +861,7 @@ action_b = {
 ai_chance = 50
 name = "EVT_657026_ACTIONB"
 command = { type = trigger which = 657028 }
+command = { type = sleepevent which = 657027 }
 }
 }
 
@@ -846,10 +870,10 @@ id = 657027
 country = CUB
 style = 2
 
-trigger = { event = 1657019 }
+trigger = { event = 657026 }
 
 date = { day = 1 month = january year = 1953 }
-offset = 30
+offset = 14 #changed the 
 deathdate = { day = 29 month = december year = 1966 }
 
 name = "EVT_657027_NAME"
@@ -902,8 +926,15 @@ name = "EVT_657029_NAME"
 desc = "EVT_657029_DESC"
 
 action_a = {
-name = "EVT_657029_ACTIONA"
-command = { }
+ai_chance = 50
+name = "EVT_657029_ACTIONA" #I'm going to adjust this for now to trigger the two following events 
+command = { type = event which = 657030 where = CUB when = 5  }
+}
+
+action_b = {
+ai_chance = 50
+name = "The rebels are making a breakthrough!"  
+command = { type = event which = 657031 where = CUB when = 5  }
 }
 }
 
@@ -912,15 +943,7 @@ id = 657030
 country = CUB
 style = 2
 
-trigger = {
-flag = CUB_REV_1
-event = 1657022
-random = 50
-NOT = { event = 657031 } }
 
-date = { day = 1 month = january year = 1953 }
-offset = 5
-deathdate = { day = 29 month = december year = 1966 }
 
 name = "EVT_657030_NAME"
 desc = "EVT_657030_DESC"
@@ -937,16 +960,6 @@ event = {
 id = 657031
 country = CUB
 style = 2
-
-trigger = {
-flag = CUB_REV_1
-event = 505907
-random = 50
-NOT = { event = 1657023 } }
-
-date = { day = 1 month = january year = 1953 }
-offset = 5
-deathdate = { day = 29 month = december year = 1966 }
 
 name = "EVT_657031_NAME"
 desc = "EVT_657031_DESC"
@@ -989,7 +1002,7 @@ flag = MONCADA_GOV
 event = 657032 }
 
 date = { day = 1 month = march year = 1953 }
-offset = 30
+offset = 14 #changing this because interval should be shorter 
 deathdate = { day = 29 month = december year = 1966 }
 
 name = "EVT_657033_NAME"
@@ -1034,7 +1047,14 @@ style = 2
 trigger = {
 government = communist
 exists = CUB
-event = 657034 }
+flag = MONCADA_GOV #removed the requirement for 657034 (Fidel doesn't need to be shot for this event to work)
+OR = {
+flag = CUB_REV_CSA  
+event = 657036
+event = 657037
+}
+} 
+
 
 date = { day = 1 month = march year = 1953 }
 offset = 60
@@ -1050,6 +1070,9 @@ command = { type = relation which = CUB value = -20 }
 command = { type = sleepevent which = 657036 }
 command = { type = sleepevent which = 657037 }
 command = { type = setflag which = CUB_CSA }
+command = { type = clrflag which = CUB_REV_CSA } #sleeping these b/c redundant now 
+command = { type = clrflag which = CUB_REV_MEX }
+command = { type = clrflag which = CUB_REV_GUA }
 }
 action_b = {
 ai_chance = 10
@@ -1068,7 +1091,13 @@ style = 2
 trigger = {
 government = communist
 exists = CUB
-event = 657034 }
+flag = MONCADA_GOV #removed the requirement for 657034 (Fidel doesn't need to be shot for this event to work)
+OR = {
+flag = CUB_REV_GUA 
+event = 657035
+event = 657037
+}
+}
 
 date = { day = 1 month = march year = 1953 }
 offset = 80
@@ -1084,6 +1113,9 @@ command = { type = relation which = CUB value = -20 }
 command = { type = sleepevent which = 657035 }
 command = { type = sleepevent which = 657037 }
 command = { type = setflag which = CUB_GUA }
+command = { type = clrflag which = CUB_REV_CSA } #sleeping these b/c redundant now
+command = { type = clrflag which = CUB_REV_MEX }
+command = { type = clrflag which = CUB_REV_GUA }
 }
 action_b = {
 ai_chance = 10
@@ -1102,7 +1134,13 @@ style = 2
 trigger = {
 government = communist
 exists = CUB
-event = 657034 }
+flag = MONCADA_GOV
+OR = {
+flag = CUB_REV_MEX
+event = 657035
+event = 657036
+} 
+}
 
 date = { day = 1 month = march year = 1953 }
 offset = 80
@@ -1118,6 +1156,9 @@ command = { type = relation which = CUB value = -20 }
 command = { type = sleepevent which = 657035 }
 command = { type = sleepevent which = 657036 }
 command = { type = setflag which = CUB_MEX }
+command = { type = clrflag which = CUB_REV_CSA } #sleeping these b/c redundant now
+command = { type = clrflag which = CUB_REV_MEX }
+command = { type = clrflag which = CUB_REV_GUA }
 }
 action_b = {
 ai_chance = 10
@@ -1139,7 +1180,7 @@ exists = CUB
 flag = CUB_CSA }
 
 date = { day = 1 month = march year = 1956 }
-offset = 500
+offset = 100 #Offset 500 was wayyy too high
 deathdate = { day = 29 month = december year = 1966 }
 
 name = "EVT_657038_NAME"
@@ -1175,7 +1216,7 @@ exists = CUB
 flag = CUB_MEX }
 
 date = { day = 1 month = march year = 1956 }
-offset = 500
+offset = 100
 deathdate = { day = 29 month = december year = 1966 }
 
 name = "EVT_657039_NAME"
@@ -1262,7 +1303,7 @@ country = CUB
 style = 2
 
 trigger = { OR = {
-event = 1657034
+event = 657034
 flag = MONCADA_REB } }
 
 date = { day = 1 month = january year = 1953 }
@@ -1281,7 +1322,7 @@ command = { type = setflag which = CUB_REV_START }
 action_b = {
 ai_chance = 20
 name = "EVT_657042_ACTIONB"
-command = { type = trigger which = 1657043 }
+command = { type = trigger which = 657050 } #fixed event
 }
 }
 
@@ -1300,8 +1341,15 @@ name = "EVT_657043_NAME"
 desc = "EVT_657043_DESC"
 
 action_a = {
-name = "EVT_657043_ACTIONA"
-command = { }
+ai_chance = 50 
+name = "Government forces dig in and hold off the assault"
+command = { type = trigger which = 657044 }
+}
+
+action_b = {
+ai_chance = 50 
+name = "Rebels overwhelm and rout government forces!"
+command = { type = trigger which = 657045 }
 }
 }
 
@@ -1310,16 +1358,9 @@ id = 657044
 country = CUB
 style = 2
 
-trigger = {
-event = 505921
-random = 20 }
-
 name = "EVT_657044_NAME"
 desc = "EVT_657044_DESC"
 
-date = { day = 1 month = january year = 1953 }
-offset = 5
-deathdate = { day = 29 month = december year = 1966 }
 
 action_a = {
 name = "EVT_657044_ACTIONA"
@@ -1334,16 +1375,9 @@ id = 657045
 country = CUB
 style = 2
 
-trigger = {
-event = 505921
-random = 80 }
 
 name = "EVT_657045_NAME"
 desc = "EVT_657045_DESC"
-
-date = { day = 1 month = january year = 1953 }
-offset = 5
-deathdate = { day = 29 month = december year = 1966 }
 
 action_a = {
 name = "EVT_657045_ACTIONA"
@@ -1359,7 +1393,7 @@ style = 2
 
 trigger = {
 flag = CUB_REV_START
-event = 1657038 }
+event = 657045 }
 
 name = "EVT_657046_NAME"
 desc = "EVT_657046_DESC"
@@ -1369,8 +1403,14 @@ offset = 30
 deathdate = { day = 29 month = december year = 1966 }
 
 action_a = {
-name = "EVT_657046_ACTIONA"
-command = { }
+ai_chance = 70
+name = "The Rebels capture a major armored train - and its passengers!" #this too 
+command = { type = trigger which = 657048 }
+}
+action_b = {
+ai_chance = 30
+name = "The rebels assault fails, and they are driven back!"
+command = { type = trigger which = 657047 }
 }
 }
 
@@ -1379,16 +1419,10 @@ id = 657047
 country = CUB
 style = 2
 
-trigger = {
-event = 1657039
-random = 20 }
 
 name = "EVT_657047_NAME"
 desc = "EVT_657047_DESC"
 
-date = { day = 1 month = january year = 1953 }
-offset = 5
-deathdate = { day = 29 month = december year = 1966 }
 
 action_a = {
 name = "EVT_657047_ACTIONA"
@@ -1403,16 +1437,8 @@ id = 657048
 country = CUB
 style = 2
 
-trigger = {
-event = 1657039
-random = 80 }
-
 name = "EVT_657048_NAME"
 desc = "EVT_657048_DESC"
-
-date = { day = 1 month = january year = 1953 }
-offset = 5
-deathdate = { day = 29 month = december year = 1966 }
 
 action_a = {
 name = "EVT_657048_ACTIONA"
@@ -1426,7 +1452,7 @@ id = 657049
 country = CUB
 style = 2
 
-trigger = { event = 1657041 }
+trigger = { event = 657048 }
 
 name = "EVT_657049_NAME"
 desc = "EVT_657049_DESC"
@@ -1452,15 +1478,17 @@ desc = "EVT_657050_DESC"
 action_a = {
 name = "EVT_657050_ACTIONA"
 command = { type = dissent value = -50 }
-command = { type = trigger which = 505928 }
+command = { trigger = { flag = CUB_CSA } type = alliance which = CSA }
+command = { trigger = { flag = CUB_GUA } type = alliance which = GUA }
+command = { trigger = { flag = CUB_MEX } type = alliance which = MEX }
 command = { type = set_domestic which = democratic value = 5 }
 command = { type = set_domestic which = political_left value = 9 }
 command = { type = headofstate which = 33216 } #Raúl Castro
 command = { type = headofgovernment which = 33218 } #Camilo Cienfuegos
 command = { type = armamentminister which = 33204 } #Carlos Rafael Rodríguez
 command = { type = foreignminister which = 33217 } #Raúl Castro
-command = { type = ministerofsecurity which = 33101 } #Fidel Castro (if he wasn't shot previously)
-command = { type = ministerofintelligence which = 33095 } #Fidel Castro (if he wasn't shot previously)
+command = { trigger = { NOT = { event = 657034 } } type = ministerofsecurity which = 33101 } #Fidel Castro (if he wasn't shot previously)
+command = { trigger = { NOT = { event = 657034 } } type = ministerofintelligence which = 33095 } #Fidel Castro (if he wasn't shot previously)
 command = { type = chiefofnavy which = 33112 } #Sandalio Junco
 command = { type = chiefofair which = 33210 } #Mario Torres Menier
 command = { type = chiefofstaff which = 33219 } #Camilo Cienfuegos
