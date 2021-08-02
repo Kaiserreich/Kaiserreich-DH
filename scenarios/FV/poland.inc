@@ -53,7 +53,7 @@ country = {
       name           = "2 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 9 }
@@ -61,14 +61,14 @@ country = {
       type           = infantry
       model          = 7
       extra          = anti_air
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 10 }
       name           = "29 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
   }
   landunit = {
@@ -80,14 +80,14 @@ country = {
       name           = "18 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 13 }
       name           = "28 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 14 }
@@ -96,7 +96,7 @@ country = {
       model          = 7
       extra          = anti_tank
       brigade_model  = 1
-      strength       = 80
+      max_strength = 65
     }
   }
   landunit = {
@@ -108,7 +108,7 @@ country = {
       name           = "Army HQ"
       type           = hq
       model          = 2
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 35 }
@@ -123,28 +123,28 @@ country = {
       name           = "1 DP Legionуw im. Pilsudskiego"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 37 }
       name           = "5 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 38 }
       name           = "11 Karpacka Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 39 }
       name           = "24 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
   }
   landunit = {
@@ -156,14 +156,14 @@ country = {
       name           = "20 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 42 }
       name           = "25 Dywizja Piechoty"
       type           = infantry
       model          = 7
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 43 }
@@ -172,7 +172,7 @@ country = {
       model          = 1
       extra          = anti_tank
       brigade_model  = 1
-      strength       = 80
+      max_strength = 65
     }
   }
   landunit = {
@@ -184,7 +184,7 @@ country = {
       name           = "I Pestininku Divizija"
       type           = infantry
       model          = 7
-      strength       = 60
+      max_strength = 50
     }
     division = {
       id             = { type = 26500 id = 3 }
@@ -192,28 +192,28 @@ country = {
       type           = infantry
       model          = 7
       extra          = artillery
-      strength       = 60
+      max_strength = 50
     }
     division = {
       id             = { type = 26500 id = 4 }
       name           = "III Pestininku Divizija"
       type           = infantry
       model          = 7
-      strength       = 60
+      max_strength = 50
     }
     division = {
       id             = { type = 26500 id = 5 }
       name           = "IV Pestininku Divizija"
       type           = infantry
       model          = 7
-      strength       = 60
+      max_strength = 50
     }
     division = {
       id             = { type = 26500 id = 6 }
       name           = "V Pestininku Divizija"
       type           = infantry
       model          = 7
-      strength       = 60
+      max_strength = 50
     }
   }
   landunit = {
@@ -225,14 +225,14 @@ country = {
       name           = "2 Dywizja Zmotoryzowana"
       type           = motorized
       model          = 0
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 18600 id = 46 }
       name           = "3 Dywizja Zmotoryzowana"
       type           = motorized
       model          = 0
-      strength       = 80
+      max_strength = 65
     }
   }
     landdivision = {
@@ -240,7 +240,7 @@ country = {
       name           = "5 Dywizja Piechoty"
       type           = infantry
       model          = 9
-      strength       = 80
+      max_strength = 65
       dormant        = yes
     }
     landdivision = {
@@ -248,7 +248,7 @@ country = {
       name           = "7 Dywizja Piechoty"
       type           = infantry
       model          = 9
-      strength       = 80
+      max_strength = 65
       dormant        = yes
     }
     landdivision = {
@@ -256,7 +256,7 @@ country = {
       name           = "10 Dywizja Piechoty"
       type           = infantry
       model          = 9
-      strength       = 80
+      max_strength = 65
       dormant        = yes
     }
     landdivision = {
@@ -264,7 +264,7 @@ country = {
       name           = "11 Dywizja Piechoty"
       type           = infantry
       model          = 9
-      strength       = 80
+      max_strength = 65
       dormant        = yes
     }
     landdivision = {
@@ -272,7 +272,7 @@ country = {
       name           = "Wilenska B.K."
       type           = cavalry
       model          = 9
-      strength       = 50
+      max_strength       = 50
       dormant        = yes
     }
 	

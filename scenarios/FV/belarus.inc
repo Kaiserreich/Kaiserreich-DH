@@ -55,7 +55,7 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 10848 id = 29 }
@@ -64,21 +64,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 10848 id = 30 }
       name           = "3. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 80
+      max_strength = 65
     }
     division = {
       id             = { type = 10848 id = 31 }
       name           = "4. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 80
+      max_strength = 65
     }
   }
   landunit = {
@@ -90,28 +90,28 @@ country = {
       name           = "5. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength = 50
     }
     division = {
       id             = { type = 10848 id = 33 }
       name           = "6. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength = 50
     }
     division = {
       id             = { type = 10848 id = 34 }
       name           = "7. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength = 50
     }
     division = {
       id             = { type = 10848 id = 35 }
       name           = "8. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength = 50
     }
   }
   landunit = {
@@ -123,28 +123,28 @@ country = {
       name           = "9. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength = 50
     }
     division = {
       id             = { type = 10848 id = 37 }
       name           = "7. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength = 50
     }
     division = {
       id             = { type = 10848 id = 38 }
       name           = "8. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 45
+      max_strength = 45
     }
     division = {
       id             = { type = 10848 id = 39 }
       name           = "9. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 45
+      max_strength = 45
     }
   }
   landunit = {
@@ -156,21 +156,21 @@ country = {
       name           = "10. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 55
+      max_strength = 55
     }
     division = {
       id             = { type = 10848 id = 42 }
       name           = "11. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      strength       = 55
+      max_strength = 55
     }
     division = {
       id             = { type = 10848 id = 43 }
       name           = "12. Piachotnaja dyvizija"
       type           = infantry
       model          = 9
-      strength       = 35
+      max_strength = 35
     }
   }
 

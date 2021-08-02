@@ -50,7 +50,7 @@ country = {
       name           = "Armeijakunta"
       type           = hq
       model          = 3
-      strength       = 75
+      max_strength       = 75
     }
   }
   landunit = {
@@ -62,21 +62,21 @@ country = {
       name           = "1. Divisioona"
       type           = infantry
       model          = 9
-      strength       = 70
+      max_strength       = 70
     }
     division = {
       id             = { type = 18750 id = 6 }
       name           = "2. Divisioona"
       type           = infantry
       model          = 10
-      strength       = 70
+      max_strength       = 70
     }
     division = {
       id             = { type = 18750 id = 7 }
       name           = "Kaartin Ratsuv‰kidivisioona"
       type           = cavalry
       model          = 10
-      strength       = 25
+      max_strength       = 25
     }
   }
   landunit = {
@@ -88,21 +88,21 @@ country = {
       name           = "3. Divisioona"
       type           = infantry
       model          = 9
-      strength       = 70
+      max_strength       = 70
     }
     division = {
       id             = { type = 18750 id = 9 }
       name           = "4. Divisioona"
       type           = infantry
       model          = 9
-      strength       = 70
+      max_strength       = 70
     }
     division = {
       id             = { type = 18750 id = 10 }
       name           = "J‰‰k‰ridivisioona"
       type           = motorized
       model          = 0
-      strength       = 50
+      max_strength       = 50
     }
   }
   landunit = {
@@ -114,14 +114,14 @@ country = {
       name           = "5. Divisioona"
       type           = infantry
       model          = 9
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 18750 id = 13 }
       name           = "6. Divisioona"
       type           = infantry
       model          = 9
-      strength       = 50
+      max_strength       = 50
     }
   }
   landunit = {
@@ -135,14 +135,14 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 8
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 18750 id = 16 }
       name           = "8. Divisioona"
       type           = infantry
       model          = 8
-      strength       = 50
+      max_strength       = 50
     }
   }
 }

@@ -49,21 +49,21 @@ country = {
       name           = "1st Rifle Division"
       type           = infantry
       model          = 7
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 18500 id = 3 }
       name           = "2nd Rifle Division"
       type           = infantry
       model          = 7
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 18500 id = 4 }
       name           = "3rd Cavalry Division"
       type           = cavalry
       model          = 6
-      strength       = 40
+      max_strength       = 40
     }
   }
 }

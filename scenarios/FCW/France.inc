@@ -24,11 +24,11 @@ SpyInfo  = {  country = "VIC" NumberOfSpies = 4  }
 
 	capital = 66
 manpower = 450
-energy	=	10000  
-metal	= 3000		
+energy	=	5000  
+metal	= 2000		
 rare_materials =	1500	
-oil =	2500	
-supplies =	20000
+oil =	2000	
+supplies =	5000
 money = 10
 transports = 25
 dissent = 35

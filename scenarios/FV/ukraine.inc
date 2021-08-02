@@ -55,14 +55,14 @@ country = {
       name           = "1. Strilkova Dyviziya"
       type           = infantry
       model          = 8
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 3 }
       name           = "5. 'Katerynoslav.' Strilk. Dyv"
       type           = infantry
       model          = 8
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 4 }
@@ -71,7 +71,7 @@ country = {
       model          = 8
       extra          = armored_car
       brigade_model  = 1
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 47 }
@@ -80,7 +80,7 @@ country = {
       model          = 8
       extra          = engineer
       brigade_model  = 1
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 48 }
@@ -89,7 +89,7 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 50 }
@@ -98,7 +98,7 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 51 }
@@ -107,7 +107,7 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 52 }
@@ -116,21 +116,21 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 53 }
       name           = "2. Kavaleriys'ka Dyviziya"
       type           = cavalry
       model          = 8
-      strength       = 80
+      max_strength       = 80
     }
     division = {
       id             = { type = 17344 id = 54 }
       name           = "3. Kavaleriys'ka Dyviziya"
       type           = cavalry
       model          = 8
-      strength       = 80
+      max_strength       = 80
     }
   }
   landunit = {
@@ -142,28 +142,28 @@ country = {
       name           = "3. Strilkova Dyviziya"
       type           = infantry
       model          = 8
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 7 }
       name           = "6. Strilkova Dyviziya"
       type           = infantry
       model          = 8
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 8 }
       name           = "7. Strilkova Dyviziya"
       type           = infantry
       model          = 8
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 9 }
       name           = "1. Kavaleriys'ka Dyviziya"
       type           = cavalry
       model          = 8
-      strength       = 50
+      max_strength       = 50
     }
   }
   landunit = {
@@ -177,21 +177,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 12 }
       name           = "8. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 13 }
       name           = "9. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 14 }
@@ -200,7 +200,7 @@ country = {
       model          = 0
       extra          = anti_tank
       brigade_model  = 1
-      strength       = 50
+      max_strength       = 50
     }
   }
   landunit = {
@@ -214,21 +214,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 17 }
       name           = "13. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 17344 id = 18 }
       name           = "11. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 17344 id = 46 }
@@ -237,7 +237,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
   }
   landunit = {
@@ -249,14 +249,14 @@ country = {
       name           = "12. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 17344 id = 21 }
       name           = "14. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 17344 id = 42 }
@@ -265,7 +265,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 45 }
@@ -274,7 +274,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
   }
   landunit = {
@@ -286,21 +286,21 @@ country = {
       name           = "15. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 24 }
       name           = "20. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 25 }
       name           = "16. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 17344 id = 44 }
@@ -309,7 +309,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
   }
   landunit = {
@@ -321,21 +321,21 @@ country = {
       name           = "17. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 20600 id = 27 }
       name           = "18. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 20600 id = 28 }
       name           = "19. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 20600 id = 43 }
@@ -344,7 +344,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
   }
   landunit = {
@@ -356,21 +356,21 @@ country = {
       name           = "19. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 20600 id = 31 }
       name           = "25. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 20600 id = 32 }
       name           = "21. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 65
+      max_strength       = 65
     }
     division = {
       id             = { type = 20600 id = 80 }
@@ -379,7 +379,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      strength       = 65
+      max_strength       = 65
     }
   }
   landunit = {
@@ -391,14 +391,14 @@ country = {
       name           = "1. Tankova Dyviziya"
       type           = armor
       model          = 9
-      strength       = 35
+      max_strength       = 35
     }
     division = {
       id             = { type = 20600 id = 36 }
       name           = "2. Tankova Dyviziya"
       type           = armor
       model          = 9
-      strength       = 35
+      max_strength       = 35
     }
   }
   landunit = {
@@ -410,21 +410,21 @@ country = {
       name           = "51. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 38 }
       name           = "52. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 39 }
       name           = "1. Garnizonna Dyviziya"
       type           = garrison
       model          = 5
-      strength       = 50
+      max_strength       = 50
     }
   }
   landunit = {
@@ -436,21 +436,21 @@ country = {
       name           = "54. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 42 }
       name           = "55. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 81 }
       name           = "2. Garnizonna Dyviziya"
       type           = garrison
       model          = 5
-      strength       = 50
+      max_strength       = 50
     }
   }
   landunit = {
@@ -462,21 +462,21 @@ country = {
       name           = "57. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 46 }
       name           = "58. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 47 }
       name           = "3. Garnizonna Dyviziya"
       type           = garrison
       model          = 5
-      strength       = 50
+      max_strength       = 50
     }
   }
   landunit = {
@@ -488,21 +488,21 @@ country = {
       name           = "60. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 32
+      max_strength       = 32
     }
     division = {
       id             = { type = 20600 id = 50 }
       name           = "61. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 32
+      max_strength       = 32
     }
     division = {
       id             = { type = 20600 id = 51 }
       name           = "4. Garnizonna Dyviziya"
       type           = garrison
       model          = 5
-      strength       = 32
+      max_strength       = 32
     }
   }
   landunit = {
@@ -514,21 +514,21 @@ country = {
       name           = "63. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 54 }
       name           = "64. Strilkova Dyviziya"
       type           = infantry
       model          = 10
-      strength       = 50
+      max_strength       = 50
     }
     division = {
       id             = { type = 20600 id = 55 }
       name           = "5. Garnizonna Dyviziya"
       type           = garrison
       model          = 5
-      strength       = 50
+      max_strength       = 50
     }
   }
 

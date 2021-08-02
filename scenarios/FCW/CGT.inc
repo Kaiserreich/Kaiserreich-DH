@@ -28,7 +28,7 @@ country = {
 
 	# Resource Reserves
 	oil 	=	500
-	supplies =	500
+	supplies =	2500
 
 
 	free = 		{

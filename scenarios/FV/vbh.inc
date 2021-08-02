@@ -51,7 +51,7 @@ country = {
       name           = "Oberkommando des Heeres"
       type           = hq
       model          = 2
-      strength       = 75
+      max_strength       = 75
     }
     division = {
       id             = { type = 14750 id = 3 }
@@ -60,7 +60,7 @@ country = {
       model          = 9
       extra          = artillery
       brigade_model  = 2
-      strength       = 75
+      max_strength       = 75
       experience     = 30
     }
   }
@@ -73,14 +73,14 @@ country = {
       name           = "Sicherungs-Brigade 'Estland'"
       type           = garrison
       model          = 4
-      strength       = 40
+      max_strength       = 40
     }
     division = {
       id             = { type = 14750 id = 6 }
       name           = "1. Deutsch-Balt. Division"
       type           = infantry
       model          = 8
-      strength       = 75
+      max_strength       = 75
     }
   }
   landunit = {
@@ -92,14 +92,14 @@ country = {
       name           = "Sicherungs-Brigade 'Livland'"
       type           = garrison
       model          = 4
-      strength       = 40
+      max_strength       = 40
     }
     division = {
       id             = { type = 14750 id = 9 }
       name           = "2. Deutsch-Balt. Division"
       type           = infantry
       model          = 8
-      strength       = 75
+      max_strength       = 75
     }
   }
   landunit = {
@@ -111,7 +111,7 @@ country = {
       name           = "3. Deutsch-Balt. Division"
       type           = infantry
       model          = 8
-      strength       = 75
+      max_strength       = 75
     }
   }
     landdivision = {
@@ -119,7 +119,7 @@ country = {
       name           = "4. Deutsch-Balt. Division"
       type           = infantry
       model          = 8
-      strength       = 70
+      max_strength       = 70
       dormant        = yes
     }
     landdivision = {
@@ -127,7 +127,7 @@ country = {
       name           = "5. Deutsch-Balt. Division"
       type           = infantry
       model          = 8
-      strength       = 70
+      max_strength       = 70
       dormant        = yes
     }
 	
