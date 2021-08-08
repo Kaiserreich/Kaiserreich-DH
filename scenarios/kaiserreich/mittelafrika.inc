@@ -113,6 +113,11 @@ relation = {   tag =  	JAP	value = 		-40	   }
 
 #Naval
 3010 3020 3030 3040 3050 #Up to 1923 DD
+3110 3120 3130 #1912 Light Cruiser
+3210 3220 3230 #1907 Heavy Cruiser
+3310 3320 #1912 BC
+3410 3420 3430 3440 3450 3456 #1917 Battleship
+3810 3820 #Troopships
 3610 3620 3630 3640 #Up to IW SS
 3900 #ASW Equipment
 3720 3730 3736 3740 #Torpedoes

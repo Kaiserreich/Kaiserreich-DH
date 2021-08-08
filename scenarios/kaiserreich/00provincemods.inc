@@ -3,8 +3,12 @@
 ####
 
 ### AFG
-province = { id = 2171 infra = { size = 0.30 current_size = 0.30 } #Kabul
-	air_base = { size = 1 current_size = 1 } }
+province = { id = 1537 ic = 1 } #Peshawar
+province = { id = 2168 ic = -1 } #Kondoz
+province = { id = 2169 ic = -2 } #Kandahar
+province = { id = 2171 energy = 4 metal = 3 rare_materials = 2 } #Bamyan coal, Hajigak & Logar iron/copper/chromite mines
+province = { id = 2171 ic = 2 #Kabul
+	infra = { size = 0.30 current_size = 0.30 } air_base = { size = 1 current_size = 1 } }
 
 ### ALB
 province = { id = 359 anti_air = 1

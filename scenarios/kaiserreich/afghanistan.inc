@@ -16,15 +16,15 @@ ai = "kaiserreich\Afghanistan.ai"
         interventionism = 1
     }
 
-
 	headofstate = { type = 9 id = 54081 }
 	headofgovernment = { type = 9 id = 54082 }
  	foreignminister = { type = 9 id = 54101 }
  	armamentminister = { type = 9 id = 54102 }
- 	ministerofsecurity = { type = 9 id = 54052  }
- 	ministerofintelligence = { type = 9 id = 54054  }
+ 	ministerofsecurity = { type = 9 id = 54052 }
+ 	ministerofintelligence = { type = 9 id = 54054 }
  	chiefofstaff = { type = 9 id = 54061 }
- 	chiefofarmy = { type = 9 id = 54107 }	
+ 	chiefofarmy = { type = 9 id = 54107 }
+	chiefofnavy = { type = 9 id = 54117 }
 
 #### Resource Reserves
 
@@ -89,8 +89,11 @@ relation = { tag = PRK value = -150 }
 4300 4310 4320 #Improved WK MR fighter (Bristol F.2)
 4500 4510 4520 4530 4540 4550 #Improved ww1 Fighter (Nieuport 24)
 
-#Land Doctrines
-6500 6510 6530 6590 #Up to pre ww1 tech
+# Great War Land Doctrines (German advisors)
+6500 6510 6530 6550 6590 6600 6610 6620 6650 6670 6680 6690 6700 6710 6910
+
+#Air Doctrines - ww2 techs
+27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470
 	}
 
 
@@ -106,27 +109,24 @@ division = {
    strength = 100
    model = 6
    type = infantry
-             }
+		}
 
   division = {
    id = { type = 10000 id = 2 }
    name = "Faizabad Militia"
    strength = 80
-   model = 4
-   type = militia
-             }
+   model = 5
+   type = d_01
+		}
 
   division = {
    id = { type = 10000 id = 3 }
    name = "Ghazni Militia"
    strength = 70
-   model = 4
-   type = militia
-             }
-
-
-
-           }
+   model = 5
+   type = d_01
+		}
+	}
 
 ##########################
 ##########################
@@ -140,9 +140,9 @@ landunit = {
    id = { type = 10000 id = 5 }
    name = "Herat Militia"
    strength = 100
-   model = 4
-   type = militia
-             }
+   model = 5
+   type = d_01
+		}
 
   division = {
    id = { type = 10000 id = 6 }
@@ -150,7 +150,7 @@ landunit = {
    strength = 30
    model = 6
    type = cavalry
-           }
+		}
 	}
 airunit = {
 	id = { type = 10000 id = 12 }
@@ -194,7 +194,7 @@ landunit = {
    strength = 50
    model = 3
    type = militia
-             }
+		}
 
   division = {
    id = { type = 10000 id = 9 }
@@ -202,7 +202,7 @@ landunit = {
    strength = 50
    model = 3
    type = militia
-   }
- }
+		}
+	}
 
 }  

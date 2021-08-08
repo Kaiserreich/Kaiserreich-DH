@@ -64,7 +64,7 @@ diplomacy = {
 5600 #Medicine
 
 # Land Doctrines WW1 - Entente Line
-6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6540 6910
+6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
 # Land Doctrines WW2 - none
 
 #Air Doctrines - ww2 techs
