@@ -644,6 +644,278 @@ command = { type = peacetime_ic_mod value = 4 }
 }
 
 
+#####################################################################
+# Military-Industrial Expansion events for AUS or Danubian Federation
+#####################################################################
+event = {
+    id = 90576
+    random = no
+    tag = { AUS U24 U25 }
+
+decision = {
+	year = 1938
+	OR = {
+		event = 901004
+		event = 901008
+		event = 901013
+		event = 901077
+		event = 901590
+	}
+}
+decision_trigger = {
+	atwar = no
+	technology = 55000 #Advanced Mining
+	supplies = 2000
+	money = 500
+}
+trigger = {
+	year = 1938
+	atwar = no
+	technology = 55000 #Advanced Mining
+	supplies = 2000
+	money = 500
+	OR = {
+		event = 901004
+		event = 901008
+		event = 901013
+		event = 901077
+		event = 901590
+	}
+}
+
+name = "Military-Industrial Expansion"
+desc = "Our industries are currently not up to the task of fully outfitting the Kaiserlich-Königliche Landwehr in modern armored vehicles and panzers. Such an endeavour requires a sufficient supply of steel and so an expansion of the mines and steelworks of Öesterreichisch-Alpine Montangesellschaft would prove most effective. Fortunately the plans for such a project have been in development for some time already."
+style = 2
+picture = "industry3"
+decision_picture = "decision_industry"
+
+date = { day = 0 month = january year = 1938 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+	ai_chance = 100
+	name = "Give the project full support."
+	command = { type = supplies value = -2000 }
+	command = { type = money value = -500 }
+	command = { type = event which = 90577 where = -1 when = 360 } #Eisenwerke Oberdonau completed
+	command = { type = event which = 90578 where = -1 when = 720 } #Expansion of Erzberg Mine
+    }
+}
+
+
+event = {
+id = 90577
+random = no
+tag = { AUS U24 U25 }
+style = 2
+
+name = "Eisenwerke Oberdonau completed."
+desc = "Öesterreichisch-Alpine Montangesellschaft's newest and most modern steelworks, purpose-built for the production of armored steel, is now operational." 
+picture = "industry"
+
+action_a = {
+	name = "On schedule."
+	command = { type = construct which = infrastructure where = 187 value = 10 }
+	command = { type = construct which = ic where = 187 value = 1 } #Linz, Upper Austria
+	}
+}
+
+
+event = {
+id = 90578
+random = no
+tag = { AUS U24 U25 }
+style = 2
+
+name = "Expansion of Erzberg Mine."
+desc = "Lying within the Grauwackenzone, Erzberg is the largest open-cast iron ore mine in Central Europe and the largest siderite deposit in the world. The enormous ore reserves will supply the Österreichische steelworks for many decades." 
+picture = "mines2"
+
+action_a = {
+	name = "Eindrucksvoll!"
+	command = { type = construct which = infrastructure where = 190 value = 10 }
+	command = { type = add_prov_resource which = metal where = 190 value = 20 } #Styria, Central Austria
+	}
+}
+
+
+event = {
+    id = 90579
+    random = no
+    tag = { AUS U24 U25 }
+
+decision = {
+	event = 90576
+}
+decision_trigger = {
+	year = 1940
+	control = { province = 193 data = -1 }
+	owned = { province = 193 data = -1 }
+	technology = 5130 #Assembly Line Exp
+	supplies = 2000
+	money = 500
+}
+trigger = {
+	year = 1940
+	event = 90576
+	control = { province = 193 data = -1 }
+	owned = { province = 193 data = -1 }
+	technology = 5130 #Assembly Line Exp
+	supplies = 2000
+	money = 500
+}
+
+name = "St. Valentin Panzerwerk" #based on the Nibelungenwerk
+desc = "Steyr-Daimler-Pusch has been chosen to construct the largest panzerwerk in all of Europe at St. Valentin."
+style = 2
+picture = "nibelungenwerk"
+decision_picture = "decision_industry"
+
+date = { day = 0 month = january year = 1940 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+	ai_chance = 100
+	name = "Expensive, but worth it."
+	command = { type = supplies value = -2000 }
+	command = { type = money value = -500 }
+	command = { type = event which = 90580 where = -1 when = 360 } #St. Valentin Panzerwerk completed
+    }
+}
+
+
+event = {
+id = 90580
+random = no
+tag = { AUS U24 U25 }
+style = 2
+
+name = "St. Valentin Panzerwerk completed."
+desc = "Utilizing the latest assembly line processes, Steyr-Daimler-Pusch's St. Valentin Panzerwerk can produce finished vehicles with remarkable speed." 
+picture = "nibelungenwerk"
+
+action_a = {
+	name = "Wunderbar!"
+	command = { type = construct which = ic where = 193 value = 2 } #St. Valentin, Lower Austria
+	command = { type = build_time which = armor when = on_upgrade value = -10 where = relative } #10% reduction for med-arm
+	command = { type = build_time which = light_armor when = on_upgrade value = -10 where = relative } #10% reduction for light-arm
+	command = { type = build_time which = anti_tank when = on_upgrade value = -10 where = relative } #10% reduction for med-arm brigade
+	command = { type = build_time which = light_armor_brigade when = on_upgrade value = -10 where = relative } #10% reduction for light-arm brigade
+	command = { type = build_time which = heavy_armor when = on_upgrade value = -10 where = relative } #10% reduction for h-arm brigade
+	command = { type = build_time which = super_heavy_armor when = on_upgrade value = -10 where = relative } #10% reduction for sh-arm brigade
+	}
+}
+
+
+event = {
+    id = 90581
+    random = no
+    tag = { AUS U24 U25 }
+
+decision = {
+	event = 90576
+}
+decision_trigger = {
+	year = 1938
+	control = { province = 194 data = -1 }
+	owned = { province = 194 data = -1 }
+	technology = 55010 #Advanced Oil Extraction
+	supplies = 1000
+	money = 250
+}
+trigger = {
+	year = 1938
+	event = 90576
+	control = { province = 194 data = -1 }
+	owned = { province = 194 data = -1 }
+	technology = 55010 #Advanced Oil Extraction
+	supplies = 1000
+	money = 250
+}
+
+name = "Oil discovered in Lower Austria."
+desc = "Founded in 1935, Rohöl-Gewinnungs AG has been conducting oil exploration in the Vienna Basin and has just confirmed oil, first at Zistersdorf, and shortly after at Gaiselberg. A secure source of fuel is critical to the future of our nation!"
+style = 2
+picture = "zistersdorf_oilfields"
+decision_picture = "decision_industry"
+
+date = { day = 0 month = january year = 1938 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+	ai_chance = 100
+	name = "Proceed at once!"
+	command = { type = supplies value = -1000 }
+	command = { type = money value = -250 }
+	command = { type = event which = 90582 where = -1 when = 360 } #St. Valentin Panzerwerk completed
+    }
+}
+
+
+event = {
+id = 90582
+random = no
+tag = { AUS U24 U25 }
+style = 2
+
+name = "Oil fields operational."
+desc = "Oil extraction has steadily increased and the refineries at Korneuburg, Lobau, Floridsdorf, Kagran and Vösendorf are processing at near capacity." 
+picture = "zistersdorf_oilfields"
+
+action_a = {
+	name = "Splendid!"
+	command = { type = construct which = infrastructure where = 194 value = 10 }
+	command = { type = add_prov_resource which = oil where = 194 value = 6 } #Zisterdorf, Lower Austria
+	}
+}
+
+
+event = {
+    id = 90583
+    random = no
+    tag = { AUS U24 U25 }
+
+decision = {
+	event = 90582
+	year = 1944
+}
+decision_trigger = {
+	year = 1945
+	control = { province = 194 data = -1 }
+	owned = { province = 194 data = -1 }
+	technology = 55030 #Modern Oil Extraction
+}
+trigger = {
+	year = 1945
+	event = 90582
+	control = { province = 194 data = -1 }
+	owned = { province = 194 data = -1 }
+	technology = 55030 #Modern Oil Extraction
+}
+
+name = "Vienna Basin oilfield expansion."
+desc = "New technologies have permitted exploitation of deeper oil deposits in the region, and the recently discovered large oilfield at Matzen has started producing."
+style = 2
+picture = "zistersdorf_oilfields"
+decision_picture = "decision_industry"
+
+date = { day = 0 month = january year = 1938 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+	ai_chance = 100
+	name = "Excellent!"
+	command = { type = add_prov_resource which = oil where = 194 value = 7 } #Zisterdorf & Matzen, Lower Austria
+    }
+}
+
+#####################################################################
+
+
 event = {
 id = 85531
 random = no
