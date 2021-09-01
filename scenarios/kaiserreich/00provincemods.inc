@@ -197,7 +197,6 @@ province = { id = 2092 ic = -2 } #Jasper
 province = { id = 2101 ic = 1 manpower = 1 } #Regina
 province = { id = 2102 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Prince Albert
 province = { id = 2103 manpower = 1 air_base = { size = 4 current_size = 4 } } #Edmonton
-province = { id = 2104 oil = 5 } #Calgary
 province = { id = 2105 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Grande Prairie
 province = { id = 2106 ic = 1 manpower = 1 anti_air = 1 #Winnipeg
 	air_base = { size = 4 current_size = 4 } }
@@ -234,9 +233,11 @@ province = { id = 2137 ic = 1 anti_air = 2 #St. Johns
 province = { id = 2138 infra = { size = 0.10 current_size = 0.10 } } #Nain
 
 ### CGX
-province = { id = 1308 ic = 1 } #Changsha
+province = { id = 1308 ic = 1 anti_air = 1 } #Changsha
 province = { id = 1309 ic = -2 } #Xiangtan
 province = { id = 1311 ic = 1 } #Chenzhou
+province = { id = 1312 ic = 1 anti_air = 1 #Henyang
+	air_base = { size = 4 current_size = 4 } }
 province = { id = 1313 ic = 1 } #Shashi
 province = { id = 1351 anti_air = 1 #Shangrao
  	air_base = { size = 2 current_size = 2 } }
@@ -249,8 +250,6 @@ province = { id = 1370 ic = 1 } #Lufeng
 province = { id = 1373 ic = -4 } #Jiangmen
 province = { id = 1375 ic = 1 } #Shantou
 province = { id = 1376 infra = { size = 0.20 current_size = 0.20 } } #Debao
-province = { id = 1378 ic = 1 anti_air = 2 #Guilin
-	air_base = { size = 4 current_size = 4 } }
 province = { id = 1379 ic = -1 } #Nanning
 province = { id = 1380 ic = -1 } #Liuzhou
 
@@ -461,7 +460,6 @@ province = { id = 836 ic = 3 #Mogadishu
 ### FIN
 province = { id = 517 #Petsamo
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 3 current_size = 3 } }
-#province = { id = 523 energy = 2 } #Kajaani
 province = { id = 520 #Oulu
 	air_base = { size = 4 current_size = 4 } }
 province = { id = 524 coastalfort = 1 anti_air = 2 #Turku
@@ -569,7 +567,7 @@ province = { id = 1392 anti_air = 2 #Haiphong
 province = { id = 1397 naval_base = { size = 2 current_size = 2 } } #Da Nang
 province = { id = 1399 anti_air = 3 oilpool = 100 supplypool = 500 #Saigon
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 10 current_size = 10 } }
-province = { id = 1432 landfort = 3 coastalfort = 4 anti_air = 4 oilpool = 2000 supplypool = 10000 #Singapore
+province = { id = 1432 landfort = 3 coastalfort = 4 anti_air = 4 ic = 2 oilpool = 500 supplypool = 5000 #Singapore
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1438 anti_air = 1 #Kuala Lumpur
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
@@ -629,8 +627,7 @@ province = { id = 261 anti_air = 1 #Klaipeda
 	
 #Oceaninic colonies
 #province = { id = 1582 naval_base = { size = 5 current_size = 5 } air_base = { size = 5 current_size = 5 } } #Espiritu Santo
-province = { id = 1586 ic = 1 metal = 2 rare_materials = 12 #Nouvelle-Caledonia
-	naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } }
+province = { id = 1586 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Nouvelle-Caledonia
 #province = { id = 1587 anti_air = 3 #Bougainville #North Solomon Islands
 #	naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } }
 #province = { id = 1590 naval_base = { size = 4 current_size = 4 } } #Lunga
@@ -660,7 +657,6 @@ province = { id = 429 landfort = 3 coastalfort = 2 anti_air = 2 oilpool = 100 su
 province = { id = 237 ic = -1 } #Tarnow
 province = { id = 239 landfort = 2 anti_air = 1 } #Pryzemysl
 province = { id = 240 ic = -1 } #Tarnopol
-province = { id = 241 oil = 2 } #Stryj
 province = { id = 242 anti_air = 2 #Lwow
 	air_base = { size = 5 current_size = 5 } }
 
@@ -1189,8 +1185,7 @@ province = { id = 1191 ic = 7 manpower = 1 landfort = 1 coastalfort = 3 anti_air
 province = { id = 1192 infra = { size = 0.10 current_size = 0.10 } } #Semyonovka
 province = { id = 1193 ic = 1 infra = { size = 0.30 current_size = 0.30 } } #Nakhodka
 province = { id = 1194 ic = 1 } #Lesozavodsk
-province = { id = 1195 ic = 1 metal = 4 rare_materials = 4 #Tetyukhe
-	infra = { size = 0.30 current_size = 0.30 } }
+province = { id = 1195 infra = { size = 0.30 current_size = 0.30 } } #Tetyukhe
 province = { id = 1196 ic = 3 } #Nikolsk-Ussuriysky
 
 ### PRK

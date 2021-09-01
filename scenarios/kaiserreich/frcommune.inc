@@ -932,9 +932,9 @@ name = "1ère Groupe de Bombardement"
 location = 55
 base = 55
 
-division = { id = { type = 13500 id = 207 } name = "Groupe de Bombardement Tactique 1" strength = 100 type = tactical_bomber model = 6 }
-division = { id = { type = 13500 id = 211 } name = "Groupe de Bombardement Tactique 2" strength = 100 type = tactical_bomber model = 6 }
-division = { id = { type = 13500 id = 215 } name = "Groupe de Bombardement Tactique 3" strength = 100 type = tactical_bomber model = 6 }
+division = { id = { type = 13500 id = 207 } name = "Groupe de Bombardement Tactique 1" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 13500 id = 211 } name = "Groupe de Bombardement Tactique 2" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 13500 id = 215 } name = "Groupe de Bombardement Tactique 3" strength = 100 type = tactical_bomber model = 5 }
 }
 
 
@@ -943,9 +943,9 @@ location = 89
 base = 89
 id = { type = 13500 id = 222 }
 name = "2ème Groupe de Bombardement"
-division = { id = { type = 13500 id = 280 } name = "Groupe de Bombardement Tactique 4" strength = 100 type = tactical_bomber model = 6 }
-division = { id = { type = 13500 id = 281 } name = "Groupe de Bombardement Tactique 5" strength = 100 type = tactical_bomber model = 6 }
-division = { id = { type = 13500 id = 223 } name = "Groupe de Bombardement Tactique 6" strength = 100 type = tactical_bomber model = 6 }
+division = { id = { type = 13500 id = 280 } name = "Groupe de Bombardement Tactique 4" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 13500 id = 281 } name = "Groupe de Bombardement Tactique 5" strength = 100 type = tactical_bomber model = 5 }
+division = { id = { type = 13500 id = 223 } name = "Groupe de Bombardement Tactique 6" strength = 100 type = tactical_bomber model = 5 }
 }
 
 airunit = {
