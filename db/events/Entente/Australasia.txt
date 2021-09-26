@@ -369,7 +369,7 @@ command = { type = relation which = GER value = -30 }
 command = { type = relation which = ENG value = 70 }
 command = { type = relation which = FRA value = 70 }
 command = { type = sleepevent which = 100037 } # The Great Schism of the Australasian Labour Party
-command	= { type = setflag which = AST_Syndicalsit }
+command	= { type = setflag which = AST_Syndicalist }
 command = { type = flag_ext where = AST which = "_syn" }
 command = { type = sleepminister which = 56800 } # Edward VIII
 command = { type = sleepminister which = 56801 } # Edward VIII
@@ -402,7 +402,7 @@ country = CAN
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -424,7 +424,7 @@ country = ENG
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -446,7 +446,7 @@ country = GER
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -468,7 +468,7 @@ country = JAP
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -490,7 +490,7 @@ country = PAK
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -512,7 +512,7 @@ country = PRK
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -6574,7 +6574,7 @@ random =  no
 country = AST
 
 trigger = { OR = { flag = NewGuard_Authoritarian
-flag = AST_Syndicalsit	   }
+flag = AST_Syndicalist	   }
 dissent = 25
 NOT = { exists = NZL } }
 
@@ -10625,7 +10625,7 @@ style = 2
 trigger = {
 OR = {
 flag = AST_Republican
-flag = AST_Syndicalsit
+flag = AST_Syndicalist
 }
 }
 
@@ -10796,6 +10796,373 @@ command = { type = research_mod value = 1 }
 command = { type = industrial_modifier which = total value = 1 }
 }
 }
+
+############
+
+event = {
+id = 100500
+random = no
+country = AST
+save_date = yes
+style = 2
+
+decision = {
+control = { province = 1715 data = AST }
+}
+
+decision_trigger = {
+energy = 1000
+metal = 1000
+money = 1000
+technology = 5510
+}
+
+trigger = {
+control = { province = 1715 data = AST }
+energy = 1000
+metal = 1000
+money = 1000
+technology = 5510
+}
+
+name = EVT_100500_NAME # Expansion of Radium Hill
+desc = EVT_100500_DESC # Radium Hill was first marked out as a deposit of radioactive material by Arthur Smith in 1906. After its discovery, Radium Hill went through the hands of various companies, though none managed to sustain their radium mining operations for long. Now that Australasia's nuclear research and testing programs have reached an advanced stage, an invaluable deposit like Radium Hill simply can't be overlooked.
+picture = "mines"
+decision_picture = "decision_mines"
+
+date = { day = 0 month = january year = 1941 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100500_A # Time to expand Radium Hill!
+ai_chance = 100
+command = { type = metalpool value = -1000 } 
+command = { type = energypool value = -1000 } 
+command = { type = money value = -1000 } 
+}
+}
+
+event = {
+id = 100501
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100500 days = 300 }
+}
+
+name = EVT_100501_NAME # Expansion of Radium Hill completed
+desc = EVT_100501_DESC # The Radium Hill Mining Facilities have been completed!. Radium Hill is now an extensive complex, comprising of an aerodrome, a newly-built local town where miners working at Radium Hill and their families can reside in and various other mills and treatment plants for mined uranium. Here's hoping for smooth operations and a steady source of radium for Australasia!
+picture = "mines"
+
+date = { day = 0 month = january year = 1941 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100501_A # Keep up the good work!
+command = { type = construct which = nuclear_reactor where = 1715 value = 1 } 
+}
+}
+
+event = {
+id = 100502
+random = no
+country = AST
+style = 2
+persistent = yes
+
+decision = {
+event = 100038
+NOT = {
+local_flag = AST_Syndicalist
+AND = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+} 
+}
+}
+
+decision_trigger = {
+energy = 2000
+metal = 2000
+money = 1000
+NOT = {
+local_flag = AST_RAAF
+}
+}
+
+trigger = {
+event = 100038
+energy = 2000
+metal = 2000
+money = 1000
+NOT = {
+local_flag = AST_Syndicalist
+local_flag = AST_RAAF
+AND = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+}
+}
+}
+
+name = EVT_100502_NAME # State of the Royal Australasian Air Force
+desc = EVT_100502_DESC # In truth, there has been no Royal Australasian Air Force to speak of, and our current airforce is barely sufficient to guard our skies never mind project air superiority elsewhere. Considering that the wars of the future will be fought in the air, this is a grave concern for the ANZAC High Command. However, it is not just aircraft that we are currently falling behind at. Australasia's air defense is at an abysmal state right now, barely able to fight off monoplanes and biplanes, much less new fighters and bombers. Airbase distribution is also a concern, as our airfields are sparse and unevenly spread, leaving the Northern Territory and Queensland exposed to a hypothetical German invasion from Papua. All of these problems combined make reforming the RAAF a matter of life or death for Australasia.
+decision_picture = "decision_airmanufacture"
+picture = "swedish_planes"
+
+date = { day = 25 month = january year = 1937 }
+offset = 20
+deathdate = { day = 14 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100502_A # Expand our aircraft production!
+trigger = {  NOT = { event = 100503 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100503 where = AST when = 200 } 
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_b = {
+name = ACTIONNAME_100502_B # Expand the airbases!
+trigger = {  NOT = { event = 100504 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100504 where = AST when = 200 } 
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_c = {
+name = ACTIONNAME_100502_C # It's time we refit our air defenses.
+trigger = {  NOT = { event = 100505 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100505 where = AST when = 150 } 
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_d = {
+name = ACTIONNAME_100502_D # Our air training scheme needs reform also.
+trigger = {  NOT = { event = 100506 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100506 where = AST when = 120 } 
+command = { type = money value = -1000 } 
+command = { type = manpowerpool value = -10 } 
+}
+}
+
+event = {
+id = 100503
+random = no
+country = AST
+style = 2
+
+name = EVT_100503_NAME # Australasian Aircraft Factories
+desc = EVT_100503_DESC # After many months of hard work and much investment from the RAAF, the manufacturers of the Australasian Aircraft Factories have officially entered production. Technical assistance from the IATS was vital in helping us catch up with the latest bomber and fighter models. They also assisted us in setting up the factories and acquiring the necessary material. With their help, we hope that from the assembly lines of these factories, a new RAAF will emerge to dominate the skies of the Pacific.
+picture = "aircraftmanufacturing"
+
+action_a = {
+name = ACTIONNAME_100503_A # Build,build!
+command = { type = construct which = ic where = 1708 value = 2 } 
+command = { type = build_time which = cas value = -7 }
+command = { type = build_time which = cag value = -7 }
+command = { type = build_time which = escort value = -8 }
+command = { type = build_time which = multi_role value = -10 }
+command = { type = build_time which = interceptor value = -10 }
+command = { type = build_time which = naval_bomber value = -7 }
+command = { type = build_time which = transport_plane value = -8 }
+command = { type = build_time which = tactical_bomber value = -10 }
+command = { type = build_time which = strategic_bomber value = -10 }
+command = { type = build_time which = naval_torpedoes_l value = -7 }
+command = { type = local_clrflag  which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100504
+random = no
+country = AST
+style = 2
+
+name = EVT_100504_NAME # Expansion of RAAF Stations
+desc = EVT_100504_DESC # We've finished construction on many new RAAF bases across Australasia, which now covers the entirety of Australasia, from Western Australia to the Northern Island of New Zealand. Notable among them is the Archerfield airbase in Queensland, our largest base in the north, and the one that will be best used to project our air power over the entire northern coast. 
+picture = "swedish_planes"
+
+action_a = {
+name = ACTIONNAME_100504_A # Keep up the good work!
+command = { type = construct which = air_base where = 1704 value = 3 } 
+command = { type = construct which = air_base where = 1690 value = 1 }
+command = { type = construct which = air_base where = 1707 value = 1 }
+command = { type = construct which = air_base where = 1697 value = 2 }
+command = { type = construct which = air_base where = 1722 value = 2 }
+command = { type = construct which = air_base where = 1721 value = 2 }
+command = { type = construct which = air_base where = 1720 value = 2 }
+command = { type = local_clrflag  which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100505
+random = no
+country = AST
+style = 2
+
+name = EVT_100505_NAME # Expansion of Australasian Anti-Air Defenses 
+desc = EVT_100505_DESC # Our anti-air defense systems across the country have now been refitted and upgraded. In strategically important cities, searchlights, warning sirens, and anti-aircraft guns are now in place to fight against enemy air combatants. However, we doubt that there will ever exist a military power in the Pacific who would be capable of such air and naval power to bring the fight to Australasia's skies and shores. 
+picture = "swedish_planes"
+
+action_a = {
+name = ACTIONNAME_100505_A # Keep up the good work!
+command = { type = construct which = flak where = 1699 value = 2 } 
+command = { type = construct which = flak where = 1704 value = 2 }
+command = { type = construct which = flak where = 1697 value = 2 }
+command = { type = construct which = flak where = 1698 value = 2 }
+command = { type = construct which = flak where = 1690 value = 1 }
+command = { type = construct which = flak where = 1694 value = 1 }
+command = { type = construct which = flak where = 1691 value = 1 }
+command = { type = construct which = flak where = 1712 value = 1 }
+command = { type = construct which = flak where = 1708 value = 1 }
+command = { type = construct which = flak where = 1707 value = 1 }
+command = { type = construct which = flak where = 1705 value = 1 }
+command = { type = local_clrflag  which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100506
+random = no
+country = AST
+style = 2
+
+name = EVT_100506_NAME # New Australasian Air Training Schemes
+desc = EVT_100506_DESC # After much deliberations, our air training reform scheme has been finalized. The new reforms include further cooperation with the IATS in the training of Australasian pilots and the introduction of women into air service with the Women's Auxiliary Air Force, which allows them to participate in signals and maintenance positions in the RAAF. They will still not be permitted into active combat duties, however. Another organization established by the scheme is the Air Observer Corps to support the RAAF with its main roles of sighting and observing aircraft over Australasia.
+picture = "swedish_planes"
+
+action_a = {
+name = ACTIONNAME_100505_A # Keep up the good work!
+command = { type = surface_detection which = cas value = 0.1 }
+command = { type = surface_detection which = cag value = 0.1 }
+command = { type = surface_detection which = escort value = 0.1 }
+command = { type = surface_detection which = multi_role value = 0.1 }
+command = { type = surface_detection which = interceptor value = 0.1 }
+command = { type = surface_detection which = naval_bomber value = 0.1 }
+command = { type = surface_detection which = transport_plane value = 0.1 }
+command = { type = surface_detection which = tactical_bomber value = 0.1 }
+command = { type = surface_detection which = strategic_bomber value = 0.1 }
+command = { type = surface_detection which = naval_torpedoes_l value = 0.1 }
+command = { type = air_detection which = cas value = 0.1 }
+command = { type = air_detection which = cag value = 0.1 }
+command = { type = air_detection which = escort value = 0.1 }
+command = { type = air_detection which = multi_role value = 0.1 }
+command = { type = air_detection which = interceptor value = 0.1 }
+command = { type = air_detection which = naval_bomber value = 0.1 }
+command = { type = air_detection which = transport_plane value = 0.1 }
+command = { type = air_detection which = tactical_bomber value = 0.1 }
+command = { type = air_detection which = strategic_bomber value = 0.1 }
+command = { type = air_detection which = naval_torpedoes_l value = 0.1 }
+command = { type = local_clrflag which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100507
+random = no
+country = AST
+save_date = yes
+style = 2
+
+decision = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+control = { province = 1715 data = AST }
+}
+
+decision_trigger = {
+energy = 2000
+metal = 2000
+money = 1000
+technology = 7590
+}
+
+trigger = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+control = { province = 1715 data = AST }
+energy = 2000
+metal = 2000
+money = 1000
+technology = 7590
+}
+
+name = EVT_100507_NAME # Construction of RAAF Woomera Base
+desc = EVT_100507_DESC # Thanks to recent advances made in rocket technology by Australasian scientists, RAAF High Command has proposed that we construct a complex dedicated to the testing and development of rockets. The Woomera Rocket Range, as it will be called, will encompass more than 122,188 km2. Its estimated range would make it larger than the US State of Pennsylvania and will become the largest land-based weapons testing complex in the world once it finishes construction.
+picture = "rocket"
+decision_picture = "decision_rocketry"
+
+date = { day = 0 month = january year = 1940 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100507_A # Woomera shall be opened.
+ai_chance = 99
+command = { type = local_setflag which = AST_RAAF }
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_b = {
+name = ACTIONNAME_100507_A # Bah!,A waste of money.
+ai_chance = 1
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 100508
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100507 days = 250 }
+local_flag = AST_RAAF
+}
+
+name = EVT_100508_NAME # Construction of Woomera Rocket Range complete
+desc = EVT_100508_DESC # We've finished constructing the RAAF Rocket Facility at Woomera. Here, missle technology from across the Empire shall be tested and researched to create the finest long-range weaponry in the world.  
+picture = "rocket"
+
+date = { day = 0 month = january year = 1940 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100508_A # Keep up the good work!
+command = { type = construct which = rocket_test where = 1715 value = 2 } 
+command = { type = local_clrflag which = AST_RAAF }
+}
+}
+
+
+
+
 
 
 
