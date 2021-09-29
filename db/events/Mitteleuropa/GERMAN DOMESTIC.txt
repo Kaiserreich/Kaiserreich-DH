@@ -7866,3 +7866,92 @@ name = "Turn up the radio!"
 command = { type = dissent value = -1  }
 }
 }
+
+event = {
+id = 907501
+random = no
+country = GER
+picture = "mecklenburg"
+
+trigger = {
+	owned = { province = 153 data = GER }
+	random = 50
+}
+
+name = "Fate of Mecklenburg-Strelitz"
+desc = EVT_907501_DESC
+style = 2
+
+date = { day = 0 month = april year = 1936 }
+offset = 7
+deathdate = { day = 29 month = april year = 1936 }
+
+action_a = {
+name = "Accept Christian Ludwig as Duke"
+ai_chance = 20 #Kaiser won't approve this arbitrariness
+command = { type = dissent value = 1 }
+command = { type = money value = 50 }
+}
+
+action_b = {
+name = "Let Georg rule Strelitz!"
+ai_chance = 60 #compromise option 
+command = { type = dissent value = 0.5 }
+}
+
+action_c = {
+name = "Why don't we have one Mecklenburg?"
+ai_chance = 20 #merging needs extra finances, which different to find 
+command = { type = dissent value = 2 }
+command = { type = money value = -25 }
+command = { type = event which = 907502 where = GER when = 120 }
+}
+}
+
+event = {
+id = 907502
+random = no
+country = GER
+picture = "thuringianstates"
+
+name = "Fate of Reuss and Schwarzburg"
+desc = "The Mecklenburg case is not unique. The old and inefficient administrative system still prevents the dukes of Reuss and Schwarzburg, who rule the two lands, from uniting them. With precedent, will we be able to correct this misunderstanding?" 
+style = 2
+
+action_a = {
+name = "Open the way for unification"
+ai_chance = 35
+command = { type = dissent value = 2 }
+command = { type = money value = -25 }
+}
+
+action_b = {
+name = "It's not worth it"
+ai_chance = 65
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 907503
+random = no
+country = GER
+picture = "thuringianstates"
+
+trigger = {
+random = 10
+}
+
+date = { day = 0 month = january year = 1937 } #Reform needs more time investment
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Reuss and Schwarzburg were merged"
+desc = "After some red tape, the process of uniting the duchies of Reuss and Schwarzburg can be considered complete. Now no one will confuse Sondershausen and Rudolstadt!"
+style = 2
+
+action_a = {
+name = "Are they used to Luxembourg?"
+command = { type = add_prov_resource which = 171 value = 1 where = metal } # More rational use of resources
+}
+}
