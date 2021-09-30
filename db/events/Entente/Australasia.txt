@@ -2,7 +2,7 @@
 ###
 ### KAISERREICH AUSTRALASIA
 ### by Milites & GP93, Flags by mikus & Fazerov
-### last edited for 1.9.3 by Ashtak
+### last edited for 1.9.4 by Ashtak
 ############
 ###
 ##################################################################################################################################################
@@ -369,7 +369,7 @@ command = { type = relation which = GER value = -30 }
 command = { type = relation which = ENG value = 70 }
 command = { type = relation which = FRA value = 70 }
 command = { type = sleepevent which = 100037 } # The Great Schism of the Australasian Labour Party
-command	= { type = setflag which = AST_Syndicalsit }
+command	= { type = setflag which = AST_Syndicalist }
 command = { type = flag_ext where = AST which = "_syn" }
 command = { type = sleepminister which = 56800 } # Edward VIII
 command = { type = sleepminister which = 56801 } # Edward VIII
@@ -402,7 +402,7 @@ country = CAN
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -424,7 +424,7 @@ country = ENG
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -446,7 +446,7 @@ country = GER
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -468,7 +468,7 @@ country = JAP
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -490,7 +490,7 @@ country = PAK
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -512,7 +512,7 @@ country = PRK
 style = 2
 picture = "Australasia"
 
-trigger = { flag = AST_Syndicalsit }
+trigger = { flag = AST_Syndicalist }
 
 date = { day = 7 month = january year = 1936 }
 offset = 4
@@ -5266,6 +5266,9 @@ desc = EVT_100186_DESC # Several of our mining corporations have taken an intere
 trigger = {
 flag = AST_TRADE_COMMONWEALTH
 exists = U49
+NOT = {
+war = { country = U49 country = SAF }
+}
 }
 
 date = { day = 1 month = march year = 1936 }
@@ -6574,7 +6577,7 @@ random =  no
 country = AST
 
 trigger = { OR = { flag = NewGuard_Authoritarian
-flag = AST_Syndicalsit	   }
+flag = AST_Syndicalist	   }
 dissent = 25
 NOT = { exists = NZL } }
 
@@ -10625,7 +10628,7 @@ style = 2
 trigger = {
 OR = {
 flag = AST_Republican
-flag = AST_Syndicalsit
+flag = AST_Syndicalist
 }
 }
 
@@ -10796,6 +10799,536 @@ command = { type = research_mod value = 1 }
 command = { type = industrial_modifier which = total value = 1 }
 }
 }
+
+############
+
+event = {
+id = 100500
+random = no
+country = AST
+save_date = yes
+style = 2
+
+decision = {
+control = { province = 1715 data = AST }
+}
+
+decision_trigger = {
+energy = 1000
+metal = 1000
+money = 1000
+technology = 5510
+}
+
+trigger = {
+control = { province = 1715 data = AST }
+energy = 1000
+metal = 1000
+money = 1000
+technology = 5510
+}
+
+name = EVT_100500_NAME # Expansion of Radium Hill
+desc = EVT_100500_DESC # Radium Hill was first marked out as a deposit of radioactive material by Arthur Smith in 1906. After its discovery, Radium Hill went through the hands of various companies, though none managed to sustain their radium mining operations for long. Now that Australasia's nuclear research and testing programs have reached an advanced stage, an invaluable deposit like Radium Hill simply can't be overlooked.
+picture = "mines"
+decision_picture = "decision_mines"
+
+date = { day = 0 month = january year = 1941 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100500_A # Time to expand Radium Hill!
+ai_chance = 100
+command = { type = metalpool value = -1000 } 
+command = { type = energypool value = -1000 } 
+command = { type = money value = -1000 } 
+}
+}
+
+event = {
+id = 100501
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100500 days = 300 }
+}
+
+name = EVT_100501_NAME # Expansion of Radium Hill completed
+desc = EVT_100501_DESC # The Radium Hill Mining Facilities have been completed!. Radium Hill is now an extensive complex, comprising of an aerodrome, a newly-built local town where miners working at Radium Hill and their families can reside in and various other mills and treatment plants for mined uranium. Here's hoping for smooth operations and a steady source of radium for Australasia!
+picture = "mines"
+
+date = { day = 0 month = january year = 1941 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100501_A # Keep up the good work!
+command = { type = construct which = nuclear_reactor where = 1715 value = 1 } 
+}
+}
+
+event = {
+id = 100502
+random = no
+country = AST
+style = 2
+persistent = yes
+
+decision = {
+event = 100038
+NOT = {
+local_flag = AST_Syndicalist
+AND = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+} 
+}
+}
+
+decision_trigger = {
+energy = 2000
+metal = 2000
+money = 1000
+NOT = {
+local_flag = AST_RAAF
+}
+}
+
+trigger = {
+event = 100038
+energy = 2000
+metal = 2000
+money = 1000
+NOT = {
+local_flag = AST_Syndicalist
+local_flag = AST_RAAF
+AND = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+}
+}
+}
+
+name = EVT_100502_NAME # State of the Royal Australasian Air Force
+desc = EVT_100502_DESC # In truth, there has been no Royal Australasian Air Force to speak of, and our current airforce is barely sufficient to guard our skies never mind project air superiority elsewhere. Considering that the wars of the future will be fought in the air, this is a grave concern for the ANZAC High Command. However, it is not just aircraft that we are currently falling behind at. Australasia's air defense is at an abysmal state right now, barely able to fight off monoplanes and biplanes, much less new fighters and bombers. Airbase distribution is also a concern, as our airfields are sparse and unevenly spread, leaving the Northern Territory and Queensland exposed to a hypothetical German invasion from Papua. All of these problems combined make reforming the RAAF a matter of life or death for Australasia.
+decision_picture = "decision_airmanufacture"
+picture = "swedish_planes"
+
+date = { day = 25 month = january year = 1937 }
+offset = 20
+deathdate = { day = 14 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100502_A # Expand our aircraft production!
+trigger = {  NOT = { event = 100503 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100503 where = AST when = 200 } 
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_b = {
+name = ACTIONNAME_100502_B # Expand the airbases!
+trigger = {  NOT = { event = 100504 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100504 where = AST when = 200 } 
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_c = {
+name = ACTIONNAME_100502_C # It's time we refit our air defenses.
+trigger = {  NOT = { event = 100505 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100505 where = AST when = 150 } 
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_d = {
+name = ACTIONNAME_100502_D # Our air training scheme needs reform also.
+trigger = {  NOT = { event = 100506 } }
+command = { type = local_setflag which = AST_RAAF }
+command = { type = event which = 100506 where = AST when = 120 } 
+command = { type = money value = -1000 } 
+command = { type = manpowerpool value = -10 } 
+}
+}
+
+event = {
+id = 100503
+random = no
+country = AST
+style = 2
+
+name = EVT_100503_NAME # Australasian Aircraft Factories
+desc = EVT_100503_DESC # After many months of hard work and much investment from the RAAF, the manufacturers of the Australasian Aircraft Factories have officially entered production. Technical assistance from the IATS was vital in helping us catch up with the latest bomber and fighter models. They also assisted us in setting up the factories and acquiring the necessary material. With their help, we hope that from the assembly lines of these factories, a new RAAF will emerge to dominate the skies of the Pacific.
+picture = "aircraftmanufacturing"
+
+action_a = {
+name = ACTIONNAME_100503_A # Build,build!
+command = { type = construct which = ic where = 1708 value = 2 } 
+command = { type = build_time which = cas value = -7 }
+command = { type = build_time which = cag value = -7 }
+command = { type = build_time which = escort value = -8 }
+command = { type = build_time which = multi_role value = -10 }
+command = { type = build_time which = interceptor value = -10 }
+command = { type = build_time which = naval_bomber value = -7 }
+command = { type = build_time which = transport_plane value = -8 }
+command = { type = build_time which = tactical_bomber value = -10 }
+command = { type = build_time which = strategic_bomber value = -10 }
+command = { type = build_time which = naval_torpedoes_l value = -7 }
+command = { type = local_clrflag  which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100504
+random = no
+country = AST
+style = 2
+
+name = EVT_100504_NAME # Expansion of RAAF Stations
+desc = EVT_100504_DESC # We've finished construction on many new RAAF bases across Australasia, which now covers the entirety of Australasia, from Western Australia to the Northern Island of New Zealand. Notable among them is the Archerfield airbase in Queensland, our largest base in the north, and the one that will be best used to project our air power over the entire northern coast. 
+picture = "swedish_planes"
+
+action_a = {
+name = ACTIONNAME_100504_A # Keep up the good work!
+command = { type = construct which = air_base where = 1704 value = 3 } 
+command = { type = construct which = air_base where = 1690 value = 1 }
+command = { type = construct which = air_base where = 1707 value = 1 }
+command = { type = construct which = air_base where = 1697 value = 2 }
+command = { type = construct which = air_base where = 1722 value = 2 }
+command = { type = construct which = air_base where = 1721 value = 2 }
+command = { type = construct which = air_base where = 1720 value = 2 }
+command = { type = local_clrflag  which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100505
+random = no
+country = AST
+style = 2
+
+name = EVT_100505_NAME # Expansion of Australasian Anti-Air Defenses 
+desc = EVT_100505_DESC # Our anti-air defense systems across the country have now been refitted and upgraded. In strategically important cities, searchlights, warning sirens, and anti-aircraft guns are now in place to fight against enemy air combatants. However, we doubt that there will ever exist a military power in the Pacific who would be capable of such air and naval power to bring the fight to Australasia's skies and shores. 
+picture = "swedish_planes"
+
+action_a = {
+name = ACTIONNAME_100505_A # Keep up the good work!
+command = { type = construct which = flak where = 1699 value = 2 } 
+command = { type = construct which = flak where = 1704 value = 2 }
+command = { type = construct which = flak where = 1697 value = 2 }
+command = { type = construct which = flak where = 1698 value = 2 }
+command = { type = construct which = flak where = 1690 value = 1 }
+command = { type = construct which = flak where = 1694 value = 1 }
+command = { type = construct which = flak where = 1691 value = 1 }
+command = { type = construct which = flak where = 1712 value = 1 }
+command = { type = construct which = flak where = 1708 value = 1 }
+command = { type = construct which = flak where = 1707 value = 1 }
+command = { type = construct which = flak where = 1705 value = 1 }
+command = { type = local_clrflag  which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100506
+random = no
+country = AST
+style = 2
+
+name = EVT_100506_NAME # New Australasian Air Training Schemes
+desc = EVT_100506_DESC # After much deliberations, our air training reform scheme has been finalized. The new reforms include further cooperation with the IATS in the training of Australasian pilots and the introduction of women into air service with the Women's Auxiliary Air Force, which allows them to participate in signals and maintenance positions in the RAAF. They will still not be permitted into active combat duties, however. Another organization established by the scheme is the Air Observer Corps to support the RAAF with its main roles of sighting and observing aircraft over Australasia.
+picture = "swedish_planes"
+
+action_a = {
+name = ACTIONNAME_100505_A # Keep up the good work!
+command = { type = surface_detection which = cag value = 1 }
+command = { type = surface_detection which = escort value = 1 }
+command = { type = surface_detection which = naval_bomber value = 1 }
+command = { type = surface_detection which = strategic_bomber value = 1 }
+command = { type = surface_detection which = naval_torpedoes_l value = 1 }
+command = { type = air_detection which = rocket_interceptor value = 1 }
+command = { type = air_detection which = interceptor value = 1 }
+command = { type = air_detection which = interceptor value = 1 }
+command = { type = air_detection which = multi_role value = 1 }
+command = { type = air_detection which = escort value = 1 }
+command = { type = local_clrflag which =  AST_RAAF }
+}
+}
+
+event = {
+id = 100507
+random = no
+country = AST
+save_date = yes
+style = 2
+
+decision = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+control = { province = 1715 data = AST }
+}
+
+decision_trigger = {
+energy = 2000
+metal = 2000
+money = 1000
+technology = 7590
+}
+
+trigger = {
+event = 100503
+event = 100504
+event = 100505
+event = 100506
+control = { province = 1715 data = AST }
+energy = 2000
+metal = 2000
+money = 1000
+technology = 7590
+}
+
+name = EVT_100507_NAME # Construction of RAAF Woomera Base
+desc = EVT_100507_DESC # Thanks to recent advances made in rocket technology by Australasian scientists, RAAF High Command has proposed that we construct a complex dedicated to the testing and development of rockets. The Woomera Rocket Range, as it will be called, will encompass more than 122,188 km2. Its estimated range would make it larger than the US State of Pennsylvania and will become the largest land-based weapons testing complex in the world once it finishes construction.
+picture = "rocket"
+decision_picture = "decision_rocketry"
+
+date = { day = 0 month = january year = 1940 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100507_A # Woomera shall be opened.
+ai_chance = 99
+command = { type = local_setflag which = AST_RAAF }
+command = { type = metalpool value = -2000 } 
+command = { type = energypool value = -2000 } 
+command = { type = money value = -1000 } 
+}
+
+action_b = {
+name = ACTIONNAME_100507_A # Bah!,A waste of money.
+ai_chance = 1
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 100508
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100507 days = 250 }
+local_flag = AST_RAAF
+}
+
+name = EVT_100508_NAME # Construction of Woomera Rocket Range complete
+desc = EVT_100508_DESC # We've finished constructing the RAAF Rocket Facility at Woomera. Here, missle technology from across the Empire shall be tested and researched to create the finest long-range weaponry in the world.  
+picture = "rocket"
+
+date = { day = 0 month = january year = 1940 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+name = ACTIONNAME_100508_A # Keep up the good work!
+command = { type = construct which = rocket_test where = 1715 value = 2 } 
+command = { type = local_clrflag which = AST_RAAF }
+}
+}
+
+####
+
+event = {
+id = 100600
+random = no
+country = AST
+style = 2
+
+name = EVT_100600_NAME # VFL Finals
+desc = EVT_100600_DESC # Extraordinary enthusiasm is building for the Victorian Football League grand finals, with large numbers of people having been recorded attending the trainings for both the Collingwood Football club and the South Melbourne Football Club. Despite the warm weather, the teams trained strenuously for the upcoming premiership on Saturday at the Melbourne Cricket Ground. Both sides are confident they can take out the grand finals, but time will tell who will succeed.
+picture = "AST_VFL"
+
+date = { day = 26 month = september year = 1936 }
+
+action_a = {
+name = ACTIONNAME_100600_A # Such excitement!
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 100601
+random = no
+country = AST
+style = 2
+
+name = EVT_100601_NAME # Collingwood takes another Premiership
+desc = EVT_100601_DESC # Around 76,000 spectators today have witnessed the Collingwood Football Club achieve their 11th premiership. The 'Master Football Tacticians' were able to bait as well as exploit the movements of South Melbourne. That, coupled with the many fatal errors in South Australia's play, led to Collingwood taking the win by 11 points.
+picture = "AST_VFL"
+
+action_a = {
+name = ACTIONNAME_100601_A # Such excitement!
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 100602
+random = no
+country = AST
+style = 2
+
+name = EVT_100602_NAME # South Melbourne takes the Premiership
+desc = EVT_100602_DESC # Around 76,000 spectators witnessed an incredibly close game with the South Melbourne Football Club securing their 4th premiership. Despite the organisation and training of Collingwood, South Melbourne was able to see through the tricks laid out and avoided giving up unnecessary marks. South Melbourne consistently played a defence, but managed to score one last behind in the dying minutes of the game to secure a one-point victory.
+picture = "AST_VFL"
+
+action_a = {
+name = ACTIONNAME_100602_A # Such excitement!
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 100603
+country = REB
+style = 2
+
+date = { day = 2 month = october year = 1936 }
+
+name = "VFL Finals"
+desc = "Extraordinary enthusiasm is building for the Victorian Football League grand finals, with large numbers of people having been recorded attending the trainings for both the Collingwood Football club and the South Melbourne Football Club."
+picture = "AST_VFL"
+
+action_a = {
+ai_chance = 75
+name = "Collingwood takes another Premiership!"
+command = { type = event which = 100601 where = AST when = 1 } 
+}
+
+action_b = {
+ai_chance = 25
+name = "South Melbourne takes the Premiership!"
+command = { type = event which = 100602 where = AST when = 1 } 
+}
+}
+
+event = {
+id = 100604
+random = no
+country = AST
+style = 2
+
+name = EVT_100604_NAME # Hume Dam finishes construction
+desc = EVT_100604_DESC # The Hume Dam, considered by many to be Australasia's most ambitious engineering project, has just finished after over 17 years of construction. As of right now, this dam is the largest in the Southern Hemisphere, costing the state governments of Victoria and New South Wales nearly 6 million dollars. The dam originated from the need for water conservation after The Federation Drought. In 1903, a royal commission was sent to the River Murray, which then recommended the construction of a dam on the Upper Murray at Cumberoona. The commission also presided over the River Murray Waters Agreement. This agreement formalized the conditions for the dam's construction and water sharing between the three states bordering the river. Construction then began in November 1919. Owing to the scale of the project, a significant amount of land was resumed. This totaled 102,850 acres across Victoria and New South Wales. Many displeased residents and landowners appealed, undertaking legal action to combat construction on their properties, lasting for nearly a decade but did not halt progress. And now that the great work is completed, farming in the Upper Murray basin enters into a new phase. The menace of drought has been removed and whole districts have been placed in a position of safety.
+picture = "hume_dam"
+
+date = { day = 20 month = november year = 1936 }
+
+action_a = {
+name = ACTIONNAME_100604_A # Three cheers for our talented engineers!
+command = { type = add_prov_resource which = 1717 value = 6 where = energy }
+command = { type = free_supplies value = 2 }
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 100605
+random = no
+country = AST
+style = 2
+
+name = EVT_100605_NAME # Farmers Request Assistance for Emu Culling
+desc = EVT_100605_DESC # Farmers in Walgoolan and Burracoppin have petitioned the government to help cull a rather large gathering of emus in the area. They asked for planes to drop small bombs on large gatherings, along with soldiers armed with machine guns to shoot down the rest, similar to the failed attempt in 1932. The Chief Game Inspector, Mr A. Arnold, stated 'The situation did not warrant mass extermination of the birds' and that inspectors had not spotted any of the so-called reported mass gatherings. The state government has also denied the request on the basis of the Mr Arnold's observation.
+picture = "AST_Emu War"
+
+date = { day = 2 month = july year = 1943 }
+
+action_a = {
+name = ACTIONNAME_100605_A # A war on Emus is unnecessary.
+command = { }
+}
+}
+
+event = {
+id = 100606
+random = no
+country = AST
+style = 2
+
+trigger = {
+day = 7
+month = october
+year = 1941
+control = { province = 1722 data = AST }
+NOT = {
+exists = NZL 
+}
+} 
+
+name = EVT_100606_NAME # Manhunt Begins for Stanley Graham
+desc = EVT_100606_DESC # 5 Volunteer Defence Corps Officers have been shot today in Kowhitirangi, on South Island. The man perpetrator of this crime, Stanley Graham, has fled his homestead after the VDC were investigating a scuffle between Stanley and his neighbours. Things escalated after one of Stanley's cows had died, and he had accused his neighbours of poisoning it. Witnesses reported that when Anker Madsen, one of his neighbours rode by on his bike, Stanley shot him in the leg. When VDC officers came to detain him, he opened fired killing 3 instantly and wounding 2 with one later dying from his wounds. A manhunt has begun to bring Stanley to swift justice.
+picture = "AST_stangraham"
+
+date = { day = 6 month = october year = 1941 }
+offset = 1
+deathdate = { day = 10 month = october year = 1941 }
+
+action_a = {
+name = ACTIONNAME_100606_A # Close your doors!
+command = { }
+}
+}
+
+event = {
+id = 100607
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = 100606
+day = 19
+month = october
+year = 1941
+control = { province = 1722 data = AST }
+NOT = {
+exists = NZL 
+}
+} 
+
+name = EVT_100607_NAME # Manhunt for Stanley Graham Ends
+desc = EVT_100607_DESC # Today police and members of the VDC successfully shot and killed Stanley Graham, who to this date perpetrated one of the worst mass killings in Australasian history. Before Graham could be stopped, he took the lives of 14 across the three weeks he'd been running. While the specifics are not known as to why Mr. Graham began his spree, police reports show he had a history of threats and assault. Following the shootings, the Graham household was burned down, and the government has shifted his wife and children across the country. Plans are in the making to build a memorial on the former site of Mr Graham's house as a tribute to those who died.
+picture = "AST_stangraham"
+
+date = { day = 18 month = october year = 1941 }
+offset = 1
+deathdate = { day = 25 month = october year = 1941 }
+
+action_a = {
+name = ACTIONNAME_100607_A # Thank goodness...
+command = { type = dissent value = -1 }
+}
+}
+
+
 
 
 
