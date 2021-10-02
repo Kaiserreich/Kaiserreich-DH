@@ -76,7 +76,7 @@ province = { id = 1722 infra = { size = 0.30 current_size = 0.30 } anti_air = 3 
 #Papua New Guinea
 province = { id = 1234 anti_air = 1 oilpool = 100 supplypool = 500 #Lae/Buna
 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } }
-province = { id = 1607 anti_air = 1 #Port Moresby
+province = { id = 1607 anti_air = 1 rare_materials = 1 #Port Moresby
 naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 
 ### AUS
