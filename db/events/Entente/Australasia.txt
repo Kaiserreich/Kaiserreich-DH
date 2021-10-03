@@ -11243,7 +11243,7 @@ date = { day = 20 month = november year = 1936 }
 
 action_a = {
 name = ACTIONNAME_100604_A # Three cheers for our talented engineers!
-command = { type = add_prov_resource which = 1717 value = 6 where = energy }
+command = { type = add_prov_resource which = 1717 value = 15 where = energy }
 command = { type = free_supplies value = 2 }
 command = { type = dissent value = -1 }
 }
@@ -11327,6 +11327,278 @@ name = ACTIONNAME_100607_A # Thank goodness...
 command = { type = dissent value = -1 }
 }
 }
+
+event = {
+id = 100608
+random = no
+country = AST
+style = 2
+
+name = EVT_100608_NAME # The Bamu-Purari Expedition 
+desc = EVT_100608_DESC # After his remarkable 1927 expedition to cross the Central Range into German New Guinea, Ivan Champion will once more set out to explore the unknown regions of Papua. This time, Mr. Champion will attempt to cross the uncontrolled area between the Bamu and Purrari rivers, where he will be the forerunner for the establishment of a police camp in the area. 
+picture = "bamu_river"
+
+date = { day = 24 month = april year = 1936 }
+
+action_a = {
+name = ACTIONNAME_100608_A # We wish them the best of luck!
+command = { }
+}
+}
+
+event = {
+id = 100609
+random = no
+country = AST
+style = 2
+
+name = EVT_100609_NAME # The Bamu-Purari Expedition returns!
+desc = EVT_100609_DESC # The Bamu-Purari Expedition was a success! Ivan Champion and his entourage reached the Purari river right on Christmas evening and were soon after escorted to safety. This mission was a resounding success, as they've scaled the uncontrolled area between the Bamu and the Purrari rivers without any loss of life, nor were there hostile encounters with the natives of the area. With its success, we can hope to establish a police camp near Lake Kutubu after some more investigations. We can also look forward to Mr. Champion's recollection of his experience in the new year. 
+picture = "bamu_river"
+
+date = { day = 23 month = december year = 1936 }
+
+action_a = {
+name = ACTIONNAME_100609_A # Hurrah!
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 100610
+random = no
+country = AST
+style = 2
+
+name = EVT_100610_NAME # The Man-devourers of Papua
+desc = EVT_100610_DESC # In his recently published recollection of the expedition, Mr. Champion has noted down the encounter he and his expedition had had with a supposedly "tree-climbing crocodile". At the time of their encounter with the lizard, it had been carrying a cuscus in its mouth. However, this is not the first time we've heard of such "tree crocodiles". These specimens are called "Si-e" by the Koita of Port Moresby and "Aou-angi-angi" by the Eboa of Makeo, both roughly translating to "man-devourer". Local stories about these lizards say that they come at night to eat the bodies of the dead. There have also been various incidences where these creatures were indicated as the culprits. The most notable reports are when a native reported seeing his wife consumed by these creatures, and another where a native tried to rescue his dog from a Si-e, only to be eaten himself. With Mr. Champion's report, their existence seems indisputable, but we are still not sure about the true nature of these creatures. Various theories about them have been put forth, with some speculating that they are in fact Komodo Dragons first found in Malaya, while others remain in doubt about the existence of "tree-alligators" at all.
+picture = "bamu_river"
+
+date = { day = 25 month = january year = 1937 }
+
+action_a = {
+name = ACTIONNAME_100610_A # When alligators climb trees...
+command = { }
+}
+}
+
+event = {
+id = 100611
+random = no
+country = AST
+save_date = yes
+style = 2
+
+decision = {
+control = { province = 1604 data = AST }
+control = { province = 1606 data = AST }
+control = { province = 1607 data = AST }
+control = { province = 1608 data = AST }
+control = { province = 1609 data = AST }
+NOT = { 
+flag = AST_Syndicalist
+}
+}
+
+decision_trigger = {
+money = 500
+}
+
+trigger = {
+control = { province = 1604 data = AST }
+control = { province = 1606 data = AST }
+control = { province = 1607 data = AST }
+control = { province = 1608 data = AST }
+control = { province = 1609 data = AST }
+money = 500
+}
+
+name = EVT_100611_NAME # The Second Papua Act
+desc = EVT_100611_DESC # The Territory of Papua is one of the few remaining British colonies after the fall of the Home Islands to the Syndicalists. Since its discovery, Papua has been shown to possess many disadvantages, being sparsely populated and having little potential in the way of agriculture. This is not to mention the constant conflicts between native tribes and the impossible terrain, described by one account as "it was easier to ascend the highest peaks of the European Alps with an alpenstock than to cross an ordinary hill in Papua". Despite all of this, William MacGregor, the first administrator of British New Guinea managed to bring about a state of order after his tenure. The situation had remained calm until the start of the Weltkrieg, where Papua would experience wartime difficulties. Germany's victory and the subsequent collapse of the Empire would grind its administration to a halt when the Consolidation of Resources forced the colonial government to make do with the bare minimum. Now that the situation has somewhat settled for us, it would be wise to take a look to see how Papua is holding up and provide them with more resources or allow for reforms where necessary.
+picture = "AST_Papua"
+decision_picture = "decision_papua"
+
+date = { day = 0 month = january year = 1937 }
+offset = 15
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_100611_A # Let's build up Papua!
+ai_chance = 99
+command = { type = local_setflag which = AST_PAPUA }
+command = { type = industrial_modifier which = total value = -2 }
+command = { type = money value = -500 } 
+}
+
+action_b = {
+name = ACTIONNAME_100611_A # Bah!,A waste of money.
+ai_chance = 1
+command = { type = dissent value = -2 }
+}
+}
+
+event = {
+id = 100612
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100611 days = 100 }
+local_flag = AST_PAPUA
+NOT = { 
+flag = AST_Syndicalist
+}
+}
+
+name = EVT_100612_NAME # The Papua Bounties Act.
+desc = EVT_100612_DESC # The collapse of the British Empire halted any sort of economic development in Papua for over a decade, as Governor Birdwood forced the colony to survive on the bare minimum. However, now that the situation has somewhat stabilized, we must take this opportunity to explore Papua's economic potential. The Papua Bounties Act aims to provide farmers and planters in Papua with bounties from the Consolidated Revenue Fund, which would help increase their revenue and encourage them to explore more profitable cash crops still not widely grown in Papua. 
+picture = "AST_Papua"
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_100612_A # Grow some rubber!
+command = { type = add_prov_resource which = 1607 value = 20 where = rare_materials }
+command = { type = free_supplies value = 1 }
+}
+}
+
+event = {
+id = 100613
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100611 days = 180 }
+local_flag = AST_PAPUA
+NOT = { 
+flag = AST_Syndicalist
+}
+}
+
+name = EVT_100613_NAME # Expand Gold production in the Louisiade Archipelago
+desc = EVT_100613_DESC # In 1889, William MacGregor, the first lieutenant governor of British Papua, discovered gold on Misima Island. Since then, it has become the most prominent gold-producing area of Papua, with output reaching as high as  £56,508 of gold at its peak. However, gold output from these islands declined during the late 20s and still has not recovered to their levels pre-1925. Misima may possess gold and mineral resources still unworked, and we must incentivize mining companies to uncover the island's full potential.  
+picture = "AST_Papua"
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_100613_A # Expand!
+command = { type = free_money value = 1 }
+}
+}
+
+event = {
+id = 100614
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100611 days = 250 }
+local_flag = AST_PAPUA
+NOT = { 
+flag = AST_Syndicalist
+}
+}
+
+name = EVT_100614_NAME # Formalizing the Councillor System
+desc = EVT_100614_DESC # The current village councilor system for the various native tribes of Papua was little more than an experiment when it was first established. However, against the expectations and prejudices of many, it seems that the people of Papua do possess the intellectual will to debate policies to make demands. The councilors have been a great help to our administration, and it is thanks to them that we now have a better understanding of tribal grievances. Therefore, institutionalising the council system seems like the thing to do to further improve our administration in Papua. 
+picture = "AST_Papua"
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_100614_A # From Kairuku to Abau, the administration extends! 
+command = { type = dissent value = -1 }
+command = { type = province_revoltrisk which = 1604 value = -15 }
+command = { type = province_revoltrisk which = 1606 value = -15 }
+command = { type = province_revoltrisk which = 1607 value = -15 }
+command = { type = province_revoltrisk which = 1608 value = -15 }
+command = { type = province_revoltrisk which = 1609 value = -15 }
+}
+}
+
+event = {
+id = 100615
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100611 days = 350 }
+local_flag = AST_PAPUA
+NOT = { 
+flag = AST_Syndicalist
+}
+}
+
+name = EVT_100615_NAME # Matters of Papuan security
+desc = EVT_100615_DESC # Germany's presence in New Guinea has always been a source of worry for our government. Not only is German New Guinea a security threat, but they also harm the prospects of economic development in Papua by driving away investors. Because of this, several of our generals are petitioning for a budget increase to improve Papua's defenses. However, doing this means that we'll have to divert more resources towards Papua given the scale of the buildups, which government ministers are arguing against. 
+picture = "AST_Papua"
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_100615_A # We shall invest in Papua's defenses.
+command = { type = industrial_modifier which = total value = -1 }
+command = { type = money value = -100 } 
+}
+
+action_b = {
+name = ACTIONNAME_100615_A # There is not much to gain from this
+command = { type = industrial_modifier which = total value = 2 } 
+command = { type = local_clrflag which = AST_PAPUA }
+command = { type = money value = 100 }
+}
+}
+
+event = {
+id = 100616
+random = no
+country = AST
+style = 2
+
+trigger = {
+event = { id = 100611 days = 440 }
+local_flag = AST_PAPUA
+NOT = { 
+flag = AST_Syndicalist
+}
+}
+
+name = EVT_100616_NAME # Reinforcement of Papuan defenses complete
+desc = EVT_100616_DESC # We've finished reinforcing Papua's defense network. The territory now boasts an improved road network for military maneuvers. We've also strengthened Port Moresby's defenses with the construction of HMAS base Basilisk as a staging ground for the navy while the RAAF can now use Port Moresby as a base of operation with the recently finished Airfield complex. A detachment of the Royal Australian Artillery Corps has also helped construct various naval forts around the harbor to help fend off against any attempts at an amphibious assault against Port Moresby.  
+picture = "AST_Papua"
+
+date = { day = 0 month = january year = 1937 }
+offset = 10
+deathdate = { day = 29 month = december year = 1964 }
+
+action_a = {
+name = ACTIONNAME_100616_A # Fortress Papua, the new frontier!
+command = { type = industrial_modifier which = total value = 3 }
+command = { type = construct which = air_base where = 1607 value = 1 }
+command = { type = construct which = naval_base where = 1607 value = 1 }
+command = { type = construct which = coastal_fort where = 1607 value = 1 }
+command = { type = construct which = infrastructure where = 1604 value = 10 }
+command = { type = construct which = infrastructure where = 1606 value = 10 }
+command = { type = construct which = infrastructure where = 1607 value = 20 }
+command = { type = construct which = infrastructure where = 1608 value = 10 }
+command = { type = construct which = infrastructure where = 1609 value = 10 }
+}
+}
+
 
 
 
