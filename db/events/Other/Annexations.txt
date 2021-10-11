@@ -13542,7 +13542,7 @@ id = 3991024
 picture = "austrianvictory"
 decision_picture = "decision_diplomatic_campaign"
 tag = { AUS U24 U25 }
-persistent = yes
+#persistent = yes
 style = 2
 
 decision = {
@@ -13749,11 +13749,7 @@ action = {
 ai_chance = 60
 name = "Recreate German Empire under leadership of Vienna! "
 trigger = {
-OR = {
-country = U24
-country = U25
-country = AUS
-}
+country = AUS #removed U24 and U25
 NOT = {
 puppet = { country = U31 country = -1 }
 puppet = { country = GER country = -1 }
@@ -13762,7 +13758,7 @@ control = { province = 163 data = -1 }
 }
 command = { type = manpowerpool value = 400 }
 command = { type = flag_ext where = AUS } #reset Austrian flag
-command = { trigger = { NOT = { country = AUS } } type = country which = AUS }
+#command = { trigger = { OR = { country = U24 country = U25 } } type = country which = AUS }
 command = { trigger = { control = { province = 207 data = -1 }  NOT = { exists = CZE } } type = setflag which = CZE_PUP }
 command = { trigger = { NOT = { exists = CZE } } type = independence which = CZE value = 1 when = 0 }
 command = { type = secedearea which = CZE value = "Bohemia" when = 1 }
@@ -13903,10 +13899,8 @@ command = { trigger = { country = AUS } type = waketeam which = 611 when = 1 } #
 command = { trigger = { country = AUS } type = waketeam which = 618 when = 1 } #Blohm & Voss
 command = { trigger = { country = AUS } type = waketeam which = 619 when = 1 } #Germaniawerft
 command = { trigger = { country = AUS } type = waketeam which = 624 when = 1 } #Rheinmetall
-command = { trigger = { country = AUS } type = waketeam which = 628 when = 1 } #Maschinenfabrik Augsburg-Nürnberg
-command = { trigger = { country = AUS } type = waketeam which = 629 when = 1 } #Krauss-Maffei
-command = { trigger = { country = AUS } type = waketeam which = 637 when = 1 } #Wacker Chemie AG
 command = { trigger = { country = AUS } type = waketeam which = 639 when = 1 } #Friedrich Krupp AG
+command = { type = local_setflag which = AUS_GDE }
 command = { type = local_setflag which = GER_AUSCONQ }
 }
 
@@ -14072,9 +14066,10 @@ control = { province = 163 data = -1 }
 }
 command = { type = manpowerpool value = 400 }
 command = { type = flag_ext where = AUS } #reset Austrian flag
-command = { trigger = { NOT = { country = AUS } } type = country which = AUS }
+#command = { trigger = { OR = { country = U24 country = U25 } } type = country which = AUS }
 command = { trigger = { control = { province = 207 data = -1 }  NOT = { exists = CZE } } type = setflag which = CZE_PUP }
 command = { trigger = { NOT = { exists = CZE } } type = independence which = CZE value = 1 when = 0 }
+command = { type = secedearea which = CZE value = "Bohemia" when = 1 }
 command = { trigger = { flag = CZE_PUP } type = make_puppet which = CZE }
 command = { trigger = { control = { province = 208 data = -1 }  NOT = { exists = SLO } } type = setflag which = SLO_PUP }
 command = { trigger = { NOT = { exists = SLO } } type = independence which = SLO value = 1 when = 0 }
@@ -14209,13 +14204,11 @@ command = { type = waketeam which = 611 when = 1 } #Gothaer Waggonfabrik
 command = { type = waketeam which = 618 when = 1 } #Blohm & Voss
 command = { type = waketeam which = 619 when = 1 } #Germaniawerft
 command = { type = waketeam which = 624 when = 1 } #Rheinmetall
-command = { type = waketeam which = 628 when = 1 } #Maschinenfabrik Augsburg-Nürnberg
-command = { type = waketeam which = 629 when = 1 } #Krauss-Maffei
-command = { type = waketeam which = 637 when = 1 } #Wacker Chemie AG
 command = { type = waketeam which = 639 when = 1 } #Friedrich Krupp AG
 command = { type = dissent value = 10 }
 command = { type = flag_ext where = AUS which = "_nat" }
 command = { type = name where = AUS which = AUS_GDE_NAME }
+command = { type = local_setflag which = AUS_GDE }
 command = { type = local_setflag which = GER_AUSCONQ }
 }
 
@@ -14373,6 +14366,7 @@ action = {
 ai_chance = 60
 name = "Recreate German Empire under leadership of Vienna! "
 trigger = {
+country = AUS # removed U24 and U25
 NOT = {
 puppet = { country = U31 country = -1 }
 puppet = { country = GER country = -1 }
@@ -14381,9 +14375,10 @@ control = { province = 163 data = -1 }
 }
 command = { type = manpowerpool value = 400 }
 command = { type = flag_ext where = AUS } #reset Austrian flag
-command = { trigger = { NOT = { country = AUS } } type = country which = AUS }
+#command = { trigger = { OR = { country = U24 country = U25 } } type = country which = AUS }
 command = { trigger = { control = { province = 207 data = -1 }  NOT = { exists = CZE } } type = setflag which = CZE_PUP }
 command = { trigger = { NOT = { exists = CZE } } type = independence which = CZE value = 1 when = 0 }
+command = { type = secedearea which = CZE value = "Bohemia" when = 1 }
 command = { trigger = { flag = CZE_PUP } type = make_puppet which = CZE }
 command = { trigger = { control = { province = 208 data = -1 }  NOT = { exists = SLO } } type = setflag which = SLO_PUP }
 command = { trigger = { NOT = { exists = SLO } } type = independence which = SLO value = 1 when = 0 }
@@ -14675,6 +14670,7 @@ action = {
 ai_chance = 60
 name = "Recreate German Empire under leadership of Vienna! "
 trigger = {
+country = AUS # removed U24 and U25
 NOT = {
 puppet = { country = U31 country = -1 }
 puppet = { country = GER country = -1 }
@@ -14683,9 +14679,10 @@ control = { province = 163 data = -1 }
 }
 command = { type = manpowerpool value = 400 }
 command = { type = flag_ext where = AUS } #reset Austrian flag
-command = { trigger = { NOT = { country = AUS } } type = country which = AUS }
+#command = { trigger = { OR = { country = U24 country = U25 } } type = country which = AUS }
 command = { trigger = { control = { province = 207 data = -1 }  NOT = { exists = CZE } } type = setflag which = CZE_PUP }
 command = { trigger = { NOT = { exists = CZE } } type = independence which = CZE value = 1 when = 0 }
+command = { type = secedearea which = CZE value = "Bohemia" when = 1 }
 command = { trigger = { flag = CZE_PUP } type = make_puppet which = CZE }
 command = { trigger = { control = { province = 208 data = -1 }  NOT = { exists = SLO } } type = setflag which = SLO_PUP }
 command = { trigger = { NOT = { exists = SLO } } type = independence which = SLO value = 1 when = 0 }
@@ -14905,40 +14902,33 @@ desc = "...Nobody sees this..."
 
 action_a = {
 name = "Freedom at last!"
-
 command = { type = add_corps which = "I. Armee Corps" value = land where = 134 }
 command = { type = add_division which = "I. Division" value = infantry when = 10 }
 command = { type = add_division which = "II. Division" value = infantry when = 10 }
-
 command = { type = add_corps which = "II. Armee Corps" value = land where = 178 }
 command = { type = add_division which = "III. Division" value = infantry when = 10 }
 command = { type = add_division which = "IV. Division" value = infantry when = 10 }
-
 command = { type = add_corps which = "III. Armee Corps" value = land where = 175 }
 command = { type = add_division which = "V. Division" value = infantry when = 10 }
 command = { type = add_division which = "VI. Division" value = infantry when = 10 }
-
 command = { type = dissent value = 10 }
-
 command = { type = manpowerpool value = 50 }
-
 command = { type = rarematerialspool value = 750 }
 command = { type = energypool value = 500 }
 command = { type = metalpool value = 250 }
 command = { type = supplies value = 250 }
 command = { type = oilpool value = 75 }
 command = { type = money value = 10 }
-
-command = { trigger = { flag = BDW_PUP } type = capital which =  134 }
+command = { trigger = { flag = BDW_PUP } type = capital which = 134 }
 command = { trigger = { flag = BDW_PUP } type = removecore which = 176 }
 command = { trigger = { flag = BDW_PUP } type = removecore which = 178 }
 command = { trigger = { flag = BDW_PUP } type = removecore which = 179 }
 command = { trigger = { flag = BDW_PUP } type = removecore which = 174 }
 command = { trigger = { flag = BDW_PUP } type = removecore which = 175 }
 command = { trigger = { flag = BDW_PUP } type = removecore which = 177 }
-command = { trigger = { flag = BDW_PUP puppet = { country = U11 country = AUS  } } type = secedeprovince which = AUS value = 179 }
-command = { trigger = { flag = BDW_PUP puppet = { country = U11 country = U24  } } type = secedeprovince which = U24 value = 179 }
-command = { trigger = { flag = BDW_PUP puppet = { country = U11 country = U25  } } type = secedeprovince which = U25 value = 179 }
+command = { trigger = { flag = BDW_PUP puppet = { country = U11 country = AUS } } type = secedeprovince which = AUS value = 179 when = 2 }
+command = { trigger = { flag = BDW_PUP puppet = { country = U11 country = U24 } } type = secedeprovince which = U24 value = 179 when = 2 }
+command = { trigger = { flag = BDW_PUP puppet = { country = U11 country = U25 } } type = secedeprovince which = U25 value = 179 when = 2 }
 command = { type = set_relation which = FRA value = -150 }
 command = { type = set_relation which = AUS value = 150 }
 command = { type = set_relation which = U24 value = 150 }
@@ -14957,8 +14947,6 @@ command = { type = set_relation which = CRO value = -199 }
 command = { type = clrflag which = BDW_PUP }
 }
 }
-
-
 
 
 event = {
@@ -15649,6 +15637,7 @@ command = { type = secedeprovince which = GER value = 164 }
 command = { type = secedeprovince which = GER value = 166 }
 command = { type = secedeprovince which = GER value = 167 }
 command = { type = secedeprovince which = GER value = 168 }
+command = { type = secedeprovince which = GER value = 221 }
 command = { type = secedeprovince which = GER value = 161 }
 command = { type = secedeprovince which = GER value = 155 }
 command = { type = secedeprovince which = GER value = 226 }
@@ -15736,6 +15725,7 @@ command = { type = secedeprovince which = GER value = 164 }
 command = { type = secedeprovince which = GER value = 166 }
 command = { type = secedeprovince which = GER value = 167 }
 command = { type = secedeprovince which = GER value = 168 }
+command = { type = secedeprovince which = GER value = 221 }
 command = { type = secedeprovince which = GER value = 161 }
 command = { type = secedeprovince which = GER value = 155 }
 command = { type = secedeprovince which = GER value = 226 }
@@ -15822,6 +15812,7 @@ command = { type = secedeprovince which = GER value = 164 }
 command = { type = secedeprovince which = GER value = 166 }
 command = { type = secedeprovince which = GER value = 167 }
 command = { type = secedeprovince which = GER value = 168 }
+command = { type = secedeprovince which = GER value = 221 }
 command = { type = secedeprovince which = GER value = 161 }
 command = { type = secedeprovince which = GER value = 155 }
 command = { type = secedeprovince which = GER value = 226 }
@@ -15847,12 +15838,27 @@ desc = "We will now honour the treaty of Vienna and comply to all austrian deman
 
 action_a = {
 name = "We have no other choice"
-command = { type = capital which =  163 }
+command = { type = capital which = 163 }
 command = { type = sleepevent which = 3967393 }
 command = { type = sleepevent which = 77093 }
 command = { type = sleepevent which = 91747 }
 command = { type = sleepevent which = 350095 }
 command = { type = sleepevent which = 350095 }
+command = { type = removecore which = 96 } #France
+command = { type = removecore which = 104 }
+command = { type = removecore which = 105 }
+command = { type = removecore which = 106 }
+command = { type = removecore which = 107 }
+command = { trigger = { exists = U08 } type = secedeprovince which = U08 value = 96 }
+command = { trigger = { exists = U08 } type = secedeprovince which = U08 value = 104 }
+command = { trigger = { exists = U08 } type = secedeprovince which = U08 value = 105 }
+command = { trigger = { exists = U08 } type = secedeprovince which = U08 value = 106 }
+command = { trigger = { exists = U08 } type = secedeprovince which = U08 value = 107 }
+command = { trigger = { exists = VIC NOT = { exists = FRA } } type = secedeprovince which = VIC value = 96 }
+command = { trigger = { exists = VIC NOT = { exists = FRA } } type = secedeprovince which = VIC value = 104 }
+command = { trigger = { exists = VIC NOT = { exists = FRA } } type = secedeprovince which = VIC value = 105 }
+command = { trigger = { exists = VIC NOT = { exists = FRA } } type = secedeprovince which = VIC value = 106 }
+command = { trigger = { exists = VIC NOT = { exists = FRA } } type = secedeprovince which = VIC value = 107 }
 }
 }
 
@@ -16133,6 +16139,7 @@ save_date = yes
 picture = "militaryparade1"
 
 trigger = {
+local_flag = AUS_GDE
 NOT = {
 war = { country = AUS country = U11 }
 war = { country = AUS country = U14 }
@@ -16349,12 +16356,12 @@ desc = "State of Bavaria, we were once unsuccesfully tried to include into our e
 
 action_a = {
 name = "Great!"
-command = { type = addclaim which = 176 }
-command = { type = addclaim which = 178 }
-command = { type = addclaim which = 179 }
-command = { type = addclaim which = 174 }
-command = { type = addclaim which = 175 }
-command = { type = addclaim which = 177 }
+command = { type = addcore which = 176 }
+command = { type = addcore which = 178 }
+command = { type = addcore which = 179 }
+command = { type = addcore which = 174 }
+command = { type = addcore which = 175 }
+command = { type = addcore which = 177 }
 command = { type = dissent value = 5 }
 }
 }
@@ -19912,229 +19919,113 @@ command = { type = dissent value = -1 }
 ##############
 #India
 ##############
+
 event = {
-
 id = 77282
-
 tag = { OTT TUR AZB TRA GEO PER ARM CHI MON CXB SIK CHC CSX BHU TIB GER CAN USA CSA SOV RUS FRA ENG JAP SIB MAN U31 EGY LBY SAU VIC U07 TEX KAZ NEP AFG }
-
-
 persistent = yes
 
 trigger = {
-
-NOT = {
-
-local_flag = IND_CONQ
-
-war = { country = -1 country = BHU }
-
-war = { country = -1 country = BUR }
-
-war = { country = -1 country = AFG }
-
-war = { country = -1 country = PAK }
-
-war = { country = -1 country = IND }
-
-war = { country = -1 country = PRK }
-
-war = { country = -1 country = U12 }
-
-war = { country = -1 country = U35 }
-
-war = { country = -1 country = U44 }
-
-war = { country = -1 country = U45 }
-
+	NOT = {
+		local_flag = IND_CONQ
+		war = { country = -1 country = BHU }
+		war = { country = -1 country = BUR }
+		war = { country = -1 country = AFG }
+		war = { country = -1 country = PAK }
+		war = { country = -1 country = IND }
+		war = { country = -1 country = PRK }
+		war = { country = -1 country = U12 }
+		war = { country = -1 country = U35 }
+		war = { country = -1 country = U44 }
+		war = { country = -1 country = U45 }
+	}
+	NOT = { exists = PRK }
+	NOT = { exists = PAK }
+	NOT = { exists = IND }
+	NOT = { exists = U12 }
+	NOT = { exists = U35 }
+	NOT = { exists = U44 }
+	NOT = { exists = U45 }
+	owned = { province = 1459 data = -1 } #Delhi
+	owned = { province = 1447 data = -1 } #Calcutta
+	owned = { province = 1487 data = -1 } #Hyderabad
 }
-
-NOT = { exists = PRK }
-
-NOT = { exists = PAK }
-
-NOT = { exists = IND }
-
-NOT = { exists = U12 }
-
-NOT = { exists = U35 }
-
-NOT = { exists = U44 }
-
-NOT = { exists = U45 }
-
-owned = { province = 1459 data = -1 } #Delhi
-
-owned = { province = 1447 data = -1 } #Calcutta
-
-owned = { province = 1487 data = -1 } #Hyderabad
-
-}
-
-
-
 
 name = "The Annexation of India"
 
 desc = "Following our campaigns in the Indian subcontinent, we are now controlling several territories of the former states of that region. Local leaders, and also our own politicians, are petitioning for autonomy for those areas."
-
 picture = "POWs"
-
 style = 2
 
-
-
-
 date = { day = 1 month = january year = 1936 }
-
 offset = 90
-
 deathdate = { day = 29 month = december year = 1963 }
 
-
-
-
 action = {
-
-name = "Continue with Military Occupation!"
-
-ai_chance = 1
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = 1 }
-
-command = { type = local_setflag which = IND_CONQ }
-
+	name = "Continue with Military Occupation!"
+	ai_chance = 1
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = 1 }
+	command = { type = local_setflag which = IND_CONQ }
 }
-
-
-
 action = {
-
-trigger = {
-
-not = {
-
-government = communist
-
+	trigger = {
+		NOT = { government = communist }
+	owned = { province = 1459 data = -1 } #Delhi
+	participant = { value = 1 }
+	}
+	name = "Restore our friends of the Delhi government to power!"
+	ai_chance = 99
+	command = { type = independence which = PAK value = 1 when = 0 }
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = -5 }
+	command = { type = make_puppet which = PAK }
+	command = { type = secederegion which = PAK value = INDIA when = 1 }
+	command = { type = name where = PAK which = PAK_UNI_NAME }
 }
-
-owned = { province = 1459 data = -1 } #Delhi
-
-participant = { value = 1 }
-
-}
-
-name = "Restore our friends of the Delhi government to power!"
-
-ai_chance = 99
-
-command = { type = independence which = PAK value = 1 when = 0 }
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = -5 }
-
-command = { type = make_puppet which = PAK }
-
-command = { type = secederegion which = PAK value = INDIA when = 1 }
-
-command = { type = name where = PAK which = PAK_UNI_NAME }
-
-}
-
-
-
 action = {
-
-trigger = {
-
-or = {
-
-government = communist
-
-participant = { value = 3 }
-
+	trigger = {
+		OR = {
+			government = communist
+			participant = { value = 3 }
+		}
+		NOT = { exists = PRK }
+		owned = { province = 1447 data = -1 } #Calcutta
+	}
+	name = "Liberate the good socialists of the Bhartiya Commune!"
+	ai_chance = 99
+	command = { type = independence which = PRK value = 1 when = 0 }
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = -5 }
+	command = { type = make_puppet which = PRK }
+	command = { type = secederegion which = PRK value = INDIA when = 1 }
 }
-
-not = {
-
-exists = PRK
-
-}
-
-owned = { province = 1447 data = -1 } #Calcutta
-
-}
-
-name = "Liberate the good socialists of the Bhartiya Commune!"
-
-ai_chance = 99
-
-command = { type = independence which = PRK value = 1 when = 0 }
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = -5 }
-
-command = { type = make_puppet which = PRK }
-
-command = { type = secederegion which = PRK value = INDIA when = 1 }
-
-}
-
-
-
 action = {
-
-trigger = {
-
-or = {
-
-not = { government = communist }
-
-participant = { value = 2 }
-
+	trigger = {
+		OR = {
+			not = { government = communist }
+			participant = { value = 2 }
+		}
+		NOT = {
+			exists = IND
+			participant = { value = 1 }
+		}
+		owned = { province = 1487 data = -1 } #Hyderabad
+	}
+	name = "Liberate the nationally conscious Indian Union!"
+	ai_chance = 99
+	command = { type = independence which = IND value = 1 when = 0 }
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = -5 }
+	command = { type = make_puppet which = IND }
+	command = { type = name where = IND which = IND_UNI_NAME }
+	command = { trigger = { country = RUS NOT = { flag = RUS_TSAR } } type = flag_ext where = IND which = "_rus" }
+	command = { trigger = { AND = { country = RUS flag = RUS_TSAR } } type = flag_ext where = IND which = "_rus2" }
+	command = { trigger = { country = SOV } type = flag_ext where = IND which = "_sov" }
+	command = { type = secederegion which = IND value = INDIA when = 1 }
+}
 }
 
-not = {
-
-exists = IND
-
-participant = { value = 1 }
-
-}
-
-owned = { province = 1487 data = -1 } #Hyderabad
-
-}
-
-name = "Liberate the nationally conscious Indian Union!"
-
-ai_chance = 99
-
-command = { type = independence which = IND value = 1 when = 0 }
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = -5 }
-
-command = { type = make_puppet which = IND }
-
-command = { type = name where = IND which = IND_UNI_NAME }
-
-command = { trigger =  { country = RUS NOT = { flag = RUS_TSAR } } type = flag_ext where = IND which = "_rus" }
- 
-command = { trigger =  { AND = { country = RUS flag = RUS_TSAR }  } type = flag_ext where = IND which = "_rus2" } 
-
-command = { trigger =  { country = SOV } type = flag_ext where = IND which = "_sov" }
- 
-command = { type = secederegion which = IND value = INDIA when = 1 }
-
-}
-
-}
 ##########
 #### Afghanistan
 ##########
@@ -20687,53 +20578,47 @@ command = { type = dissent value = -5 }
 #### Turkey
 ##############################
 
-
 event = {
 id = 996046
 tag = { FRA ENG RSI GEO PER SAU EGY GRE BUL SER URU ROM YUG GER AUS U24 U25 HUN CSA TEX USA CAN VIC AST PAK U07 RUS SOV }
 persistent = yes
 
-
-
 decision = {
-NOT = {
-local_flag = OTT_CONQ
-}
-control = { province = 1075 data = -1 } #Ankara
-control = { province = 1058 data = -1 } #Tarsus
+	NOT = { local_flag = OTT_CONQ }
+	control = { province = 1075 data = -1 } #Ankara
+	control = { province = 1058 data = -1 } #Tarsus
 }
 
 decision_trigger = {
-NOT = {
-exists = TUR
-exists = OTT
-war = { country = -1 country = BUL }
-war = { country = -1 country = GEO }
-war = { country = -1 country = IRQ }
-war = { country = -1 country = PER }
-war = { country = -1 country = SYR }
-war = { country = -1 country = LEB }
-war = { country = -1 country = KUR }
-}
+	NOT = {
+		exists = TUR
+		exists = OTT
+		war = { country = -1 country = BUL }
+		war = { country = -1 country = GEO }
+		war = { country = -1 country = IRQ }
+		war = { country = -1 country = PER }
+		war = { country = -1 country = SYR }
+		war = { country = -1 country = LEB }
+		war = { country = -1 country = KUR }
+	}
 }
 
 trigger = {
-NOT = {
-war = { country = -1 country = BUL }
-war = { country = -1 country = GEO }
-war = { country = -1 country = IRQ }
-war = { country = -1 country = PER }
-war = { country = -1 country = SYR }
-war = { country = -1 country = LEB }
-war = { country = -1 country = KUR }
-exists = TUR
-exists = OTT
-local_flag = OTT_CONQ
+	NOT = {
+		war = { country = -1 country = BUL }
+		war = { country = -1 country = GEO }
+		war = { country = -1 country = IRQ }
+		war = { country = -1 country = PER }
+		war = { country = -1 country = SYR }
+		war = { country = -1 country = LEB }
+		war = { country = -1 country = KUR }
+		exists = TUR
+		exists = OTT
+		local_flag = OTT_CONQ
+	}
+	control = { province = 1075 data = -1 } #Ankara
+	control = { province = 1058 data = -1 } #Tarsus
 }
-control = { province = 1075 data = -1 } #Ankara
-control = { province = 1058 data = -1 } #Tarsus
-}
-
 
 name = "The Conquest of Anatolia"
 desc = "We have destroyed the last remnants of the Turkish state and finally put the 'sick man of Europe' in his grave. Our troops patrol the streets of Ankara and the ancient city of Constantinople, however, we can't remain as occupiers for ever. A decision will have to be made in regards to the future government of the Turkish people."
@@ -20741,200 +20626,98 @@ picture = "Anatoliamap"
 decision_picture = "decision_fateanatolia"
 style = 2
 
-
 date = { day = 1 month = january year = 1936 }
 offset = 10
 deathdate = { day = 29 month = december year = 1963 }
 
-
 action = {
-
-name = "Allow the formation of a new Turkish Republic!"
-
-ai_chance = 65
-
-command = { trigger = { country = BUL } type = addcore which = 370 }
-
-command = { trigger = { country = BUL } type = addcore which = 384 }
-
-command = { trigger = { country = BUL } type = addcore which = 385 }
-
-command = { trigger = { country = BUL } type = addcore which = 409 }
-
-command = { trigger = { country = GRE } type = addcore which = 370 }
-
-command = { trigger = { country = GRE } type = addcore which = 384 }
-
-command = { trigger = { country = GRE } type = addcore which = 385 }
-
-command = { trigger = { country = GRE } type = addcore which = 409 }
-
-command = { trigger = { country = GRE } type = addcore which = 1076 }
-
-command = { trigger = { country = GRE } type = addcore which = 1077 }
-
-command = { trigger = { country = GRE } type = addcore which = 1078 }
-
-command = { trigger = { country = RUS } type = addclaim which = 1076 }
-
-command = { trigger = { country = RUS } type = addclaim which = 1078 }
-
-command = { trigger = { country = RUS } type = addclaim which = 370 }
-
-command = { trigger = { country = RUS } type = addclaim which = 384 }
-
-command = { trigger = { country = RUS } type = addclaim which = 385 }
-
-command = { trigger = { country = RUS } type = addclaim which = 409 }
-
-command = { trigger = { country = RUS } type = addcore which = 386 }
-
-command = { trigger = { country = RUS } type = addcore which = 1063 }
-
-command = { trigger = { country = RUS } type = addcore which = 1067 }
-
-command = { type = independence which = TUR value = 1 when = 0 }
-
-command = { type = make_puppet which = TUR }
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = -2 }
-
+	name = "Allow the formation of a new Turkish Republic!"
+	ai_chance = 65
+	command = { trigger = { country = BUL } type = addcore which = 370 }
+	command = { trigger = { country = BUL } type = addcore which = 384 }
+	command = { trigger = { country = BUL } type = addcore which = 385 }
+	command = { trigger = { country = BUL } type = addcore which = 409 }
+	command = { trigger = { country = GRE } type = addcore which = 370 }
+	command = { trigger = { country = GRE } type = addcore which = 384 }
+	command = { trigger = { country = GRE } type = addcore which = 385 }
+	command = { trigger = { country = GRE } type = addcore which = 409 }
+	command = { trigger = { country = GRE } type = addcore which = 1076 }
+	command = { trigger = { country = GRE } type = addcore which = 1077 }
+	command = { trigger = { country = GRE } type = addcore which = 1078 }
+	command = { trigger = { country = RUS } type = addclaim which = 1076 }
+	command = { trigger = { country = RUS } type = addclaim which = 1078 }
+	command = { trigger = { country = RUS } type = addclaim which = 370 }
+	command = { trigger = { country = RUS } type = addclaim which = 384 }
+	command = { trigger = { country = RUS } type = addclaim which = 385 }
+	command = { trigger = { country = RUS } type = addclaim which = 409 }
+	command = { trigger = { country = RUS } type = addcore which = 386 }
+	command = { trigger = { country = RUS } type = addcore which = 1063 }
+	command = { trigger = { country = RUS } type = addcore which = 1067 }
+	command = { type = independence which = TUR value = 1 when = 0 }
+	command = { type = make_puppet which = TUR }
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = -2 }
 }
-
-
-
 action = {
-
-trigger = {
-NOT = {
-exists = KUR
+	trigger = {	NOT = { exists = KUR } }
+	name = "Partition Anatolia between a Kurdish and a Turkish state!"
+	ai_chance = 35
+	command = { trigger = { country = BUL } type = addcore which = 370 }
+	command = { trigger = { country = BUL } type = addcore which = 384 }
+	command = { trigger = { country = BUL } type = addcore which = 385 }
+	command = { trigger = { country = BUL } type = addcore which = 409 }
+	command = { trigger = { country = GRE } type = addcore which = 370 }
+	command = { trigger = { country = GRE } type = addcore which = 384 }
+	command = { trigger = { country = GRE } type = addcore which = 385 }
+	command = { trigger = { country = GRE } type = addcore which = 409 }
+	command = { trigger = { country = GRE } type = addcore which = 1076 }
+	command = { trigger = { country = GRE } type = addcore which = 1077 }
+	command = { trigger = { country = GRE } type = addcore which = 1078 }
+	command = { trigger = { country = RUS } type = addclaim which = 1076 }
+	command = { trigger = { country = RUS } type = addclaim which = 1078 }
+	command = { trigger = { country = RUS } type = addclaim which = 370 }
+	command = { trigger = { country = RUS } type = addclaim which = 384 }
+	command = { trigger = { country = RUS } type = addclaim which = 385 }
+	command = { trigger = { country = RUS } type = addclaim which = 409 }
+	command = { trigger = { country = RUS } type = addcore which = 386 }
+	command = { trigger = { country = RUS } type = addcore which = 1063 }
+	command = { trigger = { country = RUS } type = addcore which = 1067 }
+	command = { type = independence which = KUR value = 1 when = 0 }
+	command = { type = make_puppet which = KUR }
+	command = { type = independence which = TUR value = 1 when = 0 }
+	command = { type = make_puppet which = TUR }
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = -2 }
 }
-}
-
-name = "Partition Anatolia between a Kurdish and a Turkish state!"
-
-ai_chance = 35
-
-command = { trigger = { country = BUL } type = addcore which = 370 }
-
-command = { trigger = { country = BUL } type = addcore which = 384 }
-
-command = { trigger = { country = BUL } type = addcore which = 385 }
-
-command = { trigger = { country = BUL } type = addcore which = 409 }
-
-command = { trigger = { country = GRE } type = addcore which = 370 }
-
-command = { trigger = { country = GRE } type = addcore which = 384 }
-
-command = { trigger = { country = GRE } type = addcore which = 385 }
-
-command = { trigger = { country = GRE } type = addcore which = 409 }
-
-command = { trigger = { country = GRE } type = addcore which = 1076 }
-
-command = { trigger = { country = GRE } type = addcore which = 1077 }
-
-command = { trigger = { country = GRE } type = addcore which = 1078 }
-
-command = { trigger = { country = RUS } type = addclaim which = 1076 }
-
-command = { trigger = { country = RUS } type = addclaim which = 1078 }
-
-command = { trigger = { country = RUS } type = addclaim which = 370 }
-
-command = { trigger = { country = RUS } type = addclaim which = 384 }
-
-command = { trigger = { country = RUS } type = addclaim which = 385 }
-
-command = { trigger = { country = RUS } type = addclaim which = 409 }
-
-command = { trigger = { country = RUS } type = addcore which = 386 }
-
-command = { trigger = { country = RUS } type = addcore which = 1063 }
-
-command = { trigger = { country = RUS } type = addcore which = 1067 }
-
-command = { type = independence which = KUR value = 1 when = 0 }
-
-command = { type = make_puppet which = KUR }
-
-
-command = { type = independence which = TUR value = 1 when = 0 }
-
-command = { type = make_puppet which = TUR }
-
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = -2 }
-
-}
-
-
-
 action = {
-
-trigger = {
-
-NOT = {
-government = communist
+	trigger = {
+		NOT = { government = communist }
+		OR = {
+			participant = { value = 2 }
+			country = GER
+			country = AUS
+			country = U24
+			country = BUL
+			country = HUN
+		}
+	}
+	name = "Restore the Ottoman sultan to his throne!"
+	ai_chance = 99
+	command = { trigger = { country = BUL } type = addcore which = 370 }
+	command = { trigger = { country = BUL } type = addcore which = 384 }
+	command = { trigger = { country = BUL } type = addcore which = 385 }
+	command = { type = independence which = OTT value = 1 when = 0 }
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = -5 }
+	command = { type = make_puppet which = OTT }
 }
-
-OR = {
-
-participant = { value = 2 }
-
-country = GER
-
-country = AUS
-
-country = U24
-
-country = BUL
-
-country = HUN
-
-}
-
-}
-
-name = "Restore the Ottoman sultan to his throne!"
-
-ai_chance = 99
-
-command = { trigger = { country = BUL } type = addcore which = 370 }
-
-command = { trigger = { country = BUL } type = addcore which = 384 }
-
-command = { trigger = { country = BUL } type = addcore which = 385 }
-
-command = { type = independence which = OTT value = 1 when = 0 }
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = -5 }
-
-command = { type = make_puppet which = OTT }
-
-}
-
-
 action = {
-
-name = "Maintain our military occupation!"
-
-ai_chance = 0
-
-command = { type = supplies value = 1000 }
-
-command = { type = dissent value = 2 }
-command = { type = local_setflag which = OTT_CONQ }
-
+	name = "Maintain our military occupation!"
+	ai_chance = 0
+	command = { type = supplies value = 1000 }
+	command = { type = dissent value = 2 }
+	command = { type = local_setflag which = OTT_CONQ }
 }
-
 }
 
 ##############################
