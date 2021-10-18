@@ -118,6 +118,10 @@ dormant_leaders = {
 52123 #Merritt C.
 52124 #Prince T.
 }
+
+dormant_teams = { 926 927
+	916 954 962
+	}
 	
 	techapps = {
 #Infantry

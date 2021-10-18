@@ -7,7 +7,7 @@ ai = "kaiserreich\Azerbaijan.ai"
 	policy = {
         date = { year = 0 month = january day = 0 }
         democratic = 4
-        political_left = 3
+        political_left = 5
         freedom = 6
         free_market = 5
         professional_army = 3
@@ -16,16 +16,16 @@ ai = "kaiserreich\Azerbaijan.ai"
     }
 
 #### cabinet
-	headofstate = { type = 9 id = 516038 }
-	headofgovernment = { type = 9 id = 516039 }
- 	foreignminister = { type = 9 id = 516040  }
- 	armamentminister = { type = 9 id = 516041 }
- 	ministerofsecurity = { type = 9 id = 516042 }
- 	ministerofintelligence = { type = 9 id = 516043 }
- 	chiefofstaff = { type = 9 id = 516044 }
- 	chiefofarmy = { type = 9 id = 516045 }
- 	chiefofnavy = { type = 9 id = 516046  }        
- 	chiefofair = { type = 9 id = 516047  }
+	headofstate = { type = 9 id = 516038 } #Mammad Amin Rasulzade
+	headofgovernment = { type = 9 id = 516039 } #Nasib Yusifbeyli
+	foreignminister = { type = 9 id = 516040 } #Mammad Yusif Jafarov
+	armamentminister = { type = 9 id = 516041 } #Abdulali bey Amirjanov
+	ministerofsecurity = { type = 9 id = 516042 } #Behbud Khan Javanshir
+	ministerofintelligence = { type = 9 id = 516043 } #Mammad Hasan Hajinski
+	chiefofstaff = { type = 9 id = 516051 } #Abdulhamid bey Qaytabashi
+	chiefofarmy = { type = 9 id = 516061 } #Habib bey Salimov
+	chiefofnavy = { type = 9 id = 516046 } #Khosrov bey Sultanov
+	chiefofair = { type = 9 id = 516047 } #Ibrahim bey Usubov
 
 #### Resource Reserves
 	capital = 713 
@@ -85,7 +85,7 @@ SpyInfo  = {  country = "AZB" NumberOfSpies = 2  }
 
 #Land Doctrines
 6500 6510 6530 6550 6590 6600 6610 6620 6650 6670 6680 6690 6700 6710 6910
-6010 # Firepower focus
+6560 # Defensive Focus
 14000 14010 #Hospitals
 
 
