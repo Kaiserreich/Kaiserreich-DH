@@ -1,6 +1,8 @@
 ################################
 ## Taiwan events by Dermaglen ##
 ################################
+#reserved ID's 156000 ~ 157999
+#free ID left : 156091 ~ 157999
 
 ################
 #Freedom       #
@@ -17,17 +19,20 @@ picture = "Taiwan"
 
 trigger = { 
 atwar = no 
+NOT = {
+flag = TAI_Japanese
+}
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 2
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Freedom for Formosa"
-desc = "Our masters now agreed to grant us independence. The Taiwanese Cultural Association (Bunka Kyokai) formed a provisional government. Maybe later we can hold a democratic election. Our masters granted us some resources, too."
+name = EVT_156000_NAME #Freedom for Formosa
+desc = EVT_156000_DESC #Our masters now agreed to grant us independence. The Taiwanese Cultural Association (Wenhua Xiehui) formed a provisional government. Maybe later we can hold a democratic election. Our masters granted us some resources, too.
 
 action_a = {
-name = "Hurray!"
+name = ACTIONNAME156000A #Hurray!
 command = { type = supplies value = 300 }
 command = { type = rarematerialspool value = 300 }
 command = { type = energypool value = 300 }
@@ -39,7 +44,6 @@ command = { type = setflag which = TAI_freed }
 }
 }
 
-
 event = {
 id = 156001
 random = no
@@ -50,17 +54,20 @@ picture = "China_Army"
 trigger = {
 atwar = no
 flag = TAI_freed
+NOT = {
+flag = TAI_Japanese
+}
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 7
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Taiwanese Army"
-desc = "After becoming idependent, thousands of young Taiwanese people approached us and offered to join the Army of the Taiwanese Republic."
+name = EVT_156001_NAME #Taiwanese Army
+desc = EVT_156001_DESC #After becoming independent, thousands of young Taiwanese people approached us and offered to join the Army of the Taiwanese Republic.
 
 action_a = {
-name = "Welcome them and give them weapons"
+name = ACTIONNAME156001A #Welcome them and give them weapons
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
 command = { type = add_corps which = "First Taiwanese Corps" value = land where = 1361 }
@@ -71,7 +78,6 @@ command = { type = add_division which = "2. Min Shi" value = militia when = 4 }
 command = { type = add_corps which = "Taiwanese Fleet" value = naval where = 1362 }
 command = { type = add_division which = "1. Quzujian Dadui" value = destroyer when = 3 }
 command = { type = add_division which = "1. Kongyunji Dadui" value = transport when = 1 }
-command = { type = domestic which = professional_army value = 1 }
 command = { type = setflag which = TAI_freedom }
 command = { type = clrflag  which = TAI_freed }
 }
@@ -88,45 +94,38 @@ style = 2
 picture = "Taiwan"
 
 trigger = {
-flag = kor_japfree # set by events in Japan_Korea.txt
+event = 260026 #KOR : Autonomous Status Granted
+puppet = { country = KOR country = JAP }
 NOT = { 
 exists = U30 
 }
 }
 
-date = { day = 0 month = january year = 1936 }
-offset =  3
-deathdate = { day = 29 month = december year = 1963 }
+date = { day = 0 month = january year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1937 }
 
-name = "Another idependence movement?"
-desc = "Just some days passed after we let the Koreans to create their own state and an other group approached us. The Taiwanese delegation of the Bunka Kyokai (Cultural Association) leaded by Chiang Wei-Shui asked for the same freedoms as Korea. What should we do?"
+name = EVT_156002_NAME #Another Autonomous Colony?
+desc = EVT_156002_DESC #The Taiwanese delegation of the Bunka Kyokai (Cultural Association) led by Chiang Wei-Shui asks for the same status as Korea for Taiwan. What should we do?
 
 action_a = {
-name = "Grant them partial independence"
+name = ACTIONNAME156002A #Grant a limited autonomous status
 ai_chance = 85
 command = { type = removeclaim which = 1361 }
 command = { type = removeclaim which = 1362 }
 command = { type = removeclaim which = 1363 }
 command = { type = removeclaim which = 1364 }
-command = { type = removecore which = 1361 }
-command = { type = removecore which = 1362 }
-command = { type = removecore which = 1363 }
-command = { type = removecore which = 1364 }
 command = { type = independence which = U30 value = 1 when = 1 }
+command = { type = secederegion which = U30 value = "Taiwan" when = 1 }
 command = { type = make_puppet which = U30 }
 command = { type = flag_ext where = U30 which = "_JAP" }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = domestic which = democratic value = 1 }
 command = { type = dissent value = 5 }
-command = { type = event which = 156003 where = U30 when = 2  }
+command = { type = trigger which = 156003 }
 }
 
 action_b = {
-name = "Arrest them"
+name = ACTIONNAME156002B #Arrest them
 ai_chance = 15
-command = { type = domestic which = defense_lobby value = -1 }
-command = { type = domestic which = democratic value = -1 }
 command = { type = dissent value = 5 }
 command = { type = setflag which = TAI_military }
 }
@@ -140,24 +139,28 @@ country = U30
 style = 2
 picture = "Taiwan"
 
-
-name = "Freedom for Formosa"
-desc = "We became an idependent nation thanks to the glorious Emperor Hirohito. Everybody hopes we will live in peace and harmony forever!"
+name = EVT_260026_NAME #Autonomous Status Granted
+desc = "BOO"  #None is supposed to see this event screen
 
 action_a = {
-name = "We are free now!"
-command = { type = alliance which = JAP }
-command = { type = set_relation which = JAP value = 200 }
-command = { type = supplies value = 500 }
-command = { type = oilpool value = 250 }
+name = OK
+command = { type = wakeminister which = 910943 } # Hasegawa Kiyoshi
+command = { type = wakeminister which = 910944 } # Morioka Jiro
+command = { type = headofstate which = 910943 } # Hasegawa Kiyoshi
+command = { type = headofgovernment which = 910944 } # Morioka Jiro
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 3 }
+command = { type = supplies value = 375 }
+command = { type = oilpool value = 75 }
 command = { type = metalpool value = 250 }
 command = { type = energypool value = 500 }
-command = { type = rarematerialspool value = 250 }
+command = { type = rarematerialspool value = 125 }
 command = { type = money value = 75 }
 command = { type = manpowerpool value = 50 }
+command = { type = set_relation which = JAP value = 200 }
 command = { type = sleepevent which = 156000 }
 command = { type = setflag which = TAI_Japanese }
-command = { type = setflag which = TAI_freed }
+command = { type = setflag which = TAI_freedom }
 command = { type = add_corps which = "First Taiwanese Corps" value = land where = 1361 }
 command = { type = add_division which = "1. Min Shi" value = militia when = 4 }
 command = { type = add_corps which = "Second Taiwanese Corps" value = land where = 1362 }
@@ -183,21 +186,18 @@ exists = U30
 control = { province = 1362 data = JAP }
 }
 
-date = { day = 0 month = january year = 1936 }
-offset =  25
-deathdate = { day = 29 month = december year = 1963 }
+date = { day = 0 month = january year = 1937 }
+offset =  30
+deathdate = { day = 29 month = december year = 1937 }
 
-name = "Rebellion in Taiwan!"
-desc = "After arresting their leaders the Taiwanese Cultural Association was also banned. However our local forces couldn't handle the problem of strikes and mass demonstrations in Taiwan. Now the situation is so hostile that the whole island is in revolt. We must do something before it's not too late."
+name = EVT_156004_NAME #Rebellion in Taiwan!
+desc = EVT_156004_DESC #After arresting their leaders the Taiwanese Cultural Association was also banned. However our local forces couldn't handle the problem of strikes and mass demonstrations in Taiwan. Now the situation is so hostile that the whole island is in revolt. We must do something before it's not too late.
 picture = "politics2"
 
 action_a = {
-name = "We will crush them!"
+name = ACTIONNAME156004A #We will crush them!
 command = { type = independence which = U30 value = 1 when = 1 }
-command = { type = secedeprovince which = U30 value = 1361 }
-command = { type = secedeprovince which = U30 value = 1362 }
-command = { type = secedeprovince which = U30 value = 1363 }
-command = { type = secedeprovince which = U30 value = 1364 }
+command = { type = secederegion which = U30 value = "Taiwan" when = 1 }
 command = { type = control which = U30 value = 1361 }
 command = { type = control which = U30 value = 1362 }
 command = { type = control which = U30 value = 1363 }
@@ -205,10 +205,6 @@ command = { type = control which = U30 value = 1364 }
 command = { type = war which = U30 }
 command = { type = trigger which = 156005 }
 command = { type = dissent value = 5 }
-command = { type = addclaim   which = 1361   }
-command = { type = addclaim   which = 1362   }
-command = { type = addclaim   which = 1363   }
-command = { type = addclaim   which = 1364   }
 }
 }
 
@@ -220,15 +216,17 @@ country = U30
 style = 2
 picture = "politics2"
 
-name = "The Taipei Uprising"
-desc = "Our leaders were arrested by the Japanese and our Cultural Association was banned. They want us to be their slaves but it won't happen! We will fight for our independence!"
+name = EVT_156005_NAME #The Taiwan Uprising
+desc = EVT_156005_DESC #Our leaders were arrested by the Japanese and our Cultural Association was banned. They want us to be their slaves but it won't happen! We will fight for our independence!
 
 action_a = {
-name = "We will be independent or die!"
+name = ACTIONNAME156004A #We will be independent or die!
+command = { type = wakeminister which = 910910 } # Wenhua Xiehui
+command = { type = wakeminister which = 910911 } # Wenhua Xiehui
+command = { type = headofstate which = 910910 } # Wenhua Xiehui
+command = { type = headofgovernment which = 910911 } # Wenhua Xiehui
 command = { type = set_domestic which = democratic value = 4 }
 command = { type = set_domestic which = political_left value = 4 }
-command = { type = headofstate which = 910923 }
-command = { type = headofgovernment which = 910921 }
 command = { type = add_corps which = "Taiwanese Army" value = land where = 1361 }
 command = { type = add_division which = "Di'2 Shi" value = infantry when = 8 }
 command = { type = add_division which = "Taipei Militia" value = militia when = 4 }
@@ -272,19 +270,18 @@ war = { country = JAP country = U30 }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  5
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "The Taipei Uprising"
-desc = "The people of Taiwan rebelled against their Japanese oppressors. Maybe if we give them some help like giving weapons and sending voulnteers it would allow them to destroy the Japanese forces. After that they would be really grateful to us. But they would want to stay independent."
+name = EVT_156005_NAME #The Taiwan Uprising
+desc = EVT_156006_DESC #The people of Taiwan rebelled against their Japanese oppressors. Maybe if we give them some help like giving weapons and sending voulnteers it would allow them to destroy the Japanese forces. After that they would be really grateful to us. But they would want to stay independent.
 picture = "Wehrmacht"
 decision_picture = "decision_foreign_volunteers"
 
 action_a = {
-name = "Send them everything they need!"
+name = ACTIONNAME156006A #Send them everything they need!
 ai_chance = 90
 command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
 command = { type = relation which = U30 value = 50 }
 command = { type = relation which = JAP value = -30 }
 command = { type = supplies value = -500 }
@@ -294,10 +291,9 @@ command = { type = trigger which = 156007 }
 }
 
 action_b = {
-name = "We can't support rebels like them"
+name = ACTIONNAME156006B #We can't support rebels like them
 ai_chance = 10
 command = { type = domestic which = interventionism value = -1 }
-command = { type = domestic which = defense_lobby value = -1 }
 command = { type = relation which = JAP value = 15 }
 command = { type = relation which = U30 value = -30 }
 command = { type = dissent value = 3 }
@@ -312,11 +308,11 @@ country = U30
 style = 2
 picture = "Qing_Marching"
 
-name = "Qing help arrives"
-desc = "Mighty Emperor Puyi of the Qing Empire decided to send volunteers and supplies to help us in our fight. We have now bigger chance than ever to be free."
+name = EVT_156007_NAME #Qing help arrives
+desc = EVT_156007_DESC #Mighty Emperor Puyi of the Qing Empire decided to send volunteers and supplies to help us in our fight. We have now bigger chance than ever to be free.
 
 action_a = {
-name = "Hurray! Long live Puyi!"
+name = ACTIONNAME156006A #Hurray! Long live Puyi!
 command = { type = add_corps which = "Qing Volunteer Army" value = land where = 1362 }
 command = { type = add_division which = "1. Qing Shi" value = militia when = 4 }
 command = { type = supplies value = 500 }
@@ -350,16 +346,16 @@ war = { country = JAP country = U30 }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  7
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "The Taipei Uprising"
-desc = "The people of Taiwan rebelled against their Japanese oppressors. They are in need of weapons and soldiers. Maybe if we give them enough help they will be really grateful to us. But maybe the Germans won't be happy that we do things like this on our own."
+name = EVT_156005_NAME #The Taiwan Uprising
+desc = EVT_156008_DESC #The people of Taiwan rebelled against their Japanese oppressors. They are in need of weapons and soldiers. Maybe if we give them enough help they will be really grateful to us. But maybe the Germans won't be happy that we do things like this on our own.
 picture = "Wehrmacht"
 decision_picture = "decision_foreign_volunteers"
 
 action_a = {
-name = "Send aid and volunteers!"
+name = ACTIONNAME156008A #Send aid and volunteers!
 ai_chance = 25
 command = { type = domestic which = interventionism value = 1 }
 command = { type = relation which = U30 value = 30 }
@@ -372,7 +368,7 @@ command = { type = trigger which = 156009 }
 }
 
 action_b = {
-name = "This isn't our problem"
+name = ACTIONNAME156008B #This isn't our problem
 ai_chance = 75
 command = { type = domestic which = interventionism value = -1 }
 command = { type = relation which = JAP value = 30 }
@@ -390,11 +386,11 @@ country = U30
 style = 2
 picture = "Chinese Infantry2"
 
-name = "AOG help arrives"
-desc = "The AOG Board of Directors and Falkenhausen decided to send us supplies and medical aid. Now we have a bigger chance to deal with the oppressors!"
+name = EVT_156009_NAME #AOG help arrives
+desc = EVT_156009_DESC #The AOG Board of Directors and Falkenhausen decided to send us supplies and medical aid. Now we have a bigger chance to deal with the oppressors!
 
 action_a = {
-name = "Hurray!"
+name = ACTIONNAME156000A #Hurray!
 command = { type = supplies value = 500 }
 }
 }
@@ -430,16 +426,16 @@ war = { country = JAP country = U30 }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  8
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "The Taipei Uprising"
-desc = "The people of Taiwan rebelled against their Japanese oppressors. For years they shared the same life as us. We should give them the chance to become independent like us."
+name = EVT_156005_NAME #The Taiwan Uprising
+desc = EVT_156010_DESC #The people of Taiwan rebelled against their Japanese oppressors. For years they shared the same life as us. We should give them the chance to become independent like us.
 picture = "Wehrmacht"
 decision_picture = "decision_foreign_volunteers"
 
 action_a = {
-name = "Send what few volunteers we can spare"
+name = ACTIONNAME156010A #Send what few volunteers we can spare
 ai_chance = 60
 trigger = {
 NOT = { 
@@ -457,7 +453,7 @@ command = { type = trigger which = 156011 }
 }
 
 action_b = {
-name = "We must ally with Taiwan"
+name = ACTIONNAME156010B #We must ally with Taiwan
 ai_chance = 20
 trigger = {
 NOT = { 
@@ -478,7 +474,7 @@ command = { type = trigger which = 156012 }
 }
 
 action_c = {
-name = "We cannot intervene."
+name = ACTIONNAME156010C #We cannot intervene
 ai_chance = 0
 command = { type = domestic which = interventionism value = -1 }
 command = { type = relation which = JAP value = 20 }
@@ -495,11 +491,11 @@ country = U30
 style = 2
 picture = "Chinese Infantry2"
 
-name = "Korean help arrives"
-desc = "Our Korean brothers decided to send us some supplies, weapons, and volunteers. With their help we are now much closer to remaining independent and protected from the Japanese forces."
+name = EVT_156011_NAME #Korean help arrives
+desc = EVT_156011_DESC #Our Korean brothers decided to send us some supplies, weapons, and volunteers. With their help we are now much closer to remaining independent and protected from the Japanese forces.
 
 action_a = {
-name = "Brilliant!"
+name = ACTIONNAME156011A #Brilliant!
 command = { type = add_corps which = "Korean Volunteer Army" value = land where = 1362 }
 command = { type = add_division which = "Seoul Volunteers" value = militia when = 4 }
 command = { type = supplies value = 500 }
@@ -514,263 +510,16 @@ country = U30
 style = 2
 picture = "Chinese Infantry2"
 
-name = "Korean alliance"
-desc = "The Korean leaders decided to help us with a full alliance. With their help we can destroy the overwhelming Japanese forces."
+name = EVT_156012_NAME #Korean alliance
+desc = EVT_156012_DESC #The Korean leaders decided to help us with a full alliance. With their help we can destroy the overwhelming Japanese forces.
 
 action_a = {
-name = "Hurray for the Korean-Taiwanese brotherhood!"
+name = ACTIONNAME156012A #Hurray for the Korean-Taiwanese brotherhood!
 command = { type = relation which = KOR value = 200 }
 command = { type = supplies value = 500 }
 command = { type = setflag which = TAI_KOR }
 }
 }
-
-
-event = {
-id = 156013
-random = no
-country = MAN
-style = 2
-picture = "Chinese_Fighting"
-
-trigger = {
-flag = TAI_KOR
-alliance = { country = KOR country = U30 }
-war = { country = U30 country = JAP }
-}
-
-date = { day = 0 month = january year = 1936 }
-offset =  3
-deathdate = { day = 29 month = december year = 1963 }
-
-name = "Korean-Taiwanese Alliance"
-desc = "The government of Korea decided to help Taiwan directly in their fight against Japan. Now a coalition has formed against the Japanese and maybe it is our chance to get rid of the Japanese."
-
-action_a = {
-ai_chance = 50
-name = "We must continue to support Japan"
-command = { type = dissent value = 5 }
-}
-
-action_b = {
-ai_chance = 15
-name = "Make Peace and choose independence"
-command = { type = peace which = KOR value = 1 }
-command = { type = peace which = U30 value = 1 }
-command = { type = peace which = PRI value = 1 }
-command = { type = peace which = SIB value = 1 }
-command = { type = peace which = CSX value = 1 }
-command = { type = peace which = CHC value = 1 }
-command = { type = peace which = EAF value = 1 }
-command = { type = leave_alliance when = 1 }
-command = { type = end_puppet }
-command = { type = end_access which = JAP }
-command = { type = set_relation which = JAP value = -50 }
-command = { type = relation which = CSX value = 30 }
-command = { type = set_relation which = KOR value = 50 }
-command = { type = set_relation which = U30 value = 50 }
-command = { type = end_access which = JAP where = MAN }
-command = { type = end_access which = MAN where = JAP }
-command = { type = addcore which = 1240 }
-command = { type = addcore which = 1236 }
-command = { type = addcore which = 1235 }
-command = { type = addcore which = 1216 }
-command = { type = addcore which = 1219 }
-command = { trigger = { control = { province = 1239 data = JAP } } type = addcore which = 1239 }
-command = { trigger = { control = { province = 1246 data = JAP } } type = addcore which = 1246 }
-command = { trigger = { control = { province = 1247 data = JAP } } type = addcore which = 1247 }
-}
-
-action_c = {
-ai_chance = 35
-name = "Join the Anti-Japanese coalition"
-command = { type = leave_alliance when = 1 }
-command = { type = peace which = KOR value = 1 }
-command = { type = peace which = U30 value = 1 }
-command = { type = peace which = PRI value = 1 }
-command = { type = peace which = SIB value = 1 }
-command = { type = peace which = CSX value = 1 }
-command = { type = peace which = CHC value = 1 }
-command = { type = peace which = EAF value = 1 }
-command = { type = end_puppet }
-command = { type = end_access which = JAP }
-command = { type = set_relation which = JAP value = -50 }
-command = { type = relation which = CSX value = 30 }
-command = { type = set_relation which = KOR value = 150 }
-command = { type = set_relation which = U30 value = 150 }
-command = { type = setflag which = TAI_MAN }
-command = { type = trigger which = 156014 }
-command = { type = end_access which = JAP where = MAN }
-command = { type = end_access which = MAN where = JAP }
-command = { type = addcore which = 1240 }
-command = { type = addcore which = 1236 }
-command = { type = addcore which = 1235 }
-command = { type = addcore which = 1216 }
-command = { type = addcore which = 1219 }
-command = { trigger = { control = { province = 1239 data = JAP } } type = addcore which = 1239 }
-command = { trigger = { control = { province = 1246 data = JAP } } type = addcore which = 1246 }
-command = { trigger = { control = { province = 1247 data = JAP } } type = addcore which = 1247 }
-}
-
-action_d = {
-ai_chance = 0
-name = "It is time to reunite China under Pu Yi"
-trigger = {
-exists = CSX
-NOT = { ispuppet = CSX }
-}
-name = "It is time to reunite China under Pu Yi"
-command = { type = leave_alliance when = 1 }
-command = { type = end_puppet }
-command = { type = end_access which = JAP }
-command = { type = peace which = KOR value = 1 }
-command = { type = peace which = U30 value = 1 }
-command = { type = peace which = PRI value = 1 }
-command = { type = peace which = SIB value = 1 }
-command = { trigger = { NOT = { alliance = { country = CAN  country = RUS } alliance = { country = CAN country = SOV } alliance = { country = CAN country = MON } alliance = { country = CAN country = CSX } alliance = { country = CAN country = CHC } } } type = peace which = CAN value = 1 } #Preserve state of war with RUS/SOV/MON/CSX/CHC since they may have their own interests in Fengtien land
-command = { trigger = { NOT = { alliance = { country = FRA  country = RUS } alliance = { country = FRA country = SOV } alliance = { country = FRA country = MON } alliance = { country = FRA country = CSX } alliance = { country = FRA country = CHC } } } type = peace which = FRA value = 1 }
-command = { trigger = { NOT = { alliance = { country = GER  country = RUS } alliance = { country = GER country = SOV } alliance = { country = GER country = MON } alliance = { country = GER country = CSX } alliance = { country = GER country = CHC } } } type = peace which = GER value = 1 }
-command = { trigger = { NOT = { alliance = { country = PHI  country = RUS } alliance = { country = PHI country = SOV } alliance = { country = PHI country = MON } alliance = { country = PHI country = CSX } alliance = { country = PHI country = CHC } } } type = peace which = PHI value = 1 }
-command = { trigger = { NOT = { alliance = { country = U15 country = RUS } alliance = { country = U15 country = SOV } alliance = { country = U15 country = MON } alliance = { country = U15 country = CSX } alliance = { country = U15 country = CHC } } } type = peace which = U15 value = 1 } #Hawaii
-command = { trigger = { NOT = { alliance = { country = CAL  country = RUS } alliance = { country = CAL country = SOV } alliance = { country = CAL country = MON } alliance = { country = CAL country = CSX } alliance = { country = CAL country = CHC } } } type = peace which = CAL value = 1 }
-command = { type = trigger which = 144010 }
-command = { type = event which = 144012 where = CSX when = 1  }
-}
-}
-
-
-event = {
-id = 156014
-random = no
-country = KOR
-style = 2
-picture = "diplomatic_campaign"
-
-name = "Fengtiang joins Anti-Japanese coalition"
-desc = "Great news. Fengtien has decided to join the common cause - to defend our newly gained independence and freedom against Japanese tyranny. Now we have a greater chance of surviving the war against Japan!"
-
-action_a = {
-name = "We shall win!"
-command = { type = dissent value = -3 }
-command = { type = alliance which = MAN }
-command = { type = relation which = MAN value = 150 }
-#maybe new ai?
-}
-}
-
-
-event = {
-id = 156015
-random = no
-country = PRI
-style = 2
-picture = "Chinese_Fighting"
-
-trigger = {
-flag = TAI_KOR
-alliance = { country = KOR country = U30 }
-war = { country = U30 country = JAP }
-}
-
-date = { day = 0 month = january year = 1936 }
-offset =  3
-deathdate = { day = 29 month = december year = 1963 }
-
-name = "Korean-Taiwanese Alliance"
-desc = "The government of Korea decided to help Taiwan directly in their fight against Japan. Now a coalition has formed against the Japanese and maybe it is our chance to get rid of the Japanese."
-
-action_a = {
-ai_chance = 50
-trigger = {
-alliance = { country = PRI country = JAP }
-}
-name = "We must continue to support Japan"
-command = { type = dissent value = 5 }
-}
-
-action_b = {
-ai_chance = 15
-name = "Make Peace and choose independence"
-command = { type = leave_alliance when = 1 }
-command = { type = peace which = KOR value = 1 }
-command = { type = peace which = U30 value = 1 }
-command = { type = peace which = SIB value = 1 }
-command = { type = peace which = MAN value = 1 }
-command = { type = peace which = CSX value = 1 }
-command = { type = peace which = CHC value = 1 }
-command = { type = peace which = EAF value = 1 }
-command = { type = end_puppet }
-command = { type = end_access which = JAP }
-command = { type = set_relation which = JAP value = -50 }
-command = { type = relation which = CSX value = 30 }
-command = { type = set_relation which = KOR value = 50 }
-command = { type = set_relation which = U30 value = 50 }
-}
-
-action_c = {
-ai_chance = 35
-name = "Join the Anti-Japanese coalition"
-command = { type = leave_alliance when = 1 }
-command = { type = peace which = KOR value = 1 }
-command = { type = peace which = U30 value = 1 }
-command = { type = peace which = SIB value = 1 }
-command = { type = peace which = MAN value = 1 }
-command = { type = peace which = CSX value = 1 }
-command = { type = peace which = CHC value = 1 }
-command = { type = peace which = EAF value = 1 }
-command = { type = end_puppet }
-command = { type = end_access which = JAP }
-command = { type = set_relation which = JAP value = -70 }
-command = { type = relation which = CSX value = 10 }
-command = { type = relation which = CSX value = 30 }
-command = { type = set_relation which = KOR value = 150 }
-command = { type = set_relation which = U30 value = 150 }
-command = { type = setflag which = TAI_PRI }
-command = { type = trigger which = 156016 }
-}
-
-action_d = {
-trigger = {
-exists = RUS
-NOT = { 
-exists = SIB 
-}
-control = { province = 1162 data = RUS } #Irkutsk
-}
-ai_chance = 25
-name = "It is time to reunite with Russia"
-command = { type = leave_alliance when = 1 }
-command = { type = peace which = KOR value = 1 }
-command = { type = peace which = U30 value = 1 }
-command = { type = peace which = SIB value = 1 }
-command = { type = peace which = MAN value = 1 }
-command = { type = peace which = CSX value = 1 }
-command = { type = peace which = CHC value = 1 }
-command = { type = peace which = EAF value = 1 }
-command = { type = trigger which = 750068 } # in russian foreign policy
-}
-}
-
-
-event = {
-id = 156016
-random = no
-country = KOR
-style = 2
-picture = "diplomatic_campaign"
-
-name = "Primorsk joins Anti-Japanese coalition"
-desc = "Great news. Transamur has decided to join the common cause - to defend our newly gained independence and freedom against Japanese tyranny. Now we have a greater chance of surviving the war against Japan!"
-
-action_a = {
-name = "We shall win!"
-command = { type = dissent value = -3 }
-command = { type = alliance which = PRI }
-command = { type = relation which = PRI value = 150 }
-#maybe new ai?
-}
-}
-
 
 event = {
 id = 156017
@@ -780,304 +529,77 @@ style = 2
 picture = "Chinese_Fighting"
 
 trigger = {
+flag = KOR_MAN
+flag = KOR_PRI
 flag = TAI_KOR
-flag = TAI_MAN
-flag = TAI_PRI
 alliance = { country = KOR country = U30 }
 alliance = { country = KOR country = MAN }
 alliance = { country = KOR country = PRI }
 war = { country = U30 country = JAP }
+war = { country = KOR country = JAP }
+war = { country = MAN country = JAP }
+war = { country = PRI country = JAP }
+region = { region = "Korea" country = KOR data = 1 value = 100 }
+region = { region = "Taiwan" country = U30 data = 1 value = 100 }
 NOT = {  
 ispuppet = JAP
 ispuppet = KOR
 ispuppet = MAN
 ispuppet = PRI
+ispuppet = U30
 }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  7
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Anti-Japanese Alliance"
-desc = "After Korea gave help to the rebels on Taiwan, Transamur and Manchuria followed them and formed an Anti-Japanese Alliance. Now that our colonies have rebelled against us we face serious problems."
-
-action_a = {
-ai_chance = 30
-name = "Destroy their pathetic alliance"
-command = { type = dissent value = -5 }
-command = { type = addclaim which = 1230 }
-command = { type = addclaim which = 1231 }
-command = { type = addclaim which = 1232 }
-command = { type = addclaim which = 1233 }
-command = { type = addclaim which = 1228 }
-command = { type = addclaim which = 1229 }
-command = { type = addclaim which = 1224 }
-command = { type = addclaim which = 1226 }
-command = { type = addclaim which = 1225 }
-command = { type = addclaim which = 1227 }
-command = { type = addclaim which = 1223 }
-command = { type = addclaim which = 1221 }
-command = { type = addclaim which = 1222 }
-command = { type = addclaim which = 1361 }
-command = { type = addclaim which = 1362 }
-command = { type = addclaim which = 1363 }
-command = { type = addclaim which = 1364 }
-command = { type = clrflag  which = TAI_KOR }
-command = { type = clrflag  which = TAI_MAN }
-command = { type = clrflag  which = TAI_PRI }
-}
-
-action_b = {
-ai_chance = 40
-name = "Make peace and restore our alliance in a more democratic way"
-command = { type = peace which = KOR value = 0 }
-command = { type = peace which = U30 value = 0 }
-command = { type = peace which = MAN value = 0 }
-command = { type = peace which = PRI value = 0 }
-command = { type = relation which = KOR value = 100 }
-command = { type = relation which = U30 value = 100 }
-command = { type = relation which = MAN value = 100 }
-command = { type = relation which = RSI value = 100 }
-command = { type = secedeprovince which = KOR value = 1230 }
-command = { type = secedeprovince which = KOR value = 1231 }
-command = { type = secedeprovince which = KOR value = 1232 }
-command = { type = secedeprovince which = KOR value = 1233 }
-command = { type = secedeprovince which = KOR value = 1228 }
-command = { type = secedeprovince which = KOR value = 1229 }
-command = { type = secedeprovince which = KOR value = 1224 }
-command = { type = secedeprovince which = KOR value = 1226 }
-command = { type = secedeprovince which = KOR value = 1225 }
-command = { type = secedeprovince which = KOR value = 1227 }
-command = { type = secedeprovince which = KOR value = 1223 }
-command = { type = secedeprovince which = KOR value = 1221 }
-command = { type = secedeprovince which = KOR value = 1222 }
-command = { type = removeclaim   which = 1361   }
-command = { type = removeclaim   which = 1362   }
-command = { type = removeclaim   which = 1363   }
-command = { type = removeclaim   which = 1364   }
-command = { type = dissent value = 4 }
-command = { type = trigger which = 156018 }
-command = { type = trigger which = 156019 }
-command = { type = trigger which = 156020 }
-command = { type = trigger which = 156021 }
-command = { type = secedeprovince which = MAN value = 1240 }
-command = { type = secedeprovince which = MAN value = 1236 }
-command = { type = secedeprovince which = MAN value = 1235 }
-command = { type = secedeprovince which = MAN value = 1216 }
-command = { type = secedeprovince which = MAN value = 1239 }
-command = { type = secedeprovince which = MAN value = 1246 }
-command = { type = secedeprovince which = MAN value = 1247 }
-command = { type = clrflag  which = TAI_KOR }
-command = { type = clrflag  which = TAI_MAN }
-command = { type = clrflag  which = TAI_PRI }
-}
-
-action_c = {
-ai_chance = 30
-name = "Retreat to our isles"
-command = { type = peace which = KOR value = 0 }
-command = { type = peace which = U30 value = 0 }
-command = { type = peace which = MAN value = 0 }
-command = { type = peace which = PRI value = 0 }
-command = { type = secedeprovince which = KOR value = 1230 }
-command = { type = secedeprovince which = KOR value = 1231 }
-command = { type = secedeprovince which = KOR value = 1232 }
-command = { type = secedeprovince which = KOR value = 1233 }
-command = { type = secedeprovince which = KOR value = 1228 }
-command = { type = secedeprovince which = KOR value = 1229 }
-command = { type = secedeprovince which = KOR value = 1224 }
-command = { type = secedeprovince which = KOR value = 1226 }
-command = { type = secedeprovince which = KOR value = 1225 }
-command = { type = secedeprovince which = KOR value = 1227 }
-command = { type = secedeprovince which = KOR value = 1223 }
-command = { type = secedeprovince which = KOR value = 1221 }
-command = { type = secedeprovince which = KOR value = 1222 }
-command = { type = removeclaim   which = 1361   }
-command = { type = removeclaim   which = 1362   }
-command = { type = removeclaim   which = 1363   }
-command = { type = removeclaim   which = 1364   }
-command = { type = relation which = KOR value = 10 }
-command = { type = relation which = U30 value = 10 }
-command = { type = relation which = MAN value = 10 }
-command = { type = relation which = RSI value = 10 }
-command = { type = secedeprovince which = MAN value = 1240 }
-command = { type = secedeprovince which = MAN value = 1236 }
-command = { type = secedeprovince which = MAN value = 1235 }
-command = { type = secedeprovince which = MAN value = 1216 }
-command = { type = secedeprovince which = MAN value = 1239 }
-command = { type = secedeprovince which = MAN value = 1246 }
-command = { type = secedeprovince which = MAN value = 1247 }
-command = { type = dissent value = 7 }
-command = { type = clrflag  which = TAI_KOR }
-command = { type = clrflag  which = TAI_MAN }
-command = { type = clrflag  which = TAI_PRI }
-}
-}
-
-
-event = {
-id = 156018
-random = no
-country = MAN
-style = 2
-picture = "japan"
-
-name = "Alliance with Japan?"
-desc = "The Emperor of Japan recognised our desire to become an independent nation and now he offers us the chance to enter an alliance with the Japanese Empire."
-
-action_a = {
-ai_chance = 30
-name = "Japan is our ally"
-command = { type = leave_alliance when = 1 }
-command = { type = alliance which = JAP }
-command = { type = set_relation which = JAP value = 150 }
-command = { type = relation which = CSX value = -30 }
-command = { type = dissent value = 3 }
-}
-
-action_b = {
-ai_chance = 10
-name = "Choose independence"
-command = { type = leave_alliance when = 1 }
-command = { type = set_relation which = JAP value = 0 }
-command = { type = dissent value = -5 }
-}
-
-action_c = {
-ai_chance = 60
-name = "It is time to reunite China under Pu Yi"
-trigger = {
-exists = CSX
-NOT = { ispuppet = CSX }
-}
-name = "It is time to reunite China under Pu Yi"
-command = { type = leave_alliance when = 1 }
-command = { type = end_puppet }
-command = { type = end_access which = JAP }
-command = { type = peace which = KOR value = 1 }
-command = { type = peace which = U30 value = 1 }
-command = { type = peace which = PRI value = 1 }
-command = { type = peace which = SIB value = 1 }
-command = { trigger = { NOT = { alliance = { country = CAN  country = RUS } alliance = { country = CAN country = SOV } alliance = { country = CAN country = MON } alliance = { country = CAN country = CSX } alliance = { country = CAN country = CHC } } } type = peace which = CAN value = 1 } #Preserve state of war with RUS/SOV/MON/CSX/CHC since they may have their own interests in Fengtien land
-command = { trigger = { NOT = { alliance = { country = FRA  country = RUS } alliance = { country = FRA country = SOV } alliance = { country = FRA country = MON } alliance = { country = FRA country = CSX } alliance = { country = FRA country = CHC } } } type = peace which = FRA value = 1 }
-command = { trigger = { NOT = { alliance = { country = GER  country = RUS } alliance = { country = GER country = SOV } alliance = { country = GER country = MON } alliance = { country = GER country = CSX } alliance = { country = GER country = CHC } } } type = peace which = GER value = 1 }
-command = { trigger = { NOT = { alliance = { country = PHI  country = RUS } alliance = { country = PHI country = SOV } alliance = { country = PHI country = MON } alliance = { country = PHI country = CSX } alliance = { country = PHI country = CHC } } } type = peace which = PHI value = 1 }
-command = { trigger = { NOT = { alliance = { country = U15 country = RUS } alliance = { country = U15 country = SOV } alliance = { country = U15 country = MON } alliance = { country = U15 country = CSX } alliance = { country = U15 country = CHC } } } type = peace which = U15 value = 1 } #Hawaii
-command = { trigger = { NOT = { alliance = { country = CAL  country = RUS } alliance = { country = CAL country = SOV } alliance = { country = CAL country = MON } alliance = { country = CAL country = CSX } alliance = { country = CAL country = CHC } } } type = peace which = CAL value = 1 }
-command = { type = trigger which = 144010 }
-command = { type = event which = 144012 where = CSX when = 1  }
-}
-}
-
-
-event = {
-id = 156019
-random = no
-country = PRI
-style = 2
-picture = "japan"
-
-name = "Alliance with Japan?"
-desc = "The Emperor of Japan recognised our desire to become an independent nation and now he offers us the chance to enter an alliance with the Japanese Empire."
-
-action_a = {
-ai_chance = 30
-name = "Japan is our ally"
-command = { type = leave_alliance when = 1 }
-command = { type = alliance which = JAP }
-command = { type = set_relation which = JAP value = 150 }
-command = { type = dissent value = 3 }
-}
-
-action_b = {
-ai_chance = 10
-name = "Choose independence"
-command = { type = leave_alliance when = 1 }
-command = { type = set_relation which = JAP value = 0 }
-command = { type = dissent value = -5 }
-}
-
-action_c = {
-ai_chance = 60
-name = "It is time to reunite with Russia"
-trigger = {
-exists = RUS
-NOT = {
-exists = SOV
-exists = SIB
-ispuppet = RUS
-}
-}
-command = { type = leave_alliance when = 1 }
-command = { type = trigger which = 750068 } # in russian foreign policy
-}
-}
-
-
-event = {
-id = 156020
-random = no
-country = KOR
-style = 2
-picture = "japan"
-
-name = "Allaince with Japan?"
-desc = "The Emperor of Japan recognised our desire to become an independent nation and now he offers us the chance to enter an alliance with the Japanese Empire."
+name = EVT_156017_NAME #Anti-Japanese Alliance
+desc = EVT_156017_DESC #Fengtian, Transamur, and those rebels in Korea and Taiwan have effectively formed a coalition against us. They have surrounded us in all directions and we face serious problems.
 
 action_a = {
 ai_chance = 50
-name = "Japan is our ally"
-command = { type = leave_alliance when = 1 }
-command = { type = alliance which = JAP }
-command = { type = set_relation which = JAP value = 150 }
-command = { type = dissent value = 3 }
+name = ACTIONNAME156017A #Destroy their pathetic alliance
+command = { type = dissent value = -5 }
 }
 
 action_b = {
 ai_chance = 50
-name = "Choose independence"
-command = { type = leave_alliance when = 1 }
-command = { type = set_relation which = JAP value = 0 }
-command = { type = dissent value = -5 }
+name = ACTIONNAME156017B #Retreat to our isles
+command = { type = peace which = KOR value = 0 }
+command = { type = peace which = U30 value = 0 }
+command = { type = peace which = MAN value = 0 }
+command = { type = peace which = PRI value = 0 }
+command = { type = removeclaim which = 1221 }
+command = { type = removeclaim which = 1222 }
+command = { type = removeclaim which = 1223 }
+command = { type = removeclaim which = 1224 }
+command = { type = removeclaim which = 1225 }
+command = { type = removeclaim which = 1226 }
+command = { type = removeclaim which = 1227 }
+command = { type = removeclaim which = 1228 }
+command = { type = removeclaim which = 1229 }
+command = { type = removeclaim which = 1230 }
+command = { type = removeclaim which = 1231 }
+command = { type = removeclaim which = 1232 }
+command = { type = removeclaim which = 1233 }
+command = { type = secederegion which = KOR value = "Korea" when = 1 }
+command = { type = removeclaim   which = 1361 }
+command = { type = removeclaim   which = 1362 }
+command = { type = removeclaim   which = 1363 }
+command = { type = removeclaim   which = 1364 }
+command = { type = secederegion which = U30 value = "Taiwan" when = 1 }
+command = { type = secederegion which = MAN value = "China" when = 1 }
+command = { type = secederegion which = PRI value = "Far East Siberia" when = 1 }
+command = { type = secederegion which = PRI value = "Krasnoyarsk" when = 1 }
+command = { type = secederegion which = PRI value = "Irkutsk" when = 1 }
+command = {
+trigger = { area = { area = "Sakhalin_Kuriles" country = PRI data = 1 value = 50 } }
+type = secedearea which = PRI value = "Sakhalin_Kuriles" when = 1
+}
+command = { type = dissent value = 30 }
 }
 }
-
-
-event = {
-id = 156021
-random = no
-country = U30
-style = 2
-picture = "japan"
-
-name = "Allaince with Japan?"
-desc = "The Emperor of Japan recognised our desire to become an independent nation and now he offers us the chance to enter an alliance with the Japanese Empire."
-
-action_a = {
-ai_chance = 30
-name = "Japan is our ally"
-command = { type = leave_alliance when = 1 }
-command = { type = alliance which = JAP }
-command = { type = set_relation which = JAP value = 150 }
-command = { type = dissent value = 3 }
-command = { type = sleepevent which = 156000 }
-command = { type = setflag which = TAI_freedom }
-command = { type = setflag which = TAI_wonwar }
-}
-
-action_b = {
-ai_chance = 70
-name = "Choose independence"
-command = { type = leave_alliance when = 1 }
-command = { type = set_relation which = JAP value = 0 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 156000 }
-command = { type = setflag which = TAI_freedom }
-command = { type = setflag which = TAI_wonwar }
-}
-}
-
 
 event = {
 id = 156022
@@ -1090,10 +612,7 @@ trigger = {
 war = { country = JAP country = U30 }
 event = { id = 156004 days = 100 } #Rebellion in Taiwan 100 days ago
 flag = TAI_freedomfight
-control = { province = 1361 data = U30 }
-control = { province = 1362 data = U30 }
-control = { province = 1363 data = U30 }
-control = { province = 1364 data = U30 }
+region = { region = "Taiwan" country = U30 data = 1 value = 100 }
 NOT = { 
 flag = TAI_KOR
 ispuppet = JAP
@@ -1102,17 +621,17 @@ ispuppet = U30
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  50
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Taiwan - a big problem"
-desc = "Our army couldn't reconquer the legal property of the Empire and lots of our soldiers were killed. The island is just too strong to destroy them. Maybe it is time to offer them peace."
+name = EVT_156022_NAME #Taiwan - a big problem
+desc = EVT_156022_DESC #Our army couldn't reconquer the legal property of the Empire and lots of our soldiers were killed. The island is just too strong to destroy them. Maybe it is time to offer them peace.
 
 action_a = {
-name = "Make peace"
-ai_chance = 70
+name = ACTIONNAME156022A #Make peace
+ai_chance = 50
 command = { type = peace which = U30 value = 0 }
-command = { type = set_relation which = U30 value = 30 }
+command = { type = secederegion which = U30 value = "Taiwan" when = 1 }
 command = { type = dissent value = 3 }
 command = { type = removeclaim   which = 1361   }
 command = { type = removeclaim   which = 1362   }
@@ -1122,12 +641,11 @@ command = { type = trigger which = 156023 }
 }
 
 action_b = {
-name = "Peace? Never! Banzai! Banzai!"
-ai_chance = 30
+name = ACTIONNAME156022B #Peace? Never!
+ai_chance = 50
 command = { type = dissent value = 3 }
 }
 }
-
 
 event = {
 id = 156023
@@ -1136,12 +654,11 @@ country = U30
 style = 2
 picture = "japan"
 
-name = "We have defeated Japan!"
-desc = "The heavy fighting now have its advantages: we were able to destroy the invading Japanese Army and the humiliated Japaneese leadership now recognized our independence."
+name = EVT_156023_NAME #We have defeated Japan!
+desc = EVT_156023_DESC #The heavy fighting now have its advantages: we were able to destroy the invading Japanese Army and the humiliated Japaneese leadership now recognized our independence.
 
 action_a = {
-name = "Hurrah! Taiwan is independent!"
-command = { type = set_relation which = JAP value = 0 }
+name = ACTIONNAME156023A #Hurrah! Taiwan is independent!
 command = { type = dissent value = -5 }
 command = { type = sleepevent which = 156000 }
 command = { type = setflag which = TAI_freedom }
@@ -1166,15 +683,16 @@ war = { country = U30 country = JAP }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  3
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Korean volunteers leave"
-desc = "After destorying Japan the very helpful volunteer army left Taiwan to return to their homeland."
+name = EVT_156024_NAME #Korean volunteers leave
+desc = EVT_156024_DESC #After destorying Japan the very helpful volunteer army left Taiwan to return to their homeland.
 
 action_a = {
-name = "Thank you for your help!"
+name = ACTIONNAME156024A #Thank you for your help!
 command = { type = relation which = KOR value = 50 }
+command = { type = remove_division which = "Seoul Volunteers" value = U30 }
 command = { type = dissent value = -1 }
 }
 }
@@ -1196,14 +714,14 @@ war = { country = U30 country = JAP }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  2
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "AOG volunteers leave"
-desc = "After destorying Japan the very helpful volunteer army left Taiwan to return to their homeland."
+name = EVT_156025_NAME #AOG volunteers leave
+desc = EVT_156024_DESC #After destorying Japan the very helpful volunteer army left Taiwan to return to their homeland.
 
 action_a = {
-name = "Thank you for your help!"
+name = ACTIONNAME156024A #Thank you for your help!
 command = { type = relation which = CGX value = 50 }
 command = { type = dissent value = -1 }
 }
@@ -1226,15 +744,16 @@ war = { country = U30 country = JAP }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  2
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Qing volunteers leave"
-desc = "After destorying Japan the very helpful volunteer army left Taiwan to return to their homeland."
+name = EVT_156026_NAME #Qing volunteers leave
+desc = EVT_156024_DESC #After destorying Japan the very helpful volunteer army left Taiwan to return to their homeland.
 
 action_a = {
-name = "Thank you for your help!"
+name = ACTIONNAME156024A #Thank you for your help!
 command = { type = relation which = CSX value = 50 }
+command = { type = remove_division which = "1. Qing Shi" value = U30 }
 command = { type = dissent value = -1 }
 }
 }
@@ -1259,34 +778,30 @@ war = { country = CSX country = JAP }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  7
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Fate of Taiwan"
-desc = "After conquering Taiwan a small delegation of the Bunka Kyokai (Cultural Association) appeared before the Glorious Emperor Puyi and asked him to grant them autonomy within the Qing Empire"
+name = EVT_156027_NAME #Fate of Taiwan
+desc = EVT_156027_DESC #After conquering Taiwan a small delegation of the Wenhua Xiehui (Cultural Association) appeared before the Glorious Emperor Puyi and asked him to grant them autonomy within the Qing Empire.
 
 action_a = {
-ai_chance = 0
-name = "Give them some freedom"
-command = { type = domestic which = democratic value = 1 }
-command = { type = independence which = U30 value = 1 when = 0 }
-command = { type = dissent value = -1 }
-command = { type = make_puppet which = U30 }
-command = { type = trigger which = 156028 }
-}
-
-action_b = {
 ai_chance = 100
-name = "Taiwan is a part of the Empire"
-command = { type = domestic which = democratic value = -1 }
+name = ACTIONNAME156027A #Taiwan is a part of the Empire
 command = { type = addcore which = 1361 }
 command = { type = addcore which = 1362 }
 command = { type = addcore which = 1363 }
 command = { type = addcore which = 1364 }
 command = { type = dissent value = 2 }
 }
+action_b = {
+ai_chance = 0
+name = ACTIONNAME156027B #Give them some freedom
+command = { type = independence which = U30 value = 1 when = 0 }
+command = { type = dissent value = -1 }
+command = { type = make_puppet which = U30 }
+command = { type = trigger which = 156028 }
 }
-
+}
 
 event = {
 id = 156028
@@ -1295,13 +810,13 @@ country = U30
 style = 2
 picture = "Chinese New Year"
 
-name = "Qing autonomy"
-desc = "Emperor Puyi decided to give us some autonomy. We will remain a part of the Empire and a governor will be appointed for us. The first governor will be Prince Zaizhen."
+name = EVT_156028_NAME #Qing autonomy
+desc = EVT_156028_DESC #Emperor Puyi decided to give us some autonomy. We will remain a part of the Empire and a governor will be appointed for us. The first governor will be Prince Zaizhen.
 
 action_a = {
-name = "Better than nothing"
+name = ACTIONNAME156028A #Better than nothing
 command = { type = headofstate which = 910920 }
-command = { type = headofgovernment which = 910946 }
+command = { type = headofgovernment which = 910923 }
 command = { type = armamentminister which =  910940 }
 command = { type = alliance which = CSX }
 command = { type = supplies value = 300 }
@@ -1338,30 +853,30 @@ war = { country = -1 country = JAP }
 }
 
 date = { day = 1 month = january year = 1936 }
-offset =  7
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Fate of Taiwan"
-desc = "After conquering Taiwan a small delegation of the Bunka Kyokai (Cultural Association) appeared before the President and asked him to allow Taiwan to become a free and independent nation."
+name = EVT_156027_NAME #Fate of Taiwan
+desc = EVT_156029_DESC #After conquering Taiwan a small delegation of the Wenhua Xiehui (Cultural Association) appeared before the President and asked him to allow Taiwan to become a free and independent nation.
 
 action_a = {
-ai_chance = 0
-name = "Let them be free"
-command = { type = domestic which = democratic value = 1 }
-command = { type = independence which = U30 value = 1 when = 1 }
-command = { type = dissent value = -3 }
-command = { type = make_puppet which = U30 }
-command = { type = trigger which = 156030 }
-}
-
-action_b = {
 ai_chance = 100
-name = "Taiwan is indivisible part of China!"
+name = ACTIONNAME156029A #Taiwan is indivisible part of China!
 command = { type = addcore which = 1361 }
 command = { type = addcore which = 1362 }
 command = { type = addcore which = 1363 }
 command = { type = addcore which = 1364 }
 command = { type = dissent value = 1 }
+}
+
+action_b = {
+ai_chance = 0
+name = ACTIONNAME156029B #Let them be free
+command = { type = domestic which = democratic value = 1 }
+command = { type = independence which = U30 value = 1 when = 1 }
+command = { type = dissent value = -3 }
+command = { type = make_puppet which = U30 }
+command = { type = trigger which = 156030 }
 }
 }
 
@@ -1373,11 +888,11 @@ country = U30
 style = 2
 picture = "Chinese New Year"
 
-name = "Autonomy"
-desc = "After conquering the island of Taiwan from the Japanese, the government of China gas decided to let us become an independent nation. This is a great day for all of us!"
+name = EVT_156030_NAME #Autonomy
+desc = EVT_156030_DESC #After conquering the island of Taiwan from the Japanese, the government of China gas decided to let us become an independent nation. This is a great day for all of us!
 
 action_a = {
-name = "Hurrah! Taiwan is independent!"
+name = ACTIONNAME156030A #Hurrah! Taiwan is independent!
 command = { type = supplies value = 300 }
 command = { type = rarematerialspool value = 300 }
 command = { type = energypool value = 300 }
@@ -1408,14 +923,14 @@ flag = TAI_freedom
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  25
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Reforms"
-desc = "After forming the provisional government of Taiwan, the Bunka Kyokai was faced with the underdevelopment of the island. The reforms are indispensable to make the island economically self-sufficient."
+name = EVT_156031_NAME #Reforms
+desc = EVT_156031_DESC #After forming the provisional government of Taiwan, the Wenhua Xiehui was faced with the underdevelopment of the island. The reforms are indispensable to make the island economically self-sufficient.
 
 action_a = {
-name = "Reforming the economy is the most important"
+name = ACTIONNAME156031A #Reforming the economy is the most important
 ai_chance = 75
 command = { type = domestic which = free_market value = -1 }
 command = { type = peacetime_ic_mod value = 5 }
@@ -1426,9 +941,9 @@ command = { type = setflag which = TAI_economy }
 }
 
 action_b = {
-name = "Creating a modern army is the right choice"
+name = ACTIONNAME156031B #Creating a modern army is the right choice
 ai_chance = 25
-command = { type = domestic which = professional_army value = -1 }
+command = { type = domestic which = professional_army value = 1 }
 command = { type = domestic which = defense_lobby value = 1 }
 command = { type = supplies value = -300 }
 command = { type = money value = -30 }
@@ -1452,22 +967,22 @@ flag = TAI_economy
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  15
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Economic Reforms"
-desc = "The time to decide where we would like to start the economic reforms is nigh. There are a lot of things to do, and we can't help all of the sectors. All of the options seem good and can be a good choice."
+name = EVT_156032_NAME #Economic Reforms
+desc = EVT_156032_DESC #The time to decide where we would like to start the economic reforms is nigh. There are a lot of things to do, and we can't help all of the sectors. All of the options seem good and can be a good choice.
 
 action_a = {
-name = "Strong industry is what we need"
+name = ACTIONNAME156032A #Strong industry is what we need
 ai_chance = 40
-command = { type = domestic which = interventionism value = 1 }
+command = { type = domestic which = free_market value = -1 }
 command = { type = dissent value = 1 }
 command = { type = setflag which = TAI_industry }
 }
 
 action_b = {
-name = "Agriculture needs reforms as soon as possible"
+name = ACTIONNAME156032B #Agriculture needs reforms as soon as possible
 ai_chance = 30
 command = { type = domestic which = free_market value = -1 }
 command = { type = peacetime_ic_mod value = 5 }
@@ -1476,13 +991,12 @@ command = { type = setflag which = TAI_agriculture }
 }
 
 action_c = {
-name = "Resources are important if we wish to become a strong nation"
+name = ACTIONNAME156032C #Resources are important if we wish to become a strong nation
 ai_chance = 30
 command = { type = dissent value = -1 }
 command = { type = setflag which = TAI_resource }
 }
 }
-
 
 event = {
 id = 156033
@@ -1496,14 +1010,14 @@ flag = TAI_industry
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  50
+offset =  60
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Industrial Reforms"
-desc = "After investing money and resources into the new factories, the improvements are nearly ready. It's time now to decide where should we deploy them."
+name = EVT_156033_NAME #Industrial Reforms
+desc = EVT_156033_DESC #After investing money and resources into the new factories, the improvements are nearly ready. It's time now to decide where should we deploy them.
 
 action_a = {
-name = "A strong industrial base"
+name = ACTIONNAME156033A #A strong industrial base
 ai_chance = 50
 command = { type = domestic which = free_market value = -1 }
 command = { type = construct which = ic where = 1362 value = 3 }
@@ -1515,7 +1029,7 @@ command = { type = setflag which = TAI_reformed }
 }
 
 action_b = {
-name = "Equal development"
+name = ACTIONNAME156033B #Equal development
 ai_chance = 50
 command = { type = domestic which = free_market value = 1 }
 command = { type = construct which = ic where = 1362 value = 1 }
@@ -1525,7 +1039,6 @@ command = { type = dissent value = -1 }
 command = { type = setflag which = TAI_reformed }
 }
 }
-
 
 event = {
 id = 156034
@@ -1539,15 +1052,15 @@ flag = TAI_agriculture
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  50
+offset =  60
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Agricultural Reforms"
-desc = "After investing lots of money and resources into the mechanization of agriculture, the improvements are nearly ready."
+name = EVT_156034_NAME #Agricultural Reforms
+desc = EVT_156034_DESC #After investing lots of money and resources into the mechanization of agriculture, the improvements are nearly ready.
 
 action_a = {
-name = "Now Taiwan is a modern nation"
-command = { type = domestic which = free_market value = 1 }
+name = ACTIONNAME156034A #Now Taiwan is a modern nation
+command = { type = domestic which = free_market value = -1 }
 command = { type = relative_manpower value = 3 }
 command = { type = money value = 75 }
 command = { type = manpowerpool value = 10 }
@@ -1559,7 +1072,6 @@ command = { type = dissent value = -1 }
 command = { type = setflag which = TAI_reformed }
 }
 }
-
 
 event = {
 id = 156035
@@ -1573,14 +1085,14 @@ flag = TAI_resource
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  50
+offset =  60
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Agricultural Reforms"
-desc = "After investing lots of money and resources into the development of our natural resources, the improvements are nearly ready."
+name = EVT_156035_NAME #Mining Reforms
+desc = EVT_156035_DESC #After investing lots of money and resources into the development of our natural resources, the improvements are nearly ready.
 
 action_a = {
-name = "Now Taiwan is a modern nation"
+name = ACTIONNAME156034A #Now Taiwan is a modern nation
 command = { type = domestic which = free_market value = -1 }
 command = { type = relative_manpower value = 1 }
 command = { type = money value = -30 }
@@ -1591,7 +1103,6 @@ command = { type = construct which = ic where = 1323 value = 1 }
 command = { type = setflag which = TAI_reformed }
 }
 }
-
 
 event = {
 id = 156036
@@ -1604,23 +1115,22 @@ trigger = {
 flag = TAI_army 
 }
 date = { day = 0 month = january year = 1936 }
-offset =  15
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Military Reforms"
-desc = "The time to decide where we would like to start the military reforms is nigh. There are a lot of things to do, and we can't develop the whole military. All of the options seem good and can be a good choice."
+name = EVT_156036_NAME #Military Reforms
+desc = EVT_156036_DESC #The time to decide where we would like to start the military reforms is nigh. There are a lot of things to do, and we can't develop the whole military. All of the options seem good and can be a good choice.
 
 action_a = {
-name = "We need a fleet to protect our seas"
+name = ACTIONNAME156036A #We need a fleet to protect our seas
 ai_chance = 33
 command = { type = domestic which = professional_army value = 1 }
-command = { type = domestic which = interventionism value = 1 }
 command = { type = dissent value = 1 }
 command = { type = setflag which = TAI_sea }
 }
 
 action_b = {
-name = "A strong army will stop our enemies"
+name = ACTIONNAME156036B #A strong army will stop our enemies
 ai_chance = 33
 command = { type = domestic which = professional_army value = 1 }
 command = { type = dissent value = -1 }
@@ -1628,7 +1138,7 @@ command = { type = setflag which = TAI_land }
 }
 
 action_c = {
-name = "Controlling the skies are the key to win a war"
+name = ACTIONNAME156036C #Controlling the skies is the key to win a war
 ai_chance = 34
 command = { type = domestic which = professional_army value = 1 }
 command = { type = dissent value = 1 }
@@ -1652,14 +1162,14 @@ date = { day = 0 month = january year = 1936 }
 offset = 60
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Fleet reform"
-desc = "We spent all of the resources we could to build a bigger and better fleet. It's not a very impressive force but with this we are now able to protect our seas."
+name = EVT_156037_NAME #Naval reform
+desc = EVT_156037_DESC #We spent all of the resources we could to build a bigger and better fleet. It's not a very impressive force but with this we are now able to protect our seas.
 
 action_a = {
-name = "Good"
+name = ACTIONNAME156037A #Good
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
-command = { type = add_division which = "Formosa" value = light_cruiser when = 2 }
+command = { type = add_division which = "Taiwan" value = light_cruiser when = 2 }
 command = { type = add_division which = "2. Quzujian Dadui" value = destroyer when = 2 }
 command = { type = add_division which = "3. Quzujian Dadui" value = destroyer when = 2 }
 }
@@ -1681,11 +1191,11 @@ date = { day = 0 month = january year = 1936 }
 offset = 60
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Army reform"
-desc = "We spent all of the resources we could to build a bigger and better army. It's not a very impressive force but with this we are now able to protect our homeland."
+name = EVT_156038_NAME #Army reform
+desc = EVT_156038_DESC #We spent all of the resources we could to build a bigger and better army. It's not a very impressive force but with this we are now able to protect our homeland.
 
 action_a = {
-name = "Good"
+name = ACTIONNAME156037A #Good
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
 command = { type = add_division which = "Di'2 Shi" value = infantry when = 1 where = artillery }
@@ -1709,11 +1219,11 @@ date = { day = 0 month = january year = 1936 }
 offset = 60
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Air Force reform"
-desc = "We spent all of the resources we could to build a bigger and better air force. It's not a very impressive force but with this we are now able to protect our skies."
+name = EVT_156039_NAME #Air Force reform
+desc = EVT_156039_DESC #We spent all of the resources we could to build a bigger and better air force. It's not a very impressive force but with this we are now able to protect our skies.
 
 action_a = {
-name = "Good"
+name = ACTIONNAME156037A #Good
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
 command = { type = add_division which = "1. Zhandouji Dadui" value = interceptor when = 1 }
@@ -1737,21 +1247,21 @@ atwar = no
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 15
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Elections?"
-desc = "The President of the Provisional Government gave a speech on the Bunka Kyokai's conference. He told us that after the reforms Taiwan is ready to hold a democratic election if it's necessary."
+name = EVT_156040_NAME #Elections?
+desc = EVT_156040_DESC #The President of the Provisional Government gave a speech on the Wenhua Xiehui's conference. He told us that after the reforms Taiwan is ready to hold a democratic election if it's necessary.
 
 action_a = {
-name = "Call the elections!"
+name = ACTIONNAME156040A #Call the elections!
 ai_chance = 80
 command = { type = dissent value = -3 }
 command = { type = setflag which = TAI_elections }
 }
 
 action_b = {
-name = "There's no need of it. The nationalists will rule Taiwan!"
+name = ACTIONNAME156040B #There's no need of it. The nationalists will rule Taiwan!
 ai_chance = 20
 command = { type = set_domestic which = democratic value = 5 }
 command = { type = set_domestic which = political_left value = 2 }
@@ -1781,15 +1291,24 @@ date = { day = 0 month = january year = 1936 }
 offset =  45
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "General Elections"
-desc = "The first general elections are ahead. It's a really big event because the last time when Taiwan was an independent republic (in 1895) there was no time for holding elections. There are two major parties: the nationalist Taiwanese People's Party and the radical socialist Taiwanese Syndicalist Party. The race is really even between them and both parties are well-supported."
+name = EVT_156041_NAME #General Election
+desc = EVT_156041_DESC #The first general election is ahead. It's a really big event because the last time when Taiwan was an independent republic (in 1895) there was no time for holding elections.
 
 action_a = {
-name = "Taiwanese People's Party"
+name = ACTIONNAME156041A #Taiwanese People's Party
 ai_chance = 95
 command = { type = set_domestic which = democratic value = 6 }
 command = { type = set_domestic which = political_left value = 3 }
-command = { type = headofstate which = 910922 }
+command = {
+trigger = {
+NOT = {
+AND = {
+flag = TAI_Japanese
+puppet = { country = U30 country = JAP }
+}
+}
+}
+type = headofstate which = 910922 }
 command = { type = headofgovernment which = 910924 }
 command = { type = armamentminister which =  910927 }
 command = { type = foreignminister which = 910926 }
@@ -1807,7 +1326,7 @@ NOT = {
 ispuppet = U30
 }
 }
-name = "Taiwanese Syndicalist Party"
+name = ACTIONNAME156041B #Taiwanese Syndicalist Party
 ai_chance = 5
 command = { type = set_domestic which = democratic value = 5 }
 command = { type = set_domestic which = political_left value = 8 }
@@ -1850,14 +1369,14 @@ ispuppet = U30
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  7
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Taiwanese Syndicalism needs help"
-desc = "After the glorious revolution on Taiwan, the evil nationalists are endangering the revolutionary achievements. Our nation is so young and we are so unprotected that we may need the help of other Syndicalists."
+name = EVT_156042_NAME #Taiwanese Syndicalism needs help
+desc = EVT_156042_DESC #After the glorious revolution on Taiwan, the evil nationalists are endangering the revolutionary achievements. Our nation is so young and we are so unprotected that we may need the help of other Syndicalists.
 
 action_a = {
-name = "Contact other Syndicalists - their help will be useful"
+name = ACTIONNAME156042A #Contact other Syndicalists - their help will be useful
 ai_chance = 95
 command = { type = domestic which = interventionism value = 1 }
 command = { type = relation which = FRA value = 50 }
@@ -1867,10 +1386,9 @@ command = { type = setflag which = TAI_needhelp }
 }
 
 action_b = {
-name = "We dont need anybody's help"
+name = ACTIONNAME156042B #We dont need anybody's help
 ai_chance = 5
 command = { type = domestic which = interventionism value = -1 }
-command = { type = domestic which = defense_lobby value = -1 }
 command = { type = relation which = FRA value = -30 }
 command = { type = relation which = PRK value = -30 }
 command = { type = dissent value = 1 }
@@ -1893,21 +1411,21 @@ government = { type = communist country = U30 }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  2
+offset =  10
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Taiwan asks for help"
-desc = "Just some days ago, Syndicalism came to power in the newly-formed Taiwanese Republic and now their leader Xie Xuehong asked for our help."
+name = EVT_156043_NAME #Taiwan asks for help
+desc = EVT_156043_DESC #Just some days ago, Syndicalism came to power in the newly-formed Taiwanese Republic and now their leader Xie Xuehong asked for our help.
 
 action_a = {
-name = "Give diplomatic help"
+name = ACTIONNAME156043A #Give diplomatic help
 ai_chance = 30
 command = { type = relation which = U30 value = 30 }
 command = { type = guarantee which = FRA where = U30 }
 }
 
 action_b = {
-name = "Send military advisors"
+name = ACTIONNAME156043B #Send military advisors
 ai_chance = 30
 command = { type = relation which = U30 value = 50 }
 command = { type = manpowerpool value = -1 }
@@ -1915,7 +1433,7 @@ command = { type = setflag which = FRA_advisorstai }
 }
 
 action_c = {
-name = "Full aid shall be given"
+name = ACTIONNAME156043C #Full aid shall be given
 ai_chance = 35
 command = { type = supplies value = -300 }
 command = { type = money value = -50 }
@@ -1927,7 +1445,7 @@ command = { type = setflag which = FRA_fullhelptai }
 }
 
 action_d = {
-name = "Taiwan is not important to us"
+name = ACTIONNAME156043D #Taiwan is not important to us
 ai_chance = 5
 command = { type = relation which = U30 value = -30 }
 command = { type = domestic which = interventionism value = -1 }
@@ -1947,14 +1465,14 @@ flag = FRA_advisorstai
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 7
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "French advisors arrive"
-desc = "A week after asking for help, the glorious Commune of France sent us some advisors who arrived today. With their knowledge and experience we can defend our island from the reactionaries."
+name = EVT_156044_NAME #French advisors arrive
+desc = EVT_156044_DESC #Weeks after asking for help, the glorious Commune of France sent us some advisors who arrived today. With their knowledge and experience we can defend our island from the reactionaries.
 
 action_a = {
-name = "Great"
+name = ACTIONNAME156044A #Great
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
 command = { type = domestic which = professional_army value = 1 }
@@ -1974,14 +1492,14 @@ flag = FRA_fullhelptai
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 7
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "French help arrive"
-desc = "A week after asking for help, the glorious Commune of France sent us some advisors who arrived today. They came not alone, but with thousands of young Syndicalist volunteers who are ready to give their lives for the Revolution."
+name = EVT_156045_NAME #French help arrive
+desc = EVT_156045_DESC #Weeks after asking for help, the glorious Commune of France sent us some advisors who arrived today. They came not alone, but with thousands of young Syndicalist volunteers who are ready to give their lives for the Revolution.
 
 action_a = {
-name = "Splendid"
+name = ACTIONNAME156045A #Splendid
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
 command = { type = domestic which = professional_army value = 2 }
@@ -2005,21 +1523,21 @@ government = { type = communist country = U30 }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  2
+offset =  10
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Taiwan asks for help"
-desc = "Just some days ago, Syndicalism came to power in the newly-formed Taiwanese Republic and now their leader Xie Xuehong asked for our help."
+name = EVT_156043_NAME #Taiwan asks for help
+desc = EVT_156043_DESC #Just some days ago, Syndicalism came to power in the newly-formed Taiwanese Republic and now their leader Xie Xuehong asked for our help.
 
 action_a = {
-name = "Give diplomatic help"
+name = ACTIONNAME156043A #Give diplomatic help
 ai_chance = 50
 command = { type = relation which = U30 value = 30 }
 command = { type = guarantee which = PRK where = U30 }
 }
 
 action_b = {
-name = "Send military advisors"
+name = ACTIONNAME156043B #Send military advisors
 ai_chance = 20
 command = { type = relation which = U30 value = 50 }
 command = { type = manpowerpool value = -1 }
@@ -2027,7 +1545,7 @@ command = { type = setflag which = PRK_advisorstai }
 }
 
 action_c = {
-name = "Full aid shall be given"
+name = ACTIONNAME156043C #Full aid shall be given
 ai_chance = 20
 command = { type = supplies value = -300 }
 command = { type = money value = -70 }
@@ -2039,7 +1557,7 @@ command = { type = setflag which = PRK_fullhelptai }
 }
 
 action_d = {
-name = "Taiwan is not important for us"
+name = ACTIONNAME156043D #Taiwan is not important to us
 ai_chance = 10
 command = { type = relation which = U30 value = -30 }
 command = { type = domestic which = interventionism value = -1 }
@@ -2059,14 +1577,14 @@ flag = PRK_advisorstai
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 7
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Bengal advisors arrive"
-desc = "A week after asking for help, our Bengalese brothers and sisters sent us some advisors who arrived today. With their knowledge and experience we can defend our island from the reactionaries."
+name = EVT_156047_NAME #Indian advisors arrive
+desc = EVT_156047_DESC #Weeks after asking for help, our Indian brothers and sisters sent us some advisors who arrived today. With their knowledge and experience we can defend our island from the reactionaries.
 
 action_a = {
-name = "Great"
+name = ACTIONNAME156044A #Great
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
 command = { type = domestic which = professional_army value = 1 }
@@ -2086,18 +1604,18 @@ flag = PRK_fullhelptai
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 7
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Bengal help arrive"
-desc = "A week after asking for help, our Bengalese brothers and sisters sent us some advisors who arrived today. They came not alone, but with thousands of young Syndicalist volunteers who are ready to give their lives for the Revolution."
+name = EVT_156048_NAME #Indian help arrive
+desc = EVT_156048_DESC #Weeks after asking for help, our Indian brothers and sisters sent us some advisors who arrived today. They came not alone, but with thousands of young Syndicalist volunteers who are ready to give their lives for the Revolution.
 
 action_a = {
-name = "Splendid"
+name = ACTIONNAME156045A #Splendid
 command = { type = max_organization which = land value = 5 }
 command = { type = morale which = land value = 5 }
 command = { type = domestic which = professional_army value = 2 }
-command = { type = add_division which = "French Volunteers" value = militia when = 4 }
+command = { type = add_division which = "Indian Volunteers" value = militia when = 4 }
 }
 }
 
@@ -2120,19 +1638,19 @@ flag = FRA_fullhelptai
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 14
+offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Creating the Worker's Army"
-desc = "With the help of other Syndicalist nations we can now focus on improving our currently weak armed forces. It will soon be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!"
+name = EVT_156049_NAME #Creating the Worker's Army
+desc = EVT_156049_DESC #With the help of other Syndicalist nations we can now focus on improving our currently weak armed forces. It will soon be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!
 
 action_a = {
-name = "Create it!"
+name = ACTIONNAME156049A #Create it!
 command = { type = remove_division which = "Di'1 Shi" value = U30 }
 command = { type = remove_division which = "1. Min Shi" value = U30 }
 command = { type = remove_division which = "2. Min Shi" value = U30 }
 command = { type = add_corps which = "Taiwanese Worker's Army" value = land where = 1362 }
-command = { type = add_division which = "Xinbian Di'1 Shi" value = infantry when = 9 where = artillery }
+command = { type = add_division which = "Di'1 Xin Shi" value = infantry when = 9 where = artillery }
 command = { type = add_division which = "1. Youji Zongdui" value = militia when = 4 }
 command = { type = add_division which = "2. Youji Zongdui" value = militia when = 4 }
 command = { type = domestic which = professional_army value = -1 }
@@ -2157,12 +1675,12 @@ date = { day = 0 month = january year = 1936 }
 offset = 90
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Units ready for Worker's Army"
-desc = "With the help of other Syndicalist nations we can now focus on creating a better army than the one we have now. It will be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!"
+name = EVT_156050_NAME #Units ready for Worker's Army
+desc = EVT_156050_DESC #With the help of other Syndicalist nations we can now focus on creating a better army than the one we have now. It will be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!
 
 action_a = {
-name = "Good"
-command = { type = add_division which = "Xinbian Di'2 Shi" value = infantry when = 9 }
+name = ACTIONNAME156050A #Good
+command = { type = add_division which = "Di'2 Xin Shi" value = infantry when = 9 }
 command = { type = add_division which = "3. Youji Zongdui" value = militia when = 4 }
 }
 }
@@ -2185,12 +1703,12 @@ date = { day = 0 month = january year = 1936 }
 offset = 120
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Units ready for Worker's Army"
-desc = "With the help of other Syndicalist nations we can now focus on creating a better army than the one we have now. It will be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!"
+name = EVT_156050_NAME #Units ready for Worker's Army
+desc = EVT_156050_DESC #With the help of other Syndicalist nations we can now focus on creating a better army than the one we have now. It will be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!
 
 action_a = {
-name = "Good"
-command = { type = add_division which = "Xinbian Di'3 Shi" value = infantry when = 9 }
+name = ACTIONNAME156050A #Good
+command = { type = add_division which = "Di'3 Xin Shi" value = infantry when = 9 }
 command = { type = add_division which = "4. Youji Zongdui" value = militia when = 4 }
 }
 }
@@ -2213,12 +1731,12 @@ date = { day = 0 month = january year = 1936 }
 offset = 150
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Units ready for Worker's Army"
-desc = "With the help of other Syndicalist nations we can now focus on creating a better army than the one we have now. It will be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!"
+name = EVT_156050_NAME #Units ready for Worker's Army
+desc = EVT_156050_DESC #With the help of other Syndicalist nations we can now focus on creating a better army than the one we have now. It will be the strongest army of proletarians and peasants who will defend Taiwan from the imperialist pigs!
 
 action_a = {
-name = "Good"
-command = { type = add_division which = "Xinbian Di'4 Shi" value = infantry when = 9 }
+name = ACTIONNAME156050A #Good
+command = { type = add_division which = "Di'4 Xin Shi" value = infantry when = 9 }
 command = { type = add_division which = "5. Youji Zongdui" value = militia when = 4 }
 }
 }
@@ -2237,19 +1755,18 @@ event = 156042
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  21
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Collectivising banks"
-desc = "Banks, which were the headquaters of imperialism and capitalism, are still dangerous to us. Maybe it would be best if we would collectivise them and make them work for the workers' and peasants' benefit."
+name = EVT_156053_NAME #Collectivising banks
+desc = EVT_156053_DESC #Banks, which were the headquaters of imperialism and capitalism, are still dangerous to us. Maybe it would be best if we would collectivise them and make them work for the workers' and peasants' benefit.
 
 action_a = {
-name = "Good idea"
+name = ACTIONNAME156053A #Good idea
 ai_chance = 80
 command = { type = money value = 50 }
 command = { type = free_money value = -0.5 }
 command = { type = dissent value = -2 }
-command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = 1 }
 command = { type = domestic which = free_market value = -1 }
 command = { type = relation which = FRA value = 15 }
@@ -2261,11 +1778,10 @@ command = { type = relation which = CSX value = -30 }
 }
 
 action_b = {
-name = "That's too radical"
+name = ACTIONNAME156053B #That's too radical
 ai_chance = 20
 command = { type = free_money value = 0.3 }
 command = { type = dissent value = 3 }
-command = { type = domestic which = democratic value = 1 }
 command = { type = domestic which = political_left value = -1 }
 command = { type = domestic which = free_market value = 1 }
 command = { type = relation which = FRA value = -20 }
@@ -2287,14 +1803,14 @@ event = 156053
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  21
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "What to do with industry?"
-desc = "A big question in the Party and in the government is what to do with the industry? The radicals want to put it under state control, while the Syndicalist-wing want to give the control to workers's unions"
+name = EVT_156054_NAME #What to do with industry?
+desc = EVT_156054_DESC #A big question in the Party and in the government is what to do with the industry? The radicals want to put it under state control, while the Syndicalist-wing want to give the control to workers's unions
 
 action_a = {
-name = "Workers' Union should control them"
+name = ACTIONNAME156054A #Workers' Union should control them
 ai_chance = 60
 command = { type = money value = -20 }
 command = { type = industrial_modifier which = total value = 5 }
@@ -2311,7 +1827,7 @@ command = { type = dissent value = 1 }
 }
 
 action_b = {
-name = "Direct state control"
+name = ACTIONNAME156054B #Direct state control
 ai_chance = 30
 command = { type = money value = -35 }
 command = { type = industrial_modifier which = total value = 5 }
@@ -2329,7 +1845,7 @@ command = { type = dissent value = 3 }
 }
 
 action_c = {
-name = "Leave everything as it is"
+name = ACTIONNAME156054C #Leave everything as it is
 ai_chance = 10
 command = { type = money value = 30 }
 command = { type = domestic which = democratic value = 1 }
@@ -2352,25 +1868,21 @@ picture = "agriculture2"
 trigger = {
 flag = TAI_syndicalist
 event = 156054
-NOT = { 
-flag = TAI_Japanese 
-}
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  21
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Collectivising land"
-desc = "The third big question of the Party is what to do with the land. A large part of them is still controlled by Japanese landholders and Japan would be furious if we take it from them. On the other hand radicals in the party and the peasants are pushing us for a solution."
+name = EVT_156055_NAME #Collectivising land
+desc = EVT_156055_DESC #The third big question of the Party is what to do with the land. A large part of them is still controlled by Japanese landholders and Japan would be furious if we take it from them. On the other hand radicals in the party and the peasants are pushing us for a solution.
 
 action_a = {
-name = "Seize the lands of the squatters"
+name = ACTIONNAME156055A #Seize the lands of the squatters
 ai_chance = 45
 command = { type = money value = 20 }
-command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = 1 }
-command = { type = domestic which = free_market value = -1 }
+command = { type = domestic which = free_market value = -2 }
 command = { type = relation which = FRA value = 25 }
 command = { type = relation which = PRK value = 15 }
 command = { type = relation which = JAP value = -100 }
@@ -2382,83 +1894,18 @@ command = { type = dissent value = 3 }
 }
 
 action_b = {
-name = "Buy the land from the squatters"
+name = ACTIONNAME156055B #Buy the land from the squatters
 ai_chance = 45
 command = { type = money value = -70 }
-command = { type = domestic which = democratic value = 1 }
-command = { type = domestic which = political_left value = 1 }
-command = { type = domestic which = free_market value = 1 }
-command = { type = setflag which = TAI_landtaken }
-command = { type = dissent value = 1 }
-}
-
-action_c = {
-name = "The current system is good"
-ai_chance = 10
-command = { type = domestic which = democratic value = 1 }
-command = { type = domestic which = political_left value = -2 }
-command = { type = domestic which = free_market value = 1 }
-command = { type = relation which = FRA value = -30 }
-command = { type = relation which = PRK value = -25 }
-command = { type = dissent value = 5 }
-}
-}
-
-
-event = {
-id = 156056
-random = no
-country = U30
-style = 2
-#picture = "agriculture"
-
-trigger = {
-flag = TAI_syndicalist
-event = 156054
-flag = TAI_Japanese
-}
-
-date = { day = 0 month = january year = 1936 }
-offset =  21
-deathdate = { day = 29 month = december year = 1963 }
-
-name = "Collectivising land"
-desc = "The third big question of the Party is what to do with the land. A large part of them is still controlled by Japanese landholders and Japan would be furious if we take it from them. On the other hand radicals in the party and peasants are pushing us for a solution."
-
-action_a = {
-name = "Seize the land of the squatters"
-ai_chance = 20
-command = { type = money value = -20 }
-command = { type = resource which = supplies value = -20 }
-command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = 1 }
 command = { type = domestic which = free_market value = -1 }
-command = { type = relation which = FRA value = 25 }
-command = { type = relation which = PRK value = 15 }
-command = { type = relation which = JAP value = -150 }
-command = { type = relation which = CGX value = -30 }
-command = { type = relation which = GER value = -30 }
-command = { type = relation which = CSX value = -30 }
-command = { type = setflag which = TAI_landtakenseize }
-command = { type = dissent value = 3 }
-}
-
-action_b = {
-name = "Buy the land from the squatters"
-ai_chance = 65
-command = { type = money value = -50 }
-command = { type = resource which = supplies value = -40 }
-command = { type = domestic which = democratic value = 1 }
-command = { type = domestic which = political_left value = 1 }
-command = { type = domestic which = free_market value = 1 }
 command = { type = setflag which = TAI_landtaken }
 command = { type = dissent value = 1 }
 }
 
 action_c = {
-name = "The current system is good"
-ai_chance = 15
-command = { type = domestic which = democratic value = 1 }
+name = ACTIONNAME156055C #The current system is good
+ai_chance = 10
 command = { type = domestic which = political_left value = -2 }
 command = { type = domestic which = free_market value = 1 }
 command = { type = relation which = FRA value = -30 }
@@ -2466,7 +1913,6 @@ command = { type = relation which = PRK value = -25 }
 command = { type = dissent value = 5 }
 }
 }
-
 
 event = {
 id = 156057
@@ -2483,14 +1929,14 @@ flag = TAI_landtakenseize
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  21
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Agricultural revolution"
-desc = "After getting the lands from the Japanese squatters, we must decide what to do with them. There are more decisions for us and that will decide what the people of Taiwan will think of us."
+name = EVT_156057_NAME #Agricultural revolution
+desc = EVT_156057_DESC #After getting the lands from the Japanese squatters, we must decide what to do with them. There are more decisions for us and that will decide what the people of Taiwan will think of us.
 
 action_a = {
-name = "Create Farmer's Communes"
+name = ACTIONNAME156057A #Create Farmer's Communes
 ai_chance = 40
 command = { type = supplies value = 150 }
 command = { type = free_supplies value = 7 }
@@ -2498,7 +1944,7 @@ command = { type = dissent value = 3 }
 }
 
 action_b = {
-name = "Give the land to the poor peasants"
+name = ACTIONNAME156057B #Give the land to the poor peasants
 ai_chance = 35
 command = { type = supplies value = 120 }
 command = { type = free_supplies value = 5 }
@@ -2506,7 +1952,7 @@ command = { type = dissent value = -3 }
 }
 
 action_c = {
-name = "Keep all the land and employ the peasants"
+name = ACTIONNAME156057C #Keep all the land and employ the peasants
 ai_chance = 20
 command = { type = supplies value = 200 }
 command = { type = free_supplies value = 10 }
@@ -2528,14 +1974,14 @@ event = 156057
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  21
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Too much workforce for the agriculture"
-desc = "Our agricultural reforms made a strong peasantry which can defend itself from the enemies of the Revolution. But there are now too many people in agriculture so maybe we should find a permanent solution to that problem."
+name = EVT_156058_NAME #Too much workforce for the agriculture
+desc = EVT_156058_DESC #Our agricultural reforms made a strong peasantry which can defend itself from the enemies of the Revolution. But there are now too many people in agriculture so maybe we should find a permanent solution to that problem.
 
 action_a = {
-name = "Start urbanisation with force"
+name = ACTIONNAME156058A #Start urbanisation with force
 ai_chance = 40
 command = { type = money value = -10 }
 command = { type = resource which = supplies value = -70 }
@@ -2545,7 +1991,7 @@ command = { type = setflag which = TAI_urbanisation_force }
 }
 
 action_b = {
-name = "Start urbanisation with propaganda"
+name = ACTIONNAME156058B #Start urbanisation with propaganda
 ai_chance = 35
 command = { type = money value = -30 }
 command = { type = resource which = supplies value = -50 }
@@ -2555,7 +2001,7 @@ command = { type = setflag which = TAI_urbanisation_prop }
 }
 
 action_c = {
-name = "Draft them to the Worker's Army"
+name = ACTIONNAME156058C #Draft them to the Worker's Army
 ai_chance = 25
 command = { type = money value = -40 }
 command = { type = resource which = supplies value = -100 }
@@ -2581,14 +2027,14 @@ flag = TAI_urbanisation_force
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 60
+offset = 120
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Urbanisation"
-desc = "Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!"
+name = EVT_156059_NAME #Urbanisation
+desc = EVT_156059_DESC #Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!
 
 action_a = {
-name = "Good news!"
+name = ACTIONNAME156059A #Good news!
 command = { type = money value = 10 }
 command = { type = resource which = supplies value = -50 }
 command = { type = construct which = ic where = 1362 value = 1 }
@@ -2612,14 +2058,14 @@ event = 156059
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 90
+offset = 180
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Urbanisation"
-desc = "Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!"
+name = EVT_156059_NAME #Urbanisation
+desc = EVT_156059_DESC #Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!
 
 action_a = {
-name = "Good news!"
+name = ACTIONNAME156059A #Good news!
 command = { type = money value = 10 }
 command = { type = resource which = supplies value = -50 }
 command = { type = construct which = ic where = 1362 value = 1 }
@@ -2643,14 +2089,14 @@ event = 156060
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 120
+offset = 240
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Urbanisation"
-desc = "Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!"
+name = EVT_156059_NAME #Urbanisation
+desc = EVT_156059_DESC #Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!
 
 action_a = {
-name = "Good news!"
+name = ACTIONNAME156059A #Good news!
 command = { type = money value = 10 }
 command = { type = resource which = supplies value = -50 }
 command = { type = construct which = ic where = 1362 value = 1 }
@@ -2673,14 +2119,14 @@ flag = TAI_urbanisation_prop
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 70
+offset = 300
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Urbanisation"
-desc = "Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!"
+name = EVT_156059_NAME #Urbanisation
+desc = EVT_156059_DESC #Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!
 
 action_a = {
-name = "Good news!"
+name = ACTIONNAME156059A #Good news!
 command = { type = money value = 25 }
 command = { type = resource which = supplies value = -30 }
 command = { type = construct which = ic where = 1362 value = 1 }
@@ -2704,14 +2150,14 @@ event = 156062
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 100
+offset = 360
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Urbanisation"
-desc = "Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!"
+name = EVT_156059_NAME #Urbanisation
+desc = EVT_156059_DESC #Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!
 
 action_a = {
-name = "Good news!"
+name = ACTIONNAME156059A #Good news!
 command = { type = money value = 25 }
 command = { type = resource which = supplies value = -30 }
 command = { type = construct which = ic where = 1362 value = 1 }
@@ -2735,14 +2181,14 @@ event = 156063
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 130
+offset = 420
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Urbanisation"
-desc = "Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!"
+name = EVT_156059_NAME #Urbanisation
+desc = EVT_156059_DESC #Due to our strong urbanisation policy, hundreds of thousands have moved to Taipei, our capital. They are now working in the factories for the glory of the Proletariat!
 
 action_a = {
-name = "Good news!"
+name = ACTIONNAME156059A #Good news!
 command = { type = money value = 25 }
 command = { type = resource which = supplies value = -30 }
 command = { type = construct which = ic where = 1362 value = 1 }
@@ -2770,14 +2216,14 @@ flag = TAI_noelection
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  15
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Problems with the Syndicalists"
-desc = "Cancelling elections was not the most popular decision of the Bunka Kyokai. The Syndicalists left the Association and their leader Xie Xuehong, who was the most popular after Chiang Wei-shui, declared a new policy for their party. According to it they will use any means to get power and use it to help the workers and peasants. Another big problem is that Chiang hasn't accepted the office Prime Minister because of cancelling the elections."
+name = EVT_156065_NAME #Problems with the Syndicalists
+desc = EVT_156065_DESC #Cancelling elections was not the most popular decision of the Wenhua Xiehui. The Syndicalists left the Association and their leader Xie Xuehong, who was the most popular after Chiang Wei-shui, declared a new policy for their party. According to it they will use any means to get power and use it to help the workers and peasants. Another big problem is that Chiang hasn't accepted the office Prime Minister because of cancelling the elections.
 
 action_a = {
-name = "Arrest that bastard and ban her pathetic party!"
+name = ACTIONNAME156065A #Arrest that bastard and ban her pathetic party!
 ai_chance = 60
 command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = -1 }
@@ -2787,13 +2233,13 @@ command = { type = setflag which = TAI_arrest }
 }
 
 action_b = {
-name = "Let them continue but watch them closely"
+name = ACTIONNAME156065B #Let them continue but watch them closely
 ai_chance = 40
 command = { type = domestic which = democratic value = 1 }
 command = { type = domestic which = political_left value = 1 }
 command = { type = domestic which = freedom value = 1 }
 command = { type = dissent value = -1 }
-command = { type = setflag which = TAI_noaciton }
+command = { type = setflag which = TAI_noaction }
 }
 }
 
@@ -2812,14 +2258,14 @@ flag = TAI_noaction
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  25
+offset =  30
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Workers strike!"
-desc = "We were very generous towards the Syndicalists and now they are organising a great strike against our government. It's time to do something before our economy suffers too much damage."
+name = EVT_156066_NAME #Workers strike!
+desc = EVT_156066_DESC #We were very generous towards the Syndicalists and now they are organising a great strike against our government. It's time to do something before our economy suffers too much damage.
 
 action_a = {
-name = "Send in the army and declare martial law"
+name = ACTIONNAME156066A #Send in the army and declare martial law
 ai_chance = 60
 command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = -1 }
@@ -2828,14 +2274,14 @@ command = { type = setflag which = TAI_martial }
 }
 
 action_b = {
-name = "Compromise with the Syndicalists and form a Coalition Government"
+name = ACTIONNAME156066B #Compromise with the Syndicalists and form a coalition government
 ai_chance = 40
 command = { type = domestic which = democratic value = 3 }
 command = { type = domestic which = political_left value = 2 }
-command = { type = ministerofsecurity which = 910944 }
+command = { type = ministerofsecurity which = 910934 }
 command = { type = armamentminister which = 910933 }
 command = { type = dissent value = -5 }
-command = { type = setflag which = TAI_colaitional }
+command = { type = setflag which = TAI_coalition }
 }
 }
 
@@ -2855,11 +2301,11 @@ date = { day = 0 month = january year = 1936 }
 offset =  10
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Punishing the traitors"
-desc = "The Syndicalist workers' districts of Taipei, Kaohsiung, and other cities are showing great resistance against our forces and attacked them. During the fights 13 soldiers, 26 policemen, and 68 workers have been killed and the situation is becoming more and more hostile. Maybe if we punish the Syndicalists we take as prisoners will help to make the others put down their weapons."
+name = EVT_156067_NAME #Punishing the traitors
+desc = EVT_156067_DESC #The Syndicalist workers' districts of Taipei, Kaohsiung, and other cities are showing great resistance against our forces and attacked them. During the fights 13 soldiers, 26 policemen, and 68 workers have been killed and the situation is becoming more and more hostile. Maybe if we punish the Syndicalists we take as prisoners will help to make the others put down their weapons.
 
 action_a = {
-name = "Kill them all!"
+name = ACTIONNAME156067A #Kill them all!
 ai_chance = 55
 command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = -1 }
@@ -2868,7 +2314,7 @@ command = { type = setflag which = TAI_execution }
 }
 
 action_b = {
-name = "Mass murder won't help"
+name = ACTIONNAME156067B #Mass murder won't help
 ai_chance = 45
 command = { type = domestic which = democratic value = 1 }
 command = { type = domestic which = political_left value = 1 }
@@ -2890,14 +2336,14 @@ government = communist
 }
 
 date = { day = 0 month = january year = 1936 }
-offset =  12
+offset =  10
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Mass murder in Taiwan"
-desc = "There is a semi-civil war in Taiwan and Taiwanese nationalist government is using the mass murders of Syndicalists to break the spirits of the local workers. Those bourgeois pigs will rule the island forever if they manage to eliminate the leaders of the Syndicalist Party."
+name = EVT_156068_NAME #Mass murder in Taiwan
+desc = EVT_156068_DESC #There is a semi-civil war in Taiwan and Taiwanese nationalist government is using the mass murders of Syndicalists to break the spirits of the local workers. Those bourgeois pigs will rule the island forever if they manage to eliminate the leaders of the Syndicalist Party.
 
 action_a = {
-name = "Give them help"
+name = ACTIONNAME156068A #Give them help
 ai_chance = 85
 command = { type = domestic which = interventionism value = 1 }
 command = { type = dissent value = -1 }
@@ -2905,7 +2351,7 @@ command = { type = trigger which = 156069 }
 }
 
 action_b = {
-name = "Taiwan is too far for International Syndicalism"
+name = ACTIONNAME156068B #Taiwan is too far for International Syndicalism
 ai_chance = 15
 command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = 2 }
@@ -2920,11 +2366,11 @@ country = U30
 style = 2
 #picture = "Chinese_Fighting2"
 
-name = "French intervention"
-desc = "According to the decision of the leaders of Commune of France, supplies and soldiers arrived in Taipei and Kaohsiung today. Our fleet wasn't able to stop them so they could land. Our stiuation is hostile and only luck will decide who will win this bloody fight."
+name = EVT_156069_NAME #French intervention
+desc = EVT_156069_DESC #According to the decision of the leaders of Commune of France, supplies and soldiers arrived in Taipei and Kaohsiung today. Our fleet wasn't able to stop them so they could land. Our stiuation is hostile and only luck will decide who will win this bloody fight.
 
 action_a = {
-name = "This will be a bloody civil war!"
+name = ACTIONNAME156069A #This will be a bloody civil war!
 command = { type = dissent value = 1 }
 command = { type = setflag which = TAI_civilwar }
 }
@@ -2949,13 +2395,12 @@ date = { day = 0 month = january year = 1936 }
 offset =  2
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Nationalist Victory!"
-desc = "It was a hard fight but we managed to defend our land and to destroy the Syndicalist scum. The leaders of the Syndicalist Party left the island and emigrated to Paris. It is a major victory for us."
+name = EVT_156070_NAME #Nationalist Victory!
+desc = EVT_156070_DESC #It was a hard fight but we managed to defend our land and to destroy the Syndicalist scum. The leaders of the Syndicalist Party left the island and emigrated to Paris. It is a major victory for us.
 action_a = {
-name = "A good day for us!"
+name = ACTIONNAME156070A #A good day for us!
 command = { type = dissent value = -3 }
 command = { type = relation which = FRA value = -70 }
-command = { type = sleepevent which = 156052 }
 command = { type = sleepevent which = 156071 }
 command = { type = setflag which = TAI_nationalist }
 }
@@ -2980,13 +2425,15 @@ date = { day = 0 month = january year = 1936 }
 offset =  2
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Syndicalist Victory!"
-desc = "It was a hard fight but we could manage to defend our land and to destroy the Nationalist pigs. The leaders of their pathetic dictatorship fled to China. It is a major vitroy for us and for the International Revolution!"
+name = EVT_156071_NAME #Syndicalist Victory!
+desc = EVT_156071_DESC #It was a hard fight but we managed to defend our land and to destroy the Nationalist pigs. The leaders of the pathetic dictatorship fled to China. It is a major vitroy for us and for the International Revolution!
 
 action_a = {
-name = "Hurrah for the Revolution!"
+name = ACTIONNAME156071A #Hurrah for the Revolution!
 command = { type = set_domestic which = democratic value = 4 }
 command = { type = set_domestic which = political_left value = 9 }
+command = { type = end_puppet }
+command = { type = leave_alliance when = 1 }
 command = { type = headofstate which = 910930 }
 command = { type = headofgovernment which = 910931 }
 command = { type = foreignminister which = 910932 }
@@ -3005,9 +2452,14 @@ command = { type = set_relation which = JAP value = -100 }
 command = { type = set_relation which = CSX value = -100 }
 command = { type = set_relation which = GER value = -100 }
 command = { type = dissent value = -5 }
-command = { type = sleepevent which = 156051 }
 command = { type = sleepevent which = 156070 }
 command = { type = setflag which = TAI_syndicalist }
+command = {
+trigger = {
+flag = TAI_Japanese
+}
+type = trigger which = 156076
+}
 }
 }
 
@@ -3030,11 +2482,11 @@ date = { day = 0 month = january year = 1936 }
 offset =  20
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Situation goes wild"
-desc = "We could manage to restore order in most of the districts in Taipei but the rebels still control a significant area and try to hold mass demonstrations. We are in a very hostile situation and if we don't do semothing fast our government will face big problems."
+name = EVT_156072_NAME #Situation goes wild
+desc = EVT_156072_DESC #We managed to restore order in most of Taipei but the rebels still control a significant area and try to hold mass demonstrations. We are in a very hostile situation and if we don't do semothing fast our government will face big problems.
 
 action_a = {
-name = "We must show more force!"
+name = ACTIONNAME156072A #We must show more force!
 ai_chance = 40
 command = { type = domestic which = democratic value = -1 }
 command = { type = dissent value = 5 }
@@ -3042,19 +2494,18 @@ command = { type = setflag which = TAI_civilwar }
 }
 
 action_b = {
-name = "Compromise with the Syndicalists and form a Coalition Government"
+name = ACTIONNAME156066B #Compromise with the Syndicalists and form a coalition government
 ai_chance = 40
 command = { type = domestic which = democratic value = 3 }
 command = { type = domestic which = political_left value = 2 }
-command = { type = ministerofsecurity which = 910944 }
+command = { type = ministerofsecurity which = 910934 }
 command = { type = armamentminister which = 910933 }
 command = { type = dissent value = -5 }
 }
 
 action_c = {
-name = "Just wait, they will give up sonner than us"
+name = ACTIONNAME156072C #Just wait, they will give up sonner than us
 ai_chance = 20
-command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = 1 }
 command = { type = setflag which = TAI_wait }
 }
@@ -3078,11 +2529,11 @@ date = { day = 0 month = january year = 1936 }
 offset =  45
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Syndicalist Problem"
-desc = "Arresting Syndicalist leaders and declaring martial law helped us restore order in the country. Too bad that it was just temporary: leftist workers are rallying on the street and proclaimed a nationwide strike against the government. We must do something before it's too late."
+name = EVT_156073_NAME #Syndicalist Problem
+desc = EVT_156073_DESC #Arresting Syndicalist leaders and declaring martial law helped us restore order in the country. Too bad that it was just temporary: leftist workers are rallying on the street and proclaimed a nationwide strike against the government. We must do something before it's too late.
 
 action_a = {
-name = "Send in the army and declare martial law"
+name = ACTIONNAME156073A #Send in the army and declare martial law
 ai_chance = 35
 command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = -1 }
@@ -3091,20 +2542,19 @@ command = { type = setflag which = TAI_martial }
 }
 
 action_b = {
-name = "Compromise with the Syndicalists and form a Coalition Government"
+name = ACTIONNAME156066B #Compromise with the Syndicalists and form a coalition government
 ai_chance = 35
 command = { type = domestic which = democratic value = 3 }
 command = { type = domestic which = political_left value = 2 }
-command = { type = ministerofsecurity which = 910944 }
+command = { type = ministerofsecurity which = 910934 }
 command = { type = armamentminister which = 910933 }
 command = { type = dissent value = -5 }
-command = { type = setflag which = TAI_colaitional }
+command = { type = setflag which = TAI_coalition }
 }
 
 action_c = {
-name = "Just wait and let's see if they can stand more than us"
+name = ACTIONNAME156073C #Just wait and let's see if they can stand more than us
 ai_chance = 30
-command = { type = domestic which = interventionism value = -1 }
 command = { type = dissent value = -1 }
 command = { type = setflag which = TAI_wait }
 command = { type = peacetime_ic_mod value = -20 }
@@ -3129,11 +2579,11 @@ date = { day = 0 month = january year = 1936 }
 offset =  45
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "End of the Syndicalist problem"
-desc = "Waiting out the end of their fury was a good idea, the Syndicalists have returned to their bases in the workers' districts of Kaoshiung and Taipei and started to work again. But next time maybe we won't be so successful. I wonder if we should change something in our domestic policy."
+name = EVT_156074_NAME #End of the Syndicalist problem
+desc = EVT_156074_DESC #Waiting out the end of their fury was a good idea, the Syndicalists have returned to their bases in the workers' districts of Kaoshiung and Taipei and started to work again. But next time maybe we won't be so successful. Should we change something in our domestic policy?
 
 action_a = {
-name = "Call the elections"
+name = ACTIONNAME156074A #Call an election
 ai_chance = 55
 command = { type = domestic which = democratic value = 2 }
 command = { type = domestic which = political_left value = 1 }
@@ -3144,20 +2594,20 @@ command = { type = setflag which = TAI_elections }
 }
 
 action_b = {
-name = "Form a Coalition Government with the Syndicalists"
+name = ACTIONNAME156074B #Form a coalition government with the Syndicalists
 ai_chance = 30
 command = { type = domestic which = democratic value = 3 }
 command = { type = domestic which = political_left value = 2 }
-command = { type = ministerofsecurity which = 910944 }
+command = { type = ministerofsecurity which = 910934 }
 command = { type = armamentminister which = 910933 }
 command = { type = peacetime_ic_mod value = 20 }
 command = { type = tc_mod value = 10 }
 command = { type = dissent value = -5 }
-command = { type = setflag which = TAI_colaitional }
+command = { type = setflag which = TAI_coalition }
 }
 
 action_c = {
-name = "Everything is okay as it is"
+name = ACTIONNAME156074C #Everything is okay as it is
 ai_chance = 15
 command = { type = domestic which = democratic value = -1 }
 command = { type = domestic which = political_left value = -1 }
@@ -3185,11 +2635,11 @@ date = { day = 0 month = january year = 1936 }
 offset =  15
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Revolution!"
-desc = "The Syndicalists went back to the streets but this time with weapons and with the will to overthrow the government. We can't do anything but to send our troops against them and see what will be the result."
+name = EVT_156075_NAME #Revolution!
+desc = EVT_156075_DESC #The Syndicalists are back in the streets but this time with weapons and with the will to overthrow the government. We can do nothing but to send our troops against them and see what would be the result.
 
 action_a = {
-name = "These are the darkest times of Taiwan"
+name = ACTIONNAME156075A #These are the darkest times of Taiwan
 command = { type = dissent value = 1 }
 command = { type = setflag which = TAI_civilwar }
 }
@@ -3203,11 +2653,60 @@ country = JAP
 style = 2
 picture = "Taiwan"
 
-name = "Growing Unrest on Taiwan"
-desc = "Few days after the entire Korean peninsula erupted in the flames of revolution another revolution is looming on the horizon. The Taiwanese delegation of the Bunka Kyokai (Cultural Association) leaded by Chiang Wei-Shui asked us to release Taiwan as an independent state. What should we do?"
+name = EVT_156076_NAME #Taiwan turns red
+desc = EVT_156076_DESC #Taiwanese rebels managed to overthrow the administration and replaced it with a Syndicalist one. The new administration has declared independence from the Empire and severed all ties with us.
 
 action_a = {
-name = "Grant them autonomy."
+name = ACTIONNAME156076A #Reclaim the island immediately
+ai_chance = 100
+command = { type = addclaim which = 1361 }
+command = { type = addclaim which = 1362 }
+command = { type = addclaim which = 1363 }
+command = { type = addclaim which = 1364 }
+command = { type = war which = U30 }
+command = { type = dissent value = 5 }
+}
+
+action_b = {
+name = ACTIONNAME156076B #Withdraw from Taiwan peacefully
+ai_chance = 0
+command = { type = domestic which = defense_lobby value = -1 }
+command = { type = domestic which = interventionism value = 1 }
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 156077
+random = no
+country = JAP
+style = 2
+
+trigger = {
+war = { country = JAP country = KOR }
+NOT = {
+flag = TAI_Japanese
+}
+}
+
+name = EVT_156077_NAME #Growing Unrest on Taiwan
+desc = EVT_156077_DESC #Few days after the entire Korean peninsula erupted in the flames of revolution another revolution is looming on the horizon. The Taiwanese delegation of the Bunka Kyokai (Cultural Association) led by Chiang Wei-Shui has demanded an autonomous status for Taiwan. What should we do?
+picture = "Taiwan"
+
+date = { day = 0 month = january year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1937 }
+
+action_b = {
+name = ACTIONNAME156077A #Arrest these secessionists and traitors!
+ai_chance = 70
+command = { type = dissent value = 2 }
+command = { type = setflag which = TAI_military }
+}
+
+action_a = {
+name = ACTIONNAME260025B #Grant a limited autonomous status
 ai_chance = 30
 command = { type = removeclaim which = 1361 }
 command = { type = removeclaim which = 1362 }
@@ -3216,44 +2715,8 @@ command = { type = removeclaim which = 1364 }
 command = { type = independence which = U30 value = 1 when = 1 }
 command = { type = flag_ext where = U30 which = "_JAP" }
 command = { type = make_puppet which = U30 }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = domestic which = democratic value = 1 }
 command = { type = dissent value = 5 }
-command = { type = event which = 156003 where = U30 when = 2  }
-}
-
-action_b = {
-name = "Arrest these secessionists and traitors!"
-ai_chance = 70
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = dissent value = 2 }
-command = { type = setflag which = TAI_military }
-}
-}
-
-
-#####################
-#Flavor events      #
-#####################
-event = {
-id = 156077
-country = U30
-style = 2
-
-date = { day = 9 month = july year = 1939 }
-
-name = "Lin Shao-mao dies"
-desc = "The greatest and only living war hero of 1895, the strongest person on Formosa died today. The whole island is now in tears for this great man!"
-
-action_a = {
-name = "We lost a hero today"
-command = { type = dissent value = 1 }
-command = { type = sleepminister which = 910916 }
-command = { type = sleepminister which = 910917 }
-command = { type = sleepleader which = 875412 }
-command = { type = chiefofstaff which = 910943 }
-command = { type = chiefofarmy which = 910944 }
+command = { type = trigger which = 156003 }
 }
 }
 
@@ -3263,8 +2726,11 @@ event = {
 id = 156078
 random = no
 country = JAP
+style = 2
+persistent = yes
 
 decision = {
+NOT = { flag = JNBT }
 war = { country = JAP country = U30 }
 event = 156004
 }
@@ -3276,25 +2742,24 @@ supplies = 500
 }
 
 trigger = {
+NOT = { flag = JNBT }
 war = { country = JAP country = U30 }
 event = 156004
 garrison = { country = JAP province = 2515   type = naval size = 3 area = no }
 }
 
-name = "Naval blockade of Taiwan"
-desc = "With Taiwan engulfed with the fires of revolution, many hostile nations might use this event as a grand opportunity to weaken our influence in the Pacific by direct or indirect support of those damned revolutionaries. We can only prevent this by imposing a naval blockade around Taiwan."
-style = 2
+name = EVT_156078_NAME #Naval blockade of Taiwan
+desc = EVT_156078_DESC #With Taiwan engulfed with the fires of uprising, many hostile nations might use this event as a grand opportunity to weaken our influence in the Pacific by direct or indirect support of those damned separatists. We can only prevent this by imposing a naval blockade around Taiwan.
 picture = "navalblockade"
 decision_picture = "decision_navalblockadej"
 
-date = { day = 0 month = january year = 1936 }
-offset = 2
+date = { day = 10 month = august year = 1937 }
+offset = 15
 deathdate = { day = 29 month = december year = 1940 }
 
 action_a = {
-name = "Impose naval blockade!"
+name = ACTIONNAME260062A # Impose naval blockade!
 command = { type = setflag which = JNBT }
-command = { type = belligerence which = JAP value = 5  }
 command = { type = supplies value = -500 }
 command = { type = oilpool value = -100 }
 command = { type = trigger which = 156079 }
@@ -3307,15 +2772,13 @@ id = 156079
 random = no
 country = U30
 
-name = "Japanese naval blockade"
-desc = "In a desperate attempt to prevent our inevitable victory, the Imperial Japanese navy has set up a blockade around all of Taiwan."
+name = EVT_260063_NAME #Japanese Naval Blockade
+desc = EVT_156079_DESC #In desperate attempt to prevent our inevitable victory, the Imperial Japanese Navy has set up a naval blockade around the entire island of Taiwan.
 style = 2
 picture = "SCW_German Intervention"
 
 action_a = {
-name = "They cannot stop us!"
-command = { type = supplies value = -500 }
-command = { type = industrial_modifier which = total value = -2 }
+name = ACTIONNAME260063A # They can not stop us!
 command = { type = embargo which = ENG where = U30 value = 3 }
 command = { type = embargo which = SWE where = U30 value = 3 }
 command = { type = embargo which = SOV where = U30 value = 3 }
@@ -3336,44 +2799,33 @@ command = { type = embargo which = RUS where = U30 value = 3 }
 }
 }
 
-
 event = {
 id = 156080
 random = no
 country = JAP
 style = 2
-picture = "navalblockade"
 persistent = yes
 
 trigger = {
 flag = JNBT
-war = { country = JAP country = U30 }
+ai = no
+NOT = { garrison = { country = JAP province = 2515   type = naval size = 3 area = no } }
 }
 
-date = { day = 0 month = january year = 1936 }
-offset = 90
-deathdate = { day = 29 month = december year = 1940 }
+name = EVT_260064_NAME #Ending the Naval Blockade
+desc = EVT_156080_DESC #Our ships are no longer in the position to blockade the island. The Blockade has ended.
+picture = "navalblockade"
 
-name = "Enforcing the naval blockade"
-desc = "Our glorious navy continues to maintain a complete naval blockade around rebellious Taiwan, denying rebels much needed foreign aid. But some members of the general staff argue, that naval blockade has already outlived its usefulness since the rebels will be soon crushed and the blockade itself is very expensive..."
+date = { day = 10 month = august year = 1937 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
-name = "Continue the blockade!"
-ai_chance = 90
-command = { type = supplies value = -300 }
-command = { type = oilpool value = -70 }
-command = { type = belligerence which = JAP value = 3  }
-}
-
-action_b = {
-name = "Cancel the blockade"
-ai_chance = 10
+name = ACTIONNAME260064A # End the Blockade
 command = { type = clrflag which = JNBT }
 command = { type = trigger which = 156082 }
-command = { type = belligerence which = JAP value = -1  }
 }
 }
-
 
 event = {
 id = 156081
@@ -3388,18 +2840,17 @@ NOT = {
 war = { country = JAP country = U30 } 
 }
 }
-date = { day = 0 month = january year = 1936 }
-offset = 10
-deathdate = { day = 29 month = december year = 1940 }
+date = { day = 10 month = august year = 1937 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
 
-name = "End of the naval blockade"
-desc = "With the fighting over Taiwan definitively over it is time for our navy to end this long and costly blockade."
+name = EVT_260065_NAME #End of the Naval Blockade
+desc = EVT_156081_DESC #As the fighting over Taiwan is definitively over, it is time to end this blockade.
 
 action_a = {
-name = "Cancel the blockade"
+name = ACTIONNAME260064A # End the Blockade
 command = { type = clrflag which = JNBT }
 command = { type = trigger which = 156082 }
-command = { type = belligerence which = JAP value = -1  }
 }
 }
 
@@ -3411,13 +2862,11 @@ country = U30
 style = 2
 picture = "navalblockade"
 
-name = "Naval blockade ended!"
-desc = "The Imperial Japaneese navy, facing severe problems, canceled the deadly military blockade around Taiwan."
+name = EVT_260065_NAME #End of the Naval Blockade
+desc = EVT_260066_DESC #The Japanese navy has ended their naval blockade!
 
 action_a = {
-name = "We shall win!"
-command = { type = supplies value = 500 }
-command = { type = industrial_modifier which = total value = 2 }
+name = ACTIONNAME260066A #Good for us!
 command = { type = embargo which = ENG where = U30 value = 0 }
 command = { type = embargo which = SWE where = U30 value = 0 }
 command = { type = embargo which = SOV where = U30 value = 0 }
@@ -3475,18 +2924,18 @@ control = { province = 163 data = GER }
 }
 
 date = { day = 0 month = january year = 1936 }
-offset = 15
-deathdate = { day = 29 month = december year = 1940 }
+offset =  30
+deathdate = { day = 29 month = december year = 1963 }
 
-name = "The Taiwan uprising"
-desc = "The people of Taiwan have risen against their Japanese overlords, wanting to finally break free from them. This presents us with an opportunity to weaken the Japanese empire via supporting the Taiwan independence movement..."
+name = EVT_156005_NAME #The Taiwan Uprising
+desc = EVT_156083_DESC #The people of Taiwan have risen against their Japanese overlords, wanting to finally break free from them. This presents us with an opportunity to weaken the Japanese empire via supporting the Taiwan independence movement...
 picture = "Wehrmacht"
 decision_picture = "decision_foreign_volunteers"
 style = 2
 
 action_a = {
 ai_chance = 70
-name = "Send aid to Taiwan!"
+name = ACTIONNAME156083A #Send aid to Taiwan!
 command = { type = domestic which = interventionism value = 1 }
 command = { type = relation which = JAP value = -50 }
 command = { type = relation which = PRI value = -50 }
@@ -3500,7 +2949,7 @@ command = { type = dissent value = 1 }
 
 action_b = {
 ai_chance = 30
-name = "We cannot do anything..."
+name = ACTIONNAME156083B #We cannot do anything...
 command = { type = domestic which = interventionism value = -1 }
 command = { type = relation which = JAP value = 50 }
 command = { type = relation which = PRI value = 50 }
@@ -3515,13 +2964,13 @@ id = 156084
 random = no
 country = U30
 
-name = "Aid from the German Empire"
-desc = "The German Empire has sent us a large ammount of supplies and skilled officers eager to help us prevail against Japan!"
+name = EVT_260055_NAME #Aid from the German Empire
+desc = EVT_260055_DESC #The German Empire has sent us a large amount of supplies and skilled officers eager to help us prevail against Japan!
 style = 2
 picture = "Wehrmacht"
 
 action_a = {
-name = "Great!"
+name = ACTIONNAME260045A # Great!
 command = { type = supplies value = 500 }
 command = { type = steal_tech which = GER }
 command = { type = manpowerpool value = 2 }
@@ -3543,8 +2992,8 @@ war = { country = U30 country = JAP }
 }
 }
 
-name = "The End of the Taiwan war"
-desc = "For good or ill, the Taiwan war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+name = EVT_156085_NAME #The End of the Taiwan war
+desc = EVT_156085_DESC #For good or ill, the Taiwan war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict.
 
 style = 2
 picture = "soviet_replacement"
@@ -3554,7 +3003,7 @@ offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
-name = "ACTIONNAME2803A" # Great!
+name = ACTIONNAME260045A # Great!
 command = { type = manpowerpool value = 2 }	 	# Soldiers return home
 command = { type = dissent value = -1 }
 command = { type = gain_tech which = -1 } 		# get random tech blueprints
@@ -3609,15 +3058,15 @@ date = { day = 0 month = january year = 1936 }
 offset = 15
 deathdate = { day = 29 month = december year = 1940 }
 
-name = "The Taiwan uprising"
-desc = "The people of Taiwan have risen against their Japanese overlords, wanting to finally break free from them. This presents us with an opportunity to weaken the Japanese empire via supporting the Taiwan independence movement..."
+name = EVT_156005_NAME #The Taiwan Uprising
+desc = EVT_156083_DESC #The people of Taiwan have risen against their Japanese overlords, wanting to finally break free from them. This presents us with an opportunity to weaken the Japanese empire via supporting the Taiwan independence movement...
 picture = "soviet_replacement"
 decision_picture = "decision_foreign_volunteers"
 style = 2
 
 action_a = {
 ai_chance = 70
-name = "Send aid to Taiwan!"
+name = ACTIONNAME156083A #Send aid to Taiwan!
 command = { type = domestic which = interventionism value = 1 }
 command = { type = relation which = JAP value = -50 }
 command = { type = relation which = PRI value = -50 }
@@ -3631,7 +3080,7 @@ command = { type = dissent value = 1 }
 
 action_b = {
 ai_chance = 30
-name = "We cannot do anything..."
+name = ACTIONNAME156083B #We cannot do anything...
 command = { type = domestic which = interventionism value = -1 }
 command = { type = relation which = JAP value = 50 }
 command = { type = relation which = PRI value = 50 }
@@ -3646,13 +3095,13 @@ id = 156087
 random = no
 country = U30
 
-name = "Aid from the Russia"
-desc = "Russia has sent us a large ammount of supplies and skilled officers eager to help us prevail against Japan!"
+name = EVT_260045_NAME #Aid from the Russians
+desc = EVT_156087_DESC #The Russian state has sent us a massive amount of supplies and skilled officers eager to help us preveil against Japan!
 style = 2
 picture = "soviet_replacement"
 
 action_a = {
-name = "Great!"
+name = ACTIONNAME260045A # Great!
 command = { type = supplies value = 500 }
 command = { type = steal_tech which = RUS }
 command = { type = manpowerpool value = 1 }
@@ -3674,8 +3123,8 @@ war = { country = U30 country = JAP }
 }
 }
 
-name = "The End of the Taiwan war"
-desc = "For good or ill, the Taiwan war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+name = EVT_156085_NAME #The End of the Taiwan war
+desc = EVT_156085_DESC #For good or ill, the Taiwan war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict.
 
 style = 2
 picture = "soviet_replacement"
@@ -3685,7 +3134,7 @@ offset = 30
 deathdate = { day = 29 month = december year = 1960 }
 
 action_a = {
-name = "ACTIONNAME2803A" # Great!
+name = ACTIONNAME260045A # Great!
 command = { type = manpowerpool value = 2 }	 	# Soldiers return home
 command = { type = dissent value = -1 }
 command = { type = gain_tech which = -1 } 		# get random tech blueprints
@@ -3740,15 +3189,15 @@ date = { day = 0 month = january year = 1936 }
 offset = 15
 deathdate = { day = 29 month = december year = 1940 }
 
-name = "The Taiwan uprising"
-desc = "The people of Taiwan have risen against their Japanese overlords, wanting to finally break free from them. This presents us with an opportunity to weaken the Japanese empire via supporting the Taiwan independence movement..."
+name = EVT_156005_NAME #The Taiwan Uprising
+desc = EVT_156083_DESC #The people of Taiwan have risen against their Japanese overlords, wanting to finally break free from them. This presents us with an opportunity to weaken the Japanese empire via supporting the Taiwan independence movement...
 picture = "soviet_replacement"
 decision_picture = "decision_foreign_volunteers"
 style = 2
 
 action_a = {
 ai_chance = 70
-name = "Send aid to Taiwan!"
+name = ACTIONNAME156083A #Send aid to Taiwan!
 command = { type = domestic which = interventionism value = 1 }
 command = { type = relation which = JAP value = -50 }
 command = { type = relation which = PRI value = -50 }
@@ -3762,7 +3211,7 @@ command = { type = dissent value = 1 }
 
 action_b = {
 ai_chance = 30
-name = "We cannot do anything..."
+name = ACTIONNAME156083B #We cannot do anything...
 command = { type = domestic which = interventionism value = -1 }
 command = { type = relation which = JAP value = 50 }
 command = { type = relation which = PRI value = 50 }
@@ -3777,13 +3226,13 @@ id = 156090
 random = no
 country = U30
 
-name = "Aid from the Soviets"
-desc = "Russia has sent us a large ammount of supplies and skilled officers eager to help us prevail against Japan!"
+name = EVT_260049_NAME #Aid from the Soviets
+desc = EVT_156090_DESC #The Soviet state has sent us a massive amount of supplies and skilled officers eager to help us prevail against Japan!
 style = 2
 picture = "soviet_replacement"
 
 action_a = {
-name = "Great!"
+name = ACTIONNAME260045A # Great!
 command = { type = supplies value = 500 }
 command = { type = steal_tech which = SOV }
 command = { type = manpowerpool value = 2 }
@@ -3805,8 +3254,8 @@ war = { country = U30 country = JAP }
 }
 }
 
-name = "The End of the Taiwan war"
-desc = "For good or ill, the Taiwan war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+name = EVT_156085_NAME #The End of the Taiwan war
+desc = EVT_156085_DESC #For good or ill, the Taiwan war is now over.  The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict.
 style = 2
 picture = "soviet_replacement"
 
@@ -3815,7 +3264,7 @@ offset = 30
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
-name = "ACTIONNAME2803A" # Great!
+name = ACTIONNAME260045A # Great!
 command = { type = manpowerpool value = 2 }	 	# Soldiers return home
 command = { type = dissent value = -1 }
 command = { type = gain_tech which = -1 } 		# get random tech blueprints

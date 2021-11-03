@@ -120,11 +120,11 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 	landunit = {
 	location = 1208
         id = { type = 28500 id = 1 }
-	name = "1 Fang'tien Jüntuan"
+	name = "1 Fang'tien Jï¿½ntuan"
 
 		division = {
 	        id = { type = 28500 id = 2 }
-		name = "7 Man'chu Lü"
+		name = "7 Man'chu Lï¿½"
 		type = militia
 		model = 4
 		strength  = 40
@@ -134,11 +134,11 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 	landunit = {
 	location = 1237
         id = { type = 28500 id = 3 }
-	name = "1 Changde Jüntuan"
+	name = "1 Changde Jï¿½ntuan"
 
 		division = {
 	        id = { type = 28500 id = 4 }
-		name = "9 Man'chu Lü"
+		name = "9 Man'chu Lï¿½"
 		type = infantry
 		model = 7
                 extra = artillery
@@ -149,7 +149,7 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 
                 division = {
 	        id = { type = 28500 id = 5 }
-		name = "11 Man'chu Lü"
+		name = "11 Man'chu Lï¿½"
 		type = bergsjaeger
 		model = 8
 		strength  = 100
@@ -158,7 +158,7 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 
                 division = {
 	        id = { type = 28500 id = 6 }
-		name = "26 Man'chu Lü"
+		name = "26 Man'chu Lï¿½"
 		type = infantry
 		model = 7
 		strength  = 100
@@ -180,11 +180,11 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 	landunit = {
 	location = 1200
         id = { type = 28500 id = 8 }
-	name = "2 Ji'lin Jüntuan"
+	name = "2 Ji'lin Jï¿½ntuan"
 
 		division = {
 	        id = { type = 28500 id = 9 }
-		name = "8 Man'chu Lü"
+		name = "8 Man'chu Lï¿½"
 		type = infantry
 		model = 7
                 extra = artillery
@@ -206,11 +206,11 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 	landunit = {
 	location = 1201
         id = { type = 28500 id = 16 }
-	name = "3 Qiqihar Jüntuan"
+	name = "3 Qiqihar Jï¿½ntuan"
 
 		division = {
 	        id = { type = 28500 id = 17 }
-		name = "9 Man'chu Lü"
+		name = "9 Man'chu Lï¿½"
 		type = militia
 		model = 4
 		strength  = 75
@@ -220,11 +220,11 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 	landunit = {
 	location = 1199
         id = { type = 28500 id = 23 }
-		name = "4 Harbin Jüntuan"
+		name = "4 Harbin Jï¿½ntuan"
 
 		division = {
 	        id = { type = 28500 id = 24 }
-		name = "10 Man'chu Lü"
+		name = "10 Man'chu Lï¿½"
 		type = infantry
 		model = 7
 		strength  = 50
@@ -236,11 +236,11 @@ dormant_teams = { 6428 6405 6433 6434 6401 6406 6416 6438 6404 6426 6400 }
 	landunit = {
 	location = 1202
         id = { type = 28500 id = 33 }
-	name = "5 Chengde Jüntuan"
+	name = "5 Chengde Jï¿½ntuan"
 
 		division = {
 	        id = { type = 28500 id = 34 }
-		name = "12 Man'chu Lü"
+		name = "12 Man'chu Lï¿½"
 		type = bergsjaeger
 		model = 7
 		strength  = 100
@@ -306,6 +306,50 @@ location = 1209
 		division = { id = { type = 28500 id = 66 } name = "1 Man'chu Zhan'dou'ji" strength = 100 type = interceptor model = 6 }
 	}
 
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 67 }
+name = "3. DÃºlÃ¬ HÃ¹nhÃ© LÃ¼"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 68 }
+name = "4. DÃºlÃ¬ HÃ¹nhÃ© LÃ¼"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 69 }
+name = "5. DÃºlÃ¬ HÃ¹nhÃ© LÃ¼"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
+landdivision = {
+dormant = yes
+id = { type = 28500 id = 70 }
+name = "6. DÃºlÃ¬ HÃ¹nhÃ© LÃ¼"  
+type = bergsjaeger
+model = 8
+strength  = 40
+max_strength = 50
+extra = light_armor_brigade
+brigade_model = 1
+}
 
 navalunit = {
 location = 1218 #Yingkou
