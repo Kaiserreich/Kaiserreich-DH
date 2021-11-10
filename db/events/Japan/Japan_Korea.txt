@@ -44,6 +44,11 @@ ai_chance = 0
 command = { type = setflag which = ANTI_BANDITRY_0 }
 command = { type = relation which = MAN value = 20 }
 command = { type = relation which = PRI value = 20 }
+# Fengtian and Transamur automatically agrees to help Koreans.
+# The below two lines are inserted to eliminate the need for savescumming for players who want to switch over to Korea later and want an easy early game.
+# The AI chance to select this option is set to 0, and if this is to be altered, the modder might want to implement additional mechanics to ensure that MAN and PRI are allowed to choose between joining KOR and siding with JAP.
+command = { type = setflag which = KOR_MAN }
+command = { type = setflag which = KOR_PRI }
 }
 }
 
@@ -1452,13 +1457,13 @@ deathdate = { day = 0 month = august year = 1937 }
 
 action = {
 trigger = {
-NOT = {
-war = { country = RUS country = PRI }
-war = { country = SIB country = PRI }
-war = { country = SOV country = PRI }
-lost_national = { country = PRI value = 1 }
-lost_vp = { country = PRI value = 1 }
-}
+    NOT = {
+        war = { country = RUS country = PRI }
+        war = { country = SIB country = PRI }
+        war = { country = SOV country = PRI }
+        lost_national = { country = PRI value = 1 }
+        lost_vp = { country = PRI value = 1 }
+    }
 }
 ai_chance = 100
 name = ACTIONNAME260027A # Accept the plan
@@ -1468,13 +1473,13 @@ command = { type = domestic which = interventionism value = 1 }
 
 action = {
 trigger = {
-NOT = {
-war = { country = RUS country = PRI }
-war = { country = SIB country = PRI }
-war = { country = SOV country = PRI }
-lost_national = { country = PRI value = 1 }
-lost_vp = { country = PRI value = 1 }
-}
+    NOT = {
+        war = { country = RUS country = PRI }
+        war = { country = SIB country = PRI }
+        war = { country = SOV country = PRI }
+        lost_national = { country = PRI value = 1 }
+        lost_vp = { country = PRI value = 1 }
+    }
 }
 ai_chance = 0
 name = ACTIONNAME260027B # We decline
@@ -1485,48 +1490,53 @@ command = { type = clrflag which = KOR_PRI }
 
 action = {
 trigger = {
-NOT = {
-war = { country = RUS country = PRI }
-war = { country = SIB country = PRI }
-war = { country = SOV country = PRI }
-}
-lost_national = { country = PRI value = 1 }
-lost_vp = { country = PRI value = 1 }
+    OR = {
+        war = { country = RUS country = PRI }
+        war = { country = SIB country = PRI }
+        war = { country = SOV country = PRI }
+        lost_national = { country = PRI value = 1 }
+        lost_vp = { country = PRI value = 1 }
+    }
 }
 ai_chance = 0
 name = ACTIONNAME260027A # Accept the plan
+command = { type = dissent value = 5 }
 command = { type = domestic which = defense_lobby value = 2 }
 command = { type = domestic which = interventionism value = 1 }
 }
 
 action = {
 trigger = {
-NOT = {
-war = { country = RUS country = PRI }
-war = { country = SIB country = PRI }
-war = { country = SOV country = PRI }
-}
-lost_national = { country = PRI value = 1 }
-lost_vp = { country = PRI value = 1 }
+    OR = {
+        lost_national = { country = PRI value = 1 }
+        lost_vp = { country = PRI value = 1 }
+    }
+    NOT = {
+        war = { country = RUS country = PRI }
+        war = { country = SIB country = PRI }
+        war = { country = SOV country = PRI }
+    }
 }
 ai_chance = 100
 name = ACTIONNAME260027B # We decline
-command = { type = dissent value = 5 }
 command = { type = domestic which = interventionism value = -1 }
 command = { type = clrflag which = KOR_PRI }
 }
 
 action = {
 trigger = {
-OR = {
-war = { country = RUS country = PRI }
-war = { country = SIB country = PRI }
-war = { country = SOV country = PRI }
-}
+    NOT = {
+        lost_national = { country = PRI value = 1 }
+        lost_vp = { country = PRI value = 1 }
+    }
+    OR = {
+        war = { country = RUS country = PRI }
+        war = { country = SIB country = PRI }
+        war = { country = SOV country = PRI }
+    }
 }
 ai_chance = 100
 name = ACTIONNAME260028C # We're in the middle of a civil war, we must decline
-command = { type = dissent value = 5 }
 command = { type = domestic which = interventionism value = -1 }
 command = { type = clrflag which = KOR_PRI }
 }
