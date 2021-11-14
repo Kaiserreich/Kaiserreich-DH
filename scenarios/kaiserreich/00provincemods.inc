@@ -395,6 +395,10 @@ province = { id = 1371 ic = 2 landfort = 1 coastalfort = 1 anti_air = 4 oilpool 
 	naval_base = { size = 8 current_size = 8 } air_base = { size = 4 current_size = 4 } }
  
 ### ECU
+province = { id = 2007 infra = { size = 0.20 current_size = 0.20 } } #Puyo
+province = { id = 2008 infra = { size = 0.10 current_size = 0.10 } } #Iquitos
+province = { id = 2010 infra = { size = 0.10 current_size = 0.10 } } #Nanta
+province = { id = 2033 infra = { size = 0.20 current_size = 0.20 } } #Jaen
 province = { id = 2040 naval_base = { size = 3 current_size = 3 } } #Santiago de Guayaquil
 province = { id = 2042 anti_air = 2 #San Francisco de Quito 
 	air_base = { size = 1 current_size = 1 } }
@@ -1202,7 +1206,12 @@ province = { id = 1471 ic = -3 } #Bhubanesbar
 province = { id = 1493 ic = 2 } #Vizagapatam
 
 ### PRU
-province = { id = 2016 naval_base = { size = 3 current_size = 3 } } #Lima
+province = { id = 2012 infra = { size = 0.20 current_size = 0.20 } } #Requena
+province = { id = 2013 infra = { size = 0.10 current_size = 0.10 } } #Puerto Maldonado
+province = { id = 2014 infra = { size = 0.40 current_size = 0.40 } } #Trujillo
+province = { id = 2015 infra = { size = 0.40 current_size = 0.40 } } #Cuzco
+province = { id = 2016 naval_base = { size = 3 current_size = 3 } air_base = { size = 2 current_size = 2 } } #Lima
+province = { id = 2017 infra = { size = 0.40 current_size = 0.40 } } #Arequipa
 
 ### ROM
 province = { id = 297 anti_air = 1 #Iasi
