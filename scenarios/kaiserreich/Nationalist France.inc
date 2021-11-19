@@ -17,16 +17,16 @@ ai = "kaiserreich\Nationalist France.ai"
 
 
 #### cabinet
-	headofstate = { type = 9 id = 57001 }
-	headofgovernment = { type = 9 id = 57094 }
- 	foreignminister = { type = 9 id = 57003 }
- 	armamentminister = { type = 9 id = 57044 }
- 	ministerofsecurity = { type = 9 id = 57045 }
- 	ministerofintelligence = { type = 9 id = 57046 }
- 	chiefofstaff = { type = 9 id = 57007 }
- 	chiefofarmy = { type = 9 id = 57048  }
- 	chiefofnavy = { type = 9 id = 57009 }        
- 	chiefofair = { type = 9 id = 57050 }
+	headofstate = { type = 9 id = 57001 } #Phillipe Petain
+	headofgovernment = { type = 9 id = 57242 } #Louis Franchet d'Esperey
+	foreignminister = { type = 9 id = 57147 } #Edouard de Castelnau
+	armamentminister = { type = 9 id = 57023 } #Paul Painleve
+	ministerofsecurity = { type = 9 id = 57080 } #Theodore Steeg
+	ministerofintelligence = { type = 9 id = 57212 } #Louis Rivet
+	chiefofstaff = { type = 9 id = 57223 } #Alphonse Georges
+	chiefofarmy = { type = 9 id = 57232 } #Henri Giraud
+	chiefofnavy = { type = 9 id = 57093 } #Georges Durand-Viel
+	chiefofair = { type = 9 id = 57050 } #Jean Mermoz
 
 #### Resource Reserves
 
@@ -114,67 +114,75 @@ relation = {   tag =  	JAP	value = 		50	   }
 #######################
 
 #Infantry
-1010 1020 1030 1040 1050 1060 1070 1080 1090 #interwar Infantry Division 
-13060 13070 13080 1310 1320 1330 1340 1350 #interwar cavalry division 
-1160 1170 1180 1190 1200 1210 1220 1230 1240 #Early Mountain Division 
+1010 1020 1030 1040 1050 1060 1070 1080 1090 #interwar Infantry Division
+13060 13070 13080 1310 1320 1330 1340 1350 1360 1370 1380 #1936 Cavalry
+1160 1170 1180 1190 1200 1210 1220 1230 1240 #Early Mountain Division
 1910 1920 1930 1940 1950 1960 1970 1980 #Up to IW Supply 1930
 1830 1840 1850 #Engineers
 1396 #Motorized Divisions
 1560 # Naval infantry
 
 #Aircrafts
-4500 4510 4520 4530 4540 4550 4010 #interceptors
-4300 4310 4320 4330 #MR Fighter
-4600 4610 4620 4630 4120 #Up to 1924 Tac Bomber
-4800 4810 4820 #ww1 strategic bomber
-7290 7300 7310 7320 #CAS
+4500 4510 4520 4530 4540 4550 4010 4020 #Interceptor 1930
+4300 4310 4320 4330 #Multi-Role 1926
+4600 4610 4620 4630 4120 4130 #Tac Bomber 1932
+4700 4710 #Nav Bomber 1924
+4800 4810 4820 #Strat Bomber 1930
+7290 7300 7310 7320 #CAS 1922
+4740 4750 4760 4770 4780 4790 #Seaplane 1932
+4900 4910 #CAG 1930
+4290 #Trans Plane 1926
 
 #Armour & Artillery
-2860 2870 2880 2020 #Armd Cars up to post ww1 armd car
-2620 2010 2630 2640 #1924 tanks
-2290 2300 2310 2900 2910 #Great War Heavy Field Artillery  
-2800 2450 21180 21190 21200 #Early Static Anti-Air Artillery 
-2810 2820 2510 #Basic Anti-Air Artillery Brigade
+2860 2870 2880 2020 #Armd Cars 1929
+2620 2010 2630 2640 2646 #Tank 1928
+2290 2300 2310 2900 2910 2920 2930 #Artillery 1930
+2800 2450 21180 21190 21200 #Anti-Air 1935
+2810 2820 2510 #AA Brigade 1930
+2400 #Anti-Tank 1935
 
 #Secret Weapons (for tanks only)
 7600 7610 #Tank experiments
 
 #Industrial
-5810 5820 #Manufacturing
+5810 5820 5050 5830 #Production 1925
 5700 5710 5010 5020 #Mechanized Agriculture
 5600 5610 5620 5630 #Medicine
-5800 5080 5090 #Improved Construction Engineering 
-5190 #Basic Oil Refining 
-5310 54010 54020 54030 5316 5326 #Computers & cryptografi
+5800 5080 5090 #Improved Construction Engineering
+5190 #Basic Oil Refining
+5310 54010 54020 54030 5316 5326 #Computers & cryptography
 
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
 # Great War Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
-6010 6020 # Superior Firepower
+6390 6400 6420 #Light Infantry (French colonial army)
 14000 14010 #Improved Great War Hospital System
 
 #Naval Doctrines
 8010 8020 8040 8050 8030 8060 8070 8080 #Basic Theories
 8100 8110 8120 8150 8160 8170 8200 8210 #Naval supremacy
-8900 8910 8920 8930 8940 # Fleet in being
+8500 8510 8520 8550 8560 8570 #Naval Interdiction
+81300 81310 81320 81330 81340 81350 #Indirect Approach
 82500 #Fuel Oil Logistics
+82300 #Basic Amphib Warfare
 
 #Naval
-3010 3020 3030 3040 3050 #DD
-3110 3120 3130 #Early Light Cruiser 
-3210 3220 3230 #Early Heavy Cruiser
-3310 3320 3330 3340 #Interwar Battlecruiser  
-3410 3420 3430 3440 3450 3456 #Early Battleship 
-3610 3620 3630 #Short Range Submarine 
+3010 3020 3030 3040 3050 #1923 DD
+3110 3120 3130 3140 #1922 Light Cruiser
+3210 3220 3230 3240 #1922 Heavy Cruiser
+3310 3320 3330 3340 #Interwar Battlecruiser
+3410 3420 3430 3440 3450 3456 #Early Battleship
+3610 3620 3630 3640 #Interwar Submarine
+12100 12110 12120 #Early Light Carrier
 3720 3730 3736 3740 3750 3900 #Torpedo & ASW 18
 3810 3820 #Troopships
 
 
 	}
 
-dormant_teams = { 6659 6662 }
+dormant_teams = { 6641 6652 6657 6659 6662 }
 
 #########  OOB (...)
 

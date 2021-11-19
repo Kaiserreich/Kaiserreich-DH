@@ -131,8 +131,8 @@ ai_chance = 70
 command = { type = construct which = ic where = -1 value = -1 }
 command = { type = construct which = ic where = -1 value = -1 }
 command = { type = construct which = ic where = -1 value = -1 }
-command = { type = construct which = ic where = -1 value = -1 }
-command = { type = construct which = ic where = -1 value = -1 }
+#command = { type = construct which = ic where = -1 value = -1 }
+#command = { type = construct which = ic where = -1 value = -1 }
 command = { type = relation which = CGX value = -100 }
 command = { type = relation which = GER value = -25 }
 command = { type = dissent value = 5 }
@@ -290,19 +290,19 @@ action_a = {
 ai_chance = 25
 name = "Claim some independence and reorganize"
 command = { type = local_clrflag which = CGX_Reform_Continue }
-command = { type = headofgovernment which = 502022 }
-command = { type = foreignminister which = 502023 }
-command = { type = chiefofstaff which = 502024 }
-command = { type = chiefofarmy which = 502025 }
-command = { type = chiefofnavy which = 502026 }
-command = { type = chiefofair which = 502027 }
-command = { type = ministerofsecurity which = 502028 }
-command = { type = ministerofintelligence which = 502029 }
-command = { type = armamentminister which = 502030 }
+command = { type = headofgovernment which = 502022 } #T.V. Soong
+command = { type = foreignminister which = 502038 } #Chen Zhiping
+command = { type = armamentminister which = 502054 } #Li Guoqin
+command = { type = ministerofsecurity which = 502039 } #Chen Zhiping
+command = { type = ministerofintelligence which = 502056 } #Zhu Jiahua
+#German military ministers remain, for now
 command = { type = dissent value = -5 }
 command = { type = relation which = GER value = -25 }
 command = { type = end_puppet }
 command = { type = trigger which = 140010 }
+command = { type = event which = 140017 where = CGX when = 100 } #activate Chinese teams, leaders, ministers
+command = { type = event which = 140018 where = CGX when = 101 } #retire German teams, leaders, ministers
+command = { type = event which = 140019 where = CGX when = 102 } #set new cabinet
 }
 
 action_b = {
@@ -438,16 +438,16 @@ desc = "The Republicans have established full control over the provinces formerl
 action_a = {
 name = "Huzzah!"
 command = { type = dissent value = -10 }
-command = { type = headofstate which = 183500 }
-command = { type = headofgovernment which = 183501 }
-command = { type = foreignminister which = 183502 }
-command = { type = ministerofsecurity which = 183503 }
-command = { type = ministerofintelligence which = 183504 }
-command = { type = armamentminister which = 183505 }
-command = { type = chiefofstaff which = 183506 }
-command = { type = chiefofarmy which = 183507 }
-command = { type = chiefofnavy which = 183508 }
-command = { type = chiefofair which = 183509 }
+command = { type = headofstate which = 183500 } #Huang Xing
+command = { type = headofgovernment which = 183501 } #Sun Li-Gen
+command = { type = foreignminister which = 183502 } #T. V. Soong
+command = { type = ministerofsecurity which = 183503 } #Dai Li
+command = { type = ministerofintelligence which = 183504 } #Du Yuming
+command = { type = armamentminister which = 183505 } #Xue Yue
+#command = { type = chiefofstaff which = 183506 } #doesn't exist
+command = { type = chiefofarmy which = 183507 } #Huang Shaohong
+command = { type = chiefofnavy which = 183508 } #Chen Shaokuan
+command = { type = chiefofair which = 183509 } #Sun Li-Gen
 command = { type = set_relation which = CYN value = 149 }
 command = { type = set_relation which = GER value = -149 }
 command = { type = set_relation which = MAN value = -39 }
@@ -635,11 +635,6 @@ command = { type = relation which = CSX value = -10 }
 command = { type = flag_ext where = CGX which = "_rep" }
 command = { type = independence which = CGX value = 1 when = 0 }
 command = { type = name where = CGX which = CGX_REP_NAME }
-command = { type = sleepminister which = 502001 }
-command = { type = sleepminister which = 502002 }
-command = { type = sleepminister which = 502019 }
-command = { type = sleepteam which = 8706 }
-command = { type = sleepteam which = 8707 }
 }
 
 action_b = {
@@ -670,11 +665,6 @@ command = { type = make_puppet which = CGX }
 command = { type = relation which = CGX value = 50 }
 command = { type = relation which = CSX value = -10 }
 command = { type = name where = CGX which = CGX_REP_NAME }
-command = { type = sleepminister which = 502001 }
-command = { type = sleepminister which = 502002 }
-command = { type = sleepminister which = 502019 }
-command = { type = sleepteam which = 8706 }
-command = { type = sleepteam which = 8707 }
 }
 
 action_b = {
@@ -705,11 +695,6 @@ command = { type = make_puppet which = CGX }
 command = { type = relation which = CGX value = 50 }
 command = { type = relation which = CSX value = -10 }
 command = { type = name where = CGX which = CGX_REP_NAME }
-command = { type = sleepminister which = 502001 }
-command = { type = sleepminister which = 502002 }
-command = { type = sleepminister which = 502019 }
-command = { type = sleepteam which = 8706 }
-command = { type = sleepteam which = 8707 }
 }
 
 action_b = {
@@ -718,5 +703,549 @@ name = "Refuse their alliance, we don't need anyone!"
 command = { type = domestic which = interventionism value = -1 }
 command = { type = relation which = CGX value = -25 }
 command = { type = relation which = CSX value = 10 }
+}
+}
+
+##### Events 140017, 140018, 140019 used to shift AOG into Guangxi Republic #####
+event = {
+id = 140017
+random = no
+country = CGX
+style = 2
+
+name = "Long live the Guangxi Republic!"
+desc = "Long live the Guangxi Republic!"
+picture = "Chinese Big Swords"
+
+action_a = {
+name = "Huzzah!"
+command = { type = dissent value = -10 }
+command = { type = waketeam which = 8702 when = 1 } #Luo Mingyu
+command = { type = waketeam which = 8715 when = 1 } #Ling Hongxun
+command = { type = waketeam which = 8719 when = 1 } #Wen Yuqing
+command = { type = waketeam which = 8735 when = 1 } #Ouyang Ge
+command = { type = waketeam which = 8736 when = 1 } #Li Qingwen
+command = { type = waketeam which = 8737 when = 1 } #Feng Qicong
+command = { type = waketeam which = 8738 when = 1 } #Huang Guangrui
+command = { type = waketeam which = 8739 when = 1 } #Zhou Zhirou
+command = { type = waketeam which = 8740 when = 1 } #Lei Yanjun
+command = { type = waketeam which = 8741 when = 1 } #Chen Ruitian
+command = { type = waketeam which = 8742 when = 1 } #Li Xueyan
+command = { type = waketeam which = 8743 when = 1 } #Huang Zhenqiu
+command = { type = waketeam which = 8744 when = 1 } #Huang Qixiang
+command = { type = waketeam which = 8745 when = 1 } #Fan Hanjie
+command = { type = waketeam which = 8746 when = 1 } #Zhang Yunyi
+command = { type = waketeam which = 8747 when = 1 } #Tang Junbo
+command = { type = waketeam which = 8748 when = 1 } #Xie Zhaoqi
+command = { type = waketeam which = 8749 when = 1 } #Zhou Shidi
+command = { type = wakeminister which = 502150 }
+command = { type = wakeminister which = 502151 }
+command = { type = wakeminister which = 502152 }
+command = { type = wakeminister which = 502153 }
+command = { type = wakeminister which = 502154 }
+command = { type = wakeminister which = 502155 }
+command = { type = wakeminister which = 502156 }
+command = { type = wakeminister which = 502157 }
+command = { type = wakeminister which = 502158 }
+command = { type = wakeminister which = 502159 }
+command = { type = wakeminister which = 502160 }
+command = { type = wakeminister which = 502161 }
+command = { type = wakeminister which = 502162 }
+command = { type = wakeminister which = 502163 }
+command = { type = wakeminister which = 502164 }
+command = { type = wakeminister which = 502165 }
+command = { type = wakeminister which = 502166 }
+command = { type = wakeminister which = 502167 }
+command = { type = wakeminister which = 502168 }
+command = { type = wakeminister which = 502169 }
+command = { type = wakeminister which = 502170 }
+command = { type = wakeminister which = 502171 }
+command = { type = wakeminister which = 502172 }
+command = { type = wakeminister which = 502173 }
+command = { type = wakeminister which = 502174 }
+command = { type = wakeminister which = 502175 }
+command = { type = wakeminister which = 502176 }
+command = { type = wakeminister which = 502177 }
+command = { type = wakeminister which = 502178 }
+command = { type = wakeminister which = 502179 }
+command = { type = wakeminister which = 502180 }
+command = { type = wakeminister which = 502181 }
+command = { type = wakeminister which = 502182 }
+command = { type = wakeminister which = 502183 }
+command = { type = wakeminister which = 502184 }
+command = { type = wakeminister which = 502185 }
+command = { type = wakeminister which = 502186 }
+command = { type = wakeminister which = 502187 }
+command = { type = wakeminister which = 502188 }
+command = { type = wakeminister which = 502189 }
+command = { type = wakeminister which = 502190 }
+command = { type = wakeminister which = 502191 }
+command = { type = wakeminister which = 502192 }
+command = { type = wakeminister which = 502193 }
+command = { type = wakeminister which = 502194 }
+command = { type = wakeminister which = 502195 }
+command = { type = wakeminister which = 502196 }
+command = { type = wakeminister which = 502197 }
+command = { type = wakeminister which = 502198 }
+command = { type = wakeminister which = 502199 }
+command = { type = wakeminister which = 502200 }
+command = { type = wakeminister which = 502201 }
+command = { type = wakeminister which = 502202 }
+command = { type = wakeminister which = 502203 }
+command = { type = wakeminister which = 502204 }
+command = { type = wakeminister which = 502205 }
+command = { type = wakeminister which = 502206 }
+command = { type = wakeminister which = 502207 }
+command = { type = wakeminister which = 502208 }
+command = { type = wakeminister which = 502209 }
+command = { type = wakeminister which = 502210 }
+command = { type = wakeminister which = 502211 }
+command = { type = wakeminister which = 502212 }
+command = { type = wakeminister which = 502213 }
+command = { type = wakeminister which = 502214 }
+command = { type = wakeminister which = 502215 }
+command = { type = wakeminister which = 502216 }
+command = { type = wakeminister which = 502217 }
+command = { type = wakeminister which = 502218 }
+command = { type = wakeminister which = 502219 }
+command = { type = wakeminister which = 502220 }
+command = { type = wakeminister which = 502221 }
+command = { type = wakeminister which = 502222 }
+command = { type = wakeminister which = 502223 }
+command = { type = wakeminister which = 502224 }
+command = { type = wakeminister which = 502225 }
+command = { type = wakeminister which = 502226 }
+command = { type = wakeminister which = 502227 }
+command = { type = wakeminister which = 502228 }
+command = { type = wakeminister which = 502229 }
+command = { type = wakeminister which = 502230 }
+command = { type = wakeminister which = 502231 }
+command = { type = wakeminister which = 502232 }
+command = { type = wakeminister which = 502233 }
+command = { type = wakeminister which = 502234 }
+command = { type = wakeminister which = 502235 }
+command = { type = wakeminister which = 502236 }
+command = { type = wakeminister which = 502237 }
+command = { type = wakeminister which = 502238 }
+command = { type = wakeminister which = 502239 }
+command = { type = wakeminister which = 502240 }
+command = { type = wakeminister which = 502241 }
+command = { type = wakeminister which = 502242 }
+command = { type = wakeminister which = 502243 }
+command = { type = wakeminister which = 502244 }
+command = { type = wakeminister which = 502245 }
+command = { type = wakeminister which = 502246 }
+command = { type = wakeminister which = 502247 }
+command = { type = wakeminister which = 502248 }
+command = { type = wakeminister which = 502249 }
+command = { type = wakeminister which = 502250 }
+command = { type = wakeminister which = 502251 }
+command = { type = wakeminister which = 502252 }
+command = { type = wakeminister which = 502253 }
+command = { type = wakeminister which = 502254 }
+command = { type = wakeminister which = 502255 }
+command = { type = wakeminister which = 502256 }
+command = { type = wakeminister which = 502257 }
+command = { type = wakeminister which = 502258 }
+command = { type = wakeminister which = 502259 }
+command = { type = wakeminister which = 502260 }
+command = { type = wakeminister which = 502261 }
+command = { type = wakeminister which = 502262 }
+command = { type = wakeminister which = 502263 }
+command = { type = wakeminister which = 502264 }
+command = { type = wakeminister which = 502265 }
+command = { type = wakeminister which = 502266 }
+command = { type = wakeminister which = 502267 }
+command = { type = wakeminister which = 502268 }
+command = { type = wakeminister which = 502269 }
+command = { type = wakeminister which = 502270 }
+command = { type = wakeminister which = 502271 }
+command = { type = wakeminister which = 502272 }
+command = { type = wakeminister which = 502273 }
+command = { type = wakeminister which = 502274 }
+command = { type = wakeminister which = 502275 }
+command = { type = wakeminister which = 502276 }
+command = { type = wakeminister which = 502277 }
+command = { type = wakeminister which = 502278 }
+command = { type = wakeminister which = 502279 }
+command = { type = wakeminister which = 502280 }
+command = { type = wakeminister which = 502281 }
+command = { type = wakeminister which = 502282 }
+command = { type = wakeminister which = 502283 }
+command = { type = wakeminister which = 502284 }
+command = { type = wakeminister which = 502285 }
+command = { type = wakeminister which = 502286 }
+command = { type = wakeminister which = 502287 }
+command = { type = wakeminister which = 502288 }
+command = { type = wakeminister which = 502289 }
+command = { type = wakeminister which = 502290 }
+command = { type = wakeminister which = 502291 }
+command = { type = wakeminister which = 502292 }
+command = { type = wakeminister which = 502293 }
+command = { type = wakeminister which = 502294 }
+command = { type = wakeminister which = 502295 }
+command = { type = wakeminister which = 502296 }
+command = { type = wakeminister which = 502297 }
+command = { type = wakeminister which = 502298 }
+command = { type = wakeminister which = 502299 }
+command = { type = wakeminister which = 502300 }
+command = { type = wakeminister which = 502301 }
+command = { type = wakeminister which = 502302 }
+command = { type = wakeminister which = 502303 }
+command = { type = wakeminister which = 502304 }
+command = { type = wakeminister which = 502305 }
+command = { type = wakeminister which = 502306 }
+command = { type = wakeminister which = 502307 }
+command = { type = wakeminister which = 502308 }
+command = { type = wakeminister which = 502309 }
+command = { type = wakeminister which = 502310 }
+command = { type = wakeminister which = 502311 }
+command = { type = wakeminister which = 502312 }
+command = { type = wakeminister which = 502313 }
+command = { type = wakeminister which = 502314 }
+command = { type = wakeminister which = 502315 }
+command = { type = wakeminister which = 502316 }
+command = { type = wakeminister which = 502317 }
+command = { type = wakeminister which = 502318 }
+command = { type = wakeminister which = 502319 }
+command = { type = wakeminister which = 502320 }
+command = { type = wakeminister which = 502321 }
+command = { type = wakeminister which = 502322 }
+command = { type = wakeminister which = 502323 }
+command = { type = wakeminister which = 502324 }
+command = { type = wakeminister which = 502325 }
+command = { type = wakeminister which = 502326 }
+command = { type = wakeminister which = 502327 }
+command = { type = wakeminister which = 502328 }
+command = { type = wakeminister which = 502329 }
+command = { type = wakeminister which = 502330 }
+command = { type = wakeminister which = 502331 }
+command = { type = wakeleader which = 502100 }
+command = { type = wakeleader which = 502101 }
+command = { type = wakeleader which = 502102 }
+command = { type = wakeleader which = 502103 }
+command = { type = wakeleader which = 502104 }
+command = { type = wakeleader which = 502105 }
+command = { type = wakeleader which = 502106 }
+command = { type = wakeleader which = 502107 }
+command = { type = wakeleader which = 502108 }
+command = { type = wakeleader which = 502109 }
+command = { type = wakeleader which = 502110 }
+command = { type = wakeleader which = 502111 }
+command = { type = wakeleader which = 502112 }
+command = { type = wakeleader which = 502113 }
+command = { type = wakeleader which = 502114 }
+command = { type = wakeleader which = 502115 }
+command = { type = wakeleader which = 502116 }
+command = { type = wakeleader which = 502117 }
+command = { type = wakeleader which = 502118 }
+command = { type = wakeleader which = 502119 }
+command = { type = wakeleader which = 502120 }
+command = { type = wakeleader which = 502121 }
+command = { type = wakeleader which = 502122 }
+command = { type = wakeleader which = 502123 }
+command = { type = wakeleader which = 502124 }
+command = { type = wakeleader which = 502125 }
+command = { type = wakeleader which = 502126 }
+command = { type = wakeleader which = 502127 }
+command = { type = wakeleader which = 502128 }
+command = { type = wakeleader which = 502129 }
+command = { type = wakeleader which = 502130 }
+command = { type = wakeleader which = 502131 }
+command = { type = wakeleader which = 502132 }
+command = { type = wakeleader which = 502133 }
+command = { type = wakeleader which = 502134 }
+command = { type = wakeleader which = 502135 }
+command = { type = wakeleader which = 502136 }
+command = { type = wakeleader which = 502137 }
+command = { type = wakeleader which = 502138 }
+command = { type = wakeleader which = 502139 }
+command = { type = wakeleader which = 502140 }
+command = { type = wakeleader which = 502141 }
+command = { type = wakeleader which = 502142 }
+command = { type = wakeleader which = 502143 }
+command = { type = wakeleader which = 502144 }
+command = { type = wakeleader which = 502145 }
+command = { type = wakeleader which = 502146 }
+command = { type = wakeleader which = 502147 }
+command = { type = wakeleader which = 502148 }
+command = { type = wakeleader which = 502149 }
+command = { type = wakeleader which = 502150 }
+command = { type = wakeleader which = 502151 }
+command = { type = wakeleader which = 502152 }
+command = { type = wakeleader which = 502153 }
+command = { type = wakeleader which = 502154 }
+command = { type = wakeleader which = 502155 }
+command = { type = wakeleader which = 502156 }
+command = { type = wakeleader which = 502157 }
+command = { type = wakeleader which = 502158 }
+command = { type = wakeleader which = 502159 }
+command = { type = wakeleader which = 502160 }
+command = { type = wakeleader which = 502161 }
+command = { type = wakeleader which = 502162 }
+command = { type = wakeleader which = 502163 }
+command = { type = wakeleader which = 502164 }
+command = { type = wakeleader which = 502165 }
+command = { type = wakeleader which = 502166 }
+command = { type = wakeleader which = 502167 }
+command = { type = wakeleader which = 502168 }
+command = { type = wakeleader which = 502169 }
+command = { type = wakeleader which = 502170 }
+command = { type = wakeleader which = 502171 }
+command = { type = wakeleader which = 502172 }
+command = { type = wakeleader which = 502173 }
+command = { type = wakeleader which = 502174 }
+command = { type = wakeleader which = 502175 }
+command = { type = wakeleader which = 502176 }
+command = { type = wakeleader which = 502177 }
+command = { type = wakeleader which = 502178 }
+command = { type = wakeleader which = 502179 }
+command = { type = wakeleader which = 502180 }
+command = { type = wakeleader which = 502181 }
+command = { type = wakeleader which = 502182 }
+command = { type = wakeleader which = 502183 }
+command = { type = wakeleader which = 502184 }
+command = { type = wakeleader which = 502185 }
+command = { type = wakeleader which = 502186 }
+command = { type = wakeleader which = 502187 }
+command = { type = wakeleader which = 502188 }
+command = { type = wakeleader which = 502189 }
+command = { type = wakeleader which = 502190 }
+command = { type = wakeleader which = 502191 }
+command = { type = wakeleader which = 502192 }
+command = { type = wakeleader which = 502193 }
+command = { type = wakeleader which = 502194 }
+}
+}
+
+
+event = {
+id = 140018
+random = no
+country = CGX
+style = 2
+
+name = "Long live the Guangxi Republic!"
+desc = "The Germans retire!"
+picture = "Chinese Big Swords"
+
+action_a = {
+name = "Goodbye!"
+command = { type = sleepteam which = 8717 when = 1 } #Sigmund Moosauer
+command = { type = sleepteam which = 8723 when = 1 } #Hellmuth von Mücke
+command = { type = sleepteam which = 8724 when = 1 } #Conrad Patzig
+command = { type = sleepteam which = 8725 when = 1 } #Gustav Siess
+command = { type = sleepteam which = 8726 when = 1 } #Karl Kettembeil
+command = { type = sleepteam which = 8727 when = 1 } #Kurt-Bertram von Döring
+command = { type = sleepteam which = 8729 when = 1 } #Hans Sehmsdorf
+command = { type = sleepteam which = 8730 when = 1 } #Hermann Voigt-Ruscheweyh
+command = { type = sleepteam which = 8731 when = 1 } #Karl Fabiunke
+command = { type = sleepteam which = 8732 when = 1 } #Erich Hauger
+command = { type = sleepteam which = 8733 when = 1 } #Walter Hollaender
+command = { type = sleepteam which = 8734 when = 1 } #Alexander von Falkenhausen
+#Tan Kah Kee, Lee Kong Chian, Chen Zhiping remain active
+command = { type = sleepminister which = 502001 }
+command = { type = sleepminister which = 502006 }
+command = { type = sleepminister which = 502007 }
+command = { type = sleepminister which = 502008 }
+command = { type = sleepminister which = 502009 }
+command = { type = sleepminister which = 502010 }
+command = { type = sleepminister which = 502014 }
+command = { type = sleepminister which = 502015 }
+command = { type = sleepminister which = 502016 }
+command = { type = sleepminister which = 502017 }
+command = { type = sleepminister which = 502018 }
+command = { type = sleepminister which = 502019 }
+command = { type = sleepminister which = 502020 }
+command = { type = sleepminister which = 502021 }
+command = { type = sleepminister which = 502022 }
+command = { type = sleepminister which = 502023 }
+command = { type = sleepminister which = 502024 }
+command = { type = sleepminister which = 502025 }
+command = { type = sleepminister which = 502026 }
+command = { type = sleepminister which = 502027 }
+command = { type = sleepminister which = 502028 }
+command = { type = sleepminister which = 502029 }
+command = { type = sleepminister which = 502030 }
+command = { type = sleepminister which = 502031 }
+command = { type = sleepminister which = 502032 }
+command = { type = sleepminister which = 502033 }
+command = { type = sleepminister which = 502034 }
+command = { type = sleepminister which = 502035 }
+command = { type = sleepminister which = 502036 }
+command = { type = sleepminister which = 502037 }
+command = { type = sleepminister which = 502041 }
+command = { type = sleepminister which = 502042 }
+command = { type = sleepminister which = 502043 }
+command = { type = sleepminister which = 502044 }
+command = { type = sleepminister which = 502045 }
+command = { type = sleepminister which = 502046 }
+command = { type = sleepminister which = 502047 }
+command = { type = sleepminister which = 502048 }
+command = { type = sleepminister which = 502049 }
+command = { type = sleepminister which = 502050 }
+command = { type = sleepminister which = 502051 }
+command = { type = sleepminister which = 502052 }
+command = { type = sleepminister which = 502053 }
+command = { type = sleepminister which = 502054 }
+command = { type = sleepminister which = 502055 }
+command = { type = sleepminister which = 502056 }
+command = { type = sleepminister which = 502057 }
+command = { type = sleepminister which = 502058 }
+command = { type = sleepminister which = 502059 }
+command = { type = sleepminister which = 502060 }
+command = { type = sleepminister which = 502061 }
+command = { type = sleepminister which = 502062 }
+command = { type = sleepminister which = 502063 }
+command = { type = sleepminister which = 502064 }
+command = { type = sleepminister which = 502065 }
+command = { type = sleepminister which = 502066 }
+command = { type = sleepminister which = 502067 }
+command = { type = sleepminister which = 502068 }
+command = { type = sleepminister which = 502069 }
+command = { type = sleepminister which = 502070 }
+command = { type = sleepminister which = 502071 }
+command = { type = sleepminister which = 502072 }
+command = { type = sleepminister which = 502073 }
+command = { type = sleepminister which = 502074 }
+command = { type = sleepminister which = 502075 }
+command = { type = sleepminister which = 502076 }
+command = { type = sleepminister which = 502077 }
+command = { type = sleepminister which = 502078 }
+command = { type = sleepminister which = 502079 }
+command = { type = sleepminister which = 502080 }
+command = { type = sleepminister which = 502081 }
+command = { type = sleepminister which = 502082 }
+command = { type = sleepminister which = 502083 }
+command = { type = sleepminister which = 502084 }
+command = { type = sleepminister which = 502085 }
+command = { type = sleepminister which = 502086 }
+command = { type = sleepminister which = 502087 }
+command = { type = sleepminister which = 502088 }
+command = { type = sleepminister which = 502089 }
+command = { type = sleepminister which = 502090 }
+command = { type = sleepminister which = 502091 }
+command = { type = sleepminister which = 502092 }
+command = { type = sleepminister which = 502093 }
+command = { type = sleepminister which = 502094 }
+command = { type = sleepminister which = 502095 }
+command = { type = sleepminister which = 502096 }
+command = { type = sleepminister which = 502097 }
+command = { type = sleepminister which = 502098 }
+command = { type = sleepminister which = 502099 }
+command = { type = sleepminister which = 502100 }
+command = { type = sleepminister which = 502101 }
+command = { type = sleepminister which = 502102 }
+command = { type = sleepminister which = 502103 }
+command = { type = sleepminister which = 502104 }
+command = { type = sleepminister which = 502105 }
+command = { type = sleepminister which = 502106 }
+command = { type = sleepminister which = 502107 }
+command = { type = sleepminister which = 502108 }
+command = { type = sleepminister which = 502109 }
+command = { type = sleepminister which = 502110 }
+command = { type = sleepminister which = 502111 }
+command = { type = sleepminister which = 502112 }
+command = { type = sleepminister which = 502113 }
+command = { type = sleepminister which = 502114 }
+command = { type = sleepminister which = 502115 }
+command = { type = sleepminister which = 502116 }
+command = { type = sleepminister which = 502117 }
+command = { type = sleepminister which = 502118 }
+command = { type = sleepminister which = 502119 }
+command = { type = sleepminister which = 502120 }
+command = { type = sleepminister which = 502121 }
+command = { type = sleepminister which = 502122 }
+command = { type = sleepminister which = 502123 }
+command = { type = sleepminister which = 502124 }
+#Gu Dinghua remains active
+command = { type = sleepleader which = 502000 }
+command = { type = sleepleader which = 502001 }
+command = { type = sleepleader which = 502002 }
+command = { type = sleepleader which = 502003 }
+command = { type = sleepleader which = 502004 }
+command = { type = sleepleader which = 502005 }
+command = { type = sleepleader which = 502006 }
+command = { type = sleepleader which = 502007 }
+command = { type = sleepleader which = 502008 }
+command = { type = sleepleader which = 502009 }
+command = { type = sleepleader which = 502010 }
+command = { type = sleepleader which = 502011 }
+command = { type = sleepleader which = 502012 }
+command = { type = sleepleader which = 502013 }
+command = { type = sleepleader which = 502014 }
+command = { type = sleepleader which = 502015 }
+command = { type = sleepleader which = 502016 }
+command = { type = sleepleader which = 502017 }
+command = { type = sleepleader which = 502018 }
+command = { type = sleepleader which = 502019 }
+command = { type = sleepleader which = 502020 }
+command = { type = sleepleader which = 502021 }
+command = { type = sleepleader which = 502022 }
+command = { type = sleepleader which = 502023 }
+command = { type = sleepleader which = 502024 }
+command = { type = sleepleader which = 502025 }
+command = { type = sleepleader which = 502026 }
+command = { type = sleepleader which = 502027 }
+command = { type = sleepleader which = 502028 }
+command = { type = sleepleader which = 502029 }
+command = { type = sleepleader which = 502030 }
+command = { type = sleepleader which = 502031 }
+command = { type = sleepleader which = 502032 }
+command = { type = sleepleader which = 502033 }
+command = { type = sleepleader which = 502034 }
+command = { type = sleepleader which = 502035 }
+command = { type = sleepleader which = 502036 }
+command = { type = sleepleader which = 502037 }
+command = { type = sleepleader which = 502038 }
+command = { type = sleepleader which = 502039 }
+command = { type = sleepleader which = 502040 }
+command = { type = sleepleader which = 502041 }
+command = { type = sleepleader which = 502042 }
+command = { type = sleepleader which = 502043 }
+command = { type = sleepleader which = 502044 }
+command = { type = sleepleader which = 502045 }
+command = { type = sleepleader which = 502046 }
+command = { type = sleepleader which = 502047 }
+command = { type = sleepleader which = 502048 }
+command = { type = sleepleader which = 502049 }
+command = { type = sleepleader which = 502050 }
+command = { type = sleepleader which = 502051 }
+command = { type = sleepleader which = 502052 }
+command = { type = sleepleader which = 502054 }
+command = { type = sleepleader which = 502055 }
+command = { type = sleepleader which = 502056 }
+command = { type = sleepleader which = 502057 }
+}
+}
+
+
+event = {
+id = 140019
+random = no
+country = CGX
+style = 2
+
+name = "Long live the Guangxi Republic!"
+desc = "Chen Jitang forms his government."
+picture = "mayfourth"
+
+action_a = {
+name = "The Southern King!"
+command = { type = name where = CGX which = CGX_REP_NAME }
+command = { type = flag_ext where = CGX which = "_rep" }
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 5 }
+command = { type = set_domestic which = freedom value = 4 }
+command = { type = headofstate which = 502162 } #Chen Jitang
+command = { type = headofgovernment which = 502167 } #Xu Chongzhi
+command = { type = foreignminister which = 502199 } #Gu Yingfen
+command = { type = armamentminister which = 502215 } #Lin Yungai
+command = { type = ministerofsecurity which = 502224 } #Cheng Tiangu
+command = { type = ministerofintelligence which = 502238 } #Wen Yuqing
+command = { type = chiefofstaff which = 502274 } #Li Yangjing
+command = { type = chiefofarmy which = 502188 } #Li Hanhun
+command = { type = chiefofnavy which = 502305 } #Chen Ce
+command = { type = chiefofair which = 502318 } #Huang Zhenqiu
 }
 }

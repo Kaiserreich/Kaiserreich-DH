@@ -9,8 +9,8 @@ ai = "kaiserreich\Armenia.ai"
 
 	policy = {
         date = { year = 0 month = january day = 0 }
-        democratic = 2
-        political_left = 3
+        democratic = 3
+        political_left = 5
         freedom = 2
         free_market = 4
         professional_army = 5
@@ -19,9 +19,16 @@ ai = "kaiserreich\Armenia.ai"
     }
 
 #### cabinet
-	headofstate 		= { type = 9 id = 515031 } #Semeno Ter-Petrossian
-	headofgovernment	= { type = 9 id = 515030 } #Mehmed Esad Pasha
-	chiefofstaff		= { type = 9 id = 515041 } #Movses Silikyan
+	headofstate = { type = 9 id = 515036 } #Mehmed Esat Pasha
+	headofgovernment = { type = 9 id = 515037 } #Kazim Ozalp
+	foreignminister = { type = 9 id = 515009 } #Hamo Ohanjanyan
+	armamentminister = { type = 9 id = 515011 } #Berch Kerestejyan
+	#ministerofsecurity = { type = 9 id =  } #
+	ministerofintelligence = { type = 9 id = 515061 } #Nikol Aghbalian
+	chiefofstaff = { type = 9 id = 515078 } #Movses Silikyan
+	chiefofarmy = { type = 9 id = 515081 } #Hovhannes Hakhverdyan
+	chiefofnavy = { type = 9 id = 515023 } #Yervand Gasparyan
+	#chiefofair = { type = 9 id =  } #
 
 #### Resource Reserves
 
@@ -68,6 +75,7 @@ relation = { tag = TRA value = 20 }
 1010 1020 1030 1040 1050 1060 #1918 infantry
 1160 1170 1180 1190 1200 1210 #1918 mountain infantry
 13060 13070 13080 1310 1320 1330 #1918 cavalry division
+1910 1920 1930 #Army Logistics 1914
 
 #Armour and artillery
 2290 2300 2310 2900 #Artillery
@@ -85,10 +93,14 @@ relation = { tag = TRA value = 20 }
 
 #Land Doctrines
 6500 6510 6530 6590 #Up to pre ww1 tech
-6600 6610 6620 6650 6670 6680 6630 6640 6660 #ww1 defensive doctrines
-6540 6910 6010 #Land Doctrines Firepower Doctrine
+6600 6610 6620 6650 6670 6680 6630 6640 6660 6540 6910 #ww1 defensive doctrines
+6560 #Defensive Focus
+14000 #Early Weltkrieg Hospital System
 
+#Air Doctrines - ww2 techs
+27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470
 
+8080 #Naval Logistics
 	}
 
 #########  OOB (...)
