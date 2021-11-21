@@ -1395,33 +1395,28 @@ random = no
 country = VIC
 
 name = "Growing unrest"
-desc = "Despite our best efforts, our current military government is causing rising discontent among the population of our Fourth Republic. The recent political blunders of Prime Minister Louis Franchet d'Espèrey have forced Marshal Pétain to look for a replacement for him. However, onlookers are raising the concern that simply changing the prime minister while keeping the existing military dictatorship intact would prove detrimental to the future of France....."
+desc = "The recent political blunders of Prime Minister Louis Franchet d'Espèrey have forced Marshal Pétain to look for a replacement for him. However, onlookers are raising the concern that simply changing the prime minister while keeping the existing military dictatorship intact would be insufficient. There are hostile forces at work who may try to take advantage of the crisis to make their move..."
 style = 2
 picture = "diplomatic_campaign"
 
 date = { day = 20 month = june year = 1936 }
 
 action = {
-	name = "Keep everything as it is!"
-	ai_chance = 5
-	command = { type = dissent value = 7 }
-	command = { type = domestic which = freedom value = -1 }
-	command = { type = event which = 130030 where = VIC when = 30 }
-}
-action = {
-	name = "Replace Louis Franchet d'Esperey to appease the masses"
+	name = "Pétain fires Louis Franchet d'Esperey to appease the masses"
 	ai_chance = 30
 	command = { type = event which = 130029 where = VIC when = 2 }
 	command = { type = event which = 130030 where = VIC when = 30 }
+	command = { type = trigger which = 130151 } 
 	command = { type = domestic which = freedom value = 1 }
 	command = { type = dissent value = 2 }
 }
 action = {
-	name = "Restore the suspended constitution"
-	ai_chance = 20
+	name = "Henri Mordacq overthrows Petain!"
+	ai_chance = 40
 	command = { type = set_domestic which = democratic value = 7 }
 	command = { type = set_domestic which = political_left value = 4 }
-	command = { type = headofstate which = 57001 } #Phillipe Petain
+	command = { type = headofstate which = 57261 } #Henri Mordacq
+	command = { type = sleepminister which = 57001 } #Petain HoS 
 	command = { type = headofgovernment which = 57061 } #Paul Reynaud
 	command = { type = foreignminister which = 57068 } #George Bidault
 	command = { type = armamentminister which = 57069 } #Robert Schumann
@@ -1429,26 +1424,19 @@ action = {
 	command = { type = local_setflag which = VIC_demo }
 	command = { type = event which = 130045 where = VIC when = 15 }
 	command = { type = event which = 130046 where = VIC when = 3 } #admit social democrats to election?
-	command = { type = event which = 130047 where = VIC when = 6 } #status of marshal Petain
 	command = { type = event which = 130048 where = VIC when = 20 }
 	command = { type = event which = 130030 where = VIC when = 30 } #Reforming the Army
 	command = { type = dissent value = -4 }
+	command = { type = trigger which = 130152 } 
 }
 action = {
-	name = "Restore Kingdom of France"
-	ai_chance = 15
-	command = { type = local_setflag which = VIC_monarch }
-	command = { type = event which = 130074 where = VIC when = 15 }
-	command = { type = event which = 130030 where = VIC when = 30 }
-	command = { type = dissent value = -1 }
-}
-action = {
-	name = "Restore French Empire"
-	ai_chance = 15
-	command = { type = local_setflag which = VIC_empire }
-	command = { type = event which = 130076 where = VIC when = 15 }
-	command = { type = event which = 130030 where = VIC when = 30 }
-	command = { type = dissent value = 1 }
+	name = "Charles de Gaulle leads reactionary officers in a coup!"
+	ai_chance = 25
+	command = { type = headofstate which = 57053 } #Charles de Gaulle
+	command = { type = headofgovernment which = 57054 } #Charles de Gaulle
+	command = { type = sleepminister which = 57001 } #Petain HoS 
+	command = { type = dissent value = 15 }
+	command = { type = trigger which = 130153 } 
 }
 }
 
@@ -2065,7 +2053,7 @@ action_a = {
 	name = "He will remain president of France!"
 	ai_chance = 65
 	command = { type = local_setflag which = VIC_PREPET }
-	command = { type = headofstate which = 57001 }
+	command = { type = headofstate which = 57161 } #Henri Mordacq
 	command = { type = dissent value = -1 }
 }
 action_b = {
@@ -2167,9 +2155,6 @@ action_b = {
 	name = "Action Francaise wins majority"
 	command = { type = set_domestic which = democratic value = 5 }
 	command = { type = set_domestic which = political_left value = 3 }
-	command = { trigger = { local_flag = VIC_PREPET } type = headofstate which = 57001 }
-	command = { trigger = { local_flag = VIC_monarch } type = headofstate which = 57073 }
-	command = { trigger = { local_flag = VIC_empire } type = headofstate which = 57074 }
 	command = { type = headofgovernment which = 57060 }
 	command = { type = foreignminister which = 57003 }
 	command = { type = armamentminister which = 57004 }
@@ -2221,9 +2206,9 @@ picture = "politics4"
 
 action_a = {
 	ai_chance = 35
-	name = "Marshall Petain, the war hero!"
+	name = "Henri Mordacq, the war hero!"
 	command = { type = dissent value = -1 }
-	command = { type = headofstate which = 57001 }
+	command = { type = headofstate which = 57161 } #Henri Mordacq
 }
 action_b = {
 	ai_chance = 35
@@ -2361,9 +2346,6 @@ action_b = {
 	name = "Action Francaise wins majority"
 	command = { type = set_domestic which = democratic value = 5 }
 	command = { type = set_domestic which = political_left value = 3 }
-	command = { trigger = { local_flag = VIC_PREPET } type = headofstate which = 57001 }
-	command = { trigger = { local_flag = VIC_monarch } type = headofstate which = 57075 }
-	command = { trigger = { local_flag = VIC_empire } type = headofstate which = 57074 }
 	command = { type = headofgovernment which = 57060 }
 	command = { type = foreignminister which = 57003 }
 	command = { type = armamentminister which = 57004 }
@@ -2415,9 +2397,9 @@ picture = "politics4"
 
 action_a = {
 	ai_chance = 35
-	name = "Marshall Petain, the war hero!"
+	name = "Henri Mordacq, the war hero!"
 	command = { type = dissent value = -1 }
-	command = { type = headofstate which = 57001 }
+	command = { type = headofstate which = 57161 } #Henri Mordacq
 }
 action_b = {
 	ai_chance = 35
@@ -2504,8 +2486,6 @@ action_b = {
 	name = "Action Francaise wins majority"
 	command = { type = set_domestic which = democratic value = 5 }
 	command = { type = set_domestic which = political_left value = 3 }
-	command = { trigger = { local_flag = VIC_monarch } type = headofstate which = 57075 }
-	command = { trigger = { local_flag = VIC_empire } type = headofstate which = 57074 }
 	command = { type = headofgovernment which = 57060 }
 	command = { type = foreignminister which = 57003 }
 	command = { type = armamentminister which = 57004 }
@@ -2640,8 +2620,6 @@ action_b = {
 	name = "Action Francaise wins majority"
 	command = { type = set_domestic which = democratic value = 5 }
 	command = { type = set_domestic which = political_left value = 3 }
-	command = { trigger = { local_flag = VIC_monarch } type = headofstate which = 57075 }
-	command = { trigger = { local_flag = VIC_empire } type = headofstate which = 57074 }
 	command = { type = headofgovernment which = 57060 }
 	command = { type = foreignminister which = 57003 }
 	command = { type = armamentminister which = 57004 }
@@ -2776,8 +2754,6 @@ action_b = {
 	name = "Action Francaise wins majority"
 	command = { type = set_domestic which = democratic value = 5 }
 	command = { type = set_domestic which = political_left value = 3 }
-	command = { trigger = { local_flag = VIC_monarch } type = headofstate which = 57075 }
-	command = { trigger = { local_flag = VIC_empire } type = headofstate which = 57074 }
 	command = { type = headofgovernment which = 57131 }
 	command = { type = foreignminister which = 57003 }
 	command = { type = armamentminister which = 57004 }
@@ -3018,8 +2994,6 @@ action_b = {
 	name = "Action Francaise wins majority"
 	command = { type = set_domestic which = democratic value = 5 }
 	command = { type = set_domestic which = political_left value = 3 }
-	command = { trigger = { local_flag = VIC_monarch } type = headofstate which = 57075 }
-	command = { trigger = { local_flag = VIC_empire } type = headofstate which = 57074 }
 	command = { type = headofgovernment which = 57131 }
 	command = { type = foreignminister which = 57003 }
 	command = { type = armamentminister which = 57004 }
@@ -3168,8 +3142,6 @@ action_c = {
 	name = "Radical Party wins majority"
 	command = { type = set_domestic which = democratic value = 9 }
 	command = { type = set_domestic which = political_left value = 5 }
-	command = { trigger = { local_flag = VIC_monarch } type = headofstate which = 57075 }
-	command = { trigger = { local_flag = VIC_empire } type = headofstate which = 57074 }
 	command = { type = headofgovernment which = 57141 }
 	command = { type = foreignminister which = 57142 }
 	command = { type = armamentminister which = 57140 }
@@ -3283,7 +3255,7 @@ random = no
 country = VIC
 
 name = "The Imperial restauration"
-desc = "Today Louis Napoleon III has been crowned Emperor of France during an ornate ceremony in the Notre Dame d'Afrique. During the ceremony President of Republic handed the crown to the cardinal that crowned him, symbolizing the transfer of power from the President to the new Emperor. Vive l'empereur!"
+desc = "Today Louis Napoleon VI has been crowned Emperor of France during an ornate ceremony in the Notre Dame d'Afrique. During the ceremony President of Republic handed the crown to the cardinal that crowned him, symbolizing the transfer of power from the President to the new Emperor. Vive l'empereur!"
 style = 2
 picture = "bonapartesrestored"
 
@@ -3342,7 +3314,7 @@ random = no
 country = VIC
 
 name = "The form of Empire"
-desc = "Louis Napoleon IV, the legitimate Emperor of France, has finally been allowed to take the throne. However, he has been pressed on how exactly he will rule, within the confines of a constitution or by royal prerogative. He is expected to answer the Assembly shortly."
+desc = "Louis Napoleon VI, the legitimate Emperor of France, has finally been allowed to take the throne. However, he has been pressed on how exactly he will rule, within the confines of a constitution or by royal prerogative. He is expected to answer the Assembly shortly."
 picture = "diplomatic_campaign"
 style = 2
 
@@ -3352,9 +3324,9 @@ action_a = {
 	command = { type = dissent value = 2 }
 	command = { type = set_domestic which = democratic value = 3 }
 	command = { type = set_domestic which = political_left value = 3 }
-	command = { type = headofstate which = 57058 } #Louis Napoleon IV AD
-	command = { type = headofgovernment which = 57060 } #Charles Maurras
-	command = { type = trigger which = 130079 }
+	command = { type = headofstate which = 57058 } #Louis Napoleon VI AD
+	command = { type = headofgovernment which = 57096 } #Joachim, Prince de Murat 
+	command = { type = trigger which = 130158 }
 }
 action_b = {
 	ai_chance = 40
@@ -3362,7 +3334,7 @@ action_b = {
 	command = { type = dissent value = 2 }
 	command = { type = set_domestic which = democratic value = 6 }
 	command = { type = set_domestic which = political_left value = 4 }
-	command = { type = headofstate which = 57074 } #Louis Napoleon IV SC
+	command = { type = headofstate which = 57074 } #Louis Napoleon VI SC
 	command = { type = headofgovernment which = 57061 } #Paul Reynaud
 	command = { type = local_setflag which = VIC_demo }
 	command = { type = event which = 130045 where = VIC when = 15 }
@@ -3383,9 +3355,9 @@ desc = "With the new regime firmly established, voices are calling for current p
 picture = "diplomatic_campaign"
 
 action_a = {
-	name = "Appoint General Henri Mordacq"
+	name = "Appoint Maurice Pujo, leader of the AF Youth"
 	ai_chance = 45
-	command = { type = headofgovernment which = 57067 }
+	command = { type = headofgovernment which = 57131 }
 	command = { type = dissent value = -5 }
 	command = { type = domestic which = defense_lobby value = 2 }
 }
@@ -4280,7 +4252,7 @@ desc = "German Empire defeated the hated Commune of France and since we have suc
 
 action_a = {
 	name = "A great deal!"
-	ai_chance = 90
+	ai_chance = 40
 	command = { type = trigger which = 130102 }
 	command = { type = relation which = GER value = 40 }
 command = { trigger = { NOT = { control = { province = 77 data = -3 } control = { province = 85 data = -3 } } } type = setflag which = VIC_LIMC }
@@ -4289,8 +4261,8 @@ command = { trigger = { OR = { control = { province = 77 data = -3 } control = {
 	command = { type = dissent value = 2 }
 }
 action_b = {
-	name = "We will never accept your proposal!"
-	ai_chance = 10
+	name = "France shall not be divided!"
+	ai_chance = 60
 	command = { type = relation which = GER value = -50 }
 	command = { type = dissent value = -3 }
 	command = { type = trigger which = 666052 }
@@ -6705,3 +6677,239 @@ action_b = {
 }
 }
 
+###Reaction events from Petain Crisis
+
+event = {
+id = 130151
+country = VIC
+random = no
+style = 2
+
+name = "Pétain saves face"
+desc = "Pétain has managed to save his career by firing the unpopular prime minister. This has earned him a significant amount of political capital within the regime and among the people, which he has used to secure his position against his rivals."
+picture = "vichy_regime"
+
+action_a = {
+	name = "Crisis averted!"
+	command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 130152
+country = VIC
+random = no
+style = 2
+
+name = "Mordacq restores democratic rule!"
+desc = "Today a clique of Army Officers stormed the Assembly building and removed Marshal Pétain from office. They declare that their coup is to save the Republic from the clutches of dictators, and that they will restore the Constitution and the power of the National Assembly!"  
+picture = "algeria"
+
+action_a = {
+	name = "Liberté, Égalité, Fraternité!" 
+	command = { type = dissent value = -5 }
+}
+}
+
+event = {
+id = 130153 
+country = VIC
+random = no
+style = 2
+
+name = "Action Francaise officers seize power!"
+desc = "Gunshots were heard from a barracks, and soon Army officers with fleur-de-lis armbands were seen heading towards key government buildings in Algiers. By the evening, they seized apparatus of state with the aid of allied militias. The coup plotters are led by the young Colonel Charles de Gaulle, who is promissing a restoration of order after the chaos and corruption of the Pétain regime." 
+picture = "frenchpartisans"
+
+action_a = {
+	name = "The destiny of France is here." 
+	command = { type = dissent value = 5 }
+	command = { type = event which = 130159 where = VIC when = 15  }
+}
+}
+
+
+###Bonapartist Route 
+
+event = {
+id = 130154
+country = VIC
+random = no
+style = 2
+
+trigger = {
+atwar = VIC 
+}
+
+
+date = { day = 0 month = january year = 1936 }
+offset = 150
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The case of Louis Blanchard"
+desc = "We have received word of a legionairre that is making a name for himself at the front lines. He calls himself Louis Blanchard, but rumor has it he is actually Louis, Prince Napoléon, the Bonapartist claimant to the French throne. He is serving despite the government's wishes, although he seems to be well liked by his comrades. We can pull him out of service, or let him keep serving La France in his way." 
+picture = "frenchforeignlegion"
+
+action_a = {
+	ai_chance = 75
+	name = "Let him serve if he wants!"
+	command = { type = local_setflag which = VIC_NAP } 
+}
+action_b = {
+	ai_chance = 25
+	name = "Demobilize the young Prince and send him back to Algiers."
+	command = { }
+}
+}
+
+event = {
+id = 130155
+country = VIC
+random = no
+style = 2
+
+trigger = {
+local_flag = VIC_NAP 
+NOT = {
+local_flag = VIC_empire
+}
+}
+
+date = { day = 0 month = january year = 1940 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "A faction emerges"
+desc = "A faction has re-emerged on the French political scene: adherents to the Bonapartist claim to the French throne. They claim that the current government has failed and that France can once again claim her glory underneath the Imperial eagle. They are emboldened by the popularity of the young Prince Louis Napoleon, a war hero for his service in the Légion étrangère. " 
+picture = "bonapartesrestored"
+
+action_a = {
+	ai_chance = 50
+	name = "Perhaps France will have another Empereur?"
+	command = { type = setflag which = VIC_BONAPARTIST } 
+}
+action_b = {
+	ai_chance = 50
+	name = "Bah! History has not been kind to Bonapartes"
+	command = { }
+}
+}
+
+event = {
+id = 130156
+country = VIC
+random = no
+style = 2
+
+trigger = {
+local_flag = VIC_NAP 
+flag = VIC_BONAPARTIST
+OR = {
+headofstate = 57001 #Petain
+headofstate = 57052 #Francis Xavier
+headofstate = 57057 #Jean III
+headofstate = 57059 #Henri VI
+headofstate = 57073 #Jean III
+headofstate = 57075 #Henri VI 
+}
+government = fascist 
+NOT = {
+local_flag = VIC_empire
+control = { province = 55 data = VIC } #The National French have not taken Paris 
+}
+}
+
+date = { day = 19 month = november year = 1941 }
+offset = 360 
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "An opportunity for the Bonapartists?"
+desc = "The current political situation is seen as intolerable for many French citizens. The government is seen as incapable of taking back La Métropole. The Bonapartists are arguing that only a strong martial hero and man of the people embodying the Empire would be able to lead us to victory. They have won a lot of popular support, and they may make a push for power..." 
+picture = "French_Victory"
+
+action_a = {
+	ai_chance = 35
+	name = "The Bonapartists make their move!"
+	command = { type = trigger which = 130157 } 
+}
+action_b = {
+	ai_chance = 65
+	name = "Crack down on the Bonapartist traitors!"
+	command = { type = sleepminister which = 57096 } #Joachim
+	command = { type = sleepminister which = 57097 } #Joachim
+	command = { type = sleepminister which = 57262 } #Joachim
+	command = { type = sleepminister which = 57098 } #Pierre Costantini
+	command = { type = sleepminister which = 57099 } #Pierre Costantini 
+	command = { type = sleepminister which = 57058 } #Napoleon
+	command = { type = sleepminister which = 57074 } #Napoleon 
+}
+}
+
+
+event = {
+id = 130157 
+country = VIC
+random = no
+style = 2
+
+name = "Bonapartist coup!"
+desc = "leaders of the Bonapartist cause, including Joachim, Prince Murat, and Corsican Air Force officer Pierre Costaninti barged into the Assembly hall and declared it dissolved, while their loyal soldiers took control of the streets. The Prince de Murat is taking provisional leadership, and they are summoning Louis, Prince Napoleon to the capital. The streets are filled with citizens chanting 'Vive l'Empereur!'" 
+picture = "algeria"
+
+action_a = {
+	name = "La victorie en chantant!"  
+	command = { type = dissent value = 10 }
+	command = { type = local_setflag which = VIC_empire }
+	command = { type = event which = 130076 where = VIC when = 15  }
+	command = { type = event which = 130030 where = VIC when = 30  }
+    command = { type = headofstate which = 57262 } #Joachim 
+	command = { type = headofgovernment which = 57098 } #Costantini 
+}
+}
+
+event = {
+id = 130158
+random = no
+country = VIC
+style = 2
+
+name = "Appointing a Prime Minister"
+desc = "With the new regime firmly established, voices are calling for current prime minister to be replaced with a man favoured by powerful military circles, who will bring true France on the road towards the reconquest of our homeland..."
+picture = "diplomatic_campaign"
+
+action_a = {
+	name = "Appoint the aristocrat, Joachim, Prince de Murat!"
+	ai_chance = 50
+	command = { type = headofgovernment which = 57096 } #Joachim, Prince de Murat 
+	command = { type = dissent value = -5 }
+	command = { type = domestic which = defense_lobby value = 2 }
+}
+action_b = {
+	name = "Appoint the firebrand officer, Pierre Costantini"
+	ai_chance = 50 
+	command = { type = headofgovernment which = 57098 } #Costantini
+	command = { type = dissent value = -1 }
+	command = { type = domestic which = defense_lobby value = 2 }
+}
+}
+
+##De Gaulle's Message 
+
+event = {
+id = 130159 
+country = VIC
+random = no
+style = 2
+
+name = "Charles de Gaulle takes to the radio"
+desc = "'Toute ma vie, je me suis fait une certaine idée de la France.' Colonel Charles de Gaulle took to the radio today. He declared that the Republic has failed France, and that it is his intent to restore France to her glory under the Bourbon monarchy, claiming that a great man such as Jean is what is needed to guide the country in its darkest hour." 
+picture = "Appel_de_Gaulle"
+
+action_a = {
+	name = "Je vous ai compris!" 
+	command = { type = dissent value = 5 }
+	command = { type = local_setflag which = VIC_monarch }
+	command = { type = event which = 130074 where = VIC when = 15 }
+	command = { type = event which = 130030 where = VIC when = 30 }
+}
+}
