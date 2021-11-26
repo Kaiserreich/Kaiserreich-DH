@@ -21,7 +21,7 @@ ai = "kaiserreich\Poland.ai"
 	headofstate				= { type = 9 id = 13179 }
 	headofgovernment		= { type = 9 id = 13002 }
 	foreignminister			= { type = 9 id = 13003 }
-	armamentminister		= { type = 9 id = 13004 }
+	armamentminister		= { type = 9 id = 13253 } #Feliks Mlynarski
 	ministerofsecurity		= { type = 9 id = 13005 }
 	ministerofintelligence	= { type = 9 id = 13211 } #Tadeusz Pelczynski
 	chiefofstaff			= { type = 9 id = 13105 } #Waclaw Stachiewicz
@@ -81,20 +81,20 @@ relation = {   tag =	JAP value = -10 }
 
 	techapps = {
 #Infantry
-1010  1020 1030 1040 1050 1060 1070 1080 #Infantry Division 
-1160  1170 1180 1190 1200 1210 1220  #Mountain Division 
-13060 13070 13080 1310 1320 1330 1340 1350 #1930 Cavalry Division  
-1910 1920 1930 1940 1950 1960 #Interbellum 1930 Supply 
-1830 1840 1850 #Engineers
+1010 1020 1030 1040 1050 1060 1070 1080 1090 #1931 Infantry Division
+1160 1170 1180 1190 1200 1210 1220 1230 #1925 Mountain Division
+13060 13070 13080 1310 1320 1330 1340 1350 1360 1370 #1932 Cavalry Division
+1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply
+1830 1840 1850 1860 #Engineers
 #Great War Hospital System 
 14000 14010 14020
 
 #Armour & Artillery
-7600 7610 2620 2010 2630 #Tankette 
-2860 2870 2880# Armoured Car
-2290 2300 2310 2900  #Field Artillery 
-2800 2450 #Early Static Anti-Air Artillery
-2810 2820 #Basic Anti-Air Artillery Brigade 
+7600 7610 2620 2010 2630 2640 2646 #1928 Tank
+2860 2870 2880 2020 #1929 Armoured Car
+2290 2300 2310 2900 2910 2920 2930 #1930 Field Artillery
+2800 2450 21180 21190 #1930 Static Anti-Air Artillery
+2810 2820 2510 #1930 Anti-Air Artillery Brigade
 
 #Aircrafts
 4500 4510 4520 4530 4540 4550 4010 #Fighter 
@@ -104,10 +104,10 @@ relation = {   tag =	JAP value = -10 }
 7290 7300 7310 7320 #CAS
 
 #Industrial
-5700 5710 #Modern Agriculture
-5310 54010 54020 #Computers & cryptografi
+5700 5710 5010 #Modern Agriculture
+5310 5316 5326 5327 54010 54020 54030 #Computers & cryptography
 5810 5820 5050 5830 #Manufactoring
-5800 5080  #Improved Construction Engineering 
+5800 5080 5090 #Improved Construction Engineering
 5600 5610 5620 5630 #Medicine
 
 # Land Doctrines WWI - Entente line (default)

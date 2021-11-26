@@ -18,69 +18,58 @@ ai = "kaiserreich\Japan.ai"
     }
 
 #### cabinet
-
-headofstate = { type = 9 id = 55601 }
-headofgovernment = { type = 9 id = 55602 }
-  foreignminister = { type = 9 id = 55603 }
-  armamentminister = { type = 9 id = 55604 }
-  ministerofsecurity = { type = 9 id = 55605 }
-  ministerofintelligence = { type = 9 id = 55606 }
-  chiefofstaff = { type = 9 id = 55607 }
-  chiefofarmy = { type = 9 id = 55608 }
-  chiefofnavy = { type = 9 id = 55609 }        
-  chiefofair = { type = 9 id = 55610 }
+	headofstate = { type = 9 id = 55601 }
+	headofgovernment = { type = 9 id = 55602 }
+	foreignminister = { type = 9 id = 55603 }
+	armamentminister = { type = 9 id = 55604 }
+	ministerofsecurity = { type = 9 id = 55605 }
+	ministerofintelligence = { type = 9 id = 55606 }
+	chiefofstaff = { type = 9 id = 55607 }
+	chiefofarmy = { type = 9 id = 55608 }
+	chiefofnavy = { type = 9 id = 55609 }
+	chiefofair = { type = 9 id = 55610 }
 
 #### Resource Reserves
 
 	manpower = 735
 
-        SpyInfo  = {  country = "JAP" NumberOfSpies = 5  } 
+	SpyInfo = { country = "JAP" NumberOfSpies = 5 }
 
 	# Resource Reserves
-	energy	=		1000 
-	metal	= 		1000	
-	rare_materials =	500	
-	oil =			500	
-	supplies =		500
-	money = 		100
+	energy	= 1000
+	metal	= 1000
+	rare_materials = 500
+	oil	= 500
+	supplies = 500
+	money	= 100
 
 	capital = 1552
 
-
-
-
-    ownedprovinces =      {
-     1543 1564 1544 1545 1549 1551 1550 1556 1552 1557 1558 1553 1554 1559 1560 1561 1662 1661 1562 1563 1672 1362 1361 1364 1225 1226 
-     1227 1223 1221 1228 1233 1232 1231 1230 1224 1219 1542 1555 1547 1548 1546 1664 1663 1541 
-     # Sakhalin 
-     1363 1229 1222 
-     #Japan in China    
-     1216 1235 1236 1240  
-}
-
-
-
-controlledprovinces = {
-1543 1564 1544 1545   1549 1551 1550 1556 1552 1557 1558 1553 1554 1559 1560 1561 1662 1661 1562 1563 1672 1362 1361 1364 1225 1226 
-               1227 1223 1221 1228 1233 1232 1231 1230 1224 1219 1542 1555 
-     1547 1548 1546 1664 1663 1541 
-     # Sakhalin 
-     1363 1229 1222 
- 
-     #Japan in China    
-     1216 1235 1236 1240  
-
-	  }
-    nationalprovinces =   {
-		1543 1544 1545 1549 1551 1550 1556 1552 1557 1558 1553 1554 1559 1560 1561 1662 1661 1562 1563 1672 1555 1542  
-               1664 1564 1663 
-     1547 1548 1546 1541
- 
+    ownedprovinces = {
+		1543 1564 1544 1545 1549 1551 1550 1556 1552 1557 1558 1553 1554 1559 1560 1561 1662 1661 1562 1563 1672 1362 1361 1364 1225 1226
+		1227 1223 1221 1228 1233 1232 1231 1230 1224 1219 1542 1555 1547 1548 1546 1664 1663 1541
+		#Sakhalin
+		1363 1229 1222
+		#Japan in China
+		#1216 1235 1236 1240
 	}
 
-claimedprovinces = {
- 1228 1233 1232 1231 1230  1229 # South Korea 
- 1223 1221 1222 1226 1227 1224 1225    # North Korea 
+	controlledprovinces = {
+		1543 1564 1544 1545 1549 1551 1550 1556 1552 1557 1558 1553 1554 1559 1560 1561 1662 1661 1562 1563 1672 1362 1361 1364 1225 1226
+		1227 1223 1221 1228 1233 1232 1231 1230 1224 1219 1542 1555 1547 1548 1546 1664 1663 1541
+		#Sakhalin
+		1363 1229 1222
+		#Japan in China
+		#1216 1235 1236 1240
+	}
+    nationalprovinces = {
+		1543 1544 1545 1549 1551 1550 1556 1552 1557 1558 1553 1554 1559 1560 1561 1662 1661 1562 1563 1672 1555 1542
+		1664 1564 1663 1547 1548 1546 1541
+	}
+
+	claimedprovinces = {
+		1228 1233 1232 1231 1230 1229 #South Korea
+		1223 1221 1222 1226 1227 1224 1225 #North Korea
 		1219 1363 1362 1361 1364
 	}
 

@@ -306,6 +306,7 @@ province = { id = 1243 ic = 1 } #Baoding
 province = { id = 1245 ic = 3 } #Tangshen
 province = { id = 1247 anti_air = 4 #Beijing
 	air_base = { size = 6 current_size = 6 } }
+province = { id = 1249 infra = { size = 0.30 current_size = 0.30 } } #Yangquan
 province = { id = 1251 ic = 1 } #Datong
 province = { id = 1252 ic = -3 } #Taiyuan
 province = { id = 1253 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Linfen
@@ -931,7 +932,7 @@ province = { id = 272 ic = 1 } #Tartu
 province = { id = 273 landfort = 1 } #Voru
 province = { id = 274 ic = 1 landfort = 1 } #Narva
 province = { id = 275 infra = { size = 0.20 current_size = 0.20 } } #Kuressaare
-province = { id = 270 landfort = 1 #Tallinn
+province = { id = 270 manpower = 2 landfort = 1 #Tallinn
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 
 #Latvia
@@ -940,6 +941,7 @@ province = { id = 264 manpower = 2 landfort = 1 anti_air = 1 #Riga
 province = { id = 266 ic = 1 landfort = 2 } #Daugavpils
 province = { id = 268 ic = 2 landfort = 2 #Liepaja
 	naval_base = { size = 7 current_size = 7 } }
+province = { id = 269 manpower = 1 } #Jelgave
 
 ### LBY
 province = { id = 750 ic = 4 anti_air = 1 manpower = 2 #Tripoli
@@ -963,7 +965,7 @@ province = { id = 969 anti_air = 1 #Monrovia
 ### LIT
 province = { id = 252 ic = 2 } #Suwalki
 province = { id = 255 ic = 1 anti_air = 2 } #Grodno
-province = { id = 258 ic = 4 anti_air = 5 #Wilno
+province = { id = 258 ic = 4 manpower = 2 anti_air = 5 #Wilno
 	air_base = { size = 3 current_size = 3 } }
 province = { id = 262 anti_air = 1 #Kaunas
 	air_base = { size = 1 current_size = 1 } }
