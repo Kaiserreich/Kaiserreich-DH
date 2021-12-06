@@ -62,6 +62,9 @@ relation = { tag = PRI value = 30  }
 relation = { tag = JAP value = 50 access = yes }
 }
 
+headofstate = { type = 9 id = 58031 }
+	headofgovernment = { type = 9 id = 58025 }
+
 
 	
 	techapps = {

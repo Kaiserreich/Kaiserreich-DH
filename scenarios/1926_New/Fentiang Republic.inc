@@ -27,8 +27,9 @@ country = {
     }
 #### cabinet
 
-	headofstate = { type = 9 id = 58001 } # Zhang Zuolin
-	headofgovernment = { type = 9 id = 58015 } # Zhang Zongchang
+headofstate = { type = 9 id = 58031 } #Zhang Zuolin
+	headofgovernment = { type = 9 id = 58025 } #Zhang Zuoxiang 
+
 
 #### Resource Reserves
 	energy	=	200  metal	=	200	rare_materials =	200	oil =	500	supplies = 8000
