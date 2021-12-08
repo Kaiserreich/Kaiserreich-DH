@@ -19,17 +19,17 @@ country = {
     }
 
 #### cabinet
-	headofstate = { type = 9 id = 58031 } #Zhang Zuolin
+	headofstate = { type = 9 id = 58033 } #Zhang Zuolin
 	headofgovernment = { type = 9 id = 58401 } #Yan Xishan
-	#headofgovernment = { type = 9 id = 58048 } #Zang Shiyi
-	foreignminister = { type = 9 id = 58054 } #Wu Jinglian
-	armamentminister = { type = 9 id = 58107 } #Peng Xian
-	ministerofsecurity = { type = 9 id = 58131 } #Yu Zhen
-	ministerofintelligence = { type = 9 id = 58174 } #Xu Zuyi
-	chiefofstaff = { type = 9 id = 58044 } #Zhang Xueliang
-	chiefofarmy = { type = 9 id = 58192 } #Wu Guangxin
-	chiefofnavy = { type = 9 id = 58222 } #Shen Honglie
-	chiefofair = { type = 9 id = 58169 } #Feng Yong
+	#headofgovernment = { type = 9 id = 58066 } #Zang Shiyi
+	foreignminister = { type = 9 id = 58059 } #Wu Jinglian
+	armamentminister = { type = 9 id = 58129 } #Peng Xian
+	ministerofsecurity = { type = 9 id = 58157 } #Yu Zhen
+	ministerofintelligence = { type = 9 id = 58210 } #Xu Zuyi
+	chiefofstaff = { type = 9 id = 58046 } #Zhang Xueliang
+	chiefofarmy = { type = 9 id = 58228 } #Wu Guangxin
+	chiefofnavy = { type = 9 id = 58256 } #Shen Honglie
+	chiefofair = { type = 9 id = 58205 } #Feng Yong
 
 #### Resource Reserves
 	energy	=	200  metal	=	200	rare_materials =	200	oil =	200	supplies =	300
@@ -128,6 +128,7 @@ dormant_ministers = { #JAP (not slept are 58309 58312-17 58328 58330)
 		58300 58301 58302 58303 58304 58305 58306 58307 58308 58310 58311 58318 58319 58320 58321 58322 58323 58324 58325
 		58326 58327 58329 58331 58332 58333 58334 58335 58336 58337 58338 58339 58340 58341 58342 58343 58344 58345 58346
 		58347 58348 58349 58350 58351 58352 58353 58354 58355 58356 58357 58358 58359 58360 58361 58362 58363 58364 58365
+		58002 58003 58004 58112 #LW versions of Gao Chongmin & Lu Guangji
 		58450 58451 #Puyi (more Qing ministers in the future)
 		}
 

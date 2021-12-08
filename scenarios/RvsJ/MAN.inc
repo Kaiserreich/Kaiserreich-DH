@@ -118,8 +118,8 @@ country = {
 
 	policy = { democratic = 3 political_left = 3 freedom = 4 free_market = 3 professional_army = 7 defense_lobby = 8 interventionism = 8 }
 
-	headofstate = { type = 9 id = 58031 }
-	headofgovernment = { type = 9 id = 58025 }
+	headofstate = { type = 9 id = 58033 } #Zhang Zuolin
+	headofgovernment = { type = 9 id = 58027 } #Zhang Zuoxiang
 
 landunit = {
 	location = 1206

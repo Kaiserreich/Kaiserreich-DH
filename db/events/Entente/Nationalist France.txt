@@ -1481,7 +1481,7 @@ picture = "militaryparade1"
 action_a = {
 	ai_chance = 50
 	name = "Choose the Durand-Viel-Platon Plan" #cabinet reorg to more dynamic officers
-	command = { type = local_setflag which = VIC_darlan }
+	command = { type = local_setflag which = VIC_platon }
 	command = { type = waketeam which = 6652 when = 1 } #Paul Vauthier
 	command = { type = waketeam which = 6641 when = 1 } #Charles Platon
 	command = { type = chiefofstaff which = 57219 } #Paul Vauthier
@@ -1507,7 +1507,7 @@ action_b = {
 }
 
 #####################
-##  Darlan's events
+##  Platon's events
 #####################
 
 event = {
@@ -1516,26 +1516,34 @@ random = no
 country = VIC
 save_date = yes
 
-name = "Darlan's Plan"
-desc = "Admiral Darlan promised to improve the defences of the one true France against invasion and expand our existing naval forces in his plan. However our current economical options allows us to pursue only one part of this plan..."
+name = "Platon's Plan"
+desc = "Admiral Durand-Viel promised to expand our existing naval forces in his plan but Admiral Jean de Laborde, known for his aggressive stance, has put forth an unexpected proposal that goes even further. Our current economical situation allows us to execute the original plan but if we to approach the Exile naval engineers..."
 style = 2
 
 action_a = {
-	ai_chance = 70
-	name = "We will start a programme to expand the navy"
+	ai_chance = 80
+	name = "We will start a programme to expand the navy."
 	command = { type = money value = -100 }
 	command = { type = free_supplies value = -30 }
-	command = { type = sleepevent which = 130034 }
-	command = { type = sleepevent which = 130035 }
-	command = { type = sleepevent which = 130036 }
+	command = { type = event which = 130032 where = VIC when = 200 }
+	command = { type = event which = 130033 where = VIC when = 380 }
 }
 action_b = {
-	ai_chance = 30
-	name = "We will build more fortifications along the coast"
+	ai_chance = 20
+	trigger = {
+		division_exists = { type = 13501 id = 301 } #Bretagne
+		division_exists = { type = 13501 id = 305 } #Courbet
+		division_exists = { type = 13501 id = 308 } #Condorcet
+		division_exists = { type = 13501 id = 312 } #Voltaire
+	}
+	name = "It is no time for timid and half-hearted measures!"
 	command = { type = supplies value = -150 }
-	command = { type = money value = -50 }
-	command = { type = sleepevent which = 130032 }
-	command = { type = sleepevent which = 130033 }
+	command = { type = money value = -30 }
+	command = { type = event which = 130032 where = VIC when = 200 }
+	command = { type = event which = 130033 where = VIC when = 380 }
+	command = { type = event which = 130034 where = VIC when = 50 }
+	command = { type = event which = 130035 where = VIC when = 90 } #battleship refit
+	command = { type = event which = 130036 where = VIC when = 400 } #carrier conversion
 }
 }
 
@@ -1545,19 +1553,10 @@ id = 130032
 random = no
 country = VIC
 
-trigger = {
-	local_flag = VIC_darlan
-	event = { id = 130031 days = 200 }
-}
-
 name = "Naval Expansion"
-desc = "Admiral Darlan promised to protect us from the Commune by expanding the navy. The first ships he promised us have left the dockyards of Dakar today."
+desc = "Admiral Durand-Viel promised to protect us from the Commune by expanding the navy. The first ships he promised us have left the dockyards of Dakar today."
 style = 2
 picture = "american_ships_in_dock"
-
-date = { day = 0 month = january year = 1937 }
-offset = 5
-deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 	name = "C'est magnifique!"
@@ -1574,19 +1573,10 @@ id = 130033
 random = no
 country = VIC
 
-trigger = {
-	local_flag = VIC_darlan
-	event = { id = 130031 days = 380 }
-}
-
-name = " Naval Expansion"
-desc = "Admiral Darlan promised to protect us from the Commune by expanding the navy. Three more ships he promised us have left the dockyards of Bizerte today."
+name = "Naval Expansion"
+desc = "Admiral Durand-Viel promised to protect us from the Commune by expanding the navy. Three more ships he promised us have left the dockyards of Bizerte today."
 style = 2
 picture = "american_ships_in_dock"
-
-date = { day = 0 month = january year = 1937 }
-offset = 5
-deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
 	name = "C'est magnifique!"
@@ -1603,30 +1593,25 @@ id = 130034
 random = no
 country = VIC
 
-trigger = {
-	local_flag = VIC_darlan
-	event = { id = 130031 days = 200 }
-}
-
-name = "Fortifications are built"
-desc = "Admiral Darlan promised to protect us from the Commune by fortifying our main cities. Hiding behind concrete might look cowardly, but the Commune will surely think twice before testing our defence."
+name = "Capital Ship Refit"
+desc = "While obsolete, the Bretagne and Courbet-class battleships still have some use if modernized. The semi-dreadnought Danton-class ships are, however, completely unsuited for combat against ships built in the last decade and so naval aviator and Vice-amiral d'escadre Jean de Laborde hopes to convert two into carriers and scrap the remainder. Exile naval engineers with experience in carrier design and conversion have recently arrived and are working with our engineers on the conversion."
 style = 2
-picture = "coastal_fort"
-
-date = { day = 0 month = january year = 1937 }
-offset = 5
-deathdate = { day = 29 month = december year = 1963 }
+picture = "redfleet"
 
 action_a = {
-	name = "Let them come!"
-	command = { type = construct which = coastal_fort where = 727 value = 1 } #Algiers
-	command = { type = construct which = coastal_fort where = 747 value = 1 } #Tunis
-	command = { type = construct which = coastal_fort where = 728 value = 1 } #Oran
-	command = { type = construct which = coastal_fort where = 978 value = 1 } #Dakar
-	command = { type = construct which = land_fort where = 727 value = 1 } #Algiers
-	command = { type = construct which = land_fort where = 747 value = 1 } #Tunis
-	command = { type = construct which = land_fort where = 728 value = 1 } #Oran
-	command = { type = construct which = land_fort where = 978 value = 1 } #Dakar
+	name = "The battleships retire, for now."
+	command = { type = remove_division which = 13501 value = 301 } #Bretagne
+	command = { type = remove_division which = 13501 value = 302 } #Provence
+	command = { type = remove_division which = 13501 value = 303 } #Lorraine
+	command = { type = remove_division which = 13501 value = 305 } #Courbet
+	command = { type = remove_division which = 13501 value = 306 } #Jean Bart
+	command = { type = remove_division which = 13501 value = 307 } #Paris
+	command = { type = remove_division which = 13501 value = 313 } #France
+	command = { type = remove_division which = 13501 value = 308 } #Condorcet
+	command = { type = remove_division which = 13501 value = 309 } #Diderot
+	command = { type = remove_division which = 13501 value = 310 } #Mirabeau
+	command = { type = remove_division which = 13501 value = 311 } #Vergniaud
+	command = { type = remove_division which = 13501 value = 312 } #Voltaire
 }
 }
 
@@ -1636,30 +1621,27 @@ id = 130035
 random = no
 country = VIC
 
-trigger = {
-	local_flag = VIC_darlan
-	event = { id = 130031 days = 400 }
-}
-
-name = "Fortifications are built"
-desc = "Admiral Darlan promised to protect us from the Commune by fortifying our main cities. Hiding behind concrete might look cowardly, but the Commune will surely think twice before testing our defence."
+name = "Capital Ship Refit Complete"
+desc = "Our Bretagne and Courbet-class battleships have finished their refit."
 style = 2
-picture = "coastal_fort"
-
-date = { day = 0 month = january year = 1937 }
-offset = 5
-deathdate = { day = 29 month = december year = 1963 }
+picture = "redfleet"
 
 action_a = {
-	name = "Let them come!"
-	command = { type = construct which = coastal_fort where = 727 value = 1 } #Algiers
-	command = { type = construct which = coastal_fort where = 747 value = 1 } #Tunis
-	command = { type = construct which = coastal_fort where = 728 value = 1 } #Oran
-	command = { type = construct which = coastal_fort where = 978 value = 1 } #Dakar
-	command = { type = construct which = land_fort where = 727 value = 1 } #Algiers
-	command = { type = construct which = land_fort where = 747 value = 1 } #Tunis
-	command = { type = construct which = land_fort where = 728 value = 1 } #Oran
-	command = { type = construct which = land_fort where = 978 value = 1 } #Dakar
+	name = "C'est magnifique!"
+	command = { type = add_division which = "Bretagne" value = battleship when = 3 where = naval_fire_controll_l }
+	command = { type = add_brigade value = naval_anti_air_l when = 0 }
+	command = { type = add_division which = "Provence" value = battleship when = 3 where = naval_fire_controll_l }
+	command = { type = add_brigade value = naval_anti_air_l when = 0 }
+	command = { type = add_division which = "Lorraine" value = battleship when = 3 where = naval_fire_controll_l }
+	command = { type = add_brigade value = naval_anti_air_l when = 0 }
+	command = { type = add_division which = "Courbet" value = battleship when = 2 where = naval_fire_controll_l }
+	command = { type = add_brigade value = naval_anti_air_l when = 0 }
+	command = { type = add_division which = "Jean Bart" value = battleship when = 2 where = naval_fire_controll_l }
+	command = { type = add_brigade value = naval_anti_air_l when = 0 }
+	command = { type = add_division which = "Paris" value = battleship when = 2 where = naval_fire_controll_l }
+	command = { type = add_brigade value = naval_anti_air_l when = 0 }
+	command = { type = add_division which = "France" value = battleship when = 2 where = naval_fire_controll_l }
+	command = { type = add_brigade value = naval_anti_air_l when = 0 }
 }
 }
 
@@ -1669,34 +1651,15 @@ id = 130036
 random = no
 country = VIC
 
-trigger = {
-	local_flag = VIC_darlan
-	NOT = { atwar = VIC }
-}
-
-name = "De Gaulle Accuses the Government of Cowardice"
-desc = "General De Gaulle has publicly condemned our policy of building fortifications instead of expanding our armed forces. According to the general, we should be preparing to fight the Commune, not wait behind concrete for them to come to us. How will we deal with this man?"
+name = "Carrier Conversion Complete"
+desc = "The aging battleships Condorcet and Voltaire, with the help of exile naval engineers, have finally finished the carrier conversion process. We are more ready than ever to strike at the Commune and reclaim Metropolitan France!"
 style = 2
-picture = "news_paper"
-
-date = { day = 0 month = august year = 1936 }
-offset = 30
-deathdate = { day = 29 month = august year = 1938 }
+picture = "Rebecca"
 
 action_a = {
-	ai_chance = 50
-	name = "Arrange an early retirement for him"
-	command = { type = sleepminister which = 57056 }
-	command = { type = sleepminister which = 57054 }
-	command = { type = sleepminister which = 57053 }
-	command = { type = sleepminister which = 57055 }
-	command = { type = sleepleader which = 380065 }
-	command = { type = dissent value = 2 }
-}
-action_b = {
-	ai_chance = 50
-	name = "An officer should be able to speak his mind"
-	command = { type = dissent value = 3 }
+	name = "C'est magnifique!"
+	command = { type = add_division which = "Condorcet" value = carrier when = 0 where = cag }
+	command = { type = add_division which = "Voltaire" value = carrier when = 0 where = cag }
 }
 }
 
@@ -1708,7 +1671,6 @@ event = {
 id = 130037
 random = no
 country = VIC
-save_date = yes
 
 name = "De Gaulle's Plan"
 desc = "General De Gaulle is the leader of the so called 'Young Guard', a group of young officers bent on destroying the Commune. In his plans he emphasis the ground forces and plans its great expansion, yet the local Pied-Noir population is too small to facilitate such an expansion. Another way has to be found to expand our army."
@@ -1720,19 +1682,15 @@ action_a = {
 	name = "Start conscripting Arabs and Africans into the armed forces"
 	command = { type = money value = -100 }
 	command = { type = supplies value = -100 }
-	command = { type = sleepevent which = 130041 }
-	command = { type = sleepevent which = 130042 }
-	command = { type = sleepevent which = 130043 }
 	command = { type = dissent value = 2 }
+	command = { type = event which = 130038 where = VIC when = 150 }
 }
 action_b = {
 	ai_chance = 50
 	name = "Start expanding the Foreign Legion"
 	command = { type = supplies value = -20 }
 	command = { type = money value = -20 }
-	command = { type = sleepevent which = 130038 }
-	command = { type = sleepevent which = 130039 }
-	command = { type = sleepevent which = 130040 }
+	command = { type = event which = 130041 where = VIC when = 150 }
 }
 }
 
@@ -1742,19 +1700,10 @@ id = 130038
 country = VIC
 random = no
 
-trigger = {
-	local_flag = VIC_gaulle
-	event = { id = 130037 days = 150 }
-}
-
 name = "Conscription of the Native Population"
 desc = "De Gaulle has promised the people will fight the Commune, but at the same time he knows the army can never match that of the Commune in size. Therefore he decided to start conscripting the local population of the colonies into the army. This wasn't a popular decision among the natives however."
 style = 2
 picture = "VIC_Native_troops"
-
-date = { day = 0 month = january year = 1937 }
-offset = 30
-deathdate = { day = 29 month = december year = 1941 }
 
 action_a = {
 	ai_chance = 100
@@ -1764,14 +1713,13 @@ action_a = {
 	command = { type = add_division which = "1ème Division Tirailleurs Sénégalais" value = d_01 when = 8 }
 	command = { type = add_division which = "2ème Division Tirailleurs Sénégalais" value = d_01 when = 8 }
 	command = { type = add_division which = "3ème Division Tirailleurs Sénégalais" value = d_01 when = 8 }
+	command = { type = event which = 130039 where = VIC when = 100 }
 	command = { type = dissent value = 5 }
 }
 action_b = {
 	ai_chance = 0
 	name = "We have expanded the army enough"
 	command = { type = dissent value = -3 }
-	command = { type = sleepevent which = 130039 }
-	command = { type = sleepevent which = 130040 }
 }
 }
 
@@ -1781,19 +1729,10 @@ id = 130039
 country = VIC
 random = no
 
-trigger = {
-	local_flag = VIC_gaulle
-	event = { id = 130037 days = 250 }
-}
-
 name = "Conscription of the Native Population"
 desc = "De Gaulle has promised the people will fight the Commune, but at the same time he knows the army can never match that of the Commune in size. Therefore he decided to start conscripting the local population of the colonies into the army. This wasn't a popular decision among the natives however."
 style = 2
 picture = "VIC_Native_troops"
-
-date = { day = 0 month = january year = 1937 }
-offset = 30
-deathdate = { day = 29 month = december year = 1941 }
 
 action_a = {
 	ai_chance = 60
@@ -1803,13 +1742,13 @@ action_a = {
 	command = { type = add_division which = "4ème Division Tirailleurs Sénégalais" value = d_01 when = 8 }
 	command = { type = add_division which = "5ème Division Tirailleurs Sénégalais" value = d_01 when = 8 }
 	command = { type = add_division which = "6ème Division Tirailleurs Sénégalais" value = d_01 when = 8 }
+	command = { type = event which = 130040 where = VIC when = 100 }
 	command = { type = dissent value = 5 }
 }
 action_b = {
 	ai_chance = 40
 	name = "We have expanded the army enough"
 	command = { type = dissent value = -3 }
-	command = { type = sleepevent which = 130040 }
 }
 }
 
@@ -1819,19 +1758,10 @@ id = 130040
 country = VIC
 random = no
 
-trigger = {
-	local_flag = VIC_gaulle
-	event = { id = 130037 days = 350 }
-}
-
 name = "Conscription of the Native Population"
 desc = "De Gaulle has promised the people will fight the Commune, but at the same time he knows the army can never match that of the Commune in size. Therefore he decided to start conscripting the local population of the colonies into the army. This wasn't a popular decision among the natives however."
 style = 2
 picture = "VIC_Native_troops"
-
-date = { day = 0 month = january year = 1937 }
-offset = 30
-deathdate = { day = 29 month = december year = 1941 }
 
 action_a = {
 	name = "The conscription was a success!"
@@ -1850,19 +1780,10 @@ id = 130041
 country = VIC
 random = no
 
-trigger = {
-	local_flag = VIC_gaulle
-	event = { id = 130037 days = 150 }
-}
-
 name = "Expansion of the Foreign Legion"
 desc = "De Gaulle has promised the people will fight the Commune, but at the same time he knows the army can never match that of the Commune in size. Therefore he decided to bolster the army by expanding the Foreign Legion. These soldiers will not fight for free though."
 style = 2
 picture = "frenchforeignlegion"
-
-date = { day = 0 month = january year = 1937 }
-offset = 30
-deathdate = { day = 29 month = december year = 1941 }
 
 action_a = {
 	ai_chance = 100
@@ -1871,13 +1792,12 @@ action_a = {
 	command = { type = add_division which = "1ème Division Légion Étrangère" value = d_01 when = 9 }
 	command = { type = add_division which = "2ème Division Légion Étrangère" value = d_01 when = 9 }
 	command = { type = money value = -20 }
+	command = { type = event which = 130042 where = VIC when = 100 }
 }
 action_b = {
 	ai_chance = 0
 	name = "We have expanded the army enough"
 	command = { type = dissent value = -1 }
-	command = { type = sleepevent which = 130042 }
-	command = { type = sleepevent which = 130043 }
 }
 }
 
@@ -1887,19 +1807,10 @@ id = 130042
 country = VIC
 random = no
 
-trigger = {
-	local_flag = VIC_gaulle
-	event = { id = 130037 days = 250 }
-}
-
 name = "Expansion of the Foreign Legion"
 desc = "De Gaulle has promised the people to fight the Commune, but at the same time he knows the army can never match that of the Commune in size. Therefore he decided to bolster the army by expanding the Foreign Legion. These soldiers will not fight for free though."
 style = 2
 picture = "frenchforeignlegion"
-
-date = { day = 0 month = january year = 1937 }
-offset = 30
-deathdate = { day = 29 month = december year = 1941 }
 
 action_a = {
 	ai_chance = 60
@@ -1908,12 +1819,12 @@ action_a = {
 	command = { type = add_division which = "3ème Division Légion Étrangère" value = d_01 when = 9 }
 	command = { type = add_division which = "4ème Division Légion Étrangère" value = d_01 when = 9 }
 	command = { type = money value = -20 }
+	command = { type = event which = 130043 where = VIC when = 100 }
 }
 action_b = {
 	ai_chance = 40
 	name = "We have expanded the army enough"
 	command = { type = dissent value = -1 }
-	command = { type = sleepevent which = 130043 }
 }
 }
 
@@ -1923,19 +1834,10 @@ id = 130043
 country = VIC
 random = no
 
-trigger = {
-	local_flag = VIC_gaulle
-	event = { id = 130037 days = 350 }
-}
-
 name = "Expansion of the Foreign Legion"
 desc = "De Gaulle has promised the people will fight the Commune, but at the same times he knows the army can never match that of the Commune in size. Therefore he decided to bolster the army by expanding the Foreign Legion. These soldiers will not fight for free though."
 style = 2
 picture = "frenchforeignlegion"
-
-date = { day = 0 month = january year = 1937 }
-offset = 30
-deathdate = { day = 29 month = december year = 1941 }
 
 action_a = {
 	name = "The expansion was a success!"
@@ -1947,41 +1849,41 @@ action_a = {
 }
 
 
-event = {
-id = 130044
-random = no
-country = VIC
-
-trigger = {
-	local_flag = VIC_gaulle
-	NOT = { atwar = VIC }
-}
-
-name = "Darlan accuses government of recklesness"
-desc = "Admiral Darlan has publicly condemned our policy of aggressively expanding the army. According to the admiral we should be preparing to defend ourselves from the the Commune, not provoke them. How will we deal with this man?"
-style = 2
-
-date = { day = 0 month = august year = 1936 }
-offset = 30
-deathdate = { day = 29 month = august year = 1938 }
-
-action_a = {
-	ai_chance = 50
-	name = "Arrange an early retirement for him"
-	command = { type = sleepminister which = 57072 }
-	command = { type = sleepminister which = 57033 }
-	command = { type = sleepminister which = 57012 }
-	command = { type = sleepminister which = 57002 }
-	command = { type = sleepminister which = 57025 }
-	command = { type = sleepleader which = 380087 }
-	command = { type = dissent value = 2 }
-}
-action_b = {
-	ai_chance = 50
-	name = "An officer should be able to speak his mind"
-	command = { type = dissent value = 3 }
-}
-}
+#event = {
+#id = 130044
+#random = no
+#country = VIC
+#
+#trigger = {
+#	local_flag = VIC_gaulle
+#	NOT = { atwar = VIC }
+#}
+#
+#name = "Darlan accuses government of recklesness"
+#desc = "Admiral Darlan has publicly condemned our policy of aggressively expanding the army. According to the admiral we should be preparing to defend ourselves from the the Commune, not provoke them. How will we deal with this #man?"
+#style = 2
+#
+#date = { day = 0 month = august year = 1936 }
+#offset = 30
+#deathdate = { day = 29 month = august year = 1938 }
+#
+#action_a = {
+#	ai_chance = 50
+#	name = "Arrange an early retirement for him"
+#	command = { type = sleepminister which = 57072 }
+#	command = { type = sleepminister which = 57033 }
+#	command = { type = sleepminister which = 57012 }
+#	command = { type = sleepminister which = 57002 }
+#	command = { type = sleepminister which = 57025 }
+#	command = { type = sleepleader which = 380087 }
+#	command = { type = dissent value = 2 }
+#}
+#action_b = {
+#	ai_chance = 50
+#	name = "An officer should be able to speak his mind"
+#	command = { type = dissent value = 3 }
+#}
+#}
 
 #####################
 ## Democratisation events

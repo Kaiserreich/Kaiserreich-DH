@@ -26,9 +26,8 @@ country = {
         interventionism = 8
     }
 #### cabinet
-
-headofstate = { type = 9 id = 58031 } #Zhang Zuolin
-	headofgovernment = { type = 9 id = 58025 } #Zhang Zuoxiang 
+	headofstate = { type = 9 id = 58033 } #Zhang Zuolin
+	headofgovernment = { type = 9 id = 58027 } #Zhang Zuoxiang
 
 
 #### Resource Reserves

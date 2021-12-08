@@ -26,6 +26,8 @@ country = {
         interventionism = 8
     }
 #### cabinet
+	headofstate = { type = 9 id = 58033 } #Zhang Zuolin
+	headofgovernment = { type = 9 id = 58027 } #Zhang Zuoxiang
 
 #### Resource Reserves
 	energy	=	200  metal	=	200	rare_materials =	200	oil =	500	supplies =	9000
@@ -61,10 +63,6 @@ relation = { tag = RUS value = 40  }
 relation = { tag = PRI value = 30  }
 relation = { tag = JAP value = 50 access = yes }
 }
-
-headofstate = { type = 9 id = 58031 }
-	headofgovernment = { type = 9 id = 58025 }
-
 
 	
 	techapps = {
