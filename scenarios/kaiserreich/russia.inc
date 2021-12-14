@@ -14,14 +14,15 @@ country = {
 	}
 
 #### cabinet
-	headofstate = { type = 9 id = 4092 }
-	headofgovernment = { type = 9 id = 4160 }
-	ministerofsecurity = { type = 9 id = 4242 }
-	ministerofintelligence = { type = 9 id = 4251 }
-	chiefofstaff = { type = 9 id = 4124 }
-	chiefofarmy = { type = 9 id = 4266 }
-	chiefofnavy = { type = 9 id = 4179 }
-	chiefofair = { type = 9 id = 4148 }
+	headofstate = { type = 9 id = 4092 } #Aleksandr Kerensky
+	headofgovernment = { type = 9 id = 4160 } #Pavel Milyukov
+	armamentminister = { type = 9 id = 4230 } #Aleksandr Konovalov
+	ministerofsecurity = { type = 9 id = 4247 } #Boris Nolde
+	ministerofintelligence = { type = 9 id = 4251 } #Pavel Malyantovich
+	chiefofstaff = { type = 9 id = 4124 } #Pyotr Wrangel
+	chiefofarmy = { type = 9 id = 4266 } #Lavr Kornilov
+	chiefofnavy = { type = 9 id = 4179 } #Mikhail Kedrov
+	chiefofair = { type = 9 id = 4148 } #Vyacheslav Tkachov
 
 #### Resource Reserves
 
@@ -209,7 +210,7 @@ dormant_leaders = {
 				}
 
 deactivate = { 6010 6210 6570 6560 6390 }
-dormant_ministers = { 4141 4199 4198 
+dormant_ministers = { 4141 4199 4198 4549
 					#PRI
 					4600 4601 4602 4603 4604 4605 4606 4607 4608 4609 4610 4611 4612 4613 4614 4615 4616
 					4617 4618 4619 4620
