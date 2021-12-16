@@ -1836,3 +1836,127 @@ command = { type = industrial_modifier which = total value = 2 }
 command = { type = dissent value = -2 }
 }
 }
+
+#### Generic Manpower Decision
+event = {
+id = 9000100
+random = no
+persistent = yes
+decision = {
+OR = {
+money = 400
+AND = {
+NOT = { IC = 80 }
+money = 300
+}
+AND = {
+NOT = { IC = 50 }
+money = 200
+}
+AND = {
+NOT = { IC = 15 }
+money = 100
+}
+}
+NOT = { local_flag = manpower_investment_1 }
+NOT = { local_flag = manpower_investment_2 }
+NOT = { local_flag = manpower_investment_3 }
+}
+
+decision_trigger = {
+OR = {
+money = 500
+AND = {
+NOT = { IC = 80 }
+money = 400
+}
+AND = {
+NOT = { IC = 50 }
+money = 300
+}
+AND = {
+NOT = { IC = 15 }
+money = 150
+}
+}
+}
+
+trigger = {
+random = 60
+money = 500
+#NOT = { policy = { type = professional_army value = 8 } }
+NOT = { local_flag = manpower_investment_1 }
+NOT = { local_flag = manpower_investment_2 }
+NOT = { local_flag = manpower_investment_3 }
+}
+
+name = "9000100name"
+desc = "9000100desc"
+style = 2
+picture = "invest_research"
+decision_picture = "decision_invest_research"
+
+date = { day = 1 month = january year = 1914 }
+offset = 120
+deathdate = { day = 29 month = december year = 1999 }
+
+action = {
+trigger = { OR = { AND = { IC = 80 money = 500 } AND = { IC = 50 NOT = { IC = 80 } money = 400 } AND = { IC = 15 NOT = { IC = 50 } money = 300 } AND = { NOT = { IC = 15 } money = 150 } } }
+ai_chance = 30
+name = "9000100a"
+command = { trigger = { IC = 80 money = 500 } type = money value = -500 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 400 } type = money value = -400 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 300 } type = money value = -300 }
+command = { trigger = { NOT = { IC = 15 } money = 150 } type = money value = -150 }
+command = { type = event which = 9000101 where = -1 when = 30 }
+command = { type = local_setflag which = manpower_investment_1 }
+}
+action = {
+trigger = { OR = { AND = { IC = 80 money = 1000 } AND = { IC = 50 NOT = { IC = 80 } money = 800 } AND = { IC = 15 NOT = { IC = 50 } money = 600 } AND = { NOT = { IC = 15 } money = 300 } } }
+ai_chance = 30
+name = "9000100b"
+command = { trigger = { IC = 80 money = 1000 } type = money value = -1000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 800 } type = money value = -800 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 600 } type = money value = -600 }
+command = { trigger = { NOT = { IC = 15 } money = 300 } type = money value = -300 }
+command = { type = event which = 9000101 where = -1 when = 30 }
+command = { type = local_setflag which = manpower_investment_2 }
+}
+action = {
+trigger = { OR = { AND = { IC = 80 money = 2000 } AND = { IC = 50 NOT = { IC = 80 } money = 1600 } AND = { IC = 15 NOT = { IC = 50 } money = 1200 } AND = { NOT = { IC = 15 } money = 600 } } }
+ai_chance = 40
+name = "9000100c"
+command = { trigger = { IC = 80 money = 2000 } type = money value = -2000 }
+command = { trigger = { IC = 50 NOT = { IC = 80 } money = 1600 } type = money value = -1600 }
+command = { trigger = { IC = 15 NOT = { IC = 50 } money = 1200 } type = money value = -1200 }
+command = { trigger = { NOT = { IC = 15 } money = 600 } type = money value = -600 }
+command = { trigger = { NOT = { domestic = { type = professional_army value = 5 } } } type = domestic which = professional_army value = -1 }
+command = { type = event which = 9000101 where = -1 when = 30 }
+command = { type = local_setflag which = manpower_investment_3 }
+}
+}
+event = {
+id = 9000101
+random = no
+persistent = yes
+
+name = "9000101name"
+desc = "9000101desc"
+style = 2
+picture = "invest_research"
+
+action = {
+name = ACTION_NAME_EXCELLENT
+command = { }
+command = { trigger = { local_flag = manpower_investment_1 } type = manpowerpool value = 3 }
+command = { trigger = { local_flag = manpower_investment_1 } type = local_clrflag which = manpower_investment_1 }
+command = { trigger = { local_flag = manpower_investment_2 } type = manpowerpool value = 3 }
+command = { trigger = { local_flag = manpower_investment_2 } type = province_manpower which = -1 value = 1 }
+command = { trigger = { local_flag = manpower_investment_2 } type = local_clrflag which = manpower_investment_2 }
+command = { trigger = { local_flag = manpower_investment_3 } type = manpowerpool value = 3 }
+command = { trigger = { local_flag = manpower_investment_3 } type = relative_manpower value = 10 }
+command = { trigger = { local_flag = manpower_investment_3 } type = province_manpower which = -1 value = 1 }
+#command = { trigger = { local_flag = manpower_investment_3 } type = province_manpower which = -1 value = 1 }
+command = { trigger = { local_flag = manpower_investment_3 } type = local_clrflag which = manpower_investment_3 }
+}
+}
