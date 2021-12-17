@@ -17,16 +17,16 @@ ai = "kaiserreich\Cossack.ai"
     }
 
 #### cabinet
-	headofstate = { type = 9 id = 523001 }
-	headofgovernment = { type = 9 id = 523014 }
- 	foreignminister = { type = 9 id = 523018  }
- 	armamentminister = { type = 9 id = 523023 }
- 	ministerofsecurity = { type = 9 id = 523030 }
- 	ministerofintelligence = { type = 9 id = 523036 }
- 	chiefofstaff = { type = 9 id = 523038 }
- 	chiefofarmy = { type = 9 id = 523042 }
- 	chiefofnavy = { type = 9 id = 523058  }        
- 	chiefofair = { type = 9 id = 523046  }
+	headofstate = { type = 9 id = 523001 } #Pyotr Krasnov
+	headofgovernment = { type = 9 id = 523014 } #Mikhail Grabbe
+	foreignminister = { type = 9 id = 523096 } #Pyotr Popov
+	armamentminister = { type = 9 id = 523023 } #Vasiliy Ivanis
+	ministerofsecurity = { type = 9 id = 523104 } #Ivan Ushakov
+	ministerofintelligence = { type = 9 id = 523102 } #Isaak Bykadorov
+	chiefofstaff = { type = 9 id = 523108 } #Vladimir Sidorin
+	chiefofarmy = { type = 9 id = 523113 } #Fedor Abramov
+	chiefofnavy = { type = 9 id = 523058 }
+	chiefofair = { type = 9 id = 523064 } #Vyacheslav Baranov
 #### Resource Reserves
 
 SpyInfo  = {  country = "TRA" NumberOfSpies = 2  } 
