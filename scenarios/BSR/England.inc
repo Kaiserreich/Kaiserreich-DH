@@ -73,7 +73,7 @@ relation = { tag = ENG value = -200  }
 4800 4810 #ww1 strategic bomber
 7290 7300 7310 7320 #CAS
 
-#Armour & Artillery
+#Armor & Artillery
 2860 2870 2880 #Armd Cars up to post ww1 armd car
 2620 2010 2630 2640 #1924 tanks
 2290 2300 2310 2900 2910 #Great War Heavy Field Artillery  

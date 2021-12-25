@@ -60,8 +60,8 @@ techapps = {
 4600 4610 4620 4630 4120 #Interwar Bomber
 4300 4310 4320 4330 #Multirole fighter
 
-#Armour & Artillery
-2860 #Interwar Armoured Car  
+#Armor & Artillery
+2860 #Interwar Armored Car  
 2290 2300 2310 2900 2910 2920 #1924FA
 7600 7610 2620 2010 2630 #SW Tank 
 2800 2450 #1921 Static Anti-Air Artillery 
