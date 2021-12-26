@@ -7,40 +7,49 @@ country = {
 
 	policy = {
 		date = { year = 0 month = january day = 0 }
-		democratic = 2
-		political_left = 3
-		freedom = 3
+		democratic = 4
+		political_left = 5
+		freedom = 4
 		free_market = 5
-		professional_army = 1
-		defense_lobby = 1
-		interventionism = 2
+		professional_army = 4
+		defense_lobby = 3
+		interventionism = 4
 		}
 
 #### cabinet
-#headofstate = { type = 9 id = 502001 }
-#headofgovernment = { type = 9 id = 502002 }
+	headofstate = { type = 9 id = 98015 } #Zhao Hengti
+	headofgovernment = { type = 9 id = 98016 } #Zhao Hengti
+	foreignminister = { type = 9 id = 98164 } #He Yaozu
+	armamentminister = { type = 9 id = 98099 } #Li Daichen
+	ministerofsecurity = { type = 9 id = 98019 } #He Jian
+	ministerofintelligence = { type = 9 id = 98196 } #Yang Xuancheng
+	chiefofstaff = { type = 9 id = 98155 } #Fang Dingying
+	chiefofarmy = { type = 9 id = 98159 } #Ye Qi
+	chiefofnavy = { type = 9 id = 98195 } #Yang Xuancheng
+	chiefofair = { type = 9 id = 98201 } #Shi Bangfan
+
 #### Resource Reserves
-		energy		= 200
-		metal		= 200
-		rare_materials 	= 100
-		oil 		= 100
-		supplies 	= 100
-		money		= 50
+	energy		= 200
+	metal		= 200
+	rare_materials 	= 100
+	oil 		= 100
+	supplies 	= 100
+	money		= 50
 	capital = 1308 #Changsha 
 	manpower = 200
 
-        free = { ic = 7 }
+	free = { ic = 7 energy = 10 metal = 4 } #free energy and metal to keep Hunan's economy alive while a puppet
 
-SpyInfo  = {  country = "UGS" NumberOfSpies = 3  } 
+SpyInfo  = { country = "UGS" NumberOfSpies = 3 }
 
     ownedprovinces =      {
- 1306 1307 1308 1309 1310 1311 1312 1378 
+ 1306 1307 1308 1309 1310 1311 1312 1378
 	 }
     controlledprovinces = {
- 1306 1307 1308 1309 1310 1311 1312 1378 
+ 1306 1307 1308 1309 1310 1311 1312 1378
 	  }
     nationalprovinces =   {
-	1306 1307 1308 1309 1310 1311 1312 1378 
+	1306 1307 1308 1309 1310 1311 1312 1378
 	}
 
 diplomacy = {

@@ -4,8 +4,8 @@
 country = {
     tag = MAN  
 
-        ai = "kaiserreich\Fengtian.ai"
-	puppet = JAP
+	ai = "kaiserreich\Fengtian.ai"
+	#puppet = JAP
 
 	policy = {
         date = { year = 0 month = january day = 0 }
@@ -13,47 +13,48 @@ country = {
         political_left = 4
         freedom = 3
         free_market = 3
-        professional_army = 3
+        professional_army = 6
         defense_lobby = 8
         interventionism = 8
     }
 
-#### cabinet (temp by Maxian)
-	headofstate = { type = 9 id = 58024 } #Zhang Zuolin
-	headofgovernment = { type = 9 id = 58048 } #Zang Shiyi
-	foreignminister = { type = 9 id = 58041 } #Wu Jinglian
-	armamentminister = { type = 9 id = 58093 } #Peng Xian
-	ministerofsecurity = { type = 9 id = 58107 } #Yu Zhen
-	ministerofintelligence = { type = 9 id = 58149 } #Xu Zuyi
-	chiefofstaff = { type = 9 id = 58033 } #Zhang Xueliang
-	chiefofarmy = { type = 9 id = 58167 } #Wu Guangxin
-	chiefofnavy = { type = 9 id = 58195 } #Shen Honglie
-	chiefofair = { type = 9 id = 58144 } #Feng Yong
+#### cabinet
+	headofstate = { type = 9 id = 58033 } #Zhang Zuolin
+	headofgovernment = { type = 9 id = 58401 } #Yan Xishan
+	#headofgovernment = { type = 9 id = 58066 } #Zang Shiyi
+	foreignminister = { type = 9 id = 58059 } #Wu Jinglian
+	armamentminister = { type = 9 id = 58129 } #Peng Xian
+	ministerofsecurity = { type = 9 id = 58157 } #Yu Zhen
+	ministerofintelligence = { type = 9 id = 58210 } #Xu Zuyi
+	chiefofstaff = { type = 9 id = 58046 } #Zhang Xueliang
+	chiefofarmy = { type = 9 id = 58228 } #Wu Guangxin
+	chiefofnavy = { type = 9 id = 58256 } #Shen Honglie
+	chiefofair = { type = 9 id = 58205 } #Feng Yong
 
 #### Resource Reserves
 	energy	=	200  metal	=	200	rare_materials =	200	oil =	200	supplies =	300
 	money = 50
 
-        SpyInfo  = {  country = "MAN" NumberOfSpies = 3  } 
+	SpyInfo = { country = "MAN" NumberOfSpies = 3 }
 
 	manpower = 150
 
-	capital = 	1208
+	capital = 1208
 
 	free = { ic = 8 }
 
     ownedprovinces = {
-		1202 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218 
-                1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1235 1236 1216
-				}
+		1202 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218
+		1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1216 1235 1236
+	}
     controlledprovinces = {
-		1202 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218 
-                1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1235 1236 1216
-				}
+		1202 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218
+		1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1216 1235 1236
+	}
     nationalprovinces = {
-		1202 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218 
-                1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1235 1236 1216
-				}
+		1202 1204 1212 1205 1199 1203 1200 1206 1213 1237 1207 1220 1218
+		1201 1208 1209 1210 1211 1214 1215 1217 1197 1198 1216 1235 1236
+	}
 
 diplomacy = {
 	relation = { tag = CHI value = -10 }
@@ -66,7 +67,6 @@ diplomacy = {
 	relation = { tag = PRI value = 30 }
 	relation = { tag = JAP value = 50 access = yes }
 	}
-
 
 	blueprints = { 6010 6020 } #Superior Firepower Doctrine
 	techapps = {
@@ -89,7 +89,7 @@ diplomacy = {
 2810 #1918 AA Bde
 
 #Infantry
-1010  1020 1030 1040 1050 1060 1070 1080 #1926 Infantry Division
+1010 1020 1030 1040 1050 1060 1070 1080 #1926 Infantry Division
 1160 1170 1180 1190 1200 1210 1220 1230 1240 #1930 Mountain Division
 1910 1920 1930 1940 1950 1960 1970 #Interbellum 1930 Supply
 13060 13070 13080 1310 1320 1330 1340 1350 #1928 Cavalry Division
@@ -120,20 +120,22 @@ diplomacy = {
 	}
 
 dormant_leaders = { #JAP
-					250150 250151 250152 250153 250154 250155 250156 250157 250158 250159 250160 250161 250162
-					250163 250164 250165 250166 250167
-				}
+		250200 250201 250202 250203 250204 250205 250206 250207 250208 250209 250210 250211 250212 250213 250214 250215
+		250216 250217 250218 250219 250220 250221 250222 250223 250224 250225
+		}
 
-dormant_ministers = { #JAP
-					  58300 58301 58302 58303 58304 58305 58306 58307 58308 58309 58310 58311 58312 58313 58314
-					  58315 58316 58317 58318 58319 58320 58321 58322 58323 58324 58325 58326 58327 58328 58329
-					  58330 58331 58332 58333 58334 58335 58336 58337 58338 58339 58340 58341 58342 58343 58344
-					  58345 58346 58347 58348 58349
-					}
+dormant_ministers = { #JAP (not slept are 58309 58312-17 58328 58330)
+		58300 58301 58302 58303 58304 58305 58306 58307 58308 58310 58311 58318 58319 58320 58321 58322 58323 58324 58325
+		58326 58327 58329 58331 58332 58333 58334 58335 58336 58337 58338 58339 58340 58341 58342 58343 58344 58345 58346
+		58347 58348 58349 58350 58351 58352 58353 58354 58355 58356 58357 58358 58359 58360 58361 58362 58363 58364 58365
+		58002 58003 58004 58112 #LW versions of Gao Chongmin & Lu Guangji
+		58450 58451 #Puyi (more Qing ministers in the future)
+		}
 
-dormant_teams = { 6440 6443 #JAP
-				}
-
+dormant_teams = { 6437 6443 6444 6449 #JAP
+		6451 6452 6454 6456 6457 6458 6459 6460 6461 6463 6464 6465 6466 6467 6468 6469 #united China
+		6453 6455 6462 #EAF
+		}
 
 #########  OOB (...)
 
@@ -151,7 +153,8 @@ dormant_teams = { 6440 6443 #JAP
 		extra = rocket_artillery
 		brigade_model = 6
 		}
-		}
+	}
+
 
 	landunit = {
 	location = 1237
@@ -190,7 +193,8 @@ dormant_teams = { 6440 6443 #JAP
 		brigade_model = 2
 		strength = 100
 		}
-		}
+	}
+
 
 	landunit = {
 	location = 1200
@@ -224,7 +228,7 @@ dormant_teams = { 6440 6443 #JAP
 		extra = armored_car
 		brigade_model = 2
 		}
-		}
+	}
 
 	landunit = {
 	location = 1201
@@ -240,7 +244,7 @@ dormant_teams = { 6440 6443 #JAP
 		extra = rocket_artillery
 		brigade_model = 6
 		}
-		}
+	}
 
 	landunit = {
 	location = 1199
@@ -256,7 +260,7 @@ dormant_teams = { 6440 6443 #JAP
 		extra = light_armor_brigade
 		brigade_model = 1
 		}
-		}
+	}
 
 	landunit = {
 	location = 1202
@@ -270,12 +274,12 @@ dormant_teams = { 6440 6443 #JAP
 		model = 7
 		strength = 100
 		}
-		}
+	}
 
 	landunit = {
 	location = 1197
 	id = { type = 28500 id = 18 }
-	name = "4 Harbin Juntuan"
+	name = "4 Harbin Jüntuan"
 
 		division = {
 		id = { type = 28500 id = 19 }
@@ -293,12 +297,12 @@ dormant_teams = { 6440 6443 #JAP
 		extra = artillery
 		brigade_model = 5
 		}
-		}
+	}
 
 	landunit = {
 	location = 1206
 	id = { type = 28500 id = 21 }
-	name = "4 Harbin Juntuan"
+	name = "4 Harbin Jüntuan"
 
 		division = {
 		id = { type = 28500 id = 22 }
@@ -309,12 +313,12 @@ dormant_teams = { 6440 6443 #JAP
 		extra = light_armor_brigade
 		brigade_model = 1
 		}
-		}
+	}
 
 	landunit = {
 	location = 1209
 	id = { type = 28500 id = 23 }
-	name = "4 Harbin Juntuan"
+	name = "4 Harbin Jüntuan"
 
 		division = {
 		id = { type = 28500 id = 24 }
@@ -325,28 +329,28 @@ dormant_teams = { 6440 6443 #JAP
 		extra = artillery
 		brigade_model = 5
 		}
-		}
+	}
 
-	airunit = {
+    airunit = {
 	location = 1208
+	base = 1208
 	id = { type = 28500 id = 60 }
 	name = "Di'1 Man'chu Kongjun"
-	base = 1208
 		division = { id = { type = 28500 id = 62 } name = "1 Man'chu TAC Hong'zha'ji" strength = 100 type = tactical_bomber model = 4 }
 		division = { id = { type = 28500 id = 66 } name = "1 Man'chu Zhan'dou'ji" strength = 100 type = interceptor model = 6 }
 	}
 
 	navalunit = {
 	location = 1218 #Yingkou
-	id = { type = 29600 id = 80 }
 	base = 1218
 	name = "Fengtian Navy"
-
-		division = { id = { type = 28500 id = 81 } name = "Zhuang'he" type = light_cruiser model = 2 }
+	id = { type = 29600 id = 79 }
+		division = { id = { type = 29600 id = 80 } name = "Zhenhai" type = escort_carrier model = 0 }
+		division = { id = { type = 29600 id = 81 } name = "Zhuang'he" type = light_cruiser model = 2 }
 		division = { id = { type = 29600 id = 82 } name = "Fu'xian" type = light_cruiser model = 2 }
 		division = { id = { type = 29600 id = 83 } name = "1 Man'chu TBS Bingtuan" type = destroyer model = 3 }
 		division = { id = { type = 29600 id = 84 } name = "2 Man'chu TBS Bingtuan" type = destroyer model = 3 }
 		division = { id = { type = 29600 id = 85 } name = "3 Man'chu TBS Bingtuan" type = destroyer model = 3 }
-		division = { id = { type = 28500 id = 86 } name = "1 Man'chu Qian'ting'bu" type = submarine model = 2 }
+		division = { id = { type = 29600 id = 86 } name = "1 Man'chu Qian'ting'bu" type = submarine model = 2 }
 		}
-}  
+}
