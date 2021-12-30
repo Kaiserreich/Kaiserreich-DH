@@ -17,16 +17,16 @@ country = {
 		}
 
 #### cabinet
-	headofstate = { type = 9 id = 98015 } #Zhao Hengti
-	headofgovernment = { type = 9 id = 98016 } #Zhao Hengti
-	foreignminister = { type = 9 id = 98164 } #He Yaozu
-	armamentminister = { type = 9 id = 98099 } #Li Daichen
-	ministerofsecurity = { type = 9 id = 98019 } #He Jian
-	ministerofintelligence = { type = 9 id = 98196 } #Yang Xuancheng
-	chiefofstaff = { type = 9 id = 98155 } #Fang Dingying
-	chiefofarmy = { type = 9 id = 98159 } #Ye Qi
-	chiefofnavy = { type = 9 id = 98195 } #Yang Xuancheng
-	chiefofair = { type = 9 id = 98201 } #Shi Bangfan
+	headofstate = { type = 9 id = 98018 } #Zhao Hengti
+	headofgovernment = { type = 9 id = 98046 } #Wu Jianxue
+	foreignminister = { type = 9 id = 98172 } #He Yaozu
+	armamentminister = { type = 9 id = 98105 } #Liu Yuezhi
+	ministerofsecurity = { type = 9 id = 98022 } #He Jian
+	ministerofintelligence = { type = 9 id = 98204 } #Yang Xuancheng
+	chiefofstaff = { type = 9 id = 98163 } #Fang Dingying
+	chiefofarmy = { type = 9 id = 98167 } #Ye Qi
+	chiefofnavy = { type = 9 id = 98203 } #Yang Xuancheng
+	chiefofair = { type = 9 id = 98209 } #Shi Bangfan
 
 #### Resource Reserves
 	energy		= 200
