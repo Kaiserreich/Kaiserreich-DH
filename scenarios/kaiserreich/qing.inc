@@ -19,9 +19,16 @@ ai = "kaiserreich\Qing.ai"
 
 #### cabinet
 
-        headofstate = { type = 9 id = 503001 }
-	headofgovernment = { type = 9 id = 503002 }
- 	chiefofnavy = { type = 9 id =  503025 }
+    headofstate = { type = 9 id = 503001 } # Aisin-Gioro Puyi
+	headofgovernment = { type = 9 id = 503002 } # Xu Shichang
+	foreignminister = { type = 9 id = 978130 } # Yan Huiqing
+	armamentminister = { type = 9 id = 978154 } # Zhao Yuke
+	ministerofsecurity = { type = 9 id = 978283 } # Qi Xieyuan
+	ministerofintelligence = { type = 9 id = 978118 } # Aisin-Gioro Xianyu
+	chiefofstaff = { type = 9 id = 978268 } # Jiang Baili
+	chiefofarmy = { type = 9 id = 503008 } # Wu Peifu 
+ 	chiefofnavy = { type = 9 id =  978124 } # Sa Zhenbing
+	chiefofair = { type = 9 id = 978149 } # Bao Bingchen
 
 #### Resource Reserves
 
@@ -65,14 +72,15 @@ ai = "kaiserreich\Qing.ai"
 diplomacy = {
 relation = { tag = EAF value = 60 guaranteed = { day = 29 month = december year = 1935   }  	   } 
 relation = { tag = JAP value = -100   	   } 
-relation = { tag = MAN value = -20   	   } 
-relation = { tag = CHC value = -120   	   }
+relation = { tag = MAN value = -150   	   } 
+relation = { tag = CHC value = -150   	   }
 relation = { tag = CGX value = 10   	   } 
-relation = { tag = GER value = 70   	   }
+relation = { tag = GER value = 75   	   }
 relation = { tag = RUS value = 20   	   }
-relation = { tag = MON value = -10   	   }
-relation = { tag = CYN value = -20   	   }
-relation = { tag = CXB value = -20   	   }
+relation = { tag = MON value = -100   	   }
+relation = { tag = CYN value = -75   	   }
+relation = { tag = TIB value = 25   	   } 
+relation = { tag = CXB value = 25   	   }
 }
 
 
@@ -81,16 +89,16 @@ relation = { tag = CXB value = -20   	   }
 
 
 #Infantry
-1010  1020 1030 1040 1050 1060 1070 #Great War Infantry Division  
-1160 1170 1180 1190 1200 1210 #1918 Mountain Division
-13060 13070 13080 1310 1320 1330 #Great War Cavalry Division 
-1910 1920 1930 1940 1950 1960 #Interbellum Supply 
-1830 1840 #Engineers
+1010  1020 1030 1040 1050 1060 1070 1080 #1926 Infantry Division  
+1160 1170 1180 1190 1200 1210 1220 #1921 Mountain Division
+13060 13070 13080 1310 1320 1330 1340 1350 # 1924 Cavalry Division
+1910 1920 1930 1940 1950 1960 1970 #Interbellum Supply (1924)
+1830 1840 1850 # 1921 Combat Engineer Brigade
 
 #Armour & Artillery
 2860 2870 2880 #Basic Armoured Car 
-2290 2300 2310 #Great War Heavy Field Artillery 
-7600 7610 2620 2010 #SW Tank 
+2290 2300 2310 2900 2910 2920 # Interwar Field Artillery
+7600 7610 2620 2010 2630 # Post-War Tank I
 
 #Naval
 3110 3120 3130 #Light Cruiser
@@ -101,19 +109,22 @@ relation = { tag = CXB value = -20   	   }
 3720 3730 #Torpedoes
 
 #Aircrafts 
-4500 4510 4520 4530 4540 #Interwar Fighter 
+4500 4510 4520 4530 4540 4550 4010 # Interceptor 1924 
 4600 4610 4620 4630 4120 #Interwar Bomber 
-4300 4310 4320 #Multirole fighter
-4800 4810 #ww1 strategic bomber
-4700 #ww1 navalbomber
-7290 7300 #CAS
+4300 4310 4320 # Multi-Role Fighter 1918
+4800 4810 # Strategic Bomber 1918
+4700 # 1918 Naval Bombers
+7290 7300 7310 7320 # 1922 Ground attack aircraft
 
 #Industrial
-5800 5080 #Improved Construction Engineering 
+5800 5080 5090 #Improved Construction Engineering 
+5700 5710 5010 5020 # Mechanized Agriculture
 5980 #Spec Equipment Rough terrain
-5600 #Medicine
-5810 #Scientific Management
-5310 #Census tabulating
+5600 5610 5620 # Early Pharmacology
+5810 5820 5050 5830 # Manufacturing support systems
+5310 54010 54020 54030 # Accounting Machine
+5316 5326 5327 # Early Decryption Devices
+5190 # Basic Oil Refining
 
 #Naval Doctrines
 8010 8050
@@ -123,8 +134,7 @@ relation = { tag = CXB value = -20   	   }
 
 # Great War Land Doctrines (entente)
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
-6570 6300 #Manpower Focus
-14000 #Improved Great War Hospital System
+14000 14010 #Improved Great War Hospital System
 
 }
 
