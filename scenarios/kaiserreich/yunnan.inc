@@ -61,28 +61,35 @@ relation = { tag = TIB value = 24 }
 #######################
 
 #Armour & Artillery
-2860 #AC
-2290 #Light Field Artillery
+2620 2010 # Weltkrieg Tank
+2860 2870 2880 # 1921 AC
+2290 2300 2310 2900 2910 # Post WK Field Artillery
 7600 7610 #SW Tank
 
 #Infantry
-1010 1020 1030 1040 1050 1060 #1918 lgt. Infantry Division
-1160 1170 1180 #1907 Mountain Division
-1910 1920 1930 1940 1950 1960 #Interbellum 1930 Supply
-13060 13070 13080 1310 1320 1330 1340 #1916 Cavalry Division
+1010 1020 1030 1040 1050 1060 1070 #1921 lgt. Infantry Division
+1160 1170 1180 1190 1200 1210 1220 #1921 Mountain Division
+1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply
+13060 13070 13080 1310 1320 1330 1340 #1921 Cavalry Division
+1830 1840 1850 # 1921 Engineer brigades
 
 #Industrial
 5800 5080 #Improved Construction Engineering
-5810 #Scientific Management
-5700 #Early Agriculture
-5600 #Medicine
+5810 5820 5050 # Mass Production
+5700 5710 # Early mechanisation
+5600 5610 5620 #Medicine
+5310 54010 # Automatic feed tabulator
 
 #Aircrafts
-4500 4510 4520 4530 4540 #Interceptor 1917
-4600 4610 4620 4630 #Tactical Bomber 1918
+4500 4510 4520 4530 4540 4550 4010 #Interceptor 1924
+4600 4610 4620 4630 4120 #Tactical Bomber 1924
+4300 4310 4320 # Multi-role fighters 1918
+7290 7300 7310 7320 # 1922 Ground attack aircraft
+4800 4810 # Strategic Bomber 1918
 
 # Land Doctrines WWI - Entente line
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
+14000 14010 # Improved Weltkrieg Hospital System
 
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470
@@ -275,7 +282,7 @@ relation = { tag = TIB value = 24 }
 		}
 		division = {
 	        	id = { type = 22000 id = 274 }
-			name = "Guizhou Yunnan"
+			name = "8. Lujun"
 			type = infantry
 			model = 5
 		}
