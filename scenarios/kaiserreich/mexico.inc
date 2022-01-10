@@ -90,12 +90,23 @@ techapps = {
 
 #Naval
 3810 #Troopships
+3010 3020 3030 3040 3050 #Destroyers
+3110 3120 3130 3140 #Light Cruiser
+3410 3420 3430 3440 3450 3460 #Battleships
+3210 3220 3230 # Heavy Cruisers
 
 # Land Doctrines WW1 - Entente (default)
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
 14000 #Great War Hospital System
 # Land Doctrines WW2 - none
 6010 # Firepower
+
+# Naval Doctrines
+8010 8020 8050 8060 8070 8080 #Basics
+8900 8910 8920 8930 #FIB
+8100 8110 8120 # Naval Supremacy
+8150 # Commerce Defense
+
 
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
