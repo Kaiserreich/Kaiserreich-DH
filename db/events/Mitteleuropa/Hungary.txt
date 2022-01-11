@@ -787,3 +787,181 @@ command = { type = addclaim  which =  354 }
 command = { type = addclaim  which =  356 }
 }
 }
+
+#####################################################################
+# Resource development events for HUN or Danubian Federation
+#####################################################################
+event = {
+    id = 935
+    random = no
+    tag = { HUN U24 U25 }
+
+decision = {
+	year = 1940
+	OR = {
+		event = 901004
+		event = 901008
+		event = 901013
+		event = 901077
+		event = 901590
+	}
+}
+decision_trigger = {
+	NOT = { war = { country = AUS country = HUN } }
+	control = { province = 278 data = -1 } #Szekesfehervar
+	owned = { province = 278 data = -1 }
+	technology = 55000 #Advanced Mining
+	supplies = 500
+	money = 100
+}
+trigger = {
+	year = 1940
+	NOT = { war = { country = AUS country = HUN } }
+	control = { province = 278 data = -1 } #Szekesfehervar
+	owned = { province = 278 data = -1 }
+	technology = 55000 #Advanced Mining
+	supplies = 500
+	money = 100
+	OR = {
+		event = 901004
+		event = 901008
+		event = 901013
+		event = 901077
+		event = 901590
+	}
+}
+
+name = "Aluminum Industry Expansion"
+desc = "During the Weltkrieg, Hungary's bauxite was supplied by mines in the Körösvidék region of Transylvania. The usefulness of aluminum has lead to surging demand in a variety of industries that has outstripped what our current mines can supply. Fortunately the Transdanubian Central Mountains contain exploitable bauxite and a recent survey by geologists have confirmed a large reserve."
+style = 2
+picture = "industry3"
+decision_picture = "decision_industry"
+
+date = { day = 0 month = january year = 1940 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+	ai_chance = 100
+	name = "Give the project full support."
+	command = { type = supplies value = -500 }
+	command = { type = money value = -100 }
+	command = { type = event which = 936 where = -1 when = 300 } #Tósokberéndi Timföldgyár (Tósokberénd Alumina Factory) completed
+	command = { type = event which = 937 where = -1 when = 600 } #Almásfüzitoi Timföldgyár (Almásfüzitoi Alumina Factory) completed
+    }
+}
+
+
+event = {
+id = 936
+random = no
+tag = { HUN U24 U25 }
+style = 2
+
+name = "Tósokberéndi Timföldgyár completed."
+desc = "The first aluminum smelter in Tósokberénd is now operational, supplied by bauxite from mines in the Bakony."
+picture = "industry"
+
+action_a = {
+	name = "On schedule."
+	command = { type = add_prov_resource which = metal where = 278 value = 3 } #Tósokberénd, Szekesfehervar
+	command = { type = add_prov_resource which = rare_materials where = 278 value = 2 }
+	}
+}
+
+
+event = {
+id = 937
+random = no
+tag = { HUN U24 U25 }
+style = 2
+
+name = "Almásfüzitoi Timföldgyár completed."
+desc = "The largest aluminum smelter in Hungary, and even in all of Central Europe, at Almásfüzito is now operational, supplied by bauxite from mines in the Vértes."
+picture = "industry"
+
+action_a = {
+	name = "On schedule."
+	command = { type = add_prov_resource which = metal where = 278 value = 7 } #Almásfüzito, Komárom-Esztergom (Szekesfehervar)
+	command = { type = add_prov_resource which = rare_materials where = 278 value = 3 }
+	command = { type = construct which = ic where = 278 value = 1 }
+	}
+}
+
+
+event = {
+    id = 938
+    random = no
+    tag = { HUN U24 U25 }
+
+decision = {
+	year = 1938
+	OR = {
+		event = 901004
+		event = 901008
+		event = 901013
+		event = 901077
+		event = 901590
+	}
+}
+decision_trigger = {
+	NOT = { war = { country = AUS country = HUN } }
+	control = { province = 276 data = -1 } #Zalaegerszeg
+	owned = { province = 276 data = -1 }
+	technology = 55010 #Advanced Oil Extraction
+	supplies = 1000
+	money = 250
+}
+trigger = {
+	year = 1938
+	NOT = { war = { country = AUS country = HUN } }
+	control = { province = 276 data = -1 } #Zalaegerszeg
+	owned = { province = 276 data = -1 }
+	technology = 55010 #Advanced Oil Extraction
+	supplies = 1000
+	money = 250
+	OR = {
+		event = 901004
+		event = 901008
+		event = 901013
+		event = 901077
+		event = 901590
+	}
+}
+
+name = "Oil discovered in Zala County."
+desc = "Chief geologist of Magyar Petróleumipari, Papp Simon, has ascertained the presence of hydrocarbon deposits at Lovászi and elsewhere in Zala. The nearby Nagykanizsa is an excellent location for a refinery and the government ministers advocate for direct control of a strategic supply of oil as a national imperative!"
+style = 2
+picture = "zistersdorf_oilfields"
+decision_picture = "decision_industry"
+
+date = { day = 0 month = january year = 1938 }
+offset = 1
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+	ai_chance = 100
+	name = "Proceed at once!"
+	command = { type = supplies value = -1000 }
+	command = { type = money value = -250 }
+	command = { type = event which = 939 where = -1 when = 300 } #Zala oil fields
+    }
+}
+
+
+event = {
+id = 939
+random = no
+tag = { AUS U24 U25 }
+style = 2
+
+name = "Zala oil fields."
+desc = "The startup phase of the refinery at Nagykanizsa has gone smoothly and is now ramping up to full capacity."
+picture = "zistersdorf_oilfields"
+
+action_a = {
+	name = "Splendid!"
+	command = { type = add_prov_resource which = oil where = 276 value = 7 } #Nagykanizsa & Zala county, Zalaegerszeg
+	command = { type = construct which = ic where = 276 value = 1 }
+	}
+}
