@@ -10,17 +10,18 @@
 # 15-17 GER Mobilization
 # 18 GER Coronation of Wilhelm III
 # 19-22 LAT-U00-BLR-UKR Exile of Kings/Dukes
-# 23-26 Weather events
+# 23-27 LAT-U00-BLR-UKR Vassalization
+# 47-50 Weather events
 ### Interventions
-# 27-30 RUS Finnish
-# 31-34 RUS MRNC
-# 35-38 RUS Georgian 
-# 39-42 RUS Azerbaijani
-### Cities
-# 43 Riga		44 Warsaw		45 Helsinki
-# 46 Petrograd	47 Vilnius		48 Konigsberg
-# 49 Moscow		50 Minsk		51 Poznan
-# 52 Rostov		53 Kyiv			54 Berlin		55 Tsaritsyn
+# 31-34 RUS Finnish
+# 35-38 RUS MRNC
+# 39-42 RUS Georgian 
+# 43-46 RUS Azerbaijani
+### Cities (100-111)
+# 100 Riga		101 Warsaw		102 Helsinki
+# 103 Petrograd	104 Vilnius		105 Konigsberg
+# 106 Moscow	107 Minsk		108 Poznan
+# 109 Rostov	110 Kyiv		111 Berlin		112 Tsaritsyn
 
 event = {
 	id = 1
@@ -48,7 +49,7 @@ event = {
 	country = GER
 
 	name = "Baptism of Fire"
-	desc = "William III studied war school in the fields of France. While the incumbent Kaiser was removed from office, he was prepared to rule. The day of Weltkriegkaiser's death has come, and Russia is attacking us like thunder in the clear sky! It is not known how powerful the attack from the East will be, but for William it will be a real baptism of fire."
+	desc = "Wilhelm III studied war school in the fields of France. While the incumbent Kaiser was removed from office, he was prepared to rule. The day of Weltkriegkaiser's death has come, and Russia is attacking us like thunder in the clear sky! It is not known how powerful the attack from the East will be, but for Wilhelm it will be a real baptism of fire."
 	picture = "german_withdrawal"
 	style = 2
 
@@ -163,7 +164,7 @@ event = {
 	style = 2
 	
 	trigger = {
-	random = 60
+	random = 30
 	}
 
 	date = { hour = 0 day = 1 month = june year = 1941 }
@@ -187,7 +188,7 @@ event = {
 	style = 2
 	
 	trigger = {
-	random = 60
+	random = 30
 	}
 
 	date = { hour = 0 day = 1 month = june year = 1941 }
@@ -427,7 +428,7 @@ event = {
 	style = 2
 	
 	trigger = {
-		lost_vp = { country = LAT value = 80 }
+		lost_vp = { country = LAT value = 70 }
 		NOT = { control = { province = 264 data = LAT } }
 	}
 
@@ -436,13 +437,24 @@ event = {
 	deathdate = { hour = 0 day = 29 month = january year = 1944 }
 
 	name = "Exile of the Great Duke"
-	desc = "Russian boots walking in Riga. Fearing for his fate, Adolf Friedrich hid in Schwerin, in an unknown place."
+	desc = "Russian boots walking in Riga. Fearing for his fate, Adolf Friedrich hid in Schwerin, in an unknown place." #Тепер, коли держава колапсує, єдиним виходом є...
 	picture = "Cernauti"
 
 	action_a = {
-	name = "The war even came to the rulers"
+	name = "The war even came to the rulers" #Покоритися Савінкову
 	command = { type = dissent value = 10 }
-	command = { type = demobilize which = land when = 0 where = 0 value = 2 }
+	command = { type = end_puppet }
+	command = { type = leave_alliance when = 1 }
+	command = { type = peace which = RUS value = 1 }
+	command = { type = name where = LAT which = LAT_RUS_NAME }
+	command = { type = flag_ext where = LAT which = "_RUS" }
+	command = { type = access which = RUS }
+	command = { type = alliance which = RUS }
+	command = { type = relation which = RUS value = 200 }
+	command = { type = relation which = GER value = -200 }	
+	command = { event which = 23 where = RUS }
+	command = { type = headofstate which = 27078 }
+	command = { type = headofgovernment which = 27083 }
 	}
 }
 
@@ -452,7 +464,7 @@ event = {
 	style = 2
 	
 	trigger = {
-		lost_vp = { country = U00 value = 80 }
+		lost_vp = { country = U00 value = 70 }
 		NOT = { control = { province = 232 data = U00 } }
 		NOT = { control = { province = 258 data = U00 } }
 	}
@@ -478,7 +490,7 @@ event = {
 	style = 2
 	
 	trigger = {
-		lost_vp = { country = BLR value = 80 }
+		lost_vp = { country = BLR value = 70 }
 		NOT = { control = { province = 599 data = BLR } }
 	}
 
@@ -503,7 +515,7 @@ event = {
 	style = 2
 	
 	trigger = {
-		lost_vp = { country = UKR value = 80 }
+		lost_vp = { country = UKR value = 70 }
 		NOT = { control = { province = 617 data = UKR } }
 	}
 
@@ -523,7 +535,31 @@ event = {
 }
 
 event = {
-	id = 27
+	id = 23
+	country = RUS
+	style = 2
+
+	name = "Russophile government in Pribaltika established"
+	desc = "The Russophile and Latvian-Estonian movement SOP in Pribaltika managed to create a new pro-russian government which immediately gave us an offer of permanently friendly relations between our states which includes signing an alliance treaty and exclusive trade agreements."
+	picture = "british_protesting"
+	
+	action_a = {
+		name = "DAAA"
+		command = { type = dissent value = 1  }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = LAT value = -10 }
+		command = { type = make_puppet which = LAT }
+		command = { type = supplies value = 500 }
+		command = { type = money value = 30  }	
+		command = { type = military_control which = RUS where = LAT value = 1}
+		command = { type = military_control which = RUS where = U00 value = 1}
+		command = { type = military_control which = RUS where = UKR value = 1}
+		command = { type = military_control which = RUS where = BLR value = 1}
+	}
+}
+
+event = {
+	id = 31
 	country = RUS
 	style = 2
 	
@@ -554,7 +590,7 @@ event = {
 }
 
 event = {
-	id = 28
+	id = 32
 	country = FIN
 	style = 2
 
@@ -582,7 +618,7 @@ event = {
 }
 
 event = {
-	id = 29
+	id = 33
 	country = RUS
 	style = 2
 
@@ -614,7 +650,7 @@ event = {
 }
 
 event = {
-	id = 30
+	id = 34
 	country = RUS
 	style = 2
 
@@ -630,7 +666,7 @@ event = {
 }
 
 event = {
-	id = 31
+	id = 35
 	country = RUS
 	style = 2
 	
@@ -672,7 +708,7 @@ event = {
 }
 
 event = {
-	id = 32
+	id = 36
 	country = U43
 	style = 2
 
@@ -696,7 +732,7 @@ event = {
 }
 
 event = {
-	id = 33
+	id = 37
 	country = RUS
 	style = 2
 
@@ -711,7 +747,7 @@ event = {
 }
 
 event = {
-	id = 34
+	id = 38
 	country = RUS
 	style = 2
 
@@ -727,7 +763,7 @@ event = {
 }
 
 event = {
-	id = 35
+	id = 39
 	country = RUS
 	style = 2
 	
@@ -758,7 +794,7 @@ event = {
 }
 
 event = {
-	id = 36
+	id = 40
 	country = GEO
 	style = 2
 
@@ -782,7 +818,7 @@ event = {
 }
 
 event = {
-	id = 37
+	id = 41
 	country = RUS
 	style = 2
 
@@ -797,7 +833,7 @@ event = {
 }
 
 event = {
-	id = 38
+	id = 42
 	country = RUS
 	style = 2
 
@@ -813,7 +849,7 @@ event = {
 }
 
 event = {
-	id = 39
+	id = 43
 	country = RUS
 	style = 2
 	
@@ -844,7 +880,7 @@ event = {
 }
 
 event = {
-	id = 40
+	id = 44
 	country = AZB
 	style = 2
 
@@ -868,7 +904,7 @@ event = {
 }
 
 event = {
-	id = 41
+	id = 45
 	country = RUS
 	style = 2
 
@@ -883,7 +919,7 @@ event = {
 }
 
 event = {
-	id = 42
+	id = 46
 	country = RUS
 	style = 2
 
@@ -901,7 +937,7 @@ event = {
 #  Weather events - mud (GER)
 #########################################################################
 event = {
-	id = 23
+	id = 47
 	random = no
 	country = GER
 	
@@ -936,7 +972,7 @@ event = {
 #  Weather events - frozen (GER)
 #########################################################################
 event = {
-	id = 24
+	id = 48
 	random = no
 	country = GER
 
@@ -970,7 +1006,7 @@ event = {
 #  Weather events - mud (RUS)
 #########################################################################
 event = {
-	id = 25
+	id = 49
 	random = no
 	country = RUS
 	
@@ -998,7 +1034,7 @@ event = {
 #  Weather events - mud (RUS)
 #########################################################################
 event = {
-	id = 26
+	id = 50
 	random = no
 	country = RUS
 	
@@ -1024,7 +1060,7 @@ event = {
 }
 
 event = {
-id = 43
+id = 100
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1050,7 +1086,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 44
+id = 101
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1076,7 +1112,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 45
+id = 102
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1102,7 +1138,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 46
+id = 103
 tag = { GER U00 LAT BLR UKR }
 picture = "TH_Petrograd"
 style = 2
@@ -1110,6 +1146,7 @@ style = 2
 trigger = {
         ai = no
 		control = { province = 553 data = -3 }
+		not = { alliance = { country = -1 country = RUS } }
 }
 
 name = "Fall of Petrograd"
@@ -1128,7 +1165,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 47
+id = 104
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1136,6 +1173,7 @@ style = 2
 trigger = {
         ai = no
 		control = { province = 258 data = -3 }
+		not = { alliance = { country = -1 country = RUS } }
 }
 
 name = "Fall of Vilno"
@@ -1154,7 +1192,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 48
+id = 105
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1180,7 +1218,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 49
+id = 106
 tag = { GER U00 LAT BLR UKR }
 picture = "Moscow"
 style = 2
@@ -1188,6 +1226,7 @@ style = 2
 trigger = {
         ai = no
 		control = { province = 572 data = -3 }
+		not = { alliance = { country = -1 country = RUS } }
 }
 
 name = "Fall of Moscow"
@@ -1206,7 +1245,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 50
+id = 107
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1232,7 +1271,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 51
+id = 108
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1258,7 +1297,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 52
+id = 109
 tag = { GER U00 LAT BLR UKR }
 picture = "Captured_Supplies1"
 style = 2
@@ -1266,6 +1305,7 @@ style = 2
 trigger = {
         ai = no
 		control = { province = 644 data = -3 }
+		not = { alliance = { country = -1 country = RUS } }
 }
 
 name = "Fall of Rostov"
@@ -1284,7 +1324,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 53
+id = 110
 country = RUS
 picture = "Captured_Supplies1"
 style = 2
@@ -1310,7 +1350,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 54
+id = 111
 country = RUS
 picture = "fallofberlin"
 style = 2
@@ -1336,7 +1376,7 @@ name = "It won't be long now!"
 }
 
 event = {
-id = 55
+id = 112
 tag = { GER U00 LAT BLR UKR }
 picture = "Captured_Supplies1"
 style = 2
@@ -1344,6 +1384,7 @@ style = 2
 trigger = {
         ai = no
 		control = { province = 663 data = -3 }
+		not = { alliance = { country = -1 country = RUS } }
 }
 
 name = "Fall of Tsaritsyn"
@@ -1363,7 +1404,7 @@ name = "It won't be long now!"
 
 ### Victory Events
 event = {
-	id = 61
+	id = 91
 	random = no
 	country = GER
 
@@ -1390,7 +1431,7 @@ event = {
 }
 
 event = {
-	id = 62
+	id = 92
 	random = no
 	country = GER
 
@@ -1413,7 +1454,7 @@ event = {
 }
 
 event = {
-	id = 63
+	id = 93
 	random = no
 	country = RUS
 
@@ -1439,7 +1480,7 @@ event = {
 }
 
 event = {
-	id = 64
+	id = 94
 	random = no
 	country = RUS
 

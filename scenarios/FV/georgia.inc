@@ -10,7 +10,7 @@ country = {
   tag                = GEO
   capital            = 709 # Tbilisi
   extra_tc           = 50
-  manpower           = 100
+  manpower           = 2
   # Resource Reserves
   energy         = 800
   metal          = 800
@@ -49,21 +49,21 @@ country = {
       name           = "1st Rifle Division"
       type           = infantry
       model          = 7
-      max_strength       = 50
+      strength       = 40
     }
     division = {
       id             = { type = 18500 id = 3 }
       name           = "2nd Rifle Division"
       type           = infantry
       model          = 7
-      max_strength       = 50
+      strength       = 40
     }
     division = {
       id             = { type = 18500 id = 4 }
       name           = "3rd Cavalry Division"
       type           = cavalry
       model          = 6
-      max_strength       = 40
+      strength       = 35
     }
   }
 }

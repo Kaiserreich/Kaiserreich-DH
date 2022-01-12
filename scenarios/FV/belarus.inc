@@ -12,7 +12,7 @@ country = {
   control            = GER
   capital            = 599 # Minsk
   extra_tc           = 50
-  manpower           = 200
+  manpower           = 5
   # Resource Reserves
   energy         = 2500
   metal          = 2500
@@ -55,7 +55,7 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 65
+      strength = 65
     }
     division = {
       id             = { type = 10848 id = 29 }
@@ -64,21 +64,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 5
-      max_strength = 65
+      strength = 65
     }
     division = {
       id             = { type = 10848 id = 30 }
       name           = "3. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 65
+      strength = 65
     }
     division = {
       id             = { type = 10848 id = 31 }
       name           = "4. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 65
+      strength = 65
     }
   }
   landunit = {
@@ -90,28 +90,28 @@ country = {
       name           = "5. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 50
+      strength = 55
     }
     division = {
       id             = { type = 10848 id = 33 }
       name           = "6. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 50
+      strength = 55
     }
     division = {
       id             = { type = 10848 id = 34 }
       name           = "7. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 50
+      strength = 55
     }
     division = {
       id             = { type = 10848 id = 35 }
       name           = "8. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 50
+      strength = 55
     }
   }
   landunit = {
@@ -123,28 +123,28 @@ country = {
       name           = "9. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 50
+      strength = 55
     }
     division = {
       id             = { type = 10848 id = 37 }
       name           = "7. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 50
+      strength = 55
     }
     division = {
       id             = { type = 10848 id = 38 }
       name           = "8. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 45
+      strength = 65
     }
     division = {
       id             = { type = 10848 id = 39 }
       name           = "9. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 45
+      strength = 65
     }
   }
   landunit = {
@@ -156,28 +156,28 @@ country = {
       name           = "10. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 55
+      strength = 60
     }
     division = {
       id             = { type = 10848 id = 42 }
       name           = "11. Piachotnaja dyvizija"
       type           = infantry
       model          = 10
-      max_strength = 55
+      strength = 60
     }
     division = {
       id             = { type = 10848 id = 43 }
       name           = "12. Piachotnaja dyvizija"
       type           = infantry
       model          = 9
-      max_strength = 35
+      strength = 55
     }
   }
 
-  landdivision = { dormant = yes id = { type = 10848 id = 2 } name = "13. Piachotnaja dyvizija"  type = infantry model = 9 strength = 70 } 
-  landdivision = { dormant = yes id = { type = 10848 id = 6 } name = "1. Kavalieryjskaja Dyvizija"  type = cavalry model = 10 strength = 70 } 
-  landdivision = { dormant = yes id = { type = 10848 id = 4 } name = "14. Piachotnaja dyvizija"  type = infantry model = 9 strength = 70 } 
-  landdivision = { dormant = yes id = { type = 10848 id = 5 } name = "2. Kavalieryjskaja Dyvizija"  type = cavalry model = 10 strength = 70 } 
+  landdivision = { dormant = yes id = { type = 10848 id = 2 } name = "13. Piachotnaja dyvizija"  type = infantry model = 9 strength = 55 } 
+  landdivision = { dormant = yes id = { type = 10848 id = 6 } name = "1. Kavalieryjskaja Dyvizija"  type = cavalry model = 10 strength = 55 } 
+  landdivision = { dormant = yes id = { type = 10848 id = 4 } name = "14. Piachotnaja dyvizija"  type = infantry model = 9 strength = 55 } 
+  landdivision = { dormant = yes id = { type = 10848 id = 5 } name = "2. Kavalieryjskaja Dyvizija"  type = cavalry model = 10 strength = 55 } 
   
    airunit =
   { id       = { type = 10848 id = 252 }
@@ -194,7 +194,7 @@ country = {
     division =
     { id       = { type = 10848 id = 255 }
       name     = "2. IAD"
-      strength = 40
+      strength = 60
       type     = multi_role
       model    = 4
     }

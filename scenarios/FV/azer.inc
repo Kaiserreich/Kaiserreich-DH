@@ -10,7 +10,7 @@ country = {
   tag                = AZB
   capital            = 713 # Baku
   extra_tc           = 50
-  manpower           = 25
+  manpower           = 2
   # Resource Reserves
   energy         = 1000
   metal          = 1000
@@ -49,21 +49,21 @@ country = {
       model          = 7
       extra          = artillery
       brigade_model  = 6
-      max_strength = 50
+      strength = 40
     }
     division = {
       id             = { type = 18240 id = 3 }
       name           = "2nd Rifle Division"
       type           = infantry
       model          = 7
-      max_strength  = 50
+      strength  = 40
     }
     division = {
       id             = { type = 18240 id = 4 }
       name           = "3rd Cavalry Division"
       type           = cavalry
       model          = 6
-      max_strength = 50
+      strength = 40
     }
   }
 }

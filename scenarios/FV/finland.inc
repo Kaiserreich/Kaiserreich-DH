@@ -10,7 +10,7 @@ country = {
   tag                = FIN
   capital            = 525
   extra_tc           = 50
-  manpower           = 100
+  manpower           = 5
   # Resource Reserves
   energy         = 1500
   metal          = 1500
@@ -50,7 +50,7 @@ country = {
       name           = "Armeijakunta"
       type           = hq
       model          = 3
-      max_strength       = 75
+      strength = 45
     }
   }
   landunit = {
@@ -62,21 +62,21 @@ country = {
       name           = "1. Divisioona"
       type           = infantry
       model          = 9
-      max_strength       = 70
+      strength = 40
     }
     division = {
       id             = { type = 18750 id = 6 }
       name           = "2. Divisioona"
       type           = infantry
       model          = 10
-      max_strength       = 70
+      strength = 40
     }
     division = {
       id             = { type = 18750 id = 7 }
       name           = "Kaartin Ratsuv‰kidivisioona"
       type           = cavalry
       model          = 10
-      max_strength       = 25
+      strength = 20
     }
   }
   landunit = {
@@ -88,21 +88,21 @@ country = {
       name           = "3. Divisioona"
       type           = infantry
       model          = 9
-      max_strength       = 70
+      strength = 40
     }
     division = {
       id             = { type = 18750 id = 9 }
       name           = "4. Divisioona"
       type           = infantry
       model          = 9
-      max_strength       = 70
+      strength = 40
     }
     division = {
       id             = { type = 18750 id = 10 }
       name           = "J‰‰k‰ridivisioona"
       type           = motorized
       model          = 0
-      max_strength       = 50
+      strength = 30
     }
   }
   landunit = {
@@ -114,14 +114,14 @@ country = {
       name           = "5. Divisioona"
       type           = infantry
       model          = 9
-      max_strength       = 50
+      strength = 30
     }
     division = {
       id             = { type = 18750 id = 13 }
       name           = "6. Divisioona"
       type           = infantry
       model          = 9
-      max_strength       = 50
+      strength = 30
     }
   }
   landunit = {
@@ -135,14 +135,14 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 8
-      max_strength       = 50
+      strength = 30
     }
     division = {
       id             = { type = 18750 id = 16 }
       name           = "8. Divisioona"
       type           = infantry
       model          = 8
-      max_strength       = 50
+      strength = 30
     }
   }
 }

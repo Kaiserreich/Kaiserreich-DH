@@ -11,7 +11,7 @@ country = {
   flag_ext           = _nats
   capital            = 553
   extra_tc           = 50
-  manpower           = 1800
+  manpower           = 100
   # Resource Reserves
   energy         = 8000
   metal          = 8000
@@ -60,28 +60,25 @@ country = {
       name           = "88. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 9
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 10848 id = 380 }
       name           = "76. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 381 }
       name           = "52. 'Kazanskaya' Pekhot. Div."
       type           = infantry
-      model          = 8
-      max_strength = 100
-    }
+      model          = 8    
+	  }
     division = {
       id             = { type = 10848 id = 382 }
       name           = "53. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
   }
   landunit = {
@@ -93,7 +90,6 @@ country = {
       name           = "STAVKA"
       type           = hq
       model          = 2
-      max_strength = 100
     }
   }
   landunit = {
@@ -107,7 +103,6 @@ country = {
       model          = 9
       extra          = engineer
       brigade_model  = 2
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 294 }
@@ -116,7 +111,6 @@ country = {
       model          = 9
       extra          = engineer
       brigade_model  = 2
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 487 }
@@ -125,7 +119,6 @@ country = {
       model          = 9
       extra          = engineer
       brigade_model  = 2
-      max_strength = 100
     }
   }
   landunit = {
@@ -139,7 +132,6 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 237 }
@@ -148,7 +140,6 @@ country = {
       model          = 8
       extra          = anti_tank
       brigade_model  = 2
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 9 }
@@ -157,7 +148,6 @@ country = {
       model          = 8
       extra          = light_armor_brigade
       brigade_model  = 2
-      max_strength = 100
     }
   }
   landunit = {
@@ -171,21 +161,21 @@ country = {
       model          = 7
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 302 }
       name           = "8. 'Novgorodskaya' Pekhot. Div."
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 303 }
       name           = "16. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -197,21 +187,21 @@ country = {
       name           = "95. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 442 }
       name           = "98. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 445 }
       name           = "100. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -225,7 +215,6 @@ country = {
       model          = 9
       extra          = artillery
       brigade_model  = 5
-      max_strength = 100
       locked         = yes
     }
     division = {
@@ -235,31 +224,6 @@ country = {
       model          = 9
       extra          = super_heavy_artillery
       brigade_model  = 1
-      max_strength = 100
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 309 }
-      name           = "10. 'Tulskaya' Pekhot. Div."
-      type           = infantry
-      model          = 9
-      max_strength = 100
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 310 }
-      name           = "34. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 9
-      max_strength = 100
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 311 }
-      name           = "35. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 9
-      max_strength = 100
       locked         = yes
     }
   }
@@ -274,21 +238,21 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 314 }
       name           = "11. 'Ryazanskaya' Pekhot. Div."
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 315 }
       name           = "39. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -302,21 +266,21 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 320 }
       name           = "12. 'Moskovskaya' Pekhot. Div."
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 321 }
       name           = "33. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -330,28 +294,28 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 326 }
       name           = "54. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 327 }
       name           = "14. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 328 }
       name           = "15. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -365,28 +329,28 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 332 }
       name           = "19. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 333 }
       name           = "17. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 334 }
       name           = "37. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -400,28 +364,28 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 338 }
       name           = "80. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 339 }
       name           = "81. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 340 }
       name           = "57. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -435,28 +399,28 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 344 }
       name           = "21. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 7
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 345 }
       name           = "38. 'Smolenskaya' Pekhot. Div."
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 346 }
       name           = "43. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -470,28 +434,28 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 508 }
       name           = "120. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 509 }
       name           = "119. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 510 }
       name           = "121. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -505,28 +469,28 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 357 }
       name           = "26. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 358 }
       name           = "28. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 359 }
       name           = "46. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -540,23 +504,7 @@ country = {
       model          = 8
       extra          = artillery
       brigade_model  = 5
-      max_strength       = 50
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 363 }
-      name           = "29. 'Murmanskaya' Pekhot. Div."
-      type           = infantry
-      model          = 8
-      max_strength       = 50
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 364 }
-      name           = "44. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 8
-      max_strength       = 50
+      strength       = 50
       locked         = yes
     }
   }
@@ -569,23 +517,7 @@ country = {
       name           = "30. 'Kemskaya' Pekhot. Div."
       type           = infantry
       model          = 8
-      max_strength = 70
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 369 }
-      name           = "75. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 8
-      max_strength = 70
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 370 }
-      name           = "42. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
   }
@@ -598,23 +530,7 @@ country = {
       name           = "48. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 377 }
-      name           = "50. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 8
-      max_strength = 70
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 378 }
-      name           = "51. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
   }
@@ -627,23 +543,7 @@ country = {
       name           = "47. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 373 }
-      name           = "45. 'Petrovskaya' Pekhot. Div."
-      type           = infantry
-      model          = 8
-      max_strength = 70
-      locked         = yes
-    }
-    division = {
-      id             = { type = 10848 id = 365 }
-      name           = "41. Pekhotnaya  Diviziya"
-      type           = infantry
-      model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
   }
@@ -656,21 +556,18 @@ country = {
       name           = "86. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 389 }
       name           = "61. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 390 }
       name           = "64. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
   }
   landunit = {
@@ -682,22 +579,19 @@ country = {
       name           = "63. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 394 }
       name           = "66. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
-    }
+   }
     division = {
       id             = { type = 10848 id = 393 }
       name           = "84. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
-    }
+     }
   }
   landunit = {
     id       = { type = 10848 id = 515 }
@@ -708,21 +602,18 @@ country = {
       name           = "62. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 397 }
       name           = "59. 'Saratovskaya' Pekhot. Div."
       type           = infantry
       model          = 8
-      max_strength = 100
-    }
+   }
     division = {
       id             = { type = 10848 id = 398 }
       name           = "92. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
   }
   landunit = {
@@ -734,42 +625,39 @@ country = {
       name           = "60. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
-    }
+     }
     division = {
       id             = { type = 10848 id = 401 }
       name           = "67. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 402 }
       name           = "68. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 426 }
       name           = "79. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 427 }
       name           = "83. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
     division = {
       id             = { type = 10848 id = 428 }
       name           = "90. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 85
+      strength = 85
     }
   }
   landunit = {
@@ -781,42 +669,36 @@ country = {
       name           = "70. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 409 }
       name           = "85. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 410 }
       name           = "93. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 404 }
       name           = "97. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 405 }
       name           = "96. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
     division = {
       id             = { type = 10848 id = 406 }
       name           = "69. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 100
     }
   }
   landunit = {
@@ -830,14 +712,14 @@ country = {
       model          = 9
       extra          = artillery
       brigade_model  = 5
-      max_strength       = 50
+      strength       = 50
     }
     division = {
       id             = { type = 10848 id = 513 }
       name           = "2.Kavaleriiskaya Diviziya"
       type           = cavalry
       model          = 9
-      max_strength       = 50
+      strength       = 50
     }
   }
   landunit = {
@@ -849,14 +731,14 @@ country = {
       name           = "1. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 518 }
       name           = "6. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 519 }
@@ -865,7 +747,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -877,14 +759,14 @@ country = {
       name           = "3. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 522 }
       name           = "5. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 523 }
@@ -893,7 +775,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -905,14 +787,14 @@ country = {
       name           = "11. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 526 }
       name           = "15. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 527 }
@@ -921,7 +803,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -933,14 +815,14 @@ country = {
       name           = "12. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 530 }
       name           = "18. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 531 }
@@ -949,7 +831,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -961,14 +843,14 @@ country = {
       name           = "15. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 534 }
       name           = "20. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 535 }
@@ -977,7 +859,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -989,14 +871,14 @@ country = {
       name           = "16. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 538 }
       name           = "17. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 539 }
@@ -1005,7 +887,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -1017,14 +899,14 @@ country = {
       name           = "18. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 542 }
       name           = "24. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 543 }
@@ -1033,7 +915,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -1045,14 +927,14 @@ country = {
       name           = "27. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 546 }
       name           = "28. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 547 }
@@ -1061,7 +943,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -1073,14 +955,14 @@ country = {
       name           = "29. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 550 }
       name           = "30. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 551 }
@@ -1089,7 +971,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -1101,14 +983,14 @@ country = {
       name           = "32. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 554 }
       name           = "34. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 555 }
@@ -1117,7 +999,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -1129,14 +1011,14 @@ country = {
       name           = "36. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 558 }
       name           = "37. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 559 }
@@ -1145,7 +1027,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -1157,14 +1039,14 @@ country = {
       name           = "39. Tankovaya Diviziya"
       type           = armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 562 }
       name           = "40. Tankovaya Diviziya"
       type           = light_armor
       model          = 1
-      max_strength = 75
+      strength = 75
     }
     division = {
       id             = { type = 13000 id = 563 }
@@ -1173,7 +1055,7 @@ country = {
       model          = 0
       extra          = armored_car
       brigade_model  = 1
-      max_strength = 75
+      strength = 75
     }
   }
   landunit = {
@@ -1185,7 +1067,7 @@ country = {
       name           = "89. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
     division = {
@@ -1193,7 +1075,7 @@ country = {
       name           = "91. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
     division = {
@@ -1201,7 +1083,7 @@ country = {
       name           = "94. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
   }
@@ -1214,7 +1096,7 @@ country = {
       name           = "98. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
     division = {
@@ -1222,7 +1104,7 @@ country = {
       name           = "99. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
     division = {
@@ -1230,7 +1112,7 @@ country = {
       name           = "102. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
   }
@@ -1243,7 +1125,7 @@ country = {
       name           = "103. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
     division = {
@@ -1251,7 +1133,7 @@ country = {
       name           = "104. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
     division = {
@@ -1259,10 +1141,102 @@ country = {
       name           = "105. Pekhotnaya  Diviziya"
       type           = infantry
       model          = 8
-      max_strength = 70
+      strength = 70
       locked         = yes
     }
   }
+  landunit = {
+    id       = { type = 10848 id = 600 }
+    name     = "15-y Korpus (1)"
+    location = 593
+    division = {
+      id             = { type = 10848 id = 309 }
+      name           = "10. 'Tulskaya' Pekhot. Div."
+      type           = infantry
+      model          = 9
+    }
+    division = {
+      id             = { type = 10848 id = 310 }
+      name           = "34. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 9
+    }
+    division = {
+      id             = { type = 10848 id = 311 }
+      name           = "35. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 9
+    }
+  }  
+  landunit = {
+    id       = { type = 10848 id = 601 }
+    name     = "15-y Korpus (2)"
+    location = 602
+    division = {
+      id             = { type = 10848 id = 363 }
+      name           = "29. 'Murmanskaya' Pekhot. Div."
+      type           = infantry
+      model          = 8
+      strength       = 50
+    }
+    division = {
+      id             = { type = 10848 id = 364 }
+      name           = "44. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 8
+      strength       = 50
+    }
+    division = {
+      id             = { type = 10848 id = 369 }
+      name           = "75. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 8
+      strength = 70
+    }
+    division = {
+      id             = { type = 10848 id = 370 }
+      name           = "42. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 8
+      strength = 70
+    }	
+  }  
+  
+   landunit = {
+    id       = { type = 10848 id = 602 }
+    name     = "15-y Korpus (3)"
+    location = 590
+    division = {
+      id             = { type = 10848 id = 373 }
+      name           = "45. 'Petrovskaya' Pekhot. Div."
+      type           = infantry
+      model          = 8
+      strength = 70
+    }
+    division = {
+      id             = { type = 10848 id = 365 }
+      name           = "41. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 8
+      strength = 70
+    }	
+    division = {
+      id             = { type = 10848 id = 377 }
+      name           = "50. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 8
+      strength = 70
+    }
+    division = {
+      id             = { type = 10848 id = 378 }
+      name           = "51. Pekhotnaya  Diviziya"
+      type           = infantry
+      model          = 8
+      strength = 70
+    }	
+  }   
+  
+  
   landunit = {
     id       = { type = 17349 id = 1 }
     name     = "Don Cossack Host"
@@ -1272,28 +1246,24 @@ country = {
       name           = "2ya 'Gorkovskaya'Strelk. Div."
       type           = infantry
       model          = 5
-      max_strength = 100
     }
     division = {
       id             = { type = 17349 id = 3 }
       name           = "1. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 9
-      max_strength = 100
-    }
+   }
     division = {
       id             = { type = 17349 id = 4 }
       name           = "2. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 9
-      max_strength = 100
     }
     division = {
       id             = { type = 17349 id = 5 }
       name           = "6. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 9
-      max_strength = 100
     }
   }
   landunit = {
@@ -1305,28 +1275,24 @@ country = {
       name           = "1ya Strelkovaya Diviziya"
       type           = infantry
       model          = 5
-      max_strength = 100
     }
     division = {
       id             = { type = 17349 id = 8 }
       name           = "3. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 9
-      max_strength = 100
     }
     division = {
       id             = { type = 17349 id = 9 }
       name           = "4. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 9
-      max_strength = 100
     }
     division = {
       id             = { type = 17349 id = 10 }
       name           = "5. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 9
-      max_strength = 100
     }
   }
 
@@ -1443,70 +1409,70 @@ model = 2
       name           = "1. AD"
       type           = interceptor
       model          = 2
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 702 }
       name           = "2. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 703 }
       name           = "4. AD"
       type           = interceptor
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 704 }
       name           = "5. AD"
       type           = interceptor
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 705 }
       name           = "23. BAD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 706 }
       name           = "24. BAD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 707 }
       name           = "26. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 708 }
       name           = "40. BAD"
       type           = tactical_bomber
       model          = 2
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 709 }
       name           = "41. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 710 }
       name           = "3. BAD"
       type           = strategic_bomber
       model          = 0
-      max_strength = 70
+      strength = 70
     }
   }
   airunit = { 
@@ -1519,56 +1485,56 @@ model = 2
       name           = "6. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 713 }
       name           = "7. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 714 }
       name           = "8. AD"
       type           = interceptor
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 715 }
       name           = "39. IAD"
       type           = interceptor
       model          = 2
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 716 }
       name           = "12. BAD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 717 }
       name           = "13. BAD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 718 }
       name           = "57. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 719 }
       name           = "62. BAD"
       type           = tactical_bomber
       model          = 2
-      max_strength = 70
+      strength = 70
     }
   }
   airunit = { 
@@ -1581,63 +1547,63 @@ model = 2
       name           = "9. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 722 }
       name           = "10. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 723 }
       name           = "11. AD"
       type           = interceptor
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 724 }
       name           = "25. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 725 }
       name           = "28. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 726 }
       name           = "31. BAD"
       type           = tactical_bomber
       model          = 2
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 727 }
       name           = "29. BAD"
       type           = strategic_bomber
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 728 }
       name           = "30. BAD"
       type           = strategic_bomber
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 729 }
       name           = "42. BAD"
       type           = strategic_bomber
       model          = 0
-      max_strength = 70
+      strength = 70
     }
   }
   airunit = { 
@@ -1650,63 +1616,63 @@ model = 2
       name           = "14. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 742 }
       name           = "15. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 743 }
       name           = "16. AD"
       type           = interceptor
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 744 }
       name           = "17. AD"
       type           = interceptor
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 745 }
       name           = "19. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 746 }
       name           = "32. BAD"
       type           = tactical_bomber
       model          = 2
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 747 }
       name           = "33. BAD"
       type           = tactical_bomber
       model          = 2
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 748 }
       name           = "37. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 749 }
       name           = "34. BAD"
       type           = strategic_bomber
       model          = 0
-      max_strength = 70
+      strength = 70
     }
   }
   airunit = { 
@@ -1719,56 +1685,56 @@ model = 2
       name           = "20. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 752 }
       name           = "21. AD"
       type           = interceptor
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 753 }
       name           = "22. AD"
       type           = interceptor
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 754 }
       name           = "27. IAD"
       type           = interceptor
       model          = 2
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 755 }
       name           = "18. BAD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 756 }
       name           = "45. BAD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 757 }
       name           = "35. BAD"
       type           = strategic_bomber
       model          = 0
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 759 }
       name           = "38. BAD"
       type           = strategic_bomber
       model          = 0
-      max_strength = 70
+      strength = 70
     }
   }
   airunit = { 
@@ -1781,56 +1747,56 @@ model = 2
       name           = "36. IAD"
       type           = interceptor
       model          = 2
-      max_strength       = 100
+      strength       = 100
     }
     division = {
       id             = { type = 13000 id = 762 }
       name           = "43. IAD"
       type           = interceptor
       model          = 2
-      max_strength       = 100
+      strength       = 100
     }
     division = {
       id             = { type = 13000 id = 763 }
       name           = "46/48. Transport Division"
       type           = transport_plane
       model          = 0
-      max_strength       = 100
+      strength       = 100
     }
     division = {
       id             = { type = 13000 id = 764 }
       name           = "49/50. Transport Division"
       type           = transport_plane
       model          = 0
-      max_strength       = 100
+      strength       = 100
     }
     division = {
       id             = { type = 13000 id = 765 }
       name           = "44. IAD"
       type           = interceptor
       model          = 2
-      max_strength       = 100
+      strength       = 100
     }
     division = {
       id             = { type = 13000 id = 766 }
       name           = "47. SzAD"
       type           = cas
       model          = 0
-      max_strength       = 100
+      strength       = 100
     }
     division = {
       id             = { type = 13000 id = 767 }
       name           = "55. AD"
       type           = tactical_bomber
       model          = 1
-      max_strength = 70
+      strength = 70
     }
     division = {
       id             = { type = 13000 id = 768 }
       name           = "52. BAD"
       type           = tactical_bomber
       model          = 2
-      max_strength = 70
+      strength = 70
     }
   }
 

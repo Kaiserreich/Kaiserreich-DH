@@ -10,7 +10,7 @@ country = {
   tag                = GER
   capital            = 163 # Berlin
   extra_tc           = 50
-  manpower           = 1000
+  manpower           = 75
   # Resource Reserves
   energy         = 7500
   metal          = 7500
@@ -56,7 +56,7 @@ country = {
       name           = "Oberste Heeres Leitung"
       type           = hq
       model          = 2
-      max_strength = 100
+	  strength = 90
     }
   }
   landunit = {
@@ -68,7 +68,7 @@ country = {
       name           = "1. Panzer Division"
       type           = armor
       model          = 1
-      max_strength = 100
+	  strength = 80
     }
     division = {
       id             = { type = 14502 id = 5 }
@@ -77,7 +77,7 @@ country = {
       model          = 1
       extra          = light_armor_brigade
       brigade_model  = 4
-      max_strength = 100
+	  strength = 80
     }
     division = {
       id             = { type = 14502 id = 6 }
@@ -86,7 +86,7 @@ country = {
       model          = 1
       extra          = light_armor_brigade
       brigade_model  = 4
-      max_strength = 100
+	  strength = 80
     }
   }
   landunit = {
@@ -100,7 +100,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -114,14 +114,14 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 77 }
       name           = "4. Kцniglich Sдchsische Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -135,7 +135,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 24 }
@@ -144,7 +144,7 @@ country = {
       model          = 10
       extra          = light_armor_brigade
       brigade_model  = 4
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 141 }
@@ -153,7 +153,7 @@ country = {
       model          = 10
       extra          = light_armor_brigade
       brigade_model  = 4
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -167,7 +167,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 25 }
@@ -176,7 +176,7 @@ country = {
       model          = 10
       extra          = light_armor_brigade
       brigade_model  = 4
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 142 }
@@ -185,7 +185,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -199,21 +199,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 35 }
       name           = "10. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 145 }
       name           = "36. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -227,21 +227,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 38 }
       name           = "12. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 146 }
       name           = "37. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -255,7 +255,7 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -269,21 +269,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 52 }
       name           = "22. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 53 }
       name           = "25. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -297,21 +297,21 @@ country = {
       model          = 10
       extra          = artillery
       brigade_model  = 6
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 56 }
       name           = "15. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
     division = {
       id             = { type = 14502 id = 57 }
       name           = "28. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -323,21 +323,21 @@ country = {
       name           = "2. Panzer Division"
       type           = armor
       model          = 1
-      max_strength = 100
+	  strength = 80
     }
     division = {
       id             = { type = 14502 id = 151 }
       name           = "3. Panzer Division"
       type           = armor
       model          = 1
-      max_strength = 100
+	  strength = 80
     }
     division = {
       id             = { type = 14502 id = 152 }
       name           = "37. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 80
+      strength = 80
     }
   }
   landunit = {
@@ -349,7 +349,7 @@ country = {
       name           = "4. Panzer Division"
       type           = armor
       model          = 1
-      max_strength = 100
+	  strength = 80
     }
     division = {
       id             = { type = 14502 id = 149 }
@@ -358,7 +358,7 @@ country = {
       model          = 1
       extra          = light_armor_brigade
       brigade_model  = 4
-      max_strength = 100
+	  strength = 80
     }
     division = {
       id             = { type = 14502 id = 150 }
@@ -367,7 +367,7 @@ country = {
       model          = 1
       extra          = light_armor_brigade
       brigade_model  = 4
-      max_strength = 100
+	  strength = 80
     }
   }
     landdivision = {
@@ -375,7 +375,7 @@ country = {
       name           = "30. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -384,7 +384,7 @@ country = {
       name           = "31. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -393,7 +393,7 @@ country = {
       name           = "32. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       defaultorganisation = 0
       dormant        = yes
@@ -403,7 +403,7 @@ country = {
       name           = "60. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       defaultorganisation = 0
       dormant        = yes
@@ -413,7 +413,7 @@ country = {
       name           = "32. Infanterie-Division (mot)"
       type           = motorized
       model          = 1
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -422,7 +422,7 @@ country = {
       name           = "5. Panzer-Division"
       type           = armor
       model          = 1
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -431,7 +431,7 @@ country = {
       name           = "36. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -440,7 +440,7 @@ country = {
       name           = "37. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -449,7 +449,7 @@ country = {
       name           = "38. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }    
@@ -458,7 +458,7 @@ country = {
       name           = "61. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -467,7 +467,7 @@ country = {
       name           = "38. Infanterie-Division (mot)"
       type           = motorized
       model          = 1
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -476,7 +476,7 @@ country = {
       name           = "7. Kavallerie-Division"
       type           = cavalry
       model          = 11
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -485,7 +485,7 @@ country = {
       name           = "39. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 5
       dormant        = yes
     }
@@ -494,7 +494,7 @@ country = {
       name           = "40. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 5
       dormant        = yes
     }
@@ -503,7 +503,7 @@ country = {
       name           = "41. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 5
       dormant        = yes
     }    
@@ -512,7 +512,7 @@ country = {
       name           = "62. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 5
       dormant        = yes
     }
@@ -521,7 +521,7 @@ country = {
       name           = "41. Infanterie-Division (mot)"
       type           = motorized
       model          = 1
-      max_strength = 85
+      strength = 55
       experience     = 5
       dormant        = yes
     }
@@ -530,7 +530,7 @@ country = {
       name           = "8. Panzer-Division"
       type           = armor
       model          = 1
-      max_strength = 85
+      strength = 55
       experience     = 5
       dormant        = yes
     }
@@ -539,7 +539,7 @@ country = {
       name           = "42. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -548,7 +548,7 @@ country = {
       name           = "43. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -557,7 +557,7 @@ country = {
       name           = "44. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }    
@@ -566,7 +566,7 @@ country = {
       name           = "45. Infanterie-Division"
       type           = infantry
       model          = 10
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -575,7 +575,7 @@ country = {
       name           = "65. Infanterie-Division (mot)"
       type           = motorized
       model          = 1
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }
@@ -584,7 +584,7 @@ country = {
       name           = "9. Kavallerie-Division"
       type           = cavalry
       model          = 11
-      max_strength = 85
+      strength = 55
       experience     = 10
       dormant        = yes
     }

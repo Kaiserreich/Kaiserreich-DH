@@ -10,7 +10,7 @@ country = {
   tag                = U43
   capital            = 704 # Makhachkala
   extra_tc           = 50
-  manpower           = 50
+  manpower           = 2
   # Resource Reserves
   energy         = 500
   metal          = 500
@@ -47,20 +47,20 @@ country = {
       name           = "1. 'Avarskaya' Pekhotnaya  Diviziya"
       type           = infantry
       model          = 7
-      max_strength   = 60
+      strength   = 40
     }
     division = {
       id             = { type = 18000 id = 3 }
       name           = "2. 'Kumykskaya' Pekhotnaya  Diviziya"
       type           = bergsjaeger
       model          = 7
-      max_strength   = 40
+      strength   = 30
     }
     division = {
       id             = { type = 18000 id = 4 }
       name           = "3. 'Lezginskaya' Pekhotnaya  Diviziya"
       type           = bergsjaeger
-      max_strength       = 40
+      strength       = 30
     }
   }
   landunit = {
@@ -72,14 +72,14 @@ country = {
       name           = "1. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 7
-      max_strength   = 40
+      strength   = 30
     }
     division = {
       id             = { type = 18000 id = 7 }
       name           = "2. Kavaleriyskaya Diviziya"
       type           = cavalry
       model          = 7
-      max_strength   = 40
+      strength   = 30
     }
   }
 }
