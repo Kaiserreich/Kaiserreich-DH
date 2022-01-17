@@ -715,3 +715,56 @@ command = { type = dissent value = -10 }
 command = { type = alliance which = VIC }
 }
 }
+
+event = {
+id = 3967145
+country = SPA
+style = 2
+picture = "diplomatic_campaign"
+
+date =  { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+trigger = {
+event = 3967144
+puppet = { country = VIC country = SPA }
+region = { region = "France" data = 2 value = 10 }
+OR = {
+owned = { province = 89 data = SPA } #Marseille
+owned = { province = 55 data = SPA } #Paris
+owned = { province = 77 data = SPA } #Toulouse
+}
+NOT = {
+government = communist
+ispuppet = SPA
+war = { country = SPA country = POR }
+war = { country = SPA country = U21 }
+war = { country = SPA country = U22 }
+war = { country = SPA country = U23 }
+war = { country = SPA country = GER }
+exists = FRA
+}
+}
+
+name = "Give the French back their mainland?"
+desc = "Our forces have conquered Metropolitan France. Should we hand it back to the French government in Algiers?"
+
+action = {
+name = "Commence the handover of France!"
+ai_chance = 99
+command = { type = secederegion which = VIC value = "France" }
+command = { type = relation which = VIC value = 200 }
+command = { type = relation which = ITA value = 100 }
+command = { type = dissent value = 5 }
+}
+
+action = {
+name = "They are unworthy"
+ai_chance = 1
+command = { type = relation which = VIC value = -100 }
+command = { type = relation which = ITA value = -50 }
+command = { type = dissent value = 5 }
+command = { type = belligerence value = 5 }
+}
+}
