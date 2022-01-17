@@ -247,7 +247,7 @@ event = {
 id = 3967126
 country = SPA
 style = 2
-picture = "MilitaryParade1"
+picture = "bourbonsrestored"
 
 trigger = {
 NOT = {
@@ -345,5 +345,373 @@ action_b = {
 ai_chance = 100
 name = "We must focus on Spain"
 command = { type = dissent value = -5 }
+}
+}
+
+
+##Spain conquers France
+event = {
+id = 3967141
+random = no
+country = SPA
+style = 2
+picture = "diplomatic_campaign"
+decision_picture = "decision_diplomatic_campaign"
+
+decision = {
+region = { region = "France" data = 2 value = 10 }
+OR = {
+owned = { province = 89 data = SPA } #Marseille
+owned = { province = 55 data = SPA } #Paris
+owned = { province = 77 data = SPA } #Toulouse
+}
+NOT = {
+government = communist
+ispuppet = SPA
+war = { country = SPA country = POR }
+war = { country = SPA country = U21 }
+war = { country = SPA country = U22 }
+war = { country = SPA country = U23 }
+war = { country = SPA country = GER }
+exists = FRA
+alliance = { country = SPA country = VIC }
+puppet = { country = VIC country = SPA  }
+}
+}
+
+decision_trigger = {
+
+}
+
+trigger = {
+region = { region = "France" data = 2 value = 10 }
+OR = {
+owned = { province = 89 data = SPA } #Marseille
+owned = { province = 55 data = SPA } #Paris
+owned = { province = 77 data = SPA } #Toulouse
+}
+NOT = {
+government = communist
+ispuppet = SPA
+war = { country = SPA country = POR }
+war = { country = SPA country = U21 }
+war = { country = SPA country = U22 }
+war = { country = SPA country = U23 }
+war = { country = SPA country = GER }
+exists = FRA
+alliance = { country = SPA country = VIC }
+puppet = { country = VIC country = SPA  }
+}
+}
+
+name = "Fate of France"
+desc = "By the grace and wisdom of God, we have played our part in the destruction of the heathen Commune of France and we ended in possession of parts of France! How shall we administer captured French territory?"
+
+date =  { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+name = "National France can have that land, if they join us!"
+trigger = {
+exists = VIC
+NOT = {
+ispuppet = VIC
+war = { country = SPA country = VIC }
+war = { country = VIC country = SPA }
+lost_national = { country = VIC value = 10 }
+}
+}
+ai_chance = 80
+command = { type = relation which = VIC value = 50 }
+command = { type = relation which = ITA value = 25 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 3967136 } #Spain offers France!
+}
+
+action = {
+name = "We'll guide a new France!"
+ai_chance = 20
+trigger = { region = { region = "France" data = 2 value = 30 } owned = { province = 55 data = SPA } NOT = { exists = U08 } }
+command = { type = independence which = U08 value = 1 when = 0 }
+command = { type = make_puppet which = U08 }
+command = { type = relation which = VIC value = -50 }
+command = { type = relation which = ITA value = 10 }
+command = { type = event which = 62940 where = U08 when = 10  }
+command = { trigger = { OR = { headofstate = 10212 headofstate = 10038 headofstate = 10039 } } type = trigger which = 3967138 } #a king sits on the throne of Spain 
+command = { type = dissent value = -5 }
+}
+
+
+action = {
+name = "Actually, we'll keep these for ourselves!"
+ai_chance = 1
+command = { type = relation which = VIC value = -100 }
+command = { type = relation which = ITA value = -50 }
+command = { type = dissent value = 5 }
+command = { type = belligerence value = 5 }
+}
+}
+
+event = {
+id = 3967136
+random = no
+country = VIC
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Spain offer France!"
+desc = "The Spanish have somehow not only defeated the Commune of France, but are now offering the French mainland! This is a wonderful opportunity to be a major power in the world again! Should we accept such an offer?"
+
+action = {
+name = "Of course we accept!"
+ai_chance = 85
+command = { type = leave_alliance }
+command = { type = relation which = CAN value = -150 }
+command = { type = event which = 3967137 where = SPA when = 1  }
+command = { trigger = { NOT = { war = { country = SPA country = ENG } } } type = peace which = ENG value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = IRE } } } type = peace which = IRE value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = ICL } } } type = peace which = ICL value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = NOR } } } type = peace which = NOR value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = SCA } } } type = peace which = SCA value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = UKR } } } type = peace which = UKR value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = SOV } } } type = peace which = SOV value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = CSA } } } type = peace which = CSA value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = AST } } } type = peace which = AST value = 1 }
+command = { trigger = { NOT = { OR = { flag = bourbonj event = 3967117 event = 3967118 } } } type = headofstate which = 57269 } #Alfonso becomes king 
+command = { trigger = { OR = { flag = bourbonj event = 3967117 } } type = headofstate which = 57270 } #Jaime becomes king 
+command = { type = name where = VIC which = "VIC_KIN_NAME" }
+command = { type = flag_ext where = VIC which = "_kin" }
+}
+
+action = {
+name = "We decline..."
+ai_chance = 15
+command = { type = dissent value = 3 }
+command = { type = relation which = SPA value = -35 }
+}
+}
+
+event = {
+id = 3967137
+country = SPA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "National France accepts our offer!"
+desc = "As we predicted, this offer was just too good for the Algerian government to refuse.  With their acceptance we can unite both crowns of the House of Bourbon!"
+
+action = {
+name = "Commence the handover of France!"
+command = { type = secederegion which = VIC value = "France" }
+command = { type = relation which = VIC value = 200 }
+command = { type = relation which = ITA value = 100 }
+command = { type = dissent value = -10 }
+command = { type = alliance which = VIC }
+}
+}
+
+event = {
+id = 3967138
+picture = "bourbonsrestored"
+country = SPA
+style = 2
+
+name = "Choosing the new Head of State of France"
+desc = "We have the opportunity to install our king of the house of Bourbon as the new king of France. However, it may be wise to let the French choose their own government."
+
+action_a = {
+name = "We take both crowns!"
+ai_chance = 90
+command = { type = relation which = U08 value = -50 }
+command = { type = dissent value = -1 }
+command = { trigger = { NOT = { OR = { flag = bourbonj event = 3967117 event = 3967118 } } } type = trigger which = 3967139 } #Alfonso becomes king 
+command = { trigger = { OR = { flag = bourbonj event = 3967117 } } type = trigger which = 3967140 } #Jaime becomes king
+}
+action_b = {
+name = "Let the French decide, as long as they stay loyal."
+ai_chance = 10
+command = { type = relation which = U23 value = 20 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 3967139
+picture = "diplomatic_campaign"
+country = U08
+style = 2
+
+name = "A new King"
+desc = "Spain has crowned their own king as the new King of France. There's nothing we can do, we have to fold and become a Kingdom."
+
+action_a = {
+name = "Long live Alphonse I!"
+command = { type = name where = U23 which = U23_KIN_NAME }
+command = { type = headofstate which = 551798 } #Alphonse I
+command = { type = dissent value = 5 }
+}
+}
+
+
+event = {
+id = 3967140
+picture = "diplomatic_campaign"
+country = U08
+style = 2
+
+name = "A new King"
+desc = "Spain has crowned their own king as the new King of France. There's nothing we can do, we have to fold and become a Kingdom."
+
+action_a = {
+name = "Long live Jacques II!"
+command = { type = name where = U08 which = U08_KIN_NAME }
+command = { type = headofstate which = 551799 } #Jaime, reigning as Jacques II
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 3967142
+random = no
+country = SPA
+style = 2
+picture = "FRA_surrender"
+decision_picture = "decision_diplomatic_campaign"
+
+decision = {
+war = { country = SPA country = VIC } 
+AND = {
+owned = { province = 727 data = SPA } #Algiers
+owned = { province = 747 data = SPA } #Tunis
+owned = { province = 978 data = SPA } #Dakar
+}
+NOT = {
+government = communist
+ispuppet = SPA
+war = { country = SPA country = POR }
+war = { country = SPA country = U21 }
+war = { country = SPA country = U22 }
+war = { country = SPA country = U23 }
+war = { country = SPA country = GER }
+exists = FRA
+exists = U08 
+owned = { province = 55 data = VIC } #Nat France doesn't own Paris
+}
+}
+
+decision_trigger = {
+
+}
+
+trigger = {
+war = { country = SPA country = VIC } 
+OR = {
+owned = { province = 727 data = SPA } #Algiers
+owned = { province = 747 data = SPA } #Tunis
+owned = { province = 978 data = SPA } #Dakar
+}
+NOT = {
+government = communist
+ispuppet = SPA
+war = { country = SPA country = POR }
+war = { country = SPA country = U21 }
+war = { country = SPA country = U22 }
+war = { country = SPA country = U23 }
+war = { country = SPA country = GER }
+exists = FRA
+exists = U08 
+owned = { province = 55 data = VIC } #Nat France doesn't own Paris
+}
+}
+
+name = "Force the National French to yield"
+desc = "Our victorious forces have seized several major cities from the National French. We may consider offering them a chance to surrender and yield to our might."
+
+date =  { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
+
+action = {
+name = "Send our demands to the French"
+trigger = {
+exists = VIC
+NOT = {
+ispuppet = VIC
+}
+}
+ai_chance = 80
+command = { type = relation which = VIC value = -10 }
+command = { type = relation which = ITA value = 25 }
+command = { type = dissent value = -5 }
+command = { type = trigger which = 3967143 } #Spain demands our surrender
+command = { type = belligerence value = 5 }
+}
+
+action = {
+name = "The war will continue"
+ai_chance = 20
+command = { type = relation which = VIC value = -100 }
+command = { type = dissent value = 5 }
+}
+}
+
+event = {
+id = 3967143
+random = no
+country = VIC
+style = 2
+picture = "diplomatic_campaign"
+
+name = "Spain demands our surrender"
+desc = "The Spanish have conquered our major ports and are forces are in full flight into the Sahara. Spain demands our surrender and control of our government. What should we do?"
+
+action = {
+name = "We must yield..."
+ai_chance = 85
+command = { type = leave_alliance }
+command = { type = relation which = CAN value = -150 }
+command = { type = event which = 3967144 where = SPA when = 1  }
+command = { type = peace which = SPA value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = ENG } } } type = peace which = ENG value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = IRE } } } type = peace which = IRE value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = ICL } } } type = peace which = ICL value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = NOR } } } type = peace which = NOR value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = SCA } } } type = peace which = SCA value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = UKR } } } type = peace which = UKR value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = SOV } } } type = peace which = SOV value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = CSA } } } type = peace which = CSA value = 1 }
+command = { trigger = { NOT = { war = { country = SPA country = AST } } } type = peace which = AST value = 1 }
+command = { trigger = { NOT = { OR = { flag = bourbonj event = 3967117 event = 3967118 } } } type = headofstate which = 57269 } #Alfonso becomes king 
+command = { trigger = { OR = { flag = bourbonj event = 3967117 } } type = headofstate which = 57270 } #Jaime becomes king 
+command = { type = name where = VIC which = "VIC_KIN_NAME" }
+command = { type = flag_ext where = VIC which = "_kin" }
+}
+
+action = {
+name = "We will fight to the end!"
+ai_chance = 15
+command = { type = dissent value = 3 }
+command = { type = relation which = SPA value = -35 }
+}
+}
+
+event = {
+id = 3967144
+country = SPA
+style = 2
+picture = "diplomatic_campaign"
+
+name = "The National French surrender"
+desc = "The French in North Africa have surrendered and have submitted to our mercy."
+
+action = {
+name = "¡Viva El Rey!"
+command = { type = make_puppet which = VIC }
+command = { type = relation which = VIC value = 100 }
+command = { type = relation which = ITA value = 100 }
+command = { type = dissent value = -10 }
+command = { type = alliance which = VIC }
 }
 }
