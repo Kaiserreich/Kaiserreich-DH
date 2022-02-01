@@ -317,7 +317,7 @@ province = { id = 350 ic = -1 anti_air = 2 #Split
 province = { id = 352 ic = 1 anti_air = 2 } #Zagreb
 
 ### CSX
-province = { id = 1242 ic = 1 manpower = 1 } #Shijazhuang
+province = { id = 1242 ic = 1 manpower = 11 } #Shijazhuang
 province = { id = 1243 ic = 1 } #Baoding
 province = { id = 1244 manpower = 5 } #Changzhou
 province = { id = 1245 ic = 3 #Tangshan
@@ -830,16 +830,26 @@ province = { id = 212 ic = 3 } #Zilina
 province = { id = 214 ic = -4 infra = { size = 0.50 current_size = 0.50 } } #Presov
 
 ### IND
+province = { id = 1485 air_base = { size = 2 current_size = 2 } } #Nagpur
 province = { id = 1487 anti_air = 1 #Hyderbad
-	air_base = { size = 4 current_size = 4 } }
+	air_base = { size = 4 current_size = 4 } infra = { size = 0.40 current_size = 0.40 } }
+province = { id = 1489 infra = { size = 0.30 current_size = 0.30 } } #Nizamabad
 province = { id = 1494 ic = -2 } #Nellore
-province = { id = 1502 ic = -2 } #Bangalore
+province = { id = 1495 ic = -1 #Trivandrum
+	air_base = { size = 2 current_size = 2 } infra = { size = 0.30 current_size = 0.30 } }
+province = { id = 1497 anti_air = 1 ic = -1 #Cochin
+	naval_base = { size = 6 current_size = 6 } infra = { size = 0.30 current_size = 0.30 } }
+province = { id = 1501 infra = { size = 0.50 current_size = 0.50 } } #Anantapur
+province = { id = 1502 ic = -1 infra = { size = 0.50 current_size = 0.50 } #Bangalore
+	air_base = { size = 2 current_size = 2 } }
 province = { id = 1504 ic = -1 } #Madurai
+province = { id = 1505 ic = 1 } #Coimbatore
+province = { id = 1508 infra = { size = 0.50 current_size = 0.50 } } #Solapur
 province = { id = 1512 ic = -2 } #Kohlapur
 province = { id = 1515 ic = -2 } #Hubli
 province = { id = 1516 ic = 2 } #Poona
 province = { id = 1517 ic = -2 anti_air = 3 #Bombay
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+	naval_base = { size = 10 current_size = 10 } air_base = { size = 8 current_size = 8 } }
 
 ### ITA
 province = { id = 87 ic = -3 } #Nice
@@ -1102,7 +1112,8 @@ province = { id = 1168 ic = 1 } #Borzya (was 2)
 province = { id = 1169 ic = 1 } #Chita
 
 ### NEP
-province = { id = 1467 ic = 4 } #Gorakhpur
+province = { id = 1451 infra = { size = 0.20 current_size = 0.20 } } #Dehradun
+province = { id = 1467 ic = 1 } #Gorakhpur
 
 ### NIC
 province = { id = 2080 infra = { size = 0.40 current_size = 0.40 } ic = -2 #Managua
@@ -1179,25 +1190,36 @@ province = { id = 1077 ic = 3 #Smyrna
 province = { id = 1078 ic = 4 } #Bursa
 
 ### PAK
+province = { id = 1454 infra = { size = 0.20 current_size = 0.20 } } #Simla
 province = { id = 1459 anti_air = 2 #Delhi
-	air_base = { size = 4 current_size = 4 } }
-province = { id = 1522 anti_air = 1 #Rajkot
-	air_base = { size = 4 current_size = 4 } }
-province = { id = 1524 ic = -2 } #Jaypur
-province = { id = 1525 ic = -1 } #Jodhpur
-province = { id = 1531 ic = -1 } #Ludhiana
-province = { id = 1533 anti_air = 1 #Karachi
-	naval_base = { size = 8 current_size = 8 } air_base = { size = 8 current_size = 8 } }
-province = { id = 1535 ic = -1 } #Amritstar
-province = { id = 1538 infra = { size = 0.30 current_size = 0.30 } } #Gwadar
-province = { id = 1466 ic = -1 } #Arrah
-province = { id = 1483 ic = -1 } #Rewa
-province = { id = 1460 ic = -1 } #Merath
-province = { id = 1468 ic = -4 } #Cawnpore
+	air_base = { size = 6 current_size = 6 } infra = { size = 0.70 current_size = 0.70 } }
+province = { id = 1460 ic = -1 infra = { size = 0.60 current_size = 0.60 } } #Merath
+province = { id = 1461 ic = 1 infra = { size = 0.60 current_size = 0.60 } } #Lucknow
+province = { id = 1463 air_base = { size = 2 current_size = 2 } } #Chandigarh
+province = { id = 1466 #Arrah
+	air_base = { size = 4 current_size = 4 } infra = { size = 0.60 current_size = 0.60 } }
+province = { id = 1468 ic = -3 infra = { size = 0.60 current_size = 0.60 } } #Cawnpore
+province = { id = 1478 infra = { size = 0.30 current_size = 0.30 } } #Burhanpur
+province = { id = 1480 infra = { size = 0.40 current_size = 0.40 } } #Bhopal
 province = { id = 1481 anti_air = 1 #Indhur
-	air_base = { size = 4 current_size = 4 } }
-province = { id = 1532 ic = -2 } #Nawabshah
+	air_base = { size = 4 current_size = 4 } infra = { size = 0.50 current_size = 0.50 } }
+province = { id = 1483 ic = -1 } #Rewa
 province = { id = 1518 ic = -1 } #Ahmedabad
+province = { id = 1519 ic = -1 infra = { size = 0.10 current_size = 0.10 } } #Mandvi
+province = { id = 1524 ic = -2 infra = { size = 0.50 current_size = 0.50 } } #Jaypur
+province = { id = 1525 infra = { size = 0.30 current_size = 0.30 } #Jodhpur
+	air_base = { size = 2 current_size = 2 } }
+province = { id = 1528 infra = { size = 0.50 current_size = 0.50 } } #Kotah
+province = { id = 1529 infra = { size = 0.30 current_size = 0.30 } } #Quetta
+province = { id = 1530 ic = 1 #Lahore
+	infra = { size = 0.60 current_size = 0.60 } air_base = { size = 3 current_size = 3 } }
+province = { id = 1531 ic = -1 infra = { size = 0.50 current_size = 0.50 } } #Ludhiana
+province = { id = 1532 ic = -2 } #Nawabshah
+province = { id = 1533 anti_air = 1 infra = { size = 0.40 current_size = 0.40 } #Karachi
+	naval_base = { size = 8 current_size = 8 } air_base = { size = 8 current_size = 8 } }
+province = { id = 1534 air_base = { size = 3 current_size = 3 } } #Rawalpindi
+province = { id = 1535 ic = -1 } #Amritstar
+province = { id = 1538 ic = -1 infra = { size = 0.20 current_size = 0.20 } } #Gwadar
 
 ### PAN
 province = { id = 2078 anti_air = 2 infra = { size = 0.40 current_size = 0.40 } #Cuidad de Panama
@@ -1251,6 +1273,7 @@ province = { id = 992 naval_base = { size = 3 current_size = 3  } air_base = { s
 #Asian/Oceanic colonies
 province = { id = 1372 #Macao
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
+province = { id = 1513 naval_base = { size = 4 current_size = 4 } } #Panjam (Goa)
 province = { id = 1617 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Dili
 
 #Portugal
@@ -1273,15 +1296,26 @@ province = { id = 1195 infra = { size = 0.30 current_size = 0.30 } } #Tetyukhe
 province = { id = 1196 ic = 3 } #Nikolsk-Ussuriysky
 
 ### PRK
+province = { id = 1444 ic = -3 infra = { size = 0.40 current_size = 0.40 } } #Khulna
 province = { id = 1445 infra = { size = 0.30 current_size = 0.30 } } #Dhaka
-province = { id = 1446 ic = -1 } #Siliguri
-province = { id = 1447 ic = 4 anti_air = 2 #Calcutta -5
+province = { id = 1446 ic = -1 infra = { size = 0.40 current_size = 0.40 } } #Siliguri
+province = { id = 1447 ic = 4 anti_air = 2 infra = { size = 0.70 current_size = 0.70 } #Calcutta
 	naval_base = { size = 8 current_size = 8 } air_base = { size = 8 current_size = 8 } }
-province = { id = 1449 ic = -1 infra = { size = 0.40 current_size = 0.40 } } #Rajshahi
+province = { id = 1448 ic = 1 } #Kharagpur
+province = { id = 1449 infra = { size = 0.40 current_size = 0.40 } } #Rajshahi
 province = { id = 1450 ic = -1 } #Cattagram
+province = { id = 1465 ic = 2 infra = { size = 0.60 current_size = 0.60 } #Patna
+	air_base = { size = 3 current_size = 3 } }
+province = { id = 1469 infra = { size = 0.30 current_size = 0.30 } } #Raigarh
 province = { id = 1470 ic = -1 } #Balangir
 province = { id = 1471 ic = -3 } #Bhubanesbar
-province = { id = 1493 ic = 2 } #Vizagapatam
+province = { id = 1473 air_base = { size = 2 current_size = 2 } } #Kataka
+province = { id = 1474 infra = { size = 0.20 current_size = 0.20 } } #Jeypore
+province = { id = 1475 ic = -1 } #Bastar
+province = { id = 1477 infra = { size = 0.30 current_size = 0.30 } #Raipur
+	air_base = { size = 4 current_size = 4 } }
+province = { id = 1493 ic = 2 #Vizagapatam
+	naval_base = { size = 3 current_size = 3 } }
 
 ### PRU
 province = { id = 2012 infra = { size = 0.20 current_size = 0.20 } } #Requena
@@ -1485,7 +1519,7 @@ province = { id = 382 anti_air = 1 infra = { size = 0.30 current_size = 0.30 } #
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
 ### U35
-province = { id = 1500 ic = 2 #Madras
+province = { id = 1500 ic = 2 infra = { size = 0.50 current_size = 0.50 } #Madras
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
 
 ### UKR

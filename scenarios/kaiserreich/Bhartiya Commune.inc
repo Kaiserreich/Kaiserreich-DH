@@ -95,12 +95,19 @@ relation = {   tag =  	IND	value = 		-150	   }
 #Armour and artillery
 2860 2870 #Armd Cars up to ww1 armd car
 2290 2300 2310 2900 #Artillery
+7600 7610 #SW Tank
 2800 #ww1 static AA
 2810 #ww1 AA bde
+
+#Naval
+3010 3020 3030 3040 #Great War Destroyer
+3720 3730 3736 3740 3900 #Torpedo & ASW 18
+3810 #Troopships
 
 #Aircraft
 4500 4510 4520 4530 4540 4550 #up to 1918 interceptor
 4300 4310 4320 #Up to 1916 MR Fighter
+4600 4610 4620 4630 #1918 TAC
 
 #Industrial
 5600 #Medicine
