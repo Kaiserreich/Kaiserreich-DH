@@ -7,18 +7,39 @@ country = {
 
 	policy = {
 		date = { year = 0 month = january day = 0 }
-		democratic = 2
-		political_left = 3
+		democratic = 6
+		political_left = 4
 		freedom = 3
 		free_market = 3
-		professional_army = 1
-		defense_lobby = 1
-		interventionism = 1
+		professional_army = 3
+		defense_lobby = 5
+		interventionism = 3
 	}
 
 #### cabinet
-headofstate = { type = 9 id = 501001 }
-headofgovernment = { type = 9 id = 501002 }
+#Tang Jiyao starting cabinet
+headofstate = { type = 9 id = 501019 } #Tang Jiyao
+headofgovernment = { type = 9 id = 501045 } #Zhou Zhongyue
+foreignminister = { type = 9 id = 501069 } #Li Yuegai
+armamentminister = { type = 9 id = 501082 } #Wang Jiuling
+ministerofsecurity = { type = 9 id = 501053 } #Tang Jiyu
+ministerofintelligence = { type = 9 id = 501086 } #Dong Ze
+chiefofstaff = { type = 9 id = 501141 } #Wang Zhaoxiang (Gao Yinhuai [501146] also an option)
+chiefofarmy = { type = 9 id = 501056 } #Hu Ying
+chiefofnavy = { type = 9 id = 501105 } #Zeng Shuhuai
+chiefofair = { type = 9 id = 501178 } #Liu Peiquan
+
+#Long Yun starting cabinet
+#headofstate = { type = 9 id = 501024 } #Long Yun
+#headofgovernment = { type = 9 id = 501054 } #Hu Ying (Zhang Weihan [501049] also an option)
+#foreignminister = { type = 9 id = 501050 } #Zhang Weihan (Gong Zizhi [501072] also an option)
+#armamentminister = { type = 9 id = 501090 } #Lu Chongren
+#ministerofsecurity = { type = 9 id = 501113 } #Ding Zhaoguan
+#ministerofintelligence = { type = 9 id = 501169 } #Yang Hongguang (An Enpu [501048] also an option)
+#chiefofstaff = { type = 9 id = 501150 } #Sun Du (Gao Yinhuai [501146] also an option)
+#chiefofarmy = { type = 9 id = 501162 } #Huang Yucheng (Gao Yinhuai [501147] also an option)
+#chiefofnavy = { type = 9 id = 501173 } #Lu Daoyuan
+#chiefofair = { type = 9 id = 501178 } #Liu Peiquan
 #### Resource Reserves
 
 	# Resource Reserves
@@ -84,13 +105,13 @@ relation = { tag = TIB value = 24 }
   5800 5080 # Basic Construction Engineering
   5190 # Basic Oil Refining
   5310 54010 # Automatic feed tabulator
-  5316 # Ciphering Machine 
+  5316 # Ciphering Machine
   5700 5710 5010 # Modern Agriculture
   5600 5610 # Indirect Blood transfusions
   
   #Land Doctrine Techs
   6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910 #Weltkrieg Doctrine, Entente Side
-  6390 # Light Infantry doctrine
+  6390 6400 # Light Infantry doctrine
   
   #Secret Weapons SHHHHHHH TOP SECRET
   7600 7610 # Heavy Tank
@@ -105,7 +126,7 @@ relation = { tag = TIB value = 24 }
 	landunit = {
 		location = 1390 # Kunming
 		name = "Yunnan Jingbei"
-		leader = 501006 # Long Yun
+		leader = 501003 # Long Yun
 		id = { type = 22100 id = 1 }
 		division = {
 	        	id = { type = 22100 id = 2 }
@@ -133,7 +154,7 @@ relation = { tag = TIB value = 24 }
 	landunit = {
 		location = 1299 # Nanchong
 		name = "24. Jun"
-		leader = 501004 # Liu Wenhui
+		leader = 501019 # Huang Yucheng
 		id = { type = 22100 id = 11 }
 		division = {
 	        	id = { type = 22100 id = 12 }
