@@ -1279,7 +1279,10 @@ province = { id = 1617 naval_base = { size = 1 current_size = 1 } air_base = { s
 #Portugal
 province = { id = 476 anti_air = 4 #Lisbon
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
-province = { id = 481 anti_air = 1 } #Porto
+province = { id = 478 air_base = { size = 6 current_size = 6 } } #Beja
+province = { id = 480 infra = { size = 0.40 current_size = 0.40 } } #Evora
+province = { id = 481 anti_air = 1 infra = { size = 0.50 current_size = 0.50 } #Porto
+	naval_base = { size = 4 current_size = 4 } }
 province = { id = 995 anti_air = 2 #The Azores
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
 
@@ -1454,38 +1457,57 @@ province = { id = 1435 naval_base = { size = 2 current_size = 2 } } #Kuala Lumpu
 ### SPA
 
 #Africa colonies
-province = { id = 461 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } } #Castellon de la Plana
-province = { id = 473 naval_base = { size = 4 current_size = 4 } } #Cadiz
 province = { id = 715 anti_air = 3 #Tanger
-naval_base = { size = 6 current_size = 6 } air_base = { size = 2 current_size = 2 } }
+naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
 province = { id = 988 anti_air = 2 #Villa Cisneros
 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
-province = { id = 990 naval_base = { size = 1 current_size = 1 } air_base = { size = 2 current_size = 2 } } #Las Palmas de Gran Canaria
-province = { id = 991 anti_air = 2 #Santa Cruz de Tenerife
-naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
+province = { id = 990 naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } } #Las Palmas de Gran Canaria
+province = { id = 991 anti_air = 2 air_base = { size = 4 current_size = 4 } } #Santa Cruz de Tenerife
 
 #Spain
 province = { id = 348 anti_air = 4 oilpool = 200 supplypool = 500 #Gibraltar
-naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 6 current_size = 6 } }
 province = { id = 436 anti_air = 2 #Tarragona
-naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
-province = { id = 437 landfort = 3 } #Gerona
+	air_base = { size = 4 current_size = 4 } }
+province = { id = 437 landfort = 3 infra = { size = 0.50 current_size = 0.50 } } #Gerona
 province = { id = 438 landfort = 3 } #Huesca
-province = { id = 439 landfort = 3 } #Lerida
-province = { id = 440 naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } } #Barcelona
-province = { id = 441 anti_air = 2 #Coruna
-naval_base = { size = 7 current_size = 7 } air_base = { size = 7 current_size = 7 } }
-province = { id = 443 landfort = 3 } #Bilbao
-province = { id = 446 landfort = 2 } #Pamplona
+province = { id = 439 landfort = 3 infra = { size = 0.40 current_size = 0.40 } } #Lerida
+province = { id = 440 infra = { size = 0.70 current_size = 0.70 } #Barcelona
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
+province = { id = 441 anti_air = 2 infra = { size = 0.40 current_size = 0.40 } #Coruna
+	naval_base = { size = 7 current_size = 7 } air_base = { size = 7 current_size = 7 } }
+province = { id = 443 landfort = 3 naval_base = { size = 2 current_size = 2 } } #Bilbao
+province = { id = 444 infra = { size = 0.50 current_size = 0.50 } } #Oviedo
+province = { id = 446 landfort = 2 infra = { size = 0.40 current_size = 0.40 } } #Pamplona
+province = { id = 447 infra = { size = 0.40 current_size = 0.40 } } #Salamanca
+province = { id = 448 infra = { size = 0.50 current_size = 0.50 } #Leon
+	air_base = { size = 4 current_size = 4 } }
+province = { id = 449 infra = { size = 0.40 current_size = 0.40 } } #Vigo
+province = { id = 451 infra = { size = 0.40 current_size = 0.40 } } #Burgos
+province = { id = 452 infra = { size = 0.40 current_size = 0.40 } } #Segovia
+province = { id = 455 infra = { size = 0.40 current_size = 0.40 } } #Guadalajara
+province = { id = 456 infra = { size = 0.50 current_size = 0.50 } #Soria
+	air_base = { size = 2 current_size = 2 } }
+province = { id = 457 infra = { size = 0.50 current_size = 0.50 } } #Toledo
 province = { id = 460 anti_air = 3 #Madrid
-air_base = { size = 10 current_size = 10 } }
-province = { id = 464 anti_air = 2 #Valencia
-naval_base = { size = 3 current_size = 3 } air_base = { size = 2 current_size = 2 } }
-province = { id = 472 naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } } #Huevla
-province = { id = 474 anti_air = 2 #Sevilla
-naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
-province = { id = 475 anti_air = 2 #Palma de Mallorca
-naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
+	air_base = { size = 10 current_size = 10 } }
+province = { id = 461 infra = { size = 0.40 current_size = 0.40 } } #Castellon de la Plana
+province = { id = 462 infra = { size = 0.40 current_size = 0.40 } } #Alicante
+province = { id = 463 #Murcia
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
+province = { id = 464 anti_air = 2 infra = { size = 0.60 current_size = 0.60 } #Valencia
+	naval_base = { size = 3 current_size = 3 } air_base = { size = 2 current_size = 2 } }
+province = { id = 465 air_base = { size = 2 current_size = 2 } } #Albacete
+province = { id = 468 infra = { size = 0.50 current_size = 0.50 } } #Cuidad Real
+province = { id = 470 infra = { size = 0.40 current_size = 0.40 } } #Granada
+province = { id = 471 air_base = { size = 3 current_size = 3 } } #Malaga
+province = { id = 472 infra = { size = 0.50 current_size = 0.50 } } #Huelva
+province = { id = 473 infra = { size = 0.40 current_size = 0.40 } #Cadiz
+	naval_base = { size = 4 current_size = 4 } }
+province = { id = 474 anti_air = 2 infra = { size = 0.60 current_size = 0.60 } #Sevilla
+	naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
+province = { id = 475 anti_air = 2 infra = { size = 0.30 current_size = 0.30 } #Palma de Mallorca
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
 ### SWE
 province = { id = 2152 coastalfort = 3 manpower = 2 #Malmo

@@ -98,7 +98,7 @@ relation = { tag = SPR value = -50 }
 
 #Land Doctrines WWI - Entente Line
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910
-6010 6020 #Land Doctrine WWII - Firepower Focus?  WTF?  Really?
+6560 6030 #Land Doctrine WWII - Defensive Focus (influenced by French doctrine)
 14000 14010 #Improved Great War Hospital System
 
 #Naval Doctrines
