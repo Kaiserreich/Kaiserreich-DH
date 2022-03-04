@@ -19,17 +19,17 @@ ai = "kaiserreich\Hungary.ai"
         interventionism = 8
     }
 
-
-headofstate = { type = 9 id = 21044 }
+#### cabinet
+	headofstate = { type = 9 id = 21044 }
 	headofgovernment = { type = 9 id = 21053 }
- 	foreignminister = { type = 9 id = 21074 }
- 	armamentminister = { type = 9 id = 21084 }
- 	ministerofsecurity = { type = 9 id = 21098 }
- 	ministerofintelligence = { type = 9 id = 21006 }
- 	chiefofstaff = { type = 9 id = 21131  }
- 	chiefofarmy = { type = 9 id = 21145 }
- 	chiefofnavy = { type = 9 id = 21009 }        
- 	chiefofair = { type = 9 id = 21163  }
+	foreignminister = { type = 9 id = 21074 }
+	armamentminister = { type = 9 id = 21206 }
+	ministerofsecurity = { type = 9 id = 21098 }
+	ministerofintelligence = { type = 9 id = 21006 }
+	chiefofstaff = { type = 9 id = 21131  }
+	chiefofarmy = { type = 9 id = 21145 }
+	chiefofnavy = { type = 9 id = 21009 }
+	chiefofair = { type = 9 id = 21163 }
 
 #### Resource Reserves
 
