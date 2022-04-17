@@ -4,43 +4,53 @@ country = {
 
 	puppet = CGX
 
-
 	policy = {
 		date = { year = 0 month = january day = 0 }
-		democratic = 2
-		political_left = 3
+		democratic = 3
+		political_left = 4
 		freedom = 3
-		free_market = 5
-		professional_army = 1
-		defense_lobby = 1
-		interventionism = 2
-		}
+		free_market = 4
+		professional_army = 2
+		defense_lobby = 9
+		interventionism = 1
+	}
 
 #### cabinet
-#headofstate = { type = 9 id = 502001 }
-#headofgovernment = { type = 9 id = 502002 }
+headofstate = { type = 9 id = 99039 } #Yang Sen
+headofgovernment = { type = 9 id = 99018 } #Liu Xiang
+foreignminister = { type = 9 id = 99102 } #Zhang Biguo
+armamentminister = { type = 9 id = 99142 } #Liu Hangchen
+ministerofsecurity = { type = 9 id = 99076 } #Wang Zanxu
+ministerofintelligence = { type = 9 id = 99143 } #Liu Hangchen
+chiefofstaff = { type = 9 id = 99053 } #Guo Changming (Wang Lingji [99227] also an option)
+chiefofarmy = { type = 9 id = 99249 } #Guo Rudong (Qiao Yifu [99244] also an option)
+chiefofnavy = { type = 9 id = 99061 } #Zheng Dongqin
+chiefofair = { type = 9 id = 99265 } #Jiang Kui
+
 #### Resource Reserves
-		energy		= 200
-		metal		= 200
-		rare_materials 	= 100
-		oil 		= 100
-		supplies 	= 100
-		money		= 50
+
+	energy		= 200
+	metal		= 200
+	rare_materials 	= 100
+	oil 		= 100
+	supplies 	= 100
+	money		= 50
+
 	capital = 1297
 	manpower = 200
 
-        free = { ic = 7 }
+	free = { ic = 7 }
 
-SpyInfo  = {  country = "UCS" NumberOfSpies = 3  } 
+	SpyInfo = { country = "UCS" NumberOfSpies = 3 }
 
-    ownedprovinces =      {
- 1291 1292 1293 1297 1261 1262 1296 1298 1267 1302 1299 1301
-	 }
-    controlledprovinces = {
- 1291 1292 1293 1297 1261 1262 1296 1298 1267 1302 1299 1301 
-	  }
-    nationalprovinces =   {
-	1291 1292 1293 1297 1261 1262 1296 1298 1267 1302 1299 1301
+	ownedprovinces = {
+		1291 1292 1293 1297 1261 1262 1296 1298 1267 1302 1299 1301
+	}
+	controlledprovinces = {
+		1291 1292 1293 1297 1261 1262 1296 1298 1267 1302 1299 1301
+	}
+	nationalprovinces = {
+		1291 1292 1293 1297 1261 1262 1296 1298 1267 1302 1299 1301
 	}
 
 diplomacy = {
@@ -95,4 +105,6 @@ relation = { tag = UGS value = 50 }
   # Air Doctrines
   27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 #Weltkrieg and Interwar Doctrines pre-1936
    }
+
+	dormant_teams = { 4611 4614 } #Panzhihua Iron and Steel
 }
