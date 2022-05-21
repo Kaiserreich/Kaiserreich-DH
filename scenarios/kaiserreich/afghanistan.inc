@@ -70,7 +70,7 @@ relation = { tag = PRK value = -150 }
 #######################
 #Infantry
 1010 1020 1030 1040 1050 1060 1070 1080 #1926 Infantry Division
-13060 13070 13080 1310 #Cavalry, just stoped in 1914 cavalry division
+13060 13070 13080 1310 #Cavalry, just stopped in 1914 cavalry division
 
 #Armour and artillery
 2860 2870 #Armd Cars up to ww1 armd car

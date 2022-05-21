@@ -555,7 +555,7 @@ relation = { tag = EAF value = 60 }
          }
 
 
-     navalunit = { location = 889 base = 889  id = { type = 14800 id = 95 } name = "USN Carribean Fleet"
+     navalunit = { location = 889 base = 889  id = { type = 14800 id = 95 } name = "USN Caribbean Fleet"
          division = {     id = { type = 14800 id = 96 }     name = "Destroyer Division 17"     type = destroyer model = 3 } #
          division = {     id = { type = 14800 id = 97 }     name = "Submarine Division 11"     type = submarine model = 1 } #
          division = {     id = { type = 14800 id = 190 }     name = "Destroyer Division 41"     type = destroyer model = 3 } #
