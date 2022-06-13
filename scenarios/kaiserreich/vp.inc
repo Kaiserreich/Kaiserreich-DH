@@ -35,7 +35,7 @@ province = {	id = 900	points = 5	}#Suez
 province = {	id = 348	points = 2	}#Gibraltar
 province = {	id = 429	points = 1	}#Malta
 province = {	id = 1432	points = 5	}#Singapore
-province = {	id = 1328	points = 1	}# german Tsingtau
+province = {	id = 1328	points = 1	}# German Tsingtau
 #province = { id = 1726 points = 1 } #Rabaul
 #province = { id = 1587 points = 1 } #Bougainville
 
@@ -520,7 +520,7 @@ province = { id = 836 points = 1 }#Mogadishu
 province = { id = 969 points = 1 }#Monorovia
 
 
-#South africa
+#South Africa
 province = { id = 880 points = 3 }#Capetown
 province = { id = 876 points = 3 }#Johannesburg
 province = { id = 881 points = 2 }#Port Elizabeth

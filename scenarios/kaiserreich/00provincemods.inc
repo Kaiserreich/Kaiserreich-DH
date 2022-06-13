@@ -19,7 +19,7 @@ naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 
 #Argentina
 province = { id = 2048 anti_air = 2 #Bahia Blanca
 naval_base = { size = 8 current_size = 8 } air_base = { size = 3 current_size = 3 } } 
-province = { id = 2050 anti_air = 5 #Buenos aires
+province = { id = 2050 anti_air = 5 #Buenos Aires
 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } }
 province = { id = 2054 anti_air = 1 } #Cordoba
 

@@ -54,8 +54,8 @@ diplomacy = {
 5810 5820
 
 #Infantry
-1010 1020 1030 1040 #Infantry divisions just stoped in 1914 inf div
-13060 13070 13080 1310 #Cavalry, just stoped in 1914 cavalry division
+1010 1020 1030 1040 #Infantry divisions just stopped in 1914 inf div
+13060 13070 13080 1310 #Cavalry, just stopped in 1914 cavalry division
 
 #Land Doctrines
 6500 6510 6530 6590 #Up to pre ww1 tech

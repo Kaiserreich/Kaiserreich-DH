@@ -1,8 +1,8 @@
 
-# list of spanish bases 
+# list of Spanish bases 
 
 province = {
-	id = 436 #tarragona
+	id = 436 #Tarragona
 	anti_air = 2
 	naval_base = {
 		size = 6
@@ -15,7 +15,7 @@ province = {
 }
 
 province = {
-	id = 464 #valencia
+	id = 464 #Valencia
 	anti_air = 2
 	naval_base = {
 		size = 3
@@ -41,7 +41,7 @@ province = {
 }
 
 province = {
-	id = 475 #mallorca
+	id = 475 #Mallorca
 	anti_air = 2
 	naval_base = {
 		size = 2
@@ -54,7 +54,7 @@ province = {
 }
 
 province = {
-	id = 474 #sevilla
+	id = 474 #Sevilla
 	anti_air = 2
 	naval_base = {
 		size = 4
@@ -67,7 +67,7 @@ province = {
 }
 
 province = {
-	id = 460 #madrid
+	id = 460 #Madrid
 	anti_air = 3
 	air_base = {
 		size = 2
@@ -75,7 +75,7 @@ province = {
 	}
 }
 
-province = { id = 444 #oviedo  
+province = { id = 444 #Oviedo  
 	     anti_air = 2 
 	     air_base = { #a couple of small airfields were made during SCW, and later "scrapped"
 		size = 1
@@ -83,14 +83,14 @@ province = { id = 444 #oviedo
 		}
 	} 
 	
-province = { id = 462 #almería
+province = { id = 462 #Almería
 	     air_base = {
 		size = 2
 		current_size = 2
 		}
 	}	
 
-province = { id = 436   #tarragona
+province = { id = 436   #Tarragona
 	     anti_air = 2 
 	      air_base = {
 		size = 2
@@ -104,7 +104,7 @@ province = { id = 436   #tarragona
 	    } 
 	    
 	    
-province = { id = 463 #murcia (cartagena)
+province = { id = 463 #Murcia (Cartagena)
 	     anti_air = 2
 	     naval_base = {
 		size = 8
@@ -112,7 +112,7 @@ province = { id = 463 #murcia (cartagena)
 		}
 	}
 	
-province = { id = 715 #ceuta
+province = { id = 715 #Ceuta
 	     anti_air = 2 
 	     air_base = {
 		size = 1
