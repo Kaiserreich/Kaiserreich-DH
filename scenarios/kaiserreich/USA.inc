@@ -6,36 +6,33 @@ country = {
 
 ai = "kaiserreich\usa.ai"
 	policy = {
-        date = { year = 0 month = january day = 0 }
-        democratic = 10
-        political_left = 6
-        freedom = 10
-        free_market = 10
-        professional_army = 1
-        defense_lobby = 1
-        interventionism = 1
-    }
+		date = { year = 0 month = january day = 0 }
+		democratic = 10
+		political_left = 6
+		freedom = 10
+		free_market = 10
+		professional_army = 1
+		defense_lobby = 1
+		interventionism = 1
+	}
 	headofstate = { type = 9 id = 6229 }
 	headofgovernment = { type = 9 id = 6230 }
- 	foreignminister = { type = 9 id = 6061 }
- 	armamentminister = { type = 9 id = 6231 }
- 	ministerofsecurity = { type = 9 id = 6232 }
- 	ministerofintelligence = { type = 9 id = 6130 }
- 	chiefofstaff = { type = 9 id = 6233 }
- 	chiefofarmy = { type = 9 id = 6182 }
- 	chiefofnavy = { type = 9 id = 6183 }        
- 	chiefofair = { type = 9 id = 6237  }
+	foreignminister = { type = 9 id = 6061 } #Henry L. Stimson
+	armamentminister = { type = 9 id = 6313 } #Ogden L. Mills
+	ministerofsecurity = { type = 9 id = 6232 } #Ray L. Wilbur
+	ministerofintelligence = { type = 9 id = 6392 } #William D. Puleston (alternatives: George Sabin Gibbs [6400] or J. Edgar Hoover [6125])
+	chiefofstaff = { type = 9 id = 6449 } #George S. Simonds
+	chiefofarmy = { type = 9 id = 6182 } #Douglas MacArthur
+	chiefofnavy = { type = 9 id = 6156 } #Joseph 'Bull' Reeves
+	chiefofair = { type = 9 id = 6546 } #Hiram Bingham III
 
-
-
-
- 	peacetime_ic_mod = 0.13
+	peacetime_ic_mod = 0.13
 
 #### Resource Reserves
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 100
 
-        SpyInfo  = {  country = "USA" NumberOfSpies = 5  } 
+	SpyInfo  = { country = "USA" NumberOfSpies = 5 }
 
 	manpower = 0
 
@@ -154,62 +151,58 @@ relation = { tag = EAF value = 60 }
 #######################
 
 #Aircrafts
-4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter  
-4600 4610 4620 4630 4120 4130 #Early Bomber 
-4290 4250 #Basic Air Transport 
+4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter
+4600 4610 4620 4630 4120 4130 #Early Bomber
+4290 4250 #Basic Air Transport
 4800 4810 4820 4220 #Basic Strategic Bomber
-4300 4310 4320 4330 4340 #Multirole fighter 
-4700 4710 #ww1 navalbomber	
+4300 4310 4320 4330 4340 #Multirole fighter
+4700 4710 #ww1 navalbomber
 4740 4750 4760 4770 #Seaplanes
 4900 4910 4920 #CAG 34
 7290 7300 7310 7320 4400 #CAS
 
 #Armour & Artillery
-2860 2870 2880 2020 #Armoured Cars 
-7600 7610 2620 2010 2630 #Great War Tank 
-2290 2300 2310 2900 2910 2920 #Great War Heavy Field Artillery 
+2860 2870 2880 2020 #Armoured Cars
+7600 7610 2620 2010 2630 #Great War Tank
+2290 2300 2310 2900 2910 2920 #Great War Heavy Field Artillery
 2800 2450 21180 21190 21200 #Early Static Anti-Air Artillery
 2810 2820 2510 #Basic Anti-Air Artillery Brigade
 
 #Infantry
-1010  1020 1030 1040 1050 1060 1070 1080 1090 #Great War Infantry Division 
-13060 13070 13080 1310 1320 1330 1340 1350 1360 1370 #1932 Cavalry Division 
-1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply 
+1010  1020 1030 1040 1050 1060 1070 1080 1090 #Great War Infantry Division
+13060 13070 13080 1310 1320 1330 1340 1350 1360 1370 #1932 Cavalry Division
+1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply
 1560 1570 1580 #Naval Infantry
-1160  1170  1180  1190 1200 1210 1220 1230 #Mountain
+1160 1170 1180 1190 1200 1210 1220 1230 #Mountain
 1830 1840 1850 1860 #Engineers
 
 #Industrial
 5700 5710 5010 5020 #Mechanized Agriculture
-5810 5050 5830 5060 5070 #Basic Machine Tools 
-5800 5080 5090 #Improved Construction Engineering 
+5810 5050 5830 5060 5070 #Basic Machine Tools
+5800 5080 5090 #Improved Construction Engineering
 5310 54010 54020 54030 5316 5326 5327 #Computers and cryptografi
 5190 #Refining
-5470 #Faculty of Atomic Research 
+5470 #Faculty of Atomic Research
 5600 5610 5620 5630 #Medicine
 5560 #Exp. Rocket
 
 #Naval
-12100 12110 12120 #Improved Light carrier 
+12100 12110 12120 #Improved Light carrier
 3720 3730 3736 3740 3750 3900 #Torpedo & ASW 18
-3010 3020 3030 3040 3050 3060 #Improved Destroyer 
-3110 3120 3130 3140 3150 3160 #Interwar Light Cruiser 
-3210 3220 3230 3240 3250 3260 #Improved Heavy Cruiser 
+3010 3020 3030 3040 3050 3060 #Improved Destroyer
+3110 3120 3130 3140 3150 3160 #Interwar Light Cruiser
+3210 3220 3230 3240 3250 3260 #Improved Heavy Cruiser
 3310 3320 3330 #Heavy Battlecruiser
-3410 3420 3430 3440 3450 3456 3460 3470 #Early Battleship 
-3510 3520 3530 #Fleet Carrier 
-3610 3620 3630 3640 3650 #Short Range Submarine 
+3410 3420 3430 3440 3450 3456 3460 3470 #Early Battleship
+3510 3520 3530 #Fleet Carrier
+3610 3620 3630 3640 3650 #Short Range Submarine
 3810 5820 #Troopships
 
-
-
-
-
-# WWI Land Doctrines - Entente: eng fra ita usa bel hol jap 
+# WWI Land Doctrines - Entente: eng fra ita usa bel hol jap
 6500 6510  6530 6540 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6910
 # WWII Land Doctrines - Firepower Focus
 6010 6020
-14000 14010 14020 #Great War Hospital System 
+14000 14010 14020 #Great War Hospital System
 
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010 9140
@@ -227,12 +220,12 @@ relation = { tag = EAF value = 60 }
 # Carrier - Scouting Focus
 81850
 # Logistic Support
-82500  
+82500
 # Amphibious Warfare
 82300
-
-
 	}
+
+dormant_ministers = { 6570 6571 6572 } #some ministers for collapsed USA (event 906536)
 
 #########  OOB (14800)
 	landunit = {

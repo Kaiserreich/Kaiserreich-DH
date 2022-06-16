@@ -1,19 +1,18 @@
 
-
 ################### POSTWAR USA
 ### Reed and the CSA escape to France
 event = {
 id = 800320
 random = no
 country = USA
+
 trigger = {
-flag = END_ACW
-not = {
-headofstate = 6208
+	flag = END_ACW
+	NOT = {	headofstate = 6208 }
+	flag = ACW_CSA
+	exists = FRA
 }
-flag = ACW_CSA
-exists = FRA
-}
+
 name = "The CSA Escapes to France"
 desc = "After the CSA was defeated, Reed and the CSA evacuated to France to continue the effort against the USA. Reed would continue to be dangerous from outside the country but for now he was defeated along with radical socialism in America."
 style = 2
@@ -23,11 +22,10 @@ offset = 10
 deathdate = { day = 29 month = december year = 1954 }
 
 action_a = {
-name = "He can run for now."
-command = { type = relation which = FRA value = -25 }
+	name = "He can run for now."
+	command = { type = relation which = FRA value = -25 }
 }
 }
-
 
 
 event = {
@@ -49,18 +47,19 @@ desc = "EVT_906500_DESC"
 #hang up his mic. We may be able to speed us his depature from CBS Radio and force him off the air by refusing to renew his permit.
 
 action_a = {
-ai_chance = 50
-name = "Coughlin is a becoming a dangerous proposition, shut him down"
-command = { type = relation which = ITA value = 20 }
-command = { type = dissent value = 5 }
+	ai_chance = 50
+	name = "Coughlin is a becoming a dangerous proposition, shut him down"
+	command = { type = relation which = ITA value = 20 }
+	command = { type = dissent value = 5 }
 }
 action_b = {
-ai_chance = 50
-name = "There is nothing we can do"
-command = { type = relation which = ITA value = -15 }
-command = { type = dissent value = 3 }
+	ai_chance = 50
+	name = "There is nothing we can do"
+	command = { type = relation which = ITA value = -15 }
+	command = { type = dissent value = 3 }
 }
 }
+
 
 event = {
 id = 658639
@@ -75,8 +74,8 @@ picture = "battleofalamo"
 date = { day = 6 month = March year = 1936 }
 
 action_a = {
-name = "Remember the Alamo!"
-command = { type = dissent value = -1 }
+	name = "Remember the Alamo!"
+	command = { type = dissent value = -1 }
 }
 }
 
@@ -92,21 +91,12 @@ desc = "After a bitter war the United States has triumphed over its enemies. The
 style = 2
 
 action = {
-ai_chance = 100
-name = "Welcome back"
-command = { type = inherit which = U10 }
-command = { type = waketeam which = 100 when = 1 } #Vought Aircraft
-command = { type = waketeam which = 103 when = 1 } #Vought Aircraft
-command = { type = waketeam which = 111 when = 1 } #Electric Boat Company
-command = { type = waketeam which = 112 when = 1 } #Portsmouth Naval Shipyard
-command = { type = waketeam which = 113 when = 1 } #Portsmouth Naval Shipyard
-command = { type = waketeam which = 120 when = 1 } #Springfield Armory
-command = { type = waketeam which = 138 when = 1 } #MIT
-command = { type = waketeam which = 142 when = 1 } #Harvard University
-command = { Type = dissent value = -5 }
+	ai_chance = 100
+	name = "Welcome back"
+	command = { type = inherit which = U10 }
+	command = { Type = dissent value = -5 }
 }
 }
-
 
 #############################################
 #Democracy after Civil War - MacArthur
@@ -118,39 +108,40 @@ country = USA
 style = 2
 picture = "macarthurdic"
 
+trigger = {
+	event = 908500
+	event = 908501
+	headofstate = 6208
+	NOT = {
+		exists = TEX
+		exists = CSA
+	}
+}
+
+name = "Form of government"
+desc = "Now when we destroyed the rebellious CSA and AUS we can think about domestic affairs. Democracy was and is really an important value in American lives since the foundation of our country but with crises and rebellions support for democracy has significantly diminished. MacArthur, beloved by many, must decide whether he wants to restore democracy or to establish a dictatorship."
+
 date = { day = 1 month = january year = 1937 }
 offset = 30
 deathdate = { day = 29 month = december year = 1947 }
 
-trigger = {
-event = 908500
-event = 908501
-headofstate = 6208
-NOT = {
-exists = TEX
-exists = CSA
-}
-}
-name = "Form of government"
-desc = "Now when we destroyed the rebellious CSA and AUS we can think about domestic affairs. Democracy was and is really an important value in American lives since the foundation of our country but with crises and rebellions support for democracy has significantly diminished. MacArthur, beloved by many, must decide whether he wants to restore democracy or to establish a dictatorship."
-
 action_a = {
-ai_chance = 50
-name = "It's out of question - Viva La Democracy!"
-command = { type = headofstate which = 6242 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = free_market value = 8 }
-command = { type = dissent value = 5 }
-command = { type = sleepevent which = 906531 }
+	ai_chance = 50
+	name = "It's out of question - Viva La Democracy!"
+	command = { type = headofstate which = 6242 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = free_market value = 8 }
+	command = { type = dissent value = 5 }
+	command = { type = sleepevent which = 906531 }
+}
+action_b = {
+	ai_chance = 50
+	name = "Mac Arthur...sounds good for a dictator"
+	command = { type = dissent value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 50
-name = "Mac Arthur...sounds good for a dictator"
-command = { type = dissent value = 10 }
-}
-}
 
 event = {
 id = 906531
@@ -159,9 +150,9 @@ country = USA
 style = 2
 
 trigger = {
-event = 906508
-government = fascist
-headofstate = 6208 #fascist MacArthur
+	event = 906508
+	government = fascist
+	headofstate = 6208 #fascist MacArthur
 }
 
 name = "Forging New USA - Internal Policy"
@@ -173,32 +164,31 @@ offset = 30
 deathdate = { day = 1 month = january year = 1960 }
 
 action_a = {
-ai_chance = 50
-name = "MacArthur doesn't need to be President to exercise power!"
-command = { type = dissent value = -5 }
-command = { type = setflag which = USA_MIN_JUNTA }
-command = { type = set_domestic which = democratic value = 5 }
-command = { type = set_domestic which = political_left value = 5 }
+	ai_chance = 50
+	name = "MacArthur doesn't need to be President to exercise power!"
+	command = { type = dissent value = -5 }
+	command = { type = setflag which = USA_MIN_JUNTA }
+	command = { type = set_domestic which = democratic value = 5 }
+	command = { type = set_domestic which = political_left value = 5 }
 }
-
 action_b = {
-ai_chance = 20
-name = "MacArthur will be President but he will leave day-to-day ruling to Senate and House"
-command = { type = dissent value = -10 }
-command = { type = setflag which = USA_MAX_JUNTA }
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 3 }
+	ai_chance = 20
+	name = "MacArthur will be President but he will leave day-to-day ruling to Senate and House"
+	command = { type = dissent value = -10 }
+	command = { type = setflag which = USA_MAX_JUNTA }
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { type = set_domestic which = political_left value = 3 }
+}
+action_c = {
+	ai_chance = 20
+	name = "One nation, one country, one ruler"
+	command = { type = dissent value = 5 }
+	command = { type = setflag which = USA_TOTALITARIAN }
+	command = { type = set_domestic which = democratic value = 3 }
+	command = { type = set_domestic which = political_left value = 2 }
+}
 }
 
-action_c = {
-ai_chance = 20
-name = "One nation, one country, one ruler"
-command = { type = dissent value = 5 }
-command = { type = setflag which = USA_TOTALITARIAN }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0 }
-}
-}
 
 event = {
 id = 906532
@@ -207,42 +197,41 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-headofstate = 6208 #fascist MacArthur
-flag = USA_MIN_JUNTA
+	government = fascist
+	headofstate = 6208 #fascist MacArthur
+	flag = USA_MIN_JUNTA
 }
-
-date = { day = 1 month = january year = 1940 }
-offset = 30
-deathdate = { day = 1 month = january year = 1960 }
 
 name = "1940 presidential elections"
 desc = "The Patriotic Party connected with Mac Arthur and his cabinet has a great chance of winning the Presidential elections. The voters are stunned with pro-government propaganda and police actions against the opposition are working. It seems that the government will win and MacArthur's puppet will be the new President."
 picture = "us1936elections"
 
+date = { day = 1 month = january year = 1940 }
+offset = 30
+deathdate = { day = 1 month = january year = 1960 }
+
 action_a ={
-ai_chance = 15
-name = "Democrat"
-command = { type = headofstate which = 6236 } # Garner
-command = { type = headofgovernment which = 6044 } # Henry Wallace
-command = { type = setflag which = OPPOSITION_WINS }
-command = { type = dissent value = -5 }
+	ai_chance = 15
+	name = "Democrat"
+	command = { type = headofstate which = 6236 } # Cordell Hull
+	command = { type = headofgovernment which = 6044 } # Henry Wallace
+	command = { type = setflag which = OPPOSITION_WINS }
+	command = { type = dissent value = -5 }
 }
-
 action_b = {
-ai_chance = 15
-name = "Republican"
-command = { type = headofstate which = 6239 } # Knox
-command = { type = headofgovernment which = 6241 } # Dewey
-command = { type = setflag which = OPPOSITION_WINS }
-command = { type = dissent value = -5 }
+	ai_chance = 15
+	name = "Republican"
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6037 } # Arthur James
+	command = { type = setflag which = OPPOSITION_WINS }
+	command = { type = dissent value = -5 }
 }
-
 action_c = {
-ai_chance = 70
-name = "Patriotic"
-command = { type = headofstate which = 6256 } #Eisenhower
-command = { type = dissent value = 5 }
+	ai_chance = 70
+	name = "Patriotic"
+	command = { type = headofstate which = 6260 } #Hanford MacNider
+	command = { type = headofgovernment which = 6257 } #Dwight Eisenhower
+	command = { type = dissent value = 5 }
 }
 }
 
@@ -253,44 +242,44 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-headofstate = 6256 #fascist Eisenhower
-flag = USA_MIN_JUNTA
+	government = fascist
+	headofstate = 6260 #Hanford MacNider
+	flag = USA_MIN_JUNTA
 }
-
-date = { day = 1 month = january year = 1944 }
-offset = 30
-deathdate = { day = 1 month = january year = 1960 }
 
 name = "1944 presidential elections"
 desc = "The Patriotic Party connected with MacArthur and his cabinet has a great chance of winning the Presidential elections. The voters are stunned with pro-government propaganda and police actions against the opposition are working. It seems that the government will once again win and MacArthur's puppet will be the new President."
 picture = "us1936elections"
 
+date = { day = 1 month = january year = 1944 }
+offset = 30
+deathdate = { day = 1 month = january year = 1960 }
+
 action_a ={
-ai_chance = 15
-name = "Democrat"
-command = { type = headofstate which = 6243 } # Hull
-command = { type = headofgovernment which = 6046 } # Truman
-command = { type = setflag which = OPPOSITION_WINS }
-command = { type = dissent value = -5 }
+	ai_chance = 15
+	name = "Democrat"
+	command = { type = headofstate which = 6142 } # James Byrnes
+	command = { type = headofgovernment which = 6036 } # Scott Lucas
+	command = { type = setflag which = OPPOSITION_WINS }
+	command = { type = dissent value = -5 }
 }
-
 action_b = {
-ai_chance = 15
-name = "Republican"
-command = { type = headofstate which = 6038 } # Dewey
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = setflag which = OPPOSITION_WINS }
-command = { type = dissent value = -5 }
+	ai_chance = 15
+	name = "Republican"
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6050 } # John Bricker
+	command = { type = setflag which = OPPOSITION_WINS }
+	command = { type = dissent value = -5 }
+}
+action_c = {
+	ai_chance = 70
+	name = "Patriotic"
+	command = { type = headofstate which = 6260 } #Hanford MacNider
+	command = { type = headofgovernment which = 6257 } #Dwight Eisenhower
+	command = { type = dissent value = 5 }
+}
 }
 
-action_c = {
-ai_chance = 70
-name = "Patriotic"
-command = { type = headofstate which = 6256 } #Eisenhower
-command = { type = dissent value = 5 }
-}
-}
 
 event = {
 id = 906530
@@ -299,9 +288,9 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-headofstate = 6256 #fascist Eisenhower
-flag = USA_MIN_JUNTA
+	government = fascist
+	headofstate = 6260 #Hanford MacNider
+	flag = USA_MIN_JUNTA
 }
 
 date = { day = 1 month = january year = 1948 }
@@ -313,28 +302,27 @@ desc = "The Patriotic Party connected with MacArthur and his cabinet has a great
 picture = "us1936elections"
 
 action_a ={
-ai_chance = 15
-name = "Democrat"
-command = { type = headofstate which = 6032 } # Walace
-command = { type = headofgovernment which = 6247 } # Harriman
-command = { type = setflag which = OPPOSITION_WINS }
-command = { type = dissent value = -5 }
+	ai_chance = 15
+	name = "Democrat"
+	command = { type = headofstate which = 6032 } #Henry A. Wallace
+	command = { type = headofgovernment which = 6251 } # Adlai Stevenson II
+	command = { type = setflag which = OPPOSITION_WINS }
+	command = { type = dissent value = -5 }
 }
-
 action_b = {
-ai_chance = 15
-name = "Republican"
-command = { type = headofstate which = 6038 } # Dewey
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = setflag which = OPPOSITION_WINS }
-command = { type = dissent value = -5 }
+	ai_chance = 15
+	name = "Republican"
+	command = { type = headofstate which = 6038 } # Thomas Dewey
+	command = { type = headofgovernment which = 6054 } #Edward Martin
+	command = { type = setflag which = OPPOSITION_WINS }
+	command = { type = dissent value = -5 }
 }
-
 action_c = {
-ai_chance = 70
-name = "Patriotic"
-command = { type = headofstate which = 6256 } #Eisenhower
-command = { type = dissent value = 5 }
+	ai_chance = 70
+	name = "Patriotic"
+	command = { type = headofstate which = 6260 } #Hanford MacNider
+	command = { type = headofgovernment which = 6257 } #Dwight Eisenhower
+	command = { type = dissent value = 5 }
 }
 }
 
@@ -347,40 +335,39 @@ random = no
 country = USA
 style = 2
 
-date = { day = 1 month = january year = 1938 }
-offset = 30
-deathdate = { day = 29 month = december year = 1960 }
-
 trigger = {
-government = fascist
-flag = OPPOSITION_WINS
+	government = fascist
+	flag = OPPOSITION_WINS
 }
 
 name = "Opposition wins elections!"
 desc = "People still don't think we are suited enough to form an cabinet. Even our forgeries during elections didn't help us to achieve victory. Now when the new President will be appointed the Army and MacArthur will loose significant authority. It's also inevitable that future President will abide by the Constitution and there will no place for an old general..."
 picture = "macarthurdic"
 
-action_a = {
-ai_chance = 30
-name = "Democratize!"
-command = { type = set_domestic which = democratic value = 9 }
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = clrflag which = OPPOSITION_WINS }
-command = { type = dissent value = -20 }
-}
+date = { day = 1 month = january year = 1938 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
 
+action_a = {
+	ai_chance = 30
+	name = "Democratize!"
+	command = { type = set_domestic which = democratic value = 9 }
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = clrflag which = OPPOSITION_WINS }
+	command = { type = dissent value = -20 }
+}
 action_b = {
-ai_chance = 70
-name = "MacArthur declares martial law, and becomes the new President"
-command = { type = headofstate which = 6208 }
-command = { type = headofgovernment which = 6257 }
-command = { type = dissent value = 10 }
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = OPPOSITION_WINS }
-command = { type = setflag which = USA_TOTALITARIAN }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0 }
+	ai_chance = 70
+	name = "MacArthur declares martial law, and becomes the new President"
+	command = { type = headofstate which = 6208 }
+	command = { type = headofgovernment which = 6261 } #Hanford MacNider
+	command = { type = dissent value = 10 }
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = OPPOSITION_WINS }
+	command = { type = setflag which = USA_TOTALITARIAN }
+	command = { type = set_domestic which = democratic value = 3 }
+	command = { type = set_domestic which = political_left value = 2 }
 }
 }
 
@@ -393,23 +380,23 @@ random = no
 country = USA
 style = 2
 
-date = { day = 1 month = january year = 1938 }
-offset = 60
-deathdate = { day = 1 month = january year = 1960 }
-
 trigger = {
-government = fascist
-headofstate = 6208 #fascist MacArthur
-flag = USA_TOTALITARIAN
+	government = fascist
+	headofstate = 6208 #fascist MacArthur
+	flag = USA_TOTALITARIAN
 }
 
 name = "Opposition becomes more radical"
 desc = "Yesterday pro-democratic politicians like Garner started plotting to overthrow the government. Various organizations are sprouting across the whole USA, due to MacArthur's move. What's worse, old enemies like the Syndicalists and nationalists are emerging back from their political graves. Let's not forget about the typical American who is now dirty poor and desperate. Everything is against us..."
 picture = "CSA"
 
+date = { day = 1 month = january year = 1940 }
+offset = 60
+deathdate = { day = 1 month = january year = 1960 }
+
 action_a = {
-name = "Should I worry?"
-command = { type = dissent value = 10 }
+	name = "Should I worry?"
+	command = { type = dissent value = 10 }
 }
 }
 
@@ -422,73 +409,72 @@ random = no
 country = USA
 style = 2
 
-date = { day = 1 month = january year = 1939 }
-offset = 280
-deathdate = { day = 1 month = january year = 1952 }
-
 trigger = {
-government = fascist
-headofstate = 6208 #fascist MacArthur
-random = 40
-event = 906534
+	government = fascist
+	headofstate = 6208 #fascist MacArthur
+	random = 40
+	event = 906534
 }
 
 name = "Mac Arthur was killed!"
 desc = "Today MacArthur has been killed during a visit to a farm belonging to an immigrant from Europe, Boleslaw Gebert. Nobody knows who will take the Presidential seat, since the Consitution was thrown away and there are no sucession plans. The country is on the verge of chaos!"
 picture = "macarthurdic"
 
+date = { day = 1 month = january year = 1944 }
+offset = 280
+deathdate = { day = 1 month = january year = 1952 }
+
 action_a = {
-ai_chance = 30
-name = "Eisenhower wins the struggle for the power!"
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = sleepminister which = 6242 }
-command = { type = sleepleader which = 60250 }
-#command = { type = sleepteam which = 140 }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0  }
-command = { type = headofstate which = 6256 }
-command = { type = headofgovernment which = 6257 }
-command = { type = dissent value = 10 }
+	ai_chance = 30
+	name = "Eisenhower wins the struggle for the power!"
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = sleepminister which = 6242 }
+	command = { type = sleepleader which = 60622 }
+	command = { type = set_domestic which = democratic value = 3 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { type = headofstate which = 6256 }
+	command = { type = headofgovernment which = 6264 } #Alfred Gruenther
+	command = { type = dissent value = 10 }
 }
-
 action_b = {
-ai_chance = 40
-name = "Chaos overtakes Washington"
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = sleepminister which = 6242 }
-command = { type = sleepleader which = 60250 }
-#command = { type = sleepteam which = 140 }
-command = { type = trigger which = 906536 }
-command = { type = dissent value = 15 }
+	ai_chance = 40
+	name = "Chaos overtakes Washington"
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = sleepminister which = 6242 }
+	command = { type = sleepleader which = 60622 }
+	command = { type = wakeminister which = 6570 } #Gerald Nye
+	command = { type = wakeminister which = 6571 } #Archibald Roosevelt
+	command = { type = wakeminister which = 6572 } #Howard Buffett
+	command = { type = trigger which = 906536 }
+	command = { type = dissent value = 15 }
+}
+action_c = {
+	ai_chance = 40
+	name = "Pro-democratic circles retake Washington!"
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = sleepminister which = 6242 }
+	command = { type = sleepleader which = 60622 }
+	command = { type = dissent value = -5 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6250 } # John Bricker
+	command = { type = foreignminister which = 6066 } # Arthur Vandenberg
+	command = { type = armamentminister which = 6354 } # Harold E. Talbott Jr.
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = clrflag which = USA_TOTALITARIAN }
+}
 }
 
-action_c = {
-ai_chance = 40
-name = "Pro-democratic circles retake Washington!"
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = sleepminister which = 6242 }
-command = { type = sleepleader which = 60250 }
-#command = { type = sleepteam which = 140 }
-command = { type = dissent value = -5 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = headofstate which = 6038 } # Dewey
-command = { type = headofgovernment which = 6250 } # Bricker
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6091 } # Vinson
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = clrflag which = USA_TOTALITARIAN }
-}
-}
 
 event = {
 id = 906536
@@ -503,10 +489,14 @@ picture = "CSA"
 action_a = {
 name= "So the USA is no longer a superpower?"
 command = { type = dissent value = 15 }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0  }
-command = { type = headofstate which = 6256 }
-command = { type = headofgovernment which = 6257 }
+command = { type = set_domestic which = democratic value = 3 }
+command = { type = set_domestic which = political_left value = 2 }
+command = { type = set_domestic which = freedom value = 2 }
+command = { type = set_domestic which = defense_lobby value = 1 }
+command = { type = set_domestic which = interventionism value = 1 }
+command = { type = headofstate which = 6570 } #Gerald Nye
+command = { type = headofgovernment which = 6571 } #Archibald Roosevelt
+command = { type = armamentminister which = 6572 } #Howard Buffett
 command = { type = strength which = land when = 1 where = 0 value = -0.20 } #land units lose 20% strength (deserters)
 command = { type = demobilize which = battleship when = 0 where = 0 value = 0 }
 command = { type = demobilize which = carrier when = 0 where = 0 value = 0 }
@@ -861,12 +851,12 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-OR = {
-flag = USA_MAX_JUNTA
-flag = USA_MIN_JUNTA
-flag = USA_TOTALITARIAN
-}
+	government = fascist
+	OR = {
+		flag = USA_MAX_JUNTA
+		flag = USA_MIN_JUNTA
+		flag = USA_TOTALITARIAN
+	}
 }
 
 date = { day = 1 month = january year = 1938 }
@@ -878,18 +868,18 @@ desc = "Freedom of spech was one of the most important freedoms which distinigui
 picture = "diplomatic_campaign"
 
 action_a = {
-ai_chance = 75
-name = "Censor the press"
-command = { type = domestic which = freedom value = -1 }
-command = { type = domestic which = democratic value = -2 }
+	ai_chance = 75
+	name = "Censor the press"
+	command = { type = domestic which = freedom value = -1 }
+	command = { type = domestic which = democratic value = -2 }
+}
+action_b = {
+	ai_chance = 25
+	name = "Don't censor the press"
+	command = { type = dissent value = -3}
+}
 }
 
-action_b = {
-ai_chance = 25
-name = "Don't censor the press"
-command = { type = dissent value = -3}
-}
-}
 ################################################################
 #Protestors
 ################################################################
@@ -900,16 +890,16 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-NOT = {
-exists = CSA
-exists = TEX
-}
-OR = {
-flag = USA_MAX_JUNTA
-flag = USA_MIN_JUNTA
-flag = USA_TOTALITARIAN
-}
+	government = fascist
+	NOT = {
+		exists = CSA
+		exists = TEX
+	}
+	OR = {
+		flag = USA_MAX_JUNTA
+		flag = USA_MIN_JUNTA
+		flag = USA_TOTALITARIAN
+	}
 }
 
 date = { day = 1 month = january year = 1938 }
@@ -921,32 +911,27 @@ desc = "The opposition circles, to which many artists, professors, intellectuals
 picture = "Depression1"
 
 action_a = {
-ai_chance = 25
-name = "Send them to jails!"
-command = { type = dissent value = 5 }
-command = { type = domestic which = democratic value = -2 }
+	ai_chance = 25
+	name = "Send them to jails!"
+	command = { type = dissent value = 5 }
+	command = { type = domestic which = democratic value = -2 }
 }
-
 action_b = {
-ai_chance = 25
-name = "Exile them to Canada!"
-trigger = {
-NOT = {
-war = { country = USA country = CAN }
+	ai_chance = 25
+	name = "Exile them to Canada!"
+	trigger = { NOT = { war = { country = USA country = CAN } } }
+	command = { type = dissent value = 4 }
+	command = { type = trigger which = 906539 }
+	command = { type = domestic which = democratic value = -1 }
+	command = { type = relation which = CAN value = -10 }
 }
+action_c = {
+	ai_chance = 50
+	name = "Do nothing"
+	command = { type = dissent value = -3 }
 }
-command = { type = dissent value = 4 }
-command = { type = trigger which = 906539 }
-command = { type = domestic which = democratic value = -1 }
-command = { type = relation which = CAN value = -10 }
 }
 
-action_c = {
-ai_chance = 50
-name = "Do nothing"
-command = { type = dissent value = -3 }
-}
-}
 
 event = {
 id = 906539
@@ -959,13 +944,14 @@ desc = "MacArthur's madness must be stopped. He decided to throw away all protes
 picture = "Depression1"
 
 action_a = {
-name = "We welcome them"
-command = { type = manpowerpool value = 40 }
-command = { type = money value = 50 }
-command = { type = dissent value = 1 }
-command = { type = relation which = USA value = -10 }
+	name = "We welcome them"
+	command = { type = manpowerpool value = 40 }
+	command = { type = money value = 50 }
+	command = { type = dissent value = 1 }
+	command = { type = relation which = USA value = -10 }
 }
 }
+
 #################################################
 #Education reforms
 #################################################
@@ -976,12 +962,12 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-OR = {
-flag = USA_MAX_JUNTA
-flag = USA_MIN_JUNTA
-flag = USA_TOTALITARIAN
-}
+	government = fascist
+	OR = {
+		flag = USA_MAX_JUNTA
+		flag = USA_MIN_JUNTA
+		flag = USA_TOTALITARIAN
+	}
 }
 
 date = { day = 1 month = july year = 1938 }
@@ -994,23 +980,21 @@ desc = "We need to reform the educational system. Schools are poor, and teachers
 picture = "Depression1"
 
 action_a = {
-ai_chance = 60
-name = "Army education is the future of the United States"
-command = { type = domestic which = freedom value = -1 }
-command = { type = domestic which = professional_army value = 2 }
-command = { type = money value = -100 }
+	ai_chance = 60
+	name = "Army education is the future of the United States"
+	command = { type = domestic which = freedom value = -1 }
+	command = { type = domestic which = professional_army value = 2 }
+	command = { type = money value = -100 }
 }
-
 action_b = {
-ai_chance = 40
-name = "Patriotic education is enough"
-command = { type = domestic which = freedom value = -1 }
-command = { type = money value = -25 }
+	ai_chance = 40
+	name = "Patriotic education is enough"
+	command = { type = domestic which = freedom value = -1 }
+	command = { type = money value = -25 }
 }
-
 action_c = {
-name = "Do nothing"
-command = { type = dissent value = 1 }
+	name = "Do nothing"
+	command = { type = dissent value = 1 }
 }
 }
 ##########################################################
@@ -1023,12 +1007,12 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-OR = {
-flag = USA_MAX_JUNTA
-flag = USA_MIN_JUNTA
-flag = USA_TOTALITARIAN
-}
+	government = fascist
+	OR = {
+		flag = USA_MAX_JUNTA
+		flag = USA_MIN_JUNTA
+		flag = USA_TOTALITARIAN
+	}
 }
 
 name = "Confiscation of big fortunes"
@@ -1039,20 +1023,19 @@ date = { day = 1 month = january year = 1938 }
 offset = 60
 deathdate = { day = 29 month = december year = 1945 }
 
-
 action_a = {
-ai_chance = 50
-name = "Confiscate, Rockefellers are enemies of the average Joe"
-command = { type = domestic which = democratic value = -1 }
-command = { type = domestic which = free_market value = -2 }
+	ai_chance = 50
+	name = "Confiscate, Rockefellers are enemies of the average Joe"
+	command = { type = domestic which = democratic value = -1 }
+	command = { type = domestic which = free_market value = -2 }
+}
+action_b = {
+	ai_chance = 50
+	name = "Don't confiscate, we are not Bolsheviks"
+	command = { type = domestic which = free_market value = 1 }
+}
 }
 
-action_b = {
-ai_chance = 50
-name = "Don't confiscate, we are not Bolsheviks"
-command = { type = domestic which = free_market value = 1 }
-}
-}
 
 event = {
 id = 906542
@@ -1060,37 +1043,37 @@ random = no
 country = USA
 style = 2
 
-date = { day = 1 month = january year = 1938 }
-offset = 60
-deathdate = { day = 29 month = december year = 1945 }
-
 trigger = {
-government = fascist
-OR = {
-flag = USA_MAX_JUNTA
-flag = USA_MIN_JUNTA
-flag = USA_TOTALITARIAN
-}
+	government = fascist
+	OR = {
+		flag = USA_MAX_JUNTA
+		flag = USA_MIN_JUNTA
+		flag = USA_TOTALITARIAN
+	}
 }
 
 name = "Delegalization of the Unions?"
 desc = "Many unions are prodemocratic and their supporters are known for sorrowful cries for restoring 'real' democracy in the United States of America. We need to take over the unions or allow only our unions to operate."
 picture = "diplomatic_campaign"
 
+date = { day = 1 month = january year = 1938 }
+offset = 60
+deathdate = { day = 29 month = december year = 1945 }
+
 action_a = {
-ai_chance = 70
-name = "Trade unions must be under our strict control"
-command = { type = domestic which = freedom value = -1 }
-command = { type = domestic which = democratic value = -1 }
-command = { type = dissent value = 3 }
+	ai_chance = 70
+	name = "Trade unions must be under our strict control"
+	command = { type = domestic which = freedom value = -1 }
+	command = { type = domestic which = democratic value = -1 }
+	command = { type = dissent value = 3 }
+}
+action_b ={
+	ai_chance = 30
+	name = "Workers need free institutions"
+	command = { type = dissent value = -3 }
+}
 }
 
-action_b ={
-ai_chance = 30
-name = "Workers need free institutions"
-command = { type = dissent value = -3 }
-}
-}
 
 event = {
 id = 906543
@@ -1099,12 +1082,12 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-OR = {
-flag = USA_MAX_JUNTA
-flag = USA_MIN_JUNTA
-flag = USA_TOTALITARIAN
-}
+	government = fascist
+	OR = {
+		flag = USA_MAX_JUNTA
+		flag = USA_MIN_JUNTA
+		flag = USA_TOTALITARIAN
+	}
 }
 
 date = { day = 1 month = january year = 1939 }
@@ -1116,18 +1099,18 @@ desc = "Many people from government are beliving that we should change the Const
 picture = "diplomatic_campaign"
 
 action_a = {
-ai_chance = 99
-name = "Change, otherwise we won't stand long"
-command = { type = dissent value = 5 }
-command = { type = domestic which = freedom value = -1 }
+	ai_chance = 99
+	name = "Change, otherwise we won't stand long"
+	command = { type = dissent value = 5 }
+	command = { type = domestic which = freedom value = -1 }
+}
+action_b = {
+	ai_chance = 1
+	name = "No change in policy!"
+	command = { type = dissent value = 1 }
+}
 }
 
-action_b = {
-ai_chance = 0
-name = "No change in policy!"
-command = { type = dissent value = 1 }
-}
-}
 
 event = {
 id = 906544
@@ -1136,8 +1119,8 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-flag = USA_MAX_JUNTA
+	government = fascist
+	flag = USA_MAX_JUNTA
 }
 
 name = "Elections to Senate and Lower House - 1940"
@@ -1148,38 +1131,36 @@ date = { day = 1 month = january year = 1940 }
 offset = 180
 deathdate = { day = 29 month = december year = 1941 }
 
-
 action_a = {
-ai_chance = 30
-name = "Mac Arthur throws away the Constitution!"
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = setflag which = USA_TOTALITARIAN }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0 }
+	ai_chance = 25
+	name = "Mac Arthur throws away the Constitution!"
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = setflag which = USA_TOTALITARIAN }
+	command = { type = set_domestic which = democratic value = 3 }
+	command = { type = set_domestic which = political_left value = 2 }
 }
-
 action_b = {
-ai_chance = 70
-name = "Patriotic Party wins by manipulation"
-command = { type = dissent value = 2 }
+	ai_chance = 70
+	name = "Patriotic Party wins by manipulation"
+	command = { type = dissent value = 2 }
+}
+action_c = {
+	ai_chance = 5
+	name = "Democratic opposition is fully allowed to run and wins!"
+	command = { type = set_domestic which = democratic value = 9 }
+	command = { type = set_domestic which = freedom value = 9 }
+	command = { type = set_domestic which = political_left value = 5 }
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = headofstate which = 6243 } #Cordell Hull
+	command = { type = headofgovernment which = 6044 } #Henry A. Wallace
+	command = { type = foreignminister which = 6060 } # Edward Stettinius Jr.
+	command = { type = armamentminister which = 6305 } # Marriner Eccles
+	command = { type = ministerofsecurity which = 6185 } # Harold Ickes
+	command = { type = dissent value = -10 }
+}
 }
 
-action_c = {
-ai_chance = 5
-name = "Democratic opposition is fully allowed to run and wins!"
-command = { type = set_domestic which = democratic value = 9 }
-command = { type = set_domestic which = freedom value = 9 }
-command = { type = set_domestic which = political_left value = 5 }
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = headofstate which = 6236 } # Garner
-command = { type = headofgovernment which = 6044 } # Henry Wallace
-command = { type = foreignminister which = 6003 } # Hull
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = dissent value = -10 }
-}
-}
 
 event = {
 id = 906545
@@ -1188,8 +1169,8 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-flag = USA_MAX_JUNTA
+	government = fascist
+	flag = USA_MAX_JUNTA
 }
 
 name = "Boycott of elections"
@@ -1201,10 +1182,11 @@ offset = 60
 deathdate = { day = 29 month = december year = 1945 }
 
 action_a = {
-name = "Too bad, Patriotic Party will have long-desired majority"
-command = { type = dissent value = 3 }
+	name = "Too bad, Patriotic Party will have long-desired majority"
+	command = { type = dissent value = 3 }
 }
 }
+
 
 event = {
 id = 906546
@@ -1213,9 +1195,9 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-event = 906545
-flag = USA_MAX_JUNTA
+	government = fascist
+	event = 906545
+	flag = USA_MAX_JUNTA
 }
 
 name = "Elections to Senate and Lower House - 1944"
@@ -1226,39 +1208,37 @@ date = { day = 1 month = january year = 1944 }
 offset = 180
 deathdate = { day = 29 month = december year = 1945 }
 
-
 action_a = {
-ai_chance = 5
-name = "MacArthur throws away the Constitution!"
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = setflag which = USA_TOTALITARIAN }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0 }
+	ai_chance = 5
+	name = "MacArthur throws away the Constitution!"
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = setflag which = USA_TOTALITARIAN }
+	command = { type = set_domestic which = democratic value = 2 }
+	command = { type = set_domestic which = political_left value = 0 }
 }
-
 action_b = {
-ai_chance = 90
-name = "Patriotic Party wins a majority by manipulation and fraud"
-command = { type = dissent value = 1 }
+	ai_chance = 90
+	name = "Patriotic Party wins a majority by manipulation and fraud"
+	command = { type = dissent value = 1 }
+}
+action_c = {
+	ai_chance = 5
+	name = "Democratic opposition is fully allowed to run and wins!"
+	command = { type = set_domestic which = democratic value = 9 }
+	command = { type = set_domestic which = freedom value = 9 }
+	command = { type = set_domestic which = political_left value = 5 }
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = headofstate which = 6032 } #Henry A. Wallace
+	command = { type = headofgovernment which = 6047 } #Alben W. Barkley
+	command = { type = foreignminister which = 6275 } # Sumner Welles
+	command = { type = armamentminister which = 6305 } # Marriner Eccles
+	command = { type = ministerofsecurity which = 6106 } # Francis B. Biddle
+	command = { type = dissent value = -10 }
+}
 }
 
-action_c = {
-ai_chance = 5
-name = "Democratic opposition is fully allowed to run and wins!"
-command = { type = set_domestic which = democratic value = 9 }
-command = { type = set_domestic which = freedom value = 9 }
-command = { type = set_domestic which = political_left value = 5 }
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = headofstate which = 6243 } # Hull
-command = { type = headofgovernment which = 6046 } # Truman
-command = { type = foreignminister which = 6203 } # Connally
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = dissent value = -10 }
-}
-}
 
 event = {
 id = 906526
@@ -1267,8 +1247,8 @@ country = USA
 style = 2
 
 trigger = {
-government = fascist
-flag = USA_MAX_JUNTA
+	government = fascist
+	flag = USA_MAX_JUNTA
 }
 
 name = "Elections to Senate and Lower House - 1948"
@@ -1279,37 +1259,34 @@ date = { day = 1 month = january year = 1948 }
 offset = 180
 deathdate = { day = 1 month = january year = 1949 }
 
-
 action_a = {
-ai_chance = 5
-name = "MacArthur throws away the Constitution!"
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = setflag which = USA_TOTALITARIAN }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0 }
+	ai_chance = 5
+	name = "MacArthur throws away the Constitution!"
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = setflag which = USA_TOTALITARIAN }
+	command = { type = set_domestic which = democratic value = 2 }
+	command = { type = set_domestic which = political_left value = 0 }
 }
-
 action_b = {
-ai_chance = 80
-name = "Patriotic Party wins a majority by manipulation and fraud"
-command = { type = dissent value = 1 }
+	ai_chance = 80
+	name = "Patriotic Party wins a majority by manipulation and fraud"
+	command = { type = dissent value = 1 }
 }
-
 action_c = {
-ai_chance = 15
-name = "Democratic opposition is fully allowed to run and wins!"
-command = { type = set_domestic which = democratic value = 9 }
-command = { type = set_domestic which = freedom value = 9 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = headofstate which = 6255 } # Thurmoud
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6253 } # Lodge
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = dissent value = -10 }
+	ai_chance = 15
+	name = "Democratic opposition is fully allowed to run and wins!"
+	command = { type = set_domestic which = democratic value = 9 }
+	command = { type = set_domestic which = freedom value = 9 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = headofstate which = 6038 } # Dewey
+	command = { type = headofgovernment which = 6054 } # Edward Martin
+	command = { type = foreignminister which = 6170 } # Hugh Scott
+	command = { type = armamentminister which = 6337 } # Ferdinand A. Eberstadt
+	command = { type = ministerofsecurity which = 6169 } # Walter H. Judd
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = dissent value = -10 }
 }
 }
 
@@ -1323,11 +1300,9 @@ country = USA
 style = 2
 
 trigger = {
-headofstate = 6256 #fascist Eisenhower
-flag = USA_MIN_JUNTA
-NOT= {
-event = 906535
-}
+	headofstate = 6256 #fascist Eisenhower
+	flag = USA_MIN_JUNTA
+	NOT = { event = 906535 }
 }
 
 name = "Mac Arthur dies!"
@@ -1339,52 +1314,53 @@ offset = 180
 deathdate = { day = 29 month = december year = 1955 }
 
 action_a = {
-ai_chance = 50
-name = "Democratic opposition takes power"
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = dissent value = -10 }
-command = { type = set_domestic which = democratic value = 9 }
-command = { type = set_domestic which = freedom value = 9 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = headofstate which = 6255 } # Thurmoud
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6253 } # Lodge
+	ai_chance = 60
+	name = "Democratic opposition takes power"
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = dissent value = -10 }
+	command = { type = set_domestic which = democratic value = 9 }
+	command = { type = set_domestic which = freedom value = 9 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = headofstate which = 6038 } # Dewey
+	command = { type = headofgovernment which = 6049 } # Harold Stassen
+	command = { type = foreignminister which = 6170 } # Hugh Scott
+	command = { type = armamentminister which = 6337 } # Ferdinand A. Eberstadt
+	command = { type = ministerofsecurity which = 6169 } # Walter H. Judd
 }
-
-action_b = {
-ai_chance = 25
-name = "Eisenhower retains power!"
-command = { type = clrflag which = USA_MIN_JUNTA }
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = setflag which = USA_TOTALITARIAN }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0 }
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
+	action_b = {
+	ai_chance = 30
+	name = "Eisenhower retains power!"
+	command = { type = clrflag which = USA_MIN_JUNTA }
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = setflag which = USA_TOTALITARIAN }
+	command = { type = set_domestic which = democratic value = 3 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
 }
-
 action_c = {
-ai_chance = 10
-name = "Chaos overtakes Washington"
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = sleepminister which = 6242 }
-command = { type = sleepleader which = 60250 }
-#command = { type = sleepteam which = 140 }
-command = { type = trigger which = 906536 }
-command = { type = dissent value = 15 }
+	ai_chance = 10
+	name = "Chaos overtakes Washington"
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = sleepminister which = 6242 }
+	command = { type = sleepleader which = 60622 }
+	command = { type = wakeminister which = 6570 } #Gerald Nye
+	command = { type = wakeminister which = 6571 } #Archibald Roosevelt
+	command = { type = wakeminister which = 6572 } #Howard Buffett
+	command = { type = trigger which = 906536 }
+	command = { type = dissent value = 15 }
 }
 }
+
 #########################################################################
 #Death of Mac Arthur
 #########################################################################
@@ -1395,11 +1371,11 @@ country = USA
 style = 2
 
 trigger = {
-headofstate = 6208 #fascist MacArthur
-OR = {
-flag = USA_MAX_JUNTA
-flag = USA_TOTALITARIAN
-}
+	headofstate = 6208 #fascist MacArthur
+	OR = {
+		flag = USA_MAX_JUNTA
+		flag = USA_TOTALITARIAN
+	}
 }
 
 name = "Mac Arthur dies!"
@@ -1411,57 +1387,58 @@ offset = 180
 deathdate = { day = 29 month = december year = 1955 }
 
 action_a = {
-ai_chance = 30
-name = "Democratic opposition takes power"
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = dissent value = -10 }
-command = { type = set_domestic which = democratic value = 9 }
-command = { type = set_domestic which = freedom value = 9 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = sleepminister which = 6242 }
-command = { type = sleepleader which = 60250 }
-#command = { type = sleepteam which = 140 }
-command = { type = headofstate which = 6255 } # Thurmoud
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6253 } # Lodge
+	ai_chance = 30
+	name = "Democratic opposition takes power"
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = dissent value = -10 }
+	command = { type = set_domestic which = democratic value = 9 }
+	command = { type = set_domestic which = freedom value = 9 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = sleepminister which = 6242 }
+	command = { type = sleepleader which = 60622 }
+	command = { type = headofstate which = 6038 } # Dewey
+	command = { type = headofgovernment which = 6049 } # Harold Stassen
+	command = { type = foreignminister which = 6170 } # Hugh Scott
+	command = { type = armamentminister which = 6337 } # Ferdinand A. Eberstadt
+	command = { type = ministerofsecurity which = 6169 } # Walter H. Judd
 }
-
 action_b = {
-ai_chance = 35
-name = "Radical officers get into power!"
-command = { type = clrflag which = USA_MAX_JUNTA }
-command = { type = setflag which = USA_TOTALITARIAN }
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 0 }
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = sleepminister which = 6242 }
-command = { type = sleepleader which = 60250 }
-#command = { type = sleepteam which = 140 }
+	ai_chance = 35
+	name = "Radical officers get into power!"
+	command = { type = clrflag which = USA_MAX_JUNTA }
+	command = { type = setflag which = USA_TOTALITARIAN }
+	command = { type = set_domestic which = democratic value = 3 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { type = headofstate which = 6263 } # Alfred Gruenther
+	command = { type = headofgovernment which = 6268 } # Lyman Lemnitzer
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = sleepminister which = 6242 }
+	command = { type = sleepleader which = 60622 }
+}
+action_c = {
+	ai_chance = 35
+	name = "Chaos overtakes Washington"
+	command = { type = sleepminister which = 6181 }
+	command = { type = sleepminister which = 6182 }
+	command = { type = sleepminister which = 6208 }
+	command = { type = sleepminister which = 6238 }
+	command = { type = sleepminister which = 6242 }
+	command = { type = sleepleader which = 60622 }
+	command = { type = wakeminister which = 6570 } #Gerald Nye
+	command = { type = wakeminister which = 6571 } #Archibald Roosevelt
+	command = { type = wakeminister which = 6572 } #Howard Buffett
+	command = { type = trigger which = 906536 }
+	command = { type = dissent value = 15 }
+}
 }
 
-action_c = {
-ai_chance = 40
-name = "Chaos overtakes Washington"
-command = { type = sleepminister which = 6181 }
-command = { type = sleepminister which = 6182 }
-command = { type = sleepminister which = 6208 }
-command = { type = sleepminister which = 6238 }
-command = { type = sleepminister which = 6242 }
-command = { type = sleepleader which = 60250 }
-#command = { type = sleepteam which = 140 }
-command = { type = trigger which = 906536 }
-command = { type = dissent value = 15 }
-}
-}
 
 event = {
 id = 906547
@@ -1469,99 +1446,97 @@ country = U06
 style = 2
 
 trigger =  {
-flag = U06_LIB
-NOT = {
-government = communist
-alliance = { country = U06 country = USA }
-alliance = { country = U06 country = GER }
-alliance = { country = U06 country = JAP }
-alliance = { country = U06 country = CAN }
-alliance = { country = U06 country = FRA }
-alliance = { country = U06 country = ENG }
-alliance = { country = U06 country = U07 }
-alliance = { country = U06 country = RUS }
-ispuppet = U06
-atwar = U06
+	flag = U06_LIB
+	NOT = {
+		government = communist
+		alliance = { country = U06 country = USA }
+		alliance = { country = U06 country = GER }
+		alliance = { country = U06 country = JAP }
+		alliance = { country = U06 country = CAN }
+		alliance = { country = U06 country = FRA }
+		alliance = { country = U06 country = ENG }
+		alliance = { country = U06 country = U07 }
+		alliance = { country = U06 country = RUS }
+		ispuppet = U06
+		atwar = U06
+	}
 }
-}
-
-date = { day = 1 month = january year = 1936 }
-offset = 70
-deathdate = { day = 29 month = december year = 1960 }
 
 name = "Choosing the sides"
 desc = "Although the independence of the Federate Union is for the moment secured we must look to the bigger players on the international scene if we want to secure the long-term survival of our state..."
 picture = "diplomatic_campaign"
 
+date = { day = 1 month = january year = 1936 }
+offset = 70
+deathdate = { day = 29 month = december year = 1960 }
+
 action_a = {
-ai_chance = 70
-name = "Join forces with the Entente"
-trigger = {
-exists = CAN
-NOT = { ispuppet = CAN }
-participant = { country = CAN value = 1 }
+	ai_chance = 70
+	name = "Join forces with the Entente"
+	trigger = {
+		exists = CAN
+		NOT = { ispuppet = CAN }
+		participant = { country = CAN value = 1 }
+	}
+	command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906548 }
+	command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906549 }
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U06_LIB }
+	command = { type = relation which = CAN value = 20 }
 }
-command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906548 }
-command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906549 }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U06_LIB }
-command = { type = relation which = CAN value = 20 }
-}
-
 action_b = {
-ai_chance = 50
-name = "Join forces with Mitteleuropa"
-trigger = {
-exists = GER
-NOT = { ispuppet = GER }
-control = { province = 163 data = GER }
-control = { province = 145 data = GER }
-NOT = { war = { country = GER country = CAN } }
-participant = { country = GER value = 2 }
+	ai_chance = 50
+	name = "Join forces with Mitteleuropa"
+	trigger = {
+		exists = GER
+		NOT = { ispuppet = GER }
+		control = { province = 163 data = GER }
+		control = { province = 145 data = GER }
+		NOT = { war = { country = GER country = CAN } }
+		participant = { country = GER value = 2 }
+	}
+	command = { type = trigger which = 906550 } # German response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U06_LIB }
+	command = { type = relation which = GER value = 20 }
 }
-command = { type = trigger which = 906550 } # German response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U06_LIB }
-command = { type = relation which = GER value = 20 }
-}
-
 action_c = {
-ai_chance = 10
-name = "Join forces with Russia"
-trigger = {
-exists = RUS
-control = { province = 691 data = RUS }
-control = { province = 1186 data = RUS }
-control = { province = 572 data = RUS }
-control = { province = 1162 data = RUS }
-NOT = {
-alliance = { country = RUS country = JAP }
-alliance = { country = RUS country = FRA }
-alliance = { country = RUS country = CAN }
-alliance = { country = RUS country = GER }
-ispuppet = RUS
-exists = TRA
-atwar = RUS
-flag = RUS_BOL
-exists = SOV
+	ai_chance = 10
+	name = "Join forces with Russia"
+	trigger = {
+		exists = RUS
+		control = { province = 691 data = RUS }
+		control = { province = 1186 data = RUS }
+		control = { province = 572 data = RUS }
+		control = { province = 1162 data = RUS }
+		NOT = {
+			alliance = { country = RUS country = JAP }
+			alliance = { country = RUS country = FRA }
+			alliance = { country = RUS country = CAN }
+			alliance = { country = RUS country = GER }
+			ispuppet = RUS
+			exists = TRA
+			atwar = RUS
+			flag = RUS_BOL
+			exists = SOV
+		}
+	}
+	command = { type = trigger which = 906551 } # Russian response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U06_LIB }
+	command = { type = relation which = RUS value = 20 }
 }
+action_d = {
+	ai_chance = 15
+	name = "Isolationism will protect us..."
+	command = { type = dissent value = -1 }
+	command = { type = belligerence which = TEX value = -10 }
 }
-command = { type = trigger which = 906551 } # Russian response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U06_LIB }
-command = { type = relation which = RUS value = 20 }
 }
 
-action_d = {
-ai_chance = 15
-name = "Isolationism will protect us..."
-command = { type = dissent value = -1 }
-command = { type = belligerence which = TEX value = -10  }
-}
-}
 
 event = {
 id = 906548
@@ -1573,21 +1548,20 @@ name = "Alliance with Federate Union?"
 desc = "The government of the Federate Union has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and the army. Do we want to create the Great Alliance between Federate Union and the British Empire in exile?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U06 }
-command = { type = relation which = U06 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U06 }
+	command = { type = relation which = U06 value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U06 value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U06 value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -1602,23 +1576,23 @@ name = "Alliance with Federate Union?"
 desc = "The government of the Federate Union has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between Federate Union and the British Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U06 }
-command = { type = relation which = U06 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U06 }
+	command = { type = relation which = U06 value = 50 }
+	command = { type = relation which = USA value = -10 }
+}
+action_b = {
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U06 value = -25 }
+	command = { type = relation which = USA value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U06 value = -25 }
-command = { type = relation which = USA value = 10 }
-}
-}
 
 event = {
 id = 906550
@@ -1630,21 +1604,20 @@ name = "Alliance with Federate Union?"
 desc = "The government of the Federate Union has announced recently that they want to join Mitteleuropa. It's not a sudden move because pro-Mitteleuropa policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between Federate Union and the German Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U06 }
-command = { type = relation which = U06 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U06 }
+	command = { type = relation which = U06 value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U06 value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U06 value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -1659,23 +1632,23 @@ name = "Alliance with the Federate Union?"
 desc = "The Federate Union wants to secure their independence via forming a new alliance with us. How we shall respond?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U06 }
-command = { type = relation which = U06 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U06 }
+	command = { type = relation which = U06 value = 50 }
+	command = { type = relation which = USA value = -10 }
+}
+action_b = {
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U06 value = -25 }
+	command = { type = relation which = USA value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U06 value = -25 }
-command = { type = relation which = USA value = 10 }
-}
-}
 
 event = {
 id = 906552
@@ -1683,99 +1656,97 @@ country = U10
 style = 2
 
 trigger =  {
-flag = U10_LIB
-NOT = {
-government = communist
-alliance = { country = U10 country = USA }
-alliance = { country = U10 country = GER }
-alliance = { country = U10 country = JAP }
-alliance = { country = U10 country = CAN }
-alliance = { country = U10 country = FRA }
-alliance = { country = U10 country = ENG }
-alliance = { country = U10 country = U07 }
-alliance = { country = U10 country = RUS }
-ispuppet = U10
-atwar = U10
+	flag = U10_LIB
+	NOT = {
+		government = communist
+		alliance = { country = U10 country = USA }
+		alliance = { country = U10 country = GER }
+		alliance = { country = U10 country = JAP }
+		alliance = { country = U10 country = CAN }
+		alliance = { country = U10 country = FRA }
+		alliance = { country = U10 country = ENG }
+		alliance = { country = U10 country = U07 }
+		alliance = { country = U10 country = RUS }
+		ispuppet = U10
+		atwar = U10
+	}
 }
-}
-
-date = { day = 1 month = january year = 1936 }
-offset = 70
-deathdate = { day = 29 month = december year = 1960 }
 
 name = "Choosing the sides"
 desc = "Although the independence of New England is for the moment secured we must look to bigger players on the international scene if we want to secure the long-term survival of our state..."
 picture = "diplomatic_campaign"
 
+date = { day = 1 month = january year = 1936 }
+offset = 70
+deathdate = { day = 29 month = december year = 1960 }
+
 action_a = {
-ai_chance = 70
-name = "Join forces with the Entente"
-trigger = {
-exists = CAN
-NOT = { ispuppet = CAN }
-participant = { country = CAN value = 1 }
+	ai_chance = 70
+	name = "Join forces with the Entente"
+	trigger = {
+		exists = CAN
+		NOT = { ispuppet = CAN }
+		participant = { country = CAN value = 1 }
+	}
+	command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906553 }
+	command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906554 }
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U10_LIB }
+	command = { type = relation which = CAN value = 20 }
 }
-command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906553 }
-command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906554 }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U10_LIB }
-command = { type = relation which = CAN value = 20 }
-}
-
 action_b = {
-ai_chance = 50
-name = "Join forces with Mitteleuropa"
-trigger = {
-exists = GER
-NOT = { ispuppet = GER }
-control = { province = 163 data = GER }
-control = { province = 145 data = GER }
-participant = { country = GER value = 2 }
-NOT = { war = { country = GER country = CAN } }
+	ai_chance = 50
+	name = "Join forces with Mitteleuropa"
+	trigger = {
+		exists = GER
+		NOT = { ispuppet = GER }
+		control = { province = 163 data = GER }
+		control = { province = 145 data = GER }
+		participant = { country = GER value = 2 }
+		NOT = { war = { country = GER country = CAN } }
+	}
+	command = { type = trigger which = 906555 } # German response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U10_LIB }
+	command = { type = relation which = GER value = 20 }
 }
-command = { type = trigger which = 906555 } # German response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U10_LIB }
-command = { type = relation which = GER value = 20 }
-}
-
 action_c = {
-ai_chance = 10
-name = "Join forces with Russia"
-trigger = {
-exists = RUS
-control = { province = 691 data = RUS }
-control = { province = 1186 data = RUS }
-control = { province = 572 data = RUS }
-control = { province = 1162 data = RUS }
-NOT = {
-alliance = { country = RUS country = JAP }
-alliance = { country = RUS country = FRA }
-alliance = { country = RUS country = CAN }
-alliance = { country = RUS country = GER }
-ispuppet = RUS
-exists = TRA
-atwar = RUS
-flag = RUS_BOL
-exists = SOV
+	ai_chance = 10
+	name = "Join forces with Russia"
+	trigger = {
+		exists = RUS
+		control = { province = 691 data = RUS }
+		control = { province = 1186 data = RUS }
+		control = { province = 572 data = RUS }
+		control = { province = 1162 data = RUS }
+		NOT = {
+			alliance = { country = RUS country = JAP }
+			alliance = { country = RUS country = FRA }
+			alliance = { country = RUS country = CAN }
+			alliance = { country = RUS country = GER }
+			ispuppet = RUS
+			exists = TRA
+			atwar = RUS
+			flag = RUS_BOL
+			exists = SOV
+		}
+	}
+	command = { type = trigger which = 906556 } # Russian response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U10_LIB }
+	command = { type = relation which = RUS value = 20 }
 }
+action_d = {
+	ai_chance = 15
+	name = "Isolationism will protect us.."
+	command = { type = dissent value = -1 }
+	command = { type = belligerence which = U10 value = -10 }
 }
-command = { type = trigger which = 906556 } # Russian response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U10_LIB }
-command = { type = relation which = RUS value = 20 }
 }
 
-action_d = {
-ai_chance = 15
-name = "Isolationism will protect us.."
-command = { type = dissent value = -1 }
-command = { type = belligerence which = U10 value = -10  }
-}
-}
 
 event = {
 id = 906553
@@ -1787,21 +1758,20 @@ name = "Alliance with New England?"
 desc = "The government of New England has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between New England and the British Empire in exile?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U10 }
-command = { type = relation which = U10 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U10 }
+	command = { type = relation which = U10 value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U10 value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U10 value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -1816,23 +1786,23 @@ name = "Alliance with New England?"
 desc = "The government of New England has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between New England and the British Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U10 }
-command = { type = relation which = U10 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U10 }
+	command = { type = relation which = U10 value = 50 }
+	command = { type = relation which = USA value = -10 }
+}
+action_b = {
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U10 value = -25 }
+	command = { type = relation which = USA value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U10 value = -25 }
-command = { type = relation which = USA value = 10 }
-}
-}
 
 event = {
 id = 906555
@@ -1844,21 +1814,20 @@ name = "Alliance with New England?"
 desc = "The government of New England has announced recently that they want to join Mitteleuropa. It's not a sudden move because pro-Mitteleuropa policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between New England and the German Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U10 }
-command = { type = relation which = U10 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U10 }
+	command = { type = relation which = U10 value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U10 value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U10 value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -1873,23 +1842,23 @@ name = "Alliance with New England?"
 desc = "New England want to secure their independence via forming a new alliance with us. How we shall respond?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U10 }
-command = { type = relation which = U10 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U10 }
+	command = { type = relation which = U10 value = 50 }
+	command = { type = relation which = USA value = -10 }
+}
+action_b = {
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U10 value = -25 }
+	command = { type = relation which = USA value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U10 value = -25 }
-command = { type = relation which = USA value = 10 }
-}
-}
 
 event = {
 id = 906557
@@ -1897,119 +1866,116 @@ country = CAL
 style = 2
 
 trigger =  {
-flag = CAL_LIB
-NOT = {
-government = communist
-alliance = { country = CAL country = USA }
-alliance = { country = CAL country = GER }
-alliance = { country = CAL country = JAP }
-alliance = { country = CAL country = CAN }
-alliance = { country = CAL country = FRA }
-alliance = { country = CAL country = ENG }
-alliance = { country = CAL country = U07 }
-alliance = { country = CAL country = RUS }
-ispuppet = CAL
-atwar = CAL
+	flag = CAL_LIB
+	NOT = {
+		government = communist
+		alliance = { country = CAL country = USA }
+		alliance = { country = CAL country = GER }
+		alliance = { country = CAL country = JAP }
+		alliance = { country = CAL country = CAN }
+		alliance = { country = CAL country = FRA }
+		alliance = { country = CAL country = ENG }
+		alliance = { country = CAL country = U07 }
+		alliance = { country = CAL country = RUS }
+		ispuppet = CAL
+		atwar = CAL
+	}
 }
-}
-
-date = { day = 1 month = january year = 1936 }
-offset = 50
-deathdate = { day = 29 month = december year = 1960 }
 
 name = "Choosing the sides"
 desc = "Although the independence of Pacific States is for the moment secured, we must look to bigger players on the international scene if we want to secure the long-term survival of our state..."
 picture = "diplomatic_campaign"
 
-action = {
-ai_chance = 70
-name = "Join forces with the Entente"
-trigger = {
-exists = CAN
-NOT = { ispuppet = CAN }
-NOT = { war = { country = RUS country = CAN } }
-participant = { country = CAN value = 1 }
-}
-command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906558 }
-command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906559 }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = CAL_LIB }
-command = { type = relation which = CAN value = 20 }
-}
+date = { day = 1 month = january year = 1936 }
+offset = 50
+deathdate = { day = 29 month = december year = 1960 }
 
 action = {
-ai_chance = 50
-name = "Join forces with Mitteleuropa"
-trigger = {
-exists = GER
-NOT = { ispuppet = GER }
-control = { province = 163 data = GER }
-control = { province = 145 data = GER }
-participant = { country = GER value = 2 }
+	ai_chance = 70
+	name = "Join forces with the Entente"
+	trigger = {
+		exists = CAN
+		NOT = { ispuppet = CAN }
+		NOT = { war = { country = RUS country = CAN } }
+		participant = { country = CAN value = 1 }
+	}
+	command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906558 }
+	command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906559 }
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = CAL_LIB }
+	command = { type = relation which = CAN value = 20 }
 }
-command = { type = trigger which = 906560 } # German response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = CAL_LIB }
-command = { type = relation which = GER value = 20 }
+action = {
+	ai_chance = 50
+	name = "Join forces with Mitteleuropa"
+	trigger = {
+		exists = GER
+		NOT = { ispuppet = GER }
+		control = { province = 163 data = GER }
+		control = { province = 145 data = GER }
+		participant = { country = GER value = 2 }
+	}
+	command = { type = trigger which = 906560 } # German response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = CAL_LIB }
+	command = { type = relation which = GER value = 20 }
+}
+action = {
+	ai_chance = 30
+	name = "Join forces with Japan"
+	trigger = {
+		exists = JAP
+		NOT = { ispuppet = JAP }
+		control = { province = 1552 data = JAP }
+		control = { province = 1554 data = JAP }
+		NOT = {
+			flag = JAP_ISO
+			atwar = JAP
+		}
+	}
+	command = { type = trigger which = 906561 } # Japan response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = CAL_LIB }
+	command = { type = relation which = JAP value = 20 }
+}
+action = {
+	ai_chance = 10
+	name = "Join forces with Russia"
+	trigger = {
+		exists = RUS
+		control = { province = 691 data = RUS }
+		control = { province = 1186 data = RUS }
+		control = { province = 572 data = RUS }
+		control = { province = 1162 data = RUS }
+		NOT = {
+			alliance = { country = RUS country = JAP }
+			alliance = { country = RUS country = FRA }
+			alliance = { country = RUS country = CAN }
+			alliance = { country = RUS country = GER }
+			ispuppet = RUS
+			exists = TRA
+			atwar = RUS
+			flag = RUS_BOL
+			exists = SOV
+		}
+	}
+	command = { type = trigger which = 906562 } # Russian response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = CAL_LIB }
+	command = { type = relation which = RUS value = 20 }
+}
+action = {
+	ai_chance = 15
+	name = "Isolationism will protect us.."
+	command = { type = dissent value = -1 }
+	command = { type = belligerence which = CAL value = -10 }
+}
 }
 
-action = {
-ai_chance = 30
-name = "Join forces with Japan"
-trigger = {
-exists = JAP
-NOT = { ispuppet = JAP }
-control = { province = 1552 data = JAP }
-control = { province = 1554 data = JAP }
-NOT = {
-flag = JAP_ISO
-atwar = JAP
-}
-}
-command = { type = trigger which = 906561 } # Japan response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = CAL_LIB }
-command = { type = relation which = JAP value = 20 }
-}
-
-action = {
-ai_chance = 10
-name = "Join forces with Russia"
-trigger = {
-exists = RUS
-control = { province = 691 data = RUS }
-control = { province = 1186 data = RUS }
-control = { province = 572 data = RUS }
-control = { province = 1162 data = RUS }
-NOT = {
-alliance = { country = RUS country = JAP }
-alliance = { country = RUS country = FRA }
-alliance = { country = RUS country = CAN }
-alliance = { country = RUS country = GER }
-ispuppet = RUS
-exists = TRA
-atwar = RUS
-flag = RUS_BOL
-exists = SOV
-}
-}
-command = { type = trigger which = 906562 } # Russian response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = CAL_LIB }
-command = { type = relation which = RUS value = 20 }
-}
-
-action = {
-ai_chance = 15
-name = "Isolationism will protect us.."
-command = { type = dissent value = -1 }
-command = { type = belligerence which = CAL value = -10  }
-}
-}
 
 event = {
 id = 906558
@@ -2021,21 +1987,20 @@ name = "Alliance with the Pacific States?"
 desc = "The government of the Pacific States has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between the PSA and the British Empire in exile?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = CAL }
-command = { type = relation which = CAL value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = CAL }
+	command = { type = relation which = CAL value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = CAL value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = CAL value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -2050,21 +2015,20 @@ name = "Alliance with the Pacific States?"
 desc = "The government of the Pacific States has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between the PSA and the British Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = CAL }
-command = { type = relation which = CAL value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = CAL }
+	command = { type = relation which = CAL value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = CAL value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = CAL value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -2078,21 +2042,20 @@ name = "Alliance with the Pacific States?"
 desc = "The government of the Pacific States has announced recently that they want to join Mitteleuropa. It's not a sudden move because pro-Mitteleuropa policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between the PSA and the German Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = CAL }
-command = { type = relation which = CAL value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = CAL }
+	command = { type = relation which = CAL value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = CAL value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = CAL value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -2107,23 +2070,23 @@ name = "Alliance with the Pacific States?"
 desc = "The Pacific States want to secure their independence via forming a new alliance with us. How we shall respond?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = CAL }
-command = { type = relation which = CAL value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = CAL }
+	command = { type = relation which = CAL value = 50 }
+	command = { type = relation which = USA value = -10 }
+}
+action_b = {
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = CAL value = -25 }
+	command = { type = relation which = USA value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = CAL value = -25 }
-command = { type = relation which = USA value = 10 }
-}
-}
 
 event = {
 id = 906562
@@ -2135,23 +2098,23 @@ name = "Alliance with Pacific States?"
 desc = "The Pacific States want to secure their independence via forming a new alliance with us. How we shall respond?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = CAL }
-command = { type = relation which = CAL value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = CAL }
+	command = { type = relation which = CAL value = 50 }
+	command = { type = relation which = USA value = -10 }
+}
+action_b = {
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = CAL value = -25 }
+	command = { type = relation which = USA value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = CAL value = -25 }
-command = { type = relation which = USA value = 10 }
-}
-}
 
 event = {
 id = 906568
@@ -2159,99 +2122,97 @@ country = U32
 style = 2
 
 trigger =  {
-flag = U32_LIB
-NOT = {
-government = communist
-alliance = { country = U32 country = USA }
-alliance = { country = U32 country = GER }
-alliance = { country = U32 country = JAP }
-alliance = { country = U32 country = CAN }
-alliance = { country = U32 country = FRA }
-alliance = { country = U32 country = ENG }
-alliance = { country = U32 country = U07 }
-alliance = { country = U32 country = RUS }
-ispuppet = U32
-atwar = U32
+	flag = U32_LIB
+	NOT = {
+		government = communist
+		alliance = { country = U32 country = USA }
+		alliance = { country = U32 country = GER }
+		alliance = { country = U32 country = JAP }
+		alliance = { country = U32 country = CAN }
+		alliance = { country = U32 country = FRA }
+		alliance = { country = U32 country = ENG }
+		alliance = { country = U32 country = U07 }
+		alliance = { country = U32 country = RUS }
+		ispuppet = U32
+		atwar = U32
+	}
 }
-}
-
-date = { day = 1 month = january year = 1936 }
-offset = 70
-deathdate = { day = 29 month = december year = 1960 }
 
 name = "Choosing the sides"
 desc = "Although the independence of the Great Lakes Federation is for the moment secured, we must look to the bigger players on the international scene if we want to secure the long-term survival of our state..."
 picture = "diplomatic_campaign"
 
+date = { day = 1 month = january year = 1936 }
+offset = 70
+deathdate = { day = 29 month = december year = 1960 }
+
 action_a = {
-ai_chance = 70
-name = "Join forces with the Entente"
-trigger = {
-exists = CAN
-NOT = { ispuppet = CAN }
-participant = { country = CAN value = 1 }
+	ai_chance = 70
+	name = "Join forces with the Entente"
+	trigger = {
+		exists = CAN
+		NOT = { ispuppet = CAN }
+		participant = { country = CAN value = 1 }
+	}
+	command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906569 }
+	command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906565 }
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U32_LIB }
+	command = { type = relation which = CAN value = 20 }
 }
-command = { trigger = { NOT = { alliance = { country = CAN country = U07 } } } type = trigger which = 906569 }
-command = { trigger = { alliance = { country = CAN country = U07 } } type = trigger which = 906565 }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U32_LIB }
-command = { type = relation which = CAN value = 20 }
-}
-
 action_b = {
-ai_chance = 50
-name = "Join forces with Mitteleuropa"
-trigger = {
-exists = GER
-NOT = { ispuppet = GER }
-control = { province = 163 data = GER }
-control = { province = 145 data = GER }
-participant = { country = GER value = 2 }
-NOT = { war = { country = GER country = CAN } }
+	ai_chance = 50
+	name = "Join forces with Mitteleuropa"
+	trigger = {
+		exists = GER
+		NOT = { ispuppet = GER }
+		control = { province = 163 data = GER }
+		control = { province = 145 data = GER }
+		participant = { country = GER value = 2 }
+		NOT = { war = { country = GER country = CAN } }
+	}
+	command = { type = trigger which = 906566 } # German response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U32_LIB }
+	command = { type = relation which = GER value = 20 }
 }
-command = { type = trigger which = 906566 } # German response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U32_LIB }
-command = { type = relation which = GER value = 20 }
-}
-
 action_c = {
-ai_chance = 10
-name = "Join forces with Russia"
-trigger = {
-exists = RUS
-control = { province = 691 data = RUS }
-control = { province = 1186 data = RUS }
-control = { province = 572 data = RUS }
-control = { province = 1162 data = RUS }
-NOT = {
-alliance = { country = RUS country = JAP }
-alliance = { country = RUS country = FRA }
-alliance = { country = RUS country = CAN }
-alliance = { country = RUS country = GER }
-ispuppet = RUS
-exists = TRA
-atwar = RUS
-flag = RUS_BOL
-exists = SOV
+	ai_chance = 10
+	name = "Join forces with Russia"
+	trigger = {
+		exists = RUS
+		control = { province = 691 data = RUS }
+		control = { province = 1186 data = RUS }
+		control = { province = 572 data = RUS }
+		control = { province = 1162 data = RUS }
+		NOT = {
+			alliance = { country = RUS country = JAP }
+			alliance = { country = RUS country = FRA }
+			alliance = { country = RUS country = CAN }
+			alliance = { country = RUS country = GER }
+			ispuppet = RUS
+			exists = TRA
+			atwar = RUS
+			flag = RUS_BOL
+			exists = SOV
+		}
+	}
+	command = { type = trigger which = 906567 } # Russian response
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = dissent value = 2 }
+	command = { type = clrflag which = U32_LIB }
+	command = { type = relation which = RUS value = 20 }
 }
+action_d = {
+	ai_chance = 15
+	name = "Isolationism will protect us.."
+	command = { type = dissent value = -1 }
+	command = { type = belligerence which = U32 value = -10 }
 }
-command = { type = trigger which = 906567 } # Russian response
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 2 }
-command = { type = clrflag which = U32_LIB }
-command = { type = relation which = RUS value = 20 }
 }
 
-action_d = {
-ai_chance = 15
-name = "Isolationism will protect us.."
-command = { type = dissent value = -1 }
-command = { type = belligerence which = U32 value = -10  }
-}
-}
 
 event = {
 id = 906569
@@ -2263,21 +2224,20 @@ name = "Alliance with the Great Lakes Federation?"
 desc = "The government of the Great Lakes Federation has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between the Great Lakes Federation and the British Empire in exile?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U32 }
-command = { type = relation which = U32 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U32 }
+	command = { type = relation which = U32 value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U32 value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U32 value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -2292,23 +2252,23 @@ name = "Alliance with the Great Lakes Federation?"
 desc = "The government of the Great Lakes Federation has announced recently that they want to join the Entente. It's not a sudden move because pro-Entente policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between the Great Lakes Federation and the British Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U32 }
-command = { type = relation which = U32 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U32 }
+	command = { type = relation which = U32 value = 50 }
+	command = { type = relation which = USA value = -10 }
+}
+action_b = {
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U32 value = -25 }
+	command = { type = relation which = USA value = 10 }
+}
 }
 
-action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U32 value = -25 }
-command = { type = relation which = USA value = 10 }
-}
-}
 
 event = {
 id = 906566
@@ -2320,21 +2280,20 @@ name = "Alliance with Great Lakes Federation?"
 desc = "The government of the Great Lakes Federation has announced recently that they want to join Mitteleuropa. It's not a sudden move because pro-Mitteleuropa policy is popular in many circles including the ruling cabinet and army. Do we want to create the Great Alliance between Great Lakes Federation and the German Empire?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U32 }
-command = { type = relation which = U32 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U32 }
+	command = { type = relation which = U32 value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U32 value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U32 value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
@@ -2349,28 +2308,26 @@ name = "Alliance with the Great Lakes Federation?"
 desc = "The Great Lakes Federation want to secure their independence via forming a new alliance with us. How we shall respond?"
 
 action_a = {
-ai_chance = 95
-name = "Accept their offer!"
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = alliance which = U32 }
-command = { type = relation which = U32 value = 50 }
-command = { type = relation which = USA value = -10 }
+	ai_chance = 95
+	name = "Accept their offer!"
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = alliance which = U32 }
+	command = { type = relation which = U32 value = 50 }
+	command = { type = relation which = USA value = -10 }
 }
-
 action_b = {
-ai_chance = 5
-name = "Refuse their alliance, we don't need anyone!"
-command = { type = domestic which = interventionism value = -1 }
-command = { type = relation which = U32 value = -25 }
-command = { type = relation which = USA value = 10 }
+	ai_chance = 5
+	name = "Refuse their alliance, we don't need anyone!"
+	command = { type = domestic which = interventionism value = -1 }
+	command = { type = relation which = U32 value = -25 }
+	command = { type = relation which = USA value = 10 }
 }
 }
 
 ###########
 # 1940 elections
 ############
-
 
 event = {
 id = 9993711
@@ -2379,46 +2336,45 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6235 # Curtis
+	flag = END_ACW
+	headofstate = 6235 # Curtis
 }
 
-name = "The Elections of 1940: Knox vs. Garner"
+name = "The Elections of 1940: Taft vs. Hull"
 desc = "The Civil War is finally at an end and many Americans see the upcoming elections as a sign the country is finally recovering. President Curtis will not seek reelection because of his weak health. Vice president Knox is leading the polls, but the tough Texan Garner is not willing to go down without a fight..."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1940 }
 
 action_a = {
-name = "Frank Knox/Thomas Dewey (Rep.)"
-ai_chance = 60
-command = { type = headofstate which = 6239 } # Knox
-command = { type = headofgovernment which = 6241 } # Dewey
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6240 } # Landon
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993712 }
-command = { type = sleepevent which = 9993713 }
-command = { type = sleepevent which = 9993714 }
+	name = "Robert Taft/Arthur James (Rep.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6037 } # Arthur James
+	command = { type = foreignminister which = 6066 } # Arthur Vandenberg
+	command = { type = armamentminister which = 6359 } # Joseph N. Pew Jr.
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993712 }
+	command = { type = sleepevent which = 9993713 }
+	command = { type = sleepevent which = 9993714 }
 }
 action_b = {
-name = "John Nance Garner/Henry Wallace (Dem.)"
-ai_chance = 40
-command = { type = headofstate which = 6236 } # Garner
-command = { type = headofgovernment which = 6044 } # Henry Wallace
-command = { type = foreignminister which = 6003 } # Hull
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -2 }
-command = { type = sleepevent which = 9993712 }
-command = { type = sleepevent which = 9993713 }
-command = { type = sleepevent which = 9993714 }
+	name = "Cordell Hull/Henry Wallace (Dem.)"
+	ai_chance = 40
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6243 } #Cordell Hull
+	command = { type = headofgovernment which = 6044 } #Henry A. Wallace
+	command = { type = foreignminister which = 6060 } # Edward Stettinius Jr.
+	command = { type = armamentminister which = 6305 } # Marriner Eccles
+	command = { type = ministerofsecurity which = 6185 } # Harold Ickes
+	command = { type = dissent value = -2 }
+	command = { type = sleepevent which = 9993712 }
+	command = { type = sleepevent which = 9993713 }
+	command = { type = sleepevent which = 9993714 }
 }
 }
 
@@ -2430,48 +2386,48 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6293 # Knox (Curtis can die in office).
+	flag = END_ACW
+	headofstate = 6293 # Knox (Curtis can die in office).
 }
 
-name = "The Elections of 1940: Knox vs. Garner"
+name = "The Elections of 1940: Taft vs. Hull"
 desc = "The Civil War is finally at an end and many Americans see the upcoming elections as a sign the country is finally recovering. Frank Knox, who became president after the death of president Curtis in office, is leading the polls, but the tough Texan Garner is not willing to go down without a fight..."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1940 }
 
 action_a = {
-name = "Frank Knox/Thomas Dewey (Rep.)"
-ai_chance = 60
-command = { type = headofstate which = 6239 } # Knox
-command = { type = headofgovernment which = 6241 } # Dewey
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6240 } # Landon
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993711 }
-command = { type = sleepevent which = 9993713 }
-command = { type = sleepevent which = 9993714 }
+	name = "Robert Taft/Arthur James (Rep.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6037 } # Arthur James
+	command = { type = foreignminister which = 6066 } # Arthur Vandenberg
+	command = { type = armamentminister which = 6359 } # Joseph N. Pew Jr.
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993711 }
+	command = { type = sleepevent which = 9993713 }
+	command = { type = sleepevent which = 9993714 }
 }
 action_b = {
-name = "John Nance Garner/Henry Wallace (Dem.)"
-ai_chance = 40
-command = { type = headofstate which = 6236 } # Garner
-command = { type = headofgovernment which = 6044 } # Henry Wallace
-command = { type = foreignminister which = 6003 } # Hull
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -2 }
-command = { type = sleepevent which = 9993711 }
-command = { type = sleepevent which = 9993713 }
-command = { type = sleepevent which = 9993714 }
+	name = "Cordell Hull/Henry Wallace (Dem.)"
+	ai_chance = 40
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6243 } #Cordell Hull
+	command = { type = headofgovernment which = 6044 } #Henry A. Wallace
+	command = { type = foreignminister which = 6060 } # Edward Stettinius Jr.
+	command = { type = armamentminister which = 6305 } # Marriner Eccles
+	command = { type = ministerofsecurity which = 6185 } # Harold Ickes
+	command = { type = dissent value = -2 }
+	command = { type = sleepevent which = 9993711 }
+	command = { type = sleepevent which = 9993713 }
+	command = { type = sleepevent which = 9993714 }
 }
 }
+
 
 event = {
 id = 9993713
@@ -2480,48 +2436,48 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6236 # Garner.
+	flag = END_ACW
+	headofstate = 6236 # Garner
 }
 
-name = "The Elections of 1940: Garner vs. Knox"
+name = "The Elections of 1940: Hull vs. Taft"
 desc = "The Civil War is finally at an end and many Americans see the upcoming elections as a sign the country is finally recovering. President Garner has lead the country through this great ordeal and hopes to win reelection. The Republicans have nominated equally tough Frank Knox to show the nation they too can take a tough stance."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1940 }
 
 action_a = {
-name = "John Nance Garner/Henry Wallace (Dem.)"
-ai_chance = 60
-command = { type = headofstate which = 6236 } # Garner
-command = { type = headofgovernment which = 6044 } # Henry Wallace
-command = { type = foreignminister which = 6003 } # Hull
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -2 }
-command = { type = sleepevent which = 9993711 }
-command = { type = sleepevent which = 9993712 }
-command = { type = sleepevent which = 9993714 }
+	name = "Cordell Hull/Henry Wallace (Dem.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6243 } #Cordell Hull
+	command = { type = headofgovernment which = 6044 } #Henry A. Wallace
+	command = { type = foreignminister which = 6060 } # Edward Stettinius Jr.
+	command = { type = armamentminister which = 6305 } # Marriner Eccles
+	command = { type = ministerofsecurity which = 6185 } # Harold Ickes
+	command = { type = dissent value = -2 }
+	command = { type = sleepevent which = 9993711 }
+	command = { type = sleepevent which = 9993712 }
+	command = { type = sleepevent which = 9993714 }
 }
 action_b = {
-name = "Frank Knox/Thomas Dewey (Rep.)"
-ai_chance = 40
-command = { type = headofstate which = 6239 } # Knox
-command = { type = headofgovernment which = 6241 } # Dewey
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6240 } # Landon
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993711 }
-command = { type = sleepevent which = 9993712 }
-command = { type = sleepevent which = 9993714 }
+	name = "Robert Taft/Arthur James (Rep.)"
+	ai_chance = 40
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6037 } # Arthur James
+	command = { type = foreignminister which = 6066 } # Arthur Vandenberg
+	command = { type = armamentminister which = 6359 } # Joseph N. Pew Jr.
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993711 }
+	command = { type = sleepevent which = 9993712 }
+	command = { type = sleepevent which = 9993714 }
 }
 }
+
 
 event = {
 id = 9993714
@@ -2530,46 +2486,45 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6242 # MacArthur.
+	flag = END_ACW
+	headofstate = 6242 # MacArthur.
 }
 
-name = "The Elections of 1940: MacArthur vs. Garner"
+name = "The Elections of 1940: MacArthur vs. Hull"
 desc = "The Civil War is finally at an end and General MacArthur has put down his dictatorial powers in order to restore democracy. The Republicans have asked the General to run for president on their behalf. However, many wonder if MacArthur will be as able a leader in times of peace as he was in times of war."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1940 }
 
 action_a = {
-name = "Douglas MacArthur/Frank Knox (Rep.)"
-ai_chance = 70
-command = { type = headofstate which = 6242 } # Mac
-command = { type = headofgovernment which = 6048 } # Knox
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6240 } # Landon
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993711 }
-command = { type = sleepevent which = 9993712 }
-command = { type = sleepevent which = 9993713 }
+	name = "Douglas MacArthur/Arthur Vandenberg (Rep.)"
+	ai_chance = 70
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6242 } # Mac
+	command = { type = headofgovernment which = 6048 } # Arthur Vandenberg
+	command = { type = foreignminister which = 6282 } #Patrick J. Hurley
+	command = { type = armamentminister which = 6359 } # Joseph N. Pew Jr.
+	command = { type = ministerofsecurity which = 6386 } # Courtney Whitney
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993711 }
+	command = { type = sleepevent which = 9993712 }
+	command = { type = sleepevent which = 9993713 }
 }
 action_b = {
-name = "John Nance Garner/Henry Wallace (Dem.)"
-ai_chance = 30
-command = { type = headofstate which = 6236 } # Garner
-command = { type = headofgovernment which = 6044 } # Henry Wallace
-command = { type = foreignminister which = 6003 } # Hull
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -2 }
-command = { type = sleepevent which = 9993711 }
-command = { type = sleepevent which = 9993712 }
-command = { type = sleepevent which = 9993713 }
+	name = "Cordell Hull/Henry Wallace (Dem.)"
+	ai_chance = 30
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6243 } #Cordell Hull
+	command = { type = headofgovernment which = 6044 } #Henry A. Wallace
+	command = { type = foreignminister which = 6060 } # Edward Stettinius Jr.
+	command = { type = armamentminister which = 6305 } # Marriner Eccles
+	command = { type = ministerofsecurity which = 6185 } # Harold Ickes
+	command = { type = dissent value = -2 }
+	command = { type = sleepevent which = 9993711 }
+	command = { type = sleepevent which = 9993712 }
+	command = { type = sleepevent which = 9993713 }
 }
 }
 
@@ -2584,99 +2539,97 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6239 # Knox
+	flag = END_ACW
+	headofstate = 6244 # Robert Taft
 }
 
-name = "The Elections of 1944: Dewey vs. Hull"
+name = "The Elections of 1944: Taft vs. Brynes"
 desc = "President Knox has decided not to run for reelection because of his steadily worsening health. His VP, Thomas Dewey quickly won the Republican nomination. The Democrats nominated experienced Cordell Hull to run against the young Dewey."
 picture = "us1936elections"
 
-
 date = { day = 5 month = november year = 1944 }
 
 action_a = {
-name = "Thomas E. Dewey/John Bricker (Rep.)"
-ai_chance = 60
-command = { type = headofstate which = 6038 } # Dewey
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6091} # Vinson
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993716 }
-command = { type = sleepevent which = 9993717 }
-command = { type = sleepevent which = 9993718 }
+	name = "Robert Taft/John Bricker (Rep.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6050 } # John Bricker
+	command = { type = foreignminister which = 6066 } # Arthur Vandenberg
+	command = { type = armamentminister which = 6360 } # Joseph Dodge
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993716 }
+	command = { type = sleepevent which = 9993717 }
+	command = { type = sleepevent which = 9993718 }
 }
 action_b = {
-name = "Cordell Hull/Harry S. Truman (Dem.)"
-ai_chance = 40
-command = { type = headofstate which = 6243 } # Hull
-command = { type = headofgovernment which = 6046 } # Truman
-command = { type = foreignminister which = 6203 } # Connally
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -2 }
-command = { type = sleepevent which = 9993716 }
-command = { type = sleepevent which = 9993717 }
-command = { type = sleepevent which = 9993718 }
+	name = "James Byrnes/Scott Lucas (Dem.)"
+	ai_chance = 40
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6142 } # James F. Byrnes
+	command = { type = headofgovernment which = 6036 } # Scott W. Lucas
+	command = { type = foreignminister which = 6281 } # Joseph Grew
+	command = { type = armamentminister which = 6330 } # William L. Clayton
+	command = { type = ministerofsecurity which = 6249 } # William J. Donovan
+	command = { type = dissent value = -2 }
+	command = { type = sleepevent which = 9993716 }
+	command = { type = sleepevent which = 9993717 }
+	command = { type = sleepevent which = 9993718 }
 }
 }
 
 
-event = {
-id = 9993716
-random = no
-country = USA
-style = 2
+#event = {
+#id = 9993716
+#random = no
+#country = USA
+#style = 2
 
-trigger = {
-flag = END_ACW
-headofstate = 6038 # Dewey (Knox can die in office).
-}
+#trigger = {
+#flag = END_ACW
+#headofstate = 6038 # Dewey (Knox can die in office).
+#}
 
-name = "The Elections of 1944: Dewey vs. Hull"
-desc = "President Knox suffered a fatal heart attack while in office, and Thomas Dewey served out his term. As acting president Dewey was the natural choice to run for the Republicans. The Democrats hope the experienced Cordell Hull could convince the electorate that Dewey lacked the experience needed to lead the nation."
-picture = "us1936elections"
+#name = "The Elections of 1944: Dewey vs. Hull"
+#desc = "President Knox suffered a fatal heart attack while in office, and Thomas Dewey served out his term. As acting president Dewey was the natural choice to run for the Republicans. The Democrats hope the experienced Cordell #Hull could convince the electorate that Dewey lacked the experience needed to lead the nation."
+#picture = "us1936elections"
 
+#date = { day = 5 month = november year = 1944 }
 
-date = { day = 5 month = november year = 1944 }
-
-action_a = {
-name = "Thomas Dewey/John Bricker (Rep.)"
-ai_chance = 60
-command = { type = headofstate which = 6038 } # Dewey
-command = { type = headofgovernment which = 6250 } # Bricker
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6091 } # Vinson
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993715 }
-command = { type = sleepevent which = 9993717 }
-command = { type = sleepevent which = 9993718 }
-}
-action_b = {
-name = "Cordell Hull/Harry S Truman (Dem.)"
-ai_chance = 40
-command = { type = headofstate which = 6243 } # Hull
-command = { type = headofgovernment which = 6046 } # Truman
-command = { type = foreignminister which = 6203 } # Connally
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -2 }
-command = { type = sleepevent which = 9993715 }
-command = { type = sleepevent which = 9993717 }
-command = { type = sleepevent which = 9993718 }
-}
-}
+#action_a = {
+#name = "Thomas Dewey/John Bricker (Rep.)"
+#ai_chance = 60
+#command = { type = headofstate which = 6038 } # Dewey
+#command = { type = headofgovernment which = 6250 } # Bricker
+#command = { type = foreignminister which = 6066 } # Vandenberg
+#command = { type = armamentminister which = 6091 } # Vinson
+#command = { type = ministerofsecurity which = 6005 } # J E Hoover
+#command = { type = set_domestic which = political_left value = 3 }
+#command = { type = set_domestic which = democratic value = 10 }
+#command = { type = dissent value = -5 }
+#command = { type = sleepevent which = 9993715 }
+#command = { type = sleepevent which = 9993717 }
+#command = { type = sleepevent which = 9993718 }
+#}
+#action_b = {
+#name = "Cordell Hull/Harry S Truman (Dem.)"
+#ai_chance = 40
+#command = { type = headofstate which = 6243 } # Hull
+#command = { type = headofgovernment which = 6046 } # Truman
+#command = { type = foreignminister which = 6203 } # Connally
+#command = { type = armamentminister which = 6078 } # Hopkins
+#command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
+#command = { type = set_domestic which = political_left value = 6 }
+#command = { type = set_domestic which = democratic value = 10 }
+#command = { type = dissent value = -2 }
+#command = { type = sleepevent which = 9993715 }
+#command = { type = sleepevent which = 9993717 }
+#command = { type = sleepevent which = 9993718 }
+#}
+#}
 
 event = {
 id = 9993717
@@ -2685,48 +2638,48 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6236 # Garner
+	flag = END_ACW
+	headofstate = 6243 #Cordell Hull
 }
 
 name = "The Elections of 1944: Wallace vs. Taft"
 desc = "After two successful terms, it was time for the Democrats to find a new man to lead them. Henry Wallace was the natural choice to run for president. Wallace's opponent, the formidable senator Robert Taft, was quick to accuse Wallace of being a 'Syndicalist sympathizer' and a new Reed. This started of the dirtiest campaign in American history."
 picture = "us1936elections"
 
-
 date = { day = 5 month = november year = 1944 }
 
 action_a = {
-name = "Henry Wallace/Alben W. Barkley (Dem.)"
-ai_chance = 50
-command = { type = headofstate which = 6032 } # Wallace
-command = { type = headofgovernment which = 6047 } # Barkley
-command = { type = foreignminister which = 6203 } # Connally
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -2 }
-command = { type = sleepevent which = 9993715 }
-command = { type = sleepevent which = 9993716 }
-command = { type = sleepevent which = 9993718 }
+	name = "Henry Wallace/Alben W. Barkley (Dem.)"
+	ai_chance = 50
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6032 } # Henry Wallace
+	command = { type = headofgovernment which = 6047 } # Alben Barkley
+	command = { type = foreignminister which = 6275 } # Sumner Welles
+	command = { type = armamentminister which = 6305 } # Marriner Eccles
+	command = { type = ministerofsecurity which = 6106 } # Francis B. Biddle
+	command = { type = dissent value = -2 }
+	command = { type = sleepevent which = 9993715 }
+	command = { type = sleepevent which = 9993716 }
+	command = { type = sleepevent which = 9993718 }
 }
 action_b = {
-name = "Robert Taft/Strom Thurmond (Rep.)"
-ai_chance = 50
-command = { type = headofstate which = 6244 } # Taft
-command = { type = headofgovernment which = 6051 } # Thurmond
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6091 } # Vinson
-command = { type = ministerofsecurity which = 6005 } # J E Hoover
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993715 }
-command = { type = sleepevent which = 9993716 }
-command = { type = sleepevent which = 9993718 }
+	name = "Robert Taft/John Bricker (Rep.)"
+	ai_chance = 50
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6050 } # John Bricker
+	command = { type = foreignminister which = 6066 } # Arthur Vandenberg
+	command = { type = armamentminister which = 6360 } # Joseph Dodge
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993715 }
+	command = { type = sleepevent which = 9993716 }
+	command = { type = sleepevent which = 9993718 }
 }
 }
+
 
 event = {
 id = 9993718
@@ -2735,46 +2688,45 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6242 # MacArthur
+	flag = END_ACW
+	headofstate = 6242 # MacArthur
 }
 
 name = "The Elections of 1944: MacArthur vs. Hull"
 desc = "President MacArthur proved to be an able but controversial leader. His unforgiving stance against former Syndicalists and American Firsters alike lead many to believe it was Mac himself who prevented the nation from fully recovering. Cordell Hull promised to become a president for all Americans and his message was catching on..."
 picture = "us1936elections"
 
-
 date = { day = 5 month = november year = 1944 }
 
 action_a = {
-name = "Douglas MacArthur/John Bricker (Rep.)"
-ai_chance = 40
-command = { type = headofstate which = 6242 } # MacArthur
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6066 } # Vandenberg
-command = { type = armamentminister which = 6091 } # Vinson
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993715 }
-command = { type = sleepevent which = 9993716 }
-command = { type = sleepevent which = 9993717 }
+	name = "Douglas MacArthur/John Bricker (Rep.)"
+	ai_chance = 40
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6242 } # MacArthur
+	command = { type = headofgovernment which = 6050 } # Bricker
+	command = { type = foreignminister which = 6066 } # Vandenberg
+	command = { type = armamentminister which = 6360 } # Joseph Dodge
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993715 }
+	command = { type = sleepevent which = 9993716 }
+	command = { type = sleepevent which = 9993717 }
 }
 action_b = {
-name = "Cordell Hull/Averell Harriman (Dem.)"
-ai_chance = 60
-command = { type = headofstate which = 6243 } # Hull
-command = { type = headofgovernment which = 6247 } # Harriman
-command = { type = foreignminister which = 6203 } # Connally
-command = { type = armamentminister which = 6078 } # Hopkins
-command = { type = ministerofsecurity which = 6005 } # J Edgar Hoover
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993715 }
-command = { type = sleepevent which = 9993716 }
-command = { type = sleepevent which = 9993717 }
+	name = "James Brynes/Scott Lucas (Dem.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6142 } # James F. Byrnes
+	command = { type = headofgovernment which = 6036 } # Scott W. Lucas
+	command = { type = foreignminister which = 6281 } # Joseph Grew
+	command = { type = armamentminister which = 6330 } # William L. Clayton
+	command = { type = ministerofsecurity which = 6249 } # William J. Donovan
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993715 }
+	command = { type = sleepevent which = 9993716 }
+	command = { type = sleepevent which = 9993717 }
 }
 }
 
@@ -2789,50 +2741,51 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6038 # Dewey
+	flag = END_ACW
+	event = 9993715
+	headofstate = 6242 # Taft
 }
 
-name = "The Elections of 1948: Dewey vs. Wallace"
+name = "The Elections of 1948: Dewey vs. Wallace" #4, following 2 Taft terms
 desc = "With the experience Hull being unable to beat Dewey four years earlier, the Democrats now tried to win the presidency with the dynamic reformer Henry Wallace."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1948 }
 
 action_a = {
-name = "Thomas Dewey/John Bricker (Rep.)"
-ai_chance = 60
-command = { type = headofstate which = 6038 } # Dewey
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6246 } # A. Dulles
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993722 }
-command = { type = sleepevent which = 9993723 }
+	name = "Thomas Dewey/Edward Martin (Rep.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6038 } # Thomas E. Dewey
+	command = { type = headofgovernment which = 6054 } # Edward Martin
+	command = { type = foreignminister which = 6170 } # Hugh Scott
+	command = { type = armamentminister which = 6337 } # Ferdinand A. Eberstadt
+	command = { type = ministerofsecurity which = 6169 } # Walter H. Judd
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993722 }
+	command = { type = sleepevent which = 9993723 }
 }
 action_b = {
-name = "Henry Wallace/Averell Harriman (Dem.)"
-ai_chance = 40
-command = { type = headofstate which = 6032 } # Walace
-command = { type = headofgovernment which = 6247 } # Harriman
-command = { type = foreignminister which = 6060 } # Stettinius
-command = { type = armamentminister which = 6248 } # Truman
-command = { type = ministerofsecurity which = 6249 } # Donovan
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993722 }
-command = { type = sleepevent which = 9993723 }
+	name = "Henry Wallace/Adlai Stevenson (Dem.)"
+	ai_chance = 40
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6032 } # Wallace
+	command = { type = headofgovernment which = 6251 } # Stevenson
+	command = { type = foreignminister which = 6198 } # Dean Acheson
+	command = { type = armamentminister which = 6299 } # Rexford Tugwell
+	command = { type = ministerofsecurity which = 6277 } # Ralph Bunche
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993722 }
+	command = { type = sleepevent which = 9993723 }
 }
 }
+
 
 event = {
 id = 9993720
@@ -2841,50 +2794,48 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6242 # MacArthur
+	flag = END_ACW
+	headofstate = 6242 # MacArthur
 }
 
-name = "The Elections of 1948: Bricker vs. Wallace"
+name = "The Elections of 1948: Taft vs. Wallace" #5, following 2 MacArthur terms
 desc = "MacArthur's second tenure in office was rife with conflicts between the general and the Republican party. In the end MacArthur left the world of politics disillusioned, refusing to support any candidate. The Republican favorite son Bricker won the nomination, but could the GOP fend off Wallace once again?"
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1948 }
 
 action_a = {
-name = "John Bricker/Strom Thurmond (Rep.)"
-ai_chance = 40
-command = { type = headofstate which = 6250 } # Bricker
-command = { type = headofgovernment which = 6051 } # Thurmond
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6246 } # A. Dulles
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993722 }
-command = { type = sleepevent which = 9993723 }
+	name = "Robert Taft/John Bricker (Rep.)"
+	ai_chance = 40
+	command = { type = headofstate which = 6244 } # Robert Taft
+	command = { type = headofgovernment which = 6050 } # Bricker
+	command = { type = foreignminister which = 6066 } # Vandenberg
+	command = { type = armamentminister which = 6360 } # Joseph Dodge
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993722 }
+	command = { type = sleepevent which = 9993723 }
 }
 action_b = {
-name = "Henry Wallace/Adlai Stevenson (Dem.)"
-ai_chance = 60
-command = { type = headofstate which = 6032 } # Walace
-command = { type = headofgovernment which = 6251 } # Stevenson
-command = { type = foreignminister which = 6060 } # Stettinius
-command = { type = armamentminister which = 6248 } # Truman
-command = { type = ministerofsecurity which = 6249 } # Donovan
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993722 }
-command = { type = sleepevent which = 9993723 }
+	name = "Henry Wallace/Adlai Stevenson (Dem.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6032 } # Wallace
+	command = { type = headofgovernment which = 6251 } # Stevenson
+	command = { type = foreignminister which = 6198 } # Dean Acheson
+	command = { type = armamentminister which = 6299 } # Rexford Tugwell
+	command = { type = ministerofsecurity which = 6277 } # Ralph Bunche
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993722 }
+	command = { type = sleepevent which = 9993723 }
 }
 }
+
 
 event = {
 id = 9993721
@@ -2893,50 +2844,51 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6242 # Taft
+	flag = END_ACW
+	event = 9993717
+	headofstate = 6242 # Taft
 }
 
-name = "The Elections of 1948: Taft vs. Barkley"
+name = "The Elections of 1948: Taft vs. Barkley" #2, following 1 Taft term
 desc = "The election of President Taft in 1944 proved that the country wished for stability above all else. In order to beat Taft, the Democrats nominated experienced Kentucky senator Alben W. Barkley."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1948 }
 
 action_a = {
-name = "Robert Taft/John Bricker (Rep.)"
-ai_chance = 60
-command = { type = headofstate which = 6244 } # Taft
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6253 } # Lodge
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993722 }
-command = { type = sleepevent which = 9993723 }
+	name = "Robert Taft/John Bricker (Rep.)"
+	ai_chance = 60
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6244 } # Taft
+	command = { type = headofgovernment which = 6050 } # Bricker
+	command = { type = foreignminister which = 6066 } # Vandenberg
+	command = { type = armamentminister which = 6360 } # Joseph Dodge
+	command = { type = ministerofsecurity which = 6573 } # William 'Wild Bill' Langer
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993722 }
+	command = { type = sleepevent which = 9993723 }
 }
 action_b = {
-name = "Alben W. Barkley/Adlai Stevenson (Dem.)"
-ai_chance = 40
-command = { type = headofstate which = 6252 } # Barkley
-command = { type = headofgovernment which = 6251 } # Stevenson
-command = { type = foreignminister which = 6060 } # Stettinius
-command = { type = armamentminister which = 6248 } # Truman
-command = { type = ministerofsecurity which = 6249 } # Donovan
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993722 }
-command = { type = sleepevent which = 9993723 }
+	name = "Alben Barkley/Scott Lucas (Dem.)"
+	ai_chance = 40
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6252 } # Barkley
+	command = { type = headofgovernment which = 6036 } # Scott W. Lucas
+	command = { type = foreignminister which = 6278 } # Charles E. Bohlen
+	command = { type = armamentminister which = 6311 } # Stuart Symington III
+	command = { type = ministerofsecurity which = 6138 } # Henry A. Wallace
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993722 }
+	command = { type = sleepevent which = 9993723 }
 }
 }
+
 
 event = {
 id = 9993722
@@ -2945,50 +2897,50 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6243 # Hull
+	flag = END_ACW
+	headofstate = 6243 # Brynes
 }
 
-name = "The Elections of 1948: Harriman vs. Thurmond"
+name = "The Elections of 1948: Lucas vs. Dewey" #1
 desc = "Cordell Hull retired from politics after just one term in the White House, citing ill health as the reason. His former VP, Averell Harriman however is seen as a dangerous liberal by most Republicans. They hope Senator Taft can prevent this man from ruining the country."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1948 }
 
 action_a = {
-name = "W. Averell Harriman/Adlai Stevenson (Dem.)"
-ai_chance = 50
-command = { type = headofstate which = 6252 } # Harriman
-command = { type = headofgovernment which = 6251 } # Stevenson
-command = { type = foreignminister which = 6060 } # Stettinius
-command = { type = armamentminister which = 6248 } # Truman
-command = { type = ministerofsecurity which = 6249 } # Donovan
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993723 }
+	name = "Scott Lucas/W. Averell Harriman (Dem.)"
+	ai_chance = 50
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6152 } # Scott W. Lucas
+	command = { type = headofgovernment which = 6247 } # W. Averell Harriman
+	command = { type = foreignminister which = 6278 } # Charles E. Bohlen
+	command = { type = armamentminister which = 6311 } # Stuart Symington III
+	command = { type = ministerofsecurity which = 6138 } # Henry A. Wallace
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993723 }
 }
 action_b = {
-name = "Robert Taft/Strom Thurmond (Rep.)"
-ai_chance = 50
-command = { type = headofstate which = 6244 } # Taft
-command = { type = headofgovernment which = 6051 } # Thurmond
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6253 } # Lodge
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993723 }
+	name = "Thomas Dewey/Edward Martin (Rep.)"
+	ai_chance = 50
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6038 } # Thomas E. Dewey
+	command = { type = headofgovernment which = 6054 } # Edward Martin
+	command = { type = foreignminister which = 6170 } # Hugh Scott
+	command = { type = armamentminister which = 6337 } # Ferdinand A. Eberstadt
+	command = { type = ministerofsecurity which = 6169 } # Walter H. Judd
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993723 }
 }
 }
+
 
 event = {
 id = 9993723
@@ -2997,50 +2949,50 @@ country = USA
 style = 2
 
 trigger = {
-flag = END_ACW
-headofstate = 6032 # Wallace
+	flag = END_ACW
+	headofstate = 6032 # Wallace
 }
 
-name = "The Elections of 1948: Wallace vs. Thurmond"
+name = "The Elections of 1948: Wallace vs. Thurmond" #3
 desc = "President Wallace had tried hard to reform America in a country where all Americans could live side by side once again. However, many of his reforms had proven to be very unpopular, especially his attempts at ending segregation in the South. The Republicans tried to take advantage of the controversy by nominating Strom Thurmond as their candidate."
 picture = "us1936elections"
-
 
 date = { day = 5 month = november year = 1948 }
 
 action_a = {
-name = "Henry Wallace/Harry Truman (Dem.)"
-ai_chance = 50
-command = { type = headofstate which = 6032 } # Walace
-command = { type = headofgovernment which = 6046 } # Truman
-command = { type = foreignminister which = 6060 } # Stettinius
-command = { type = armamentminister which = 6248 } # Truman
-command = { type = ministerofsecurity which = 6249 } # Donovan
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993722 }
+	name = "Henry Wallace/Adlai Stevenson (Dem.)"
+	ai_chance = 50
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6032 } # Wallace
+	command = { type = headofgovernment which = 6251 } # Stevenson
+	command = { type = foreignminister which = 6198 } # Dean Acheson
+	command = { type = armamentminister which = 6299 } # Rexford Tugwell
+	command = { type = ministerofsecurity which = 6277 } # Ralph Bunche
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993722 }
 }
 action_b = {
-name = "Strom Thurmond/John Bricker (Rep.)"
-ai_chance = 50
-command = { type = headofstate which = 6255 } # Thurmoud
-command = { type = headofgovernment which = 6050 } # Bricker
-command = { type = foreignminister which = 6245 } # Dulles
-command = { type = armamentminister which = 6090 } # Rockefeller
-command = { type = ministerofsecurity which = 6253 } # Lodge
-command = { type = set_domestic which = political_left value = 6 }
-command = { type = set_domestic which = democratic value = 10 }
-command = { type = dissent value = -5 }
-command = { type = sleepevent which = 9993719 }
-command = { type = sleepevent which = 9993720 }
-command = { type = sleepevent which = 9993721 }
-command = { type = sleepevent which = 9993722 }
+	name = "Thomas Dewey/Edward Martin (Rep.)"
+	ai_chance = 50
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = democratic value = 10 }
+	command = { type = headofstate which = 6038 } # Thomas E. Dewey
+	command = { type = headofgovernment which = 6054 } # Edward Martin
+	command = { type = foreignminister which = 6170 } # Hugh Scott
+	command = { type = armamentminister which = 6337 } # Ferdinand A. Eberstadt
+	command = { type = ministerofsecurity which = 6169 } # Walter H. Judd
+	command = { type = dissent value = -5 }
+	command = { type = sleepevent which = 9993719 }
+	command = { type = sleepevent which = 9993720 }
+	command = { type = sleepevent which = 9993721 }
+	command = { type = sleepevent which = 9993722 }
 }
 }
+
 
 event = {
 id = 658601
@@ -3055,10 +3007,11 @@ picture = "minister_died"
 date = { day = 27 month = august year = 1936 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6004 } #George H. Dern
+	name = "OK"
+	command = { type = sleepminister which = 6004 } #George H. Dern
 }
 }
+
 
 event = {
 id = 658602
@@ -3073,10 +3026,11 @@ picture = "minister_died"
 date = { day = 16 month = february year = 1936 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6231 } #Roy D. Chapin
+	name = "OK"
+	command = { type = sleepminister which = 6231 } #Roy D. Chapin
 }
 }
+
 
 event = {
 id = 658603
@@ -3091,8 +3045,9 @@ picture = "minister_died"
 date = { day = 21 month = september year = 1938 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6010 } #Oscar Westover
+	name = "OK"
+	command = { type = sleepminister which = 6010 } #Oscar Westover
+	command = { type = sleepleader which = 60291 }
 }
 }
 
@@ -3110,8 +3065,8 @@ picture = "minister_died"
 date = { day = 7 month = july year = 1939 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6009 } #Claude A. Swanson
+	name = "OK"
+	#command = { type = sleepminister which = 6009 } #Claude A. Swanson
 }
 }
 
@@ -3129,8 +3084,8 @@ picture = "minister_died"
 date = { day = 11 month = april year = 1943 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6085 } #Daniel C. Roper
+	name = "OK"
+	command = { type = sleepminister which = 6085 } #Daniel C. Roper
 }
 }
 
@@ -3148,8 +3103,8 @@ picture = "minister_died"
 date = { day = 29 month = january year = 1944 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6078 } #Harry Hopkins
+	name = "OK"
+	command = { type = sleepminister which = 6078 } #Harry Hopkins
 }
 }
 
@@ -3167,10 +3122,11 @@ picture = "minister_died"
 date = { day = 2 month = july year = 1944 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6093 } #Norman H. Davis
+	name = "OK"
+	command = { type = sleepminister which = 6093 } #Norman H. Davis
 }
 }
+
 
 event = {
 id = 658608
@@ -3185,10 +3141,11 @@ picture = "minister_died"
 date = { day = 4 month = october year = 1944 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6067 } #Al Smith
+	name = "OK"
+	command = { type = sleepminister which = 6067 } #Al Smith
 }
 }
+
 
 event = {
 id = 658609
@@ -3203,10 +3160,10 @@ picture = "minister_died"
 date = { day = 13 month = march year = 1945 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6007 } #Malin Craig
-command = { type = sleepminister which = 6008 } #Malin Craig
-command = { type = sleepleader which = 60112 } #Malin Craig
+	name = "OK"
+	command = { type = sleepminister which = 6007 } #Malin Craig
+	command = { type = sleepminister which = 6008 } #Malin Craig
+	command = { type = sleepleader which = 60425 } #Malin Craig
 }
 }
 
@@ -3224,8 +3181,8 @@ picture = "minister_died"
 date = { day = 25 month = july year = 1945 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6104 } #Victor Selden Clark
+	name = "OK"
+	command = { type = sleepminister which = 6104 } #Victor Selden Clark
 }
 }
 
@@ -3242,10 +3199,11 @@ picture = "minister_died"
 date = { day = 7 month = april year = 1947 }
 
 action_a = {
-name = "Memento Mori"
-command = { type = sleepminister which = 6096 } #Henry Ford
+	name = "Memento Mori"
+	command = { type = sleepminister which = 6096 } #Henry Ford
 }
 }
+
 
 event = {
 id = 658612
@@ -3260,8 +3218,8 @@ picture = "minister_died"
 date = { day = 12 month = november year = 1947 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6065 } #John Bassett Moore
+	name = "OK"
+	command = { type = sleepminister which = 6065 } #John Bassett Moore
 }
 }
 
@@ -3280,8 +3238,8 @@ picture = "minister_died"
 date = { day = 22 month = may year = 1949 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6155 } #James Forrestal
+	name = "OK"
+	#command = { type = sleepminister which = 6155 } #James Forrestal
 }
 }
 
@@ -3299,10 +3257,11 @@ picture = "minister_died"
 date = { day = 26 month = june year = 1949 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6232 } #Ray L. Wilbur
+	name = "OK"
+	command = { type = sleepminister which = 6232 } #Ray L. Wilbur
 }
 }
+
 
 event = {
 id = 658615
@@ -3317,10 +3276,11 @@ picture = "minister_died"
 date = { day = 19 month = july year = 1949 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6107 } #Frank Murphy
+	name = "OK"
+	command = { type = sleepminister which = 6107 } #Frank Murphy
 }
 }
+
 
 event = {
 id = 658616
@@ -3335,10 +3295,12 @@ picture = "minister_died"
 date = { day = 29 month = october year = 1949 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6060 } #Edward Stettinius
+	name = "OK"
+	command = { type = sleepminister which = 6060 } #Edward Stettinius
+	command = { type = sleepminister which = 6303 } #Edward Stettinius
 }
 }
+
 
 event = {
 id = 658617
@@ -3353,10 +3315,12 @@ picture = "minister_died"
 date = { day = 29 month = may year = 1950 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6097 } #William Lemke
+	name = "OK"
+	command = { type = sleepminister which = 6097 } #William Lemke
+	command = { type = sleepminister which = 6186 } #William Lemke
 }
 }
+
 
 event = {
 id = 658618
@@ -3371,11 +3335,12 @@ picture = "minister_died"
 date = { day = 20 month = october year = 1950 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6061 } #Henry L. Stimson
-command = { type = sleepminister which = 6207 } #Henry L. Stimson
+	name = "OK"
+	command = { type = sleepminister which = 6061 } #Henry L. Stimson
+	command = { type = sleepminister which = 6207 } #Henry L. Stimson
 }
 }
+
 
 event = {
 id = 658619
@@ -3390,8 +3355,9 @@ picture = "minister_died"
 date = { day = 18 month = april year = 1951 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6066 } #Arthur Vandenberg
+	name = "OK"
+	command = { type = sleepminister which = 6066 } #Arthur Vandenberg
+	command = { type = sleepminister which = 6146 } #Arthur Vandenberg
 }
 }
 
@@ -3409,10 +3375,11 @@ picture = "minister_died"
 date = { day = 22 month = january year = 1952 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6083 } #Robert P. Patterson
+	name = "OK"
+	command = { type = sleepminister which = 6083 } #Robert P. Patterson
 }
 }
+
 
 event = {
 id = 658621
@@ -3427,10 +3394,11 @@ picture = "minister_died"
 date = { day = 3 month = february year = 1952 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6199 } #Harold Ickes
+	name = "OK"
+	command = { type = sleepminister which = 6199 } #Harold Ickes
 }
 }
+
 
 event = {
 id = 658622
@@ -3445,10 +3413,11 @@ picture = "minister_died"
 date = { day = 13 month = june year = 1952 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6075 } #Robert Minor
+	name = "OK"
+	command = { type = sleepminister which = 6075 } #Robert Minor
 }
 }
+
 
 event = {
 id = 658623
@@ -3463,10 +3432,11 @@ picture = "minister_died"
 date = { day = 1 month = august year = 1952 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6160 } #Andrew Higgins
+	name = "OK"
+	command = { type = sleepminister which = 6160 } #Andrew Higgins
 }
 }
+
 
 event = {
 id = 658624
@@ -3481,10 +3451,11 @@ picture = "minister_died"
 date = { day = 4 month = may year = 1953 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6206 } #Robert F. Wagner
+	name = "OK"
+	command = { type = sleepminister which = 6206 } #Robert F. Wagner
 }
 }
+
 
 event = {
 id = 658625
@@ -3499,10 +3470,11 @@ picture = "minister_died"
 date = { day = 8 month = september year = 1953 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6091 } #Fred M. Vinson
+	name = "OK"
+	command = { type = sleepminister which = 6091 } #Fred M. Vinson
 }
 }
+
 
 event = {
 id = 658626
@@ -3517,9 +3489,9 @@ picture = "minister_died"
 date = { day = 2 month = april year = 1954 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6130 } #Hoyt Vandenberg
-command = { type = sleepleader which = 60358 } #Hoyt Vandenberg
+	name = "OK"
+	command = { type = sleepminister which = 6130 } #Hoyt Vandenberg
+	command = { type = sleepleader which = 60286 } #Hoyt Vandenberg
 }
 }
 
@@ -3537,10 +3509,11 @@ picture = "minister_died"
 date = { day = 10 month = june year = 1954 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6234 } #Charles F. Adams III
+	name = "OK"
+	command = { type = sleepminister which = 6234 } #Charles F. Adams III
 }
 }
+
 
 event = {
 id = 658628
@@ -3555,10 +3528,11 @@ picture = "minister_died"
 date = { day = 13 month = june year = 1954 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6110 } #Hugh S. Gibson
+	name = "OK"
+	command = { type = sleepminister which = 6110 } #Hugh S. Gibson
 }
 }
+
 
 event = {
 id = 658629
@@ -3573,10 +3547,11 @@ picture = "minister_died"
 date = { day = 9 month = october year = 1954 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6108 } #Robert H. Jackson
+	name = "OK"
+	command = { type = sleepminister which = 6108 } #Robert H. Jackson
 }
 }
+
 
 event = {
 id = 658630
@@ -3591,10 +3566,12 @@ picture = "minister_died"
 date = { day = 13 month = february year = 1955 }
 
 action_a = {
-name = "OK"
-command = { type = sleepleader which = 60336 } #Brehon B. Somervell
+	name = "OK"
+	command = { type = sleepminister which = 6486 } #Brehon B. Somervell
+	command = { type = sleepleader which = 60754 }
 }
 }
+
 
 event = {
 id = 658631
@@ -3609,29 +3586,28 @@ picture = "minister_died"
 date = { day = 11 month = june year = 1958 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6114 } #William Aalto
+	name = "OK"
+	command = { type = sleepminister which = 6114 } #William Aalto
 }
 }
 
-event = {
-id = 658632
-random = no
-country = USA
-style = 2
+#event = {
+#id = 658632
+#random = no
+#country = USA
+#style = 2
 
-name = "EVT_103_NAME"
-desc = "EVT_103_DESC"
-picture = "minister_died"
+#name = "EVT_103_NAME"
+#desc = "EVT_103_DESC"
+#picture = "minister_died"
 
-date = { day = 21 month = june year = 1958 }
+#date = { day = 21 month = june year = 1958 }
 
-action_a = {
-name = "OK"
-command = { type = sleepminister which = 6183 } #Robert L. Ghormley
-}
-}
-
+#action_a = {
+#name = "OK"
+#command = { type = sleepminister which = 6183 } #Robert L. Ghormley
+#}
+#}
 
 event = {
 id = 658633
@@ -3646,8 +3622,8 @@ picture = "minister_died"
 date = { day = 3 month = february year = 1959 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6124 } #Vincent Astor
+	name = "OK"
+	command = { type = sleepminister which = 6124 } #Vincent Astor
 }
 }
 
@@ -3664,9 +3640,9 @@ picture = "minister_died"
 date = { day = 8 month = february year = 1959 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6128 } #William J. Donovan
-command = { type = sleepleader which = 60134 } #William J. Donovan
+	name = "OK"
+	command = { type = sleepminister which = 6128 } #William J. Donovan
+	command = { type = sleepminister which = 6249 } #William J. Donovan
 }
 }
 
@@ -3684,10 +3660,9 @@ picture = "minister_died"
 date = { day = 20 month = june year = 1959 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6176 } #William D. Leahy
-command = { type = sleepminister which = 6162 } #William D. Leahy
-command = { type = sleepleader which = 60429 } #William D. Leahy
+	name = "OK"
+	#command = { type = sleepminister which = 6176 } #William D. Leahy
+	#command = { type = sleepminister which = 6162 } #William D. Leahy
 }
 }
 
@@ -3705,10 +3680,11 @@ picture = "minister_died"
 date = { day = 16 month = august year = 1959 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6197 } #William Halsey
+	name = "OK"
+	#command = { type = sleepminister which = 6197 } #William Halsey
 }
 }
+
 
 event = {
 id = 658638
@@ -3723,10 +3699,10 @@ picture = "minister_died"
 date = { day = 16 month = october year = 1959 }
 
 action_a = {
-name = "OK"
-command = { type = sleepminister which = 6064 } #George C. Marshall
-command = { type = sleepminister which = 6136 } #George C. Marshall
-command = { type = sleepminister which = 6144 } #George C. Marshall
-command = { type = sleepleader which = 60254 } #George C. Marshall
+	name = "OK"
+	#command = { type = sleepminister which = 6064 } #George C. Marshall
+	#command = { type = sleepminister which = 6136 } #George C. Marshall
+	#command = { type = sleepminister which = 6144 } #George C. Marshall
+	#command = { type = sleepleader which = 60254 } #George C. Marshall
 }
 }
