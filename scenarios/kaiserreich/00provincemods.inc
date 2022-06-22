@@ -1525,15 +1525,16 @@ province = { id = 2166 ic = 1 landfort = 3 anti_air = 2 #Lulea
 naval_base = { size = 3 current_size = 3 } air_base = { size = 4 current_size = 4 } }
 
 ### TRA
-province = { id = 691 ic = 4 infra = { size = 0.50 current_size = 0.50 } } #Krasnodar
-province = { id = 692 infra = { size = 0.40 current_size = 0.40 } } #Salsk
+province = { id = 649 ic = 1 } #Kamensk-Shakhtinsky
+province = { id = 691 ic = 1 infra = { size = 0.50 current_size = 0.50 } } #Krasnodar
+province = { id = 692 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Salsk
 province = { id = 694 ic = 2 anti_air = 2 infra = { size = 0.40 current_size = 0.40 } #Novorossiysk
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
 province = { id = 698 infra = { size = 0.20 current_size = 0.20 } } #Stavropol
 province = { id = 700 infra = { size = 0.30 current_size = 0.30 } } #Khasavyurt
-province = { id = 702 ic = 2 #Gronzy
+province = { id = 702 ic = 1 #Gronzy
 air_base = { size = 2 current_size = 2 } } 
-province = { id = 703 ic = 2 } #Vladikavkaz
+province = { id = 703 ic = 1 } #Vladikavkaz
 province = { id = 704 infra = { size = 0.30 current_size = 0.30 } } #Makhachkala
 
 ### U02
@@ -1568,7 +1569,7 @@ province = { id = 635 landfort = 1 anti_air = 2 } #Stalino
 province = { id = 636 ic = 2 landfort = 2 anti_air = 5 } #Kharkov
 province = { id = 641 ic = 1 landfort = 3 coastalfort = 5 anti_air = 5 #Sevastopol
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
-province = { id = 644 anti_air = 2 #Rostov
+province = { id = 644 anti_air = 2 ic = 3 #Rostov
 	naval_base = { size = 4 current_size = 4 } }
 province = { id = 654 anti_air = 1 } #Voronezh
 
