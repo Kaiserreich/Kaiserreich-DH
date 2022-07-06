@@ -18,16 +18,16 @@ ai = "kaiserreich\Kazakh.ai"
     }
 
 #### cabinet
-	headofstate = { type = 9 id = 520012 }
-	headofgovernment = { type = 9 id = 520013 }
-	foreignminister = { type = 9 id = 520017 }
-	armamentminister = { type = 9 id = 520042 }
-	ministerofsecurity = { type = 9 id = 520023 }
-	ministerofintelligence = { type = 9 id = 520025 }
-	chiefofstaff = { type = 9 id = 520030 }
-	chiefofarmy = { type = 9 id = 520054 }
+	headofstate = { type = 9 id = 520012 } #Alikhan Bukeikhanov
+	headofgovernment = { type = 9 id = 520062 } #Mukhamedzhan Tynyshpayev
+	foreignminister = { type = 9 id = 520068 } #Validkhan Tanachev
+	armamentminister = { type = 9 id = 520070 } #Alimkhan Abeuovich Yermekov
+	ministerofsecurity = { type = 9 id = 520067 } #Khalel Dosmukhamedov
+	ministerofintelligence = { type = 9 id = 520073 } #Aleksandr N. Vagin
+	chiefofstaff = { type = 9 id = 520030 } #Aleksandr Dutov
+	chiefofarmy = { type = 9 id = 520054 } #Aleksandr Dutov
 	chiefofnavy = { type = 9 id = 520052 }
-	chiefofair = { type = 9 id = 520039 }
+	chiefofair = { type = 9 id = 520074 } #Viktor G. Fodorov
 #### Resource Reserves
 
        SpyInfo  = {  country = "KAZ" NumberOfSpies = 2  } 
@@ -67,10 +67,13 @@ relation = { tag = MON value = 50 }
 1010 1020 1030 1040 1050 1060 #1918 infantry
 1160 1170 1180 1190 1200 1210 #1918 mountain infantry
 13060 13070 13080 1310 1320 1330 #1918 cavalry division
+1830 #Engineers
+1910 1920 1930 #Logistics 1914
 
 #Armour and artillery
 2860 2870 #Armd Cars up to ww1 armd car
 2290 2300 2310 2900 #Artillery
+7600 7610 #SW Tank
 2800 #ww1 static AA
 2810 #ww1 AA bde
 
@@ -86,6 +89,9 @@ relation = { tag = MON value = 50 }
 #Land Doctrines
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910 #Up to pre ww1 tech
 14000 14010 #Hospitals
+
+#Air Doctrines - ww2 techs
+27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 	}
 
 #########  OOB (...)
