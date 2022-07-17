@@ -1788,72 +1788,103 @@ random = no
 country = RUS
 
 decision = {
-OR = {
-flag = RUS_TSR
-flag = RUS_FMS
-flag = RUS_EFE
-}
-OR = {
-flag = RUS_ISO
-flag = RUS_REAL
-flag = RUS_EXP
-}
-flag = SIB_OPN
-exists = PRI
-exists = JAP
-NOT = {
-alliance = { country = RUS country = PRI }
-war = { country = RUS country = PRI }
-war = { country = RUS country = JAP }
-puppet = { country = PRI country = RUS  }
-ispuppet = RUS
-
-}
-control = { province = 1190 data = PRI }
-control = { province = 1191 data = PRI }
-control = { province = 1187 data = RUS }
-control = { province = 1188 data = RUS }
-control = { province = 1175 data = RUS }
-control = { province = 1189 data = RUS }
+	OR = {
+		flag = RUS_TSR
+		flag = RUS_FMS
+		flag = RUS_EFE
+	}
+	OR = {
+		flag = RUS_ISO
+		flag = RUS_REAL
+		flag = RUS_EXP
+	}
+	flag = SIB_OPN
+	exists = PRI
+	exists = JAP
+	NOT = {
+		alliance = { country = RUS country = PRI }
+		war = { country = RUS country = PRI }
+		war = { country = RUS country = JAP }
+		puppet = { country = PRI country = RUS }
+		ispuppet = RUS
+	}
+	OR = {
+		AND = {
+			control = { province = 1190 data = PRI } #Khabarovsk
+			control = { province = 1191 data = PRI } #Vladivostok
+			control = { province = 1187 data = RUS } #Sofiysk
+			control = { province = 1188 data = RUS } #Elban
+			control = { province = 1175 data = RUS } #Birobidzhan
+			control = { province = 1189 data = RUS } #Nikolayevsk-on-Amur
+		}
+		AND = {
+			control = { province = 1190 data = PRI } #Khabarovsk
+			control = { province = 1191 data = PRI } #Vladivostok
+			control = { province = 1187 data = PRI } #Sofiysk
+			control = { province = 1189 data = PRI } #Nikolayevsk-on-Amur
+			control = { province = 1132 data = RUS } #Chelyabinsk
+			control = { province = 1127 data = RUS } #Pervouralsk
+			control = { province = 1128 data = RUS } #Nizhny Tagil
+		}
+	}
 }
 
 decision_trigger = {
-garrison = { country = RUS province = 1187 size = 1 } #
-garrison = { country = RUS province = 1188 size = 1 } #
-garrison = { country = RUS province = 1189 size = 1 } #
+	OR = {
+		AND = {
+			garrison = { country = RUS province = 1187 size = 1 } #Sofiysk
+			garrison = { country = RUS province = 1188 size = 1 } #Elban
+			garrison = { country = RUS province = 1189 size = 1 } #Nikolayevsk-on-Amur
+		}
+		AND = {
+			garrison = { country = RUS province = 1132 size = 1 } #Chelyabinsk
+			garrison = { country = RUS province = 1127 size = 1 } #Pervouralsk
+			garrison = { country = RUS province = 1128 size = 1 } #Nizhny Tagil
+		}
+	}
 }
 
 trigger = {
-OR = {
-flag = RUS_TSR
-flag = RUS_FMS
-flag = RUS_EFE
+	OR = {
+		flag = RUS_TSR
+		flag = RUS_FMS
+		flag = RUS_EFE
+	}
+	OR = {
+		flag = RUS_ISO
+		flag = RUS_REAL
+		flag = RUS_EXP
+	}
+	flag = SIB_OPN
+	exists = PRI
+	exists = JAP
+	NOT = {
+		alliance = { country = RUS country = PRI }
+		war = { country = RUS country = PRI }
+		war = { country = RUS country = JAP }
+		puppet = { country = PRI country = RUS }
+		ispuppet = RUS
+	}
+	OR = {
+		AND = {
+			control = { province = 1190 data = PRI } #Khabarovsk
+			control = { province = 1191 data = PRI } #Vladivostok
+			control = { province = 1187 data = RUS } #Sofiysk
+			control = { province = 1188 data = RUS } #Elban
+			control = { province = 1175 data = RUS } #Birobidzhan
+			control = { province = 1189 data = RUS } #Nikolayevsk-on-Amur
+		}
+		AND = {
+			control = { province = 1190 data = PRI } #Khabarovsk
+			control = { province = 1191 data = PRI } #Vladivostok
+			control = { province = 1187 data = PRI } #Sofiysk
+			control = { province = 1189 data = PRI } #Nikolayevsk-on-Amur
+			control = { province = 1132 data = RUS } #Chelyabinsk
+			control = { province = 1127 data = RUS } #Pervouralsk
+			control = { province = 1128 data = RUS } #Nizhny Tagil
+		}
+	}
 }
-OR = {
-flag = RUS_ISO
-flag = RUS_REAL
-flag = RUS_EXP
-}
-flag = SIB_OPN
-exists = PRI
-exists = JAP
-NOT = {
-alliance = { country = RUS country = PRI }
-war = { country = RUS country = PRI }
-war = { country = RUS country = JAP }
-puppet = { country = PRI country = RUS  }
-ispuppet = RUS
-
-}
-control = { province = 1190 data = PRI }
-control = { province = 1191 data = PRI }
-control = { province = 1187 data = RUS }
-control = { province = 1188 data = RUS }
-control = { province = 1175 data = RUS }
-control = { province = 1189 data = RUS }
-
-}
-
 
 name = "The Transamur Plebiscite"
 desc = "EVT_9997_DESC"
@@ -1866,67 +1897,62 @@ offset = 10
 deathdate = { day = 29 month = december year = 1963 }
 
 action_a = {
-ai_chance = 50
-name = "Encourage them to plan a plebiscite."
-command = { type = domestic which = interventionism value = 1 }
-command = { type = trigger which = 750070  }
+	ai_chance = 50
+	name = "Encourage them to plan a plebiscite."
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = trigger which = 750070 }
 }
 action_b = {
-
-ai_chance = 10
-name = "Leave this alone."
-trigger = {
-OR = {
-flag = RUS_REAL
-flag = RUS_ISO
+	ai_chance = 10
+	name = "Leave this alone."
+	trigger = {
+		OR = {
+			flag = RUS_REAL
+			flag = RUS_ISO
+		}
+	}
+	command = { type = belligerence which = RUS value = -5 }
+	command = { type = relation which = JAP value = 40 }
+	command = { type = relation which = PRI value = 40 }
 }
-}
-command = { type = belligerence which = RUS value = -5 }
-command = { type = relation which = JAP value = 40 }
-command = { type = relation which = PRI value = 40 }
-}
-
 action_c = {
-
-ai_chance = 50
-name = "There is no need to vote, all Russians must be under Russian rule!"
-trigger = {
-OR = {
-flag = RUS_REAL
-flag = RUS_EXP
+	ai_chance = 50
+	name = "There is no need to vote, all Russians must be under Russian rule!"
+	trigger = {
+		OR = {
+			flag = RUS_REAL
+			flag = RUS_EXP
+		}
+	}
+	command = { type = belligerence which = RUS value = 5 }
+	command = { type = addcore which = 1191 }
+	command = { type = addcore which = 1196 }
+	command = { type = addcore which = 1193 }
+	command = { type = addcore which = 1192 }
+	command = { type = addcore which = 1195 }
+	command = { type = addcore which = 1194 }
+	command = { type = addcore which = 1190 }
+	command = { type = addcore which = 1185 }
+	command = { trigger = { OR = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP } } } type = trigger which = 750063 }
+	command = { trigger = { NOT = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP } } } type = trigger which = 750068 }
+	command = { type = belligerence which = RUS value = 5 }
 }
-}
-command = { type = belligerence which = RUS value = 5 }
-command = { type = addcore which = 1191 }
-command = { type = addcore which = 1196 }
-command = { type = addcore which = 1193 }
-command = { type = addcore which = 1192 }
-command = { type = addcore which = 1195 }
-command = { type = addcore which = 1194 }
-command = { type = addcore which = 1190 }
-command = { type = addcore which = 1185 }
-command = { trigger = { OR = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP  } } } type = trigger which = 750063  }
-command = { trigger = { NOT = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP  } } } type = trigger which = 750068  }
-command = { type = belligerence which = RUS value = 5 }
-}
-
 action_d = {
-
-ai_chance = 50
-name = "Send a detachment of troops to Vladivostok to dissolve Transamur!"
-trigger = { flag = RUS_EXP }
-command = { type = belligerence which = RUS value = 5 }
-command = { type = addcore which = 1191 }
-command = { type = addcore which = 1196 }
-command = { type = addcore which = 1193 }
-command = { type = addcore which = 1192 }
-command = { type = addcore which = 1195 }
-command = { type = addcore which = 1194 }
-command = { type = addcore which = 1190 }
-command = { type = addcore which = 1185 }
-command = { trigger = { OR = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP  } } } type = trigger which = 750064  }
-command = { trigger = { NOT = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP  } } } type = trigger which = 750068  }
-command = { type = belligerence which = RUS value = 5 }
+	ai_chance = 50
+	name = "Send a detachment of troops to Vladivostok to dissolve Transamur!"
+	trigger = { flag = RUS_EXP }
+	command = { type = belligerence which = RUS value = 5 }
+	command = { type = addcore which = 1191 }
+	command = { type = addcore which = 1196 }
+	command = { type = addcore which = 1193 }
+	command = { type = addcore which = 1192 }
+	command = { type = addcore which = 1195 }
+	command = { type = addcore which = 1194 }
+	command = { type = addcore which = 1190 }
+	command = { type = addcore which = 1185 }
+	command = { trigger = { OR = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP } } } type = trigger which = 750064 }
+	command = { trigger = { NOT = { alliance = { country = JAP country = PRI } puppet = { country = PRI country = JAP } } } type = trigger which = 750068 }
+	command = { type = belligerence which = RUS value = 5 }
 }
 }
 
