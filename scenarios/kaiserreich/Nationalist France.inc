@@ -20,7 +20,7 @@ ai = "kaiserreich\Nationalist France.ai"
 	headofstate = { type = 9 id = 57001 } #Phillipe Petain
 	headofgovernment = { type = 9 id = 57242 } #Louis Franchet d'Esperey
 	foreignminister = { type = 9 id = 57147 } #Edouard de Castelnau
-	armamentminister = { type = 9 id = 57023 } #Paul Painleve
+	armamentminister = { type = 9 id = 57069 } #Charles Bedaux
 	ministerofsecurity = { type = 9 id = 57080 } #Theodore Steeg
 	ministerofintelligence = { type = 9 id = 57212 } #Louis Rivet
 	chiefofstaff = { type = 9 id = 57223 } #Alphonse Georges
