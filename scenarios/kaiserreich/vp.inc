@@ -688,7 +688,7 @@ province = { id = 1972 points = 1 }#Acapulco
 
 #WIF/Caribbean Federation
 province = { id = 1782 points = 1 }#Jamaica, oh I want to take ya
-province = { id = 1733 points = 1 }#Beruda, Bahama, come on pretty mama
+province = { id = 1773 points = 1 }#Bermuda, Bahama, come on pretty mama
 province = { id = 1997 points = 2 }#Georgetown
 province = { id = 2000 points = 1 }#Culican
 
