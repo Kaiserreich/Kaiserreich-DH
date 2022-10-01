@@ -351,15 +351,19 @@ command = { type = dissent value = 5 }
 command = { type = peace which = AFG value = 1 }
 command = { type = leave_alliance }
 command = { type = set_relation which = CAN value = -70 }
-command = { type = relation which = PAK value = -20 }
-command = { type = relation which = VIC value = -30 }
-command = { type = relation which = GUY value = -30 }
-command = { type = relation which = GER value = -30 }
-command = { type = relation which = ENG value = 70 }
-command = { type = relation which = FRA value = 70 }
+command = { type = relation which = PAK value = -100 }
+command = { type = relation which = VIC value = -100 }
+command = { type = relation which = GUY value = -100 }
+command = { type = relation which = GER value = -100 }
+command = { type = relation which = ENG value = 200 }
+command = { type = relation which = FRA value = 200 }
+command = { type = relation which = RSI value = 200 }
+command = { type = relation which = PRK value = 200 }
 command = { type = sleepevent which = 100037 } # The Great Schism of the Australasian Labour Party
 command	= { type = setflag which = AST_Syndicalist }
 command = { type = flag_ext where = AST which = "_syn" }
+command = { type = end_guarantee which = AST where = EAF }
+command = { type = end_access which = CAN when = 0 }
 command = { type = sleepminister which = 56800 } # Edward VIII
 command = { type = sleepminister which = 56801 } # Edward VIII
 command = { type = sleepminister which = 56802 } # Edward VIII
@@ -402,7 +406,11 @@ desc = EVT_100011_DESC # Australasia has been overtaken by Syndicalist revolutio
 
 action_a = {
 name = ACTIONNAME_100011_A # Another blow to the British Empire...
-command = { type = dissent value = 4 }
+command = { type = dissent value = 2 }
+command = { type = end_guarantee which = CAN where = AST }
+command = { type = embargo which = CAN where = AST value = 3 }
+command = { type = embargo which = VIC where = AST value = 3 }
+command = { type = embargo which = GUY where = AST value = 3 }
 }
 }
 
@@ -425,6 +433,9 @@ desc = EVT_100012_DESC # Australasia has been overtaken by Syndicalist revolutio
 action_a = {
 name = ACTIONNAME_100012_A # Another blow to the British Empire!
 command = { type = dissent value = -4 }
+command = { type = embargo which = ENG where = AST value = 0 }
+command = { type = embargo which = FRA where = AST value = 0 }
+command = { type = embargo which = RSI where = AST value = 0 }
 }
 }
 
@@ -446,7 +457,7 @@ desc = EVT_100013_DESC # Australasia has been overtaken by Syndicalist revolutio
 
 action_a = {
 name = ACTIONNAME_100013_A # Another blow to the British Empire!
-command = { type = dissent value = -1 }
+command = { type = embargo which = GER where = AST value = 3 }
 }
 }
 
@@ -491,6 +502,7 @@ desc = EVT_100015_DESC # Australasia has been overtaken by Syndicalist revolutio
 action_a = {
 name = ACTIONNAME_100015_A # Another blow to the British Empire
 command = { type = dissent value = 2 }
+command = { type = embargo which = PAK where = AST value = 3 }
 }
 }
 
@@ -513,58 +525,59 @@ desc = EVT_100016_DESC # Australasia has been overtaken by Syndicalist revolutio
 action_a = {
 name = ACTIONNAME_100016_A # Another blow to European Imperialism!
 command = { type = dissent value = -2 }
+command = { type = embargo which = PRK where = AST value = 0 }
 }
 }
 
-event = {
-id = 100017
-random = no
-country = AST
-style = 2
-picture = "diplomatic_campaign"
+#event = {
+#id = 100017
+#random = no
+#country = AST
+#style = 2
+#picture = "diplomatic_campaign"
 
-trigger = {
-government = communist
-control = { province = 55 data = FRA }
-NOT = {
-atwar = AST
-}
-NOT = {
-alliance = { country = CAN country = AST }
-alliance = { country = GER country = AST }
-alliance = { country = JAP country = AST }
-alliance = { country = FRA country = AST }
-alliance = { country = RUS country = AST }
-alliance = { country = SOV country = AST }
-ispuppet = AST
-ispuppet = FRA
-}
-participant = { country = FRA value = 3 } #Commune of France is part of Syndicalist Internationale
-}
+#trigger = {
+#government = communist
+#control = { province = 55 data = FRA }
+#NOT = {
+#atwar = AST
+#}
+#NOT = {
+#alliance = { country = CAN country = AST }
+#alliance = { country = GER country = AST }
+#alliance = { country = JAP country = AST }
+#alliance = { country = FRA country = AST }
+#alliance = { country = RUS country = AST }
+#alliance = { country = SOV country = AST }
+#ispuppet = AST
+#ispuppet = FRA
+#}
+#participant = { country = FRA value = 3 } #Commune of France is part of Syndicalist Internationale
+#}
 
-name = EVT_100017_NAME # Foreign policy
-desc = EVT_100017_DESC # With Australasia finally free from capitalist oppression we can now freely decide our stance towards the international community. While many are arguing for an immediate alliance with other Syndicalist nations, it might be wise enough to remain neutral to rebuild our country.
+#name = EVT_100017_NAME # Foreign policy
+#desc = EVT_100017_DESC # With Australasia finally free from capitalist oppression we can now freely decide our stance towards the international community. While many are arguing for an immediate alliance with other Syndicalist nations, it might be wise enough to #remain neutral to rebuild our country.
 
-date = { day = 3 month = january year = 1936 }
-offset = 40
-deathdate = { day = 10 month = december year = 1960 }
+#date = { day = 3 month = january year = 1936 }
+#offset = 40
+#deathdate = { day = 10 month = december year = 1960 }
 
-action_a = {
-ai_chance = 95
-name = ACTIONNAME_100017_A # We must join arms with France
-command = { type = trigger which = 100018 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = dissent value = 4 }
-}
-action_b = {
-ai_chance = 5
-name = ACTIONNAME_100017_B # Isolationism, we must organize our country
-command = { type = dissent value = -5 }
-command = { type = domestic which = defense_lobby value = -1 }
-command = { type = domestic which = interventionism value = -1 }
-}
-}
+#action_a = {
+#ai_chance = 95
+#name = ACTIONNAME_100017_A # We must join arms with France
+#command = { type = trigger which = 100018 }
+#command = { type = domestic which = defense_lobby value = 1 }
+#command = { type = domestic which = interventionism value = 1 }
+#command = { type = dissent value = 4 }
+#}
+#action_b = {
+#ai_chance = 5
+#name = ACTIONNAME_100017_B # Isolationism, we must organize our country
+#command = { type = dissent value = -5 }
+#command = { type = domestic which = defense_lobby value = -1 }
+#command = { type = domestic which = interventionism value = -1 }
+#}
+#}
 
 event = {
 id = 100018
@@ -8426,6 +8439,7 @@ style = 2
 
 trigger = {
 flag = AST_Syndicalist
+event = 100701
 }
 
 name = EVT_100702_NAME # The First Congress of Australasian Trade Unions
