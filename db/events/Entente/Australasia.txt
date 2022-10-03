@@ -7556,7 +7556,7 @@ persistent = yes
 decision = {
 event = 100038
 NOT = {
-local_flag = AST_Syndicalist
+flag = AST_Syndicalist
 AND = {
 event = 100503
 event = 100504
@@ -7581,7 +7581,7 @@ energy = 2000
 metal = 2000
 money = 1000
 NOT = {
-local_flag = AST_Syndicalist
+flag = AST_Syndicalist
 local_flag = AST_RAAF
 AND = {
 event = 100503
@@ -9249,7 +9249,7 @@ event = 100712
 
 name = EVT_100730_NAME # Revolutionary Rearmament
 desc = EVT_100730_DESC # We are facing a critical shortage of arms and material stemming from the ANZAC's old dependence on Canada to supply it. While theoreticallhy we can turn to the 3rd Internationale to fund the ANZAC, doing so would just make us dependant on allies whose connections with us is hardly reliable. Therefore the optimal solution is to build up our own arms industry and make the ANZAC full self-suficient whewn it comes to manufacturing equipment and arms. 
-picture = "american_officers"
+picture = "ANZAC_march"
 
 date = { day = 0 month = january year = 1936 }
 offset = 25
@@ -9281,7 +9281,7 @@ event = 100730
 
 name = EVT_100731_NAME # Commonwealth Security Services
 desc = EVT_100731_DESC # It is no secret that there still remains within Australasia many pockets of counter-revolutionary monarchists working to overthrow us. Local militias have faced great difficulty in stamping out these monarchist cells, since many of them are led by former officers and commanders of the ANZAC who defected after the fall of the Confederation. In urban areas these White Guard units involve themselves in smuggling operations, arms trafficking and other illegal activities which threatens the people's faith in our authority. Given the severity of our situation, a new scheme to quickly ramp up our security apparatus is being thrown in ACTU. If passed, the "Commonwealth Security Services Bill" will allow us to be more flexible in dealing with the Guard and their operations. However, the bill's implementation will also mean much greater censorship and the curtailment of civil liberties for many citizens. A fierce battle over the bill is being fought, with the ebd results still uncertain.
-picture = "american_officers"
+picture = "ANZAC_march"
 
 date = { day = 0 month = january year = 1936 }
 offset = 75
@@ -9768,16 +9768,22 @@ id = 100749
 country = AST
 picture = "AST_Indonesia"
 
-trigger = {
+decision = { 
 flag = AST_Syndicalist
 OR = { 
 control = { province = 1647 data = HOL } #Batavia
 control = { province = 1647 data = INO } #Batavia
 }
-NOT = {
-alliance = { country = HOL country = AST }
-alliance = { country = INO country = FRA }
-alliance = { country = HOL country = FRA }
+}
+
+decision_trigger = {
+}
+
+trigger = {
+flag = AST_Syndicalist
+OR = { 
+control = { province = 1647 data = HOL } #Batavia
+control = { province = 1647 data = INO } #Batavia
 }
 }
 
@@ -9785,7 +9791,7 @@ name = EVT_100749_NAME # Liberation of Indonesia
 desc = EVT_100749_DESC # The Dutch first established their presence on the Indonesian Archipelago with the founding of the Dutch East Indies Company, a colonial charter company which by some measures was the largest conglomorate to have ever existed. Since then the Dutch Empire has expanded to encompass the entire of the Indonesian archipelago in order to squeeze dry Indonesian resources and exploit the various native peoples. However, their control has never been quite secure due to the sheer size of Indonesia and the complexity of native power structures. Therefore they've always governed indirectly through local leaders, much like how the British did in India. The German economic collapse plus looming the threat of war in Europe has greatly weakened their presence in the Indies. This presents Australasia with a unique oppoturnity to contribute to the global liberation movement by opening up another front against imperialists in the Pacific.  
 style = 2
 
-date = { day = 1 month = january year = 1938 }
+date = { day = 1 month = january year = 1937 }
 offset = 20
 deathdate = { day = 29 month = december year = 1963 }
 
@@ -9970,3 +9976,199 @@ command = { type = flag_ext where = INO which = "_SYN" }
 }
 }
 
+## FOREIGN INTERACTIONS
+
+event = {
+id = 100800
+random = no
+country = AST
+
+decision = {
+exists = CHI
+flag = AST_Syndicalist
+NOT = {
+ispuppet = CHI
+ispuppet = AST
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 400
+money = 50
+}
+
+trigger = {
+exists = CHI
+flag = AST_Syndicalist
+NOT = {
+ispuppet = CHI
+ispuppet = AST
+}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The Second Chinese Revolution"
+desc = "The Chinese people discontent with corporativist leadership of the German AOG and oppression they present have launched a revolution, aimed against German presence in China. This present us with an great option to weaken German influence in the southern China and ultimately in Pacific as whole."
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+style = 2
+
+action_a = {
+ai_chance = 99
+name = "Send aid to the new republican government!"
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = GER value = -40 }
+command = { type = relation which = CGX value = -40 }
+command = { type = relation which = CSX value = -40 }
+command = { type = relation which = CHI value = 40 }
+command = { type = money value = -50 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -400 }
+command = { type = event which = 100801 where = CHI when = 6  }
+}
+
+action_b = {
+ai_chance = 1
+name = "We cannot do anything..."
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = CHI value = -20 }
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 100801
+random = no
+country = CHI
+
+name = "Australasian volunteers arrive"
+desc = "The Australasian syndicalists have decided to support our struggle against German oppressors with steady flow of military material and volunteers, eager to see Germans defeated."
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!"
+command = { type = supplies value = 500 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = steal_tech which = AST }
+}
+}
+
+
+event = {
+id = 100802
+random = no
+country = AST
+
+trigger = {
+event = 100801
+NOT = {
+war = { country = CHI country = CGX }
+}
+}
+
+name = "The End of the Chinese Revolution"
+desc = "For good or ill, the Chinese Revolution is now over. The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+style = 2
+picture = "foreign_volunteers"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 100803
+random = no
+country = CHI
+
+trigger = {
+event = 100801
+war = { country = CHI country = CGX }
+}
+
+name = "Expatriates celebrate our assistance to the Chinese Nationalists"
+desc = "Many Chinese expatriates living in Australasia are celebrating our decision to send aid to the revolutionaries in Southern China. With many having been refugees from the privations of German colonialism themselves, our assistnace has had a deeply personal effect on many of them especially the politically organised Kuomintang groups across Australasia. The Australasian KMT cells have also taken this oppoturnity to organise fundraising and charity events to support their brethren's struggle at home."
+style = 2
+picture = "Australasian-KMT"
+
+date = { day = 18 month = july year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great!"
+command = { type = dissent value = -1 }
+}
+}
+
+event = {
+id = 100804
+random = no
+country = CHI
+
+trigger = {
+event = 100803
+}
+
+name = "General Cai Tingkai visits Australasia"
+desc = "Cai Tingkai, a prominent general of the Chinese National Revolutionary Army have just recently landed in Melbourne alongside an entourage of diplomats and other NRA officers. Officially, he's here to promote relations and formally establish the Southern Government's diplomatic mission, replacing the extradited imperials. However, informally, General Cai is also here to solidify our military relations, with hopes that Australasia can provide further assistance to the nationalist cause."
+style = 2
+picture = "Australasian-KMT"
+
+date = { day = 1 month = january year = 1936 }
+offset = 300
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 10
+name = "We can't spare much more."
+command = { type = dissent value = 1 }
+command = { type = relation which = CHI value = -10 }
+}
+
+action_b = {
+ai_chance = 90
+name = "Of course!"
+command = { type = relation which = CHI value = 25 }
+command = { type = event which = 100805 where = CHI when = 14  }
+command = { type = resource which = supplies value = -200 }
+command = { type = manpowerpool value = -5 }
+command = { type = money value = -50 }
+}
+}
+
+event = {
+id = 100805
+random = no
+country = CHI
+
+name = "General Cai Tingkai returns from Australasia"
+desc = "General Cai Tingkai and his entourage has just returned from a diplomatic mission in Australasia. Despite our initial skepticism, they have seemingly succeeded in securing not only military, but also comprehensive economic and industrial assistance from Australasia. Truly, this is a new page in the brotherhood between the peoples of Australasia and China."
+style = 2
+picture = "Australasian-KMT"
+
+action_a = {
+ai_chance = 10
+name = "Wansui!"
+command = { type = free_ic value = 1 }
+command = { type = relation which = AST value = 50 }
+command = { type = resource which = supplies value = 200 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
