@@ -523,7 +523,7 @@ offset = 4
 deathdate = { day = 14 month = december year = 1963 }
 
 name = EVT_100016_NAME # Revolution In Australasia!
-desc = EVT_100016_DESC # Australasia has been overtaken by Syndicalist revolution! This is yet another blow against the Imperialists, one from which some are questioning that it can recover from!
+desc = EVT_100016_DESC # We have received word that the government of Australia has been overthrown by a Peoples’ Revolution, and a new Republic has been declared in the Pacific. Sympathetic members of the INC and AITUC have issued their personal congratulations, while the AICC and Working Committee will meet to determine the Party’s official position. Regardless, the Australasian Revolution has dealt a major blow to Imperialism in the Asia-Pacific, and the Party welcomes this and another home to democracy and equality in the region. 
 
 action_a = {
 name = ACTIONNAME_100016_A # Another blow to European Imperialism!
@@ -10007,7 +10007,7 @@ ispuppet = AST
 }
 }
 
-date = { day = 0 month = january year = 1936 }
+date = { day = 1 month = january year = 1936 }
 offset = 15
 deathdate = { day = 29 month = december year = 1963 }
 
@@ -10049,7 +10049,7 @@ country = CHI
 name = "Australasian volunteers arrive"
 desc = "The Australasian syndicalists have decided to support our struggle against German oppressors with steady flow of military material and volunteers, eager to see Germans defeated."
 style = 2
-picture = "foreign_volunteers"
+picture = "European_soldiers_china"
 
 action_a = {
 name = "Great!"
@@ -10075,7 +10075,7 @@ war = { country = CHI country = CGX }
 name = "The End of the Chinese Revolution"
 desc = "For good or ill, the Chinese Revolution is now over. The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
 style = 2
-picture = "foreign_volunteers"
+picture = "European_soldiers_china"
 
 date = { day = 18 month = july year = 1936 }
 offset = 30
@@ -10168,6 +10168,155 @@ name = "Wansui!"
 command = { type = free_ic value = 1 }
 command = { type = relation which = AST value = 50 }
 command = { type = resource which = supplies value = 200 }
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+event = {
+id = 100806
+random = no
+country = AST
+
+trigger = {
+event = 100801
+NOT = {
+war = { country = CHI country = CGX }
+}
+}
+
+name = "The End of the Chinese Revolution"
+desc = "For good or ill, the Chinese Revolution is now over. The General Staff have reported that they learnt many valuable lessons regarding the nature of modern warfare over the course of the conflict."
+style = 2
+picture = "European_soldiers_china"
+
+date = { day = 18 month = july year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "ACTIONNAME2803A" # Great!
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
+
+################
+## PRK EVENTS ##
+################
+
+event = {
+id = 100807
+random = no
+country = PRK
+
+trigger = {
+event = 100016
+}
+
+name = "Australasia-India Friendship Treaty"
+desc = "A proposal for a Pact between Free India and Australasia has been making headlines. Both of our powers struggle to resist British colonialism and other foreign imperialisms, and proponents say that together, India and Australasia can promote peoples’ liberation and emancipation in Asia and Oceania. Many in our ranks, such as Comrade Bose, are enthusiastic of the proposition of an Asia-Pacific Democratic Alliance, but the issue will have to be put to a vote at a special session of Congress."
+style = 2
+picture = "Australasia"
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 99
+name = "To Melbourne!"
+command = { type = dissent value = -1 }
+command = { type = free_ic value = 1 }
+command = { type = resource which = money value = -100 }
+command = { type = relation which = AST value = 10 }
+command = { type = event which = 100808 where = AST when = 14  }
+}
+
+action_b = {
+ai_chance = 1
+name = "Let's not"
+command = { type = relation which = AST value = -10 }
+}
+}
+
+event = {
+id = 100808
+random = no
+country = AST
+
+name = "Australasia-India Friendship Treaty"
+desc = "Our revolutionary friends in the Bengal wishes to further strengthen our bonds by officially signign an Austrlasia-India Friendship Treaty. Signing this declaration will not only further our diplomatic ties, but will also enhance our joint economic and military projects."
+style = 2
+picture = "indiamap2"
+
+action_a = {
+name = "Cheers for our proletarian brotherhood!"
+command = { type = relation which = PRK value = 50 }
+command = { type = metalpool value = 500 }
+command = { type = energypool value = 500 }
+command = { type = oilpool value = 1000 }
+command = { type = rarematerialspool value = 1000 }
+}
+}
+
+event = {
+id = 100809
+random = no
+country = AST
+
+trigger = {
+event = 100808
+}
+
+name = "Assisting the Indian Revolutionaries"
+desc = "The Indian National Army has never lacked in spirits. Their vigour and drive to free their motherland free is nothing less than admirable, but in training and some other regards, they have still not quite managed to evolve from the shackles of the colonialism. By offering them assistance with modernising their program and equipment, we could aid the Indian Revolutionaries in their struggle against the colonialists in Delhi and their princely lackeys."
+style = 2
+picture = "Indian Motorized"
+
+date = { day = 1 month = january year = 1936 }
+offset = 60
+deathdate = { day = 29 month = december year = 1963 }
+
+action_a = {
+ai_chance = 80
+name = "To Bengal!"
+command = { type = resource which = money value = -100 }
+command = { type = supplies value = -2000 }
+command = { type = manpowerpool value = -5 }
+command = { type = relation which = PRK value = 50 }
+command = { type = event which = 100810 where = PRK when = 14  }
+}
+
+action_b = {
+ai_chance = 20
+name = "Let's not"
+command = { type = dissent value = 1 }
+}
+}
+
+event = {
+id = 100810
+random = no
+country = PRK
+
+name = "ANZAC Military Mission"
+desc = "Australasian Commandos, many of which are veterans of the Weltkrieg and their independence struggle, arrived today in Calcutta to meet with National Army leadership. They are putting together a training program, and will be setting up training camps in the jungles in Manipur and Nagaland.  The first class is already on their way."
+style = 2
+picture = "ANZAC_march"
+
+action_a = {
+ai_chance = 80
+name = "Their help is deeply appreciated!"
+command = { type = relation which = AST value = 50 }
+command = { type = attrition_mod value = 2 }
+command = { type = max_organization which = land value = 1 }
+command = { type = morale which = land value = 1 }
+command = { type = gain_tech which = -1 } 
+command = { type = gain_tech which = -1 } 	
 command = { type = add_leader_skill which = -1 value = 1 }
 command = { type = add_leader_skill which = -1 value = 1 }
 }
