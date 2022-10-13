@@ -125,6 +125,8 @@ relation = {   tag =  	SIK	value = 		90	   }
 
 dormant_ministers = { 55973 55984 55985 }
 
+dormant_teams = { 1972 1973 1974 1975 1976 1977 1978 1979 1980 1984 1985 } #doctrine teams
+
 	techapps = {
 
 # JAP 1936 techs
