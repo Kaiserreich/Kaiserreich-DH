@@ -118,8 +118,8 @@ country = {
 
 	policy = { democratic = 3 political_left = 3 freedom = 4 free_market = 3 professional_army = 7 defense_lobby = 8 interventionism = 8 }
 
-	headofstate = { type = 9 id = 58033 } #Zhang Zuolin
-	headofgovernment = { type = 9 id = 58027 } #Zhang Zuoxiang
+	headofstate = { type = 9 id = 58451 } #Puyi 
+	headofgovernment = { type = 9 id = 58041 } #Zhang Jinghui
 
 landunit = {
 	location = 1206
