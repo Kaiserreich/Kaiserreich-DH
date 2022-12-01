@@ -691,7 +691,7 @@ province = { id = 1586 naval_base = { size = 3 current_size = 3 } air_base = { s
 #province = { id = 1590 naval_base = { size = 4 current_size = 4 } } #Lunga
 #province = { id = 1593 air_base = { size = 4 current_size = 4 } } #Guadalcanal
 province = { id = 1667 anti_air = 5 infra = { size = 0.30 current_size = 0.30 } oilpool = 200 supplypool = 1000 #Truk
-	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1686 anti_air = 1 #Pagan
 	naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } }
 #province = { id = 1725 naval_base = { size = 7 current_size = 7 } air_base = { size = 7 current_size = 7 } } #Kavieng
@@ -894,29 +894,29 @@ province = { id = 36 anti_air = 2 coastalfort = 1 #Belfast
 province = { id = 1219 ic = 2 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Port Arthur
 naval_base = { size = 8 current_size = 8 } air_base = { size = 7 current_size = 7 } }
 province = { id = 1221 anti_air = 2 #Pyongyang
-air_base = { size = 4 current_size = 4 } }
-province = { id = 1228 naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } } #Seoul
-province = { id = 1230 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } } #Gwuangju
-province = { id = 1232 anti_air = 2 #Busan
-naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
+air_base = { size = 3 current_size = 3 } }
+province = { id = 1228 naval_base = { size = 3 current_size = 3 } air_base = { size = 5 current_size = 5 } } #Seoul
+province = { id = 1230 air_base = { size = 2 current_size = 2 } } #Gwuangju
+province = { id = 1232 anti_air = 2 landfort = 2 #Busan
+naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
 province = { id = 1541 oilpool = 100 supplypool = 500 } #Okha
 province = { id = 1542 anti_air = 2 infra = { size = 0.20 current_size = 0.20 } #Toyohara
 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } oilpool = 100 supplypool = 500 }
 
 #Japan
-province = { id = 1544 ic = -1 naval_base = { size = 6 current_size = 6 } } #Kushrio
+province = { id = 1544 ic = -1 naval_base = { size = 4 current_size = 4 } } #Kushrio
 province = { id = 1545 ic = 1 infra = { size = 0.40 current_size = 0.40 } #Sapporo
 	naval_base = { size = 5 current_size = 5 } air_base = { size = 6 current_size = 6 } }
-province = { id = 1546 ic = 1 } #Shizuoka
+province = { id = 1546 ic = 1 air_base = { size = 3 current_size = 3 } } #Shizuoka
 province = { id = 1547 ic = 1 anti_air = 2 #Akita
-	air_base = { size = 6 current_size = 6 } }
+	air_base = { size = 3 current_size = 3 } }
 province = { id = 1548 ic = 1 } #Nagano
 province = { id = 1549 ic = 2 #Sendai
-	naval_base = { size = 5 current_size = 5 } air_base = { size = 5 current_size = 5 } }
+	naval_base = { size = 5 current_size = 5 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1550 anti_air = 2 #Yokohama
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1551 anti_air = 2 #Niigata
-	naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
 province = { id = 1552 ic = 7 anti_air = 2 #Tokyo
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 1553 ic = 2 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Osaka
@@ -953,9 +953,9 @@ province = { id = 1672 air_base = { size = 1 current_size = 1 } } #Minami Torish
 
 #Taiwan
 province = { id = 1361 manpower = 2 oilpool = 100 supplypool = 500 #Gaoxiong
-	naval_base = { size = 6 current_size = 6 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1362 anti_air = 4 oilpool = 100 supplypool = 500 #Taipei
-	naval_base = { size = 8 current_size = 8 } air_base = { size = 10 current_size = 10 } }
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
 province = { id = 1363 oilpool = 100 supplypool = 500 } #Taizhong
 province = { id = 1364 manpower = 0 } #Hualian
 
