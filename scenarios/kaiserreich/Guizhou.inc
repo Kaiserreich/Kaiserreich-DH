@@ -1,6 +1,6 @@
 country = {
-    tag = UGS  
-#ai = "kaiserreich\AOG.ai"
+    tag = UGS
+	#ai = "kaiserreich\AOG.ai"
 
 	puppet = CGX
 
@@ -52,7 +52,7 @@ relation = { tag = MAN value = -75 }
 relation = { tag = MEN value = -75 }
 relation = { tag = CYN value = -75 }
 relation = { tag = CSX value =  25 }
-relation = { tag = UIR value = 50 }
+relation = { tag = UPE value = 50 }
 relation = { tag = UCS value = -50 }
 relation = { tag = UCH value = 50 }
 }

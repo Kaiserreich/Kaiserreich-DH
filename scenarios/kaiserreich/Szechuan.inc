@@ -1,5 +1,5 @@
 country = {
-    tag = UCS  
+    tag = UCS
 	#ai = "kaiserreich\Yunnan.ai"
 
 	puppet = CGX
@@ -62,7 +62,7 @@ relation = { tag = MAN value = -75 }
 relation = { tag = MEN value = -75 }
 relation = { tag = CYN value = 25 }
 relation = { tag = CSX value =  25 }
-relation = { tag = UIR value = -100 }
+relation = { tag = UPE value = -100 }
 relation = { tag = UCS value = -50 }
 relation = { tag = UGS value = 50 }
 }

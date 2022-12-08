@@ -1,6 +1,6 @@
 country = {
 tag = VIE
-puppet = UPE
+puppet = UPR
 ai = "kaiserreich\minor_default.ai" #we need a dedicated AI file for them
 policy = {
 date = { year = 0 month = january day = 0 }
@@ -60,7 +60,7 @@ claimedprovinces = {
 diplomacy = {
 relation = { tag = EAF value = 100 } 
 relation = { tag = GER value = 200 }
-relation = { tag = UPE value = -75 }
+relation = { tag = UPR value = -75 }
 relation = { tag = JAP value = -75 }
 relation = { tag = MAN value = -75 }
 relation = { tag = MEN value = -75 }

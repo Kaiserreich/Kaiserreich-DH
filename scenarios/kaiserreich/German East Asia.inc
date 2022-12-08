@@ -2,7 +2,7 @@
 
 
 country = {
-    tag = UPE  
+    tag = UPR
 #ai = "kaiserreich\AOG.ai"
 
 	puppet = GER
@@ -44,7 +44,7 @@ country = {
 
         free = { ic = 10 energy = 20 }
 
-SpyInfo  = {  country = "UPE" NumberOfSpies = 5  } 
+SpyInfo  = { country = "UPR" NumberOfSpies = 5 }
 
     ownedprovinces =      {
 		1432 1437 1438 1234 1365 1367 1624 1625 1626 1670 1671 1748 1668 1669 1684 1685 1686 1667 1676 1665 1666 1674 1675 1681 1677 1678 1679

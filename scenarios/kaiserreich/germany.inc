@@ -191,7 +191,7 @@ relation = { tag = 	URU   value = 20		   }
 relation = { tag = 	VEN   value = 10		   }
 relation = { tag = 	USA   value = -40		 }
 relation = { tag = 	CGX   value = 150	access = yes   guaranteed = { day = 29 month = december year = 1933   } 	   }
-relation = { tag = 	UPE   value = 150	access = yes   guaranteed = { day = 29 month = december year = 1933   } 	   }
+relation = { tag = 	UPR   value = 150	access = yes   guaranteed = { day = 29 month = december year = 1933   } 	   }
 relation = { tag = 	CHC   value = -90		   }
 relation = { tag = 	CSX   value = 120	access = yes   guaranteed = { day = 29 month = december year = 1933   } 	   }
 relation = { tag = 	CXB   value = 50		   }
