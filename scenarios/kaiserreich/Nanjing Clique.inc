@@ -70,12 +70,12 @@ chiefofair = { type = 9 id = 100301 } #Xu Peigen
 	#chiefofnavy = { type = 9 id = 100341 } #Wang Shouting
 	#chiefofair = { type = 9 id = 100366 } #Zhu Lin
 	#possible successor RKMT gov (CC Clique + Sun Wenist officers)
-	#headofstate = { type = 9 id = 100022 } #Lin Sen (Tao Xingzhi [100211] also an option), maybe Dai Jitao [100036] for a far-right version
-	#headofgovernment = { type = 9 id = 100057 } #Chen Guofu, another possibility is Wu Zhongxin [100059]
-	#foreignminister = { type = 9 id = 100083 } #Guo Taiqi, another possibility is Wu Zhongxin [100060], maybe Miao Bin [100101] for a far-right version
-	#armamentminister = { type = 9 id = 100141 } #Zhao Dihua, other possibilities are Chen Qicai [100157] or Fu Rulin [100164]
-	#ministerofsecurity = { type = 9 id = 100219 } #Ju Zheng, other possibilities are Ye Chucang [100227] or Li Shizhen [100230], maybe Ding Mocun [100245] for a far-right version
-	#ministerofintelligence = { type = 9 id = 100026 } #Chen Lifu, other possibilities are Hu Jingan [100097] or Xu Enzeng [100265], maybe Ding Mocun [100245] for a far-right version
+	#headofstate = { type = 9 id = 100022 } #Lin Sen (Dai Jitao [100036] also a far-right option)
+	#headofgovernment = { type = 9 id = 100057 } #Chen Guofu (Wu Zhongxin [100059] also an option)
+	#foreignminister = { type = 9 id = 100083 } #Guo Taiqi (Wu Zhongxin [100060] also an option, Miao Bin [100101] a far-right option)
+	#armamentminister = { type = 9 id = 100141 } #Zhao Dihua (Chen Qicai [100157] & Fu Rulin [100164] also options)
+	#ministerofsecurity = { type = 9 id = 100219 } #Ju Zheng (Ye Chucang [100227] & Li Shizhen [100230] also options, Ding Mocun [100245] a far-right option)
+	#ministerofintelligence = { type = 9 id = 100026 } #Chen Lifu (Hu Jingan [100097] & Xu Enzeng [100265] also options)
 	#chiefofstaff = { type = 9 id = 100299 } #Liu Zhi
 	#chiefofarmy = { type = 9 id = 100326 } #Hu Zongnan
 	#chiefofnavy = { type = 9 id = 100352 } #Chen Zhaoying
