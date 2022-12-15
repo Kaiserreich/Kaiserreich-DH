@@ -32,38 +32,34 @@ country = {
 #### Resource Reserves
 
 	capital = 1338
-
 	manpower = 0
-    
-SpyInfo  = {  country = "EAF" NumberOfSpies = 2  } 
+	SpyInfo = { country = "EAF" NumberOfSpies = 2 }
+	energy = 1000
+	metal = 1000
+	rare_materials = 500
+	oil = 500
+	supplies = 500
+	money = 10
+	transports = 60
+	escorts = 5
 
-	energy	= 1000   
-        metal	= 1000		
-        rare_materials =	500	
-        oil =	500	
-        supplies =	500
-	money = 10       
-        transports = 60
-        escorts = 5
-
-
-    ownedprovinces =      {
-1338 1358 1371 1346
-	 }
+    ownedprovinces = {
+		1338 1358 1371 1346
+	}
     controlledprovinces = {
-1338 1358 1371 1346
-	  }
-    nationalprovinces =   {
-1338 1358 1371 1346
+		1338 1358 1371 1346
+	}
+    nationalprovinces = {
+		1338 1358 1371 1346
 	}
 
 diplomacy = {
-relation = { tag = CGX value = 100 guaranteed = { day = 29 month = december year = 1935   }  access = yes	   } 
-relation = { tag = GER value = 60 }
-relation = { tag = AST value = 60 }
-relation = { tag = CAN value = 60 }
-relation = { tag = CSX value = 60 }
-relation = { tag = USA value = 60 }
+	relation = { tag = CGX value = 100 guaranteed = { day = 29 month = december year = 1935 } access = yes }
+	relation = { tag = GER value = 60 }
+	relation = { tag = AST value = 60 }
+	relation = { tag = CAN value = 60 }
+	relation = { tag = CSX value = 60 }
+	relation = { tag = USA value = 60 }
 }
 
 
@@ -72,46 +68,55 @@ relation = { tag = USA value = 60 }
 
 #Aircraft
 4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter
-4600 4610 4620 4630 4120 4130 #Early Bomber 
+4600 4610 4620 4630 4120 4130 #Early Bomber
 4300 4310 4320 4330 #Multirole fighter
 4800 4810 4820 #ww1 strategic bomber
 4700 4710 #Naval Bomber
+4740 4750 4760 4770 #Seaplane 1924
 
 #Armour & Artillery
-2860 2870 2880 2020 #Basic Armoured Car 
-2290 2300 2310 #Great War Heavy Field Artillery 
+2860 2870 2880 2020 #Basic Armoured Car
+2290 2300 2310 2900 2910 2920 #Artillery 1924
 7600 7610 2620 2010 #SW Tank
-2800 2450 #Early Static Anti-Air Artillery 
-2810 #1918 AA Bde
+2800 2450 21180 #Anti-Air 1924
+2810 2820 #1924 AA Bde
 
 #Infantry
-1010  1020 1030 1040 1050 1060 1070 1080 #1926 Infantry Division
-1160  1170 1180 1190 1200 1210 1220 #Early Mountain Division
-1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply 
-13060 13070 13080 1310 1320 1330 1340 1350 #1930 Cavalry Division 
+1010 1020 1030 1040 1050 1060 1070 1080 #1926 Infantry Division
+1560 1570 1580 #1931 Naval Infantry Division
+1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply
+13060 13070 13080 1310 1320 1330 1340 1350 #1930 Cavalry Division
 1830 1840 1850 1860 #Engineers
 1396 # Motorized Infantry
 
-#Air Doctrines 
+#Air Doctrines
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 
 #Industrial
-5700 5710 5010 5020 #Mechanized Agriculture 
+5810 5820 5050 5830 #Production 1925
+5700 5710 5010 5020 #Mechanized Agriculture
 5800 5080 5090 #Improved Construction Engineering
+5310 54010 54020 54030 #Accounting Machine
+5316 5326 5327 #Early Decryption
 5600 5610 5620 #Medicine
-5190 #Basic Oil Refining 
+5190 #Basic Oil Refining
 
-# Great War Land Doctrines (central powers)
+#Great War Land Doctrines (central powers)
 6500 6510 6530 6550 6590 6600 6610 6620 6650 6670 6680 6690 6700 6710 6910
-6010 6020 # Superior Firepower
-14000 14010 14020 #Great War Hospital System 
+6560 6030 #Grand Battle Plan
+14000 14010 14020 #Great War Hospital System
 
 #Naval
 3010 3020 3030 3040 3050 #Large Destroyer
-3410 3420 3430 3440 3450 #Early Battleship
+3110 3120 3130 3140 #Interwar Light Cruiser
+3810 3820 #Troopship 25
+3900 #ASW 1918
+3720 3730 3736 3740 3750 #Interwar Torpedo
 
 #Naval Doctrines
-8010 8020 8030 8040 8050 
+8010 8020 8030 8040 8050 8070 8100 8110 8120 8900 8910 8920 8930 8940 8150 8160 8060 8080 82300 8500 8510 8520 8550
+8200 8210 8170 8560
+82500 #Fuel Oil Logistics
 
 	}
 
