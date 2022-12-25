@@ -47,15 +47,26 @@ chiefofair = { type = 9 id = 100301 } #Xu Peigen
 	#chiefofarmy = { type = 9 id = 100063 } #Chen Yi (Tang Enbo [100334] also an option)
 	#chiefofnavy = { type = 9 id = 100356 } #Jiang Hongjie
 	#chiefofair = { type = 9 id = 100301 } #Xu Peigen
-	#possible successor Socdem gov (CDL + CDNCA figures)
-	#headofstate = { type = 9 id = 502001 } #
-	#headofgovernment = { type = 9 id = 502002 } #
-	#foreignminister = { type = 9 id = 579004 } #
-	#armamentminister = { type = 9 id = 579008 } #
-	#ministerofsecurity = { type = 9 id = 579011 } #
-	#ministerofintelligence = { type = 9 id = 579012 } #
-	#chiefofstaff = { type = 9 id = 579015 } #
-	#chiefofarmy = { type = 9 id = 579018 } #
+	#possible successor Socdem gov (CDL)
+	#headofstate = { type = 9 id = 100010 } #Shen Junru
+	#headofgovernment = { type = 9 id = 100013 } #Zhang Dongsun
+	#foreignminister = { type = 9 id = 100016 } #Huang Yanpei
+	#armamentminister = { type = 9 id = 100115 } #Ma Yinchu
+	#ministerofsecurity = { type = 9 id = 100190 } #Gao Yihan (Hu Yuzhi [100077] also an option)
+	#ministerofintelligence = { type = 9 id = 100250 } #Xu Mengqiu
+	#chiefofstaff = { type = 9 id = 100269 } #Chen Qihan
+	#chiefofarmy = { type = 9 id = 100308 } #Yao Xingwu
+	#chiefofnavy = { type = 9 id = 100341 } #Wang Shouting
+	#chiefofair = { type = 9 id = 100364 } #Chen Yibai (Li Mingyang [100334] also an option)
+	#possible successor Soclib gov (CDNCA)
+	#headofstate = { type = 9 id = 100015 } #Huang Yanpei
+	#headofgovernment = { type = 9 id = 100047 } #Leng Yu
+	#foreignminister = { type = 9 id = 100079 } #Yang Weiyu
+	#armamentminister = { type = 9 id = 100128 } #Lu Xiaobo (Yu Huancheng [100129] also an option)
+	#ministerofsecurity = { type = 9 id = 100205 } #Shen Suwen
+	#ministerofintelligence = { type = 9 id = 100255 } #Wu Yunchu
+	#chiefofstaff = { type = 9 id = 100279 } #Zhang Hongchun
+	#chiefofarmy = { type = 9 id = 100277 } #Li Mingyang (Fan Songfu [100311] also an option)
 	#chiefofnavy = { type = 9 id = 100341 } #Wang Shouting
 	#chiefofair = { type = 9 id = 100364 } #Chen Yibai (Li Mingyang [100334] also an option)
 	#possible successor Lib-dem gov
@@ -74,7 +85,7 @@ chiefofair = { type = 9 id = 100301 } #Xu Peigen
 	#headofgovernment = { type = 9 id = 100057 } #Chen Guofu (Wu Zhongxin [100059] also an option)
 	#foreignminister = { type = 9 id = 100083 } #Guo Taiqi (Wu Zhongxin [100060] also an option, Miao Bin [100101] a far-right option)
 	#armamentminister = { type = 9 id = 100141 } #Zhao Dihua (Chen Qicai [100157] & Fu Rulin [100164] also options)
-	#ministerofsecurity = { type = 9 id = 100219 } #Ju Zheng (Ye Chucang [100227] & Li Shizhen [100230] also options, Ding Mocun [100245] a far-right option)
+	#ministerofsecurity = { type = 9 id = 100227 } #Ye Chucang (Li Shizhen [100230] also an option, Ding Mocun [100245] a far-right option)
 	#ministerofintelligence = { type = 9 id = 100026 } #Chen Lifu (Hu Jingan [100097] & Xu Enzeng [100265] also options)
 	#chiefofstaff = { type = 9 id = 100299 } #Liu Zhi
 	#chiefofarmy = { type = 9 id = 100326 } #Hu Zongnan
