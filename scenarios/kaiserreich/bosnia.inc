@@ -2,12 +2,11 @@
 
 
 country = {
-    tag = BOS  
+    tag = BOS
 
-ai = "kaiserreich\Bosnia.ai"
+	ai = "kaiserreich\Bosnia.ai"
 	puppet = AUS
-        flag_ext = _aus
-
+	flag_ext = _aus
 
 	policy = {
         date = { year = 0 month = january day = 0 }
@@ -21,31 +20,29 @@ ai = "kaiserreich\Bosnia.ai"
     }
 
 #### cabinet
-
-	headofstate = { type = 9 id = 546038 }
-	headofgovernment = { type = 9 id = 546013  }
- 	foreignminister = { type = 9 id = 546015   }
- 	armamentminister = { type = 9 id = 546018 }
- 	ministerofsecurity = { type = 9 id = 546023 }
- 	ministerofintelligence = { type = 9 id = 546027  }
- 	chiefofstaff = { type = 9 id = 546030 }
- 	chiefofarmy = { type = 9 id = 546008}
- 	chiefofnavy = { type = 9 id = 546009 }        
- 	chiefofair = { type = 9 id = 546036 }
-
+	headofstate = { type = 9 id = 546054 } #Nikola Mandic
+	headofgovernment = { type = 9 id = 546013 } #Mehmed Spaho
+	foreignminister = { type = 9 id = 546006 } #Hakija Hadzic
+	armamentminister = { type = 9 id = 546022 } #Nikola Mandic
+	ministerofsecurity = { type = 9 id = 546056 } #Osman Kulenovic
+	ministerofintelligence = { type = 9 id = 546028 } #Muhamed Hadziefendic
+	chiefofstaff = { type = 9 id = 546030 } #Ivan Markulj
+	chiefofarmy = { type = 9 id = 546060 } #Gojkomir von Glogovac
+	chiefofnavy = { type = 9 id = 546009 } #Muhamed Hadziefendic
+	chiefofair = { type = 9 id = 546034 } #Duro Dragicevic
 
 #### Resource Reserves
 	capital = 355
 
 	manpower = 28
 
-SpyInfo  = {  country = "BOS" NumberOfSpies = 2  } 
+	SpyInfo = { country = "BOS" NumberOfSpies = 2 }
 
 	# Resource Reserves
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10
 
-
+	free = { ic = 1 }
 
     ownedprovinces =      {
 357 353 358 355 354 356
