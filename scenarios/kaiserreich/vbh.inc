@@ -20,7 +20,7 @@ ai = "kaiserreich\VBH.ai"
     }
 #### cabinet
 headofstate = { type = 9 id = 27001 }
-headofgovernment = { type = 9 id = 27002 }
+headofgovernment = { type = 9 id = 27020 } #August Winnig
 armamentminister = { type = 9 id = 27103 } #Edwin Magnus
 ministerofsecurity = { type = 9 id = 27098  } #Otto von Kursell
 ministerofintelligence = { type = 9 id = 27123 } #Alfred von Randow

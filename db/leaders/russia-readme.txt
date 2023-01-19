@@ -1,4 +1,5 @@
 November 2021
+	June 2022 Update
 KR 1.9.3
 
 Naval Leaders: IDs 500000-500024, 500746-500777
@@ -23,3 +24,5 @@ Leaders gained from BLR: IDs 500850-500859
 Leaders gained from PRI: IDs 500860-500888
 Leaders gained from TRA: IDs 500890-500912
 Leaders gained from UKR: IDs 500915-500950
+
+Additional Leaders: 500980-500982

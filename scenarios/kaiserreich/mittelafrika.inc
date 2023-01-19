@@ -211,15 +211,15 @@ landunit = {
 }
 }
 landunit = {
- name = "Katanga Miliz"
- location = 902
+ name = "Force Publique"
+ location = 899
  id = { type = 22006  id = 8 }
 
  division = {
   id = { type = 22006  id = 9 }
-  name = "'Outer Heaven' Warlords"
-  type = militia
-  model = 3
+  name = "8. Mittelafrikanische Division"
+  type = d_01
+  model = 7
   strength = 100
     }
 }

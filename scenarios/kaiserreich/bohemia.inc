@@ -19,12 +19,12 @@ country = {
     	}
 
 
-	headofstate = { type = 9 id = 24154 }
-	headofgovernment = { type = 9 id = 24175 }
-	foreignminister = { type = 9 id = 24060 }
-	armamentminister = { type = 9 id = 24067 } #Karl von Skoda
-	ministerofsecurity = { type = 9 id = 24085 }
-	ministerofintelligence = { type = 9 id = 24104 }
+	headofstate = { type = 9 id = 24224 } #Jan Nepomuk II. ze Schwarzenbergu
+	headofgovernment = { type = 9 id = 24230 } #Moric Hruban
+	foreignminister = { type = 9 id = 24231 } #Josef Samalík
+	armamentminister = { type = 9 id = 24232 } #Josef Solle
+	ministerofsecurity = { type = 9 id = 24233 } #Václav Zboril
+	ministerofintelligence = { type = 9 id = 24101 } #Cenek Hauzvic
 	chiefofstaff = { type = 9 id = 24183 }
 	chiefofarmy = { type = 9 id = 24182 }
 	chiefofnavy = { type = 9 id = 24138 }

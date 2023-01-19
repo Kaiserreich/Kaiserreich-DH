@@ -20,7 +20,7 @@ ai = "kaiserreich\Cossack.ai"
 	headofstate = { type = 9 id = 523001 } #Pyotr Krasnov
 	headofgovernment = { type = 9 id = 523014 } #Mikhail Grabbe
 	foreignminister = { type = 9 id = 523096 } #Pyotr Popov
-	armamentminister = { type = 9 id = 523023 } #Vasiliy Ivanis
+	armamentminister = { type = 9 id = 523115 } #Nikolay Paramonov
 	ministerofsecurity = { type = 9 id = 523104 } #Ivan Ushakov
 	ministerofintelligence = { type = 9 id = 523102 } #Isaak Bykadorov
 	chiefofstaff = { type = 9 id = 523108 } #Vladimir Sidorin
