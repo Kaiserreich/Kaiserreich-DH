@@ -37,8 +37,9 @@ province = { id = 2052 anti_air = 1 #Montevideo
 naval_base = { size = 6 current_size = 6 } air_base = { size = 2 current_size = 2 } }
 
 ### ARM
-province = { id = 711 ic = 1 landfort = 3 anti_air = 1 #Yerevan (Mar2020 - previously ic = 5, increased infra)
+province = { id = 711 ic = 1 landfort = 3 anti_air = 1 #Yerevan
 	infra = { size = 0.30 current_size = 0.30 } }
+province = { id = 714 infra = { size = 0.20 current_size = 0.20 } } #Nakhchivan
 
 ### AST
 
@@ -63,7 +64,7 @@ province = { id = 1707 ic = -1 anti_air = 2 #Canberra
 province = { id = 1708 ic = 6 anti_air = 3 coastalfort = 1 #Melbourne
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 8 current_size = 8 } }
 province = { id = 1710 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } } #Hobart
-province = { id = 1711 ic = 1 } #Port Lincoln
+province = { id = 1711 ic = 1 infra = { size = 0.30 current_size = 0.30 } } #Port Lincoln
 province = { id = 1712 ic = 3 anti_air = 2 #Adelaide
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 province = { id = 1713 ic = -3 } #Robe
@@ -771,7 +772,10 @@ province = { id = 1781 anti_air = 1 #Port-au-Prince
 ### HOL
 
 #Indonesia
-province = { id = 1615 air_base = { size = 4 current_size = 4 } } #Flores
+province = { id = 1615 infra = { size = 0.20 current_size = 0.20 } #Flores
+	air_base = { size = 4 current_size = 4 } }
+province = { id = 1625 infra = { size = 0.20 current_size = 0.20 } } #Bandar Seri Begawan
+province = { id = 1629 infra = { size = 0.20 current_size = 0.20 } } #Singkawang
 province = { id = 1632 ic = 1 infra = { size = 0.20 current_size = 0.20 } #Balikpapan
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 3 current_size = 3 } }
 province = { id = 1636 anti_air = 2 infra = { size = 0.30 current_size = 0.30 } #Palembang
@@ -781,6 +785,8 @@ province = { id = 1640 infra = { size = 0.20 current_size = 0.20 } } #Koeta-Radj
 province = { id = 1641 infra = { size = 0.30 current_size = 0.30 } } #Oosthaven
 province = { id = 1642 anti_air = 2 #Medan
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 2 current_size = 2 } }
+province = { id = 1643 infra = { size = 0.20 current_size = 0.20 } } #Bali
+province = { id = 1644 infra = { size = 0.20 current_size = 0.20 } } #Sumbawa
 province = { id = 1646 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Tjilatjap
 province = { id = 1647 ic = 2 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Batavia
   naval_base = { size = 6 current_size = 6 } oilpool = 100 supplypool = 500 air_base = { size = 6 current_size = 6 } }
@@ -794,7 +800,9 @@ province = { id = 1653 infra = { size = 0.50 current_size = 0.50 } anti_air = 2 
 province = { id = 1654 ic = 1 infra = { size = 0.40 current_size = 0.40 } } #Jogjakarta
 province = { id = 1655 infra = { size = 0.40 current_size = 0.40 } } #Malang
 province = { id = 1656 infra = { size = 0.30 current_size = 0.30 } } #Madura
-province = { id = 1658 naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } } #Kendari
+province = { id = 1657 infra = { size = 0.30 current_size = 0.30 } } #Makassar
+province = { id = 1658 infra = { size = 0.20 current_size = 0.20 } #Kendari
+	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
 
 #Netherlands
 province = { id = 118 anti_air = 2 air_base = { size = 4 current_size = 4 } } #Eindhoven
@@ -910,13 +918,13 @@ province = { id = 36 anti_air = 2 coastalfort = 1 #Belfast
 province = { id = 1219 ic = 2 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Port Arthur
 naval_base = { size = 8 current_size = 8 } air_base = { size = 7 current_size = 7 } }
 province = { id = 1221 anti_air = 2 #Pyongyang
-air_base = { size = 3 current_size = 3 } }
+	air_base = { size = 3 current_size = 3 } }
 province = { id = 1228 naval_base = { size = 3 current_size = 3 } air_base = { size = 5 current_size = 5 } } #Seoul
 province = { id = 1230 air_base = { size = 2 current_size = 2 } } #Gwuangju
 province = { id = 1232 anti_air = 2 landfort = 2 #Busan
-naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
-province = { id = 1541 oilpool = 100 supplypool = 500 } #Okha
-province = { id = 1542 anti_air = 2 infra = { size = 0.20 current_size = 0.20 } #Toyohara
+	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
+province = { id = 1541 oilpool = 100 supplypool = 500 infra = { size = 0.20 current_size = 0.20 } } #Okha
+province = { id = 1542 anti_air = 2 infra = { size = 0.30 current_size = 0.30 } #Toyohara
 naval_base = { size = 3 current_size = 3 } air_base = { size = 3 current_size = 3 } oilpool = 100 supplypool = 500 }
 
 #Japan
@@ -1278,6 +1286,12 @@ province = { id = 1565 coastalfort = 3 anti_air = 2 #Manila
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
 province = { id = 1567 anti_air = 4 #Baguio
 	naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } }
+province = { id = 1573 infra = { size = 0.20 current_size = 0.20 } } #Leyte
+province = { id = 1574 infra = { size = 0.20 current_size = 0.20 } } #Bacolod
+province = { id = 1576 infra = { size = 0.30 current_size = 0.30 } } #Panay
+province = { id = 1578 infra = { size = 0.20 current_size = 0.20 } } #Cagayan de Oro
+province = { id = 1579 infra = { size = 0.20 current_size = 0.20 } } #Davao
+
 
 ### POL
 province = { id = 223 anti_air = 4 ic = -2 #Lodz
@@ -1304,7 +1318,9 @@ province = { id = 992 naval_base = { size = 3 current_size = 3  } air_base = { s
 province = { id = 1372 #Macao
 	naval_base = { size = 3 current_size = 3 } air_base = { size = 1 current_size = 1 } }
 province = { id = 1513 naval_base = { size = 4 current_size = 4 } } #Panjam (Goa)
-province = { id = 1617 naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } } #Dili
+province = { id = 1616 infra = { size = 0.20 current_size = 0.20 } } #Koepang
+province = { id = 1617 infra = { size = 0.20 current_size = 0.20 } #Dili
+	naval_base = { size = 1 current_size = 1 } air_base = { size = 1 current_size = 1 } }
 
 #Portugal
 province = { id = 476 anti_air = 4 #Lisbon
@@ -1526,10 +1542,10 @@ province = { id = 1049 air_base = { size = 2 current_size = 2 } infra = { size =
 
 ### SCH
 province = { id = 389 landfort = 5 anti_air = 3 } #Zurich
-province = { id = 390 landfort = 5 anti_air = 3 } #Lugano
+province = { id = 390 landfort = 5 anti_air = 3 infra = { size = 0.40 current_size = 0.40 } } #Lugano
 province = { id = 391 landfort = 5 anti_air = 3 } #Geneva
 province = { id = 392 landfort = 5 anti_air = 5 #Bern
-air_base = { size = 4 current_size = 4 } }
+	air_base = { size = 4 current_size = 4 } }
 
 ### SER
 province = { id = 327 landfort = 2 infra = { size = 0.40 current_size = 0.40 } } #Krusevac
