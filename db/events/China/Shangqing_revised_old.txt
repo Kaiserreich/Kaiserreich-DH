@@ -1,0 +1,1248 @@
+
+
+
+event = {
+id = 154000
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+	exists = CHI
+	NOT = {
+		ispuppet = CHC
+		ispuppet = CHI
+		atwar = CHC
+		alliance = { country = CHI country = CHC }
+	}
+}
+
+date = { day = 1 month = January year = 1936 }
+offset =  15
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "A like minded revolution"
+desc = "In Southern China a new revolution has erupted against those collaborating with the Germans. Although we may not agree on everything, It may be in our best interest to support this revolution and decide who truly rules China later!"
+
+action_a = {
+	ai_chance = 80
+	name = "China for the Chinese!"
+	command = { type = trigger which = 628017 }
+}
+action_b = {
+	ai_chance = 20
+	name = "They are really no better than collaborators!"
+	command = { type = dissent value = -1 }
+}
+}
+
+
+####################
+### Empire of Manchuria
+####################
+
+event = {
+id = 154001
+country = GER
+style = 2
+picture = "China_rally"
+
+trigger = {
+	exists = MAN
+	exists = JAP
+	puppet = { country = MAN country = JAP }
+	NOT = {
+		war = { country = JAP country = GER }
+		ispuppet = CHC
+		ispuppet = JAP
+		exists = CSX
+		alliance = { country = GER country = CHI }
+		alliance = { country = JAP country = CHI }
+	}
+	control = { province = 1247 data = CHC }
+	control = { province = 1259 data = CHC }
+	control = { province = 1328 data = GER }
+	control = { province = 163 data = GER }
+	control = { province = 1552 data = JAP }
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  7
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Fall of the Qing Empire"
+desc = "Our long-term friend and potential ally in China, the Qing Empire has fallen to the fanatic rebels who now fancy themselves as the true empire of China, however they are fast becoming a real threat to our colonial holdings in Eastern Asia. On the other hand our spies have saved Puyi who is eager for revenge, maybe we can work out a deal with the Japanese and weaken both Asian giants at the same time."
+
+action_a = {
+	ai_chance = 95
+	name = "Call Puyi and contact Japanese!"
+	command = { type = relation which = JAP value = 50 }
+	command = { type = trigger which = 154002 }
+}
+action_b = {
+	ai_chance = 5
+	name = "This is useless.."
+	command = { type = dissent value = 2 } #Fall of CSX without retaliation
+}
+}
+
+
+event = {
+id = 154002
+country = JAP
+style = 2
+picture = "japsun"
+
+name = "Offer from the German Empire"
+desc = "Today we received an interesting offer from Germany, they want to form a secret pact with us to counter rise of the new religious fanatics in China. The former emperor of Qing dynasty Puyi, who is currently in exile in German-held Qingdao, has officially pleaded for our support against the rebels. He might be more useful as the rightful leader of the Manchurian people than the shifty Zhang Zuolin who once betrayed us by siding with the Republic of China."
+
+action_a = {
+	ai_chance = 95
+	name = "Puyi would make a more willing puppet."
+	command = { type = relation which = GER value = 50 }
+	command = { type = setflag which = JAP_KILL_Zhang }
+}
+action_b = {
+	ai_chance = 5
+	name = "This is useless.."
+	command = { type = relation which = GER value = -10 }
+}
+}
+
+
+event = {
+id = 154003
+country = MAN
+style = 2
+picture = "minister_died"
+
+trigger = { flag = JAP_KILL_Zhang }
+
+date = { day = 0 month = january year = 1936 }
+offset = 10
+deathdate = { day = 29 month = december year = 1966 }
+
+name = "Death of Zhang Zuolin"
+desc = "Terrible news, our leader Zhang Zuolin and his eldest son Zhang Xueliang died in a train accident at the outskirts of Shenyang. Following the accident, the chaos was used by to justify a Japanese intervention with the backing of Germany to restore order and use the opportunity to declare the former emperor of Qing, Puyi, as the rightful ruler of Manchuria and its people."
+
+action_a = {
+	name = "How could this happen..."
+	command = { type = dissent value = 10 }
+	command = { type = wakeminister which = 58451 } #Puyi
+	command = { type = wakeminister which = 58450 }
+	command = { type = sleepminister which = 58033 } #Zhang Zuolin
+	command = { type = sleepminister which = 58034 }
+	command = { type = sleepminister which = 58035 }
+	command = { type = sleepminister which = 58043 } #Zhang Xueliang
+	command = { type = sleepminister which = 58044 }
+	command = { type = sleepminister which = 58045 }
+	command = { type = sleepminister which = 58046 }
+	command = { type = sleepminister which = 58047 }
+	command = { type = sleepminister which = 58048 }
+	command = { type = headofstate which = 58451 } #Puyi
+	command = { type = headofgovernment which = 58041 } #Zhang Jinghui
+	command = { type = sleepteam which = 6439 } #Zhang Xueliang
+	command = { type = sleepleader which = 250038 }
+	command = { type = sleepleader which = 250131 }
+	command = { type = sleepleader which = 250137 } #Zhang Zuolin
+	command = { type = sleepevent which = 66704 } #sleep the original Fengtien events to avoid confusion
+	command = { type = sleepevent which = 154019 }
+	command = { type = sleepevent which = 6627078 }
+	command = { type = sleepevent which = 925045 }
+	command = { type = sleepevent which = 627061 }
+	command = { type = sleepevent which = 95048 }
+	command = { type = sleepevent which = 95060 }
+	command = { type = sleepevent which = 95051 }
+	command = { type = sleepevent which = 95056 }
+	command = { type = sleepevent which = 95053 }
+	command = { type = setflag which = Man_puyi }
+	command = { type = clrflag which = JAP_KILL_Zhang }
+}
+}
+
+
+event = {
+id = 154004
+country = MAN
+style = 2
+picture = "China_Rally"
+
+trigger = { flag = MAN_puyi }
+
+date = { day = 1 month = January year = 1936 }
+offset =  5
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Great Empire of Manchuria"
+desc = "With the help of the Germans and the Japanese the rule of Manchu Dynasty was able to reestablished in their homeland. We are confident that soon the time will come for revenge against the rebels in the south!"
+
+action_a = {
+	name = "Rebirth of the Manchu Empire!"
+	command = { type = name where = MAN which = "MAN_EMP_NAME"}
+	command = { type = domestic which = interventionism value = 1 }
+	command = { type = flag_ext where = MAN which = "_EMP" }
+	command = { type = manpowerpool value = 30 }
+	command = { type = add_division which = "Qi Jun" value = infantry when = 8 }
+	command = { type = add_division which = "Qi Jun" value = infantry when = 8 }
+	command = { type = add_division which = "Qi Jun" value = infantry when = 8 }
+	command = { type = add_division which = "Qi Jun" value = infantry when = 8 }
+	command = { type = add_division which = "Qi Jun" value = infantry when = 8 }
+	command = { type = add_division value = light_cruiser when = 3 }
+	command = { type = add_division value = destroyer when = 3 }
+	command = { type = clrflag which = MAN_puyi }
+}
+}
+
+event = {
+id = 154005
+random = no
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+control = { province = 1247 data = CHC }
+control = { province = 1159 data = CHC }
+event = 154004
+exists = MAN
+NOT = {
+ispuppet = CHC
+exists = CSX
+}
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  10
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Rebirth of the Qing"
+desc = "Word has reached us that after evading capture by the Revolutionary Army the former Qing emperor Puyi has managed to rebuild his little empire in Manchuria, declaring himself Emperor of Manchuria after the Japanese Empire managed to remove the shifty warlord Zhang Zuolin of Fengtien through nefarious means. The continual Japanese presence on Chinese soil alone offends the will of Heaven, maybe it's time for us to finish the job and evict the foreigners from Manchuria?"
+
+action_a = {
+ai_chance = 5
+name = "Puyi won't be able to escape this time!"
+command = { type = war which = MAN }
+command = { type = war which = JAP }
+}
+
+action_b = {
+ai_chance = 95
+name = "We are not ready to face Japan..."
+command = { type = dissent value = 1 }
+}
+}
+
+
+event = {
+id = 154006
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+control = { province = 1247 data = CHC }
+NOT = {
+exists = CSX
+exists = CHI
+ispuppet = CHC
+alliance = { country = CHC country = CGX }
+}
+exists = CGX
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Revolution in the South"
+desc = "With our recent victory over the pathetic Qing Empire, we now must find ways to continue driving the foreigners out of China! Word has it that there are like-minded individuals in Southern China, maybe if we supported their revolution..."
+
+action_a = {
+ai_chance = 75
+name = "Fund another revolution!"
+command = { type = manpowerpool value = -20 }
+command = { type = supplies value = -250 }
+command = { type = domestic which = interventionism value = 2 }
+command = { type = relation which = CGX value = -150 }
+command = { type = setflag which = CHC_revolt }
+}
+
+action_b = {
+ai_chance = 25
+name = "Leave them be, they cannot be trusted"
+command = { type = dissent value = -1 }
+command = { type = domestic which = interventionism value = -2 }
+}
+}
+
+
+event = {
+id = 154007
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+flag = CHC_revolt
+NOT = {
+exists = CSX
+exists = CHI
+}
+}
+
+date = { day = 1 month = January year = 1936 }
+offset =  50
+deathdate = { day = 29 month = december year = 1960 }
+
+name = "Our Brothers have taken up arms!"
+desc = "Through our smuggling of weapons and supplies we have been able to instigate a revolt in Southern China. Let us remove the German presence forever!"
+
+action_a = {
+name = "Our efforts pay off"
+command = { type = clrflag which = CHC_revolt }
+}
+}
+
+
+event = {
+id = 154008
+country = CHC
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+NOT = {
+atwar = CHC
+ispuppet = CHC
+}
+exists = CYN
+war = { country = CGX country = CYN }
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  15
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "War in the South"
+desc = "Yunnan and the German-led AoG have gone to war with each other. The foreign menace seeks to expand and subjugate even more good Chinese people. We should stop them! Save what we can and fight the Germans however possible."
+
+action_a = {
+ai_chance = 70
+name = "We must take action, send troops south"
+command = { type = war which = CYN }
+command = { type = dissent value = -1 }
+command = { type = setflag which = CHC_revolt }
+}
+
+action_b = {
+ai_chance = 30
+name = "we are in no position to act"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 154009
+country = CHC
+style = 2
+picture = "Chinese Crossroad"
+
+trigger = {
+alliance = { country = CHC country = CHI }
+not = {
+atwar = CHC
+exists = CYN
+exists = CSX
+ispuppet = CHC
+}
+}
+
+date = { day = 0 month = January year = 1936 }
+offset =  40
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "China is Chinese and now it needs one Government!"
+desc = "We, together with the Republican movement, have thrown the corruption of the foreigners out of our lands. Now we must unite and carry China onwards forever!"
+
+action_a = {
+ai_chance = 100
+name = "Press for unity"
+command = { type = event which = 154010 where = CHI when = 2  }
+}
+
+action_b = {
+ai_chance = 0
+name = "Our alliance shall stand!"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 154010
+country = CHI
+style = 2
+picture = "Chinese Crossroad"
+
+name = "The Shangqing are pressing for a united China"
+desc = "The Shangqing have decided that they alone should rule China, but our differences are great and many of our people do not wish to join them"
+
+action_a = {
+ai_chance = 70
+name = "We refuse - push for twin governments"
+command = { type = dissent value = -1 }
+command = { type = trigger which = 154011 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Accept to exist under their rule"
+command = { type = trigger which = 154012 }
+}
+
+action_c = {
+ai_chance = 20
+name = "Agree, but remain semi-autonomous"
+command = { type = trigger which = 154013 }
+}
+
+action_d = {
+ai_chance = 40
+name = "One Government, One Religion"
+command = { type = trigger which = 154014 }
+}
+}
+
+
+event = {
+id = 154011
+country = CHC
+style = 2
+picture = "Chinese Crossroad"
+
+name = "The Republicans have refused to accept the Mandate of Heaven!"
+desc = "The Republicans have obviously been too influenced by the foreign powers, we must remove their stain as well!"
+
+action_a = {
+ai_chance = 70
+name = "Enfore the Mandate!"
+command = { type = leave_alliance }
+command = { type = war which = CHI }
+command = { type = addcore which = 1378 }
+command = { type = addcore which = 1360 }
+command = { type = addcore which = 1301 }
+command = { type = addcore which = 1304 }
+command = { type = addcore which = 1305 }
+command = { type = addcore which = 1306 }
+command = { type = addcore which = 1307 }
+command = { type = addcore which = 1308 }
+command = { type = addcore which = 1309 }
+command = { type = addcore which = 1310 }
+command = { type = addcore which = 1311 }
+command = { type = addcore which = 1312 }
+command = { type = addcore which = 1313 }
+command = { type = addcore which = 1314 }
+command = { type = addcore which = 1315 }
+command = { type = addcore which = 1318 }
+command = { type = addcore which = 1347 }
+command = { type = addcore which = 1348 }
+command = { type = addcore which = 1349 }
+command = { type = addcore which = 1350 }
+command = { type = addcore which = 1351 }
+command = { type = addcore which = 1352 }
+command = { type = addcore which = 1353 }
+command = { type = addcore which = 1354 }
+command = { type = addcore which = 1355 }
+command = { type = addcore which = 1356 }
+command = { type = addcore which = 1357 }
+command = { type = addcore which = 1359 }
+command = { type = addcore which = 1368 }
+command = { type = addcore which = 1369 }
+command = { type = addcore which = 1370 }
+command = { type = addcore which = 1373 }
+command = { type = addcore which = 1374 }
+command = { type = addcore which = 1375 }
+command = { type = addcore which = 1376 }
+command = { type = addcore which = 1377 }
+command = { type = addcore which = 1379 }
+command = { type = addcore which = 1380 }
+command = { type = addcore which = 1381 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1389 }
+command = { type = addcore which = 1390 }
+command = { type = addcore which = 1384 }
+command = { type = addcore which = 1385 }
+command = { type = addcore which = 1387 }
+command = { type = addcore which = 1386 }
+command = { type = addcore which = 1388 }
+command = { type = addcore which = 1292 }
+command = { type = addcore which = 1293 }
+command = { type = addcore which = 1291 }
+command = { type = addcore which = 1300 }
+command = { type = addcore which = 1303 }
+command = { type = addcore which = 1261 }
+command = { type = addcore which = 1262 }
+command = { type = addcore which = 1296 }
+command = { type = addcore which = 1297 }
+command = { type = addcore which = 1298 }
+command = { type = addcore which = 1299 }
+command = { type = addcore which = 1302 }
+command = { type = addcore which = 1267 }
+command = { type = addcore which = 1338 }
+command = { type = addcore which = 1358 }
+command = { type = addcore which = 1371 }
+command = { type = addcore which = 1346 }
+command = { type = addcore which = 1365 }
+command = { type = addcore which = 1367 }
+command = { type = addcore which = 1328 }
+command = { type = addcore which = 1331 }
+command = { type = addcore which = 1241 }
+command = { type = addcore which = 1245 }
+}
+
+action_b = {
+ai_chance = 30
+name = "Let the alliance stand, we are united enough"
+command = { type = dissent value = 3 }
+}
+}
+
+
+event = {
+id = 154012
+country = CHC
+style = 2
+picture = "Chinese Crossroad"
+
+name = "Unity for China!"
+desc = "The Republican government has accepted our push for the total unification of our countries. This is a great day for all of China!"
+
+action_a = {
+name = "Bring them into the fold!"
+command = { type = addcore which = 1378 }
+command = { type = addcore which = 1360 }
+command = { type = addcore which = 1301 }
+command = { type = addcore which = 1304 }
+command = { type = addcore which = 1305 }
+command = { type = addcore which = 1306 }
+command = { type = addcore which = 1307 }
+command = { type = addcore which = 1308 }
+command = { type = addcore which = 1309 }
+command = { type = addcore which = 1310 }
+command = { type = addcore which = 1311 }
+command = { type = addcore which = 1312 }
+command = { type = addcore which = 1313 }
+command = { type = addcore which = 1314 }
+command = { type = addcore which = 1315 }
+command = { type = addcore which = 1318 }
+command = { type = addcore which = 1347 }
+command = { type = addcore which = 1348 }
+command = { type = addcore which = 1349 }
+command = { type = addcore which = 1350 }
+command = { type = addcore which = 1351 }
+command = { type = addcore which = 1352 }
+command = { type = addcore which = 1353 }
+command = { type = addcore which = 1354 }
+command = { type = addcore which = 1355 }
+command = { type = addcore which = 1356 }
+command = { type = addcore which = 1357 }
+command = { type = addcore which = 1359 }
+command = { type = addcore which = 1368 }
+command = { type = addcore which = 1369 }
+command = { type = addcore which = 1370 }
+command = { type = addcore which = 1373 }
+command = { type = addcore which = 1374 }
+command = { type = addcore which = 1375 }
+command = { type = addcore which = 1376 }
+command = { type = addcore which = 1377 }
+command = { type = addcore which = 1379 }
+command = { type = addcore which = 1380 }
+command = { type = addcore which = 1381 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1389 }
+command = { type = addcore which = 1390 }
+command = { type = addcore which = 1384 }
+command = { type = addcore which = 1385 }
+command = { type = addcore which = 1387 }
+command = { type = addcore which = 1386 }
+command = { type = addcore which = 1388 }
+command = { type = addcore which = 1292 }
+command = { type = addcore which = 1293 }
+command = { type = addcore which = 1291 }
+command = { type = addcore which = 1300 }
+command = { type = addcore which = 1303 }
+command = { type = addcore which = 1261 }
+command = { type = addcore which = 1262 }
+command = { type = addcore which = 1296 }
+command = { type = addcore which = 1297 }
+command = { type = addcore which = 1298 }
+command = { type = addcore which = 1299 }
+command = { type = addcore which = 1302 }
+command = { type = addcore which = 1267 }
+command = { type = addcore which = 1338 }
+command = { type = addcore which = 1358 }
+command = { type = addcore which = 1371 }
+command = { type = addcore which = 1346 }
+command = { type = addcore which = 1365 }
+command = { type = addcore which = 1367 }
+command = { type = addcore which = 1328 }
+command = { type = addcore which = 1331 }
+command = { type = addcore which = 1241 }
+command = { type = addcore which = 1245 }
+command = { type = inherit which = CHI }
+}
+}
+
+
+event = {
+id = 154013
+country = CHC
+style = 2
+picture = "Chinese Crossroad"
+
+name = "Automony?"
+desc = "The Republicans have decided to follow us if we let the Republic be autonomous."
+
+action_a = {
+ai_chance = 70
+name = "Accept"
+command = { type = make_puppet which = CHI }
+}
+
+action_b = {
+ai_chance = 30
+name = "Fools, We have the Mandate!"
+command = { type = leave_alliance }
+command = { type = war which = CHI }
+command = { type = addcore which = 1360 }
+command = { type = addcore which = 1301 }
+command = { type = addcore which = 1304 }
+command = { type = addcore which = 1305 }
+command = { type = addcore which = 1306 }
+command = { type = addcore which = 1307 }
+command = { type = addcore which = 1308 }
+command = { type = addcore which = 1309 }
+command = { type = addcore which = 1310 }
+command = { type = addcore which = 1311 }
+command = { type = addcore which = 1312 }
+command = { type = addcore which = 1313 }
+command = { type = addcore which = 1314 }
+command = { type = addcore which = 1315 }
+command = { type = addcore which = 1318 }
+command = { type = addcore which = 1347 }
+command = { type = addcore which = 1348 }
+command = { type = addcore which = 1349 }
+command = { type = addcore which = 1350 }
+command = { type = addcore which = 1351 }
+command = { type = addcore which = 1352 }
+command = { type = addcore which = 1353 }
+command = { type = addcore which = 1354 }
+command = { type = addcore which = 1355 }
+command = { type = addcore which = 1356 }
+command = { type = addcore which = 1357 }
+command = { type = addcore which = 1359 }
+command = { type = addcore which = 1368 }
+command = { type = addcore which = 1369 }
+command = { type = addcore which = 1370 }
+command = { type = addcore which = 1373 }
+command = { type = addcore which = 1374 }
+command = { type = addcore which = 1375 }
+command = { type = addcore which = 1376 }
+command = { type = addcore which = 1377 }
+command = { type = addcore which = 1379 }
+command = { type = addcore which = 1380 }
+command = { type = addcore which = 1381 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1389 }
+command = { type = addcore which = 1390 }
+command = { type = addcore which = 1384 }
+command = { type = addcore which = 1385 }
+command = { type = addcore which = 1387 }
+command = { type = addcore which = 1386 }
+command = { type = addcore which = 1388 }
+command = { type = addcore which = 1292 }
+command = { type = addcore which = 1293 }
+command = { type = addcore which = 1291 }
+command = { type = addcore which = 1300 }
+command = { type = addcore which = 1303 }
+command = { type = addcore which = 1261 }
+command = { type = addcore which = 1262 }
+command = { type = addcore which = 1296 }
+command = { type = addcore which = 1297 }
+command = { type = addcore which = 1298 }
+command = { type = addcore which = 1299 }
+command = { type = addcore which = 1302 }
+command = { type = addcore which = 1267 }
+command = { type = addcore which = 1338 }
+command = { type = addcore which = 1358 }
+command = { type = addcore which = 1371 }
+command = { type = addcore which = 1346 }
+command = { type = addcore which = 1365 }
+command = { type = addcore which = 1367 }
+command = { type = addcore which = 1328 }
+command = { type = addcore which = 1331 }
+command = { type = addcore which = 1241 }
+command = { type = addcore which = 1245 }
+}
+}
+
+
+event = {
+id = 154014
+country = CHC
+style = 2
+picture = "Chinese Crossroad"
+
+name = "One Government, One Religion"
+desc = "The Republican Government is offering us complete spiritual control, while they control the government"
+
+action_a = {
+ai_chance = 75
+command = { type = trigger which = 154015 }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+command = { type = switch_allegiance which = -1 where = CHI }
+}
+
+action_b = {
+ai_chance = 25
+name = "Fools, We have the Mandate!"
+command = { type = leave_alliance }
+command = { type = war which = CHI }
+command = { type = addcore which = 1301 }
+command = { type = addcore which = 1304 }
+command = { type = addcore which = 1305 }
+command = { type = addcore which = 1306 }
+command = { type = addcore which = 1307 }
+command = { type = addcore which = 1308 }
+command = { type = addcore which = 1309 }
+command = { type = addcore which = 1310 }
+command = { type = addcore which = 1311 }
+command = { type = addcore which = 1312 }
+command = { type = addcore which = 1313 }
+command = { type = addcore which = 1314 }
+command = { type = addcore which = 1315 }
+command = { type = addcore which = 1318 }
+command = { type = addcore which = 1347 }
+command = { type = addcore which = 1348 }
+command = { type = addcore which = 1349 }
+command = { type = addcore which = 1350 }
+command = { type = addcore which = 1351 }
+command = { type = addcore which = 1352 }
+command = { type = addcore which = 1353 }
+command = { type = addcore which = 1354 }
+command = { type = addcore which = 1355 }
+command = { type = addcore which = 1356 }
+command = { type = addcore which = 1357 }
+command = { type = addcore which = 1359 }
+command = { type = addcore which = 1368 }
+command = { type = addcore which = 1369 }
+command = { type = addcore which = 1370 }
+command = { type = addcore which = 1373 }
+command = { type = addcore which = 1374 }
+command = { type = addcore which = 1375 }
+command = { type = addcore which = 1376 }
+command = { type = addcore which = 1377 }
+command = { type = addcore which = 1379 }
+command = { type = addcore which = 1380 }
+command = { type = addcore which = 1381 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1382 }
+command = { type = addcore which = 1389 }
+command = { type = addcore which = 1390 }
+command = { type = addcore which = 1384 }
+command = { type = addcore which = 1385 }
+command = { type = addcore which = 1387 }
+command = { type = addcore which = 1386 }
+command = { type = addcore which = 1388 }
+command = { type = addcore which = 1292 }
+command = { type = addcore which = 1293 }
+command = { type = addcore which = 1291 }
+command = { type = addcore which = 1300 }
+command = { type = addcore which = 1303 }
+command = { type = addcore which = 1261 }
+command = { type = addcore which = 1262 }
+command = { type = addcore which = 1296 }
+command = { type = addcore which = 1297 }
+command = { type = addcore which = 1298 }
+command = { type = addcore which = 1299 }
+command = { type = addcore which = 1302 }
+command = { type = addcore which = 1267 }
+command = { type = addcore which = 1338 }
+command = { type = addcore which = 1358 }
+command = { type = addcore which = 1371 }
+command = { type = addcore which = 1346 }
+command = { type = addcore which = 1365 }
+command = { type = addcore which = 1367 }
+command = { type = addcore which = 1328 }
+command = { type = addcore which = 1331 }
+command = { type = addcore which = 1241 }
+command = { type = addcore which = 1245 }
+}
+}
+
+
+event = {
+id = 154015
+country = CHI
+style = 2
+picture = "Chinese Crossroad"
+
+name = "The Shangqing have accepted!"
+desc = "The Shangqing have accepted our offer aimed at unification of our countries. This is a glorious day for FREE CHINA!"
+
+action_a = {
+name = "Victory and Peace!"
+command = { type = inherit which = CHC }
+}
+}
+
+
+event = {
+id = 154016
+random = no
+country = CHC
+style = 2
+
+trigger = {
+	owned = { province = 1247 data = CHC }
+	control = { province = 1247 data = CHC }
+	owned = { province = 1337 data = CHC }
+	control = { province = 1337 data = CHC }
+	NOT = {
+		exists = CSX
+		event = 160002
+	}
+}
+
+name = "A New Home for The Path of Consistence"
+desc = "With the ousting of the Manchurian Qing dynasty from Peking and the ascendency of Shanqing supremacy over all Chinese lands between the Yellow and Yangtze rivers, enforcing the Mandate from Yan'an has become somewhat cumbersome. Perhaps it is time for The Pure Kingdom Upon the Heavens to find a new administrative nucleus?"
+picture = "shangqingone"
+
+date = { day = 0 month = february year = 1936 }
+offset = 100
+deathdate = { day = 16 month = november year = 1963 }
+
+action_a = {
+	ai_chance = 60
+	name = "In honor of Hong Xiuquan, onwards to Nanjing!"
+	command = { type = capital which = 1337 }
+}
+action_b = {
+	ai_chance = 30
+	name = "Install the Mandate in the Forbidden City!"
+	command = { type = capital which = 1247 }
+}
+action_c = {
+	ai_chance = 10
+	name = "Yan'an actually does have its charms..."
+	command = { type = capital which = 1259 }
+}
+}
+
+
+event = {
+id = 154017
+random = no
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+	control = { province = 1378 data = CHC }
+	NOT = { exists = CGX }
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 40
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "The AoG has been defeated"
+desc = "The AOG has succumbed to our might. Where others have failed, we have prevailed! South China stands united and free, guided by the heavenly light of I-Kuan-Tao! Our victory even inspired some former underground revolutionaries to join our ranks. May those German pigs and their running dogs never despoil our sacred realms again!" # this is for players who want to strike the south first, still gotta disable the revolution
+
+action_a = {
+	name = "Huzzah! Wansui, wansui!"
+	command = { type = addcore which = 1378 }
+	command = { type = addcore which = 1360 }
+	command = { type = addcore which = 1301 }
+	command = { type = addcore which = 1304 }
+	command = { type = addcore which = 1305 }
+	command = { type = addcore which = 1306 }
+	command = { type = addcore which = 1307 }
+	command = { type = addcore which = 1308 }
+	command = { type = addcore which = 1309 }
+	command = { type = addcore which = 1310 }
+	command = { type = addcore which = 1311 }
+	command = { type = addcore which = 1312 }
+	command = { type = addcore which = 1313 }
+	command = { type = addcore which = 1314 }
+	command = { type = addcore which = 1315 }
+	command = { type = addcore which = 1318 }
+	command = { type = addcore which = 1347 }
+	command = { type = addcore which = 1348 }
+	command = { type = addcore which = 1349 }
+	command = { type = addcore which = 1350 }
+	command = { type = addcore which = 1351 }
+	command = { type = addcore which = 1352 }
+	command = { type = addcore which = 1353 }
+	command = { type = addcore which = 1354 }
+	command = { type = addcore which = 1355 }
+	command = { type = addcore which = 1356 }
+	command = { type = addcore which = 1357 }
+	command = { type = addcore which = 1359 }
+	command = { type = addcore which = 1368 }
+	command = { type = addcore which = 1369 }
+	command = { type = addcore which = 1370 }
+	command = { type = addcore which = 1373 }
+	command = { type = addcore which = 1374 }
+	command = { type = addcore which = 1375 }
+	command = { type = addcore which = 1376 }
+	command = { type = addcore which = 1377 }
+	command = { type = addcore which = 1379 }
+	command = { type = addcore which = 1380 }
+	command = { type = addcore which = 1381 }
+	command = { type = addcore which = 1382 }
+	command = { type = addcore which = 1383 }
+	command = { type = addcore which = 1338 }
+	command = { type = addcore which = 1358 }
+	command = { type = addcore which = 1371 }
+	command = { type = addcore which = 1346 }
+	command = { type = addcore which = 1365 }
+	command = { type = addcore which = 1367 }
+	command = { type = addcore which = 1328 }
+	command = { type = addcore which = 1331 }
+	command = { type = addcore which = 1241 }
+	command = { type = addcore which = 1245 }
+	command = { type = add_division which = "The Heavenly Guard" value = d_01 when = 9 }
+	command = { type = add_division which = "Swords of the Dao" value = d_01 when = 9 }
+	command = { type = add_division which = "Defenders of Wuji Shengmu" value = militia when = 5 }
+	command = { type = add_division which = "White Lotus Militia" value = militia when = 5 }
+	command = { type = add_division which = "Black Flag Militia" value = militia when = 5 }
+	command = { type = dissent value = -3 }
+	command = { type = sleepevent which = 154000 }
+}
+}
+
+
+event = {
+id = 154018
+random = no
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+	control = { province = 1390 data = CHC }
+	NOT = { exists = CYN }
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Yunnan has been defeated! "
+desc = "Our brothers of the Southwest have been liberated from that godless warlord scum Long Yun! Enthusiastic volunteers and former soldiers of the clique, having seen the error of their ways, have joined us."
+
+action_a = {
+	name = "How great is the way of Heaven!"
+	command = { type = addcore which = 1389 }
+	command = { type = addcore which = 1390 }
+	command = { type = addcore which = 1384 }
+	command = { type = addcore which = 1385 }
+	command = { type = addcore which = 1387 }
+	command = { type = addcore which = 1386 }
+	command = { type = addcore which = 1388 }
+	command = { type = addcore which = 1292 }
+	command = { type = addcore which = 1293 }
+	command = { type = addcore which = 1291 }
+	command = { type = addcore which = 1300 }
+	command = { type = addcore which = 1303 }
+	command = { type = addcore which = 1261 }
+	command = { type = addcore which = 1262 }
+	command = { type = addcore which = 1296 }
+	command = { type = addcore which = 1297 }
+	command = { type = addcore which = 1298 }
+	command = { type = addcore which = 1299 }
+	command = { type = addcore which = 1302 }
+	command = { type = addcore which = 1267 }
+	command = { type = add_division which = "Shi Dakai Militia" value = militia when = 5 }
+	command = { type = add_division which = "Yunnan Bubing Zongdui" value = d_01 when = 9 }
+	command = { type = add_division which = "Sichuan Bubing Zongdui" value = d_01 when = 9 }
+	command = { type = add_division which = "Miao tribesmen" value = militia when = 5 }
+	command = { type = dissent value = -3 }
+}
+}
+
+
+event = {
+id = 154019
+random = no
+country = CHC
+style = 2
+picture = "TheBrotherhood"
+
+trigger = {
+	control = { province = 1208 data = CHC }
+	NOT = {
+		exists = MAN
+		event = 160063
+		event = 160067
+	}
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Fengtien has been defeated"
+desc = "The Northeast has been taken by our heavenly host! That bandit and traitor emperor-wannabe Zhang Zuolin is history now, as is his clique! He was just like the Overlord of Chu, cruelty and arrogance led to a well-deserved downfall. The people, delivered from their plight, are flocking to Our Great Teacher's cause."
+
+action_a = {
+	name = "Excellent"
+	command = { type = waketeam which = 8303 when = 1 } #Harbin Aircraft Plant
+	command = { type = waketeam which = 8304 when = 1 } #Shenyang Aircraft Factory
+	command = { type = waketeam which = 8309 when = 1 } #Bohai Shipbuilding Heavy Industry
+	command = { type = waketeam which = 8310 when = 1 } #Dalian Shipbuilding Industry
+	command = { type = waketeam which = 8314 } #Shenyang Arsenal
+	command = { type = waketeam which = 8330 when = 1 } #Fushun Mining Group
+	command = { type = addcore which = 1202 }
+	command = { type = addcore which = 1204 }
+	command = { type = addcore which = 1212 }
+	command = { type = addcore which = 1205 }
+	command = { type = addcore which = 1199 }
+	command = { type = addcore which = 1203 }
+	command = { type = addcore which = 1200 }
+	command = { type = addcore which = 1206 }
+	command = { type = addcore which = 1213 }
+	command = { type = addcore which = 1237 }
+	command = { type = addcore which = 1207 }
+	command = { type = addcore which = 1220 }
+	command = { type = addcore which = 1218 }
+	command = { type = addcore which = 1201 }
+	command = { type = addcore which = 1208 }
+	command = { type = addcore which = 1209 }
+	command = { type = addcore which = 1210 }
+	command = { type = addcore which = 1211 }
+	command = { type = addcore which = 1214 }
+	command = { type = addcore which = 1215 }
+	command = { type = addcore which = 1217 }
+	command = { type = addcore which = 1197 }
+	command = { type = addcore which = 1198 }
+	command = { type = addcore which = 1240 }
+	command = { type = addcore which = 1236 }
+	command = { type = addcore which = 1235 }
+	command = { type = addcore which = 1216 }
+	command = { type = addcore which = 1219 }
+	command = { type = dissent value = -3 }
+}
+}
+
+
+event = {
+id = 154020
+random = no
+country = CHC
+style = 2
+
+trigger = {
+	headofstate = 51011 #Zhang Tianran
+	NOT = { event = 160002 }
+}
+
+name = "Our great teacher has died!"
+desc = "Zhang Tianran, our great teacher that has lead us for so long, has died! The Leadership has become divided on who is to succed our Great Teacher between Sun Suzhen and Zhang Guotao. Who will lead our nation?"
+picture = "minister_died"
+
+date = { day = 29 month = september year = 1947 }
+
+action_a = {
+	ai_chance = 100
+	name = "Sun Suzhen will now guide our people!"
+	command = { type = sleepminister which = 51011 } #Zhang Tianran
+	command = { type = headofstate which = 51012 } #Sun Suzhen
+	command = { type = headofgovernment which = 51021 } #Zhang Peicheng
+	command = { type = dissent value = 2 }
+	command = { type = sleepevent which = 154021 }
+}
+action_b = {
+	ai_chance = 0
+	name = "Former KMT politicians orchestrate a silent coup!"
+	command = { type = sleepminister which = 51011 } #Zhang Tianran
+	command = { type = headofstate which = 51000 } #Chen Gan until 1951, He Siyuan afterwards
+	command = { type = headofgovernment which = 51015 } #Chu Minyi until 1951 or 1954, Ge Tan afterwards
+	command = { type = dissent value = 5 }
+	command = { type = sleepevent which = 154021 }
+}
+}
+
+
+event = {
+id = 154021
+random = no
+country = CHC
+style = 2
+
+trigger = {
+	NOT = {
+		headofstate = 51011 #Zhang Tianran
+		event = 160002
+	}
+}
+
+name = "Zhang Tianran has died!"
+desc = "Zhang Tianran, our former teacher that had lead us for so long, has died! A week of mourning has been declared."
+picture = "minister_died"
+
+date = { day = 29 month = september year = 1947 }
+
+action_a = {
+	name = "We will never forget him!"
+	command = { type = sleepminister which = 51011 } #Zhang Tianran
+	command = { type = dissent value = 1 }
+}
+}
+
+## duplicate of event 160068 in Tian Empire.txt
+#event = {
+#id = 154022
+#country = CHC
+#style = 2
+#picture = "China_Reunited"
+#
+#trigger = {
+#control = { province = 1247 data = CHC }
+#control = { province = 1337 data = CHC }
+#control = { province = 1338 data = CHC }
+#control = { province = 1369 data = CHC }
+#control = { province = 1390 data = CHC }
+#control = { province = 1281 data = CHC }
+#control = { province = 1208 data = CHC }
+#control = { province = 1289 data = CHC }
+#NOT = {
+#exists = MAN
+#exists = CYN
+#exists = CSX
+#exists = CGX
+#exists = CXB
+#}
+#}
+#
+#date = { day = 1 month = january year = 1936 }
+#offset =  10
+#deathdate = { day = 29 month = december year = 1963 }
+#
+#name = "China reunited!"
+#desc = "We had to fight fiercely on the battlefields and in the conference rooms but we have reached our goal. Historical China is now reunited and stronger than ever! The last hundred years was just a nightmare! Time for a #big festival to celebrate becoming a Great Power!"
+#action_a = {
+#name = "China forever!"
+#command = { type = dissent value = -5 }
+#command = { type = free_ic value = -7 }
+#command = { type = waketeam which = 8313 }
+#command = { type = waketeam which = 8314 }
+#command = { type = waketeam which = 8315 }
+#command = { trigger = { NOT = { ispuppet = CHC } } type = setflag which = CHC_united }
+#}
+#}
+
+
+event = {
+id = 154023
+country = CHC
+style = 2
+picture = "China_Reunited"
+
+trigger = {
+	flag = CHC_united
+	NOT = { ispuppet = CHC }
+}
+
+date = { day = 0 month = january year = 1936 }
+offset =  60
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "New directions"
+desc = "With China once again united under one banner, it is now time to redirect our economical and military expansion. There are several places of interest, where united China can expand...."
+
+action_a = {
+	name = "Russia is weak, lay claims on our rightful lands!"
+	ai_chance = 70
+	trigger = {
+		NOT = {
+			alliance = { country = RUS country = CHC }
+			control = { province = 1191 data = CHC }
+		}
+	}
+	command = { type = relation which = RUS value = -100 }
+	command = { type = relation which = PRI value = -100 }
+	command = { type = relation which = SIB value = -100 }
+	command = { type = relation which = SOV value = -100 }
+	command = { type = relation which = JAP value = -100 }
+	command = { type = belligerence which = CHC value = 5 }
+	command = { type = clrflag which = CHC_united }
+	command = { type = addclaim which = 1191 }
+	command = { type = addclaim which = 1196 }
+	command = { type = addclaim which = 1193 }
+	command = { type = addclaim which = 1192 }
+	command = { type = addclaim which = 1195 }
+	command = { type = addclaim which = 1194 }
+	command = { type = addclaim which = 1190 }
+	command = { type = addclaim which = 1185 }
+}
+action_b = {
+	name = "Put Southern Asia under our Sphere of Influence"
+	ai_chance = 20
+	trigger = {
+		NOT = {
+			alliance = { country = GER country = CHC }
+			control = { province = 1395 data = CHC }
+		}
+	}
+	command = { type = belligerence which = CHC value = 5 }
+	command = { type = addclaim which = 1398 }
+	command = { type = addclaim which = 1399 }
+	command = { type = addclaim which = 1403 }
+	command = { type = addclaim which = 1394 }
+	command = { type = addclaim which = 1397 }
+	command = { type = addclaim which = 1395 }
+	command = { type = addclaim which = 1396 }
+	command = { type = addclaim which = 1392 }
+	command = { type = addclaim which = 1393 }
+	command = { type = addclaim which = 1404 }
+	command = { type = addclaim which = 1405 }
+	command = { type = addclaim which = 1391 }
+	command = { type = relation which = GER value = -50 }
+	command = { type = relation which = PRK value = -25 }
+	command = { type = relation which = IND value = -25 }
+	command = { type = relation which = AST value = -25 }
+	command = { type = clrflag which = CHC_united }
+}
+action_c = {
+	name = "We are done now"
+	ai_chance = 10
+	command = { type = belligerence which = CHC value = -1 }
+	command = { type = clrflag which = CHC_united }
+}
+}
