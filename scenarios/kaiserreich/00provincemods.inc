@@ -11,8 +11,9 @@ province = { id = 2171 ic = 2 #Kabul
 	infra = { size = 0.30 current_size = 0.30 } air_base = { size = 1 current_size = 1 } }
 
 ### ALB
-province = { id = 359 anti_air = 1
-naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } } #Tirana
+province = { id = 359 anti_air = 1 infra = { size = 0.30 current_size = 0.30 } #Tirana
+	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
+province = { id = 362 infra = { size = 0.20 current_size = 0.20 } } #Vlore
 
 ### ARG
 
@@ -826,21 +827,25 @@ province = { id = 2085 anti_air = 1 ic = -2 manpower = 2 #Tegucigalpa
 #Hungary
 province = { id = 188 infra = { size = 0.80 current_size = 0.80 } } #Eisenstadt
 province = { id = 276 infra = { size = 0.60 current_size = 0.60 } } #Zalaegerszeg
-province = { id = 277 infra = { size = 0.70 current_size = 0.70 } } #Pecs
-province = { id = 278 ic = -9 infra = { size = 0.80 current_size = 0.80 } } #Szekesfehervar
+province = { id = 277 ic = -3 infra = { size = 0.70 current_size = 0.70 } } #Pecs
+province = { id = 278 ic = -10 infra = { size = 0.80 current_size = 0.80 } } #Szekesfehervar
 province = { id = 279 infra = { size = 0.80 current_size = 0.80 } } #Gyor
-province = { id = 280 infra = { size = 0.70 current_size = 0.70 } } #Szeged
-province = { id = 281 ic = 2 } #Debrecen
-province = { id = 282 ic = 1 infra = { size = 0.70 current_size = 0.70 } } #Miskolc
+province = { id = 280 ic = -2 infra = { size = 0.70 current_size = 0.70 } } #Szeged
+province = { id = 281 ic = 1 } #Debrecen
+province = { id = 282 ic = 3 infra = { size = 0.70 current_size = 0.70 } } #Miskolc
 province = { id = 283 infra = { size = 0.60 current_size = 0.60 } } #Bekescsaba
-province = { id = 284 ic = 5 anti_air = 2 #Budapest
+province = { id = 284 ic = 11 anti_air = 2 #Budapest (Hungary industry is heavily concentrated)
 	air_base = { size = 8 current_size = 8 } infra = { size = 1.00 current_size = 1.00 } }
-province = { id = 286 infra = { size = 0.60 current_size = 0.60 } } #Arad
+province = { id = 285 ic = -1 } #Timisoara
+province = { id = 286 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Arad
 province = { id = 287 infra = { size = 0.40 current_size = 0.40 } } #Turda
-province = { id = 288 anti_air = 2 #Cluj
+province = { id = 288 manpower = 1 ic = -1 anti_air = 2 #Cluj
 	air_base = { size = 5 current_size = 5 } infra = { size = 0.50 current_size = 0.50 } }
+province = { id = 289 ic = 2 } #Alba Iulia (Hunedora)
 province = { id = 291 infra = { size = 0.50 current_size = 0.50 } } #Sibiu
+province = { id = 292 ic = -1 } #Bistrita
 province = { id = 295 ic = 2 infra = { size = 0.40 current_size = 0.40 } } #Resita
+province = { id = 296 ic = -1 } #Oradea
 province = { id = 336 manpower = 1 infra = { size = 0.50 current_size = 0.50 } } #Petrovgrad
 province = { id = 341 ic = -1 infra = { size = 0.60 current_size = 0.60 } } #Novi Sad
 
@@ -1377,19 +1382,20 @@ province = { id = 2017 infra = { size = 0.40 current_size = 0.40 } } #Arequipa
 ### ROM
 province = { id = 297 anti_air = 1 #Iasi
 	air_base = { size = 3 current_size = 3 } }
-province = { id = 300 infra = { size = 0.50 current_size = 0.50 } } #Cernauti
+province = { id = 300 manpower = 1 infra = { size = 0.50 current_size = 0.50 } } #Cernauti
 province = { id = 301 infra = { size = 0.40 current_size = 0.40 } } #Suceava
 province = { id = 302 infra = { size = 0.40 current_size = 0.40 } } #Hotin
 province = { id = 303 ic = -2 infra = { size = 0.40 current_size = 0.40 } } #Balti
 province = { id = 304 anti_air = 1 infra = { size = 0.40 current_size = 0.40 } } #Chisinau
 province = { id = 305 infra = { size = 0.30 current_size = 0.30 } } #Cahul
-province = { id = 306 ic = -2 infra = { size = 0.40 current_size = 0.40 } } #Ismail
+province = { id = 306 ic = -2 manpower = 1 infra = { size = 0.40 current_size = 0.40 } } #Ismail
+province = { id = 308 manpower = 1 } #Giurgiu
 province = { id = 310 ic = 2 anti_air = 2 #Constantza
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
 province = { id = 311 ic = 1 anti_air = 3 } #Ploiesti
 province = { id = 313 infra = { size = 0.10 current_size = 0.10 } } #Sulina
 province = { id = 315 infra = { size = 0.40 current_size = 0.40 } } #Craiova
-province = { id = 316 anti_air = 2 #Bucharest
+province = { id = 316 manpower = 2 anti_air = 2 #Bucharest
 	air_base = { size = 5 current_size = 5 } }
 	
 ### RSI
