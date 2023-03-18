@@ -79,8 +79,8 @@ country = {
 
 	free = { ic = 50 oil = 20 }
 
-	headofstate = { type = 9 id = 51001 }
-	headofgovernment = { type = 9 id = 51006 }
+	headofstate = { type = 9 id = 51011 }
+	headofgovernment = { type = 9 id = 51013 }
 	
 
 landunit = {
