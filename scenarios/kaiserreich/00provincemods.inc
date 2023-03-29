@@ -406,22 +406,22 @@ province = { id = 1284 manpower = 1 #Xining
 	air_base = { size = 3 current_size = 3 } }
 
 ### CZE
-province = { id = 196 ic = 3 anti_air = 2 manpower = 2 #Brno
+province = { id = 196 ic = 4 anti_air = 2 manpower = 2 #Brno
 	air_base = { size = 3 current_size = 3 } infra = { size = 0.80 current_size = 0.80 } }
 province = { id = 197 ic = -2 infra = { size = 0.70 current_size = 0.70 } } #Znojmo
 province = { id = 198 infra = { size = 0.90 current_size = 0.90 } #Hradec Kralove
 	air_base = { size = 6 current_size = 6 } }
 province = { id = 199 ic = 7 anti_air = 2 manpower = 1 #Plzen
 	air_base = { size = 7 current_size = 7 } infra = { size = 0.80 current_size = 0.80 } }
-province = { id = 200 manpower = 0 #Liberec
+province = { id = 200 ic = 1 manpower = 0 #Liberec
 	infra = { size = 0.70 current_size = 0.70 } }
-province = { id = 201 ic = 2 manpower = 1 } #Ostrava
-province = { id = 202 ic = 4 infra = { size = 0.70 current_size = 0.70 } } #Ceske Budejovice
+province = { id = 201 ic = 4 manpower = 1 } #Ostrava
+province = { id = 202 ic = 2 infra = { size = 0.70 current_size = 0.70 } } #Ceske Budejovice
 province = { id = 203 ic = 2 infra = { size = 0.70 current_size = 0.70 } } #Tesin
 province = { id = 204 infra = { size = 0.50 current_size = 0.50 } } #Prachatice
-province = { id = 205 manpower = 2 #Karlovy Vary
+province = { id = 205 ic = 2 manpower = 2 #Karlovy Vary
 	air_base = { size = 4 current_size = 4 } infra = { size = 0.90 current_size = 0.90 } }
-province = { id = 206 infra = { size = 0.60 current_size = 0.60 } } #Opava
+province = { id = 206 ic = 2 infra = { size = 0.60 current_size = 0.60 } } #Opava
 province = { id = 207 ic = 5 anti_air = 3 manpower = 2 #Prague
 	air_base = { size = 6 current_size = 6 } infra = { size = 1.00 current_size = 1.00 } }
 
@@ -594,7 +594,7 @@ province = { id = 98 landfort = 3 anti_air = 1 } #Pontarlier
 province = { id = 100 landfort = 6 anti_air = 2 } #Verdun
 province = { id = 102 landfort = 5 anti_air = 2 } #Sedan
 province = { id = 103 landfort = 4 anti_air = 2 } #Hirson
-province = { id = 104 ic = 3 anti_air = 3 infra = { size = 0.90 current_size = 0.90 } #Metz
+province = { id = 104 anti_air = 3 infra = { size = 0.90 current_size = 0.90 } #Metz
 	air_base = { size = 10 current_size = 10 } }
 
 ### GUA
@@ -748,8 +748,8 @@ province = { id = 1728 infra = { size = 0.20 current_size = 0.20 } #Suva
 
 #Post 1870 European gains
 province = { id = 96 ic = 2 landfort = 3 anti_air = 2 } #Longwy
-province = { id = 105 landfort = 2 anti_air = 2 } #Colmar
-province = { id = 106 landfort = 3 anti_air = 2 infra = { size = 0.80 current_size = 0.80 } } #Nancy
+province = { id = 105 ic = 1 landfort = 2 anti_air = 2 } #Colmar
+province = { id = 106 ic = 2 landfort = 3 anti_air = 2 infra = { size = 0.80 current_size = 0.80 } } #Nancy
 province = { id = 108 landfort = 4 anti_air = 2 } #Liege
 province = { id = 111 landfort = 3 anti_air = 2 } #Arlon
 province = { id = 429 landfort = 3 coastalfort = 2 anti_air = 2 oilpool = 100 supplypool = 500 #Malta

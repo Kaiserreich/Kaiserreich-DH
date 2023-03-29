@@ -18,9 +18,9 @@ country = {
 
 #### cabinet
 	headofstate = { type = 9 id = 51011 } #Zhang Tianran
-	headofgovernment = { type = 9 id = 51015 } #Chu Minyi
-	#headofgovernment = { type = 9 id = 51013 } #Sun Suzhen
-	foreignminister = { type = 9 id = 51014 } #Sun Suzhen (Chu Minyi [51016], Shi Taixu [51035] & Xia Jiquan [51031] also options)
+	#headofgovernment = { type = 9 id = 51015 } #Chu Minyi
+	headofgovernment = { type = 9 id = 51013 } #Sun Suzhen
+	foreignminister = { type = 9 id = 51016 } #Chu Minyi (Sun Suzhen [51014], Shi Taixu [51035] & Xia Jiquan [51031] also options)
 	armamentminister = { type = 9 id = 51048 } #Liu Zishan (Gu Ruzhang [51056], Ding Jingchen [51039] & Yin Renxian [51053] also options)
 	ministerofsecurity = { type = 9 id = 51082 } #Xue Dian (Yang Yuting [51076], Ma Liang [51047] & Xiao Changming [51080] also options)
 	ministerofintelligence = { type = 9 id = 51037 } #Yin Ruizhi
