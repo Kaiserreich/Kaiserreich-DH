@@ -415,7 +415,7 @@ province = { id = 199 ic = 7 anti_air = 2 manpower = 1 #Plzen
 	air_base = { size = 7 current_size = 7 } infra = { size = 0.80 current_size = 0.80 } }
 province = { id = 200 ic = 1 manpower = 0 #Liberec
 	infra = { size = 0.70 current_size = 0.70 } }
-province = { id = 201 ic = 4 manpower = 1 } #Ostrava
+province = { id = 201 ic = 3 manpower = 1 } #Ostrava
 province = { id = 202 ic = 2 infra = { size = 0.70 current_size = 0.70 } } #Ceske Budejovice
 province = { id = 203 ic = 2 infra = { size = 0.70 current_size = 0.70 } } #Tesin
 province = { id = 204 infra = { size = 0.50 current_size = 0.50 } } #Prachatice
@@ -1657,21 +1657,22 @@ province = { id = 475 anti_air = 2 infra = { size = 0.30 current_size = 0.30 } #
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 
 ### SWE
-province = { id = 2152 coastalfort = 3 manpower = 2 #Malmo
+province = { id = 2152 ic = 1 coastalfort = 3 manpower = 2 #Malmo
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 6 } }
-province = { id = 2153 coastalfort = 1 anti_air = 2 manpower = 2 #Gothenburg
+province = { id = 2153 ic = 2 coastalfort = 1 anti_air = 2 manpower = 2 #Gothenburg
 	naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
-province = { id = 2155 infra = { size = 0.60 current_size = 0.60 } } #Kalmar
+province = { id = 2154 ic = 1 } #Joenkoping
+province = { id = 2155 ic = -1 infra = { size = 0.60 current_size = 0.60 } } #Kalmar
 province = { id = 2156 anti_air = 2 infra = { size = 0.50 current_size = 0.50 } #Visby
 	naval_base = { size = 7 current_size = 7 } air_base = { size = 4 current_size = 4 } }
-province = { id = 2157 infra = { size = 0.70 current_size = 0.70 } } #Linkoping
-province = { id = 2158 landfort = 1 coastalfort = 1 #Uppsala
+province = { id = 2157 ic = 3 infra = { size = 0.70 current_size = 0.70 } } #Linkoping
+province = { id = 2158 ic = 1 landfort = 1 coastalfort = 1 #Uppsala
 	infra = { size = 0.70 current_size = 0.70 } }
-province = { id = 2159 coastalfort = 3 anti_air = 2 manpower = 2 #Stockholm
+province = { id = 2159 ic = -4 coastalfort = 3 anti_air = 2 manpower = 2 #Stockholm
 	naval_base = { size = 8 current_size = 8 } air_base = { size = 8 current_size = 8 } }
-province = { id = 2160 infra = { size = 0.70 current_size = 0.70 } } #Oerebro
-province = { id = 2161 infra = { size = 0.60 current_size = 0.60 } } #Karlstad
-province = { id = 2162 landfort = 1 coastalfort = 1 } #Gaevla
+province = { id = 2160 ic = 2 infra = { size = 0.70 current_size = 0.70 } } #Oerebro
+province = { id = 2161 ic = -1 infra = { size = 0.60 current_size = 0.60 } } #Karlstad
+province = { id = 2162 ic = 1 landfort = 1 coastalfort = 1 } #Gaevla
 province = { id = 2163 ic = -1 } #Vilhelmina
 province = { id = 2164 infra = { size = 0.60 current_size = 0.60 } } #Oestersund
 province = { id = 2166 ic = 1 landfort = 3 anti_air = 2 #Lulea
@@ -1702,42 +1703,48 @@ province = { id = 1500 ic = 2 infra = { size = 0.50 current_size = 0.50 } #Madra
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 2 current_size = 2 } }
 
 ### UKR
+province = { id = 244 ic = -3 } #Rowne
 province = { id = 245 landfort = 2 infra = { size = 0.50 current_size = 0.50 } } #Lutsk
 province = { id = 249 infra = { size = 0.30 current_size = 0.30 } } #Sarny
 province = { id = 587 infra = { size = 0.50 current_size = 0.50 } } #Klintsy
-province = { id = 605 landfort = 1 infra = { size = 0.50 current_size = 0.50 } } #Konotop
-province = { id = 606 landfort = 1 infra = { size = 0.50 current_size = 0.50 } } #Sumy
+province = { id = 605 ic = 2 manpower = 1 landfort = 1 infra = { size = 0.50 current_size = 0.50 } } #Konotop
+province = { id = 606 ic = -1 landfort = 1 infra = { size = 0.50 current_size = 0.50 } } #Sumy
 province = { id = 607 landfort = 1 air_base = { size = 2 current_size = 2 } #Chernigov
 	infra = { size = 0.50 current_size = 0.50 } }
-province = { id = 608 infra = { size = 0.50 current_size = 0.50 } } #Sarny
-province = { id = 610 infra = { size = 0.40 current_size = 0.40 } } #Kremenchug
-province = { id = 612 ic = -1 infra = { size = 0.60 current_size = 0.60 } } #Vinnitsa
+province = { id = 608 manpower = 1 infra = { size = 0.50 current_size = 0.50 } } #Nezhin
+province = { id = 610 ic = 1 manpower = 1 infra = { size = 0.40 current_size = 0.40 } } #Kremenchug
+province = { id = 611 manpower = 2 } #Zhitomir
+province = { id = 612 ic = -2 infra = { size = 0.60 current_size = 0.60 } } #Vinnitsa
 province = { id = 613 infra = { size = 0.50 current_size = 0.50 } } #Cherkasy
-province = { id = 614 infra = { size = 0.60 current_size = 0.60 } } #Proskurov
-province = { id = 615 infra = { size = 0.40 current_size = 0.40 } } #Uman
+province = { id = 614 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Proskurov
+province = { id = 615 manpower = 1 infra = { size = 0.40 current_size = 0.40 } } #Uman
 province = { id = 616 infra = { size = 0.40 current_size = 0.40 } } #Novograd-Volynsky
 province = { id = 617 anti_air = 3 infra = { size = 0.60 current_size = 0.60 } #Kiev
 	air_base = { size = 8 current_size = 8 } }
-province = { id = 618 ic = -2 infra = { size = 0.50 current_size = 0.50 } } #Kamenets-Podolsky
-province = { id = 619 infra = { size = 0.60 current_size = 0.60 } } #Mogilev-Podolsky
+province = { id = 618 ic = -1 manpower = 1 infra = { size = 0.50 current_size = 0.50 } } #Kamenets-Podolsky
+province = { id = 619 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Mogilev-Podolsky
 province = { id = 620 infra = { size = 0.50 current_size = 0.50 } } #Balta
 province = { id = 621 infra = { size = 0.40 current_size = 0.40 } } #Tiraspol
 province = { id = 622 ic = 2 infra = { size = 0.40 current_size = 0.40 } #Nikolayev
 	naval_base = { size = 5 current_size = 5 } }
-province = { id = 624 infra = { size = 0.30 current_size = 0.30 } } #Kherson
+province = { id = 623 manpower = 1 } #Melitopol
+province = { id = 624 ic = -1 manpower = 0 infra = { size = 0.30 current_size = 0.30 } } #Kherson
 province = { id = 625 infra = { size = 0.30 current_size = 0.30 } } #Ochakov
-province = { id = 626 anti_air = 3 infra = { size = 0.50 current_size = 0.50 } #Odessa
+province = { id = 626 ic = -1 anti_air = 3 infra = { size = 0.50 current_size = 0.50 } #Odessa
 	naval_base = { size = 3 current_size = 3 } }
 province = { id = 627 infra = { size = 0.60 current_size = 0.60 } } #Krivoy Rog
-province = { id = 628 infra = { size = 0.50 current_size = 0.50 } } #Yelisavetgrad
-province = { id = 629 infra = { size = 0.40 current_size = 0.40 } } #Poltava
-province = { id = 631 infra = { size = 0.50 current_size = 0.50 } } #Mariupol
-province = { id = 632 anti_air = 2 infra = { size = 0.60 current_size = 0.60 } #Dnepropetrovsk
+province = { id = 628 ic = 1 manpower = 2 infra = { size = 0.50 current_size = 0.50 } } #Yelisavetgrad (Kirovograd)
+province = { id = 629 ic = -1 infra = { size = 0.40 current_size = 0.40 } } #Poltava
+province = { id = 630 ic = 2 } #Zaporozhye
+province = { id = 631 ic = 1 infra = { size = 0.50 current_size = 0.50 } } #Mariupol
+province = { id = 632 ic = -1 manpower = 1 anti_air = 2 infra = { size = 0.60 current_size = 0.60 } #Yekaterinoslav (Dnepropetrovsk)
 	air_base = { size = 2 current_size = 2 } }
-province = { id = 633 infra = { size = 0.50 current_size = 0.50 } } #Kupyansk
-province = { id = 634 landfort = 1 infra = { size = 0.70 current_size = 0.70 } } #Voroshilovgrad
-province = { id = 635 landfort = 1 anti_air = 2 infra = { size = 0.80 current_size = 0.80 } } #Stalino
-province = { id = 636 ic = 2 landfort = 2 anti_air = 5 infra = { size = 0.70 current_size = 0.70 } } #Kharkov
+province = { id = 633 ic = 1 manpower = 1 infra = { size = 0.50 current_size = 0.50 } } #Kupyansk
+province = { id = 634 ic = 4 manpower = 2 landfort = 1 infra = { size = 0.70 current_size = 0.70 } } #Lugansk (Voroshilovgrad)
+province = { id = 635 manpower = 3 landfort = 1 anti_air = 2 infra = { size = 0.80 current_size = 0.80 } } #Yuzovka (Donetsk/Stalino)
+province = { id = 636 ic = 1 manpower = 3 landfort = 2 anti_air = 5 infra = { size = 0.70 current_size = 0.70 } } #Kharkov
+province = { id = 638 ic = 1 } #Simferopol
+province = { id = 640 ic = 1 manpower = 1 } #Kerch
 province = { id = 641 ic = 1 landfort = 3 coastalfort = 5 anti_air = 5 #Sevastopol
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 6 current_size = 6 } }
 province = { id = 644 anti_air = 2 ic = 3 #Rostov
