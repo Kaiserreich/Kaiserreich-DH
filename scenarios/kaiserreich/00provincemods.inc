@@ -90,19 +90,19 @@ naval_base = { size = 6 current_size = 6 } air_base = { size = 6 current_size = 
 ### AUS
 
 #Austria
-province = { id = 186 infra = { size = 0.60 current_size = 0.60 } } #Freistadt
+province = { id = 186 ic = -2 infra = { size = 0.60 current_size = 0.60 } } #Freistadt
 province = { id = 187 ic = 2 infra = { size = 0.80 current_size = 0.80 } #Linz
 	air_base = { size = 4 current_size = 4 } }
-province = { id = 189 anti_air = 2 #Innsbruck
+province = { id = 189 ic = 1 anti_air = 2 #Innsbruck
 	air_base = { size = 4 current_size = 4 } }
 province = { id = 190 ic = 4 anti_air = 1 } #Graz
 province = { id = 191 ic = 1 #Klagenfurt
 	air_base = { size = 6 current_size = 6 } infra = { size = 0.60 current_size = 0.60 } }
-province = { id = 192 ic = 2 } #Salzburg
-province = { id = 193 ic = 1 manpower = 2 #Sankt Poelten
+province = { id = 192 ic = -1 } #Salzburg
+province = { id = 193 ic = 3 manpower = 2 #Sankt Poelten
 	infra = { size = 0.90 current_size = 0.90 } }
 province = { id = 194 infra = { size = 0.80 current_size = 0.80 } } #Hollabrunn
-province = { id = 195 anti_air = 5 ic = 1 manpower = 3 #Vienna
+province = { id = 195 anti_air = 5 ic = 9 manpower = 3 #Vienna (Austrian industry is heavily concentrated between Wien & Wiener Neustadt)
 	air_base = { size = 10 current_size = 10 } }
 
 #Montenegro
@@ -112,9 +112,11 @@ province = { id = 332 #Cetinje
 #Slovene/Italian lands
 province = { id = 346 ic = 2 manpower = 1 infra = { size = 0.60 current_size = 0.60 } } #Maribor
 province = { id = 349 ic = -1 } #Ljubljana
-province = { id = 394 ic = -2 } #Belluno
+province = { id = 394 ic = -3 } #Belluno
 province = { id = 400 anti_air = 2 ic = 3 #Venezia
 	naval_base = { size = 5 current_size = 5 } air_base = { size = 5 current_size = 5 } }
+province = { id = 401 ic = -2 } #Trento
+province = { id = 402 ic = -1 } #Bolzano
 province = { id = 404 anti_air = 1 #Trieste
 	naval_base = { size = 5 current_size = 5 } air_base = { size = 5 current_size = 5 } }
 province = { id = 405 ic = -1 } #Udine
@@ -912,7 +914,7 @@ province = { id = 91 ic = 2 } #Chambery
 province = { id = 94 naval_base = { size = 2 current_size = 2 } air_base = { size = 2 current_size = 2 } } #Corsica
 province = { id = 379 naval_base = { size = 2 current_size = 2 } #Rodos
 	air_base = { size = 4 current_size = 4 } infra = { size = 0.30 current_size = 0.30 } }
-province = { id = 395 ic = -2 } #Bergamo
+province = { id = 395 ic = -1 } #Bergamo
 province = { id = 396 landfort = 2 anti_air = 2 ic = 4 #Genoa
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 10 current_size = 10 } }
 province = { id = 398 landfort = 2 anti_air = 3 ic = 2 #Turin
