@@ -18,18 +18,16 @@ ai = "kaiserreich\Finland.ai"
 
 
 #### cabinet
-
-
 	headofstate = { type = 9 id = 29001 }
-	headofgovernment = { type = 9 id = 29065  }
- 	foreignminister = { type = 9 id = 29079 }
- 	armamentminister = { type = 9 id = 29099 }
- 	ministerofsecurity = { type = 9 id = 29118 }
- 	ministerofintelligence = { type = 9 id = 29129 }
- 	chiefofstaff = { type = 9 id = 29138 }
- 	chiefofarmy = { type = 9 id = 29146  }
- 	chiefofnavy = { type = 9 id = 29151 }        
- 	chiefofair = { type = 9 id = 29156 }
+	headofgovernment = { type = 9 id = 29065 }
+	foreignminister = { type = 9 id = 29079 }
+	armamentminister = { type = 9 id = 29099 }
+	ministerofsecurity = { type = 9 id = 29118 }
+	ministerofintelligence = { type = 9 id = 29129 }
+	chiefofstaff = { type = 9 id = 29138 }
+	chiefofarmy = { type = 9 id = 29146 }
+	chiefofnavy = { type = 9 id = 29151 }
+	chiefofair = { type = 9 id = 29156 }
 
 #### Resource Reserves
 
@@ -39,36 +37,35 @@ ai = "kaiserreich\Finland.ai"
 	capital = 525
 	manpower = 35
 
-SpyInfo  = {  country = "FIN" NumberOfSpies = 3  } 
+	SpyInfo  = { country = "FIN" NumberOfSpies = 3 }
 
-    ownedprovinces =      {
-529 530 531 525 524 512 527 528 533 532 520 526 521 523 518 522 519 514 515 516 511 513 517
-	 }
+    ownedprovinces = {
+		529 530 531 525 524 512 527 528 533 532 520 526 521 523 518 522 519 514 515 516 511 513 517
+	}
     controlledprovinces = {
-529 530 531 525 524 512 527 528 533 532 520 526 521 523 518 522 519 514 515 516 511 513 517
-	  }
-    nationalprovinces =   {
-529 530 531 525 524 512 527 528 533 532 538 520 526 521 523 518 540 522 519 514 515 516 511 513 517
-536 537 541 539
+		529 530 531 525 524 512 527 528 533 532 520 526 521 523 518 522 519 514 515 516 511 513 517
+	}
+    nationalprovinces = {
+		529 530 531 525 524 512 527 528 533 532 538 520 526 521 523 518 540 522 519 514 515 516 511 513 517
+		536 537 541 539
 	}
 
-claimedprovinces = {
-		534 535 
-		
+	claimedprovinces = {
+		534 535
 	}
 
 diplomacy = {
-relation = {   tag =    	BEL	value = 	80		   }  
-relation = {   tag =  	BLR	 value =		20	   }  
-relation = {   tag =  	GER	 value =		60	   }  
-relation = {   tag =  	LAT	value = 		120	   }  
-relation = {   tag =  	LIT	 value =		50	   }  
-relation = {   tag =  	AUS	value = 		40	   }  
-relation = {   tag =  	HUN	 value =		60	   }  
-relation = {   tag =  	SPA	value = 		20	   }  
-relation = {   tag =  	CAN	value = 		10	   }  
-relation = {   tag =  	RUS	 value =		-30	   }  
-relation = { tag =	USA	value = 		10	 }
+	relation = { tag = BEL value = 80 }
+	relation = { tag = BLR value = 20 }
+	relation = { tag = GER value = 60 }
+	relation = { tag = LAT value = 120 }
+	relation = { tag = LIT value = 50 }
+	relation = { tag = AUS value = 40 }
+	relation = { tag = HUN value = 60 }
+	relation = { tag = SPA value = 20 }
+	relation = { tag = CAN value = 10 }
+	relation = { tag = RUS value = -30 }
+	relation = { tag = USA value = 10 }
 }
 
 dormant_ministers = { 29164 29166 29168 29169 }
@@ -78,38 +75,42 @@ dormant_ministers = { 29164 29166 29168 29169 }
 # Group C 1936 techs
 #######################
 #Aircrafts
-4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter  
-4600 4610 4620 4630 4120 #Interwar Bomber 
+4500 4510 4520 4530 4540 4550 4010 4020 #1930 Interceptor
+4300 4310 4320 4330 #1926 Multi-role fighter
+7290 7300 7310 7320 #1922 CAS
+4600 4610 4620 4630 4120 #1924 Tac bomber
+4740 4750 4760 4770 #1924 Seaplane
 
 #Armour & Artillery
 2860 2870 2880 2020 #Basic Armoured Car
-7600 7610 2620 2010 2630 2640 #Tankette 
-2290 2300 2310 #Great War Heavy Field Artillery 
+7600 7610 2620 2010 2630 2640 #Tankette
+2290 2300 2310 2900 2910 2920 2930 #Basic Interwar Field Artillery
 2800 2450 21180 21190 21200 #Early Static Anti-Air Artillery
 2810 2820 2510 #Basic Anti-Air Artillery Brigade
 
 #Infantry
 1830 1840 1850 1860 #Engineers
-1010  1020 1030 1040 1050 1060 1070 1080 1090 #Early Infantry Division 
-1910 1920 1930 1940 1950 1960 #Interbellum Supply
+1010 1020 1030 1040 1050 1060 1070 1080 1090 #Early Infantry Division
+1910 1920 1930 1940 1950 1960 1970 1980 #Logistics 1930
 13060 13070 13080 1310 1320 1330 1340 #Great War Cavalry Division
-1160  1170 1180 1190 1200 1210 1220 1230 1240 1250 #Early Mountain Division 
+1160 1170 1180 1190 1200 1210 1220 1230 1240 #1930 Mountain Division
 
 #Industrial
-5700 5710 5010 #Modern Agriculture 
+5700 5710 5010 #Modern Agriculture
 5310 54010 54020 54030 5316 5326 #Computers & cryptografi
-5810 5820 5050 5830 #Manufactoring 
-5800 5080 5090 #Improved Construction Engineering 
+5810 5820 5050 5830 #Manufactoring
+5800 5080 5090 #Improved Construction Engineering
 5920 # Winter equipment
-5190 #Basic Oil Refining 
+5190 #Basic Oil Refining
 5600 5610 5620 5630 #Medicine
 
 #Naval
-3010 3020 3030 3040 #Great War Destroyer
-3210 3220 3230 #Early Heavy Cruiser 
-3610 3620 3630 #Short Range Submarine 
+3010 3020 3030 3040 #Weltkrieg Destroyer
+3110 3120 3130 3140 #Interwar Light Cruiser
+3210 3220 3230 #Early Heavy Cruiser
+3610 3620 3630 3640 #Interwar Submarine
 3720 3730 3736 3740 3750 3900 #Torpedo & ASW 18
-3410 3420 3430 3440 3450 3456 3460 3470 #Early Battleship 
+3410 3420 3430 3440 3450 #Early Battleship
 3810 #Troopships
 
 #Land Doctrines
@@ -120,8 +121,8 @@ dormant_ministers = { 29164 29166 29168 29169 }
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
 #Naval Doctrines
-8010 8020  8040  8050
-
+8010 8020 8040 8050 8060 8070 8080
+8100 8110 8120 #Naval Supremacy
 	}
 
 #########  OOB (...)

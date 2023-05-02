@@ -1967,6 +1967,132 @@ command = { type = steal_tech which = JAP }
 }
 }
 
+###########################
+#########      AST RCWIND13
+###########################
+
+event = {
+id = 756059
+random = no
+country = AST
+
+decision = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+war = { country = AST country = RUS }
+war = { country = AST country = JAP }
+war = { country = AST country = CSX }
+war = { country = AST country = GER }
+war = { country = AST country = EAF }
+}
+}
+}
+
+decision_trigger = {
+manpower = 10
+supplies = 1000
+money = 100
+}
+
+trigger = {
+war = { country = SOV country = RUS }
+event = 756030
+NOT = {
+OR = {
+war = { country = AST country = RUS }
+war = { country = AST country = JAP }
+war = { country = AST country = CSX }
+war = { country = AST country = GER }
+war = { country = AST country = EAF }
+}
+}
+}
+
+name = "Civil War in Russia"
+desc = "The crisis in Russia has reached a frightening level of intensity: once more, Red and White forces are at war.  We have seen the horrors of Bolshevism once before, and though our own workers may prefer otherwise, it is in our best interests to aid the legitimate White Russian government."
+style = 2
+picture = "foreign_volunteers"
+decision_picture = "decision_foreign_volunteers"
+
+date = { day = 20 month = july year = 1936 }
+offset = 5
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Help the White forces"
+ai_chance = 90
+command = { type = domestic which = interventionism value = 1 }
+command = { type = relation which = SOV value = -50 }
+command = { type = relation which = RUS value = 50 }
+command = { type = money value = -100 }
+command = { type = manpowerpool value = -10 }
+command = { type = resource which = supplies value = -1000 }
+command = { type = trigger which = 756060 }
+}
+
+action_b = {
+ai_chance = 10
+name = "Do nothing"
+command = { type = domestic which = interventionism value = -1 }
+command = { type = relation which = SOV value = 50 }
+command = { type = relation which = RUS value = -50 }
+}
+}
+
+event = {
+id = 756060
+random = no
+country = RUS
+
+
+name = "Aid from Britain!"
+desc = "The Australasians have sent us a significant number of volunteers and military materials that will help us considerably in our struggle against the dangerous Bolshevik menace threatening to rip apart Russia!"
+style = 2
+picture = "foreign_volunteers"
+
+action_a = {
+name = "Great!" # Great!
+command = { type = supplies value = 1000 }
+command = { type = add_division value = d_01 when = 9 }
+command = { type = steal_tech which = AST }
+}
+}
+
+event = {
+id = 756061
+random = no
+country = AST
+
+trigger = {
+event = 756060
+OR = {
+event = 757001
+event = 756041
+}
+}
+name = "The End of the Russian civil war"
+desc = "For good or ill, the Russian Civil War is now over. Our General Staff have reported many valuable lessons learnt regarding the nature of modern warfare over the course of the conflict."
+
+
+style = 2
+picture = "soviet_replacement"
+
+date = { day = 18 month = july year = 1936 }
+offset = 20
+deathdate = { day = 29 month = december year = 1960 }
+
+action_a = {
+name = "Great!"
+command = { type = relation which = RUS value = 10 }	#
+command = { type = manpowerpool value = 5 }	 	# Soldiers return home
+command = { type = dissent value = -1 }
+command = { type = gain_tech which = -1 } 		# get random tech blueprints
+command = { type = add_leader_skill which = -1 value = 1 }
+command = { type = add_leader_skill which = -1 value = 1 }
+}
+}
 
 ####  Reactions to Civil war
 

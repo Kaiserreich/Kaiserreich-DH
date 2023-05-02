@@ -2,11 +2,10 @@
 
 
 country = {
-    tag = HUN 
-ai = "kaiserreich\Hungary.ai"
- 
-	puppet = AUS
+    tag = HUN
+	ai = "kaiserreich\Hungary.ai"
 
+	puppet = AUS
 
     policy = {
         date = { year = 0 month = january day = 0 }
@@ -26,78 +25,77 @@ ai = "kaiserreich\Hungary.ai"
 	armamentminister = { type = 9 id = 21206 }
 	ministerofsecurity = { type = 9 id = 21098 }
 	ministerofintelligence = { type = 9 id = 21006 }
-	chiefofstaff = { type = 9 id = 21131  }
+	chiefofstaff = { type = 9 id = 21131 }
 	chiefofarmy = { type = 9 id = 21145 }
 	chiefofnavy = { type = 9 id = 21009 }
 	chiefofair = { type = 9 id = 21163 }
 
 #### Resource Reserves
 
-manpower = 150
+	manpower = 150
 	capital = 284
 
-        SpyInfo  = {  country = "HUN" NumberOfSpies = 3  } 
+	SpyInfo  = { country = "HUN" NumberOfSpies = 3 }
 
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money	=	10
 
 
-
-    ownedprovinces =      {
-208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288 
-287 291 292 293
-	 }
-    controlledprovinces = {
-208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288 
-287 291 292 293
-	  }
-    nationalprovinces =   {
-208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288 
-287 291 292 293
+    ownedprovinces = {
+		208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288
+		287 291 292 293
 	}
-	
+    controlledprovinces = {
+		208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288
+		287 291 292 293
+	}
+    nationalprovinces = {
+		208 210 212 211 209 214 213 215 188 279 276 277 278 284 280 282 281 283 341 336 285 295 289 286 296 288
+		287 291 292 293
+	}
+
 	dormant_leaders = { 105228 105229 105230 105231 }
 
 diplomacy = {
-relation = {   tag =    	BEL	value = 		50	   }  
-relation = {   tag =  	BLR	 value =		60	   }  
-relation = {   tag =  	BUL	value = 		20	   }  
-relation = {   tag =  	GER	 value =		100	   }  
-relation = {   tag =  	LAT	value = 		40	   }  
-relation = {   tag =  	LIT	 value =		50	   }  
-relation = {   tag =  	POL	value = 		100	   }  
-relation = {   tag =  	UKR	 value =		-30	   }  
-relation = {   tag =  	AUS	value = 		120	   }  
-relation = {   tag =  	BOS	value = 		60	   }  
-relation = {   tag =  	CRO	 value =		160	   }  
-relation = {   tag =  	CZE	value = 		80	   }  
-relation = {   tag =  	GLD	value = 		100	   }  
-relation = {   tag =  	ALB	value = 		-40	   }  
-relation = {   tag =  	DEN	 value =		30	   }  
-relation = {   tag =  	FIN	value = 		60	   }  
-relation = {   tag =  	GRE	value = 		-20	   }  
-relation = {   tag =  	HOL	 value =		20	   }  
-relation = {   tag =  	ITA	value = 		20	   }  
-relation = {   tag =  	ROM	value = 		-140	   }  
-relation = {   tag =  	SER	value = 		-100	   }  
-relation = {   tag =  	SPA	value = 		50	   }  
-relation = {   tag =  	ENG	value = 		-120	   }  
-relation = {   tag =  	FRA	value = 		-150	   }  
-relation = {   tag =  	RSI	 value =		-100	   }  
-relation = {   tag =  	AST	value = 		-40	   }  
-relation = {   tag =  	CAN	value = 		-40	   }  
-relation = {   tag =  	VIC	value = 		30	   }  
-relation = {   tag =  	ARM	 value =		80	   }  
-relation = {   tag =  	AZB	value = 		40	   }  
-relation = {   tag =  	GEO	value = 		-50	   }  
-relation = {   tag =  	KAZ	 value =		40	   }  
-relation = {   tag =  	KYG	value = 		-60	   }  
-relation = {   tag =  	RUS	 value =		60	   }  
-relation = {   tag =  	TRA	value = 		20	   }  
-relation = {   tag =  	OTT	 value =		80	   }  
-relation = {   tag =  	CON	value = 		80	   }  
-relation = { tag =	USA	value = 		-80	 }
-relation = {   tag =  	JAP	value = 		-50	   }  
+	relation = { tag = BEL value = 50 }
+	relation = { tag = BLR value = 60 }
+	relation = { tag = BUL value = 20 }
+	relation = { tag = GER value = 100 }
+	relation = { tag = LAT value = 40 }
+	relation = { tag = LIT value = 50 }
+	relation = { tag = POL value = 100 }
+	relation = { tag = UKR value = -30 }
+	relation = { tag = AUS value = 120 }
+	relation = { tag = BOS value = 60 }
+	relation = { tag = CRO value = 160 }
+	relation = { tag = CZE value = 80 }
+	relation = { tag = GLD value = 100 }
+	relation = { tag = ALB value = -40 }
+	relation = { tag = DEN value = 30 }
+	relation = { tag = FIN value = 60 }
+	relation = { tag = GRE value = -20 }
+	relation = { tag = HOL value = 20 }
+	relation = { tag = ITA value = 20 }
+	relation = { tag = ROM value = -140 }
+	relation = { tag = SER value = -100 }
+	relation = { tag = SPA value = 50 }
+	relation = { tag = ENG value = -120 }
+	relation = { tag = FRA value = -150 }
+	relation = { tag = RSI value = -100 }
+	relation = { tag = AST value = -40 }
+	relation = { tag = CAN value = -40 }
+	relation = { tag = VIC value = 30 }
+	relation = { tag = ARM value = 80 }
+	relation = { tag = AZB value = 40 }
+	relation = { tag = GEO value = -50 }
+	relation = { tag = KAZ value = 40 }
+	relation = { tag = KYG value = -60 }
+	relation = { tag = RUS value = 60 }
+	relation = { tag = TRA value = 20 }
+	relation = { tag = OTT value = 80 }
+	relation = { tag = CON value = 80 }
+	relation = { tag = USA value = -80 }
+	relation = { tag = JAP value = -50 }
 }
 
 
@@ -107,11 +105,11 @@ relation = {   tag =  	JAP	value = 		-50	   }
 # Group C 1936 techs
 #######################
 #Aircraft
-4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter 
+4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter
 4300 4310 4320 4330 #Multirole fighter
 4800 4810 4820 #ww1 strategic bomber
 4700 4710 #ww1 navalbomber
-4600 4610 4620 4630 4120 #Interwar Bomber 
+4600 4610 4620 4630 4120 #Interwar Bomber
 7290 7300 7310 7320 #CAS
 
 #Armour and artillery
@@ -130,17 +128,17 @@ relation = {   tag =  	JAP	value = 		-50	   }
 1830 1840 1850 #Engineers
 
 #Industrial
-5700 5710 5010 5020 #Mechanized Agriculture 
+5700 5710 5010 5020 #Mechanized Agriculture
 5310 54010 54020 54030 5316 5326 #Computers & cryptografi
 5810 5820 5050 5830 5060 #Manufactoring
-5800 5080 5090 #Improved Construction Engineering 
-5190 #Basic Oil Refining 
+5800 5080 5090 #Improved Construction Engineering
+5190 #Basic Oil Refining
 5470 #Atomic Research
 5600 5610 5620 5630 #Medicine
 
 #Land Doctrines
 6500 6510 6530 6550 6590 6600 6610 6620 6650 6670 6680 6690 6700 6710 6910 # Great War Land Doctrines (central powers)
-14000 14010 14020 #Great War Hospital System 
+14000 14010 14020 #Great War Hospital System
 
 #Air Doctrines - ww2 techs
 27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 9010
@@ -166,7 +164,6 @@ relation = {   tag =  	JAP	value = 		-50	   }
 81300 81310 81320 81330 81340 #Indirect Approach
 82300 #Basic Amph warfare
 82500 #Fuel Oil Logistics
-
 
 	}
 

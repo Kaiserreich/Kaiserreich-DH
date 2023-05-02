@@ -30,20 +30,20 @@ chiefofnavy = { type = 9 id = 9 }
 chiefofair = { type = 9 id = 273 }
 
 
-
-
 #### Resource Reserves
 
-SpyInfo  = {  country = "GER" NumberOfSpies = 7  }
+	SpyInfo = { country = "GER" NumberOfSpies = 7 }
 
-capital = 163
+	capital = 163
 
-manpower = 850
+	manpower = 850
 
-energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
-money	=	70
-free = { ic = 5 }
-
+	energy	= 1000
+	metal = 1000
+	rare_materials = 500
+	oil = 500
+	supplies = 500
+	money =	70
 
 
 ownedprovinces =      {
@@ -125,7 +125,7 @@ controlledprovinces = {
 
 }
 nationalprovinces =   {
-96 106 105 107 104 109 110 132 133 135 178 179 176 175 177 134 136 130 127 174 180
+105 107 104 109 110 132 133 135 178 179 176 175 177 134 136 130 127 174 180
 139 138 140 143 128 129 126 131 142 145 141 147 148 149 146 144 137 171 170 173 172
 157 169 156 153 162 151 154 152 150 216 160 163 158 159 165 164 166 167 168 222 224
 225 161 155 226 181 183 185 182 184 261 221
@@ -133,6 +133,7 @@ nationalprovinces =   {
 }
 claimedprovinces = {
 108 111 #Wallonia
+96 106 #french dominant Lorraine
 429 #Malta
 1432 #Singapore
 900 1007 #Suez

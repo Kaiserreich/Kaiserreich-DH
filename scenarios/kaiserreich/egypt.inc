@@ -2,9 +2,9 @@
 
 
 country = {
-    tag = EGY  
+    tag = EGY
  
-        ai = "kaiserreich\Egypt.ai"
+	ai = "kaiserreich\Egypt.ai"
 	policy = {
         date = { year = 0 month = january day = 0 }
         democratic = 3
@@ -31,31 +31,29 @@ country = {
 
 #### Resource Reserves
 	manpower = 100
-     	capital = 787
+	capital = 787
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10
 
-        SpyInfo  = {  country = "EGY" NumberOfSpies = 3  } 
+	SpyInfo = { country = "EGY" NumberOfSpies = 3 }
 
-    ownedprovinces =      {
-			#EGYPT
-		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 
-		 #SUDAN
-		 804 803 813 805 814 811 810 807 812 808 809 806
-	 }
+    ownedprovinces = {
+		#EGYPT
+		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802
+		#SUDAN
+		804 803 813 805 814 811 810 807 812 808 809 806
+	}
     controlledprovinces = {
-			#EGYPT
-		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 
-		    #SUDAN
-			803 804 813 805 814 811 810 807 812 808 809 806
-
-	  }
-    nationalprovinces =   {
-			#EGYPT
-		781 782 780 778 785 784 783 787 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802 
-          #Sinai and The Canal Zone     
-			   900 1007 1006 1004 1005
-                 
+		#EGYPT
+		781 782 780 778 785 787 784 783 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802
+		#SUDAN
+		803 804 813 805 814 811 810 807 812 808 809 806
+	}
+    nationalprovinces = {
+		#EGYPT
+		781 782 780 778 785 784 783 787 789 800 799 779 792 788 790 786 791 796 793 801 794 797 795 798 802
+		#Sinai and The Canal Zone
+		900 1007 1006 1004 1005
 	}
 
 

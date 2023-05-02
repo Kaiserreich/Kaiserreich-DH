@@ -3,11 +3,10 @@
 
 country = {
     tag = CRO
-ai = "kaiserreich\Croatia.ai"
+	ai = "kaiserreich\Croatia.ai"
     flag_ext = _hun
 
 	puppet = HUN
-	
 
 	policy = {
         date = { year = 0 month = january day = 0 }
@@ -20,33 +19,30 @@ ai = "kaiserreich\Croatia.ai"
         interventionism = 8
     }
 
-     
-
+#### cabinet
 	headofstate = { type = 9 id = 30021 }
 	headofgovernment = { type = 9 id = 30025 }
- 	foreignminister = { type = 9 id = 30030 }
- 	armamentminister = { type = 9 id = 30033  }
- 	ministerofsecurity = { type = 9 id = 30037 }
- 	ministerofintelligence = { type = 9 id = 30045  }
- 	chiefofstaff = { type = 9 id = 30048 }
- 	chiefofarmy = { type = 9 id = 30053}
- 	chiefofnavy = { type = 9 id = 30061}        
- 	chiefofair = { type = 9 id = 30066 }
+	foreignminister = { type = 9 id = 30030 }
+	armamentminister = { type = 9 id = 30033 }
+	ministerofsecurity = { type = 9 id = 30037 }
+	ministerofintelligence = { type = 9 id = 30045 }
+	chiefofstaff = { type = 9 id = 30048 }
+	chiefofarmy = { type = 9 id = 30053 }
+	chiefofnavy = { type = 9 id = 30061 }
+	chiefofair = { type = 9 id = 30066 }
 
 #### Resource Reserves
-capital = 352
-
-free = { ic = 5 }
-
-SpyInfo  = {  country = "CRO" NumberOfSpies = 2  } 
+	capital = 352
 
 	manpower = 28
+
+	SpyInfo  = { country = "CRO" NumberOfSpies = 2 }
 
 	# Resource Reserves
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10      transports = 20
 
-
+	free = { ic = 4 }
 
 ownedprovinces = { 337 344 345 352 347 350 351 343
 			#357 353 358 355 354 356 #BOS

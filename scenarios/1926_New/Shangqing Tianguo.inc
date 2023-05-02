@@ -25,8 +25,8 @@ country = {
 		interventionism = 3
 	}
 #### cabinet
-	headofstate = { type = 9 id = 51073 } # Yan Xishan
-	headofgovernment = { type = 9 id = 51072 } # Yan Xishan
+	headofstate = { type = 9 id = 51213 } # Yan Xishan
+	headofgovernment = { type = 9 id = 51214 } # Yan Xishan
  	chiefofarmy = { type = 9 id = 51005  }
 
 #### Resource Reserves

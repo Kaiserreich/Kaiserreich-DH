@@ -18,8 +18,8 @@ country = {
 
 #### cabinet
 
-headofstate = { type = 9 id = 501021  } # Wu Peifu
-headofgovernment = { type = 9 id = 501022 } # Wu Peifu
+headofstate = { type = 9 id = 501184  } # Wu Peifu
+headofgovernment = { type = 9 id = 501185 } # Wu Peifu
 
 #### Resource Reserves
 
