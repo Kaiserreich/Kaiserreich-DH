@@ -30,7 +30,7 @@ SpyInfo  = {  country = "POR" NumberOfSpies = 3  }
 	manpower = 70
 
 
-    nationalprovinces   = {   481 476 479 477 478 482 480 
+    nationalprovinces   = {   481 476 479 477 478 482 480 994 995
   
     } 
   ownedprovinces     = {   481 476 479 477 478 995 992 963 912 895 890 892 887 891 888 855 856 857 858 854 853 1617 1372 893 
