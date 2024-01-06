@@ -128,15 +128,16 @@ province = { id = 713 ic = 3 landfort = 3 anti_air = 1 #Baku (previously ic = 7)
 	air_base = { size = 4 current_size = 4 } infra = { size = 0.50 current_size = 0.50 } }
 
 ### BEL
-province = { id = 112 landfort = 2 anti_air = 1 } #Mons
-province = { id = 114 landfort = 2 anti_air = 1 #Burges
-	air_base = { size = 5 current_size = 5 } }
- province = { id = 114 manpower = 2 #Bruges
+province = { id = 108 ic = 4 } #Liege
+province = { id = 112 landfort = 2 anti_air = 1 ic = 4 } #Mons
+province = { id = 113 ic = 2 } #Namur
+province = { id = 114 landfort = 2 anti_air = 1 ic = -2 manpower = 2 #Bruges
 	air_base = { size = 6 current_size = 6 } naval_base = { size = 3 current_size = 3 } }
-province = { id = 115 manpower = 1 #Antwerpen
+province = { id = 115 manpower = 1 ic = -2 #Antwerpen
 	naval_base = { size = 5 current_size = 5 } }
-province = { id = 116 landfort = 2 anti_air = 1 manpower = 3 #Brussels
+province = { id = 116 landfort = 2 anti_air = 1 ic = -3 manpower = 3 #Brussels
 	air_base = { size = 6 current_size = 6 } }
+province = { id = 117 ic = -3 } #Hasselt
 
 ### BLR
 province = { id = 247 landfort = 2 infra = { size = 0.50 current_size = 0.50 } } #Brest-Litovsk
