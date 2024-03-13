@@ -37,13 +37,13 @@ desc = "Today is the final day of the Chinese New Year. Today marks the common m
 the Chinese people."
 
 action_a = {
-ai_chance = 75
+ai_chance = 95
 name = "The Empire is entering The New Reformation"
 command = { type = dissent value = -1 }
 }
 
 action_b = {
-ai_chance = 25
+ai_chance = 5
 name = "The Empire is doing very well and we shall continue as such"
 command = { type = dissent value = 5 }
 command = { type = setflag which = CSX_noreform }
@@ -65,13 +65,13 @@ desc = "Today celebrations for the year of the Ox have ended, and again Pu Yi is
 speech going to be tonight? We should look to the Ox as it may give us direction. Ox speaks little but eloquently and is inspirational but also quick to anger!"
 
 action_a = {
-ai_chance = 80
+ai_chance = 90
 name = "The New Reformation!"
 command = { type = dissent value = -1 }
 }
 
 action_b = {
-ai_chance = 20
+ai_chance = 10
 name = "The Empire is doing very well and we shall continue as such"
 command = { type = dissent value = 5 }
 command = { type = setflag which = CSX_noreform2 }
@@ -125,7 +125,6 @@ date = { day = 18 month = march year = 1939 }
 name = "One Hundred Years Since the Opium War"
 desc = "One hundred years ago the imperialist British attacked our then-great Chinese nation! We will not be beaten like that again!"
 
-
 action_a = {
 name = "Stupid Imperialists"
 command = { type = dissent value = 1 }
@@ -145,8 +144,8 @@ picture = "Chinese Wedding"
 
 trigger = {
 OR = {
-headofstate = 503001
-headofstate = 978138
+headofstate = 503048 #Puyi (PA)
+headofstate = 503047 #Puyi (AD)
 }
 }
 
@@ -163,11 +162,14 @@ command = { type = dissent value = -1 }
 }
 }
 
-
 ####################
 ### Qing domestic events by thegreatplant
 ####################
-
+# Mod note, Jan 2024: Qing's internal reform events/decisions should be re-written to occur post-unification and be multifaceted & non-generic: tax/finance, mining, industry, education, & public health.
+#	Also decisions for public works: railroad expansion, repair of the Grand Canal, & the Yangtze River Project (aka Three Gorges Dam).
+# The initial reforms should be military oriented as Wu Peifu desires to forcibly bring China together:
+#	Logistics (infrastructure + logistic blueprints), artillery & armor (brigades + blueprints) & aircraft (tactical bombers + blueprints).
+# Perhaps the starting land doctrine should also become a choice: Light Infantry & Methodical Battle (Defensive Focus) would be most appropriate, but Manpower & Firepower Focus could be available too.
 
 event = {
 id = 150006
@@ -184,7 +186,7 @@ desc = "With the New Year's speech of Emperor Pu Yi the Qing Empire has entered 
 
 action_a = {
 name = "Begin expanding the Military, we must regain our lost territories!"
-ai_chance = 30
+ai_chance = 33
 command = { type = belligerence which = CSX value = 5 }
 command = { type = relation which = JAP value = -50 }
 command = { type = relation which = CHC value = -50 }
@@ -196,31 +198,31 @@ command = { type = dissent value = 3 }
 command = { type = supplies value = -1000 }
 command = { type = money value = -100 }
 command = { type = manpowerpool value = -50 }
-command = { type = event which = 150007 where = CSX when = 10  }
+command = { type = event which = 150007 where = CSX when = 10 }
 }
 
 action_b = {
 name = "Industrialization, we need an industrial base if we are to become a World Power"
-ai_chance = 30
+ai_chance = 33
 command = { type = dissent value = -3 }
 command = { type = supplies value = -2000 }
 command = { type = money value = -100 }
-command = { type = event which = 150009 where = CSX when = 10  }
+command = { type = event which = 150009 where = CSX when = 10 }
 }
 
 action_c = {
 name = "Farming and mining, the demand in the World for rice and minerals is great"
-ai_chance = 30
+ai_chance = 33
 command = { type = manpowerpool value = 50 }
 command = { type = dissent value = -3 }
 command = { type = supplies value = -1000 }
 command = { type = money value = -100 }
-command = { type = event which = 150008 where = CSX when = 10  }
+command = { type = event which = 150008 where = CSX when = 10 }
 }
 
 action_d = {
 name = "Reform? What? That was just a joke"
-ai_chance = 10
+ai_chance = 1
 command = { type = dissent value = 15 } # people don't think it is funny
 command = { type = event which = 150014 where = CSX when = 10  }
 command = { type = sleepevent which = 150002 }
@@ -266,7 +268,7 @@ command = { type = add_corps which = "Qing Second Corp" value = land where = 124
 command = { type = add_division which = "3rd Qing Cavalry" value = cavalry when = 7 where = artillery }
 command = { type = add_division which = "4th Qing Cavalry" value = cavalry when = 7 }
 command = { type = manpowerpool value = -25 }
-command = { type = domestic which = professional_army value = 2 }
+command = { type = domestic which = professional_army value = 1 }
 }
 }
 
@@ -281,7 +283,6 @@ picture = "Chinese Workforce"
 name = "The Agrarian Reform"
 desc = "Pu Yi has announced the top priority will be boosting agriculture, and mining. How should we go about fulfilling this goal?"
 
-
 action_a = {
 name = "Grow crops and mine minerals so we can export them to the rest of the world"
 ai_chance = 50
@@ -289,7 +290,7 @@ command = { type = domestic which = free_market value = 2 }
 command = { type = relative_manpower value = 3 }
 command = { type = money value = 75 }
 command = { type = manpowerpool value = 10 }
-command = { type = gain_tech which = 5700 }
+#command = { type = gain_tech which = 5700 }
 command = { type = gain_tech which = 5710 }
 command = { type = add_prov_resource which = 1247 value = 7 where = metal }
 command = { type = add_prov_resource which = 1247 value = 4 where = rare_materials }
@@ -302,7 +303,7 @@ ai_chance = 30
 command = { type = domestic which = free_market value = -1 }
 command = { type = relative_manpower value = 5 }
 command = { type = manpowerpool value = 25 }
-command = { type = gain_tech which = 5700 }
+#command = { type = gain_tech which = 5700 }
 command = { type = gain_tech which = 5710 }
 command = { type = gain_tech which = 5010 }
 command = { type = gain_tech which = 5020 }
@@ -382,99 +383,80 @@ command = { type = relation which = CHC value = -25 }
 }
 }
 
-
+# Modnote Feb 2024 - placeholder rewrite of this event chain
 event  = {
 id = 150010
 random = no
 country = CSX
 style = 2
 
-trigger = {
-NOT = { 
-government = communist  
-}
-}
+trigger = { NOT = { government = communist } }
 
 date = { day = 27 month = july year = 1937 }
 offset =  10
 deathdate = { day = 29 month = december year = 1949 }
 
 name = "Politicians and Economic Reform"
-desc = "If we are to move the Empire towards the future we must continue our reforms. H.H.Kung, the rich banker, has offered to help - or should we choose the German Stennes, to bring the people in line?
-Wang Kemin is a good worker and organizer and is liked by the people, however."
+desc = "If we are to move the Empire towards the future we must continue our reforms. The western educated businessman Xu Shizhang has offered to help - or should we choose retired military man, Shi Xingchuan, of the 'General Corps'? Ye Jingkui is talented and upright, however."
 picture = "economic"
 
 action_a = {
-name = "H.H. Kung is the man for the job"
-ai_chance = 30
+name = "Xu Shizhang, the businessman!"
+ai_chance = 33
 command = { type = set_domestic which = democratic value = 4 }
 command = { type = set_domestic which = political_left value = 3 }
-command = { type = set_domestic which = free_market value = 5 }
+command = { type = domestic which = free_market value = 2 }
 command = { type = domestic which = freedom value = 1 }
 command = { type = extra_tc value = 10 }
-command = { type = sleepminister which = 503002 }
-command = { type = headofgovernment which = 503015 }
-command = { type = foreignminister which = 978117 }
-command = { type = armamentminister which = 978129 }
-command = { type = ministerofsecurity which = 978120 }
-command = { type = ministerofintelligence which = 503017 }
+command = { type = headofgovernment which = 503038 } #Gu Weijun
+command = { type = foreignminister which = 503138 } #Lu Zhengxiang
+command = { type = armamentminister which = 503222 } #Xu Shizhang
+command = { type = ministerofsecurity which = 503302 } #Liu Ruiheng
 command = { type = dissent value = 2 } #reform of markets
 command = { type = money value = 100 }
+command = { type = local_setflag which = CSX_econA }
 }
 
 action_b = {
-trigger = {
-NOT = { 
-puppet = { country = CSX country = JAP  
-}  
-}
-}
-name = "The German, Walther Stennes"
-ai_chance = 20
+name = "Shi Xingchuan, the military industrialist!" 
+ai_chance = 23
 command = { type = set_domestic which = democratic value = 3 }
 command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom value = -2 }
-command = { type = domestic which = defense_lobby value = 3 }
-command = { type = domestic which = interventionism value = 3 }
+command = { type = domestic which = defense_lobby value = 2 }
+command = { type = domestic which = interventionism value = 2 }
 command = { type = domestic which = professional_army value = 2 }
-command = { type = sleepminister which = 503002 }
-command = { type = headofgovernment which = 503018 }
-command = { type = foreignminister which = 978117 }
-command = { type = armamentminister which = 978119 }
-command = { type = chiefofarmy which = 503019 }
-command = { type = ministerofsecurity which = 503013 }
-command = { type = ministerofintelligence which = 503017 }
-command = { type = dissent value = 5 } #a german HoG pisses people off
+command = { type = headofgovernment which = 503041 } #Chen Qitian
+command = { type = foreignminister which = 503151 } #Lei Shourong
+command = { type = armamentminister which = 503247 } #Shi Xingchuan
+command = { type = ministerofsecurity which = 503329 } #Zhang Zongxiang
 command = { type = relation which = CHC value = -75 }
 command = { type = relation which = CGX value = 25 }
 command = { type = relation which = GER value = 25 }
+command = { type = local_setflag which = CSX_econB }
 }
 
 action_c = {
-name = "Wang Kemin, A solid industrial banker"
-ai_chance = 40
-command = { type = set_domestic which = democratic value = 2 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { type = domestic which = freedom value = -1 }
+name = "Ye Jingkui, the industrial banker!"
+ai_chance = 43
+command = { type = set_domestic which = democratic value = 4 }
+command = { type = set_domestic which = political_left value = 4 }
+command = { type = domestic which = freedom value = 1 }
 command = { type = domestic which = defense_lobby value = 1 }
-command = { type = domestic which = interventionism value = 1 }
-command = { type = domestic which = professional_army value = 1 }
-command = { type = domestic which = free_market value = -2 }
+command = { type = domestic which = interventionism value = 2 }
 command = { type = dissent value = -3 }
-command = { type = sleepminister which = 503002 }
-command = { type = headofgovernment which = 503020 }
-command = { type = foreignminister which = 978123 }
-command = { type = ministerofsecurity which = 978127 }
-command = { type = armamentminister which = 978126 }
-command = { type = chiefofarmy which = 503008 }
+command = { type = headofgovernment which = 503032 } #Yan Huiqing
+command = { type = foreignminister which = 503105 } #Xu Dongfan
+command = { type = armamentminister which = 503220 } #Ye Jingkui
+command = { type = ministerofsecurity which = 503067 } #Wang Chonghui
+command = { type = local_setflag which = CSX_econC }
 }
 
 action_d = {
 name = "Reform? What? We are done with that!"
-ai_chance = 10
+ai_chance = 1
 command = { type = dissent value = 15 }
-command = { type = domestic which = democratic value = -2 }
-command = { type = event which = 150015 where = CSX when = 10  }
+command = { type = domestic which = democratic value = -1 }
+command = { type = event which = 150015 where = CSX when = 10 }
 }
 }
 
@@ -485,24 +467,21 @@ random = no
 country = CSX
 style = 2
 
-trigger = {
-headofgovernment = 503015
-}
+trigger = { local_flag = CSX_econA } #Xu Shizhang
 
 date = { day = 0 month = september year = 1937 }
 offset =  10
 deathdate = { day = 29 month = december year = 1949 }
 
-
-name = "H.H. Kung's proposal on trade"
-desc = "The first step on the path to reform is to reorganize our trade relationship. He has studied in America and is full of new ideas about free trade, but should our Empire pursue international money at the expense of our local markets and our preferred trade partner Germany?"
+name = "Xu Shizhang's Proposal on Trade"
+desc = "The first step on the path to reform is to reorganize our trade relationship. He has studied in Belgium and is full of new ideas about free trade, but should our Empire pursue international money at the expense of our local markets and our preferred trade partner Germany?"
 
 picture = "China_Rally"
 
 action_a = {
-name = "Open the Chinese Market to the world"
+name = "Open the Chinese market to the world"
 ai_chance = 50
-command = { type = domestic which = free_market value = 10 } #should be full freemarket by now
+command = { type = domestic which = free_market value = 3 }
 command = { type = dissent value = 5 }
 command = { type = relation which = CAN value = 50 }
 command = { type = relation which = AUS value = 50 }
@@ -513,12 +492,13 @@ command = { type = relation which = JAP value = 20 }
 command = { type = relation which = CGX value = -10 }
 command = { type = sleepevent which = 150012 }
 command = { type = sleepevent which = 150013 }
+command = { type = local_clrflag which = CSX_econA }
 }
 
 action_b = {
-name = "Let us focus on the Chinese Market"
+name = "Let us focus on the Chinese market"
 ai_chance = 45
-command = { type = domestic which = free_market value = 2 }
+command = { type = domestic which = free_market value = 1 }
 command = { type = construct which = ic where = 1249 value = 1 } #local industry growth
 command = { type = dissent value = -3 }
 command = { type = relation which = CHC value = 20 }
@@ -529,14 +509,16 @@ command = { type = relation which = MAN value = 20 } #Fengtien
 command = { type = relation which = U30 value = 20 } #formosa if they exist
 command = { type = sleepevent which = 150012 }
 command = { type = sleepevent which = 150013 }
+command = { type = local_clrflag which = CSX_econA }
 }
 
 action_c = {
-name = "Germany is still our prefferred partner"
+name = "Germany is still our preferred partner"
 ai_chance = 5
-command = { type = dissent value = 5 }#Kung has failed to reform anything
+command = { type = dissent value = 5 }
 command = { type = sleepevent which = 150012 }
 command = { type = sleepevent which = 150013 }
+command = { type = local_clrflag which = CSX_econA }
 }
 }
 
@@ -547,29 +529,27 @@ random = no
 country = CSX
 style = 2
 
-trigger = {
-headofgovernment = 503018
-}
+trigger = { local_flag = CSX_econB } #Shi Xingchuan
 
 date = { day = 0 month = september year = 1937 }
 offset =  10
 deathdate = { day = 29 month = december year = 1949 }
 
-name = "Walther Stennes Modernization Program"
+name = "Shi Xingchuan's Modernization Program"
 desc = "EVT_9985_DESC"
 picture = "China_Rally"
 
 action = {
-name = "Walther Stennes will show the Chinese how to work!"
+name = "Shi Xingchuan will show the Chinese how to work!"
 ai_chance = 60
-command = { type = domestic which = free_market value = -3 }
+command = { type = domestic which = free_market value = -2 }
 command = { type = domestic which = freedom value = -1 }
-command = { type = domestic which = democratic value = -1 }
 command = { type = construct which = ic where = -4 value = 2 }
 command = { type = construct which = ic where = -4 value = 2 }
 command = { type = dissent value = 10 }
 command = { type = sleepevent which = 150011 }
 command = { type = sleepevent which = 150013 }
+command = { type = local_clrflag which = CSX_econB }
 }
 
 action = {
@@ -580,6 +560,7 @@ command = { type = construct which = ic where = -4 value = 2 }
 command = { type = dissent value = 2 }
 command = { type = sleepevent which = 150011 }
 command = { type = sleepevent which = 150013 }
+command = { type = local_clrflag which = CSX_econB }
 }
 }
 
@@ -590,23 +571,20 @@ random = no
 country = CSX
 style = 2
 
-trigger = {
-headofgovernment = 503020
-}
+trigger = { local_flag = CSX_econC } #Ye Jingkui
 
 date = { day = 0 month = september year = 1937 }
 offset =  10
 deathdate = { day = 29 month = december year = 1949 }
 
-
-name = "Wang Kemin will develop China through righteous industrialization!"
-desc = "Wang Kemin had been working his way through the Qing bureacracy for some time. As head of the Central Bank he has earned a reputation of brilliant administrative skill, he is also well liked by Chinese workers. Since being chosen by Pu Yi to lead the New Reoformation he has increased his Populist rhetoric. China he argues can and must industrialize by its own strength, and not give an inch of sovereignity. We now have a choice in how to go about this great process."
+name = "Ye Jingkui will develop China through industrialization!"
+desc = "Ye Jingkui had been working his way through the Qing bureacracy for some time. As supervisor of the Qing Central Bank he earned a reputation for discipline and administrative skill, reforming the Bank's practices and safely steering it away from bankruptcy. Chosen by Pu Yi to lead the New Reformation China, Ye Jingkui argues China can, and must, industrialize by its own strength and not give an inch of sovereignty. We now have a choice in how to go about this great process."
 picture = "China_Rally"
 
 action = {
 name = "The Chinese will become an industrial power in 5 years!"
 ai_chance = 75
-command = { type = domestic which = free_market value = -10 }
+command = { type = domestic which = free_market value = -2 }
 command = { type = construct which = ic where = -4 value = 2 }
 command = { type = construct which = ic where = -4 value = 2 }
 command = { type = dissent value = 5 }
@@ -615,10 +593,11 @@ command = { type = relation which = JAP value = -25 }
 command = { type = relation which = CHC value = 25 }
 command = { type = sleepevent which = 150011 }
 command = { type = sleepevent which = 150012 }
+command = { type = local_clrflag which = CSX_econC }
 }
 
 action = {
-name = "We will form a Cooperative Chinese Market"
+name = "We will form a cooperative Chinese market"
 ai_chance = 25
 command = { type = domestic which = free_market value = 2 }
 command = { type = construct which = ic where = 1249 value = 1 } #local industry growth
@@ -631,6 +610,7 @@ command = { type = relation which = MAN value = 20 } #Fengtien
 command = { type = relation which = U30 value = 20 } #formosa if they exist
 command = { type = sleepevent which = 150011 }
 command = { type = sleepevent which = 150012 }
+command = { type = local_clrflag which = CSX_econC }
 }
 }
 
@@ -675,9 +655,7 @@ country = CSX
 style = 2
 picture = "China_Rally"
 
-trigger = { 
-flag = CSX_noreform3 
-}
+trigger = { flag = CSX_noreform3 }
 
 date = { day = 0 month = January year = 1936 }
 offset =  40
@@ -703,9 +681,7 @@ picture = "fortification2"
 trigger = {
 control = { province = 1255 data = -1 }
 control = { province = 1259 data = -1 }
-NOT = { 
-exists = CHC 
-}
+NOT = { exists = CHC }
 }
 
 date = { day = 0 month = January year = 1936 }
@@ -740,7 +716,7 @@ picture = "Chinese Workforce"
 
 trigger = {
 control = { province = 1247 data = CSX }
-headofstate = 503001 # Aisin-Gioro Puyi
+headofstate = 503048 #Puyi (PA)
 government = fascist
 }
 
@@ -748,7 +724,7 @@ date = { day = 0 month = january year = 1938 }
 offset = 50
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Intelectualls demand constitutional monarchy!"
+name = "Intelectuals demand constitutional monarchy!"
 desc = "Various intellectual circles in Beijing and other major cities have issued a petition to the Emperor to install constitutional monarchy. This move is dangerous as it can weaken our stability. Nearly everyone in the court is opposed to this move, from various reasons, mostly from fears about internal stability. We have no other choice..."
 
 action_a = {
@@ -761,7 +737,7 @@ command = { type = setflag which = CSX_INT_REB }
 action_b = {
 ai_chance = 10
 name = "Make little concession"
-command = { type = headofstate which = 978138 }
+command = { type = headofstate which = 503047 } #Puyi (AD)
 command = { type = domestic which = democratic value = 2 }
 command = { type = domestic which = freedom value = 1 }
 }
@@ -779,16 +755,14 @@ picture = "Chinese Workforce"
 trigger = {
 flag = CSX_INT_REB
 government = fascist
-NOT = {
-exists = CHI
-}
+NOT = { exists = CHI }
 }
 
 date = { day = 0 month = january year = 1938 }
 offset = 90
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Intellectuals give support to Kuomitang"
+name = "Intellectuals give support to Kuomintang"
 desc = "Poets, painters, compositors, and professors are against our regime. They view it as a backward, oppresive dictatorship which doesn't solve any of the problems of modern China. Not suprising as they voiced support for the Kuomintang and a united China."
 
 action_a = {
@@ -800,7 +774,7 @@ command = { type = dissent value = 3 }
 action_b = {
 ai_chance = 50
 name = "Make little concession"
-command = { type = headofstate which = 978138 }
+command = { type = headofstate which = 503047 } #Puyi (AD)
 command = { type = domestic which = democratic value = 2 }
 command = { type = domestic which = freedom value = 1 }
 command = { type = clrflag which = CSX_INT_REB }
@@ -826,7 +800,7 @@ date = { day = 0 month = january year = 1938 }
 offset = 90
 deathdate = { day = 29 month = december year = 1963 }
 
-name = "Intellectuals give support to Kuomitang"
+name = "Intellectuals give support to Kuomintang"
 desc = "Poets, painters, compositors, and professors are against our regime. They view it as a backward, oppresive dictatorship which doesn't solve any of the problems of modern China. Not suprising that they voiced support for the Kuomintang and a united China."
 
 action_a = {
@@ -838,7 +812,7 @@ command = { type = dissent value = 6 }
 action_b = {
 ai_chance = 70
 name = "Make little concession"
-command = { type = headofstate which = 978138 }
+command = { type = headofstate which = 503047 } #Puyi (AD)
 command = { type = domestic which = democratic value = 2 }
 command = { type = domestic which = freedom value = 1 }
 command = { type = clrflag which = CSX_INT_REB }
@@ -857,10 +831,7 @@ trigger = {
 flag = CSX_INT_REB
 random = 80
 government = fascist
-NOT = {
-war = { country = CHI country = CSX }
-
-}
+NOT = { war = { country = CHI country = CSX } }
 dissent = 10
 }
 
@@ -886,19 +857,19 @@ country = CSX
 style = 2
 picture = "Marshalldead"
 
-trigger = {
-headofgovernment = 503002
-}
+trigger = { headofgovernment = 503032 } #Yan Huiqing
 
-date = { day = 5 month = june year = 1939 }
+date = { day = 5 month = june year = 1948 }
 
-name = "Death of Xu Shichang"
-desc = "The Prime Minister, Xu Shichang, hero of the restoration of the empire died today at the age of 85 years. Marquis Li Kuo-chieh, The grandson of Li Hongzhang will succeed in his position."
+name = "Death of Yan Huiqing"
+desc = "The Prime Minister, Yan Huiqing, retires as his failing health takes a severe turn. The eminent statesman, Gu Weijun, will succeed in his position."
 
 action_a = {
 name = "A state funeral is least we can do...."
-command = { type = sleepminister which = 503002 }
-command = { type = headofgovernment which = 978257 }
+command = { type = sleepminister which = 503031 } #Yan Huiqing
+command = { type = sleepminister which = 503032 }
+command = { type = sleepminister which = 503033 }
+command = { type = headofgovernment which = 503038 } #Gu Weijun
 command = { type = sleepevent which = 150023 }
 }
 }
@@ -911,24 +882,21 @@ country = CSX
 style = 2
 picture = "Marshalldead"
 
-trigger = {
-NOT = {
-headofgovernment = 503002
-}
-}
+trigger = { NOT = { headofgovernment = 503032 } } #Yan Huiqing
 
-date = { day = 6 month = june year = 1939 }
+date = { day = 6 month = june year = 1949 }
 
-name = "Death of Xu Shichang"
-desc = "The former Prime Minister, Xu Shichang, hero of the restoration of Qing empire died today at the age of 85 years. The grand state funeral has been organized to remeber his great deeds for Chinese nation."
+name = "Death of Yan Huiqing"
+desc = "The former Prime Minister, Yan Huiqing, hero of the restoration of Qing empire died today at the age of 72. The grand state funeral has been organized to remeber his great deeds for Chinese nation."
 
 action_a = {
 name = "A state funeral is least we can do...."
-command = { type = sleepminister which = 503002 }
+command = { type = sleepminister which = 503031 } #Yan Huiqing
+command = { type = sleepminister which = 503032 }
+command = { type = sleepminister which = 503033 }
 command = { type = sleepevent which = 150022 }
 }
 }
-
 
 
 event = {
@@ -1062,7 +1030,6 @@ date = { day = 13 month = february year = 1945 }
 
 name = "Chinese New Year, Rooster"
 desc = "EVT_91859_DESC"
-
 
 action_a = {
 name = "Prepare the celebrations and the stage!"

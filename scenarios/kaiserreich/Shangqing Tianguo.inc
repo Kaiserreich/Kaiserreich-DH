@@ -161,7 +161,7 @@ landunit = {
 		division = {
 	        	id = { type = 24000 id = 2 }
 			name = "1. Juntuan"
-			type = bergsjaeger
+			type = d_01
 			experience = 20
 			model = 6
 		}
@@ -169,14 +169,14 @@ landunit = {
 			experience = 20
 	        	id = { type = 24000 id = 3 }
 			name = "3. Juntuan"
-			type = bergsjaeger
+			type = d_01
 			model = 5
 		}
 		division = {
 			experience = 20
 	        	id = { type = 24000 id = 4 }
 			name = "5. Juntuan"
-			type = bergsjaeger
+			type = d_01
 			model = 5
 		}
 		division = {
@@ -196,7 +196,7 @@ landunit = {
                 dig_in = 20.000 
 	}
 	landunit = {
-		location = 1330 # Jinan
+		location = 1332
 		name = "2. Fangmianjun"
 		id = { type = 24000 id = 7 }
 		division = {
@@ -216,7 +216,7 @@ landunit = {
                 dig_in = 20.000 
 	}
 	landunit = {
-		location = 1330 # Jinan
+		location = 1333 # Huaiyin
 		name = "4. Fangmianjun"
 		id = { type = 24000 id = 10 }
 		division = {
@@ -246,7 +246,7 @@ landunit = {
                 dig_in = 20.000 
 	}
 	landunit = {
-		location = 1330 # Jinan
+		location = 1334 #Nantong
 		name = "15. Juntuan"
 		id = { type = 24000 id = 15 }
 		division = {
