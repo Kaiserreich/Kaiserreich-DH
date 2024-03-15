@@ -16,8 +16,8 @@ country = {
 
 #### cabinet
 
-headofstate = { type = 9 id = 501011  }
-headofgovernment = { type = 9 id = 501012 }
+headofstate = { type = 9 id = 501019 } #Tang Jiyao
+headofgovernment = { type = 9 id = 501045 } #Zhou Zhongyue
 
 #### Resource Reserves
 

@@ -23,9 +23,8 @@ country = {
 		interventionism = 5
 	}
 #### cabinet
-	headofstate = { type = 9 id = 51001 }
-	headofgovernment = { type = 9 id = 51006 }
- 	chiefofarmy = { type = 9 id = 51005  }
+	headofstate = { type = 9 id = 51213 } #Yan Xishan
+	headofgovernment = { type = 9 id = 51214 } #Yan Xishan
 
 #### Resource Reserves
 	capital = 1259 # Yan'an

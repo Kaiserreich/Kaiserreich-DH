@@ -27,8 +27,8 @@ country = {
     }
 #### cabinet
 
-headofstate = { type = 9 id = 978214 }
-headofgovernment = { type = 9 id = 978215 }
+headofstate = { type = 9 id = 978000 } #Feng Yuxiang
+headofgovernment = { type = 9 id = 978001 } #Feng Yuxiang
 
 #### Resource Reserves
 	energy	= 200  metal = 200	rare_materials = 200	oil = 200 supplies = 9000

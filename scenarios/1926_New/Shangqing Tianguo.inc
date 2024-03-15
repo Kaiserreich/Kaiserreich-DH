@@ -27,7 +27,6 @@ country = {
 #### cabinet
 	headofstate = { type = 9 id = 51213 } # Yan Xishan
 	headofgovernment = { type = 9 id = 51214 } # Yan Xishan
- 	chiefofarmy = { type = 9 id = 51005  }
 
 #### Resource Reserves
 	capital = 1259 # Yan'an

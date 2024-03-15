@@ -161,7 +161,7 @@ landunit = {
 		division = {
 	        	id = { type = 24000 id = 2 }
 			name = "1. Juntuan"
-			type = bergsjaeger
+			type = d_01
 			experience = 20
 			model = 6
 		}
@@ -169,14 +169,14 @@ landunit = {
 			experience = 20
 	        	id = { type = 24000 id = 3 }
 			name = "3. Juntuan"
-			type = bergsjaeger
+			type = d_01
 			model = 5
 		}
 		division = {
 			experience = 20
 	        	id = { type = 24000 id = 4 }
 			name = "5. Juntuan"
-			type = bergsjaeger
+			type = d_01
 			model = 5
 		}
 		division = {
