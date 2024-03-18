@@ -554,83 +554,88 @@ province = { id = 532 ic = 1 landfort = 2 infra = { size = 0.60 current_size = 0
 province = { id = 533 ic = 1 infra = { size = 0.50 current_size = 0.50 } } #Joensuu
 
 ### FRA
-province = { id = 37 ic = 1 anti_air = 2 infra = { size = 0.60 current_size = 0.60 } #Brest
+province = { id = 37 ic = 2 anti_air = 2 infra = { size = 0.60 current_size = 0.60 } #Brest
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 3 current_size = 3 } }
-province = { id = 38 infra = { size = 0.70 current_size = 0.70 } } #Rennes
-province = { id = 39 ic = 3 infra = { size = 0.60 current_size = 0.60 } #Lorient
+province = { id = 38 ic = -3 infra = { size = 0.70 current_size = 0.70 } } #Rennes
+province = { id = 39 ic = 2 infra = { size = 0.60 current_size = 0.60 } #Lorient
 	naval_base = { size = 4 current_size = 4 } }
-province = { id = 40 ic = 2 manpower = 1 infra = { size = 0.70 current_size = 0.70 } #Saint-Nazaire
+province = { id = 40 ic = 3 manpower = 1 infra = { size = 0.70 current_size = 0.70 } #Saint-Nazaire
 	naval_base = { size = 8 current_size = 8 } }
-province = { id = 41 infra = { size = 0.60 current_size = 0.60 } } #Saint-Brieuc
-province = { id = 43 anti_air = 3 #Cherbourg
+province = { id = 41 ic = -4 infra = { size = 0.60 current_size = 0.60 } } #Saint-Brieuc
+province = { id = 43 ic = 2 anti_air = 3 #Cherbourg
 	naval_base = { size = 6 current_size = 6 } air_base = { size = 5 current_size = 5 } }
-province = { id = 44 ic = 2 anti_air = 1 infra = { size = 0.70 current_size = 0.70 } } #Caen
-province = { id = 45 ic = 2 infra = { size = 0.90 current_size = 0.90 } #Le Havre
+province = { id = 44 ic = 1 anti_air = 1 infra = { size = 0.70 current_size = 0.70 } } #Caen
+province = { id = 45 ic = 5 infra = { size = 0.90 current_size = 0.90 } #Le Havre
 	naval_base = { size = 5 current_size = 5 } }
 province = { id = 46 infra = { size = 0.70 current_size = 0.70 } } #Bayeux
 province = { id = 47 infra = { size = 0.60 current_size = 0.60 } } #Falaise
-province = { id = 48 infra = { size = 0.80 current_size = 0.80 } #Evreux
+province = { id = 48 ic = 2 infra = { size = 0.80 current_size = 0.80 } #Evreux
 	air_base = { size = 2 current_size = 2 } }
 province = { id = 49 infra = { size = 0.70 current_size = 0.70 } #Calais
 	naval_base = { size = 5 current_size = 5 } air_base = { size = 4 current_size = 4 } }
-province = { id = 50 manpower = 2 infra = { size = 0.90 current_size = 0.90 } } #Amiens
-province = { id = 51 landfort = 4 anti_air = 2 manpower = 1 infra = { size = 0.80 current_size = 0.80 } #Dunkirk
+province = { id = 50 ic = 2 manpower = 2 infra = { size = 0.90 current_size = 0.90 } } #Amiens
+province = { id = 51 landfort = 4 anti_air = 2 ic = 1 manpower = 1 infra = { size = 0.80 current_size = 0.80 } #Dunkirk
 	naval_base = { size = 4 current_size = 4 } }
 province = { id = 52 landfort = 5 anti_air = 3 #Lille
 	air_base = { size = 6 current_size = 6 } }
-province = { id = 53 infra = { size = 0.90 current_size = 0.90 } #Dieppe
+province = { id = 53 ic = 1 infra = { size = 0.90 current_size = 0.90 } #Dieppe
 	air_base = { size = 2 current_size = 2 } }
-province = { id = 54 infra = { size = 0.80 current_size = 0.80 } } #Troyes
-province = { id = 55 ic = 1 anti_air = 8 #Paris
+province = { id = 54 ic = -2 infra = { size = 0.80 current_size = 0.80 } } #Troyes
+province = { id = 55 ic = 10 anti_air = 8 #Paris metropole is an outsized portion of France's GDP
 	air_base = { size = 10 current_size = 10 } }
-province = { id = 56 infra = { size = 0.80 current_size = 0.80 } } #Chateau Thierry
-province = { id = 57 anti_air = 2 infra = { size = 0.70 current_size = 0.70 } #Nantes
+province = { id = 56 ic = -8 infra = { size = 0.80 current_size = 0.80 } } #Chateau Thierry
+province = { id = 57 ic = 6 anti_air = 2 infra = { size = 0.70 current_size = 0.70 } #Nantes
 	air_base = { size = 2 current_size = 2 } }
-province = { id = 58 infra = { size = 0.80 current_size = 0.80 } } #Le Mans
-province = { id = 59 infra = { size = 0.70 current_size = 0.70 } } #Angers
-province = { id = 60 infra = { size = 0.80 current_size = 0.80 } } #Chartres
+province = { id = 58 ic = 2 infra = { size = 0.80 current_size = 0.80 } } #Le Mans
+province = { id = 59 ic = 1 infra = { size = 0.70 current_size = 0.70 } } #Angers
+province = { id = 60 ic = 1 infra = { size = 0.80 current_size = 0.80 } } #Chartres
 province = { id = 61 infra = { size = 0.80 current_size = 0.80 } } #Tours
+province = { id = 62 ic = 2 } #Poitiers
 province = { id = 63 ic = 1 infra = { size = 0.80 current_size = 0.80 } } #Auxerre
-province = { id = 64 infra = { size = 0.90 current_size = 0.90 } #Le Creusot
+province = { id = 64 ic = 1 infra = { size = 0.90 current_size = 0.90 } #Le Creusot
 	air_base = { size = 5 current_size = 5 } }
-province = { id = 66 ic = 2 infra = { size = 0.80 current_size = 0.80 } #Orleans
+province = { id = 65 ic = 2 } #Bourges
+province = { id = 66 ic = 1 infra = { size = 0.80 current_size = 0.80 } #Orleans
 	air_base = { size = 2 current_size = 2 } }
-province = { id = 67 landfort = 2 infra = { size = 0.70 current_size = 0.70 } #Mont-de-Marsan
+province = { id = 67 ic = 1 landfort = 2 infra = { size = 0.70 current_size = 0.70 } #Mont-de-Marsan
 	air_base = { size = 6 current_size = 6 } }
-province = { id = 68 anti_air = 4 manpower = 2 infra = { size = 0.80 current_size = 0.80 } #Bordeaux
+province = { id = 68 anti_air = 4 manpower = 2 ic = -1 infra = { size = 0.80 current_size = 0.80 } #Bordeaux
 	naval_base = { size = 4 current_size = 4 } air_base = { size = 4 current_size = 4 } }
 province = { id = 69 infra = { size = 0.70 current_size = 0.70 } #La Rochelle/La Pallice
 	naval_base = { size = 2 current_size = 2 } }
-province = { id = 71 ic = 1 infra = { size = 0.70 current_size = 0.70 } #Clermont-Ferrand
+province = { id = 70 ic = -1 } #Angouleme
+province = { id = 71 infra = { size = 0.70 current_size = 0.70 } #Clermont-Ferrand
 	air_base = { size = 2 current_size = 2 } }
-province = { id = 74 ic = 2 anti_air = 1 infra = { size = 0.80 current_size = 0.80 } } #Vichy
+province = { id = 72 ic = 1 } #Chateauroux
+province = { id = 73 ic = -1 } #Limoges
+province = { id = 74 ic = 3 anti_air = 1 infra = { size = 0.80 current_size = 0.80 } } #Vichy
 province = { id = 75 infra = { size = 0.70 current_size = 0.70 } } #Perigueux
-province = { id = 76 infra = { size = 0.60 current_size = 0.60 } } #Tulle
-province = { id = 77 infra = { size = 0.80 current_size = 0.80 } #Toulouse
+province = { id = 76 ic = 1 infra = { size = 0.60 current_size = 0.60 } } #Tulle
+province = { id = 77 ic = -2 infra = { size = 0.80 current_size = 0.80 } #Toulouse
 	air_base = { size = 4 current_size = 4 } }
-province = { id = 78 ic = 1 infra = { size = 0.90 current_size = 0.90 } } #Saint-Etienne
-province = { id = 79 infra = { size = 0.70 current_size = 0.70 } } #Beziers
-province = { id = 80 landfort = 2 anti_air = 1 infra = { size = 0.60 current_size = 0.60 } } #Perpignan
-province = { id = 81 infra = { size = 0.60 current_size = 0.60 } } #Rodez
-province = { id = 82 infra = { size = 0.80 current_size = 0.80 } } #Montpellier
-province = { id = 83 landfort = 2 infra = { size = 0.60 current_size = 0.60 } } #Pau
+province = { id = 78 ic = 7 infra = { size = 0.90 current_size = 0.90 } } #Saint-Etienne
+province = { id = 79 ic = 1 infra = { size = 0.70 current_size = 0.70 } } #Beziers
+province = { id = 80 ic = 1 landfort = 2 anti_air = 1 infra = { size = 0.60 current_size = 0.60 } } #Perpignan
+province = { id = 81 ic = 1 infra = { size = 0.60 current_size = 0.60 } } #Rodez
+province = { id = 82 ic = -1 infra = { size = 0.80 current_size = 0.80 } } #Montpellier
+province = { id = 83 ic = 2 landfort = 2 infra = { size = 0.60 current_size = 0.60 } } #Pau
 province = { id = 84 infra = { size = 0.70 current_size = 0.70 } } #Agen
-province = { id = 85 ic = 1 infra = { size = 1.00 current_size = 1.00 } } #Lyon
-province = { id = 86 landfort = 3 anti_air = 3 infra = { size = 0.70 current_size = 0.70 } #Toulon
+province = { id = 85 ic = -2 infra = { size = 1.00 current_size = 1.00 } } #Lyon
+province = { id = 86 ic = 2 landfort = 3 anti_air = 3 infra = { size = 0.70 current_size = 0.70 } #Toulon
 	naval_base = { size = 10 current_size = 10 } air_base = { size = 5 current_size = 5 } }
-province = { id = 88 landfort = 3 anti_air = 1 infra = { size = 0.80 current_size = 0.80 } } #Bourg-en-Bresse
+province = { id = 88 ic = 1 landfort = 3 anti_air = 1 infra = { size = 0.80 current_size = 0.80 } } #Bourg-en-Bresse
 province = { id = 89 ic = 1 anti_air = 5 manpower = 2 #Marseille
 	naval_base = { size = 8 current_size = 8 } air_base = { size = 6 current_size = 6 } }
-province = { id = 90 landfort = 3 anti_air = 1 manpower = 1 #Grenoble
+province = { id = 90 ic = -1 landfort = 3 anti_air = 1 manpower = 1 #Grenoble
 	infra = { size = 0.50 current_size = 0.50 } }
-province = { id = 92 landfort = 3 anti_air = 1 infra = { size = 0.70 current_size = 0.70 } #Valence
+province = { id = 92 ic = 1 landfort = 3 anti_air = 1 infra = { size = 0.70 current_size = 0.70 } #Valence
 	air_base = { size = 2 current_size = 2 } }
 province = { id = 93 infra = { size = 0.70 current_size = 0.70 } } #Avignon
-province = { id = 95 landfort = 4 anti_air = 3 infra = { size = 0.80 current_size = 0.80 } } #Chaumont
+province = { id = 95 ic = 1 landfort = 4 anti_air = 3 infra = { size = 0.80 current_size = 0.80 } } #Chaumont
 province = { id = 97 landfort = 4 anti_air = 2 infra = { size = 0.80 current_size = 0.80 } #Belfort
 	air_base = { size = 3 current_size = 3 } }
-province = { id = 98 landfort = 3 anti_air = 1 infra = { size = 0.70 current_size = 0.70 } } #Pontarlier
-province = { id = 99 air_base = { size = 5 current_size = 5 } } #Reims
+province = { id = 98 ic = 1 landfort = 3 anti_air = 1 infra = { size = 0.70 current_size = 0.70 } } #Pontarlier
+province = { id = 99 ic = 1 air_base = { size = 5 current_size = 5 } } #Reims
 province = { id = 100 landfort = 6 anti_air = 2 #Verdun
 	air_base = { size = 2 current_size = 2 } }
 province = { id = 102 landfort = 5 anti_air = 2 infra = { size = 0.80 current_size = 0.80 } } #Sedan

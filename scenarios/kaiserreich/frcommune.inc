@@ -39,7 +39,7 @@ SpyInfo  = {  country = "FRA" NumberOfSpies = 5  }
 	money = 50      transports = 60
 
 	manpower = 560
-        free = { ic = 10 }
+	free = { ic = 0 }
 
 
     ownedprovinces =      {

@@ -182,10 +182,10 @@ offset =  10
 deathdate = { day = 29 month = december year = 1949 }
 
 name = "The New Reformation"
-desc = "With the New Year's speech of Emperor Pu Yi the Qing Empire has entered into the New Reformation - This at first seemed simple but the choices of where to go are adding up - how shall the Empire start this new phase?"
+desc = "With the New Year's speech of Emperor Pu Yi the Qing Empire has entered into the New Reformation - China has been divided for too long; the Warlord Era must come to an end!"
 
 action_a = {
-name = "Begin expanding the Military, we must regain our lost territories!"
+name = "A divided China is a weak China!"
 ai_chance = 33
 command = { type = belligerence which = CSX value = 5 }
 command = { type = relation which = JAP value = -50 }
@@ -198,35 +198,219 @@ command = { type = dissent value = 3 }
 command = { type = supplies value = -1000 }
 command = { type = money value = -100 }
 command = { type = manpowerpool value = -50 }
-command = { type = event which = 150007 where = CSX when = 10 }
+#command = { type = event which = 150007 where = CSX when = 10 }
+command = { type = event which = 150041 where = CSX when = 30 }
+command = { type = event which = 150042 where = CSX when = 90 }
+}
+
+#action_b = {
+#name = "Industrialization, we need an industrial base if we are to become a World Power"
+#ai_chance = 33
+#command = { type = dissent value = -3 }
+#command = { type = supplies value = -2000 }
+#command = { type = money value = -100 }
+#command = { type = event which = 150009 where = CSX when = 10 }
+#}
+
+#action_c = {
+#name = "Farming and mining, the demand in the World for rice and minerals is great"
+#ai_chance = 33
+#command = { type = manpowerpool value = 50 }
+#command = { type = dissent value = -3 }
+#command = { type = supplies value = -1000 }
+#command = { type = money value = -100 }
+#command = { type = event which = 150008 where = CSX when = 10 }
+#}
+
+#action_d = {
+#name = "Reform? What? That was just a joke"
+#ai_chance = 1
+#command = { type = dissent value = 15 } # people don't think it is funny
+#command = { type = event which = 150014 where = CSX when = 10 }
+#command = { type = sleepevent which = 150002 }
+#command = { type = sleepevent which = 150003 }
+#}
+}
+
+
+event = {
+id = 150041
+random = no
+country = CSX
+style = 2
+picture = "China_Army"
+
+name = "Military Logistics"
+desc = "He Guoguang has been hard at work developing mobilization and supply plans, and improving the efficiency of the Army's rear services."
+
+action_b = {
+name = "Careful preparation is key to success"
+command = { type = gain_tech which = 1970 } #supply blueprints
+command = { type = gain_tech which = 1980 }
+command = { type = tc_mod value = 10 when = 0 }
+command = { type = supply_dist_mod value = 10 when = 0 }
+command = { type = construct which = infrastructure where = 1245 value = 10 }
+command = { type = construct which = infrastructure where = 1246 value = 10 }
+command = { type = construct which = infrastructure where = 1250 value = 10 }
+command = { type = construct which = infrastructure where = 1316 value = 10 }
+command = { type = construct which = infrastructure where = 1320 value = 10 }
+command = { type = construct which = infrastructure where = 1325 value = 10 }
+command = { type = construct which = infrastructure where = 1340 value = 10 }
+}
+}
+
+
+event = {
+id = 150042
+random = no
+country = CSX
+style = 2
+picture = "China_Army"
+
+name = "Formation of the Cavalry Corp"
+desc = "Our cavalry forces have long been distributed as piecemeal brigades or regiments, but now have been consolidated and partially modernized into divisions and finally a full corp."
+
+action_b = {
+name = "Cavalry, speed and manoeuvrability are essential to victory"
+command = { type = gain_tech which = 1340 } #cav blueprints
+command = { type = gain_tech which = 1350 }
+command = { type = gain_tech which = 1360 }
+command = { type = add_corps which = "Di 1. Qibing Jun" value = land where = 1247 }
+command = { type = add_division which = "Xinjun 2. Qibing Zhen" value = cavalry when = 7 }
+command = { type = add_division which = "Xinjun 3. Qibing Zhen" value = cavalry when = 7 }
+command = { type = domestic which = professional_army value = 1 }
+}
+}
+
+
+event = {
+id = 150043
+random = no
+country = CSX
+style = 2
+picture = "China_Army"
+decision_picture = "decision_licensed_unit"
+
+decision = {
+	event = 150006
+	control = { province = 1247 data = CSX }
+	NOT = { ispuppet = CSX }
+}
+
+decision_trigger = {
+	supplies = 1500
+	money = 150
+}
+
+trigger = {
+	event = 150006
+	supplies = 1500
+	money = 150
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Import German Heavy Weapons?"
+desc = "The arsenals at Taiyuan and Hanyang have yet not the capacity to fully supply the Qing New Army. In the interim we should make contracts with Krupp and Henschel & Sohn through our attachés in the German Empire. A recommendation put forth by some officers is that we also hire german engineer consultants for our arsenals."
+
+action_a = {
+name = "Only purchase the weaponry"
+ai_chance = 65
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = light_armor_brigade when = 3 }
+command = { type = add_brigade value = light_armor_brigade when = 3 }
+command = { type = supplies value = -1500 }
+command = { type = money value = -150 }
 }
 
 action_b = {
-name = "Industrialization, we need an industrial base if we are to become a World Power"
-ai_chance = 33
-command = { type = dissent value = -3 }
+name = "Also pay for German specialists"
+ai_chance = 35
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = artillery when = 5 }
+command = { type = add_brigade value = light_armor_brigade when = 3 }
+command = { type = add_brigade value = light_armor_brigade when = 3 }
+command = { type = gain_tech which = 2930 } #field artillery
+command = { type = gain_tech which = 2940 }
+command = { type = gain_tech which = 2800 } #static AA
+command = { type = gain_tech which = 2450 }
+command = { type = gain_tech which = 2810 } #AA brigades
+command = { type = gain_tech which = 2820 }
+command = { type = gain_tech which = 2640 } #light tanks
+command = { type = gain_tech which = 2646 }
+command = { type = gain_tech which = 2020 }
+command = { type = gain_tech which = 2150 } #armored cars
 command = { type = supplies value = -2000 }
-command = { type = money value = -100 }
-command = { type = event which = 150009 where = CSX when = 10 }
+command = { type = money value = -250 }
+}
 }
 
-action_c = {
-name = "Farming and mining, the demand in the World for rice and minerals is great"
-ai_chance = 33
-command = { type = manpowerpool value = 50 }
-command = { type = dissent value = -3 }
-command = { type = supplies value = -1000 }
-command = { type = money value = -100 }
-command = { type = event which = 150008 where = CSX when = 10 }
+
+event = {
+id = 150044
+random = no
+country = CSX
+style = 2
+picture = "China_Army"
+decision_picture = "decision_licensed_unit"
+
+decision = {
+	event = 150006
+	control = { province = 1247 data = CSX }
+	NOT = { ispuppet = CSX }
 }
 
-action_d = {
-name = "Reform? What? That was just a joke"
-ai_chance = 1
-command = { type = dissent value = 15 } # people don't think it is funny
-command = { type = event which = 150014 where = CSX when = 10 }
-command = { type = sleepevent which = 150002 }
-command = { type = sleepevent which = 150003 }
+decision_trigger = {
+	supplies = 3000
+	money = 300
+}
+
+trigger = {
+	event = 150006
+	supplies = 3000
+	money = 300
+}
+
+date = { day = 0 month = january year = 1936 }
+offset = 30
+deathdate = { day = 29 month = december year = 1963 }
+
+name = "Import German Bombers?"
+desc = "The Nanyuan Aviation Factory has yet to produce a remotely modern bomber; to effectively attack the Warlord armies from the air we will need German expertise. Licensing some German designs and hiring aeronautic engineers may also be possible."
+
+action_a = {
+name = "Only purchase the aircraft"
+ai_chance = 65
+command = { type = add_division which = "2. TAC Hongzhaji Dadui" value = tactical_bomber when = 5 }
+command = { type = add_division which = "3. TAC Hongzhaji Dadui" value = tactical_bomber when = 5 }
+command = { type = supplies value = -3000 }
+command = { type = money value = -300 }
+}
+
+action_b = {
+name = "Also pay for German specialists"
+ai_chance = 35
+command = { type = add_division which = "2. TAC Hongzhaji Dadui" value = tactical_bomber when = 5 }
+command = { type = add_division which = "3. TAC Hongzhaji Dadui" value = tactical_bomber when = 5 }
+command = { type = gain_tech which = 4130 }
+command = { type = gain_tech which = 4020 }
+command = { type = gain_tech which = 4330 }
+command = { type = gain_tech which = 4340 }
+command = { type = gain_tech which = 4400 }
+command = { type = gain_tech which = 4740 }
+command = { type = gain_tech which = 4750 }
+command = { type = gain_tech which = 4760 }
+command = { type = gain_tech which = 4770 }
+command = { type = gain_tech which = 4780 }
+command = { type = supplies value = -4000 }
+command = { type = money value = -400 }
 }
 }
 
@@ -405,7 +589,7 @@ command = { type = set_domestic which = democratic value = 4 }
 command = { type = set_domestic which = political_left value = 3 }
 command = { type = domestic which = free_market value = 2 }
 command = { type = domestic which = freedom value = 1 }
-command = { type = extra_tc value = 10 }
+#command = { type = extra_tc value = 10 }
 command = { type = headofgovernment which = 503038 } #Gu Weijun
 command = { type = foreignminister which = 503138 } #Lu Zhengxiang
 command = { type = armamentminister which = 503222 } #Xu Shizhang
