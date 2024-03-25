@@ -133,7 +133,7 @@ nationalprovinces =   {
 }
 claimedprovinces = {
 108 111 #Wallonia
-96 106 #french dominant Lorraine
+96 106 #French dominant Lorraine
 429 #Malta
 1432 #Singapore
 900 1007 #Suez
