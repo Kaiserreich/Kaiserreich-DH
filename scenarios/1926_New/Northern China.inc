@@ -26,8 +26,8 @@ country = {
     }
 #### cabinet
 
-headofstate = { type = 9 id = 978294 } # Sun Chuanfang
-headofgovernment = { type = 9 id = 978295 } # Sun Chuanfang
+headofstate = { type = 9 id = 978002 } # Sun Chuanfang
+headofgovernment = { type = 9 id = 978003 } # Sun Chuanfang
 
 #### Resource Reserves
 	energy	= 200  metal = 200	rare_materials = 200	oil = 200 supplies = 5000

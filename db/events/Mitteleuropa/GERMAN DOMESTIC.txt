@@ -344,7 +344,7 @@ command = { trigger = { ai = yes } type = province_revoltrisk which = 1626 value
 command = { trigger = { ai = yes } type = province_revoltrisk which = 1328 value = -80 }
 command = { trigger = { ai = yes } type = province_revoltrisk which = 1331 value = -80 }
 command = { trigger = { ai = yes } type = province_revoltrisk which = 1241 value = -80 }
-command = { trigger = { ai = yes } type = province_revoltrisk which = 1245 value = -80 }
+#command = { trigger = { ai = yes } type = province_revoltrisk which = 1245 value = -80 }
 command = { trigger = { ai = yes } type = province_revoltrisk which = 1365 value = -80 }
 command = { trigger = { ai = yes } type = province_revoltrisk which = 1367 value = -80 }
 command = { trigger = { ai = yes } type = province_revoltrisk which = 1509 value = -80 }
@@ -6761,6 +6761,11 @@ control = { province = 55 data = FRA }
 exists = FRA
 event = 102928340 # FAUD scandal
 event = 907000 # German elections 1937 (Reichskanzler)
+OR = {
+headofgovernment = 45 # von Papen
+headofgovernment = 47 # von Schleicher
+headofgovernment = 216 # Strasser
+}
 control = { province = 163 data = GER }
 NOT = {
 alliance = { country = GER country = FRA }
@@ -6779,13 +6784,14 @@ picture = "german policemen1"
 
 action_a = {
 name = "Increase military control in the border regions!"
-ai_chance = 50
+ai_chance = 80
 command = { type = setflag which = WLL_supressed }
 command = { type = domestic which = freedom value = -1 }
 command = { type = trigger which = 69034 }
 command = { type = add_corps which = "Gendarmerie" value = land where = 108 }
 command = { type = add_division which = "Gendarmerie" value = garrison when = 4 where = police }
 command = { type = relation which = FRA value = -20 }
+command = { type = relation which = VIC value = -20 }
 command = { type = relation which = ENG value = -10 }
 command = { type = relation which = RSI value = -10 }
 command = { type = dissent value = 3 }
@@ -6796,6 +6802,7 @@ name = "Allow these petty Franzosen to meet in their petty clubs"
 ai_chance = 20
 command = { type = domestic which = freedom value = 1 }
 command = { type = relation which = FRA value = 10 }
+command = { type = relation which = VIC value = 10 }
 command = { type = relation which = RSI value = 10 }
 command = { type = relation which = ENG value = 10 }
 }
@@ -6855,8 +6862,9 @@ action_b = {
 name = "It's the time to ban all French organisations in Germany!"
 ai_chance = 50
 command = { type = dissent value = 2 }
-command = { type = belligerence which = GER value = 3  }
+command = { type = belligerence which = GER value = 3 }
 command = { type = relation which = FRA value = -50 }
+command = { type = relation which = VIC value = -50 }
 command = { type = relation which = RSI value = -40 }
 command = { type = relation which = ENG value = -40 }
 command = { type = relation which = GEO value = -40 }
@@ -6884,6 +6892,7 @@ command = { type = dissent value = 2 }
 command = { type = clrflag which = WLL_supressed }
 command = { type = domestic which = freedom value = 2 }
 command = { type = relation which = FRA value = 10 }
+command = { type = relation which = VIC value = 10 }
 command = { type = relation which = RSI value = 10 }
 command = { type = relation which = ENG value = 10 }
 command = { type = sleepevent which = 69038 }
@@ -6895,7 +6904,6 @@ event = {
 id = 69036
 random = no
 country = FRA
-
 
 name = "German Empire Bans French Organisations!"
 desc = "In response to rising power of our motherland, pathetic leadership of German Empire decided to secure territorial integrity of their state by banning all French or French funded organisation. These actions aimed against existence of French minority within German Empire should not go unpunished!"
@@ -6924,7 +6932,7 @@ action_c = {
 name = "Publicly condemn German actions!"
 ai_chance = 40
 command = { type = trigger which = 69037 }
-command = { type = belligerence which = FRA value = -1  }
+command = { type = belligerence which = FRA value = -1 }
 command = { type = dissent value = -1 }
 }
 
@@ -6939,7 +6947,6 @@ event = {
 id = 69037
 random = no
 country = GER
-
 
 name = "International community condemns us!"
 desc = "EVT_91806_DESC"
@@ -6995,6 +7002,7 @@ command = { type = relation which = LAT value = 10 }
 command = { type = relation which = RUS value = 10 }
 command = { type = relation which = SOV value = 10 }
 command = { type = relation which = FRA value = 10 }
+command = { type = relation which = VIC value = 10 }
 command = { type = relation which = RSI value = 10 }
 command = { type = relation which = ENG value = 10 }
 command = { type = sleepevent which = 69038 }

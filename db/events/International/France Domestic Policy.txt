@@ -16,7 +16,7 @@
 # 220006 : FRA : The Results: Travailleur Majority
 # 220007 : FRA : Sebastian Faure's Resignation
 # 220008 : FRA : The Results: Jacobin Majority
-# 220009 : FRA : Marcel Deat Succeeds Faure
+# 220009 : FRA : Suzanne Girault Succeeds Faure
 # 220010 : FRA : The Results: Sorelian Majority
 # 220011 : FRA : Sebastian Faure's Resignation
 # 220012 : FRA : The Results: Anarchiste Majority
@@ -150,7 +150,7 @@ command = { type = chiefofarmy which = 2308 } #Charles Delestraint
 command = { type = chiefofnavy which = 2179 }
 command = { type = chiefofair which = 2225 }
 command = { type = activate which = 6210 }
-command = { type = gain_tech which = 6210  }
+command = { type = gain_tech which = 6210 }
 command = { type = gain_tech which = 6220 }
 command = { type = gain_tech which = 6250 } #Schwerpunkt
 command = { type = gain_tech which = 6900 } #Armor Division formation. Seems logical doesn't it?
@@ -171,8 +171,8 @@ command = { type = chiefofarmy which = 2268 }
 command = { type = chiefofnavy which = 2224 }
 command = { type = chiefofair which = 2195 }
 command = { type = activate which = 6560 }
-command = { type = gain_tech which = 6560  }
-command = { type = gain_tech which = 6030  }
+command = { type = gain_tech which = 6560 }
+command = { type = gain_tech which = 6030 }
 command = { type = gain_tech which = 6120 } #Trench Warfare
 command = { type = dissent value = -1 }
 command = { type = supplies value = -2500 }
@@ -190,8 +190,8 @@ command = { type = chiefofarmy which = 2223 }
 command = { type = chiefofnavy which = 2180 }
 command = { type = chiefofair which = 2225 }
 command = { type = activate which = 6010 }
-command = { type = gain_tech which = 6010  }
-command = { type = gain_tech which = 6020  }
+command = { type = gain_tech which = 6010 }
+command = { type = gain_tech which = 6020 }
 #command = { type = gain_tech which = 6040 } #Delay, nope.avi it's too modern
 command = { type = dissent value = -1 }
 command = { type = supplies value = -500 }
@@ -339,11 +339,15 @@ action_a = {
 name = "Benoît Frachon (Travailleur) - Orthodox Syndicalism"
 ai_chance = 25
 command = { type = armamentminister which = 2094 }
-command = { type = domestic which = free_market value = 2 }
-command = { type = construct which = ic where = 55 value = 3 }
-command = { type = construct which = ic where = 47 value = 3 }
-command = { type = construct which = ic where = 85 value = 3 }
-command = { type = construct which = ic where = 68 value = 3 }
+#command = { type = domestic which = free_market value = 2 }
+command = { type = peacetime_ic_mod which = total value = 5 }
+command = { type = building_prod_mod which = infrastructure value = 10 }
+command = { type = building_prod_mod which = air_base value = 10 }
+command = { type = building_prod_mod which = naval_base value = 10 }
+command = { type = construct which = ic where = 55 value = 1 }
+command = { type = construct which = ic where = 47 value = 1 }
+command = { type = construct which = ic where = 85 value = 1 }
+command = { type = construct which = ic where = 68 value = 1 }
 command = { type = relative_manpower value = 10 }
 command = { type = setflag which = ECO_TRAV }
 }
@@ -352,12 +356,13 @@ action_b = {
 name = "Jean Jerôme (Jacobin) - Industrialization"
 ai_chance = 25
 command = { type = armamentminister which = 2093 }
-command = { type = domestic which = free_market value = -3 }
-command = { type = industrial_modifier which = total value = 5 }
-command = {  type = supplies value = -200  }
-command = { type = construct which = ic where = 55 value = 3 }
-command = { type = construct which = ic where = 47 value = 3 }
-command = { type = construct which = ic where = 85 value = 3 }
+command = { type = domestic which = free_market value = -2 }
+command = { type = industrial_modifier which = ic value = 5 }
+command = { type = building_prod_mod which = ic value = 5 }
+command = { type = supplies value = -200 }
+command = { type = construct which = ic where = 55 value = 1 }
+command = { type = construct which = ic where = 47 value = 1 }
+command = { type = construct which = ic where = 85 value = 1 }
 command = { type = construct which = ic where = 68 value = 1 }
 command = { type = relative_manpower value = 10 }
 command = { type = setflag which = ECO_JACO }
@@ -367,12 +372,16 @@ action_c = {
 name = "Jacques Doriot (Sorelian) - War economy and agriculture"
 ai_chance = 25
 command = { type = armamentminister which = 2241 }
-command = { type = domestic which = free_market value = -2 }
+command = { type = domestic which = free_market value = -1 }
+command = { type = industrial_modifier which = supplies value = 10 }
+command = { type = build_time which = land when = on_upgrade value = -2 where = relative }
+command = { type = build_time which = air when = on_upgrade value = -6 where = relative } #average out to about 2% faster
+command = { type = build_time which = naval when = on_upgrade value = -3 where = relative }
 command = { type = supplies value = -500 }
-command = { type = add_division value = infantry when = 7 }
-command = { type = add_division value = infantry when = 7 }
-command = { type = add_division value = infantry when = 7 }
-command = { type = add_division value = infantry when = 7 }
+command = { type = construct which = ic where = 55 value = 1 }
+command = { type = construct which = ic where = 47 value = 1 }
+command = { type = construct which = ic where = 85 value = 1 }
+command = { type = construct which = ic where = 68 value = 1 }
 command = { type = relative_manpower value = 10 }
 command = { type = setflag which = ECO_SORE }
 }
@@ -381,11 +390,11 @@ action_d = {
 name = "Daniel Guerin (Anarchiste) - Cooperatives"
 ai_chance = 25
 command = { type = armamentminister which = 2244 }
-command = { type = domestic which = free_market value = 3 }
-command = { type = construct which = ic where = 55 value = 2 }
-command = { type = construct which = ic where = 47 value = 2 }
-command = { type = construct which = ic where = 85 value = 2 }
-command = { type = construct which = ic where = 68 value = 2 }
+command = { type = domestic which = free_market value = 1 }
+command = { type = construct which = ic where = 55 value = 1 }
+command = { type = construct which = ic where = 47 value = 1 }
+command = { type = construct which = ic where = 85 value = 1 }
+command = { type = construct which = ic where = 68 value = 1 }
 command = { type = relative_manpower value = 25 }
 command = { type = setflag which = ECO_ANAR }
 }
@@ -780,8 +789,8 @@ trigger = {
 event = 220008 #The results-Jacobin majority
 }
 
-name = "Marcel Deat Succeeds Sebastien Faure"
-desc = "During the inauguration ceremony of the new Comite de Salut Public at the Bourse Generale du Travail, the new Chairman of the CSP has asked to its BGT counterpart Sebastien Faure to resign, arguing that the alliance with the Anarchists was no longer corresponding to the vows of the Commune. The old man accepted with reluctance, thus consecrating the Jacobin complete takeover of the Commune. Admiral Marcel Deat was eventually elected."
+name = "Suzanne Girault Succeeds Sebastien Faure"
+desc = "During the inauguration ceremony of the new Comite de Salut Public at the Bourse Generale du Travail, the new Chairman of the CSP has asked to its BGT counterpart Sebastien Faure to resign, arguing that the alliance with the Anarchists was no longer corresponding to the vows of the Commune. The old man accepted with reluctance, thus consecrating the Jacobin complete takeover of the Commune. Veteran of the Russian Revolution and former Cheka operative Suzanne Girault was eventually elected."
 style = 2
 picture = "Congress"
 
@@ -1491,10 +1500,10 @@ action_a = {
 name = "Travailleurs: Maintain the Syndicalist course!"
 ai_chance = 25
 command = { type = domestic which = free_market value = 1 }
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
 command = { type = relative_manpower value = 3 }
 command = { type = local_setflag which = FRA2_ECO_TRAV }
 command = { type = event which = 220023 where = FRA when = 4 }
@@ -1511,9 +1520,9 @@ name = "Jacobins: Further centralize the economy!"
 ai_chance = 25
 command = { type = domestic which = free_market value = -2 }
 command = {  type = supplies value = -200  }
-command = { type = construct which = ic where = -1 value = 3 }
-command = { type = construct which = ic where = -1 value = 3 }
-command = { type = construct which = ic where = -1 value = 3 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
 command = { type = construct which = ic where = -1 value = 1 }
 command = { type = relative_manpower value = 3 }
 command = { type = local_setflag which = FRA2_ECO_JACO }
@@ -1524,10 +1533,10 @@ action_c = {
 trigger = { NOT = { event = 220008 } } # The results-Jacobin majority
 name = "Sorelians: We must focus on the armament industries!"
 ai_chance = 25
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
 command = { type = domestic which = free_market value = -4 }
 command = { type = supplies value = -500 }
 command = { type = relative_manpower value = 1 }
@@ -1539,9 +1548,9 @@ action_d = {
 name = "Anarchistes: More power to the Cooperatives!"
 ai_chance = 25
 command = { type = domestic which = free_market value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
-command = { type = construct which = ic where = -1 value = 2 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
+command = { type = construct which = ic where = -1 value = 1 }
 command = { type = construct which = ic where = -1 value = 1 }
 command = { type = relative_manpower value = 5 }
 command = { type = local_setflag which = FRA2_ECO_ANAR }
@@ -2909,6 +2918,7 @@ action_a = {
 name = "The old system shall be swept away!"
 ai_chance = 55
 command = { type = dissent value = 10 } # People angry
+command = { type = flag_ext where = FRA which = "_lenin" }
 command = { type = setflag which = COMMUNIST_FRANCE }
 }
 
@@ -3167,6 +3177,7 @@ command = { type = sleepminister which = 2224 }
 command = { type = sleepminister which = 2268 }
 command = { type = sleepminister which = 2195 }
 command = { type = sleepminister which = 2183 }
+command = { type = sleepminister which = 2335 }
 command = { type = sleepleader which = 24159 }
 command = { type = sleepleader which = 24157 }
 command = { type = revolt which = 55 } # Jacobin loyalists in Paris
@@ -3177,6 +3188,7 @@ command = { type = setflag which = JACOBIN_BAN }
 command = { type = local_clrflag which = GAMELIN1 }
 command = { type = local_clrflag which = GAMELIN2 }
 command = { type = clrflag which = COMMUNIST_FRANCE }
+command = { type = flag_ext where = FRA which = "" } #reset CoF flag 
 }
 }
 

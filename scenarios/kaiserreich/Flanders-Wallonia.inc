@@ -19,18 +19,16 @@ country = {
         interventionism = 2
     }
 
-
-	headofstate = { type = 9 id = 15157  }
+	headofstate = { type = 9 id = 15157 }
 	headofgovernment = { type = 9 id = 15159 }
- 	foreignminister = { type = 9 id = 15046 }
- 	armamentminister = { type = 9 id = 15139  }
- 	ministerofsecurity = { type = 9 id = 15150  }
- 	ministerofintelligence = { type = 9 id = 15095  }
- 	chiefofstaff = { type = 9 id = 15104 }
- 	chiefofarmy = { type = 9 id = 15108  }
- 	chiefofnavy = { type = 9 id = 15114 }        
- 	chiefofair = { type = 9 id = 15115 }
-
+	foreignminister = { type = 9 id = 15046 }
+	armamentminister = { type = 9 id = 15139 }
+	ministerofsecurity = { type = 9 id = 15150 }
+	ministerofintelligence = { type = 9 id = 15095 }
+	chiefofstaff = { type = 9 id = 15104 }
+	chiefofarmy = { type = 9 id = 15108 }
+	chiefofnavy = { type = 9 id = 15114 }
+	chiefofair = { type = 9 id = 15115 }
 
 #### Resource Reserves
 
@@ -44,7 +42,7 @@ country = {
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 20
 
-
+	free = { ic = 4 } #compensation for adjustment to province base IC
 
     ownedprovinces =      {
 116 114 115 117 112 113
@@ -98,16 +96,16 @@ relation = {   tag =  	JAP	value = 		-50	   }
 #######################
 #Infantry
 1010  1020 1030 1040 1050 1060 1070 1080 1090 #Early Infantry Division
-1160  1170 1180 1190 1200 1210 1220 1230 1240 #Early Mountain Division 
+1160  1170 1180 1190 1200 #1916 Mountain Division
 1396 #Motorised Inf
-1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply 
-13060 13070 13080 1310 1320 1330 1340 1350 1360 1370 #1930 Cavalry Division 
+1910 1920 1930 1940 1950 1960 1970 1980 #Interbellum 1930 Supply
+13060 13070 13080 1310 1320 1330 1340 1350 1360 1370 #1930 Cavalry Division
 1830 1840 1850 1860 #Engineers
 
 #Armour & Artillery
 2860 2870 2880 2020 #Basic Armoured Car
-7600 7610 2620 2010 2630 2640 #Tankette 
-2290 2300 2310 #Great War Heavy Field Artillery 
+7600 7610 2620 2010 2630 2640 #Tankette
+2290 2300 2310 2900 2910 2920 2930 #Basic Interwar Field Artillery
 2800 2450 21180 21190 #Early Static Anti-Air Artillery
 2810 2820 2510 #Basic Anti-Air Artillery Brigade
 
@@ -123,19 +121,19 @@ relation = {   tag =  	JAP	value = 		-50	   }
 3810 3820 #1925 transport
 
 #Aircrafts
-4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter  
-4600 4610 4620 4630 4120 #Interwar Bomber 
+4500 4510 4520 4530 4540 4550 4010 4020 #Early Fighter
+4600 4610 4620 4630 4120 #Interwar Bomber
 7290 7300 7310 7320 #CAS
 
 #Industrial
-5310 54010 54020 54030 5316 5326 #Computers & cryptografi
+5310 54010 54020 54030 5316 5326 #Computers & cryptography
 5600 5610 5620 5630 #Medicine
-5700 5710 5010 #Modern Agriculture 
+5700 5710 5010 #Modern Agriculture
 5810 5820 5050 5830 5060 #Manufactoring
-5800 5080 5090 #Improved Construction Engineering 
+5800 5080 5090 #Improved Construction Engineering
 
 #Land Doctrines
-14000 14010 14020 #Great War Hospital System 
+14000 14010 14020 #Great War Hospital System
 6500 6510 6530 6580 6600 6610 6620 6630 6640 6650 6660 6670 6680 6540 6910 # Great War Land Doctrines
 6010 6020 # Superior Firepower
 
