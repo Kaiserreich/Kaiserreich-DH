@@ -1912,7 +1912,7 @@ province = { id = 1806 anti_air = 1 infra = { size = 0.90 current_size = 0.90 } 
 province = { id = 1821 manpower = 1 ic = -9 #Columbus
 	infra = { size = 0.70 current_size = 0.70 } }
 province = { id = 1822 ic = 1 infra = { size = 0.80 current_size = 0.80 } } #Toledo
-province = { id = 1823 ic = 3 manpower = 2 #Cincinnnati
+province = { id = 1823 ic = 3 manpower = 2 #Cincinnati
 	air_base = { size = 6 current_size = 6 } }
 province = { id = 1824 ic = 1 infra = { size = 0.70 current_size = 0.70 } } #Erie
 province = { id = 1825 ic = -4 #Cleveland

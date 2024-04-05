@@ -20,16 +20,16 @@ country = {
     }
 
 #### cabinet
-	headofstate = { type = 9 id = 30021 }
-	headofgovernment = { type = 9 id = 30025 }
+	headofstate = { type = 9 id = 30021 } #Stjepan barun Sarkotic (Stefan Sarkotic Freiherr von Lovcen)
+	headofgovernment = { type = 9 id = 30025 } #Ivo Pilar
 	foreignminister = { type = 9 id = 30030 }
 	armamentminister = { type = 9 id = 30033 }
-	ministerofsecurity = { type = 9 id = 30037 }
-	ministerofintelligence = { type = 9 id = 30045 }
-	chiefofstaff = { type = 9 id = 30048 }
-	chiefofarmy = { type = 9 id = 30053 }
-	chiefofnavy = { type = 9 id = 30061 }
-	chiefofair = { type = 9 id = 30066 }
+	ministerofsecurity = { type = 9 id = 30037 } #Nikola Zvonimir Bjelovucic
+	ministerofintelligence = { type = 9 id = 30045 } #Fedor Dragojlov
+	chiefofstaff = { type = 9 id = 30048 } #Ivan Percevic
+	chiefofarmy = { type = 9 id = 30053 } #Stjepan Duic
+	chiefofnavy = { type = 9 id = 30061 } #Marijan Polic
+	chiefofair = { type = 9 id = 30066 } #Emil Uzelac
 
 #### Resource Reserves
 	capital = 352
@@ -58,27 +58,34 @@ nationalprovinces = { 337 344 345 352 347 350 351 343
 			}
 
 diplomacy = {
-relation = {   tag =    BEL	value = 		30	   }  
-relation = {   tag =  	BLR	 value =		60	   }  
-relation = {   tag =  	BUL	value = 		40	   }  
-relation = {   tag =  	GER	 value =		120	   }  
-relation = {   tag =  	LAT	value = 		80	   }  
-relation = {   tag =  	LIT	 value =		40	   }  
-relation = {   tag =  	POL	value = 		20	   }  
-relation = {   tag =  	AUS	value = 		120	   }  
-relation = {   tag =  	HUN	 value =		160	   }  
-relation = {   tag =  	ITA	value = 		50	   }  
-relation = {   tag =  	SPA	value = 		60	   }  
-relation = {   tag =  	ENG	value = 		-80	   }  
-relation = {   tag =  	FRA	value = 		-60	   }  
-relation = {   tag =  	RSI	 value =		-70	   }  
-relation = {   tag =  	RUS	 value =		50	   }  
-relation = {   tag =  	OTT	 value =		-50	   }  
-relation = {   tag =  	JAP	value = 		-10	   } 
+	relation = { tag = BEL value = 30 }
+	relation = { tag = BLR value = 60 }
+	relation = { tag = BUL value = 40 }
+	relation = { tag = GER value = 120 }
+	relation = { tag = LAT value = 80 }
+	relation = { tag = LIT value = 40 }
+	relation = { tag = POL value = 20 }
+	relation = { tag = AUS value = 120 }
+	relation = { tag = HUN value = 160 }
+	relation = { tag = ITA value = 50 }
+	relation = { tag = SPA value = 60 }
+	relation = { tag = ENG value = -80 }
+	relation = { tag = FRA value = -60 }
+	relation = { tag = RSI value = -70 }
+	relation = { tag = RUS value = 50 }
+	relation = { tag = OTT value = -50 }
+	relation = { tag = JAP value = -10 }
 }
 
+dormant_ministers = { }
 
-	
+dormant_teams = { 31030
+	31003 31005 31028 #Slovenia
+	31007 31008 #Bosnia
+	}
+
+dormant_leaders = { }
+
 	techapps = {
 
 #Aircrafts
