@@ -126,12 +126,12 @@ dormant_ministers = { 546040 546043 }
 
 
 landunit = {
-id = { type = 25000 id = 5 }
+id = { type = 25000 id = 50 }
 location = 355
 name = "Landwehr"
 
  division = {
-  id = { type = 25000 id = 6 }
+  id = { type = 25000 id = 51 }
   name = "1. Bosnische Landwehrbrigade"
   strength = 50
   max_strength = 75
