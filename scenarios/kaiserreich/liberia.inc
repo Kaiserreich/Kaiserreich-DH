@@ -86,7 +86,7 @@ landunit = {
 		name = "Army of Liberia"
 
 		division = {
-	        id = { type = 25000 id = 2 }
+	        id = { type = 25500 id = 2 }
 		name = "1st Republican Guards Div."
 		type = infantry
 		model = 6
