@@ -209,538 +209,452 @@ dormant_teams = { 604 620 630 644 646 #HUN
 
 
 landunit = {
-id = { type = 17352       id = 1 }
-location = 195
-name = "Oberkommando der Kaiserlichen Armee"
-
- division = {
- id = { type = 17352       id = 2 }
- name = "Oberkommando der Kaiserlichen Armee"
- type = hq
- model = 2
- strength = 100
- }
-}
-
+	id = { type = 17352 id = 1 }
+	location = 195
+	name = "Oberkommando der Kaiserlichen Armee"
+		division = {
+			id = { type = 17352 id = 2 }
+			name = "Oberkommando der Kaiserlichen Armee"
+			type = hq
+			model = 2
+			strength = 100
+		}
+	}
 landunit = {
-id = { type = 17352       id = 3 }
-location = 189
-name = "Armeekreis Tirol"
-
-
- division = {
-        id = { type = 17352       id = 4 }
- name = "1. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- extra = anti_tank
- brigade_model = 2
- }
-
- division = {
-        id = { type = 17352       id = 5 }
- name = "3. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- extra    = artillery
- brigade_model = 5
- }
-
- division = {
-        id = { type = 17352       id = 6 }
- name = "15. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-}
-
-
+	id = { type = 17352 id = 3 }
+	location = 189
+	name = "Armeekreis Tirol"
+		division = {
+			id = { type = 17352 id = 4 }
+			name = "1. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+			extra = anti_tank
+			brigade_model = 2
+		}
+		division = {
+        id = { type = 17352 id = 5 }
+			name = "3. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+			extra = artillery
+			brigade_model = 5
+		}
+		division = {
+			id = { type = 17352 id = 6 }
+			name = "15. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+	}
 landunit = {
-id = { type = 17352       id = 7 }
-location = 400
-name = "Armeekreis Italien"
-
-
- division = {
-        id = { type = 17352       id = 8 }
- name = "2. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-
- division = {
-        id = { type = 17352       id = 9 }
- name = "11. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- extra    = artillery
- brigade_model = 6
- }
-
- division = {
-        id = { type = 17352       id = 10 }
- name = "14. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-}
-
+	id = { type = 17352 id = 7 }
+	location = 400
+	name = "Armeekreis Italien"
+		division = {
+			id = { type = 17352 id = 8 }
+			name = "2. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+		division = {
+			id = { type = 17352 id = 9 }
+			name = "11. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+			extra = artillery
+			brigade_model = 6
+		}
+		division = {
+			id = { type = 17352 id = 10 }
+			name = "14. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+	}
 landunit = {
-id = { type = 17352       id = 11 }
-location = 192
-name = "Armeekreis Oberösterreich"
-
-
- division = {
-        id = { type = 17352       id = 12 }
- name = "4. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-
- division = {
-        id = { type = 17352       id = 13 }
- name = "7. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- extra    = artillery
- brigade_model = 5
- }
-
- division = {
-        id = { type = 17352       id = 14 }
- name = "13. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-}
-
+	id = { type = 17352 id = 11 }
+	location = 192
+	name = "Armeekreis Oberösterreich"
+		division = {
+			id = { type = 17352 id = 12 }
+			name = "4. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+		division = {
+			id = { type = 17352 id = 13 }
+			name = "7. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+			extra = artillery
+			brigade_model = 5
+		}
+		division = {
+			id = { type = 17352 id = 14 }
+			name = "13. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+	}
 landunit = {
-id = { type = 17352       id = 15 }
-location = 195
-name = "Armeekreis Niederösterreich-Wien"
-
-
- division = {
-        id = { type = 17352       id = 16 }
- name = "5. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-
- division = {
-        id = { type = 17352       id = 17 }
- name = "8. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- extra    = artillery
- brigade_model = 5
- }
-
- division = {
-        id = { type = 17352       id = 18 }
- name = "12. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-}
-
+	id = { type = 17352 id = 15 }
+	location = 195
+	name = "Armeekreis Niederösterreich-Wien"
+		division = {
+			id = { type = 17352 id = 16 }
+			name = "5. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+		division = {
+			id = { type = 17352 id = 17 }
+			name = "8. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+			extra = artillery
+			brigade_model = 5
+		}
+		division = {
+			id = { type = 17352 id = 18 }
+			name = "12. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+	}
 landunit = {
-id = { type = 17352       id = 19 }
-location = 349
-name = "Armeekreis Kärnten"
-
-
+	id = { type = 17352 id = 19 }
+	location = 349
+	name = "Armeekreis Kärnten"
+		division = {
+			id = { type = 17352 id = 20 }
+			name = "6. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+		division = {
+			id = { type = 17352 id = 21 }
+			name = "9. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+			extra = artillery
+			brigade_model = 5
+		}
  division = {
-        id = { type = 17352       id = 20 }
- name = "6. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-
- division = {
-        id = { type = 17352       id = 21 }
- name = "9. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- extra    = artillery
- brigade_model = 5
- }
-
- division = {
-        id = { type = 17352       id = 22 }
- name = "10. Infantriedivision"
- type = infantry
- strength  = 100
- model = 8
- }
-}
-
-
+        id = { type = 17352 id = 22 }
+			name = "10. Infantriedivision"
+			type = infantry
+			strength = 100
+			model = 8
+		}
+	}
 landunit = {
-id = { type = 17352       id = 23 }
-location = 401
-name = "Tiroler Schützen"
-
- division = {
-        id = { type = 17352       id = 24 }
- name = "1. Alpenjägerdivision"
- type = bergsjaeger
- strength  = 80
- model = 8
- extra    = artillery
- brigade_model = 5
- }
-
- division = {
-        id = { type = 17352       id = 25 }
- name = "2. Alpenjägerdivision"
- type = bergsjaeger
- strength  = 80             
- model = 8
- extra    = artillery
- brigade_model = 5
- }
-}
-
-
+	id = { type = 17352 id = 23 }
+	location = 401
+	name = "Tiroler Schützen"
+		division = {
+			id = { type = 17352 id = 24 }
+			name = "1. Alpenjägerdivision"
+			type = bergsjaeger
+			strength = 80
+			model = 8
+			extra = artillery
+			brigade_model = 5
+		}
+		division = {
+			id = { type = 17352 id = 25 }
+			name = "2. Alpenjägerdivision"
+			type = bergsjaeger
+			strength = 80
+			model = 8
+			extra = artillery
+			brigade_model = 5
+		}
+	}
 landunit = {
-id = { type = 17352       id = 52 }
-location = 195
-name = "1.Kavalleriedivision"
-
- division = {
-        id = { type = 17352       id = 26 }
- name = "1.Kavalleriedivision"
- type = cavalry
- strength  = 35           
- model = 8
- extra = armored_car
- brigade_model = 2
-        }
- }
-
+	id = { type = 17352 id = 52 }
+	location = 195
+	name = "1.Kavalleriedivision"
+		division = {
+			id = { type = 17352 id = 26 }
+			name = "1.Kavalleriedivision"
+			type = cavalry
+			strength = 35
+			model = 8
+			extra = armored_car
+			brigade_model = 2
+		}
+	}
 landunit = {
-id = { type = 17352 id = 27 }
-location = 207
-name = "Garnison Prag"
-
- division = {
- id = { type = 17352 id = 28 }
- name = "Garnison Prag"
- type = garrison
- locked = yes
- strength  = 30
- max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 27 }
+	location = 207
+	name = "Garnison Prag"
+		division = {
+			id = { type = 17352 id = 28 }
+			name = "Garnison Prag"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352       id = 29 }
-location = 208
-name = "Garnison Preßburg"
-
- division = {
-        id = { type = 17352       id = 30 }
- name = "Garnison Preßburg"
- type = garrison
-               locked = yes
- strength  = 30
-               max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 29 }
+	location = 208
+	name = "Garnison Preßburg"
+		division = {
+			id = { type = 17352 id = 30 }
+			name = "Garnison Preßburg"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352       id = 31 }
-location = 284
-name = "Garnison Budapest"
-
- division = {
-        id = { type = 17352       id = 32 }
- name = "Garnison Budapest"
- type = garrison
-               locked = yes
- strength  = 30
-               max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 31 }
+	location = 284
+	name = "Garnison Budapest"
+		division = {
+			id = { type = 17352 id = 32 }
+			name = "Garnison Budapest"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352       id = 33 }
-location = 406
-name = "Garnison Pola"
-
- division = {
-        id = { type = 17352       id = 34 }
- name = "Garnison Pola"
- type = garrison
-               locked = yes
- strength  = 30
-               max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 33 }
+	location = 406
+	name = "Garnison Pola"
+		division = {
+			id = { type = 17352 id = 34 }
+			name = "Garnison Pola"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352       id = 35 }
-location = 332
-name = "Garnison Cetinje"
-
- division = {
-        id = { type = 17352       id = 36 }
- name = "Garnison Cetinje"
- type = garrison
-               locked = yes
- strength  = 30
-               max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 35 }
+	location = 332
+	name = "Garnison Cetinje"
+		division = {
+			id = { type = 17352 id = 36 }
+			name = "Garnison Cetinje"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352       id = 37 }
-location = 355
-name = "Garnison Sarajevo"
-
- division = {
-        id = { type = 17352       id = 38 }
- name = "Garnison Sarajevo"
- type = garrison
-               locked = yes
- strength  = 30
-               max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 37 }
+	location = 355
+	name = "Garnison Sarajevo"
+		division = {
+			id = { type = 17352 id = 38 }
+			name = "Garnison Sarajevo"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352 id = 39 }
-location = 239
-name = "Garnison Przemysl"
-
- division = {
- id = { type = 17352 id = 40 }
- name = "Garnison Przemysl"
- type = garrison
- locked = yes
- strength  = 30
- max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 39 }
+	location = 239
+	name = "Garnison Przemysl"
+		division = {
+			id = { type = 17352 id = 40 }
+			name = "Garnison Przemysl"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352 id = 41 }
-location = 242
-name = "Garnison Lemberg"
-
- division = {
- id = { type = 17352 id = 42 }
- name = "Garnison Lemberg"
- type = garrison
- locked = yes
- strength  = 30
- max_strength = 30
- model = 3
- }
- }
-
+	id = { type = 17352 id = 41 }
+	location = 242
+	name = "Garnison Lemberg"
+		division = {
+			id = { type = 17352 id = 42 }
+			name = "Garnison Lemberg"
+			type = garrison
+			locked = yes
+			strength  = 30
+			max_strength = 30
+			model = 3
+		}
+	}
 landunit = {
-id = { type = 17352 id = 43 }
-location = 371
-name = "Adriatische Festung"
-
- division = {
- id = { type = 17352 id = 44 }
- name = "Adriatische Festung"
- type = garrison
- locked = yes
- strength  = 30
- max_strength = 30
- model = 3
- extra = artillery
- brigade_model = 3
- }
- }
-
+	id = { type = 17352 id = 43 }
+	location = 371
+	name = "Adriatische Festung"
+		division = {
+			id = { type = 17352 id = 44 }
+			name = "Adriatische Festung"
+			type = garrison
+			locked = yes
+			strength = 30
+			max_strength = 30
+			model = 3
+			extra = artillery
+			brigade_model = 3
+		}
+	}
 
 airunit = {
-       id = { type = 17352       id = 45 }
-       name = "Grünhertz Kampfgruppen"
-       location = 195
-       prevprov = 195
-       home = 195
-       base = 195
-
-       division = {
-           id = { type = 17352       id = 46 }
-           name = "1. Jagdgruppe"
-           type = interceptor
-	   model = 7
-           strength = 70
-           
-           }
-       division = {
-           id = { type = 17352       id = 47 }
-           name = "2. Jagdgruppe"
-           type = interceptor
-	   model = 7
-           strength = 70
-          
-           }
-       }
-
+	id = { type = 17352 id = 45 }
+	name = "Grünhertz Kampfgruppen"
+	location = 195
+	prevprov = 195
+	home = 195
+	base = 195
+		division = {
+			id = { type = 17352 id = 46 }
+			name = "1. Jagdgruppe"
+			type = interceptor
+			model = 7
+			strength = 70
+		}
+		division = {
+			id = { type = 17352 id = 47 }
+			name = "2. Jagdgruppe"
+			type = interceptor
+			model = 7
+			strength = 70
+		}
+	}
 airunit = {
-       id = { type = 17352       id = 48 }
-       name = "Gottfried Küstengruppen"
-       location = 400
-       prevprov = 400
-       home = 400
-       base = 400
-
-       division = {
-           id = { type = 17352       id = 49 }
-           name = "Gottfried Küstengruppen"
-           type = naval_bomber
-	   model = 1
-           strength = 60
-          
-           }
-       }
-
+	id = { type = 17352 id = 48 }
+	name = "Gottfried Küstengruppen"
+	location = 400
+	prevprov = 400
+	home = 400
+	base = 400
+		division = {
+			id = { type = 17352 id = 49 }
+			name = "Gottfried Küstengruppen"
+			type = naval_bomber
+			model = 1
+			strength = 60
+		}
+	}
 airunit = {
-       id = { type = 17352       id = 50 }
-       name = "Adriatische Küstengruppen"
-       location = 406
-       prevprov = 406
-       home = 406
-       base = 406
-
-       division = {
-           id = { type = 17352       id = 51 }
-           name = "Adriatische Küstengruppen"
-           type = naval_bomber
-           strength = 30
-	   model = 1
-            
-           }
-       }
+	id = { type = 17352 id = 50 }
+	name = "Adriatische Küstengruppen"
+	location = 406
+	prevprov = 406
+	home = 406
+	base = 406
+		division = {
+			id = { type = 17352 id = 51 }
+			name = "Adriatische Küstengruppen"
+			type = naval_bomber
+			strength = 30
+			model = 1
+		}
+	}
 
 # Die Kaiserliche und Königliche Kriegsmarine
 
 navalunit = {
-name = "I.KuK Schlachtschwadron"
-id = { type = 17352 id = 53 }
-location = 406
-base = 406
-
-division = { id = { type = 17352 id = 54 } name = "SMS Kaiser Franz Jozef" type = battleship model = 5 }
-division = { id = { type = 17352 id = 55 } name = "SMS Hunyadi" type = battleship model = 5 }
-division = { id = { type = 17352 id = 56 } name = "SMS Corvinus" type = battleship model = 5 }
-
-}
-
+	name = "I.KuK Schlachtschwadron"
+	id = { type = 17352 id = 53 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 54 } name = "SMS Kaiser Franz Jozef" type = battleship model = 5 }
+		division = { id = { type = 17352 id = 55 } name = "SMS Hunyadi" type = battleship model = 5 }
+		division = { id = { type = 17352 id = 56 } name = "SMS Corvinus" type = battleship model = 5 }
+	}
 navalunit = {
-name = "II.KuK Schlachtschwadron"
-id = { type = 17352 id = 57 }
-location = 406
-base = 406
-
-division = { id = { type = 17352 id = 58 } name = "SMS Tegetthoff" type = battleship model = 4 }
-division = { id = { type = 17352 id = 59 } name = "SMS Prinz Eugen" type = battleship model = 4 }
-division = { id = { type = 17352 id = 60 } name = "SMS Viribus Unitis" type = battleship model = 4 }
-
-}
-
+	name = "II.KuK Schlachtschwadron"
+	id = { type = 17352 id = 57 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 58 } name = "SMS Tegetthoff" type = battleship model = 4 }
+		division = { id = { type = 17352 id = 59 } name = "SMS Prinz Eugen" type = battleship model = 4 }
+		division = { id = { type = 17352 id = 60 } name = "SMS Viribus Unitis" type = battleship model = 4 }
+	}
 navalunit = {
-name = "I.KuK Kreuzerschwadron"
-id = { type = 17352 id = 61 }
-location = 406
-base = 406
-
-division = { id = { type = 17352 id = 62 } name = "SMS Pola" type = heavy_cruiser model = 3 }
-division = { id = { type = 17352 id = 63 } name = "SMS Fiume" type = heavy_cruiser model = 3 }
-division = { id = { type = 17352 id = 64 } name = "SMS Admiral Haus" type = light_cruiser model = 3 }
-division = { id = { type = 17352 id = 65 } name = "SMS Admiral Njegovan" type = light_cruiser model = 3 }
-
-}
-
+	name = "I.KuK Kreuzerschwadron"
+	id = { type = 17352 id = 61 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 62 } name = "SMS Pola" type = heavy_cruiser model = 3 }
+		division = { id = { type = 17352 id = 63 } name = "SMS Fiume" type = heavy_cruiser model = 3 }
+		division = { id = { type = 17352 id = 64 } name = "SMS Admiral Haus" type = light_cruiser model = 3 }
+		division = { id = { type = 17352 id = 65 } name = "SMS Admiral Njegovan" type = light_cruiser model = 3 }
+	}
 navalunit = {
-name = "II.KuK Kreuzerschwadron"
-id = { type = 17352 id = 66 }
-location = 406
-base = 406
-
-division = { id = { type = 17352 id = 67 } name = "SMS Ragusa" type = heavy_cruiser model = 3 }
-division = { id = { type = 17352 id = 68 } name = "SMS Sebenico" type = heavy_cruiser model = 3 }
-division = { id = { type = 17352 id = 69 } name = "SMS Admiral Daublebsky von Sterneck " type = light_cruiser model = 3 }
-division = { id = { type = 17352 id = 70 } name = "SMS Admiral Horthy" type = light_cruiser model = 3 }
-}
-
+	name = "II.KuK Kreuzerschwadron"
+	id = { type = 17352 id = 66 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 67 } name = "SMS Ragusa" type = heavy_cruiser model = 3 }
+		division = { id = { type = 17352 id = 68 } name = "SMS Sebenico" type = heavy_cruiser model = 3 }
+		division = { id = { type = 17352 id = 69 } name = "SMS Admiral Daublebsky von Sterneck " type = light_cruiser model = 3 }
+		division = { id = { type = 17352 id = 70 } name = "SMS Admiral Horthy" type = light_cruiser model = 3 }
+	}
 navalunit = {
-name = "I.KuK Zerstörerflotte"
-id = { type = 17352 id = 71 }
-location = 406
-base = 406
-division = { id = { type = 17352 id = 72 } name = "1. Torpedobootzerstörerschwadron" type = destroyer model = 3 }
-division = { id = { type = 17352 id = 73 } name = "2. Torpedobootzerstörerschwadron" type = destroyer model = 3 }
-division = { id = { type = 17352 id = 74 } name = "3. Torpedobootzerstörerschwadron" type = destroyer model = 3 }
-
-}
-
+	name = "I.KuK Zerstörerflotte"
+	id = { type = 17352 id = 71 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 72 } name = "1. Torpedobootzerstörerschwadron" type = destroyer model = 3 }
+		division = { id = { type = 17352 id = 73 } name = "2. Torpedobootzerstörerschwadron" type = destroyer model = 3 }
+		division = { id = { type = 17352 id = 74 } name = "3. Torpedobootzerstörerschwadron" type = destroyer model = 3 }
+	}
 navalunit = {
-name = "KuK Unterseebootsflotten"
-id = { type = 17352 id = 75 }
-location = 406
-base = 406
-division = { id = { type = 17352 id = 76 } name = "1. Unterseebootsflotte" type = submarine model = 2 }
-division = { id = { type = 17352 id = 77 } name = "2. Unterseebootsflotte" type = submarine model = 1 }
-
-
-
-}
-
+	name = "KuK Unterseebootsflotten"
+	id = { type = 17352 id = 75 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 76 } name = "1. Unterseebootsflotte" type = submarine model = 2 }
+		division = { id = { type = 17352 id = 77 } name = "2. Unterseebootsflotte" type = submarine model = 1 }
+	}
 navalunit = {
-name = "III.KuK Kreuzerschwadron"
-id = { type = 17352 id = 78 }
-location = 406
-base = 406
-
-division = { id = { type = 17352 id = 79 } name = "SMS Helgoland" type = light_cruiser model = 2 }
-division = { id = { type = 17352 id = 80 } name = "SMS Novara" type = light_cruiser model = 2 }
-division = { id = { type = 17352 id = 81 } name = "SMS Saida" type = light_cruiser model = 2 }
-division = { id = { type = 17352 id = 82 } name = "SMS Admiral Spaun" type = light_cruiser model = 1 }
-
-}
-
+	name = "III.KuK Kreuzerschwadron"
+	id = { type = 17352 id = 78 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 79 } name = "SMS Helgoland" type = light_cruiser model = 2 }
+		division = { id = { type = 17352 id = 80 } name = "SMS Novara" type = light_cruiser model = 2 }
+		division = { id = { type = 17352 id = 81 } name = "SMS Saida" type = light_cruiser model = 2 }
+		division = { id = { type = 17352 id = 82 } name = "SMS Admiral Spaun" type = light_cruiser model = 1 }
+	}
 navalunit = {
-name = "II.KuK Zerstörerflotte"
-id = { type = 17352 id = 83 }
-location = 406
-base = 406
-division = { id = { type = 17352 id = 84 } name = "4. Torpedobootzerstörerschwadron" type = destroyer model = 2 }
-division = { id = { type = 17352 id = 85 } name = "5. Torpedobootzerstörerschwadron" type = destroyer model = 2 }
-
-
-}
-
-
+	name = "II.KuK Zerstörerflotte"
+	id = { type = 17352 id = 83 }
+	location = 406
+	base = 406
+		division = { id = { type = 17352 id = 84 } name = "4. Torpedobootzerstörerschwadron" type = destroyer model = 2 }
+		division = { id = { type = 17352 id = 85 } name = "5. Torpedobootzerstörerschwadron" type = destroyer model = 2 }
+	}
 
 }  

@@ -420,7 +420,7 @@ province = { id = 199 ic = 7 anti_air = 2 manpower = 1 #Plzen
 	air_base = { size = 7 current_size = 7 } infra = { size = 0.80 current_size = 0.80 } }
 province = { id = 200 ic = 1 manpower = 0 #Liberec
 	infra = { size = 0.70 current_size = 0.70 } }
-province = { id = 201 ic = 3 manpower = 1 } #Ostrava
+province = { id = 201 ic = 3 manpower = 1 air_base = { size = 3 current_size = 3 } } #Ostrava
 province = { id = 202 ic = 2 infra = { size = 0.70 current_size = 0.70 } } #Ceske Budejovice
 province = { id = 203 ic = 2 infra = { size = 0.70 current_size = 0.70 } } #Tesin
 province = { id = 204 infra = { size = 0.50 current_size = 0.50 } } #Prachatice

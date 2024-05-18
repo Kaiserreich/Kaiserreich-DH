@@ -209,5 +209,4 @@ airunit = {
 			strength = 25
 		}
 	}
-
-}  
+}
