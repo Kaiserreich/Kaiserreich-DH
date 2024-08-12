@@ -90,11 +90,11 @@ relation = { tag = USA value = 200 }
 #########  OOB (...)
 
 		landunit = {
-		id = { type = 26000 id = 40 }
+		id = { type = 26000 id = 4000 }
 		name = "Ejercito de Cuba"
 		location = 1776
 			division = {
-			id = { type = 26000 id = 4000 }
+			id = { type = 26000 id = 4001 }
 			name = "1a Brigada de Ejercito"
 			strength = 100
 			type = infantry
@@ -102,7 +102,7 @@ relation = { tag = USA value = 200 }
 			}
 		
 			division = {
-			id = { type = 26000 id = 4001 }
+			id = { type = 26000 id = 4002 }
 			name = "1a Brigada de Caballería 'Floridita'"
 			strength = 100
 			type = cavalry

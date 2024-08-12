@@ -84,19 +84,19 @@ economy = {
 # Added extra upgrade progress to units in supply. Added daily progress to all units in supply that can upgrade is equal to Cur_STR/(Max_STR * THIS). Added value is not affected by any other upgrade modifiers. Set to 0 to disable this functionality.
 	720 #0
 # Nationalism starting value
-	5.0 #15
+	5 #15
 # Nationalism per MP (added to stating value)
-	1 # 0.0
+	1.0 # 0.0
 # Max unmodified nationalism = starting + MP*mod + added by events or partisan funds
 	20 # 30
 # Max base province revolt risk (before applying suppression bonus)
-	35.0000 # 100
+	35 # 100
 # Monthly Nationalism reduction
-	0
+	0.1250
 # Time in days to send a division to an ally
-	30.0	
+	30
 # TC Load from undeployed brigades (multiplied on top of the division cost)
-	0
+	0.3
 # If units can be sold/transferred to non allied countries. 0 = No, 1 = Yes (player could offer units to all countries and ask for units from allied countries), 2 = Yes (player could offer and ask for units from all countries) 
 	1 #1
 # If Blue Prints can be sold to non-allied countries. 0 = No, 1 = Yes (player could offer BP), 2 = Yes (player could offer and ask for BPs) 	0 #0
@@ -114,7 +114,7 @@ economy = {
 # Stockpile limits multiplier for supplies and oil. -1 = Disable, else = Desired Stockpile (unmodified) * this
 	4.0 #-1
 # Over stockpile limit daily loss (percentage of the exceeding resource). 0.0 = no loss, 1.0 = 100%
-	0 #0.0
+	0.02 #0.0
 # Max provincial energy/metal/rare materials depot size.
 	5000 #9999
 # Max provincial oil/supplies depot size.
@@ -156,9 +156,9 @@ economy = {
 # CL to convoy escorts conversion ratio
 	7 #0
 # CVL to convoy escorts conversion ratio
-	1 #0
+	10 #0
 # Enable production line edit (auto-upgrade and serial builds lengths): 1 - Enabled, 0 - Disabled
-	1.0 #0
+	1 #0
 # Gearing bonus loss per level of upgrade for unit. Values 0.0 (0% or no gearing bonus lost) to 1.0 (100% or all gearing will be lost)
 	0.1 # -10% gearing bonus per level of upgrade
 # Gearing bonus loss per level of brigade/attachment (added for every upgraded br./att.). Values 0.0 (0% or no gearing bonus lost) to 1.0 (100% or all gearing will be lost)
@@ -180,7 +180,11 @@ economy = {
 #	-1.0 - Disabled (only oil is shipped back)
 #	>= 0.0 - Percentage of the current needs that should be left in the province. 
 #	Examples: 0.0 - take all exceeding supplies and oil, 0.5 - leave currently needed + 50% buffer, 1.0 - leave currently needed + 100% buffer etc.
-	}
+	0.2 # -1.0
+# Modifier on distance between current and closest friendly province which is used for supply distance mod calculation (modifier on ORG regain, reinforce and upgrade speed of units). 
+#	Higher this is, higher the distance penalty would be. 0.0 - ignore distance (effectively disables supply distance mod), 1.0 - no modification on distance between provinces
+	1.0 # 1.0
+}
 
 intelligence = {
 # Days between spy missions in a country. Do not use fractions
@@ -229,7 +233,7 @@ diplomacy = {
 # Relationship hit for cancel of a trade deal. This penalty is not used for trades between allies, puppet<->master, inactive trades or trades with efficiency less then 45%.
 	0 #0
 # Relationship hit (0..100) for cancel by players of trade deals that are set as permanent. This penalty is not used for trades between allies, puppet<->master, inactive trades or trades with efficiency less then 45%. Use -1 to disable manual cancelation of permanent trades.
-	0 #0
+	-1 #0
 # Force puppets to join their master's alliance (creating a new alliance if Master is not already in one). Check alliances each day. 0 - No
 	0 #0
 # Masters become masters of new puppet’s puppets too. 1 – Yes, 0 – No
@@ -243,7 +247,7 @@ diplomacy = {
 # Should not aligned countries join automatically Allies/Axis when DoW by Axis/Allies and both alliances are at war? 1 = Yes, 0 = No
 	0 #1
 # Allow change by players of HoS or HoG. 0 - not allowed, 1 - HoG can be changed, 2 - HoS can be changed, 3 - both HoG and HoS can be changed
-	3 #0
+	0 #0
 # Used change TAG on coup logic. 0 - Compatibility mode (check only for regular_ID match), 1 - Darkest Hour mode (using coup = { } list in revolt.txt and apply extra validation checks)
 	0 #0
 # Filter used on available for release countries list based on regular_id and intrinsic_gov_type set in revolt.txt (applied to both players and AI). 
@@ -328,9 +332,9 @@ combat = {
 # Combat Modifier: Total Naval Overstacking Mod for each non-transport division above two.
 	-0.01
 # Combat Modifier: Penalty for air units bombing entrenched armies (entrenchment level * THIS, final value is limited to -0.99)
-	0
+	-0.03
 # Combat Modifier: Bonus for defending entrenched armies in land combat (entrenchment level * THIS)
-	0
+	0.01
 # Land Leader Command Limit (nr of divisions), Rank 0 (highest)
 	15
 # Land Leader Command Limit (nr of divisions), Rank 1
@@ -354,11 +358,11 @@ combat = {
 # Naval Leader Command Limit (nr of ships), Rank 2
 	12
 # Naval Leader Command Limit (nr of ships), Rank 3 (lowest)
-	6.0
+	6
 # HQ Command Limit Factor (value * HQ Leader Command Limit)
 	2
 # Convoy protection factor  (higher, the more fearful convoy escorts are for raiders.)
-	1
+	1.0
 # Convoy escorts model in battles. 0 = use current researched DD model; -1 = use one level below current researched DD model and so on. Do not use fractions and numbers above 0!
 	-1 #-1
 # Convoy transports model in battles. 0 = use current researched TP model; -1 = use one level below current researched TP model and so on. Do not use fractions and numbers above 0!
@@ -412,9 +416,9 @@ combat = {
 # Base chance of Air units to avoid hit if no defences left.
 	0.9
 # Base chance of Naval units to avoid hit if no defences left.
-	0
+	0.9
 # Base chance of units attacked by province AA to avoid hit if no defences left.
-	0 #-0.01
+	0.9 #-0.01
 # CHANCE TO GET TERRAIN TRAIT 
 	2400.0
 # CHANCE TO GET EVENT TRAIT 
@@ -537,7 +541,7 @@ combat = {
 # Navy vs. Subs - Extra STR damage multiplier to subs in combat vs naval units. 1 = no extra damage [multiplier]
 	1.0 #3.0
 # Pure sub stacks detection modifier ( 0 = subs will never be detected, 1.0 - no change )
-	0 #1.0
+	0.5 #1.0
 # AA - Min inflicted ORG damage - starting value, it is modified before being used.
 	2.0 #2.0
 # AA - Additional inflicted ORG damage (random) - starting value, it is modified before being used. Don't use fractions!
@@ -563,7 +567,7 @@ combat = {
 # Nukes: Max STR damage (as percentage of current STR) to friendly units (except for the bomber unit that drops the nuke). 0.0 - no damage to friendly units, 1.0 - take damage as any other unit. [multiplier]
 	0.5 #1.0
 # Nukes: ORG damage (as percentage of current ORG) to friendly units in province (except for the bomber unit that drops the nuke). 0.0 - no ORG damage to friendly units, 1.0 - 100% org damage [multiplier]
-	0 #1.0
+	0.25 #1.0
 # Nukes: ORG damage (as percentage of current ORG) to enemy or neutral units in province. 0.0 - no ORG damage to affected units, 1.0 - 100% org damage [multiplier]
 	1 #1.0
 # Naval bombardment [1] - Chance for attacking bombers to hit the most damaged ship in fleet. [1] + [2] <= 100; 100 - [1] - [2] = chance to hit a random ship. Don't use fractions!
@@ -575,9 +579,9 @@ combat = {
 # Movement bonus to units under command of leader with terrain trait when moving on such terrain
 	0.05
 # Movement bonus to units under command of leader with terrain trait when moving on similar terrain (Ranger in Jungles for example)
-	0 #0.0
+	0.025 #0.0
 # Logistics Wizard ESE bonus - Add this bonus if current ESE is below 100% (1.0)
- 	0 #0.0
+	0.1 #0.0
 # ESE bonus from offensive supply
 	0.25 #0.25
 # Days in offensive supply
@@ -641,11 +645,11 @@ combat = {
 # ORG regain [army] - Friendly soil modifier. Used when the unit is in province owned by a friendly nation. Multiplier
 	1.3	#1.3
 # ORG regain [army] - In transportation modifier - Used for loaded on transport ships or planes land units. Multiplier
-	0 #0.0
+	0.5 #0.0
 # ORG regain [army] - Moving modifier - Used when the land unit is moving (not retreating!) to another province. Used as Multiplier when greater or equal to 0.0. Used as flat hourly ORG loss when negative (and not out of supply)
-	0 #-0.02
+	0.1 #-0.02
 # ORG regain [army] - Retreating modifier - Used when the land unit is retreating. Set to 0.0 to ignore. Multiplier
-	0 #1.0
+	0.8 #1.0
 # Convoy interception by naval units on Interdiction, Combat Patrol, Shore Bomb. and ASW missions: 0 disabled for all, 1 - optional for players only (disabled by default), 2 - optional for players (enabled by default) and enabled for AI
 	2.0 #0 
 # Auto-return transport fleets to base on Amphibious assault and Sea transport missions (players only): 0 - enabled, 1 - enabled by default, optional, 2 - disabled by default, optional
@@ -675,15 +679,15 @@ combat = {
 # Land units speed modifier for units containing at least one division with ORG less then 1% (ignored for retreating units!). speed = speed / THIS.
 	1.0 #2.0
 # Movement time modifier for fuel consuming land and air units when out of fuel (ignored for retreating and AI controlled units!). Higher THIS value is, longer the arrival time will be. Use 1.0 to disable this.
-	1 #3.0
+	1.0 #3.0
 # Default speed for fuel consuming land units when out of fuel. This value can be overridden for each unit type and model by setting out_of_fuel_speed modifier in unit files. -1 - Disable this functionality, else Default out of fuel speed = THIS
 	9.0 #-1
 # Fleet size range penalty - Percentage loss for every ship above the max threshold (see below). 0.0 (0%) to 1.0 (100%)
-	0 #0.025 #0.0
+	0.1 #0.025 #0.0
 # Fleet size range penalty - apply for every ship in the fleet above this. -1 = Disabled 
 	33.0 #3 #-1
 # Fleet size range penalty - max penalty value (min allowed multiplier on the range). 0.0 to 1.0 (no penalty)
-	0 #0.5 #1.0
+	0.15 #0.5 #1.0
 # Apply air and naval unit's range limits on missions to Areas and Regions. 0 = Disabled, 1 = Enabled, 2 = Enabled for AI countries too (Not recommended!!!)
 	1.0 #0
 # Radar bonus on detection - used to guide friendly air units on Air Superiority and Scramble missions (This * Radar level * Radar efficiency). Added to mission and friendly province bonuses (see below). Higher the better
@@ -720,7 +724,7 @@ combat = {
 	# Maximum chance bonus reached with THIS remaining speed point (Avrg. Unit Speed - Value above <= THIS)
 	13.0 #4.0
 	# Chance modifier per remaining speed point (higher THIS is, higher the chance bonus will be)
-	0 #0.1
+	0.05 #0.1
 # Combat events duration in hours.
 	8.0 #8
 # Counterattack combat event modifiers
@@ -791,7 +795,8 @@ combat = {
 # Combat mode. Note: This setting controls only full names, short names and descriptions of some unit stats.
 # 0 - Use old (DH 1.02 and older) mode: Defensiveness, Toughness, Air Defence, Surface Defence, Sea Defence
 # 1 - Use new (DH 1.03) mode: Defensive Vulnerability, Offensive Vulnerability, Air Vulnerability, Ground Vulnerability, Naval Vulnerability
-	}
+	1 #0
+}
 
 mission = {
 # _MISSION_ATTACK_
@@ -1001,7 +1006,20 @@ country = {
 # Min ships positioning in battle (applied to all naval units!)
 	0.1 #0.1
 # Max ships positioning in battle (applied to all naval units!)
-	}
+	0.2 #0.2
+# Peacetime modifier on stockpiles for industry resources
+	1.0 #1.0
+# Wartime modifier on stockpiles for industry resources
+	1.0 #1.0
+# Peacetime modifier on stockpiles for oil and supplies
+	1.0 #1.0
+# Wartime modifier on stockpiles for oil and supplies
+	1.0 #1.0
+# Max Land units dig in level.
+	30.0 #15.0
+# Dig in level increase per day.
+	1.5 #1.0
+}
 
 research = {
 # Blueprint Bonus
@@ -1142,11 +1160,11 @@ ai = {
 # -1 : Random - every valid action has the same chance. Used for events that do not have valid action with AI chance set, else AI chances are used
 # -2 : Historical - First valid action is always selected. Used for events that do not have valid action with AI chance set, else AI chances are used
 # -3 : Forced historical - First valid action is always selected if there is no AI chances set for a valid action, else - (first) valid action with the highest AI chance set is selected
-     85 #85
+	85 #85
 # Force strategic redeployment if movement time is longer then X hours. Overrides default AI settings! -1 – Disable, Else time in hours
 	1440 # 1440 #-1
 # Max. redeployment days for AI controlled units cheat. 0 or less - disable cheat, else - max. days that AI units will redeploy to any valid redeployment location
-	1 #0
+	14 #0
 # Use quick area check (Garrison AI) - could be inaccurate in some rare cases. 1 - Enabled, 0 - Disabled
 	1 # 0
 # AI masters get all provinces conquered by AI puppets. 1 – Yes, 0 – No (old rules)
@@ -1168,7 +1186,8 @@ ai = {
 # AI unit power calculation [used to calculate attack/defence odds] - min ORG: return 0 power for any division with ORG less then THIS.
 	2.0 #2.0
 # AI unit power calculation [used to calculate attack/defence odds] - min STR: return 0 power for any division with STR less then THIS.
-	}
+	1.0 #0.0
+}
 
 mod = {
 # AI spy (LogSpyAI.csv) and diplomatic (LogDiploAI.csv) mission loggers: 0 - Disabled, 1 - Enabled.
