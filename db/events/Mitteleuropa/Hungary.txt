@@ -41,7 +41,7 @@ trigger = {
 		ideology = social_liberal
 		ideology = market_liberal
 		ispuppet = HUN
-		headofstate = 21044 # Otto
+		headofstate = 21064 # Otto
 		alliance = { country = HUN country = AUS }
 	}
 }
@@ -51,7 +51,7 @@ offset = 90
 deathdate = { day = 29 month = december year = 1966 }
 
 name = "Republic or Monarchy?"
-desc = "Despite being oficially styled the 'Kingdom of Hungary', ever since our liberation from Vienna's tyranny, our country has been de facto ruled as a dictatorship by the duo István Bethlen and Pál Teleki. Now, both our parliament and our landed nobility want a clarification of this situation. What shall we do now? We must either adopt a new constitution and proclaim a Republic of Hungary, or start searching for suitable candidates for the Crown of Saint Stephen."
+desc = "Despite being oficially styled the 'Kingdom of Hungary', ever since our liberation from Vienna's tyranny, our country has been de facto ruled as a dictatorship by the duo Bartha Albert and P. Ábrahám Dezso. Now, both our parliament and our landed nobility want a clarification of this situation. What shall we do now? We must either adopt a new constitution and proclaim a Republic of Hungary, or start searching for suitable candidates for the Crown of Saint Stephen."
 
 action = {
 	ai_chance = 60
@@ -77,26 +77,27 @@ style = 2
 picture = "reichsrat"
 
 name = "The head of state"
-desc = "The new constitution has been adopted, a constitution that proclaims that Hungary doesn't have a king from now on. The head of state's role is to remain a stable force in the game of politics. He is elected for 7 years. Candidates are: István Bethlen, a conservative, Károly Peyer, a social democrat, and Károly Bartha, the decorated hero of the victorious revolution againt Austria."
+desc = "The new constitution has been adopted, a constitution that proclaims that Hungary doesn't have a king from now on. The head of state's role is to remain a stable force in the game of politics. He is elected for 7 years. Candidates are: Bethlen István, a conservative, Károlyi Mihály, a social liberal, and Bartha Albert, the decorated hero of the victorious revolution against Austria."
 
 action = {
-	ai_chance = 10
-	name = "Károly Peyer, a man for the people and democracy"
-	command = { type = headofstate which = 21045 }
+	ai_chance = 30
+	name = "Károlyi Mihály, a man for the people and democracy"
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = headofstate which = 21035 }
 	command = { type = dissent value = 5 }
 	command = { type = event which = 931 where = HUN when = 30 } #initiates choosing of future course
 	}
 action = {
-	name = "István Bethlen, his abilities have been proven"
-	ai_chance = 70
-	command = { type = headofstate which = 21180 }
-	command = { type = set_domestic which = interventionism value = 7 }
+	name = "Bethlen István, his abilities have been proven"
+	ai_chance = 50
+	command = { type = headofstate which = 21054 }
 	command = { type = event which = 932 where = HUN when = 30 } #initiates choosing of future course
 	}
 action = {
-	name = "Károly Bartha, military brings stability"
+	name = "Bartha Albert, military brings stability"
 	ai_chance = 20
-	command = { type = headofstate which = 21201 }
+	command = { type = headofstate which = 21045 }
 	command = { type = dissent value = 8 }
 	command = { type = event which = 933 where = HUN when = 30 } #initiates choosing of future course
 	}
@@ -111,13 +112,19 @@ style = 2
 picture = "reichsrat"
 
 #this is made in case the republic and the monarchy is chosen to have different possible courses, in case scrapped, one of them should be deleted, and links changed accordingly
-#and was obviously revamped without noting anything...
+#Social democracy: Magyarországi Szociáldemokrata Párt (MSZDP)
+#Leftwing agrarian: Nemzeti Parasztpárt (NPP) [post-1940]
+#Liberals: Polgári Radikális Párt (PRP), Nemzeti Demokrata Polgári Párt (NPP), Nemzeti Szabadelvu Párt/Polgári Szabadságpárt (NSZP)
+#Rightwing agrarian/peasant-farmer: Független Kisgazda, Földmunkás és Polgári Párt (FKgP) [former Egyesült Kisgazda- és Földmíves Párt (EKFP), and the Országos Kisgazda- és Földmuves Párt (OKGFP)]
+#Right-to-far right christian-nationalist: Keresztény Nemzeti Egyesülés Pártja (KNEP) [OTL Nemzeti Egység Pártja (NEP)]
+#Extreme-nationalist: Magyar Megújulás Pártja (MMP) [NEP faction around Imrédy Béla + Jaross Andor, post-1940]
+
 name = "Elections"
-desc = "After the election of the head of state by the Upper house of Parliament in Budapest, the time of elections has come. As it is known, Peyer has lowered the census, and thus the MSZDP (social democrats) have grown in popularity. The other parties are Egységes Párt (conservatives), FKgP (right-centrum), and Szabadelvû Párt (liberals)."
+desc = "After the election of the head of state by the Upper house of Parliament in Budapest, the time of elections has come. As it is known, Károlyi Mihály has expanded the suffrage, and thus the MSZDP (social democrats) have grown in popularity. The other parties are KNEP (right-christian), FKgP (right-agrarian), and liberals of the PRP (centre-left), NDPP and NSZP (centre)."
 
 action = {
-	ai_chance = 35
-	name = "Kunfi & the social democrats"
+	ai_chance = 30
+	name = "Peyer Károly & the social democrats"
 	command = { type = relation which = GER value = -10 }
 	command = { type = relation which = ENG value = 10 }
 	command = { type = relation which = FRA value = 10 }
@@ -125,42 +132,53 @@ action = {
 	command = { type = set_domestic which = democratic value = 7 }
 	command = { type = set_domestic which = political_left value = 8 }
 	command = { type = set_domestic which = freedom value = 7 }
-	command = { type = headofstate which = 21045 } #Károly Peyer
-	command = { type = headofgovernment which = 21200 } #Zsigmond Kunfi
+	command = { type = headofstate which = 21035 } #Károlyi Mihály
+	command = { type = headofgovernment which = 21092 } #Peyer Károly (Szeder Ferenc also a possible socdem HoG)
 	#new SD gov, -rel with GER, +rel with UoB&FRA, 1 dissent, sliders to left, open society
 	}
 action = {
 	ai_chance = 30
-	name = "Teleki & the conservatives"
+	name = "Tildy Zoltán & the peasant-farmers"
 	command = { type = set_domestic which = democratic value = 7 }
 	command = { type = set_domestic which = political_left value = 4 }
 	command = { type = set_domestic which = freedom value = 3 }
-	command = { type = headofstate which = 21045 } #Károly Peyer
-	command = { type = headofgovernment which = 21181 } #Pál Teleki
+	command = { type = headofstate which = 21035 } #Károlyi Mihály
+	command = { type = headofgovernment which = 21048 } #Tildy Zoltán
+	command = { type = dissent value = -3 }
 	#new SC gov, closed society
 	}
 action = {
-	ai_chance = 50
-	name = "Bajcsy-Zsilinszky & the right-centrum"
+	ai_chance = 30
+	name = "Teleki Pál & the christian-nationalists"
 	command = { type = set_domestic which = democratic value = 7 }
 	command = { type = set_domestic which = political_left value = 3 }
 	command = { type = set_domestic which = freedom value = 3 }
-	command = { type = set_domestic which = free_market value = 7 }
-	command = { type = headofstate which = 21045 } #Károly Peyer
-	command = { type = headofgovernment which = 21203 } #Endre Bajcsy-Zsilinszky
+	command = { type = set_domestic which = free_market value = 6 }
+	command = { type = headofstate which = 21035 } #Károlyi Mihály
+	command = { type = headofgovernment which = 21118 } #Teleki Pál
 	command = { type = dissent value = -1 }
-	#new SC gov, -1 dissent, sliders to SC, free market
+	#new SC gov, free market
 	}
 action = {
 	ai_chance = 5
-	name = "Rassay & the liberals"
+	name = "Rassay Károly & the centre-liberals"
 	command = { type = set_domestic which = democratic value = 7 }
 	command = { type = set_domestic which = political_left value = 5 }
-	command = { type = set_domestic which = freedom value = 6 }
+	command = { type = set_domestic which = freedom value = 5 }
 	command = { type = set_domestic which = free_market value = 7 }
-	command = { type = headofstate which = 21045 } #Károly Peyer
-	command = { type = headofgovernment which = 21198 } #Károly Rassay
-	#new ML gov, sliders to ML & free market,democratic, open society
+	command = { type = headofstate which = 21035 } #Károlyi Mihály
+	command = { type = headofgovernment which = 21107 } #Károly Rassay
+	#new ML gov, sliders to ML & free market, democratic, open society
+	}
+action = {
+	ai_chance = 5
+	name = "Jászi Oszkár & the left-liberals"
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = freedom value = 6 }
+	command = { type = headofstate which = 21035 } #Károlyi Mihály
+	command = { type = headofgovernment which = 21037 } #Jászi Oszkár
+	#new SL gov, sliders to SL, democratic, open society
 	}
 }
 
@@ -174,67 +192,77 @@ picture = "reichsrat"
 
 #this is made in case the republic and the monarchy is chosen to have different possible courses, in case scrapped, one of them should be deleted, and links changed accordingly
 name = "Elections"
-desc = "After the election of the head of state by the Upper house of Parliament in Budapest, the time of elections has come. As it is known, Bethlen has kept existing voting census which means that only educated people may vote, the result could be a win of Egységes Párt (conservatives). Other parties are FKgP (right-centrum) MSZDP (social-democrats), Hungarista Párt (NP), and Szabadelvû Párt (liberals)."
+desc = "After the election of the head of state by the Upper house of Parliament in Budapest, the time of elections has come. As it is known, Bethlen István has kept existing voting census which means that only educated people may vote, the result could be a win of KNEP (right-christian) or FKgP (right-agrarian). The other parties are MSZDP (social-democrats), and liberals of the PRP (centre-left), NDPP and NSZP (centre)."
 
 action = {
 	ai_chance = 5
-	name = "Kunfi & the social democrats"
+	name = "Peyer Károly & the social democrats"
 	command = { type = relation which = GER value = -10 }
 	command = { type = relation which = ENG value = 10 }
 	command = { type = relation which = FRA value = 10 }
 	command = { type = dissent value = 1 }
 	command = { type = set_domestic which = democratic value = 7 }
-	command = { type = set_domestic which = political_left value = 8 }
-	command = { type = set_domestic which = freedom value = 7 }
-	command = { type = headofstate which = 21180 } #István Bethlen
-	command = { type = headofgovernment which = 21200 } #Zsigmond Kunfi
-	#new SD gov, -rel with GER, +rel with UoB&FRA, 1 dissent, sliders to left, open society
+	command = { type = set_domestic which = political_left value = 6 }
+	command = { type = set_domestic which = freedom value = 6 }
+	command = { type = headofstate which = 21054 } #Bethlen István
+	command = { type = headofgovernment which = 21092 } #Peyer Károly (Szeder Ferenc also a possible socdem HoG)
+	#new SL gov, -rel with GER, +rel with UoB&FRA, 1 dissent, sliders to left, open society
 	}
 action = {
-	ai_chance = 60
-	name = "Teleki & the conservatives"
-	command = { type = set_domestic which = democratic value = 7 }
+	ai_chance = 40
+	name = "Tildy Zoltán & the peasant-farmers"
+	command = { type = set_domestic which = democratic value = 6 }
 	command = { type = set_domestic which = political_left value = 4 }
 	command = { type = set_domestic which = freedom value = 3 }
-	command = { type = headofstate which = 21180 } #István Bethlen
-	command = { type = headofgovernment which = 21181 } #Pál Teleki
-	#new AD gov, closed society
+	command = { type = headofstate which = 21054 } #Bethlen István
+	command = { type = headofgovernment which = 21048 } #Tildy Zoltán
+	command = { type = dissent value = -3 }
+	#new SC gov, closed society
 	}
 action = {
-	ai_chance = 20
-	name = "Bajcsy-Zsilinszky & the right-centrum"
-	command = { type = set_domestic which = democratic value = 7 }
+	ai_chance = 45
+	name = "Teleki Pál & the christian-nationalists"
+	command = { type = set_domestic which = democratic value = 5 }
 	command = { type = set_domestic which = political_left value = 3 }
 	command = { type = set_domestic which = freedom value = 3 }
-	command = { type = set_domestic which = free_market value = 7 }
-	command = { type = headofstate which = 21180 } #István Bethlen
-	command = { type = headofgovernment which = 21203 } #Endre Bajcsy-Zsilinszky
+	command = { type = set_domestic which = free_market value = 6 }
+	command = { type = headofstate which = 21054 } #Bethlen István
+	command = { type = headofgovernment which = 21118 } #Teleki Pál
 	command = { type = dissent value = -1 }
-	#new SC gov, -1 dissent, sliders to SC, free market
+	#new AD gov, free market
 	}
 action = {
 	ai_chance = 5
-	name = "Rassay & the liberals"
+	name = "Rassay Károly & the centre-liberals"
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = set_domestic which = freedom value = 5 }
+	command = { type = set_domestic which = free_market value = 7 }
+	command = { type = headofstate which = 21054 } #Bethlen István
+	command = { type = headofgovernment which = 21107 } #Károly Rassay
+	#new ML(SC) gov, sliders to ML & free market, democratic, open society
+	}
+action = {
+	ai_chance = 5
+	name = "Jászi Oszkár & the left-liberals"
 	command = { type = set_domestic which = democratic value = 7 }
 	command = { type = set_domestic which = political_left value = 5 }
 	command = { type = set_domestic which = freedom value = 6 }
-	command = { type = set_domestic which = free_market value = 7 }
-	command = { type = headofstate which = 21180 } #István Bethlen
-	command = { type = headofgovernment which = 21198 } #Károly Rassay
-	#new ML gov, sliders to ML & free market,democratic, open society
+	command = { type = headofstate which = 21054 } #Bethlen István
+	command = { type = headofgovernment which = 21037 } #Jászi Oszkár
+	#new SL(ML) gov, sliders to SL, democratic, open society
 	}
-action = {
-	ai_chance = 0 #player-only choice, not realistic
-	name = "Szálasi & the far right" #Hinnye! - Kry
-	command = { type = headofstate which = 21041 }
-	command = { type = set_domestic which = democratic value = 2 }
-	command = { type = set_domestic which = political_left value = 1 }
-	command = { type = set_domestic which = freedom value = 1 }
-	command = { type = set_domestic which = free_market value = 2 }
-	command = { type = headofstate which = 21180 } #István Bethlen
-	command = { type = headofgovernment which = 21204 } #Ferenc Szálasi
-	#new NP gov, sliders to NP & central planning, authoritarian, closed society
-	}
+#action = {
+#	ai_chance = 0 #player-only choice, not realistic
+#	name = "Imrédy Béla & the far right" #not possible until at least 1940
+#	command = { type = set_domestic which = democratic value = 2 }
+#	command = { type = set_domestic which = political_left value = 1 }
+#	command = { type = set_domestic which = freedom value = 1 }
+#	command = { type = set_domestic which = free_market value = 2 }
+#	command = { type = headofstate which = 21054 } #István Bethlen
+#	command = { type = headofgovernment which = 21078 } #Imrédy Béla
+#	#new NP gov, sliders to NP & central planning, authoritarian, closed society
+#	}
 }
 
 
@@ -247,66 +275,8 @@ picture = "reichsrat"
 
 #this is made in case the republic and the monarchy is chosen to have different possible courses, in case scrapped, one of them should be deleted, and links changed accordingly
 name = "Elections"
-desc = "After the election of the head of state by the Upper house of Parliament in Budapest, the time of elections has come - although this custom may only be short lived. As it is known, Bartha has kept existing voting census which means that only educated people may vote, the result could be a win of Egységes Párt (conservatives). Other parties are FKgP (right-centrum) MSZDP (social-democrats), Hungarista Párt (NP), and Szabadelvû Párt (liberals)."
+desc = "After the election of the head of state by the Upper house of Parliament in Budapest, the time of elections has come - although this custom may only be short lived. Though Bartha has kept the existing voting census, a wave of extralegal intimidation & suppression of leftwing opposition has swept the country. The result could be a win of KNEP (right-christian). The other parties are FKgP (right-agrarian), and liberals of the PRP (centre-left), NDPP and NSZP (centre)."
 
-action = {
-	ai_chance = 0 #oops, this election may be rigged
-	name = "Kunfi & the social democrats"
-	command = { type = relation which = GER value = -10 }
-	command = { type = relation which = ENG value = 10 }
-	command = { type = relation which = FRA value = 10 }
-	command = { type = dissent value = 1 }
-	command = { type = set_domestic which = democratic value = 7 }
-	command = { type = set_domestic which = political_left value = 8 }
-	command = { type = set_domestic which = freedom value = 7 }
-	command = { type = headofstate which = 21201 }
-	command = { type = headofgovernment which = 21200 } #Zsigmond Kunfi
-	#new SD gov, -rel with GER, +rel with UoB&FRA, 1 dissent, sliders to left, open society
-	}
-action = {
-	ai_chance = 60
-	name = "Teleki & the conservatives"
-	command = { type = set_domestic which = democratic value = 7 }
-	command = { type = set_domestic which = political_left value = 3 }
-	command = { type = set_domestic which = freedom value = 3 }
-	command = { type = headofstate which = 21201 }
-	command = { type = headofgovernment which = 21181 } #Pál Teleki
-	#new AD gov, closed society
-	}
-action = {
-	ai_chance = 20
-	name = "Bajcsy-Zsilinszky & the right-centrum"
-	command = { type = set_domestic which = democratic value = 7 }
-	command = { type = set_domestic which = political_left value = 4 }
-	command = { type = set_domestic which = freedom value = 3 }
-	command = { type = set_domestic which = free_market value = 7 }
-	command = { type = headofstate which = 21201 }
-	command = { type = headofgovernment which = 21203 } #Endre Bajcsy-Zsilinszky
-	command = { type = dissent value = -1 }
-	#new SC gov, -1 dissent, sliders to SC, free market
-	}
-action = {
-	ai_chance = 5
-	name = "Rassay & the liberals"
-	command = { type = set_domestic which = democratic value = 7 }
-	command = { type = set_domestic which = political_left value = 5 }
-	command = { type = set_domestic which = freedom value = 6 }
-	command = { type = set_domestic which = free_market value = 7 }
-	command = { type = headofstate which = 21201 }
-	command = { type = headofgovernment which = 21198 } #Károly Rassay
-	#new ML gov, sliders to ML & free market,democratic, open society
-	}
-action = {
-	ai_chance = 10
-	name = "Szálasi & the far right"
-	command = { type = set_domestic which = democratic value = 2 }
-	command = { type = set_domestic which = political_left value = 1 }
-	command = { type = set_domestic which = freedom value = 1 }
-	command = { type = set_domestic which = free_market value = 2 }
-	command = { type = headofstate which = 21201 }
-	command = { type = headofgovernment which = 21204 } #Ferenc Szálasi
-	#new NP gov, sliders to NP & central planning, interventionist, authoritarian, closed society
-	}
 action = {
 	ai_chance = 10
 	name = "The Army shall put an end to this chaotic democracy"
@@ -316,10 +286,65 @@ action = {
 	command = { type = set_domestic which = free_market value = 2 }
 	command = { type = set_domestic which = defense_lobby value = 7 }
 	command = { type = set_domestic which = interventionism value = 2 }
-	command = { type = headofstate which = 21201 } #Barthá Karoly
-	command = { type = headofgovernment which = 21060 } #Barthá Karoly
+	command = { type = headofstate which = 21067 } #Barthá Karoly
+	command = { type = headofgovernment which = 21068 } #Barthá Karoly
 	#new PA gov, sliders to PA & central planning, hawk, authoritarian, closed society, isolationism
 	}
+action = {
+	ai_chance = 30
+	name = "Tildy Zoltán & the peasant-farmers"
+	command = { type = set_domestic which = democratic value = 6 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = set_domestic which = freedom value = 3 }
+	command = { type = headofstate which = 21045 } #Bartha Albert
+	command = { type = headofgovernment which = 21048 } #Tildy Zoltán
+	command = { type = dissent value = -3 }
+	#new SC gov, closed society
+	}
+action = {
+	ai_chance = 60
+	name = "Teleki Pál & the christian-nationalists"
+	command = { type = set_domestic which = democratic value = 5 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = set_domestic which = freedom value = 3 }
+	command = { type = set_domestic which = free_market value = 6 }
+	command = { type = headofstate which = 21045 } #Bartha Albert
+	command = { type = headofgovernment which = 21118 } #Teleki Pál
+	command = { type = dissent value = -1 }
+	#new AD gov, free market
+	}
+action = {
+	ai_chance = 0
+	name = "Rassay Károly & the centre-liberals"
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = set_domestic which = freedom value = 5 }
+	command = { type = set_domestic which = free_market value = 7 }
+	command = { type = headofstate which = 21045 } #Bartha Albert
+	command = { type = headofgovernment which = 21107 } #Károly Rassay
+	#new ML(SC) gov, sliders to ML & free market, democratic, open society
+	}
+action = {
+	ai_chance = 0
+	name = "Jászi Oszkár & the left-liberals"
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 5 }
+	command = { type = set_domestic which = freedom value = 6 }
+	command = { type = headofstate which = 21045 } #Bartha Albert
+	command = { type = headofgovernment which = 21037 } #Jászi Oszkár
+	#new SL(ML) gov, sliders to SL, democratic, open society
+	}
+#action = {
+#	ai_chance = 0 #player-only choice, not realistic
+#	name = "Imrédy Béla & the far right" #not possible until at least 1940
+#	command = { type = set_domestic which = democratic value = 2 }
+#	command = { type = set_domestic which = political_left value = 1 }
+#	command = { type = set_domestic which = freedom value = 1 }
+#	command = { type = set_domestic which = free_market value = 2 }
+#	command = { type = headofstate which = 21045 } #Bartha Albert
+#	command = { type = headofgovernment which = 21078 } #Imrédy Béla
+#	#new NP gov, sliders to NP & central planning, authoritarian, closed society
+#	}
 }
 
 
@@ -329,36 +354,36 @@ country = HUN
 style = 2
 
 name = "A King for Hungary"
-desc = "As Bethlen and Teleki have abided to the parliament's pressure and decided to restore the monarchy, the noble houses of Hungary have been gathering in Budapest for weeks, in order to select the first sovereign of the new kingdom. Four main candidates have been put forward and are awaiting confirmation from the parliament: the military-backed Count Gyula of Cseszneky, the pro-German Ludwig of Saxe-Coburg-Gotha-Koháry, the industrialist Pál Maria of Esterházy, and the statesman György of Festetics."
+desc = "As Bartha Albert and P. Ábrahám Dezso have abided to the parliament's pressure and decided to restore the monarchy, the noble houses of Hungary have been gathering in Budapest for weeks, in order to select the first sovereign of the new kingdom. Four main candidates have been put forward and are awaiting confirmation from the parliament: the military-backed Gróf Teleki Mihály, the pro-German Szász-Coburg-Gotha-Koháry Fülöp, the industrialist Esterházy Pál, and the statesman Bánffy Dániel."
 picture = "reichsrat"
 
 action = {
-	ai_chance = 25
-	name = "Gyula of Csesznek will help expand the armed forces"
+	ai_chance = 20
+	name = "Teleki Mihály will help expand the armed forces"
 	command = { type = domestic which = defense_lobby value = 1 }
-	command = { type = headofstate which = 21190 } #Cseszneky Gyula István, b.1914 [replace with Teleki Mihály, b.1896]
+	command = { type = headofstate which = 21190 } #Teleki Mihály b.1896
 	}
 action = {
-	ai_chance = 25
-	name = "Ludwig of Saxe-Coburg-Gotha-Koháry, for good relations with Berlin"
+	ai_chance = 20
+	name = "Szász-Coburg-Gotha-Koháry Fülöp, for good relations with Berlin"
 	command = { type = dissent value = 1 }
 	command = { type = relation which = GER value = 100 }
-	command = { type = headofstate which = 21191 } #Ludwig Gaston von Sachsen-Coburg und Gotha, b.1870 [replace with Philipp Josias von Sachsen-Coburg und Gotha, b.1901]
+	command = { type = headofstate which = 21191 } #Philipp Josias von Sachsen-Coburg und Gotha b.1901
 	}
 action = {
-	ai_chance = 25
-	name = "Pál Maria of Esterházy will bring progress to Hungary"
-	command = { type = headofstate which = 21192 } #Esterházy Pál Mária Lajos Antal, b.1901
+	ai_chance = 20
+	name = "Esterházy Pál will bring progress to Hungary"
+	command = { type = headofstate which = 21192 } #Esterházy Pál Mária Lajos Antal b.1901
 	}
 action = {
-	ai_chance = 25
-	name = "György of Festetics will stabilize the nation"
+	ai_chance = 20
+	name = "Bánffy Dániel will stabilize the nation"
 	command = { type = dissent value = -1 }
-	command = { type = headofstate which = 21193 } #Festetics György Tasziló József, b.1882 [replace with Károlyi Mihály, b.1875, or Bánffy Dániel, b.1893]
+	command = { type = headofstate which = 21193 } #Bánffy Dániel, b.1893
 	}
 action = {
 	name = "These are dangerous times for a monarch, regency it is"
-	ai_chance = 35
+	ai_chance = 20
 	command = { type = dissent value = 3 }
 	command = { type = event which = 934 where = HUN when = 2 } #an action for regents
 	}
@@ -376,27 +401,27 @@ name = "Choosing the regent"
 desc = "There has been several regents up to now in Hungarian history, but the most famous one was John Hunyadi, who defeated the Turks & defended Hungary gloriously. The regent nearly has the power of a king, so the upper house of parliament is asked to choose wisely."
 
 action = {
-	name = "Admiral Horthy"
-	ai_chance = 40
-	command = { type = headofstate which = 21001 } #replace with Habsburg–Lotaringiai József Ágost
+	name = "Habsburg-Lotaringiai József Ágost"
+	ai_chance = 60
+	command = { type = headofstate which = 21066 }
 	#Bartha-type election
 	}
 action = {
-	name = "Miklós Bánffy"
+	name = "Eckhardt Tibor"
 	ai_chance = 10
-	command = { type = headofstate which = 21202 } #replace with Eckhardt Tibor or Teleki Mihály
+	command = { type = headofstate which = 21070 }
 	#Bethlen-type election
 	}
 action = {
-	name = "János Esterházy"
-	ai_chance = 30
-	command = { type = headofstate which = 21199 }
-	#Peyer-type election
+	name = "Andrássy Sándor"
+	ai_chance = 10
+	command = { type = headofstate which = 21057 } #Andrássy Sándor b.1863 (eldest son Andrássy Imre b.1891)
+	#Bethlen-type election
 	}
 action = {
-	name = "István Bethlen"
+	name = "Bethlen István"
 	ai_chance = 20
-	command = { type = headofstate which = 21185 }
+	command = { type = headofstate which = 21054 }
 	#Bethlen-type election
 	}
 }
@@ -525,49 +550,49 @@ action_a = {
 	command = { type = waketeam which = 1608 when = 1 } #Torpedo Fabrik Whitehead und Co.
 	command = { type = waketeam which = 1642 when = 1 } #Bogdan Pecotic
 	command = { type = waketeam which = 1643 when = 1 } #Magyar Kir. Tengerészeti Akadémia Fiumei
-	#command = { type = wakeleader which = 32500 }
-	#command = { type = wakeleader which = 32501 }
-	#command = { type = wakeleader which = 32502 }
-	#command = { type = wakeleader which = 32503 }
-	#command = { type = wakeleader which = 32504 }
-	#command = { type = wakeleader which = 32505 }
-	#command = { type = wakeleader which = 32506 }
-	#command = { type = wakeleader which = 32507 }
-	#command = { type = wakeleader which = 32508 }
-	#command = { type = wakeleader which = 32509 }
-	#command = { type = wakeleader which = 32510 }
-	#command = { type = wakeleader which = 32511 }
-	#command = { type = wakeleader which = 32512 }
-	#command = { type = wakeleader which = 32513 }
-	#command = { type = wakeleader which = 32514 }
-	#command = { type = wakeleader which = 32515 }
-	#command = { type = wakeleader which = 32516 }
-	#command = { type = wakeleader which = 32517 }
-	#command = { type = wakeleader which = 32518 }
-	#command = { type = wakeleader which = 32519 }
-	#command = { type = wakeleader which = 32520 }
-	#command = { type = wakeleader which = 32521 }
-	#command = { type = wakeleader which = 32522 }
-	#command = { type = wakeleader which = 32523 }
-	#command = { type = wakeminister which = 21700 }
-	#command = { type = wakeminister which = 21701 }
-	#command = { type = wakeminister which = 21702 }
-	#command = { type = wakeminister which = 21703 }
-	#command = { type = wakeminister which = 21704 }
-	#command = { type = wakeminister which = 21705 }
-	#command = { type = wakeminister which = 21706 }
-	#command = { type = wakeminister which = 21707 }
-	#command = { type = wakeminister which = 21708 }
-	#command = { type = wakeminister which = 21709 }
-	#command = { type = wakeminister which = 21710 }
-	#command = { type = wakeminister which = 21711 }
-	#command = { type = wakeminister which = 21712 }
-	#command = { type = wakeminister which = 21713 }
-	#command = { type = wakeminister which = 21714 }
-	#command = { type = wakeminister which = 21715 }
-	#command = { type = wakeminister which = 21716 }
-	#command = { type = wakeminister which = 21717 }
-	#command = { type = wakeminister which = 21718 }
+	command = { type = wakeleader which = 32500 }
+	command = { type = wakeleader which = 32501 }
+	command = { type = wakeleader which = 32502 }
+	command = { type = wakeleader which = 32503 }
+	command = { type = wakeleader which = 32504 }
+	command = { type = wakeleader which = 32505 }
+	command = { type = wakeleader which = 32506 }
+	command = { type = wakeleader which = 32507 }
+	command = { type = wakeleader which = 32508 }
+	command = { type = wakeleader which = 32509 }
+	command = { type = wakeleader which = 32510 }
+	command = { type = wakeleader which = 32511 }
+	command = { type = wakeleader which = 32512 }
+	command = { type = wakeleader which = 32513 }
+	command = { type = wakeleader which = 32514 }
+	command = { type = wakeleader which = 32515 }
+	command = { type = wakeleader which = 32516 }
+	command = { type = wakeleader which = 32517 }
+	command = { type = wakeleader which = 32518 }
+	command = { type = wakeleader which = 32519 }
+	command = { type = wakeleader which = 32520 }
+	command = { type = wakeleader which = 32521 }
+	command = { type = wakeleader which = 32522 }
+	command = { type = wakeleader which = 32523 }
+	command = { type = wakeminister which = 21700 }
+	command = { type = wakeminister which = 21701 }
+	command = { type = wakeminister which = 21702 }
+	command = { type = wakeminister which = 21703 }
+	command = { type = wakeminister which = 21704 }
+	command = { type = wakeminister which = 21705 }
+	command = { type = wakeminister which = 21706 }
+	command = { type = wakeminister which = 21707 }
+	command = { type = wakeminister which = 21708 }
+	command = { type = wakeminister which = 21709 }
+	command = { type = wakeminister which = 21710 }
+	command = { type = wakeminister which = 21711 }
+	command = { type = wakeminister which = 21712 }
+	command = { type = wakeminister which = 21713 }
+	command = { type = wakeminister which = 21714 }
+	command = { type = wakeminister which = 21715 }
+	command = { type = wakeminister which = 21716 }
+	command = { type = wakeminister which = 21717 }
+	command = { type = wakeminister which = 21718 }
 	command = { type = addcore which = 337 }
 	command = { type = addcore which = 344 }
 	command = { type = addcore which = 345 }

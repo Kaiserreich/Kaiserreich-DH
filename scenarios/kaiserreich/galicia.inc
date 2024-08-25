@@ -2,13 +2,10 @@
 
 
 country = {
-    tag = GLD
+	tag = GLD
+	ai = "kaiserreich\Galicia.ai"
 
-ai = "kaiserreich\Galicia.ai"
 	puppet = AUS
-	
-
-
 
 	policy = {
         date = { year = 0 month = january day = 0 }
@@ -20,6 +17,7 @@ ai = "kaiserreich\Galicia.ai"
         defense_lobby = 4
         interventionism = 3
     }
+
 #### cabinet
 
 	headofstate = { type = 9 id = 551001 } #Karol Olbracht Habsburg
@@ -35,16 +33,16 @@ ai = "kaiserreich\Galicia.ai"
 
 #### Resource Reserves
 
-capital = 242
-	manpower = 28
-	free = { ic = 3 }
+	capital = 242
 
+	SpyInfo = { country = "GLD" NumberOfSpies = 2 }
 
 	# Resource Reserves
 	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
 	money = 10
+	manpower = 28
 
-SpyInfo  = {  country = "GLD" NumberOfSpies = 2  } 
+	free = { ic = 3 }
 
     ownedprovinces =      {
 235 237 236 239 242 241 238 300 240 301
