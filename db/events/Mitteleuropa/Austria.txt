@@ -103,6 +103,7 @@ event = {
 id = 90557
 random = no
 country = AUS
+
 trigger = {
 NOT = {
 ispuppet = AUS
@@ -134,6 +135,7 @@ event = {
 id = 90558
 random = no
 country = AUS
+
 trigger = {
 NOT = {
 ispuppet = AUS
@@ -167,6 +169,7 @@ event = {
 id = 90559
 random = no
 country = AUS
+
 trigger = {
 NOT = {
 ispuppet = AUS
@@ -199,6 +202,7 @@ event = {
 id = 90560
 random = no
 country = HUN
+
 trigger = {
 NOT = {
 exists = U24
@@ -229,6 +233,7 @@ event = {
 id = 90561
 random = no
 country = HUN
+
 trigger = {
 NOT = {
 exists = U24
@@ -261,6 +266,7 @@ event = {
 id = 90562
 random = no
 country = HUN
+
 trigger = {
 NOT = {
 exists = U24
@@ -292,6 +298,7 @@ event = {
 id = 90563
 random = no
 country = CRO
+
 trigger = {
 control = { province = 352 data = CRO }
 random = 15
@@ -319,6 +326,7 @@ event = {
 id = 90564
 random = no
 country = CRO
+
 trigger = {
 control = { province = 352 data = CRO }
 random = 30
@@ -348,6 +356,7 @@ event = {
 id = 90565
 random = no
 country = CRO
+
 trigger = {
 control = { province = 352 data = CRO }
 random = 25
@@ -376,6 +385,7 @@ event = {
 id = 90566
 random = no
 country = GLD
+
 trigger = {
 control = { province = 242 data = GLD }
 random = 15
@@ -403,6 +413,7 @@ event = {
 id = 90567
 random = no
 country = GLD
+
 trigger = {
 control = { province = 242 data = GLD }
 random = 30
@@ -432,6 +443,7 @@ event = {
 id = 90568
 random = no
 country = GLD
+
 trigger = {
 control = { province = 242 data = GLD }
 random = 25
@@ -460,6 +472,7 @@ event = {
 id = 90569
 random = no
 country = CZE
+
 trigger = {
 control = { province = 207 data = CZE }
 random = 15
@@ -487,6 +500,7 @@ event = {
 id = 90570
 random = no
 country = CZE
+
 trigger = {
 control = { province = 207 data = CZE }
 random = 30
@@ -516,6 +530,7 @@ event = {
 id = 90571
 random = no
 country = CZE
+
 trigger = {
 control = { province = 207 data = CZE }
 random = 25
@@ -564,6 +579,7 @@ event = {
 id = 90573
 random = no
 country = BOS
+
 trigger = {
 control = { province = 355 data = BOS }
 random = 15
@@ -591,6 +607,7 @@ event = {
 id = 90574
 random = no
 country = BOS
+
 trigger = {
 control = { province = 355 data = BOS }
 random = 30
@@ -620,6 +637,7 @@ event = {
 id = 90575
 random = no
 country = BOS
+
 trigger = {
 control = { province = 355 data = BOS }
 random = 25
@@ -735,7 +753,7 @@ picture = "mines2"
 action_a = {
 	name = "Eindrucksvoll!"
 	command = { type = construct which = infrastructure where = 190 value = 10 }
-	command = { type = add_prov_resource which = 190 value = 20 where = metal } #Styria, Central Austria
+	command = { type = add_prov_resource which = 190 value = 17 where = metal } #Styria, Central Austria
 	}
 }
 
@@ -915,48 +933,47 @@ action_a = {
 
 #####################################################################
 
-
 event = {
 id = 85531
 random = no
 country = AUS
 
+trigger = {
+	atwar = yes
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
+}
+
 name = "Status of elections!"
 desc = "We are at War with our mortal enemies! It is a battle for the very soul of our great empire and we must focus on winning it!"
-picture = "reichsrat"
 style = 2
-
-trigger = {
-atwar = yes
-NOT = { government = communist }
-NOT = { ideology = nazi }
-}
+picture = "reichsrat"
 
 date = { day = 6 month = march year = 1938 }
 
 action_a = {
-name = "Cancel elections!"
-ai_chance = 50
-command = { type = dissent value = 4 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = sleepevent which = 85530 }
+	name = "Cancel elections!"
+	ai_chance = 50
+	command = { type = dissent value = 4 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = sleepevent which = 85530 }
+	}
+action_b = {
+	name = "Let elections proceed without interference!"
+	ai_chance = 50
+	command = { type = dissent value = -2 }
+	}
 }
 
-action_b = {
-name = "Let elections proceed without interference!"
-ai_chance = 50
-command = { type = dissent value = -2 }
-}
-}
 
 event = {
 id = 85530
-random =  no
+random = no
 country = AUS
 
 trigger = {
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 8 month = march year = 1938 }
@@ -969,76 +986,73 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "No surprise, 'Christlichsoziale Partei' wins."
-ai_chance = 70
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom value = 1 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23032 } #Josef Bürckel
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23055 } #Ernst Rüdiger Starhemberg
-command = { type = foreignminister which = 23084 } #Alfred von Arbengau
-command = { type = armamentminister which = 23121 } #Ludwig Draxler
-command = { type = ministerofsecurity which = 23139 } #Robert Winterstein
-command = { type = ministerofintelligence which = 23060 } #Julius Raab
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85532 }
-}
-
+	name = "No surprise, 'Christlichsoziale Partei' wins."
+	ai_chance = 55
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = domestic which = freedom value = 1 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23029 } #Leopold Kunschak (pro-democracy)
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23071 } #Johann Staud (pro-democracy, Kunschak associated)
+	command = { type = foreignminister which = 23073 } #Hans Rott
+	command = { type = armamentminister which = 23169 } #Eduard Heinl
+	command = { type = ministerofsecurity which = 23223 } #Emil Schneider
+	command = { type = ministerofintelligence which = 23245 } #Andreas Figl
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85532 }
+	}
 action_b = {
-name = "Minor surprise, 'Liberalpartei Österreichs' wins."
-ai_chance = 15
-command = { type = set_domestic which = democratic value = 8 }
-command = { type = set_domestic which = political_left value = 4 }
-command = { type = domestic which = freedom value = 5 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23022 } #Joseph Schumpeter
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23051 } #Karl Hartleb
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = armamentminister which = 23101 } #Eduard Heinl
-command = { type = ministerofsecurity which = 23137 } #Josef Gerö
-command = { type = ministerofintelligence which = 23080 } #Viktor von Seiller
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85533 }
-}
-
+	name = "Minor surprise, 'Liberalpartei Österreichs' wins."
+	ai_chance = 25
+	command = { type = set_domestic which = democratic value = 8 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = domestic which = freedom value = 5 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23026 } #Joseph Schumpeter
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = foreignminister which = 23121 } #Viktor von Seiller
+	command = { type = armamentminister which = 23117 } #Gustav Stolper
+	command = { type = ministerofsecurity which = 23214 } #Heinrich Klang
+	command = { type = ministerofintelligence which = 23244 } #Johann Adametz
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85533 }
+	}
 action_c = {
-name = "A major surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
-ai_chance = 10
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 7 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23008 } #Karl Renner
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23044 } #Richard Bernaschek
-command = { type = foreignminister which = 23078 } #Karl Seitz
-command = { type = armamentminister which = 23095 } #Margarete Schütte-Lihotzky
-command = { type = ministerofsecurity which = 23128 } #Ernst Fischer
-command = { type = ministerofintelligence which = 23013 } #Theodor Körner von Siegringen
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85534 }
-}
-
+	name = "A major surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
+	ai_chance = 15
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 7 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23008 } #Friedrich Adler
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23013 } #Karl Renner
+	command = { type = foreignminister which = 23108 } #Karl Seitz
+	command = { type = armamentminister which = 23157 } #Richard Freund
+	command = { type = ministerofsecurity which = 23110 } #Frederick Hertz
+	command = { type = ministerofintelligence which = 23017 } #Theodor Körner von Siegringen
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85534 }
+	}
 action_d = {
-name = "Gott im Himmel! The 'Deutsche Partei' wins."
-ai_chance = 5
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { trigger = { event = 758316 } type = headofstate which = 23026 } #Maria II von Romanov PA
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23037 } #Wilhelm Miklas
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = foreignminister which = 23090 } #Guido Schmidt
-command = { type = armamentminister which = 23126 } #Rudolf Neumayr
-command = { type = ministerofsecurity which = 23144 } #Vinzenz Schumy
-command = { type = ministerofintelligence which = 23193 } #Franz Böhme
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85535 }
-}
+	name = "Gott im Himmel! The 'Deutsche Partei' wins."
+	ai_chance = 5
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23040 } #Otto I von Habsburg AD
+	command = { trigger = { event = 758316 } type = headofstate which = 23038 } #Maria II von Romanov PA
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23048 } #Wilhelm Miklas
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23093 } #Arthur Seyss-Inquart
+	command = { type = foreignminister which = 23145 } #Guido Schmidt
+	command = { type = armamentminister which = 23133 } #Hermann Neubacher
+	command = { type = ministerofsecurity which = 23235 } #Hugo Jury
+	command = { type = ministerofintelligence which = 23304 } #Franz Böhme
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85535 }
+	}
 }
 
 
 event = {
 id = 85532
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1047,24 +1061,23 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Ernst Rüdiger von Starhemberg is our new Ministerpräsident."
-ai_chance = 60
-command = { type = headofgovernment which = 23055 } #Ernst Rüdiger Starhemberg
-command = { type = dissent value = 1 }
-}
-
+	name = "Johann Staud is our new Ministerpräsident."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23071 } #Johann Staud
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "A new face, Kurt von Schuschnigg, is the better choice."
-ai_chance = 40
-command = { type = headofgovernment which = 23070 } #Kurt von Schuschnigg
-command = { type = dissent value = 3 }
-}
+	name = "A new face, Ernst Rüdiger Starhemberg, is the better choice."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23074 } #Ernst Rüdiger Starhemberg
+	command = { type = dissent value = 3 }
+	}
 }
 
 
 event = {
 id = 85533
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1073,26 +1086,23 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "The people want the liberals, the people will get the liberals."
-ai_chance = 60
-command = { type = headofgovernment which = 23051 } #Karl Hartleb
-command = { type = dissent value = 1 }
-}
-
+	name = "The people want the liberals, the people will get the liberals."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "The country needs stability, Edmund von Horstenau will be our new Ministerpräsident."
-ai_chance = 40
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
-command = { type = foreignminister which = 23085 } #Egon Berger von Waldenegg
-command = { type = dissent value = 3 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "The country needs stability, Ernst Streer von Streeruwitz will be our new Ministerpräsident."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23079 } #Ernst Streer von Streeruwitz
+	command = { type = dissent value = 3 }
+	}
 }
 
 
 event = {
 id = 85534
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1101,26 +1111,23 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Richard Bernaschek will become the Ministerpräsident."
-ai_chance = 50
-command = { type = headofgovernment which = 23044 } #Richard Bernaschek
-command = { type = dissent value = 1 }
-}
-
+	name = "Karl Renner will become the Ministerpräsident."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23013 } #Karl Renner
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "Appoint Ministerpräsident from the 'Christlichsoziale Partei'."
-ai_chance = 50
-command = { type = headofgovernment which = 23053 } #Ludwig Hülgerth
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = dissent value = 5 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "The trade unionist Johann Böhm."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23066 } #Johann Böhm
+	command = { type = dissent value = 5 }
+	}
 }
 
 
 event = {
 id = 85535
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1129,24 +1136,19 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Arthur Seyss-Inquart and closer cooperation with Germany."
-ai_chance = 50
-command = { type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = relation which = GER value = 40 }
-command = { type = dissent value = 3 }
-}
-
+	name = "Arthur Seyss-Inquart and closer cooperation with Germany."
+	ai_chance = 50
+	command = { type = headofgovernment which = 23093 } #Arthur Seyss-Inquart
+	command = { type = relation which = GER value = 40 }
+	command = { type = dissent value = 3 }
+	}
 action_b = {
-name = "We need a strong hand! Create a military cabinet!"
-ai_chance = 50
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
-command = { type = foreignminister which = 23085 } #Egon Berger von Waldenegg
-command = { type = armamentminister which = 23108 } #Emil Hickmann
-command = { type = ministerofsecurity which = 23092 } #Eduard Baar von Baarenfels
-command = { type = ministerofintelligence which = 23156 } #Maximilian Ronge
-command = { type = dissent value = 7 }
-command = { type = domestic which = defense_lobby value = 2 }
-}
+	name = "The military man, Edmund Glaise von Horstenau."
+	ai_chance = 50
+	command = { type = headofgovernment which = 23089 } #Edmund Glaise von Horstenau
+	command = { type = dissent value = 7 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	}
 }
 
 
@@ -1155,43 +1157,42 @@ id = 85536
 random = no
 country = AUS
 
+trigger = {
+	atwar = yes
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
+}
+
 name = "Status of elections!"
 desc = "We are at War with our mortal enemies! It is a battle for the very soul of our great empire and we must focus on winning it!"
-picture = "reichsrat"
 style = 2
-
-trigger = {
-atwar = yes
-NOT = { government = communist }
-NOT = { ideology = nazi }
-}
+picture = "reichsrat"
 
 date = { day = 6 month = march year = 1942 }
 
 action_a = {
-name = "Cancel elections!"
-ai_chance = 50
-command = { type = dissent value = 4 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = sleepevent which = 85537 }
-}
-
+	name = "Cancel elections!"
+	ai_chance = 50
+	command = { type = dissent value = 4 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = sleepevent which = 85537 }
+	}
 action_b = {
-name = "Let elections proceed without interference!"
-ai_chance = 50
-command = { type = dissent value = -2 }
-}
+	name = "Let elections proceed without interference!"
+	ai_chance = 50
+	command = { type = dissent value = -2 }
+	}
 }
 
 
 event = {
 id = 85537
-random =  no
+random = no
 country = AUS
 
 trigger = {
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 8 month = march year = 1942 }
@@ -1204,76 +1205,73 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "No surprise, 'Christlichsoziale Partei' wins."
-ai_chance = 60
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom  value = 1 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23032 } #Josef Bürckel
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23055 } #Ernst Rüdiger Starhemberg
-command = { type = foreignminister which = 23084 } #Alfred von Arbengau
-command = { type = armamentminister which = 23121 } #Ludwig Draxler
-command = { type = ministerofsecurity which = 23140 } #Ludwig Adamovich Sr.
-command = { type = ministerofintelligence which = 23060 } #Julius Raab
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85538 }
-}
-
+	name = "No surprise, 'Christlichsoziale Partei' wins."
+	ai_chance = 55
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = domestic which = freedom value = 1 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23030 } #Richard Schmitz (pro-democracy)
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23072 } #Hans Rott (pro-democracy)
+	command = { type = foreignminister which = 23131 } #Ludwig von Kleinwächter
+	command = { type = armamentminister which = 23083 } #Julius Raab
+	command = { type = ministerofsecurity which = 23228 } #Hans Pernter
+	command = { type = ministerofintelligence which = 23189 } #Karl Leitner
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85538 }
+	}
 action_b = {
-name = "A major surprise, 'Liberalpartei Österreichs' wins."
-ai_chance = 10
-command = { type = set_domestic which = democratic value = 8 }
-command = { type = set_domestic which = political_left value = 4 }
-command = { type = domestic which = freedom  value = 5 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23022 } #Joseph Schumpeter
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23051 } #Karl Hartleb
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = armamentminister which = 23101 } #Eduard Heinl
-command = { type = ministerofsecurity which = 23137 } #Josef Gerö
-command = { type = ministerofintelligence which = 23080 } #Viktor von Seiller
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85539 }
+	name = "A major surprise, 'Liberalpartei Österreichs' wins."
+	ai_chance = 15
+	command = { type = set_domestic which = democratic value = 8 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = domestic which = freedom value = 5 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23026 } #Joseph Schumpeter
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = foreignminister which = 23025 } #Leopold Figl
+	command = { type = armamentminister which = 23117 } #Gustav Stolper
+	command = { type = ministerofsecurity which = 23214 } #Heinrich Klang
+	command = { type = ministerofintelligence which = 23271 } #Emil Liebitzky
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85539 }
 }
-
 action_c = {
-name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
-ai_chance = 20
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 7 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23008 } #Karl Renner
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23044 } #Richard Bernaschek
-command = { type = foreignminister which = 23078 } #Karl Seitz
-command = { type = armamentminister which = 23095 } #Margarete Schütte-Lihotzky
-command = { type = ministerofsecurity which = 23128 } #Ernst Fischer
-command = { type = ministerofintelligence which = 23013 } #Theodor Körner von Siegringen
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85540 }
-}
-
+	name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
+	ai_chance = 25
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 7 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23008 } #Friedrich Adler
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23013 } #Karl Renner
+	command = { type = foreignminister which = 23108 } #Karl Seitz
+	command = { type = armamentminister which = 23157 } #Richard Freund
+	command = { type = ministerofsecurity which = 23207 } #Robert Danneberg
+	command = { type = ministerofintelligence which = 23017 } #Theodor Körner von Siegringen
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85540 }
+	}
 action_d = {
-name = "Gott im Himmel! The 'Deutsche Partei' wins."
-ai_chance = 5
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { trigger = { event = 758316 } type = headofstate which = 23026 } #Maria II von Romanov PA
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23037 } #Wilhelm Miklas
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23067 } #Arthur Seyss-Inquart PA
-command = { type = foreignminister which = 23090 } #Guido Schmidt
-command = { type = armamentminister which = 23126 } #Rudolf Neumayr
-command = { type = ministerofsecurity which = 23144 } #Vinzenz Schumy
-command = { type = ministerofintelligence which = 23193 } #Franz Böhme
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85541 }
-}
+	name = "Gott im Himmel! The 'Deutsche Partei' wins."
+	ai_chance = 5
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23040 } #Otto I von Habsburg AD
+	command = { trigger = { event = 758316 } type = headofstate which = 23038 } #Maria II von Romanov PA
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23048 } #Wilhelm Miklas
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23093 } #Arthur Seyss-Inquart
+	command = { type = foreignminister which = 23145 } #Guido Schmidt
+	command = { type = armamentminister which = 23133 } #Hermann Neubacher
+	command = { type = ministerofsecurity which = 23235 } #Hugo Jury
+	command = { type = ministerofintelligence which = 23304 } #Franz Böhme
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85541 }
+	}
 }
 
 
 event = {
 id = 85538
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1282,24 +1280,23 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Ernst Rüdiger von Starhemberg is our new Ministerpräsident."
-ai_chance = 60
-command = { type = headofgovernment which = 23055 } #Ernst Rüdiger Starhemberg
-command = { type = dissent value = 1 }
-}
-
+	name = "Hans Rott is our new Ministerpräsident."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23072 } #Hans Rott
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "A new face, Kurt von Schuschnigg, is the better choice."
-ai_chance = 40
-command = { type = headofgovernment which = 23070 } #Kurt von Schuschnigg
-command = { type = dissent value = 3 }
-}
+	name = "A new face, Ernst Rüdiger Starhemberg, is the better choice."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23074 } #Ernst Rüdiger Starhemberg
+	command = { type = dissent value = 3 }
+	}
 }
 
 
 event = {
 id = 85539
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1308,26 +1305,23 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "The people want the liberals, the people will get the liberals."
-ai_chance = 60
-command = { type = headofgovernment which = 23051 } #Karl Hartleb
-command = { type = dissent value = 1 }
-}
-
+	name = "The people want the liberals, the people will get the liberals."
+	ai_chance = 70
+	command = { type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "The country needs stability, Edmund von Horstenau will be our new Ministerpräsident."
-ai_chance = 40
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
-command = { type = foreignminister which = 23085 } #Egon Berger von Waldenegg
-command = { type = dissent value = 3 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "The country needs stability, Ernst Streer von Streeruwitz will be our new Ministerpräsident."
+	ai_chance = 30
+	command = { type = headofgovernment which = 23079 } #Ernst Streer von Streeruwitz
+	command = { type = dissent value = 3 }
+	}
 }
 
 
 event = {
 id = 85540
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1336,26 +1330,23 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Richard Bernaschek will become the Ministerpräsident."
-ai_chance = 50
-command = { type = headofgovernment which = 23044 } #Richard Bernaschek
-command = { type = dissent value = 1 }
-}
-
+	name = "Karl Renner will become the Ministerpräsident."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23013 } #Karl Renner
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "Appoint Ministerpräsident from the 'Christlichsoziale Partei'."
-ai_chance = 50
-command = { type = headofgovernment which = 23034 } #Alfons Gorbach
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = dissent value = 5 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "The trade unionist Johann Böhm."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23066 } #Johann Böhm
+	command = { type = dissent value = 5 }
+	}
 }
 
 
 event = {
 id = 85541
-random =  no
+random = no
 country = AUS
 
 name = "New Ministerpräsident"
@@ -1364,24 +1355,19 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Arthur Seyss-Inquart and closer cooperation with Germany."
-ai_chance = 50
-command = { type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = relation which = GER value = 40 }
-command = { type = dissent value = 3 }
-}
-
+	name = "Arthur Seyss-Inquart and closer cooperation with Germany."
+	ai_chance = 50
+	command = { type = headofgovernment which = 23093 } #Arthur Seyss-Inquart
+	command = { type = relation which = GER value = 40 }
+	command = { type = dissent value = 3 }
+	}
 action_b = {
-name = "We need a strong hand! Create a military cabinet!"
-ai_chance = 50
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
-command = { type = foreignminister which = 23085 } #Egon Berger von Waldenegg
-command = { type = armamentminister which = 23108 } #Emil Hickmann
-command = { type = ministerofsecurity which = 23092 } #Eduard Baar von Baarenfels
-command = { type = ministerofintelligence which = 23156 } #Maximilian Ronge
-command = { type = dissent value = 7 }
-command = { type = domestic which = defense_lobby value = 2 }
-}
+	name = "The military man, Edmund Glaise von Horstenau."
+	ai_chance = 50
+	command = { type = headofgovernment which = 23089 } #Edmund Glaise von Horstenau
+	command = { type = dissent value = 7 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	}
 }
 
 
@@ -1396,26 +1382,25 @@ picture = "reichsrat"
 style = 2
 
 trigger = {
-atwar = yes
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	atwar = yes
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 6 month = march year = 1946 }
 
 action_a = {
-name = "Cancel elections!"
-ai_chance = 50
-command = { type = dissent value = 4 }
-command = { type = domestic which = defense_lobby value = 1 }
-command = { type = sleepevent which = 85543 }
-}
-
+	name = "Cancel elections!"
+	ai_chance = 50
+	command = { type = dissent value = 4 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	command = { type = sleepevent which = 85543 }
+	}
 action_b = {
-name = "Let elections proceed without interference!"
-ai_chance = 50
-command = { type = dissent value = -2 }
-}
+	name = "Let elections proceed without interference!"
+	ai_chance = 50
+	command = { type = dissent value = -2 }
+	}
 }
 
 
@@ -1425,8 +1410,8 @@ random = no
 country = AUS
 
 trigger = {
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 8 month = march year = 1946 }
@@ -1439,70 +1424,66 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "No surprise, 'Christlichsoziale Partei' wins."
-ai_chance = 50
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom  value = 1 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23032 } #Josef Bürckel
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23055 } #Ernst Rüdiger Starhemberg
-command = { type = foreignminister which = 23091 } #Eduard Baar von Baarenfels
-command = { type = armamentminister which = 23121 } #Ludwig Draxler
-command = { type = ministerofsecurity which = 23140 } #Ludwig Adamovich Sr.
-command = { type = ministerofintelligence which = 23060 } #Julius Raab
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85544 }
+	name = "No surprise, 'Christlichsoziale Partei' wins."
+	ai_chance = 50
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = domestic which = freedom value = 1 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23030 } #Richard Schmitz (pro-democracy)
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23072 } #Hans Rott (pro-democracy)
+	command = { type = foreignminister which = 23131 } #Ludwig von Kleinwächter
+	command = { type = armamentminister which = 23083 } #Julius Raab
+	command = { type = ministerofsecurity which = 23228 } #Hans Pernter
+	command = { type = ministerofintelligence which = 23246 } #Felix Meissner
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85544 }
 }
-
 action_b = {
-name = "A major surprise, 'Liberalpartei Österreichs' wins."
-ai_chance = 10
-command = { type = set_domestic which = democratic value = 8 }
-command = { type = set_domestic which = political_left value = 4 }
-command = { type = domestic which = freedom  value = 5 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23022 } #Joseph Schumpeter
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23051 } #Karl Hartleb
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = armamentminister which = 23101 } #Eduard Heinl
-command = { type = ministerofsecurity which = 23137 } #Josef Gerö
-command = { type = ministerofintelligence which = 23080 } #Viktor von Seiller
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85545 }
+	name = "A major surprise, 'Liberalpartei Österreichs' wins."
+	ai_chance = 10
+	command = { type = set_domestic which = democratic value = 8 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = domestic which = freedom value = 5 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23026 } #Joseph Schumpeter
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = foreignminister which = 23123 } #Karl Gruber
+	command = { type = armamentminister which = 23172 } #Eugen Margarétha
+	command = { type = ministerofsecurity which = 23219 } #Josef Gerö
+	command = { type = ministerofintelligence which = 23271 } #Emil Liebitzky
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85545 }
 }
-
 action_c = {
-name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
-ai_chance = 30
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 7 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23011 } #Theodor Körner von Siegringen
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23016 } #Adolf Schärf
-command = { type = foreignminister which = 23077 } #Joseph Buttinger
-command = { type = armamentminister which = 23098 } #Josef Dobretsberger
-command = { type = ministerofsecurity which = 23128 } #Ernst Fischer
-command = { type = ministerofintelligence which = 23167 } #Emil Liebitzky
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85546 }
-}
-
+	name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
+	ai_chance = 35
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 7 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23015 } #Theodor Körner von Siegringen
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23020 } #Adolf Schärf
+	command = { type = foreignminister which = 23063 } #Joseph Buttinger
+	command = { type = armamentminister which = 23159 } #Karl Ausch
+	command = { type = ministerofsecurity which = 23212 } #Karl Maisel
+	command = { type = ministerofintelligence which = 23119 } #Karl Peyerl
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85546 }
+	}
 action_d = {
-name = "Gott im Himmel! The 'Deutsche Partei' wins."
-ai_chance = 5
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { trigger = { event = 758316 } type = headofstate which = 23026 } #Maria II von Romanov PA
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23037 } #Wilhelm Miklas
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = foreignminister which = 23090 } #Guido Schmidt
-command = { type = armamentminister which = 23126 } #Rudolf Neumayr
-command = { type = ministerofsecurity which = 23144 } #Vinzenz Schumy
-command = { type = ministerofintelligence which = 23193 } #Franz Böhme
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85547 }
-}
+	name = "Gott im Himmel! The 'Deutsche Partei' wins."
+	ai_chance = 5
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23040 } #Otto I von Habsburg AD
+	command = { trigger = { event = 758316 } type = headofstate which = 23038 } #Maria II von Romanov PA
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23048 } #Wilhelm Miklas
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = foreignminister which = 23145 } #Guido Schmidt
+	command = { type = armamentminister which = 23133 } #Hermann Neubacher
+	command = { type = ministerofsecurity which = 23050 } #Franz Hueber
+	command = { type = ministerofintelligence which = 23304 } #Franz Böhme
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85547 }
+	}
 }
 
 
@@ -1518,17 +1499,17 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Ernst Rüdiger von Starhemberg is our new Ministerpräsident."
-ai_chance = 60
-command = { type = headofgovernment which = 23055 } #Ernst Rüdiger Starhemberg
-command = { type = dissent value = 1 }
-}
-
+	name = "Hans Rott is our new Ministerpräsident."
+	ai_chance = 50
+	command = { type = headofgovernment which = 23072 } #Hans Rott
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "Kurt von Schuschnigg is the better choice."
-ai_chance = 40
-command = { type = headofgovernment which = 23070 } #Kurt von Schuschnigg
-command = { type = dissent value = 3 }
+	name = "A new face, Julius Raab, is the better choice."
+	ai_chance = 50
+	command = { type = headofgovernment which = 23082 } #Julius Raab
+	command = { type = dissent value = 3 }
+	}
 }
 }
 
@@ -1545,20 +1526,17 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "The people want the liberals, the people will get the liberals."
-ai_chance = 60
-command = { type = headofgovernment which = 23051 } #Karl Hartleb
-command = { type = dissent value = 1 }
-}
-
+	name = "The people want the liberals, the people will get the liberals."
+	ai_chance = 70
+	command = { type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "The country needs stability, Edmund von Horstenau will be our new Ministerpräsident."
-ai_chance = 40
-command = { type = headofgovernment which = 23058 } #Julius Raab
-command = { type = foreignminister which = 23174 } #Alfred Jansa von Tannenau
-command = { type = dissent value = 3 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "The country needs stability, Leopold Figl will be our new Ministerpräsident."
+	ai_chance = 30
+	command = { type = headofgovernment which = 23024 } #Leopold Figl
+	command = { type = dissent value = 3 }
+	}
 }
 
 
@@ -1574,20 +1552,17 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Richard Bernaschek will become the Ministerpräsident."
-ai_chance = 50
-command = { type = headofgovernment which = 23163 } #Richard Bernaschek RS
-command = { type = dissent value = 1 }
-}
-
+	name = "Adolf Schärf, the 'right wing' of the SPÖ."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23020 } #Adolf Schärf
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "Appoint Ministerpräsident from the 'Christlichsoziale Partei'."
-ai_chance = 50
-command = { type = headofgovernment which = 23034 } #Alfons Gorbach
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = dissent value = 5 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "The trade unionist Johann Böhm."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23066 } #Johann Böhm
+	command = { type = dissent value = 3 }
+	}
 }
 
 
@@ -1603,24 +1578,19 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Arthur Seyss-Inquart and closer cooperation with Germany."
-ai_chance = 50
-command = { type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = relation which = GER value = 40 }
-command = { type = dissent value = 3 }
-}
-
+	name = "Wilhelm Wolf and closer cooperation with Germany."
+	ai_chance = 70
+	command = { type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = relation which = GER value = 40 }
+	command = { type = dissent value = 3 }
+	}
 action_b = {
-name = "We need a strong hand! Create a military cabinet!"
-ai_chance = 50
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
-command = { type = foreignminister which = 23085 } #Egon Berger von Waldenegg
-command = { type = armamentminister which = 23108 } #Emil Hickmann
-command = { type = ministerofsecurity which = 23092 } #Eduard Baar von Baarenfels
-command = { type = ministerofintelligence which = 23150 } #Felix Meissner
-command = { type = dissent value = 7 }
-command = { type = domestic which = defense_lobby value = 2 }
-}
+	name = "The military man, Edmund Glaise von Horstenau."
+	ai_chance = 30
+	command = { type = headofgovernment which = 23089 } #Edmund Glaise von Horstenau
+	command = { type = dissent value = 7 }
+	command = { type = domestic which = defense_lobby value = 1 }
+	}
 }
 
 
@@ -1630,8 +1600,8 @@ random = no
 country = AUS
 
 trigger = {
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 8 month = march year = 1950 }
@@ -1644,70 +1614,67 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "No surprise, 'Christlichsoziale Partei' wins."
-ai_chance = 50
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom  value = 1 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23035 } #Heinrich Gleissner
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23055 } #Ernst Rüdiger Starhemberg
-command = { type = foreignminister which = 23091 } #Eduard Baar von Baarenfels
-command = { type = armamentminister which = 23121 } #Ludwig Draxler
-command = { type = ministerofsecurity which = 23071 } #Kurt von Schuschnigg
-command = { type = ministerofintelligence which = 23060 } #Julius Raab
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85544 }
-}
-
+	name = "No surprise, 'Christlichsoziale Partei' wins."
+	ai_chance = 45
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = domestic which = freedom value = 1 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23046 } #Heinrich Gleissner
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23082 } #Julius Raab
+	command = { type = foreignminister which = 23129 } #Karl Lugmayer
+	command = { type = armamentminister which = 23083 } #Julius Raab
+	command = { type = ministerofsecurity which = 23033 } #Felix Hurdes
+	command = { type = ministerofintelligence which = 23246 } #Felix Meissner
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85544 }
+	}
 action_b = {
-name = "A major surprise, 'Liberalpartei Österreichs' wins."
-ai_chance = 10
-command = { type = set_domestic which = democratic value = 8 }
-command = { type = set_domestic which = political_left value = 4 }
-command = { type = domestic which = freedom  value = 5 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23293 } #Emil van Tongel
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23051 } #Karl Hartleb
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = armamentminister which = 23104 } #Eugen Margarétha
-command = { type = ministerofsecurity which = 23137 } #Josef Gerö
-command = { type = ministerofintelligence which = 23080 } #Viktor von Seiller
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85546 }
+	name = "A major surprise, 'Liberalpartei Österreichs' wins."
+	ai_chance = 10
+	command = { type = set_domestic which = democratic value = 8 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = domestic which = freedom value = 5 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23028 } #Emil van Tongel
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = foreignminister which = 23123 } #Karl Gruber
+	command = { type = armamentminister which = 23172 } #Eugen Margarétha
+	command = { type = ministerofsecurity which = 23219 } #Josef Gerö
+	command = { type = ministerofintelligence which = 23271 } #Emil Liebitzky
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85546 }
 }
-
 action_c = {
-name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
-ai_chance = 30
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 7 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23011 } #Theodor Körner von Siegringen
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23016 } #Adolf Schärf
-command = { type = foreignminister which = 23077 } #Joseph Buttinger
-command = { type = armamentminister which = 23098 } #Josef Dobretsberger
-command = { type = ministerofsecurity which = 23128 } #Ernst Fischer
-command = { type = ministerofintelligence which = 23167 } #Emil Liebitzky
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85545 }
+	name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
+	ai_chance = 40
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 7 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23015 } #Theodor Körner von Siegringen
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23020 } #Adolf Schärf
+	command = { type = foreignminister which = 23063 } #Joseph Buttinger
+	command = { type = armamentminister which = 23159 } #Karl Ausch
+	command = { type = ministerofsecurity which = 23212 } #Karl Maisel
+	command = { type = ministerofintelligence which = 23119 } #Karl Peyerl
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85545 }
 }
-
 action_d = {
-name = "Gott im Himmel! The 'Deutsche Partei' wins."
-ai_chance = 5
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23028 } #Otto I von Habsburg SC AD
-command = { trigger = { event = 758316 } type = headofstate which = 23026 } #Maria II von Romanov PA
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23030 } #Engelbert Dollfuss
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = foreignminister which = 23068 } #Arthur Seyss-Inquart
-command = { type = armamentminister which = 23122 } #Reinhard Kamitz
-command = { type = ministerofsecurity which = 23145 } #Alfred Maleta
-command = { type = ministerofintelligence which = 23193 } #Franz Böhme
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85547 }
-}
+	name = "Gott im Himmel! The 'Deutsche Partei' wins."
+	ai_chance = 5
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23040 } #Otto I von Habsburg AD
+	command = { trigger = { event = 758316 } type = headofstate which = 23038 } #Maria II von Romanov PA
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23048 } #Wilhelm Miklas
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = foreignminister which = 23338 } #Lothar Rendulic
+	command = { type = armamentminister which = 23133 } #Hermann Neubacher
+	command = { type = ministerofsecurity which = 23050 } #Franz Hueber
+	command = { type = ministerofintelligence which = 23250 } #Joseph Brauner von Haydringen
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85547 }
+	}
 }
 
 
@@ -1717,8 +1684,8 @@ random = no
 country = AUS
 
 trigger = {
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 8 month = march year = 1954 }
@@ -1731,70 +1698,67 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "No surprise, 'Christlichsoziale Partei' wins."
-ai_chance = 50
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom  value = 1 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23035 } #Heinrich Gleissner
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23034 } #Alfons Gorbach
-command = { type = foreignminister which = 23091 } #Eduard Baar von Baarenfels
-command = { type = armamentminister which = 23115 } #Fritz Bock
-command = { type = ministerofsecurity which = 23071 } #Kurt von Schuschnigg
-command = { type = ministerofintelligence which = 23060 } #Julius Raab
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85578 }
-}
-
+	name = "No surprise, 'Christlichsoziale Partei' wins."
+	ai_chance = 45
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = domestic which = freedom value = 1 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23046 } #Heinrich Gleissner
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23082 } #Julius Raab
+	command = { type = foreignminister which = 23129 } #Karl Lugmayer
+	command = { type = armamentminister which = 23194 } #Peter Krauland
+	command = { type = ministerofsecurity which = 23033 } #Felix Hurdes
+	command = { type = ministerofintelligence which = 23248 } #Zdenko von Paumgartten
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85578 }
+	}
 action_b = {
-name = "A major surprise, 'Liberalpartei Österreichs' wins."
-ai_chance = 10
-command = { type = set_domestic which = democratic value = 8 }
-command = { type = set_domestic which = political_left value = 4 }
-command = { type = domestic which = freedom  value = 5 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23293 } #Emil van Tongel
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23052 } #Herbert Alois Kraus
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = armamentminister which = 23104 } #Eugen Margarétha
-command = { type = ministerofsecurity which = 23137 } #Josef Gerö
-command = { type = ministerofintelligence which = 23080 } #Viktor von Seiller
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85579 }
-}
-
+	name = "A major surprise, 'Liberalpartei Österreichs' wins."
+	ai_chance = 10
+	command = { type = set_domestic which = democratic value = 8 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = domestic which = freedom value = 5 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23028 } #Emil van Tongel
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23070 } #Herbert Alois Kraus
+	command = { type = foreignminister which = 23123 } #Karl Gruber
+	command = { type = armamentminister which = 23165 } #Josef Dobretsberger
+	command = { type = ministerofsecurity which = 23219 } #Josef Gerö
+	command = { type = ministerofintelligence which = 23308 } #Robert Bernardis
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85579 }
+	}
 action_c = {
-name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
-ai_chance = 30
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 7 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23018 } #Franz Jonas
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23016 } #Adolf Schärf
-command = { type = foreignminister which = 23050 } #Bruno Kreisky
-command = { type = armamentminister which = 23098 } #Josef Dobretsberger
-command = { type = ministerofsecurity which = 23128 } #Ernst Fischer
-command = { type = ministerofintelligence which = 23167 } #Emil Liebitzky
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85580 }
-}
-
+	name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
+	ai_chance = 40
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 7 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23019 } #Adolf Schärf
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23062 } #Joseph Buttinger
+	command = { type = foreignminister which = 23063 } #Joseph Buttinger
+	command = { type = armamentminister which = 23159 } #Stefan Wirlandner
+	command = { type = ministerofsecurity which = 23212 } #Karl Maisel
+	command = { type = ministerofintelligence which = 23265 } #Karl von Lütgendorf
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85580 }
+	}
 action_d = {
-name = "Gott im Himmel! The 'Deutsche Partei' wins."
-ai_chance = 5
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { trigger = { event = 758316 } type = headofstate which = 23026 } #Maria II von Romanov PA
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23030 } #Engelbert Dollfuss
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = foreignminister which = 23068 } #Arthur Seyss-Inquart
-command = { type = armamentminister which = 23122 } #Reinhard Kamitz
-command = { type = ministerofsecurity which = 23145 } #Alfred Maleta
-command = { type = ministerofintelligence which = 23154 } #Franz Rudolf
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85581 }
-}
+	name = "Gott im Himmel! The 'Deutsche Partei' wins."
+	ai_chance = 5
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23040 } #Otto I von Habsburg AD
+	command = { trigger = { event = 758316 } type = headofstate which = 23038 } #Maria II von Romanov PA
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23048 } #Wilhelm Miklas
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = foreignminister which = 23338 } #Lothar Rendulic
+	command = { type = armamentminister which = 23195 } #Reinhard Kamitz
+	command = { type = ministerofsecurity which = 23050 } #Franz Hueber
+	command = { type = ministerofintelligence which = 23252 } #Werner Vogl
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85581 }
+	}
 }
 
 
@@ -1804,24 +1768,23 @@ random = no
 country = AUS
 persistent = yes
 
-name = "New Ministerpräsident" #54 & 58 & 62
+name = "New Ministerpräsident" #54 & 58
 desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
 style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Alfons Gorbach is our new Ministerpräsident."
-ai_chance = 60
-command = { type = headofgovernment which = 23034 } #Alfons Gorbach
-command = { type = dissent value = 1 }
-}
-
+	name = "Julius Raab is our new Ministerpräsident."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23082 } #Julius Raab
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "Josef Klaus is the better choice."
-ai_chance = 40
-command = { type = headofgovernment which = 23056 } #Josef Klaus
-command = { type = dissent value = 3 }
-}
+	name = "The Christian trade unionist Erwin Altenburger."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23075 } #Erwin Altenburger
+	command = { type = dissent value = 3 }
+	}
 }
 
 
@@ -1831,26 +1794,23 @@ random = no
 country = AUS
 persistent = yes
 
-name = "New Ministerpräsident" #54 & 58 & 62
+name = "New Ministerpräsident" #54 & 58
 desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
 style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "The people want the liberals, the people will get the liberals."
-ai_chance = 60
-command = { type = headofgovernment which = 23052 } #Herbert Alois Kraus
-command = { type = dissent value = 1 }
-}
-
+	name = "The young economist Herbert Alois Kraus."
+	ai_chance = 70
+	command = { type = headofgovernment which = 23070 } #Herbert Alois Kraus
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "The country needs stability, Kurt von Schuschnigg will be our next Ministerpräsident."
-ai_chance = 40
-command = { type = headofgovernment which = 23070 } #Kurt von Schuschnigg
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = dissent value = 3 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "Karl Hartleb, the 'Old Shatterhand'."
+	ai_chance = 30
+	command = { type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = dissent value = 3 }
+	}
 }
 
 
@@ -1860,26 +1820,23 @@ random = no
 country = AUS
 persistent = yes
 
-name = "New Ministerpräsident" #54 & 58 & 62
+name = "New Ministerpräsident" #54 & 58
 desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
 style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Adolf Schärf will become the Ministerpräsident."
-ai_chance = 50
-command = { type = headofgovernment which = 23016 } #Adolf Schärf
-command = { type = dissent value = 1 }
-}
-
+	name = "Adolf Schärf, the 'right wing' of the SPÖ."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23020 } #Adolf Schärf
+	command = { type = dissent value = 1 }
+	}
 action_b = {
-name = "Appoint Ministerpräsident from the 'Christlichsoziale Partei'."
-ai_chance = 50
-command = { type = headofgovernment which = 23034 } #Alfons Gorbach
-command = { type = foreignminister which = 23021 } #Leopold Figl
-command = { type = dissent value = 5 }
-command = { type = domestic which = defense_lobby value = 1 }
-}
+	name = "Joseph Buttinger, the 'left wing' of the SPÖ."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23062 } #Joseph Buttinger
+	command = { type = dissent value = 3 }
+	}
 }
 
 
@@ -1889,30 +1846,24 @@ random = no
 country = AUS
 persistent = yes
 
-name = "New Ministerpräsident" #54 & 58 & 62
+name = "New Ministerpräsident" #54 & 58
 desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
 style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "Arthur Seyss-Inquart and closer cooperation with Germany."
-ai_chance = 50
-command = { type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = relation which = GER value = 40 }
-command = { type = dissent value = 3 }
-}
-
+	name = "Wilhelm Wolf and closer cooperation with Germany."
+	ai_chance = 70
+	command = { type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = relation which = GER value = 40 }
+	command = { type = dissent value = 3 }
+	}
 action_b = {
-name = "We need a strong hand! Create a military cabinet!"
-ai_chance = 50
-command = { type = headofgovernment which = 23224 } #Julius Ringel
-command = { type = foreignminister which = 23227 } #Lothar Rendulic
-command = { type = armamentminister which = 23124 } #Hans Malzacher
-command = { type = ministerofsecurity which = 23092 } #Eduard Baar von Baarenfels
-command = { type = ministerofintelligence which = 23150 } #Felix Meissner
-command = { type = dissent value = 7 }
-command = { type = domestic which = defense_lobby value = 2 }
-}
+	name = "The country needs stability, Alfons Gorbach will be our new Ministerpräsident."
+	ai_chance = 30
+	command = { type = headofgovernment which = 23045 } #Alfons Gorbach
+	command = { type = dissent value = 1 }
+	}
 }
 
 
@@ -1922,8 +1873,8 @@ random = no
 country = AUS
 
 trigger = {
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 8 month = march year = 1958 }
@@ -1936,70 +1887,67 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "No surprise, 'Christlichsoziale Partei' wins."
-ai_chance = 50
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom  value = 1 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23035 } #Heinrich Gleissner
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23034 } #Alfons Gorbach
-command = { type = foreignminister which = 23091 } #Eduard Baar von Baarenfels
-command = { type = armamentminister which = 23115 } #Fritz Bock
-command = { type = ministerofsecurity which = 23071 } #Kurt von Schuschnigg
-command = { type = ministerofintelligence which = 23060 } #Julius Raab
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85578 }
-}
-
+	name = "No surprise, 'Christlichsoziale Partei' wins."
+	ai_chance = 45
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = domestic which = freedom value = 1 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23032 } #Felix Hurdes
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23075 } #Erwin Altenburger
+	command = { type = foreignminister which = 23129 } #Karl Lugmayer
+	command = { type = armamentminister which = 23194 } #Peter Krauland
+	command = { type = ministerofsecurity which = 23076 } #Erwin Altenburger
+	command = { type = ministerofintelligence which = 23248 } #Zdenko von Paumgartten
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85578 }
+	}
 action_b = {
-name = "A major surprise, 'Liberalpartei Österreichs' wins."
-ai_chance = 10
-command = { type = set_domestic which = democratic value = 8 }
-command = { type = set_domestic which = political_left value = 4 }
-command = { type = domestic which = freedom  value = 5 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23293 } #Emil van Tongel
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23052 } #Herbert Alois Kraus
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = armamentminister which = 23104 } #Eugen Margarétha
-command = { type = ministerofsecurity which = 23137 } #Josef Gerö
-command = { type = ministerofintelligence which = 23080 } #Viktor von Seiller
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85579 }
+	name = "A major surprise, 'Liberalpartei Österreichs' wins."
+	ai_chance = 10
+	command = { type = set_domestic which = democratic value = 8 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = domestic which = freedom  value = 5 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23028 } #Emil van Tongel
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23070 } #Herbert Alois Kraus
+	command = { type = foreignminister which = 23123 } #Karl Gruber
+	command = { type = armamentminister which = 23165 } #Josef Dobretsberger
+	command = { type = ministerofsecurity which = 23220 } #Ferdinand Nagl
+	command = { type = ministerofintelligence which = 23308 } #Robert Bernardis
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85579 }
 }
-
 action_c = {
-name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
-ai_chance = 30
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 7 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23018 } #Franz Jonas
-command = { trigger = { NOT = { headofstate = 23041 headofstate = 23157 headofstate = 23158 headofstate = 23159 } } type = headofgovernment which = 23016 } #Adolf Schärf
-command = { type = foreignminister which = 23050 } #Bruno Kreisky
-command = { type = armamentminister which = 23098 } #Josef Dobretsberger
-command = { type = ministerofsecurity which = 23128 } #Ernst Fischer
-command = { type = ministerofintelligence which = 23197 } #Robert Bernardis
-command = { trigger = { OR = { headofstate = 23041 headofstate = 23157 headofstate = 23158 headofstate = 23159 } } type = trigger which = 85580 }
+	name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
+	ai_chance = 40
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 7 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23019 } #Adolf Schärf
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23062 } #Joseph Buttinger
+	command = { type = foreignminister which = 23112 } #Karl Czernetz
+	command = { type = armamentminister which = 23159 } #Stefan Wirlandner
+	command = { type = ministerofsecurity which = 23213 } #Rudolf Häuser
+	command = { type = ministerofintelligence which = 23265 } #Karl von Lütgendorf
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85580 }
 }
-
 action_d = {
-name = "Gott im Himmel! The 'Deutsche Partei' wins."
-ai_chance = 5
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23028 } ##Otto I von Habsburg SC AD
-command = { trigger = { event = 758316 } type = headofstate which = 23026 } #Maria II von Romanov PA
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23030 } #Engelbert Dollfuss
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = foreignminister which = 23068 } #Arthur Seyss-Inquart
-command = { type = armamentminister which = 23122 } #Reinhard Kamitz
-command = { type = ministerofsecurity which = 23145 } #Alfred Maleta
-command = { type = ministerofintelligence which = 23154 } #Franz Rudolf
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85581 }
-}
+	name = "Gott im Himmel! The 'Deutsche Partei' wins."
+	ai_chance = 5
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23040 } #Otto I von Habsburg AD
+	command = { trigger = { event = 758316 } type = headofstate which = 23038 } #Maria II von Romanov PA
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23049 } #Franz Hueber
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = foreignminister which = 23139 } #Heinrich Jordis von Lohausen
+	command = { type = armamentminister which = 23195 } #Reinhard Kamitz
+	command = { type = ministerofsecurity which = 23050 } #Franz Hueber
+	command = { type = ministerofintelligence which = 23252 } #Werner Vogl
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85581 }
+	}
 }
 
 
@@ -2009,8 +1957,8 @@ random = no
 country = AUS
 
 trigger = {
-NOT = { government = communist }
-NOT = { ideology = nazi }
+	NOT = { government = communist }
+	NOT = { ideology = nazi }
 }
 
 date = { day = 8 month = march year = 1962 }
@@ -2023,70 +1971,168 @@ style = 2
 picture = "reichsrat"
 
 action_a = {
-name = "No surprise, 'Christlichsoziale Partei' wins."
-ai_chance = 50
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 3 }
-command = { type = domestic which = freedom  value = 1 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23035 } #Heinrich Gleissner
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23034 } #Alfons Gorbach
-command = { type = foreignminister which = 23091 } #Eduard Baar von Baarenfels
-command = { type = armamentminister which = 23115 } #Fritz Bock
-command = { type = ministerofsecurity which = 23071 } #Kurt von Schuschnigg
-command = { type = ministerofintelligence which = 23060 } #Julius Raab
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85578 }
+	name = "No surprise, 'Christlichsoziale Partei' wins."
+	ai_chance = 50
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 3 }
+	command = { type = domestic which = freedom value = 1 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23032 } #Felix Hurdes
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23075 } #Erwin Altenburger
+	command = { type = foreignminister which = 23129 } #Karl Lugmayer
+	command = { type = armamentminister which = 23186 } #Josef Klaus
+	command = { type = ministerofsecurity which = 23076 } #Erwin Altenburger
+	command = { type = ministerofintelligence which = 23248 } #Zdenko von Paumgartten
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85584 }
 }
-
 action_b = {
-name = "A major surprise, 'Liberalpartei Österreichs' wins."
-ai_chance = 10
-command = { type = set_domestic which = democratic value = 8 }
-command = { type = set_domestic which = political_left value = 4 }
-command = { type = domestic which = freedom  value = 5 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23293 } #Emil van Tongel
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23052 } #Herbert Alois Kraus
-command = { type = foreignminister which = 23081 } #Karl Gruber
-command = { type = armamentminister which = 23104 } #Eugen Margarétha
-command = { type = ministerofsecurity which = 23137 } #Josef Gerö
-command = { type = ministerofintelligence which = 23080 } #Viktor von Seiller
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85579 }
+	name = "A major surprise, 'Liberalpartei Österreichs' wins."
+	ai_chance = 10
+	command = { type = set_domestic which = democratic value = 8 }
+	command = { type = set_domestic which = political_left value = 4 }
+	command = { type = domestic which = freedom value = 5 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23028 } #Emil van Tongel
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23070 } #Herbert Alois Kraus
+	command = { type = foreignminister which = 23123 } #Karl Gruber
+	command = { type = armamentminister which = 23166 } #Wolfgang Stolper
+	command = { type = ministerofsecurity which = 23220 } #Ferdinand Nagl
+	command = { type = ministerofintelligence which = 23308 } #Robert Bernardis
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85585 }
 }
-
 action_c = {
-name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
-ai_chance = 30
-command = { type = set_domestic which = democratic value = 7 }
-command = { type = set_domestic which = political_left value = 7 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23027 } #Otto I von Habsburg SC
-command = { trigger = { event = 758316 } type = headofstate which = 23025 } #Maria II von Romanov SC
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23018 } #Franz Jonas
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23016 } #Adolf Schärf
-command = { type = foreignminister which = 23050 } #Bruno Kreisky
-command = { type = armamentminister which = 23098 } #Josef Dobretsberger
-command = { type = ministerofsecurity which = 23128 } #Ernst Fischer
-command = { type = ministerofintelligence which = 23197 } #Robert Bernardis
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85580 }
+	name = "Minor surprise, 'Sozialdemokratische Arbeiterpartei Österreichs' wins."
+	ai_chance = 30
+	command = { type = set_domestic which = democratic value = 7 }
+	command = { type = set_domestic which = political_left value = 7 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23039 } #Otto I von Habsburg SC
+	command = { trigger = { event = 758316 } type = headofstate which = 23037 } #Maria II von Romanov SC
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23022 } #Franz Jonas
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23062 } #Joseph Buttinger
+	command = { type = foreignminister which = 23112 } #Karl Czernetz
+	command = { type = armamentminister which = 23164 } #Franz Nemschak
+	command = { type = ministerofsecurity which = 23213 } #Rudolf Häuser
+	command = { type = ministerofintelligence which = 23265 } #Karl von Lütgendorf
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85586 }
+	}
+action_d = {
+	name = "Gott im Himmel! The 'Deutsche Partei' wins."
+	ai_chance = 5
+	command = { type = set_domestic which = democratic value = 4 }
+	command = { type = set_domestic which = political_left value = 2 }
+	command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23040 } #Otto I von Habsburg AD
+	command = { trigger = { event = 758316 } type = headofstate which = 23038 } #Maria II von Romanov PA
+	command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23049 } #Franz Hueber
+	command = { trigger = { NOT = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = foreignminister which = 23139 } #Heinrich Jordis von Lohausen
+	command = { type = armamentminister which = 23195 } #Reinhard Kamitz
+	command = { type = ministerofsecurity which = 23050 } #Franz Hueber
+	command = { type = ministerofintelligence which = 23252 } #Werner Vogl
+	command = { trigger = { OR = { headofstate = 23039 headofstate = 23040 headofstate = 23037 headofstate = 23038 } } type = trigger which = 85587 }
+	}
 }
 
-action_d = {
-name = "Gott im Himmel! The 'Deutsche Partei' wins."
-ai_chance = 5
-command = { type = set_domestic which = democratic value = 4 }
-command = { type = set_domestic which = political_left value = 2 }
-command = { trigger = { NOT = { event = 758316 } } type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { trigger = { event = 758316 } type = headofstate which = 23026 } #Maria II von Romanov PA
-command = { trigger = { NOT = { event = 758316 } local_flag = AUS_REP } type = headofstate which = 23030 } #Engelbert Dollfuss
-command = { trigger = { NOT = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = headofgovernment which = 23067 } #Arthur Seyss-Inquart
-command = { type = foreignminister which = 23068 } #Arthur Seyss-Inquart
-command = { type = armamentminister which = 23122 } #Reinhard Kamitz
-command = { type = ministerofsecurity which = 23145 } #Alfred Maleta
-command = { type = ministerofintelligence which = 23154 } #Franz Rudolf
-command = { trigger = { OR = { headofstate = 23027 headofstate = 23028 headofstate = 23025 headofstate = 23026 } } type = trigger which = 85581 }
+
+event = {
+id = 85584
+random = no
+country = AUS
+
+name = "New Ministerpräsident" #62
+desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
+style = 2
+picture = "reichsrat"
+
+action_a = {
+	name = "Josef Klaus, the young reformer."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23077 } #Josef Klaus
+	command = { type = dissent value = 1 }
+	}
+action_b = {
+	name = "The Christian trade unionist Erwin Altenburger."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23075 } #Erwin Altenburger
+	command = { type = dissent value = 3 }
+	}
 }
+
+
+event = {
+id = 85585
+random = no
+country = AUS
+
+name = "New Ministerpräsident" #62
+desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
+style = 2
+picture = "reichsrat"
+
+action_a = {
+	name = "The young economist Herbert Alois Kraus."
+	ai_chance = 70
+	command = { type = headofgovernment which = 23070 } #Herbert Alois Kraus
+	command = { type = dissent value = 1 }
+	}
+action_b = {
+	name = "Karl Hartleb, the 'Old Shatterhand'."
+	ai_chance = 30
+	command = { type = headofgovernment which = 23069 } #Karl Hartleb
+	command = { type = dissent value = 3 }
+	}
+}
+
+
+event = {
+id = 85586
+random = no
+country = AUS
+
+name = "New Ministerpräsident" #62
+desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
+style = 2
+picture = "reichsrat"
+
+action_a = {
+	name = "A new face, Bruno Kreisky, is the better choice."
+	ai_chance = 40
+	command = { type = headofgovernment which = 23067 } #Bruno Kreisky
+	command = { type = dissent value = 1 }
+	}
+action_b = {
+	name = "Joseph Buttinger, the 'left wing' of the SPÖ."
+	ai_chance = 60
+	command = { type = headofgovernment which = 23062 } #Joseph Buttinger
+	command = { type = dissent value = 3 }
+	}
+}
+
+
+event = {
+id = 85587
+random = no
+country = AUS
+
+name = "New Ministerpräsident" #62
+desc = "After elections, the Austrian Kaiser must choose a new Ministerpräsident (Minister-President)."
+style = 2
+picture = "reichsrat"
+
+action_a = {
+	name = "Wilhelm Wolf and closer cooperation with Germany."
+	ai_chance = 70
+	command = { type = headofgovernment which = 23100 } #Wilhelm Wolf
+	command = { type = relation which = GER value = 40 }
+	command = { type = dissent value = 3 }
+	}
+action_b = {
+	name = "The country needs stability, Alfons Gorbach will be our new Ministerpräsident."
+	ai_chance = 30
+	command = { type = headofgovernment which = 23045 } #Alfons Gorbach
+	command = { type = dissent value = 1 }
+	}
 }
 
 
@@ -2098,17 +2144,17 @@ style = 2
 picture = "FORA"
 
 trigger = {
-event = 901579
-NOT = {
-government = communist
-ispuppet = AUS
-atwar = AUS
-control = { province = 284 data = -3 }
-}
+	event = 901579
+	NOT = {
+		government = communist
+		ispuppet = AUS
+		atwar = AUS
+		control = { province = 284 data = -3 }
+	}
 }
 
 name = "Syndicalist revolt!"
-desc = "Following the crumbling of the Austro-Hungarian Empire, the paramilitary forces of the forbidden Syndicalist party of Austria have instigated an uprising in major cities against the current order. Local garrisons have been sent to contain them but since there is possibility that they are already infiltrated by revolutionary elements the results of our effort are not certain...."
+desc = "Following the crumbling of the Austro-Hungarian Empire, the paramilitary forces of the forbidden Communist Party of Austria have instigated an uprising in major cities against the current order. Local garrisons have been sent to contain them but since there is possibility that they are already infiltrated by revolutionary elements the results of our effort are not certain...."
 
 date = { day = 1 month = january year = 1936 }
 offset = 20
@@ -2119,16 +2165,16 @@ name = "The revolt succeeds!"
 ai_chance = 30
 command = { type = set_domestic which = democratic value = 3 }
 command = { type = set_domestic which = political_left value = 9 }
-command = { type = headofstate which = 23006 } #Alfred Klahr
-command = { type = headofgovernment which = 23038 } #Johann Koplenig
-command = { type = foreignminister which = 23164 } #Julius Deutsch
-command = { type = armamentminister which = 23095 } #Margarete Schütte-Lihotzky
-command = { type = ministerofsecurity which = 23094 } #Erwin Puschmann
-command = { type = ministerofintelligence which = 23045 } #Richard Bernaschek
-command = { type = chiefofstaff which = 23014 } #Theodor Körner von Siegringen
-command = { type = chiefofarmy which = 23160 } #Alexander Eifler von Lobenstedt
-command = { type = chiefofnavy which = 23163 } #Julius Deutsch
-command = { type = chiefofair which = 23205 } #Franz Winterer
+command = { type = headofstate which = 23009 } #Gottlieb Fiala
+command = { type = headofgovernment which = 23057 } #Franz Koritschoner
+command = { type = foreignminister which = 23103 } #Gerhart Eisler
+command = { type = armamentminister which = 23152 } #Alexander Weissberg-Cybulski
+command = { type = ministerofsecurity which = 23200 } #Franz Honner
+command = { type = ministerofintelligence which = 23017 } #Theodor Körner von Siegringen
+command = { type = chiefofstaff which = 23256 } #Alexander Eifler von Lobenstedt
+command = { type = chiefofarmy which = 23259 } #Julius Deutsch
+command = { type = chiefofnavy which = 23260 } #Julius Deutsch
+command = { type = chiefofair which = 23316 } #Franz Winterer
 command = { type = flag_ext where = AUS which = "_nor" }
 command = { type = relation which = FRA value = 150 }
 command = { type = relation which = ENG value = 150 }
@@ -2139,15 +2185,14 @@ command = { type = relation which = GER value = -100 }
 command = { trigger = { exists = GER control = { province = 163 data = GER } control = { province = 145 data = GER } NOT = { ispuppet = GER alliance = { country = FRA country = GER } } } type = event which = 85549 where = GER when = 1 }
 command = { type = dissent value = 4 }
 }
-
 action_b = {
 name = "Armed forces stays loyal. The revolt is crushed!"
 ai_chance = 70
 command = { type = event which = 85562 where = AUS when = 10 }
 command = { type = set_domestic which = democratic value = 3 }
 command = { type = set_domestic which = political_left value = 3 }
-command = { type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
+command = { type = headofstate which = 23040 } #Otto I von Habsburg AD
+command = { type = headofgovernment which = 23089 } #Edmund Glaise von Horstenau
 command = { type = dissent value = 5 }
 }
 }
@@ -2218,8 +2263,8 @@ command = { type = trigger which = 85551 }
 command = { type = flag_ext where = AUS }
 command = { type = set_domestic which = democratic value = 3 }
 command = { type = set_domestic which = political_left value = 3 }
-command = { type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
+command = { type = headofstate which = 23040 } #Otto I von Habsburg AD
+command = { type = headofgovernment which = 23089 } #Edmund Glaise von Horstenau
 command = { type = access which = GER }
 command = { type = dissent value = 7 }
 }
@@ -2532,8 +2577,8 @@ name = "Restore democracy."
 ai_chance = 25
 command = { type = set_domestic which = democratic value = 7 }
 command = { type = set_domestic which = political_left value = 4 }
-command = { type = headofstate which = 23028 } #Otto I von Habsburg AD
-command = { type = headofgovernment which = 23063 } #Edmund Glaise von Horstenau
+command = { type = headofstate which = 23040 } #Otto I von Habsburg AD
+command = { type = headofgovernment which = 23089 } #Edmund Glaise von Horstenau
 command = { type = dissent value = -4 }
 command = { type = event which = 85564 where = AUS when = 3 }
 }
@@ -2585,7 +2630,7 @@ desc = "With order and democracy finally fully restored in, some members of the 
 action_a = {
 name = "Republic"
 ai_chance = 80
-command = { type = headofstate which = 23008 } #Karl Renner
+command = { type = headofstate which = 23012 } #Karl Renner
 command = { type = local_setflag which = AUS_REP }
 command = { type = dissent value = -3 }
 command = { type = event which = 85565 where = AUS when = 3 }
@@ -2594,7 +2639,7 @@ command = { type = event which = 85565 where = AUS when = 3 }
 action_b = {
 name = "Monarchy"
 ai_chance = 20
-command = { type = headofstate which = 23027 } #Otto I von Habsburg SC
+command = { type = headofstate which = 23039 } #Otto I von Habsburg SC
 command = { type = dissent value = 5 }
 command = { type = event which = 85565 where = AUS when = 3 }
 }
@@ -2982,10 +3027,52 @@ picture = "military_parade"
 action_a = {
 name = "Excellent!"
 command = { type = inherit which = CZE }
-command = { type = waketeam which = 605 when = 1 } #Avia
-command = { type = waketeam which = 606 when = 1 } #Aero
-command = { type = waketeam which = 622 when = 1 } #Zbrojovka Brno
-command = { type = waketeam which = 627 when = 1 } #Ceskomoravská Kolben-Danek
+command = { type = waketeam which = 603 when = 1 } #Avia
+command = { type = waketeam which = 604 when = 1 } #Aero Vodochody
+command = { type = waketeam which = 621 when = 1 } #Zbrojovka Brno
+command = { type = waketeam which = 632 when = 1 } #Ceskomoravská Kolben-Danek
+command = { type = waketeam which = 635 when = 1 } #Skoda
+command = { type = addcore which = 205 }
+command = { type = addcore which = 199 }
+command = { type = addcore which = 204 }
+command = { type = addcore which = 200 }
+command = { type = addcore which = 207 }
+command = { type = addcore which = 198 }
+command = { type = addcore which = 197 }
+command = { type = addcore which = 196 }
+command = { type = addcore which = 201 }
+command = { type = addcore which = 206 }
+command = { type = addcore which = 203 }
+command = { type = addcore which = 202 }
+command = { type = wakeminister which = 23500 }
+command = { type = wakeminister which = 23501 }
+command = { type = wakeminister which = 23502 }
+command = { type = wakeminister which = 23503 }
+command = { type = wakeminister which = 23504 }
+command = { type = wakeminister which = 23505 }
+command = { type = wakeminister which = 23506 }
+command = { type = wakeminister which = 23507 }
+command = { type = wakeminister which = 23508 }
+command = { type = wakeminister which = 23509 }
+command = { type = wakeminister which = 23510 }
+command = { type = wakeminister which = 23511 }
+command = { type = wakeminister which = 23512 }
+command = { type = wakeminister which = 23513 }
+command = { type = wakeminister which = 23514 }
+command = { type = wakeminister which = 23515 }
+command = { type = wakeminister which = 23516 }
+command = { type = wakeminister which = 23517 }
+command = { type = wakeminister which = 23518 }
+command = { type = wakeminister which = 23519 }
+command = { type = wakeminister which = 23520 }
+command = { type = wakeminister which = 23521 }
+command = { type = wakeminister which = 23522 }
+command = { type = wakeminister which = 23523 }
+command = { type = wakeminister which = 23524 }
+command = { type = wakeminister which = 23525 }
+command = { type = wakeminister which = 23526 }
+command = { type = wakeminister which = 23527 }
+command = { type = wakeminister which = 23528 }
 command = { type = wakeleader which = 2400 }
 command = { type = wakeleader which = 2401 }
 command = { type = wakeleader which = 2402 }
@@ -3012,35 +3099,6 @@ command = { type = wakeleader which = 2422 }
 command = { type = wakeleader which = 2423 }
 command = { type = wakeleader which = 2424 }
 command = { type = wakeleader which = 2425 }
-command = { type = wakeminister which = 23525 }
-command = { type = wakeminister which = 23526 }
-command = { type = wakeminister which = 23527 }
-command = { type = wakeminister which = 23528 }
-command = { type = wakeminister which = 23529 }
-command = { type = wakeminister which = 23530 }
-command = { type = wakeminister which = 23531 }
-command = { type = wakeminister which = 23532 }
-command = { type = wakeminister which = 23533 }
-command = { type = wakeminister which = 23534 }
-command = { type = wakeminister which = 23535 }
-command = { type = wakeminister which = 23536 }
-command = { type = wakeminister which = 23537 }
-command = { type = wakeminister which = 23538 }
-command = { type = wakeminister which = 23539 }
-command = { type = wakeminister which = 23540 }
-command = { type = wakeminister which = 23541 }
-command = { type = addcore which = 205 }
-command = { type = addcore which = 199 }
-command = { type = addcore which = 204 }
-command = { type = addcore which = 200 }
-command = { type = addcore which = 207 }
-command = { type = addcore which = 198 }
-command = { type = addcore which = 197 }
-command = { type = addcore which = 196 }
-command = { type = addcore which = 201 }
-command = { type = addcore which = 206 }
-command = { type = addcore which = 203 }
-command = { type = addcore which = 202 }
 }
 }
 

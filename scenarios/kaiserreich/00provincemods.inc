@@ -802,7 +802,7 @@ province = { id = 429 landfort = 3 coastalfort = 2 anti_air = 2 oilpool = 100 su
 	naval_base = { size = 5 current_size = 5 } air_base = { size = 4 current_size = 4 } }
 
 ### GLD
-province = { id = 237 ic = -1 } #Tarnow
+province = { id = 237 } #Tarnow
 province = { id = 239 landfort = 2 anti_air = 1 } #Pryzemysl
 province = { id = 240 ic = -1 } #Tarnopol
 province = { id = 242 anti_air = 2 #Lwow

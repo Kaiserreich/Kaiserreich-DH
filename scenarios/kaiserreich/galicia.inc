@@ -20,16 +20,16 @@ country = {
 
 #### cabinet
 
-	headofstate = { type = 9 id = 551001 } #Karol Olbracht Habsburg
-	headofgovernment = { type = 9 id = 551016 } #Alfred Antoni Potocki
-	foreignminister = { type = 9 id = 551040 } #Jerzy Potocki
-	armamentminister = { type = 9 id = 551085 } #Aleksander Litwinowicz
-	ministerofsecurity = { type = 9 id = 551059 } #Marian Dabrowski
-	ministerofintelligence = { type = 9 id = 551032 } #Kazimierz Switalski
-	chiefofstaff = { type = 9 id = 551073 } #Wlodzimierz Zagórski
-	chiefofarmy = { type = 9 id = 551088 } #Józef Haller von Hallenburg
-	chiefofnavy = { type = 9 id = 551090 } #Bogumil Nowotny
-	chiefofair = { type = 9 id = 551098 } #Wladyslaw Kalkus
+	headofstate = { type = 9 id = 551029 } #Karol Olbracht Habsburg
+	headofgovernment = { type = 9 id = 551059 } #Alfred Antoni Potocki
+	foreignminister = { type = 9 id = 551108 } #Jerzy Potocki
+	armamentminister = { type = 9 id = 551140 } #Wladyslaw Byrka
+	ministerofsecurity = { type = 9 id = 551185 } #Marian Dabrowski
+	ministerofintelligence = { type = 9 id = 551217 } #Jozef Rybak
+	chiefofstaff = { type = 9 id = 551221 } #Eugeniusz Tinz
+	chiefofarmy = { type = 9 id = 551243 } #Stanislaw Haller de Hallenburg
+	chiefofnavy = { type = 9 id = 551253 } #Bogumil Nowotny
+	chiefofair = { type = 9 id = 551265 } #Wladyslaw Kalkus
 
 #### Resource Reserves
 
@@ -44,36 +44,35 @@ country = {
 
 	free = { ic = 3 }
 
-    ownedprovinces =      {
-235 237 236 239 242 241 238 300 240 301
-	 }
-    controlledprovinces = {
-235 237 236 239 242 241 238 300 240 301
-	  }
-    nationalprovinces =   {
-235 237 236 239 242 241 238 300 240 301
-	}
+	ownedprovinces = {
+		235 237 236 239 242 241 238 300 240 301
+		}
+	controlledprovinces = {
+		235 237 236 239 242 241 238 300 240 301
+		}
+	nationalprovinces = {
+		235 237 236 239 242 241 238 300 240 301
+		}
 
 diplomacy = {
-relation = {   tag =	BEL value = 40 }
-relation = {   tag =	BLR value = 60 }
-relation = {   tag =	BUL value = 30 }
-relation = {   tag =	GER value = 80 }
-relation = {   tag =	LAT value = 50 }
-relation = {   tag =	LIT value = 60 }
-relation = {   tag =	POL value = 80 }
-relation = {   tag =	UKR value = 50 }
-relation = {   tag =	AUS value = 170 }
-relation = {   tag =	HUN value = 100 }
-relation = {   tag =	ITA value = 20 }
-relation = {   tag =	SPA value = 20 }
-relation = {   tag =	ENG value = -20 }
-relation = {   tag =	FRA value = -40 }
-relation = {   tag =	RUS value = 10 }
-relation = {   tag =	OTT value = 40 }
-relation = {   tag =	JAP value = -10 }
+relation = {   tag = BEL value = 40 }
+relation = {   tag = BLR value = 60 }
+relation = {   tag = BUL value = 30 }
+relation = {   tag = GER value = 80 }
+relation = {   tag = LAT value = 50 }
+relation = {   tag = LIT value = 60 }
+relation = {   tag = POL value = 80 }
+relation = {   tag = UKR value = 50 }
+relation = {   tag = AUS value = 170 }
+relation = {   tag = HUN value = 100 }
+relation = {   tag = ITA value = 20 }
+relation = {   tag = SPA value = 20 }
+relation = {   tag = ENG value = -20 }
+relation = {   tag = FRA value = -40 }
+relation = {   tag = RUS value = 10 }
+relation = {   tag = OTT value = 40 }
+relation = {   tag = JAP value = -10 }
 }
-
 
 
 	techapps = {
@@ -96,7 +95,6 @@ relation = {   tag =	JAP value = -10 }
 1160 1170 1180 1190 1200 1210 #1918 mountain infantry
 13060 13070 13080 1310 1320 1330 #1918 cavalry division
 
-
 #Air Doctrines
 9020 9030 27480 27490 27500 27510 27520 27530 27540 27550 27560 27570 27580 27590 27600 #ww1 Air Doctrines
 27460 27470 9010 #IW doctrines
@@ -112,24 +110,122 @@ relation = {   tag =	JAP value = -10 }
 6550 6910 #IW Doctrine
 6010 6020 #Into firepower focus
 14000 #Hospitals
-
-
 	}
 
 #########  OOB (...)
 
-landunit = {
-id = { type = 18600 id = 1 }
-location = 242
-name = "Korpus Zachodni"
-  division = { id = { type = 18600 id = 2 } name = "1 Dywizja Legionow" type = infantry model = 6 strength = 100 extra = armored_car brigade_model = 1 }
-}
+#Lviv/Lemberg/Lwow: k.u.k. XI. Korps
+#	k.u.k. 11. Infanteriedivision (2 field artillery reg.) - Lviv (Polish/Ukrainian)
+#	k.u.k. 30. Infanteriedivision (2 field artillery reg. 1 heavy field reg.) - Lviv (Polish/Ukrainian)
+#	k.u.k. 2. Infanteriedivision (2 field artillery reg.) - Jaroslaw/Przemysl (Polish/Ukrainian)
+#Lviv: k.u.k. II. Kavallerie Korps
+#	k.u.k. 4. Kavalleriedivision (1 horse artillery reg.) - Lviv (Polish/Ukrainian)
+#	k.u.k. 6. Kavalleriedivision (1 horse artillery reg.) - Jaroslaw/Przemysl (Polish/Ukrainian)
+#Przemysl: k.u.k. X. Korps
+#	k.u.k. 12. Infanteriedivision (2 field artillery reg. 1 heavy field reg.) - Krakow (Polish)
+#	k.u.k. 24. Infanteriedivision (2 field artillery reg. 1 heavy field reg.) - Przemysl (Polish/Ukrainian)
+#	k.u.k. 7. Kavalleriedivision (1 horse artillery reg.) - Krakow (Polish)
+#Ivano-Frankivsk/Czernowitz: k.u.k. IV. Korps
+#	k.k. 43. Schützendivision (2 field artillery reg.) - Czernowitz +cav [AUS]
+#	k.u.k. 8. Kavalleriedivision (1 horse artillery reg.) - Stanislawów (Polish/Ukrainian)
 
 landunit = {
-id = { type = 18600 id = 3 }
-location = 240
-name = "Korpus Wschodni"
-  division = { id = { type = 18600 id = 4 } name = "2 Dywizja Legionow" type = infantry model = 6 strength = 100 }
-}
+	id = { type = 18700 id = 1 }
+	location = 239 #Przemysl
+	name = "k.u.k. X. Korps"
+		division = {
+			id = { type = 18700 id = 2 }
+			name = "k.u.k. 12. Infanteriedivision"
+			type = infantry
+			model = 8
+			strength = 50
+			experience = 20
+			extra = artillery
+			brigade_model = 5
+		}
+		division = {
+			id = { type = 18700 id = 3 }
+			name = "k.u.k. 24. Infanteriedivision"
+			type = infantry
+			model = 8
+			strength = 50
+			experience = 20
+			extra = artillery
+			brigade_model = 5
+		}
+		division = {
+			id = { type = 18700 id = 4 }
+			name = "k.u.k. 7. Kavalleriedivision"
+			type = cavalry
+			model = 8
+			strength = 35
+			experience = 20
+		}
+	}
+landunit = {
+	id = { type = 18700 id = 5 }
+	location = 242 #Lwow/Lviv
+	name = "k.u.k. XI. Korps"
+		division = {
+			id = { type = 18700 id = 6 }
+			name = "k.u.k. 2. Infanteriedivision"
+			type = infantry
+			model = 8
+			strength = 50
+			experience = 20
+		}
+		division = {
+			id = { type = 18700 id = 7 }
+			name = "k.u.k. 11. Infanteriedivision"
+			type = infantry
+			model = 8
+			strength = 50
+			experience = 20
+		}
+		division = {
+			id = { type = 18700 id = 8 }
+			name = "k.u.k. 30. Infanteriedivision"
+			type = infantry
+			model = 8
+			strength = 50
+			experience = 20
+			extra = artillery
+			brigade_model = 5
+		}
+	}
+landunit = {
+	id = { type = 18700 id = 9 }
+	location = 242 #Lwow/Lviv
+	name = "k.u.k. II. Kavallerie Korps"
+		division = {
+			id = { type = 18700 id = 10 }
+			name = "k.u.k. 4. Kavalleriedivision"
+			type = cavalry
+			model = 8
+			strength = 35
+			experience = 20
+		}
+		division = {
+			id = { type = 18700 id = 11 }
+			name = "k.u.k. 6. Kavalleriedivision"
+			type = cavalry
+			model = 8
+			strength = 35
+			experience = 20
+		}
+	}
+landunit = {
+	id = { type = 18700 id = 12 }
+	location = 238 #Stanislawow
+	name = "k.u.k. IV. Korps"
+		division = {
+			id = { type = 18700 id = 13 }
+			name = "k.u.k. 8. Kavalleriedivision"
+			type = cavalry
+			model = 8
+			strength = 35
+			experience = 20
+		}
+	}
 
 }  

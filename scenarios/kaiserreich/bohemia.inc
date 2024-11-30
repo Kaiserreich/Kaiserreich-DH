@@ -159,6 +159,7 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
 			extra = engineer
 			brigade_model = 3
 		}
@@ -168,6 +169,7 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
 			extra = engineer
 			brigade_model = 3
 		}
@@ -177,6 +179,7 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
 			extra = artillery
 			brigade_model = 6
 		}
@@ -186,6 +189,9 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
+			extra = artillery
+			brigade_model = 6
 		}
 		division = {
 			id = { type = 26000 id = 6 }
@@ -193,6 +199,9 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
+			extra = artillery
+			brigade_model = 6
 		}
 	}
 landunit = {
@@ -205,6 +214,7 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
 			extra = engineer
 			brigade_model = 3
 		}
@@ -214,6 +224,7 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
 			extra = engineer
 			brigade_model = 3
 		}
@@ -223,6 +234,7 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
 			extra = artillery
 			brigade_model = 6
 		}
@@ -232,6 +244,9 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
+			extra = artillery
+			brigade_model = 6
 		}
 		division = {
 			id = { type = 26000 id = 12 }
@@ -239,6 +254,9 @@ landunit = {
 			type = infantry
 			model = 8
 			strength = 20
+			experience = 20
+			extra = artillery
+			brigade_model = 6
 		}
 	}
 landunit = {
@@ -251,6 +269,7 @@ landunit = {
 			type = bergsjaeger
 			model = 8
 			strength = 25
+			experience = 20
 			extra = artillery
 			brigade_model = 6
 		}
@@ -265,6 +284,7 @@ landunit = {
 			type = bergsjaeger
 			model = 8
 			strength = 25
+			experience = 20
 			extra = engineer
 			brigade_model = 3
 		}
@@ -279,6 +299,7 @@ landunit = {
 			type = cavalry
 			model = 8
 			strength = 25
+			experience = 20
 			extra = light_armor_brigade
 			brigade_model = 3
 		}
@@ -293,6 +314,7 @@ landunit = {
 			type = cavalry
 			model = 8
 			strength = 25
+			experience = 20
 			extra = light_armor_brigade
 			brigade_model = 3
 		}
@@ -307,6 +329,7 @@ landunit = {
 			type = cavalry
 			model = 8
 			strength = 25
+			experience = 20
 			extra = light_armor_brigade
 			brigade_model = 3
 		}
@@ -323,6 +346,7 @@ airunit = {
 			type = multi_role
 			model = 4
 			strength = 25
+			experience = 20
 		}
 		division = {
 			id = { type = 26000 id = 25 }
@@ -330,6 +354,7 @@ airunit = {
 			type = tactical_bomber
 			model = 4
 			strength = 25
+			experience = 20
 		}
 	}
 airunit = {
@@ -343,6 +368,7 @@ airunit = {
 			type = multi_role
 			model = 4
 			strength = 25
+			experience = 20
 		}
 		division = {
 			id = { type = 26000 id = 28 }
@@ -350,6 +376,7 @@ airunit = {
 			type = tactical_bomber
 			model = 4
 			strength = 25
+			experience = 20
 		}
 	}
 airunit = {
@@ -363,6 +390,7 @@ airunit = {
 			type = interceptor
 			model = 7
 			strength = 25
+			experience = 20
 		}
 	}
 airunit = {
@@ -376,6 +404,7 @@ airunit = {
 			type = interceptor
 			model = 7
 			strength = 25
+			experience = 20
 		}
 	}
 }

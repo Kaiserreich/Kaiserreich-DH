@@ -30,25 +30,27 @@ ai = "kaiserreich\Poland.ai"
 	chiefofair				= { type = 9 id = 13010 } #Stanislaw Ujejski
 
 #### Resource Reserves
-capital = 232
+	capital = 232
 
-SpyInfo  = {  country = "POL" NumberOfSpies = 2  } 
+	SpyInfo = { country = "POL" NumberOfSpies = 2 }
 
-manpower = 275
-
-	energy	=	1000   metal	= 1000		rare_materials =	500	oil =	500	supplies =	500
+	energy = 1000
+	metal = 1000
+	rare_materials = 500
+	oil = 500
+	supplies = 500
 	money = 20
+	manpower = 275
 
-
-    ownedprovinces =      {
-231 227 223 233 234 243 246 228 232 229 250 254 230
-	 }
-    controlledprovinces = {
-231 227 223 233 234 243 246 228 232 229 250 254 230
-	  }
-    nationalprovinces =   {
-230 231 227 223 233 234 243 246 228 232 229 250 254
-	}
+	ownedprovinces = {
+		231 227 223 233 234 243 246 228 232 229 250 254 230
+		}
+	controlledprovinces = {
+		231 227 223 233 234 243 246 228 232 229 250 254 230
+		}
+	nationalprovinces = {
+		230 231 227 223 233 234 243 246 228 232 229 250 254
+		}
 
 diplomacy = {
 relation = {   tag =	BEL value = 60 }
@@ -129,9 +131,9 @@ dormant_ministers = { 13168 13185 13186 13187
 
 dormant_teams = {
 				#GER-Silesia-Gdansk
-				2708 2709 2717 2728 2737 2738 2740 2741 2742
+				2710 2711 2719 2744 2745 2747 2748 2749
 				#GLD
-				2716 2718 2724 2729 2730 2734 2739 2746
+				2705 2718 2727 2728 2729 2740 2741 2746 2753
 				}
 
 dormant_leaders = {
